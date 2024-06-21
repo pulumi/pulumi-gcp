@@ -3931,8 +3931,8 @@ func (o AccessPolicyIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput 
 
 type ServicePerimeterEgressPolicyEgressFrom struct {
 	// A list of identities that are allowed access through this `EgressPolicy`.
-	// Should be in the format of an email address. The email address should
-	// represent an individual user, service account, or Google group.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities []string `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
@@ -3960,8 +3960,8 @@ type ServicePerimeterEgressPolicyEgressFromInput interface {
 
 type ServicePerimeterEgressPolicyEgressFromArgs struct {
 	// A list of identities that are allowed access through this `EgressPolicy`.
-	// Should be in the format of an email address. The email address should
-	// represent an individual user, service account, or Google group.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
@@ -4054,8 +4054,8 @@ func (o ServicePerimeterEgressPolicyEgressFromOutput) ToServicePerimeterEgressPo
 }
 
 // A list of identities that are allowed access through this `EgressPolicy`.
-// Should be in the format of an email address. The email address should
-// represent an individual user, service account, or Google group.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimeterEgressPolicyEgressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterEgressPolicyEgressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
@@ -4107,8 +4107,8 @@ func (o ServicePerimeterEgressPolicyEgressFromPtrOutput) Elem() ServicePerimeter
 }
 
 // A list of identities that are allowed access through this `EgressPolicy`.
-// Should be in the format of an email address. The email address should
-// represent an individual user, service account, or Google group.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimeterEgressPolicyEgressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterEgressPolicyEgressFrom) []string {
 		if v == nil {
@@ -4701,9 +4701,9 @@ func (o ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrayOutput) 
 }
 
 type ServicePerimeterIngressPolicyIngressFrom struct {
-	// A list of identities that are allowed access through this `IngressPolicy`.
-	// Should be in the format of an email address. The email address should represent
-	// an individual user, service account, or Google group.
+	// A list of identities that are allowed access through this ingress policy.
+	// Should be in the format of email address. The email address should represent
+	// individual user or service account only.
 	Identities []string `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
@@ -4727,9 +4727,9 @@ type ServicePerimeterIngressPolicyIngressFromInput interface {
 }
 
 type ServicePerimeterIngressPolicyIngressFromArgs struct {
-	// A list of identities that are allowed access through this `IngressPolicy`.
-	// Should be in the format of an email address. The email address should represent
-	// an individual user, service account, or Google group.
+	// A list of identities that are allowed access through this ingress policy.
+	// Should be in the format of email address. The email address should represent
+	// individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
@@ -4818,9 +4818,9 @@ func (o ServicePerimeterIngressPolicyIngressFromOutput) ToServicePerimeterIngres
 	}).(ServicePerimeterIngressPolicyIngressFromPtrOutput)
 }
 
-// A list of identities that are allowed access through this `IngressPolicy`.
-// Should be in the format of an email address. The email address should represent
-// an individual user, service account, or Google group.
+// A list of identities that are allowed access through this ingress policy.
+// Should be in the format of email address. The email address should represent
+// individual user or service account only.
 func (o ServicePerimeterIngressPolicyIngressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterIngressPolicyIngressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
@@ -4865,9 +4865,9 @@ func (o ServicePerimeterIngressPolicyIngressFromPtrOutput) Elem() ServicePerimet
 	}).(ServicePerimeterIngressPolicyIngressFromOutput)
 }
 
-// A list of identities that are allowed access through this `IngressPolicy`.
-// Should be in the format of an email address. The email address should represent
-// an individual user, service account, or Google group.
+// A list of identities that are allowed access through this ingress policy.
+// Should be in the format of email address. The email address should represent
+// individual user or service account only.
 func (o ServicePerimeterIngressPolicyIngressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterIngressPolicyIngressFrom) []string {
 		if v == nil {
@@ -5926,10 +5926,9 @@ func (o ServicePerimeterSpecEgressPolicyArrayOutput) Index(i pulumi.IntInput) Se
 }
 
 type ServicePerimeterSpecEgressPolicyEgressFrom struct {
-	// 'A list of identities that are allowed access through this `EgressPolicy`.
-	// To specify an identity or identity group, use the IAM v1
-	// format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-	// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities []string `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
@@ -5956,10 +5955,9 @@ type ServicePerimeterSpecEgressPolicyEgressFromInput interface {
 }
 
 type ServicePerimeterSpecEgressPolicyEgressFromArgs struct {
-	// 'A list of identities that are allowed access through this `EgressPolicy`.
-	// To specify an identity or identity group, use the IAM v1
-	// format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-	// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
@@ -6051,10 +6049,9 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) ToServicePerimeterSpec
 	}).(ServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
 }
 
-// 'A list of identities that are allowed access through this `EgressPolicy`.
-// To specify an identity or identity group, use the IAM v1
-// format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
@@ -6105,10 +6102,9 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Elem() ServicePerim
 	}).(ServicePerimeterSpecEgressPolicyEgressFromOutput)
 }
 
-// 'A list of identities that are allowed access through this `EgressPolicy`.
-// To specify an identity or identity group, use the IAM v1
-// format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressFrom) []string {
 		if v == nil {
@@ -6823,10 +6819,9 @@ func (o ServicePerimeterSpecIngressPolicyArrayOutput) Index(i pulumi.IntInput) S
 }
 
 type ServicePerimeterSpecIngressPolicyIngressFrom struct {
-	// 'A list of identities that are allowed access through this `IngressPolicy`.
-	// To specify an identity or identity group, use the IAM v1
-	// format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-	// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+	// A list of identities that are allowed access through this ingress policy.
+	// Should be in the format of email address. The email address should represent
+	// individual user or service account only.
 	Identities []string `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
@@ -6850,10 +6845,9 @@ type ServicePerimeterSpecIngressPolicyIngressFromInput interface {
 }
 
 type ServicePerimeterSpecIngressPolicyIngressFromArgs struct {
-	// 'A list of identities that are allowed access through this `IngressPolicy`.
-	// To specify an identity or identity group, use the IAM v1
-	// format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-	// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+	// A list of identities that are allowed access through this ingress policy.
+	// Should be in the format of email address. The email address should represent
+	// individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
@@ -6942,10 +6936,9 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) ToServicePerimeterSp
 	}).(ServicePerimeterSpecIngressPolicyIngressFromPtrOutput)
 }
 
-// 'A list of identities that are allowed access through this `IngressPolicy`.
-// To specify an identity or identity group, use the IAM v1
-// format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+// A list of identities that are allowed access through this ingress policy.
+// Should be in the format of email address. The email address should represent
+// individual user or service account only.
 func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
@@ -6990,10 +6983,9 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Elem() ServicePer
 	}).(ServicePerimeterSpecIngressPolicyIngressFromOutput)
 }
 
-// 'A list of identities that are allowed access through this `IngressPolicy`.
-// To specify an identity or identity group, use the IAM v1
-// format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+// A list of identities that are allowed access through this ingress policy.
+// Should be in the format of email address. The email address should represent
+// individual user or service account only.
 func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressFrom) []string {
 		if v == nil {
@@ -8197,10 +8189,9 @@ func (o ServicePerimeterStatusEgressPolicyArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type ServicePerimeterStatusEgressPolicyEgressFrom struct {
-	// 'A list of identities that are allowed access through this `EgressPolicy`.
-	// To specify an identity or identity group, use the IAM v1
-	// format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-	// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities []string `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
@@ -8227,10 +8218,9 @@ type ServicePerimeterStatusEgressPolicyEgressFromInput interface {
 }
 
 type ServicePerimeterStatusEgressPolicyEgressFromArgs struct {
-	// 'A list of identities that are allowed access through this `EgressPolicy`.
-	// To specify an identity or identity group, use the IAM v1
-	// format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-	// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
@@ -8322,10 +8312,9 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) ToServicePerimeterSt
 	}).(ServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
 }
 
-// 'A list of identities that are allowed access through this `EgressPolicy`.
-// To specify an identity or identity group, use the IAM v1
-// format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
@@ -8376,10 +8365,9 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Elem() ServicePer
 	}).(ServicePerimeterStatusEgressPolicyEgressFromOutput)
 }
 
-// 'A list of identities that are allowed access through this `EgressPolicy`.
-// To specify an identity or identity group, use the IAM v1
-// format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressFrom) []string {
 		if v == nil {
@@ -9094,10 +9082,9 @@ func (o ServicePerimeterStatusIngressPolicyArrayOutput) Index(i pulumi.IntInput)
 }
 
 type ServicePerimeterStatusIngressPolicyIngressFrom struct {
-	// 'A list of identities that are allowed access through this `IngressPolicy`.
-	// To specify an identity or identity group, use the IAM v1
-	// format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-	// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+	// A list of identities that are allowed access through this ingress policy.
+	// Should be in the format of email address. The email address should represent
+	// individual user or service account only.
 	Identities []string `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
@@ -9121,10 +9108,9 @@ type ServicePerimeterStatusIngressPolicyIngressFromInput interface {
 }
 
 type ServicePerimeterStatusIngressPolicyIngressFromArgs struct {
-	// 'A list of identities that are allowed access through this `IngressPolicy`.
-	// To specify an identity or identity group, use the IAM v1
-	// format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-	// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+	// A list of identities that are allowed access through this ingress policy.
+	// Should be in the format of email address. The email address should represent
+	// individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
@@ -9213,10 +9199,9 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) ToServicePerimeter
 	}).(ServicePerimeterStatusIngressPolicyIngressFromPtrOutput)
 }
 
-// 'A list of identities that are allowed access through this `IngressPolicy`.
-// To specify an identity or identity group, use the IAM v1
-// format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+// A list of identities that are allowed access through this ingress policy.
+// Should be in the format of email address. The email address should represent
+// individual user or service account only.
 func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
@@ -9261,10 +9246,9 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Elem() ServiceP
 	}).(ServicePerimeterStatusIngressPolicyIngressFromOutput)
 }
 
-// 'A list of identities that are allowed access through this `IngressPolicy`.
-// To specify an identity or identity group, use the IAM v1
-// format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+// A list of identities that are allowed access through this ingress policy.
+// Should be in the format of email address. The email address should represent
+// individual user or service account only.
 func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressFrom) []string {
 		if v == nil {
@@ -10748,10 +10732,9 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput) Index(i pu
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom struct {
-	// 'A list of identities that are allowed access through this `EgressPolicy`.
-	// To specify an identity or identity group, use the IAM v1 format
-	// specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-	// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities []string `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
@@ -10778,10 +10761,9 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromInput interface 
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs struct {
-	// 'A list of identities that are allowed access through this `EgressPolicy`.
-	// To specify an identity or identity group, use the IAM v1 format
-	// specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-	// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
@@ -10873,10 +10855,9 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) ToSer
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
 }
 
-// 'A list of identities that are allowed access through this `EgressPolicy`.
-// To specify an identity or identity group, use the IAM v1 format
-// specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
@@ -10929,10 +10910,9 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) El
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput)
 }
 
-// 'A list of identities that are allowed access through this `EgressPolicy`.
-// To specify an identity or identity group, use the IAM v1 format
-// specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) []string {
 		if v == nil {
@@ -11655,10 +11635,9 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput) Index(i p
 }
 
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom struct {
-	// 'A list of identities that are allowed access through this `IngressPolicy`.
-	// To specify an identity or identity group, use the IAM v1 format
-	// specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-	// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+	// A list of identities that are allowed access through this ingress policy.
+	// Should be in the format of email address. The email address should represent
+	// individual user or service account only.
 	Identities []string `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
@@ -11682,10 +11661,9 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromInput interfac
 }
 
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs struct {
-	// 'A list of identities that are allowed access through this `IngressPolicy`.
-	// To specify an identity or identity group, use the IAM v1 format
-	// specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-	// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+	// A list of identities that are allowed access through this ingress policy.
+	// Should be in the format of email address. The email address should represent
+	// individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
@@ -11774,10 +11752,9 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) ToS
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput)
 }
 
-// 'A list of identities that are allowed access through this `IngressPolicy`.
-// To specify an identity or identity group, use the IAM v1 format
-// specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+// A list of identities that are allowed access through this ingress policy.
+// Should be in the format of email address. The email address should represent
+// individual user or service account only.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
@@ -11822,10 +11799,9 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) 
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput)
 }
 
-// 'A list of identities that are allowed access through this `IngressPolicy`.
-// To specify an identity or identity group, use the IAM v1 format
-// specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+// A list of identities that are allowed access through this ingress policy.
+// Should be in the format of email address. The email address should represent
+// individual user or service account only.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) []string {
 		if v == nil {
@@ -13041,10 +13017,9 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput) Index(i 
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom struct {
-	// 'A list of identities that are allowed access through this `EgressPolicy`.
-	// To specify an identity or identity group, use the IAM v1 format
-	// specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-	// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities []string `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
@@ -13071,10 +13046,9 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromInput interfac
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs struct {
-	// 'A list of identities that are allowed access through this `EgressPolicy`.
-	// To specify an identity or identity group, use the IAM v1 format
-	// specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-	// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+	// A list of identities that are allowed access through this `EgressPolicy`.
+	// Should be in the format of email address. The email address should
+	// represent individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
@@ -13166,10 +13140,9 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) ToS
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
 }
 
-// 'A list of identities that are allowed access through this `EgressPolicy`.
-// To specify an identity or identity group, use the IAM v1 format
-// specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
@@ -13222,10 +13195,9 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) 
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput)
 }
 
-// 'A list of identities that are allowed access through this `EgressPolicy`.
-// To specify an identity or identity group, use the IAM v1 format
-// specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+// A list of identities that are allowed access through this `EgressPolicy`.
+// Should be in the format of email address. The email address should
+// represent individual user or service account only.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) []string {
 		if v == nil {
@@ -13950,10 +13922,9 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput) Index(i
 }
 
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom struct {
-	// 'A list of identities that are allowed access through this `IngressPolicy`.
-	// To specify an identity or identity group, use the IAM v1 format
-	// specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-	// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+	// A list of identities that are allowed access through this ingress policy.
+	// Should be in the format of email address. The email address should represent
+	// individual user or service account only.
 	Identities []string `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
@@ -13977,10 +13948,9 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromInput interf
 }
 
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs struct {
-	// 'A list of identities that are allowed access through this `IngressPolicy`.
-	// To specify an identity or identity group, use the IAM v1 format
-	// specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-	// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+	// A list of identities that are allowed access through this ingress policy.
+	// Should be in the format of email address. The email address should represent
+	// individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
@@ -14069,10 +14039,9 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) T
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput)
 }
 
-// 'A list of identities that are allowed access through this `IngressPolicy`.
-// To specify an identity or identity group, use the IAM v1 format
-// specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+// A list of identities that are allowed access through this ingress policy.
+// Should be in the format of email address. The email address should represent
+// individual user or service account only.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
@@ -14117,10 +14086,9 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput)
 }
 
-// 'A list of identities that are allowed access through this `IngressPolicy`.
-// To specify an identity or identity group, use the IAM v1 format
-// specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+// A list of identities that are allowed access through this ingress policy.
+// Should be in the format of email address. The email address should represent
+// individual user or service account only.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) []string {
 		if v == nil {

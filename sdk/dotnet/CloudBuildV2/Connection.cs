@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuildV2
 {
     /// <summary>
-    /// A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center or GitLab.
+    /// A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center/Cloud or GitLab.
     /// 
     /// To get more information about Connection, see:
     /// 
@@ -250,6 +250,20 @@ namespace Pulumi.Gcp.CloudBuildV2
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for connections to Bitbucket Cloud.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("bitbucketCloudConfig")]
+        public Output<Outputs.ConnectionBitbucketCloudConfig?> BitbucketCloudConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for connections to Bitbucket Data Center.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("bitbucketDataCenterConfig")]
+        public Output<Outputs.ConnectionBitbucketDataCenterConfig?> BitbucketDataCenterConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. Server assigned timestamp for when the connection was created.
         /// </summary>
         [Output("createTime")]
@@ -393,6 +407,20 @@ namespace Pulumi.Gcp.CloudBuildV2
         }
 
         /// <summary>
+        /// Configuration for connections to Bitbucket Cloud.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("bitbucketCloudConfig")]
+        public Input<Inputs.ConnectionBitbucketCloudConfigArgs>? BitbucketCloudConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for connections to Bitbucket Data Center.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("bitbucketDataCenterConfig")]
+        public Input<Inputs.ConnectionBitbucketDataCenterConfigArgs>? BitbucketDataCenterConfig { get; set; }
+
+        /// <summary>
         /// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         /// </summary>
         [Input("disabled")]
@@ -462,6 +490,20 @@ namespace Pulumi.Gcp.CloudBuildV2
             get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
+
+        /// <summary>
+        /// Configuration for connections to Bitbucket Cloud.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("bitbucketCloudConfig")]
+        public Input<Inputs.ConnectionBitbucketCloudConfigGetArgs>? BitbucketCloudConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for connections to Bitbucket Data Center.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("bitbucketDataCenterConfig")]
+        public Input<Inputs.ConnectionBitbucketDataCenterConfigGetArgs>? BitbucketDataCenterConfig { get; set; }
 
         /// <summary>
         /// Output only. Server assigned timestamp for when the connection was created.

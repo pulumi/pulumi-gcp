@@ -125,8 +125,8 @@ export class FolderSink extends pulumi.CustomResource {
      */
     public readonly includeChildren!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-     * resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+     * Whether or not to intercept logs from child projects. If true, matching logs will not
+     * match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
      */
     public readonly interceptChildren!: pulumi.Output<boolean | undefined>;
     /**
@@ -237,8 +237,8 @@ export interface FolderSinkState {
      */
     includeChildren?: pulumi.Input<boolean>;
     /**
-     * Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-     * resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+     * Whether or not to intercept logs from child projects. If true, matching logs will not
+     * match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
      */
     interceptChildren?: pulumi.Input<boolean>;
     /**
@@ -301,8 +301,8 @@ export interface FolderSinkArgs {
      */
     includeChildren?: pulumi.Input<boolean>;
     /**
-     * Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-     * resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+     * Whether or not to intercept logs from child projects. If true, matching logs will not
+     * match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
      */
     interceptChildren?: pulumi.Input<boolean>;
     /**

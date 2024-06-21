@@ -345,6 +345,9 @@ public final class Config {
     public Optional<String> lookerCustomEndpoint() {
         return Codegen.stringProp("lookerCustomEndpoint").config(config).get();
     }
+    public Optional<String> managedKafkaCustomEndpoint() {
+        return Codegen.stringProp("managedKafkaCustomEndpoint").config(config).get();
+    }
     public Optional<String> memcacheCustomEndpoint() {
         return Codegen.stringProp("memcacheCustomEndpoint").config(config).get();
     }

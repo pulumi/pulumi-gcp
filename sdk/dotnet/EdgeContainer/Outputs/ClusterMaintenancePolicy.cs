@@ -14,14 +14,25 @@ namespace Pulumi.Gcp.EdgeContainer.Outputs
     public sealed class ClusterMaintenancePolicy
     {
         /// <summary>
+        /// Exclusions to automatic maintenance. Non-emergency maintenance should not occur
+        /// in these windows. Each exclusion has a unique name and may be active or expired.
+        /// The max number of maintenance exclusions allowed at a given time is 3.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ClusterMaintenancePolicyMaintenanceExclusion> MaintenanceExclusions;
+        /// <summary>
         /// Specifies the maintenance window in which maintenance may be performed.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterMaintenancePolicyWindow Window;
 
         [OutputConstructor]
-        private ClusterMaintenancePolicy(Outputs.ClusterMaintenancePolicyWindow window)
+        private ClusterMaintenancePolicy(
+            ImmutableArray<Outputs.ClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions,
+
+            Outputs.ClusterMaintenancePolicyWindow window)
         {
+            MaintenanceExclusions = maintenanceExclusions;
             Window = window;
         }
     }

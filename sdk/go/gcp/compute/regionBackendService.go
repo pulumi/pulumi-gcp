@@ -524,6 +524,7 @@ type RegionBackendService struct {
 	CircuitBreakers RegionBackendServiceCircuitBreakersPtrOutput `pulumi:"circuitBreakers"`
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
+	// From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
 	ConnectionDrainingTimeoutSec pulumi.IntPtrOutput `pulumi:"connectionDrainingTimeoutSec"`
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
@@ -632,11 +633,7 @@ type RegionBackendService struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
-	Network pulumi.StringPtrOutput `pulumi:"network"`
-	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-	// This field is applicable only when the `loadBalancingScheme` is set
-	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-	// Structure is documented below.
+	Network          pulumi.StringPtrOutput                        `pulumi:"network"`
 	OutlierDetection RegionBackendServiceOutlierDetectionPtrOutput `pulumi:"outlierDetection"`
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
@@ -668,8 +665,10 @@ type RegionBackendService struct {
 	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
 	// Structure is documented below.
 	Subsetting RegionBackendServiceSubsettingPtrOutput `pulumi:"subsetting"`
-	// How many seconds to wait for the backend before considering it a
-	// failed request. Default is 30 seconds. Valid range is [1, 86400].
+	// The backend service timeout has a different meaning depending on the type of load balancer.
+	// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+	// The default is 30 seconds.
+	// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
 	TimeoutSec pulumi.IntOutput `pulumi:"timeoutSec"`
 }
 
@@ -722,6 +721,7 @@ type regionBackendServiceState struct {
 	CircuitBreakers *RegionBackendServiceCircuitBreakers `pulumi:"circuitBreakers"`
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
+	// From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
 	ConnectionDrainingTimeoutSec *int `pulumi:"connectionDrainingTimeoutSec"`
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
@@ -830,11 +830,7 @@ type regionBackendServiceState struct {
 	Name *string `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
-	Network *string `pulumi:"network"`
-	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-	// This field is applicable only when the `loadBalancingScheme` is set
-	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-	// Structure is documented below.
+	Network          *string                               `pulumi:"network"`
 	OutlierDetection *RegionBackendServiceOutlierDetection `pulumi:"outlierDetection"`
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
@@ -866,8 +862,10 @@ type regionBackendServiceState struct {
 	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
 	// Structure is documented below.
 	Subsetting *RegionBackendServiceSubsetting `pulumi:"subsetting"`
-	// How many seconds to wait for the backend before considering it a
-	// failed request. Default is 30 seconds. Valid range is [1, 86400].
+	// The backend service timeout has a different meaning depending on the type of load balancer.
+	// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+	// The default is 30 seconds.
+	// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
 	TimeoutSec *int `pulumi:"timeoutSec"`
 }
 
@@ -891,6 +889,7 @@ type RegionBackendServiceState struct {
 	CircuitBreakers RegionBackendServiceCircuitBreakersPtrInput
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
+	// From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
 	ConnectionDrainingTimeoutSec pulumi.IntPtrInput
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
@@ -999,11 +998,7 @@ type RegionBackendServiceState struct {
 	Name pulumi.StringPtrInput
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
-	Network pulumi.StringPtrInput
-	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-	// This field is applicable only when the `loadBalancingScheme` is set
-	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-	// Structure is documented below.
+	Network          pulumi.StringPtrInput
 	OutlierDetection RegionBackendServiceOutlierDetectionPtrInput
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
@@ -1035,8 +1030,10 @@ type RegionBackendServiceState struct {
 	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
 	// Structure is documented below.
 	Subsetting RegionBackendServiceSubsettingPtrInput
-	// How many seconds to wait for the backend before considering it a
-	// failed request. Default is 30 seconds. Valid range is [1, 86400].
+	// The backend service timeout has a different meaning depending on the type of load balancer.
+	// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+	// The default is 30 seconds.
+	// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
 	TimeoutSec pulumi.IntPtrInput
 }
 
@@ -1064,6 +1061,7 @@ type regionBackendServiceArgs struct {
 	CircuitBreakers *RegionBackendServiceCircuitBreakers `pulumi:"circuitBreakers"`
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
+	// From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
 	ConnectionDrainingTimeoutSec *int `pulumi:"connectionDrainingTimeoutSec"`
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
@@ -1165,11 +1163,7 @@ type regionBackendServiceArgs struct {
 	Name *string `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
-	Network *string `pulumi:"network"`
-	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-	// This field is applicable only when the `loadBalancingScheme` is set
-	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-	// Structure is documented below.
+	Network          *string                               `pulumi:"network"`
 	OutlierDetection *RegionBackendServiceOutlierDetection `pulumi:"outlierDetection"`
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
@@ -1199,8 +1193,10 @@ type regionBackendServiceArgs struct {
 	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
 	// Structure is documented below.
 	Subsetting *RegionBackendServiceSubsetting `pulumi:"subsetting"`
-	// How many seconds to wait for the backend before considering it a
-	// failed request. Default is 30 seconds. Valid range is [1, 86400].
+	// The backend service timeout has a different meaning depending on the type of load balancer.
+	// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+	// The default is 30 seconds.
+	// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
 	TimeoutSec *int `pulumi:"timeoutSec"`
 }
 
@@ -1225,6 +1221,7 @@ type RegionBackendServiceArgs struct {
 	CircuitBreakers RegionBackendServiceCircuitBreakersPtrInput
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
+	// From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
 	ConnectionDrainingTimeoutSec pulumi.IntPtrInput
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
@@ -1326,11 +1323,7 @@ type RegionBackendServiceArgs struct {
 	Name pulumi.StringPtrInput
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
-	Network pulumi.StringPtrInput
-	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-	// This field is applicable only when the `loadBalancingScheme` is set
-	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-	// Structure is documented below.
+	Network          pulumi.StringPtrInput
 	OutlierDetection RegionBackendServiceOutlierDetectionPtrInput
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
@@ -1360,8 +1353,10 @@ type RegionBackendServiceArgs struct {
 	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
 	// Structure is documented below.
 	Subsetting RegionBackendServiceSubsettingPtrInput
-	// How many seconds to wait for the backend before considering it a
-	// failed request. Default is 30 seconds. Valid range is [1, 86400].
+	// The backend service timeout has a different meaning depending on the type of load balancer.
+	// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+	// The default is 30 seconds.
+	// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
 	TimeoutSec pulumi.IntPtrInput
 }
 
@@ -1483,6 +1478,7 @@ func (o RegionBackendServiceOutput) CircuitBreakers() RegionBackendServiceCircui
 
 // Time for which instance will be drained (not accept new
 // connections, but still work to finish started).
+// From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
 func (o RegionBackendServiceOutput) ConnectionDrainingTimeoutSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.IntPtrOutput { return v.ConnectionDrainingTimeoutSec }).(pulumi.IntPtrOutput)
 }
@@ -1642,10 +1638,6 @@ func (o RegionBackendServiceOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-// This field is applicable only when the `loadBalancingScheme` is set
-// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-// Structure is documented below.
 func (o RegionBackendServiceOutput) OutlierDetection() RegionBackendServiceOutlierDetectionPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) RegionBackendServiceOutlierDetectionPtrOutput { return v.OutlierDetection }).(RegionBackendServiceOutlierDetectionPtrOutput)
 }
@@ -1704,8 +1696,10 @@ func (o RegionBackendServiceOutput) Subsetting() RegionBackendServiceSubsettingP
 	return o.ApplyT(func(v *RegionBackendService) RegionBackendServiceSubsettingPtrOutput { return v.Subsetting }).(RegionBackendServiceSubsettingPtrOutput)
 }
 
-// How many seconds to wait for the backend before considering it a
-// failed request. Default is 30 seconds. Valid range is [1, 86400].
+// The backend service timeout has a different meaning depending on the type of load balancer.
+// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+// The default is 30 seconds.
+// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
 func (o RegionBackendServiceOutput) TimeoutSec() pulumi.IntOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.IntOutput { return v.TimeoutSec }).(pulumi.IntOutput)
 }

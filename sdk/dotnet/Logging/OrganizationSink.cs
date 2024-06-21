@@ -119,8 +119,8 @@ namespace Pulumi.Gcp.Logging
         public Output<bool?> IncludeChildren { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-        /// resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+        /// Whether or not to intercept logs from child projects. If true, matching logs will not
+        /// match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
         /// </summary>
         [Output("interceptChildren")]
         public Output<bool?> InterceptChildren { get; private set; } = null!;
@@ -250,8 +250,8 @@ namespace Pulumi.Gcp.Logging
         public Input<bool>? IncludeChildren { get; set; }
 
         /// <summary>
-        /// Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-        /// resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+        /// Whether or not to intercept logs from child projects. If true, matching logs will not
+        /// match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
         /// </summary>
         [Input("interceptChildren")]
         public Input<bool>? InterceptChildren { get; set; }
@@ -336,8 +336,8 @@ namespace Pulumi.Gcp.Logging
         public Input<bool>? IncludeChildren { get; set; }
 
         /// <summary>
-        /// Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child
-        /// resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
+        /// Whether or not to intercept logs from child projects. If true, matching logs will not
+        /// match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
         /// </summary>
         [Input("interceptChildren")]
         public Input<bool>? InterceptChildren { get; set; }

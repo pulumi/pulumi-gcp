@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// A regional NEG that can support Serverless Products and proxying traffic to external backends.
+    /// A regional NEG that can support Serverless Products, proxying traffic to
+    /// external backends and providing traffic to the PSC port mapping endpoints.
     /// 
     /// To get more information about RegionNetworkEndpointGroup, see:
     /// 
@@ -397,6 +398,40 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Network Endpoint Group Portmap
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "network",
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "subnetwork",
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var regionNetworkEndpointGroupPortmap = new Gcp.Compute.RegionNetworkEndpointGroup("region_network_endpoint_group_portmap", new()
+    ///     {
+    ///         Name = "portmap-neg",
+    ///         Region = "us-central1",
+    ///         Network = @default.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         NetworkEndpointType = "GCE_VM_IP_PORTMAP",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -485,7 +520,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
         /// Default value is `SERVERLESS`.
-        /// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+        /// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
         /// </summary>
         [Output("networkEndpointType")]
         public Output<string?> NetworkEndpointType { get; private set; } = null!;
@@ -635,7 +670,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
         /// Default value is `SERVERLESS`.
-        /// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+        /// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
         /// </summary>
         [Input("networkEndpointType")]
         public Input<string>? NetworkEndpointType { get; set; }
@@ -741,7 +776,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
         /// Default value is `SERVERLESS`.
-        /// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+        /// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
         /// </summary>
         [Input("networkEndpointType")]
         public Input<string>? NetworkEndpointType { get; set; }

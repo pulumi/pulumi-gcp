@@ -667,6 +667,7 @@ class ServicePerimeter(pulumi.CustomResource):
             ),
             use_explicit_dry_run_spec=True)
         ```
+
         ## Import
 
         ServicePerimeter can be imported using any of these accepted formats:
@@ -923,6 +924,7 @@ class ServicePerimeter(pulumi.CustomResource):
             ),
             use_explicit_dry_run_spec=True)
         ```
+
         ## Import
 
         ServicePerimeter can be imported using any of these accepted formats:

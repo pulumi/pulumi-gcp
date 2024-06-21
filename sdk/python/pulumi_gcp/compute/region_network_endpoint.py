@@ -16,7 +16,9 @@ class RegionNetworkEndpointArgs:
     def __init__(__self__, *,
                  port: pulumi.Input[int],
                  region_network_endpoint_group: pulumi.Input[str],
+                 client_destination_port: Optional[pulumi.Input[int]] = None,
                  fqdn: Optional[pulumi.Input[str]] = None,
+                 instance: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
@@ -27,8 +29,11 @@ class RegionNetworkEndpointArgs:
                
                
                - - -
+        :param pulumi.Input[int] client_destination_port: Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
         :param pulumi.Input[str] fqdn: Fully qualified domain name of network endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+        :param pulumi.Input[str] instance: The name for a specific VM instance that the IP address belongs to.
+               This is required for network endpoints of type GCE_VM_IP_PORTMAP.
         :param pulumi.Input[str] ip_address: IPv4 address external endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -37,8 +42,12 @@ class RegionNetworkEndpointArgs:
         """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "region_network_endpoint_group", region_network_endpoint_group)
+        if client_destination_port is not None:
+            pulumi.set(__self__, "client_destination_port", client_destination_port)
         if fqdn is not None:
             pulumi.set(__self__, "fqdn", fqdn)
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if project is not None:
@@ -74,6 +83,18 @@ class RegionNetworkEndpointArgs:
         pulumi.set(self, "region_network_endpoint_group", value)
 
     @property
+    @pulumi.getter(name="clientDestinationPort")
+    def client_destination_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+        """
+        return pulumi.get(self, "client_destination_port")
+
+    @client_destination_port.setter
+    def client_destination_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "client_destination_port", value)
+
+    @property
     @pulumi.getter
     def fqdn(self) -> Optional[pulumi.Input[str]]:
         """
@@ -85,6 +106,19 @@ class RegionNetworkEndpointArgs:
     @fqdn.setter
     def fqdn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "fqdn", value)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for a specific VM instance that the IP address belongs to.
+        This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance", value)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -128,7 +162,9 @@ class RegionNetworkEndpointArgs:
 @pulumi.input_type
 class _RegionNetworkEndpointState:
     def __init__(__self__, *,
+                 client_destination_port: Optional[pulumi.Input[int]] = None,
                  fqdn: Optional[pulumi.Input[str]] = None,
+                 instance: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -136,8 +172,11 @@ class _RegionNetworkEndpointState:
                  region_network_endpoint_group: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RegionNetworkEndpoint resources.
+        :param pulumi.Input[int] client_destination_port: Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
         :param pulumi.Input[str] fqdn: Fully qualified domain name of network endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+        :param pulumi.Input[str] instance: The name for a specific VM instance that the IP address belongs to.
+               This is required for network endpoints of type GCE_VM_IP_PORTMAP.
         :param pulumi.Input[str] ip_address: IPv4 address external endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
         :param pulumi.Input[int] port: Port number of network endpoint.
@@ -149,8 +188,12 @@ class _RegionNetworkEndpointState:
                
                - - -
         """
+        if client_destination_port is not None:
+            pulumi.set(__self__, "client_destination_port", client_destination_port)
         if fqdn is not None:
             pulumi.set(__self__, "fqdn", fqdn)
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if port is not None:
@@ -161,6 +204,18 @@ class _RegionNetworkEndpointState:
             pulumi.set(__self__, "region", region)
         if region_network_endpoint_group is not None:
             pulumi.set(__self__, "region_network_endpoint_group", region_network_endpoint_group)
+
+    @property
+    @pulumi.getter(name="clientDestinationPort")
+    def client_destination_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+        """
+        return pulumi.get(self, "client_destination_port")
+
+    @client_destination_port.setter
+    def client_destination_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "client_destination_port", value)
 
     @property
     @pulumi.getter
@@ -174,6 +229,19 @@ class _RegionNetworkEndpointState:
     @fqdn.setter
     def fqdn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "fqdn", value)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for a specific VM instance that the IP address belongs to.
+        This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance", value)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -246,7 +314,9 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 client_destination_port: Optional[pulumi.Input[int]] = None,
                  fqdn: Optional[pulumi.Input[str]] = None,
+                 instance: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -308,6 +378,49 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             fqdn="backend.example.com",
             port=443)
         ```
+        ### Region Network Endpoint Portmap
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="subnetwork",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=default.id)
+        default_region_network_endpoint_group = gcp.compute.RegionNetworkEndpointGroup("default",
+            name="portmap-neg",
+            region="us-central1",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            network_endpoint_type="GCE_VM_IP_PORTMAP")
+        my_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        default_instance = gcp.compute.Instance("default",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                subnetwork=default_subnetwork.id,
+            )],
+            name="instance",
+            machine_type="e2-medium",
+            zone="us-central1-a",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image=my_image.self_link,
+                ),
+            ))
+        region_network_endpoint_portmap = gcp.compute.RegionNetworkEndpoint("region_network_endpoint_portmap",
+            region_network_endpoint_group=default_region_network_endpoint_group.name,
+            region="us-central1",
+            instance=default_instance.self_link,
+            port=80,
+            ip_address=default_instance.network_interfaces[0].network_ip,
+            client_destination_port=8080)
+        ```
 
         ## Import
 
@@ -341,8 +454,11 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] client_destination_port: Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
         :param pulumi.Input[str] fqdn: Fully qualified domain name of network endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+        :param pulumi.Input[str] instance: The name for a specific VM instance that the IP address belongs to.
+               This is required for network endpoints of type GCE_VM_IP_PORTMAP.
         :param pulumi.Input[str] ip_address: IPv4 address external endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
         :param pulumi.Input[int] port: Port number of network endpoint.
@@ -415,6 +531,49 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             fqdn="backend.example.com",
             port=443)
         ```
+        ### Region Network Endpoint Portmap
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="subnetwork",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=default.id)
+        default_region_network_endpoint_group = gcp.compute.RegionNetworkEndpointGroup("default",
+            name="portmap-neg",
+            region="us-central1",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            network_endpoint_type="GCE_VM_IP_PORTMAP")
+        my_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        default_instance = gcp.compute.Instance("default",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                subnetwork=default_subnetwork.id,
+            )],
+            name="instance",
+            machine_type="e2-medium",
+            zone="us-central1-a",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image=my_image.self_link,
+                ),
+            ))
+        region_network_endpoint_portmap = gcp.compute.RegionNetworkEndpoint("region_network_endpoint_portmap",
+            region_network_endpoint_group=default_region_network_endpoint_group.name,
+            region="us-central1",
+            instance=default_instance.self_link,
+            port=80,
+            ip_address=default_instance.network_interfaces[0].network_ip,
+            client_destination_port=8080)
+        ```
 
         ## Import
 
@@ -461,7 +620,9 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 client_destination_port: Optional[pulumi.Input[int]] = None,
                  fqdn: Optional[pulumi.Input[str]] = None,
+                 instance: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -476,7 +637,9 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegionNetworkEndpointArgs.__new__(RegionNetworkEndpointArgs)
 
+            __props__.__dict__["client_destination_port"] = client_destination_port
             __props__.__dict__["fqdn"] = fqdn
+            __props__.__dict__["instance"] = instance
             __props__.__dict__["ip_address"] = ip_address
             if port is None and not opts.urn:
                 raise TypeError("Missing required property 'port'")
@@ -496,7 +659,9 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            client_destination_port: Optional[pulumi.Input[int]] = None,
             fqdn: Optional[pulumi.Input[str]] = None,
+            instance: Optional[pulumi.Input[str]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -509,8 +674,11 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] client_destination_port: Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
         :param pulumi.Input[str] fqdn: Fully qualified domain name of network endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+        :param pulumi.Input[str] instance: The name for a specific VM instance that the IP address belongs to.
+               This is required for network endpoints of type GCE_VM_IP_PORTMAP.
         :param pulumi.Input[str] ip_address: IPv4 address external endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
         :param pulumi.Input[int] port: Port number of network endpoint.
@@ -526,13 +694,23 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
 
         __props__ = _RegionNetworkEndpointState.__new__(_RegionNetworkEndpointState)
 
+        __props__.__dict__["client_destination_port"] = client_destination_port
         __props__.__dict__["fqdn"] = fqdn
+        __props__.__dict__["instance"] = instance
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["port"] = port
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
         __props__.__dict__["region_network_endpoint_group"] = region_network_endpoint_group
         return RegionNetworkEndpoint(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="clientDestinationPort")
+    def client_destination_port(self) -> pulumi.Output[Optional[int]]:
+        """
+        Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+        """
+        return pulumi.get(self, "client_destination_port")
 
     @property
     @pulumi.getter
@@ -542,6 +720,15 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
         This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
         """
         return pulumi.get(self, "fqdn")
+
+    @property
+    @pulumi.getter
+    def instance(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name for a specific VM instance that the IP address belongs to.
+        This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+        """
+        return pulumi.get(self, "instance")
 
     @property
     @pulumi.getter(name="ipAddress")

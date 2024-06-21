@@ -159,10 +159,6 @@ class BackendServiceArgs:
                
                
                - - -
-        :param pulumi.Input['BackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
-               Applicable backend service types can be a global backend service with the
-               loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
-               Structure is documented below.
         :param pulumi.Input[str] port_name: Name of backend port. The same name should appear in the instance
                groups referenced by this service. Required when the load balancing
                scheme is EXTERNAL.
@@ -185,8 +181,10 @@ class BackendServiceArgs:
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
-        :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
-               failed request. Default is 30 seconds. Valid range is [1, 86400].
+        :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
+               For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+               The default is 30 seconds.
+               The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
         """
         if affinity_cookie_ttl_sec is not None:
             pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -570,12 +568,6 @@ class BackendServiceArgs:
     @property
     @pulumi.getter(name="outlierDetection")
     def outlier_detection(self) -> Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']]:
-        """
-        Settings controlling eviction of unhealthy hosts from the load balancing pool.
-        Applicable backend service types can be a global backend service with the
-        loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
-        Structure is documented below.
-        """
         return pulumi.get(self, "outlier_detection")
 
     @outlier_detection.setter
@@ -685,8 +677,10 @@ class BackendServiceArgs:
     @pulumi.getter(name="timeoutSec")
     def timeout_sec(self) -> Optional[pulumi.Input[int]]:
         """
-        How many seconds to wait for the backend before considering it a
-        failed request. Default is 30 seconds. Valid range is [1, 86400].
+        The backend service timeout has a different meaning depending on the type of load balancer.
+        For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+        The default is 30 seconds.
+        The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
         """
         return pulumi.get(self, "timeout_sec")
 
@@ -849,10 +843,6 @@ class _BackendServiceState:
                
                
                - - -
-        :param pulumi.Input['BackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
-               Applicable backend service types can be a global backend service with the
-               loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
-               Structure is documented below.
         :param pulumi.Input[str] port_name: Name of backend port. The same name should appear in the instance
                groups referenced by this service. Required when the load balancing
                scheme is EXTERNAL.
@@ -876,8 +866,10 @@ class _BackendServiceState:
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
-        :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
-               failed request. Default is 30 seconds. Valid range is [1, 86400].
+        :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
+               For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+               The default is 30 seconds.
+               The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
         """
         if affinity_cookie_ttl_sec is not None:
             pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -1306,12 +1298,6 @@ class _BackendServiceState:
     @property
     @pulumi.getter(name="outlierDetection")
     def outlier_detection(self) -> Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']]:
-        """
-        Settings controlling eviction of unhealthy hosts from the load balancing pool.
-        Applicable backend service types can be a global backend service with the
-        loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
-        Structure is documented below.
-        """
         return pulumi.get(self, "outlier_detection")
 
     @outlier_detection.setter
@@ -1433,8 +1419,10 @@ class _BackendServiceState:
     @pulumi.getter(name="timeoutSec")
     def timeout_sec(self) -> Optional[pulumi.Input[int]]:
         """
-        How many seconds to wait for the backend before considering it a
-        failed request. Default is 30 seconds. Valid range is [1, 86400].
+        The backend service timeout has a different meaning depending on the type of load balancer.
+        For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+        The default is 30 seconds.
+        The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
         """
         return pulumi.get(self, "timeout_sec")
 
@@ -1873,10 +1861,6 @@ class BackendService(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['BackendServiceOutlierDetectionArgs']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
-               Applicable backend service types can be a global backend service with the
-               loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
-               Structure is documented below.
         :param pulumi.Input[str] port_name: Name of backend port. The same name should appear in the instance
                groups referenced by this service. Required when the load balancing
                scheme is EXTERNAL.
@@ -1899,8 +1883,10 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
-        :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
-               failed request. Default is 30 seconds. Valid range is [1, 86400].
+        :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
+               For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+               The default is 30 seconds.
+               The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
         """
         ...
     @overload
@@ -2439,10 +2425,6 @@ class BackendService(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['BackendServiceOutlierDetectionArgs']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
-               Applicable backend service types can be a global backend service with the
-               loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
-               Structure is documented below.
         :param pulumi.Input[str] port_name: Name of backend port. The same name should appear in the instance
                groups referenced by this service. Required when the load balancing
                scheme is EXTERNAL.
@@ -2466,8 +2448,10 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
-        :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
-               failed request. Default is 30 seconds. Valid range is [1, 86400].
+        :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
+               For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+               The default is 30 seconds.
+               The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2781,12 +2765,6 @@ class BackendService(pulumi.CustomResource):
     @property
     @pulumi.getter(name="outlierDetection")
     def outlier_detection(self) -> pulumi.Output[Optional['outputs.BackendServiceOutlierDetection']]:
-        """
-        Settings controlling eviction of unhealthy hosts from the load balancing pool.
-        Applicable backend service types can be a global backend service with the
-        loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
-        Structure is documented below.
-        """
         return pulumi.get(self, "outlier_detection")
 
     @property
@@ -2872,8 +2850,10 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="timeoutSec")
     def timeout_sec(self) -> pulumi.Output[int]:
         """
-        How many seconds to wait for the backend before considering it a
-        failed request. Default is 30 seconds. Valid range is [1, 86400].
+        The backend service timeout has a different meaning depending on the type of load balancer.
+        For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+        The default is 30 seconds.
+        The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
         """
         return pulumi.get(self, "timeout_sec")
 

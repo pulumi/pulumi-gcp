@@ -49,6 +49,10 @@ import (
 //					pulumi.String("test1"),
 //					pulumi.String("test2"),
 //				},
+//				Administrators: pulumi.StringArray{
+//					pulumi.String("test1"),
+//					pulumi.String("test2"),
+//				},
 //				Description:          pulumi.String("ActiveDirectory is the public representation of the active directory config."),
 //				EncryptDcConnections: pulumi.Bool(false),
 //				KdcHostname:          pulumi.String("hostname"),
@@ -100,6 +104,8 @@ import (
 type ActiveDirectory struct {
 	pulumi.CustomResourceState
 
+	// Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+	Administrators pulumi.StringArrayOutput `pulumi:"administrators"`
 	// Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
 	AesEncryption pulumi.BoolPtrOutput `pulumi:"aesEncryption"`
 	// Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
@@ -220,6 +226,8 @@ func GetActiveDirectory(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ActiveDirectory resources.
 type activeDirectoryState struct {
+	// Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+	Administrators []string `pulumi:"administrators"`
 	// Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
 	AesEncryption *bool `pulumi:"aesEncryption"`
 	// Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
@@ -284,6 +292,8 @@ type activeDirectoryState struct {
 }
 
 type ActiveDirectoryState struct {
+	// Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+	Administrators pulumi.StringArrayInput
 	// Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
 	AesEncryption pulumi.BoolPtrInput
 	// Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
@@ -352,6 +362,8 @@ func (ActiveDirectoryState) ElementType() reflect.Type {
 }
 
 type activeDirectoryArgs struct {
+	// Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+	Administrators []string `pulumi:"administrators"`
 	// Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
 	AesEncryption *bool `pulumi:"aesEncryption"`
 	// Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
@@ -406,6 +418,8 @@ type activeDirectoryArgs struct {
 
 // The set of arguments for constructing a ActiveDirectory resource.
 type ActiveDirectoryArgs struct {
+	// Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+	Administrators pulumi.StringArrayInput
 	// Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
 	AesEncryption pulumi.BoolPtrInput
 	// Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
@@ -543,6 +557,11 @@ func (o ActiveDirectoryOutput) ToActiveDirectoryOutput() ActiveDirectoryOutput {
 
 func (o ActiveDirectoryOutput) ToActiveDirectoryOutputWithContext(ctx context.Context) ActiveDirectoryOutput {
 	return o
+}
+
+// Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+func (o ActiveDirectoryOutput) Administrators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActiveDirectory) pulumi.StringArrayOutput { return v.Administrators }).(pulumi.StringArrayOutput)
 }
 
 // Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.

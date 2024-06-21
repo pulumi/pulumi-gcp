@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetClusterSecurityPostureConfig {
     /**
-     * @return Sets the mode of the Kubernetes security posture API&#39;s off-cluster features. Available options include DISABLED and BASIC.
+     * @return Sets the mode of the Kubernetes security posture API&#39;s off-cluster features. Available options include DISABLED, BASIC, and ENTERPRISE.
      * 
      */
     private String mode;
@@ -23,7 +23,7 @@ public final class GetClusterSecurityPostureConfig {
 
     private GetClusterSecurityPostureConfig() {}
     /**
-     * @return Sets the mode of the Kubernetes security posture API&#39;s off-cluster features. Available options include DISABLED and BASIC.
+     * @return Sets the mode of the Kubernetes security posture API&#39;s off-cluster features. Available options include DISABLED, BASIC, and ENTERPRISE.
      * 
      */
     public String mode() {

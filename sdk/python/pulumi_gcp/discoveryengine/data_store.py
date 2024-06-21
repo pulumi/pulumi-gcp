@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DataStoreArgs', 'DataStore']
 
@@ -20,6 +22,7 @@ class DataStoreArgs:
                  industry_vertical: pulumi.Input[str],
                  location: pulumi.Input[str],
                  create_advanced_site_search: Optional[pulumi.Input[bool]] = None,
+                 document_processing_config: Optional[pulumi.Input['DataStoreDocumentProcessingConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  solution_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -39,6 +42,8 @@ class DataStoreArgs:
         :param pulumi.Input[bool] create_advanced_site_search: If true, an advanced data store for site search will be created. If the
                data store is not configured as site search (GENERIC vertical and
                PUBLIC_WEBSITE contentConfig), this flag will be ignored.
+        :param pulumi.Input['DataStoreDocumentProcessingConfigArgs'] document_processing_config: Configuration for Document understanding and enrichment.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] solution_types: The solutions that the data store enrolls.
@@ -51,6 +56,8 @@ class DataStoreArgs:
         pulumi.set(__self__, "location", location)
         if create_advanced_site_search is not None:
             pulumi.set(__self__, "create_advanced_site_search", create_advanced_site_search)
+        if document_processing_config is not None:
+            pulumi.set(__self__, "document_processing_config", document_processing_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if solution_types is not None:
@@ -138,6 +145,19 @@ class DataStoreArgs:
         pulumi.set(self, "create_advanced_site_search", value)
 
     @property
+    @pulumi.getter(name="documentProcessingConfig")
+    def document_processing_config(self) -> Optional[pulumi.Input['DataStoreDocumentProcessingConfigArgs']]:
+        """
+        Configuration for Document understanding and enrichment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "document_processing_config")
+
+    @document_processing_config.setter
+    def document_processing_config(self, value: Optional[pulumi.Input['DataStoreDocumentProcessingConfigArgs']]):
+        pulumi.set(self, "document_processing_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -173,6 +193,7 @@ class _DataStoreState:
                  data_store_id: Optional[pulumi.Input[str]] = None,
                  default_schema_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 document_processing_config: Optional[pulumi.Input['DataStoreDocumentProcessingConfigArgs']] = None,
                  industry_vertical: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -193,6 +214,8 @@ class _DataStoreState:
         :param pulumi.Input[str] default_schema_id: The id of the default Schema associated with this data store.
         :param pulumi.Input[str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
+        :param pulumi.Input['DataStoreDocumentProcessingConfigArgs'] document_processing_config: Configuration for Document understanding and enrichment.
+               Structure is documented below.
         :param pulumi.Input[str] industry_vertical: The industry vertical that the data store registers.
                Possible values are: `GENERIC`, `MEDIA`.
         :param pulumi.Input[str] location: The geographic location where the data store should reside. The value can
@@ -218,6 +241,8 @@ class _DataStoreState:
             pulumi.set(__self__, "default_schema_id", default_schema_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if document_processing_config is not None:
+            pulumi.set(__self__, "document_processing_config", document_processing_config)
         if industry_vertical is not None:
             pulumi.set(__self__, "industry_vertical", industry_vertical)
         if location is not None:
@@ -309,6 +334,19 @@ class _DataStoreState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="documentProcessingConfig")
+    def document_processing_config(self) -> Optional[pulumi.Input['DataStoreDocumentProcessingConfigArgs']]:
+        """
+        Configuration for Document understanding and enrichment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "document_processing_config")
+
+    @document_processing_config.setter
+    def document_processing_config(self, value: Optional[pulumi.Input['DataStoreDocumentProcessingConfigArgs']]):
+        pulumi.set(self, "document_processing_config", value)
+
+    @property
     @pulumi.getter(name="industryVertical")
     def industry_vertical(self) -> Optional[pulumi.Input[str]]:
         """
@@ -385,6 +423,7 @@ class DataStore(pulumi.CustomResource):
                  create_advanced_site_search: Optional[pulumi.Input[bool]] = None,
                  data_store_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 document_processing_config: Optional[pulumi.Input[pulumi.InputType['DataStoreDocumentProcessingConfigArgs']]] = None,
                  industry_vertical: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -417,6 +456,32 @@ class DataStore(pulumi.CustomResource):
             content_config="NO_CONTENT",
             solution_types=["SOLUTION_TYPE_SEARCH"],
             create_advanced_site_search=False)
+        ```
+        ### Discoveryengine Datastore Document Processing Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        document_processing_config = gcp.discoveryengine.DataStore("document_processing_config",
+            location="global",
+            data_store_id="data-store-id",
+            display_name="tf-test-structured-datastore",
+            industry_vertical="GENERIC",
+            content_config="NO_CONTENT",
+            solution_types=["SOLUTION_TYPE_SEARCH"],
+            create_advanced_site_search=False,
+            document_processing_config=gcp.discoveryengine.DataStoreDocumentProcessingConfigArgs(
+                default_parsing_config=gcp.discoveryengine.DataStoreDocumentProcessingConfigDefaultParsingConfigArgs(
+                    digital_parsing_config=gcp.discoveryengine.DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs(),
+                ),
+                parsing_config_overrides=[gcp.discoveryengine.DataStoreDocumentProcessingConfigParsingConfigOverrideArgs(
+                    file_type="pdf",
+                    ocr_parsing_config=gcp.discoveryengine.DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs(
+                        use_native_text=True,
+                    ),
+                )],
+            ))
         ```
 
         ## Import
@@ -456,6 +521,8 @@ class DataStore(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
+        :param pulumi.Input[pulumi.InputType['DataStoreDocumentProcessingConfigArgs']] document_processing_config: Configuration for Document understanding and enrichment.
+               Structure is documented below.
         :param pulumi.Input[str] industry_vertical: The industry vertical that the data store registers.
                Possible values are: `GENERIC`, `MEDIA`.
         :param pulumi.Input[str] location: The geographic location where the data store should reside. The value can
@@ -498,6 +565,32 @@ class DataStore(pulumi.CustomResource):
             content_config="NO_CONTENT",
             solution_types=["SOLUTION_TYPE_SEARCH"],
             create_advanced_site_search=False)
+        ```
+        ### Discoveryengine Datastore Document Processing Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        document_processing_config = gcp.discoveryengine.DataStore("document_processing_config",
+            location="global",
+            data_store_id="data-store-id",
+            display_name="tf-test-structured-datastore",
+            industry_vertical="GENERIC",
+            content_config="NO_CONTENT",
+            solution_types=["SOLUTION_TYPE_SEARCH"],
+            create_advanced_site_search=False,
+            document_processing_config=gcp.discoveryengine.DataStoreDocumentProcessingConfigArgs(
+                default_parsing_config=gcp.discoveryengine.DataStoreDocumentProcessingConfigDefaultParsingConfigArgs(
+                    digital_parsing_config=gcp.discoveryengine.DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs(),
+                ),
+                parsing_config_overrides=[gcp.discoveryengine.DataStoreDocumentProcessingConfigParsingConfigOverrideArgs(
+                    file_type="pdf",
+                    ocr_parsing_config=gcp.discoveryengine.DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs(
+                        use_native_text=True,
+                    ),
+                )],
+            ))
         ```
 
         ## Import
@@ -543,6 +636,7 @@ class DataStore(pulumi.CustomResource):
                  create_advanced_site_search: Optional[pulumi.Input[bool]] = None,
                  data_store_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 document_processing_config: Optional[pulumi.Input[pulumi.InputType['DataStoreDocumentProcessingConfigArgs']]] = None,
                  industry_vertical: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -566,6 +660,7 @@ class DataStore(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["document_processing_config"] = document_processing_config
             if industry_vertical is None and not opts.urn:
                 raise TypeError("Missing required property 'industry_vertical'")
             __props__.__dict__["industry_vertical"] = industry_vertical
@@ -593,6 +688,7 @@ class DataStore(pulumi.CustomResource):
             data_store_id: Optional[pulumi.Input[str]] = None,
             default_schema_id: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            document_processing_config: Optional[pulumi.Input[pulumi.InputType['DataStoreDocumentProcessingConfigArgs']]] = None,
             industry_vertical: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -618,6 +714,8 @@ class DataStore(pulumi.CustomResource):
         :param pulumi.Input[str] default_schema_id: The id of the default Schema associated with this data store.
         :param pulumi.Input[str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
+        :param pulumi.Input[pulumi.InputType['DataStoreDocumentProcessingConfigArgs']] document_processing_config: Configuration for Document understanding and enrichment.
+               Structure is documented below.
         :param pulumi.Input[str] industry_vertical: The industry vertical that the data store registers.
                Possible values are: `GENERIC`, `MEDIA`.
         :param pulumi.Input[str] location: The geographic location where the data store should reside. The value can
@@ -641,6 +739,7 @@ class DataStore(pulumi.CustomResource):
         __props__.__dict__["data_store_id"] = data_store_id
         __props__.__dict__["default_schema_id"] = default_schema_id
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["document_processing_config"] = document_processing_config
         __props__.__dict__["industry_vertical"] = industry_vertical
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -702,6 +801,15 @@ class DataStore(pulumi.CustomResource):
         string with a length limit of 128 characters.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="documentProcessingConfig")
+    def document_processing_config(self) -> pulumi.Output[Optional['outputs.DataStoreDocumentProcessingConfig']]:
+        """
+        Configuration for Document understanding and enrichment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "document_processing_config")
 
     @property
     @pulumi.getter(name="industryVertical")

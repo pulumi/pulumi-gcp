@@ -5,11 +5,22 @@ package com.pulumi.gcp.edgecontainer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.edgecontainer.outputs.ClusterMaintenancePolicyMaintenanceExclusion;
 import com.pulumi.gcp.edgecontainer.outputs.ClusterMaintenancePolicyWindow;
+import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterMaintenancePolicy {
+    /**
+     * @return Exclusions to automatic maintenance. Non-emergency maintenance should not occur
+     * in these windows. Each exclusion has a unique name and may be active or expired.
+     * The max number of maintenance exclusions allowed at a given time is 3.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<ClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions;
     /**
      * @return Specifies the maintenance window in which maintenance may be performed.
      * Structure is documented below.
@@ -18,6 +29,16 @@ public final class ClusterMaintenancePolicy {
     private ClusterMaintenancePolicyWindow window;
 
     private ClusterMaintenancePolicy() {}
+    /**
+     * @return Exclusions to automatic maintenance. Non-emergency maintenance should not occur
+     * in these windows. Each exclusion has a unique name and may be active or expired.
+     * The max number of maintenance exclusions allowed at a given time is 3.
+     * Structure is documented below.
+     * 
+     */
+    public List<ClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions() {
+        return this.maintenanceExclusions == null ? List.of() : this.maintenanceExclusions;
+    }
     /**
      * @return Specifies the maintenance window in which maintenance may be performed.
      * Structure is documented below.
@@ -36,13 +57,24 @@ public final class ClusterMaintenancePolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<ClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions;
         private ClusterMaintenancePolicyWindow window;
         public Builder() {}
         public Builder(ClusterMaintenancePolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.maintenanceExclusions = defaults.maintenanceExclusions;
     	      this.window = defaults.window;
         }
 
+        @CustomType.Setter
+        public Builder maintenanceExclusions(@Nullable List<ClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions) {
+
+            this.maintenanceExclusions = maintenanceExclusions;
+            return this;
+        }
+        public Builder maintenanceExclusions(ClusterMaintenancePolicyMaintenanceExclusion... maintenanceExclusions) {
+            return maintenanceExclusions(List.of(maintenanceExclusions));
+        }
         @CustomType.Setter
         public Builder window(ClusterMaintenancePolicyWindow window) {
             if (window == null) {
@@ -53,6 +85,7 @@ public final class ClusterMaintenancePolicy {
         }
         public ClusterMaintenancePolicy build() {
             final var _resultValue = new ClusterMaintenancePolicy();
+            _resultValue.maintenanceExclusions = maintenanceExclusions;
             _resultValue.window = window;
             return _resultValue;
         }

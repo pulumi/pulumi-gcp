@@ -65,6 +65,56 @@ import * as utilities from "../utilities";
  *     port: 443,
  * });
  * ```
+ * ### Region Network Endpoint Portmap
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "subnetwork",
+ *     ipCidrRange: "10.0.0.0/16",
+ *     region: "us-central1",
+ *     network: _default.id,
+ * });
+ * const defaultRegionNetworkEndpointGroup = new gcp.compute.RegionNetworkEndpointGroup("default", {
+ *     name: "portmap-neg",
+ *     region: "us-central1",
+ *     network: _default.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     networkEndpointType: "GCE_VM_IP_PORTMAP",
+ * });
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const defaultInstance = new gcp.compute.Instance("default", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         subnetwork: defaultSubnetwork.id,
+ *     }],
+ *     name: "instance",
+ *     machineType: "e2-medium",
+ *     zone: "us-central1-a",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: myImage.then(myImage => myImage.selfLink),
+ *         },
+ *     },
+ * });
+ * const regionNetworkEndpointPortmap = new gcp.compute.RegionNetworkEndpoint("region_network_endpoint_portmap", {
+ *     regionNetworkEndpointGroup: defaultRegionNetworkEndpointGroup.name,
+ *     region: "us-central1",
+ *     instance: defaultInstance.selfLink,
+ *     port: 80,
+ *     ipAddress: defaultInstance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
+ *     clientDestinationPort: 8080,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -125,10 +175,19 @@ export class RegionNetworkEndpoint extends pulumi.CustomResource {
     }
 
     /**
+     * Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+     */
+    public readonly clientDestinationPort!: pulumi.Output<number | undefined>;
+    /**
      * Fully qualified domain name of network endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      */
     public readonly fqdn!: pulumi.Output<string | undefined>;
+    /**
+     * The name for a specific VM instance that the IP address belongs to.
+     * This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+     */
+    public readonly instance!: pulumi.Output<string | undefined>;
     /**
      * IPv4 address external endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
@@ -168,7 +227,9 @@ export class RegionNetworkEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionNetworkEndpointState | undefined;
+            resourceInputs["clientDestinationPort"] = state ? state.clientDestinationPort : undefined;
             resourceInputs["fqdn"] = state ? state.fqdn : undefined;
+            resourceInputs["instance"] = state ? state.instance : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -182,7 +243,9 @@ export class RegionNetworkEndpoint extends pulumi.CustomResource {
             if ((!args || args.regionNetworkEndpointGroup === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'regionNetworkEndpointGroup'");
             }
+            resourceInputs["clientDestinationPort"] = args ? args.clientDestinationPort : undefined;
             resourceInputs["fqdn"] = args ? args.fqdn : undefined;
+            resourceInputs["instance"] = args ? args.instance : undefined;
             resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -199,10 +262,19 @@ export class RegionNetworkEndpoint extends pulumi.CustomResource {
  */
 export interface RegionNetworkEndpointState {
     /**
+     * Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+     */
+    clientDestinationPort?: pulumi.Input<number>;
+    /**
      * Fully qualified domain name of network endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      */
     fqdn?: pulumi.Input<string>;
+    /**
+     * The name for a specific VM instance that the IP address belongs to.
+     * This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+     */
+    instance?: pulumi.Input<string>;
     /**
      * IPv4 address external endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
@@ -235,10 +307,19 @@ export interface RegionNetworkEndpointState {
  */
 export interface RegionNetworkEndpointArgs {
     /**
+     * Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+     */
+    clientDestinationPort?: pulumi.Input<number>;
+    /**
      * Fully qualified domain name of network endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      */
     fqdn?: pulumi.Input<string>;
+    /**
+     * The name for a specific VM instance that the IP address belongs to.
+     * This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+     */
+    instance?: pulumi.Input<string>;
     /**
      * IPv4 address external endpoint.
      * This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.

@@ -12062,7 +12062,7 @@ class ClusterSecurityPostureConfig(dict):
                  mode: Optional[str] = None,
                  vulnerability_mode: Optional[str] = None):
         """
-        :param str mode: Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
+        :param str mode: Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED`, `BASIC`, and `ENTERPRISE`.
         :param str vulnerability_mode: Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC` and `VULNERABILITY_ENTERPRISE`.
         """
         if mode is not None:
@@ -12074,7 +12074,7 @@ class ClusterSecurityPostureConfig(dict):
     @pulumi.getter
     def mode(self) -> Optional[str]:
         """
-        Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
+        Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED`, `BASIC`, and `ENTERPRISE`.
         """
         return pulumi.get(self, "mode")
 
@@ -19847,7 +19847,7 @@ class GetClusterSecurityPostureConfigResult(dict):
                  mode: str,
                  vulnerability_mode: str):
         """
-        :param str mode: Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED and BASIC.
+        :param str mode: Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED, BASIC, and ENTERPRISE.
         :param str vulnerability_mode: Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include VULNERABILITY_DISABLED, VULNERABILITY_BASIC and VULNERABILITY_ENTERPRISE.
         """
         pulumi.set(__self__, "mode", mode)
@@ -19857,7 +19857,7 @@ class GetClusterSecurityPostureConfigResult(dict):
     @pulumi.getter
     def mode(self) -> str:
         """
-        Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED and BASIC.
+        Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED, BASIC, and ENTERPRISE.
         """
         return pulumi.get(self, "mode")
 

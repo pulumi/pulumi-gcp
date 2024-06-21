@@ -19,7 +19,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A regional NEG that can support Serverless Products and proxying traffic to external backends.
+ * A regional NEG that can support Serverless Products, proxying traffic to
+ * external backends and providing traffic to the PSC port mapping endpoints.
  * 
  * To get more information about RegionNetworkEndpointGroup, see:
  * 
@@ -542,6 +543,59 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Network Endpoint Group Portmap
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("network")
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+ *             .name("subnetwork")
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .region("us-central1")
+ *             .network(default_.id())
+ *             .build());
+ * 
+ *         var regionNetworkEndpointGroupPortmap = new RegionNetworkEndpointGroup("regionNetworkEndpointGroupPortmap", RegionNetworkEndpointGroupArgs.builder()
+ *             .name("portmap-neg")
+ *             .region("us-central1")
+ *             .network(default_.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .networkEndpointType("GCE_VM_IP_PORTMAP")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -693,7 +747,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
      * Default value is `SERVERLESS`.
-     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
      * 
      */
     @Export(name="networkEndpointType", refs={String.class}, tree="[0]")
@@ -702,7 +756,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     /**
      * @return Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
      * Default value is `SERVERLESS`.
-     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
      * 
      */
     public Output<Optional<String>> networkEndpointType() {

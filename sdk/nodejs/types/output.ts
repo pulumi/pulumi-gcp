@@ -464,8 +464,8 @@ export namespace accesscontextmanager {
     export interface ServicePerimeterEgressPolicyEgressFrom {
         /**
          * A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of an email address. The email address should
-         * represent an individual user, service account, or Google group.
+         * Should be in the format of email address. The email address should
+         * represent individual user or service account only.
          */
         identities?: string[];
         /**
@@ -550,9 +550,9 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterIngressPolicyIngressFrom {
         /**
-         * A list of identities that are allowed access through this `IngressPolicy`.
-         * Should be in the format of an email address. The email address should represent
-         * an individual user, service account, or Google group.
+         * A list of identities that are allowed access through this ingress policy.
+         * Should be in the format of email address. The email address should represent
+         * individual user or service account only.
          */
         identities?: string[];
         /**
@@ -710,10 +710,9 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterSpecEgressPolicyEgressFrom {
         /**
-         * 'A list of identities that are allowed access through this `EgressPolicy`.
-         * To specify an identity or identity group, use the IAM v1
-         * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+         * A list of identities that are allowed access through this `EgressPolicy`.
+         * Should be in the format of email address. The email address should
+         * represent individual user or service account only.
          */
         identities?: string[];
         /**
@@ -813,10 +812,9 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterSpecIngressPolicyIngressFrom {
         /**
-         * 'A list of identities that are allowed access through this `IngressPolicy`.
-         * To specify an identity or identity group, use the IAM v1
-         * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+         * A list of identities that are allowed access through this ingress policy.
+         * Should be in the format of email address. The email address should represent
+         * individual user or service account only.
          */
         identities?: string[];
         /**
@@ -980,10 +978,9 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterStatusEgressPolicyEgressFrom {
         /**
-         * 'A list of identities that are allowed access through this `EgressPolicy`.
-         * To specify an identity or identity group, use the IAM v1
-         * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+         * A list of identities that are allowed access through this `EgressPolicy`.
+         * Should be in the format of email address. The email address should
+         * represent individual user or service account only.
          */
         identities?: string[];
         /**
@@ -1083,10 +1080,9 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterStatusIngressPolicyIngressFrom {
         /**
-         * 'A list of identities that are allowed access through this `IngressPolicy`.
-         * To specify an identity or identity group, use the IAM v1
-         * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+         * A list of identities that are allowed access through this ingress policy.
+         * Should be in the format of email address. The email address should represent
+         * individual user or service account only.
          */
         identities?: string[];
         /**
@@ -1324,10 +1320,9 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom {
         /**
-         * 'A list of identities that are allowed access through this `EgressPolicy`.
-         * To specify an identity or identity group, use the IAM v1 format
-         * specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+         * A list of identities that are allowed access through this `EgressPolicy`.
+         * Should be in the format of email address. The email address should
+         * represent individual user or service account only.
          */
         identities?: string[];
         /**
@@ -1427,10 +1422,9 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom {
         /**
-         * 'A list of identities that are allowed access through this `IngressPolicy`.
-         * To specify an identity or identity group, use the IAM v1 format
-         * specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+         * A list of identities that are allowed access through this ingress policy.
+         * Should be in the format of email address. The email address should represent
+         * individual user or service account only.
          */
         identities?: string[];
         /**
@@ -1594,10 +1588,9 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom {
         /**
-         * 'A list of identities that are allowed access through this `EgressPolicy`.
-         * To specify an identity or identity group, use the IAM v1 format
-         * specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+         * A list of identities that are allowed access through this `EgressPolicy`.
+         * Should be in the format of email address. The email address should
+         * represent individual user or service account only.
          */
         identities?: string[];
         /**
@@ -1697,10 +1690,9 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom {
         /**
-         * 'A list of identities that are allowed access through this `IngressPolicy`.
-         * To specify an identity or identity group, use the IAM v1 format
-         * specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+         * A list of identities that are allowed access through this ingress policy.
+         * Should be in the format of email address. The email address should represent
+         * individual user or service account only.
          */
         identities?: string[];
         /**
@@ -7368,6 +7360,17 @@ export namespace bigtable {
         title: string;
     }
 
+    export interface TableAutomatedBackupPolicy {
+        /**
+         * How frequently automated backups should occur.
+         */
+        frequency: string;
+        /**
+         * How long the automated backups should be retained.
+         */
+        retentionPeriod: string;
+    }
+
     export interface TableColumnFamily {
         /**
          * The name of the column family.
@@ -12317,6 +12320,117 @@ export namespace cloudbuild {
 }
 
 export namespace cloudbuildv2 {
+    export interface ConnectionBitbucketCloudConfig {
+        /**
+         * Required. An access token with the `webhook`, `repository`, `repository:admin` and `pullrequest` scope access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate these credentials.
+         * Structure is documented below.
+         */
+        authorizerCredential: outputs.cloudbuildv2.ConnectionBitbucketCloudConfigAuthorizerCredential;
+        /**
+         * Required. An access token with the `repository` access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate the credentials.
+         * Structure is documented below.
+         */
+        readAuthorizerCredential: outputs.cloudbuildv2.ConnectionBitbucketCloudConfigReadAuthorizerCredential;
+        /**
+         * Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        webhookSecretSecretVersion: string;
+        /**
+         * The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
+         */
+        workspace: string;
+    }
+
+    export interface ConnectionBitbucketCloudConfigAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        userTokenSecretVersion: string;
+        /**
+         * (Output)
+         * Output only. The username associated to this token.
+         */
+        username: string;
+    }
+
+    export interface ConnectionBitbucketCloudConfigReadAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        userTokenSecretVersion: string;
+        /**
+         * (Output)
+         * Output only. The username associated to this token.
+         */
+        username: string;
+    }
+
+    export interface ConnectionBitbucketDataCenterConfig {
+        /**
+         * Required. A http access token with the `REPO_ADMIN` scope access.
+         * Structure is documented below.
+         */
+        authorizerCredential: outputs.cloudbuildv2.ConnectionBitbucketDataCenterConfigAuthorizerCredential;
+        /**
+         * The URI of the Bitbucket Data Center host this connection is for.
+         */
+        hostUri: string;
+        /**
+         * Required. A http access token with the `REPO_READ` access.
+         * Structure is documented below.
+         */
+        readAuthorizerCredential: outputs.cloudbuildv2.ConnectionBitbucketDataCenterConfigReadAuthorizerCredential;
+        /**
+         * (Output)
+         * Output only. Version of the Bitbucket Data Center running on the `hostUri`.
+         */
+        serverVersion: string;
+        /**
+         * Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
+         * Structure is documented below.
+         */
+        serviceDirectoryConfig?: outputs.cloudbuildv2.ConnectionBitbucketDataCenterConfigServiceDirectoryConfig;
+        /**
+         * SSL certificate to use for requests to the Bitbucket Data Center.
+         */
+        sslCa?: string;
+        /**
+         * Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        webhookSecretSecretVersion: string;
+    }
+
+    export interface ConnectionBitbucketDataCenterConfigAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        userTokenSecretVersion: string;
+        /**
+         * (Output)
+         * Output only. The username associated to this token.
+         */
+        username: string;
+    }
+
+    export interface ConnectionBitbucketDataCenterConfigReadAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        userTokenSecretVersion: string;
+        /**
+         * (Output)
+         * Output only. The username associated to this token.
+         */
+        username: string;
+    }
+
+    export interface ConnectionBitbucketDataCenterConfigServiceDirectoryConfig {
+        /**
+         * Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+         */
+        service: string;
+    }
+
     export interface ConnectionGithubConfig {
         /**
          * GitHub App installation id.
@@ -20217,6 +20331,7 @@ export namespace compute {
          * and CONNECTION (for TCP/SSL).
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
+         * From version 6.0.0 default value will be UTILIZATION to match default GCP value.
          * Default value is `UTILIZATION`.
          * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
          */
@@ -20834,7 +20949,6 @@ export namespace compute {
     export interface DiskGuestOsFeature {
         /**
          * The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-         * Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
          */
         type: string;
     }
@@ -21176,7 +21290,9 @@ export namespace compute {
          * and CONNECTION (for TCP/SSL).
          *
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-         * for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
+         * for an explanation of load balancing modes.
+         *
+         * From version 6.0.0 default value will be UTILIZATION to match default GCP value. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
          */
         balancingMode: string;
         /**
@@ -28947,6 +29063,7 @@ export namespace compute {
          * Specifies the balancing mode for this backend.
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
+         * From version 6.0.0 default value will be UTILIZATION to match default GCP value.
          * Default value is `CONNECTION`.
          * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
          */
@@ -33529,7 +33646,7 @@ export namespace compute {
         /**
          * Rule visibility. Supported values include: "STANDARD", "PREMIUM".
          */
-        ruleVisibility?: string;
+        ruleVisibility: string;
     }
 
     export interface SecurityPolicyAdvancedOptionsConfig {
@@ -39353,7 +39470,7 @@ export namespace container {
 
     export interface ClusterSecurityPostureConfig {
         /**
-         * Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
+         * Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED`, `BASIC`, and `ENTERPRISE`.
          */
         mode: string;
         /**
@@ -41337,7 +41454,7 @@ export namespace container {
 
     export interface GetClusterSecurityPostureConfig {
         /**
-         * Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED and BASIC.
+         * Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED, BASIC, and ENTERPRISE.
          */
         mode: string;
         /**
@@ -56285,6 +56402,74 @@ export namespace discoveryengine {
         companyName?: string;
     }
 
+    export interface DataStoreDocumentProcessingConfig {
+        /**
+         * Configurations for default Document parser. If not specified, this resource
+         * will be configured to use a default DigitalParsingConfig, and the default parsing
+         * config will be applied to all file types for Document parsing.
+         * Structure is documented below.
+         */
+        defaultParsingConfig?: outputs.discoveryengine.DataStoreDocumentProcessingConfigDefaultParsingConfig;
+        /**
+         * (Output)
+         * The full resource name of the Document Processing Config. Format:
+         * `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/documentProcessingConfig`.
+         */
+        name: string;
+        /**
+         * Map from file type to override the default parsing configuration based on the file type. Supported keys:
+         */
+        parsingConfigOverrides?: outputs.discoveryengine.DataStoreDocumentProcessingConfigParsingConfigOverride[];
+    }
+
+    export interface DataStoreDocumentProcessingConfigDefaultParsingConfig {
+        /**
+         * Configurations applied to digital parser.
+         */
+        digitalParsingConfig?: outputs.discoveryengine.DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig;
+        /**
+         * Configurations applied to OCR parser. Currently it only applies to PDFs.
+         * Structure is documented below.
+         */
+        ocrParsingConfig?: outputs.discoveryengine.DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig;
+    }
+
+    export interface DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig {
+    }
+
+    export interface DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig {
+        /**
+         * If true, will use native text instead of OCR text on pages containing native text.
+         */
+        useNativeText?: boolean;
+    }
+
+    export interface DataStoreDocumentProcessingConfigParsingConfigOverride {
+        /**
+         * Configurations applied to digital parser.
+         */
+        digitalParsingConfig?: outputs.discoveryengine.DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        fileType: string;
+        /**
+         * Configurations applied to OCR parser. Currently it only applies to PDFs.
+         * Structure is documented below.
+         */
+        ocrParsingConfig?: outputs.discoveryengine.DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig;
+    }
+
+    export interface DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig {
+    }
+
+    export interface DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig {
+        /**
+         * If true, will use native text instead of OCR text on pages containing native text.
+         */
+        useNativeText?: boolean;
+    }
+
     export interface SearchEngineCommonConfig {
         /**
          * The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
@@ -57098,10 +57283,41 @@ export namespace edgecontainer {
 
     export interface ClusterMaintenancePolicy {
         /**
+         * Exclusions to automatic maintenance. Non-emergency maintenance should not occur
+         * in these windows. Each exclusion has a unique name and may be active or expired.
+         * The max number of maintenance exclusions allowed at a given time is 3.
+         * Structure is documented below.
+         */
+        maintenanceExclusions?: outputs.edgecontainer.ClusterMaintenancePolicyMaintenanceExclusion[];
+        /**
          * Specifies the maintenance window in which maintenance may be performed.
          * Structure is documented below.
          */
         window: outputs.edgecontainer.ClusterMaintenancePolicyWindow;
+    }
+
+    export interface ClusterMaintenancePolicyMaintenanceExclusion {
+        /**
+         * A unique (per cluster) id for the window.
+         */
+        id: string;
+        /**
+         * Represents an arbitrary window of time.
+         * Structure is documented below.
+         */
+        window: outputs.edgecontainer.ClusterMaintenancePolicyMaintenanceExclusionWindow;
+    }
+
+    export interface ClusterMaintenancePolicyMaintenanceExclusionWindow {
+        /**
+         * The time that the window ends. The end time must take place after the
+         * start time.
+         */
+        endTime: string;
+        /**
+         * The time that the window first starts.
+         */
+        startTime: string;
     }
 
     export interface ClusterMaintenancePolicyWindow {
@@ -59298,6 +59514,10 @@ export namespace gkehub {
          * Structure is documented below.
          */
         oci?: outputs.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci;
+        /**
+         * Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+         */
+        preventDrift?: boolean;
         /**
          * Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
          */
@@ -65332,6 +65552,56 @@ export namespace looker {
          * Number of additional Viewer Users to allocate to the Looker Instance.
          */
         additionalViewerUserCount?: number;
+    }
+
+}
+
+export namespace managedkafka {
+    export interface ClusterCapacityConfig {
+        /**
+         * The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
+         *
+         * - - -
+         */
+        memoryBytes: string;
+        /**
+         * The number of vCPUs to provision for the cluster. The minimum is 3.
+         */
+        vcpuCount: string;
+    }
+
+    export interface ClusterGcpConfig {
+        /**
+         * The configuration of access to the Kafka cluster.
+         * Structure is documented below.
+         */
+        accessConfig: outputs.managedkafka.ClusterGcpConfigAccessConfig;
+        /**
+         * The Cloud KMS Key name to use for encryption. The key must be located in the same region as the cluster and cannot be changed. Must be in the format `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`.
+         */
+        kmsKey?: string;
+    }
+
+    export interface ClusterGcpConfigAccessConfig {
+        /**
+         * Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka cluster. Minimum of 1 network is required. Maximum of 10 networks can be specified.
+         * Structure is documented below.
+         */
+        networkConfigs: outputs.managedkafka.ClusterGcpConfigAccessConfigNetworkConfig[];
+    }
+
+    export interface ClusterGcpConfigAccessConfigNetworkConfig {
+        /**
+         * Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. The subnet must be located in the same region as the cluster. The project may differ. A minimum of 1 subnet is required. A maximum of 10 subnets can be specified. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
+         */
+        subnet: string;
+    }
+
+    export interface ClusterRebalanceConfig {
+        /**
+         * The rebalance behavior for the cluster. When not specified, defaults to `NO_REBALANCE`. Possible values: `MODE_UNSPECIFIED`, `NO_REBALANCE`, `AUTO_REBALANCE_ON_SCALE_UP`.
+         */
+        mode?: string;
     }
 
 }
@@ -74405,6 +74675,333 @@ export namespace securitycenter {
         description?: string;
         expression: string;
         title: string;
+    }
+
+    export interface ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig {
+        /**
+         * Custom output properties.
+         * Structure is documented below.
+         */
+        customOutput?: outputs.securitycenter.ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput;
+        /**
+         * Text that describes the vulnerability or misconfiguration that the custom
+         * module detects. This explanation is returned with each finding instance to
+         * help investigators understand the detected issue. The text must be enclosed in quotation marks.
+         */
+        description?: string;
+        /**
+         * The CEL expression to evaluate to produce findings. When the expression evaluates
+         * to true against a resource, a finding is generated.
+         * Structure is documented below.
+         */
+        predicate?: outputs.securitycenter.ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigPredicate;
+        /**
+         * An explanation of the recommended steps that security teams can take to resolve
+         * the detected issue. This explanation is returned with each finding generated by
+         * this module in the nextSteps property of the finding JSON.
+         */
+        recommendation?: string;
+        /**
+         * The resource types that the custom module operates on. Each custom module
+         * can specify up to 5 resource types.
+         * Structure is documented below.
+         */
+        resourceSelector?: outputs.securitycenter.ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector;
+        /**
+         * The severity to assign to findings generated by the module.
+         * Possible values are: `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+         */
+        severity?: string;
+    }
+
+    export interface ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput {
+        /**
+         * A list of custom output properties to add to the finding.
+         * Structure is documented below.
+         */
+        properties?: outputs.securitycenter.ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty[];
+    }
+
+    export interface ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty {
+        /**
+         * Name of the property for the custom output.
+         */
+        name?: string;
+        /**
+         * The CEL expression for the custom output. A resource property can be specified
+         * to return the value of the property or a text string enclosed in quotation marks.
+         * Structure is documented below.
+         */
+        valueExpression?: outputs.securitycenter.ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpression;
+    }
+
+    export interface ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpression {
+        /**
+         * Description of the expression. This is a longer text which describes the
+         * expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a
+         * file name and a position in the file.
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose. This can
+         * be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: string;
+    }
+
+    export interface ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigPredicate {
+        /**
+         * Description of the expression. This is a longer text which describes the
+         * expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a
+         * file name and a position in the file.
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose. This can
+         * be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: string;
+    }
+
+    export interface ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector {
+        /**
+         * The resource types to run the detector on.
+         */
+        resourceTypes: string[];
+    }
+
+    export interface ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig {
+        /**
+         * Custom output properties.
+         * Structure is documented below.
+         */
+        customOutput?: outputs.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput;
+        /**
+         * Text that describes the vulnerability or misconfiguration that the custom
+         * module detects. This explanation is returned with each finding instance to
+         * help investigators understand the detected issue. The text must be enclosed in quotation marks.
+         */
+        description?: string;
+        /**
+         * The CEL expression to evaluate to produce findings. When the expression evaluates
+         * to true against a resource, a finding is generated.
+         * Structure is documented below.
+         */
+        predicate: outputs.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigPredicate;
+        /**
+         * An explanation of the recommended steps that security teams can take to resolve
+         * the detected issue. This explanation is returned with each finding generated by
+         * this module in the nextSteps property of the finding JSON.
+         */
+        recommendation: string;
+        /**
+         * The resource types that the custom module operates on. Each custom module
+         * can specify up to 5 resource types.
+         * Structure is documented below.
+         */
+        resourceSelector: outputs.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector;
+        /**
+         * The severity to assign to findings generated by the module.
+         * Possible values are: `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+         */
+        severity: string;
+    }
+
+    export interface ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput {
+        /**
+         * A list of custom output properties to add to the finding.
+         * Structure is documented below.
+         */
+        properties?: outputs.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty[];
+    }
+
+    export interface ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty {
+        /**
+         * Name of the property for the custom output.
+         */
+        name?: string;
+        /**
+         * The CEL expression for the custom output. A resource property can be specified
+         * to return the value of the property or a text string enclosed in quotation marks.
+         * Structure is documented below.
+         */
+        valueExpression?: outputs.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpression;
+    }
+
+    export interface ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpression {
+        /**
+         * Description of the expression. This is a longer text which describes the
+         * expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a
+         * file name and a position in the file.
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose. This can
+         * be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: string;
+    }
+
+    export interface ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigPredicate {
+        /**
+         * Description of the expression. This is a longer text which describes the
+         * expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a
+         * file name and a position in the file.
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose. This can
+         * be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: string;
+    }
+
+    export interface ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector {
+        /**
+         * The resource types to run the detector on.
+         */
+        resourceTypes: string[];
+    }
+
+    export interface ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig {
+        /**
+         * Custom output properties.
+         * Structure is documented below.
+         */
+        customOutput?: outputs.securitycenter.ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput;
+        /**
+         * Text that describes the vulnerability or misconfiguration that the custom
+         * module detects. This explanation is returned with each finding instance to
+         * help investigators understand the detected issue. The text must be enclosed in quotation marks.
+         */
+        description?: string;
+        /**
+         * The CEL expression to evaluate to produce findings. When the expression evaluates
+         * to true against a resource, a finding is generated.
+         * Structure is documented below.
+         */
+        predicate: outputs.securitycenter.ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigPredicate;
+        /**
+         * An explanation of the recommended steps that security teams can take to resolve
+         * the detected issue. This explanation is returned with each finding generated by
+         * this module in the nextSteps property of the finding JSON.
+         */
+        recommendation: string;
+        /**
+         * The resource types that the custom module operates on. Each custom module
+         * can specify up to 5 resource types.
+         * Structure is documented below.
+         */
+        resourceSelector: outputs.securitycenter.ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector;
+        /**
+         * The severity to assign to findings generated by the module.
+         * Possible values are: `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+         */
+        severity: string;
+    }
+
+    export interface ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput {
+        /**
+         * A list of custom output properties to add to the finding.
+         * Structure is documented below.
+         */
+        properties?: outputs.securitycenter.ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty[];
+    }
+
+    export interface ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty {
+        /**
+         * Name of the property for the custom output.
+         */
+        name?: string;
+        /**
+         * The CEL expression for the custom output. A resource property can be specified
+         * to return the value of the property or a text string enclosed in quotation marks.
+         * Structure is documented below.
+         */
+        valueExpression?: outputs.securitycenter.ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpression;
+    }
+
+    export interface ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpression {
+        /**
+         * Description of the expression. This is a longer text which describes the
+         * expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a
+         * file name and a position in the file.
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose. This can
+         * be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: string;
+    }
+
+    export interface ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigPredicate {
+        /**
+         * Description of the expression. This is a longer text which describes the
+         * expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a
+         * file name and a position in the file.
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose. This can
+         * be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: string;
+    }
+
+    export interface ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector {
+        /**
+         * The resource types to run the detector on.
+         */
+        resourceTypes: string[];
     }
 
     export interface NotificationConfigStreamingConfig {

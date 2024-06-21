@@ -19,8 +19,7 @@ public final class RegionTargetHttpsProxyState extends com.pulumi.resources.Reso
 
     /**
      * URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-     * Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
-     * sslCertificates and certificateManagerCertificates fields can not be defined together.
+     * sslCertificates and certificateManagerCertificates can&#39;t be defined together.
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
      * 
      */
@@ -29,8 +28,7 @@ public final class RegionTargetHttpsProxyState extends com.pulumi.resources.Reso
 
     /**
      * @return URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-     * Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
-     * sslCertificates and certificateManagerCertificates fields can not be defined together.
+     * sslCertificates and certificateManagerCertificates can&#39;t be defined together.
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
      * 
      */
@@ -286,8 +284,7 @@ public final class RegionTargetHttpsProxyState extends com.pulumi.resources.Reso
 
         /**
          * @param certificateManagerCertificates URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-         * Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
-         * sslCertificates and certificateManagerCertificates fields can not be defined together.
+         * sslCertificates and certificateManagerCertificates can&#39;t be defined together.
          * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
          * 
          * @return builder
@@ -300,8 +297,7 @@ public final class RegionTargetHttpsProxyState extends com.pulumi.resources.Reso
 
         /**
          * @param certificateManagerCertificates URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-         * Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
-         * sslCertificates and certificateManagerCertificates fields can not be defined together.
+         * sslCertificates and certificateManagerCertificates can&#39;t be defined together.
          * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
          * 
          * @return builder
@@ -313,8 +309,7 @@ public final class RegionTargetHttpsProxyState extends com.pulumi.resources.Reso
 
         /**
          * @param certificateManagerCertificates URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-         * Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
-         * sslCertificates and certificateManagerCertificates fields can not be defined together.
+         * sslCertificates and certificateManagerCertificates can&#39;t be defined together.
          * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
          * 
          * @return builder

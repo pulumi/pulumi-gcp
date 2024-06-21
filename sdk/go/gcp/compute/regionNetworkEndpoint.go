@@ -114,6 +114,92 @@ import (
 //	}
 //
 // ```
+// ### Region Network Endpoint Portmap
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("subnetwork"),
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionNetworkEndpointGroup, err := compute.NewRegionNetworkEndpointGroup(ctx, "default", &compute.RegionNetworkEndpointGroupArgs{
+//				Name:                pulumi.String("portmap-neg"),
+//				Region:              pulumi.String("us-central1"),
+//				Network:             _default.ID(),
+//				Subnetwork:          defaultSubnetwork.ID(),
+//				NetworkEndpointType: pulumi.String("GCE_VM_IP_PORTMAP"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-11"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := compute.NewInstance(ctx, "default", &compute.InstanceArgs{
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+//							nil,
+//						},
+//						Subnetwork: defaultSubnetwork.ID(),
+//					},
+//				},
+//				Name:        pulumi.String("instance"),
+//				MachineType: pulumi.String("e2-medium"),
+//				Zone:        pulumi.String("us-central1-a"),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String(myImage.SelfLink),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionNetworkEndpoint(ctx, "region_network_endpoint_portmap", &compute.RegionNetworkEndpointArgs{
+//				RegionNetworkEndpointGroup: defaultRegionNetworkEndpointGroup.Name,
+//				Region:                     pulumi.String("us-central1"),
+//				Instance:                   defaultInstance.SelfLink,
+//				Port:                       pulumi.Int(80),
+//				IpAddress: defaultInstance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+//					return &networkInterfaces[0].NetworkIp, nil
+//				}).(pulumi.StringPtrOutput),
+//				ClientDestinationPort: pulumi.Int(8080),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -147,9 +233,14 @@ import (
 type RegionNetworkEndpoint struct {
 	pulumi.CustomResourceState
 
+	// Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+	ClientDestinationPort pulumi.IntPtrOutput `pulumi:"clientDestinationPort"`
 	// Fully qualified domain name of network endpoint.
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn pulumi.StringPtrOutput `pulumi:"fqdn"`
+	// The name for a specific VM instance that the IP address belongs to.
+	// This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+	Instance pulumi.StringPtrOutput `pulumi:"instance"`
 	// IPv4 address external endpoint.
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
 	IpAddress pulumi.StringPtrOutput `pulumi:"ipAddress"`
@@ -202,9 +293,14 @@ func GetRegionNetworkEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionNetworkEndpoint resources.
 type regionNetworkEndpointState struct {
+	// Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+	ClientDestinationPort *int `pulumi:"clientDestinationPort"`
 	// Fully qualified domain name of network endpoint.
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn *string `pulumi:"fqdn"`
+	// The name for a specific VM instance that the IP address belongs to.
+	// This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+	Instance *string `pulumi:"instance"`
 	// IPv4 address external endpoint.
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -222,9 +318,14 @@ type regionNetworkEndpointState struct {
 }
 
 type RegionNetworkEndpointState struct {
+	// Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+	ClientDestinationPort pulumi.IntPtrInput
 	// Fully qualified domain name of network endpoint.
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn pulumi.StringPtrInput
+	// The name for a specific VM instance that the IP address belongs to.
+	// This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+	Instance pulumi.StringPtrInput
 	// IPv4 address external endpoint.
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
 	IpAddress pulumi.StringPtrInput
@@ -246,9 +347,14 @@ func (RegionNetworkEndpointState) ElementType() reflect.Type {
 }
 
 type regionNetworkEndpointArgs struct {
+	// Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+	ClientDestinationPort *int `pulumi:"clientDestinationPort"`
 	// Fully qualified domain name of network endpoint.
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn *string `pulumi:"fqdn"`
+	// The name for a specific VM instance that the IP address belongs to.
+	// This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+	Instance *string `pulumi:"instance"`
 	// IPv4 address external endpoint.
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -267,9 +373,14 @@ type regionNetworkEndpointArgs struct {
 
 // The set of arguments for constructing a RegionNetworkEndpoint resource.
 type RegionNetworkEndpointArgs struct {
+	// Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+	ClientDestinationPort pulumi.IntPtrInput
 	// Fully qualified domain name of network endpoint.
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn pulumi.StringPtrInput
+	// The name for a specific VM instance that the IP address belongs to.
+	// This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+	Instance pulumi.StringPtrInput
 	// IPv4 address external endpoint.
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
 	IpAddress pulumi.StringPtrInput
@@ -373,10 +484,21 @@ func (o RegionNetworkEndpointOutput) ToRegionNetworkEndpointOutputWithContext(ct
 	return o
 }
 
+// Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+func (o RegionNetworkEndpointOutput) ClientDestinationPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpoint) pulumi.IntPtrOutput { return v.ClientDestinationPort }).(pulumi.IntPtrOutput)
+}
+
 // Fully qualified domain name of network endpoint.
 // This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 func (o RegionNetworkEndpointOutput) Fqdn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpoint) pulumi.StringPtrOutput { return v.Fqdn }).(pulumi.StringPtrOutput)
+}
+
+// The name for a specific VM instance that the IP address belongs to.
+// This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+func (o RegionNetworkEndpointOutput) Instance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpoint) pulumi.StringPtrOutput { return v.Instance }).(pulumi.StringPtrOutput)
 }
 
 // IPv4 address external endpoint.

@@ -341,6 +341,9 @@ func GetLoggingCustomEndpoint(ctx *pulumi.Context) string {
 func GetLookerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:lookerCustomEndpoint")
 }
+func GetManagedKafkaCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:managedKafkaCustomEndpoint")
+}
 func GetMemcacheCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:memcacheCustomEndpoint")
 }

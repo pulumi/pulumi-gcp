@@ -20,6 +20,21 @@ public final class ActiveDirectoryArgs extends com.pulumi.resources.ResourceArgs
     public static final ActiveDirectoryArgs Empty = new ActiveDirectoryArgs();
 
     /**
+     * Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+     * 
+     */
+    @Import(name="administrators")
+    private @Nullable Output<List<String>> administrators;
+
+    /**
+     * @return Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+     * 
+     */
+    public Optional<Output<List<String>>> administrators() {
+        return Optional.ofNullable(this.administrators);
+    }
+
+    /**
      * Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
      * 
      */
@@ -336,6 +351,7 @@ public final class ActiveDirectoryArgs extends com.pulumi.resources.ResourceArgs
     private ActiveDirectoryArgs() {}
 
     private ActiveDirectoryArgs(ActiveDirectoryArgs $) {
+        this.administrators = $.administrators;
         this.aesEncryption = $.aesEncryption;
         this.backupOperators = $.backupOperators;
         this.description = $.description;
@@ -374,6 +390,37 @@ public final class ActiveDirectoryArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder(ActiveDirectoryArgs defaults) {
             $ = new ActiveDirectoryArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param administrators Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder administrators(@Nullable Output<List<String>> administrators) {
+            $.administrators = administrators;
+            return this;
+        }
+
+        /**
+         * @param administrators Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder administrators(List<String> administrators) {
+            return administrators(Output.of(administrators));
+        }
+
+        /**
+         * @param administrators Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder administrators(String... administrators) {
+            return administrators(List.of(administrators));
         }
 
         /**

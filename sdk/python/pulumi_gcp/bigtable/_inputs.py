@@ -18,6 +18,7 @@ __all__ = [
     'InstanceClusterAutoscalingConfigArgs',
     'InstanceIamBindingConditionArgs',
     'InstanceIamMemberConditionArgs',
+    'TableAutomatedBackupPolicyArgs',
     'TableColumnFamilyArgs',
     'TableIamBindingConditionArgs',
     'TableIamMemberConditionArgs',
@@ -491,6 +492,45 @@ class InstanceIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class TableAutomatedBackupPolicyArgs:
+    def __init__(__self__, *,
+                 frequency: Optional[pulumi.Input[str]] = None,
+                 retention_period: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] frequency: How frequently automated backups should occur.
+        :param pulumi.Input[str] retention_period: How long the automated backups should be retained.
+        """
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
+        if retention_period is not None:
+            pulumi.set(__self__, "retention_period", retention_period)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> Optional[pulumi.Input[str]]:
+        """
+        How frequently automated backups should occur.
+        """
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "frequency", value)
+
+    @property
+    @pulumi.getter(name="retentionPeriod")
+    def retention_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        How long the automated backups should be retained.
+        """
+        return pulumi.get(self, "retention_period")
+
+    @retention_period.setter
+    def retention_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "retention_period", value)
 
 
 @pulumi.input_type

@@ -1586,6 +1586,11 @@ func (o ClusterMaintenanceEventArrayOutput) Index(i pulumi.IntInput) ClusterMain
 }
 
 type ClusterMaintenancePolicy struct {
+	// Exclusions to automatic maintenance. Non-emergency maintenance should not occur
+	// in these windows. Each exclusion has a unique name and may be active or expired.
+	// The max number of maintenance exclusions allowed at a given time is 3.
+	// Structure is documented below.
+	MaintenanceExclusions []ClusterMaintenancePolicyMaintenanceExclusion `pulumi:"maintenanceExclusions"`
 	// Specifies the maintenance window in which maintenance may be performed.
 	// Structure is documented below.
 	Window ClusterMaintenancePolicyWindow `pulumi:"window"`
@@ -1603,6 +1608,11 @@ type ClusterMaintenancePolicyInput interface {
 }
 
 type ClusterMaintenancePolicyArgs struct {
+	// Exclusions to automatic maintenance. Non-emergency maintenance should not occur
+	// in these windows. Each exclusion has a unique name and may be active or expired.
+	// The max number of maintenance exclusions allowed at a given time is 3.
+	// Structure is documented below.
+	MaintenanceExclusions ClusterMaintenancePolicyMaintenanceExclusionArrayInput `pulumi:"maintenanceExclusions"`
 	// Specifies the maintenance window in which maintenance may be performed.
 	// Structure is documented below.
 	Window ClusterMaintenancePolicyWindowInput `pulumi:"window"`
@@ -1685,6 +1695,16 @@ func (o ClusterMaintenancePolicyOutput) ToClusterMaintenancePolicyPtrOutputWithC
 	}).(ClusterMaintenancePolicyPtrOutput)
 }
 
+// Exclusions to automatic maintenance. Non-emergency maintenance should not occur
+// in these windows. Each exclusion has a unique name and may be active or expired.
+// The max number of maintenance exclusions allowed at a given time is 3.
+// Structure is documented below.
+func (o ClusterMaintenancePolicyOutput) MaintenanceExclusions() ClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicy) []ClusterMaintenancePolicyMaintenanceExclusion {
+		return v.MaintenanceExclusions
+	}).(ClusterMaintenancePolicyMaintenanceExclusionArrayOutput)
+}
+
 // Specifies the maintenance window in which maintenance may be performed.
 // Structure is documented below.
 func (o ClusterMaintenancePolicyOutput) Window() ClusterMaintenancePolicyWindowOutput {
@@ -1715,6 +1735,19 @@ func (o ClusterMaintenancePolicyPtrOutput) Elem() ClusterMaintenancePolicyOutput
 	}).(ClusterMaintenancePolicyOutput)
 }
 
+// Exclusions to automatic maintenance. Non-emergency maintenance should not occur
+// in these windows. Each exclusion has a unique name and may be active or expired.
+// The max number of maintenance exclusions allowed at a given time is 3.
+// Structure is documented below.
+func (o ClusterMaintenancePolicyPtrOutput) MaintenanceExclusions() ClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
+	return o.ApplyT(func(v *ClusterMaintenancePolicy) []ClusterMaintenancePolicyMaintenanceExclusion {
+		if v == nil {
+			return nil
+		}
+		return v.MaintenanceExclusions
+	}).(ClusterMaintenancePolicyMaintenanceExclusionArrayOutput)
+}
+
 // Specifies the maintenance window in which maintenance may be performed.
 // Structure is documented below.
 func (o ClusterMaintenancePolicyPtrOutput) Window() ClusterMaintenancePolicyWindowPtrOutput {
@@ -1724,6 +1757,277 @@ func (o ClusterMaintenancePolicyPtrOutput) Window() ClusterMaintenancePolicyWind
 		}
 		return &v.Window
 	}).(ClusterMaintenancePolicyWindowPtrOutput)
+}
+
+type ClusterMaintenancePolicyMaintenanceExclusion struct {
+	// A unique (per cluster) id for the window.
+	Id *string `pulumi:"id"`
+	// Represents an arbitrary window of time.
+	// Structure is documented below.
+	Window *ClusterMaintenancePolicyMaintenanceExclusionWindow `pulumi:"window"`
+}
+
+// ClusterMaintenancePolicyMaintenanceExclusionInput is an input type that accepts ClusterMaintenancePolicyMaintenanceExclusionArgs and ClusterMaintenancePolicyMaintenanceExclusionOutput values.
+// You can construct a concrete instance of `ClusterMaintenancePolicyMaintenanceExclusionInput` via:
+//
+//	ClusterMaintenancePolicyMaintenanceExclusionArgs{...}
+type ClusterMaintenancePolicyMaintenanceExclusionInput interface {
+	pulumi.Input
+
+	ToClusterMaintenancePolicyMaintenanceExclusionOutput() ClusterMaintenancePolicyMaintenanceExclusionOutput
+	ToClusterMaintenancePolicyMaintenanceExclusionOutputWithContext(context.Context) ClusterMaintenancePolicyMaintenanceExclusionOutput
+}
+
+type ClusterMaintenancePolicyMaintenanceExclusionArgs struct {
+	// A unique (per cluster) id for the window.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Represents an arbitrary window of time.
+	// Structure is documented below.
+	Window ClusterMaintenancePolicyMaintenanceExclusionWindowPtrInput `pulumi:"window"`
+}
+
+func (ClusterMaintenancePolicyMaintenanceExclusionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMaintenancePolicyMaintenanceExclusion)(nil)).Elem()
+}
+
+func (i ClusterMaintenancePolicyMaintenanceExclusionArgs) ToClusterMaintenancePolicyMaintenanceExclusionOutput() ClusterMaintenancePolicyMaintenanceExclusionOutput {
+	return i.ToClusterMaintenancePolicyMaintenanceExclusionOutputWithContext(context.Background())
+}
+
+func (i ClusterMaintenancePolicyMaintenanceExclusionArgs) ToClusterMaintenancePolicyMaintenanceExclusionOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyMaintenanceExclusionOutput)
+}
+
+// ClusterMaintenancePolicyMaintenanceExclusionArrayInput is an input type that accepts ClusterMaintenancePolicyMaintenanceExclusionArray and ClusterMaintenancePolicyMaintenanceExclusionArrayOutput values.
+// You can construct a concrete instance of `ClusterMaintenancePolicyMaintenanceExclusionArrayInput` via:
+//
+//	ClusterMaintenancePolicyMaintenanceExclusionArray{ ClusterMaintenancePolicyMaintenanceExclusionArgs{...} }
+type ClusterMaintenancePolicyMaintenanceExclusionArrayInput interface {
+	pulumi.Input
+
+	ToClusterMaintenancePolicyMaintenanceExclusionArrayOutput() ClusterMaintenancePolicyMaintenanceExclusionArrayOutput
+	ToClusterMaintenancePolicyMaintenanceExclusionArrayOutputWithContext(context.Context) ClusterMaintenancePolicyMaintenanceExclusionArrayOutput
+}
+
+type ClusterMaintenancePolicyMaintenanceExclusionArray []ClusterMaintenancePolicyMaintenanceExclusionInput
+
+func (ClusterMaintenancePolicyMaintenanceExclusionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterMaintenancePolicyMaintenanceExclusion)(nil)).Elem()
+}
+
+func (i ClusterMaintenancePolicyMaintenanceExclusionArray) ToClusterMaintenancePolicyMaintenanceExclusionArrayOutput() ClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
+	return i.ToClusterMaintenancePolicyMaintenanceExclusionArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterMaintenancePolicyMaintenanceExclusionArray) ToClusterMaintenancePolicyMaintenanceExclusionArrayOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyMaintenanceExclusionArrayOutput)
+}
+
+type ClusterMaintenancePolicyMaintenanceExclusionOutput struct{ *pulumi.OutputState }
+
+func (ClusterMaintenancePolicyMaintenanceExclusionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMaintenancePolicyMaintenanceExclusion)(nil)).Elem()
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionOutput) ToClusterMaintenancePolicyMaintenanceExclusionOutput() ClusterMaintenancePolicyMaintenanceExclusionOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionOutput) ToClusterMaintenancePolicyMaintenanceExclusionOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionOutput {
+	return o
+}
+
+// A unique (per cluster) id for the window.
+func (o ClusterMaintenancePolicyMaintenanceExclusionOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicyMaintenanceExclusion) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Represents an arbitrary window of time.
+// Structure is documented below.
+func (o ClusterMaintenancePolicyMaintenanceExclusionOutput) Window() ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicyMaintenanceExclusion) *ClusterMaintenancePolicyMaintenanceExclusionWindow {
+		return v.Window
+	}).(ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput)
+}
+
+type ClusterMaintenancePolicyMaintenanceExclusionArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterMaintenancePolicyMaintenanceExclusionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterMaintenancePolicyMaintenanceExclusion)(nil)).Elem()
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionArrayOutput) ToClusterMaintenancePolicyMaintenanceExclusionArrayOutput() ClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionArrayOutput) ToClusterMaintenancePolicyMaintenanceExclusionArrayOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionArrayOutput) Index(i pulumi.IntInput) ClusterMaintenancePolicyMaintenanceExclusionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterMaintenancePolicyMaintenanceExclusion {
+		return vs[0].([]ClusterMaintenancePolicyMaintenanceExclusion)[vs[1].(int)]
+	}).(ClusterMaintenancePolicyMaintenanceExclusionOutput)
+}
+
+type ClusterMaintenancePolicyMaintenanceExclusionWindow struct {
+	// The time that the window ends. The end time must take place after the
+	// start time.
+	EndTime *string `pulumi:"endTime"`
+	// The time that the window first starts.
+	StartTime *string `pulumi:"startTime"`
+}
+
+// ClusterMaintenancePolicyMaintenanceExclusionWindowInput is an input type that accepts ClusterMaintenancePolicyMaintenanceExclusionWindowArgs and ClusterMaintenancePolicyMaintenanceExclusionWindowOutput values.
+// You can construct a concrete instance of `ClusterMaintenancePolicyMaintenanceExclusionWindowInput` via:
+//
+//	ClusterMaintenancePolicyMaintenanceExclusionWindowArgs{...}
+type ClusterMaintenancePolicyMaintenanceExclusionWindowInput interface {
+	pulumi.Input
+
+	ToClusterMaintenancePolicyMaintenanceExclusionWindowOutput() ClusterMaintenancePolicyMaintenanceExclusionWindowOutput
+	ToClusterMaintenancePolicyMaintenanceExclusionWindowOutputWithContext(context.Context) ClusterMaintenancePolicyMaintenanceExclusionWindowOutput
+}
+
+type ClusterMaintenancePolicyMaintenanceExclusionWindowArgs struct {
+	// The time that the window ends. The end time must take place after the
+	// start time.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// The time that the window first starts.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (ClusterMaintenancePolicyMaintenanceExclusionWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMaintenancePolicyMaintenanceExclusionWindow)(nil)).Elem()
+}
+
+func (i ClusterMaintenancePolicyMaintenanceExclusionWindowArgs) ToClusterMaintenancePolicyMaintenanceExclusionWindowOutput() ClusterMaintenancePolicyMaintenanceExclusionWindowOutput {
+	return i.ToClusterMaintenancePolicyMaintenanceExclusionWindowOutputWithContext(context.Background())
+}
+
+func (i ClusterMaintenancePolicyMaintenanceExclusionWindowArgs) ToClusterMaintenancePolicyMaintenanceExclusionWindowOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyMaintenanceExclusionWindowOutput)
+}
+
+func (i ClusterMaintenancePolicyMaintenanceExclusionWindowArgs) ToClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput() ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return i.ToClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterMaintenancePolicyMaintenanceExclusionWindowArgs) ToClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyMaintenanceExclusionWindowOutput).ToClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutputWithContext(ctx)
+}
+
+// ClusterMaintenancePolicyMaintenanceExclusionWindowPtrInput is an input type that accepts ClusterMaintenancePolicyMaintenanceExclusionWindowArgs, ClusterMaintenancePolicyMaintenanceExclusionWindowPtr and ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput values.
+// You can construct a concrete instance of `ClusterMaintenancePolicyMaintenanceExclusionWindowPtrInput` via:
+//
+//	        ClusterMaintenancePolicyMaintenanceExclusionWindowArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterMaintenancePolicyMaintenanceExclusionWindowPtrInput interface {
+	pulumi.Input
+
+	ToClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput() ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput
+	ToClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutputWithContext(context.Context) ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput
+}
+
+type clusterMaintenancePolicyMaintenanceExclusionWindowPtrType ClusterMaintenancePolicyMaintenanceExclusionWindowArgs
+
+func ClusterMaintenancePolicyMaintenanceExclusionWindowPtr(v *ClusterMaintenancePolicyMaintenanceExclusionWindowArgs) ClusterMaintenancePolicyMaintenanceExclusionWindowPtrInput {
+	return (*clusterMaintenancePolicyMaintenanceExclusionWindowPtrType)(v)
+}
+
+func (*clusterMaintenancePolicyMaintenanceExclusionWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMaintenancePolicyMaintenanceExclusionWindow)(nil)).Elem()
+}
+
+func (i *clusterMaintenancePolicyMaintenanceExclusionWindowPtrType) ToClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput() ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return i.ToClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterMaintenancePolicyMaintenanceExclusionWindowPtrType) ToClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput)
+}
+
+type ClusterMaintenancePolicyMaintenanceExclusionWindowOutput struct{ *pulumi.OutputState }
+
+func (ClusterMaintenancePolicyMaintenanceExclusionWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMaintenancePolicyMaintenanceExclusionWindow)(nil)).Elem()
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionWindowOutput) ToClusterMaintenancePolicyMaintenanceExclusionWindowOutput() ClusterMaintenancePolicyMaintenanceExclusionWindowOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionWindowOutput) ToClusterMaintenancePolicyMaintenanceExclusionWindowOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionWindowOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionWindowOutput) ToClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput() ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return o.ToClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionWindowOutput) ToClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterMaintenancePolicyMaintenanceExclusionWindow) *ClusterMaintenancePolicyMaintenanceExclusionWindow {
+		return &v
+	}).(ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput)
+}
+
+// The time that the window ends. The end time must take place after the
+// start time.
+func (o ClusterMaintenancePolicyMaintenanceExclusionWindowOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicyMaintenanceExclusionWindow) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// The time that the window first starts.
+func (o ClusterMaintenancePolicyMaintenanceExclusionWindowOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicyMaintenanceExclusionWindow) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMaintenancePolicyMaintenanceExclusionWindow)(nil)).Elem()
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput) ToClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput() ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput) ToClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput) Elem() ClusterMaintenancePolicyMaintenanceExclusionWindowOutput {
+	return o.ApplyT(func(v *ClusterMaintenancePolicyMaintenanceExclusionWindow) ClusterMaintenancePolicyMaintenanceExclusionWindow {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterMaintenancePolicyMaintenanceExclusionWindow
+		return ret
+	}).(ClusterMaintenancePolicyMaintenanceExclusionWindowOutput)
+}
+
+// The time that the window ends. The end time must take place after the
+// start time.
+func (o ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterMaintenancePolicyMaintenanceExclusionWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time that the window first starts.
+func (o ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterMaintenancePolicyMaintenanceExclusionWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterMaintenancePolicyWindow struct {
@@ -3586,6 +3890,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenanceEventArrayInput)(nil)).Elem(), ClusterMaintenanceEventArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyInput)(nil)).Elem(), ClusterMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyPtrInput)(nil)).Elem(), ClusterMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyMaintenanceExclusionInput)(nil)).Elem(), ClusterMaintenancePolicyMaintenanceExclusionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyMaintenanceExclusionArrayInput)(nil)).Elem(), ClusterMaintenancePolicyMaintenanceExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyMaintenanceExclusionWindowInput)(nil)).Elem(), ClusterMaintenancePolicyMaintenanceExclusionWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyMaintenanceExclusionWindowPtrInput)(nil)).Elem(), ClusterMaintenancePolicyMaintenanceExclusionWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyWindowInput)(nil)).Elem(), ClusterMaintenancePolicyWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyWindowPtrInput)(nil)).Elem(), ClusterMaintenancePolicyWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyWindowRecurringWindowInput)(nil)).Elem(), ClusterMaintenancePolicyWindowRecurringWindowArgs{})
@@ -3630,6 +3938,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterMaintenanceEventArrayOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterMaintenancePolicyMaintenanceExclusionOutput{})
+	pulumi.RegisterOutputType(ClusterMaintenancePolicyMaintenanceExclusionArrayOutput{})
+	pulumi.RegisterOutputType(ClusterMaintenancePolicyMaintenanceExclusionWindowOutput{})
+	pulumi.RegisterOutputType(ClusterMaintenancePolicyMaintenanceExclusionWindowPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyWindowOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyWindowPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyWindowRecurringWindowOutput{})

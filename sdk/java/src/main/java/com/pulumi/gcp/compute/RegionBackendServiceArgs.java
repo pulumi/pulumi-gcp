@@ -109,6 +109,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
+     * From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
      * 
      */
     @Import(name="connectionDrainingTimeoutSec")
@@ -117,6 +118,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     /**
      * @return Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
+     * From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
      * 
      */
     public Optional<Output<Integer>> connectionDrainingTimeoutSec() {
@@ -457,23 +459,9 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.network);
     }
 
-    /**
-     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
-     * This field is applicable only when the `load_balancing_scheme` is set
-     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-     * Structure is documented below.
-     * 
-     */
     @Import(name="outlierDetection")
     private @Nullable Output<RegionBackendServiceOutlierDetectionArgs> outlierDetection;
 
-    /**
-     * @return Settings controlling eviction of unhealthy hosts from the load balancing pool.
-     * This field is applicable only when the `load_balancing_scheme` is set
-     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-     * Structure is documented below.
-     * 
-     */
     public Optional<Output<RegionBackendServiceOutlierDetectionArgs>> outlierDetection() {
         return Optional.ofNullable(this.outlierDetection);
     }
@@ -612,16 +600,20 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * How many seconds to wait for the backend before considering it a
-     * failed request. Default is 30 seconds. Valid range is [1, 86400].
+     * The backend service timeout has a different meaning depending on the type of load balancer.
+     * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+     * The default is 30 seconds.
+     * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      * 
      */
     @Import(name="timeoutSec")
     private @Nullable Output<Integer> timeoutSec;
 
     /**
-     * @return How many seconds to wait for the backend before considering it a
-     * failed request. Default is 30 seconds. Valid range is [1, 86400].
+     * @return The backend service timeout has a different meaning depending on the type of load balancer.
+     * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+     * The default is 30 seconds.
+     * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      * 
      */
     public Optional<Output<Integer>> timeoutSec() {
@@ -793,6 +785,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         /**
          * @param connectionDrainingTimeoutSec Time for which instance will be drained (not accept new
          * connections, but still work to finish started).
+         * From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
          * 
          * @return builder
          * 
@@ -805,6 +798,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         /**
          * @param connectionDrainingTimeoutSec Time for which instance will be drained (not accept new
          * connections, but still work to finish started).
+         * From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
          * 
          * @return builder
          * 
@@ -1219,29 +1213,11 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
             return network(Output.of(network));
         }
 
-        /**
-         * @param outlierDetection Settings controlling eviction of unhealthy hosts from the load balancing pool.
-         * This field is applicable only when the `load_balancing_scheme` is set
-         * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder outlierDetection(@Nullable Output<RegionBackendServiceOutlierDetectionArgs> outlierDetection) {
             $.outlierDetection = outlierDetection;
             return this;
         }
 
-        /**
-         * @param outlierDetection Settings controlling eviction of unhealthy hosts from the load balancing pool.
-         * This field is applicable only when the `load_balancing_scheme` is set
-         * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder outlierDetection(RegionBackendServiceOutlierDetectionArgs outlierDetection) {
             return outlierDetection(Output.of(outlierDetection));
         }
@@ -1422,8 +1398,10 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param timeoutSec How many seconds to wait for the backend before considering it a
-         * failed request. Default is 30 seconds. Valid range is [1, 86400].
+         * @param timeoutSec The backend service timeout has a different meaning depending on the type of load balancer.
+         * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+         * The default is 30 seconds.
+         * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
          * 
          * @return builder
          * 
@@ -1434,8 +1412,10 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param timeoutSec How many seconds to wait for the backend before considering it a
-         * failed request. Default is 30 seconds. Valid range is [1, 86400].
+         * @param timeoutSec The backend service timeout has a different meaning depending on the type of load balancer.
+         * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+         * The default is 30 seconds.
+         * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
          * 
          * @return builder
          * 

@@ -595,6 +595,1005 @@ func (o ChatEngineCommonConfigPtrOutput) CompanyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type DataStoreDocumentProcessingConfig struct {
+	// Configurations for default Document parser. If not specified, this resource
+	// will be configured to use a default DigitalParsingConfig, and the default parsing
+	// config will be applied to all file types for Document parsing.
+	// Structure is documented below.
+	DefaultParsingConfig *DataStoreDocumentProcessingConfigDefaultParsingConfig `pulumi:"defaultParsingConfig"`
+	// (Output)
+	// The full resource name of the Document Processing Config. Format:
+	// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/documentProcessingConfig`.
+	Name *string `pulumi:"name"`
+	// Map from file type to override the default parsing configuration based on the file type. Supported keys:
+	ParsingConfigOverrides []DataStoreDocumentProcessingConfigParsingConfigOverride `pulumi:"parsingConfigOverrides"`
+}
+
+// DataStoreDocumentProcessingConfigInput is an input type that accepts DataStoreDocumentProcessingConfigArgs and DataStoreDocumentProcessingConfigOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigInput` via:
+//
+//	DataStoreDocumentProcessingConfigArgs{...}
+type DataStoreDocumentProcessingConfigInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigOutput() DataStoreDocumentProcessingConfigOutput
+	ToDataStoreDocumentProcessingConfigOutputWithContext(context.Context) DataStoreDocumentProcessingConfigOutput
+}
+
+type DataStoreDocumentProcessingConfigArgs struct {
+	// Configurations for default Document parser. If not specified, this resource
+	// will be configured to use a default DigitalParsingConfig, and the default parsing
+	// config will be applied to all file types for Document parsing.
+	// Structure is documented below.
+	DefaultParsingConfig DataStoreDocumentProcessingConfigDefaultParsingConfigPtrInput `pulumi:"defaultParsingConfig"`
+	// (Output)
+	// The full resource name of the Document Processing Config. Format:
+	// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/documentProcessingConfig`.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Map from file type to override the default parsing configuration based on the file type. Supported keys:
+	ParsingConfigOverrides DataStoreDocumentProcessingConfigParsingConfigOverrideArrayInput `pulumi:"parsingConfigOverrides"`
+}
+
+func (DataStoreDocumentProcessingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfig)(nil)).Elem()
+}
+
+func (i DataStoreDocumentProcessingConfigArgs) ToDataStoreDocumentProcessingConfigOutput() DataStoreDocumentProcessingConfigOutput {
+	return i.ToDataStoreDocumentProcessingConfigOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigArgs) ToDataStoreDocumentProcessingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigOutput)
+}
+
+func (i DataStoreDocumentProcessingConfigArgs) ToDataStoreDocumentProcessingConfigPtrOutput() DataStoreDocumentProcessingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigArgs) ToDataStoreDocumentProcessingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigOutput).ToDataStoreDocumentProcessingConfigPtrOutputWithContext(ctx)
+}
+
+// DataStoreDocumentProcessingConfigPtrInput is an input type that accepts DataStoreDocumentProcessingConfigArgs, DataStoreDocumentProcessingConfigPtr and DataStoreDocumentProcessingConfigPtrOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigPtrInput` via:
+//
+//	        DataStoreDocumentProcessingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataStoreDocumentProcessingConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigPtrOutput() DataStoreDocumentProcessingConfigPtrOutput
+	ToDataStoreDocumentProcessingConfigPtrOutputWithContext(context.Context) DataStoreDocumentProcessingConfigPtrOutput
+}
+
+type dataStoreDocumentProcessingConfigPtrType DataStoreDocumentProcessingConfigArgs
+
+func DataStoreDocumentProcessingConfigPtr(v *DataStoreDocumentProcessingConfigArgs) DataStoreDocumentProcessingConfigPtrInput {
+	return (*dataStoreDocumentProcessingConfigPtrType)(v)
+}
+
+func (*dataStoreDocumentProcessingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfig)(nil)).Elem()
+}
+
+func (i *dataStoreDocumentProcessingConfigPtrType) ToDataStoreDocumentProcessingConfigPtrOutput() DataStoreDocumentProcessingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataStoreDocumentProcessingConfigPtrType) ToDataStoreDocumentProcessingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigOutput) ToDataStoreDocumentProcessingConfigOutput() DataStoreDocumentProcessingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigOutput) ToDataStoreDocumentProcessingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigOutput) ToDataStoreDocumentProcessingConfigPtrOutput() DataStoreDocumentProcessingConfigPtrOutput {
+	return o.ToDataStoreDocumentProcessingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataStoreDocumentProcessingConfigOutput) ToDataStoreDocumentProcessingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataStoreDocumentProcessingConfig) *DataStoreDocumentProcessingConfig {
+		return &v
+	}).(DataStoreDocumentProcessingConfigPtrOutput)
+}
+
+// Configurations for default Document parser. If not specified, this resource
+// will be configured to use a default DigitalParsingConfig, and the default parsing
+// config will be applied to all file types for Document parsing.
+// Structure is documented below.
+func (o DataStoreDocumentProcessingConfigOutput) DefaultParsingConfig() DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfig) *DataStoreDocumentProcessingConfigDefaultParsingConfig {
+		return v.DefaultParsingConfig
+	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput)
+}
+
+// (Output)
+// The full resource name of the Document Processing Config. Format:
+// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/documentProcessingConfig`.
+func (o DataStoreDocumentProcessingConfigOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Map from file type to override the default parsing configuration based on the file type. Supported keys:
+func (o DataStoreDocumentProcessingConfigOutput) ParsingConfigOverrides() DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfig) []DataStoreDocumentProcessingConfigParsingConfigOverride {
+		return v.ParsingConfigOverrides
+	}).(DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput)
+}
+
+type DataStoreDocumentProcessingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigPtrOutput) ToDataStoreDocumentProcessingConfigPtrOutput() DataStoreDocumentProcessingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigPtrOutput) ToDataStoreDocumentProcessingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigPtrOutput) Elem() DataStoreDocumentProcessingConfigOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfig) DataStoreDocumentProcessingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataStoreDocumentProcessingConfig
+		return ret
+	}).(DataStoreDocumentProcessingConfigOutput)
+}
+
+// Configurations for default Document parser. If not specified, this resource
+// will be configured to use a default DigitalParsingConfig, and the default parsing
+// config will be applied to all file types for Document parsing.
+// Structure is documented below.
+func (o DataStoreDocumentProcessingConfigPtrOutput) DefaultParsingConfig() DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfig) *DataStoreDocumentProcessingConfigDefaultParsingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultParsingConfig
+	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput)
+}
+
+// (Output)
+// The full resource name of the Document Processing Config. Format:
+// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/documentProcessingConfig`.
+func (o DataStoreDocumentProcessingConfigPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Map from file type to override the default parsing configuration based on the file type. Supported keys:
+func (o DataStoreDocumentProcessingConfigPtrOutput) ParsingConfigOverrides() DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfig) []DataStoreDocumentProcessingConfigParsingConfigOverride {
+		if v == nil {
+			return nil
+		}
+		return v.ParsingConfigOverrides
+	}).(DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput)
+}
+
+type DataStoreDocumentProcessingConfigDefaultParsingConfig struct {
+	// Configurations applied to digital parser.
+	DigitalParsingConfig *DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig `pulumi:"digitalParsingConfig"`
+	// Configurations applied to OCR parser. Currently it only applies to PDFs.
+	// Structure is documented below.
+	OcrParsingConfig *DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig `pulumi:"ocrParsingConfig"`
+}
+
+// DataStoreDocumentProcessingConfigDefaultParsingConfigInput is an input type that accepts DataStoreDocumentProcessingConfigDefaultParsingConfigArgs and DataStoreDocumentProcessingConfigDefaultParsingConfigOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigDefaultParsingConfigInput` via:
+//
+//	DataStoreDocumentProcessingConfigDefaultParsingConfigArgs{...}
+type DataStoreDocumentProcessingConfigDefaultParsingConfigInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigDefaultParsingConfigOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigOutput
+	ToDataStoreDocumentProcessingConfigDefaultParsingConfigOutputWithContext(context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigOutput
+}
+
+type DataStoreDocumentProcessingConfigDefaultParsingConfigArgs struct {
+	// Configurations applied to digital parser.
+	DigitalParsingConfig DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrInput `pulumi:"digitalParsingConfig"`
+	// Configurations applied to OCR parser. Currently it only applies to PDFs.
+	// Structure is documented below.
+	OcrParsingConfig DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrInput `pulumi:"ocrParsingConfig"`
+}
+
+func (DataStoreDocumentProcessingConfigDefaultParsingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfig)(nil)).Elem()
+}
+
+func (i DataStoreDocumentProcessingConfigDefaultParsingConfigArgs) ToDataStoreDocumentProcessingConfigDefaultParsingConfigOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigOutput {
+	return i.ToDataStoreDocumentProcessingConfigDefaultParsingConfigOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigDefaultParsingConfigArgs) ToDataStoreDocumentProcessingConfigDefaultParsingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigDefaultParsingConfigOutput)
+}
+
+func (i DataStoreDocumentProcessingConfigDefaultParsingConfigArgs) ToDataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigDefaultParsingConfigArgs) ToDataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigDefaultParsingConfigOutput).ToDataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutputWithContext(ctx)
+}
+
+// DataStoreDocumentProcessingConfigDefaultParsingConfigPtrInput is an input type that accepts DataStoreDocumentProcessingConfigDefaultParsingConfigArgs, DataStoreDocumentProcessingConfigDefaultParsingConfigPtr and DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigDefaultParsingConfigPtrInput` via:
+//
+//	        DataStoreDocumentProcessingConfigDefaultParsingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataStoreDocumentProcessingConfigDefaultParsingConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput
+	ToDataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutputWithContext(context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput
+}
+
+type dataStoreDocumentProcessingConfigDefaultParsingConfigPtrType DataStoreDocumentProcessingConfigDefaultParsingConfigArgs
+
+func DataStoreDocumentProcessingConfigDefaultParsingConfigPtr(v *DataStoreDocumentProcessingConfigDefaultParsingConfigArgs) DataStoreDocumentProcessingConfigDefaultParsingConfigPtrInput {
+	return (*dataStoreDocumentProcessingConfigDefaultParsingConfigPtrType)(v)
+}
+
+func (*dataStoreDocumentProcessingConfigDefaultParsingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfigDefaultParsingConfig)(nil)).Elem()
+}
+
+func (i *dataStoreDocumentProcessingConfigDefaultParsingConfigPtrType) ToDataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataStoreDocumentProcessingConfigDefaultParsingConfigPtrType) ToDataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigDefaultParsingConfigOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigDefaultParsingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput {
+	return o.ToDataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataStoreDocumentProcessingConfigDefaultParsingConfig) *DataStoreDocumentProcessingConfigDefaultParsingConfig {
+		return &v
+	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput)
+}
+
+// Configurations applied to digital parser.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOutput) DigitalParsingConfig() DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigDefaultParsingConfig) *DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig {
+		return v.DigitalParsingConfig
+	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput)
+}
+
+// Configurations applied to OCR parser. Currently it only applies to PDFs.
+// Structure is documented below.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOutput) OcrParsingConfig() DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigDefaultParsingConfig) *DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig {
+		return v.OcrParsingConfig
+	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfigDefaultParsingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput) Elem() DataStoreDocumentProcessingConfigDefaultParsingConfigOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigDefaultParsingConfig) DataStoreDocumentProcessingConfigDefaultParsingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataStoreDocumentProcessingConfigDefaultParsingConfig
+		return ret
+	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigOutput)
+}
+
+// Configurations applied to digital parser.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput) DigitalParsingConfig() DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigDefaultParsingConfig) *DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DigitalParsingConfig
+	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput)
+}
+
+// Configurations applied to OCR parser. Currently it only applies to PDFs.
+// Structure is documented below.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput) OcrParsingConfig() DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigDefaultParsingConfig) *DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.OcrParsingConfig
+	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig struct {
+}
+
+// DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigInput is an input type that accepts DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs and DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigInput` via:
+//
+//	DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs{...}
+type DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput
+	ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutputWithContext(context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput
+}
+
+type DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs struct {
+}
+
+func (DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig)(nil)).Elem()
+}
+
+func (i DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs) ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput {
+	return i.ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs) ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput)
+}
+
+func (i DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs) ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs) ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput).ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutputWithContext(ctx)
+}
+
+// DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrInput is an input type that accepts DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs, DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtr and DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrInput` via:
+//
+//	        DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput
+	ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutputWithContext(context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput
+}
+
+type dataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrType DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs
+
+func DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtr(v *DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs) DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrInput {
+	return (*dataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrType)(v)
+}
+
+func (*dataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig)(nil)).Elem()
+}
+
+func (i *dataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrType) ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrType) ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput {
+	return o.ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig) *DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig {
+		return &v
+	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput) Elem() DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig) DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig
+		return ret
+	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput)
+}
+
+type DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig struct {
+	// If true, will use native text instead of OCR text on pages containing native text.
+	UseNativeText *bool `pulumi:"useNativeText"`
+}
+
+// DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigInput is an input type that accepts DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs and DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigInput` via:
+//
+//	DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs{...}
+type DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput
+	ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutputWithContext(context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput
+}
+
+type DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs struct {
+	// If true, will use native text instead of OCR text on pages containing native text.
+	UseNativeText pulumi.BoolPtrInput `pulumi:"useNativeText"`
+}
+
+func (DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig)(nil)).Elem()
+}
+
+func (i DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs) ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput {
+	return i.ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs) ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput)
+}
+
+func (i DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs) ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs) ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput).ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutputWithContext(ctx)
+}
+
+// DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrInput is an input type that accepts DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs, DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtr and DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrInput` via:
+//
+//	        DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput
+	ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutputWithContext(context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput
+}
+
+type dataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrType DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs
+
+func DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtr(v *DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs) DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrInput {
+	return (*dataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrType)(v)
+}
+
+func (*dataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig)(nil)).Elem()
+}
+
+func (i *dataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrType) ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrType) ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput {
+	return o.ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig) *DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig {
+		return &v
+	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput)
+}
+
+// If true, will use native text instead of OCR text on pages containing native text.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput) UseNativeText() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig) *bool {
+		return v.UseNativeText
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput) Elem() DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig) DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig
+		return ret
+	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput)
+}
+
+// If true, will use native text instead of OCR text on pages containing native text.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput) UseNativeText() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseNativeText
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigParsingConfigOverride struct {
+	// Configurations applied to digital parser.
+	DigitalParsingConfig *DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig `pulumi:"digitalParsingConfig"`
+	// The identifier for this object. Format specified above.
+	FileType string `pulumi:"fileType"`
+	// Configurations applied to OCR parser. Currently it only applies to PDFs.
+	// Structure is documented below.
+	OcrParsingConfig *DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig `pulumi:"ocrParsingConfig"`
+}
+
+// DataStoreDocumentProcessingConfigParsingConfigOverrideInput is an input type that accepts DataStoreDocumentProcessingConfigParsingConfigOverrideArgs and DataStoreDocumentProcessingConfigParsingConfigOverrideOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigParsingConfigOverrideInput` via:
+//
+//	DataStoreDocumentProcessingConfigParsingConfigOverrideArgs{...}
+type DataStoreDocumentProcessingConfigParsingConfigOverrideInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigParsingConfigOverrideOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideOutput
+	ToDataStoreDocumentProcessingConfigParsingConfigOverrideOutputWithContext(context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideOutput
+}
+
+type DataStoreDocumentProcessingConfigParsingConfigOverrideArgs struct {
+	// Configurations applied to digital parser.
+	DigitalParsingConfig DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrInput `pulumi:"digitalParsingConfig"`
+	// The identifier for this object. Format specified above.
+	FileType pulumi.StringInput `pulumi:"fileType"`
+	// Configurations applied to OCR parser. Currently it only applies to PDFs.
+	// Structure is documented below.
+	OcrParsingConfig DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrInput `pulumi:"ocrParsingConfig"`
+}
+
+func (DataStoreDocumentProcessingConfigParsingConfigOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverride)(nil)).Elem()
+}
+
+func (i DataStoreDocumentProcessingConfigParsingConfigOverrideArgs) ToDataStoreDocumentProcessingConfigParsingConfigOverrideOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideOutput {
+	return i.ToDataStoreDocumentProcessingConfigParsingConfigOverrideOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigParsingConfigOverrideArgs) ToDataStoreDocumentProcessingConfigParsingConfigOverrideOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigParsingConfigOverrideOutput)
+}
+
+// DataStoreDocumentProcessingConfigParsingConfigOverrideArrayInput is an input type that accepts DataStoreDocumentProcessingConfigParsingConfigOverrideArray and DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigParsingConfigOverrideArrayInput` via:
+//
+//	DataStoreDocumentProcessingConfigParsingConfigOverrideArray{ DataStoreDocumentProcessingConfigParsingConfigOverrideArgs{...} }
+type DataStoreDocumentProcessingConfigParsingConfigOverrideArrayInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput
+	ToDataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutputWithContext(context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput
+}
+
+type DataStoreDocumentProcessingConfigParsingConfigOverrideArray []DataStoreDocumentProcessingConfigParsingConfigOverrideInput
+
+func (DataStoreDocumentProcessingConfigParsingConfigOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataStoreDocumentProcessingConfigParsingConfigOverride)(nil)).Elem()
+}
+
+func (i DataStoreDocumentProcessingConfigParsingConfigOverrideArray) ToDataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput {
+	return i.ToDataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigParsingConfigOverrideArray) ToDataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput)
+}
+
+type DataStoreDocumentProcessingConfigParsingConfigOverrideOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigParsingConfigOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverride)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideOutput {
+	return o
+}
+
+// Configurations applied to digital parser.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOutput) DigitalParsingConfig() DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigParsingConfigOverride) *DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig {
+		return v.DigitalParsingConfig
+	}).(DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOutput) FileType() pulumi.StringOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigParsingConfigOverride) string { return v.FileType }).(pulumi.StringOutput)
+}
+
+// Configurations applied to OCR parser. Currently it only applies to PDFs.
+// Structure is documented below.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOutput) OcrParsingConfig() DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigParsingConfigOverride) *DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig {
+		return v.OcrParsingConfig
+	}).(DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataStoreDocumentProcessingConfigParsingConfigOverride)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput) Index(i pulumi.IntInput) DataStoreDocumentProcessingConfigParsingConfigOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataStoreDocumentProcessingConfigParsingConfigOverride {
+		return vs[0].([]DataStoreDocumentProcessingConfigParsingConfigOverride)[vs[1].(int)]
+	}).(DataStoreDocumentProcessingConfigParsingConfigOverrideOutput)
+}
+
+type DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig struct {
+}
+
+// DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigInput is an input type that accepts DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs and DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigInput` via:
+//
+//	DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs{...}
+type DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput
+	ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutputWithContext(context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput
+}
+
+type DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs struct {
+}
+
+func (DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig)(nil)).Elem()
+}
+
+func (i DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs) ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput {
+	return i.ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs) ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput)
+}
+
+func (i DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs) ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs) ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput).ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutputWithContext(ctx)
+}
+
+// DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrInput is an input type that accepts DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs, DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtr and DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrInput` via:
+//
+//	        DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput
+	ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutputWithContext(context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput
+}
+
+type dataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrType DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs
+
+func DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtr(v *DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs) DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrInput {
+	return (*dataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrType)(v)
+}
+
+func (*dataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig)(nil)).Elem()
+}
+
+func (i *dataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrType) ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrType) ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput {
+	return o.ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig) *DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig {
+		return &v
+	}).(DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput) Elem() DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig) DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig
+		return ret
+	}).(DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput)
+}
+
+type DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig struct {
+	// If true, will use native text instead of OCR text on pages containing native text.
+	UseNativeText *bool `pulumi:"useNativeText"`
+}
+
+// DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigInput is an input type that accepts DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs and DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigInput` via:
+//
+//	DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs{...}
+type DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput
+	ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutputWithContext(context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput
+}
+
+type DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs struct {
+	// If true, will use native text instead of OCR text on pages containing native text.
+	UseNativeText pulumi.BoolPtrInput `pulumi:"useNativeText"`
+}
+
+func (DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig)(nil)).Elem()
+}
+
+func (i DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs) ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput {
+	return i.ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs) ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput)
+}
+
+func (i DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs) ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs) ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput).ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutputWithContext(ctx)
+}
+
+// DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrInput is an input type that accepts DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs, DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtr and DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrInput` via:
+//
+//	        DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput
+	ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutputWithContext(context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput
+}
+
+type dataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrType DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs
+
+func DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtr(v *DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs) DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrInput {
+	return (*dataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrType)(v)
+}
+
+func (*dataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig)(nil)).Elem()
+}
+
+func (i *dataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrType) ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrType) ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput {
+	return o.ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig) *DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig {
+		return &v
+	}).(DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput)
+}
+
+// If true, will use native text instead of OCR text on pages containing native text.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput) UseNativeText() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig) *bool {
+		return v.UseNativeText
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput) Elem() DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig) DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig
+		return ret
+	}).(DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput)
+}
+
+// If true, will use native text instead of OCR text on pages containing native text.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput) UseNativeText() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseNativeText
+	}).(pulumi.BoolPtrOutput)
+}
+
 type SearchEngineCommonConfig struct {
 	// The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
 	CompanyName *string `pulumi:"companyName"`
@@ -917,6 +1916,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineChatEngineMetadataArrayInput)(nil)).Elem(), ChatEngineChatEngineMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineCommonConfigInput)(nil)).Elem(), ChatEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineCommonConfigPtrInput)(nil)).Elem(), ChatEngineCommonConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigDefaultParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigDefaultParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideArrayInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineCommonConfigInput)(nil)).Elem(), SearchEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineCommonConfigPtrInput)(nil)).Elem(), SearchEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineSearchEngineConfigInput)(nil)).Elem(), SearchEngineSearchEngineConfigArgs{})
@@ -929,6 +1942,20 @@ func init() {
 	pulumi.RegisterOutputType(ChatEngineChatEngineMetadataArrayOutput{})
 	pulumi.RegisterOutputType(ChatEngineCommonConfigOutput{})
 	pulumi.RegisterOutputType(ChatEngineCommonConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigDefaultParsingConfigOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput{})
 	pulumi.RegisterOutputType(SearchEngineCommonConfigOutput{})
 	pulumi.RegisterOutputType(SearchEngineCommonConfigPtrOutput{})
 	pulumi.RegisterOutputType(SearchEngineSearchEngineConfigOutput{})

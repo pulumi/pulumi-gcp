@@ -57,6 +57,52 @@ import (
 //	}
 //
 // ```
+// ### Discoveryengine Datastore Document Processing Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/discoveryengine"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := discoveryengine.NewDataStore(ctx, "document_processing_config", &discoveryengine.DataStoreArgs{
+//				Location:         pulumi.String("global"),
+//				DataStoreId:      pulumi.String("data-store-id"),
+//				DisplayName:      pulumi.String("tf-test-structured-datastore"),
+//				IndustryVertical: pulumi.String("GENERIC"),
+//				ContentConfig:    pulumi.String("NO_CONTENT"),
+//				SolutionTypes: pulumi.StringArray{
+//					pulumi.String("SOLUTION_TYPE_SEARCH"),
+//				},
+//				CreateAdvancedSiteSearch: pulumi.Bool(false),
+//				DocumentProcessingConfig: &discoveryengine.DataStoreDocumentProcessingConfigArgs{
+//					DefaultParsingConfig: &discoveryengine.DataStoreDocumentProcessingConfigDefaultParsingConfigArgs{
+//						DigitalParsingConfig: nil,
+//					},
+//					ParsingConfigOverrides: discoveryengine.DataStoreDocumentProcessingConfigParsingConfigOverrideArray{
+//						&discoveryengine.DataStoreDocumentProcessingConfigParsingConfigOverrideArgs{
+//							FileType: pulumi.String("pdf"),
+//							OcrParsingConfig: &discoveryengine.DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs{
+//								UseNativeText: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -102,6 +148,9 @@ type DataStore struct {
 	// The display name of the data store. This field must be a UTF-8 encoded
 	// string with a length limit of 128 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Configuration for Document understanding and enrichment.
+	// Structure is documented below.
+	DocumentProcessingConfig DataStoreDocumentProcessingConfigPtrOutput `pulumi:"documentProcessingConfig"`
 	// The industry vertical that the data store registers.
 	// Possible values are: `GENERIC`, `MEDIA`.
 	IndustryVertical pulumi.StringOutput `pulumi:"industryVertical"`
@@ -184,6 +233,9 @@ type dataStoreState struct {
 	// The display name of the data store. This field must be a UTF-8 encoded
 	// string with a length limit of 128 characters.
 	DisplayName *string `pulumi:"displayName"`
+	// Configuration for Document understanding and enrichment.
+	// Structure is documented below.
+	DocumentProcessingConfig *DataStoreDocumentProcessingConfig `pulumi:"documentProcessingConfig"`
 	// The industry vertical that the data store registers.
 	// Possible values are: `GENERIC`, `MEDIA`.
 	IndustryVertical *string `pulumi:"industryVertical"`
@@ -222,6 +274,9 @@ type DataStoreState struct {
 	// The display name of the data store. This field must be a UTF-8 encoded
 	// string with a length limit of 128 characters.
 	DisplayName pulumi.StringPtrInput
+	// Configuration for Document understanding and enrichment.
+	// Structure is documented below.
+	DocumentProcessingConfig DataStoreDocumentProcessingConfigPtrInput
 	// The industry vertical that the data store registers.
 	// Possible values are: `GENERIC`, `MEDIA`.
 	IndustryVertical pulumi.StringPtrInput
@@ -260,6 +315,9 @@ type dataStoreArgs struct {
 	// The display name of the data store. This field must be a UTF-8 encoded
 	// string with a length limit of 128 characters.
 	DisplayName string `pulumi:"displayName"`
+	// Configuration for Document understanding and enrichment.
+	// Structure is documented below.
+	DocumentProcessingConfig *DataStoreDocumentProcessingConfig `pulumi:"documentProcessingConfig"`
 	// The industry vertical that the data store registers.
 	// Possible values are: `GENERIC`, `MEDIA`.
 	IndustryVertical string `pulumi:"industryVertical"`
@@ -290,6 +348,9 @@ type DataStoreArgs struct {
 	// The display name of the data store. This field must be a UTF-8 encoded
 	// string with a length limit of 128 characters.
 	DisplayName pulumi.StringInput
+	// Configuration for Document understanding and enrichment.
+	// Structure is documented below.
+	DocumentProcessingConfig DataStoreDocumentProcessingConfigPtrInput
 	// The industry vertical that the data store registers.
 	// Possible values are: `GENERIC`, `MEDIA`.
 	IndustryVertical pulumi.StringInput
@@ -425,6 +486,12 @@ func (o DataStoreOutput) DefaultSchemaId() pulumi.StringOutput {
 // string with a length limit of 128 characters.
 func (o DataStoreOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataStore) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Configuration for Document understanding and enrichment.
+// Structure is documented below.
+func (o DataStoreOutput) DocumentProcessingConfig() DataStoreDocumentProcessingConfigPtrOutput {
+	return o.ApplyT(func(v *DataStore) DataStoreDocumentProcessingConfigPtrOutput { return v.DocumentProcessingConfig }).(DataStoreDocumentProcessingConfigPtrOutput)
 }
 
 // The industry vertical that the data store registers.

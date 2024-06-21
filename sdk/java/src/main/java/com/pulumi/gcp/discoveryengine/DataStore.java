@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.discoveryengine.DataStoreArgs;
 import com.pulumi.gcp.discoveryengine.inputs.DataStoreState;
+import com.pulumi.gcp.discoveryengine.outputs.DataStoreDocumentProcessingConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -62,6 +63,60 @@ import javax.annotation.Nullable;
  *             .contentConfig("NO_CONTENT")
  *             .solutionTypes("SOLUTION_TYPE_SEARCH")
  *             .createAdvancedSiteSearch(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Discoveryengine Datastore Document Processing Config
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.discoveryengine.DataStore;
+ * import com.pulumi.gcp.discoveryengine.DataStoreArgs;
+ * import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigArgs;
+ * import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigDefaultParsingConfigArgs;
+ * import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var documentProcessingConfig = new DataStore("documentProcessingConfig", DataStoreArgs.builder()
+ *             .location("global")
+ *             .dataStoreId("data-store-id")
+ *             .displayName("tf-test-structured-datastore")
+ *             .industryVertical("GENERIC")
+ *             .contentConfig("NO_CONTENT")
+ *             .solutionTypes("SOLUTION_TYPE_SEARCH")
+ *             .createAdvancedSiteSearch(false)
+ *             .documentProcessingConfig(DataStoreDocumentProcessingConfigArgs.builder()
+ *                 .defaultParsingConfig(DataStoreDocumentProcessingConfigDefaultParsingConfigArgs.builder()
+ *                     .digitalParsingConfig()
+ *                     .build())
+ *                 .parsingConfigOverrides(DataStoreDocumentProcessingConfigParsingConfigOverrideArgs.builder()
+ *                     .fileType("pdf")
+ *                     .ocrParsingConfig(DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs.builder()
+ *                         .useNativeText(true)
+ *                         .build())
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -192,6 +247,22 @@ public class DataStore extends com.pulumi.resources.CustomResource {
      */
     public Output<String> displayName() {
         return this.displayName;
+    }
+    /**
+     * Configuration for Document understanding and enrichment.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="documentProcessingConfig", refs={DataStoreDocumentProcessingConfig.class}, tree="[0]")
+    private Output</* @Nullable */ DataStoreDocumentProcessingConfig> documentProcessingConfig;
+
+    /**
+     * @return Configuration for Document understanding and enrichment.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<DataStoreDocumentProcessingConfig>> documentProcessingConfig() {
+        return Codegen.optional(this.documentProcessingConfig);
     }
     /**
      * The industry vertical that the data store registers.

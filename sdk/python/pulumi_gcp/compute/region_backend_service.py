@@ -59,6 +59,7 @@ class RegionBackendServiceArgs:
                Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
+               From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
         :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
@@ -149,10 +150,6 @@ class RegionBackendServiceArgs:
                - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
-        :param pulumi.Input['RegionBackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
-               This field is applicable only when the `load_balancing_scheme` is set
-               to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-               Structure is documented below.
         :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for
                communication to the backend VMs in that group. Required when the
                loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -174,8 +171,10 @@ class RegionBackendServiceArgs:
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
         :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
                Structure is documented below.
-        :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
-               failed request. Default is 30 seconds. Valid range is [1, 86400].
+        :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
+               For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+               The default is 30 seconds.
+               The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
         """
         if affinity_cookie_ttl_sec is not None:
             pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -293,6 +292,7 @@ class RegionBackendServiceArgs:
         """
         Time for which instance will be drained (not accept new
         connections, but still work to finish started).
+        From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
         """
         return pulumi.get(self, "connection_draining_timeout_sec")
 
@@ -525,12 +525,6 @@ class RegionBackendServiceArgs:
     @property
     @pulumi.getter(name="outlierDetection")
     def outlier_detection(self) -> Optional[pulumi.Input['RegionBackendServiceOutlierDetectionArgs']]:
-        """
-        Settings controlling eviction of unhealthy hosts from the load balancing pool.
-        This field is applicable only when the `load_balancing_scheme` is set
-        to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-        Structure is documented below.
-        """
         return pulumi.get(self, "outlier_detection")
 
     @outlier_detection.setter
@@ -639,8 +633,10 @@ class RegionBackendServiceArgs:
     @pulumi.getter(name="timeoutSec")
     def timeout_sec(self) -> Optional[pulumi.Input[int]]:
         """
-        How many seconds to wait for the backend before considering it a
-        failed request. Default is 30 seconds. Valid range is [1, 86400].
+        The backend service timeout has a different meaning depending on the type of load balancer.
+        For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+        The default is 30 seconds.
+        The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
         """
         return pulumi.get(self, "timeout_sec")
 
@@ -699,6 +695,7 @@ class _RegionBackendServiceState:
                Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
+               From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
         :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
@@ -793,10 +790,6 @@ class _RegionBackendServiceState:
                - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
-        :param pulumi.Input['RegionBackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
-               This field is applicable only when the `load_balancing_scheme` is set
-               to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-               Structure is documented below.
         :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for
                communication to the backend VMs in that group. Required when the
                loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -819,8 +812,10 @@ class _RegionBackendServiceState:
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
         :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
                Structure is documented below.
-        :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
-               failed request. Default is 30 seconds. Valid range is [1, 86400].
+        :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
+               For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+               The default is 30 seconds.
+               The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
         """
         if affinity_cookie_ttl_sec is not None:
             pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -946,6 +941,7 @@ class _RegionBackendServiceState:
         """
         Time for which instance will be drained (not accept new
         connections, but still work to finish started).
+        From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
         """
         return pulumi.get(self, "connection_draining_timeout_sec")
 
@@ -1215,12 +1211,6 @@ class _RegionBackendServiceState:
     @property
     @pulumi.getter(name="outlierDetection")
     def outlier_detection(self) -> Optional[pulumi.Input['RegionBackendServiceOutlierDetectionArgs']]:
-        """
-        Settings controlling eviction of unhealthy hosts from the load balancing pool.
-        This field is applicable only when the `load_balancing_scheme` is set
-        to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-        Structure is documented below.
-        """
         return pulumi.get(self, "outlier_detection")
 
     @outlier_detection.setter
@@ -1341,8 +1331,10 @@ class _RegionBackendServiceState:
     @pulumi.getter(name="timeoutSec")
     def timeout_sec(self) -> Optional[pulumi.Input[int]]:
         """
-        How many seconds to wait for the backend before considering it a
-        failed request. Default is 30 seconds. Valid range is [1, 86400].
+        The backend service timeout has a different meaning depending on the type of load balancer.
+        For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+        The default is 30 seconds.
+        The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
         """
         return pulumi.get(self, "timeout_sec")
 
@@ -1688,6 +1680,7 @@ class RegionBackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
+               From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceConnectionTrackingPolicyArgs']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
@@ -1778,10 +1771,6 @@ class RegionBackendService(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceOutlierDetectionArgs']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
-               This field is applicable only when the `load_balancing_scheme` is set
-               to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-               Structure is documented below.
         :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for
                communication to the backend VMs in that group. Required when the
                loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -1803,8 +1792,10 @@ class RegionBackendService(pulumi.CustomResource):
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
                Structure is documented below.
-        :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
-               failed request. Default is 30 seconds. Valid range is [1, 86400].
+        :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
+               For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+               The default is 30 seconds.
+               The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
         """
         ...
     @overload
@@ -2242,6 +2233,7 @@ class RegionBackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
+               From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceConnectionTrackingPolicyArgs']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
@@ -2336,10 +2328,6 @@ class RegionBackendService(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceOutlierDetectionArgs']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
-               This field is applicable only when the `load_balancing_scheme` is set
-               to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-               Structure is documented below.
         :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for
                communication to the backend VMs in that group. Required when the
                loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -2362,8 +2350,10 @@ class RegionBackendService(pulumi.CustomResource):
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
                Structure is documented below.
-        :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
-               failed request. Default is 30 seconds. Valid range is [1, 86400].
+        :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
+               For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+               The default is 30 seconds.
+               The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2448,6 +2438,7 @@ class RegionBackendService(pulumi.CustomResource):
         """
         Time for which instance will be drained (not accept new
         connections, but still work to finish started).
+        From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
         """
         return pulumi.get(self, "connection_draining_timeout_sec")
 
@@ -2653,12 +2644,6 @@ class RegionBackendService(pulumi.CustomResource):
     @property
     @pulumi.getter(name="outlierDetection")
     def outlier_detection(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceOutlierDetection']]:
-        """
-        Settings controlling eviction of unhealthy hosts from the load balancing pool.
-        This field is applicable only when the `load_balancing_scheme` is set
-        to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
-        Structure is documented below.
-        """
         return pulumi.get(self, "outlier_detection")
 
     @property
@@ -2743,8 +2728,10 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter(name="timeoutSec")
     def timeout_sec(self) -> pulumi.Output[int]:
         """
-        How many seconds to wait for the backend before considering it a
-        failed request. Default is 30 seconds. Valid range is [1, 86400].
+        The backend service timeout has a different meaning depending on the type of load balancer.
+        For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+        The default is 30 seconds.
+        The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
         """
         return pulumi.get(self, "timeout_sec")
 

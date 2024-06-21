@@ -421,7 +421,7 @@ class _InterconnectState:
                all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications.
                This field is required for users who sign up for Cloud Interconnect using workforce identity
                federation.
-        :param pulumi.Input[str] operational_status: The current status of this Interconnect's functionality, which can take one of the following values:
+        :param pulumi.Input[str] operational_status: The current status of this Interconnect's functionality, which can take one of the following:
                - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
                be provisioned on this Interconnect.
                - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be
@@ -799,7 +799,7 @@ class _InterconnectState:
     @pulumi.getter(name="operationalStatus")
     def operational_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The current status of this Interconnect's functionality, which can take one of the following values:
+        The current status of this Interconnect's functionality, which can take one of the following:
         - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
         be provisioned on this Interconnect.
         - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be
@@ -1310,7 +1310,7 @@ class Interconnect(pulumi.CustomResource):
                all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications.
                This field is required for users who sign up for Cloud Interconnect using workforce identity
                federation.
-        :param pulumi.Input[str] operational_status: The current status of this Interconnect's functionality, which can take one of the following values:
+        :param pulumi.Input[str] operational_status: The current status of this Interconnect's functionality, which can take one of the following:
                - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
                be provisioned on this Interconnect.
                - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be
@@ -1583,7 +1583,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="operationalStatus")
     def operational_status(self) -> pulumi.Output[str]:
         """
-        The current status of this Interconnect's functionality, which can take one of the following values:
+        The current status of this Interconnect's functionality, which can take one of the following:
         - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
         be provisioned on this Interconnect.
         - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be

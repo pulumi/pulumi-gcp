@@ -11,6 +11,13 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ConnectionBitbucketCloudConfig',
+    'ConnectionBitbucketCloudConfigAuthorizerCredential',
+    'ConnectionBitbucketCloudConfigReadAuthorizerCredential',
+    'ConnectionBitbucketDataCenterConfig',
+    'ConnectionBitbucketDataCenterConfigAuthorizerCredential',
+    'ConnectionBitbucketDataCenterConfigReadAuthorizerCredential',
+    'ConnectionBitbucketDataCenterConfigServiceDirectoryConfig',
     'ConnectionGithubConfig',
     'ConnectionGithubConfigAuthorizerCredential',
     'ConnectionGithubEnterpriseConfig',
@@ -23,6 +30,420 @@ __all__ = [
     'ConnectionIAMMemberCondition',
     'ConnectionInstallationState',
 ]
+
+@pulumi.output_type
+class ConnectionBitbucketCloudConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizerCredential":
+            suggest = "authorizer_credential"
+        elif key == "readAuthorizerCredential":
+            suggest = "read_authorizer_credential"
+        elif key == "webhookSecretSecretVersion":
+            suggest = "webhook_secret_secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionBitbucketCloudConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionBitbucketCloudConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionBitbucketCloudConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authorizer_credential: 'outputs.ConnectionBitbucketCloudConfigAuthorizerCredential',
+                 read_authorizer_credential: 'outputs.ConnectionBitbucketCloudConfigReadAuthorizerCredential',
+                 webhook_secret_secret_version: str,
+                 workspace: str):
+        """
+        :param 'ConnectionBitbucketCloudConfigAuthorizerCredentialArgs' authorizer_credential: Required. An access token with the `webhook`, `repository`, `repository:admin` and `pullrequest` scope access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate these credentials.
+               Structure is documented below.
+        :param 'ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs' read_authorizer_credential: Required. An access token with the `repository` access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate the credentials.
+               Structure is documented below.
+        :param str webhook_secret_secret_version: Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+        :param str workspace: The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
+        """
+        pulumi.set(__self__, "authorizer_credential", authorizer_credential)
+        pulumi.set(__self__, "read_authorizer_credential", read_authorizer_credential)
+        pulumi.set(__self__, "webhook_secret_secret_version", webhook_secret_secret_version)
+        pulumi.set(__self__, "workspace", workspace)
+
+    @property
+    @pulumi.getter(name="authorizerCredential")
+    def authorizer_credential(self) -> 'outputs.ConnectionBitbucketCloudConfigAuthorizerCredential':
+        """
+        Required. An access token with the `webhook`, `repository`, `repository:admin` and `pullrequest` scope access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate these credentials.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authorizer_credential")
+
+    @property
+    @pulumi.getter(name="readAuthorizerCredential")
+    def read_authorizer_credential(self) -> 'outputs.ConnectionBitbucketCloudConfigReadAuthorizerCredential':
+        """
+        Required. An access token with the `repository` access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate the credentials.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "read_authorizer_credential")
+
+    @property
+    @pulumi.getter(name="webhookSecretSecretVersion")
+    def webhook_secret_secret_version(self) -> str:
+        """
+        Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "webhook_secret_secret_version")
+
+    @property
+    @pulumi.getter
+    def workspace(self) -> str:
+        """
+        The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
+        """
+        return pulumi.get(self, "workspace")
+
+
+@pulumi.output_type
+class ConnectionBitbucketCloudConfigAuthorizerCredential(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userTokenSecretVersion":
+            suggest = "user_token_secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionBitbucketCloudConfigAuthorizerCredential. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionBitbucketCloudConfigAuthorizerCredential.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionBitbucketCloudConfigAuthorizerCredential.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 user_token_secret_version: str,
+                 username: Optional[str] = None):
+        """
+        :param str user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+        :param str username: (Output)
+               Output only. The username associated to this token.
+        """
+        pulumi.set(__self__, "user_token_secret_version", user_token_secret_version)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="userTokenSecretVersion")
+    def user_token_secret_version(self) -> str:
+        """
+        Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "user_token_secret_version")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The username associated to this token.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class ConnectionBitbucketCloudConfigReadAuthorizerCredential(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userTokenSecretVersion":
+            suggest = "user_token_secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionBitbucketCloudConfigReadAuthorizerCredential. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionBitbucketCloudConfigReadAuthorizerCredential.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionBitbucketCloudConfigReadAuthorizerCredential.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 user_token_secret_version: str,
+                 username: Optional[str] = None):
+        """
+        :param str user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+        :param str username: (Output)
+               Output only. The username associated to this token.
+        """
+        pulumi.set(__self__, "user_token_secret_version", user_token_secret_version)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="userTokenSecretVersion")
+    def user_token_secret_version(self) -> str:
+        """
+        Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "user_token_secret_version")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The username associated to this token.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class ConnectionBitbucketDataCenterConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizerCredential":
+            suggest = "authorizer_credential"
+        elif key == "hostUri":
+            suggest = "host_uri"
+        elif key == "readAuthorizerCredential":
+            suggest = "read_authorizer_credential"
+        elif key == "webhookSecretSecretVersion":
+            suggest = "webhook_secret_secret_version"
+        elif key == "serverVersion":
+            suggest = "server_version"
+        elif key == "serviceDirectoryConfig":
+            suggest = "service_directory_config"
+        elif key == "sslCa":
+            suggest = "ssl_ca"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionBitbucketDataCenterConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionBitbucketDataCenterConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionBitbucketDataCenterConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authorizer_credential: 'outputs.ConnectionBitbucketDataCenterConfigAuthorizerCredential',
+                 host_uri: str,
+                 read_authorizer_credential: 'outputs.ConnectionBitbucketDataCenterConfigReadAuthorizerCredential',
+                 webhook_secret_secret_version: str,
+                 server_version: Optional[str] = None,
+                 service_directory_config: Optional['outputs.ConnectionBitbucketDataCenterConfigServiceDirectoryConfig'] = None,
+                 ssl_ca: Optional[str] = None):
+        """
+        :param 'ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs' authorizer_credential: Required. A http access token with the `REPO_ADMIN` scope access.
+               Structure is documented below.
+        :param str host_uri: The URI of the Bitbucket Data Center host this connection is for.
+        :param 'ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs' read_authorizer_credential: Required. A http access token with the `REPO_READ` access.
+               Structure is documented below.
+        :param str webhook_secret_secret_version: Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+        :param str server_version: (Output)
+               Output only. Version of the Bitbucket Data Center running on the `host_uri`.
+        :param 'ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs' service_directory_config: Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
+               Structure is documented below.
+        :param str ssl_ca: SSL certificate to use for requests to the Bitbucket Data Center.
+        """
+        pulumi.set(__self__, "authorizer_credential", authorizer_credential)
+        pulumi.set(__self__, "host_uri", host_uri)
+        pulumi.set(__self__, "read_authorizer_credential", read_authorizer_credential)
+        pulumi.set(__self__, "webhook_secret_secret_version", webhook_secret_secret_version)
+        if server_version is not None:
+            pulumi.set(__self__, "server_version", server_version)
+        if service_directory_config is not None:
+            pulumi.set(__self__, "service_directory_config", service_directory_config)
+        if ssl_ca is not None:
+            pulumi.set(__self__, "ssl_ca", ssl_ca)
+
+    @property
+    @pulumi.getter(name="authorizerCredential")
+    def authorizer_credential(self) -> 'outputs.ConnectionBitbucketDataCenterConfigAuthorizerCredential':
+        """
+        Required. A http access token with the `REPO_ADMIN` scope access.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authorizer_credential")
+
+    @property
+    @pulumi.getter(name="hostUri")
+    def host_uri(self) -> str:
+        """
+        The URI of the Bitbucket Data Center host this connection is for.
+        """
+        return pulumi.get(self, "host_uri")
+
+    @property
+    @pulumi.getter(name="readAuthorizerCredential")
+    def read_authorizer_credential(self) -> 'outputs.ConnectionBitbucketDataCenterConfigReadAuthorizerCredential':
+        """
+        Required. A http access token with the `REPO_READ` access.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "read_authorizer_credential")
+
+    @property
+    @pulumi.getter(name="webhookSecretSecretVersion")
+    def webhook_secret_secret_version(self) -> str:
+        """
+        Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "webhook_secret_secret_version")
+
+    @property
+    @pulumi.getter(name="serverVersion")
+    def server_version(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. Version of the Bitbucket Data Center running on the `host_uri`.
+        """
+        return pulumi.get(self, "server_version")
+
+    @property
+    @pulumi.getter(name="serviceDirectoryConfig")
+    def service_directory_config(self) -> Optional['outputs.ConnectionBitbucketDataCenterConfigServiceDirectoryConfig']:
+        """
+        Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_directory_config")
+
+    @property
+    @pulumi.getter(name="sslCa")
+    def ssl_ca(self) -> Optional[str]:
+        """
+        SSL certificate to use for requests to the Bitbucket Data Center.
+        """
+        return pulumi.get(self, "ssl_ca")
+
+
+@pulumi.output_type
+class ConnectionBitbucketDataCenterConfigAuthorizerCredential(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userTokenSecretVersion":
+            suggest = "user_token_secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionBitbucketDataCenterConfigAuthorizerCredential. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionBitbucketDataCenterConfigAuthorizerCredential.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionBitbucketDataCenterConfigAuthorizerCredential.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 user_token_secret_version: str,
+                 username: Optional[str] = None):
+        """
+        :param str user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+        :param str username: (Output)
+               Output only. The username associated to this token.
+        """
+        pulumi.set(__self__, "user_token_secret_version", user_token_secret_version)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="userTokenSecretVersion")
+    def user_token_secret_version(self) -> str:
+        """
+        Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "user_token_secret_version")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The username associated to this token.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class ConnectionBitbucketDataCenterConfigReadAuthorizerCredential(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userTokenSecretVersion":
+            suggest = "user_token_secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionBitbucketDataCenterConfigReadAuthorizerCredential. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionBitbucketDataCenterConfigReadAuthorizerCredential.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionBitbucketDataCenterConfigReadAuthorizerCredential.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 user_token_secret_version: str,
+                 username: Optional[str] = None):
+        """
+        :param str user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+        :param str username: (Output)
+               Output only. The username associated to this token.
+        """
+        pulumi.set(__self__, "user_token_secret_version", user_token_secret_version)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="userTokenSecretVersion")
+    def user_token_secret_version(self) -> str:
+        """
+        Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "user_token_secret_version")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The username associated to this token.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class ConnectionBitbucketDataCenterConfigServiceDirectoryConfig(dict):
+    def __init__(__self__, *,
+                 service: str):
+        """
+        :param str service: Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        """
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        """
+        return pulumi.get(self, "service")
+
 
 @pulumi.output_type
 class ConnectionGithubConfig(dict):

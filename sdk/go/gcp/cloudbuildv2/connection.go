@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center or GitLab.
+// A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center/Cloud or GitLab.
 //
 // To get more information about Connection, see:
 //
@@ -273,6 +273,12 @@ type Connection struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
+	// Configuration for connections to Bitbucket Cloud.
+	// Structure is documented below.
+	BitbucketCloudConfig ConnectionBitbucketCloudConfigPtrOutput `pulumi:"bitbucketCloudConfig"`
+	// Configuration for connections to Bitbucket Data Center.
+	// Structure is documented below.
+	BitbucketDataCenterConfig ConnectionBitbucketDataCenterConfigPtrOutput `pulumi:"bitbucketDataCenterConfig"`
 	// Output only. Server assigned timestamp for when the connection was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
@@ -344,6 +350,12 @@ type connectionState struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Configuration for connections to Bitbucket Cloud.
+	// Structure is documented below.
+	BitbucketCloudConfig *ConnectionBitbucketCloudConfig `pulumi:"bitbucketCloudConfig"`
+	// Configuration for connections to Bitbucket Data Center.
+	// Structure is documented below.
+	BitbucketDataCenterConfig *ConnectionBitbucketDataCenterConfig `pulumi:"bitbucketDataCenterConfig"`
 	// Output only. Server assigned timestamp for when the connection was created.
 	CreateTime *string `pulumi:"createTime"`
 	// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
@@ -383,6 +395,12 @@ type ConnectionState struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
+	// Configuration for connections to Bitbucket Cloud.
+	// Structure is documented below.
+	BitbucketCloudConfig ConnectionBitbucketCloudConfigPtrInput
+	// Configuration for connections to Bitbucket Data Center.
+	// Structure is documented below.
+	BitbucketDataCenterConfig ConnectionBitbucketDataCenterConfigPtrInput
 	// Output only. Server assigned timestamp for when the connection was created.
 	CreateTime pulumi.StringPtrInput
 	// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
@@ -426,6 +444,12 @@ type connectionArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
+	// Configuration for connections to Bitbucket Cloud.
+	// Structure is documented below.
+	BitbucketCloudConfig *ConnectionBitbucketCloudConfig `pulumi:"bitbucketCloudConfig"`
+	// Configuration for connections to Bitbucket Data Center.
+	// Structure is documented below.
+	BitbucketDataCenterConfig *ConnectionBitbucketDataCenterConfig `pulumi:"bitbucketDataCenterConfig"`
 	// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
 	Disabled *bool `pulumi:"disabled"`
 	// Configuration for connections to github.com.
@@ -454,6 +478,12 @@ type ConnectionArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
+	// Configuration for connections to Bitbucket Cloud.
+	// Structure is documented below.
+	BitbucketCloudConfig ConnectionBitbucketCloudConfigPtrInput
+	// Configuration for connections to Bitbucket Data Center.
+	// Structure is documented below.
+	BitbucketDataCenterConfig ConnectionBitbucketDataCenterConfigPtrInput
 	// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
 	Disabled pulumi.BoolPtrInput
 	// Configuration for connections to github.com.
@@ -568,6 +598,18 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 // Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o ConnectionOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Configuration for connections to Bitbucket Cloud.
+// Structure is documented below.
+func (o ConnectionOutput) BitbucketCloudConfig() ConnectionBitbucketCloudConfigPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionBitbucketCloudConfigPtrOutput { return v.BitbucketCloudConfig }).(ConnectionBitbucketCloudConfigPtrOutput)
+}
+
+// Configuration for connections to Bitbucket Data Center.
+// Structure is documented below.
+func (o ConnectionOutput) BitbucketDataCenterConfig() ConnectionBitbucketDataCenterConfigPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionBitbucketDataCenterConfigPtrOutput { return v.BitbucketDataCenterConfig }).(ConnectionBitbucketDataCenterConfigPtrOutput)
 }
 
 // Output only. Server assigned timestamp for when the connection was created.

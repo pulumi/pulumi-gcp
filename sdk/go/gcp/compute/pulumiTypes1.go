@@ -7885,7 +7885,9 @@ type GetBackendServiceBackend struct {
 	// and CONNECTION (for TCP/SSL).
 	//
 	// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-	// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
+	// for an explanation of load balancing modes.
+	//
+	// From version 6.0.0 default value will be UTILIZATION to match default GCP value. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
 	BalancingMode string `pulumi:"balancingMode"`
 	// A multiplier applied to the group's maximum servicing capacity
 	// (based on UTILIZATION, RATE or CONNECTION).
@@ -7979,7 +7981,9 @@ type GetBackendServiceBackendArgs struct {
 	// and CONNECTION (for TCP/SSL).
 	//
 	// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-	// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
+	// for an explanation of load balancing modes.
+	//
+	// From version 6.0.0 default value will be UTILIZATION to match default GCP value. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
 	BalancingMode pulumi.StringInput `pulumi:"balancingMode"`
 	// A multiplier applied to the group's maximum servicing capacity
 	// (based on UTILIZATION, RATE or CONNECTION).
@@ -8112,7 +8116,9 @@ func (o GetBackendServiceBackendOutput) ToGetBackendServiceBackendOutputWithCont
 // and CONNECTION (for TCP/SSL).
 //
 // See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
+// for an explanation of load balancing modes.
+//
+// From version 6.0.0 default value will be UTILIZATION to match default GCP value. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
 func (o GetBackendServiceBackendOutput) BalancingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceBackend) string { return v.BalancingMode }).(pulumi.StringOutput)
 }

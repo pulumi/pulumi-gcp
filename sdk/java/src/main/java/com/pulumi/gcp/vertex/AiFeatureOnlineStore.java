@@ -276,20 +276,28 @@ public class AiFeatureOnlineStore extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+     * The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+     * 
+     * @deprecated
+     * `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+     * 
      */
+    @Deprecated /* `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
     @Export(name="embeddingManagement", refs={AiFeatureOnlineStoreEmbeddingManagement.class}, tree="[0]")
-    private Output</* @Nullable */ AiFeatureOnlineStoreEmbeddingManagement> embeddingManagement;
+    private Output<AiFeatureOnlineStoreEmbeddingManagement> embeddingManagement;
 
     /**
-     * @return The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+     * @return The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+     * 
      */
-    public Output<Optional<AiFeatureOnlineStoreEmbeddingManagement>> embeddingManagement() {
-        return Codegen.optional(this.embeddingManagement);
+    public Output<AiFeatureOnlineStoreEmbeddingManagement> embeddingManagement() {
+        return this.embeddingManagement;
     }
     /**
      * Used to perform consistent read-modify-write updates.

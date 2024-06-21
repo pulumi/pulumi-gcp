@@ -1618,8 +1618,8 @@ class ServicePerimeterEgressPolicyEgressFromArgs:
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressFromSourceArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this `EgressPolicy`.
-               Should be in the format of an email address. The email address should
-               represent an individual user, service account, or Google group.
+               Should be in the format of email address. The email address should
+               represent individual user or service account only.
         :param pulumi.Input[str] identity_type: Specifies the type of identities that are allowed access to outside the
                perimeter. If left unspecified, then members of `identities` field will
                be allowed access.
@@ -1643,8 +1643,8 @@ class ServicePerimeterEgressPolicyEgressFromArgs:
     def identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of identities that are allowed access through this `EgressPolicy`.
-        Should be in the format of an email address. The email address should
-        represent an individual user, service account, or Google group.
+        Should be in the format of email address. The email address should
+        represent individual user or service account only.
         """
         return pulumi.get(self, "identities")
 
@@ -1891,9 +1891,9 @@ class ServicePerimeterIngressPolicyIngressFromArgs:
                  identity_type: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressFromSourceArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this `IngressPolicy`.
-               Should be in the format of an email address. The email address should represent
-               an individual user, service account, or Google group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this ingress policy.
+               Should be in the format of email address. The email address should represent
+               individual user or service account only.
         :param pulumi.Input[str] identity_type: Specifies the type of identities that are allowed access from outside the
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
@@ -1912,9 +1912,9 @@ class ServicePerimeterIngressPolicyIngressFromArgs:
     @pulumi.getter
     def identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of identities that are allowed access through this `IngressPolicy`.
-        Should be in the format of an email address. The email address should represent
-        an individual user, service account, or Google group.
+        A list of identities that are allowed access through this ingress policy.
+        Should be in the format of email address. The email address should represent
+        individual user or service account only.
         """
         return pulumi.get(self, "identities")
 
@@ -2371,10 +2371,9 @@ class ServicePerimeterSpecEgressPolicyEgressFromArgs:
                  source_restriction: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromSourceArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: 'A list of identities that are allowed access through this `EgressPolicy`.
-               To specify an identity or identity group, use the IAM v1
-               format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-               The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this `EgressPolicy`.
+               Should be in the format of email address. The email address should
+               represent individual user or service account only.
         :param pulumi.Input[str] identity_type: Specifies the type of identities that are allowed access to outside the
                perimeter. If left unspecified, then members of `identities` field will
                be allowed access.
@@ -2397,10 +2396,9 @@ class ServicePerimeterSpecEgressPolicyEgressFromArgs:
     @pulumi.getter
     def identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        'A list of identities that are allowed access through this `EgressPolicy`.
-        To specify an identity or identity group, use the IAM v1
-        format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-        The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+        A list of identities that are allowed access through this `EgressPolicy`.
+        Should be in the format of email address. The email address should
+        represent individual user or service account only.
         """
         return pulumi.get(self, "identities")
 
@@ -2694,10 +2692,9 @@ class ServicePerimeterSpecIngressPolicyIngressFromArgs:
                  identity_type: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromSourceArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: 'A list of identities that are allowed access through this `IngressPolicy`.
-               To specify an identity or identity group, use the IAM v1
-               format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-               The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this ingress policy.
+               Should be in the format of email address. The email address should represent
+               individual user or service account only.
         :param pulumi.Input[str] identity_type: Specifies the type of identities that are allowed access from outside the
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
@@ -2716,10 +2713,9 @@ class ServicePerimeterSpecIngressPolicyIngressFromArgs:
     @pulumi.getter
     def identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        'A list of identities that are allowed access through this `IngressPolicy`.
-        To specify an identity or identity group, use the IAM v1
-        format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-        The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+        A list of identities that are allowed access through this ingress policy.
+        Should be in the format of email address. The email address should represent
+        individual user or service account only.
         """
         return pulumi.get(self, "identities")
 
@@ -3205,10 +3201,9 @@ class ServicePerimeterStatusEgressPolicyEgressFromArgs:
                  source_restriction: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromSourceArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: 'A list of identities that are allowed access through this `EgressPolicy`.
-               To specify an identity or identity group, use the IAM v1
-               format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-               The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this `EgressPolicy`.
+               Should be in the format of email address. The email address should
+               represent individual user or service account only.
         :param pulumi.Input[str] identity_type: Specifies the type of identities that are allowed access to outside the
                perimeter. If left unspecified, then members of `identities` field will
                be allowed access.
@@ -3231,10 +3226,9 @@ class ServicePerimeterStatusEgressPolicyEgressFromArgs:
     @pulumi.getter
     def identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        'A list of identities that are allowed access through this `EgressPolicy`.
-        To specify an identity or identity group, use the IAM v1
-        format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-        The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+        A list of identities that are allowed access through this `EgressPolicy`.
+        Should be in the format of email address. The email address should
+        represent individual user or service account only.
         """
         return pulumi.get(self, "identities")
 
@@ -3528,10 +3522,9 @@ class ServicePerimeterStatusIngressPolicyIngressFromArgs:
                  identity_type: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromSourceArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: 'A list of identities that are allowed access through this `IngressPolicy`.
-               To specify an identity or identity group, use the IAM v1
-               format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-               The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this ingress policy.
+               Should be in the format of email address. The email address should represent
+               individual user or service account only.
         :param pulumi.Input[str] identity_type: Specifies the type of identities that are allowed access from outside the
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
@@ -3550,10 +3543,9 @@ class ServicePerimeterStatusIngressPolicyIngressFromArgs:
     @pulumi.getter
     def identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        'A list of identities that are allowed access through this `IngressPolicy`.
-        To specify an identity or identity group, use the IAM v1
-        format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-        The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+        A list of identities that are allowed access through this ingress policy.
+        Should be in the format of email address. The email address should represent
+        individual user or service account only.
         """
         return pulumi.get(self, "identities")
 
@@ -4258,10 +4250,9 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs:
                  source_restriction: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: 'A list of identities that are allowed access through this `EgressPolicy`.
-               To specify an identity or identity group, use the IAM v1 format
-               specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-               The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this `EgressPolicy`.
+               Should be in the format of email address. The email address should
+               represent individual user or service account only.
         :param pulumi.Input[str] identity_type: Specifies the type of identities that are allowed access to outside the
                perimeter. If left unspecified, then members of `identities` field will
                be allowed access.
@@ -4284,10 +4275,9 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs:
     @pulumi.getter
     def identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        'A list of identities that are allowed access through this `EgressPolicy`.
-        To specify an identity or identity group, use the IAM v1 format
-        specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-        The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+        A list of identities that are allowed access through this `EgressPolicy`.
+        Should be in the format of email address. The email address should
+        represent individual user or service account only.
         """
         return pulumi.get(self, "identities")
 
@@ -4581,10 +4571,9 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs:
                  identity_type: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: 'A list of identities that are allowed access through this `IngressPolicy`.
-               To specify an identity or identity group, use the IAM v1 format
-               specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-               The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this ingress policy.
+               Should be in the format of email address. The email address should represent
+               individual user or service account only.
         :param pulumi.Input[str] identity_type: Specifies the type of identities that are allowed access from outside the
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
@@ -4603,10 +4592,9 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs:
     @pulumi.getter
     def identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        'A list of identities that are allowed access through this `IngressPolicy`.
-        To specify an identity or identity group, use the IAM v1 format
-        specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-        The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+        A list of identities that are allowed access through this ingress policy.
+        Should be in the format of email address. The email address should represent
+        individual user or service account only.
         """
         return pulumi.get(self, "identities")
 
@@ -5092,10 +5080,9 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs:
                  source_restriction: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: 'A list of identities that are allowed access through this `EgressPolicy`.
-               To specify an identity or identity group, use the IAM v1 format
-               specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-               The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this `EgressPolicy`.
+               Should be in the format of email address. The email address should
+               represent individual user or service account only.
         :param pulumi.Input[str] identity_type: Specifies the type of identities that are allowed access to outside the
                perimeter. If left unspecified, then members of `identities` field will
                be allowed access.
@@ -5118,10 +5105,9 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs:
     @pulumi.getter
     def identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        'A list of identities that are allowed access through this `EgressPolicy`.
-        To specify an identity or identity group, use the IAM v1 format
-        specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-        The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+        A list of identities that are allowed access through this `EgressPolicy`.
+        Should be in the format of email address. The email address should
+        represent individual user or service account only.
         """
         return pulumi.get(self, "identities")
 
@@ -5415,10 +5401,9 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs:
                  identity_type: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: 'A list of identities that are allowed access through this `IngressPolicy`.
-               To specify an identity or identity group, use the IAM v1 format
-               specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-               The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this ingress policy.
+               Should be in the format of email address. The email address should represent
+               individual user or service account only.
         :param pulumi.Input[str] identity_type: Specifies the type of identities that are allowed access from outside the
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
@@ -5437,10 +5422,9 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs:
     @pulumi.getter
     def identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        'A list of identities that are allowed access through this `IngressPolicy`.
-        To specify an identity or identity group, use the IAM v1 format
-        specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-        The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+        A list of identities that are allowed access through this ingress policy.
+        Should be in the format of email address. The email address should represent
+        individual user or service account only.
         """
         return pulumi.get(self, "identities")
 

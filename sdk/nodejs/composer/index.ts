@@ -20,6 +20,21 @@ export const getImageVersions: typeof import("./getImageVersions").getImageVersi
 export const getImageVersionsOutput: typeof import("./getImageVersions").getImageVersionsOutput = null as any;
 utilities.lazyLoad(exports, ["getImageVersions","getImageVersionsOutput"], () => require("./getImageVersions"));
 
+export { GetUserWorkloadsConfigMapArgs, GetUserWorkloadsConfigMapResult, GetUserWorkloadsConfigMapOutputArgs } from "./getUserWorkloadsConfigMap";
+export const getUserWorkloadsConfigMap: typeof import("./getUserWorkloadsConfigMap").getUserWorkloadsConfigMap = null as any;
+export const getUserWorkloadsConfigMapOutput: typeof import("./getUserWorkloadsConfigMap").getUserWorkloadsConfigMapOutput = null as any;
+utilities.lazyLoad(exports, ["getUserWorkloadsConfigMap","getUserWorkloadsConfigMapOutput"], () => require("./getUserWorkloadsConfigMap"));
+
+export { GetUserWorkloadsSecretArgs, GetUserWorkloadsSecretResult, GetUserWorkloadsSecretOutputArgs } from "./getUserWorkloadsSecret";
+export const getUserWorkloadsSecret: typeof import("./getUserWorkloadsSecret").getUserWorkloadsSecret = null as any;
+export const getUserWorkloadsSecretOutput: typeof import("./getUserWorkloadsSecret").getUserWorkloadsSecretOutput = null as any;
+utilities.lazyLoad(exports, ["getUserWorkloadsSecret","getUserWorkloadsSecretOutput"], () => require("./getUserWorkloadsSecret"));
+
+export { UserWorkloadsConfigMapArgs, UserWorkloadsConfigMapState } from "./userWorkloadsConfigMap";
+export type UserWorkloadsConfigMap = import("./userWorkloadsConfigMap").UserWorkloadsConfigMap;
+export const UserWorkloadsConfigMap: typeof import("./userWorkloadsConfigMap").UserWorkloadsConfigMap = null as any;
+utilities.lazyLoad(exports, ["UserWorkloadsConfigMap"], () => require("./userWorkloadsConfigMap"));
+
 export { UserWorkloadsSecretArgs, UserWorkloadsSecretState } from "./userWorkloadsSecret";
 export type UserWorkloadsSecret = import("./userWorkloadsSecret").UserWorkloadsSecret;
 export const UserWorkloadsSecret: typeof import("./userWorkloadsSecret").UserWorkloadsSecret = null as any;
@@ -32,6 +47,8 @@ const _module = {
         switch (type) {
             case "gcp:composer/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
+            case "gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap":
+                return new UserWorkloadsConfigMap(name, <any>undefined, { urn })
             case "gcp:composer/userWorkloadsSecret:UserWorkloadsSecret":
                 return new UserWorkloadsSecret(name, <any>undefined, { urn })
             default:
@@ -40,4 +57,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "composer/environment", _module)
+pulumi.runtime.registerResourceModule("gcp", "composer/userWorkloadsConfigMap", _module)
 pulumi.runtime.registerResourceModule("gcp", "composer/userWorkloadsSecret", _module)

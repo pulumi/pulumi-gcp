@@ -24,6 +24,10 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly Outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci? Oci;
         /// <summary>
+        /// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+        /// </summary>
+        public readonly bool? PreventDrift;
+        /// <summary>
         /// Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
         /// </summary>
         public readonly string? SourceFormat;
@@ -34,10 +38,13 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
             Outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci? oci,
 
+            bool? preventDrift,
+
             string? sourceFormat)
         {
             Git = git;
             Oci = oci;
+            PreventDrift = preventDrift;
             SourceFormat = sourceFormat;
         }
     }

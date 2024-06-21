@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:netapp/activeDirectory:ActiveDirectory":
 		r = &ActiveDirectory{}
+	case "gcp:netapp/backup:Backup":
+		r = &Backup{}
 	case "gcp:netapp/backupPolicy:BackupPolicy":
 		r = &BackupPolicy{}
 	case "gcp:netapp/backupVault:BackupVault":
@@ -53,6 +55,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"netapp/activeDirectory",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"netapp/backup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

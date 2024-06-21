@@ -56,18 +56,30 @@ public final class AiFeatureOnlineStoreArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+     * The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+     * 
+     * @deprecated
+     * `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+     * 
      */
+    @Deprecated /* `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
     @Import(name="embeddingManagement")
     private @Nullable Output<AiFeatureOnlineStoreEmbeddingManagementArgs> embeddingManagement;
 
     /**
-     * @return The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+     * @return The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+     * 
+     * @deprecated
+     * `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+     * 
      */
+    @Deprecated /* `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
     public Optional<Output<AiFeatureOnlineStoreEmbeddingManagementArgs>> embeddingManagement() {
         return Optional.ofNullable(this.embeddingManagement);
     }
@@ -251,24 +263,36 @@ public final class AiFeatureOnlineStoreArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param embeddingManagement The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+         * @param embeddingManagement The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
          * Structure is documented below.
+         * 
+         * &gt; **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
          * 
          * @return builder
          * 
+         * @deprecated
+         * `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+         * 
          */
+        @Deprecated /* `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
         public Builder embeddingManagement(@Nullable Output<AiFeatureOnlineStoreEmbeddingManagementArgs> embeddingManagement) {
             $.embeddingManagement = embeddingManagement;
             return this;
         }
 
         /**
-         * @param embeddingManagement The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+         * @param embeddingManagement The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
          * Structure is documented below.
+         * 
+         * &gt; **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
          * 
          * @return builder
          * 
+         * @deprecated
+         * `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+         * 
          */
+        @Deprecated /* `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
         public Builder embeddingManagement(AiFeatureOnlineStoreEmbeddingManagementArgs embeddingManagement) {
             return embeddingManagement(Output.of(embeddingManagement));
         }

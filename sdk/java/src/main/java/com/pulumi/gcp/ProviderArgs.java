@@ -790,6 +790,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.lookerCustomEndpoint);
     }
 
+    @Import(name="managedKafkaCustomEndpoint")
+    private @Nullable Output<String> managedKafkaCustomEndpoint;
+
+    public Optional<Output<String>> managedKafkaCustomEndpoint() {
+        return Optional.ofNullable(this.managedKafkaCustomEndpoint);
+    }
+
     @Import(name="memcacheCustomEndpoint")
     private @Nullable Output<String> memcacheCustomEndpoint;
 
@@ -1323,6 +1330,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.kmsCustomEndpoint = $.kmsCustomEndpoint;
         this.loggingCustomEndpoint = $.loggingCustomEndpoint;
         this.lookerCustomEndpoint = $.lookerCustomEndpoint;
+        this.managedKafkaCustomEndpoint = $.managedKafkaCustomEndpoint;
         this.memcacheCustomEndpoint = $.memcacheCustomEndpoint;
         this.migrationCenterCustomEndpoint = $.migrationCenterCustomEndpoint;
         this.mlEngineCustomEndpoint = $.mlEngineCustomEndpoint;
@@ -2395,6 +2403,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder lookerCustomEndpoint(String lookerCustomEndpoint) {
             return lookerCustomEndpoint(Output.of(lookerCustomEndpoint));
+        }
+
+        public Builder managedKafkaCustomEndpoint(@Nullable Output<String> managedKafkaCustomEndpoint) {
+            $.managedKafkaCustomEndpoint = managedKafkaCustomEndpoint;
+            return this;
+        }
+
+        public Builder managedKafkaCustomEndpoint(String managedKafkaCustomEndpoint) {
+            return managedKafkaCustomEndpoint(Output.of(managedKafkaCustomEndpoint));
         }
 
         public Builder memcacheCustomEndpoint(@Nullable Output<String> memcacheCustomEndpoint) {

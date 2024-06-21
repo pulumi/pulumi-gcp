@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -31,6 +33,33 @@ import * as utilities from "../utilities";
  *     contentConfig: "NO_CONTENT",
  *     solutionTypes: ["SOLUTION_TYPE_SEARCH"],
  *     createAdvancedSiteSearch: false,
+ * });
+ * ```
+ * ### Discoveryengine Datastore Document Processing Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const documentProcessingConfig = new gcp.discoveryengine.DataStore("document_processing_config", {
+ *     location: "global",
+ *     dataStoreId: "data-store-id",
+ *     displayName: "tf-test-structured-datastore",
+ *     industryVertical: "GENERIC",
+ *     contentConfig: "NO_CONTENT",
+ *     solutionTypes: ["SOLUTION_TYPE_SEARCH"],
+ *     createAdvancedSiteSearch: false,
+ *     documentProcessingConfig: {
+ *         defaultParsingConfig: {
+ *             digitalParsingConfig: {},
+ *         },
+ *         parsingConfigOverrides: [{
+ *             fileType: "pdf",
+ *             ocrParsingConfig: {
+ *                 useNativeText: true,
+ *             },
+ *         }],
+ *     },
  * });
  * ```
  *
@@ -118,6 +147,11 @@ export class DataStore extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * Configuration for Document understanding and enrichment.
+     * Structure is documented below.
+     */
+    public readonly documentProcessingConfig!: pulumi.Output<outputs.discoveryengine.DataStoreDocumentProcessingConfig | undefined>;
+    /**
      * The industry vertical that the data store registers.
      * Possible values are: `GENERIC`, `MEDIA`.
      */
@@ -164,6 +198,7 @@ export class DataStore extends pulumi.CustomResource {
             resourceInputs["dataStoreId"] = state ? state.dataStoreId : undefined;
             resourceInputs["defaultSchemaId"] = state ? state.defaultSchemaId : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["documentProcessingConfig"] = state ? state.documentProcessingConfig : undefined;
             resourceInputs["industryVertical"] = state ? state.industryVertical : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -190,6 +225,7 @@ export class DataStore extends pulumi.CustomResource {
             resourceInputs["createAdvancedSiteSearch"] = args ? args.createAdvancedSiteSearch : undefined;
             resourceInputs["dataStoreId"] = args ? args.dataStoreId : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["documentProcessingConfig"] = args ? args.documentProcessingConfig : undefined;
             resourceInputs["industryVertical"] = args ? args.industryVertical : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -238,6 +274,11 @@ export interface DataStoreState {
      * string with a length limit of 128 characters.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Configuration for Document understanding and enrichment.
+     * Structure is documented below.
+     */
+    documentProcessingConfig?: pulumi.Input<inputs.discoveryengine.DataStoreDocumentProcessingConfig>;
     /**
      * The industry vertical that the data store registers.
      * Possible values are: `GENERIC`, `MEDIA`.
@@ -294,6 +335,11 @@ export interface DataStoreArgs {
      * string with a length limit of 128 characters.
      */
     displayName: pulumi.Input<string>;
+    /**
+     * Configuration for Document understanding and enrichment.
+     * Structure is documented below.
+     */
+    documentProcessingConfig?: pulumi.Input<inputs.discoveryengine.DataStoreDocumentProcessingConfig>;
     /**
      * The industry vertical that the data store registers.
      * Possible values are: `GENERIC`, `MEDIA`.

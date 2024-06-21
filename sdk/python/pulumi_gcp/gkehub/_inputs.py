@@ -191,18 +191,22 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
     def __init__(__self__, *,
                  git: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs']] = None,
                  oci: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs']] = None,
+                 prevent_drift: Optional[pulumi.Input[bool]] = None,
                  source_format: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs'] git: Git repo configuration for the cluster
                Structure is documented below.
         :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs'] oci: OCI repo configuration for the cluster
                Structure is documented below.
+        :param pulumi.Input[bool] prevent_drift: Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
         :param pulumi.Input[str] source_format: Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
         """
         if git is not None:
             pulumi.set(__self__, "git", git)
         if oci is not None:
             pulumi.set(__self__, "oci", oci)
+        if prevent_drift is not None:
+            pulumi.set(__self__, "prevent_drift", prevent_drift)
         if source_format is not None:
             pulumi.set(__self__, "source_format", source_format)
 
@@ -231,6 +235,18 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
     @oci.setter
     def oci(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs']]):
         pulumi.set(self, "oci", value)
+
+    @property
+    @pulumi.getter(name="preventDrift")
+    def prevent_drift(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+        """
+        return pulumi.get(self, "prevent_drift")
+
+    @prevent_drift.setter
+    def prevent_drift(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "prevent_drift", value)
 
     @property
     @pulumi.getter(name="sourceFormat")

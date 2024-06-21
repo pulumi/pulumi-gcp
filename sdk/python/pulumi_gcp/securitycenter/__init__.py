@@ -11,7 +11,10 @@ from .get_source_iam_policy import *
 from .instance_iam_binding import *
 from .instance_iam_member import *
 from .instance_iam_policy import *
+from .management_folder_security_health_analytics_custom_module import *
 from .management_organization_event_threat_detection_custom_module import *
+from .management_organization_security_health_analytics_custom_module import *
+from .management_project_security_health_analytics_custom_module import *
 from .mute_config import *
 from .notification_config import *
 from .organization_custom_module import *

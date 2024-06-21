@@ -18,20 +18,18 @@ public final class ServicePerimeterStatusEgressPolicyEgressFromArgs extends com.
     public static final ServicePerimeterStatusEgressPolicyEgressFromArgs Empty = new ServicePerimeterStatusEgressPolicyEgressFromArgs();
 
     /**
-     * &#39;A list of identities that are allowed access through this `EgressPolicy`.
-     * To specify an identity or identity group, use the IAM v1
-     * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-     * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.&#39;
+     * A list of identities that are allowed access through this `EgressPolicy`.
+     * Should be in the format of email address. The email address should
+     * represent individual user or service account only.
      * 
      */
     @Import(name="identities")
     private @Nullable Output<List<String>> identities;
 
     /**
-     * @return &#39;A list of identities that are allowed access through this `EgressPolicy`.
-     * To specify an identity or identity group, use the IAM v1
-     * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-     * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.&#39;
+     * @return A list of identities that are allowed access through this `EgressPolicy`.
+     * Should be in the format of email address. The email address should
+     * represent individual user or service account only.
      * 
      */
     public Optional<Output<List<String>>> identities() {
@@ -121,10 +119,9 @@ public final class ServicePerimeterStatusEgressPolicyEgressFromArgs extends com.
         }
 
         /**
-         * @param identities &#39;A list of identities that are allowed access through this `EgressPolicy`.
-         * To specify an identity or identity group, use the IAM v1
-         * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.&#39;
+         * @param identities A list of identities that are allowed access through this `EgressPolicy`.
+         * Should be in the format of email address. The email address should
+         * represent individual user or service account only.
          * 
          * @return builder
          * 
@@ -135,10 +132,9 @@ public final class ServicePerimeterStatusEgressPolicyEgressFromArgs extends com.
         }
 
         /**
-         * @param identities &#39;A list of identities that are allowed access through this `EgressPolicy`.
-         * To specify an identity or identity group, use the IAM v1
-         * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.&#39;
+         * @param identities A list of identities that are allowed access through this `EgressPolicy`.
+         * Should be in the format of email address. The email address should
+         * represent individual user or service account only.
          * 
          * @return builder
          * 
@@ -148,10 +144,9 @@ public final class ServicePerimeterStatusEgressPolicyEgressFromArgs extends com.
         }
 
         /**
-         * @param identities &#39;A list of identities that are allowed access through this `EgressPolicy`.
-         * To specify an identity or identity group, use the IAM v1
-         * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.&#39;
+         * @param identities A list of identities that are allowed access through this `EgressPolicy`.
+         * Should be in the format of email address. The email address should
+         * represent individual user or service account only.
          * 
          * @return builder
          * 

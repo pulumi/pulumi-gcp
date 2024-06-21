@@ -18,6 +18,21 @@ public final class RegionNetworkEndpointArgs extends com.pulumi.resources.Resour
     public static final RegionNetworkEndpointArgs Empty = new RegionNetworkEndpointArgs();
 
     /**
+     * Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+     * 
+     */
+    @Import(name="clientDestinationPort")
+    private @Nullable Output<Integer> clientDestinationPort;
+
+    /**
+     * @return Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+     * 
+     */
+    public Optional<Output<Integer>> clientDestinationPort() {
+        return Optional.ofNullable(this.clientDestinationPort);
+    }
+
+    /**
      * Fully qualified domain name of network endpoint.
      * This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
      * 
@@ -32,6 +47,23 @@ public final class RegionNetworkEndpointArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> fqdn() {
         return Optional.ofNullable(this.fqdn);
+    }
+
+    /**
+     * The name for a specific VM instance that the IP address belongs to.
+     * This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+     * 
+     */
+    @Import(name="instance")
+    private @Nullable Output<String> instance;
+
+    /**
+     * @return The name for a specific VM instance that the IP address belongs to.
+     * This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+     * 
+     */
+    public Optional<Output<String>> instance() {
+        return Optional.ofNullable(this.instance);
     }
 
     /**
@@ -120,7 +152,9 @@ public final class RegionNetworkEndpointArgs extends com.pulumi.resources.Resour
     private RegionNetworkEndpointArgs() {}
 
     private RegionNetworkEndpointArgs(RegionNetworkEndpointArgs $) {
+        this.clientDestinationPort = $.clientDestinationPort;
         this.fqdn = $.fqdn;
+        this.instance = $.instance;
         this.ipAddress = $.ipAddress;
         this.port = $.port;
         this.project = $.project;
@@ -147,6 +181,27 @@ public final class RegionNetworkEndpointArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param clientDestinationPort Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientDestinationPort(@Nullable Output<Integer> clientDestinationPort) {
+            $.clientDestinationPort = clientDestinationPort;
+            return this;
+        }
+
+        /**
+         * @param clientDestinationPort Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientDestinationPort(Integer clientDestinationPort) {
+            return clientDestinationPort(Output.of(clientDestinationPort));
+        }
+
+        /**
          * @param fqdn Fully qualified domain name of network endpoint.
          * This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
          * 
@@ -167,6 +222,29 @@ public final class RegionNetworkEndpointArgs extends com.pulumi.resources.Resour
          */
         public Builder fqdn(String fqdn) {
             return fqdn(Output.of(fqdn));
+        }
+
+        /**
+         * @param instance The name for a specific VM instance that the IP address belongs to.
+         * This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instance(@Nullable Output<String> instance) {
+            $.instance = instance;
+            return this;
+        }
+
+        /**
+         * @param instance The name for a specific VM instance that the IP address belongs to.
+         * This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instance(String instance) {
+            return instance(Output.of(instance));
         }
 
         /**

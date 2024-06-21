@@ -7,7 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A regional NEG that can support Serverless Products and proxying traffic to external backends.
+ * A regional NEG that can support Serverless Products, proxying traffic to
+ * external backends and providing traffic to the PSC port mapping endpoints.
  *
  * To get more information about RegionNetworkEndpointGroup, see:
  *
@@ -265,6 +266,27 @@ import * as utilities from "../utilities";
  *     networkEndpointType: "INTERNET_FQDN_PORT",
  * });
  * ```
+ * ### Region Network Endpoint Group Portmap
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {name: "network"});
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "subnetwork",
+ *     ipCidrRange: "10.0.0.0/16",
+ *     region: "us-central1",
+ *     network: _default.id,
+ * });
+ * const regionNetworkEndpointGroupPortmap = new gcp.compute.RegionNetworkEndpointGroup("region_network_endpoint_group_portmap", {
+ *     name: "portmap-neg",
+ *     region: "us-central1",
+ *     network: _default.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     networkEndpointType: "GCE_VM_IP_PORTMAP",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -366,7 +388,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
     /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
      * Default value is `SERVERLESS`.
-     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
      */
     public readonly networkEndpointType!: pulumi.Output<string | undefined>;
     /**
@@ -499,7 +521,7 @@ export interface RegionNetworkEndpointGroupState {
     /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
      * Default value is `SERVERLESS`.
-     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
      */
     networkEndpointType?: pulumi.Input<string>;
     /**
@@ -583,7 +605,7 @@ export interface RegionNetworkEndpointGroupArgs {
     /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
      * Default value is `SERVERLESS`.
-     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
      */
     networkEndpointType?: pulumi.Input<string>;
     /**

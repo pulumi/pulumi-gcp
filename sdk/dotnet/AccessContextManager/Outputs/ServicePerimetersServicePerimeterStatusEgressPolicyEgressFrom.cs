@@ -14,10 +14,9 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
     public sealed class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom
     {
         /// <summary>
-        /// 'A list of identities that are allowed access through this `EgressPolicy`.
-        /// To specify an identity or identity group, use the IAM v1 format
-        /// specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
-        /// The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
+        /// A list of identities that are allowed access through this `EgressPolicy`.
+        /// Should be in the format of email address. The email address should
+        /// represent individual user or service account only.
         /// </summary>
         public readonly ImmutableArray<string> Identities;
         /// <summary>

@@ -668,12 +668,6 @@ namespace Pulumi.Gcp.Compute
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-        /// Applicable backend service types can be a global backend service with the
-        /// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
-        /// Structure is documented below.
-        /// </summary>
         [Output("outlierDetection")]
         public Output<Outputs.BackendServiceOutlierDetection?> OutlierDetection { get; private set; } = null!;
 
@@ -741,8 +735,10 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SessionAffinity { get; private set; } = null!;
 
         /// <summary>
-        /// How many seconds to wait for the backend before considering it a
-        /// failed request. Default is 30 seconds. Valid range is [1, 86400].
+        /// The backend service timeout has a different meaning depending on the type of load balancer.
+        /// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+        /// The default is 30 seconds.
+        /// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
         /// </summary>
         [Output("timeoutSec")]
         public Output<int> TimeoutSec { get; private set; } = null!;
@@ -1025,12 +1021,6 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-        /// Applicable backend service types can be a global backend service with the
-        /// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
-        /// Structure is documented below.
-        /// </summary>
         [Input("outlierDetection")]
         public Input<Inputs.BackendServiceOutlierDetectionArgs>? OutlierDetection { get; set; }
 
@@ -1092,8 +1082,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SessionAffinity { get; set; }
 
         /// <summary>
-        /// How many seconds to wait for the backend before considering it a
-        /// failed request. Default is 30 seconds. Valid range is [1, 86400].
+        /// The backend service timeout has a different meaning depending on the type of load balancer.
+        /// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+        /// The default is 30 seconds.
+        /// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
         /// </summary>
         [Input("timeoutSec")]
         public Input<int>? TimeoutSec { get; set; }
@@ -1357,12 +1349,6 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-        /// Applicable backend service types can be a global backend service with the
-        /// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
-        /// Structure is documented below.
-        /// </summary>
         [Input("outlierDetection")]
         public Input<Inputs.BackendServiceOutlierDetectionGetArgs>? OutlierDetection { get; set; }
 
@@ -1430,8 +1416,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SessionAffinity { get; set; }
 
         /// <summary>
-        /// How many seconds to wait for the backend before considering it a
-        /// failed request. Default is 30 seconds. Valid range is [1, 86400].
+        /// The backend service timeout has a different meaning depending on the type of load balancer.
+        /// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+        /// The default is 30 seconds.
+        /// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
         /// </summary>
         [Input("timeoutSec")]
         public Input<int>? TimeoutSec { get; set; }

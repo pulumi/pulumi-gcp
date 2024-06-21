@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterSecurityPostureConfig {
     /**
-     * @return Sets the mode of the Kubernetes security posture API&#39;s off-cluster features. Available options include `DISABLED` and `BASIC`.
+     * @return Sets the mode of the Kubernetes security posture API&#39;s off-cluster features. Available options include `DISABLED`, `BASIC`, and `ENTERPRISE`.
      * 
      */
     private @Nullable String mode;
@@ -24,7 +24,7 @@ public final class ClusterSecurityPostureConfig {
 
     private ClusterSecurityPostureConfig() {}
     /**
-     * @return Sets the mode of the Kubernetes security posture API&#39;s off-cluster features. Available options include `DISABLED` and `BASIC`.
+     * @return Sets the mode of the Kubernetes security posture API&#39;s off-cluster features. Available options include `DISABLED`, `BASIC`, and `ENTERPRISE`.
      * 
      */
     public Optional<String> mode() {

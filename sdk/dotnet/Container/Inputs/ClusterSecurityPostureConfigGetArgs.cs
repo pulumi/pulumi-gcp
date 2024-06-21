@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterSecurityPostureConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
+        /// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED`, `BASIC`, and `ENTERPRISE`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

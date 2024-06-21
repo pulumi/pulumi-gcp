@@ -164,10 +164,14 @@ export class AiFeatureOnlineStore extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+     * The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
      * Structure is documented below.
+     *
+     * > **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+     *
+     * @deprecated `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
      */
-    public readonly embeddingManagement!: pulumi.Output<outputs.vertex.AiFeatureOnlineStoreEmbeddingManagement | undefined>;
+    public readonly embeddingManagement!: pulumi.Output<outputs.vertex.AiFeatureOnlineStoreEmbeddingManagement>;
     /**
      * Used to perform consistent read-modify-write updates.
      */
@@ -292,8 +296,12 @@ export interface AiFeatureOnlineStoreState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+     * The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
      * Structure is documented below.
+     *
+     * > **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+     *
+     * @deprecated `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
      */
     embeddingManagement?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreEmbeddingManagement>;
     /**
@@ -360,8 +368,12 @@ export interface AiFeatureOnlineStoreArgs {
      */
     dedicatedServingEndpoint?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreDedicatedServingEndpoint>;
     /**
-     * The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+     * The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
      * Structure is documented below.
+     *
+     * > **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+     *
+     * @deprecated `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
      */
     embeddingManagement?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreEmbeddingManagement>;
     /**

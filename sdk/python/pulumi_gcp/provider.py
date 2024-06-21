@@ -125,6 +125,7 @@ class ProviderArgs:
                  kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 managed_kafka_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  migration_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  ml_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -408,6 +409,8 @@ class ProviderArgs:
             pulumi.set(__self__, "logging_custom_endpoint", logging_custom_endpoint)
         if looker_custom_endpoint is not None:
             pulumi.set(__self__, "looker_custom_endpoint", looker_custom_endpoint)
+        if managed_kafka_custom_endpoint is not None:
+            pulumi.set(__self__, "managed_kafka_custom_endpoint", managed_kafka_custom_endpoint)
         if memcache_custom_endpoint is not None:
             pulumi.set(__self__, "memcache_custom_endpoint", memcache_custom_endpoint)
         if migration_center_custom_endpoint is not None:
@@ -1526,6 +1529,15 @@ class ProviderArgs:
         pulumi.set(self, "looker_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="managedKafkaCustomEndpoint")
+    def managed_kafka_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "managed_kafka_custom_endpoint")
+
+    @managed_kafka_custom_endpoint.setter
+    def managed_kafka_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "managed_kafka_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="memcacheCustomEndpoint")
     def memcache_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "memcache_custom_endpoint")
@@ -2181,6 +2193,7 @@ class Provider(pulumi.ProviderResource):
                  kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 managed_kafka_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  migration_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  ml_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2388,6 +2401,7 @@ class Provider(pulumi.ProviderResource):
                  kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 managed_kafka_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  migration_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  ml_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2567,6 +2581,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["kms_custom_endpoint"] = kms_custom_endpoint
             __props__.__dict__["logging_custom_endpoint"] = logging_custom_endpoint
             __props__.__dict__["looker_custom_endpoint"] = looker_custom_endpoint
+            __props__.__dict__["managed_kafka_custom_endpoint"] = managed_kafka_custom_endpoint
             __props__.__dict__["memcache_custom_endpoint"] = memcache_custom_endpoint
             __props__.__dict__["migration_center_custom_endpoint"] = migration_center_custom_endpoint
             __props__.__dict__["ml_engine_custom_endpoint"] = ml_engine_custom_endpoint
@@ -3165,6 +3180,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="lookerCustomEndpoint")
     def looker_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "looker_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="managedKafkaCustomEndpoint")
+    def managed_kafka_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "managed_kafka_custom_endpoint")
 
     @property
     @pulumi.getter(name="memcacheCustomEndpoint")

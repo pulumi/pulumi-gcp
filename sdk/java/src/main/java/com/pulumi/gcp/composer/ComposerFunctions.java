@@ -12,8 +12,14 @@ import com.pulumi.gcp.composer.inputs.GetEnvironmentArgs;
 import com.pulumi.gcp.composer.inputs.GetEnvironmentPlainArgs;
 import com.pulumi.gcp.composer.inputs.GetImageVersionsArgs;
 import com.pulumi.gcp.composer.inputs.GetImageVersionsPlainArgs;
+import com.pulumi.gcp.composer.inputs.GetUserWorkloadsConfigMapArgs;
+import com.pulumi.gcp.composer.inputs.GetUserWorkloadsConfigMapPlainArgs;
+import com.pulumi.gcp.composer.inputs.GetUserWorkloadsSecretArgs;
+import com.pulumi.gcp.composer.inputs.GetUserWorkloadsSecretPlainArgs;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentResult;
 import com.pulumi.gcp.composer.outputs.GetImageVersionsResult;
+import com.pulumi.gcp.composer.outputs.GetUserWorkloadsConfigMapResult;
+import com.pulumi.gcp.composer.outputs.GetUserWorkloadsSecretResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class ComposerFunctions {
@@ -536,5 +542,549 @@ public final class ComposerFunctions {
      */
     public static CompletableFuture<GetImageVersionsResult> getImageVersionsPlain(GetImageVersionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:composer/getImageVersions:getImageVersions", TypeShape.of(GetImageVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.composer.Environment;
+     * import com.pulumi.gcp.composer.EnvironmentArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+     * import com.pulumi.gcp.composer.UserWorkloadsConfigMap;
+     * import com.pulumi.gcp.composer.UserWorkloadsConfigMapArgs;
+     * import com.pulumi.gcp.composer.ComposerFunctions;
+     * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsConfigMapArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var exampleEnvironment = new Environment("exampleEnvironment", EnvironmentArgs.builder()
+     *             .name("example-environment")
+     *             .config(EnvironmentConfigArgs.builder()
+     *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
+     *                     .imageVersion("composer-3-airflow-2")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var exampleUserWorkloadsConfigMap = new UserWorkloadsConfigMap("exampleUserWorkloadsConfigMap", UserWorkloadsConfigMapArgs.builder()
+     *             .environment(exampleEnvironment.name())
+     *             .name("example-config-map")
+     *             .data(Map.ofEntries(
+     *                 Map.entry("db_host", "dbhost:5432"),
+     *                 Map.entry("api_host", "apihost:443")
+     *             ))
+     *             .build());
+     * 
+     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(exampleEnvironment.name())
+     *             .name(googleComposerUserWorkloadsConfigMap.example().name())
+     *             .build());
+     * 
+     *         ctx.export("debug", example.applyValue(getUserWorkloadsConfigMapResult -> getUserWorkloadsConfigMapResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetUserWorkloadsConfigMapResult> getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs args) {
+        return getUserWorkloadsConfigMap(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.composer.Environment;
+     * import com.pulumi.gcp.composer.EnvironmentArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+     * import com.pulumi.gcp.composer.UserWorkloadsConfigMap;
+     * import com.pulumi.gcp.composer.UserWorkloadsConfigMapArgs;
+     * import com.pulumi.gcp.composer.ComposerFunctions;
+     * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsConfigMapArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var exampleEnvironment = new Environment("exampleEnvironment", EnvironmentArgs.builder()
+     *             .name("example-environment")
+     *             .config(EnvironmentConfigArgs.builder()
+     *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
+     *                     .imageVersion("composer-3-airflow-2")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var exampleUserWorkloadsConfigMap = new UserWorkloadsConfigMap("exampleUserWorkloadsConfigMap", UserWorkloadsConfigMapArgs.builder()
+     *             .environment(exampleEnvironment.name())
+     *             .name("example-config-map")
+     *             .data(Map.ofEntries(
+     *                 Map.entry("db_host", "dbhost:5432"),
+     *                 Map.entry("api_host", "apihost:443")
+     *             ))
+     *             .build());
+     * 
+     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(exampleEnvironment.name())
+     *             .name(googleComposerUserWorkloadsConfigMap.example().name())
+     *             .build());
+     * 
+     *         ctx.export("debug", example.applyValue(getUserWorkloadsConfigMapResult -> getUserWorkloadsConfigMapResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetUserWorkloadsConfigMapResult> getUserWorkloadsConfigMapPlain(GetUserWorkloadsConfigMapPlainArgs args) {
+        return getUserWorkloadsConfigMapPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.composer.Environment;
+     * import com.pulumi.gcp.composer.EnvironmentArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+     * import com.pulumi.gcp.composer.UserWorkloadsConfigMap;
+     * import com.pulumi.gcp.composer.UserWorkloadsConfigMapArgs;
+     * import com.pulumi.gcp.composer.ComposerFunctions;
+     * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsConfigMapArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var exampleEnvironment = new Environment("exampleEnvironment", EnvironmentArgs.builder()
+     *             .name("example-environment")
+     *             .config(EnvironmentConfigArgs.builder()
+     *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
+     *                     .imageVersion("composer-3-airflow-2")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var exampleUserWorkloadsConfigMap = new UserWorkloadsConfigMap("exampleUserWorkloadsConfigMap", UserWorkloadsConfigMapArgs.builder()
+     *             .environment(exampleEnvironment.name())
+     *             .name("example-config-map")
+     *             .data(Map.ofEntries(
+     *                 Map.entry("db_host", "dbhost:5432"),
+     *                 Map.entry("api_host", "apihost:443")
+     *             ))
+     *             .build());
+     * 
+     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(exampleEnvironment.name())
+     *             .name(googleComposerUserWorkloadsConfigMap.example().name())
+     *             .build());
+     * 
+     *         ctx.export("debug", example.applyValue(getUserWorkloadsConfigMapResult -> getUserWorkloadsConfigMapResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetUserWorkloadsConfigMapResult> getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", TypeShape.of(GetUserWorkloadsConfigMapResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.composer.Environment;
+     * import com.pulumi.gcp.composer.EnvironmentArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+     * import com.pulumi.gcp.composer.UserWorkloadsConfigMap;
+     * import com.pulumi.gcp.composer.UserWorkloadsConfigMapArgs;
+     * import com.pulumi.gcp.composer.ComposerFunctions;
+     * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsConfigMapArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var exampleEnvironment = new Environment("exampleEnvironment", EnvironmentArgs.builder()
+     *             .name("example-environment")
+     *             .config(EnvironmentConfigArgs.builder()
+     *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
+     *                     .imageVersion("composer-3-airflow-2")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var exampleUserWorkloadsConfigMap = new UserWorkloadsConfigMap("exampleUserWorkloadsConfigMap", UserWorkloadsConfigMapArgs.builder()
+     *             .environment(exampleEnvironment.name())
+     *             .name("example-config-map")
+     *             .data(Map.ofEntries(
+     *                 Map.entry("db_host", "dbhost:5432"),
+     *                 Map.entry("api_host", "apihost:443")
+     *             ))
+     *             .build());
+     * 
+     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(exampleEnvironment.name())
+     *             .name(googleComposerUserWorkloadsConfigMap.example().name())
+     *             .build());
+     * 
+     *         ctx.export("debug", example.applyValue(getUserWorkloadsConfigMapResult -> getUserWorkloadsConfigMapResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetUserWorkloadsConfigMapResult> getUserWorkloadsConfigMapPlain(GetUserWorkloadsConfigMapPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", TypeShape.of(GetUserWorkloadsConfigMapResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.composer.Environment;
+     * import com.pulumi.gcp.composer.EnvironmentArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+     * import com.pulumi.gcp.composer.UserWorkloadsSecret;
+     * import com.pulumi.gcp.composer.UserWorkloadsSecretArgs;
+     * import com.pulumi.gcp.composer.ComposerFunctions;
+     * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var exampleEnvironment = new Environment("exampleEnvironment", EnvironmentArgs.builder()
+     *             .name("example-environment")
+     *             .config(EnvironmentConfigArgs.builder()
+     *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
+     *                     .imageVersion("composer-3-airflow-2")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var exampleUserWorkloadsSecret = new UserWorkloadsSecret("exampleUserWorkloadsSecret", UserWorkloadsSecretArgs.builder()
+     *             .environment(exampleEnvironment.name())
+     *             .name("example-secret")
+     *             .data(Map.ofEntries(
+     *                 Map.entry("username", StdFunctions.base64encode(Base64encodeArgs.builder()
+     *                     .input("username")
+     *                     .build()).result()),
+     *                 Map.entry("password", StdFunctions.base64encode(Base64encodeArgs.builder()
+     *                     .input("password")
+     *                     .build()).result())
+     *             ))
+     *             .build());
+     * 
+     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(exampleEnvironment.name())
+     *             .name(googleComposerUserWorkloadsSecret.example().name())
+     *             .build());
+     * 
+     *         ctx.export("debug", example.applyValue(getUserWorkloadsSecretResult -> getUserWorkloadsSecretResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetUserWorkloadsSecretResult> getUserWorkloadsSecret(GetUserWorkloadsSecretArgs args) {
+        return getUserWorkloadsSecret(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.composer.Environment;
+     * import com.pulumi.gcp.composer.EnvironmentArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+     * import com.pulumi.gcp.composer.UserWorkloadsSecret;
+     * import com.pulumi.gcp.composer.UserWorkloadsSecretArgs;
+     * import com.pulumi.gcp.composer.ComposerFunctions;
+     * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var exampleEnvironment = new Environment("exampleEnvironment", EnvironmentArgs.builder()
+     *             .name("example-environment")
+     *             .config(EnvironmentConfigArgs.builder()
+     *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
+     *                     .imageVersion("composer-3-airflow-2")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var exampleUserWorkloadsSecret = new UserWorkloadsSecret("exampleUserWorkloadsSecret", UserWorkloadsSecretArgs.builder()
+     *             .environment(exampleEnvironment.name())
+     *             .name("example-secret")
+     *             .data(Map.ofEntries(
+     *                 Map.entry("username", StdFunctions.base64encode(Base64encodeArgs.builder()
+     *                     .input("username")
+     *                     .build()).result()),
+     *                 Map.entry("password", StdFunctions.base64encode(Base64encodeArgs.builder()
+     *                     .input("password")
+     *                     .build()).result())
+     *             ))
+     *             .build());
+     * 
+     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(exampleEnvironment.name())
+     *             .name(googleComposerUserWorkloadsSecret.example().name())
+     *             .build());
+     * 
+     *         ctx.export("debug", example.applyValue(getUserWorkloadsSecretResult -> getUserWorkloadsSecretResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetUserWorkloadsSecretResult> getUserWorkloadsSecretPlain(GetUserWorkloadsSecretPlainArgs args) {
+        return getUserWorkloadsSecretPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.composer.Environment;
+     * import com.pulumi.gcp.composer.EnvironmentArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+     * import com.pulumi.gcp.composer.UserWorkloadsSecret;
+     * import com.pulumi.gcp.composer.UserWorkloadsSecretArgs;
+     * import com.pulumi.gcp.composer.ComposerFunctions;
+     * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var exampleEnvironment = new Environment("exampleEnvironment", EnvironmentArgs.builder()
+     *             .name("example-environment")
+     *             .config(EnvironmentConfigArgs.builder()
+     *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
+     *                     .imageVersion("composer-3-airflow-2")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var exampleUserWorkloadsSecret = new UserWorkloadsSecret("exampleUserWorkloadsSecret", UserWorkloadsSecretArgs.builder()
+     *             .environment(exampleEnvironment.name())
+     *             .name("example-secret")
+     *             .data(Map.ofEntries(
+     *                 Map.entry("username", StdFunctions.base64encode(Base64encodeArgs.builder()
+     *                     .input("username")
+     *                     .build()).result()),
+     *                 Map.entry("password", StdFunctions.base64encode(Base64encodeArgs.builder()
+     *                     .input("password")
+     *                     .build()).result())
+     *             ))
+     *             .build());
+     * 
+     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(exampleEnvironment.name())
+     *             .name(googleComposerUserWorkloadsSecret.example().name())
+     *             .build());
+     * 
+     *         ctx.export("debug", example.applyValue(getUserWorkloadsSecretResult -> getUserWorkloadsSecretResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetUserWorkloadsSecretResult> getUserWorkloadsSecret(GetUserWorkloadsSecretArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", TypeShape.of(GetUserWorkloadsSecretResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.composer.Environment;
+     * import com.pulumi.gcp.composer.EnvironmentArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
+     * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
+     * import com.pulumi.gcp.composer.UserWorkloadsSecret;
+     * import com.pulumi.gcp.composer.UserWorkloadsSecretArgs;
+     * import com.pulumi.gcp.composer.ComposerFunctions;
+     * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var exampleEnvironment = new Environment("exampleEnvironment", EnvironmentArgs.builder()
+     *             .name("example-environment")
+     *             .config(EnvironmentConfigArgs.builder()
+     *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
+     *                     .imageVersion("composer-3-airflow-2")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var exampleUserWorkloadsSecret = new UserWorkloadsSecret("exampleUserWorkloadsSecret", UserWorkloadsSecretArgs.builder()
+     *             .environment(exampleEnvironment.name())
+     *             .name("example-secret")
+     *             .data(Map.ofEntries(
+     *                 Map.entry("username", StdFunctions.base64encode(Base64encodeArgs.builder()
+     *                     .input("username")
+     *                     .build()).result()),
+     *                 Map.entry("password", StdFunctions.base64encode(Base64encodeArgs.builder()
+     *                     .input("password")
+     *                     .build()).result())
+     *             ))
+     *             .build());
+     * 
+     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(exampleEnvironment.name())
+     *             .name(googleComposerUserWorkloadsSecret.example().name())
+     *             .build());
+     * 
+     *         ctx.export("debug", example.applyValue(getUserWorkloadsSecretResult -> getUserWorkloadsSecretResult));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetUserWorkloadsSecretResult> getUserWorkloadsSecretPlain(GetUserWorkloadsSecretPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", TypeShape.of(GetUserWorkloadsSecretResult.class), args, Utilities.withVersion(options));
     }
 }

@@ -188,9 +188,13 @@ type AiFeatureOnlineStore struct {
 	DedicatedServingEndpoint AiFeatureOnlineStoreDedicatedServingEndpointOutput `pulumi:"dedicatedServingEndpoint"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+	// The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
 	// Structure is documented below.
-	EmbeddingManagement AiFeatureOnlineStoreEmbeddingManagementPtrOutput `pulumi:"embeddingManagement"`
+	//
+	// > **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+	//
+	// Deprecated: `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+	EmbeddingManagement AiFeatureOnlineStoreEmbeddingManagementOutput `pulumi:"embeddingManagement"`
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
@@ -264,8 +268,12 @@ type aiFeatureOnlineStoreState struct {
 	DedicatedServingEndpoint *AiFeatureOnlineStoreDedicatedServingEndpoint `pulumi:"dedicatedServingEndpoint"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+	// The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
 	// Structure is documented below.
+	//
+	// > **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+	//
+	// Deprecated: `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
 	EmbeddingManagement *AiFeatureOnlineStoreEmbeddingManagement `pulumi:"embeddingManagement"`
 	// Used to perform consistent read-modify-write updates.
 	Etag *string `pulumi:"etag"`
@@ -306,8 +314,12 @@ type AiFeatureOnlineStoreState struct {
 	DedicatedServingEndpoint AiFeatureOnlineStoreDedicatedServingEndpointPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+	// The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
 	// Structure is documented below.
+	//
+	// > **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+	//
+	// Deprecated: `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
 	EmbeddingManagement AiFeatureOnlineStoreEmbeddingManagementPtrInput
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringPtrInput
@@ -348,8 +360,12 @@ type aiFeatureOnlineStoreArgs struct {
 	// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
 	// Structure is documented below.
 	DedicatedServingEndpoint *AiFeatureOnlineStoreDedicatedServingEndpoint `pulumi:"dedicatedServingEndpoint"`
-	// The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+	// The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
 	// Structure is documented below.
+	//
+	// > **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+	//
+	// Deprecated: `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
 	EmbeddingManagement *AiFeatureOnlineStoreEmbeddingManagement `pulumi:"embeddingManagement"`
 	// If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
@@ -378,8 +394,12 @@ type AiFeatureOnlineStoreArgs struct {
 	// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
 	// Structure is documented below.
 	DedicatedServingEndpoint AiFeatureOnlineStoreDedicatedServingEndpointPtrInput
-	// The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+	// The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
 	// Structure is documented below.
+	//
+	// > **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+	//
+	// Deprecated: `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
 	EmbeddingManagement AiFeatureOnlineStoreEmbeddingManagementPtrInput
 	// If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
 	ForceDestroy pulumi.BoolPtrInput
@@ -511,12 +531,16 @@ func (o AiFeatureOnlineStoreOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStore) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+// The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
 // Structure is documented below.
-func (o AiFeatureOnlineStoreOutput) EmbeddingManagement() AiFeatureOnlineStoreEmbeddingManagementPtrOutput {
-	return o.ApplyT(func(v *AiFeatureOnlineStore) AiFeatureOnlineStoreEmbeddingManagementPtrOutput {
+//
+// > **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+//
+// Deprecated: `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+func (o AiFeatureOnlineStoreOutput) EmbeddingManagement() AiFeatureOnlineStoreEmbeddingManagementOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStore) AiFeatureOnlineStoreEmbeddingManagementOutput {
 		return v.EmbeddingManagement
-	}).(AiFeatureOnlineStoreEmbeddingManagementPtrOutput)
+	}).(AiFeatureOnlineStoreEmbeddingManagementOutput)
 }
 
 // Used to perform consistent read-modify-write updates.

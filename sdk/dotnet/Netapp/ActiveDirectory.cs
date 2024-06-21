@@ -45,6 +45,11 @@ namespace Pulumi.Gcp.Netapp
     ///             "test1",
     ///             "test2",
     ///         },
+    ///         Administrators = new[]
+    ///         {
+    ///             "test1",
+    ///             "test2",
+    ///         },
     ///         Description = "ActiveDirectory is the public representation of the active directory config.",
     ///         EncryptDcConnections = false,
     ///         KdcHostname = "hostname",
@@ -94,6 +99,12 @@ namespace Pulumi.Gcp.Netapp
     [GcpResourceType("gcp:netapp/activeDirectory:ActiveDirectory")]
     public partial class ActiveDirectory : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+        /// </summary>
+        [Output("administrators")]
+        public Output<ImmutableArray<string>> Administrators { get; private set; } = null!;
+
         /// <summary>
         /// Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
         /// </summary>
@@ -306,6 +317,18 @@ namespace Pulumi.Gcp.Netapp
 
     public sealed class ActiveDirectoryArgs : global::Pulumi.ResourceArgs
     {
+        [Input("administrators")]
+        private InputList<string>? _administrators;
+
+        /// <summary>
+        /// Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+        /// </summary>
+        public InputList<string> Administrators
+        {
+            get => _administrators ?? (_administrators = new InputList<string>());
+            set => _administrators = value;
+        }
+
         /// <summary>
         /// Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
         /// </summary>
@@ -470,6 +493,18 @@ namespace Pulumi.Gcp.Netapp
 
     public sealed class ActiveDirectoryState : global::Pulumi.ResourceArgs
     {
+        [Input("administrators")]
+        private InputList<string>? _administrators;
+
+        /// <summary>
+        /// Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+        /// </summary>
+        public InputList<string> Administrators
+        {
+            get => _administrators ?? (_administrators = new InputList<string>());
+            set => _administrators = value;
+        }
+
         /// <summary>
         /// Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
         /// </summary>

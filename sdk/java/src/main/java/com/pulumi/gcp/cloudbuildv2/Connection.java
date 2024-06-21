@@ -10,6 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.cloudbuildv2.ConnectionArgs;
 import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionState;
+import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionBitbucketCloudConfig;
+import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionBitbucketDataCenterConfig;
 import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionGithubConfig;
 import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionGithubEnterpriseConfig;
 import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionGitlabConfig;
@@ -22,7 +24,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center or GitLab.
+ * A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center/Cloud or GitLab.
  * 
  * To get more information about Connection, see:
  * 
@@ -307,6 +309,38 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> annotations() {
         return Codegen.optional(this.annotations);
+    }
+    /**
+     * Configuration for connections to Bitbucket Cloud.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="bitbucketCloudConfig", refs={ConnectionBitbucketCloudConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionBitbucketCloudConfig> bitbucketCloudConfig;
+
+    /**
+     * @return Configuration for connections to Bitbucket Cloud.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConnectionBitbucketCloudConfig>> bitbucketCloudConfig() {
+        return Codegen.optional(this.bitbucketCloudConfig);
+    }
+    /**
+     * Configuration for connections to Bitbucket Data Center.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="bitbucketDataCenterConfig", refs={ConnectionBitbucketDataCenterConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionBitbucketDataCenterConfig> bitbucketDataCenterConfig;
+
+    /**
+     * @return Configuration for connections to Bitbucket Data Center.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConnectionBitbucketDataCenterConfig>> bitbucketDataCenterConfig() {
+        return Codegen.optional(this.bitbucketDataCenterConfig);
     }
     /**
      * Output only. Server assigned timestamp for when the connection was created.

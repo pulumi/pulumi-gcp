@@ -92,6 +92,82 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Network Endpoint Portmap
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "subnetwork",
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var defaultRegionNetworkEndpointGroup = new Gcp.Compute.RegionNetworkEndpointGroup("default", new()
+    ///     {
+    ///         Name = "portmap-neg",
+    ///         Region = "us-central1",
+    ///         Network = @default.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         NetworkEndpointType = "GCE_VM_IP_PORTMAP",
+    ///     });
+    /// 
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var defaultInstance = new Gcp.Compute.Instance("default", new()
+    ///     {
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///                 Subnetwork = defaultSubnetwork.Id,
+    ///             },
+    ///         },
+    ///         Name = "instance",
+    ///         MachineType = "e2-medium",
+    ///         Zone = "us-central1-a",
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var regionNetworkEndpointPortmap = new Gcp.Compute.RegionNetworkEndpoint("region_network_endpoint_portmap", new()
+    ///     {
+    ///         RegionNetworkEndpointGroup = defaultRegionNetworkEndpointGroup.Name,
+    ///         Region = "us-central1",
+    ///         Instance = defaultInstance.SelfLink,
+    ///         Port = 80,
+    ///         IpAddress = defaultInstance.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].NetworkIp),
+    ///         ClientDestinationPort = 8080,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -127,11 +203,24 @@ namespace Pulumi.Gcp.Compute
     public partial class RegionNetworkEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+        /// </summary>
+        [Output("clientDestinationPort")]
+        public Output<int?> ClientDestinationPort { get; private set; } = null!;
+
+        /// <summary>
         /// Fully qualified domain name of network endpoint.
         /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
         /// </summary>
         [Output("fqdn")]
         public Output<string?> Fqdn { get; private set; } = null!;
+
+        /// <summary>
+        /// The name for a specific VM instance that the IP address belongs to.
+        /// This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+        /// </summary>
+        [Output("instance")]
+        public Output<string?> Instance { get; private set; } = null!;
 
         /// <summary>
         /// IPv4 address external endpoint.
@@ -215,11 +304,24 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionNetworkEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+        /// </summary>
+        [Input("clientDestinationPort")]
+        public Input<int>? ClientDestinationPort { get; set; }
+
+        /// <summary>
         /// Fully qualified domain name of network endpoint.
         /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
         /// </summary>
         [Input("fqdn")]
         public Input<string>? Fqdn { get; set; }
+
+        /// <summary>
+        /// The name for a specific VM instance that the IP address belongs to.
+        /// This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+        /// </summary>
+        [Input("instance")]
+        public Input<string>? Instance { get; set; }
 
         /// <summary>
         /// IPv4 address external endpoint.
@@ -265,11 +367,24 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionNetworkEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+        /// </summary>
+        [Input("clientDestinationPort")]
+        public Input<int>? ClientDestinationPort { get; set; }
+
+        /// <summary>
         /// Fully qualified domain name of network endpoint.
         /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
         /// </summary>
         [Input("fqdn")]
         public Input<string>? Fqdn { get; set; }
+
+        /// <summary>
+        /// The name for a specific VM instance that the IP address belongs to.
+        /// This is required for network endpoints of type GCE_VM_IP_PORTMAP.
+        /// </summary>
+        [Input("instance")]
+        public Input<string>? Instance { get; set; }
 
         /// <summary>
         /// IPv4 address external endpoint.

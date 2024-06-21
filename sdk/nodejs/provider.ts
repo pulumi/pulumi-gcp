@@ -132,6 +132,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly kmsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly loggingCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly lookerCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly managedKafkaCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly memcacheCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly migrationCenterCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly mlEngineCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -312,6 +313,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["kmsCustomEndpoint"] = args ? args.kmsCustomEndpoint : undefined;
             resourceInputs["loggingCustomEndpoint"] = args ? args.loggingCustomEndpoint : undefined;
             resourceInputs["lookerCustomEndpoint"] = args ? args.lookerCustomEndpoint : undefined;
+            resourceInputs["managedKafkaCustomEndpoint"] = args ? args.managedKafkaCustomEndpoint : undefined;
             resourceInputs["memcacheCustomEndpoint"] = args ? args.memcacheCustomEndpoint : undefined;
             resourceInputs["migrationCenterCustomEndpoint"] = args ? args.migrationCenterCustomEndpoint : undefined;
             resourceInputs["mlEngineCustomEndpoint"] = args ? args.mlEngineCustomEndpoint : undefined;
@@ -494,6 +496,7 @@ export interface ProviderArgs {
     kmsCustomEndpoint?: pulumi.Input<string>;
     loggingCustomEndpoint?: pulumi.Input<string>;
     lookerCustomEndpoint?: pulumi.Input<string>;
+    managedKafkaCustomEndpoint?: pulumi.Input<string>;
     memcacheCustomEndpoint?: pulumi.Input<string>;
     migrationCenterCustomEndpoint?: pulumi.Input<string>;
     mlEngineCustomEndpoint?: pulumi.Input<string>;

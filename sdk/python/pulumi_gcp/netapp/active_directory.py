@@ -20,6 +20,7 @@ class ActiveDirectoryArgs:
                  net_bios_prefix: pulumi.Input[str],
                  password: pulumi.Input[str],
                  username: pulumi.Input[str],
+                 administrators: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  aes_encryption: Optional[pulumi.Input[bool]] = None,
                  backup_operators: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -43,6 +44,7 @@ class ActiveDirectoryArgs:
                A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
                `\\\\NetBIOS_PREFIX-ABCD.DOMAIN_NAME\\SHARE_NAME`
         :param pulumi.Input[str] username: Username for the Active Directory account with permissions to create the compute account within the specified organizational unit.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] administrators: Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
         :param pulumi.Input[bool] aes_encryption: Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_operators: Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -74,6 +76,8 @@ class ActiveDirectoryArgs:
         pulumi.set(__self__, "net_bios_prefix", net_bios_prefix)
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "username", username)
+        if administrators is not None:
+            pulumi.set(__self__, "administrators", administrators)
         if aes_encryption is not None:
             pulumi.set(__self__, "aes_encryption", aes_encryption)
         if backup_operators is not None:
@@ -173,6 +177,18 @@ class ActiveDirectoryArgs:
     @username.setter
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter
+    def administrators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+        """
+        return pulumi.get(self, "administrators")
+
+    @administrators.setter
+    def administrators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "administrators", value)
 
     @property
     @pulumi.getter(name="aesEncryption")
@@ -356,6 +372,7 @@ class ActiveDirectoryArgs:
 @pulumi.input_type
 class _ActiveDirectoryState:
     def __init__(__self__, *,
+                 administrators: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  aes_encryption: Optional[pulumi.Input[bool]] = None,
                  backup_operators: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -383,6 +400,7 @@ class _ActiveDirectoryState:
                  username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ActiveDirectory resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] administrators: Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
         :param pulumi.Input[bool] aes_encryption: Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_operators: Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
         :param pulumi.Input[str] create_time: Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
@@ -421,6 +439,8 @@ class _ActiveDirectoryState:
         :param pulumi.Input[str] state_details: The state details of the Active Directory.
         :param pulumi.Input[str] username: Username for the Active Directory account with permissions to create the compute account within the specified organizational unit.
         """
+        if administrators is not None:
+            pulumi.set(__self__, "administrators", administrators)
         if aes_encryption is not None:
             pulumi.set(__self__, "aes_encryption", aes_encryption)
         if backup_operators is not None:
@@ -471,6 +491,18 @@ class _ActiveDirectoryState:
             pulumi.set(__self__, "state_details", state_details)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def administrators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+        """
+        return pulumi.get(self, "administrators")
+
+    @administrators.setter
+    def administrators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "administrators", value)
 
     @property
     @pulumi.getter(name="aesEncryption")
@@ -788,6 +820,7 @@ class ActiveDirectory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 administrators: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  aes_encryption: Optional[pulumi.Input[bool]] = None,
                  backup_operators: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -839,6 +872,10 @@ class ActiveDirectory(pulumi.CustomResource):
                 "test1",
                 "test2",
             ],
+            administrators=[
+                "test1",
+                "test2",
+            ],
             description="ActiveDirectory is the public representation of the active directory config.",
             encrypt_dc_connections=False,
             kdc_hostname="hostname",
@@ -882,6 +919,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] administrators: Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
         :param pulumi.Input[bool] aes_encryption: Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_operators: Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -950,6 +988,10 @@ class ActiveDirectory(pulumi.CustomResource):
                 "test1",
                 "test2",
             ],
+            administrators=[
+                "test1",
+                "test2",
+            ],
             description="ActiveDirectory is the public representation of the active directory config.",
             encrypt_dc_connections=False,
             kdc_hostname="hostname",
@@ -1006,6 +1048,7 @@ class ActiveDirectory(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 administrators: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  aes_encryption: Optional[pulumi.Input[bool]] = None,
                  backup_operators: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1035,6 +1078,7 @@ class ActiveDirectory(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ActiveDirectoryArgs.__new__(ActiveDirectoryArgs)
 
+            __props__.__dict__["administrators"] = administrators
             __props__.__dict__["aes_encryption"] = aes_encryption
             __props__.__dict__["backup_operators"] = backup_operators
             __props__.__dict__["description"] = description
@@ -1084,6 +1128,7 @@ class ActiveDirectory(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            administrators: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             aes_encryption: Optional[pulumi.Input[bool]] = None,
             backup_operators: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
@@ -1116,6 +1161,7 @@ class ActiveDirectory(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] administrators: Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
         :param pulumi.Input[bool] aes_encryption: Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_operators: Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
         :param pulumi.Input[str] create_time: Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
@@ -1158,6 +1204,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
         __props__ = _ActiveDirectoryState.__new__(_ActiveDirectoryState)
 
+        __props__.__dict__["administrators"] = administrators
         __props__.__dict__["aes_encryption"] = aes_encryption
         __props__.__dict__["backup_operators"] = backup_operators
         __props__.__dict__["create_time"] = create_time
@@ -1184,6 +1231,14 @@ class ActiveDirectory(pulumi.CustomResource):
         __props__.__dict__["state_details"] = state_details
         __props__.__dict__["username"] = username
         return ActiveDirectory(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def administrators(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
+        """
+        return pulumi.get(self, "administrators")
 
     @property
     @pulumi.getter(name="aesEncryption")

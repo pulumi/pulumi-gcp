@@ -164,6 +164,8 @@ if typing.TYPE_CHECKING:
     logging = __logging
     import pulumi_gcp.looker as __looker
     looker = __looker
+    import pulumi_gcp.managedkafka as __managedkafka
+    managedkafka = __managedkafka
     import pulumi_gcp.memcache as __memcache
     memcache = __memcache
     import pulumi_gcp.migrationcenter as __migrationcenter
@@ -326,6 +328,7 @@ else:
     kms = _utilities.lazy_import('pulumi_gcp.kms')
     logging = _utilities.lazy_import('pulumi_gcp.logging')
     looker = _utilities.lazy_import('pulumi_gcp.looker')
+    managedkafka = _utilities.lazy_import('pulumi_gcp.managedkafka')
     memcache = _utilities.lazy_import('pulumi_gcp.memcache')
     migrationcenter = _utilities.lazy_import('pulumi_gcp.migrationcenter')
     ml = _utilities.lazy_import('pulumi_gcp.ml')
@@ -2066,6 +2069,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.composer",
   "classes": {
    "gcp:composer/environment:Environment": "Environment"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "composer/userWorkloadsConfigMap",
+  "fqn": "pulumi_gcp.composer",
+  "classes": {
+   "gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap": "UserWorkloadsConfigMap"
   }
  },
  {
@@ -5814,6 +5825,22 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "managedkafka/cluster",
+  "fqn": "pulumi_gcp.managedkafka",
+  "classes": {
+   "gcp:managedkafka/cluster:Cluster": "Cluster"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "managedkafka/topic",
+  "fqn": "pulumi_gcp.managedkafka",
+  "classes": {
+   "gcp:managedkafka/topic:Topic": "Topic"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "memcache/instance",
   "fqn": "pulumi_gcp.memcache",
   "classes": {
@@ -5930,6 +5957,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.netapp",
   "classes": {
    "gcp:netapp/activeDirectory:ActiveDirectory": "ActiveDirectory"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "netapp/backup",
+  "fqn": "pulumi_gcp.netapp",
+  "classes": {
+   "gcp:netapp/backup:Backup": "Backup"
   }
  },
  {
@@ -6902,10 +6937,34 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "securitycenter/managementFolderSecurityHealthAnalyticsCustomModule",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule": "ManagementFolderSecurityHealthAnalyticsCustomModule"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "securitycenter/managementOrganizationEventThreatDetectionCustomModule",
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
    "gcp:securitycenter/managementOrganizationEventThreatDetectionCustomModule:ManagementOrganizationEventThreatDetectionCustomModule": "ManagementOrganizationEventThreatDetectionCustomModule"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/managementOrganizationSecurityHealthAnalyticsCustomModule",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/managementOrganizationSecurityHealthAnalyticsCustomModule:ManagementOrganizationSecurityHealthAnalyticsCustomModule": "ManagementOrganizationSecurityHealthAnalyticsCustomModule"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/managementProjectSecurityHealthAnalyticsCustomModule",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/managementProjectSecurityHealthAnalyticsCustomModule:ManagementProjectSecurityHealthAnalyticsCustomModule": "ManagementProjectSecurityHealthAnalyticsCustomModule"
   }
  },
  {

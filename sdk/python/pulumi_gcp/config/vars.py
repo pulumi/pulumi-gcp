@@ -457,6 +457,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('lookerCustomEndpoint')
 
     @property
+    def managed_kafka_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('managedKafkaCustomEndpoint')
+
+    @property
     def memcache_custom_endpoint(self) -> Optional[str]:
         return __config__.get('memcacheCustomEndpoint')
 
