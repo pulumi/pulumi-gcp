@@ -12,6 +12,10 @@ on:
       default_branch:
         type: string
         required: true
+    outputs:
+      version:
+        description: "Provider version being built"
+        value: ${{ jobs.prerequisites.outputs.version }}
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -44,10 +48,13 @@ jobs:
   prerequisites:
     name: prerequisites
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.provider-version.outputs.version }}
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v4
     - uses: pulumi/provider-version-action@v1
+      id: provider-version
       with:
         set-env: 'PROVIDER_VERSION'
     - name: Cache examples generation
