@@ -220,7 +220,7 @@ class GoogleChannelConfig(pulumi.CustomResource):
             name="channel",
             project=test_project.project_id,
             crypto_key_name=key1["id"],
-            opts=pulumi.ResourceOptions(depends_on=[key1_member]))
+            opts = pulumi.ResourceOptions(depends_on=[key1_member]))
         ```
 
         ## Import
@@ -288,7 +288,7 @@ class GoogleChannelConfig(pulumi.CustomResource):
             name="channel",
             project=test_project.project_id,
             crypto_key_name=key1["id"],
-            opts=pulumi.ResourceOptions(depends_on=[key1_member]))
+            opts = pulumi.ResourceOptions(depends_on=[key1_member]))
         ```
 
         ## Import

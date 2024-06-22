@@ -846,7 +846,7 @@ class Job(pulumi.CustomResource):
             secret_id=secret.id,
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
+            opts = pulumi.ResourceOptions(depends_on=[secret]))
         ```
         ### Cloudrunv2 Job Vpcaccess
 
@@ -934,7 +934,7 @@ class Job(pulumi.CustomResource):
             secret_id=secret.id,
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
+            opts = pulumi.ResourceOptions(depends_on=[secret]))
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
@@ -961,7 +961,7 @@ class Job(pulumi.CustomResource):
                     )],
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     secret_version_data,
                     secret_access,
                 ]))
@@ -1170,7 +1170,7 @@ class Job(pulumi.CustomResource):
             secret_id=secret.id,
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
+            opts = pulumi.ResourceOptions(depends_on=[secret]))
         ```
         ### Cloudrunv2 Job Vpcaccess
 
@@ -1258,7 +1258,7 @@ class Job(pulumi.CustomResource):
             secret_id=secret.id,
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
+            opts = pulumi.ResourceOptions(depends_on=[secret]))
         default = gcp.cloudrunv2.Job("default",
             name="cloudrun-job",
             location="us-central1",
@@ -1285,7 +1285,7 @@ class Job(pulumi.CustomResource):
                     )],
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     secret_version_data,
                     secret_access,
                 ]))

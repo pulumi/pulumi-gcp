@@ -858,7 +858,7 @@ class DatabaseInstance(pulumi.CustomResource):
                     enable_private_path_for_google_cloud_services=True,
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[private_vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[private_vpc_connection]))
         ```
 
         ### ENTERPRISE_PLUS Instance with data_cache_config
@@ -1052,7 +1052,7 @@ class DatabaseInstance(pulumi.CustomResource):
                     enable_private_path_for_google_cloud_services=True,
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[private_vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[private_vpc_connection]))
         ```
 
         ### ENTERPRISE_PLUS Instance with data_cache_config

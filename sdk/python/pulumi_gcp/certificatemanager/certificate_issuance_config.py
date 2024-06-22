@@ -505,7 +505,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
                 "name": "wrench",
                 "count": "3",
             },
-            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
+            opts = pulumi.ResourceOptions(depends_on=[ca_authority]))
         ```
 
         ## Import
@@ -630,7 +630,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
                 "name": "wrench",
                 "count": "3",
             },
-            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
+            opts = pulumi.ResourceOptions(depends_on=[ca_authority]))
         ```
 
         ## Import

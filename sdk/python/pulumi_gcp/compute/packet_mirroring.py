@@ -413,7 +413,7 @@ class PacketMirroring(pulumi.CustomResource):
             network=default.id,
             subnetwork=default_subnetwork.id,
             network_tier="PREMIUM",
-            opts=pulumi.ResourceOptions(depends_on=[default_subnetwork]))
+            opts = pulumi.ResourceOptions(depends_on=[default_subnetwork]))
         foobar = gcp.compute.PacketMirroring("foobar",
             name="my-mirroring",
             description="bar",
@@ -548,7 +548,7 @@ class PacketMirroring(pulumi.CustomResource):
             network=default.id,
             subnetwork=default_subnetwork.id,
             network_tier="PREMIUM",
-            opts=pulumi.ResourceOptions(depends_on=[default_subnetwork]))
+            opts = pulumi.ResourceOptions(depends_on=[default_subnetwork]))
         foobar = gcp.compute.PacketMirroring("foobar",
             name="my-mirroring",
             description="bar",

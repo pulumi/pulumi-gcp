@@ -424,7 +424,7 @@ class MembershipBinding(pulumi.CustomResource):
                     resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[primary]))
+            opts = pulumi.ResourceOptions(depends_on=[primary]))
         scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_74391")
         membership_binding = gcp.gkehub.MembershipBinding("membership_binding",
             membership_binding_id="tf-test-membership-binding_16511",
@@ -436,7 +436,7 @@ class MembershipBinding(pulumi.CustomResource):
                 "keya": "valuea",
                 "keyc": "valuec",
             },
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     membership,
                     scope,
                 ]))
@@ -520,7 +520,7 @@ class MembershipBinding(pulumi.CustomResource):
                     resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[primary]))
+            opts = pulumi.ResourceOptions(depends_on=[primary]))
         scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_74391")
         membership_binding = gcp.gkehub.MembershipBinding("membership_binding",
             membership_binding_id="tf-test-membership-binding_16511",
@@ -532,7 +532,7 @@ class MembershipBinding(pulumi.CustomResource):
                 "keya": "valuea",
                 "keyc": "valuec",
             },
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     membership,
                     scope,
                 ]))

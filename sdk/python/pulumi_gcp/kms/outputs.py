@@ -226,14 +226,12 @@ class CryptoKeyVersionAttestation(dict):
 
     @property
     @pulumi.getter(name="externalProtectionLevelOptions")
+    @_utilities.deprecated("""`externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.""")
     def external_protection_level_options(self) -> Optional['outputs.CryptoKeyVersionAttestationExternalProtectionLevelOptions']:
         """
         ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         Structure is documented below.
         """
-        warnings.warn("""`externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.""", DeprecationWarning)
-        pulumi.log.warn("""external_protection_level_options is deprecated: `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.""")
-
         return pulumi.get(self, "external_protection_level_options")
 
     @property

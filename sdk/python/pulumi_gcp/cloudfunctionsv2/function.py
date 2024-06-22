@@ -684,17 +684,17 @@ class Function(pulumi.CustomResource):
             project="my-project-name",
             role="roles/run.invoker",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[gcs_pubsub_publishing]))
+            opts = pulumi.ResourceOptions(depends_on=[gcs_pubsub_publishing]))
         event_receiving = gcp.projects.IAMMember("event-receiving",
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[invoking]))
+            opts = pulumi.ResourceOptions(depends_on=[invoking]))
         artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[event_receiving]))
+            opts = pulumi.ResourceOptions(depends_on=[event_receiving]))
         function = gcp.cloudfunctionsv2.Function("function",
             name="gcf-function",
             location="us-central1",
@@ -733,7 +733,7 @@ class Function(pulumi.CustomResource):
                     value=trigger_bucket.name,
                 )],
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     event_receiving,
                     artifactregistry_reader,
                 ]))
@@ -775,12 +775,12 @@ class Function(pulumi.CustomResource):
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[invoking]))
+            opts = pulumi.ResourceOptions(depends_on=[invoking]))
         artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[event_receiving]))
+            opts = pulumi.ResourceOptions(depends_on=[event_receiving]))
         function = gcp.cloudfunctionsv2.Function("function",
             name="gcf-function",
             location="us-central1",
@@ -831,7 +831,7 @@ class Function(pulumi.CustomResource):
                     ),
                 ],
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     event_receiving,
                     artifactregistry_reader,
                 ]))
@@ -869,7 +869,7 @@ class Function(pulumi.CustomResource):
             source=pulumi.FileAsset("function-source.zip"))
         # builder permissions need to stablize before it can pull the source zip
         wait60s = time.index.Sleep("wait_60s", create_duration=60s,
-        opts=pulumi.ResourceOptions(depends_on=[
+        opts = pulumi.ResourceOptions(depends_on=[
                 log_writer,
                 artifact_registry_writer,
                 storage_object_admin,
@@ -894,7 +894,7 @@ class Function(pulumi.CustomResource):
                 available_memory="256M",
                 timeout_seconds=60,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[wait60s]))
+            opts = pulumi.ResourceOptions(depends_on=[wait60s]))
         ```
         ### Cloudfunctions2 Secret Env
 
@@ -949,7 +949,7 @@ class Function(pulumi.CustomResource):
                     version="latest",
                 )],
             ),
-            opts=pulumi.ResourceOptions(depends_on=[secret_secret_version]))
+            opts = pulumi.ResourceOptions(depends_on=[secret_secret_version]))
         ```
         ### Cloudfunctions2 Secret Volume
 
@@ -1003,7 +1003,7 @@ class Function(pulumi.CustomResource):
                     secret=secret.secret_id,
                 )],
             ),
-            opts=pulumi.ResourceOptions(depends_on=[secret_secret_version]))
+            opts = pulumi.ResourceOptions(depends_on=[secret_secret_version]))
         ```
         ### Cloudfunctions2 Private Workerpool
 
@@ -1082,13 +1082,13 @@ class Function(pulumi.CustomResource):
                 f"serviceAccount:service-{project_get_project.number}@serverless-robot-prod.iam.gserviceaccount.com",
                 ea_sa.email.apply(lambda email: f"serviceAccount:{email}"),
             ],
-            opts=pulumi.ResourceOptions(depends_on=[ea_sa]))
+            opts = pulumi.ResourceOptions(depends_on=[ea_sa]))
         encoded_ar_repo = gcp.artifactregistry.Repository("encoded-ar-repo",
             location="us-central1",
             repository_id="cmek-repo",
             format="DOCKER",
             kms_key_name="cmek-key",
-            opts=pulumi.ResourceOptions(depends_on=[gcf_cmek_keyuser]))
+            opts = pulumi.ResourceOptions(depends_on=[gcf_cmek_keyuser]))
         binding = gcp.artifactregistry.RepositoryIamBinding("binding",
             location=encoded_ar_repo.location,
             repository=encoded_ar_repo.name,
@@ -1115,7 +1115,7 @@ class Function(pulumi.CustomResource):
                 available_memory="256M",
                 timeout_seconds=60,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[gcf_cmek_keyuser]))
+            opts = pulumi.ResourceOptions(depends_on=[gcf_cmek_keyuser]))
         ```
 
         ## Import
@@ -1373,17 +1373,17 @@ class Function(pulumi.CustomResource):
             project="my-project-name",
             role="roles/run.invoker",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[gcs_pubsub_publishing]))
+            opts = pulumi.ResourceOptions(depends_on=[gcs_pubsub_publishing]))
         event_receiving = gcp.projects.IAMMember("event-receiving",
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[invoking]))
+            opts = pulumi.ResourceOptions(depends_on=[invoking]))
         artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[event_receiving]))
+            opts = pulumi.ResourceOptions(depends_on=[event_receiving]))
         function = gcp.cloudfunctionsv2.Function("function",
             name="gcf-function",
             location="us-central1",
@@ -1422,7 +1422,7 @@ class Function(pulumi.CustomResource):
                     value=trigger_bucket.name,
                 )],
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     event_receiving,
                     artifactregistry_reader,
                 ]))
@@ -1464,12 +1464,12 @@ class Function(pulumi.CustomResource):
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[invoking]))
+            opts = pulumi.ResourceOptions(depends_on=[invoking]))
         artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(depends_on=[event_receiving]))
+            opts = pulumi.ResourceOptions(depends_on=[event_receiving]))
         function = gcp.cloudfunctionsv2.Function("function",
             name="gcf-function",
             location="us-central1",
@@ -1520,7 +1520,7 @@ class Function(pulumi.CustomResource):
                     ),
                 ],
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     event_receiving,
                     artifactregistry_reader,
                 ]))
@@ -1558,7 +1558,7 @@ class Function(pulumi.CustomResource):
             source=pulumi.FileAsset("function-source.zip"))
         # builder permissions need to stablize before it can pull the source zip
         wait60s = time.index.Sleep("wait_60s", create_duration=60s,
-        opts=pulumi.ResourceOptions(depends_on=[
+        opts = pulumi.ResourceOptions(depends_on=[
                 log_writer,
                 artifact_registry_writer,
                 storage_object_admin,
@@ -1583,7 +1583,7 @@ class Function(pulumi.CustomResource):
                 available_memory="256M",
                 timeout_seconds=60,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[wait60s]))
+            opts = pulumi.ResourceOptions(depends_on=[wait60s]))
         ```
         ### Cloudfunctions2 Secret Env
 
@@ -1638,7 +1638,7 @@ class Function(pulumi.CustomResource):
                     version="latest",
                 )],
             ),
-            opts=pulumi.ResourceOptions(depends_on=[secret_secret_version]))
+            opts = pulumi.ResourceOptions(depends_on=[secret_secret_version]))
         ```
         ### Cloudfunctions2 Secret Volume
 
@@ -1692,7 +1692,7 @@ class Function(pulumi.CustomResource):
                     secret=secret.secret_id,
                 )],
             ),
-            opts=pulumi.ResourceOptions(depends_on=[secret_secret_version]))
+            opts = pulumi.ResourceOptions(depends_on=[secret_secret_version]))
         ```
         ### Cloudfunctions2 Private Workerpool
 
@@ -1771,13 +1771,13 @@ class Function(pulumi.CustomResource):
                 f"serviceAccount:service-{project_get_project.number}@serverless-robot-prod.iam.gserviceaccount.com",
                 ea_sa.email.apply(lambda email: f"serviceAccount:{email}"),
             ],
-            opts=pulumi.ResourceOptions(depends_on=[ea_sa]))
+            opts = pulumi.ResourceOptions(depends_on=[ea_sa]))
         encoded_ar_repo = gcp.artifactregistry.Repository("encoded-ar-repo",
             location="us-central1",
             repository_id="cmek-repo",
             format="DOCKER",
             kms_key_name="cmek-key",
-            opts=pulumi.ResourceOptions(depends_on=[gcf_cmek_keyuser]))
+            opts = pulumi.ResourceOptions(depends_on=[gcf_cmek_keyuser]))
         binding = gcp.artifactregistry.RepositoryIamBinding("binding",
             location=encoded_ar_repo.location,
             repository=encoded_ar_repo.name,
@@ -1804,7 +1804,7 @@ class Function(pulumi.CustomResource):
                 available_memory="256M",
                 timeout_seconds=60,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[gcf_cmek_keyuser]))
+            opts = pulumi.ResourceOptions(depends_on=[gcf_cmek_keyuser]))
         ```
 
         ## Import

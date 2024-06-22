@@ -909,7 +909,7 @@ class Instance(pulumi.CustomResource):
                 client_id="my-client-id",
                 client_secret="my-client-secret",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
         project = gcp.organizations.get_project()
         crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
             crypto_key_id="looker-kms-key",
@@ -1156,7 +1156,7 @@ class Instance(pulumi.CustomResource):
                 client_id="my-client-id",
                 client_secret="my-client-secret",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
         project = gcp.organizations.get_project()
         crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
             crypto_key_id="looker-kms-key",

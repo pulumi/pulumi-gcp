@@ -261,14 +261,12 @@ class FirewallArgs:
 
     @property
     @pulumi.getter(name="enableLogging")
+    @_utilities.deprecated("""Deprecated in favor of log_config""")
     def enable_logging(self) -> Optional[pulumi.Input[bool]]:
         """
         This field denotes whether to enable logging for a particular firewall rule.
         If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
         """
-        warnings.warn("""Deprecated in favor of log_config""", DeprecationWarning)
-        pulumi.log.warn("""enable_logging is deprecated: Deprecated in favor of log_config""")
-
         return pulumi.get(self, "enable_logging")
 
     @enable_logging.setter
@@ -688,14 +686,12 @@ class _FirewallState:
 
     @property
     @pulumi.getter(name="enableLogging")
+    @_utilities.deprecated("""Deprecated in favor of log_config""")
     def enable_logging(self) -> Optional[pulumi.Input[bool]]:
         """
         This field denotes whether to enable logging for a particular firewall rule.
         If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
         """
-        warnings.warn("""Deprecated in favor of log_config""", DeprecationWarning)
-        pulumi.log.warn("""enable_logging is deprecated: Deprecated in favor of log_config""")
-
         return pulumi.get(self, "enable_logging")
 
     @enable_logging.setter
@@ -1476,14 +1472,12 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableLogging")
+    @_utilities.deprecated("""Deprecated in favor of log_config""")
     def enable_logging(self) -> pulumi.Output[bool]:
         """
         This field denotes whether to enable logging for a particular firewall rule.
         If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
         """
-        warnings.warn("""Deprecated in favor of log_config""", DeprecationWarning)
-        pulumi.log.warn("""enable_logging is deprecated: Deprecated in favor of log_config""")
-
         return pulumi.get(self, "enable_logging")
 
     @property

@@ -305,7 +305,7 @@ class InstanceIamBinding(pulumi.CustomResource):
             crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
                 key_reference=crypto_key.id,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key_member]))
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key_member]))
         ```
         ### Data Fusion Instance Enterprise
 
@@ -473,7 +473,7 @@ class InstanceIamBinding(pulumi.CustomResource):
             crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
                 key_reference=crypto_key.id,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key_member]))
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key_member]))
         ```
         ### Data Fusion Instance Enterprise
 

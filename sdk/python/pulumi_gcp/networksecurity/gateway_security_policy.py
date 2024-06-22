@@ -369,7 +369,7 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             name="my-tls-inspection-policy",
             location="us-central1",
             ca_pool=default.id,
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     default,
                     default_authority,
                     tls_inspection_permission,
@@ -379,7 +379,7 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             location="us-central1",
             description="my description",
             tls_inspection_policy=default_tls_inspection_policy.id,
-            opts=pulumi.ResourceOptions(depends_on=[default_tls_inspection_policy]))
+            opts = pulumi.ResourceOptions(depends_on=[default_tls_inspection_policy]))
         ```
 
         ## Import
@@ -517,7 +517,7 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             name="my-tls-inspection-policy",
             location="us-central1",
             ca_pool=default.id,
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     default,
                     default_authority,
                     tls_inspection_permission,
@@ -527,7 +527,7 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             location="us-central1",
             description="my description",
             tls_inspection_policy=default_tls_inspection_policy.id,
-            opts=pulumi.ResourceOptions(depends_on=[default_tls_inspection_policy]))
+            opts = pulumi.ResourceOptions(depends_on=[default_tls_inspection_policy]))
         ```
 
         ## Import

@@ -529,7 +529,7 @@ class VpnConnection(pulumi.CustomResource):
                 "my_key": "my_val",
                 "other_key": "other_val",
             },
-            opts=pulumi.ResourceOptions(depends_on=[node_pool]))
+            opts = pulumi.ResourceOptions(depends_on=[node_pool]))
         ```
 
         ## Import
@@ -633,7 +633,7 @@ class VpnConnection(pulumi.CustomResource):
                 "my_key": "my_val",
                 "other_key": "other_val",
             },
-            opts=pulumi.ResourceOptions(depends_on=[node_pool]))
+            opts = pulumi.ResourceOptions(depends_on=[node_pool]))
         ```
 
         ## Import

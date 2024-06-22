@@ -1179,7 +1179,7 @@ class Trigger(pulumi.CustomResource):
             ),
             service_account=cloudbuild_service_account.id,
             filename="cloudbuild.yaml",
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     act_as,
                     logs_writer,
                 ]))
@@ -1893,7 +1893,7 @@ class Trigger(pulumi.CustomResource):
             ),
             service_account=cloudbuild_service_account.id,
             filename="cloudbuild.yaml",
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     act_as,
                     logs_writer,
                 ]))

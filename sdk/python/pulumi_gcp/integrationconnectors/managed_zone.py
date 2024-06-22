@@ -392,7 +392,7 @@ class ManagedZone(pulumi.CustomResource):
             project=target_project.project_id,
             name="test",
             auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(depends_on=[compute]))
+            opts = pulumi.ResourceOptions(depends_on=[compute]))
         zone = gcp.dns.ManagedZone("zone",
             name="tf-test-dns_29439",
             dns_name="private_87786.example.com.",
@@ -402,7 +402,7 @@ class ManagedZone(pulumi.CustomResource):
                     network_url=network.id,
                 )],
             ),
-            opts=pulumi.ResourceOptions(depends_on=[dns]))
+            opts = pulumi.ResourceOptions(depends_on=[dns]))
         testmanagedzone = gcp.integrationconnectors.ManagedZone("testmanagedzone",
             name="test",
             description="tf created description",
@@ -412,7 +412,7 @@ class ManagedZone(pulumi.CustomResource):
             target_project=target_project.project_id,
             target_vpc="test",
             dns=zone.dns_name,
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     dns_peer_binding,
                     zone,
                 ]))
@@ -502,7 +502,7 @@ class ManagedZone(pulumi.CustomResource):
             project=target_project.project_id,
             name="test",
             auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(depends_on=[compute]))
+            opts = pulumi.ResourceOptions(depends_on=[compute]))
         zone = gcp.dns.ManagedZone("zone",
             name="tf-test-dns_29439",
             dns_name="private_87786.example.com.",
@@ -512,7 +512,7 @@ class ManagedZone(pulumi.CustomResource):
                     network_url=network.id,
                 )],
             ),
-            opts=pulumi.ResourceOptions(depends_on=[dns]))
+            opts = pulumi.ResourceOptions(depends_on=[dns]))
         testmanagedzone = gcp.integrationconnectors.ManagedZone("testmanagedzone",
             name="test",
             description="tf created description",
@@ -522,7 +522,7 @@ class ManagedZone(pulumi.CustomResource):
             target_project=target_project.project_id,
             target_vpc="test",
             dns=zone.dns_name,
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     dns_peer_binding,
                     zone,
                 ]))

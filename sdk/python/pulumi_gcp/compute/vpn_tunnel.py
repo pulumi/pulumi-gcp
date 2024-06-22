@@ -885,7 +885,7 @@ class VPNTunnel(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     fr_esp,
                     fr_udp500,
                     fr_udp4500,
@@ -1030,7 +1030,7 @@ class VPNTunnel(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     fr_esp,
                     fr_udp500,
                     fr_udp4500,

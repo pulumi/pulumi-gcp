@@ -163,7 +163,7 @@ class AddonsConfig(pulumi.CustomResource):
         apigee_network = gcp.compute.Network("apigee_network",
             name="apigee-network",
             project=current.project,
-            opts=pulumi.ResourceOptions(depends_on=[compute]))
+            opts = pulumi.ResourceOptions(depends_on=[compute]))
         apigee_range = gcp.compute.GlobalAddress("apigee_range",
             name="apigee-range",
             purpose="VPC_PEERING",
@@ -180,7 +180,7 @@ class AddonsConfig(pulumi.CustomResource):
             project_id=current.project,
             authorized_network=apigee_network.id,
             billing_type="EVALUATION",
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     apigee_vpc_connection,
                     apigee,
                 ]))
@@ -285,7 +285,7 @@ class AddonsConfig(pulumi.CustomResource):
         apigee_network = gcp.compute.Network("apigee_network",
             name="apigee-network",
             project=current.project,
-            opts=pulumi.ResourceOptions(depends_on=[compute]))
+            opts = pulumi.ResourceOptions(depends_on=[compute]))
         apigee_range = gcp.compute.GlobalAddress("apigee_range",
             name="apigee-range",
             purpose="VPC_PEERING",
@@ -302,7 +302,7 @@ class AddonsConfig(pulumi.CustomResource):
             project_id=current.project,
             authorized_network=apigee_network.id,
             billing_type="EVALUATION",
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     apigee_vpc_connection,
                     apigee,
                 ]))

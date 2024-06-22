@@ -568,7 +568,7 @@ class NodePool(pulumi.CustomResource):
             local_disk_encryption=gcp.edgecontainer.NodePoolLocalDiskEncryptionArgs(
                 kms_key=crypto_key_crypto_key.id,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```
         ### Edgecontainer Local Control Plane Node Pool
 
@@ -747,7 +747,7 @@ class NodePool(pulumi.CustomResource):
             local_disk_encryption=gcp.edgecontainer.NodePoolLocalDiskEncryptionArgs(
                 kms_key=crypto_key_crypto_key.id,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```
         ### Edgecontainer Local Control Plane Node Pool
 

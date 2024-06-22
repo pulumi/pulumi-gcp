@@ -385,7 +385,7 @@ class TransferJob(pulumi.CustomResource):
             bucket=s3_backup_bucket.name,
             role="roles/storage.admin",
             member=f"serviceAccount:{default.email}",
-            opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket]))
+            opts = pulumi.ResourceOptions(depends_on=[s3_backup_bucket]))
         topic = gcp.pubsub.Topic("topic", name=pubsub_topic_name)
         notification_config = gcp.pubsub.TopicIAMMember("notification_config",
             topic=topic.id,
@@ -441,7 +441,7 @@ class TransferJob(pulumi.CustomResource):
                 ],
                 payload_format="JSON",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     s3_backup_bucket_bucket_iam_member,
                     notification_config,
                 ]))
@@ -507,7 +507,7 @@ class TransferJob(pulumi.CustomResource):
             bucket=s3_backup_bucket.name,
             role="roles/storage.admin",
             member=f"serviceAccount:{default.email}",
-            opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket]))
+            opts = pulumi.ResourceOptions(depends_on=[s3_backup_bucket]))
         topic = gcp.pubsub.Topic("topic", name=pubsub_topic_name)
         notification_config = gcp.pubsub.TopicIAMMember("notification_config",
             topic=topic.id,
@@ -563,7 +563,7 @@ class TransferJob(pulumi.CustomResource):
                 ],
                 payload_format="JSON",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     s3_backup_bucket_bucket_iam_member,
                     notification_config,
                 ]))

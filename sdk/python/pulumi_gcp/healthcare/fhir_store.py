@@ -291,6 +291,7 @@ class FhirStoreArgs:
 
     @property
     @pulumi.getter(name="notificationConfig")
+    @_utilities.deprecated("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
     def notification_config(self) -> Optional[pulumi.Input['FhirStoreNotificationConfigArgs']]:
         """
         (Optional, Deprecated)
@@ -299,9 +300,6 @@ class FhirStoreArgs:
 
         > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         """
-        warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
-        pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
-
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
@@ -658,6 +656,7 @@ class _FhirStoreState:
 
     @property
     @pulumi.getter(name="notificationConfig")
+    @_utilities.deprecated("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
     def notification_config(self) -> Optional[pulumi.Input['FhirStoreNotificationConfigArgs']]:
         """
         (Optional, Deprecated)
@@ -666,9 +665,6 @@ class _FhirStoreState:
 
         > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         """
-        warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
-        pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
-
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
@@ -1409,6 +1405,7 @@ class FhirStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationConfig")
+    @_utilities.deprecated("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
     def notification_config(self) -> pulumi.Output[Optional['outputs.FhirStoreNotificationConfig']]:
         """
         (Optional, Deprecated)
@@ -1417,9 +1414,6 @@ class FhirStore(pulumi.CustomResource):
 
         > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         """
-        warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
-        pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
-
         return pulumi.get(self, "notification_config")
 
     @property

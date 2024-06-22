@@ -408,7 +408,7 @@ class WorkerPool(pulumi.CustomResource):
         network = gcp.compute.Network("network",
             name="my-network",
             auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
+            opts = pulumi.ResourceOptions(depends_on=[servicenetworking]))
         worker_range = gcp.compute.GlobalAddress("worker_range",
             name="worker-pool-range",
             purpose="VPC_PEERING",
@@ -419,7 +419,7 @@ class WorkerPool(pulumi.CustomResource):
             network=network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[worker_range.name],
-            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
+            opts = pulumi.ResourceOptions(depends_on=[servicenetworking]))
         pool = gcp.cloudbuild.WorkerPool("pool",
             name="my-pool",
             location="europe-west1",
@@ -432,7 +432,7 @@ class WorkerPool(pulumi.CustomResource):
                 peered_network=network.id,
                 peered_network_ip_range="/29",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[worker_pool_conn]))
+            opts = pulumi.ResourceOptions(depends_on=[worker_pool_conn]))
         ```
 
         ## Import
@@ -511,7 +511,7 @@ class WorkerPool(pulumi.CustomResource):
         network = gcp.compute.Network("network",
             name="my-network",
             auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
+            opts = pulumi.ResourceOptions(depends_on=[servicenetworking]))
         worker_range = gcp.compute.GlobalAddress("worker_range",
             name="worker-pool-range",
             purpose="VPC_PEERING",
@@ -522,7 +522,7 @@ class WorkerPool(pulumi.CustomResource):
             network=network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[worker_range.name],
-            opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
+            opts = pulumi.ResourceOptions(depends_on=[servicenetworking]))
         pool = gcp.cloudbuild.WorkerPool("pool",
             name="my-pool",
             location="europe-west1",
@@ -535,7 +535,7 @@ class WorkerPool(pulumi.CustomResource):
                 peered_network=network.id,
                 peered_network_ip_range="/29",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[worker_pool_conn]))
+            opts = pulumi.ResourceOptions(depends_on=[worker_pool_conn]))
         ```
 
         ## Import

@@ -984,7 +984,7 @@ class Subscription(pulumi.CustomResource):
             bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
                 table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     viewer,
                     editor,
                 ]))
@@ -1026,7 +1026,7 @@ class Subscription(pulumi.CustomResource):
                 table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
                 use_table_schema=True,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     viewer,
                     editor,
                 ]))
@@ -1058,7 +1058,7 @@ class Subscription(pulumi.CustomResource):
                 max_bytes=1000,
                 max_duration="300s",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     example,
                     admin,
                 ]))
@@ -1093,7 +1093,7 @@ class Subscription(pulumi.CustomResource):
                     write_metadata=True,
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     example,
                     admin,
                 ]))
@@ -1329,7 +1329,7 @@ class Subscription(pulumi.CustomResource):
             bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
                 table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     viewer,
                     editor,
                 ]))
@@ -1371,7 +1371,7 @@ class Subscription(pulumi.CustomResource):
                 table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
                 use_table_schema=True,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     viewer,
                     editor,
                 ]))
@@ -1403,7 +1403,7 @@ class Subscription(pulumi.CustomResource):
                 max_bytes=1000,
                 max_duration="300s",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     example,
                     admin,
                 ]))
@@ -1438,7 +1438,7 @@ class Subscription(pulumi.CustomResource):
                     write_metadata=True,
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     example,
                     admin,
                 ]))

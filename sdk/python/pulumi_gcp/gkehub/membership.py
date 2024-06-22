@@ -96,15 +96,13 @@ class MembershipArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`description` is deprecated and will be removed in a future major release.""")
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 
         > **Warning:** `description` is deprecated and will be removed in a future major release.
         """
-        warnings.warn("""`description` is deprecated and will be removed in a future major release.""", DeprecationWarning)
-        pulumi.log.warn("""description is deprecated: `description` is deprecated and will be removed in a future major release.""")
-
         return pulumi.get(self, "description")
 
     @description.setter
@@ -248,15 +246,13 @@ class _MembershipState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`description` is deprecated and will be removed in a future major release.""")
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 
         > **Warning:** `description` is deprecated and will be removed in a future major release.
         """
-        warnings.warn("""`description` is deprecated and will be removed in a future major release.""", DeprecationWarning)
-        pulumi.log.warn("""description is deprecated: `description` is deprecated and will be removed in a future major release.""")
-
         return pulumi.get(self, "description")
 
     @description.setter
@@ -758,15 +754,13 @@ class Membership(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`description` is deprecated and will be removed in a future major release.""")
     def description(self) -> pulumi.Output[Optional[str]]:
         """
         The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 
         > **Warning:** `description` is deprecated and will be removed in a future major release.
         """
-        warnings.warn("""`description` is deprecated and will be removed in a future major release.""", DeprecationWarning)
-        pulumi.log.warn("""description is deprecated: `description` is deprecated and will be removed in a future major release.""")
-
         return pulumi.get(self, "description")
 
     @property

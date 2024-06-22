@@ -270,7 +270,7 @@ class User(pulumi.CustomResource):
             cluster=default_cluster.name,
             instance_id="alloydb-instance",
             instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         project = gcp.organizations.get_project()
         user1 = gcp.alloydb.User("user1",
             cluster=default_cluster.name,
@@ -278,7 +278,7 @@ class User(pulumi.CustomResource):
             user_type="ALLOYDB_BUILT_IN",
             password="user_secret",
             database_roles=["alloydbsuperuser"],
-            opts=pulumi.ResourceOptions(depends_on=[default]))
+            opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
         ### Alloydb User Iam
 
@@ -308,14 +308,14 @@ class User(pulumi.CustomResource):
             cluster=default_cluster.name,
             instance_id="alloydb-instance",
             instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         project = gcp.organizations.get_project()
         user2 = gcp.alloydb.User("user2",
             cluster=default_cluster.name,
             user_id="user2@foo.com",
             user_type="ALLOYDB_IAM_USER",
             database_roles=["alloydbiamuser"],
-            opts=pulumi.ResourceOptions(depends_on=[default]))
+            opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
 
         ## Import
@@ -400,7 +400,7 @@ class User(pulumi.CustomResource):
             cluster=default_cluster.name,
             instance_id="alloydb-instance",
             instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         project = gcp.organizations.get_project()
         user1 = gcp.alloydb.User("user1",
             cluster=default_cluster.name,
@@ -408,7 +408,7 @@ class User(pulumi.CustomResource):
             user_type="ALLOYDB_BUILT_IN",
             password="user_secret",
             database_roles=["alloydbsuperuser"],
-            opts=pulumi.ResourceOptions(depends_on=[default]))
+            opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
         ### Alloydb User Iam
 
@@ -438,14 +438,14 @@ class User(pulumi.CustomResource):
             cluster=default_cluster.name,
             instance_id="alloydb-instance",
             instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         project = gcp.organizations.get_project()
         user2 = gcp.alloydb.User("user2",
             cluster=default_cluster.name,
             user_id="user2@foo.com",
             user_type="ALLOYDB_IAM_USER",
             database_roles=["alloydbiamuser"],
-            opts=pulumi.ResourceOptions(depends_on=[default]))
+            opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
 
         ## Import

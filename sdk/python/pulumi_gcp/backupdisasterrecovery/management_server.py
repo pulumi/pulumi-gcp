@@ -256,7 +256,7 @@ class ManagementServer(pulumi.CustomResource):
                 network=default.id,
                 peering_mode="PRIVATE_SERVICE_ACCESS",
             )],
-            opts=pulumi.ResourceOptions(depends_on=[default_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[default_connection]))
         ```
 
         ## Import
@@ -325,7 +325,7 @@ class ManagementServer(pulumi.CustomResource):
                 network=default.id,
                 peering_mode="PRIVATE_SERVICE_ACCESS",
             )],
-            opts=pulumi.ResourceOptions(depends_on=[default_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[default_connection]))
         ```
 
         ## Import

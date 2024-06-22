@@ -660,7 +660,7 @@ class Secret(pulumi.CustomResource):
                     ),
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[kms_secret_binding]))
+            opts = pulumi.ResourceOptions(depends_on=[kms_secret_binding]))
         ```
 
         ## Import
@@ -820,7 +820,7 @@ class Secret(pulumi.CustomResource):
                     ),
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[kms_secret_binding]))
+            opts = pulumi.ResourceOptions(depends_on=[kms_secret_binding]))
         ```
 
         ## Import

@@ -805,7 +805,7 @@ class Route(pulumi.CustomResource):
                 "tag1",
                 "tag2",
             ],
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     peering1,
                     peering2,
                 ]))
@@ -1044,7 +1044,7 @@ class Route(pulumi.CustomResource):
                 "tag1",
                 "tag2",
             ],
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     peering1,
                     peering2,
                 ]))

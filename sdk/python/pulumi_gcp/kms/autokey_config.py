@@ -138,38 +138,38 @@ class AutokeyConfig(pulumi.CustomResource):
             name="key-proj",
             folder_id=autokms_folder.folder_id,
             billing_account="000000-0000000-0000000-000000",
-            opts=pulumi.ResourceOptions(depends_on=[autokms_folder]))
+            opts = pulumi.ResourceOptions(depends_on=[autokms_folder]))
         # Enable the Cloud KMS API
         kms_api_service = gcp.projects.Service("kms_api_service",
             service="cloudkms.googleapis.com",
             project=key_project.project_id,
             disable_on_destroy=False,
             disable_dependent_services=True,
-            opts=pulumi.ResourceOptions(depends_on=[key_project]))
+            opts = pulumi.ResourceOptions(depends_on=[key_project]))
         # Wait delay after enabling APIs
         wait_enable_service_api = time.index.Sleep("wait_enable_service_api", create_duration=30s,
-        opts=pulumi.ResourceOptions(depends_on=[kms_api_service]))
+        opts = pulumi.ResourceOptions(depends_on=[kms_api_service]))
         #Create KMS Service Agent
         kms_service_agent = gcp.projects.ServiceIdentity("kms_service_agent",
             service="cloudkms.googleapis.com",
             project=key_project.number,
-            opts=pulumi.ResourceOptions(depends_on=[wait_enable_service_api]))
+            opts = pulumi.ResourceOptions(depends_on=[wait_enable_service_api]))
         # Wait delay after creating service agent.
         wait_service_agent = time.index.Sleep("wait_service_agent", create_duration=10s,
-        opts=pulumi.ResourceOptions(depends_on=[kms_service_agent]))
+        opts = pulumi.ResourceOptions(depends_on=[kms_service_agent]))
         #Grant the KMS Service Agent the Cloud KMS Admin role
         autokey_project_admin = gcp.projects.IAMMember("autokey_project_admin",
             project=key_project.project_id,
             role="roles/cloudkms.admin",
             member=key_project.number.apply(lambda number: f"serviceAccount:service-{number}@gcp-sa-cloudkms.iam.gserviceaccount.com"),
-            opts=pulumi.ResourceOptions(depends_on=[wait_service_agent]))
+            opts = pulumi.ResourceOptions(depends_on=[wait_service_agent]))
         # Wait delay after granting IAM permissions
         wait_srv_acc_permissions = time.index.Sleep("wait_srv_acc_permissions", create_duration=10s,
-        opts=pulumi.ResourceOptions(depends_on=[autokey_project_admin]))
+        opts = pulumi.ResourceOptions(depends_on=[autokey_project_admin]))
         example_autokeyconfig = gcp.kms.AutokeyConfig("example-autokeyconfig",
             folder=autokms_folder.folder_id,
             key_project=key_project.project_id.apply(lambda project_id: f"projects/{project_id}"),
-            opts=pulumi.ResourceOptions(depends_on=[wait_srv_acc_permissions]))
+            opts = pulumi.ResourceOptions(depends_on=[wait_srv_acc_permissions]))
         ```
 
         ## Import
@@ -226,38 +226,38 @@ class AutokeyConfig(pulumi.CustomResource):
             name="key-proj",
             folder_id=autokms_folder.folder_id,
             billing_account="000000-0000000-0000000-000000",
-            opts=pulumi.ResourceOptions(depends_on=[autokms_folder]))
+            opts = pulumi.ResourceOptions(depends_on=[autokms_folder]))
         # Enable the Cloud KMS API
         kms_api_service = gcp.projects.Service("kms_api_service",
             service="cloudkms.googleapis.com",
             project=key_project.project_id,
             disable_on_destroy=False,
             disable_dependent_services=True,
-            opts=pulumi.ResourceOptions(depends_on=[key_project]))
+            opts = pulumi.ResourceOptions(depends_on=[key_project]))
         # Wait delay after enabling APIs
         wait_enable_service_api = time.index.Sleep("wait_enable_service_api", create_duration=30s,
-        opts=pulumi.ResourceOptions(depends_on=[kms_api_service]))
+        opts = pulumi.ResourceOptions(depends_on=[kms_api_service]))
         #Create KMS Service Agent
         kms_service_agent = gcp.projects.ServiceIdentity("kms_service_agent",
             service="cloudkms.googleapis.com",
             project=key_project.number,
-            opts=pulumi.ResourceOptions(depends_on=[wait_enable_service_api]))
+            opts = pulumi.ResourceOptions(depends_on=[wait_enable_service_api]))
         # Wait delay after creating service agent.
         wait_service_agent = time.index.Sleep("wait_service_agent", create_duration=10s,
-        opts=pulumi.ResourceOptions(depends_on=[kms_service_agent]))
+        opts = pulumi.ResourceOptions(depends_on=[kms_service_agent]))
         #Grant the KMS Service Agent the Cloud KMS Admin role
         autokey_project_admin = gcp.projects.IAMMember("autokey_project_admin",
             project=key_project.project_id,
             role="roles/cloudkms.admin",
             member=key_project.number.apply(lambda number: f"serviceAccount:service-{number}@gcp-sa-cloudkms.iam.gserviceaccount.com"),
-            opts=pulumi.ResourceOptions(depends_on=[wait_service_agent]))
+            opts = pulumi.ResourceOptions(depends_on=[wait_service_agent]))
         # Wait delay after granting IAM permissions
         wait_srv_acc_permissions = time.index.Sleep("wait_srv_acc_permissions", create_duration=10s,
-        opts=pulumi.ResourceOptions(depends_on=[autokey_project_admin]))
+        opts = pulumi.ResourceOptions(depends_on=[autokey_project_admin]))
         example_autokeyconfig = gcp.kms.AutokeyConfig("example-autokeyconfig",
             folder=autokms_folder.folder_id,
             key_project=key_project.project_id.apply(lambda project_id: f"projects/{project_id}"),
-            opts=pulumi.ResourceOptions(depends_on=[wait_srv_acc_permissions]))
+            opts = pulumi.ResourceOptions(depends_on=[wait_srv_acc_permissions]))
         ```
 
         ## Import

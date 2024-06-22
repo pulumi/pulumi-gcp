@@ -255,13 +255,13 @@ class AppCheckRecaptchaV3Config(pulumi.CustomResource):
         # It takes a while for App Check to recognize the new app
         # If your app already exists, you don't have to wait 30 seconds.
         wait30s = time.index.Sleep("wait_30s", create_duration=30s,
-        opts=pulumi.ResourceOptions(depends_on=[default]))
+        opts = pulumi.ResourceOptions(depends_on=[default]))
         default_app_check_recaptcha_v3_config = gcp.firebase.AppCheckRecaptchaV3Config("default",
             project="my-project-name",
             app_id=default.app_id,
             site_secret="6Lf9YnQpAAAAAC3-MHmdAllTbPwTZxpUw5d34YzX",
             token_ttl="7200s",
-            opts=pulumi.ResourceOptions(depends_on=[wait30s]))
+            opts = pulumi.ResourceOptions(depends_on=[wait30s]))
         ```
 
         ## Import
@@ -334,13 +334,13 @@ class AppCheckRecaptchaV3Config(pulumi.CustomResource):
         # It takes a while for App Check to recognize the new app
         # If your app already exists, you don't have to wait 30 seconds.
         wait30s = time.index.Sleep("wait_30s", create_duration=30s,
-        opts=pulumi.ResourceOptions(depends_on=[default]))
+        opts = pulumi.ResourceOptions(depends_on=[default]))
         default_app_check_recaptcha_v3_config = gcp.firebase.AppCheckRecaptchaV3Config("default",
             project="my-project-name",
             app_id=default.app_id,
             site_secret="6Lf9YnQpAAAAAC3-MHmdAllTbPwTZxpUw5d34YzX",
             token_ttl="7200s",
-            opts=pulumi.ResourceOptions(depends_on=[wait30s]))
+            opts = pulumi.ResourceOptions(depends_on=[wait30s]))
         ```
 
         ## Import

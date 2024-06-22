@@ -200,13 +200,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Filestore zone of the instance.
         """
-        warnings.warn("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""", DeprecationWarning)
-        pulumi.log.warn("""zone is deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
-
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -472,13 +470,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Filestore zone of the instance.
         """
-        warnings.warn("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""", DeprecationWarning)
-        pulumi.log.warn("""zone is deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
-
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -1064,12 +1060,10 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
     def zone(self) -> pulumi.Output[str]:
         """
         The name of the Filestore zone of the instance.
         """
-        warnings.warn("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""", DeprecationWarning)
-        pulumi.log.warn("""zone is deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
-
         return pulumi.get(self, "zone")
 

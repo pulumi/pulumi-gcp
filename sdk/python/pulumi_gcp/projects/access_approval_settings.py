@@ -107,13 +107,11 @@ class AccessApprovalSettingsArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`project` is deprecated and will be removed in a future major release. Use `project_id` instead.""")
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         Project id.
         """
-        warnings.warn("""`project` is deprecated and will be removed in a future major release. Use `project_id` instead.""", DeprecationWarning)
-        pulumi.log.warn("""project is deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.""")
-
         return pulumi.get(self, "project")
 
     @project.setter
@@ -275,13 +273,11 @@ class _AccessApprovalSettingsState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`project` is deprecated and will be removed in a future major release. Use `project_id` instead.""")
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         Project id.
         """
-        warnings.warn("""`project` is deprecated and will be removed in a future major release. Use `project_id` instead.""", DeprecationWarning)
-        pulumi.log.warn("""project is deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.""")
-
         return pulumi.get(self, "project")
 
     @project.setter
@@ -367,7 +363,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
             enrolled_services=[gcp.projects.AccessApprovalSettingsEnrolledServiceArgs(
                 cloud_product="all",
             )],
-            opts=pulumi.ResourceOptions(depends_on=[iam]))
+            opts = pulumi.ResourceOptions(depends_on=[iam]))
         ```
 
         ## Import
@@ -465,7 +461,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
             enrolled_services=[gcp.projects.AccessApprovalSettingsEnrolledServiceArgs(
                 cloud_product="all",
             )],
-            opts=pulumi.ResourceOptions(depends_on=[iam]))
+            opts = pulumi.ResourceOptions(depends_on=[iam]))
         ```
 
         ## Import
@@ -659,13 +655,11 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`project` is deprecated and will be removed in a future major release. Use `project_id` instead.""")
     def project(self) -> pulumi.Output[Optional[str]]:
         """
         Project id.
         """
-        warnings.warn("""`project` is deprecated and will be removed in a future major release. Use `project_id` instead.""", DeprecationWarning)
-        pulumi.log.warn("""project is deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.""")
-
         return pulumi.get(self, "project")
 
     @property

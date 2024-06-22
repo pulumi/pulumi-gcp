@@ -236,9 +236,9 @@ class ServiceProjectAttachment(pulumi.CustomResource):
             name="Service Project",
             org_id="123456789")
         wait120s = time.index.Sleep("wait_120s", create_duration=120s,
-        opts=pulumi.ResourceOptions(depends_on=[service_project]))
+        opts = pulumi.ResourceOptions(depends_on=[service_project]))
         example = gcp.apphub.ServiceProjectAttachment("example", service_project_attachment_id=service_project.project_id,
-        opts=pulumi.ResourceOptions(depends_on=[wait120s]))
+        opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         ```
         ### Service Project Attachment Full
 
@@ -252,11 +252,11 @@ class ServiceProjectAttachment(pulumi.CustomResource):
             name="Service Project Full",
             org_id="123456789")
         wait120s = time.index.Sleep("wait_120s", create_duration=120s,
-        opts=pulumi.ResourceOptions(depends_on=[service_project_full]))
+        opts = pulumi.ResourceOptions(depends_on=[service_project_full]))
         example2 = gcp.apphub.ServiceProjectAttachment("example2",
             service_project_attachment_id=service_project_full.project_id,
             service_project=service_project_full.project_id,
-            opts=pulumi.ResourceOptions(depends_on=[wait120s]))
+            opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         ```
 
         ## Import
@@ -318,9 +318,9 @@ class ServiceProjectAttachment(pulumi.CustomResource):
             name="Service Project",
             org_id="123456789")
         wait120s = time.index.Sleep("wait_120s", create_duration=120s,
-        opts=pulumi.ResourceOptions(depends_on=[service_project]))
+        opts = pulumi.ResourceOptions(depends_on=[service_project]))
         example = gcp.apphub.ServiceProjectAttachment("example", service_project_attachment_id=service_project.project_id,
-        opts=pulumi.ResourceOptions(depends_on=[wait120s]))
+        opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         ```
         ### Service Project Attachment Full
 
@@ -334,11 +334,11 @@ class ServiceProjectAttachment(pulumi.CustomResource):
             name="Service Project Full",
             org_id="123456789")
         wait120s = time.index.Sleep("wait_120s", create_duration=120s,
-        opts=pulumi.ResourceOptions(depends_on=[service_project_full]))
+        opts = pulumi.ResourceOptions(depends_on=[service_project_full]))
         example2 = gcp.apphub.ServiceProjectAttachment("example2",
             service_project_attachment_id=service_project_full.project_id,
             service_project=service_project_full.project_id,
-            opts=pulumi.ResourceOptions(depends_on=[wait120s]))
+            opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         ```
 
         ## Import

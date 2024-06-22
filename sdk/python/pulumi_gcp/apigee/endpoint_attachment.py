@@ -260,7 +260,7 @@ class EndpointAttachment(pulumi.CustomResource):
             analytics_region="us-central1",
             project_id=current.project,
             authorized_network=apigee_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
         apigee_endpoint_attachment = gcp.apigee.EndpointAttachment("apigee_endpoint_attachment",
             org_id=apigee_org.id,
             endpoint_attachment_id="test1",
@@ -336,7 +336,7 @@ class EndpointAttachment(pulumi.CustomResource):
             analytics_region="us-central1",
             project_id=current.project,
             authorized_network=apigee_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
         apigee_endpoint_attachment = gcp.apigee.EndpointAttachment("apigee_endpoint_attachment",
             org_id=apigee_org.id,
             endpoint_attachment_id="test1",

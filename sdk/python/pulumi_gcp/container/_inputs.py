@@ -3769,13 +3769,11 @@ class ClusterBinaryAuthorizationArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated in favor of evaluation_mode.""")
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Enable Binary Authorization for this cluster.
         """
-        warnings.warn("""Deprecated in favor of evaluation_mode.""", DeprecationWarning)
-        pulumi.log.warn("""enabled is deprecated: Deprecated in favor of evaluation_mode.""")
-
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -5654,13 +5652,11 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs:
 
     @property
     @pulumi.getter(name="relayMode")
+    @_utilities.deprecated("""Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.""")
     def relay_mode(self) -> Optional[pulumi.Input[str]]:
         """
         Mode used to make Relay available.
         """
-        warnings.warn("""Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.""", DeprecationWarning)
-        pulumi.log.warn("""relay_mode is deprecated: Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.""")
-
         return pulumi.get(self, "relay_mode")
 
     @relay_mode.setter

@@ -98,6 +98,7 @@ class AiFeatureOnlineStoreArgs:
 
     @property
     @pulumi.getter(name="embeddingManagement")
+    @_utilities.deprecated("""`embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""")
     def embedding_management(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs']]:
         """
         The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
@@ -105,9 +106,6 @@ class AiFeatureOnlineStoreArgs:
 
         > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
         """
-        warnings.warn("""`embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""", DeprecationWarning)
-        pulumi.log.warn("""embedding_management is deprecated: `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""")
-
         return pulumi.get(self, "embedding_management")
 
     @embedding_management.setter
@@ -327,6 +325,7 @@ class _AiFeatureOnlineStoreState:
 
     @property
     @pulumi.getter(name="embeddingManagement")
+    @_utilities.deprecated("""`embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""")
     def embedding_management(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs']]:
         """
         The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
@@ -334,9 +333,6 @@ class _AiFeatureOnlineStoreState:
 
         > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
         """
-        warnings.warn("""`embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""", DeprecationWarning)
-        pulumi.log.warn("""embedding_management is deprecated: `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""")
-
         return pulumi.get(self, "embedding_management")
 
     @embedding_management.setter
@@ -898,6 +894,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="embeddingManagement")
+    @_utilities.deprecated("""`embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""")
     def embedding_management(self) -> pulumi.Output['outputs.AiFeatureOnlineStoreEmbeddingManagement']:
         """
         The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
@@ -905,9 +902,6 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
 
         > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
         """
-        warnings.warn("""`embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""", DeprecationWarning)
-        pulumi.log.warn("""embedding_management is deprecated: `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""")
-
         return pulumi.get(self, "embedding_management")
 
     @property

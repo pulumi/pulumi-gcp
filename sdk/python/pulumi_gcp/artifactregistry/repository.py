@@ -758,7 +758,7 @@ class Repository(pulumi.CustomResource):
             description="example docker repository with cmek",
             format="DOCKER",
             kms_key_name="kms-key",
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```
         ### Artifact Registry Repository Virtual
 
@@ -1254,7 +1254,7 @@ class Repository(pulumi.CustomResource):
             description="example docker repository with cmek",
             format="DOCKER",
             kms_key_name="kms-key",
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```
         ### Artifact Registry Repository Virtual
 
