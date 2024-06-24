@@ -144,13 +144,11 @@ class GCPolicyMaxAgeArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated in favor of duration""")
     def days(self) -> Optional[pulumi.Input[int]]:
         """
         Number of days before applying GC policy.
         """
-        warnings.warn("""Deprecated in favor of duration""", DeprecationWarning)
-        pulumi.log.warn("""days is deprecated: Deprecated in favor of duration""")
-
         return pulumi.get(self, "days")
 
     @days.setter

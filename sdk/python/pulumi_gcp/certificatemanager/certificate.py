@@ -507,7 +507,7 @@ class Certificate(pulumi.CustomResource):
             lifetime="1814400s",
             rotation_window_percentage=34,
             key_algorithm="ECDSA_P256",
-            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
+            opts = pulumi.ResourceOptions(depends_on=[ca_authority]))
         default = gcp.certificatemanager.Certificate("default",
             name="issuance-config-cert",
             description="The default cert",
@@ -619,7 +619,7 @@ class Certificate(pulumi.CustomResource):
             lifetime="1814400s",
             rotation_window_percentage=34,
             key_algorithm="ECDSA_P256",
-            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
+            opts = pulumi.ResourceOptions(depends_on=[ca_authority]))
         default = gcp.certificatemanager.Certificate("default",
             name="issuance-config-cert",
             description="sample google managed all_regions certificate with issuance config for terraform",
@@ -834,7 +834,7 @@ class Certificate(pulumi.CustomResource):
             lifetime="1814400s",
             rotation_window_percentage=34,
             key_algorithm="ECDSA_P256",
-            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
+            opts = pulumi.ResourceOptions(depends_on=[ca_authority]))
         default = gcp.certificatemanager.Certificate("default",
             name="issuance-config-cert",
             description="The default cert",
@@ -946,7 +946,7 @@ class Certificate(pulumi.CustomResource):
             lifetime="1814400s",
             rotation_window_percentage=34,
             key_algorithm="ECDSA_P256",
-            opts=pulumi.ResourceOptions(depends_on=[ca_authority]))
+            opts = pulumi.ResourceOptions(depends_on=[ca_authority]))
         default = gcp.certificatemanager.Certificate("default",
             name="issuance-config-cert",
             description="sample google managed all_regions certificate with issuance config for terraform",

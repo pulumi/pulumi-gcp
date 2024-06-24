@@ -526,6 +526,7 @@ class CertificateSelfManaged(dict):
 
     @property
     @pulumi.getter(name="certificatePem")
+    @_utilities.deprecated("""`certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.""")
     def certificate_pem(self) -> Optional[str]:
         """
         (Optional, Deprecated)
@@ -535,9 +536,6 @@ class CertificateSelfManaged(dict):
 
         > **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
         """
-        warnings.warn("""`certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.""", DeprecationWarning)
-        pulumi.log.warn("""certificate_pem is deprecated: `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.""")
-
         return pulumi.get(self, "certificate_pem")
 
     @property
@@ -561,6 +559,7 @@ class CertificateSelfManaged(dict):
 
     @property
     @pulumi.getter(name="privateKeyPem")
+    @_utilities.deprecated("""`private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.""")
     def private_key_pem(self) -> Optional[str]:
         """
         (Optional, Deprecated)
@@ -569,9 +568,6 @@ class CertificateSelfManaged(dict):
 
         > **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
         """
-        warnings.warn("""`private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.""", DeprecationWarning)
-        pulumi.log.warn("""private_key_pem is deprecated: `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.""")
-
         return pulumi.get(self, "private_key_pem")
 
 

@@ -1549,6 +1549,7 @@ class ServiceTemplateSpecArgs:
 
     @property
     @pulumi.getter(name="servingState")
+    @_utilities.deprecated("""`serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""")
     def serving_state(self) -> Optional[pulumi.Input[str]]:
         """
         (Output, Deprecated)
@@ -1559,9 +1560,6 @@ class ServiceTemplateSpecArgs:
 
         > **Warning:** `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         """
-        warnings.warn("""`serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""", DeprecationWarning)
-        pulumi.log.warn("""serving_state is deprecated: `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""")
-
         return pulumi.get(self, "serving_state")
 
     @serving_state.setter
@@ -1720,6 +1718,7 @@ class ServiceTemplateSpecContainerArgs:
 
     @property
     @pulumi.getter(name="envFroms")
+    @_utilities.deprecated("""`env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""")
     def env_froms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvFromArgs']]]]:
         """
         (Optional, Deprecated)
@@ -1732,9 +1731,6 @@ class ServiceTemplateSpecContainerArgs:
 
         > **Warning:** `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         """
-        warnings.warn("""`env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""", DeprecationWarning)
-        pulumi.log.warn("""env_froms is deprecated: `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""")
-
         return pulumi.get(self, "env_froms")
 
     @env_froms.setter
@@ -1837,6 +1833,7 @@ class ServiceTemplateSpecContainerArgs:
 
     @property
     @pulumi.getter(name="workingDir")
+    @_utilities.deprecated("""`working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""")
     def working_dir(self) -> Optional[pulumi.Input[str]]:
         """
         (Optional, Deprecated)
@@ -1846,9 +1843,6 @@ class ServiceTemplateSpecContainerArgs:
 
         > **Warning:** `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         """
-        warnings.warn("""`working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""", DeprecationWarning)
-        pulumi.log.warn("""working_dir is deprecated: `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""")
-
         return pulumi.get(self, "working_dir")
 
     @working_dir.setter

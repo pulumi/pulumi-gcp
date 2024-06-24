@@ -272,7 +272,7 @@ class Schema(pulumi.CustomResource):
                 schema="projects/my-project-name/schemas/example",
                 encoding="JSON",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[example]))
+            opts = pulumi.ResourceOptions(depends_on=[example]))
         ```
 
         ## Import
@@ -383,7 +383,7 @@ class Schema(pulumi.CustomResource):
                 schema="projects/my-project-name/schemas/example",
                 encoding="JSON",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[example]))
+            opts = pulumi.ResourceOptions(depends_on=[example]))
         ```
 
         ## Import

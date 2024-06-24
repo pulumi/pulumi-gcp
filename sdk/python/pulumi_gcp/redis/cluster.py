@@ -625,7 +625,7 @@ class Cluster(pulumi.CustomResource):
             zone_distribution_config=gcp.redis.ClusterZoneDistributionConfigArgs(
                 mode="MULTI_ZONE",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[default]))
+            opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
         ### Redis Cluster Ha Single Zone
 
@@ -661,7 +661,7 @@ class Cluster(pulumi.CustomResource):
                 mode="SINGLE_ZONE",
                 zone="us-central1-f",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[default]))
+            opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
 
         ## Import
@@ -775,7 +775,7 @@ class Cluster(pulumi.CustomResource):
             zone_distribution_config=gcp.redis.ClusterZoneDistributionConfigArgs(
                 mode="MULTI_ZONE",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[default]))
+            opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
         ### Redis Cluster Ha Single Zone
 
@@ -811,7 +811,7 @@ class Cluster(pulumi.CustomResource):
                 mode="SINGLE_ZONE",
                 zone="us-central1-f",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[default]))
+            opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
 
         ## Import

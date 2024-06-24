@@ -652,7 +652,7 @@ class Database(pulumi.CustomResource):
             cmek_config=gcp.firestore.DatabaseCmekConfigArgs(
                 kms_key_name=crypto_key.id,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
+            opts = pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
         ### Firestore Default Database In Datastore Mode
 
@@ -714,7 +714,7 @@ class Database(pulumi.CustomResource):
             cmek_config=gcp.firestore.DatabaseCmekConfigArgs(
                 kms_key_name=crypto_key.id,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
+            opts = pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
 
         ## Import
@@ -859,7 +859,7 @@ class Database(pulumi.CustomResource):
             cmek_config=gcp.firestore.DatabaseCmekConfigArgs(
                 kms_key_name=crypto_key.id,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
+            opts = pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
         ### Firestore Default Database In Datastore Mode
 
@@ -921,7 +921,7 @@ class Database(pulumi.CustomResource):
             cmek_config=gcp.firestore.DatabaseCmekConfigArgs(
                 kms_key_name=crypto_key.id,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
+            opts = pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
 
         ## Import

@@ -628,7 +628,7 @@ class Instance(pulumi.CustomResource):
             labels={
                 "test": "value",
             },
-            opts=pulumi.ResourceOptions(depends_on=[default]))
+            opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
 
         ## Import
@@ -739,7 +739,7 @@ class Instance(pulumi.CustomResource):
             labels={
                 "test": "value",
             },
-            opts=pulumi.ResourceOptions(depends_on=[default]))
+            opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
 
         ## Import

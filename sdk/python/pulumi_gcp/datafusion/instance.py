@@ -823,13 +823,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="serviceAccount")
+    @_utilities.deprecated("""`service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""")
     def service_account(self) -> Optional[pulumi.Input[str]]:
         """
         Service account which will be used to access resources in the customer project.
         """
-        warnings.warn("""`service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""", DeprecationWarning)
-        pulumi.log.warn("""service_account is deprecated: `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""")
-
         return pulumi.get(self, "service_account")
 
     @service_account.setter
@@ -1059,7 +1057,7 @@ class Instance(pulumi.CustomResource):
             crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
                 key_reference=crypto_key.id,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key_member]))
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key_member]))
         ```
         ### Data Fusion Instance Enterprise
 
@@ -1268,7 +1266,7 @@ class Instance(pulumi.CustomResource):
             crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
                 key_reference=crypto_key.id,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key_member]))
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key_member]))
         ```
         ### Data Fusion Instance Enterprise
 
@@ -1761,13 +1759,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceAccount")
+    @_utilities.deprecated("""`service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""")
     def service_account(self) -> pulumi.Output[str]:
         """
         Service account which will be used to access resources in the customer project.
         """
-        warnings.warn("""`service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""", DeprecationWarning)
-        pulumi.log.warn("""service_account is deprecated: `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""")
-
         return pulumi.get(self, "service_account")
 
     @property

@@ -967,7 +967,7 @@ class Certificate(pulumi.CustomResource):
                     key=std.filebase64(input="test-fixtures/rsa_public.pem").result,
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[default_authority]))
+            opts = pulumi.ResourceOptions(depends_on=[default_authority]))
         ```
         ### Privateca Certificate Custom Ski
 
@@ -1056,7 +1056,7 @@ class Certificate(pulumi.CustomResource):
                     key=std.filebase64(input="test-fixtures/rsa_public.pem").result,
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[default_authority]))
+            opts = pulumi.ResourceOptions(depends_on=[default_authority]))
         ```
 
         ## Import
@@ -1496,7 +1496,7 @@ class Certificate(pulumi.CustomResource):
                     key=std.filebase64(input="test-fixtures/rsa_public.pem").result,
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[default_authority]))
+            opts = pulumi.ResourceOptions(depends_on=[default_authority]))
         ```
         ### Privateca Certificate Custom Ski
 
@@ -1585,7 +1585,7 @@ class Certificate(pulumi.CustomResource):
                     key=std.filebase64(input="test-fixtures/rsa_public.pem").result,
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[default_authority]))
+            opts = pulumi.ResourceOptions(depends_on=[default_authority]))
         ```
 
         ## Import

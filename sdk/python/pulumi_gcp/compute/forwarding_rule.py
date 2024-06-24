@@ -1901,7 +1901,7 @@ class ForwardingRule(pulumi.CustomResource):
             )],
             target_tags=["allow-ssh"],
             direction="INGRESS",
-            opts=pulumi.ResourceOptions(depends_on=[fw1]))
+            opts = pulumi.ResourceOptions(depends_on=[fw1]))
         fw3 = gcp.compute.Firewall("fw3",
             name="website-fw-3",
             network=default_network.id,
@@ -1914,7 +1914,7 @@ class ForwardingRule(pulumi.CustomResource):
             )],
             target_tags=["load-balanced-backend"],
             direction="INGRESS",
-            opts=pulumi.ResourceOptions(depends_on=[fw2]))
+            opts = pulumi.ResourceOptions(depends_on=[fw2]))
         fw4 = gcp.compute.Firewall("fw4",
             name="website-fw-4",
             network=default_network.id,
@@ -1935,14 +1935,14 @@ class ForwardingRule(pulumi.CustomResource):
                 ),
             ],
             direction="INGRESS",
-            opts=pulumi.ResourceOptions(depends_on=[fw3]))
+            opts = pulumi.ResourceOptions(depends_on=[fw3]))
         default_region_health_check = gcp.compute.RegionHealthCheck("default",
             region="us-central1",
             name="website-hc",
             http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
                 port_specification="USE_SERVING_PORT",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[fw4]))
+            opts = pulumi.ResourceOptions(depends_on=[fw4]))
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             load_balancing_scheme="INTERNAL_MANAGED",
             backends=[gcp.compute.RegionBackendServiceBackendArgs(
@@ -1981,7 +1981,7 @@ class ForwardingRule(pulumi.CustomResource):
             network=default_network.id,
             subnetwork=default_subnetwork.id,
             network_tier="PREMIUM",
-            opts=pulumi.ResourceOptions(depends_on=[proxy]))
+            opts = pulumi.ResourceOptions(depends_on=[proxy]))
         ```
         ### Forwarding Rule Regional Http Xlb
 
@@ -2051,7 +2051,7 @@ class ForwardingRule(pulumi.CustomResource):
             )],
             target_tags=["allow-ssh"],
             direction="INGRESS",
-            opts=pulumi.ResourceOptions(depends_on=[fw1]))
+            opts = pulumi.ResourceOptions(depends_on=[fw1]))
         fw3 = gcp.compute.Firewall("fw3",
             name="website-fw-3",
             network=default_network.id,
@@ -2064,7 +2064,7 @@ class ForwardingRule(pulumi.CustomResource):
             )],
             target_tags=["load-balanced-backend"],
             direction="INGRESS",
-            opts=pulumi.ResourceOptions(depends_on=[fw2]))
+            opts = pulumi.ResourceOptions(depends_on=[fw2]))
         fw4 = gcp.compute.Firewall("fw4",
             name="website-fw-4",
             network=default_network.id,
@@ -2085,14 +2085,14 @@ class ForwardingRule(pulumi.CustomResource):
                 ),
             ],
             direction="INGRESS",
-            opts=pulumi.ResourceOptions(depends_on=[fw3]))
+            opts = pulumi.ResourceOptions(depends_on=[fw3]))
         default_region_health_check = gcp.compute.RegionHealthCheck("default",
             region="us-central1",
             name="website-hc",
             http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
                 port_specification="USE_SERVING_PORT",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[fw4]))
+            opts = pulumi.ResourceOptions(depends_on=[fw4]))
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             load_balancing_scheme="EXTERNAL_MANAGED",
             backends=[gcp.compute.RegionBackendServiceBackendArgs(
@@ -2135,7 +2135,7 @@ class ForwardingRule(pulumi.CustomResource):
             network=default_network.id,
             ip_address=default_address.address,
             network_tier="STANDARD",
-            opts=pulumi.ResourceOptions(depends_on=[proxy]))
+            opts = pulumi.ResourceOptions(depends_on=[proxy]))
         ```
         ### Forwarding Rule Vpc Psc
 
@@ -2308,7 +2308,7 @@ class ForwardingRule(pulumi.CustomResource):
                 "34.121.88.0/24",
                 "35.187.239.137",
             ],
-            opts=pulumi.ResourceOptions(depends_on=[external_forwarding_rule]))
+            opts = pulumi.ResourceOptions(depends_on=[external_forwarding_rule]))
         ```
         ### Forwarding Rule Internallb Ipv6
 
@@ -2799,7 +2799,7 @@ class ForwardingRule(pulumi.CustomResource):
             )],
             target_tags=["allow-ssh"],
             direction="INGRESS",
-            opts=pulumi.ResourceOptions(depends_on=[fw1]))
+            opts = pulumi.ResourceOptions(depends_on=[fw1]))
         fw3 = gcp.compute.Firewall("fw3",
             name="website-fw-3",
             network=default_network.id,
@@ -2812,7 +2812,7 @@ class ForwardingRule(pulumi.CustomResource):
             )],
             target_tags=["load-balanced-backend"],
             direction="INGRESS",
-            opts=pulumi.ResourceOptions(depends_on=[fw2]))
+            opts = pulumi.ResourceOptions(depends_on=[fw2]))
         fw4 = gcp.compute.Firewall("fw4",
             name="website-fw-4",
             network=default_network.id,
@@ -2833,14 +2833,14 @@ class ForwardingRule(pulumi.CustomResource):
                 ),
             ],
             direction="INGRESS",
-            opts=pulumi.ResourceOptions(depends_on=[fw3]))
+            opts = pulumi.ResourceOptions(depends_on=[fw3]))
         default_region_health_check = gcp.compute.RegionHealthCheck("default",
             region="us-central1",
             name="website-hc",
             http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
                 port_specification="USE_SERVING_PORT",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[fw4]))
+            opts = pulumi.ResourceOptions(depends_on=[fw4]))
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             load_balancing_scheme="INTERNAL_MANAGED",
             backends=[gcp.compute.RegionBackendServiceBackendArgs(
@@ -2879,7 +2879,7 @@ class ForwardingRule(pulumi.CustomResource):
             network=default_network.id,
             subnetwork=default_subnetwork.id,
             network_tier="PREMIUM",
-            opts=pulumi.ResourceOptions(depends_on=[proxy]))
+            opts = pulumi.ResourceOptions(depends_on=[proxy]))
         ```
         ### Forwarding Rule Regional Http Xlb
 
@@ -2949,7 +2949,7 @@ class ForwardingRule(pulumi.CustomResource):
             )],
             target_tags=["allow-ssh"],
             direction="INGRESS",
-            opts=pulumi.ResourceOptions(depends_on=[fw1]))
+            opts = pulumi.ResourceOptions(depends_on=[fw1]))
         fw3 = gcp.compute.Firewall("fw3",
             name="website-fw-3",
             network=default_network.id,
@@ -2962,7 +2962,7 @@ class ForwardingRule(pulumi.CustomResource):
             )],
             target_tags=["load-balanced-backend"],
             direction="INGRESS",
-            opts=pulumi.ResourceOptions(depends_on=[fw2]))
+            opts = pulumi.ResourceOptions(depends_on=[fw2]))
         fw4 = gcp.compute.Firewall("fw4",
             name="website-fw-4",
             network=default_network.id,
@@ -2983,14 +2983,14 @@ class ForwardingRule(pulumi.CustomResource):
                 ),
             ],
             direction="INGRESS",
-            opts=pulumi.ResourceOptions(depends_on=[fw3]))
+            opts = pulumi.ResourceOptions(depends_on=[fw3]))
         default_region_health_check = gcp.compute.RegionHealthCheck("default",
             region="us-central1",
             name="website-hc",
             http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
                 port_specification="USE_SERVING_PORT",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[fw4]))
+            opts = pulumi.ResourceOptions(depends_on=[fw4]))
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             load_balancing_scheme="EXTERNAL_MANAGED",
             backends=[gcp.compute.RegionBackendServiceBackendArgs(
@@ -3033,7 +3033,7 @@ class ForwardingRule(pulumi.CustomResource):
             network=default_network.id,
             ip_address=default_address.address,
             network_tier="STANDARD",
-            opts=pulumi.ResourceOptions(depends_on=[proxy]))
+            opts = pulumi.ResourceOptions(depends_on=[proxy]))
         ```
         ### Forwarding Rule Vpc Psc
 
@@ -3206,7 +3206,7 @@ class ForwardingRule(pulumi.CustomResource):
                 "34.121.88.0/24",
                 "35.187.239.137",
             ],
-            opts=pulumi.ResourceOptions(depends_on=[external_forwarding_rule]))
+            opts = pulumi.ResourceOptions(depends_on=[external_forwarding_rule]))
         ```
         ### Forwarding Rule Internallb Ipv6
 

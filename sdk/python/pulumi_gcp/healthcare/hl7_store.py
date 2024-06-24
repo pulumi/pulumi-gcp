@@ -126,6 +126,7 @@ class Hl7StoreArgs:
 
     @property
     @pulumi.getter(name="notificationConfig")
+    @_utilities.deprecated("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
     def notification_config(self) -> Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']]:
         """
         (Optional, Deprecated)
@@ -134,9 +135,6 @@ class Hl7StoreArgs:
 
         > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         """
-        warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
-        pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
-
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
@@ -323,6 +321,7 @@ class _Hl7StoreState:
 
     @property
     @pulumi.getter(name="notificationConfig")
+    @_utilities.deprecated("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
     def notification_config(self) -> Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']]:
         """
         (Optional, Deprecated)
@@ -331,9 +330,6 @@ class _Hl7StoreState:
 
         > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         """
-        warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
-        pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
-
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
@@ -962,6 +958,7 @@ class Hl7Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationConfig")
+    @_utilities.deprecated("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
     def notification_config(self) -> pulumi.Output[Optional['outputs.Hl7StoreNotificationConfig']]:
         """
         (Optional, Deprecated)
@@ -970,9 +967,6 @@ class Hl7Store(pulumi.CustomResource):
 
         > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         """
-        warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
-        pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
-
         return pulumi.get(self, "notification_config")
 
     @property

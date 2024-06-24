@@ -376,7 +376,7 @@ class Endpoint(pulumi.CustomResource):
             location="us-central1-f",
             network=default.id,
             severity="INFORMATIONAL",
-            opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[private_service_connection]))
         ```
 
         ## Import
@@ -455,7 +455,7 @@ class Endpoint(pulumi.CustomResource):
             location="us-central1-f",
             network=default.id,
             severity="INFORMATIONAL",
-            opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[private_service_connection]))
         ```
 
         ## Import

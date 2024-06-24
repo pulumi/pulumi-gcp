@@ -680,7 +680,7 @@ class Stream(pulumi.CustomResource):
                 ),
             ),
             customer_managed_encryption_key="kms-name",
-            opts=pulumi.ResourceOptions(depends_on=[key_user]))
+            opts = pulumi.ResourceOptions(depends_on=[key_user]))
         ```
         ### Datastream Stream Postgresql
 
@@ -887,7 +887,7 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             name="db",
             instance=instance.name,
-            opts=pulumi.ResourceOptions(depends_on=[user]))
+            opts = pulumi.ResourceOptions(depends_on=[user]))
         source = gcp.datastream.ConnectionProfile("source",
             display_name="SQL Server Source",
             location="us-central1",
@@ -1110,7 +1110,7 @@ class Stream(pulumi.CustomResource):
                 ),
             ),
             backfill_none=gcp.datastream.StreamBackfillNoneArgs(),
-            opts=pulumi.ResourceOptions(depends_on=[bigquery_key_user]))
+            opts = pulumi.ResourceOptions(depends_on=[bigquery_key_user]))
         ```
 
         ## Import
@@ -1341,7 +1341,7 @@ class Stream(pulumi.CustomResource):
                 ),
             ),
             customer_managed_encryption_key="kms-name",
-            opts=pulumi.ResourceOptions(depends_on=[key_user]))
+            opts = pulumi.ResourceOptions(depends_on=[key_user]))
         ```
         ### Datastream Stream Postgresql
 
@@ -1548,7 +1548,7 @@ class Stream(pulumi.CustomResource):
         db = gcp.sql.Database("db",
             name="db",
             instance=instance.name,
-            opts=pulumi.ResourceOptions(depends_on=[user]))
+            opts = pulumi.ResourceOptions(depends_on=[user]))
         source = gcp.datastream.ConnectionProfile("source",
             display_name="SQL Server Source",
             location="us-central1",
@@ -1771,7 +1771,7 @@ class Stream(pulumi.CustomResource):
                 ),
             ),
             backfill_none=gcp.datastream.StreamBackfillNoneArgs(),
-            opts=pulumi.ResourceOptions(depends_on=[bigquery_key_user]))
+            opts = pulumi.ResourceOptions(depends_on=[bigquery_key_user]))
         ```
 
         ## Import

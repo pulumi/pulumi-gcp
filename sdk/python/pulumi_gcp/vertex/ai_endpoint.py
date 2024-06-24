@@ -518,7 +518,7 @@ class AiEndpoint(pulumi.CustomResource):
             encryption_spec=gcp.vertex.AiEndpointEncryptionSpecArgs(
                 kms_key_name="kms-name",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
             crypto_key_id="kms-name",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
@@ -616,7 +616,7 @@ class AiEndpoint(pulumi.CustomResource):
             encryption_spec=gcp.vertex.AiEndpointEncryptionSpecArgs(
                 kms_key_name="kms-name",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
             crypto_key_id="kms-name",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",

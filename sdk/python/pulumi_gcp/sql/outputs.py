@@ -1549,13 +1549,11 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
 
     @property
     @pulumi.getter(name="requireSsl")
+    @_utilities.deprecated("""`require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.""")
     def require_ssl(self) -> Optional[bool]:
         """
         Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`. It will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.
         """
-        warnings.warn("""`require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.""", DeprecationWarning)
-        pulumi.log.warn("""require_ssl is deprecated: `require_ssl` will be fully deprecated in a future major release. For now, please use `ssl_mode` with a compatible `require_ssl` value instead.""")
-
         return pulumi.get(self, "require_ssl")
 
     @property

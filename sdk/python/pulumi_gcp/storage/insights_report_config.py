@@ -309,7 +309,7 @@ class InsightsReportConfig(pulumi.CustomResource):
                     destination_path="test-insights-reports",
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[admin]))
+            opts = pulumi.ResourceOptions(depends_on=[admin]))
         ```
 
         ## Import
@@ -414,7 +414,7 @@ class InsightsReportConfig(pulumi.CustomResource):
                     destination_path="test-insights-reports",
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[admin]))
+            opts = pulumi.ResourceOptions(depends_on=[admin]))
         ```
 
         ## Import

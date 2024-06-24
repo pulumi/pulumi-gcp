@@ -254,7 +254,7 @@ class FolderSettings(pulumi.CustomResource):
             folder=my_folder.folder_id,
             kms_key_name="kms-key",
             storage_location="us-central1",
-            opts=pulumi.ResourceOptions(depends_on=[iam]))
+            opts = pulumi.ResourceOptions(depends_on=[iam]))
         ```
 
         ## Import
@@ -321,7 +321,7 @@ class FolderSettings(pulumi.CustomResource):
             folder=my_folder.folder_id,
             kms_key_name="kms-key",
             storage_location="us-central1",
-            opts=pulumi.ResourceOptions(depends_on=[iam]))
+            opts = pulumi.ResourceOptions(depends_on=[iam]))
         ```
 
         ## Import

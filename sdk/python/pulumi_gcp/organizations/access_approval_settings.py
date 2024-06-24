@@ -325,7 +325,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
             enrolled_services=[gcp.organizations.AccessApprovalSettingsEnrolledServiceArgs(
                 cloud_product="all",
             )],
-            opts=pulumi.ResourceOptions(depends_on=[iam]))
+            opts = pulumi.ResourceOptions(depends_on=[iam]))
         ```
 
         ## Import
@@ -430,7 +430,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
             enrolled_services=[gcp.organizations.AccessApprovalSettingsEnrolledServiceArgs(
                 cloud_product="all",
             )],
-            opts=pulumi.ResourceOptions(depends_on=[iam]))
+            opts = pulumi.ResourceOptions(depends_on=[iam]))
         ```
 
         ## Import

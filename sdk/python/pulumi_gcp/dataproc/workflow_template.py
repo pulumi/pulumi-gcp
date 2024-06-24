@@ -178,13 +178,11 @@ class WorkflowTemplateArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""version is not useful as a configurable field, and will be removed in the future.""")
     def version(self) -> Optional[pulumi.Input[int]]:
         """
         Output only. The current version of this workflow template.
         """
-        warnings.warn("""version is not useful as a configurable field, and will be removed in the future.""", DeprecationWarning)
-        pulumi.log.warn("""version is deprecated: version is not useful as a configurable field, and will be removed in the future.""")
-
         return pulumi.get(self, "version")
 
     @version.setter
@@ -420,13 +418,11 @@ class _WorkflowTemplateState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""version is not useful as a configurable field, and will be removed in the future.""")
     def version(self) -> Optional[pulumi.Input[int]]:
         """
         Output only. The current version of this workflow template.
         """
-        warnings.warn("""version is not useful as a configurable field, and will be removed in the future.""", DeprecationWarning)
-        pulumi.log.warn("""version is deprecated: version is not useful as a configurable field, and will be removed in the future.""")
-
         return pulumi.get(self, "version")
 
     @version.setter
@@ -892,12 +888,10 @@ class WorkflowTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""version is not useful as a configurable field, and will be removed in the future.""")
     def version(self) -> pulumi.Output[int]:
         """
         Output only. The current version of this workflow template.
         """
-        warnings.warn("""version is not useful as a configurable field, and will be removed in the future.""", DeprecationWarning)
-        pulumi.log.warn("""version is deprecated: version is not useful as a configurable field, and will be removed in the future.""")
-
         return pulumi.get(self, "version")
 

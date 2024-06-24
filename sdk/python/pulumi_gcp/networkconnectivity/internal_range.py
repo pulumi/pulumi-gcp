@@ -584,7 +584,7 @@ class InternalRange(pulumi.CustomResource):
             peering="FOR_SELF",
             ip_cidr_range="10.0.0.0/30",
             overlaps=["OVERLAP_EXISTING_SUBNET_RANGE"],
-            opts=pulumi.ResourceOptions(depends_on=[default_subnetwork]))
+            opts = pulumi.ResourceOptions(depends_on=[default_subnetwork]))
         ```
 
         ## Import
@@ -732,7 +732,7 @@ class InternalRange(pulumi.CustomResource):
             peering="FOR_SELF",
             ip_cidr_range="10.0.0.0/30",
             overlaps=["OVERLAP_EXISTING_SUBNET_RANGE"],
-            opts=pulumi.ResourceOptions(depends_on=[default_subnetwork]))
+            opts = pulumi.ResourceOptions(depends_on=[default_subnetwork]))
         ```
 
         ## Import

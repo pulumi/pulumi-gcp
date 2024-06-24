@@ -251,7 +251,7 @@ class OrganizationSettings(pulumi.CustomResource):
             kms_key_name="kms-key",
             organization="123456789",
             storage_location="us-central1",
-            opts=pulumi.ResourceOptions(depends_on=[iam]))
+            opts = pulumi.ResourceOptions(depends_on=[iam]))
         ```
 
         ## Import
@@ -315,7 +315,7 @@ class OrganizationSettings(pulumi.CustomResource):
             kms_key_name="kms-key",
             organization="123456789",
             storage_location="us-central1",
-            opts=pulumi.ResourceOptions(depends_on=[iam]))
+            opts = pulumi.ResourceOptions(depends_on=[iam]))
         ```
 
         ## Import

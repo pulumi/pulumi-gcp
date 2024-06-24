@@ -463,15 +463,15 @@ class Service(pulumi.CustomResource):
             project=service_project.project_id,
             service="compute.googleapis.com")
         wait120s = time.index.Sleep("wait_120s", create_duration=120s,
-        opts=pulumi.ResourceOptions(depends_on=[compute_service_project]))
+        opts = pulumi.ResourceOptions(depends_on=[compute_service_project]))
         service_project_attachment = gcp.apphub.ServiceProjectAttachment("service_project_attachment", service_project_attachment_id=service_project.project_id,
-        opts=pulumi.ResourceOptions(depends_on=[wait120s]))
+        opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         # VPC network
         ilb_network = gcp.compute.Network("ilb_network",
             name="l7-ilb-network",
             project=service_project.project_id,
             auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(depends_on=[wait120s]))
+            opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         # backend subnet
         ilb_subnet = gcp.compute.Subnetwork("ilb_subnet",
             name="l7-ilb-subnet",
@@ -488,7 +488,7 @@ class Service(pulumi.CustomResource):
             tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
                 port=80,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[wait120s]))
+            opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         # backend service
         backend = gcp.compute.RegionBackendService("backend",
             name="l7-ilb-backend-subnet",
@@ -510,7 +510,7 @@ class Service(pulumi.CustomResource):
         catalog_service = gcp.apphub.get_discovered_service_output(location="us-central1",
             service_uri=forwarding_rule.id.apply(lambda id: f"//compute.googleapis.com/{id}"))
         wait120s_for_resource_ingestion = time.index.Sleep("wait_120s_for_resource_ingestion", create_duration=120s,
-        opts=pulumi.ResourceOptions(depends_on=[forwarding_rule]))
+        opts = pulumi.ResourceOptions(depends_on=[forwarding_rule]))
         example = gcp.apphub.Service("example",
             location="us-central1",
             application_id=application.application_id,
@@ -540,15 +540,15 @@ class Service(pulumi.CustomResource):
             project=service_project.project_id,
             service="compute.googleapis.com")
         wait120s = time.index.Sleep("wait_120s", create_duration=120s,
-        opts=pulumi.ResourceOptions(depends_on=[compute_service_project]))
+        opts = pulumi.ResourceOptions(depends_on=[compute_service_project]))
         service_project_attachment = gcp.apphub.ServiceProjectAttachment("service_project_attachment", service_project_attachment_id=service_project.project_id,
-        opts=pulumi.ResourceOptions(depends_on=[wait120s]))
+        opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         # VPC network
         ilb_network = gcp.compute.Network("ilb_network",
             name="l7-ilb-network",
             project=service_project.project_id,
             auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(depends_on=[wait120s]))
+            opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         # backend subnet
         ilb_subnet = gcp.compute.Subnetwork("ilb_subnet",
             name="l7-ilb-subnet",
@@ -565,7 +565,7 @@ class Service(pulumi.CustomResource):
             tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
                 port=80,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[wait120s]))
+            opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         # backend service
         backend = gcp.compute.RegionBackendService("backend",
             name="l7-ilb-backend-subnet",
@@ -587,7 +587,7 @@ class Service(pulumi.CustomResource):
         catalog_service = gcp.apphub.get_discovered_service_output(location="us-central1",
             service_uri=forwarding_rule.id.apply(lambda id: f"//compute.googleapis.com/{id}"))
         wait120s_for_resource_ingestion = time.index.Sleep("wait_120s_for_resource_ingestion", create_duration=120s,
-        opts=pulumi.ResourceOptions(depends_on=[forwarding_rule]))
+        opts = pulumi.ResourceOptions(depends_on=[forwarding_rule]))
         example = gcp.apphub.Service("example",
             location="us-central1",
             application_id=application.application_id,
@@ -691,15 +691,15 @@ class Service(pulumi.CustomResource):
             project=service_project.project_id,
             service="compute.googleapis.com")
         wait120s = time.index.Sleep("wait_120s", create_duration=120s,
-        opts=pulumi.ResourceOptions(depends_on=[compute_service_project]))
+        opts = pulumi.ResourceOptions(depends_on=[compute_service_project]))
         service_project_attachment = gcp.apphub.ServiceProjectAttachment("service_project_attachment", service_project_attachment_id=service_project.project_id,
-        opts=pulumi.ResourceOptions(depends_on=[wait120s]))
+        opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         # VPC network
         ilb_network = gcp.compute.Network("ilb_network",
             name="l7-ilb-network",
             project=service_project.project_id,
             auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(depends_on=[wait120s]))
+            opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         # backend subnet
         ilb_subnet = gcp.compute.Subnetwork("ilb_subnet",
             name="l7-ilb-subnet",
@@ -716,7 +716,7 @@ class Service(pulumi.CustomResource):
             tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
                 port=80,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[wait120s]))
+            opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         # backend service
         backend = gcp.compute.RegionBackendService("backend",
             name="l7-ilb-backend-subnet",
@@ -738,7 +738,7 @@ class Service(pulumi.CustomResource):
         catalog_service = gcp.apphub.get_discovered_service_output(location="us-central1",
             service_uri=forwarding_rule.id.apply(lambda id: f"//compute.googleapis.com/{id}"))
         wait120s_for_resource_ingestion = time.index.Sleep("wait_120s_for_resource_ingestion", create_duration=120s,
-        opts=pulumi.ResourceOptions(depends_on=[forwarding_rule]))
+        opts = pulumi.ResourceOptions(depends_on=[forwarding_rule]))
         example = gcp.apphub.Service("example",
             location="us-central1",
             application_id=application.application_id,
@@ -768,15 +768,15 @@ class Service(pulumi.CustomResource):
             project=service_project.project_id,
             service="compute.googleapis.com")
         wait120s = time.index.Sleep("wait_120s", create_duration=120s,
-        opts=pulumi.ResourceOptions(depends_on=[compute_service_project]))
+        opts = pulumi.ResourceOptions(depends_on=[compute_service_project]))
         service_project_attachment = gcp.apphub.ServiceProjectAttachment("service_project_attachment", service_project_attachment_id=service_project.project_id,
-        opts=pulumi.ResourceOptions(depends_on=[wait120s]))
+        opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         # VPC network
         ilb_network = gcp.compute.Network("ilb_network",
             name="l7-ilb-network",
             project=service_project.project_id,
             auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(depends_on=[wait120s]))
+            opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         # backend subnet
         ilb_subnet = gcp.compute.Subnetwork("ilb_subnet",
             name="l7-ilb-subnet",
@@ -793,7 +793,7 @@ class Service(pulumi.CustomResource):
             tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
                 port=80,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[wait120s]))
+            opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         # backend service
         backend = gcp.compute.RegionBackendService("backend",
             name="l7-ilb-backend-subnet",
@@ -815,7 +815,7 @@ class Service(pulumi.CustomResource):
         catalog_service = gcp.apphub.get_discovered_service_output(location="us-central1",
             service_uri=forwarding_rule.id.apply(lambda id: f"//compute.googleapis.com/{id}"))
         wait120s_for_resource_ingestion = time.index.Sleep("wait_120s_for_resource_ingestion", create_duration=120s,
-        opts=pulumi.ResourceOptions(depends_on=[forwarding_rule]))
+        opts = pulumi.ResourceOptions(depends_on=[forwarding_rule]))
         example = gcp.apphub.Service("example",
             location="us-central1",
             application_id=application.application_id,

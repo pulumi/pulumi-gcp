@@ -487,7 +487,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
-            opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         ```
         ### Vertex Ai Index Endpoint With Psc
 
@@ -616,7 +616,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
-            opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         ```
         ### Vertex Ai Index Endpoint With Psc
 

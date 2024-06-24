@@ -180,7 +180,7 @@ class EnvGroup(pulumi.CustomResource):
             analytics_region="us-central1",
             project_id=current.project,
             authorized_network=apigee_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
         env_grp = gcp.apigee.EnvGroup("env_grp",
             name="my-envgroup",
             hostnames=["abc.foo.com"],
@@ -254,7 +254,7 @@ class EnvGroup(pulumi.CustomResource):
             analytics_region="us-central1",
             project_id=current.project,
             authorized_network=apigee_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
         env_grp = gcp.apigee.EnvGroup("env_grp",
             name="my-envgroup",
             hostnames=["abc.foo.com"],

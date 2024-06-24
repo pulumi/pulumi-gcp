@@ -296,7 +296,7 @@ class EntityType(pulumi.CustomResource):
                     ],
                 ),
             ],
-            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
+            opts = pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
 
         ## Import
@@ -375,7 +375,7 @@ class EntityType(pulumi.CustomResource):
                     ],
                 ),
             ],
-            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
+            opts = pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
 
         ## Import

@@ -1750,6 +1750,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
 
     @property
     @pulumi.getter(name="monitoringInterval")
+    @_utilities.deprecated("""`monitoring_interval` is deprecated and will be removed in a future release.""")
     def monitoring_interval(self) -> Optional[pulumi.Input[str]]:
         """
         Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
@@ -1757,9 +1758,6 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
 
         > **Warning:** `monitoring_interval` is deprecated and will be removed in a future release.
         """
-        warnings.warn("""`monitoring_interval` is deprecated and will be removed in a future release.""", DeprecationWarning)
-        pulumi.log.warn("""monitoring_interval is deprecated: `monitoring_interval` is deprecated and will be removed in a future release.""")
-
         return pulumi.get(self, "monitoring_interval")
 
     @monitoring_interval.setter

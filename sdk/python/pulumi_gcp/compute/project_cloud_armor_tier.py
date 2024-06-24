@@ -154,7 +154,7 @@ class ProjectCloudArmorTier(pulumi.CustomResource):
         cloud_armor_tier_config = gcp.compute.ProjectCloudArmorTier("cloud_armor_tier_config",
             project=project.project_id,
             cloud_armor_tier="CA_STANDARD",
-            opts=pulumi.ResourceOptions(depends_on=[compute]))
+            opts = pulumi.ResourceOptions(depends_on=[compute]))
         ```
 
         ## Import
@@ -227,7 +227,7 @@ class ProjectCloudArmorTier(pulumi.CustomResource):
         cloud_armor_tier_config = gcp.compute.ProjectCloudArmorTier("cloud_armor_tier_config",
             project=project.project_id,
             cloud_armor_tier="CA_STANDARD",
-            opts=pulumi.ResourceOptions(depends_on=[compute]))
+            opts = pulumi.ResourceOptions(depends_on=[compute]))
         ```
 
         ## Import

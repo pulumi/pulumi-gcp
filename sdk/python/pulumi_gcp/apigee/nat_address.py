@@ -196,7 +196,7 @@ class NatAddress(pulumi.CustomResource):
             project_id=current.project,
             authorized_network=apigee_network.id,
             runtime_database_encryption_key_name=apigee_key.id,
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     apigee_vpc_connection,
                     apigee_sa_keyuser,
                 ]))
@@ -295,7 +295,7 @@ class NatAddress(pulumi.CustomResource):
             project_id=current.project,
             authorized_network=apigee_network.id,
             runtime_database_encryption_key_name=apigee_key.id,
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     apigee_vpc_connection,
                     apigee_sa_keyuser,
                 ]))

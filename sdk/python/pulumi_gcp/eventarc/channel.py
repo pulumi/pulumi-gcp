@@ -334,7 +334,7 @@ class Channel(pulumi.CustomResource):
             project=test_project.project_id,
             crypto_key_name=key1["id"],
             third_party_provider=f"projects/{test_project.project_id}/locations/us-west1/providers/datadog",
-            opts=pulumi.ResourceOptions(depends_on=[key1_member]))
+            opts = pulumi.ResourceOptions(depends_on=[key1_member]))
         ```
 
         ## Import
@@ -404,7 +404,7 @@ class Channel(pulumi.CustomResource):
             project=test_project.project_id,
             crypto_key_name=key1["id"],
             third_party_provider=f"projects/{test_project.project_id}/locations/us-west1/providers/datadog",
-            opts=pulumi.ResourceOptions(depends_on=[key1_member]))
+            opts = pulumi.ResourceOptions(depends_on=[key1_member]))
         ```
 
         ## Import

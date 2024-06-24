@@ -169,7 +169,7 @@ class SyncAuthorization(pulumi.CustomResource):
             analytics_region="us-central1",
             project_id=project.project_id,
             runtime_type="HYBRID",
-            opts=pulumi.ResourceOptions(depends_on=[apigee]))
+            opts = pulumi.ResourceOptions(depends_on=[apigee]))
         service_account = gcp.serviceaccount.Account("service_account",
             account_id="my-account",
             display_name="Service Account")
@@ -180,7 +180,7 @@ class SyncAuthorization(pulumi.CustomResource):
         apigee_sync_authorization = gcp.apigee.SyncAuthorization("apigee_sync_authorization",
             name=apigee_org.name,
             identities=[service_account.email.apply(lambda email: f"serviceAccount:{email}")],
-            opts=pulumi.ResourceOptions(depends_on=[synchronizer_iam]))
+            opts = pulumi.ResourceOptions(depends_on=[synchronizer_iam]))
         ```
 
         ## Import
@@ -247,7 +247,7 @@ class SyncAuthorization(pulumi.CustomResource):
             analytics_region="us-central1",
             project_id=project.project_id,
             runtime_type="HYBRID",
-            opts=pulumi.ResourceOptions(depends_on=[apigee]))
+            opts = pulumi.ResourceOptions(depends_on=[apigee]))
         service_account = gcp.serviceaccount.Account("service_account",
             account_id="my-account",
             display_name="Service Account")
@@ -258,7 +258,7 @@ class SyncAuthorization(pulumi.CustomResource):
         apigee_sync_authorization = gcp.apigee.SyncAuthorization("apigee_sync_authorization",
             name=apigee_org.name,
             identities=[service_account.email.apply(lambda email: f"serviceAccount:{email}")],
-            opts=pulumi.ResourceOptions(depends_on=[synchronizer_iam]))
+            opts = pulumi.ResourceOptions(depends_on=[synchronizer_iam]))
         ```
 
         ## Import

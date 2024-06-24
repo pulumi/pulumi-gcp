@@ -106,6 +106,7 @@ class ClientArgs:
 
     @property
     @pulumi.getter(name="createSampleWorkflows")
+    @_utilities.deprecated("""`create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""")
     def create_sample_workflows(self) -> Optional[pulumi.Input[bool]]:
         """
         (Optional, Deprecated)
@@ -113,9 +114,6 @@ class ClientArgs:
 
         > **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
         """
-        warnings.warn("""`create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""", DeprecationWarning)
-        pulumi.log.warn("""create_sample_workflows is deprecated: `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""")
-
         return pulumi.get(self, "create_sample_workflows")
 
     @create_sample_workflows.setter
@@ -137,6 +135,7 @@ class ClientArgs:
 
     @property
     @pulumi.getter(name="provisionGmek")
+    @_utilities.deprecated("""`provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""")
     def provision_gmek(self) -> Optional[pulumi.Input[bool]]:
         """
         (Optional, Deprecated)
@@ -144,9 +143,6 @@ class ClientArgs:
 
         > **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
         """
-        warnings.warn("""`provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""", DeprecationWarning)
-        pulumi.log.warn("""provision_gmek is deprecated: `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""")
-
         return pulumi.get(self, "provision_gmek")
 
     @provision_gmek.setter
@@ -245,6 +241,7 @@ class _ClientState:
 
     @property
     @pulumi.getter(name="createSampleWorkflows")
+    @_utilities.deprecated("""`create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""")
     def create_sample_workflows(self) -> Optional[pulumi.Input[bool]]:
         """
         (Optional, Deprecated)
@@ -252,9 +249,6 @@ class _ClientState:
 
         > **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
         """
-        warnings.warn("""`create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""", DeprecationWarning)
-        pulumi.log.warn("""create_sample_workflows is deprecated: `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""")
-
         return pulumi.get(self, "create_sample_workflows")
 
     @create_sample_workflows.setter
@@ -291,6 +285,7 @@ class _ClientState:
 
     @property
     @pulumi.getter(name="provisionGmek")
+    @_utilities.deprecated("""`provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""")
     def provision_gmek(self) -> Optional[pulumi.Input[bool]]:
         """
         (Optional, Deprecated)
@@ -298,9 +293,6 @@ class _ClientState:
 
         > **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
         """
-        warnings.warn("""`provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""", DeprecationWarning)
-        pulumi.log.warn("""provision_gmek is deprecated: `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""")
-
         return pulumi.get(self, "provision_gmek")
 
     @provision_gmek.setter
@@ -625,6 +617,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createSampleWorkflows")
+    @_utilities.deprecated("""`create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""")
     def create_sample_workflows(self) -> pulumi.Output[Optional[bool]]:
         """
         (Optional, Deprecated)
@@ -632,9 +625,6 @@ class Client(pulumi.CustomResource):
 
         > **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
         """
-        warnings.warn("""`create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""", DeprecationWarning)
-        pulumi.log.warn("""create_sample_workflows is deprecated: `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.""")
-
         return pulumi.get(self, "create_sample_workflows")
 
     @property
@@ -659,6 +649,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="provisionGmek")
+    @_utilities.deprecated("""`provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""")
     def provision_gmek(self) -> pulumi.Output[Optional[bool]]:
         """
         (Optional, Deprecated)
@@ -666,9 +657,6 @@ class Client(pulumi.CustomResource):
 
         > **Warning:** `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.
         """
-        warnings.warn("""`provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""", DeprecationWarning)
-        pulumi.log.warn("""provision_gmek is deprecated: `provision_gmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloud_kms_config` is not given.""")
-
         return pulumi.get(self, "provision_gmek")
 
     @property

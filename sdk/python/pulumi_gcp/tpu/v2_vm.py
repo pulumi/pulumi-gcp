@@ -853,7 +853,7 @@ class V2Vm(pulumi.CustomResource):
             zone="us-central1-c")
         # Wait after service account creation to limit eventual consistency errors.
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
-        opts=pulumi.ResourceOptions(depends_on=[sa]))
+        opts = pulumi.ResourceOptions(depends_on=[sa]))
         tpu = gcp.tpu.V2Vm("tpu",
             name="test-tpu",
             zone="us-central1-c",
@@ -891,7 +891,7 @@ class V2Vm(pulumi.CustomResource):
                 "foo": "bar",
             },
             tags=["foo"],
-            opts=pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         ```
 
         ## Import
@@ -1012,7 +1012,7 @@ class V2Vm(pulumi.CustomResource):
             zone="us-central1-c")
         # Wait after service account creation to limit eventual consistency errors.
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
-        opts=pulumi.ResourceOptions(depends_on=[sa]))
+        opts = pulumi.ResourceOptions(depends_on=[sa]))
         tpu = gcp.tpu.V2Vm("tpu",
             name="test-tpu",
             zone="us-central1-c",
@@ -1050,7 +1050,7 @@ class V2Vm(pulumi.CustomResource):
                 "foo": "bar",
             },
             tags=["foo"],
-            opts=pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         ```
 
         ## Import

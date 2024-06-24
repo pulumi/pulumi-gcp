@@ -494,6 +494,7 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.""")
     def version(self) -> Optional[str]:
         """
         (Optional, Deprecated)
@@ -501,9 +502,6 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci(dict):
 
         > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
         """
-        warnings.warn("""The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.""", DeprecationWarning)
-        pulumi.log.warn("""version is deprecated: The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.""")
-
         return pulumi.get(self, "version")
 
 
@@ -1854,13 +1852,11 @@ class FeatureMembershipMesh(dict):
 
     @property
     @pulumi.getter(name="controlPlane")
+    @_utilities.deprecated("""Deprecated in favor of the `management` field""")
     def control_plane(self) -> Optional[str]:
         """
         **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
         """
-        warnings.warn("""Deprecated in favor of the `management` field""", DeprecationWarning)
-        pulumi.log.warn("""control_plane is deprecated: Deprecated in favor of the `management` field""")
-
         return pulumi.get(self, "control_plane")
 
     @property
