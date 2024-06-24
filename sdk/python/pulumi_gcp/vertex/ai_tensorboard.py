@@ -426,7 +426,7 @@ class AiTensorboard(pulumi.CustomResource):
             encryption_spec=gcp.vertex.AiTensorboardEncryptionSpecArgs(
                 kms_key_name="kms-name",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```
 
         ## Import
@@ -530,7 +530,7 @@ class AiTensorboard(pulumi.CustomResource):
             encryption_spec=gcp.vertex.AiTensorboardEncryptionSpecArgs(
                 kms_key_name="kms-name",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```
 
         ## Import

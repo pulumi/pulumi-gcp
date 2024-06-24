@@ -310,17 +310,17 @@ class Document(pulumi.CustomResource):
             name="project-id",
             org_id="123456789")
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
-        opts=pulumi.ResourceOptions(depends_on=[project]))
+        opts = pulumi.ResourceOptions(depends_on=[project]))
         firestore = gcp.projects.Service("firestore",
             project=project.project_id,
             service="firestore.googleapis.com",
-            opts=pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         database = gcp.firestore.Database("database",
             project=project.project_id,
             name="(default)",
             location_id="nam5",
             type="FIRESTORE_NATIVE",
-            opts=pulumi.ResourceOptions(depends_on=[firestore]))
+            opts = pulumi.ResourceOptions(depends_on=[firestore]))
         mydoc = gcp.firestore.Document("mydoc",
             project=project.project_id,
             database=database.name,
@@ -340,17 +340,17 @@ class Document(pulumi.CustomResource):
             name="project-id",
             org_id="123456789")
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
-        opts=pulumi.ResourceOptions(depends_on=[project]))
+        opts = pulumi.ResourceOptions(depends_on=[project]))
         firestore = gcp.projects.Service("firestore",
             project=project.project_id,
             service="firestore.googleapis.com",
-            opts=pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         database = gcp.firestore.Database("database",
             project=project.project_id,
             name="(default)",
             location_id="nam5",
             type="FIRESTORE_NATIVE",
-            opts=pulumi.ResourceOptions(depends_on=[firestore]))
+            opts = pulumi.ResourceOptions(depends_on=[firestore]))
         mydoc = gcp.firestore.Document("mydoc",
             project=project.project_id,
             database=database.name,
@@ -434,17 +434,17 @@ class Document(pulumi.CustomResource):
             name="project-id",
             org_id="123456789")
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
-        opts=pulumi.ResourceOptions(depends_on=[project]))
+        opts = pulumi.ResourceOptions(depends_on=[project]))
         firestore = gcp.projects.Service("firestore",
             project=project.project_id,
             service="firestore.googleapis.com",
-            opts=pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         database = gcp.firestore.Database("database",
             project=project.project_id,
             name="(default)",
             location_id="nam5",
             type="FIRESTORE_NATIVE",
-            opts=pulumi.ResourceOptions(depends_on=[firestore]))
+            opts = pulumi.ResourceOptions(depends_on=[firestore]))
         mydoc = gcp.firestore.Document("mydoc",
             project=project.project_id,
             database=database.name,
@@ -464,17 +464,17 @@ class Document(pulumi.CustomResource):
             name="project-id",
             org_id="123456789")
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
-        opts=pulumi.ResourceOptions(depends_on=[project]))
+        opts = pulumi.ResourceOptions(depends_on=[project]))
         firestore = gcp.projects.Service("firestore",
             project=project.project_id,
             service="firestore.googleapis.com",
-            opts=pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         database = gcp.firestore.Database("database",
             project=project.project_id,
             name="(default)",
             location_id="nam5",
             type="FIRESTORE_NATIVE",
-            opts=pulumi.ResourceOptions(depends_on=[firestore]))
+            opts = pulumi.ResourceOptions(depends_on=[firestore]))
         mydoc = gcp.firestore.Document("mydoc",
             project=project.project_id,
             database=database.name,

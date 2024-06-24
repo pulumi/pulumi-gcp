@@ -974,7 +974,7 @@ class Authority(pulumi.CustomResource):
                     ),
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     privateca_sa_keyuser_signerverifier,
                     privateca_sa_keyuser_viewer,
                 ]))
@@ -1315,7 +1315,7 @@ class Authority(pulumi.CustomResource):
                     ),
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     privateca_sa_keyuser_signerverifier,
                     privateca_sa_keyuser_viewer,
                 ]))

@@ -368,7 +368,7 @@ class Repository(pulumi.CustomResource):
                 app_slug="gcb-app",
                 app_installation_id=300,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     policy_pk,
                     policy_whs,
                 ]))
@@ -516,7 +516,7 @@ class Repository(pulumi.CustomResource):
                 app_slug="gcb-app",
                 app_installation_id=300,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     policy_pk,
                     policy_whs,
                 ]))

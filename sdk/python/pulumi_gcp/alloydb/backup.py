@@ -722,12 +722,12 @@ class Backup(pulumi.CustomResource):
             cluster=default_cluster.name,
             instance_id="alloydb-instance",
             instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         default = gcp.alloydb.Backup("default",
             location="us-central1",
             backup_id="alloydb-backup",
             cluster_name=default_cluster.name,
-            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
+            opts = pulumi.ResourceOptions(depends_on=[default_instance]))
         ```
         ### Alloydb Backup Full
 
@@ -756,7 +756,7 @@ class Backup(pulumi.CustomResource):
             cluster=default_cluster.name,
             instance_id="alloydb-instance",
             instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         default = gcp.alloydb.Backup("default",
             location="us-central1",
             backup_id="alloydb-backup",
@@ -766,7 +766,7 @@ class Backup(pulumi.CustomResource):
             labels={
                 "label": "key",
             },
-            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
+            opts = pulumi.ResourceOptions(depends_on=[default_instance]))
         ```
 
         ## Import
@@ -863,12 +863,12 @@ class Backup(pulumi.CustomResource):
             cluster=default_cluster.name,
             instance_id="alloydb-instance",
             instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         default = gcp.alloydb.Backup("default",
             location="us-central1",
             backup_id="alloydb-backup",
             cluster_name=default_cluster.name,
-            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
+            opts = pulumi.ResourceOptions(depends_on=[default_instance]))
         ```
         ### Alloydb Backup Full
 
@@ -897,7 +897,7 @@ class Backup(pulumi.CustomResource):
             cluster=default_cluster.name,
             instance_id="alloydb-instance",
             instance_type="PRIMARY",
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         default = gcp.alloydb.Backup("default",
             location="us-central1",
             backup_id="alloydb-backup",
@@ -907,7 +907,7 @@ class Backup(pulumi.CustomResource):
             labels={
                 "label": "key",
             },
-            opts=pulumi.ResourceOptions(depends_on=[default_instance]))
+            opts = pulumi.ResourceOptions(depends_on=[default_instance]))
         ```
 
         ## Import

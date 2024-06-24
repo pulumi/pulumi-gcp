@@ -1310,7 +1310,7 @@ class Instance(pulumi.CustomResource):
             connect_mode="PRIVATE_SERVICE_ACCESS",
             redis_version="REDIS_4_0",
             display_name="Test Instance",
-            opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[private_service_connection]))
         ```
         ### Redis Instance Mrr
 
@@ -1606,7 +1606,7 @@ class Instance(pulumi.CustomResource):
             connect_mode="PRIVATE_SERVICE_ACCESS",
             redis_version="REDIS_4_0",
             display_name="Test Instance",
-            opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[private_service_connection]))
         ```
         ### Redis Instance Mrr
 

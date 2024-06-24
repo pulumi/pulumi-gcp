@@ -581,6 +581,7 @@ class ConnectionCloudSpanner(dict):
 
     @property
     @pulumi.getter(name="useServerlessAnalytics")
+    @_utilities.deprecated("""`useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.""")
     def use_serverless_analytics(self) -> Optional[bool]:
         """
         (Optional, Deprecated)
@@ -588,9 +589,6 @@ class ConnectionCloudSpanner(dict):
 
         > **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
         """
-        warnings.warn("""`useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.""", DeprecationWarning)
-        pulumi.log.warn("""use_serverless_analytics is deprecated: `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.""")
-
         return pulumi.get(self, "use_serverless_analytics")
 
 
@@ -5905,6 +5903,7 @@ class TableTimePartitioning(dict):
 
     @property
     @pulumi.getter(name="requirePartitionFilter")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.""")
     def require_partition_filter(self) -> Optional[bool]:
         """
         If set to true, queries over this table
@@ -5912,9 +5911,6 @@ class TableTimePartitioning(dict):
         specified. `require_partition_filter` is deprecated and will be removed in
         a future major release. Use the top level field with the same name instead.
         """
-        warnings.warn("""This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.""", DeprecationWarning)
-        pulumi.log.warn("""require_partition_filter is deprecated: This field is deprecated and will be removed in a future major release; please use the top level field with the same name instead.""")
-
         return pulumi.get(self, "require_partition_filter")
 
 

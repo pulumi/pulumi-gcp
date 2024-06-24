@@ -323,6 +323,7 @@ class ClusterArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
     def network(self) -> Optional[pulumi.Input[str]]:
         """
         (Optional, Deprecated)
@@ -331,9 +332,6 @@ class ClusterArgs:
 
         > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
         """
-        warnings.warn("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""", DeprecationWarning)
-        pulumi.log.warn("""network is deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
-
         return pulumi.get(self, "network")
 
     @network.setter
@@ -868,6 +866,7 @@ class _ClusterState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
     def network(self) -> Optional[pulumi.Input[str]]:
         """
         (Optional, Deprecated)
@@ -876,9 +875,6 @@ class _ClusterState:
 
         > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
         """
-        warnings.warn("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""", DeprecationWarning)
-        pulumi.log.warn("""network is deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
-
         return pulumi.get(self, "network")
 
     @network.setter
@@ -1150,12 +1146,12 @@ class Cluster(pulumi.CustomResource):
             machine_config=gcp.alloydb.InstanceMachineConfigArgs(
                 cpu_count=2,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         source_backup = gcp.alloydb.Backup("source",
             backup_id="alloydb-backup",
             location="us-central1",
             cluster_name=source.name,
-            opts=pulumi.ResourceOptions(depends_on=[source_instance]))
+            opts = pulumi.ResourceOptions(depends_on=[source_instance]))
         restored_from_backup = gcp.alloydb.Cluster("restored_from_backup",
             cluster_id="alloydb-backup-restored",
             location="us-central1",
@@ -1203,7 +1199,7 @@ class Cluster(pulumi.CustomResource):
             machine_config=gcp.alloydb.InstanceMachineConfigArgs(
                 cpu_count=2,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         secondary = gcp.alloydb.Cluster("secondary",
             cluster_id="alloydb-secondary-cluster",
             location="us-east1",
@@ -1215,7 +1211,7 @@ class Cluster(pulumi.CustomResource):
             secondary_config=gcp.alloydb.ClusterSecondaryConfigArgs(
                 primary_cluster_name=primary.name,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[primary_instance]))
+            opts = pulumi.ResourceOptions(depends_on=[primary_instance]))
         project = gcp.organizations.get_project()
         ```
 
@@ -1416,12 +1412,12 @@ class Cluster(pulumi.CustomResource):
             machine_config=gcp.alloydb.InstanceMachineConfigArgs(
                 cpu_count=2,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         source_backup = gcp.alloydb.Backup("source",
             backup_id="alloydb-backup",
             location="us-central1",
             cluster_name=source.name,
-            opts=pulumi.ResourceOptions(depends_on=[source_instance]))
+            opts = pulumi.ResourceOptions(depends_on=[source_instance]))
         restored_from_backup = gcp.alloydb.Cluster("restored_from_backup",
             cluster_id="alloydb-backup-restored",
             location="us-central1",
@@ -1469,7 +1465,7 @@ class Cluster(pulumi.CustomResource):
             machine_config=gcp.alloydb.InstanceMachineConfigArgs(
                 cpu_count=2,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         secondary = gcp.alloydb.Cluster("secondary",
             cluster_id="alloydb-secondary-cluster",
             location="us-east1",
@@ -1481,7 +1477,7 @@ class Cluster(pulumi.CustomResource):
             secondary_config=gcp.alloydb.ClusterSecondaryConfigArgs(
                 primary_cluster_name=primary.name,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[primary_instance]))
+            opts = pulumi.ResourceOptions(depends_on=[primary_instance]))
         project = gcp.organizations.get_project()
         ```
 
@@ -1945,6 +1941,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
     def network(self) -> pulumi.Output[str]:
         """
         (Optional, Deprecated)
@@ -1953,9 +1950,6 @@ class Cluster(pulumi.CustomResource):
 
         > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
         """
-        warnings.warn("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""", DeprecationWarning)
-        pulumi.log.warn("""network is deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
-
         return pulumi.get(self, "network")
 
     @property

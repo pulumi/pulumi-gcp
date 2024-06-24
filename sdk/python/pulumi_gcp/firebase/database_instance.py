@@ -345,7 +345,7 @@ class DatabaseInstance(pulumi.CustomResource):
             region="us-central1",
             instance_id="rtdb-project-default-rtdb",
             type="DEFAULT_DATABASE",
-            opts=pulumi.ResourceOptions(depends_on=[firebase_database]))
+            opts = pulumi.ResourceOptions(depends_on=[firebase_database]))
         ```
 
         ## Import
@@ -452,7 +452,7 @@ class DatabaseInstance(pulumi.CustomResource):
             region="us-central1",
             instance_id="rtdb-project-default-rtdb",
             type="DEFAULT_DATABASE",
-            opts=pulumi.ResourceOptions(depends_on=[firebase_database]))
+            opts = pulumi.ResourceOptions(depends_on=[firebase_database]))
         ```
 
         ## Import

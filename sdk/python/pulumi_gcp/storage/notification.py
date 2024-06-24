@@ -326,7 +326,7 @@ class Notification(pulumi.CustomResource):
             custom_attributes={
                 "new-attribute": "new-attribute-value",
             },
-            opts=pulumi.ResourceOptions(depends_on=[binding]))
+            opts = pulumi.ResourceOptions(depends_on=[binding]))
         ```
 
         ## Import
@@ -407,7 +407,7 @@ class Notification(pulumi.CustomResource):
             custom_attributes={
                 "new-attribute": "new-attribute-value",
             },
-            opts=pulumi.ResourceOptions(depends_on=[binding]))
+            opts = pulumi.ResourceOptions(depends_on=[binding]))
         ```
 
         ## Import

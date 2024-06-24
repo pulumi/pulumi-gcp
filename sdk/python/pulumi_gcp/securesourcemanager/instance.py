@@ -440,7 +440,7 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             instance_id="my-instance",
             kms_key=crypto_key.id,
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
         ### Secure Source Manager Instance Private
 
@@ -496,7 +496,7 @@ class Instance(pulumi.CustomResource):
             members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
         # ca pool IAM permissions can take time to propagate
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
-        opts=pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
+        opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         default = gcp.securesourcemanager.Instance("default",
             instance_id="my-instance",
             location="us-central1",
@@ -504,7 +504,7 @@ class Instance(pulumi.CustomResource):
                 is_private=True,
                 ca_pool=ca_pool.id,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     root_ca,
                     wait60_seconds,
                 ]))
@@ -608,7 +608,7 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             instance_id="my-instance",
             kms_key=crypto_key.id,
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
         ### Secure Source Manager Instance Private
 
@@ -664,7 +664,7 @@ class Instance(pulumi.CustomResource):
             members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
         # ca pool IAM permissions can take time to propagate
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
-        opts=pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
+        opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         default = gcp.securesourcemanager.Instance("default",
             instance_id="my-instance",
             location="us-central1",
@@ -672,7 +672,7 @@ class Instance(pulumi.CustomResource):
                 is_private=True,
                 ca_pool=ca_pool.id,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[
+            opts = pulumi.ResourceOptions(depends_on=[
                     root_ca,
                     wait60_seconds,
                 ]))

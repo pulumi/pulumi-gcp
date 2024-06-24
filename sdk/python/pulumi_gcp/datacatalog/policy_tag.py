@@ -287,7 +287,7 @@ class PolicyTag(pulumi.CustomResource):
             display_name="dob",
             description="The users date of birth",
             parent_policy_tag=parent_policy.id,
-            opts=pulumi.ResourceOptions(depends_on=[child_policy]))
+            opts = pulumi.ResourceOptions(depends_on=[child_policy]))
         ```
 
         ## Import
@@ -375,7 +375,7 @@ class PolicyTag(pulumi.CustomResource):
             display_name="dob",
             description="The users date of birth",
             parent_policy_tag=parent_policy.id,
-            opts=pulumi.ResourceOptions(depends_on=[child_policy]))
+            opts = pulumi.ResourceOptions(depends_on=[child_policy]))
         ```
 
         ## Import

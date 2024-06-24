@@ -813,7 +813,7 @@ class Instance(pulumi.CustomResource):
             machine_config=gcp.alloydb.InstanceMachineConfigArgs(
                 cpu_count=2,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         project = gcp.organizations.get_project()
         ```
         ### Alloydb Secondary Instance Basic
@@ -844,7 +844,7 @@ class Instance(pulumi.CustomResource):
             machine_config=gcp.alloydb.InstanceMachineConfigArgs(
                 cpu_count=2,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         secondary = gcp.alloydb.Cluster("secondary",
             cluster_id="alloydb-secondary-cluster",
             location="us-east1",
@@ -857,7 +857,7 @@ class Instance(pulumi.CustomResource):
                 primary_cluster_name=primary.name,
             ),
             deletion_policy="FORCE",
-            opts=pulumi.ResourceOptions(depends_on=[primary_instance]))
+            opts = pulumi.ResourceOptions(depends_on=[primary_instance]))
         secondary_instance = gcp.alloydb.Instance("secondary",
             cluster=secondary.name,
             instance_id="alloydb-secondary-instance",
@@ -865,7 +865,7 @@ class Instance(pulumi.CustomResource):
             machine_config=gcp.alloydb.InstanceMachineConfigArgs(
                 cpu_count=2,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         project = gcp.organizations.get_project()
         ```
 
@@ -972,7 +972,7 @@ class Instance(pulumi.CustomResource):
             machine_config=gcp.alloydb.InstanceMachineConfigArgs(
                 cpu_count=2,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         project = gcp.organizations.get_project()
         ```
         ### Alloydb Secondary Instance Basic
@@ -1003,7 +1003,7 @@ class Instance(pulumi.CustomResource):
             machine_config=gcp.alloydb.InstanceMachineConfigArgs(
                 cpu_count=2,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         secondary = gcp.alloydb.Cluster("secondary",
             cluster_id="alloydb-secondary-cluster",
             location="us-east1",
@@ -1016,7 +1016,7 @@ class Instance(pulumi.CustomResource):
                 primary_cluster_name=primary.name,
             ),
             deletion_policy="FORCE",
-            opts=pulumi.ResourceOptions(depends_on=[primary_instance]))
+            opts = pulumi.ResourceOptions(depends_on=[primary_instance]))
         secondary_instance = gcp.alloydb.Instance("secondary",
             cluster=secondary.name,
             instance_id="alloydb-secondary-instance",
@@ -1024,7 +1024,7 @@ class Instance(pulumi.CustomResource):
             machine_config=gcp.alloydb.InstanceMachineConfigArgs(
                 cpu_count=2,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         project = gcp.organizations.get_project()
         ```
 

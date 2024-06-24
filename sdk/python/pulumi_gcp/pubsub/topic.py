@@ -510,7 +510,7 @@ class Topic(pulumi.CustomResource):
                 schema="projects/my-project-name/schemas/example",
                 encoding="JSON",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[example]))
+            opts = pulumi.ResourceOptions(depends_on=[example]))
         ```
         ### Pubsub Topic Ingestion Kinesis
 
@@ -679,7 +679,7 @@ class Topic(pulumi.CustomResource):
                 schema="projects/my-project-name/schemas/example",
                 encoding="JSON",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[example]))
+            opts = pulumi.ResourceOptions(depends_on=[example]))
         ```
         ### Pubsub Topic Ingestion Kinesis
 

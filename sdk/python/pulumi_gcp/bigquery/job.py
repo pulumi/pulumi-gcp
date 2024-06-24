@@ -581,7 +581,7 @@ class Job(pulumi.CustomResource):
                 source_format="NEWLINE_DELIMITED_JSON",
                 json_extension="GEOJSON",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[object]))
+            opts = pulumi.ResourceOptions(depends_on=[object]))
         ```
         ### Bigquery Job Load Parquet
 
@@ -710,7 +710,7 @@ class Job(pulumi.CustomResource):
             encryption_configuration=gcp.bigquery.TableEncryptionConfigurationArgs(
                 kms_key_name=crypto_key.id,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[encrypt_role]))
+            opts = pulumi.ResourceOptions(depends_on=[encrypt_role]))
         job = gcp.bigquery.Job("job",
             job_id="job_copy",
             copy=gcp.bigquery.JobCopyArgs(
@@ -735,7 +735,7 @@ class Job(pulumi.CustomResource):
                     kms_key_name=crypto_key.id,
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[encrypt_role]))
+            opts = pulumi.ResourceOptions(depends_on=[encrypt_role]))
         ```
         ### Bigquery Job Extract
 
@@ -1009,7 +1009,7 @@ class Job(pulumi.CustomResource):
                 source_format="NEWLINE_DELIMITED_JSON",
                 json_extension="GEOJSON",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[object]))
+            opts = pulumi.ResourceOptions(depends_on=[object]))
         ```
         ### Bigquery Job Load Parquet
 
@@ -1138,7 +1138,7 @@ class Job(pulumi.CustomResource):
             encryption_configuration=gcp.bigquery.TableEncryptionConfigurationArgs(
                 kms_key_name=crypto_key.id,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[encrypt_role]))
+            opts = pulumi.ResourceOptions(depends_on=[encrypt_role]))
         job = gcp.bigquery.Job("job",
             job_id="job_copy",
             copy=gcp.bigquery.JobCopyArgs(
@@ -1163,7 +1163,7 @@ class Job(pulumi.CustomResource):
                     kms_key_name=crypto_key.id,
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[encrypt_role]))
+            opts = pulumi.ResourceOptions(depends_on=[encrypt_role]))
         ```
         ### Bigquery Job Extract
 

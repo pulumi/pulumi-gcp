@@ -273,7 +273,7 @@ class Fulfillment(pulumi.CustomResource):
                     "name": "wrench",
                 },
             ),
-            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
+            opts = pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
 
         ## Import
@@ -340,7 +340,7 @@ class Fulfillment(pulumi.CustomResource):
                     "name": "wrench",
                 },
             ),
-            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
+            opts = pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
 
         ## Import

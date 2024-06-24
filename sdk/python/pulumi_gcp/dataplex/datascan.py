@@ -594,7 +594,7 @@ class Datascan(pulumi.CustomResource):
                 ),
             ),
             project="my-project-name",
-            opts=pulumi.ResourceOptions(depends_on=[source]))
+            opts = pulumi.ResourceOptions(depends_on=[source]))
         ```
         ### Dataplex Datascan Basic Quality
 
@@ -854,7 +854,7 @@ class Datascan(pulumi.CustomResource):
                 ),
             ),
             project="my-project-name",
-            opts=pulumi.ResourceOptions(depends_on=[source]))
+            opts = pulumi.ResourceOptions(depends_on=[source]))
         ```
         ### Dataplex Datascan Basic Quality
 

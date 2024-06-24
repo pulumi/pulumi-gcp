@@ -557,12 +557,12 @@ class ConnectionProfile(pulumi.CustomResource):
         sql_client_cert = gcp.sql.SslCert("sql_client_cert",
             common_name="my-cert",
             instance=cloudsqldb.name,
-            opts=pulumi.ResourceOptions(depends_on=[cloudsqldb]))
+            opts = pulumi.ResourceOptions(depends_on=[cloudsqldb]))
         sqldb_user = gcp.sql.User("sqldb_user",
             name="my-username",
             instance=cloudsqldb.name,
             password="my-password",
-            opts=pulumi.ResourceOptions(depends_on=[sql_client_cert]))
+            opts = pulumi.ResourceOptions(depends_on=[sql_client_cert]))
         cloudsqlprofile = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile",
             location="us-central1",
             connection_profile_id="my-fromprofileid",
@@ -582,7 +582,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 ),
                 cloud_sql_id="my-database",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[sqldb_user]))
+            opts = pulumi.ResourceOptions(depends_on=[sqldb_user]))
         cloudsqlprofile_destination = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile_destination",
             location="us-central1",
             connection_profile_id="my-toprofileid",
@@ -612,7 +612,7 @@ class ConnectionProfile(pulumi.CustomResource):
                     root_password="testpasscloudsql",
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[cloudsqlprofile]))
+            opts = pulumi.ResourceOptions(depends_on=[cloudsqlprofile]))
         ```
         ### Database Migration Service Connection Profile Postgres
 
@@ -630,12 +630,12 @@ class ConnectionProfile(pulumi.CustomResource):
         sql_client_cert = gcp.sql.SslCert("sql_client_cert",
             common_name="my-cert",
             instance=postgresqldb.name,
-            opts=pulumi.ResourceOptions(depends_on=[postgresqldb]))
+            opts = pulumi.ResourceOptions(depends_on=[postgresqldb]))
         sqldb_user = gcp.sql.User("sqldb_user",
             name="my-username",
             instance=postgresqldb.name,
             password="my-password",
-            opts=pulumi.ResourceOptions(depends_on=[sql_client_cert]))
+            opts = pulumi.ResourceOptions(depends_on=[sql_client_cert]))
         postgresprofile = gcp.databasemigrationservice.ConnectionProfile("postgresprofile",
             location="us-central1",
             connection_profile_id="my-profileid",
@@ -655,7 +655,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 ),
                 cloud_sql_id="my-database",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[sqldb_user]))
+            opts = pulumi.ResourceOptions(depends_on=[sqldb_user]))
         ```
         ### Database Migration Service Connection Profile Oracle
 
@@ -727,7 +727,7 @@ class ConnectionProfile(pulumi.CustomResource):
                     ),
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         ```
 
         ## Import
@@ -814,12 +814,12 @@ class ConnectionProfile(pulumi.CustomResource):
         sql_client_cert = gcp.sql.SslCert("sql_client_cert",
             common_name="my-cert",
             instance=cloudsqldb.name,
-            opts=pulumi.ResourceOptions(depends_on=[cloudsqldb]))
+            opts = pulumi.ResourceOptions(depends_on=[cloudsqldb]))
         sqldb_user = gcp.sql.User("sqldb_user",
             name="my-username",
             instance=cloudsqldb.name,
             password="my-password",
-            opts=pulumi.ResourceOptions(depends_on=[sql_client_cert]))
+            opts = pulumi.ResourceOptions(depends_on=[sql_client_cert]))
         cloudsqlprofile = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile",
             location="us-central1",
             connection_profile_id="my-fromprofileid",
@@ -839,7 +839,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 ),
                 cloud_sql_id="my-database",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[sqldb_user]))
+            opts = pulumi.ResourceOptions(depends_on=[sqldb_user]))
         cloudsqlprofile_destination = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile_destination",
             location="us-central1",
             connection_profile_id="my-toprofileid",
@@ -869,7 +869,7 @@ class ConnectionProfile(pulumi.CustomResource):
                     root_password="testpasscloudsql",
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[cloudsqlprofile]))
+            opts = pulumi.ResourceOptions(depends_on=[cloudsqlprofile]))
         ```
         ### Database Migration Service Connection Profile Postgres
 
@@ -887,12 +887,12 @@ class ConnectionProfile(pulumi.CustomResource):
         sql_client_cert = gcp.sql.SslCert("sql_client_cert",
             common_name="my-cert",
             instance=postgresqldb.name,
-            opts=pulumi.ResourceOptions(depends_on=[postgresqldb]))
+            opts = pulumi.ResourceOptions(depends_on=[postgresqldb]))
         sqldb_user = gcp.sql.User("sqldb_user",
             name="my-username",
             instance=postgresqldb.name,
             password="my-password",
-            opts=pulumi.ResourceOptions(depends_on=[sql_client_cert]))
+            opts = pulumi.ResourceOptions(depends_on=[sql_client_cert]))
         postgresprofile = gcp.databasemigrationservice.ConnectionProfile("postgresprofile",
             location="us-central1",
             connection_profile_id="my-profileid",
@@ -912,7 +912,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 ),
                 cloud_sql_id="my-database",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[sqldb_user]))
+            opts = pulumi.ResourceOptions(depends_on=[sqldb_user]))
         ```
         ### Database Migration Service Connection Profile Oracle
 
@@ -984,7 +984,7 @@ class ConnectionProfile(pulumi.CustomResource):
                     ),
                 ),
             ),
-            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         ```
 
         ## Import

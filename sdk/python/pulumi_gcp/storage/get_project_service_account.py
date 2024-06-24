@@ -156,7 +156,7 @@ def get_project_service_account(project: Optional[str] = None,
         encryption=gcp.storage.BucketEncryptionArgs(
             default_kms_key_name="your-crypto-key-id",
         ),
-        opts=pulumi.ResourceOptions(depends_on=[binding]))
+        opts = pulumi.ResourceOptions(depends_on=[binding]))
     ```
 
 
@@ -248,7 +248,7 @@ def get_project_service_account_output(project: Optional[pulumi.Input[Optional[s
         encryption=gcp.storage.BucketEncryptionArgs(
             default_kms_key_name="your-crypto-key-id",
         ),
-        opts=pulumi.ResourceOptions(depends_on=[binding]))
+        opts = pulumi.ResourceOptions(depends_on=[binding]))
     ```
 
 

@@ -561,13 +561,11 @@ class _SubnetworkState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is not useful for users, and has been removed as an output.""")
     def fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
         Fingerprint of this resource. This field is used internally during updates of this resource.
         """
-        warnings.warn("""This field is not useful for users, and has been removed as an output.""", DeprecationWarning)
-        pulumi.log.warn("""fingerprint is deprecated: This field is not useful for users, and has been removed as an output.""")
-
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
@@ -1524,13 +1522,11 @@ class Subnetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is not useful for users, and has been removed as an output.""")
     def fingerprint(self) -> pulumi.Output[str]:
         """
         Fingerprint of this resource. This field is used internally during updates of this resource.
         """
-        warnings.warn("""This field is not useful for users, and has been removed as an output.""", DeprecationWarning)
-        pulumi.log.warn("""fingerprint is deprecated: This field is not useful for users, and has been removed as an output.""")
-
         return pulumi.get(self, "fingerprint")
 
     @property
