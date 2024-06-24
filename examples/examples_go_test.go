@@ -387,6 +387,7 @@ func (st labelsState) validateTransitionTo(t *testing.T, st2 labelsState) {
 			"state2": st2.serialize(t),
 		},
 		Quick:            true,
+		SkipRefresh: 	  true,
 		DestroyOnCleanup: true,
 	})
 
