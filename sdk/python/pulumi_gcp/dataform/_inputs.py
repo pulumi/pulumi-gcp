@@ -4,25 +4,71 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'RepositoryGitRemoteSettingsArgs',
+    'RepositoryGitRemoteSettingsArgsDict',
     'RepositoryGitRemoteSettingsSshAuthenticationConfigArgs',
+    'RepositoryGitRemoteSettingsSshAuthenticationConfigArgsDict',
     'RepositoryIamBindingConditionArgs',
+    'RepositoryIamBindingConditionArgsDict',
     'RepositoryIamMemberConditionArgs',
+    'RepositoryIamMemberConditionArgsDict',
     'RepositoryReleaseConfigCodeCompilationConfigArgs',
+    'RepositoryReleaseConfigCodeCompilationConfigArgsDict',
     'RepositoryReleaseConfigRecentScheduledReleaseRecordArgs',
+    'RepositoryReleaseConfigRecentScheduledReleaseRecordArgsDict',
     'RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs',
+    'RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgsDict',
     'RepositoryWorkflowConfigInvocationConfigArgs',
+    'RepositoryWorkflowConfigInvocationConfigArgsDict',
     'RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs',
+    'RepositoryWorkflowConfigInvocationConfigIncludedTargetArgsDict',
     'RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs',
+    'RepositoryWorkflowConfigRecentScheduledExecutionRecordArgsDict',
     'RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs',
+    'RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgsDict',
     'RepositoryWorkspaceCompilationOverridesArgs',
+    'RepositoryWorkspaceCompilationOverridesArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class RepositoryGitRemoteSettingsArgsDict(TypedDict):
+        default_branch: pulumi.Input[str]
+        """
+        The Git remote's default branch name.
+        """
+        url: pulumi.Input[str]
+        """
+        The Git remote's URL.
+        """
+        authentication_token_secret_version: NotRequired[pulumi.Input[str]]
+        """
+        The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*/secrets/*/versions/*.
+        """
+        ssh_authentication_config: NotRequired[pulumi.Input['RepositoryGitRemoteSettingsSshAuthenticationConfigArgsDict']]
+        """
+        Authentication fields for remote uris using SSH protocol.
+        Structure is documented below.
+        """
+        token_status: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+        """
+elif False:
+    RepositoryGitRemoteSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryGitRemoteSettingsArgs:
@@ -113,6 +159,19 @@ class RepositoryGitRemoteSettingsArgs:
         pulumi.set(self, "token_status", value)
 
 
+if not MYPY:
+    class RepositoryGitRemoteSettingsSshAuthenticationConfigArgsDict(TypedDict):
+        host_public_key: pulumi.Input[str]
+        """
+        Content of a public SSH key to verify an identity of a remote Git host.
+        """
+        user_private_key_secret_version: pulumi.Input[str]
+        """
+        The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*/secrets/*/versions/*.
+        """
+elif False:
+    RepositoryGitRemoteSettingsSshAuthenticationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepositoryGitRemoteSettingsSshAuthenticationConfigArgs:
     def __init__(__self__, *,
@@ -149,6 +208,14 @@ class RepositoryGitRemoteSettingsSshAuthenticationConfigArgs:
     def user_private_key_secret_version(self, value: pulumi.Input[str]):
         pulumi.set(self, "user_private_key_secret_version", value)
 
+
+if not MYPY:
+    class RepositoryIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    RepositoryIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryIamBindingConditionArgs:
@@ -189,6 +256,14 @@ class RepositoryIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class RepositoryIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    RepositoryIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepositoryIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -227,6 +302,46 @@ class RepositoryIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class RepositoryReleaseConfigCodeCompilationConfigArgsDict(TypedDict):
+        assertion_schema: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The default schema (BigQuery dataset ID) for assertions.
+        """
+        database_suffix: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The suffix that should be appended to all database (Google Cloud project ID) names.
+        """
+        default_database: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The default database (Google Cloud project ID).
+        """
+        default_location: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The default BigQuery location to use. Defaults to "US".
+        See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+        """
+        default_schema: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The default schema (BigQuery dataset ID).
+        """
+        schema_suffix: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+        """
+        table_prefix: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The prefix that should be prepended to all table names.
+        """
+        vars: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Optional. User-defined variables that are made available to project code during compilation.
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+elif False:
+    RepositoryReleaseConfigCodeCompilationConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryReleaseConfigCodeCompilationConfigArgs:
@@ -369,6 +484,27 @@ class RepositoryReleaseConfigCodeCompilationConfigArgs:
         pulumi.set(self, "vars", value)
 
 
+if not MYPY:
+    class RepositoryReleaseConfigRecentScheduledReleaseRecordArgsDict(TypedDict):
+        compilation_result: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The name of the created compilation result, if one was successfully created. Must be in the format projects/*/locations/*/repositories/*/compilationResults/*.
+        """
+        error_statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgsDict']]]]
+        """
+        (Output)
+        The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful.
+        Structure is documented below.
+        """
+        release_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The timestamp of this release attempt.
+        """
+elif False:
+    RepositoryReleaseConfigRecentScheduledReleaseRecordArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepositoryReleaseConfigRecentScheduledReleaseRecordArgs:
     def __init__(__self__, *,
@@ -432,6 +568,21 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordArgs:
         pulumi.set(self, "release_time", value)
 
 
+if not MYPY:
+    class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+elif False:
+    RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs:
     def __init__(__self__, *,
@@ -474,6 +625,36 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs:
     def message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "message", value)
 
+
+if not MYPY:
+    class RepositoryWorkflowConfigInvocationConfigArgsDict(TypedDict):
+        fully_refresh_incremental_tables_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Optional. When set to true, any incremental tables will be fully refreshed.
+        """
+        included_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Optional. The set of tags to include.
+        """
+        included_targets: NotRequired[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgsDict']]]]
+        """
+        Optional. The set of action identifiers to include.
+        Structure is documented below.
+        """
+        service_account: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The service account to run workflow invocations under.
+        """
+        transitive_dependencies_included: NotRequired[pulumi.Input[bool]]
+        """
+        Optional. When set to true, transitive dependencies of included actions will be executed.
+        """
+        transitive_dependents_included: NotRequired[pulumi.Input[bool]]
+        """
+        Optional. When set to true, transitive dependents of included actions will be executed.
+        """
+elif False:
+    RepositoryWorkflowConfigInvocationConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryWorkflowConfigInvocationConfigArgs:
@@ -580,6 +761,23 @@ class RepositoryWorkflowConfigInvocationConfigArgs:
         pulumi.set(self, "transitive_dependents_included", value)
 
 
+if not MYPY:
+    class RepositoryWorkflowConfigInvocationConfigIncludedTargetArgsDict(TypedDict):
+        database: NotRequired[pulumi.Input[str]]
+        """
+        The action's database (Google Cloud project ID).
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The action's name, within database and schema.
+        """
+        schema: NotRequired[pulumi.Input[str]]
+        """
+        The action's schema (BigQuery dataset ID), within database.
+        """
+elif False:
+    RepositoryWorkflowConfigInvocationConfigIncludedTargetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs:
     def __init__(__self__, *,
@@ -634,6 +832,27 @@ class RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs:
     def schema(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "schema", value)
 
+
+if not MYPY:
+    class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgsDict(TypedDict):
+        error_statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgsDict']]]]
+        """
+        (Output)
+        The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
+        Structure is documented below.
+        """
+        execution_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The timestamp of this workflow attempt.
+        """
+        workflow_invocation: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The name of the created workflow invocation, if one was successfully created. In the format projects/*/locations/*/repositories/*/workflowInvocations/*.
+        """
+elif False:
+    RepositoryWorkflowConfigRecentScheduledExecutionRecordArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs:
@@ -698,6 +917,21 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs:
         pulumi.set(self, "workflow_invocation", value)
 
 
+if not MYPY:
+    class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+elif False:
+    RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs:
     def __init__(__self__, *,
@@ -740,6 +974,23 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs:
     def message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "message", value)
 
+
+if not MYPY:
+    class RepositoryWorkspaceCompilationOverridesArgsDict(TypedDict):
+        default_database: NotRequired[pulumi.Input[str]]
+        """
+        The default database (Google Cloud project ID).
+        """
+        schema_suffix: NotRequired[pulumi.Input[str]]
+        """
+        The suffix that should be appended to all schema (BigQuery dataset ID) names.
+        """
+        table_prefix: NotRequired[pulumi.Input[str]]
+        """
+        The prefix that should be prepended to all table names.
+        """
+elif False:
+    RepositoryWorkspaceCompilationOverridesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryWorkspaceCompilationOverridesArgs:

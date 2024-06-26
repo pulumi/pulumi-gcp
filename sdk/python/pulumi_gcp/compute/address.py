@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['AddressArgs', 'Address']
@@ -842,17 +847,17 @@ class Address(pulumi.CustomResource):
             name="vm-instance",
             machine_type="f1-micro",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=debian_image.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs(
-                    nat_ip=static.address,
-                )],
-            )])
+            boot_disk={
+                "initializeParams": {
+                    "image": debian_image.self_link,
+                },
+            },
+            network_interfaces=[{
+                "network": "default",
+                "accessConfigs": [{
+                    "natIp": static.address,
+                }],
+            }])
         ```
         ### Compute Address Ipsec Interconnect
 
@@ -1043,17 +1048,17 @@ class Address(pulumi.CustomResource):
             name="vm-instance",
             machine_type="f1-micro",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=debian_image.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs(
-                    nat_ip=static.address,
-                )],
-            )])
+            boot_disk={
+                "initializeParams": {
+                    "image": debian_image.self_link,
+                },
+            },
+            network_interfaces=[{
+                "network": "default",
+                "accessConfigs": [{
+                    "natIp": static.address,
+                }],
+            }])
         ```
         ### Compute Address Ipsec Interconnect
 

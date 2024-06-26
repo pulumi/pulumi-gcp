@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -734,20 +739,20 @@ class AttachedCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']]] = None,
-                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']]] = None,
+                 authorization: Optional[pulumi.Input[Union['AttachedClusterAuthorizationArgs', 'AttachedClusterAuthorizationArgsDict']]] = None,
+                 binary_authorization: Optional[pulumi.Input[Union['AttachedClusterBinaryAuthorizationArgs', 'AttachedClusterBinaryAuthorizationArgsDict']]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution: Optional[pulumi.Input[str]] = None,
-                 fleet: Optional[pulumi.Input[pulumi.InputType['AttachedClusterFleetArgs']]] = None,
+                 fleet: Optional[pulumi.Input[Union['AttachedClusterFleetArgs', 'AttachedClusterFleetArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterLoggingConfigArgs']]] = None,
-                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterMonitoringConfigArgs']]] = None,
+                 logging_config: Optional[pulumi.Input[Union['AttachedClusterLoggingConfigArgs', 'AttachedClusterLoggingConfigArgsDict']]] = None,
+                 monitoring_config: Optional[pulumi.Input[Union['AttachedClusterMonitoringConfigArgs', 'AttachedClusterMonitoringConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 oidc_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArgs']]] = None,
+                 oidc_config: Optional[pulumi.Input[Union['AttachedClusterOidcConfigArgs', 'AttachedClusterOidcConfigArgsDict']]] = None,
                  platform_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 proxy_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterProxyConfigArgs']]] = None,
+                 proxy_config: Optional[pulumi.Input[Union['AttachedClusterProxyConfigArgs', 'AttachedClusterProxyConfigArgsDict']]] = None,
                  __props__=None):
         """
         An Anthos cluster running on customer owned infrastructure.
@@ -776,13 +781,13 @@ class AttachedCluster(pulumi.CustomResource):
             project=project.project_id,
             description="Test cluster",
             distribution="aks",
-            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
-                issuer_url="https://oidc.issuer.url",
-            ),
+            oidc_config={
+                "issuerUrl": "https://oidc.issuer.url",
+            },
             platform_version=versions.valid_versions[0],
-            fleet=gcp.container.AttachedClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ))
+            fleet={
+                "project": f"projects/{project.number}",
+            })
         ```
         ### Container Attached Cluster Full
 
@@ -803,46 +808,46 @@ class AttachedCluster(pulumi.CustomResource):
             annotations={
                 "label-one": "value-one",
             },
-            authorization=gcp.container.AttachedClusterAuthorizationArgs(
-                admin_users=[
+            authorization={
+                "adminUsers": [
                     "user1@example.com",
                     "user2@example.com",
                 ],
-                admin_groups=[
+                "adminGroups": [
                     "group1@example.com",
                     "group2@example.com",
                 ],
-            ),
-            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
-                issuer_url="https://oidc.issuer.url",
-                jwks=std.base64encode(input="{\\"keys\\":[{\\"use\\":\\"sig\\",\\"kty\\":\\"RSA\\",\\"kid\\":\\"testid\\",\\"alg\\":\\"RS256\\",\\"n\\":\\"somedata\\",\\"e\\":\\"AQAB\\"}]}").result,
-            ),
+            },
+            oidc_config={
+                "issuerUrl": "https://oidc.issuer.url",
+                "jwks": std.base64encode(input="{\\"keys\\":[{\\"use\\":\\"sig\\",\\"kty\\":\\"RSA\\",\\"kid\\":\\"testid\\",\\"alg\\":\\"RS256\\",\\"n\\":\\"somedata\\",\\"e\\":\\"AQAB\\"}]}").result,
+            },
             platform_version=versions.valid_versions[0],
-            fleet=gcp.container.AttachedClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ),
-            logging_config=gcp.container.AttachedClusterLoggingConfigArgs(
-                component_config=gcp.container.AttachedClusterLoggingConfigComponentConfigArgs(
-                    enable_components=[
+            fleet={
+                "project": f"projects/{project.number}",
+            },
+            logging_config={
+                "componentConfig": {
+                    "enableComponents": [
                         "SYSTEM_COMPONENTS",
                         "WORKLOADS",
                     ],
-                ),
-            ),
-            monitoring_config=gcp.container.AttachedClusterMonitoringConfigArgs(
-                managed_prometheus_config=gcp.container.AttachedClusterMonitoringConfigManagedPrometheusConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            binary_authorization=gcp.container.AttachedClusterBinaryAuthorizationArgs(
-                evaluation_mode="PROJECT_SINGLETON_POLICY_ENFORCE",
-            ),
-            proxy_config=gcp.container.AttachedClusterProxyConfigArgs(
-                kubernetes_secret=gcp.container.AttachedClusterProxyConfigKubernetesSecretArgs(
-                    name="proxy-config",
-                    namespace="default",
-                ),
-            ))
+                },
+            },
+            monitoring_config={
+                "managedPrometheusConfig": {
+                    "enabled": True,
+                },
+            },
+            binary_authorization={
+                "evaluationMode": "PROJECT_SINGLETON_POLICY_ENFORCE",
+            },
+            proxy_config={
+                "kubernetesSecret": {
+                    "name": "proxy-config",
+                    "namespace": "default",
+                },
+            })
         ```
         ### Container Attached Cluster Ignore Errors
 
@@ -859,13 +864,13 @@ class AttachedCluster(pulumi.CustomResource):
             project=project.project_id,
             description="Test cluster",
             distribution="aks",
-            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
-                issuer_url="https://oidc.issuer.url",
-            ),
+            oidc_config={
+                "issuerUrl": "https://oidc.issuer.url",
+            },
             platform_version=versions.valid_versions[0],
-            fleet=gcp.container.AttachedClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ),
+            fleet={
+                "project": f"projects/{project.number}",
+            },
             deletion_policy="DELETE_IGNORE_ERRORS")
         ```
 
@@ -901,19 +906,19 @@ class AttachedCluster(pulumi.CustomResource):
                alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
                non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
                'effective_annotations' for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
-        :param pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']] binary_authorization: Binary Authorization configuration.
+        :param pulumi.Input[Union['AttachedClusterAuthorizationArgs', 'AttachedClusterAuthorizationArgsDict']] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input[Union['AttachedClusterBinaryAuthorizationArgs', 'AttachedClusterBinaryAuthorizationArgsDict']] binary_authorization: Binary Authorization configuration.
         :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks".
-        :param pulumi.Input[pulumi.InputType['AttachedClusterFleetArgs']] fleet: Fleet configuration.
+        :param pulumi.Input[Union['AttachedClusterFleetArgs', 'AttachedClusterFleetArgsDict']] fleet: Fleet configuration.
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AttachedClusterLoggingConfigArgs']] logging_config: Logging configuration.
-        :param pulumi.Input[pulumi.InputType['AttachedClusterMonitoringConfigArgs']] monitoring_config: Monitoring configuration.
+        :param pulumi.Input[Union['AttachedClusterLoggingConfigArgs', 'AttachedClusterLoggingConfigArgsDict']] logging_config: Logging configuration.
+        :param pulumi.Input[Union['AttachedClusterMonitoringConfigArgs', 'AttachedClusterMonitoringConfigArgsDict']] monitoring_config: Monitoring configuration.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArgs']] oidc_config: OIDC discovery information of the target cluster.
+        :param pulumi.Input[Union['AttachedClusterOidcConfigArgs', 'AttachedClusterOidcConfigArgsDict']] oidc_config: OIDC discovery information of the target cluster.
                Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
                API server. This fields indicates how GCP services
                validate KSA tokens in order to allow system workloads (such as GKE Connect
@@ -924,7 +929,7 @@ class AttachedCluster(pulumi.CustomResource):
                `issuer_url` and `jwks`.
                Structure is documented below.
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
-        :param pulumi.Input[pulumi.InputType['AttachedClusterProxyConfigArgs']] proxy_config: Support for proxy configuration.
+        :param pulumi.Input[Union['AttachedClusterProxyConfigArgs', 'AttachedClusterProxyConfigArgsDict']] proxy_config: Support for proxy configuration.
         """
         ...
     @overload
@@ -959,13 +964,13 @@ class AttachedCluster(pulumi.CustomResource):
             project=project.project_id,
             description="Test cluster",
             distribution="aks",
-            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
-                issuer_url="https://oidc.issuer.url",
-            ),
+            oidc_config={
+                "issuerUrl": "https://oidc.issuer.url",
+            },
             platform_version=versions.valid_versions[0],
-            fleet=gcp.container.AttachedClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ))
+            fleet={
+                "project": f"projects/{project.number}",
+            })
         ```
         ### Container Attached Cluster Full
 
@@ -986,46 +991,46 @@ class AttachedCluster(pulumi.CustomResource):
             annotations={
                 "label-one": "value-one",
             },
-            authorization=gcp.container.AttachedClusterAuthorizationArgs(
-                admin_users=[
+            authorization={
+                "adminUsers": [
                     "user1@example.com",
                     "user2@example.com",
                 ],
-                admin_groups=[
+                "adminGroups": [
                     "group1@example.com",
                     "group2@example.com",
                 ],
-            ),
-            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
-                issuer_url="https://oidc.issuer.url",
-                jwks=std.base64encode(input="{\\"keys\\":[{\\"use\\":\\"sig\\",\\"kty\\":\\"RSA\\",\\"kid\\":\\"testid\\",\\"alg\\":\\"RS256\\",\\"n\\":\\"somedata\\",\\"e\\":\\"AQAB\\"}]}").result,
-            ),
+            },
+            oidc_config={
+                "issuerUrl": "https://oidc.issuer.url",
+                "jwks": std.base64encode(input="{\\"keys\\":[{\\"use\\":\\"sig\\",\\"kty\\":\\"RSA\\",\\"kid\\":\\"testid\\",\\"alg\\":\\"RS256\\",\\"n\\":\\"somedata\\",\\"e\\":\\"AQAB\\"}]}").result,
+            },
             platform_version=versions.valid_versions[0],
-            fleet=gcp.container.AttachedClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ),
-            logging_config=gcp.container.AttachedClusterLoggingConfigArgs(
-                component_config=gcp.container.AttachedClusterLoggingConfigComponentConfigArgs(
-                    enable_components=[
+            fleet={
+                "project": f"projects/{project.number}",
+            },
+            logging_config={
+                "componentConfig": {
+                    "enableComponents": [
                         "SYSTEM_COMPONENTS",
                         "WORKLOADS",
                     ],
-                ),
-            ),
-            monitoring_config=gcp.container.AttachedClusterMonitoringConfigArgs(
-                managed_prometheus_config=gcp.container.AttachedClusterMonitoringConfigManagedPrometheusConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            binary_authorization=gcp.container.AttachedClusterBinaryAuthorizationArgs(
-                evaluation_mode="PROJECT_SINGLETON_POLICY_ENFORCE",
-            ),
-            proxy_config=gcp.container.AttachedClusterProxyConfigArgs(
-                kubernetes_secret=gcp.container.AttachedClusterProxyConfigKubernetesSecretArgs(
-                    name="proxy-config",
-                    namespace="default",
-                ),
-            ))
+                },
+            },
+            monitoring_config={
+                "managedPrometheusConfig": {
+                    "enabled": True,
+                },
+            },
+            binary_authorization={
+                "evaluationMode": "PROJECT_SINGLETON_POLICY_ENFORCE",
+            },
+            proxy_config={
+                "kubernetesSecret": {
+                    "name": "proxy-config",
+                    "namespace": "default",
+                },
+            })
         ```
         ### Container Attached Cluster Ignore Errors
 
@@ -1042,13 +1047,13 @@ class AttachedCluster(pulumi.CustomResource):
             project=project.project_id,
             description="Test cluster",
             distribution="aks",
-            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
-                issuer_url="https://oidc.issuer.url",
-            ),
+            oidc_config={
+                "issuerUrl": "https://oidc.issuer.url",
+            },
             platform_version=versions.valid_versions[0],
-            fleet=gcp.container.AttachedClusterFleetArgs(
-                project=f"projects/{project.number}",
-            ),
+            fleet={
+                "project": f"projects/{project.number}",
+            },
             deletion_policy="DELETE_IGNORE_ERRORS")
         ```
 
@@ -1092,20 +1097,20 @@ class AttachedCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']]] = None,
-                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']]] = None,
+                 authorization: Optional[pulumi.Input[Union['AttachedClusterAuthorizationArgs', 'AttachedClusterAuthorizationArgsDict']]] = None,
+                 binary_authorization: Optional[pulumi.Input[Union['AttachedClusterBinaryAuthorizationArgs', 'AttachedClusterBinaryAuthorizationArgsDict']]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution: Optional[pulumi.Input[str]] = None,
-                 fleet: Optional[pulumi.Input[pulumi.InputType['AttachedClusterFleetArgs']]] = None,
+                 fleet: Optional[pulumi.Input[Union['AttachedClusterFleetArgs', 'AttachedClusterFleetArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterLoggingConfigArgs']]] = None,
-                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterMonitoringConfigArgs']]] = None,
+                 logging_config: Optional[pulumi.Input[Union['AttachedClusterLoggingConfigArgs', 'AttachedClusterLoggingConfigArgsDict']]] = None,
+                 monitoring_config: Optional[pulumi.Input[Union['AttachedClusterMonitoringConfigArgs', 'AttachedClusterMonitoringConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 oidc_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArgs']]] = None,
+                 oidc_config: Optional[pulumi.Input[Union['AttachedClusterOidcConfigArgs', 'AttachedClusterOidcConfigArgsDict']]] = None,
                  platform_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 proxy_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterProxyConfigArgs']]] = None,
+                 proxy_config: Optional[pulumi.Input[Union['AttachedClusterProxyConfigArgs', 'AttachedClusterProxyConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1161,30 +1166,30 @@ class AttachedCluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']]] = None,
-            binary_authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']]] = None,
+            authorization: Optional[pulumi.Input[Union['AttachedClusterAuthorizationArgs', 'AttachedClusterAuthorizationArgsDict']]] = None,
+            binary_authorization: Optional[pulumi.Input[Union['AttachedClusterBinaryAuthorizationArgs', 'AttachedClusterBinaryAuthorizationArgsDict']]] = None,
             cluster_region: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             deletion_policy: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             distribution: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            errors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedClusterErrorArgs']]]]] = None,
-            fleet: Optional[pulumi.Input[pulumi.InputType['AttachedClusterFleetArgs']]] = None,
+            errors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AttachedClusterErrorArgs', 'AttachedClusterErrorArgsDict']]]]] = None,
+            fleet: Optional[pulumi.Input[Union['AttachedClusterFleetArgs', 'AttachedClusterFleetArgsDict']]] = None,
             kubernetes_version: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            logging_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterLoggingConfigArgs']]] = None,
-            monitoring_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterMonitoringConfigArgs']]] = None,
+            logging_config: Optional[pulumi.Input[Union['AttachedClusterLoggingConfigArgs', 'AttachedClusterLoggingConfigArgsDict']]] = None,
+            monitoring_config: Optional[pulumi.Input[Union['AttachedClusterMonitoringConfigArgs', 'AttachedClusterMonitoringConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            oidc_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArgs']]] = None,
+            oidc_config: Optional[pulumi.Input[Union['AttachedClusterOidcConfigArgs', 'AttachedClusterOidcConfigArgsDict']]] = None,
             platform_version: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            proxy_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterProxyConfigArgs']]] = None,
+            proxy_config: Optional[pulumi.Input[Union['AttachedClusterProxyConfigArgs', 'AttachedClusterProxyConfigArgsDict']]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedClusterWorkloadIdentityConfigArgs']]]]] = None) -> 'AttachedCluster':
+            workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AttachedClusterWorkloadIdentityConfigArgs', 'AttachedClusterWorkloadIdentityConfigArgsDict']]]]] = None) -> 'AttachedCluster':
         """
         Get an existing AttachedCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1198,8 +1203,8 @@ class AttachedCluster(pulumi.CustomResource):
                alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
                non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
                'effective_annotations' for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
-        :param pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']] binary_authorization: Binary Authorization configuration.
+        :param pulumi.Input[Union['AttachedClusterAuthorizationArgs', 'AttachedClusterAuthorizationArgsDict']] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input[Union['AttachedClusterBinaryAuthorizationArgs', 'AttachedClusterBinaryAuthorizationArgsDict']] binary_authorization: Binary Authorization configuration.
         :param pulumi.Input[str] cluster_region: Output only. The region where this cluster runs.
                For EKS clusters, this is an AWS region. For AKS clusters,
                this is an Azure region.
@@ -1208,16 +1213,16 @@ class AttachedCluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedClusterErrorArgs']]]] errors: A set of errors found in the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AttachedClusterErrorArgs', 'AttachedClusterErrorArgsDict']]]] errors: A set of errors found in the cluster.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AttachedClusterFleetArgs']] fleet: Fleet configuration.
+        :param pulumi.Input[Union['AttachedClusterFleetArgs', 'AttachedClusterFleetArgsDict']] fleet: Fleet configuration.
                Structure is documented below.
         :param pulumi.Input[str] kubernetes_version: The Kubernetes version of the cluster.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AttachedClusterLoggingConfigArgs']] logging_config: Logging configuration.
-        :param pulumi.Input[pulumi.InputType['AttachedClusterMonitoringConfigArgs']] monitoring_config: Monitoring configuration.
+        :param pulumi.Input[Union['AttachedClusterLoggingConfigArgs', 'AttachedClusterLoggingConfigArgsDict']] logging_config: Logging configuration.
+        :param pulumi.Input[Union['AttachedClusterMonitoringConfigArgs', 'AttachedClusterMonitoringConfigArgsDict']] monitoring_config: Monitoring configuration.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArgs']] oidc_config: OIDC discovery information of the target cluster.
+        :param pulumi.Input[Union['AttachedClusterOidcConfigArgs', 'AttachedClusterOidcConfigArgsDict']] oidc_config: OIDC discovery information of the target cluster.
                Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
                API server. This fields indicates how GCP services
                validate KSA tokens in order to allow system workloads (such as GKE Connect
@@ -1228,14 +1233,14 @@ class AttachedCluster(pulumi.CustomResource):
                `issuer_url` and `jwks`.
                Structure is documented below.
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
-        :param pulumi.Input[pulumi.InputType['AttachedClusterProxyConfigArgs']] proxy_config: Support for proxy configuration.
+        :param pulumi.Input[Union['AttachedClusterProxyConfigArgs', 'AttachedClusterProxyConfigArgsDict']] proxy_config: Support for proxy configuration.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] state: The current state of the cluster. Possible values:
                STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
                DEGRADED
         :param pulumi.Input[str] uid: A globally unique identifier for the cluster.
         :param pulumi.Input[str] update_time: The time at which this cluster was last updated.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedClusterWorkloadIdentityConfigArgs']]]] workload_identity_configs: Workload Identity settings.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AttachedClusterWorkloadIdentityConfigArgs', 'AttachedClusterWorkloadIdentityConfigArgsDict']]]] workload_identity_configs: Workload Identity settings.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

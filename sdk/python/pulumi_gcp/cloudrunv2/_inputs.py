@@ -4,73 +4,153 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'JobBinaryAuthorizationArgs',
+    'JobBinaryAuthorizationArgsDict',
     'JobConditionArgs',
+    'JobConditionArgsDict',
     'JobIamBindingConditionArgs',
+    'JobIamBindingConditionArgsDict',
     'JobIamMemberConditionArgs',
+    'JobIamMemberConditionArgsDict',
     'JobLatestCreatedExecutionArgs',
+    'JobLatestCreatedExecutionArgsDict',
     'JobTemplateArgs',
+    'JobTemplateArgsDict',
     'JobTemplateTemplateArgs',
+    'JobTemplateTemplateArgsDict',
     'JobTemplateTemplateContainerArgs',
+    'JobTemplateTemplateContainerArgsDict',
     'JobTemplateTemplateContainerEnvArgs',
+    'JobTemplateTemplateContainerEnvArgsDict',
     'JobTemplateTemplateContainerEnvValueSourceArgs',
+    'JobTemplateTemplateContainerEnvValueSourceArgsDict',
     'JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs',
+    'JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgsDict',
     'JobTemplateTemplateContainerPortArgs',
+    'JobTemplateTemplateContainerPortArgsDict',
     'JobTemplateTemplateContainerResourcesArgs',
+    'JobTemplateTemplateContainerResourcesArgsDict',
     'JobTemplateTemplateContainerVolumeMountArgs',
+    'JobTemplateTemplateContainerVolumeMountArgsDict',
     'JobTemplateTemplateVolumeArgs',
+    'JobTemplateTemplateVolumeArgsDict',
     'JobTemplateTemplateVolumeCloudSqlInstanceArgs',
+    'JobTemplateTemplateVolumeCloudSqlInstanceArgsDict',
     'JobTemplateTemplateVolumeEmptyDirArgs',
+    'JobTemplateTemplateVolumeEmptyDirArgsDict',
     'JobTemplateTemplateVolumeGcsArgs',
+    'JobTemplateTemplateVolumeGcsArgsDict',
     'JobTemplateTemplateVolumeNfsArgs',
+    'JobTemplateTemplateVolumeNfsArgsDict',
     'JobTemplateTemplateVolumeSecretArgs',
+    'JobTemplateTemplateVolumeSecretArgsDict',
     'JobTemplateTemplateVolumeSecretItemArgs',
+    'JobTemplateTemplateVolumeSecretItemArgsDict',
     'JobTemplateTemplateVpcAccessArgs',
+    'JobTemplateTemplateVpcAccessArgsDict',
     'JobTemplateTemplateVpcAccessNetworkInterfaceArgs',
+    'JobTemplateTemplateVpcAccessNetworkInterfaceArgsDict',
     'JobTerminalConditionArgs',
+    'JobTerminalConditionArgsDict',
     'ServiceBinaryAuthorizationArgs',
+    'ServiceBinaryAuthorizationArgsDict',
     'ServiceConditionArgs',
+    'ServiceConditionArgsDict',
     'ServiceIamBindingConditionArgs',
+    'ServiceIamBindingConditionArgsDict',
     'ServiceIamMemberConditionArgs',
+    'ServiceIamMemberConditionArgsDict',
     'ServiceScalingArgs',
+    'ServiceScalingArgsDict',
     'ServiceTemplateArgs',
+    'ServiceTemplateArgsDict',
     'ServiceTemplateContainerArgs',
+    'ServiceTemplateContainerArgsDict',
     'ServiceTemplateContainerEnvArgs',
+    'ServiceTemplateContainerEnvArgsDict',
     'ServiceTemplateContainerEnvValueSourceArgs',
+    'ServiceTemplateContainerEnvValueSourceArgsDict',
     'ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs',
+    'ServiceTemplateContainerEnvValueSourceSecretKeyRefArgsDict',
     'ServiceTemplateContainerLivenessProbeArgs',
+    'ServiceTemplateContainerLivenessProbeArgsDict',
     'ServiceTemplateContainerLivenessProbeGrpcArgs',
+    'ServiceTemplateContainerLivenessProbeGrpcArgsDict',
     'ServiceTemplateContainerLivenessProbeHttpGetArgs',
+    'ServiceTemplateContainerLivenessProbeHttpGetArgsDict',
     'ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs',
+    'ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgsDict',
     'ServiceTemplateContainerLivenessProbeTcpSocketArgs',
+    'ServiceTemplateContainerLivenessProbeTcpSocketArgsDict',
     'ServiceTemplateContainerPortArgs',
+    'ServiceTemplateContainerPortArgsDict',
     'ServiceTemplateContainerResourcesArgs',
+    'ServiceTemplateContainerResourcesArgsDict',
     'ServiceTemplateContainerStartupProbeArgs',
+    'ServiceTemplateContainerStartupProbeArgsDict',
     'ServiceTemplateContainerStartupProbeGrpcArgs',
+    'ServiceTemplateContainerStartupProbeGrpcArgsDict',
     'ServiceTemplateContainerStartupProbeHttpGetArgs',
+    'ServiceTemplateContainerStartupProbeHttpGetArgsDict',
     'ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs',
+    'ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgsDict',
     'ServiceTemplateContainerStartupProbeTcpSocketArgs',
+    'ServiceTemplateContainerStartupProbeTcpSocketArgsDict',
     'ServiceTemplateContainerVolumeMountArgs',
+    'ServiceTemplateContainerVolumeMountArgsDict',
     'ServiceTemplateScalingArgs',
+    'ServiceTemplateScalingArgsDict',
     'ServiceTemplateVolumeArgs',
+    'ServiceTemplateVolumeArgsDict',
     'ServiceTemplateVolumeCloudSqlInstanceArgs',
+    'ServiceTemplateVolumeCloudSqlInstanceArgsDict',
     'ServiceTemplateVolumeEmptyDirArgs',
+    'ServiceTemplateVolumeEmptyDirArgsDict',
     'ServiceTemplateVolumeGcsArgs',
+    'ServiceTemplateVolumeGcsArgsDict',
     'ServiceTemplateVolumeNfsArgs',
+    'ServiceTemplateVolumeNfsArgsDict',
     'ServiceTemplateVolumeSecretArgs',
+    'ServiceTemplateVolumeSecretArgsDict',
     'ServiceTemplateVolumeSecretItemArgs',
+    'ServiceTemplateVolumeSecretItemArgsDict',
     'ServiceTemplateVpcAccessArgs',
+    'ServiceTemplateVpcAccessArgsDict',
     'ServiceTemplateVpcAccessNetworkInterfaceArgs',
+    'ServiceTemplateVpcAccessNetworkInterfaceArgsDict',
     'ServiceTerminalConditionArgs',
+    'ServiceTerminalConditionArgsDict',
     'ServiceTrafficArgs',
+    'ServiceTrafficArgsDict',
     'ServiceTrafficStatusArgs',
+    'ServiceTrafficStatusArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class JobBinaryAuthorizationArgsDict(TypedDict):
+        breakglass_justification: NotRequired[pulumi.Input[str]]
+        """
+        If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+        """
+        use_default: NotRequired[pulumi.Input[bool]]
+        """
+        If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
+        """
+elif False:
+    JobBinaryAuthorizationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobBinaryAuthorizationArgs:
@@ -110,6 +190,52 @@ class JobBinaryAuthorizationArgs:
     def use_default(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_default", value)
 
+
+if not MYPY:
+    class JobConditionArgsDict(TypedDict):
+        execution_reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A reason for the execution condition.
+        """
+        last_transition_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Last time the condition transitioned from one status to another.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human readable message indicating details about the current status.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A common (service-level) reason for this condition.
+        """
+        revision_reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A reason for the revision condition.
+        """
+        severity: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        How to interpret failures of this condition, one of Error, Warning, Info
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        State of the condition.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        """
+elif False:
+    JobConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobConditionArgs:
@@ -264,6 +390,14 @@ class JobConditionArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class JobIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    JobIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -303,6 +437,14 @@ class JobIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class JobIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    JobIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -341,6 +483,27 @@ class JobIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class JobLatestCreatedExecutionArgsDict(TypedDict):
+        completion_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Completion timestamp of the execution.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        create_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Creation timestamp of the execution.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the Job.
+        """
+elif False:
+    JobLatestCreatedExecutionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobLatestCreatedExecutionArgs:
@@ -404,6 +567,39 @@ class JobLatestCreatedExecutionArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class JobTemplateArgsDict(TypedDict):
+        template: pulumi.Input['JobTemplateTemplateArgsDict']
+        """
+        Describes the task(s) that will be created when executing an execution
+        Structure is documented below.
+        """
+        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+        Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+        All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+        This field follows Kubernetes annotations' namespacing, limits, and rules.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
+        or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+        https://cloud.google.com/run/docs/configuring/labels.
+        Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+        All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
+        """
+        parallelism: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
+        """
+        task_count: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        """
+elif False:
+    JobTemplateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTemplateArgs:
@@ -506,6 +702,48 @@ class JobTemplateArgs:
     def task_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "task_count", value)
 
+
+if not MYPY:
+    class JobTemplateTemplateArgsDict(TypedDict):
+        containers: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerArgsDict']]]]
+        """
+        Holds the single container that defines the unit of execution for this task.
+        Structure is documented below.
+        """
+        encryption_key: NotRequired[pulumi.Input[str]]
+        """
+        A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        """
+        execution_environment: NotRequired[pulumi.Input[str]]
+        """
+        The execution environment being used to host this Task.
+        Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
+        """
+        max_retries: NotRequired[pulumi.Input[int]]
+        """
+        Number of retries allowed per Task, before marking this Task failed.
+        """
+        service_account: NotRequired[pulumi.Input[str]]
+        """
+        Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
+        """
+        timeout: NotRequired[pulumi.Input[str]]
+        """
+        Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        volumes: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVolumeArgsDict']]]]
+        """
+        A list of Volumes to make available to containers.
+        Structure is documented below.
+        """
+        vpc_access: NotRequired[pulumi.Input['JobTemplateTemplateVpcAccessArgsDict']]
+        """
+        VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        Structure is documented below.
+        """
+elif False:
+    JobTemplateTemplateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTemplateTemplateArgs:
@@ -651,6 +889,52 @@ class JobTemplateTemplateArgs:
     def vpc_access(self, value: Optional[pulumi.Input['JobTemplateTemplateVpcAccessArgs']]):
         pulumi.set(self, "vpc_access", value)
 
+
+if not MYPY:
+    class JobTemplateTemplateContainerArgsDict(TypedDict):
+        image: pulumi.Input[str]
+        """
+        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        """
+        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
+        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerEnvArgsDict']]]]
+        """
+        List of environment variables to set in the container.
+        Structure is documented below.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the container specified as a DNS_LABEL.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerPortArgsDict']]]]
+        """
+        List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+        If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+        Structure is documented below.
+        """
+        resources: NotRequired[pulumi.Input['JobTemplateTemplateContainerResourcesArgsDict']]
+        """
+        Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        Structure is documented below.
+        """
+        volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgsDict']]]]
+        """
+        Volume to mount into the container's filesystem.
+        Structure is documented below.
+        """
+        working_dir: NotRequired[pulumi.Input[str]]
+        """
+        Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+        """
+elif False:
+    JobTemplateTemplateContainerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTemplateTemplateContainerArgs:
@@ -812,6 +1096,24 @@ class JobTemplateTemplateContainerArgs:
         pulumi.set(self, "working_dir", value)
 
 
+if not MYPY:
+    class JobTemplateTemplateContainerEnvArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+        """
+        value_source: NotRequired[pulumi.Input['JobTemplateTemplateContainerEnvValueSourceArgsDict']]
+        """
+        Source for the environment variable's value.
+        Structure is documented below.
+        """
+elif False:
+    JobTemplateTemplateContainerEnvArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTemplateTemplateContainerEnvArgs:
     def __init__(__self__, *,
@@ -868,6 +1170,16 @@ class JobTemplateTemplateContainerEnvArgs:
         pulumi.set(self, "value_source", value)
 
 
+if not MYPY:
+    class JobTemplateTemplateContainerEnvValueSourceArgsDict(TypedDict):
+        secret_key_ref: NotRequired[pulumi.Input['JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgsDict']]
+        """
+        Selects a secret and a specific version from Cloud Secret Manager.
+        Structure is documented below.
+        """
+elif False:
+    JobTemplateTemplateContainerEnvValueSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTemplateTemplateContainerEnvValueSourceArgs:
     def __init__(__self__, *,
@@ -892,6 +1204,19 @@ class JobTemplateTemplateContainerEnvValueSourceArgs:
     def secret_key_ref(self, value: Optional[pulumi.Input['JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs']]):
         pulumi.set(self, "secret_key_ref", value)
 
+
+if not MYPY:
+    class JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgsDict(TypedDict):
+        secret: pulumi.Input[str]
+        """
+        The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+        """
+        version: pulumi.Input[str]
+        """
+        The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+        """
+elif False:
+    JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs:
@@ -929,6 +1254,19 @@ class JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs:
     def version(self, value: pulumi.Input[str]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class JobTemplateTemplateContainerPortArgsDict(TypedDict):
+        container_port: NotRequired[pulumi.Input[int]]
+        """
+        Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+        """
+elif False:
+    JobTemplateTemplateContainerPortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTemplateTemplateContainerPortArgs:
@@ -969,6 +1307,15 @@ class JobTemplateTemplateContainerPortArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class JobTemplateTemplateContainerResourcesArgsDict(TypedDict):
+        limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        """
+elif False:
+    JobTemplateTemplateContainerResourcesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTemplateTemplateContainerResourcesArgs:
     def __init__(__self__, *,
@@ -991,6 +1338,19 @@ class JobTemplateTemplateContainerResourcesArgs:
     def limits(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "limits", value)
 
+
+if not MYPY:
+    class JobTemplateTemplateContainerVolumeMountArgsDict(TypedDict):
+        mount_path: pulumi.Input[str]
+        """
+        Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+        """
+        name: pulumi.Input[str]
+        """
+        This must match the Name of a Volume.
+        """
+elif False:
+    JobTemplateTemplateContainerVolumeMountArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTemplateTemplateContainerVolumeMountArgs:
@@ -1028,6 +1388,40 @@ class JobTemplateTemplateContainerVolumeMountArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class JobTemplateTemplateVolumeArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Volume's name.
+        """
+        cloud_sql_instance: NotRequired[pulumi.Input['JobTemplateTemplateVolumeCloudSqlInstanceArgsDict']]
+        """
+        For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        Structure is documented below.
+        """
+        empty_dir: NotRequired[pulumi.Input['JobTemplateTemplateVolumeEmptyDirArgsDict']]
+        """
+        Ephemeral storage used as a shared volume.
+        Structure is documented below.
+        """
+        gcs: NotRequired[pulumi.Input['JobTemplateTemplateVolumeGcsArgsDict']]
+        """
+        Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+        Structure is documented below.
+        """
+        nfs: NotRequired[pulumi.Input['JobTemplateTemplateVolumeNfsArgsDict']]
+        """
+        NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+        Structure is documented below.
+        """
+        secret: NotRequired[pulumi.Input['JobTemplateTemplateVolumeSecretArgsDict']]
+        """
+        Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        Structure is documented below.
+        """
+elif False:
+    JobTemplateTemplateVolumeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTemplateTemplateVolumeArgs:
@@ -1141,6 +1535,15 @@ class JobTemplateTemplateVolumeArgs:
         pulumi.set(self, "secret", value)
 
 
+if not MYPY:
+    class JobTemplateTemplateVolumeCloudSqlInstanceArgsDict(TypedDict):
+        instances: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+        """
+elif False:
+    JobTemplateTemplateVolumeCloudSqlInstanceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTemplateTemplateVolumeCloudSqlInstanceArgs:
     def __init__(__self__, *,
@@ -1163,6 +1566,21 @@ class JobTemplateTemplateVolumeCloudSqlInstanceArgs:
     def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "instances", value)
 
+
+if not MYPY:
+    class JobTemplateTemplateVolumeEmptyDirArgsDict(TypedDict):
+        medium: NotRequired[pulumi.Input[str]]
+        """
+        The different types of medium supported for EmptyDir.
+        Default value is `MEMORY`.
+        Possible values are: `MEMORY`.
+        """
+        size_limit: NotRequired[pulumi.Input[str]]
+        """
+        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+        """
+elif False:
+    JobTemplateTemplateVolumeEmptyDirArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTemplateTemplateVolumeEmptyDirArgs:
@@ -1207,6 +1625,19 @@ class JobTemplateTemplateVolumeEmptyDirArgs:
         pulumi.set(self, "size_limit", value)
 
 
+if not MYPY:
+    class JobTemplateTemplateVolumeGcsArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
+        """
+elif False:
+    JobTemplateTemplateVolumeGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTemplateTemplateVolumeGcsArgs:
     def __init__(__self__, *,
@@ -1244,6 +1675,23 @@ class JobTemplateTemplateVolumeGcsArgs:
     def read_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "read_only", value)
 
+
+if not MYPY:
+    class JobTemplateTemplateVolumeNfsArgsDict(TypedDict):
+        server: pulumi.Input[str]
+        """
+        Hostname or IP address of the NFS server.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path that is exported by the NFS server.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        If true, mount this volume as read-only in all mounts.
+        """
+elif False:
+    JobTemplateTemplateVolumeNfsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTemplateTemplateVolumeNfsArgs:
@@ -1298,6 +1746,24 @@ class JobTemplateTemplateVolumeNfsArgs:
     def read_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "read_only", value)
 
+
+if not MYPY:
+    class JobTemplateTemplateVolumeSecretArgsDict(TypedDict):
+        secret: pulumi.Input[str]
+        """
+        The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+        """
+        default_mode: NotRequired[pulumi.Input[int]]
+        """
+        Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+        """
+        items: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVolumeSecretItemArgsDict']]]]
+        """
+        If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+        Structure is documented below.
+        """
+elif False:
+    JobTemplateTemplateVolumeSecretArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTemplateTemplateVolumeSecretArgs:
@@ -1355,6 +1821,23 @@ class JobTemplateTemplateVolumeSecretArgs:
         pulumi.set(self, "items", value)
 
 
+if not MYPY:
+    class JobTemplateTemplateVolumeSecretItemArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        The relative path of the secret in the container.
+        """
+        version: pulumi.Input[str]
+        """
+        The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+        """
+        mode: NotRequired[pulumi.Input[int]]
+        """
+        Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+        """
+elif False:
+    JobTemplateTemplateVolumeSecretItemArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JobTemplateTemplateVolumeSecretItemArgs:
     def __init__(__self__, *,
@@ -1407,6 +1890,25 @@ class JobTemplateTemplateVolumeSecretItemArgs:
     def mode(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "mode", value)
 
+
+if not MYPY:
+    class JobTemplateTemplateVpcAccessArgsDict(TypedDict):
+        connector: NotRequired[pulumi.Input[str]]
+        """
+        VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+        """
+        egress: NotRequired[pulumi.Input[str]]
+        """
+        Traffic VPC egress settings.
+        Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+        """
+        network_interfaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVpcAccessNetworkInterfaceArgsDict']]]]
+        """
+        Direct VPC egress settings. Currently only single network interface is supported.
+        Structure is documented below.
+        """
+elif False:
+    JobTemplateTemplateVpcAccessArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTemplateTemplateVpcAccessArgs:
@@ -1466,6 +1968,29 @@ class JobTemplateTemplateVpcAccessArgs:
     def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVpcAccessNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
+
+if not MYPY:
+    class JobTemplateTemplateVpcAccessNetworkInterfaceArgsDict(TypedDict):
+        network: NotRequired[pulumi.Input[str]]
+        """
+        The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+        network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+        looked up from the subnetwork.
+        """
+        subnetwork: NotRequired[pulumi.Input[str]]
+        """
+        The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+        network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+        subnetwork with the same name with the network will be used.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Network tags applied to this Cloud Run job.
+
+        - - -
+        """
+elif False:
+    JobTemplateTemplateVpcAccessNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTemplateTemplateVpcAccessNetworkInterfaceArgs:
@@ -1533,6 +2058,52 @@ class JobTemplateTemplateVpcAccessNetworkInterfaceArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+
+if not MYPY:
+    class JobTerminalConditionArgsDict(TypedDict):
+        execution_reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A reason for the execution condition.
+        """
+        last_transition_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Last time the condition transitioned from one status to another.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human readable message indicating details about the current status.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A common (service-level) reason for this condition.
+        """
+        revision_reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A reason for the revision condition.
+        """
+        severity: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        How to interpret failures of this condition, one of Error, Warning, Info
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        State of the condition.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        """
+elif False:
+    JobTerminalConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JobTerminalConditionArgs:
@@ -1687,6 +2258,19 @@ class JobTerminalConditionArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ServiceBinaryAuthorizationArgsDict(TypedDict):
+        breakglass_justification: NotRequired[pulumi.Input[str]]
+        """
+        If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+        """
+        use_default: NotRequired[pulumi.Input[bool]]
+        """
+        If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
+        """
+elif False:
+    ServiceBinaryAuthorizationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceBinaryAuthorizationArgs:
     def __init__(__self__, *,
@@ -1725,6 +2309,52 @@ class ServiceBinaryAuthorizationArgs:
     def use_default(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_default", value)
 
+
+if not MYPY:
+    class ServiceConditionArgsDict(TypedDict):
+        execution_reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A reason for the execution condition.
+        """
+        last_transition_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Last time the condition transitioned from one status to another.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human readable message indicating details about the current status.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A common (service-level) reason for this condition.
+        """
+        revision_reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A reason for the revision condition.
+        """
+        severity: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        How to interpret failures of this condition, one of Error, Warning, Info
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        State of the condition.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The allocation type for this traffic target.
+        """
+elif False:
+    ServiceConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceConditionArgs:
@@ -1879,6 +2509,14 @@ class ServiceConditionArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ServiceIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    ServiceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -1917,6 +2555,14 @@ class ServiceIamBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class ServiceIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    ServiceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceIamMemberConditionArgs:
@@ -1957,6 +2603,15 @@ class ServiceIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class ServiceScalingArgsDict(TypedDict):
+        min_instance_count: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+        """
+elif False:
+    ServiceScalingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceScalingArgs:
     def __init__(__self__, *,
@@ -1979,6 +2634,75 @@ class ServiceScalingArgs:
     def min_instance_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_instance_count", value)
 
+
+if not MYPY:
+    class ServiceTemplateArgsDict(TypedDict):
+        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+        Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+        All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+        This field follows Kubernetes annotations' namespacing, limits, and rules.
+        """
+        containers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerArgsDict']]]]
+        """
+        Holds the containers that define the unit of execution for this Service.
+        Structure is documented below.
+        """
+        encryption_key: NotRequired[pulumi.Input[str]]
+        """
+        A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        """
+        execution_environment: NotRequired[pulumi.Input[str]]
+        """
+        The sandbox environment to host this Revision.
+        Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+        For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+        Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+        All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
+        """
+        max_instance_request_concurrency: NotRequired[pulumi.Input[int]]
+        """
+        Sets the maximum number of requests that each serving instance can receive.
+        """
+        revision: NotRequired[pulumi.Input[str]]
+        """
+        The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+        """
+        scaling: NotRequired[pulumi.Input['ServiceTemplateScalingArgsDict']]
+        """
+        Scaling settings for this Revision.
+        Structure is documented below.
+        """
+        service_account: NotRequired[pulumi.Input[str]]
+        """
+        Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
+        """
+        session_affinity: NotRequired[pulumi.Input[bool]]
+        """
+        Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+        """
+        timeout: NotRequired[pulumi.Input[str]]
+        """
+        Max allowed time for an instance to respond to a request.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        volumes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVolumeArgsDict']]]]
+        """
+        A list of Volumes to make available to containers.
+        Structure is documented below.
+        """
+        vpc_access: NotRequired[pulumi.Input['ServiceTemplateVpcAccessArgsDict']]
+        """
+        VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        Structure is documented below.
+        """
+elif False:
+    ServiceTemplateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTemplateArgs:
@@ -2219,6 +2943,66 @@ class ServiceTemplateArgs:
         pulumi.set(self, "vpc_access", value)
 
 
+if not MYPY:
+    class ServiceTemplateContainerArgsDict(TypedDict):
+        image: pulumi.Input[str]
+        """
+        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        """
+        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
+        """
+        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerEnvArgsDict']]]]
+        """
+        List of environment variables to set in the container.
+        Structure is documented below.
+        """
+        liveness_probe: NotRequired[pulumi.Input['ServiceTemplateContainerLivenessProbeArgsDict']]
+        """
+        Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Structure is documented below.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the container specified as a DNS_LABEL.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerPortArgsDict']]]]
+        """
+        List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+        If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+        Structure is documented below.
+        """
+        resources: NotRequired[pulumi.Input['ServiceTemplateContainerResourcesArgsDict']]
+        """
+        Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        Structure is documented below.
+        """
+        startup_probe: NotRequired[pulumi.Input['ServiceTemplateContainerStartupProbeArgsDict']]
+        """
+        Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Structure is documented below.
+        """
+        volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerVolumeMountArgsDict']]]]
+        """
+        Volume to mount into the container's filesystem.
+        Structure is documented below.
+        """
+        working_dir: NotRequired[pulumi.Input[str]]
+        """
+        Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+        """
+elif False:
+    ServiceTemplateContainerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTemplateContainerArgs:
     def __init__(__self__, *,
@@ -2431,6 +3215,24 @@ class ServiceTemplateContainerArgs:
         pulumi.set(self, "working_dir", value)
 
 
+if not MYPY:
+    class ServiceTemplateContainerEnvArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+        """
+        value_source: NotRequired[pulumi.Input['ServiceTemplateContainerEnvValueSourceArgsDict']]
+        """
+        Source for the environment variable's value.
+        Structure is documented below.
+        """
+elif False:
+    ServiceTemplateContainerEnvArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTemplateContainerEnvArgs:
     def __init__(__self__, *,
@@ -2487,6 +3289,16 @@ class ServiceTemplateContainerEnvArgs:
         pulumi.set(self, "value_source", value)
 
 
+if not MYPY:
+    class ServiceTemplateContainerEnvValueSourceArgsDict(TypedDict):
+        secret_key_ref: NotRequired[pulumi.Input['ServiceTemplateContainerEnvValueSourceSecretKeyRefArgsDict']]
+        """
+        Selects a secret and a specific version from Cloud Secret Manager.
+        Structure is documented below.
+        """
+elif False:
+    ServiceTemplateContainerEnvValueSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTemplateContainerEnvValueSourceArgs:
     def __init__(__self__, *,
@@ -2511,6 +3323,19 @@ class ServiceTemplateContainerEnvValueSourceArgs:
     def secret_key_ref(self, value: Optional[pulumi.Input['ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs']]):
         pulumi.set(self, "secret_key_ref", value)
 
+
+if not MYPY:
+    class ServiceTemplateContainerEnvValueSourceSecretKeyRefArgsDict(TypedDict):
+        secret: pulumi.Input[str]
+        """
+        The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+        """
+elif False:
+    ServiceTemplateContainerEnvValueSourceSecretKeyRefArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs:
@@ -2549,6 +3374,42 @@ class ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs:
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class ServiceTemplateContainerLivenessProbeArgsDict(TypedDict):
+        failure_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        """
+        grpc: NotRequired[pulumi.Input['ServiceTemplateContainerLivenessProbeGrpcArgsDict']]
+        """
+        GRPC specifies an action involving a GRPC port.
+        Structure is documented below.
+        """
+        http_get: NotRequired[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetArgsDict']]
+        """
+        HTTPGet specifies the http request to perform.
+        Structure is documented below.
+        """
+        initial_delay_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
+        period_seconds: NotRequired[pulumi.Input[int]]
+        """
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
+        """
+        tcp_socket: NotRequired[pulumi.Input['ServiceTemplateContainerLivenessProbeTcpSocketArgsDict']]
+        """
+        TCPSocketAction describes an action based on opening a socket
+        Structure is documented below.
+        """
+        timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
+elif False:
+    ServiceTemplateContainerLivenessProbeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTemplateContainerLivenessProbeArgs:
@@ -2675,6 +3536,22 @@ class ServiceTemplateContainerLivenessProbeArgs:
         pulumi.set(self, "timeout_seconds", value)
 
 
+if not MYPY:
+    class ServiceTemplateContainerLivenessProbeGrpcArgsDict(TypedDict):
+        port: NotRequired[pulumi.Input[int]]
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        The name of the service to place in the gRPC HealthCheckRequest
+        (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+        If this is not specified, the default behavior is defined by gRPC.
+        """
+elif False:
+    ServiceTemplateContainerLivenessProbeGrpcArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTemplateContainerLivenessProbeGrpcArgs:
     def __init__(__self__, *,
@@ -2719,6 +3596,25 @@ class ServiceTemplateContainerLivenessProbeGrpcArgs:
     def service(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service", value)
 
+
+if not MYPY:
+    class ServiceTemplateContainerLivenessProbeHttpGetArgsDict(TypedDict):
+        http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgsDict']]]]
+        """
+        Custom headers to set in the request. HTTP allows repeated headers.
+        Structure is documented below.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to access on the HTTP server. Defaults to '/'.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        Port number to access on the container. Must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+elif False:
+    ServiceTemplateContainerLivenessProbeHttpGetArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTemplateContainerLivenessProbeHttpGetArgs:
@@ -2779,6 +3675,19 @@ class ServiceTemplateContainerLivenessProbeHttpGetArgs:
         pulumi.set(self, "port", value)
 
 
+if not MYPY:
+    class ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The header field name
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The header field value
+        """
+elif False:
+    ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs:
     def __init__(__self__, *,
@@ -2817,6 +3726,16 @@ class ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ServiceTemplateContainerLivenessProbeTcpSocketArgsDict(TypedDict):
+        port: pulumi.Input[int]
+        """
+        Port number to access on the container. Must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+elif False:
+    ServiceTemplateContainerLivenessProbeTcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTemplateContainerLivenessProbeTcpSocketArgs:
     def __init__(__self__, *,
@@ -2840,6 +3759,19 @@ class ServiceTemplateContainerLivenessProbeTcpSocketArgs:
     def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
 
+
+if not MYPY:
+    class ServiceTemplateContainerPortArgsDict(TypedDict):
+        container_port: NotRequired[pulumi.Input[int]]
+        """
+        Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+        """
+elif False:
+    ServiceTemplateContainerPortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTemplateContainerPortArgs:
@@ -2879,6 +3811,24 @@ class ServiceTemplateContainerPortArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class ServiceTemplateContainerResourcesArgsDict(TypedDict):
+        cpu_idle: NotRequired[pulumi.Input[bool]]
+        """
+        Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
+        `resources` is set, this field must be explicitly set to true to preserve the default behavior.
+        """
+        limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        """
+        startup_cpu_boost: NotRequired[pulumi.Input[bool]]
+        """
+        Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+        """
+elif False:
+    ServiceTemplateContainerResourcesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTemplateContainerResourcesArgs:
@@ -2936,6 +3886,42 @@ class ServiceTemplateContainerResourcesArgs:
     def startup_cpu_boost(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "startup_cpu_boost", value)
 
+
+if not MYPY:
+    class ServiceTemplateContainerStartupProbeArgsDict(TypedDict):
+        failure_threshold: NotRequired[pulumi.Input[int]]
+        """
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        """
+        grpc: NotRequired[pulumi.Input['ServiceTemplateContainerStartupProbeGrpcArgsDict']]
+        """
+        GRPC specifies an action involving a GRPC port.
+        Structure is documented below.
+        """
+        http_get: NotRequired[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetArgsDict']]
+        """
+        HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+        Structure is documented below.
+        """
+        initial_delay_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
+        period_seconds: NotRequired[pulumi.Input[int]]
+        """
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
+        """
+        tcp_socket: NotRequired[pulumi.Input['ServiceTemplateContainerStartupProbeTcpSocketArgsDict']]
+        """
+        TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+        Structure is documented below.
+        """
+        timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
+elif False:
+    ServiceTemplateContainerStartupProbeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTemplateContainerStartupProbeArgs:
@@ -3062,6 +4048,22 @@ class ServiceTemplateContainerStartupProbeArgs:
         pulumi.set(self, "timeout_seconds", value)
 
 
+if not MYPY:
+    class ServiceTemplateContainerStartupProbeGrpcArgsDict(TypedDict):
+        port: NotRequired[pulumi.Input[int]]
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        The name of the service to place in the gRPC HealthCheckRequest
+        (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+        If this is not specified, the default behavior is defined by gRPC.
+        """
+elif False:
+    ServiceTemplateContainerStartupProbeGrpcArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTemplateContainerStartupProbeGrpcArgs:
     def __init__(__self__, *,
@@ -3106,6 +4108,25 @@ class ServiceTemplateContainerStartupProbeGrpcArgs:
     def service(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service", value)
 
+
+if not MYPY:
+    class ServiceTemplateContainerStartupProbeHttpGetArgsDict(TypedDict):
+        http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgsDict']]]]
+        """
+        Custom headers to set in the request. HTTP allows repeated headers.
+        Structure is documented below.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to access on the HTTP server. Defaults to '/'.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        Port number to access on the container. Must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+elif False:
+    ServiceTemplateContainerStartupProbeHttpGetArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTemplateContainerStartupProbeHttpGetArgs:
@@ -3166,6 +4187,19 @@ class ServiceTemplateContainerStartupProbeHttpGetArgs:
         pulumi.set(self, "port", value)
 
 
+if not MYPY:
+    class ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The header field name
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The header field value
+        """
+elif False:
+    ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs:
     def __init__(__self__, *,
@@ -3204,6 +4238,16 @@ class ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ServiceTemplateContainerStartupProbeTcpSocketArgsDict(TypedDict):
+        port: NotRequired[pulumi.Input[int]]
+        """
+        Port number to access on the container. Must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+elif False:
+    ServiceTemplateContainerStartupProbeTcpSocketArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTemplateContainerStartupProbeTcpSocketArgs:
     def __init__(__self__, *,
@@ -3228,6 +4272,19 @@ class ServiceTemplateContainerStartupProbeTcpSocketArgs:
     def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
 
+
+if not MYPY:
+    class ServiceTemplateContainerVolumeMountArgsDict(TypedDict):
+        mount_path: pulumi.Input[str]
+        """
+        Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+        """
+        name: pulumi.Input[str]
+        """
+        This must match the Name of a Volume.
+        """
+elif False:
+    ServiceTemplateContainerVolumeMountArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTemplateContainerVolumeMountArgs:
@@ -3265,6 +4322,19 @@ class ServiceTemplateContainerVolumeMountArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class ServiceTemplateScalingArgsDict(TypedDict):
+        max_instance_count: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of serving instances that this resource should have.
+        """
+        min_instance_count: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+        """
+elif False:
+    ServiceTemplateScalingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTemplateScalingArgs:
@@ -3304,6 +4374,40 @@ class ServiceTemplateScalingArgs:
     def min_instance_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_instance_count", value)
 
+
+if not MYPY:
+    class ServiceTemplateVolumeArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Volume's name.
+        """
+        cloud_sql_instance: NotRequired[pulumi.Input['ServiceTemplateVolumeCloudSqlInstanceArgsDict']]
+        """
+        For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        Structure is documented below.
+        """
+        empty_dir: NotRequired[pulumi.Input['ServiceTemplateVolumeEmptyDirArgsDict']]
+        """
+        Ephemeral storage used as a shared volume.
+        Structure is documented below.
+        """
+        gcs: NotRequired[pulumi.Input['ServiceTemplateVolumeGcsArgsDict']]
+        """
+        Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
+        Structure is documented below.
+        """
+        nfs: NotRequired[pulumi.Input['ServiceTemplateVolumeNfsArgsDict']]
+        """
+        Represents an NFS mount.
+        Structure is documented below.
+        """
+        secret: NotRequired[pulumi.Input['ServiceTemplateVolumeSecretArgsDict']]
+        """
+        Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        Structure is documented below.
+        """
+elif False:
+    ServiceTemplateVolumeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTemplateVolumeArgs:
@@ -3417,6 +4521,15 @@ class ServiceTemplateVolumeArgs:
         pulumi.set(self, "secret", value)
 
 
+if not MYPY:
+    class ServiceTemplateVolumeCloudSqlInstanceArgsDict(TypedDict):
+        instances: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+        """
+elif False:
+    ServiceTemplateVolumeCloudSqlInstanceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTemplateVolumeCloudSqlInstanceArgs:
     def __init__(__self__, *,
@@ -3439,6 +4552,21 @@ class ServiceTemplateVolumeCloudSqlInstanceArgs:
     def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "instances", value)
 
+
+if not MYPY:
+    class ServiceTemplateVolumeEmptyDirArgsDict(TypedDict):
+        medium: NotRequired[pulumi.Input[str]]
+        """
+        The different types of medium supported for EmptyDir.
+        Default value is `MEMORY`.
+        Possible values are: `MEMORY`.
+        """
+        size_limit: NotRequired[pulumi.Input[str]]
+        """
+        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+        """
+elif False:
+    ServiceTemplateVolumeEmptyDirArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTemplateVolumeEmptyDirArgs:
@@ -3483,6 +4611,19 @@ class ServiceTemplateVolumeEmptyDirArgs:
         pulumi.set(self, "size_limit", value)
 
 
+if not MYPY:
+    class ServiceTemplateVolumeGcsArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        GCS Bucket name
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        If true, mount the GCS bucket as read-only
+        """
+elif False:
+    ServiceTemplateVolumeGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTemplateVolumeGcsArgs:
     def __init__(__self__, *,
@@ -3520,6 +4661,25 @@ class ServiceTemplateVolumeGcsArgs:
     def read_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "read_only", value)
 
+
+if not MYPY:
+    class ServiceTemplateVolumeNfsArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        Path that is exported by the NFS server.
+        """
+        server: pulumi.Input[str]
+        """
+        Hostname or IP address of the NFS server
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        If true, mount the NFS volume as read only
+
+        - - -
+        """
+elif False:
+    ServiceTemplateVolumeNfsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTemplateVolumeNfsArgs:
@@ -3578,6 +4738,24 @@ class ServiceTemplateVolumeNfsArgs:
         pulumi.set(self, "read_only", value)
 
 
+if not MYPY:
+    class ServiceTemplateVolumeSecretArgsDict(TypedDict):
+        secret: pulumi.Input[str]
+        """
+        The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+        """
+        default_mode: NotRequired[pulumi.Input[int]]
+        """
+        Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+        """
+        items: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVolumeSecretItemArgsDict']]]]
+        """
+        If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+        Structure is documented below.
+        """
+elif False:
+    ServiceTemplateVolumeSecretArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTemplateVolumeSecretArgs:
     def __init__(__self__, *,
@@ -3634,6 +4812,23 @@ class ServiceTemplateVolumeSecretArgs:
         pulumi.set(self, "items", value)
 
 
+if not MYPY:
+    class ServiceTemplateVolumeSecretItemArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        The relative path of the secret in the container.
+        """
+        mode: NotRequired[pulumi.Input[int]]
+        """
+        Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+        """
+elif False:
+    ServiceTemplateVolumeSecretItemArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTemplateVolumeSecretItemArgs:
     def __init__(__self__, *,
@@ -3687,6 +4882,25 @@ class ServiceTemplateVolumeSecretItemArgs:
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class ServiceTemplateVpcAccessArgsDict(TypedDict):
+        connector: NotRequired[pulumi.Input[str]]
+        """
+        VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+        """
+        egress: NotRequired[pulumi.Input[str]]
+        """
+        Traffic VPC egress settings.
+        Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+        """
+        network_interfaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVpcAccessNetworkInterfaceArgsDict']]]]
+        """
+        Direct VPC egress settings. Currently only single network interface is supported.
+        Structure is documented below.
+        """
+elif False:
+    ServiceTemplateVpcAccessArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTemplateVpcAccessArgs:
@@ -3746,6 +4960,27 @@ class ServiceTemplateVpcAccessArgs:
     def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVpcAccessNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
+
+if not MYPY:
+    class ServiceTemplateVpcAccessNetworkInterfaceArgsDict(TypedDict):
+        network: NotRequired[pulumi.Input[str]]
+        """
+        The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+        network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+        looked up from the subnetwork.
+        """
+        subnetwork: NotRequired[pulumi.Input[str]]
+        """
+        The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+        network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+        subnetwork with the same name with the network will be used.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Network tags applied to this Cloud Run service.
+        """
+elif False:
+    ServiceTemplateVpcAccessNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTemplateVpcAccessNetworkInterfaceArgs:
@@ -3809,6 +5044,52 @@ class ServiceTemplateVpcAccessNetworkInterfaceArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+
+if not MYPY:
+    class ServiceTerminalConditionArgsDict(TypedDict):
+        execution_reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A reason for the execution condition.
+        """
+        last_transition_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Last time the condition transitioned from one status to another.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human readable message indicating details about the current status.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A common (service-level) reason for this condition.
+        """
+        revision_reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A reason for the revision condition.
+        """
+        severity: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        How to interpret failures of this condition, one of Error, Warning, Info
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        State of the condition.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The allocation type for this traffic target.
+        """
+elif False:
+    ServiceTerminalConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTerminalConditionArgs:
@@ -3963,6 +5244,28 @@ class ServiceTerminalConditionArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ServiceTrafficArgsDict(TypedDict):
+        percent: NotRequired[pulumi.Input[int]]
+        """
+        Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+        """
+        revision: NotRequired[pulumi.Input[str]]
+        """
+        Revision to which to send this portion of traffic, if traffic allocation is by revision.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        Indicates a string to be part of the URI to exclusively reference this target.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The allocation type for this traffic target.
+        Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+        """
+elif False:
+    ServiceTrafficArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceTrafficArgs:
     def __init__(__self__, *,
@@ -4035,6 +5338,36 @@ class ServiceTrafficArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class ServiceTrafficStatusArgsDict(TypedDict):
+        percent: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        Specifies percent of the traffic to this Revision.
+        """
+        revision: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Revision to which this traffic is sent.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Indicates the string used in the URI to exclusively reference this target.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The allocation type for this traffic target.
+        """
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Displays the target URI.
+        """
+elif False:
+    ServiceTrafficStatusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceTrafficStatusArgs:

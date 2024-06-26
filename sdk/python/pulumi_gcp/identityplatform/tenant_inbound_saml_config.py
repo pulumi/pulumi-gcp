@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -268,10 +273,10 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 idp_config: Optional[pulumi.Input[pulumi.InputType['TenantInboundSamlConfigIdpConfigArgs']]] = None,
+                 idp_config: Optional[pulumi.Input[Union['TenantInboundSamlConfigIdpConfigArgs', 'TenantInboundSamlConfigIdpConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sp_config: Optional[pulumi.Input[pulumi.InputType['TenantInboundSamlConfigSpConfigArgs']]] = None,
+                 sp_config: Optional[pulumi.Input[Union['TenantInboundSamlConfigSpConfigArgs', 'TenantInboundSamlConfigSpConfigArgsDict']]] = None,
                  tenant: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -295,18 +300,18 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
             name="saml.tf-config",
             display_name="Display Name",
             tenant=tenant.name,
-            idp_config=gcp.identityplatform.TenantInboundSamlConfigIdpConfigArgs(
-                idp_entity_id="tf-idp",
-                sign_request=True,
-                sso_url="https://example.com",
-                idp_certificates=[gcp.identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificateArgs(
-                    x509_certificate=std.file(input="test-fixtures/rsa_cert.pem").result,
-                )],
-            ),
-            sp_config=gcp.identityplatform.TenantInboundSamlConfigSpConfigArgs(
-                sp_entity_id="tf-sp",
-                callback_uri="https://example.com",
-            ))
+            idp_config={
+                "idpEntityId": "tf-idp",
+                "signRequest": True,
+                "ssoUrl": "https://example.com",
+                "idpCertificates": [{
+                    "x509Certificate": std.file(input="test-fixtures/rsa_cert.pem").result,
+                }],
+            },
+            sp_config={
+                "spEntityId": "tf-sp",
+                "callbackUri": "https://example.com",
+            })
         ```
 
         ## Import
@@ -337,12 +342,12 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Human friendly display name.
         :param pulumi.Input[bool] enabled: If this config allows users to sign in with the provider.
-        :param pulumi.Input[pulumi.InputType['TenantInboundSamlConfigIdpConfigArgs']] idp_config: SAML IdP configuration when the project acts as the relying party
+        :param pulumi.Input[Union['TenantInboundSamlConfigIdpConfigArgs', 'TenantInboundSamlConfigIdpConfigArgsDict']] idp_config: SAML IdP configuration when the project acts as the relying party
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
                hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
                alphanumeric character, and have at least 2 characters.
-        :param pulumi.Input[pulumi.InputType['TenantInboundSamlConfigSpConfigArgs']] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive
+        :param pulumi.Input[Union['TenantInboundSamlConfigSpConfigArgs', 'TenantInboundSamlConfigSpConfigArgsDict']] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive
                and accept an authentication assertion issued by a SAML identity provider.
                Structure is documented below.
         :param pulumi.Input[str] tenant: The name of the tenant where this inbound SAML config resource exists
@@ -374,18 +379,18 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
             name="saml.tf-config",
             display_name="Display Name",
             tenant=tenant.name,
-            idp_config=gcp.identityplatform.TenantInboundSamlConfigIdpConfigArgs(
-                idp_entity_id="tf-idp",
-                sign_request=True,
-                sso_url="https://example.com",
-                idp_certificates=[gcp.identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificateArgs(
-                    x509_certificate=std.file(input="test-fixtures/rsa_cert.pem").result,
-                )],
-            ),
-            sp_config=gcp.identityplatform.TenantInboundSamlConfigSpConfigArgs(
-                sp_entity_id="tf-sp",
-                callback_uri="https://example.com",
-            ))
+            idp_config={
+                "idpEntityId": "tf-idp",
+                "signRequest": True,
+                "ssoUrl": "https://example.com",
+                "idpCertificates": [{
+                    "x509Certificate": std.file(input="test-fixtures/rsa_cert.pem").result,
+                }],
+            },
+            sp_config={
+                "spEntityId": "tf-sp",
+                "callbackUri": "https://example.com",
+            })
         ```
 
         ## Import
@@ -429,10 +434,10 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 idp_config: Optional[pulumi.Input[pulumi.InputType['TenantInboundSamlConfigIdpConfigArgs']]] = None,
+                 idp_config: Optional[pulumi.Input[Union['TenantInboundSamlConfigIdpConfigArgs', 'TenantInboundSamlConfigIdpConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sp_config: Optional[pulumi.Input[pulumi.InputType['TenantInboundSamlConfigSpConfigArgs']]] = None,
+                 sp_config: Optional[pulumi.Input[Union['TenantInboundSamlConfigSpConfigArgs', 'TenantInboundSamlConfigSpConfigArgsDict']]] = None,
                  tenant: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -470,10 +475,10 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            idp_config: Optional[pulumi.Input[pulumi.InputType['TenantInboundSamlConfigIdpConfigArgs']]] = None,
+            idp_config: Optional[pulumi.Input[Union['TenantInboundSamlConfigIdpConfigArgs', 'TenantInboundSamlConfigIdpConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            sp_config: Optional[pulumi.Input[pulumi.InputType['TenantInboundSamlConfigSpConfigArgs']]] = None,
+            sp_config: Optional[pulumi.Input[Union['TenantInboundSamlConfigSpConfigArgs', 'TenantInboundSamlConfigSpConfigArgsDict']]] = None,
             tenant: Optional[pulumi.Input[str]] = None) -> 'TenantInboundSamlConfig':
         """
         Get an existing TenantInboundSamlConfig resource's state with the given name, id, and optional extra
@@ -484,12 +489,12 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Human friendly display name.
         :param pulumi.Input[bool] enabled: If this config allows users to sign in with the provider.
-        :param pulumi.Input[pulumi.InputType['TenantInboundSamlConfigIdpConfigArgs']] idp_config: SAML IdP configuration when the project acts as the relying party
+        :param pulumi.Input[Union['TenantInboundSamlConfigIdpConfigArgs', 'TenantInboundSamlConfigIdpConfigArgsDict']] idp_config: SAML IdP configuration when the project acts as the relying party
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
                hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
                alphanumeric character, and have at least 2 characters.
-        :param pulumi.Input[pulumi.InputType['TenantInboundSamlConfigSpConfigArgs']] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive
+        :param pulumi.Input[Union['TenantInboundSamlConfigSpConfigArgs', 'TenantInboundSamlConfigSpConfigArgsDict']] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive
                and accept an authentication assertion issued by a SAML identity provider.
                Structure is documented below.
         :param pulumi.Input[str] tenant: The name of the tenant where this inbound SAML config resource exists

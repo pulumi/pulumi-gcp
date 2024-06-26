@@ -4,552 +4,1167 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AutoscalerAutoscalingPolicyArgs',
+    'AutoscalerAutoscalingPolicyArgsDict',
     'AutoscalerAutoscalingPolicyCpuUtilizationArgs',
+    'AutoscalerAutoscalingPolicyCpuUtilizationArgsDict',
     'AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs',
+    'AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgsDict',
     'AutoscalerAutoscalingPolicyMetricArgs',
+    'AutoscalerAutoscalingPolicyMetricArgsDict',
     'AutoscalerAutoscalingPolicyScaleDownControlArgs',
+    'AutoscalerAutoscalingPolicyScaleDownControlArgsDict',
     'AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs',
+    'AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgsDict',
     'AutoscalerAutoscalingPolicyScaleInControlArgs',
+    'AutoscalerAutoscalingPolicyScaleInControlArgsDict',
     'AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs',
+    'AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgsDict',
     'AutoscalerAutoscalingPolicyScalingScheduleArgs',
+    'AutoscalerAutoscalingPolicyScalingScheduleArgsDict',
     'BackendBucketCdnPolicyArgs',
+    'BackendBucketCdnPolicyArgsDict',
     'BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs',
+    'BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgsDict',
     'BackendBucketCdnPolicyCacheKeyPolicyArgs',
+    'BackendBucketCdnPolicyCacheKeyPolicyArgsDict',
     'BackendBucketCdnPolicyNegativeCachingPolicyArgs',
+    'BackendBucketCdnPolicyNegativeCachingPolicyArgsDict',
     'BackendBucketIamBindingConditionArgs',
+    'BackendBucketIamBindingConditionArgsDict',
     'BackendBucketIamMemberConditionArgs',
+    'BackendBucketIamMemberConditionArgsDict',
     'BackendServiceBackendArgs',
+    'BackendServiceBackendArgsDict',
     'BackendServiceCdnPolicyArgs',
+    'BackendServiceCdnPolicyArgsDict',
     'BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs',
+    'BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgsDict',
     'BackendServiceCdnPolicyCacheKeyPolicyArgs',
+    'BackendServiceCdnPolicyCacheKeyPolicyArgsDict',
     'BackendServiceCdnPolicyNegativeCachingPolicyArgs',
+    'BackendServiceCdnPolicyNegativeCachingPolicyArgsDict',
     'BackendServiceCircuitBreakersArgs',
+    'BackendServiceCircuitBreakersArgsDict',
     'BackendServiceCircuitBreakersConnectTimeoutArgs',
+    'BackendServiceCircuitBreakersConnectTimeoutArgsDict',
     'BackendServiceConsistentHashArgs',
+    'BackendServiceConsistentHashArgsDict',
     'BackendServiceConsistentHashHttpCookieArgs',
+    'BackendServiceConsistentHashHttpCookieArgsDict',
     'BackendServiceConsistentHashHttpCookieTtlArgs',
+    'BackendServiceConsistentHashHttpCookieTtlArgsDict',
     'BackendServiceIamBindingConditionArgs',
+    'BackendServiceIamBindingConditionArgsDict',
     'BackendServiceIamMemberConditionArgs',
+    'BackendServiceIamMemberConditionArgsDict',
     'BackendServiceIapArgs',
+    'BackendServiceIapArgsDict',
     'BackendServiceLocalityLbPolicyArgs',
+    'BackendServiceLocalityLbPolicyArgsDict',
     'BackendServiceLocalityLbPolicyCustomPolicyArgs',
+    'BackendServiceLocalityLbPolicyCustomPolicyArgsDict',
     'BackendServiceLocalityLbPolicyPolicyArgs',
+    'BackendServiceLocalityLbPolicyPolicyArgsDict',
     'BackendServiceLogConfigArgs',
+    'BackendServiceLogConfigArgsDict',
     'BackendServiceOutlierDetectionArgs',
+    'BackendServiceOutlierDetectionArgsDict',
     'BackendServiceOutlierDetectionBaseEjectionTimeArgs',
+    'BackendServiceOutlierDetectionBaseEjectionTimeArgsDict',
     'BackendServiceOutlierDetectionIntervalArgs',
+    'BackendServiceOutlierDetectionIntervalArgsDict',
     'BackendServiceSecuritySettingsArgs',
+    'BackendServiceSecuritySettingsArgsDict',
     'DiskAsyncPrimaryDiskArgs',
+    'DiskAsyncPrimaryDiskArgsDict',
     'DiskAsyncReplicationSecondaryDiskArgs',
+    'DiskAsyncReplicationSecondaryDiskArgsDict',
     'DiskDiskEncryptionKeyArgs',
+    'DiskDiskEncryptionKeyArgsDict',
     'DiskGuestOsFeatureArgs',
+    'DiskGuestOsFeatureArgsDict',
     'DiskIamBindingConditionArgs',
+    'DiskIamBindingConditionArgsDict',
     'DiskIamMemberConditionArgs',
+    'DiskIamMemberConditionArgsDict',
     'DiskSourceImageEncryptionKeyArgs',
+    'DiskSourceImageEncryptionKeyArgsDict',
     'DiskSourceSnapshotEncryptionKeyArgs',
+    'DiskSourceSnapshotEncryptionKeyArgsDict',
     'ExternalVpnGatewayInterfaceArgs',
+    'ExternalVpnGatewayInterfaceArgsDict',
     'FirewallAllowArgs',
+    'FirewallAllowArgsDict',
     'FirewallDenyArgs',
+    'FirewallDenyArgsDict',
     'FirewallLogConfigArgs',
+    'FirewallLogConfigArgsDict',
     'FirewallPolicyRuleMatchArgs',
+    'FirewallPolicyRuleMatchArgsDict',
     'FirewallPolicyRuleMatchLayer4ConfigArgs',
+    'FirewallPolicyRuleMatchLayer4ConfigArgsDict',
     'ForwardingRuleServiceDirectoryRegistrationsArgs',
+    'ForwardingRuleServiceDirectoryRegistrationsArgsDict',
     'GlobalForwardingRuleMetadataFilterArgs',
+    'GlobalForwardingRuleMetadataFilterArgsDict',
     'GlobalForwardingRuleMetadataFilterFilterLabelArgs',
+    'GlobalForwardingRuleMetadataFilterFilterLabelArgsDict',
     'GlobalForwardingRuleServiceDirectoryRegistrationsArgs',
+    'GlobalForwardingRuleServiceDirectoryRegistrationsArgsDict',
     'HaVpnGatewayVpnInterfaceArgs',
+    'HaVpnGatewayVpnInterfaceArgsDict',
     'HealthCheckGrpcHealthCheckArgs',
+    'HealthCheckGrpcHealthCheckArgsDict',
     'HealthCheckHttp2HealthCheckArgs',
+    'HealthCheckHttp2HealthCheckArgsDict',
     'HealthCheckHttpHealthCheckArgs',
+    'HealthCheckHttpHealthCheckArgsDict',
     'HealthCheckHttpsHealthCheckArgs',
+    'HealthCheckHttpsHealthCheckArgsDict',
     'HealthCheckLogConfigArgs',
+    'HealthCheckLogConfigArgsDict',
     'HealthCheckSslHealthCheckArgs',
+    'HealthCheckSslHealthCheckArgsDict',
     'HealthCheckTcpHealthCheckArgs',
+    'HealthCheckTcpHealthCheckArgsDict',
     'ImageGuestOsFeatureArgs',
+    'ImageGuestOsFeatureArgsDict',
     'ImageIamBindingConditionArgs',
+    'ImageIamBindingConditionArgsDict',
     'ImageIamMemberConditionArgs',
+    'ImageIamMemberConditionArgsDict',
     'ImageImageEncryptionKeyArgs',
+    'ImageImageEncryptionKeyArgsDict',
     'ImageRawDiskArgs',
+    'ImageRawDiskArgsDict',
     'InstanceAdvancedMachineFeaturesArgs',
+    'InstanceAdvancedMachineFeaturesArgsDict',
     'InstanceAttachedDiskArgs',
+    'InstanceAttachedDiskArgsDict',
     'InstanceBootDiskArgs',
+    'InstanceBootDiskArgsDict',
     'InstanceBootDiskInitializeParamsArgs',
+    'InstanceBootDiskInitializeParamsArgsDict',
     'InstanceConfidentialInstanceConfigArgs',
+    'InstanceConfidentialInstanceConfigArgsDict',
     'InstanceFromMachineImageAdvancedMachineFeaturesArgs',
+    'InstanceFromMachineImageAdvancedMachineFeaturesArgsDict',
     'InstanceFromMachineImageAttachedDiskArgs',
+    'InstanceFromMachineImageAttachedDiskArgsDict',
     'InstanceFromMachineImageBootDiskArgs',
+    'InstanceFromMachineImageBootDiskArgsDict',
     'InstanceFromMachineImageBootDiskInitializeParamsArgs',
+    'InstanceFromMachineImageBootDiskInitializeParamsArgsDict',
     'InstanceFromMachineImageConfidentialInstanceConfigArgs',
+    'InstanceFromMachineImageConfidentialInstanceConfigArgsDict',
     'InstanceFromMachineImageGuestAcceleratorArgs',
+    'InstanceFromMachineImageGuestAcceleratorArgsDict',
     'InstanceFromMachineImageNetworkInterfaceArgs',
+    'InstanceFromMachineImageNetworkInterfaceArgsDict',
     'InstanceFromMachineImageNetworkInterfaceAccessConfigArgs',
+    'InstanceFromMachineImageNetworkInterfaceAccessConfigArgsDict',
     'InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs',
+    'InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgsDict',
     'InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs',
+    'InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgsDict',
     'InstanceFromMachineImageNetworkPerformanceConfigArgs',
+    'InstanceFromMachineImageNetworkPerformanceConfigArgsDict',
     'InstanceFromMachineImageParamsArgs',
+    'InstanceFromMachineImageParamsArgsDict',
     'InstanceFromMachineImageReservationAffinityArgs',
+    'InstanceFromMachineImageReservationAffinityArgsDict',
     'InstanceFromMachineImageReservationAffinitySpecificReservationArgs',
+    'InstanceFromMachineImageReservationAffinitySpecificReservationArgsDict',
     'InstanceFromMachineImageSchedulingArgs',
+    'InstanceFromMachineImageSchedulingArgsDict',
     'InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs',
+    'InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgsDict',
     'InstanceFromMachineImageSchedulingMaxRunDurationArgs',
+    'InstanceFromMachineImageSchedulingMaxRunDurationArgsDict',
     'InstanceFromMachineImageSchedulingNodeAffinityArgs',
+    'InstanceFromMachineImageSchedulingNodeAffinityArgsDict',
     'InstanceFromMachineImageSchedulingOnInstanceStopActionArgs',
+    'InstanceFromMachineImageSchedulingOnInstanceStopActionArgsDict',
     'InstanceFromMachineImageScratchDiskArgs',
+    'InstanceFromMachineImageScratchDiskArgsDict',
     'InstanceFromMachineImageServiceAccountArgs',
+    'InstanceFromMachineImageServiceAccountArgsDict',
     'InstanceFromMachineImageShieldedInstanceConfigArgs',
+    'InstanceFromMachineImageShieldedInstanceConfigArgsDict',
     'InstanceFromTemplateAdvancedMachineFeaturesArgs',
+    'InstanceFromTemplateAdvancedMachineFeaturesArgsDict',
     'InstanceFromTemplateAttachedDiskArgs',
+    'InstanceFromTemplateAttachedDiskArgsDict',
     'InstanceFromTemplateBootDiskArgs',
+    'InstanceFromTemplateBootDiskArgsDict',
     'InstanceFromTemplateBootDiskInitializeParamsArgs',
+    'InstanceFromTemplateBootDiskInitializeParamsArgsDict',
     'InstanceFromTemplateConfidentialInstanceConfigArgs',
+    'InstanceFromTemplateConfidentialInstanceConfigArgsDict',
     'InstanceFromTemplateGuestAcceleratorArgs',
+    'InstanceFromTemplateGuestAcceleratorArgsDict',
     'InstanceFromTemplateNetworkInterfaceArgs',
+    'InstanceFromTemplateNetworkInterfaceArgsDict',
     'InstanceFromTemplateNetworkInterfaceAccessConfigArgs',
+    'InstanceFromTemplateNetworkInterfaceAccessConfigArgsDict',
     'InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs',
+    'InstanceFromTemplateNetworkInterfaceAliasIpRangeArgsDict',
     'InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs',
+    'InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgsDict',
     'InstanceFromTemplateNetworkPerformanceConfigArgs',
+    'InstanceFromTemplateNetworkPerformanceConfigArgsDict',
     'InstanceFromTemplateParamsArgs',
+    'InstanceFromTemplateParamsArgsDict',
     'InstanceFromTemplateReservationAffinityArgs',
+    'InstanceFromTemplateReservationAffinityArgsDict',
     'InstanceFromTemplateReservationAffinitySpecificReservationArgs',
+    'InstanceFromTemplateReservationAffinitySpecificReservationArgsDict',
     'InstanceFromTemplateSchedulingArgs',
+    'InstanceFromTemplateSchedulingArgsDict',
     'InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs',
+    'InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict',
     'InstanceFromTemplateSchedulingMaxRunDurationArgs',
+    'InstanceFromTemplateSchedulingMaxRunDurationArgsDict',
     'InstanceFromTemplateSchedulingNodeAffinityArgs',
+    'InstanceFromTemplateSchedulingNodeAffinityArgsDict',
     'InstanceFromTemplateSchedulingOnInstanceStopActionArgs',
+    'InstanceFromTemplateSchedulingOnInstanceStopActionArgsDict',
     'InstanceFromTemplateScratchDiskArgs',
+    'InstanceFromTemplateScratchDiskArgsDict',
     'InstanceFromTemplateServiceAccountArgs',
+    'InstanceFromTemplateServiceAccountArgsDict',
     'InstanceFromTemplateShieldedInstanceConfigArgs',
+    'InstanceFromTemplateShieldedInstanceConfigArgsDict',
     'InstanceGroupManagerAllInstancesConfigArgs',
+    'InstanceGroupManagerAllInstancesConfigArgsDict',
     'InstanceGroupManagerAutoHealingPoliciesArgs',
+    'InstanceGroupManagerAutoHealingPoliciesArgsDict',
     'InstanceGroupManagerInstanceLifecyclePolicyArgs',
+    'InstanceGroupManagerInstanceLifecyclePolicyArgsDict',
     'InstanceGroupManagerNamedPortArgs',
+    'InstanceGroupManagerNamedPortArgsDict',
     'InstanceGroupManagerParamsArgs',
+    'InstanceGroupManagerParamsArgsDict',
     'InstanceGroupManagerStandbyPolicyArgs',
+    'InstanceGroupManagerStandbyPolicyArgsDict',
     'InstanceGroupManagerStatefulDiskArgs',
+    'InstanceGroupManagerStatefulDiskArgsDict',
     'InstanceGroupManagerStatefulExternalIpArgs',
+    'InstanceGroupManagerStatefulExternalIpArgsDict',
     'InstanceGroupManagerStatefulInternalIpArgs',
+    'InstanceGroupManagerStatefulInternalIpArgsDict',
     'InstanceGroupManagerStatusArgs',
+    'InstanceGroupManagerStatusArgsDict',
     'InstanceGroupManagerStatusAllInstancesConfigArgs',
+    'InstanceGroupManagerStatusAllInstancesConfigArgsDict',
     'InstanceGroupManagerStatusStatefulArgs',
+    'InstanceGroupManagerStatusStatefulArgsDict',
     'InstanceGroupManagerStatusStatefulPerInstanceConfigArgs',
+    'InstanceGroupManagerStatusStatefulPerInstanceConfigArgsDict',
     'InstanceGroupManagerStatusVersionTargetArgs',
+    'InstanceGroupManagerStatusVersionTargetArgsDict',
     'InstanceGroupManagerUpdatePolicyArgs',
+    'InstanceGroupManagerUpdatePolicyArgsDict',
     'InstanceGroupManagerVersionArgs',
+    'InstanceGroupManagerVersionArgsDict',
     'InstanceGroupManagerVersionTargetSizeArgs',
+    'InstanceGroupManagerVersionTargetSizeArgsDict',
     'InstanceGroupNamedPortArgs',
+    'InstanceGroupNamedPortArgsDict',
     'InstanceGuestAcceleratorArgs',
+    'InstanceGuestAcceleratorArgsDict',
     'InstanceIAMBindingConditionArgs',
+    'InstanceIAMBindingConditionArgsDict',
     'InstanceIAMMemberConditionArgs',
+    'InstanceIAMMemberConditionArgsDict',
     'InstanceNetworkInterfaceArgs',
+    'InstanceNetworkInterfaceArgsDict',
     'InstanceNetworkInterfaceAccessConfigArgs',
+    'InstanceNetworkInterfaceAccessConfigArgsDict',
     'InstanceNetworkInterfaceAliasIpRangeArgs',
+    'InstanceNetworkInterfaceAliasIpRangeArgsDict',
     'InstanceNetworkInterfaceIpv6AccessConfigArgs',
+    'InstanceNetworkInterfaceIpv6AccessConfigArgsDict',
     'InstanceNetworkPerformanceConfigArgs',
+    'InstanceNetworkPerformanceConfigArgsDict',
     'InstanceParamsArgs',
+    'InstanceParamsArgsDict',
     'InstanceReservationAffinityArgs',
+    'InstanceReservationAffinityArgsDict',
     'InstanceReservationAffinitySpecificReservationArgs',
+    'InstanceReservationAffinitySpecificReservationArgsDict',
     'InstanceSchedulingArgs',
+    'InstanceSchedulingArgsDict',
     'InstanceSchedulingLocalSsdRecoveryTimeoutArgs',
+    'InstanceSchedulingLocalSsdRecoveryTimeoutArgsDict',
     'InstanceSchedulingMaxRunDurationArgs',
+    'InstanceSchedulingMaxRunDurationArgsDict',
     'InstanceSchedulingNodeAffinityArgs',
+    'InstanceSchedulingNodeAffinityArgsDict',
     'InstanceSchedulingOnInstanceStopActionArgs',
+    'InstanceSchedulingOnInstanceStopActionArgsDict',
     'InstanceScratchDiskArgs',
+    'InstanceScratchDiskArgsDict',
     'InstanceServiceAccountArgs',
+    'InstanceServiceAccountArgsDict',
     'InstanceSettingsMetadataArgs',
+    'InstanceSettingsMetadataArgsDict',
     'InstanceShieldedInstanceConfigArgs',
+    'InstanceShieldedInstanceConfigArgsDict',
     'InstanceTemplateAdvancedMachineFeaturesArgs',
+    'InstanceTemplateAdvancedMachineFeaturesArgsDict',
     'InstanceTemplateConfidentialInstanceConfigArgs',
+    'InstanceTemplateConfidentialInstanceConfigArgsDict',
     'InstanceTemplateDiskArgs',
+    'InstanceTemplateDiskArgsDict',
     'InstanceTemplateDiskDiskEncryptionKeyArgs',
+    'InstanceTemplateDiskDiskEncryptionKeyArgsDict',
     'InstanceTemplateDiskSourceImageEncryptionKeyArgs',
+    'InstanceTemplateDiskSourceImageEncryptionKeyArgsDict',
     'InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs',
+    'InstanceTemplateDiskSourceSnapshotEncryptionKeyArgsDict',
     'InstanceTemplateGuestAcceleratorArgs',
+    'InstanceTemplateGuestAcceleratorArgsDict',
     'InstanceTemplateNetworkInterfaceArgs',
+    'InstanceTemplateNetworkInterfaceArgsDict',
     'InstanceTemplateNetworkInterfaceAccessConfigArgs',
+    'InstanceTemplateNetworkInterfaceAccessConfigArgsDict',
     'InstanceTemplateNetworkInterfaceAliasIpRangeArgs',
+    'InstanceTemplateNetworkInterfaceAliasIpRangeArgsDict',
     'InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs',
+    'InstanceTemplateNetworkInterfaceIpv6AccessConfigArgsDict',
     'InstanceTemplateNetworkPerformanceConfigArgs',
+    'InstanceTemplateNetworkPerformanceConfigArgsDict',
     'InstanceTemplateReservationAffinityArgs',
+    'InstanceTemplateReservationAffinityArgsDict',
     'InstanceTemplateReservationAffinitySpecificReservationArgs',
+    'InstanceTemplateReservationAffinitySpecificReservationArgsDict',
     'InstanceTemplateSchedulingArgs',
+    'InstanceTemplateSchedulingArgsDict',
     'InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs',
+    'InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict',
     'InstanceTemplateSchedulingMaxRunDurationArgs',
+    'InstanceTemplateSchedulingMaxRunDurationArgsDict',
     'InstanceTemplateSchedulingNodeAffinityArgs',
+    'InstanceTemplateSchedulingNodeAffinityArgsDict',
     'InstanceTemplateSchedulingOnInstanceStopActionArgs',
+    'InstanceTemplateSchedulingOnInstanceStopActionArgsDict',
     'InstanceTemplateServiceAccountArgs',
+    'InstanceTemplateServiceAccountArgsDict',
     'InstanceTemplateShieldedInstanceConfigArgs',
+    'InstanceTemplateShieldedInstanceConfigArgsDict',
     'InterconnectAttachmentPrivateInterconnectInfoArgs',
+    'InterconnectAttachmentPrivateInterconnectInfoArgsDict',
     'InterconnectCircuitInfoArgs',
+    'InterconnectCircuitInfoArgsDict',
     'InterconnectExpectedOutageArgs',
+    'InterconnectExpectedOutageArgsDict',
     'InterconnectMacsecArgs',
+    'InterconnectMacsecArgsDict',
     'InterconnectMacsecPreSharedKeyArgs',
+    'InterconnectMacsecPreSharedKeyArgsDict',
     'MachineImageIamBindingConditionArgs',
+    'MachineImageIamBindingConditionArgsDict',
     'MachineImageIamMemberConditionArgs',
+    'MachineImageIamMemberConditionArgsDict',
     'MachineImageMachineImageEncryptionKeyArgs',
+    'MachineImageMachineImageEncryptionKeyArgsDict',
     'ManagedSslCertificateManagedArgs',
+    'ManagedSslCertificateManagedArgsDict',
     'MangedSslCertificateManagedArgs',
+    'MangedSslCertificateManagedArgsDict',
     'NetworkAttachmentConnectionEndpointArgs',
+    'NetworkAttachmentConnectionEndpointArgsDict',
     'NetworkEndpointListNetworkEndpointArgs',
+    'NetworkEndpointListNetworkEndpointArgsDict',
     'NetworkFirewallPolicyRuleMatchArgs',
+    'NetworkFirewallPolicyRuleMatchArgsDict',
     'NetworkFirewallPolicyRuleMatchLayer4ConfigArgs',
+    'NetworkFirewallPolicyRuleMatchLayer4ConfigArgsDict',
     'NetworkFirewallPolicyRuleMatchSrcSecureTagArgs',
+    'NetworkFirewallPolicyRuleMatchSrcSecureTagArgsDict',
     'NetworkFirewallPolicyRuleTargetSecureTagArgs',
+    'NetworkFirewallPolicyRuleTargetSecureTagArgsDict',
     'NodeGroupAutoscalingPolicyArgs',
+    'NodeGroupAutoscalingPolicyArgsDict',
     'NodeGroupMaintenanceWindowArgs',
+    'NodeGroupMaintenanceWindowArgsDict',
     'NodeGroupShareSettingsArgs',
+    'NodeGroupShareSettingsArgsDict',
     'NodeGroupShareSettingsProjectMapArgs',
+    'NodeGroupShareSettingsProjectMapArgsDict',
     'NodeTemplateNodeTypeFlexibilityArgs',
+    'NodeTemplateNodeTypeFlexibilityArgsDict',
     'NodeTemplateServerBindingArgs',
+    'NodeTemplateServerBindingArgsDict',
     'OrganizationSecurityPolicyRuleMatchArgs',
+    'OrganizationSecurityPolicyRuleMatchArgsDict',
     'OrganizationSecurityPolicyRuleMatchConfigArgs',
+    'OrganizationSecurityPolicyRuleMatchConfigArgsDict',
     'OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs',
+    'OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgsDict',
     'PacketMirroringCollectorIlbArgs',
+    'PacketMirroringCollectorIlbArgsDict',
     'PacketMirroringFilterArgs',
+    'PacketMirroringFilterArgsDict',
     'PacketMirroringMirroredResourcesArgs',
+    'PacketMirroringMirroredResourcesArgsDict',
     'PacketMirroringMirroredResourcesInstanceArgs',
+    'PacketMirroringMirroredResourcesInstanceArgsDict',
     'PacketMirroringMirroredResourcesSubnetworkArgs',
+    'PacketMirroringMirroredResourcesSubnetworkArgsDict',
     'PacketMirroringNetworkArgs',
+    'PacketMirroringNetworkArgsDict',
     'PerInstanceConfigPreservedStateArgs',
+    'PerInstanceConfigPreservedStateArgsDict',
     'PerInstanceConfigPreservedStateDiskArgs',
+    'PerInstanceConfigPreservedStateDiskArgsDict',
     'PerInstanceConfigPreservedStateExternalIpArgs',
+    'PerInstanceConfigPreservedStateExternalIpArgsDict',
     'PerInstanceConfigPreservedStateExternalIpIpAddressArgs',
+    'PerInstanceConfigPreservedStateExternalIpIpAddressArgsDict',
     'PerInstanceConfigPreservedStateInternalIpArgs',
+    'PerInstanceConfigPreservedStateInternalIpArgsDict',
     'PerInstanceConfigPreservedStateInternalIpIpAddressArgs',
+    'PerInstanceConfigPreservedStateInternalIpIpAddressArgsDict',
     'RegionAutoscalerAutoscalingPolicyArgs',
+    'RegionAutoscalerAutoscalingPolicyArgsDict',
     'RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs',
+    'RegionAutoscalerAutoscalingPolicyCpuUtilizationArgsDict',
     'RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs',
+    'RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgsDict',
     'RegionAutoscalerAutoscalingPolicyMetricArgs',
+    'RegionAutoscalerAutoscalingPolicyMetricArgsDict',
     'RegionAutoscalerAutoscalingPolicyScaleDownControlArgs',
+    'RegionAutoscalerAutoscalingPolicyScaleDownControlArgsDict',
     'RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs',
+    'RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgsDict',
     'RegionAutoscalerAutoscalingPolicyScaleInControlArgs',
+    'RegionAutoscalerAutoscalingPolicyScaleInControlArgsDict',
     'RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs',
+    'RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgsDict',
     'RegionAutoscalerAutoscalingPolicyScalingScheduleArgs',
+    'RegionAutoscalerAutoscalingPolicyScalingScheduleArgsDict',
     'RegionBackendServiceBackendArgs',
+    'RegionBackendServiceBackendArgsDict',
     'RegionBackendServiceCdnPolicyArgs',
+    'RegionBackendServiceCdnPolicyArgsDict',
     'RegionBackendServiceCdnPolicyCacheKeyPolicyArgs',
+    'RegionBackendServiceCdnPolicyCacheKeyPolicyArgsDict',
     'RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs',
+    'RegionBackendServiceCdnPolicyNegativeCachingPolicyArgsDict',
     'RegionBackendServiceCircuitBreakersArgs',
+    'RegionBackendServiceCircuitBreakersArgsDict',
     'RegionBackendServiceCircuitBreakersConnectTimeoutArgs',
+    'RegionBackendServiceCircuitBreakersConnectTimeoutArgsDict',
     'RegionBackendServiceConnectionTrackingPolicyArgs',
+    'RegionBackendServiceConnectionTrackingPolicyArgsDict',
     'RegionBackendServiceConsistentHashArgs',
+    'RegionBackendServiceConsistentHashArgsDict',
     'RegionBackendServiceConsistentHashHttpCookieArgs',
+    'RegionBackendServiceConsistentHashHttpCookieArgsDict',
     'RegionBackendServiceConsistentHashHttpCookieTtlArgs',
+    'RegionBackendServiceConsistentHashHttpCookieTtlArgsDict',
     'RegionBackendServiceFailoverPolicyArgs',
+    'RegionBackendServiceFailoverPolicyArgsDict',
     'RegionBackendServiceIamBindingConditionArgs',
+    'RegionBackendServiceIamBindingConditionArgsDict',
     'RegionBackendServiceIamMemberConditionArgs',
+    'RegionBackendServiceIamMemberConditionArgsDict',
     'RegionBackendServiceIapArgs',
+    'RegionBackendServiceIapArgsDict',
     'RegionBackendServiceLogConfigArgs',
+    'RegionBackendServiceLogConfigArgsDict',
     'RegionBackendServiceOutlierDetectionArgs',
+    'RegionBackendServiceOutlierDetectionArgsDict',
     'RegionBackendServiceOutlierDetectionBaseEjectionTimeArgs',
+    'RegionBackendServiceOutlierDetectionBaseEjectionTimeArgsDict',
     'RegionBackendServiceOutlierDetectionIntervalArgs',
+    'RegionBackendServiceOutlierDetectionIntervalArgsDict',
     'RegionBackendServiceSubsettingArgs',
+    'RegionBackendServiceSubsettingArgsDict',
     'RegionCommitmentLicenseResourceArgs',
+    'RegionCommitmentLicenseResourceArgsDict',
     'RegionCommitmentResourceArgs',
+    'RegionCommitmentResourceArgsDict',
     'RegionDiskAsyncPrimaryDiskArgs',
+    'RegionDiskAsyncPrimaryDiskArgsDict',
     'RegionDiskDiskEncryptionKeyArgs',
+    'RegionDiskDiskEncryptionKeyArgsDict',
     'RegionDiskGuestOsFeatureArgs',
+    'RegionDiskGuestOsFeatureArgsDict',
     'RegionDiskIamBindingConditionArgs',
+    'RegionDiskIamBindingConditionArgsDict',
     'RegionDiskIamMemberConditionArgs',
+    'RegionDiskIamMemberConditionArgsDict',
     'RegionDiskSourceSnapshotEncryptionKeyArgs',
+    'RegionDiskSourceSnapshotEncryptionKeyArgsDict',
     'RegionHealthCheckGrpcHealthCheckArgs',
+    'RegionHealthCheckGrpcHealthCheckArgsDict',
     'RegionHealthCheckHttp2HealthCheckArgs',
+    'RegionHealthCheckHttp2HealthCheckArgsDict',
     'RegionHealthCheckHttpHealthCheckArgs',
+    'RegionHealthCheckHttpHealthCheckArgsDict',
     'RegionHealthCheckHttpsHealthCheckArgs',
+    'RegionHealthCheckHttpsHealthCheckArgsDict',
     'RegionHealthCheckLogConfigArgs',
+    'RegionHealthCheckLogConfigArgsDict',
     'RegionHealthCheckSslHealthCheckArgs',
+    'RegionHealthCheckSslHealthCheckArgsDict',
     'RegionHealthCheckTcpHealthCheckArgs',
+    'RegionHealthCheckTcpHealthCheckArgsDict',
     'RegionInstanceGroupManagerAllInstancesConfigArgs',
+    'RegionInstanceGroupManagerAllInstancesConfigArgsDict',
     'RegionInstanceGroupManagerAutoHealingPoliciesArgs',
+    'RegionInstanceGroupManagerAutoHealingPoliciesArgsDict',
     'RegionInstanceGroupManagerInstanceLifecyclePolicyArgs',
+    'RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict',
     'RegionInstanceGroupManagerNamedPortArgs',
+    'RegionInstanceGroupManagerNamedPortArgsDict',
     'RegionInstanceGroupManagerParamsArgs',
+    'RegionInstanceGroupManagerParamsArgsDict',
     'RegionInstanceGroupManagerStandbyPolicyArgs',
+    'RegionInstanceGroupManagerStandbyPolicyArgsDict',
     'RegionInstanceGroupManagerStatefulDiskArgs',
+    'RegionInstanceGroupManagerStatefulDiskArgsDict',
     'RegionInstanceGroupManagerStatefulExternalIpArgs',
+    'RegionInstanceGroupManagerStatefulExternalIpArgsDict',
     'RegionInstanceGroupManagerStatefulInternalIpArgs',
+    'RegionInstanceGroupManagerStatefulInternalIpArgsDict',
     'RegionInstanceGroupManagerStatusArgs',
+    'RegionInstanceGroupManagerStatusArgsDict',
     'RegionInstanceGroupManagerStatusAllInstancesConfigArgs',
+    'RegionInstanceGroupManagerStatusAllInstancesConfigArgsDict',
     'RegionInstanceGroupManagerStatusStatefulArgs',
+    'RegionInstanceGroupManagerStatusStatefulArgsDict',
     'RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs',
+    'RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgsDict',
     'RegionInstanceGroupManagerStatusVersionTargetArgs',
+    'RegionInstanceGroupManagerStatusVersionTargetArgsDict',
     'RegionInstanceGroupManagerUpdatePolicyArgs',
+    'RegionInstanceGroupManagerUpdatePolicyArgsDict',
     'RegionInstanceGroupManagerVersionArgs',
+    'RegionInstanceGroupManagerVersionArgsDict',
     'RegionInstanceGroupManagerVersionTargetSizeArgs',
+    'RegionInstanceGroupManagerVersionTargetSizeArgsDict',
     'RegionInstanceTemplateAdvancedMachineFeaturesArgs',
+    'RegionInstanceTemplateAdvancedMachineFeaturesArgsDict',
     'RegionInstanceTemplateConfidentialInstanceConfigArgs',
+    'RegionInstanceTemplateConfidentialInstanceConfigArgsDict',
     'RegionInstanceTemplateDiskArgs',
+    'RegionInstanceTemplateDiskArgsDict',
     'RegionInstanceTemplateDiskDiskEncryptionKeyArgs',
+    'RegionInstanceTemplateDiskDiskEncryptionKeyArgsDict',
     'RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs',
+    'RegionInstanceTemplateDiskSourceImageEncryptionKeyArgsDict',
     'RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs',
+    'RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgsDict',
     'RegionInstanceTemplateGuestAcceleratorArgs',
+    'RegionInstanceTemplateGuestAcceleratorArgsDict',
     'RegionInstanceTemplateNetworkInterfaceArgs',
+    'RegionInstanceTemplateNetworkInterfaceArgsDict',
     'RegionInstanceTemplateNetworkInterfaceAccessConfigArgs',
+    'RegionInstanceTemplateNetworkInterfaceAccessConfigArgsDict',
     'RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs',
+    'RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgsDict',
     'RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs',
+    'RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgsDict',
     'RegionInstanceTemplateNetworkPerformanceConfigArgs',
+    'RegionInstanceTemplateNetworkPerformanceConfigArgsDict',
     'RegionInstanceTemplateReservationAffinityArgs',
+    'RegionInstanceTemplateReservationAffinityArgsDict',
     'RegionInstanceTemplateReservationAffinitySpecificReservationArgs',
+    'RegionInstanceTemplateReservationAffinitySpecificReservationArgsDict',
     'RegionInstanceTemplateSchedulingArgs',
+    'RegionInstanceTemplateSchedulingArgsDict',
     'RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs',
+    'RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict',
     'RegionInstanceTemplateSchedulingMaxRunDurationArgs',
+    'RegionInstanceTemplateSchedulingMaxRunDurationArgsDict',
     'RegionInstanceTemplateSchedulingNodeAffinityArgs',
+    'RegionInstanceTemplateSchedulingNodeAffinityArgsDict',
     'RegionInstanceTemplateSchedulingOnInstanceStopActionArgs',
+    'RegionInstanceTemplateSchedulingOnInstanceStopActionArgsDict',
     'RegionInstanceTemplateServiceAccountArgs',
+    'RegionInstanceTemplateServiceAccountArgsDict',
     'RegionInstanceTemplateShieldedInstanceConfigArgs',
+    'RegionInstanceTemplateShieldedInstanceConfigArgsDict',
     'RegionNetworkEndpointGroupAppEngineArgs',
+    'RegionNetworkEndpointGroupAppEngineArgsDict',
     'RegionNetworkEndpointGroupCloudFunctionArgs',
+    'RegionNetworkEndpointGroupCloudFunctionArgsDict',
     'RegionNetworkEndpointGroupCloudRunArgs',
+    'RegionNetworkEndpointGroupCloudRunArgsDict',
     'RegionNetworkEndpointGroupServerlessDeploymentArgs',
+    'RegionNetworkEndpointGroupServerlessDeploymentArgsDict',
     'RegionNetworkFirewallPolicyRuleMatchArgs',
+    'RegionNetworkFirewallPolicyRuleMatchArgsDict',
     'RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs',
+    'RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgsDict',
     'RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs',
+    'RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgsDict',
     'RegionNetworkFirewallPolicyRuleTargetSecureTagArgs',
+    'RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict',
     'RegionPerInstanceConfigPreservedStateArgs',
+    'RegionPerInstanceConfigPreservedStateArgsDict',
     'RegionPerInstanceConfigPreservedStateDiskArgs',
+    'RegionPerInstanceConfigPreservedStateDiskArgsDict',
     'RegionPerInstanceConfigPreservedStateExternalIpArgs',
+    'RegionPerInstanceConfigPreservedStateExternalIpArgsDict',
     'RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgs',
+    'RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgsDict',
     'RegionPerInstanceConfigPreservedStateInternalIpArgs',
+    'RegionPerInstanceConfigPreservedStateInternalIpArgsDict',
     'RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgs',
+    'RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgsDict',
     'RegionSecurityPolicyDdosProtectionConfigArgs',
+    'RegionSecurityPolicyDdosProtectionConfigArgsDict',
     'RegionSecurityPolicyRuleMatchArgs',
+    'RegionSecurityPolicyRuleMatchArgsDict',
     'RegionSecurityPolicyRuleMatchConfigArgs',
+    'RegionSecurityPolicyRuleMatchConfigArgsDict',
     'RegionSecurityPolicyRuleMatchExprArgs',
+    'RegionSecurityPolicyRuleMatchExprArgsDict',
     'RegionSecurityPolicyRuleNetworkMatchArgs',
+    'RegionSecurityPolicyRuleNetworkMatchArgsDict',
     'RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs',
+    'RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgsDict',
     'RegionSecurityPolicyRulePreconfiguredWafConfigArgs',
+    'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict',
     'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs',
+    'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgsDict',
     'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs',
+    'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgsDict',
     'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs',
+    'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgsDict',
     'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs',
+    'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgsDict',
     'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs',
+    'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgsDict',
     'RegionSecurityPolicyRuleRateLimitOptionsArgs',
+    'RegionSecurityPolicyRuleRateLimitOptionsArgsDict',
     'RegionSecurityPolicyRuleRateLimitOptionsBanThresholdArgs',
+    'RegionSecurityPolicyRuleRateLimitOptionsBanThresholdArgsDict',
     'RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs',
+    'RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgsDict',
     'RegionSecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs',
+    'RegionSecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgsDict',
     'RegionSecurityPolicyUserDefinedFieldArgs',
+    'RegionSecurityPolicyUserDefinedFieldArgsDict',
     'RegionUrlMapDefaultRouteActionArgs',
+    'RegionUrlMapDefaultRouteActionArgsDict',
     'RegionUrlMapDefaultRouteActionCorsPolicyArgs',
+    'RegionUrlMapDefaultRouteActionCorsPolicyArgsDict',
     'RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs',
+    'RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgsDict',
     'RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgs',
+    'RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgsDict',
     'RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs',
+    'RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgsDict',
     'RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
+    'RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict',
     'RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs',
+    'RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgsDict',
     'RegionUrlMapDefaultRouteActionRetryPolicyArgs',
+    'RegionUrlMapDefaultRouteActionRetryPolicyArgsDict',
     'RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs',
+    'RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgsDict',
     'RegionUrlMapDefaultRouteActionTimeoutArgs',
+    'RegionUrlMapDefaultRouteActionTimeoutArgsDict',
     'RegionUrlMapDefaultRouteActionUrlRewriteArgs',
+    'RegionUrlMapDefaultRouteActionUrlRewriteArgsDict',
     'RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs',
+    'RegionUrlMapDefaultRouteActionWeightedBackendServiceArgsDict',
     'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs',
+    'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgsDict',
     'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs',
+    'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict',
     'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs',
+    'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict',
     'RegionUrlMapDefaultUrlRedirectArgs',
+    'RegionUrlMapDefaultUrlRedirectArgsDict',
     'RegionUrlMapHostRuleArgs',
+    'RegionUrlMapHostRuleArgsDict',
     'RegionUrlMapPathMatcherArgs',
+    'RegionUrlMapPathMatcherArgsDict',
     'RegionUrlMapPathMatcherDefaultUrlRedirectArgs',
+    'RegionUrlMapPathMatcherDefaultUrlRedirectArgsDict',
     'RegionUrlMapPathMatcherPathRuleArgs',
+    'RegionUrlMapPathMatcherPathRuleArgsDict',
     'RegionUrlMapPathMatcherPathRuleRouteActionArgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionArgsDict',
     'RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgsDict',
     'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgsDict',
     'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgsDict',
     'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgsDict',
     'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict',
     'RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgsDict',
     'RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgsDict',
     'RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgsDict',
     'RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgsDict',
     'RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgsDict',
     'RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgsDict',
     'RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgsDict',
     'RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict',
     'RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs',
+    'RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict',
     'RegionUrlMapPathMatcherPathRuleUrlRedirectArgs',
+    'RegionUrlMapPathMatcherPathRuleUrlRedirectArgsDict',
     'RegionUrlMapPathMatcherRouteRuleArgs',
+    'RegionUrlMapPathMatcherRouteRuleArgsDict',
     'RegionUrlMapPathMatcherRouteRuleHeaderActionArgs',
+    'RegionUrlMapPathMatcherRouteRuleHeaderActionArgsDict',
     'RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs',
+    'RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgsDict',
     'RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs',
+    'RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgsDict',
     'RegionUrlMapPathMatcherRouteRuleMatchRuleArgs',
+    'RegionUrlMapPathMatcherRouteRuleMatchRuleArgsDict',
     'RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs',
+    'RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgsDict',
     'RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs',
+    'RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgsDict',
     'RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs',
+    'RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgsDict',
     'RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs',
+    'RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgsDict',
     'RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs',
+    'RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgsDict',
     'RegionUrlMapPathMatcherRouteRuleRouteActionArgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionArgsDict',
     'RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgsDict',
     'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgsDict',
     'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgsDict',
     'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgsDict',
     'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict',
     'RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgsDict',
     'RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgsDict',
     'RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgsDict',
     'RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgsDict',
     'RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgsDict',
     'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgsDict',
     'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgsDict',
     'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict',
     'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict',
     'RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs',
+    'RegionUrlMapPathMatcherRouteRuleUrlRedirectArgsDict',
     'RegionUrlMapTestArgs',
+    'RegionUrlMapTestArgsDict',
     'ReservationShareSettingsArgs',
+    'ReservationShareSettingsArgsDict',
     'ReservationShareSettingsProjectMapArgs',
+    'ReservationShareSettingsProjectMapArgsDict',
     'ReservationSpecificReservationArgs',
+    'ReservationSpecificReservationArgsDict',
     'ReservationSpecificReservationInstancePropertiesArgs',
+    'ReservationSpecificReservationInstancePropertiesArgsDict',
     'ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs',
+    'ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgsDict',
     'ReservationSpecificReservationInstancePropertiesLocalSsdArgs',
+    'ReservationSpecificReservationInstancePropertiesLocalSsdArgsDict',
     'ResourcePolicyDiskConsistencyGroupPolicyArgs',
+    'ResourcePolicyDiskConsistencyGroupPolicyArgsDict',
     'ResourcePolicyGroupPlacementPolicyArgs',
+    'ResourcePolicyGroupPlacementPolicyArgsDict',
     'ResourcePolicyInstanceSchedulePolicyArgs',
+    'ResourcePolicyInstanceSchedulePolicyArgsDict',
     'ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs',
+    'ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgsDict',
     'ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs',
+    'ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgsDict',
     'ResourcePolicySnapshotSchedulePolicyArgs',
+    'ResourcePolicySnapshotSchedulePolicyArgsDict',
     'ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs',
+    'ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgsDict',
     'ResourcePolicySnapshotSchedulePolicyScheduleArgs',
+    'ResourcePolicySnapshotSchedulePolicyScheduleArgsDict',
     'ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs',
+    'ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgsDict',
     'ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs',
+    'ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgsDict',
     'ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs',
+    'ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgsDict',
     'ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs',
+    'ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgsDict',
     'ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs',
+    'ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgsDict',
     'RouterBgpArgs',
+    'RouterBgpArgsDict',
     'RouterBgpAdvertisedIpRangeArgs',
+    'RouterBgpAdvertisedIpRangeArgsDict',
     'RouterNatLogConfigArgs',
+    'RouterNatLogConfigArgsDict',
     'RouterNatRuleArgs',
+    'RouterNatRuleArgsDict',
     'RouterNatRuleActionArgs',
+    'RouterNatRuleActionArgsDict',
     'RouterNatSubnetworkArgs',
+    'RouterNatSubnetworkArgsDict',
     'RouterPeerAdvertisedIpRangeArgs',
+    'RouterPeerAdvertisedIpRangeArgsDict',
     'RouterPeerBfdArgs',
+    'RouterPeerBfdArgsDict',
     'RouterPeerMd5AuthenticationKeyArgs',
+    'RouterPeerMd5AuthenticationKeyArgsDict',
     'SecurityPolicyAdaptiveProtectionConfigArgs',
+    'SecurityPolicyAdaptiveProtectionConfigArgsDict',
     'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs',
+    'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgsDict',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs',
+    'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgsDict',
     'SecurityPolicyAdvancedOptionsConfigArgs',
+    'SecurityPolicyAdvancedOptionsConfigArgsDict',
     'SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs',
+    'SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgsDict',
     'SecurityPolicyRecaptchaOptionsConfigArgs',
+    'SecurityPolicyRecaptchaOptionsConfigArgsDict',
     'SecurityPolicyRuleArgs',
+    'SecurityPolicyRuleArgsDict',
     'SecurityPolicyRuleHeaderActionArgs',
+    'SecurityPolicyRuleHeaderActionArgsDict',
     'SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs',
+    'SecurityPolicyRuleHeaderActionRequestHeadersToAddArgsDict',
     'SecurityPolicyRuleMatchArgs',
+    'SecurityPolicyRuleMatchArgsDict',
     'SecurityPolicyRuleMatchConfigArgs',
+    'SecurityPolicyRuleMatchConfigArgsDict',
     'SecurityPolicyRuleMatchExprArgs',
+    'SecurityPolicyRuleMatchExprArgsDict',
     'SecurityPolicyRuleMatchExprOptionsArgs',
+    'SecurityPolicyRuleMatchExprOptionsArgsDict',
     'SecurityPolicyRuleMatchExprOptionsRecaptchaOptionsArgs',
+    'SecurityPolicyRuleMatchExprOptionsRecaptchaOptionsArgsDict',
     'SecurityPolicyRulePreconfiguredWafConfigArgs',
+    'SecurityPolicyRulePreconfiguredWafConfigArgsDict',
     'SecurityPolicyRulePreconfiguredWafConfigExclusionArgs',
+    'SecurityPolicyRulePreconfiguredWafConfigExclusionArgsDict',
     'SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs',
+    'SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgsDict',
     'SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs',
+    'SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgsDict',
     'SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs',
+    'SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgsDict',
     'SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs',
+    'SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgsDict',
     'SecurityPolicyRuleRateLimitOptionsArgs',
+    'SecurityPolicyRuleRateLimitOptionsArgsDict',
     'SecurityPolicyRuleRateLimitOptionsBanThresholdArgs',
+    'SecurityPolicyRuleRateLimitOptionsBanThresholdArgsDict',
     'SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs',
+    'SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgsDict',
     'SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs',
+    'SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgsDict',
     'SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs',
+    'SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgsDict',
     'SecurityPolicyRuleRedirectOptionsArgs',
+    'SecurityPolicyRuleRedirectOptionsArgsDict',
     'SecurityScanConfigAuthenticationArgs',
+    'SecurityScanConfigAuthenticationArgsDict',
     'SecurityScanConfigAuthenticationCustomAccountArgs',
+    'SecurityScanConfigAuthenticationCustomAccountArgsDict',
     'SecurityScanConfigAuthenticationGoogleAccountArgs',
+    'SecurityScanConfigAuthenticationGoogleAccountArgsDict',
     'SecurityScanConfigScheduleArgs',
+    'SecurityScanConfigScheduleArgsDict',
     'ServiceAttachmentConnectedEndpointArgs',
+    'ServiceAttachmentConnectedEndpointArgsDict',
     'ServiceAttachmentConsumerAcceptListArgs',
+    'ServiceAttachmentConsumerAcceptListArgsDict',
     'SnapshotIamBindingConditionArgs',
+    'SnapshotIamBindingConditionArgsDict',
     'SnapshotIamMemberConditionArgs',
+    'SnapshotIamMemberConditionArgsDict',
     'SnapshotSnapshotEncryptionKeyArgs',
+    'SnapshotSnapshotEncryptionKeyArgsDict',
     'SnapshotSourceDiskEncryptionKeyArgs',
+    'SnapshotSourceDiskEncryptionKeyArgsDict',
     'SubnetworkIAMBindingConditionArgs',
+    'SubnetworkIAMBindingConditionArgsDict',
     'SubnetworkIAMMemberConditionArgs',
+    'SubnetworkIAMMemberConditionArgsDict',
     'SubnetworkLogConfigArgs',
+    'SubnetworkLogConfigArgsDict',
     'SubnetworkSecondaryIpRangeArgs',
+    'SubnetworkSecondaryIpRangeArgsDict',
     'URLMapDefaultRouteActionArgs',
+    'URLMapDefaultRouteActionArgsDict',
     'URLMapDefaultRouteActionCorsPolicyArgs',
+    'URLMapDefaultRouteActionCorsPolicyArgsDict',
     'URLMapDefaultRouteActionFaultInjectionPolicyArgs',
+    'URLMapDefaultRouteActionFaultInjectionPolicyArgsDict',
     'URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs',
+    'URLMapDefaultRouteActionFaultInjectionPolicyAbortArgsDict',
     'URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs',
+    'URLMapDefaultRouteActionFaultInjectionPolicyDelayArgsDict',
     'URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
+    'URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict',
     'URLMapDefaultRouteActionRequestMirrorPolicyArgs',
+    'URLMapDefaultRouteActionRequestMirrorPolicyArgsDict',
     'URLMapDefaultRouteActionRetryPolicyArgs',
+    'URLMapDefaultRouteActionRetryPolicyArgsDict',
     'URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs',
+    'URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgsDict',
     'URLMapDefaultRouteActionTimeoutArgs',
+    'URLMapDefaultRouteActionTimeoutArgsDict',
     'URLMapDefaultRouteActionUrlRewriteArgs',
+    'URLMapDefaultRouteActionUrlRewriteArgsDict',
     'URLMapDefaultRouteActionWeightedBackendServiceArgs',
+    'URLMapDefaultRouteActionWeightedBackendServiceArgsDict',
     'URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs',
+    'URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgsDict',
     'URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs',
+    'URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict',
     'URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs',
+    'URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict',
     'URLMapDefaultUrlRedirectArgs',
+    'URLMapDefaultUrlRedirectArgsDict',
     'URLMapHeaderActionArgs',
+    'URLMapHeaderActionArgsDict',
     'URLMapHeaderActionRequestHeadersToAddArgs',
+    'URLMapHeaderActionRequestHeadersToAddArgsDict',
     'URLMapHeaderActionResponseHeadersToAddArgs',
+    'URLMapHeaderActionResponseHeadersToAddArgsDict',
     'URLMapHostRuleArgs',
+    'URLMapHostRuleArgsDict',
     'URLMapPathMatcherArgs',
+    'URLMapPathMatcherArgsDict',
     'URLMapPathMatcherDefaultRouteActionArgs',
+    'URLMapPathMatcherDefaultRouteActionArgsDict',
     'URLMapPathMatcherDefaultRouteActionCorsPolicyArgs',
+    'URLMapPathMatcherDefaultRouteActionCorsPolicyArgsDict',
     'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs',
+    'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgsDict',
     'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs',
+    'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgsDict',
     'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs',
+    'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgsDict',
     'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
+    'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict',
     'URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs',
+    'URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgsDict',
     'URLMapPathMatcherDefaultRouteActionRetryPolicyArgs',
+    'URLMapPathMatcherDefaultRouteActionRetryPolicyArgsDict',
     'URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs',
+    'URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgsDict',
     'URLMapPathMatcherDefaultRouteActionTimeoutArgs',
+    'URLMapPathMatcherDefaultRouteActionTimeoutArgsDict',
     'URLMapPathMatcherDefaultRouteActionUrlRewriteArgs',
+    'URLMapPathMatcherDefaultRouteActionUrlRewriteArgsDict',
     'URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs',
+    'URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgsDict',
     'URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs',
+    'URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgsDict',
     'URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs',
+    'URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict',
     'URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs',
+    'URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict',
     'URLMapPathMatcherDefaultUrlRedirectArgs',
+    'URLMapPathMatcherDefaultUrlRedirectArgsDict',
     'URLMapPathMatcherHeaderActionArgs',
+    'URLMapPathMatcherHeaderActionArgsDict',
     'URLMapPathMatcherHeaderActionRequestHeadersToAddArgs',
+    'URLMapPathMatcherHeaderActionRequestHeadersToAddArgsDict',
     'URLMapPathMatcherHeaderActionResponseHeadersToAddArgs',
+    'URLMapPathMatcherHeaderActionResponseHeadersToAddArgsDict',
     'URLMapPathMatcherPathRuleArgs',
+    'URLMapPathMatcherPathRuleArgsDict',
     'URLMapPathMatcherPathRuleRouteActionArgs',
+    'URLMapPathMatcherPathRuleRouteActionArgsDict',
     'URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs',
+    'URLMapPathMatcherPathRuleRouteActionCorsPolicyArgsDict',
     'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs',
+    'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgsDict',
     'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs',
+    'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgsDict',
     'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs',
+    'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgsDict',
     'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
+    'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict',
     'URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs',
+    'URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgsDict',
     'URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs',
+    'URLMapPathMatcherPathRuleRouteActionRetryPolicyArgsDict',
     'URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs',
+    'URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgsDict',
     'URLMapPathMatcherPathRuleRouteActionTimeoutArgs',
+    'URLMapPathMatcherPathRuleRouteActionTimeoutArgsDict',
     'URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs',
+    'URLMapPathMatcherPathRuleRouteActionUrlRewriteArgsDict',
     'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs',
+    'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgsDict',
     'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs',
+    'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgsDict',
     'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs',
+    'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict',
     'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs',
+    'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict',
     'URLMapPathMatcherPathRuleUrlRedirectArgs',
+    'URLMapPathMatcherPathRuleUrlRedirectArgsDict',
     'URLMapPathMatcherRouteRuleArgs',
+    'URLMapPathMatcherRouteRuleArgsDict',
     'URLMapPathMatcherRouteRuleHeaderActionArgs',
+    'URLMapPathMatcherRouteRuleHeaderActionArgsDict',
     'URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs',
+    'URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgsDict',
     'URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs',
+    'URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgsDict',
     'URLMapPathMatcherRouteRuleMatchRuleArgs',
+    'URLMapPathMatcherRouteRuleMatchRuleArgsDict',
     'URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs',
+    'URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgsDict',
     'URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs',
+    'URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgsDict',
     'URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs',
+    'URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgsDict',
     'URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs',
+    'URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgsDict',
     'URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs',
+    'URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionArgs',
+    'URLMapPathMatcherRouteRuleRouteActionArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs',
+    'URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs',
+    'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs',
+    'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs',
+    'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
+    'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs',
+    'URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs',
+    'URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs',
+    'URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionTimeoutArgs',
+    'URLMapPathMatcherRouteRuleRouteActionTimeoutArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs',
+    'URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs',
+    'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs',
+    'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs',
+    'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs',
+    'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict',
     'URLMapPathMatcherRouteRuleUrlRedirectArgs',
+    'URLMapPathMatcherRouteRuleUrlRedirectArgsDict',
     'URLMapTestArgs',
+    'URLMapTestArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AutoscalerAutoscalingPolicyArgsDict(TypedDict):
+        max_replicas: pulumi.Input[int]
+        """
+        The maximum number of instances that the autoscaler can scale up
+        to. This is required when creating or updating an autoscaler. The
+        maximum number of replicas should not be lower than minimal number
+        of replicas.
+        """
+        min_replicas: pulumi.Input[int]
+        """
+        The minimum number of replicas that the autoscaler can scale down
+        to. This cannot be less than 0. If not provided, autoscaler will
+        choose a default value depending on maximum number of instances
+        allowed.
+        """
+        cooldown_period: NotRequired[pulumi.Input[int]]
+        """
+        The number of seconds that the autoscaler should wait before it
+        starts collecting information from a new instance. This prevents
+        the autoscaler from collecting information when the instance is
+        initializing, during which the collected usage would not be
+        reliable. The default time autoscaler waits is 60 seconds.
+        Virtual machine initialization times might vary because of
+        numerous factors. We recommend that you test how long an
+        instance may take to initialize. To do this, create an instance
+        and time the startup process.
+        """
+        cpu_utilization: NotRequired[pulumi.Input['AutoscalerAutoscalingPolicyCpuUtilizationArgsDict']]
+        """
+        Defines the CPU utilization policy that allows the autoscaler to
+        scale based on the average CPU utilization of a managed instance
+        group.
+        Structure is documented below.
+        """
+        load_balancing_utilization: NotRequired[pulumi.Input['AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgsDict']]
+        """
+        Configuration parameters of autoscaling based on a load balancer.
+        Structure is documented below.
+        """
+        metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyMetricArgsDict']]]]
+        """
+        Configuration parameters of autoscaling based on a custom metric.
+        Structure is documented below.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Defines operating mode for this policy.
+        """
+        scale_down_control: NotRequired[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlArgsDict']]
+        """
+        Defines scale down controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events
+        Structure is documented below.
+        """
+        scale_in_control: NotRequired[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlArgsDict']]
+        """
+        Defines scale in controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events
+        Structure is documented below.
+        """
+        scaling_schedules: NotRequired[pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyScalingScheduleArgsDict']]]]
+        """
+        Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+        Structure is documented below.
+        """
+elif False:
+    AutoscalerAutoscalingPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AutoscalerAutoscalingPolicyArgs:
@@ -764,6 +1379,31 @@ class AutoscalerAutoscalingPolicyArgs:
         pulumi.set(self, "scaling_schedules", value)
 
 
+if not MYPY:
+    class AutoscalerAutoscalingPolicyCpuUtilizationArgsDict(TypedDict):
+        target: pulumi.Input[float]
+        """
+        The target CPU utilization that the autoscaler should maintain.
+        Must be a float value in the range (0, 1]. If not specified, the
+        default is 0.6.
+        If the CPU level is below the target utilization, the autoscaler
+        scales down the number of instances until it reaches the minimum
+        number of instances you specified or until the average CPU of
+        your instances reaches the target utilization.
+        If the average CPU is above the target utilization, the autoscaler
+        scales up until it reaches the maximum number of instances you
+        specified or until the average utilization reaches the target
+        utilization.
+        """
+        predictive_method: NotRequired[pulumi.Input[str]]
+        """
+        Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+        - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+        - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+        """
+elif False:
+    AutoscalerAutoscalingPolicyCpuUtilizationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AutoscalerAutoscalingPolicyCpuUtilizationArgs:
     def __init__(__self__, *,
@@ -826,6 +1466,17 @@ class AutoscalerAutoscalingPolicyCpuUtilizationArgs:
         pulumi.set(self, "predictive_method", value)
 
 
+if not MYPY:
+    class AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgsDict(TypedDict):
+        target: pulumi.Input[float]
+        """
+        Fraction of backend capacity utilization (set in HTTP(s) load
+        balancing configuration) that autoscaler should maintain. Must
+        be a positive float value. If not defined, the default is 0.8.
+        """
+elif False:
+    AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs:
     def __init__(__self__, *,
@@ -851,6 +1502,81 @@ class AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs:
     def target(self, value: pulumi.Input[float]):
         pulumi.set(self, "target", value)
 
+
+if not MYPY:
+    class AutoscalerAutoscalingPolicyMetricArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The identifier (type) of the Stackdriver Monitoring metric.
+        The metric cannot have negative values.
+        The metric must have a value type of INT64 or DOUBLE.
+        """
+        filter: NotRequired[pulumi.Input[str]]
+        """
+        A filter string to be used as the filter string for
+        a Stackdriver Monitoring TimeSeries.list API call.
+        This filter is used to select a specific TimeSeries for
+        the purpose of autoscaling and to determine whether the metric
+        is exporting per-instance or per-group data.
+        You can only use the AND operator for joining selectors.
+        You can only use direct equality comparison operator (=) without
+        any functions for each selector.
+        You can specify the metric in both the filter string and in the
+        metric field. However, if specified in both places, the metric must
+        be identical.
+        The monitored resource type determines what kind of values are
+        expected for the metric. If it is a gce_instance, the autoscaler
+        expects the metric to include a separate TimeSeries for each
+        instance in a group. In such a case, you cannot filter on resource
+        labels.
+        If the resource type is any other value, the autoscaler expects
+        this metric to contain values that apply to the entire autoscaled
+        instance group and resource label filtering can be performed to
+        point autoscaler at the correct TimeSeries to scale upon.
+        This is called a per-group metric for the purpose of autoscaling.
+        If not specified, the type defaults to gce_instance.
+        You should provide a filter that is selective enough to pick just
+        one TimeSeries for the autoscaled group or for each of the instances
+        (if you are using gce_instance resource type). If multiple
+        TimeSeries are returned upon the query execution, the autoscaler
+        will sum their respective values to obtain its scaling value.
+        """
+        single_instance_assignment: NotRequired[pulumi.Input[float]]
+        """
+        If scaling is based on a per-group metric value that represents the
+        total amount of work to be done or resource usage, set this value to
+        an amount assigned for a single instance of the scaled group.
+        The autoscaler will keep the number of instances proportional to the
+        value of this metric, the metric itself should not change value due
+        to group resizing.
+        For example, a good metric to use with the target is
+        `pubsub.googleapis.com/subscription/num_undelivered_messages`
+        or a custom metric exporting the total number of requests coming to
+        your instances.
+        A bad example would be a metric exporting an average or median
+        latency, since this value can't include a chunk assignable to a
+        single instance, it could be better used with utilization_target
+        instead.
+        """
+        target: NotRequired[pulumi.Input[float]]
+        """
+        The target value of the metric that autoscaler should
+        maintain. This must be a positive value. A utilization
+        metric scales number of virtual machines handling requests
+        to increase or decrease proportionally to the metric.
+        For example, a good metric to use as a utilizationTarget is
+        www.googleapis.com/compute/instance/network/received_bytes_count.
+        The autoscaler will work to keep this value constant for each
+        of the instances.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Defines how target utilization value is expressed for a
+        Stackdriver Monitoring metric.
+        Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
+        """
+elif False:
+    AutoscalerAutoscalingPolicyMetricArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AutoscalerAutoscalingPolicyMetricArgs:
@@ -1038,6 +1764,21 @@ class AutoscalerAutoscalingPolicyMetricArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class AutoscalerAutoscalingPolicyScaleDownControlArgsDict(TypedDict):
+        max_scaled_down_replicas: NotRequired[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgsDict']]
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        time_window_sec: NotRequired[pulumi.Input[int]]
+        """
+        How long back autoscaling should look when computing recommendations
+        to include directives regarding slower scale down, as described above.
+        """
+elif False:
+    AutoscalerAutoscalingPolicyScaleDownControlArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AutoscalerAutoscalingPolicyScaleDownControlArgs:
     def __init__(__self__, *,
@@ -1080,6 +1821,21 @@ class AutoscalerAutoscalingPolicyScaleDownControlArgs:
     def time_window_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "time_window_sec", value)
 
+
+if not MYPY:
+    class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgsDict(TypedDict):
+        fixed: NotRequired[pulumi.Input[int]]
+        """
+        Specifies a fixed number of VM instances. This must be a positive
+        integer.
+        """
+        percent: NotRequired[pulumi.Input[int]]
+        """
+        Specifies a percentage of instances between 0 to 100%, inclusive.
+        For example, specify 80 for 80%.
+        """
+elif False:
+    AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs:
@@ -1124,6 +1880,21 @@ class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs:
         pulumi.set(self, "percent", value)
 
 
+if not MYPY:
+    class AutoscalerAutoscalingPolicyScaleInControlArgsDict(TypedDict):
+        max_scaled_in_replicas: NotRequired[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgsDict']]
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        time_window_sec: NotRequired[pulumi.Input[int]]
+        """
+        How long back autoscaling should look when computing recommendations
+        to include directives regarding slower scale down, as described above.
+        """
+elif False:
+    AutoscalerAutoscalingPolicyScaleInControlArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AutoscalerAutoscalingPolicyScaleInControlArgs:
     def __init__(__self__, *,
@@ -1167,6 +1938,21 @@ class AutoscalerAutoscalingPolicyScaleInControlArgs:
         pulumi.set(self, "time_window_sec", value)
 
 
+if not MYPY:
+    class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgsDict(TypedDict):
+        fixed: NotRequired[pulumi.Input[int]]
+        """
+        Specifies a fixed number of VM instances. This must be a positive
+        integer.
+        """
+        percent: NotRequired[pulumi.Input[int]]
+        """
+        Specifies a percentage of instances between 0 to 100%, inclusive.
+        For example, specify 80 for 80%.
+        """
+elif False:
+    AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
     def __init__(__self__, *,
@@ -1209,6 +1995,39 @@ class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
     def percent(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "percent", value)
 
+
+if not MYPY:
+    class AutoscalerAutoscalingPolicyScalingScheduleArgsDict(TypedDict):
+        duration_sec: pulumi.Input[int]
+        """
+        The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+        """
+        min_required_replicas: pulumi.Input[int]
+        """
+        Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+        """
+        name: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        schedule: pulumi.Input[str]
+        """
+        The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of this resource.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+        """
+        time_zone: NotRequired[pulumi.Input[str]]
+        """
+        The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        """
+elif False:
+    AutoscalerAutoscalingPolicyScalingScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AutoscalerAutoscalingPolicyScalingScheduleArgs:
@@ -1324,6 +2143,69 @@ class AutoscalerAutoscalingPolicyScalingScheduleArgs:
     def time_zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "time_zone", value)
 
+
+if not MYPY:
+    class BackendBucketCdnPolicyArgsDict(TypedDict):
+        bypass_cache_on_request_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgsDict']]]]
+        """
+        Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+        Structure is documented below.
+        """
+        cache_key_policy: NotRequired[pulumi.Input['BackendBucketCdnPolicyCacheKeyPolicyArgsDict']]
+        """
+        The CacheKeyPolicy for this CdnPolicy.
+        Structure is documented below.
+        """
+        cache_mode: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the cache setting for all responses from this backend.
+        The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+        Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
+        """
+        client_ttl: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the maximum allowed TTL for cached content served by this origin.
+        """
+        default_ttl: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the default TTL for cached content served by this origin for responses
+        that do not have an existing valid TTL (max-age or s-max-age).
+        """
+        max_ttl: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the maximum allowed TTL for cached content served by this origin.
+        """
+        negative_caching: NotRequired[pulumi.Input[bool]]
+        """
+        Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+        """
+        negative_caching_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgsDict']]]]
+        """
+        Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+        Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+        Structure is documented below.
+        """
+        request_coalescing: NotRequired[pulumi.Input[bool]]
+        """
+        If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+        """
+        serve_while_stale: NotRequired[pulumi.Input[int]]
+        """
+        Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+        """
+        signed_url_cache_max_age_sec: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of seconds the response to a signed URL request will
+        be considered fresh. After this time period,
+        the response will be revalidated before being served.
+        When serving responses to signed URL requests,
+        Cloud CDN will internally behave as though
+        all responses from this backend had a "Cache-Control: public,
+        max-age=[TTL]" header, regardless of any existing Cache-Control
+        header. The actual headers served in responses will not be altered.
+        """
+elif False:
+    BackendBucketCdnPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BackendBucketCdnPolicyArgs:
@@ -1536,6 +2418,15 @@ class BackendBucketCdnPolicyArgs:
         pulumi.set(self, "signed_url_cache_max_age_sec", value)
 
 
+if not MYPY:
+    class BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgsDict(TypedDict):
+        header_name: NotRequired[pulumi.Input[str]]
+        """
+        The header field name to match on when bypassing cache. Values are case-insensitive.
+        """
+elif False:
+    BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs:
     def __init__(__self__, *,
@@ -1558,6 +2449,22 @@ class BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs:
     def header_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "header_name", value)
 
+
+if not MYPY:
+    class BackendBucketCdnPolicyCacheKeyPolicyArgsDict(TypedDict):
+        include_http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allows HTTP request headers (by name) to be used in the
+        cache key.
+        """
+        query_string_whitelists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Names of query string parameters to include in cache keys.
+        Default parameters are always included. '&' and '=' will
+        be percent encoded and not treated as delimiters.
+        """
+elif False:
+    BackendBucketCdnPolicyCacheKeyPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BackendBucketCdnPolicyCacheKeyPolicyArgs:
@@ -1604,6 +2511,21 @@ class BackendBucketCdnPolicyCacheKeyPolicyArgs:
         pulumi.set(self, "query_string_whitelists", value)
 
 
+if not MYPY:
+    class BackendBucketCdnPolicyNegativeCachingPolicyArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[int]]
+        """
+        The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+        can be specified as values, and you cannot specify a status code more than once.
+        """
+        ttl: NotRequired[pulumi.Input[int]]
+        """
+        The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+        (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        """
+elif False:
+    BackendBucketCdnPolicyNegativeCachingPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BackendBucketCdnPolicyNegativeCachingPolicyArgs:
     def __init__(__self__, *,
@@ -1647,6 +2569,14 @@ class BackendBucketCdnPolicyNegativeCachingPolicyArgs:
         pulumi.set(self, "ttl", value)
 
 
+if not MYPY:
+    class BackendBucketIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    BackendBucketIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BackendBucketIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -1686,6 +2616,14 @@ class BackendBucketIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class BackendBucketIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    BackendBucketIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BackendBucketIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -1724,6 +2662,107 @@ class BackendBucketIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class BackendServiceBackendArgsDict(TypedDict):
+        group: pulumi.Input[str]
+        """
+        The fully-qualified URL of an Instance Group or Network Endpoint
+        Group resource. In case of instance group this defines the list
+        of instances that serve traffic. Member virtual machine
+        instances from each instance group must live in the same zone as
+        the instance group itself. No two backends in a backend service
+        are allowed to use same Instance Group resource.
+        For Network Endpoint Groups this defines list of endpoints. All
+        endpoints of Network Endpoint Group must be hosted on instances
+        located in the same zone as the Network Endpoint Group.
+        Backend services cannot mix Instance Group and
+        Network Endpoint Group backends.
+        Note that you must specify an Instance Group or Network Endpoint
+        Group resource using the fully-qualified URL, rather than a
+        partial URL.
+        """
+        balancing_mode: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the balancing mode for this backend.
+        For global HTTP(S) or TCP/SSL load balancing, the default is
+        UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
+        and CONNECTION (for TCP/SSL).
+        See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+        for an explanation of load balancing modes.
+        From version 6.0.0 default value will be UTILIZATION to match default GCP value.
+        Default value is `UTILIZATION`.
+        Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+        """
+        capacity_scaler: NotRequired[pulumi.Input[float]]
+        """
+        A multiplier applied to the group's maximum servicing capacity
+        (based on UTILIZATION, RATE or CONNECTION).
+        Default value is 1, which means the group will serve up to 100%
+        of its configured capacity (depending on balancingMode). A
+        setting of 0 means the group is completely drained, offering
+        0% of its available Capacity. Valid range is [0.0,1.0].
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of this resource.
+        Provide this property when you create the resource.
+        """
+        max_connections: NotRequired[pulumi.Input[int]]
+        """
+        The max number of simultaneous connections for the group. Can
+        be used with either CONNECTION or UTILIZATION balancing modes.
+        For CONNECTION mode, either maxConnections or one
+        of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+        as appropriate for group type, must be set.
+        """
+        max_connections_per_endpoint: NotRequired[pulumi.Input[int]]
+        """
+        The max number of simultaneous connections that a single backend
+        network endpoint can handle. This is used to calculate the
+        capacity of the group. Can be used in either CONNECTION or
+        UTILIZATION balancing modes.
+        For CONNECTION mode, either
+        maxConnections or maxConnectionsPerEndpoint must be set.
+        """
+        max_connections_per_instance: NotRequired[pulumi.Input[int]]
+        """
+        The max number of simultaneous connections that a single
+        backend instance can handle. This is used to calculate the
+        capacity of the group. Can be used in either CONNECTION or
+        UTILIZATION balancing modes.
+        For CONNECTION mode, either maxConnections or
+        maxConnectionsPerInstance must be set.
+        """
+        max_rate: NotRequired[pulumi.Input[int]]
+        """
+        The max requests per second (RPS) of the group.
+        Can be used with either RATE or UTILIZATION balancing modes,
+        but required if RATE mode. For RATE mode, either maxRate or one
+        of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
+        group type, must be set.
+        """
+        max_rate_per_endpoint: NotRequired[pulumi.Input[float]]
+        """
+        The max requests per second (RPS) that a single backend network
+        endpoint can handle. This is used to calculate the capacity of
+        the group. Can be used in either balancing mode. For RATE mode,
+        either maxRate or maxRatePerEndpoint must be set.
+        """
+        max_rate_per_instance: NotRequired[pulumi.Input[float]]
+        """
+        The max requests per second (RPS) that a single backend
+        instance can handle. This is used to calculate the capacity of
+        the group. Can be used in either balancing mode. For RATE mode,
+        either maxRate or maxRatePerInstance must be set.
+        """
+        max_utilization: NotRequired[pulumi.Input[float]]
+        """
+        Used when balancingMode is UTILIZATION. This ratio defines the
+        CPU utilization target for the group. Valid range is [0.0, 1.0].
+        """
+elif False:
+    BackendServiceBackendArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BackendServiceBackendArgs:
@@ -2011,6 +3050,67 @@ class BackendServiceBackendArgs:
         pulumi.set(self, "max_utilization", value)
 
 
+if not MYPY:
+    class BackendServiceCdnPolicyArgsDict(TypedDict):
+        bypass_cache_on_request_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgsDict']]]]
+        """
+        Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+        The cache is bypassed for all cdnPolicy.cacheMode settings.
+        Structure is documented below.
+        """
+        cache_key_policy: NotRequired[pulumi.Input['BackendServiceCdnPolicyCacheKeyPolicyArgsDict']]
+        """
+        The CacheKeyPolicy for this CdnPolicy.
+        Structure is documented below.
+        """
+        cache_mode: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the cache setting for all responses from this backend.
+        The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+        Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
+        """
+        client_ttl: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the maximum allowed TTL for cached content served by this origin.
+        """
+        default_ttl: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the default TTL for cached content served by this origin for responses
+        that do not have an existing valid TTL (max-age or s-max-age).
+        """
+        max_ttl: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the maximum allowed TTL for cached content served by this origin.
+        """
+        negative_caching: NotRequired[pulumi.Input[bool]]
+        """
+        Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+        """
+        negative_caching_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgsDict']]]]
+        """
+        Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+        Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+        Structure is documented below.
+        """
+        serve_while_stale: NotRequired[pulumi.Input[int]]
+        """
+        Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+        """
+        signed_url_cache_max_age_sec: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of seconds the response to a signed URL request
+        will be considered fresh, defaults to 1hr (3600s). After this
+        time period, the response will be revalidated before
+        being served.
+        When serving responses to signed URL requests, Cloud CDN will
+        internally behave as though all responses from this backend had a
+        "Cache-Control: public, max-age=[TTL]" header, regardless of any
+        existing Cache-Control header. The actual headers served in
+        responses will not be altered.
+        """
+elif False:
+    BackendServiceCdnPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BackendServiceCdnPolicyArgs:
     def __init__(__self__, *,
@@ -2210,6 +3310,15 @@ class BackendServiceCdnPolicyArgs:
         pulumi.set(self, "signed_url_cache_max_age_sec", value)
 
 
+if not MYPY:
+    class BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The header field name to match on when bypassing cache. Values are case-insensitive.
+        """
+elif False:
+    BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs:
     def __init__(__self__, *,
@@ -2231,6 +3340,53 @@ class BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs:
     def header_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "header_name", value)
 
+
+if not MYPY:
+    class BackendServiceCdnPolicyCacheKeyPolicyArgsDict(TypedDict):
+        include_host: NotRequired[pulumi.Input[bool]]
+        """
+        If true requests to different hosts will be cached separately.
+        """
+        include_http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allows HTTP request headers (by name) to be used in the
+        cache key.
+        """
+        include_named_cookies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Names of cookies to include in cache keys.
+        """
+        include_protocol: NotRequired[pulumi.Input[bool]]
+        """
+        If true, http and https requests will be cached separately.
+        """
+        include_query_string: NotRequired[pulumi.Input[bool]]
+        """
+        If true, include query string parameters in the cache key
+        according to query_string_whitelist and
+        query_string_blacklist. If neither is set, the entire query
+        string will be included.
+        If false, the query string will be excluded from the cache
+        key entirely.
+        """
+        query_string_blacklists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Names of query string parameters to exclude in cache keys.
+        All other parameters will be included. Either specify
+        query_string_whitelist or query_string_blacklist, not both.
+        '&' and '=' will be percent encoded and not treated as
+        delimiters.
+        """
+        query_string_whitelists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Names of query string parameters to include in cache keys.
+        All other parameters will be excluded. Either specify
+        query_string_whitelist or query_string_blacklist, not both.
+        '&' and '=' will be percent encoded and not treated as
+        delimiters.
+        """
+elif False:
+    BackendServiceCdnPolicyCacheKeyPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BackendServiceCdnPolicyCacheKeyPolicyArgs:
@@ -2379,6 +3535,21 @@ class BackendServiceCdnPolicyCacheKeyPolicyArgs:
         pulumi.set(self, "query_string_whitelists", value)
 
 
+if not MYPY:
+    class BackendServiceCdnPolicyNegativeCachingPolicyArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[int]]
+        """
+        The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+        can be specified as values, and you cannot specify a status code more than once.
+        """
+        ttl: NotRequired[pulumi.Input[int]]
+        """
+        The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+        (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        """
+elif False:
+    BackendServiceCdnPolicyNegativeCachingPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BackendServiceCdnPolicyNegativeCachingPolicyArgs:
     def __init__(__self__, *,
@@ -2421,6 +3592,43 @@ class BackendServiceCdnPolicyNegativeCachingPolicyArgs:
     def ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ttl", value)
 
+
+if not MYPY:
+    class BackendServiceCircuitBreakersArgsDict(TypedDict):
+        connect_timeout: NotRequired[pulumi.Input['BackendServiceCircuitBreakersConnectTimeoutArgsDict']]
+        """
+        The timeout for new network connections to hosts.
+        Structure is documented below.
+        """
+        max_connections: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of connections to the backend cluster.
+        Defaults to 1024.
+        """
+        max_pending_requests: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of pending requests to the backend cluster.
+        Defaults to 1024.
+        """
+        max_requests: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of parallel requests to the backend cluster.
+        Defaults to 1024.
+        """
+        max_requests_per_connection: NotRequired[pulumi.Input[int]]
+        """
+        Maximum requests for a single backend connection. This parameter
+        is respected by both the HTTP/1.1 and HTTP/2 implementations. If
+        not specified, there is no limit. Setting this parameter to 1
+        will effectively disable keep alive.
+        """
+        max_retries: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of parallel retries to the backend cluster.
+        Defaults to 3.
+        """
+elif False:
+    BackendServiceCircuitBreakersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BackendServiceCircuitBreakersArgs:
@@ -2541,6 +3749,23 @@ class BackendServiceCircuitBreakersArgs:
         pulumi.set(self, "max_retries", value)
 
 
+if not MYPY:
+    class BackendServiceCircuitBreakersConnectTimeoutArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    BackendServiceCircuitBreakersConnectTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BackendServiceCircuitBreakersConnectTimeoutArgs:
     def __init__(__self__, *,
@@ -2586,6 +3811,33 @@ class BackendServiceCircuitBreakersConnectTimeoutArgs:
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
+
+if not MYPY:
+    class BackendServiceConsistentHashArgsDict(TypedDict):
+        http_cookie: NotRequired[pulumi.Input['BackendServiceConsistentHashHttpCookieArgsDict']]
+        """
+        Hash is based on HTTP Cookie. This field describes a HTTP cookie
+        that will be used as the hash key for the consistent hash load
+        balancer. If the cookie is not present, it will be generated.
+        This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+        Structure is documented below.
+        """
+        http_header_name: NotRequired[pulumi.Input[str]]
+        """
+        The hash based on the value of the specified header field.
+        This field is applicable if the sessionAffinity is set to HEADER_FIELD.
+        """
+        minimum_ring_size: NotRequired[pulumi.Input[int]]
+        """
+        The minimum number of virtual nodes to use for the hash ring.
+        Larger ring sizes result in more granular load
+        distributions. If the number of hosts in the load balancing pool
+        is larger than the ring size, each host will be assigned a single
+        virtual node.
+        Defaults to 1024.
+        """
+elif False:
+    BackendServiceConsistentHashArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BackendServiceConsistentHashArgs:
@@ -2662,6 +3914,24 @@ class BackendServiceConsistentHashArgs:
         pulumi.set(self, "minimum_ring_size", value)
 
 
+if not MYPY:
+    class BackendServiceConsistentHashHttpCookieArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the cookie.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to set for the cookie.
+        """
+        ttl: NotRequired[pulumi.Input['BackendServiceConsistentHashHttpCookieTtlArgsDict']]
+        """
+        Lifetime of the cookie.
+        Structure is documented below.
+        """
+elif False:
+    BackendServiceConsistentHashHttpCookieArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BackendServiceConsistentHashHttpCookieArgs:
     def __init__(__self__, *,
@@ -2719,6 +3989,23 @@ class BackendServiceConsistentHashHttpCookieArgs:
         pulumi.set(self, "ttl", value)
 
 
+if not MYPY:
+    class BackendServiceConsistentHashHttpCookieTtlArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    BackendServiceConsistentHashHttpCookieTtlArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BackendServiceConsistentHashHttpCookieTtlArgs:
     def __init__(__self__, *,
@@ -2764,6 +4051,20 @@ class BackendServiceConsistentHashHttpCookieTtlArgs:
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
+
+if not MYPY:
+    class BackendServiceIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    BackendServiceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BackendServiceIamBindingConditionArgs:
@@ -2814,6 +4115,20 @@ class BackendServiceIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class BackendServiceIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    BackendServiceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BackendServiceIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -2862,6 +4177,26 @@ class BackendServiceIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class BackendServiceIapArgsDict(TypedDict):
+        oauth2_client_id: pulumi.Input[str]
+        """
+        OAuth2 Client ID for IAP
+        """
+        oauth2_client_secret: pulumi.Input[str]
+        """
+        OAuth2 Client Secret for IAP
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        oauth2_client_secret_sha256: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        OAuth2 Client Secret SHA-256 for IAP
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+elif False:
+    BackendServiceIapArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BackendServiceIapArgs:
@@ -2922,6 +4257,22 @@ class BackendServiceIapArgs:
         pulumi.set(self, "oauth2_client_secret_sha256", value)
 
 
+if not MYPY:
+    class BackendServiceLocalityLbPolicyArgsDict(TypedDict):
+        custom_policy: NotRequired[pulumi.Input['BackendServiceLocalityLbPolicyCustomPolicyArgsDict']]
+        """
+        The configuration for a custom policy implemented by the user and
+        deployed with the client.
+        Structure is documented below.
+        """
+        policy: NotRequired[pulumi.Input['BackendServiceLocalityLbPolicyPolicyArgsDict']]
+        """
+        The configuration for a built-in load balancing policy.
+        Structure is documented below.
+        """
+elif False:
+    BackendServiceLocalityLbPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BackendServiceLocalityLbPolicyArgs:
     def __init__(__self__, *,
@@ -2966,6 +4317,26 @@ class BackendServiceLocalityLbPolicyArgs:
     def policy(self, value: Optional[pulumi.Input['BackendServiceLocalityLbPolicyPolicyArgs']]):
         pulumi.set(self, "policy", value)
 
+
+if not MYPY:
+    class BackendServiceLocalityLbPolicyCustomPolicyArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Identifies the custom policy.
+        The value should match the type the custom implementation is registered
+        with on the gRPC clients. It should follow protocol buffer
+        message naming conventions and include the full path (e.g.
+        myorg.CustomLbPolicy). The maximum length is 256 characters.
+        Note that specifying the same custom policy more than once for a
+        backend is not a valid configuration and will be rejected.
+        """
+        data: NotRequired[pulumi.Input[str]]
+        """
+        An optional, arbitrary JSON object with configuration data, understood
+        by a locally installed custom policy implementation.
+        """
+elif False:
+    BackendServiceLocalityLbPolicyCustomPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BackendServiceLocalityLbPolicyCustomPolicyArgs:
@@ -3018,6 +4389,41 @@ class BackendServiceLocalityLbPolicyCustomPolicyArgs:
     def data(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "data", value)
 
+
+if not MYPY:
+    class BackendServiceLocalityLbPolicyPolicyArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of a locality load balancer policy to be used. The value
+        should be one of the predefined ones as supported by localityLbPolicy,
+        although at the moment only ROUND_ROBIN is supported.
+        This field should only be populated when the customPolicy field is not
+        used.
+        Note that specifying the same policy more than once for a backend is
+        not a valid configuration and will be rejected.
+        The possible values are:
+        * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
+        is selected in round robin order.
+        * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
+        hosts and picks the host which has fewer active requests.
+        * `RING_HASH`: The ring/modulo hash load balancer implements consistent
+        hashing to backends. The algorithm has the property that the
+        addition/removal of a host from a set of N hosts only affects
+        1/N of the requests.
+        * `RANDOM`: The load balancer selects a random healthy host.
+        * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
+        connection metadata, i.e., connections are opened
+        to the same address as the destination address of
+        the incoming connection before the connection
+        was redirected to the load balancer.
+        * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
+        Maglev is not as stable as ring hash but has faster table lookup
+        build times and host selection times. For more information about
+        Maglev, refer to https://ai.google/research/pubs/pub44824
+        Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`.
+        """
+elif False:
+    BackendServiceLocalityLbPolicyPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BackendServiceLocalityLbPolicyPolicyArgs:
@@ -3093,6 +4499,22 @@ class BackendServiceLocalityLbPolicyPolicyArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class BackendServiceLogConfigArgsDict(TypedDict):
+        enable: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable logging for the load balancer traffic served by this backend service.
+        """
+        sample_rate: NotRequired[pulumi.Input[float]]
+        """
+        This field can only be specified if logging is enabled for this backend service. The value of
+        the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+        where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+        The default value is 1.0.
+        """
+elif False:
+    BackendServiceLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BackendServiceLogConfigArgs:
     def __init__(__self__, *,
@@ -3137,6 +4559,83 @@ class BackendServiceLogConfigArgs:
     def sample_rate(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "sample_rate", value)
 
+
+if not MYPY:
+    class BackendServiceOutlierDetectionArgsDict(TypedDict):
+        base_ejection_time: NotRequired[pulumi.Input['BackendServiceOutlierDetectionBaseEjectionTimeArgsDict']]
+        """
+        The base time that a host is ejected for. The real time is equal to the base
+        time multiplied by the number of times the host has been ejected. Defaults to
+        30000ms or 30s.
+        Structure is documented below.
+        """
+        consecutive_errors: NotRequired[pulumi.Input[int]]
+        """
+        Number of errors before a host is ejected from the connection pool. When the
+        backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+        Defaults to 5.
+        """
+        consecutive_gateway_failure: NotRequired[pulumi.Input[int]]
+        """
+        The number of consecutive gateway failures (502, 503, 504 status or connection
+        errors that are mapped to one of those status codes) before a consecutive
+        gateway failure ejection occurs. Defaults to 5.
+        """
+        enforcing_consecutive_errors: NotRequired[pulumi.Input[int]]
+        """
+        The percentage chance that a host will be actually ejected when an outlier
+        status is detected through consecutive 5xx. This setting can be used to disable
+        ejection or to ramp it up slowly. Defaults to 100.
+        """
+        enforcing_consecutive_gateway_failure: NotRequired[pulumi.Input[int]]
+        """
+        The percentage chance that a host will be actually ejected when an outlier
+        status is detected through consecutive gateway failures. This setting can be
+        used to disable ejection or to ramp it up slowly. Defaults to 0.
+        """
+        enforcing_success_rate: NotRequired[pulumi.Input[int]]
+        """
+        The percentage chance that a host will be actually ejected when an outlier
+        status is detected through success rate statistics. This setting can be used to
+        disable ejection or to ramp it up slowly. Defaults to 100.
+        """
+        interval: NotRequired[pulumi.Input['BackendServiceOutlierDetectionIntervalArgsDict']]
+        """
+        Time interval between ejection sweep analysis. This can result in both new
+        ejections as well as hosts being returned to service. Defaults to 10 seconds.
+        Structure is documented below.
+        """
+        max_ejection_percent: NotRequired[pulumi.Input[int]]
+        """
+        Maximum percentage of hosts in the load balancing pool for the backend service
+        that can be ejected. Defaults to 10%.
+        """
+        success_rate_minimum_hosts: NotRequired[pulumi.Input[int]]
+        """
+        The number of hosts in a cluster that must have enough request volume to detect
+        success rate outliers. If the number of hosts is less than this setting, outlier
+        detection via success rate statistics is not performed for any host in the
+        cluster. Defaults to 5.
+        """
+        success_rate_request_volume: NotRequired[pulumi.Input[int]]
+        """
+        The minimum number of total requests that must be collected in one interval (as
+        defined by the interval duration above) to include this host in success rate
+        based outlier detection. If the volume is lower than this setting, outlier
+        detection via success rate statistics is not performed for that host. Defaults
+        to 100.
+        """
+        success_rate_stdev_factor: NotRequired[pulumi.Input[int]]
+        """
+        This factor is used to determine the ejection threshold for success rate outlier
+        ejection. The ejection threshold is the difference between the mean success
+        rate, and the product of this factor and the standard deviation of the mean
+        success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+        by a thousand to get a double. That is, if the desired factor is 1.9, the
+        runtime value should be 1900. Defaults to 1900.
+        """
+elif False:
+    BackendServiceOutlierDetectionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BackendServiceOutlierDetectionArgs:
@@ -3377,6 +4876,22 @@ class BackendServiceOutlierDetectionArgs:
         pulumi.set(self, "success_rate_stdev_factor", value)
 
 
+if not MYPY:
+    class BackendServiceOutlierDetectionBaseEjectionTimeArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+        inclusive.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations
+        less than one second are represented with a 0 `seconds` field and a positive
+        `nanos` field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    BackendServiceOutlierDetectionBaseEjectionTimeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BackendServiceOutlierDetectionBaseEjectionTimeArgs:
     def __init__(__self__, *,
@@ -3421,6 +4936,22 @@ class BackendServiceOutlierDetectionBaseEjectionTimeArgs:
         pulumi.set(self, "nanos", value)
 
 
+if not MYPY:
+    class BackendServiceOutlierDetectionIntervalArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+        inclusive.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations
+        less than one second are represented with a 0 `seconds` field and a positive
+        `nanos` field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    BackendServiceOutlierDetectionIntervalArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BackendServiceOutlierDetectionIntervalArgs:
     def __init__(__self__, *,
@@ -3464,6 +4995,23 @@ class BackendServiceOutlierDetectionIntervalArgs:
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
+
+if not MYPY:
+    class BackendServiceSecuritySettingsArgsDict(TypedDict):
+        client_tls_policy: pulumi.Input[str]
+        """
+        ClientTlsPolicy is a resource that specifies how a client should authenticate
+        connections to backends of a service. This resource itself does not affect
+        configuration unless it is attached to a backend service resource.
+        """
+        subject_alt_names: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of alternate names to verify the subject identity in the certificate.
+        If specified, the client will verify that the server certificate's subject
+        alt name matches one of the specified values.
+        """
+elif False:
+    BackendServiceSecuritySettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BackendServiceSecuritySettingsArgs:
@@ -3510,6 +5058,15 @@ class BackendServiceSecuritySettingsArgs:
         pulumi.set(self, "subject_alt_names", value)
 
 
+if not MYPY:
+    class DiskAsyncPrimaryDiskArgsDict(TypedDict):
+        disk: pulumi.Input[str]
+        """
+        Primary disk for asynchronous disk replication.
+        """
+elif False:
+    DiskAsyncPrimaryDiskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DiskAsyncPrimaryDiskArgs:
     def __init__(__self__, *,
@@ -3531,6 +5088,21 @@ class DiskAsyncPrimaryDiskArgs:
     def disk(self, value: pulumi.Input[str]):
         pulumi.set(self, "disk", value)
 
+
+if not MYPY:
+    class DiskAsyncReplicationSecondaryDiskArgsDict(TypedDict):
+        disk: pulumi.Input[str]
+        """
+        The secondary disk.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        Output-only. Status of replication on the secondary disk.
+
+        - - -
+        """
+elif False:
+    DiskAsyncReplicationSecondaryDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DiskAsyncReplicationSecondaryDiskArgs:
@@ -3573,6 +5145,43 @@ class DiskAsyncReplicationSecondaryDiskArgs:
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
 
+
+if not MYPY:
+    class DiskDiskEncryptionKeyArgsDict(TypedDict):
+        kms_key_self_link: NotRequired[pulumi.Input[str]]
+        """
+        The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+        in the cloud console. Your project's Compute Engine System service account
+        (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+        `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+        See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        """
+        kms_key_service_account: NotRequired[pulumi.Input[str]]
+        """
+        The service account used for the encryption request for the given KMS key.
+        If absent, the Compute Engine Service Agent service account is used.
+        """
+        raw_key: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        rsa_encrypted_key: NotRequired[pulumi.Input[str]]
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+        customer-supplied encryption key to either encrypt or decrypt
+        this resource. You can provide either the rawKey or the rsaEncryptedKey.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        sha256: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        encryption key that protects this resource.
+        """
+elif False:
+    DiskDiskEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DiskDiskEncryptionKeyArgs:
@@ -3685,6 +5294,15 @@ class DiskDiskEncryptionKeyArgs:
         pulumi.set(self, "sha256", value)
 
 
+if not MYPY:
+    class DiskGuestOsFeatureArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+        """
+elif False:
+    DiskGuestOsFeatureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DiskGuestOsFeatureArgs:
     def __init__(__self__, *,
@@ -3706,6 +5324,14 @@ class DiskGuestOsFeatureArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class DiskIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    DiskIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DiskIamBindingConditionArgs:
@@ -3746,6 +5372,14 @@ class DiskIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class DiskIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    DiskIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DiskIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -3784,6 +5418,35 @@ class DiskIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class DiskSourceImageEncryptionKeyArgsDict(TypedDict):
+        kms_key_self_link: NotRequired[pulumi.Input[str]]
+        """
+        The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+        in the cloud console. Your project's Compute Engine System service account
+        (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+        `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+        See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        """
+        kms_key_service_account: NotRequired[pulumi.Input[str]]
+        """
+        The service account used for the encryption request for the given KMS key.
+        If absent, the Compute Engine Service Agent service account is used.
+        """
+        raw_key: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        """
+        sha256: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        encryption key that protects this resource.
+        """
+elif False:
+    DiskSourceImageEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DiskSourceImageEncryptionKeyArgs:
@@ -3872,6 +5535,35 @@ class DiskSourceImageEncryptionKeyArgs:
         pulumi.set(self, "sha256", value)
 
 
+if not MYPY:
+    class DiskSourceSnapshotEncryptionKeyArgsDict(TypedDict):
+        kms_key_self_link: NotRequired[pulumi.Input[str]]
+        """
+        The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+        in the cloud console. Your project's Compute Engine System service account
+        (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+        `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+        See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        """
+        kms_key_service_account: NotRequired[pulumi.Input[str]]
+        """
+        The service account used for the encryption request for the given KMS key.
+        If absent, the Compute Engine Service Agent service account is used.
+        """
+        raw_key: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        """
+        sha256: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        encryption key that protects this resource.
+        """
+elif False:
+    DiskSourceSnapshotEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DiskSourceSnapshotEncryptionKeyArgs:
     def __init__(__self__, *,
@@ -3959,6 +5651,26 @@ class DiskSourceSnapshotEncryptionKeyArgs:
         pulumi.set(self, "sha256", value)
 
 
+if not MYPY:
+    class ExternalVpnGatewayInterfaceArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[int]]
+        """
+        The numeric ID for this interface. Allowed values are based on the redundancy type
+        of this external VPN gateway
+        * `0 - SINGLE_IP_INTERNALLY_REDUNDANT`
+        * `0, 1 - TWO_IPS_REDUNDANCY`
+        * `0, 1, 2, 3 - FOUR_IPS_REDUNDANCY`
+        """
+        ip_address: NotRequired[pulumi.Input[str]]
+        """
+        IP address of the interface in the external VPN gateway.
+        Only IPv4 is supported. This IP address can be either from
+        your on-premise gateway or another Cloud provider's VPN gateway,
+        it cannot be an IP address from Google Compute Engine.
+        """
+elif False:
+    ExternalVpnGatewayInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ExternalVpnGatewayInterfaceArgs:
     def __init__(__self__, *,
@@ -4011,6 +5723,27 @@ class ExternalVpnGatewayInterfaceArgs:
     def ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_address", value)
 
+
+if not MYPY:
+    class FirewallAllowArgsDict(TypedDict):
+        protocol: pulumi.Input[str]
+        """
+        The IP protocol to which this rule applies. The protocol type is
+        required when creating a firewall rule. This value can either be
+        one of the following well known protocol strings (tcp, udp,
+        icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An optional list of ports to which this rule applies. This field
+        is only applicable for UDP or TCP protocol. Each entry must be
+        either an integer or a range. If not specified, this rule
+        applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and
+        ["12345-12349"].
+        """
+elif False:
+    FirewallAllowArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FirewallAllowArgs:
@@ -4066,6 +5799,27 @@ class FirewallAllowArgs:
         pulumi.set(self, "ports", value)
 
 
+if not MYPY:
+    class FirewallDenyArgsDict(TypedDict):
+        protocol: pulumi.Input[str]
+        """
+        The IP protocol to which this rule applies. The protocol type is
+        required when creating a firewall rule. This value can either be
+        one of the following well known protocol strings (tcp, udp,
+        icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An optional list of ports to which this rule applies. This field
+        is only applicable for UDP or TCP protocol. Each entry must be
+        either an integer or a range. If not specified, this rule
+        applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and
+        ["12345-12349"].
+        """
+elif False:
+    FirewallDenyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FirewallDenyArgs:
     def __init__(__self__, *,
@@ -4120,6 +5874,16 @@ class FirewallDenyArgs:
         pulumi.set(self, "ports", value)
 
 
+if not MYPY:
+    class FirewallLogConfigArgsDict(TypedDict):
+        metadata: pulumi.Input[str]
+        """
+        This field denotes whether to include or exclude metadata for firewall logs.
+        Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`.
+        """
+elif False:
+    FirewallLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FirewallLogConfigArgs:
     def __init__(__self__, *,
@@ -4143,6 +5907,57 @@ class FirewallLogConfigArgs:
     def metadata(self, value: pulumi.Input[str]):
         pulumi.set(self, "metadata", value)
 
+
+if not MYPY:
+    class FirewallPolicyRuleMatchArgsDict(TypedDict):
+        layer4_configs: pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgsDict']]]
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        """
+        dest_address_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+        """
+        dest_fqdns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+        """
+        dest_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        """
+        dest_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+        """
+        dest_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Name of the Google Cloud Threat Intelligence list.
+        """
+        src_address_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+        """
+        src_fqdns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+        """
+        src_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        """
+        src_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+        """
+        src_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Name of the Google Cloud Threat Intelligence list.
+
+        The `layer4_configs` block supports:
+        """
+elif False:
+    FirewallPolicyRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FirewallPolicyRuleMatchArgs:
@@ -4330,6 +6145,19 @@ class FirewallPolicyRuleMatchArgs:
         pulumi.set(self, "src_threat_intelligences", value)
 
 
+if not MYPY:
+    class FirewallPolicyRuleMatchLayer4ConfigArgsDict(TypedDict):
+        ip_protocol: pulumi.Input[str]
+        """
+        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+        """
+elif False:
+    FirewallPolicyRuleMatchLayer4ConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FirewallPolicyRuleMatchLayer4ConfigArgs:
     def __init__(__self__, *,
@@ -4367,6 +6195,19 @@ class FirewallPolicyRuleMatchLayer4ConfigArgs:
     def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ports", value)
 
+
+if not MYPY:
+    class ForwardingRuleServiceDirectoryRegistrationsArgsDict(TypedDict):
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Service Directory namespace to register the forwarding rule under.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        Service Directory service to register the forwarding rule under.
+        """
+elif False:
+    ForwardingRuleServiceDirectoryRegistrationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ForwardingRuleServiceDirectoryRegistrationsArgs:
@@ -4406,6 +6247,28 @@ class ForwardingRuleServiceDirectoryRegistrationsArgs:
     def service(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service", value)
 
+
+if not MYPY:
+    class GlobalForwardingRuleMetadataFilterArgsDict(TypedDict):
+        filter_labels: pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterFilterLabelArgsDict']]]
+        """
+        The list of label value pairs that must match labels in the
+        provided metadata based on filterMatchCriteria
+        This list must not be empty and can have at the most 64 entries.
+        Structure is documented below.
+        """
+        filter_match_criteria: pulumi.Input[str]
+        """
+        Specifies how individual filterLabel matches within the list of
+        filterLabels contribute towards the overall metadataFilter match.
+        MATCH_ANY - At least one of the filterLabels must have a matching
+        label in the provided metadata.
+        MATCH_ALL - All filterLabels must have matching labels in the
+        provided metadata.
+        Possible values are: `MATCH_ANY`, `MATCH_ALL`.
+        """
+elif False:
+    GlobalForwardingRuleMetadataFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GlobalForwardingRuleMetadataFilterArgs:
@@ -4462,6 +6325,21 @@ class GlobalForwardingRuleMetadataFilterArgs:
         pulumi.set(self, "filter_match_criteria", value)
 
 
+if not MYPY:
+    class GlobalForwardingRuleMetadataFilterFilterLabelArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the metadata label. The length must be between
+        1 and 1024 characters, inclusive.
+        """
+        value: pulumi.Input[str]
+        """
+        The value that the label must match. The value has a maximum
+        length of 1024 characters.
+        """
+elif False:
+    GlobalForwardingRuleMetadataFilterFilterLabelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GlobalForwardingRuleMetadataFilterFilterLabelArgs:
     def __init__(__self__, *,
@@ -4502,6 +6380,22 @@ class GlobalForwardingRuleMetadataFilterFilterLabelArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class GlobalForwardingRuleServiceDirectoryRegistrationsArgsDict(TypedDict):
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Service Directory namespace to register the forwarding rule under.
+        """
+        service_directory_region: NotRequired[pulumi.Input[str]]
+        """
+        [Optional] Service Directory region to register this global forwarding rule under.
+        Default to "us-central1". Only used for PSC for Google APIs. All PSC for
+        Google APIs Forwarding Rules on the same network should use the same Service
+        Directory region.
+        """
+elif False:
+    GlobalForwardingRuleServiceDirectoryRegistrationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GlobalForwardingRuleServiceDirectoryRegistrationsArgs:
@@ -4547,6 +6441,29 @@ class GlobalForwardingRuleServiceDirectoryRegistrationsArgs:
     def service_directory_region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_directory_region", value)
 
+
+if not MYPY:
+    class HaVpnGatewayVpnInterfaceArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[int]]
+        """
+        The numeric ID of this VPN gateway interface.
+        """
+        interconnect_attachment: NotRequired[pulumi.Input[str]]
+        """
+        URL of the interconnect attachment resource. When the value
+        of this field is present, the VPN Gateway will be used for
+        IPsec-encrypted Cloud Interconnect; all Egress or Ingress
+        traffic for this VPN Gateway interface will go through the
+        specified interconnect attachment resource.
+        Not currently available publicly.
+        """
+        ip_address: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The external IP address for this VPN gateway interface.
+        """
+elif False:
+    HaVpnGatewayVpnInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HaVpnGatewayVpnInterfaceArgs:
@@ -4614,6 +6531,44 @@ class HaVpnGatewayVpnInterfaceArgs:
     def ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_address", value)
 
+
+if not MYPY:
+    class HealthCheckGrpcHealthCheckArgsDict(TypedDict):
+        grpc_service_name: NotRequired[pulumi.Input[str]]
+        """
+        The gRPC service name for the health check.
+        The value of grpcServiceName has the following meanings by convention:
+        - Empty serviceName means the overall status of all services at the backend.
+        - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+        The grpcServiceName can only be ASCII.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The port number for the health check request.
+        Must be specified if portName and portSpecification are not set
+        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        """
+        port_name: NotRequired[pulumi.Input[str]]
+        """
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        port_name are defined, port takes precedence.
+        """
+        port_specification: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how port is selected for health checking, can be one of the
+        following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, gRPC health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
+        """
+elif False:
+    HealthCheckGrpcHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HealthCheckGrpcHealthCheckArgs:
@@ -4719,6 +6674,60 @@ class HealthCheckGrpcHealthCheckArgs:
     def port_specification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "port_specification", value)
 
+
+if not MYPY:
+    class HealthCheckHttp2HealthCheckArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        The value of the host header in the HTTP2 health check request.
+        If left empty (default value), the public IP on behalf of which this health
+        check is performed will be used.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The TCP port number for the HTTP2 health check request.
+        The default value is 443.
+        """
+        port_name: NotRequired[pulumi.Input[str]]
+        """
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        port_name are defined, port takes precedence.
+        """
+        port_specification: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how port is selected for health checking, can be one of the
+        following values:
+
+          * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+
+          * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+
+          * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+          network endpoint is used for health checking. For other backends, the
+          port or named port specified in the Backend Service is used for health
+          checking.
+
+        If not specified, HTTP2 health check follows behavior specified in 'port' and
+        'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+        """
+        proxy_header: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the type of proxy header to append before sending data to the
+        backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+        """
+        request_path: NotRequired[pulumi.Input[str]]
+        """
+        The request path of the HTTP2 health check request.
+        The default value is /.
+        """
+        response: NotRequired[pulumi.Input[str]]
+        """
+        The bytes to match against the beginning of the response data. If left empty
+        (the default value), any response will indicate health. The response data
+        can only be ASCII.
+        """
+elif False:
+    HealthCheckHttp2HealthCheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HealthCheckHttp2HealthCheckArgs:
@@ -4881,6 +6890,59 @@ class HealthCheckHttp2HealthCheckArgs:
         pulumi.set(self, "response", value)
 
 
+if not MYPY:
+    class HealthCheckHttpHealthCheckArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        The value of the host header in the HTTP health check request.
+        If left empty (default value), the public IP on behalf of which this health
+        check is performed will be used.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The TCP port number for the HTTP health check request.
+        The default value is 80.
+        """
+        port_name: NotRequired[pulumi.Input[str]]
+        """
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        port_name are defined, port takes precedence.
+        """
+        port_specification: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how port is selected for health checking, can be one of the
+        following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, HTTP health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
+        """
+        proxy_header: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the type of proxy header to append before sending data to the
+        backend.
+        Default value is `NONE`.
+        Possible values are: `NONE`, `PROXY_V1`.
+        """
+        request_path: NotRequired[pulumi.Input[str]]
+        """
+        The request path of the HTTP health check request.
+        The default value is /.
+        """
+        response: NotRequired[pulumi.Input[str]]
+        """
+        The bytes to match against the beginning of the response data. If left empty
+        (the default value), any response will indicate health. The response data
+        can only be ASCII.
+        """
+elif False:
+    HealthCheckHttpHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HealthCheckHttpHealthCheckArgs:
     def __init__(__self__, *,
@@ -5039,6 +7101,59 @@ class HealthCheckHttpHealthCheckArgs:
     def response(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "response", value)
 
+
+if not MYPY:
+    class HealthCheckHttpsHealthCheckArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        The value of the host header in the HTTPS health check request.
+        If left empty (default value), the public IP on behalf of which this health
+        check is performed will be used.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The TCP port number for the HTTPS health check request.
+        The default value is 443.
+        """
+        port_name: NotRequired[pulumi.Input[str]]
+        """
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        port_name are defined, port takes precedence.
+        """
+        port_specification: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how port is selected for health checking, can be one of the
+        following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, HTTPS health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
+        """
+        proxy_header: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the type of proxy header to append before sending data to the
+        backend.
+        Default value is `NONE`.
+        Possible values are: `NONE`, `PROXY_V1`.
+        """
+        request_path: NotRequired[pulumi.Input[str]]
+        """
+        The request path of the HTTPS health check request.
+        The default value is /.
+        """
+        response: NotRequired[pulumi.Input[str]]
+        """
+        The bytes to match against the beginning of the response data. If left empty
+        (the default value), any response will indicate health. The response data
+        can only be ASCII.
+        """
+elif False:
+    HealthCheckHttpsHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HealthCheckHttpsHealthCheckArgs:
@@ -5199,6 +7314,16 @@ class HealthCheckHttpsHealthCheckArgs:
         pulumi.set(self, "response", value)
 
 
+if not MYPY:
+    class HealthCheckLogConfigArgsDict(TypedDict):
+        enable: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether or not to export logs. This is false by default,
+        which means no health check logging will be done.
+        """
+elif False:
+    HealthCheckLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HealthCheckLogConfigArgs:
     def __init__(__self__, *,
@@ -5223,6 +7348,55 @@ class HealthCheckLogConfigArgs:
     def enable(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable", value)
 
+
+if not MYPY:
+    class HealthCheckSslHealthCheckArgsDict(TypedDict):
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The TCP port number for the HTTP2 health check request.
+        The default value is 443.
+        """
+        port_name: NotRequired[pulumi.Input[str]]
+        """
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        port_name are defined, port takes precedence.
+        """
+        port_specification: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how port is selected for health checking, can be one of the
+        following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, HTTP2 health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
+        """
+        proxy_header: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the type of proxy header to append before sending data to the
+        backend.
+        Default value is `NONE`.
+        Possible values are: `NONE`, `PROXY_V1`.
+        """
+        request: NotRequired[pulumi.Input[str]]
+        """
+        The application data to send once the SSL connection has been
+        established (default value is empty). If both request and response are
+        empty, the connection establishment alone will indicate health. The request
+        data can only be ASCII.
+        """
+        response: NotRequired[pulumi.Input[str]]
+        """
+        The bytes to match against the beginning of the response data. If left empty
+        (the default value), any response will indicate health. The response data
+        can only be ASCII.
+        """
+elif False:
+    HealthCheckSslHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HealthCheckSslHealthCheckArgs:
@@ -5367,6 +7541,55 @@ class HealthCheckSslHealthCheckArgs:
         pulumi.set(self, "response", value)
 
 
+if not MYPY:
+    class HealthCheckTcpHealthCheckArgsDict(TypedDict):
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The TCP port number for the TCP health check request.
+        The default value is 443.
+        """
+        port_name: NotRequired[pulumi.Input[str]]
+        """
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        port_name are defined, port takes precedence.
+        """
+        port_specification: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how port is selected for health checking, can be one of the
+        following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, TCP health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
+        """
+        proxy_header: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the type of proxy header to append before sending data to the
+        backend.
+        Default value is `NONE`.
+        Possible values are: `NONE`, `PROXY_V1`.
+        """
+        request: NotRequired[pulumi.Input[str]]
+        """
+        The application data to send once the TCP connection has been
+        established (default value is empty). If both request and response are
+        empty, the connection establishment alone will indicate health. The request
+        data can only be ASCII.
+        """
+        response: NotRequired[pulumi.Input[str]]
+        """
+        The bytes to match against the beginning of the response data. If left empty
+        (the default value), any response will indicate health. The response data
+        can only be ASCII.
+        """
+elif False:
+    HealthCheckTcpHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HealthCheckTcpHealthCheckArgs:
     def __init__(__self__, *,
@@ -5510,6 +7733,16 @@ class HealthCheckTcpHealthCheckArgs:
         pulumi.set(self, "response", value)
 
 
+if not MYPY:
+    class ImageGuestOsFeatureArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
+        """
+elif False:
+    ImageGuestOsFeatureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ImageGuestOsFeatureArgs:
     def __init__(__self__, *,
@@ -5533,6 +7766,27 @@ class ImageGuestOsFeatureArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class ImageIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    ImageIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ImageIamBindingConditionArgs:
@@ -5595,6 +7849,27 @@ class ImageIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class ImageIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    ImageIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ImageIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -5656,6 +7931,22 @@ class ImageIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class ImageImageEncryptionKeyArgsDict(TypedDict):
+        kms_key_self_link: NotRequired[pulumi.Input[str]]
+        """
+        The self link of the encryption key that is stored in Google Cloud
+        KMS.
+        """
+        kms_key_service_account: NotRequired[pulumi.Input[str]]
+        """
+        The service account being used for the encryption request for the
+        given KMS key. If absent, the Compute Engine default service
+        account is used.
+        """
+elif False:
+    ImageImageEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ImageImageEncryptionKeyArgs:
     def __init__(__self__, *,
@@ -5700,6 +7991,31 @@ class ImageImageEncryptionKeyArgs:
     def kms_key_service_account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kms_key_service_account", value)
 
+
+if not MYPY:
+    class ImageRawDiskArgsDict(TypedDict):
+        source: pulumi.Input[str]
+        """
+        The full Google Cloud Storage URL where disk storage is stored
+        You must provide either this property or the sourceDisk property
+        but not both.
+        """
+        container_type: NotRequired[pulumi.Input[str]]
+        """
+        The format used to encode and transmit the block device, which
+        should be TAR. This is just a container and transmission format
+        and not a runtime format. Provided by the client when the disk
+        image is created.
+        Default value is `TAR`.
+        Possible values are: `TAR`.
+        """
+        sha1: NotRequired[pulumi.Input[str]]
+        """
+        An optional SHA1 checksum of the disk image before unpackaging.
+        This is provided by the client when the disk image is created.
+        """
+elif False:
+    ImageRawDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ImageRawDiskArgs:
@@ -5771,6 +8087,23 @@ class ImageRawDiskArgs:
         pulumi.set(self, "sha1", value)
 
 
+if not MYPY:
+    class InstanceAdvancedMachineFeaturesArgsDict(TypedDict):
+        enable_nested_virtualization: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+        """
+        threads_per_core: NotRequired[pulumi.Input[int]]
+        """
+        he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        """
+        visible_core_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+        """
+elif False:
+    InstanceAdvancedMachineFeaturesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceAdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
@@ -5825,6 +8158,46 @@ class InstanceAdvancedMachineFeaturesArgs:
     def visible_core_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "visible_core_count", value)
 
+
+if not MYPY:
+    class InstanceAttachedDiskArgsDict(TypedDict):
+        source: pulumi.Input[str]
+        """
+        The name or self_link of the disk to attach to this instance.
+        """
+        device_name: NotRequired[pulumi.Input[str]]
+        """
+        Name with which the attached disk will be accessible
+        under `/dev/disk/by-id/google-*`
+        """
+        disk_encryption_key_raw: NotRequired[pulumi.Input[str]]
+        """
+        A 256-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+        to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
+        """
+        disk_encryption_key_sha256: NotRequired[pulumi.Input[str]]
+        """
+        The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+        encoded SHA-256 hash of the [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+        """
+        kms_key_self_link: NotRequired[pulumi.Input[str]]
+        """
+        The self_link of the encryption key that is
+        stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
+        and `disk_encryption_key_raw` may be set.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Either "READ_ONLY" or "READ_WRITE", defaults to "READ_WRITE"
+        If you have a persistent disk with data that you want to share
+        between multiple instances, detach it from any read-write instances and
+        attach it to one or more instances in read-only mode.
+        """
+elif False:
+    InstanceAttachedDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceAttachedDiskArgs:
@@ -5949,6 +8322,58 @@ class InstanceAttachedDiskArgs:
     def mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mode", value)
 
+
+if not MYPY:
+    class InstanceBootDiskArgsDict(TypedDict):
+        auto_delete: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the disk will be auto-deleted when the instance
+        is deleted. Defaults to true.
+        """
+        device_name: NotRequired[pulumi.Input[str]]
+        """
+        Name with which attached disk will be accessible.
+        On the instance, this device will be `/dev/disk/by-id/google-{{device_name}}`.
+        """
+        disk_encryption_key_raw: NotRequired[pulumi.Input[str]]
+        """
+        A 256-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+        to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw`
+        may be set.
+        """
+        disk_encryption_key_sha256: NotRequired[pulumi.Input[str]]
+        """
+        The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+        encoded SHA-256 hash of the [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+        """
+        initialize_params: NotRequired[pulumi.Input['InstanceBootDiskInitializeParamsArgsDict']]
+        """
+        Parameters for a new disk that will be created
+        alongside the new instance. Either `initialize_params` or `source` must be set.
+        Structure is documented below.
+        """
+        kms_key_self_link: NotRequired[pulumi.Input[str]]
+        """
+        The self_link of the encryption key that is
+        stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
+        and `disk_encryption_key_raw` may be set.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        The mode in which to attach this disk, either `READ_WRITE`
+        or `READ_ONLY`. If not specified, the default is to attach the disk in `READ_WRITE` mode.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        The name or self_link of the existing disk (such as those managed by
+        `compute.Disk`) or disk image. To create an instance from a snapshot, first create a
+        `compute.Disk` from a snapshot and reference it here.
+        """
+elif False:
+    InstanceBootDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceBootDiskArgs:
@@ -6114,6 +8539,66 @@ class InstanceBootDiskArgs:
     def source(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source", value)
 
+
+if not MYPY:
+    class InstanceBootDiskInitializeParamsArgsDict(TypedDict):
+        enable_confidential_compute: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this disk is using confidential compute mode.
+        Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        The image from which to initialize this disk. This can be
+        one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
+        `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+        `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+        `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+        images names must include the family name. If they don't, use the
+        [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+        For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+        These images can be referred by family name here.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        """
+        A set of key/value label pairs assigned to the disk. This
+        field is only applicable for persistent disks.
+        """
+        provisioned_iops: NotRequired[pulumi.Input[int]]
+        """
+        Indicates how many IOPS to provision for the disk.
+        This sets the number of I/O operations per second that the disk can handle.
+        For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+        Note: Updating currently is only supported for hyperdisk skus via disk update
+        api/gcloud without the need to delete and recreate the disk, hyperdisk allows
+        for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
+        you'll need to manually delete and recreate it.
+        """
+        provisioned_throughput: NotRequired[pulumi.Input[int]]
+        """
+        Indicates how much throughput to provision for the disk.
+        This sets the number of throughput mb per second that the disk can handle.
+        For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+        Note: Updating currently is only supported for hyperdisk skus via disk update
+        api/gcloud without the need to delete and recreate the disk, hyperdisk allows
+        for an update of throughput every 4 hours. To update your hyperdisk more
+        frequently, you'll need to manually delete and recreate it.
+        """
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
+        size: NotRequired[pulumi.Input[int]]
+        """
+        The size of the image in gigabytes. If not specified, it
+        will inherit the size of its base image.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
+        """
+elif False:
+    InstanceBootDiskInitializeParamsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceBootDiskInitializeParamsArgs:
@@ -6296,6 +8781,19 @@ class InstanceBootDiskInitializeParamsArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class InstanceConfidentialInstanceConfigArgsDict(TypedDict):
+        confidential_instance_type: NotRequired[pulumi.Input[str]]
+        """
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        """
+        enable_confidential_compute: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `on_host_maintenance` can be set to MIGRATE if `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        """
+elif False:
+    InstanceConfidentialInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceConfidentialInstanceConfigArgs:
     def __init__(__self__, *,
@@ -6334,6 +8832,23 @@ class InstanceConfidentialInstanceConfigArgs:
     def enable_confidential_compute(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_confidential_compute", value)
 
+
+if not MYPY:
+    class InstanceFromMachineImageAdvancedMachineFeaturesArgsDict(TypedDict):
+        enable_nested_virtualization: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable nested virtualization or not.
+        """
+        threads_per_core: NotRequired[pulumi.Input[int]]
+        """
+        The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        """
+        visible_core_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\\'s nominal CPU count and the underlying platform\\'s SMT width.
+        """
+elif False:
+    InstanceFromMachineImageAdvancedMachineFeaturesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromMachineImageAdvancedMachineFeaturesArgs:
@@ -6389,6 +8904,35 @@ class InstanceFromMachineImageAdvancedMachineFeaturesArgs:
     def visible_core_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "visible_core_count", value)
 
+
+if not MYPY:
+    class InstanceFromMachineImageAttachedDiskArgsDict(TypedDict):
+        source: pulumi.Input[str]
+        """
+        The name or self_link of the disk attached to this instance.
+        """
+        device_name: NotRequired[pulumi.Input[str]]
+        """
+        Name with which the attached disk is accessible under /dev/disk/by-id/
+        """
+        disk_encryption_key_raw: NotRequired[pulumi.Input[str]]
+        """
+        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        """
+        disk_encryption_key_sha256: NotRequired[pulumi.Input[str]]
+        """
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        """
+        kms_key_self_link: NotRequired[pulumi.Input[str]]
+        """
+        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+        """
+elif False:
+    InstanceFromMachineImageAttachedDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromMachineImageAttachedDiskArgs:
@@ -6491,6 +9035,43 @@ class InstanceFromMachineImageAttachedDiskArgs:
     def mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mode", value)
 
+
+if not MYPY:
+    class InstanceFromMachineImageBootDiskArgsDict(TypedDict):
+        auto_delete: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the disk will be auto-deleted when the instance is deleted.
+        """
+        device_name: NotRequired[pulumi.Input[str]]
+        """
+        Name with which attached disk will be accessible under /dev/disk/by-id/
+        """
+        disk_encryption_key_raw: NotRequired[pulumi.Input[str]]
+        """
+        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        """
+        disk_encryption_key_sha256: NotRequired[pulumi.Input[str]]
+        """
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        """
+        initialize_params: NotRequired[pulumi.Input['InstanceFromMachineImageBootDiskInitializeParamsArgsDict']]
+        """
+        Parameters with which a disk was created alongside the instance.
+        """
+        kms_key_self_link: NotRequired[pulumi.Input[str]]
+        """
+        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        The name or self_link of the disk attached to this instance.
+        """
+elif False:
+    InstanceFromMachineImageBootDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromMachineImageBootDiskArgs:
@@ -6627,6 +9208,43 @@ class InstanceFromMachineImageBootDiskArgs:
         pulumi.set(self, "source", value)
 
 
+if not MYPY:
+    class InstanceFromMachineImageBootDiskInitializeParamsArgsDict(TypedDict):
+        enable_confidential_compute: NotRequired[pulumi.Input[bool]]
+        """
+        A flag to enable confidential compute mode on boot disk
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        The image from which this disk was initialised.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        """
+        A set of key/value label pairs assigned to the disk.
+        """
+        provisioned_iops: NotRequired[pulumi.Input[int]]
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        """
+        provisioned_throughput: NotRequired[pulumi.Input[int]]
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
+        size: NotRequired[pulumi.Input[int]]
+        """
+        The size of the image in gigabytes.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
+        """
+elif False:
+    InstanceFromMachineImageBootDiskInitializeParamsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromMachineImageBootDiskInitializeParamsArgs:
     def __init__(__self__, *,
@@ -6762,6 +9380,21 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class InstanceFromMachineImageConfidentialInstanceConfigArgsDict(TypedDict):
+        confidential_instance_type: NotRequired[pulumi.Input[str]]
+        """
+        Specifies which confidential computing technology to use.
+        								This could be one of the following values: SEV, SEV_SNP.
+        								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        """
+        enable_confidential_compute: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
+        """
+elif False:
+    InstanceFromMachineImageConfidentialInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromMachineImageConfidentialInstanceConfigArgs:
     def __init__(__self__, *,
@@ -6805,6 +9438,19 @@ class InstanceFromMachineImageConfidentialInstanceConfigArgs:
         pulumi.set(self, "enable_confidential_compute", value)
 
 
+if not MYPY:
+    class InstanceFromMachineImageGuestAcceleratorArgsDict(TypedDict):
+        count: pulumi.Input[int]
+        """
+        The number of the guest accelerator cards exposed to this instance.
+        """
+        type: pulumi.Input[str]
+        """
+        The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
+        """
+elif False:
+    InstanceFromMachineImageGuestAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromMachineImageGuestAcceleratorArgs:
     def __init__(__self__, *,
@@ -6841,6 +9487,76 @@ class InstanceFromMachineImageGuestAcceleratorArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class InstanceFromMachineImageNetworkInterfaceArgsDict(TypedDict):
+        access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAccessConfigArgsDict']]]]
+        """
+        Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+        """
+        alias_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgsDict']]]]
+        """
+        An array of alias IP ranges for this network interface.
+        """
+        internal_ipv6_prefix_length: NotRequired[pulumi.Input[int]]
+        """
+        The prefix length of the primary internal IPv6 range.
+        """
+        ipv6_access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgsDict']]]]
+        """
+        An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+        """
+        ipv6_access_type: NotRequired[pulumi.Input[str]]
+        """
+        One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+        """
+        ipv6_address: NotRequired[pulumi.Input[str]]
+        """
+        An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        A unique name for the resource, required by GCE.
+        Changing this forces a new resource to be created.
+        """
+        network: NotRequired[pulumi.Input[str]]
+        """
+        The name or self_link of the network attached to this interface.
+        """
+        network_attachment: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        """
+        network_ip: NotRequired[pulumi.Input[str]]
+        """
+        The private IP address assigned to the instance.
+        """
+        nic_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+        """
+        queue_count: NotRequired[pulumi.Input[int]]
+        """
+        The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+        """
+        security_policy: NotRequired[pulumi.Input[str]]
+        """
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
+        stack_type: NotRequired[pulumi.Input[str]]
+        """
+        The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+        """
+        subnetwork: NotRequired[pulumi.Input[str]]
+        """
+        The name or self_link of the subnetwork attached to this interface.
+        """
+        subnetwork_project: NotRequired[pulumi.Input[str]]
+        """
+        The project in which the subnetwork belongs.
+        """
+elif False:
+    InstanceFromMachineImageNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromMachineImageNetworkInterfaceArgs:
@@ -7107,6 +9823,27 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
         pulumi.set(self, "subnetwork_project", value)
 
 
+if not MYPY:
+    class InstanceFromMachineImageNetworkInterfaceAccessConfigArgsDict(TypedDict):
+        nat_ip: NotRequired[pulumi.Input[str]]
+        """
+        The IP address that is be 1:1 mapped to the instance's network ip.
+        """
+        network_tier: NotRequired[pulumi.Input[str]]
+        """
+        The networking tier used for configuring this instance. One of PREMIUM or STANDARD.
+        """
+        public_ptr_domain_name: NotRequired[pulumi.Input[str]]
+        """
+        The DNS domain name for the public PTR record.
+        """
+        security_policy: NotRequired[pulumi.Input[str]]
+        """
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
+elif False:
+    InstanceFromMachineImageNetworkInterfaceAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromMachineImageNetworkInterfaceAccessConfigArgs:
     def __init__(__self__, *,
@@ -7178,6 +9915,19 @@ class InstanceFromMachineImageNetworkInterfaceAccessConfigArgs:
         pulumi.set(self, "security_policy", value)
 
 
+if not MYPY:
+    class InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgsDict(TypedDict):
+        ip_cidr_range: pulumi.Input[str]
+        """
+        The IP CIDR range represented by this alias IP range.
+        """
+        subnetwork_range_name: NotRequired[pulumi.Input[str]]
+        """
+        The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IP range.
+        """
+elif False:
+    InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs:
     def __init__(__self__, *,
@@ -7215,6 +9965,36 @@ class InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs:
     def subnetwork_range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork_range_name", value)
 
+
+if not MYPY:
+    class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgsDict(TypedDict):
+        network_tier: pulumi.Input[str]
+        """
+        The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+        """
+        external_ipv6: NotRequired[pulumi.Input[str]]
+        """
+        The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+        """
+        external_ipv6_prefix_length: NotRequired[pulumi.Input[str]]
+        """
+        The prefix length of the external IPv6 range.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        A unique name for the resource, required by GCE.
+        Changing this forces a new resource to be created.
+        """
+        public_ptr_domain_name: NotRequired[pulumi.Input[str]]
+        """
+        The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+        """
+        security_policy: NotRequired[pulumi.Input[str]]
+        """
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
+elif False:
+    InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs:
@@ -7320,6 +10100,15 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs:
         pulumi.set(self, "security_policy", value)
 
 
+if not MYPY:
+    class InstanceFromMachineImageNetworkPerformanceConfigArgsDict(TypedDict):
+        total_egress_bandwidth_tier: pulumi.Input[str]
+        """
+        The egress bandwidth tier to enable. Possible values:TIER_1, DEFAULT
+        """
+elif False:
+    InstanceFromMachineImageNetworkPerformanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromMachineImageNetworkPerformanceConfigArgs:
     def __init__(__self__, *,
@@ -7341,6 +10130,15 @@ class InstanceFromMachineImageNetworkPerformanceConfigArgs:
     def total_egress_bandwidth_tier(self, value: pulumi.Input[str]):
         pulumi.set(self, "total_egress_bandwidth_tier", value)
 
+
+if not MYPY:
+    class InstanceFromMachineImageParamsArgsDict(TypedDict):
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
+elif False:
+    InstanceFromMachineImageParamsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromMachineImageParamsArgs:
@@ -7364,6 +10162,19 @@ class InstanceFromMachineImageParamsArgs:
     def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "resource_manager_tags", value)
 
+
+if not MYPY:
+    class InstanceFromMachineImageReservationAffinityArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        The type of reservation from which this instance can consume resources.
+        """
+        specific_reservation: NotRequired[pulumi.Input['InstanceFromMachineImageReservationAffinitySpecificReservationArgsDict']]
+        """
+        Specifies the label selector for the reservation to use.
+        """
+elif False:
+    InstanceFromMachineImageReservationAffinityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromMachineImageReservationAffinityArgs:
@@ -7403,6 +10214,19 @@ class InstanceFromMachineImageReservationAffinityArgs:
         pulumi.set(self, "specific_reservation", value)
 
 
+if not MYPY:
+    class InstanceFromMachineImageReservationAffinitySpecificReservationArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Corresponds to the label values of a reservation resource.
+        """
+elif False:
+    InstanceFromMachineImageReservationAffinitySpecificReservationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromMachineImageReservationAffinitySpecificReservationArgs:
     def __init__(__self__, *,
@@ -7439,6 +10263,55 @@ class InstanceFromMachineImageReservationAffinitySpecificReservationArgs:
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class InstanceFromMachineImageSchedulingArgsDict(TypedDict):
+        automatic_restart: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+        """
+        instance_termination_action: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the action GCE should take when SPOT VM is preempted.
+        """
+        local_ssd_recovery_timeout: NotRequired[pulumi.Input['InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgsDict']]
+        """
+        Specifies the maximum amount of time a Local Ssd Vm should wait while
+          recovery of the Local Ssd state is attempted. Its value should be in
+          between 0 and 168 hours with hour granularity and the default value being 1
+          hour.
+        """
+        maintenance_interval: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+        """
+        max_run_duration: NotRequired[pulumi.Input['InstanceFromMachineImageSchedulingMaxRunDurationArgsDict']]
+        """
+        The timeout for new network connections to hosts.
+        """
+        min_node_cpus: NotRequired[pulumi.Input[int]]
+        node_affinities: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageSchedulingNodeAffinityArgsDict']]]]
+        """
+        Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+        """
+        on_host_maintenance: NotRequired[pulumi.Input[str]]
+        """
+        Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+        """
+        on_instance_stop_action: NotRequired[pulumi.Input['InstanceFromMachineImageSchedulingOnInstanceStopActionArgsDict']]
+        """
+        Defines the behaviour for instances with the instance_termination_action.
+        """
+        preemptible: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the instance is preemptible.
+        """
+        provisioning_model: NotRequired[pulumi.Input[str]]
+        """
+        Whether the instance is spot. If this is set as SPOT.
+        """
+elif False:
+    InstanceFromMachineImageSchedulingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromMachineImageSchedulingArgs:
@@ -7625,6 +10498,23 @@ class InstanceFromMachineImageSchedulingArgs:
         pulumi.set(self, "provisioning_model", value)
 
 
+if not MYPY:
+    class InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs:
     def __init__(__self__, *,
@@ -7670,6 +10560,23 @@ class InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs:
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
+
+if not MYPY:
+    class InstanceFromMachineImageSchedulingMaxRunDurationArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    InstanceFromMachineImageSchedulingMaxRunDurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromMachineImageSchedulingMaxRunDurationArgs:
@@ -7717,6 +10624,14 @@ class InstanceFromMachineImageSchedulingMaxRunDurationArgs:
         pulumi.set(self, "nanos", value)
 
 
+if not MYPY:
+    class InstanceFromMachineImageSchedulingNodeAffinityArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        operator: pulumi.Input[str]
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+elif False:
+    InstanceFromMachineImageSchedulingNodeAffinityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromMachineImageSchedulingNodeAffinityArgs:
     def __init__(__self__, *,
@@ -7755,6 +10670,15 @@ class InstanceFromMachineImageSchedulingNodeAffinityArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class InstanceFromMachineImageSchedulingOnInstanceStopActionArgsDict(TypedDict):
+        discard_local_ssd: NotRequired[pulumi.Input[bool]]
+        """
+        If true, the contents of any attached Local SSD disks will be discarded.
+        """
+elif False:
+    InstanceFromMachineImageSchedulingOnInstanceStopActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromMachineImageSchedulingOnInstanceStopActionArgs:
     def __init__(__self__, *,
@@ -7777,6 +10701,23 @@ class InstanceFromMachineImageSchedulingOnInstanceStopActionArgs:
     def discard_local_ssd(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "discard_local_ssd", value)
 
+
+if not MYPY:
+    class InstanceFromMachineImageScratchDiskArgsDict(TypedDict):
+        interface: pulumi.Input[str]
+        """
+        The disk interface used for attaching this disk. One of SCSI or NVME.
+        """
+        device_name: NotRequired[pulumi.Input[str]]
+        """
+        Name with which the attached disk is accessible under /dev/disk/by-id/
+        """
+        size: NotRequired[pulumi.Input[int]]
+        """
+        The size of the disk in gigabytes. One of 375 or 3000.
+        """
+elif False:
+    InstanceFromMachineImageScratchDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromMachineImageScratchDiskArgs:
@@ -7832,6 +10773,19 @@ class InstanceFromMachineImageScratchDiskArgs:
         pulumi.set(self, "size", value)
 
 
+if not MYPY:
+    class InstanceFromMachineImageServiceAccountArgsDict(TypedDict):
+        scopes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of service scopes.
+        """
+        email: NotRequired[pulumi.Input[str]]
+        """
+        The service account e-mail address.
+        """
+elif False:
+    InstanceFromMachineImageServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromMachineImageServiceAccountArgs:
     def __init__(__self__, *,
@@ -7869,6 +10823,23 @@ class InstanceFromMachineImageServiceAccountArgs:
     def email(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "email", value)
 
+
+if not MYPY:
+    class InstanceFromMachineImageShieldedInstanceConfigArgsDict(TypedDict):
+        enable_integrity_monitoring: NotRequired[pulumi.Input[bool]]
+        """
+        Whether integrity monitoring is enabled for the instance.
+        """
+        enable_secure_boot: NotRequired[pulumi.Input[bool]]
+        """
+        Whether secure boot is enabled for the instance.
+        """
+        enable_vtpm: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the instance uses vTPM.
+        """
+elif False:
+    InstanceFromMachineImageShieldedInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromMachineImageShieldedInstanceConfigArgs:
@@ -7925,6 +10896,23 @@ class InstanceFromMachineImageShieldedInstanceConfigArgs:
         pulumi.set(self, "enable_vtpm", value)
 
 
+if not MYPY:
+    class InstanceFromTemplateAdvancedMachineFeaturesArgsDict(TypedDict):
+        enable_nested_virtualization: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable nested virtualization or not.
+        """
+        threads_per_core: NotRequired[pulumi.Input[int]]
+        """
+        The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        """
+        visible_core_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\\'s nominal CPU count and the underlying platform\\'s SMT width.
+        """
+elif False:
+    InstanceFromTemplateAdvancedMachineFeaturesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromTemplateAdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
@@ -7979,6 +10967,35 @@ class InstanceFromTemplateAdvancedMachineFeaturesArgs:
     def visible_core_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "visible_core_count", value)
 
+
+if not MYPY:
+    class InstanceFromTemplateAttachedDiskArgsDict(TypedDict):
+        source: pulumi.Input[str]
+        """
+        The name or self_link of the disk attached to this instance.
+        """
+        device_name: NotRequired[pulumi.Input[str]]
+        """
+        Name with which the attached disk is accessible under /dev/disk/by-id/
+        """
+        disk_encryption_key_raw: NotRequired[pulumi.Input[str]]
+        """
+        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        """
+        disk_encryption_key_sha256: NotRequired[pulumi.Input[str]]
+        """
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        """
+        kms_key_self_link: NotRequired[pulumi.Input[str]]
+        """
+        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+        """
+elif False:
+    InstanceFromTemplateAttachedDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromTemplateAttachedDiskArgs:
@@ -8081,6 +11098,43 @@ class InstanceFromTemplateAttachedDiskArgs:
     def mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mode", value)
 
+
+if not MYPY:
+    class InstanceFromTemplateBootDiskArgsDict(TypedDict):
+        auto_delete: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the disk will be auto-deleted when the instance is deleted.
+        """
+        device_name: NotRequired[pulumi.Input[str]]
+        """
+        Name with which attached disk will be accessible under /dev/disk/by-id/
+        """
+        disk_encryption_key_raw: NotRequired[pulumi.Input[str]]
+        """
+        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        """
+        disk_encryption_key_sha256: NotRequired[pulumi.Input[str]]
+        """
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        """
+        initialize_params: NotRequired[pulumi.Input['InstanceFromTemplateBootDiskInitializeParamsArgsDict']]
+        """
+        Parameters with which a disk was created alongside the instance.
+        """
+        kms_key_self_link: NotRequired[pulumi.Input[str]]
+        """
+        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        The name or self_link of the disk attached to this instance.
+        """
+elif False:
+    InstanceFromTemplateBootDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromTemplateBootDiskArgs:
@@ -8217,6 +11271,43 @@ class InstanceFromTemplateBootDiskArgs:
         pulumi.set(self, "source", value)
 
 
+if not MYPY:
+    class InstanceFromTemplateBootDiskInitializeParamsArgsDict(TypedDict):
+        enable_confidential_compute: NotRequired[pulumi.Input[bool]]
+        """
+        A flag to enable confidential compute mode on boot disk
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        The image from which this disk was initialised.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        """
+        A set of key/value label pairs assigned to the disk.
+        """
+        provisioned_iops: NotRequired[pulumi.Input[int]]
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        """
+        provisioned_throughput: NotRequired[pulumi.Input[int]]
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
+        size: NotRequired[pulumi.Input[int]]
+        """
+        The size of the image in gigabytes.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
+        """
+elif False:
+    InstanceFromTemplateBootDiskInitializeParamsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromTemplateBootDiskInitializeParamsArgs:
     def __init__(__self__, *,
@@ -8352,6 +11443,21 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class InstanceFromTemplateConfidentialInstanceConfigArgsDict(TypedDict):
+        confidential_instance_type: NotRequired[pulumi.Input[str]]
+        """
+        Specifies which confidential computing technology to use.
+        								This could be one of the following values: SEV, SEV_SNP.
+        								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        """
+        enable_confidential_compute: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
+        """
+elif False:
+    InstanceFromTemplateConfidentialInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromTemplateConfidentialInstanceConfigArgs:
     def __init__(__self__, *,
@@ -8395,6 +11501,19 @@ class InstanceFromTemplateConfidentialInstanceConfigArgs:
         pulumi.set(self, "enable_confidential_compute", value)
 
 
+if not MYPY:
+    class InstanceFromTemplateGuestAcceleratorArgsDict(TypedDict):
+        count: pulumi.Input[int]
+        """
+        The number of the guest accelerator cards exposed to this instance.
+        """
+        type: pulumi.Input[str]
+        """
+        The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
+        """
+elif False:
+    InstanceFromTemplateGuestAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromTemplateGuestAcceleratorArgs:
     def __init__(__self__, *,
@@ -8431,6 +11550,76 @@ class InstanceFromTemplateGuestAcceleratorArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class InstanceFromTemplateNetworkInterfaceArgsDict(TypedDict):
+        access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAccessConfigArgsDict']]]]
+        """
+        Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+        """
+        alias_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAliasIpRangeArgsDict']]]]
+        """
+        An array of alias IP ranges for this network interface.
+        """
+        internal_ipv6_prefix_length: NotRequired[pulumi.Input[int]]
+        """
+        The prefix length of the primary internal IPv6 range.
+        """
+        ipv6_access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgsDict']]]]
+        """
+        An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+        """
+        ipv6_access_type: NotRequired[pulumi.Input[str]]
+        """
+        One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+        """
+        ipv6_address: NotRequired[pulumi.Input[str]]
+        """
+        An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        A unique name for the resource, required by GCE.
+        Changing this forces a new resource to be created.
+        """
+        network: NotRequired[pulumi.Input[str]]
+        """
+        The name or self_link of the network attached to this interface.
+        """
+        network_attachment: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        """
+        network_ip: NotRequired[pulumi.Input[str]]
+        """
+        The private IP address assigned to the instance.
+        """
+        nic_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+        """
+        queue_count: NotRequired[pulumi.Input[int]]
+        """
+        The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+        """
+        security_policy: NotRequired[pulumi.Input[str]]
+        """
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
+        stack_type: NotRequired[pulumi.Input[str]]
+        """
+        The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+        """
+        subnetwork: NotRequired[pulumi.Input[str]]
+        """
+        The name or self_link of the subnetwork attached to this interface.
+        """
+        subnetwork_project: NotRequired[pulumi.Input[str]]
+        """
+        The project in which the subnetwork belongs.
+        """
+elif False:
+    InstanceFromTemplateNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromTemplateNetworkInterfaceArgs:
@@ -8697,6 +11886,27 @@ class InstanceFromTemplateNetworkInterfaceArgs:
         pulumi.set(self, "subnetwork_project", value)
 
 
+if not MYPY:
+    class InstanceFromTemplateNetworkInterfaceAccessConfigArgsDict(TypedDict):
+        nat_ip: NotRequired[pulumi.Input[str]]
+        """
+        The IP address that is be 1:1 mapped to the instance's network ip.
+        """
+        network_tier: NotRequired[pulumi.Input[str]]
+        """
+        The networking tier used for configuring this instance. One of PREMIUM or STANDARD.
+        """
+        public_ptr_domain_name: NotRequired[pulumi.Input[str]]
+        """
+        The DNS domain name for the public PTR record.
+        """
+        security_policy: NotRequired[pulumi.Input[str]]
+        """
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
+elif False:
+    InstanceFromTemplateNetworkInterfaceAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromTemplateNetworkInterfaceAccessConfigArgs:
     def __init__(__self__, *,
@@ -8768,6 +11978,19 @@ class InstanceFromTemplateNetworkInterfaceAccessConfigArgs:
         pulumi.set(self, "security_policy", value)
 
 
+if not MYPY:
+    class InstanceFromTemplateNetworkInterfaceAliasIpRangeArgsDict(TypedDict):
+        ip_cidr_range: pulumi.Input[str]
+        """
+        The IP CIDR range represented by this alias IP range.
+        """
+        subnetwork_range_name: NotRequired[pulumi.Input[str]]
+        """
+        The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IP range.
+        """
+elif False:
+    InstanceFromTemplateNetworkInterfaceAliasIpRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs:
     def __init__(__self__, *,
@@ -8805,6 +12028,36 @@ class InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs:
     def subnetwork_range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork_range_name", value)
 
+
+if not MYPY:
+    class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgsDict(TypedDict):
+        network_tier: pulumi.Input[str]
+        """
+        The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+        """
+        external_ipv6: NotRequired[pulumi.Input[str]]
+        """
+        The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+        """
+        external_ipv6_prefix_length: NotRequired[pulumi.Input[str]]
+        """
+        The prefix length of the external IPv6 range.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        A unique name for the resource, required by GCE.
+        Changing this forces a new resource to be created.
+        """
+        public_ptr_domain_name: NotRequired[pulumi.Input[str]]
+        """
+        The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+        """
+        security_policy: NotRequired[pulumi.Input[str]]
+        """
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
+elif False:
+    InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs:
@@ -8910,6 +12163,15 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs:
         pulumi.set(self, "security_policy", value)
 
 
+if not MYPY:
+    class InstanceFromTemplateNetworkPerformanceConfigArgsDict(TypedDict):
+        total_egress_bandwidth_tier: pulumi.Input[str]
+        """
+        The egress bandwidth tier to enable. Possible values:TIER_1, DEFAULT
+        """
+elif False:
+    InstanceFromTemplateNetworkPerformanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromTemplateNetworkPerformanceConfigArgs:
     def __init__(__self__, *,
@@ -8931,6 +12193,15 @@ class InstanceFromTemplateNetworkPerformanceConfigArgs:
     def total_egress_bandwidth_tier(self, value: pulumi.Input[str]):
         pulumi.set(self, "total_egress_bandwidth_tier", value)
 
+
+if not MYPY:
+    class InstanceFromTemplateParamsArgsDict(TypedDict):
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
+elif False:
+    InstanceFromTemplateParamsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromTemplateParamsArgs:
@@ -8954,6 +12225,19 @@ class InstanceFromTemplateParamsArgs:
     def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "resource_manager_tags", value)
 
+
+if not MYPY:
+    class InstanceFromTemplateReservationAffinityArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        The type of reservation from which this instance can consume resources.
+        """
+        specific_reservation: NotRequired[pulumi.Input['InstanceFromTemplateReservationAffinitySpecificReservationArgsDict']]
+        """
+        Specifies the label selector for the reservation to use.
+        """
+elif False:
+    InstanceFromTemplateReservationAffinityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromTemplateReservationAffinityArgs:
@@ -8993,6 +12277,19 @@ class InstanceFromTemplateReservationAffinityArgs:
         pulumi.set(self, "specific_reservation", value)
 
 
+if not MYPY:
+    class InstanceFromTemplateReservationAffinitySpecificReservationArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Corresponds to the label values of a reservation resource.
+        """
+elif False:
+    InstanceFromTemplateReservationAffinitySpecificReservationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromTemplateReservationAffinitySpecificReservationArgs:
     def __init__(__self__, *,
@@ -9029,6 +12326,55 @@ class InstanceFromTemplateReservationAffinitySpecificReservationArgs:
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class InstanceFromTemplateSchedulingArgsDict(TypedDict):
+        automatic_restart: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+        """
+        instance_termination_action: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the action GCE should take when SPOT VM is preempted.
+        """
+        local_ssd_recovery_timeout: NotRequired[pulumi.Input['InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict']]
+        """
+        Specifies the maximum amount of time a Local Ssd Vm should wait while
+          recovery of the Local Ssd state is attempted. Its value should be in
+          between 0 and 168 hours with hour granularity and the default value being 1
+          hour.
+        """
+        maintenance_interval: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+        """
+        max_run_duration: NotRequired[pulumi.Input['InstanceFromTemplateSchedulingMaxRunDurationArgsDict']]
+        """
+        The timeout for new network connections to hosts.
+        """
+        min_node_cpus: NotRequired[pulumi.Input[int]]
+        node_affinities: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateSchedulingNodeAffinityArgsDict']]]]
+        """
+        Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+        """
+        on_host_maintenance: NotRequired[pulumi.Input[str]]
+        """
+        Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+        """
+        on_instance_stop_action: NotRequired[pulumi.Input['InstanceFromTemplateSchedulingOnInstanceStopActionArgsDict']]
+        """
+        Defines the behaviour for instances with the instance_termination_action.
+        """
+        preemptible: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the instance is preemptible.
+        """
+        provisioning_model: NotRequired[pulumi.Input[str]]
+        """
+        Whether the instance is spot. If this is set as SPOT.
+        """
+elif False:
+    InstanceFromTemplateSchedulingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromTemplateSchedulingArgs:
@@ -9215,6 +12561,23 @@ class InstanceFromTemplateSchedulingArgs:
         pulumi.set(self, "provisioning_model", value)
 
 
+if not MYPY:
+    class InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
     def __init__(__self__, *,
@@ -9260,6 +12623,23 @@ class InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
+
+if not MYPY:
+    class InstanceFromTemplateSchedulingMaxRunDurationArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    InstanceFromTemplateSchedulingMaxRunDurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromTemplateSchedulingMaxRunDurationArgs:
@@ -9307,6 +12687,14 @@ class InstanceFromTemplateSchedulingMaxRunDurationArgs:
         pulumi.set(self, "nanos", value)
 
 
+if not MYPY:
+    class InstanceFromTemplateSchedulingNodeAffinityArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        operator: pulumi.Input[str]
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+elif False:
+    InstanceFromTemplateSchedulingNodeAffinityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromTemplateSchedulingNodeAffinityArgs:
     def __init__(__self__, *,
@@ -9345,6 +12733,15 @@ class InstanceFromTemplateSchedulingNodeAffinityArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class InstanceFromTemplateSchedulingOnInstanceStopActionArgsDict(TypedDict):
+        discard_local_ssd: NotRequired[pulumi.Input[bool]]
+        """
+        If true, the contents of any attached Local SSD disks will be discarded.
+        """
+elif False:
+    InstanceFromTemplateSchedulingOnInstanceStopActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromTemplateSchedulingOnInstanceStopActionArgs:
     def __init__(__self__, *,
@@ -9367,6 +12764,23 @@ class InstanceFromTemplateSchedulingOnInstanceStopActionArgs:
     def discard_local_ssd(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "discard_local_ssd", value)
 
+
+if not MYPY:
+    class InstanceFromTemplateScratchDiskArgsDict(TypedDict):
+        interface: pulumi.Input[str]
+        """
+        The disk interface used for attaching this disk. One of SCSI or NVME.
+        """
+        device_name: NotRequired[pulumi.Input[str]]
+        """
+        Name with which the attached disk is accessible under /dev/disk/by-id/
+        """
+        size: NotRequired[pulumi.Input[int]]
+        """
+        The size of the disk in gigabytes. One of 375 or 3000.
+        """
+elif False:
+    InstanceFromTemplateScratchDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromTemplateScratchDiskArgs:
@@ -9422,6 +12836,19 @@ class InstanceFromTemplateScratchDiskArgs:
         pulumi.set(self, "size", value)
 
 
+if not MYPY:
+    class InstanceFromTemplateServiceAccountArgsDict(TypedDict):
+        scopes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of service scopes.
+        """
+        email: NotRequired[pulumi.Input[str]]
+        """
+        The service account e-mail address.
+        """
+elif False:
+    InstanceFromTemplateServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceFromTemplateServiceAccountArgs:
     def __init__(__self__, *,
@@ -9459,6 +12886,23 @@ class InstanceFromTemplateServiceAccountArgs:
     def email(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "email", value)
 
+
+if not MYPY:
+    class InstanceFromTemplateShieldedInstanceConfigArgsDict(TypedDict):
+        enable_integrity_monitoring: NotRequired[pulumi.Input[bool]]
+        """
+        Whether integrity monitoring is enabled for the instance.
+        """
+        enable_secure_boot: NotRequired[pulumi.Input[bool]]
+        """
+        Whether secure boot is enabled for the instance.
+        """
+        enable_vtpm: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the instance uses vTPM.
+        """
+elif False:
+    InstanceFromTemplateShieldedInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFromTemplateShieldedInstanceConfigArgs:
@@ -9515,6 +12959,21 @@ class InstanceFromTemplateShieldedInstanceConfigArgs:
         pulumi.set(self, "enable_vtpm", value)
 
 
+if not MYPY:
+    class InstanceGroupManagerAllInstancesConfigArgsDict(TypedDict):
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        , The label key-value pairs that you want to patch onto the instance.
+
+        - - -
+        """
+        metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+        """
+elif False:
+    InstanceGroupManagerAllInstancesConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceGroupManagerAllInstancesConfigArgs:
     def __init__(__self__, *,
@@ -9558,6 +13017,20 @@ class InstanceGroupManagerAllInstancesConfigArgs:
         pulumi.set(self, "metadata", value)
 
 
+if not MYPY:
+    class InstanceGroupManagerAutoHealingPoliciesArgsDict(TypedDict):
+        health_check: pulumi.Input[str]
+        """
+        The health check resource that signals autohealing.
+        """
+        initial_delay_sec: pulumi.Input[int]
+        """
+        The number of seconds that the managed instance group waits before
+        it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
+        """
+elif False:
+    InstanceGroupManagerAutoHealingPoliciesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceGroupManagerAutoHealingPoliciesArgs:
     def __init__(__self__, *,
@@ -9596,6 +13069,20 @@ class InstanceGroupManagerAutoHealingPoliciesArgs:
     def initial_delay_sec(self, value: pulumi.Input[int]):
         pulumi.set(self, "initial_delay_sec", value)
 
+
+if not MYPY:
+    class InstanceGroupManagerInstanceLifecyclePolicyArgsDict(TypedDict):
+        default_action_on_failure: NotRequired[pulumi.Input[str]]
+        """
+        , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
+        - - -
+        """
+        force_update_on_repair: NotRequired[pulumi.Input[str]]
+        """
+        , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
+        """
+elif False:
+    InstanceGroupManagerInstanceLifecyclePolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceGroupManagerInstanceLifecyclePolicyArgs:
@@ -9638,6 +13125,20 @@ class InstanceGroupManagerInstanceLifecyclePolicyArgs:
         pulumi.set(self, "force_update_on_repair", value)
 
 
+if not MYPY:
+    class InstanceGroupManagerNamedPortArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the port.
+        """
+        port: pulumi.Input[int]
+        """
+        The port number.
+        - - -
+        """
+elif False:
+    InstanceGroupManagerNamedPortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceGroupManagerNamedPortArgs:
     def __init__(__self__, *,
@@ -9677,6 +13178,15 @@ class InstanceGroupManagerNamedPortArgs:
         pulumi.set(self, "port", value)
 
 
+if not MYPY:
+    class InstanceGroupManagerParamsArgsDict(TypedDict):
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        """
+        Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+        """
+elif False:
+    InstanceGroupManagerParamsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceGroupManagerParamsArgs:
     def __init__(__self__, *,
@@ -9699,6 +13209,20 @@ class InstanceGroupManagerParamsArgs:
     def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "resource_manager_tags", value)
 
+
+if not MYPY:
+    class InstanceGroupManagerStandbyPolicyArgsDict(TypedDict):
+        initial_delay_sec: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
+        - - -
+        """
+elif False:
+    InstanceGroupManagerStandbyPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceGroupManagerStandbyPolicyArgs:
@@ -9741,6 +13265,19 @@ class InstanceGroupManagerStandbyPolicyArgs:
         pulumi.set(self, "mode", value)
 
 
+if not MYPY:
+    class InstanceGroupManagerStatefulDiskArgsDict(TypedDict):
+        device_name: pulumi.Input[str]
+        """
+        , The device name of the disk to be attached.
+        """
+        delete_rule: NotRequired[pulumi.Input[str]]
+        """
+        , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+        """
+elif False:
+    InstanceGroupManagerStatefulDiskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceGroupManagerStatefulDiskArgs:
     def __init__(__self__, *,
@@ -9778,6 +13315,19 @@ class InstanceGroupManagerStatefulDiskArgs:
     def delete_rule(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "delete_rule", value)
 
+
+if not MYPY:
+    class InstanceGroupManagerStatefulExternalIpArgsDict(TypedDict):
+        delete_rule: NotRequired[pulumi.Input[str]]
+        """
+        , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+        """
+        interface_name: NotRequired[pulumi.Input[str]]
+        """
+        , The network interface name of the external Ip. Possible value: `nic0`
+        """
+elif False:
+    InstanceGroupManagerStatefulExternalIpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceGroupManagerStatefulExternalIpArgs:
@@ -9818,6 +13368,19 @@ class InstanceGroupManagerStatefulExternalIpArgs:
         pulumi.set(self, "interface_name", value)
 
 
+if not MYPY:
+    class InstanceGroupManagerStatefulInternalIpArgsDict(TypedDict):
+        delete_rule: NotRequired[pulumi.Input[str]]
+        """
+        , A value that prescribes what should happen to the internal ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the internal ip when the VM is permanently deleted from the instance group.
+        """
+        interface_name: NotRequired[pulumi.Input[str]]
+        """
+        , The network interface name of the internal Ip. Possible value: `nic0`
+        """
+elif False:
+    InstanceGroupManagerStatefulInternalIpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceGroupManagerStatefulInternalIpArgs:
     def __init__(__self__, *,
@@ -9856,6 +13419,29 @@ class InstanceGroupManagerStatefulInternalIpArgs:
     def interface_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "interface_name", value)
 
+
+if not MYPY:
+    class InstanceGroupManagerStatusArgsDict(TypedDict):
+        all_instances_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusAllInstancesConfigArgsDict']]]]
+        """
+        Properties to set on all instances in the group. After setting
+        allInstancesConfig on the group, you must update the group's instances to
+        apply the configuration.
+        """
+        is_stable: NotRequired[pulumi.Input[bool]]
+        """
+        A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+        """
+        statefuls: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulArgsDict']]]]
+        """
+        Stateful status of the given Instance Group Manager.
+        """
+        version_targets: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusVersionTargetArgsDict']]]]
+        """
+        A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        """
+elif False:
+    InstanceGroupManagerStatusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceGroupManagerStatusArgs:
@@ -9932,6 +13518,19 @@ class InstanceGroupManagerStatusArgs:
         pulumi.set(self, "version_targets", value)
 
 
+if not MYPY:
+    class InstanceGroupManagerStatusAllInstancesConfigArgsDict(TypedDict):
+        current_revision: NotRequired[pulumi.Input[str]]
+        """
+        Current all-instances configuration revision. This value is in RFC3339 text format.
+        """
+        effective: NotRequired[pulumi.Input[bool]]
+        """
+        A bit indicating whether this configuration has been applied to all managed instances in the group.
+        """
+elif False:
+    InstanceGroupManagerStatusAllInstancesConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceGroupManagerStatusAllInstancesConfigArgs:
     def __init__(__self__, *,
@@ -9970,6 +13569,19 @@ class InstanceGroupManagerStatusAllInstancesConfigArgs:
     def effective(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "effective", value)
 
+
+if not MYPY:
+    class InstanceGroupManagerStatusStatefulArgsDict(TypedDict):
+        has_stateful_config: NotRequired[pulumi.Input[bool]]
+        """
+        A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+        """
+        per_instance_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigArgsDict']]]]
+        """
+        Status of per-instance configs on the instances.
+        """
+elif False:
+    InstanceGroupManagerStatusStatefulArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceGroupManagerStatusStatefulArgs:
@@ -10010,6 +13622,15 @@ class InstanceGroupManagerStatusStatefulArgs:
         pulumi.set(self, "per_instance_configs", value)
 
 
+if not MYPY:
+    class InstanceGroupManagerStatusStatefulPerInstanceConfigArgsDict(TypedDict):
+        all_effective: NotRequired[pulumi.Input[bool]]
+        """
+        A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
+        """
+elif False:
+    InstanceGroupManagerStatusStatefulPerInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceGroupManagerStatusStatefulPerInstanceConfigArgs:
     def __init__(__self__, *,
@@ -10033,6 +13654,15 @@ class InstanceGroupManagerStatusStatefulPerInstanceConfigArgs:
         pulumi.set(self, "all_effective", value)
 
 
+if not MYPY:
+    class InstanceGroupManagerStatusVersionTargetArgsDict(TypedDict):
+        is_reached: NotRequired[pulumi.Input[bool]]
+        """
+        A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        """
+elif False:
+    InstanceGroupManagerStatusVersionTargetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceGroupManagerStatusVersionTargetArgs:
     def __init__(__self__, *,
@@ -10055,6 +13685,48 @@ class InstanceGroupManagerStatusVersionTargetArgs:
     def is_reached(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_reached", value)
 
+
+if not MYPY:
+    class InstanceGroupManagerUpdatePolicyArgsDict(TypedDict):
+        minimal_action: pulumi.Input[str]
+        """
+        Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+        """
+        type: pulumi.Input[str]
+        """
+        The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+        """
+        max_surge_fixed: NotRequired[pulumi.Input[int]]
+        """
+        , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. If neither is set, defaults to 1
+        """
+        max_surge_percent: NotRequired[pulumi.Input[int]]
+        """
+        , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`.
+        """
+        max_unavailable_fixed: NotRequired[pulumi.Input[int]]
+        """
+        , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. If neither is set, defaults to 1
+        """
+        max_unavailable_percent: NotRequired[pulumi.Input[int]]
+        """
+        , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
+        """
+        min_ready_sec: NotRequired[pulumi.Input[int]]
+        """
+        , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        """
+        most_disruptive_allowed_action: NotRequired[pulumi.Input[str]]
+        """
+        Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        """
+        replacement_method: NotRequired[pulumi.Input[str]]
+        """
+        , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
+        - - -
+        """
+elif False:
+    InstanceGroupManagerUpdatePolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceGroupManagerUpdatePolicyArgs:
@@ -10207,6 +13879,26 @@ class InstanceGroupManagerUpdatePolicyArgs:
         pulumi.set(self, "replacement_method", value)
 
 
+if not MYPY:
+    class InstanceGroupManagerVersionArgsDict(TypedDict):
+        instance_template: pulumi.Input[str]
+        """
+        The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Version name.
+        """
+        target_size: NotRequired[pulumi.Input['InstanceGroupManagerVersionTargetSizeArgsDict']]
+        """
+        The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+
+        > Exactly one `version` you specify must not have a `target_size` specified. During a rolling update, the instance group manager will fulfill the `target_size`
+        constraints of every other `version`, and any remaining instances will be provisioned with the version where `target_size` is unset.
+        """
+elif False:
+    InstanceGroupManagerVersionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceGroupManagerVersionArgs:
     def __init__(__self__, *,
@@ -10267,6 +13959,21 @@ class InstanceGroupManagerVersionArgs:
         pulumi.set(self, "target_size", value)
 
 
+if not MYPY:
+    class InstanceGroupManagerVersionTargetSizeArgsDict(TypedDict):
+        fixed: NotRequired[pulumi.Input[int]]
+        """
+        , The number of instances which are managed for this version. Conflicts with `percent`.
+        """
+        percent: NotRequired[pulumi.Input[int]]
+        """
+        , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `fixed`.
+        Note that when using `percent`, rounding will be in favor of explicitly set `target_size` values; a managed instance group with 2 instances and 2 `version`s,
+        one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
+        """
+elif False:
+    InstanceGroupManagerVersionTargetSizeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceGroupManagerVersionTargetSizeArgs:
     def __init__(__self__, *,
@@ -10310,6 +14017,19 @@ class InstanceGroupManagerVersionTargetSizeArgs:
         pulumi.set(self, "percent", value)
 
 
+if not MYPY:
+    class InstanceGroupNamedPortArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name which the port will be mapped to.
+        """
+        port: pulumi.Input[int]
+        """
+        The port number to map the name to.
+        """
+elif False:
+    InstanceGroupNamedPortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceGroupNamedPortArgs:
     def __init__(__self__, *,
@@ -10347,6 +14067,19 @@ class InstanceGroupNamedPortArgs:
         pulumi.set(self, "port", value)
 
 
+if not MYPY:
+    class InstanceGuestAcceleratorArgsDict(TypedDict):
+        count: pulumi.Input[int]
+        """
+        The number of the guest accelerator cards exposed to this instance.
+        """
+        type: pulumi.Input[str]
+        """
+        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+elif False:
+    InstanceGuestAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceGuestAcceleratorArgs:
     def __init__(__self__, *,
@@ -10383,6 +14116,27 @@ class InstanceGuestAcceleratorArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class InstanceIAMBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    InstanceIAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceIAMBindingConditionArgs:
@@ -10445,6 +14199,27 @@ class InstanceIAMBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class InstanceIAMMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    InstanceIAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceIAMMemberConditionArgs:
     def __init__(__self__, *,
@@ -10505,6 +14280,93 @@ class InstanceIAMMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class InstanceNetworkInterfaceArgsDict(TypedDict):
+        access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAccessConfigArgsDict']]]]
+        """
+        Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+        """
+        alias_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAliasIpRangeArgsDict']]]]
+        """
+        An
+        array of alias IP ranges for this network interface. Can only be specified for network
+        interfaces on subnet-mode networks. Structure documented below.
+        """
+        internal_ipv6_prefix_length: NotRequired[pulumi.Input[int]]
+        """
+        The prefix length of the primary internal IPv6 range.
+        """
+        ipv6_access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceIpv6AccessConfigArgsDict']]]]
+        """
+        An array of IPv6 access configurations for this interface.
+        Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+        specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+        """
+        ipv6_access_type: NotRequired[pulumi.Input[str]]
+        """
+        One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet.
+        This field is always inherited from its subnetwork.
+        """
+        ipv6_address: NotRequired[pulumi.Input[str]]
+        """
+        An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        A unique name for the resource, required by GCE.
+        Changing this forces a new resource to be created.
+        """
+        network: NotRequired[pulumi.Input[str]]
+        """
+        The name or self_link of the network to attach this interface to.
+        Either `network` or `subnetwork` must be provided. If network isn't provided it will
+        be inferred from the subnetwork.
+        """
+        network_attachment: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+        """
+        network_ip: NotRequired[pulumi.Input[str]]
+        """
+        The private IP address to assign to the instance. If
+        empty, the address will be automatically assigned.
+        """
+        nic_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        """
+        queue_count: NotRequired[pulumi.Input[int]]
+        """
+        The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+        """
+        security_policy: NotRequired[pulumi.Input[str]]
+        """
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
+        stack_type: NotRequired[pulumi.Input[str]]
+        """
+        The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+        """
+        subnetwork: NotRequired[pulumi.Input[str]]
+        """
+        The name or self_link of the subnetwork to attach this
+        interface to. Either `network` or `subnetwork` must be provided. If network isn't provided
+        it will be inferred from the subnetwork. The subnetwork must exist in the same region this
+        instance will be created in. If the network resource is in
+        [legacy](https://cloud.google.com/vpc/docs/legacy) mode, do not specify this field. If the
+        network is in auto subnet mode, specifying the subnetwork is optional. If the network is
+        in custom subnet mode, specifying the subnetwork is required.
+        """
+        subnetwork_project: NotRequired[pulumi.Input[str]]
+        """
+        The project in which the subnetwork belongs.
+        If the `subnetwork` is a self_link, this field is ignored in favor of the project
+        defined in the subnetwork self_link. If the `subnetwork` is a name and this
+        field is not provided, the provider project is used.
+        """
+elif False:
+    InstanceNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceNetworkInterfaceArgs:
@@ -10805,6 +14667,30 @@ class InstanceNetworkInterfaceArgs:
         pulumi.set(self, "subnetwork_project", value)
 
 
+if not MYPY:
+    class InstanceNetworkInterfaceAccessConfigArgsDict(TypedDict):
+        nat_ip: NotRequired[pulumi.Input[str]]
+        """
+        The IP address that will be 1:1 mapped to the instance's
+        network ip. If not given, one will be generated.
+        """
+        network_tier: NotRequired[pulumi.Input[str]]
+        """
+        The service-level to be provided for IPv6 traffic when the
+        subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
+        """
+        public_ptr_domain_name: NotRequired[pulumi.Input[str]]
+        """
+        The domain name to be used when creating DNSv6
+        records for the external IPv6 ranges..
+        """
+        security_policy: NotRequired[pulumi.Input[str]]
+        """
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
+elif False:
+    InstanceNetworkInterfaceAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceNetworkInterfaceAccessConfigArgs:
     def __init__(__self__, *,
@@ -10882,6 +14768,24 @@ class InstanceNetworkInterfaceAccessConfigArgs:
         pulumi.set(self, "security_policy", value)
 
 
+if not MYPY:
+    class InstanceNetworkInterfaceAliasIpRangeArgsDict(TypedDict):
+        ip_cidr_range: pulumi.Input[str]
+        """
+        The IP CIDR range represented by this alias IP range. This IP CIDR range
+        must belong to the specified subnetwork and cannot contain IP addresses reserved by
+        system or used by other network interfaces. This range may be a single IP address
+        (e.g. 10.2.3.4), a netmask (e.g. /24) or a CIDR format string (e.g. 10.1.2.0/24).
+        """
+        subnetwork_range_name: NotRequired[pulumi.Input[str]]
+        """
+        The subnetwork secondary range name specifying
+        the secondary range from which to allocate the IP CIDR range for this alias IP
+        range. If left unspecified, the primary range of the subnetwork will be used.
+        """
+elif False:
+    InstanceNetworkInterfaceAliasIpRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceNetworkInterfaceAliasIpRangeArgs:
     def __init__(__self__, *,
@@ -10929,6 +14833,36 @@ class InstanceNetworkInterfaceAliasIpRangeArgs:
     def subnetwork_range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork_range_name", value)
 
+
+if not MYPY:
+    class InstanceNetworkInterfaceIpv6AccessConfigArgsDict(TypedDict):
+        network_tier: pulumi.Input[str]
+        """
+        The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+        """
+        external_ipv6: NotRequired[pulumi.Input[str]]
+        """
+        The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+        """
+        external_ipv6_prefix_length: NotRequired[pulumi.Input[str]]
+        """
+        The prefix length of the external IPv6 range.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        A unique name for the resource, required by GCE.
+        Changing this forces a new resource to be created.
+        """
+        public_ptr_domain_name: NotRequired[pulumi.Input[str]]
+        """
+        The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+        """
+        security_policy: NotRequired[pulumi.Input[str]]
+        """
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
+elif False:
+    InstanceNetworkInterfaceIpv6AccessConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceNetworkInterfaceIpv6AccessConfigArgs:
@@ -11034,6 +14968,16 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
         pulumi.set(self, "security_policy", value)
 
 
+if not MYPY:
+    class InstanceNetworkPerformanceConfigArgsDict(TypedDict):
+        total_egress_bandwidth_tier: pulumi.Input[str]
+        """
+        The egress bandwidth tier to enable.
+        Possible values: TIER_1, DEFAULT
+        """
+elif False:
+    InstanceNetworkPerformanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceNetworkPerformanceConfigArgs:
     def __init__(__self__, *,
@@ -11058,6 +15002,15 @@ class InstanceNetworkPerformanceConfigArgs:
         pulumi.set(self, "total_egress_bandwidth_tier", value)
 
 
+if not MYPY:
+    class InstanceParamsArgsDict(TypedDict):
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
+elif False:
+    InstanceParamsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceParamsArgs:
     def __init__(__self__, *,
@@ -11080,6 +15033,20 @@ class InstanceParamsArgs:
     def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "resource_manager_tags", value)
 
+
+if not MYPY:
+    class InstanceReservationAffinityArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        The type of reservation from which this instance can consume resources.
+        """
+        specific_reservation: NotRequired[pulumi.Input['InstanceReservationAffinitySpecificReservationArgsDict']]
+        """
+        Specifies the label selector for the reservation to use..
+        Structure is documented below.
+        """
+elif False:
+    InstanceReservationAffinityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceReservationAffinityArgs:
@@ -11121,6 +15088,19 @@ class InstanceReservationAffinityArgs:
         pulumi.set(self, "specific_reservation", value)
 
 
+if not MYPY:
+    class InstanceReservationAffinitySpecificReservationArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Corresponds to the label values of a reservation resource.
+        """
+elif False:
+    InstanceReservationAffinitySpecificReservationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceReservationAffinitySpecificReservationArgs:
     def __init__(__self__, *,
@@ -11157,6 +15137,71 @@ class InstanceReservationAffinitySpecificReservationArgs:
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class InstanceSchedulingArgsDict(TypedDict):
+        automatic_restart: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies if the instance should be
+        restarted if it was terminated by Compute Engine (not a user).
+        Defaults to true.
+        """
+        instance_termination_action: NotRequired[pulumi.Input[str]]
+        """
+        Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        """
+        local_ssd_recovery_timeout: NotRequired[pulumi.Input['InstanceSchedulingLocalSsdRecoveryTimeoutArgsDict']]
+        """
+        Specifies the maximum amount of time a Local Ssd Vm should wait while
+          recovery of the Local Ssd state is attempted. Its value should be in
+          between 0 and 168 hours with hour granularity and the default value being 1
+          hour.
+        """
+        maintenance_interval: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        """
+        max_run_duration: NotRequired[pulumi.Input['InstanceSchedulingMaxRunDurationArgsDict']]
+        """
+        The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
+        """
+        min_node_cpus: NotRequired[pulumi.Input[int]]
+        """
+        The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
+        """
+        node_affinities: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulingNodeAffinityArgsDict']]]]
+        """
+        Specifies node affinities or anti-affinities
+        to determine which sole-tenant nodes your instances and managed instance
+        groups will use as host systems. Read more on sole-tenant node creation
+        [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+        Structure documented below.
+        """
+        on_host_maintenance: NotRequired[pulumi.Input[str]]
+        """
+        Describes maintenance behavior for the
+        instance. Can be MIGRATE or TERMINATE, for more info, read
+        [here](https://cloud.google.com/compute/docs/instances/setting-instance-scheduling-options).
+        """
+        on_instance_stop_action: NotRequired[pulumi.Input['InstanceSchedulingOnInstanceStopActionArgsDict']]
+        """
+        Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
+        """
+        preemptible: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies if the instance is preemptible.
+        If this field is set to true, then `automatic_restart` must be
+        set to false.  Defaults to false.
+        """
+        provisioning_model: NotRequired[pulumi.Input[str]]
+        """
+        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+        `preemptible` should be `true` and `automatic_restart` should be
+        `false`. For more info about
+        `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+        """
+elif False:
+    InstanceSchedulingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceSchedulingArgs:
@@ -11373,6 +15418,23 @@ class InstanceSchedulingArgs:
         pulumi.set(self, "provisioning_model", value)
 
 
+if not MYPY:
+    class InstanceSchedulingLocalSsdRecoveryTimeoutArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    InstanceSchedulingLocalSsdRecoveryTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceSchedulingLocalSsdRecoveryTimeoutArgs:
     def __init__(__self__, *,
@@ -11418,6 +15480,24 @@ class InstanceSchedulingLocalSsdRecoveryTimeoutArgs:
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
+
+if not MYPY:
+    class InstanceSchedulingMaxRunDurationArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second. Must be from 0 to
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+        """
+elif False:
+    InstanceSchedulingMaxRunDurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceSchedulingMaxRunDurationArgs:
@@ -11466,6 +15546,24 @@ class InstanceSchedulingMaxRunDurationArgs:
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
+
+if not MYPY:
+    class InstanceSchedulingNodeAffinityArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The key for the node affinity label.
+        """
+        operator: pulumi.Input[str]
+        """
+        The operator. Can be `IN` for node-affinities
+        or `NOT_IN` for anti-affinities.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The values for the node affinity label.
+        """
+elif False:
+    InstanceSchedulingNodeAffinityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceSchedulingNodeAffinityArgs:
@@ -11521,6 +15619,15 @@ class InstanceSchedulingNodeAffinityArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class InstanceSchedulingOnInstanceStopActionArgsDict(TypedDict):
+        discard_local_ssd: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
+        """
+elif False:
+    InstanceSchedulingOnInstanceStopActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceSchedulingOnInstanceStopActionArgs:
     def __init__(__self__, *,
@@ -11543,6 +15650,23 @@ class InstanceSchedulingOnInstanceStopActionArgs:
     def discard_local_ssd(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "discard_local_ssd", value)
 
+
+if not MYPY:
+    class InstanceScratchDiskArgsDict(TypedDict):
+        interface: pulumi.Input[str]
+        """
+        The disk interface to use for attaching this disk; either SCSI or NVME.
+        """
+        device_name: NotRequired[pulumi.Input[str]]
+        """
+        Name with which the attached disk is accessible under /dev/disk/by-id/
+        """
+        size: NotRequired[pulumi.Input[int]]
+        """
+        The size of the disk in gigabytes. One of 375 or 3000.
+        """
+elif False:
+    InstanceScratchDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceScratchDiskArgs:
@@ -11598,6 +15722,23 @@ class InstanceScratchDiskArgs:
         pulumi.set(self, "size", value)
 
 
+if not MYPY:
+    class InstanceServiceAccountArgsDict(TypedDict):
+        scopes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of service scopes. Both OAuth2 URLs and gcloud
+        short names are supported. To allow full access to all Cloud APIs, use the
+        `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+        **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        """
+        email: NotRequired[pulumi.Input[str]]
+        """
+        The service account e-mail address.
+        **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        """
+elif False:
+    InstanceServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceServiceAccountArgs:
     def __init__(__self__, *,
@@ -11644,6 +15785,15 @@ class InstanceServiceAccountArgs:
         pulumi.set(self, "email", value)
 
 
+if not MYPY:
+    class InstanceSettingsMetadataArgsDict(TypedDict):
+        items: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A metadata key/value items map. The total size of all keys and values must be less than 512KB
+        """
+elif False:
+    InstanceSettingsMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceSettingsMetadataArgs:
     def __init__(__self__, *,
@@ -11666,6 +15816,26 @@ class InstanceSettingsMetadataArgs:
     def items(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "items", value)
 
+
+if not MYPY:
+    class InstanceShieldedInstanceConfigArgsDict(TypedDict):
+        enable_integrity_monitoring: NotRequired[pulumi.Input[bool]]
+        """
+        - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+        **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        """
+        enable_secure_boot: NotRequired[pulumi.Input[bool]]
+        """
+        - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+        **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        """
+        enable_vtpm: NotRequired[pulumi.Input[bool]]
+        """
+        - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+        **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+        """
+elif False:
+    InstanceShieldedInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceShieldedInstanceConfigArgs:
@@ -11728,6 +15898,23 @@ class InstanceShieldedInstanceConfigArgs:
         pulumi.set(self, "enable_vtpm", value)
 
 
+if not MYPY:
+    class InstanceTemplateAdvancedMachineFeaturesArgsDict(TypedDict):
+        enable_nested_virtualization: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether the instance should have nested virtualization enabled. Defaults to false.
+        """
+        threads_per_core: NotRequired[pulumi.Input[int]]
+        """
+        The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        """
+        visible_core_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+        """
+elif False:
+    InstanceTemplateAdvancedMachineFeaturesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceTemplateAdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
@@ -11783,6 +15970,19 @@ class InstanceTemplateAdvancedMachineFeaturesArgs:
         pulumi.set(self, "visible_core_count", value)
 
 
+if not MYPY:
+    class InstanceTemplateConfidentialInstanceConfigArgsDict(TypedDict):
+        confidential_instance_type: NotRequired[pulumi.Input[str]]
+        """
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        """
+        enable_confidential_compute: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `on_host_maintenance` can be set to MIGRATE if `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        """
+elif False:
+    InstanceTemplateConfidentialInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceTemplateConfidentialInstanceConfigArgs:
     def __init__(__self__, *,
@@ -11821,6 +16021,130 @@ class InstanceTemplateConfidentialInstanceConfigArgs:
     def enable_confidential_compute(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_confidential_compute", value)
 
+
+if not MYPY:
+    class InstanceTemplateDiskArgsDict(TypedDict):
+        auto_delete: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not the disk should be auto-deleted.
+        This defaults to true.
+        """
+        boot: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates that this is a boot disk.
+        """
+        device_name: NotRequired[pulumi.Input[str]]
+        """
+        A unique device name that is reflected into the
+        /dev/  tree of a Linux operating system running within the instance. If not
+        specified, the server chooses a default device name to apply to this disk.
+        """
+        disk_encryption_key: NotRequired[pulumi.Input['InstanceTemplateDiskDiskEncryptionKeyArgsDict']]
+        """
+        Encrypts or decrypts a disk using a customer-supplied encryption key.
+
+        If you are creating a new disk, this field encrypts the new disk using an encryption key that you provide. If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the customer-supplied encryption key.
+
+        If you encrypt a disk using a customer-supplied key, you must provide the same key again when you attempt to use this resource at a later time. For example, you must provide the key when you create a snapshot or an image from the disk or when you attach the disk to a virtual machine instance.
+
+        If you do not provide an encryption key, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+
+        Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt disks in a managed instance group. Structure documented below.
+        """
+        disk_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the disk. When not provided, this defaults
+        to the name of the instance.
+        """
+        disk_size_gb: NotRequired[pulumi.Input[int]]
+        """
+        The size of the image in gigabytes. If not
+        specified, it will inherit the size of its base image. For SCRATCH disks,
+        the size must be exactly 375GB.
+        """
+        disk_type: NotRequired[pulumi.Input[str]]
+        """
+        The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
+        `"pd-balanced"` or `"pd-standard"`, `"hyperdisk-balanced"`, `"hyperdisk-throughput"` or `"hyperdisk-extreme"`.
+        """
+        interface: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the disk interface to use for attaching this disk,
+        which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+        and the request will fail if you attempt to attach a persistent disk in any other format
+        than SCSI. Local SSDs can use either NVME or SCSI.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A set of ket/value label pairs to assign to disk created from
+        this template
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        The mode in which to attach this disk, either READ_WRITE
+        or READ_ONLY. If you are attaching or creating a boot disk, this must
+        read-write mode.
+        """
+        provisioned_iops: NotRequired[pulumi.Input[int]]
+        """
+        Indicates how many IOPS to provision for the disk. This
+        sets the number of I/O operations per second that the disk can handle.
+        Values must be between 10,000 and 120,000. For more details, see the
+        [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        """
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        """
+        resource_policies: NotRequired[pulumi.Input[str]]
+        """
+        - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        The name (**not self_link**)
+        of the disk (such as those managed by `compute.Disk`) to attach.
+        > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        """
+        source_image: NotRequired[pulumi.Input[str]]
+        """
+        The image from which to
+        initialize this disk. This can be one of: the image's `self_link`,
+        `projects/{project}/global/images/{image}`,
+        `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+        `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+        `{project}/{image}`, `{family}`, or `{image}`.
+        > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        """
+        source_image_encryption_key: NotRequired[pulumi.Input['InstanceTemplateDiskSourceImageEncryptionKeyArgsDict']]
+        """
+        The customer-supplied encryption
+        key of the source image. Required if the source image is protected by a
+        customer-supplied encryption key.
+
+        Instance templates do not store customer-supplied encryption keys, so you
+        cannot create disks for instances in a managed instance group if the source
+        images are encrypted with your own keys. Structure
+        documented below.
+        """
+        source_snapshot: NotRequired[pulumi.Input[str]]
+        """
+        The source snapshot to create this disk.
+        > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        """
+        source_snapshot_encryption_key: NotRequired[pulumi.Input['InstanceTemplateDiskSourceSnapshotEncryptionKeyArgsDict']]
+        """
+        The customer-supplied encryption
+        key of the source snapshot. Structure
+        documented below.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of GCE disk, can be either `"SCRATCH"` or
+        `"PERSISTENT"`.
+        """
+elif False:
+    InstanceTemplateDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceTemplateDiskArgs:
@@ -12219,6 +16543,15 @@ class InstanceTemplateDiskArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class InstanceTemplateDiskDiskEncryptionKeyArgsDict(TypedDict):
+        kms_key_self_link: pulumi.Input[str]
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS
+        """
+elif False:
+    InstanceTemplateDiskDiskEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceTemplateDiskDiskEncryptionKeyArgs:
     def __init__(__self__, *,
@@ -12240,6 +16573,22 @@ class InstanceTemplateDiskDiskEncryptionKeyArgs:
     def kms_key_self_link(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_self_link", value)
 
+
+if not MYPY:
+    class InstanceTemplateDiskSourceImageEncryptionKeyArgsDict(TypedDict):
+        kms_key_self_link: pulumi.Input[str]
+        """
+        The self link of the encryption key that is
+        stored in Google Cloud KMS.
+        """
+        kms_key_service_account: NotRequired[pulumi.Input[str]]
+        """
+        The service account being used for the
+        encryption request for the given KMS key. If absent, the Compute Engine
+        default service account is used.
+        """
+elif False:
+    InstanceTemplateDiskSourceImageEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceTemplateDiskSourceImageEncryptionKeyArgs:
@@ -12285,6 +16634,22 @@ class InstanceTemplateDiskSourceImageEncryptionKeyArgs:
         pulumi.set(self, "kms_key_service_account", value)
 
 
+if not MYPY:
+    class InstanceTemplateDiskSourceSnapshotEncryptionKeyArgsDict(TypedDict):
+        kms_key_self_link: pulumi.Input[str]
+        """
+        The self link of the encryption key that is
+        stored in Google Cloud KMS.
+        """
+        kms_key_service_account: NotRequired[pulumi.Input[str]]
+        """
+        The service account being used for the
+        encryption request for the given KMS key. If absent, the Compute Engine
+        default service account is used.
+        """
+elif False:
+    InstanceTemplateDiskSourceSnapshotEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs:
     def __init__(__self__, *,
@@ -12329,6 +16694,19 @@ class InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs:
         pulumi.set(self, "kms_key_service_account", value)
 
 
+if not MYPY:
+    class InstanceTemplateGuestAcceleratorArgsDict(TypedDict):
+        count: pulumi.Input[int]
+        """
+        The number of the guest accelerator cards exposed to this instance.
+        """
+        type: pulumi.Input[str]
+        """
+        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+elif False:
+    InstanceTemplateGuestAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceTemplateGuestAcceleratorArgs:
     def __init__(__self__, *,
@@ -12365,6 +16743,87 @@ class InstanceTemplateGuestAcceleratorArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class InstanceTemplateNetworkInterfaceArgsDict(TypedDict):
+        access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAccessConfigArgsDict']]]]
+        """
+        Access configurations, i.e. IPs via which this
+        instance can be accessed via the Internet. Omit to ensure that the instance
+        is not accessible from the Internet (this means that ssh provisioners will
+        not work unless you can send traffic to the instance's
+        network (e.g. via tunnel or because it is running on another cloud instance
+        on that network). This block can be repeated multiple times. Structure documented below.
+        """
+        alias_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpRangeArgsDict']]]]
+        """
+        An
+        array of alias IP ranges for this network interface. Can only be specified for network
+        interfaces on subnet-mode networks. Structure documented below.
+        """
+        internal_ipv6_prefix_length: NotRequired[pulumi.Input[int]]
+        """
+        The prefix length of the primary internal IPv6 range.
+        """
+        ipv6_access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceIpv6AccessConfigArgsDict']]]]
+        """
+        An array of IPv6 access configurations for this interface.
+        Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+        specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+        """
+        ipv6_access_type: NotRequired[pulumi.Input[str]]
+        """
+        One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+        """
+        ipv6_address: NotRequired[pulumi.Input[str]]
+        """
+        An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the instance template. If you leave
+        this blank, the provider will auto-generate a unique name.
+        """
+        network: NotRequired[pulumi.Input[str]]
+        """
+        The name or self_link of the network to attach this interface to.
+        Use `network` attribute for Legacy or Auto subnetted networks and
+        `subnetwork` for custom subnetted networks.
+        """
+        network_attachment: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        """
+        network_ip: NotRequired[pulumi.Input[str]]
+        """
+        The private IP address to assign to the instance. If
+        empty, the address will be automatically assigned.
+        """
+        nic_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        """
+        queue_count: NotRequired[pulumi.Input[int]]
+        """
+        The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+        """
+        stack_type: NotRequired[pulumi.Input[str]]
+        """
+        The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+        """
+        subnetwork: NotRequired[pulumi.Input[str]]
+        """
+        the name of the subnetwork to attach this interface
+        to. The subnetwork must exist in the same `region` this instance will be
+        created in. Either `network` or `subnetwork` must be provided.
+        """
+        subnetwork_project: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the project in which the subnetwork belongs.
+        If it is not provided, the provider project is used.
+        """
+elif False:
+    InstanceTemplateNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceTemplateNetworkInterfaceArgs:
@@ -12645,6 +17104,25 @@ class InstanceTemplateNetworkInterfaceArgs:
         pulumi.set(self, "subnetwork_project", value)
 
 
+if not MYPY:
+    class InstanceTemplateNetworkInterfaceAccessConfigArgsDict(TypedDict):
+        nat_ip: NotRequired[pulumi.Input[str]]
+        """
+        The IP address that will be 1:1 mapped to the instance's
+        network ip. If not given, one will be generated.
+        """
+        network_tier: NotRequired[pulumi.Input[str]]
+        """
+        The service-level to be provided for IPv6 traffic when the
+        subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        """
+        public_ptr_domain_name: NotRequired[pulumi.Input[str]]
+        """
+        The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+        """
+elif False:
+    InstanceTemplateNetworkInterfaceAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceTemplateNetworkInterfaceAccessConfigArgs:
     def __init__(__self__, *,
@@ -12704,6 +17182,25 @@ class InstanceTemplateNetworkInterfaceAccessConfigArgs:
         pulumi.set(self, "public_ptr_domain_name", value)
 
 
+if not MYPY:
+    class InstanceTemplateNetworkInterfaceAliasIpRangeArgsDict(TypedDict):
+        ip_cidr_range: pulumi.Input[str]
+        """
+        The IP CIDR range represented by this alias IP range. This IP CIDR range
+        must belong to the specified subnetwork and cannot contain IP addresses reserved by
+        system or used by other network interfaces. At the time of writing only a
+        netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+        error.
+        """
+        subnetwork_range_name: NotRequired[pulumi.Input[str]]
+        """
+        The subnetwork secondary range name specifying
+        the secondary range from which to allocate the IP CIDR range for this alias IP
+        range. If left unspecified, the primary range of the subnetwork will be used.
+        """
+elif False:
+    InstanceTemplateNetworkInterfaceAliasIpRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceTemplateNetworkInterfaceAliasIpRangeArgs:
     def __init__(__self__, *,
@@ -12753,6 +17250,32 @@ class InstanceTemplateNetworkInterfaceAliasIpRangeArgs:
     def subnetwork_range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork_range_name", value)
 
+
+if not MYPY:
+    class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgsDict(TypedDict):
+        network_tier: pulumi.Input[str]
+        """
+        The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+        """
+        external_ipv6: NotRequired[pulumi.Input[str]]
+        """
+        The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+        """
+        external_ipv6_prefix_length: NotRequired[pulumi.Input[str]]
+        """
+        The prefix length of the external IPv6 range.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the instance template. If you leave
+        this blank, the provider will auto-generate a unique name.
+        """
+        public_ptr_domain_name: NotRequired[pulumi.Input[str]]
+        """
+        The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+        """
+elif False:
+    InstanceTemplateNetworkInterfaceIpv6AccessConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
@@ -12842,6 +17365,15 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
         pulumi.set(self, "public_ptr_domain_name", value)
 
 
+if not MYPY:
+    class InstanceTemplateNetworkPerformanceConfigArgsDict(TypedDict):
+        total_egress_bandwidth_tier: pulumi.Input[str]
+        """
+        The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+        """
+elif False:
+    InstanceTemplateNetworkPerformanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceTemplateNetworkPerformanceConfigArgs:
     def __init__(__self__, *,
@@ -12863,6 +17395,20 @@ class InstanceTemplateNetworkPerformanceConfigArgs:
     def total_egress_bandwidth_tier(self, value: pulumi.Input[str]):
         pulumi.set(self, "total_egress_bandwidth_tier", value)
 
+
+if not MYPY:
+    class InstanceTemplateReservationAffinityArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        The type of reservation from which this instance can consume resources.
+        """
+        specific_reservation: NotRequired[pulumi.Input['InstanceTemplateReservationAffinitySpecificReservationArgsDict']]
+        """
+        Specifies the label selector for the reservation to use..
+        Structure is documented below.
+        """
+elif False:
+    InstanceTemplateReservationAffinityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceTemplateReservationAffinityArgs:
@@ -12904,6 +17450,19 @@ class InstanceTemplateReservationAffinityArgs:
         pulumi.set(self, "specific_reservation", value)
 
 
+if not MYPY:
+    class InstanceTemplateReservationAffinitySpecificReservationArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Corresponds to the label values of a reservation resource.
+        """
+elif False:
+    InstanceTemplateReservationAffinitySpecificReservationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceTemplateReservationAffinitySpecificReservationArgs:
     def __init__(__self__, *,
@@ -12940,6 +17499,70 @@ class InstanceTemplateReservationAffinitySpecificReservationArgs:
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class InstanceTemplateSchedulingArgsDict(TypedDict):
+        automatic_restart: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether the instance should be
+        automatically restarted if it is terminated by Compute Engine (not
+        terminated by a user). This defaults to true.
+        """
+        instance_termination_action: NotRequired[pulumi.Input[str]]
+        """
+        Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        """
+        local_ssd_recovery_timeouts: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict']]]]
+        """
+        Specifies the maximum amount of time a Local Ssd Vm should wait while
+          recovery of the Local Ssd state is attempted. Its value should be in
+          between 0 and 168 hours with hour granularity and the default value being 1
+          hour.
+        """
+        maintenance_interval: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        """
+        max_run_duration: NotRequired[pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArgsDict']]
+        """
+        The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
+        """
+        min_node_cpus: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of cpus for the instance.
+        """
+        node_affinities: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArgsDict']]]]
+        """
+        Specifies node affinities or anti-affinities
+        to determine which sole-tenant nodes your instances and managed instance
+        groups will use as host systems. Read more on sole-tenant node creation
+        [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+        Structure documented below.
+        """
+        on_host_maintenance: NotRequired[pulumi.Input[str]]
+        """
+        Defines the maintenance behavior for this
+        instance.
+        """
+        on_instance_stop_action: NotRequired[pulumi.Input['InstanceTemplateSchedulingOnInstanceStopActionArgsDict']]
+        """
+        Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
+        """
+        preemptible: NotRequired[pulumi.Input[bool]]
+        """
+        Allows instance to be preempted. This defaults to
+        false. Read more on this
+        [here](https://cloud.google.com/compute/docs/instances/preemptible).
+        """
+        provisioning_model: NotRequired[pulumi.Input[str]]
+        """
+        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+        `preemptible` should be `true` and `automatic_restart` should be
+        `false`. For more info about
+        `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+        """
+elif False:
+    InstanceTemplateSchedulingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceTemplateSchedulingArgs:
@@ -13154,6 +17777,23 @@ class InstanceTemplateSchedulingArgs:
         pulumi.set(self, "provisioning_model", value)
 
 
+if not MYPY:
+    class InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
     def __init__(__self__, *,
@@ -13199,6 +17839,24 @@ class InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
+
+if not MYPY:
+    class InstanceTemplateSchedulingMaxRunDurationArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second. Must be from 0 to
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+        """
+elif False:
+    InstanceTemplateSchedulingMaxRunDurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceTemplateSchedulingMaxRunDurationArgs:
@@ -13247,6 +17905,21 @@ class InstanceTemplateSchedulingMaxRunDurationArgs:
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
+
+if not MYPY:
+    class InstanceTemplateSchedulingNodeAffinityArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The key for the node affinity label.
+        """
+        operator: pulumi.Input[str]
+        """
+        The operator. Can be `IN` for node-affinities
+        or `NOT_IN` for anti-affinities.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+elif False:
+    InstanceTemplateSchedulingNodeAffinityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceTemplateSchedulingNodeAffinityArgs:
@@ -13298,6 +17971,15 @@ class InstanceTemplateSchedulingNodeAffinityArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class InstanceTemplateSchedulingOnInstanceStopActionArgsDict(TypedDict):
+        discard_local_ssd: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
+        """
+elif False:
+    InstanceTemplateSchedulingOnInstanceStopActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceTemplateSchedulingOnInstanceStopActionArgs:
     def __init__(__self__, *,
@@ -13320,6 +18002,29 @@ class InstanceTemplateSchedulingOnInstanceStopActionArgs:
     def discard_local_ssd(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "discard_local_ssd", value)
 
+
+if not MYPY:
+    class InstanceTemplateServiceAccountArgsDict(TypedDict):
+        scopes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of service scopes. Both OAuth2 URLs and gcloud
+        short names are supported. To allow full access to all Cloud APIs, use the
+        `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+
+        The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
+        explains that access scopes are the legacy method of specifying permissions for your instance.
+        To follow best practices you should create a dedicated service account with the minimum permissions the VM requires.
+        To use a dedicated service account this field should be configured as a list containing the `cloud-platform` scope.
+        See [Authenticate workloads using service accounts best practices](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#best_practices)
+        and [Best practices for using service accounts](https://cloud.google.com/iam/docs/best-practices-service-accounts#single-purpose).
+        """
+        email: NotRequired[pulumi.Input[str]]
+        """
+        The service account e-mail address. If not given, the
+        default Google Compute Engine service account is used.
+        """
+elif False:
+    InstanceTemplateServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceTemplateServiceAccountArgs:
@@ -13379,6 +18084,23 @@ class InstanceTemplateServiceAccountArgs:
         pulumi.set(self, "email", value)
 
 
+if not MYPY:
+    class InstanceTemplateShieldedInstanceConfigArgsDict(TypedDict):
+        enable_integrity_monitoring: NotRequired[pulumi.Input[bool]]
+        """
+        - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+        """
+        enable_secure_boot: NotRequired[pulumi.Input[bool]]
+        """
+        - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+        """
+        enable_vtpm: NotRequired[pulumi.Input[bool]]
+        """
+        - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+        """
+elif False:
+    InstanceTemplateShieldedInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceTemplateShieldedInstanceConfigArgs:
     def __init__(__self__, *,
@@ -13434,6 +18156,17 @@ class InstanceTemplateShieldedInstanceConfigArgs:
         pulumi.set(self, "enable_vtpm", value)
 
 
+if not MYPY:
+    class InterconnectAttachmentPrivateInterconnectInfoArgsDict(TypedDict):
+        tag8021q: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        802.1q encapsulation tag to be used for traffic between
+        Google and the customer, going to and from this network and region.
+        """
+elif False:
+    InterconnectAttachmentPrivateInterconnectInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InterconnectAttachmentPrivateInterconnectInfoArgs:
     def __init__(__self__, *,
@@ -13460,6 +18193,27 @@ class InterconnectAttachmentPrivateInterconnectInfoArgs:
     def tag8021q(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "tag8021q", value)
 
+
+if not MYPY:
+    class InterconnectCircuitInfoArgsDict(TypedDict):
+        customer_demarc_id: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Customer-side demarc ID for this circuit.
+        """
+        google_circuit_id: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Google-assigned unique ID for this circuit. Assigned at circuit turn-up.
+        """
+        google_demarc_id: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Google-side demarc ID for this circuit. Assigned at circuit turn-up and provided by
+        Google to the customer in the LOA.
+        """
+elif False:
+    InterconnectCircuitInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InterconnectCircuitInfoArgs:
@@ -13523,6 +18277,68 @@ class InterconnectCircuitInfoArgs:
     def google_demarc_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "google_demarc_id", value)
 
+
+if not MYPY:
+    class InterconnectExpectedOutageArgsDict(TypedDict):
+        affected_circuits: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (Output)
+        If issueType is IT_PARTIAL_OUTAGE, a list of the Google-side circuit IDs that will be
+        affected.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        end_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Scheduled end time for the outage (milliseconds since Unix epoch).
+        """
+        issue_type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Form this outage is expected to take. Note that the versions of this enum prefixed with
+        "IT_" have been deprecated in favor of the unprefixed values. Can take one of the
+        following values:
+        - OUTAGE: The Interconnect may be completely out of service for some or all of the
+        specified window.
+        - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole should remain
+        up, but with reduced bandwidth.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the resource. Provided by the client when the resource is created. The name must be
+        1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
+        long and match the regular expression `a-z?` which means the first
+        character must be a lowercase letter, and all following characters must be a dash,
+        lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The party that generated this notification. Note that the value of NSRC_GOOGLE has been
+        deprecated in favor of GOOGLE. Can take the following value:
+        - GOOGLE: this notification as generated by Google.
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Scheduled start time for the outage (milliseconds since Unix epoch).
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        State of this notification. Note that the versions of this enum prefixed with "NS_" have
+        been deprecated in favor of the unprefixed values. Can take one of the following values:
+        - ACTIVE: This outage notification is active. The event could be in the past, present,
+        or future. See startTime and endTime for scheduling.
+        - CANCELLED: The outage associated with this notification was cancelled before the
+        outage was due to start.
+        - COMPLETED: The outage associated with this notification is complete.
+        """
+elif False:
+    InterconnectExpectedOutageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InterconnectExpectedOutageArgs:
@@ -13709,6 +18525,19 @@ class InterconnectExpectedOutageArgs:
         pulumi.set(self, "state", value)
 
 
+if not MYPY:
+    class InterconnectMacsecArgsDict(TypedDict):
+        pre_shared_keys: pulumi.Input[Sequence[pulumi.Input['InterconnectMacsecPreSharedKeyArgsDict']]]
+        """
+        A keychain placeholder describing a set of named key objects along with their
+        start times. A MACsec CKN/CAK is generated for each key in the key chain.
+        Google router automatically picks the key with the most recent startTime when establishing
+        or re-establishing a MACsec secure link.
+        Structure is documented below.
+        """
+elif False:
+    InterconnectMacsecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InterconnectMacsecArgs:
     def __init__(__self__, *,
@@ -13738,6 +18567,35 @@ class InterconnectMacsecArgs:
     def pre_shared_keys(self, value: pulumi.Input[Sequence[pulumi.Input['InterconnectMacsecPreSharedKeyArgs']]]):
         pulumi.set(self, "pre_shared_keys", value)
 
+
+if not MYPY:
+    class InterconnectMacsecPreSharedKeyArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        A name for this pre-shared key. The name must be 1-63 characters long, and
+        comply with RFC1035. Specifically, the name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the first character
+        must be a lowercase letter, and all following characters must be a dash, lowercase
+        letter, or digit, except the last character, which cannot be a dash.
+        """
+        fail_open: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, the Interconnect connection is configured with a should-secure
+        MACsec security policy, that allows the Google router to fallback to cleartext
+        traffic if the MKA session cannot be established. By default, the Interconnect
+        connection is configured with a must-secure security policy that drops all traffic
+        if the MKA session cannot be established with your router.
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        A RFC3339 timestamp on or after which the key is valid. startTime can be in the
+        future. If the keychain has a single key, startTime can be omitted. If the keychain
+        has multiple keys, startTime is mandatory for each key. The start times of keys must
+        be in increasing order. The start times of two consecutive keys must be at least 6
+        hours apart.
+        """
+elif False:
+    InterconnectMacsecPreSharedKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InterconnectMacsecPreSharedKeyArgs:
@@ -13817,6 +18675,23 @@ class InterconnectMacsecPreSharedKeyArgs:
         pulumi.set(self, "start_time", value)
 
 
+if not MYPY:
+    class MachineImageIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+elif False:
+    MachineImageIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MachineImageIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -13870,6 +18745,23 @@ class MachineImageIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class MachineImageIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+elif False:
+    MachineImageIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MachineImageIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -13922,6 +18814,31 @@ class MachineImageIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class MachineImageMachineImageEncryptionKeyArgsDict(TypedDict):
+        kms_key_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the encryption key that is stored in Google Cloud KMS.
+        """
+        kms_key_service_account: NotRequired[pulumi.Input[str]]
+        """
+        The service account used for the encryption request for the given KMS key.
+        If absent, the Compute Engine Service Agent service account is used.
+        """
+        raw_key: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        """
+        sha256: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The RFC 4648 base64 encoded SHA-256 hash of the
+        customer-supplied encryption key that protects this resource.
+        """
+elif False:
+    MachineImageMachineImageEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MachineImageMachineImageEncryptionKeyArgs:
@@ -14002,6 +18919,16 @@ class MachineImageMachineImageEncryptionKeyArgs:
         pulumi.set(self, "sha256", value)
 
 
+if not MYPY:
+    class ManagedSslCertificateManagedArgsDict(TypedDict):
+        domains: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Domains for which a managed SSL certificate will be valid.  Currently,
+        there can be up to 100 domains in this list.
+        """
+elif False:
+    ManagedSslCertificateManagedArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagedSslCertificateManagedArgs:
     def __init__(__self__, *,
@@ -14026,6 +18953,16 @@ class ManagedSslCertificateManagedArgs:
         pulumi.set(self, "domains", value)
 
 
+if not MYPY:
+    class MangedSslCertificateManagedArgsDict(TypedDict):
+        domains: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Domains for which a managed SSL certificate will be valid.  Currently,
+        there can be up to 100 domains in this list.
+        """
+elif False:
+    MangedSslCertificateManagedArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MangedSslCertificateManagedArgs:
     def __init__(__self__, *,
@@ -14049,6 +18986,36 @@ class MangedSslCertificateManagedArgs:
     def domains(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "domains", value)
 
+
+if not MYPY:
+    class NetworkAttachmentConnectionEndpointArgsDict(TypedDict):
+        ip_address: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The IPv4 address assigned to the producer instance network interface. This value will be a range in case of Serverless.
+        """
+        project_id_or_num: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The project id or number of the interface to which the IP was assigned.
+        """
+        secondary_ip_cidr_ranges: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Alias IP ranges from the same subnetwork.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The status of a connected endpoint to this network attachment.
+        """
+        subnetwork: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The subnetwork used to assign the IP to the producer instance network interface.
+        """
+elif False:
+    NetworkAttachmentConnectionEndpointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NetworkAttachmentConnectionEndpointArgs:
@@ -14147,6 +19114,29 @@ class NetworkAttachmentConnectionEndpointArgs:
         pulumi.set(self, "subnetwork", value)
 
 
+if not MYPY:
+    class NetworkEndpointListNetworkEndpointArgsDict(TypedDict):
+        ip_address: pulumi.Input[str]
+        """
+        IPv4 address of network endpoint. The IP address must belong
+        to a VM in GCE (either the primary IP or as part of an aliased IP
+        range).
+        """
+        instance: NotRequired[pulumi.Input[str]]
+        """
+        The name for a specific VM instance that the IP address belongs to.
+        This is required for network endpoints of type GCE_VM_IP_PORT.
+        The instance must be in the same zone as the network endpoint group.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        Port number of network endpoint.
+        **Note** `port` is required unless the Network Endpoint Group is created
+        with the type of `GCE_VM_IP`
+        """
+elif False:
+    NetworkEndpointListNetworkEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NetworkEndpointListNetworkEndpointArgs:
     def __init__(__self__, *,
@@ -14212,6 +19202,61 @@ class NetworkEndpointListNetworkEndpointArgs:
     def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
 
+
+if not MYPY:
+    class NetworkFirewallPolicyRuleMatchArgsDict(TypedDict):
+        layer4_configs: pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchLayer4ConfigArgsDict']]]
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        """
+        dest_address_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+        """
+        dest_fqdns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+        """
+        dest_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        """
+        dest_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+        """
+        dest_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Name of the Google Cloud Threat Intelligence list.
+        """
+        src_address_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+        """
+        src_fqdns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+        """
+        src_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        """
+        src_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+        """
+        src_secure_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchSrcSecureTagArgsDict']]]]
+        """
+        List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        """
+        src_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Name of the Google Cloud Threat Intelligence list.
+
+        The `layer4_configs` block supports:
+        """
+elif False:
+    NetworkFirewallPolicyRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NetworkFirewallPolicyRuleMatchArgs:
@@ -14415,6 +19460,19 @@ class NetworkFirewallPolicyRuleMatchArgs:
         pulumi.set(self, "src_threat_intelligences", value)
 
 
+if not MYPY:
+    class NetworkFirewallPolicyRuleMatchLayer4ConfigArgsDict(TypedDict):
+        ip_protocol: pulumi.Input[str]
+        """
+        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+        """
+elif False:
+    NetworkFirewallPolicyRuleMatchLayer4ConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NetworkFirewallPolicyRuleMatchLayer4ConfigArgs:
     def __init__(__self__, *,
@@ -14452,6 +19510,19 @@ class NetworkFirewallPolicyRuleMatchLayer4ConfigArgs:
     def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ports", value)
 
+
+if not MYPY:
+    class NetworkFirewallPolicyRuleMatchSrcSecureTagArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+        """
+elif False:
+    NetworkFirewallPolicyRuleMatchSrcSecureTagArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NetworkFirewallPolicyRuleMatchSrcSecureTagArgs:
@@ -14491,6 +19562,19 @@ class NetworkFirewallPolicyRuleMatchSrcSecureTagArgs:
         pulumi.set(self, "state", value)
 
 
+if not MYPY:
+    class NetworkFirewallPolicyRuleTargetSecureTagArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+        """
+elif False:
+    NetworkFirewallPolicyRuleTargetSecureTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NetworkFirewallPolicyRuleTargetSecureTagArgs:
     def __init__(__self__, *,
@@ -14528,6 +19612,31 @@ class NetworkFirewallPolicyRuleTargetSecureTagArgs:
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
 
+
+if not MYPY:
+    class NodeGroupAutoscalingPolicyArgsDict(TypedDict):
+        max_nodes: NotRequired[pulumi.Input[int]]
+        """
+        Maximum size of the node group. Set to a value less than or equal
+        to 100 and greater than or equal to min-nodes.
+        """
+        min_nodes: NotRequired[pulumi.Input[int]]
+        """
+        Minimum size of the node group. Must be less
+        than or equal to max-nodes. The default value is 0.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        The autoscaling mode. Set to one of the following:
+        - OFF: Disables the autoscaler.
+        - ON: Enables scaling in and scaling out.
+        - ONLY_SCALE_OUT: Enables only scaling out.
+        You must use this mode if your node groups are configured to
+        restart their hosted VMs on minimal servers.
+        Possible values are: `OFF`, `ON`, `ONLY_SCALE_OUT`.
+        """
+elif False:
+    NodeGroupAutoscalingPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NodeGroupAutoscalingPolicyArgs:
@@ -14600,6 +19709,15 @@ class NodeGroupAutoscalingPolicyArgs:
         pulumi.set(self, "mode", value)
 
 
+if not MYPY:
+    class NodeGroupMaintenanceWindowArgsDict(TypedDict):
+        start_time: pulumi.Input[str]
+        """
+        instances.start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
+        """
+elif False:
+    NodeGroupMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NodeGroupMaintenanceWindowArgs:
     def __init__(__self__, *,
@@ -14621,6 +19739,21 @@ class NodeGroupMaintenanceWindowArgs:
     def start_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "start_time", value)
 
+
+if not MYPY:
+    class NodeGroupShareSettingsArgsDict(TypedDict):
+        share_type: pulumi.Input[str]
+        """
+        Node group sharing type.
+        Possible values are: `ORGANIZATION`, `SPECIFIC_PROJECTS`, `LOCAL`.
+        """
+        project_maps: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeGroupShareSettingsProjectMapArgsDict']]]]
+        """
+        A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        Structure is documented below.
+        """
+elif False:
+    NodeGroupShareSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NodeGroupShareSettingsArgs:
@@ -14664,6 +19797,19 @@ class NodeGroupShareSettingsArgs:
         pulumi.set(self, "project_maps", value)
 
 
+if not MYPY:
+    class NodeGroupShareSettingsProjectMapArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        project_id: pulumi.Input[str]
+        """
+        The project id/number should be the same as the key of this project config in the project map.
+        """
+elif False:
+    NodeGroupShareSettingsProjectMapArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NodeGroupShareSettingsProjectMapArgs:
     def __init__(__self__, *,
@@ -14700,6 +19846,24 @@ class NodeGroupShareSettingsProjectMapArgs:
     def project_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_id", value)
 
+
+if not MYPY:
+    class NodeTemplateNodeTypeFlexibilityArgsDict(TypedDict):
+        cpus: NotRequired[pulumi.Input[str]]
+        """
+        Number of virtual CPUs to use.
+        """
+        local_ssd: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Use local SSD
+        """
+        memory: NotRequired[pulumi.Input[str]]
+        """
+        Physical memory available to the node, defined in MB.
+        """
+elif False:
+    NodeTemplateNodeTypeFlexibilityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NodeTemplateNodeTypeFlexibilityArgs:
@@ -14758,6 +19922,26 @@ class NodeTemplateNodeTypeFlexibilityArgs:
         pulumi.set(self, "memory", value)
 
 
+if not MYPY:
+    class NodeTemplateServerBindingArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type of server binding policy. If `RESTART_NODE_ON_ANY_SERVER`,
+        nodes using this template will restart on any physical server
+        following a maintenance event.
+        If `RESTART_NODE_ON_MINIMAL_SERVER`, nodes using this template
+        will restart on the same physical server following a maintenance
+        event, instead of being live migrated to or restarted on a new
+        physical server. This option may be useful if you are using
+        software licenses tied to the underlying server characteristics
+        such as physical sockets or cores, to avoid the need for
+        additional licenses when maintenance occurs. However, VMs on such
+        nodes will experience outages while maintenance is applied.
+        Possible values are: `RESTART_NODE_ON_ANY_SERVER`, `RESTART_NODE_ON_MINIMAL_SERVERS`.
+        """
+elif False:
+    NodeTemplateServerBindingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NodeTemplateServerBindingArgs:
     def __init__(__self__, *,
@@ -14801,6 +19985,27 @@ class NodeTemplateServerBindingArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class OrganizationSecurityPolicyRuleMatchArgsDict(TypedDict):
+        config: pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigArgsDict']
+        """
+        The configuration options for matching the rule.
+        Structure is documented below.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        A description of the rule.
+        """
+        versioned_expr: NotRequired[pulumi.Input[str]]
+        """
+        Preconfigured versioned expression. For organization security policy rules,
+        the only supported type is "FIREWALL".
+        Default value is `FIREWALL`.
+        Possible values are: `FIREWALL`.
+        """
+elif False:
+    OrganizationSecurityPolicyRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OrganizationSecurityPolicyRuleMatchArgs:
@@ -14863,6 +20068,29 @@ class OrganizationSecurityPolicyRuleMatchArgs:
     def versioned_expr(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "versioned_expr", value)
 
+
+if not MYPY:
+    class OrganizationSecurityPolicyRuleMatchConfigArgsDict(TypedDict):
+        layer4_configs: pulumi.Input[Sequence[pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgsDict']]]
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        Structure is documented below.
+
+
+        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        """
+        dest_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Destination IP address range in CIDR format. Required for
+        EGRESS rules.
+        """
+        src_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Source IP address range in CIDR format. Required for
+        INGRESS rules.
+        """
+elif False:
+    OrganizationSecurityPolicyRuleMatchConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OrganizationSecurityPolicyRuleMatchConfigArgs:
@@ -14930,6 +20158,29 @@ class OrganizationSecurityPolicyRuleMatchConfigArgs:
         pulumi.set(self, "src_ip_ranges", value)
 
 
+if not MYPY:
+    class OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgsDict(TypedDict):
+        ip_protocol: pulumi.Input[str]
+        """
+        The IP protocol to which this rule applies. The protocol
+        type is required when creating a firewall rule.
+        This value can either be one of the following well
+        known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+        or the IP protocol number.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An optional list of ports to which this rule applies. This field
+        is only applicable for UDP or TCP protocol. Each entry must be
+        either an integer or a range. If not specified, this rule
+        applies to connections through any port.
+
+        Example inputs include: ["22"], ["80","443"], and
+        ["12345-12349"].
+        """
+elif False:
+    OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs:
     def __init__(__self__, *,
@@ -14988,6 +20239,15 @@ class OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs:
         pulumi.set(self, "ports", value)
 
 
+if not MYPY:
+    class PacketMirroringCollectorIlbArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        The URL of the forwarding rule.
+        """
+elif False:
+    PacketMirroringCollectorIlbArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PacketMirroringCollectorIlbArgs:
     def __init__(__self__, *,
@@ -15009,6 +20269,26 @@ class PacketMirroringCollectorIlbArgs:
     def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
 
+
+if not MYPY:
+    class PacketMirroringFilterArgsDict(TypedDict):
+        cidr_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        IP CIDR ranges that apply as a filter on the source (ingress) or
+        destination (egress) IP in the IP header. Only IPv4 is supported.
+        """
+        direction: NotRequired[pulumi.Input[str]]
+        """
+        Direction of traffic to mirror.
+        Default value is `BOTH`.
+        Possible values are: `INGRESS`, `EGRESS`, `BOTH`.
+        """
+        ip_protocols: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Possible IP protocols including tcp, udp, icmp and esp
+        """
+elif False:
+    PacketMirroringFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PacketMirroringFilterArgs:
@@ -15071,6 +20351,25 @@ class PacketMirroringFilterArgs:
         pulumi.set(self, "ip_protocols", value)
 
 
+if not MYPY:
+    class PacketMirroringMirroredResourcesArgsDict(TypedDict):
+        instances: NotRequired[pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesInstanceArgsDict']]]]
+        """
+        All the listed instances will be mirrored.  Specify at most 50.
+        Structure is documented below.
+        """
+        subnetworks: NotRequired[pulumi.Input[Sequence[pulumi.Input['PacketMirroringMirroredResourcesSubnetworkArgsDict']]]]
+        """
+        All instances in one of these subnetworks will be mirrored.
+        Structure is documented below.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        All instances with these tags will be mirrored.
+        """
+elif False:
+    PacketMirroringMirroredResourcesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PacketMirroringMirroredResourcesArgs:
     def __init__(__self__, *,
@@ -15130,6 +20429,17 @@ class PacketMirroringMirroredResourcesArgs:
         pulumi.set(self, "tags", value)
 
 
+if not MYPY:
+    class PacketMirroringMirroredResourcesInstanceArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        The URL of the instances where this rule should be active.
+
+        - - -
+        """
+elif False:
+    PacketMirroringMirroredResourcesInstanceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PacketMirroringMirroredResourcesInstanceArgs:
     def __init__(__self__, *,
@@ -15156,6 +20466,15 @@ class PacketMirroringMirroredResourcesInstanceArgs:
         pulumi.set(self, "url", value)
 
 
+if not MYPY:
+    class PacketMirroringMirroredResourcesSubnetworkArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        The URL of the subnetwork where this rule should be active.
+        """
+elif False:
+    PacketMirroringMirroredResourcesSubnetworkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PacketMirroringMirroredResourcesSubnetworkArgs:
     def __init__(__self__, *,
@@ -15178,6 +20497,15 @@ class PacketMirroringMirroredResourcesSubnetworkArgs:
         pulumi.set(self, "url", value)
 
 
+if not MYPY:
+    class PacketMirroringNetworkArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        The full self_link URL of the network where this rule is active.
+        """
+elif False:
+    PacketMirroringNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PacketMirroringNetworkArgs:
     def __init__(__self__, *,
@@ -15199,6 +20527,30 @@ class PacketMirroringNetworkArgs:
     def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
 
+
+if not MYPY:
+    class PerInstanceConfigPreservedStateArgsDict(TypedDict):
+        disks: NotRequired[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateDiskArgsDict']]]]
+        """
+        Stateful disks for the instance.
+        Structure is documented below.
+        """
+        external_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateExternalIpArgsDict']]]]
+        """
+        Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+        Structure is documented below.
+        """
+        internal_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input['PerInstanceConfigPreservedStateInternalIpArgsDict']]]]
+        """
+        Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+        Structure is documented below.
+        """
+        metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Preserved metadata defined for this instance. This is a list of key->value pairs.
+        """
+elif False:
+    PerInstanceConfigPreservedStateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PerInstanceConfigPreservedStateArgs:
@@ -15276,6 +20628,36 @@ class PerInstanceConfigPreservedStateArgs:
     def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
 
+
+if not MYPY:
+    class PerInstanceConfigPreservedStateDiskArgsDict(TypedDict):
+        device_name: pulumi.Input[str]
+        """
+        A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
+        """
+        source: pulumi.Input[str]
+        """
+        The URI of an existing persistent disk to attach under the specified device-name in the format
+        `projects/project-id/zones/zone/disks/disk-name`.
+        """
+        delete_rule: NotRequired[pulumi.Input[str]]
+        """
+        A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
+        The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+        `NEVER` - detach the disk when the VM is deleted, but do not delete the disk.
+        `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
+        deleted from the instance group.
+        Default value is `NEVER`.
+        Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        The mode of the disk.
+        Default value is `READ_WRITE`.
+        Possible values are: `READ_ONLY`, `READ_WRITE`.
+        """
+elif False:
+    PerInstanceConfigPreservedStateDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PerInstanceConfigPreservedStateDiskArgs:
@@ -15364,6 +20746,26 @@ class PerInstanceConfigPreservedStateDiskArgs:
         pulumi.set(self, "mode", value)
 
 
+if not MYPY:
+    class PerInstanceConfigPreservedStateExternalIpArgsDict(TypedDict):
+        interface_name: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        auto_delete: NotRequired[pulumi.Input[str]]
+        """
+        These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+        Default value is `NEVER`.
+        Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
+        """
+        ip_address: NotRequired[pulumi.Input['PerInstanceConfigPreservedStateExternalIpIpAddressArgsDict']]
+        """
+        Ip address representation
+        Structure is documented below.
+        """
+elif False:
+    PerInstanceConfigPreservedStateExternalIpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PerInstanceConfigPreservedStateExternalIpArgs:
     def __init__(__self__, *,
@@ -15424,6 +20826,15 @@ class PerInstanceConfigPreservedStateExternalIpArgs:
         pulumi.set(self, "ip_address", value)
 
 
+if not MYPY:
+    class PerInstanceConfigPreservedStateExternalIpIpAddressArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the reservation for this IP address.
+        """
+elif False:
+    PerInstanceConfigPreservedStateExternalIpIpAddressArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PerInstanceConfigPreservedStateExternalIpIpAddressArgs:
     def __init__(__self__, *,
@@ -15446,6 +20857,26 @@ class PerInstanceConfigPreservedStateExternalIpIpAddressArgs:
     def address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "address", value)
 
+
+if not MYPY:
+    class PerInstanceConfigPreservedStateInternalIpArgsDict(TypedDict):
+        interface_name: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        auto_delete: NotRequired[pulumi.Input[str]]
+        """
+        These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+        Default value is `NEVER`.
+        Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
+        """
+        ip_address: NotRequired[pulumi.Input['PerInstanceConfigPreservedStateInternalIpIpAddressArgsDict']]
+        """
+        Ip address representation
+        Structure is documented below.
+        """
+elif False:
+    PerInstanceConfigPreservedStateInternalIpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PerInstanceConfigPreservedStateInternalIpArgs:
@@ -15507,6 +20938,15 @@ class PerInstanceConfigPreservedStateInternalIpArgs:
         pulumi.set(self, "ip_address", value)
 
 
+if not MYPY:
+    class PerInstanceConfigPreservedStateInternalIpIpAddressArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the reservation for this IP address.
+        """
+elif False:
+    PerInstanceConfigPreservedStateInternalIpIpAddressArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PerInstanceConfigPreservedStateInternalIpIpAddressArgs:
     def __init__(__self__, *,
@@ -15529,6 +20969,75 @@ class PerInstanceConfigPreservedStateInternalIpIpAddressArgs:
     def address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "address", value)
 
+
+if not MYPY:
+    class RegionAutoscalerAutoscalingPolicyArgsDict(TypedDict):
+        max_replicas: pulumi.Input[int]
+        """
+        The maximum number of instances that the autoscaler can scale up
+        to. This is required when creating or updating an autoscaler. The
+        maximum number of replicas should not be lower than minimal number
+        of replicas.
+        """
+        min_replicas: pulumi.Input[int]
+        """
+        The minimum number of replicas that the autoscaler can scale down
+        to. This cannot be less than 0. If not provided, autoscaler will
+        choose a default value depending on maximum number of instances
+        allowed.
+        """
+        cooldown_period: NotRequired[pulumi.Input[int]]
+        """
+        The number of seconds that the autoscaler should wait before it
+        starts collecting information from a new instance. This prevents
+        the autoscaler from collecting information when the instance is
+        initializing, during which the collected usage would not be
+        reliable. The default time autoscaler waits is 60 seconds.
+        Virtual machine initialization times might vary because of
+        numerous factors. We recommend that you test how long an
+        instance may take to initialize. To do this, create an instance
+        and time the startup process.
+        """
+        cpu_utilization: NotRequired[pulumi.Input['RegionAutoscalerAutoscalingPolicyCpuUtilizationArgsDict']]
+        """
+        Defines the CPU utilization policy that allows the autoscaler to
+        scale based on the average CPU utilization of a managed instance
+        group.
+        Structure is documented below.
+        """
+        load_balancing_utilization: NotRequired[pulumi.Input['RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgsDict']]
+        """
+        Configuration parameters of autoscaling based on a load balancer.
+        Structure is documented below.
+        """
+        metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyMetricArgsDict']]]]
+        """
+        Configuration parameters of autoscaling based on a custom metric.
+        Structure is documented below.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Defines operating mode for this policy.
+        """
+        scale_down_control: NotRequired[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlArgsDict']]
+        """
+        Defines scale down controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events
+        Structure is documented below.
+        """
+        scale_in_control: NotRequired[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlArgsDict']]
+        """
+        Defines scale in controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events
+        Structure is documented below.
+        """
+        scaling_schedules: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyScalingScheduleArgsDict']]]]
+        """
+        Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+        Structure is documented below.
+        """
+elif False:
+    RegionAutoscalerAutoscalingPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionAutoscalerAutoscalingPolicyArgs:
@@ -15743,6 +21252,31 @@ class RegionAutoscalerAutoscalingPolicyArgs:
         pulumi.set(self, "scaling_schedules", value)
 
 
+if not MYPY:
+    class RegionAutoscalerAutoscalingPolicyCpuUtilizationArgsDict(TypedDict):
+        target: pulumi.Input[float]
+        """
+        The target CPU utilization that the autoscaler should maintain.
+        Must be a float value in the range (0, 1]. If not specified, the
+        default is 0.6.
+        If the CPU level is below the target utilization, the autoscaler
+        scales down the number of instances until it reaches the minimum
+        number of instances you specified or until the average CPU of
+        your instances reaches the target utilization.
+        If the average CPU is above the target utilization, the autoscaler
+        scales up until it reaches the maximum number of instances you
+        specified or until the average utilization reaches the target
+        utilization.
+        """
+        predictive_method: NotRequired[pulumi.Input[str]]
+        """
+        Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+        - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+        - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+        """
+elif False:
+    RegionAutoscalerAutoscalingPolicyCpuUtilizationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs:
     def __init__(__self__, *,
@@ -15805,6 +21339,17 @@ class RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs:
         pulumi.set(self, "predictive_method", value)
 
 
+if not MYPY:
+    class RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgsDict(TypedDict):
+        target: pulumi.Input[float]
+        """
+        Fraction of backend capacity utilization (set in HTTP(s) load
+        balancing configuration) that autoscaler should maintain. Must
+        be a positive float value. If not defined, the default is 0.8.
+        """
+elif False:
+    RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs:
     def __init__(__self__, *,
@@ -15830,6 +21375,81 @@ class RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs:
     def target(self, value: pulumi.Input[float]):
         pulumi.set(self, "target", value)
 
+
+if not MYPY:
+    class RegionAutoscalerAutoscalingPolicyMetricArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The identifier (type) of the Stackdriver Monitoring metric.
+        The metric cannot have negative values.
+        The metric must have a value type of INT64 or DOUBLE.
+        """
+        filter: NotRequired[pulumi.Input[str]]
+        """
+        A filter string to be used as the filter string for
+        a Stackdriver Monitoring TimeSeries.list API call.
+        This filter is used to select a specific TimeSeries for
+        the purpose of autoscaling and to determine whether the metric
+        is exporting per-instance or per-group data.
+        You can only use the AND operator for joining selectors.
+        You can only use direct equality comparison operator (=) without
+        any functions for each selector.
+        You can specify the metric in both the filter string and in the
+        metric field. However, if specified in both places, the metric must
+        be identical.
+        The monitored resource type determines what kind of values are
+        expected for the metric. If it is a gce_instance, the autoscaler
+        expects the metric to include a separate TimeSeries for each
+        instance in a group. In such a case, you cannot filter on resource
+        labels.
+        If the resource type is any other value, the autoscaler expects
+        this metric to contain values that apply to the entire autoscaled
+        instance group and resource label filtering can be performed to
+        point autoscaler at the correct TimeSeries to scale upon.
+        This is called a per-group metric for the purpose of autoscaling.
+        If not specified, the type defaults to gce_instance.
+        You should provide a filter that is selective enough to pick just
+        one TimeSeries for the autoscaled group or for each of the instances
+        (if you are using gce_instance resource type). If multiple
+        TimeSeries are returned upon the query execution, the autoscaler
+        will sum their respective values to obtain its scaling value.
+        """
+        single_instance_assignment: NotRequired[pulumi.Input[float]]
+        """
+        If scaling is based on a per-group metric value that represents the
+        total amount of work to be done or resource usage, set this value to
+        an amount assigned for a single instance of the scaled group.
+        The autoscaler will keep the number of instances proportional to the
+        value of this metric, the metric itself should not change value due
+        to group resizing.
+        For example, a good metric to use with the target is
+        `pubsub.googleapis.com/subscription/num_undelivered_messages`
+        or a custom metric exporting the total number of requests coming to
+        your instances.
+        A bad example would be a metric exporting an average or median
+        latency, since this value can't include a chunk assignable to a
+        single instance, it could be better used with utilization_target
+        instead.
+        """
+        target: NotRequired[pulumi.Input[float]]
+        """
+        The target value of the metric that autoscaler should
+        maintain. This must be a positive value. A utilization
+        metric scales number of virtual machines handling requests
+        to increase or decrease proportionally to the metric.
+        For example, a good metric to use as a utilizationTarget is
+        www.googleapis.com/compute/instance/network/received_bytes_count.
+        The autoscaler will work to keep this value constant for each
+        of the instances.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Defines how target utilization value is expressed for a
+        Stackdriver Monitoring metric.
+        Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
+        """
+elif False:
+    RegionAutoscalerAutoscalingPolicyMetricArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionAutoscalerAutoscalingPolicyMetricArgs:
@@ -16017,6 +21637,21 @@ class RegionAutoscalerAutoscalingPolicyMetricArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class RegionAutoscalerAutoscalingPolicyScaleDownControlArgsDict(TypedDict):
+        max_scaled_down_replicas: NotRequired[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgsDict']]
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        time_window_sec: NotRequired[pulumi.Input[int]]
+        """
+        How long back autoscaling should look when computing recommendations
+        to include directives regarding slower scale down, as described above.
+        """
+elif False:
+    RegionAutoscalerAutoscalingPolicyScaleDownControlArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionAutoscalerAutoscalingPolicyScaleDownControlArgs:
     def __init__(__self__, *,
@@ -16059,6 +21694,21 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControlArgs:
     def time_window_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "time_window_sec", value)
 
+
+if not MYPY:
+    class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgsDict(TypedDict):
+        fixed: NotRequired[pulumi.Input[int]]
+        """
+        Specifies a fixed number of VM instances. This must be a positive
+        integer.
+        """
+        percent: NotRequired[pulumi.Input[int]]
+        """
+        Specifies a percentage of instances between 0 to 100%, inclusive.
+        For example, specify 80 for 80%.
+        """
+elif False:
+    RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs:
@@ -16103,6 +21753,21 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs
         pulumi.set(self, "percent", value)
 
 
+if not MYPY:
+    class RegionAutoscalerAutoscalingPolicyScaleInControlArgsDict(TypedDict):
+        max_scaled_in_replicas: NotRequired[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgsDict']]
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        time_window_sec: NotRequired[pulumi.Input[int]]
+        """
+        How long back autoscaling should look when computing recommendations
+        to include directives regarding slower scale down, as described above.
+        """
+elif False:
+    RegionAutoscalerAutoscalingPolicyScaleInControlArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionAutoscalerAutoscalingPolicyScaleInControlArgs:
     def __init__(__self__, *,
@@ -16146,6 +21811,21 @@ class RegionAutoscalerAutoscalingPolicyScaleInControlArgs:
         pulumi.set(self, "time_window_sec", value)
 
 
+if not MYPY:
+    class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgsDict(TypedDict):
+        fixed: NotRequired[pulumi.Input[int]]
+        """
+        Specifies a fixed number of VM instances. This must be a positive
+        integer.
+        """
+        percent: NotRequired[pulumi.Input[int]]
+        """
+        Specifies a percentage of instances between 0 to 100%, inclusive.
+        For example, specify 80 for 80%.
+        """
+elif False:
+    RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
     def __init__(__self__, *,
@@ -16188,6 +21868,39 @@ class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
     def percent(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "percent", value)
 
+
+if not MYPY:
+    class RegionAutoscalerAutoscalingPolicyScalingScheduleArgsDict(TypedDict):
+        duration_sec: pulumi.Input[int]
+        """
+        The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+        """
+        min_required_replicas: pulumi.Input[int]
+        """
+        Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+        """
+        name: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        schedule: pulumi.Input[str]
+        """
+        The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of this resource.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+        """
+        time_zone: NotRequired[pulumi.Input[str]]
+        """
+        The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        """
+elif False:
+    RegionAutoscalerAutoscalingPolicyScalingScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionAutoscalerAutoscalingPolicyScalingScheduleArgs:
@@ -16303,6 +22016,120 @@ class RegionAutoscalerAutoscalingPolicyScalingScheduleArgs:
     def time_zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "time_zone", value)
 
+
+if not MYPY:
+    class RegionBackendServiceBackendArgsDict(TypedDict):
+        group: pulumi.Input[str]
+        """
+        The fully-qualified URL of an Instance Group or Network Endpoint
+        Group resource. In case of instance group this defines the list
+        of instances that serve traffic. Member virtual machine
+        instances from each instance group must live in the same zone as
+        the instance group itself. No two backends in a backend service
+        are allowed to use same Instance Group resource.
+        For Network Endpoint Groups this defines list of endpoints. All
+        endpoints of Network Endpoint Group must be hosted on instances
+        located in the same zone as the Network Endpoint Group.
+        Backend services cannot mix Instance Group and
+        Network Endpoint Group backends.
+        When the `load_balancing_scheme` is INTERNAL, only instance groups
+        are supported.
+        Note that you must specify an Instance Group or Network Endpoint
+        Group resource using the fully-qualified URL, rather than a
+        partial URL.
+        """
+        balancing_mode: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the balancing mode for this backend.
+        See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+        for an explanation of load balancing modes.
+        From version 6.0.0 default value will be UTILIZATION to match default GCP value.
+        Default value is `CONNECTION`.
+        Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
+        """
+        capacity_scaler: NotRequired[pulumi.Input[float]]
+        """
+        A multiplier applied to the group's maximum servicing capacity
+        (based on UTILIZATION, RATE or CONNECTION).
+        ~>**NOTE**: This field cannot be set for
+        INTERNAL region backend services (default loadBalancingScheme),
+        but is required for non-INTERNAL backend service. The total
+        capacity_scaler for all backends must be non-zero.
+        A setting of 0 means the group is completely drained, offering
+        0% of its available Capacity. Valid range is [0.0,1.0].
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of this resource.
+        Provide this property when you create the resource.
+        """
+        failover: NotRequired[pulumi.Input[bool]]
+        """
+        This field designates whether this is a failover backend. More
+        than one failover backend can be configured for a given RegionBackendService.
+        """
+        max_connections: NotRequired[pulumi.Input[int]]
+        """
+        The max number of simultaneous connections for the group. Can
+        be used with either CONNECTION or UTILIZATION balancing modes.
+        Cannot be set for INTERNAL backend services.
+        For CONNECTION mode, either maxConnections or one
+        of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+        as appropriate for group type, must be set.
+        """
+        max_connections_per_endpoint: NotRequired[pulumi.Input[int]]
+        """
+        The max number of simultaneous connections that a single backend
+        network endpoint can handle. Cannot be set
+        for INTERNAL backend services.
+        This is used to calculate the capacity of the group. Can be
+        used in either CONNECTION or UTILIZATION balancing modes. For
+        CONNECTION mode, either maxConnections or
+        maxConnectionsPerEndpoint must be set.
+        """
+        max_connections_per_instance: NotRequired[pulumi.Input[int]]
+        """
+        The max number of simultaneous connections that a single
+        backend instance can handle. Cannot be set for INTERNAL backend
+        services.
+        This is used to calculate the capacity of the group.
+        Can be used in either CONNECTION or UTILIZATION balancing modes.
+        For CONNECTION mode, either maxConnections or
+        maxConnectionsPerInstance must be set.
+        """
+        max_rate: NotRequired[pulumi.Input[int]]
+        """
+        The max requests per second (RPS) of the group. Cannot be set
+        for INTERNAL backend services.
+        Can be used with either RATE or UTILIZATION balancing modes,
+        but required if RATE mode. Either maxRate or one
+        of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
+        group type, must be set.
+        """
+        max_rate_per_endpoint: NotRequired[pulumi.Input[float]]
+        """
+        The max requests per second (RPS) that a single backend network
+        endpoint can handle. This is used to calculate the capacity of
+        the group. Can be used in either balancing mode. For RATE mode,
+        either maxRate or maxRatePerEndpoint must be set. Cannot be set
+        for INTERNAL backend services.
+        """
+        max_rate_per_instance: NotRequired[pulumi.Input[float]]
+        """
+        The max requests per second (RPS) that a single backend
+        instance can handle. This is used to calculate the capacity of
+        the group. Can be used in either balancing mode. For RATE mode,
+        either maxRate or maxRatePerInstance must be set. Cannot be set
+        for INTERNAL backend services.
+        """
+        max_utilization: NotRequired[pulumi.Input[float]]
+        """
+        Used when balancingMode is UTILIZATION. This ratio defines the
+        CPU utilization target for the group. Valid range is [0.0, 1.0].
+        Cannot be set for INTERNAL backend services.
+        """
+elif False:
+    RegionBackendServiceBackendArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionBackendServiceBackendArgs:
@@ -16624,6 +22451,61 @@ class RegionBackendServiceBackendArgs:
         pulumi.set(self, "max_utilization", value)
 
 
+if not MYPY:
+    class RegionBackendServiceCdnPolicyArgsDict(TypedDict):
+        cache_key_policy: NotRequired[pulumi.Input['RegionBackendServiceCdnPolicyCacheKeyPolicyArgsDict']]
+        """
+        The CacheKeyPolicy for this CdnPolicy.
+        Structure is documented below.
+        """
+        cache_mode: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the cache setting for all responses from this backend.
+        The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+        Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
+        """
+        client_ttl: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the maximum allowed TTL for cached content served by this origin.
+        """
+        default_ttl: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the default TTL for cached content served by this origin for responses
+        that do not have an existing valid TTL (max-age or s-max-age).
+        """
+        max_ttl: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the maximum allowed TTL for cached content served by this origin.
+        """
+        negative_caching: NotRequired[pulumi.Input[bool]]
+        """
+        Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+        """
+        negative_caching_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCdnPolicyNegativeCachingPolicyArgsDict']]]]
+        """
+        Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+        Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+        Structure is documented below.
+        """
+        serve_while_stale: NotRequired[pulumi.Input[int]]
+        """
+        Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+        """
+        signed_url_cache_max_age_sec: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of seconds the response to a signed URL request
+        will be considered fresh, defaults to 1hr (3600s). After this
+        time period, the response will be revalidated before
+        being served.
+        When serving responses to signed URL requests, Cloud CDN will
+        internally behave as though all responses from this backend had a
+        "Cache-Control: public, max-age=[TTL]" header, regardless of any
+        existing Cache-Control header. The actual headers served in
+        responses will not be altered.
+        """
+elif False:
+    RegionBackendServiceCdnPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionBackendServiceCdnPolicyArgs:
     def __init__(__self__, *,
@@ -16803,6 +22685,48 @@ class RegionBackendServiceCdnPolicyArgs:
         pulumi.set(self, "signed_url_cache_max_age_sec", value)
 
 
+if not MYPY:
+    class RegionBackendServiceCdnPolicyCacheKeyPolicyArgsDict(TypedDict):
+        include_host: NotRequired[pulumi.Input[bool]]
+        """
+        If true requests to different hosts will be cached separately.
+        """
+        include_named_cookies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Names of cookies to include in cache keys.
+        """
+        include_protocol: NotRequired[pulumi.Input[bool]]
+        """
+        If true, http and https requests will be cached separately.
+        """
+        include_query_string: NotRequired[pulumi.Input[bool]]
+        """
+        If true, include query string parameters in the cache key
+        according to query_string_whitelist and
+        query_string_blacklist. If neither is set, the entire query
+        string will be included.
+        If false, the query string will be excluded from the cache
+        key entirely.
+        """
+        query_string_blacklists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Names of query string parameters to exclude in cache keys.
+        All other parameters will be included. Either specify
+        query_string_whitelist or query_string_blacklist, not both.
+        '&' and '=' will be percent encoded and not treated as
+        delimiters.
+        """
+        query_string_whitelists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Names of query string parameters to include in cache keys.
+        All other parameters will be excluded. Either specify
+        query_string_whitelist or query_string_blacklist, not both.
+        '&' and '=' will be percent encoded and not treated as
+        delimiters.
+        """
+elif False:
+    RegionBackendServiceCdnPolicyCacheKeyPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionBackendServiceCdnPolicyCacheKeyPolicyArgs:
     def __init__(__self__, *,
@@ -16932,6 +22856,21 @@ class RegionBackendServiceCdnPolicyCacheKeyPolicyArgs:
         pulumi.set(self, "query_string_whitelists", value)
 
 
+if not MYPY:
+    class RegionBackendServiceCdnPolicyNegativeCachingPolicyArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[int]]
+        """
+        The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+        can be specified as values, and you cannot specify a status code more than once.
+        """
+        ttl: NotRequired[pulumi.Input[int]]
+        """
+        The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+        (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        """
+elif False:
+    RegionBackendServiceCdnPolicyNegativeCachingPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs:
     def __init__(__self__, *,
@@ -16974,6 +22913,43 @@ class RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs:
     def ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ttl", value)
 
+
+if not MYPY:
+    class RegionBackendServiceCircuitBreakersArgsDict(TypedDict):
+        connect_timeout: NotRequired[pulumi.Input['RegionBackendServiceCircuitBreakersConnectTimeoutArgsDict']]
+        """
+        The timeout for new network connections to hosts.
+        Structure is documented below.
+        """
+        max_connections: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of connections to the backend cluster.
+        Defaults to 1024.
+        """
+        max_pending_requests: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of pending requests to the backend cluster.
+        Defaults to 1024.
+        """
+        max_requests: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of parallel requests to the backend cluster.
+        Defaults to 1024.
+        """
+        max_requests_per_connection: NotRequired[pulumi.Input[int]]
+        """
+        Maximum requests for a single backend connection. This parameter
+        is respected by both the HTTP/1.1 and HTTP/2 implementations. If
+        not specified, there is no limit. Setting this parameter to 1
+        will effectively disable keep alive.
+        """
+        max_retries: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of parallel retries to the backend cluster.
+        Defaults to 3.
+        """
+elif False:
+    RegionBackendServiceCircuitBreakersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionBackendServiceCircuitBreakersArgs:
@@ -17094,6 +23070,23 @@ class RegionBackendServiceCircuitBreakersArgs:
         pulumi.set(self, "max_retries", value)
 
 
+if not MYPY:
+    class RegionBackendServiceCircuitBreakersConnectTimeoutArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    RegionBackendServiceCircuitBreakersConnectTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionBackendServiceCircuitBreakersConnectTimeoutArgs:
     def __init__(__self__, *,
@@ -17139,6 +23132,50 @@ class RegionBackendServiceCircuitBreakersConnectTimeoutArgs:
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
+
+if not MYPY:
+    class RegionBackendServiceConnectionTrackingPolicyArgsDict(TypedDict):
+        connection_persistence_on_unhealthy_backends: NotRequired[pulumi.Input[str]]
+        """
+        Specifies connection persistence when backends are unhealthy.
+        If set to `DEFAULT_FOR_PROTOCOL`, the existing connections persist on
+        unhealthy backends only for connection-oriented protocols (TCP and SCTP)
+        and only if the Tracking Mode is PER_CONNECTION (default tracking mode)
+        or the Session Affinity is configured for 5-tuple. They do not persist
+        for UDP.
+        If set to `NEVER_PERSIST`, after a backend becomes unhealthy, the existing
+        connections on the unhealthy backend are never persisted on the unhealthy
+        backend. They are always diverted to newly selected healthy backends
+        (unless all backends are unhealthy).
+        If set to `ALWAYS_PERSIST`, existing connections always persist on
+        unhealthy backends regardless of protocol and session affinity. It is
+        generally not recommended to use this mode overriding the default.
+        Default value is `DEFAULT_FOR_PROTOCOL`.
+        Possible values are: `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, `ALWAYS_PERSIST`.
+        """
+        enable_strong_affinity: NotRequired[pulumi.Input[bool]]
+        """
+        Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+        """
+        idle_timeout_sec: NotRequired[pulumi.Input[int]]
+        """
+        Specifies how long to keep a Connection Tracking entry while there is
+        no matching traffic (in seconds).
+        For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
+        For NLB the minimum(default) is 60 seconds and the maximum is 16 hours.
+        """
+        tracking_mode: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the key used for connection tracking. There are two options:
+        `PER_CONNECTION`: The Connection Tracking is performed as per the
+        Connection Key (default Hash Method) for the specific protocol.
+        `PER_SESSION`: The Connection Tracking is performed as per the
+        configured Session Affinity. It matches the configured Session Affinity.
+        Default value is `PER_CONNECTION`.
+        Possible values are: `PER_CONNECTION`, `PER_SESSION`.
+        """
+elif False:
+    RegionBackendServiceConnectionTrackingPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionBackendServiceConnectionTrackingPolicyArgs:
@@ -17257,6 +23294,33 @@ class RegionBackendServiceConnectionTrackingPolicyArgs:
         pulumi.set(self, "tracking_mode", value)
 
 
+if not MYPY:
+    class RegionBackendServiceConsistentHashArgsDict(TypedDict):
+        http_cookie: NotRequired[pulumi.Input['RegionBackendServiceConsistentHashHttpCookieArgsDict']]
+        """
+        Hash is based on HTTP Cookie. This field describes a HTTP cookie
+        that will be used as the hash key for the consistent hash load
+        balancer. If the cookie is not present, it will be generated.
+        This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+        Structure is documented below.
+        """
+        http_header_name: NotRequired[pulumi.Input[str]]
+        """
+        The hash based on the value of the specified header field.
+        This field is applicable if the sessionAffinity is set to HEADER_FIELD.
+        """
+        minimum_ring_size: NotRequired[pulumi.Input[int]]
+        """
+        The minimum number of virtual nodes to use for the hash ring.
+        Larger ring sizes result in more granular load
+        distributions. If the number of hosts in the load balancing pool
+        is larger than the ring size, each host will be assigned a single
+        virtual node.
+        Defaults to 1024.
+        """
+elif False:
+    RegionBackendServiceConsistentHashArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionBackendServiceConsistentHashArgs:
     def __init__(__self__, *,
@@ -17332,6 +23396,24 @@ class RegionBackendServiceConsistentHashArgs:
         pulumi.set(self, "minimum_ring_size", value)
 
 
+if not MYPY:
+    class RegionBackendServiceConsistentHashHttpCookieArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the cookie.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to set for the cookie.
+        """
+        ttl: NotRequired[pulumi.Input['RegionBackendServiceConsistentHashHttpCookieTtlArgsDict']]
+        """
+        Lifetime of the cookie.
+        Structure is documented below.
+        """
+elif False:
+    RegionBackendServiceConsistentHashHttpCookieArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionBackendServiceConsistentHashHttpCookieArgs:
     def __init__(__self__, *,
@@ -17389,6 +23471,23 @@ class RegionBackendServiceConsistentHashHttpCookieArgs:
         pulumi.set(self, "ttl", value)
 
 
+if not MYPY:
+    class RegionBackendServiceConsistentHashHttpCookieTtlArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    RegionBackendServiceConsistentHashHttpCookieTtlArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionBackendServiceConsistentHashHttpCookieTtlArgs:
     def __init__(__self__, *,
@@ -17434,6 +23533,40 @@ class RegionBackendServiceConsistentHashHttpCookieTtlArgs:
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
+
+if not MYPY:
+    class RegionBackendServiceFailoverPolicyArgsDict(TypedDict):
+        disable_connection_drain_on_failover: NotRequired[pulumi.Input[bool]]
+        """
+        On failover or failback, this field indicates whether connection drain
+        will be honored. Setting this to true has the following effect: connections
+        to the old active pool are not drained. Connections to the new active pool
+        use the timeout of 10 min (currently fixed). Setting to false has the
+        following effect: both old and new connections will have a drain timeout
+        of 10 min.
+        This can be set to true only if the protocol is TCP.
+        The default is false.
+        """
+        drop_traffic_if_unhealthy: NotRequired[pulumi.Input[bool]]
+        """
+        This option is used only when no healthy VMs are detected in the primary
+        and backup instance groups. When set to true, traffic is dropped. When
+        set to false, new connections are sent across all VMs in the primary group.
+        The default is false.
+        """
+        failover_ratio: NotRequired[pulumi.Input[float]]
+        """
+        The value of the field must be in [0, 1]. If the ratio of the healthy
+        VMs in the primary backend is at or below this number, traffic arriving
+        at the load-balanced IP will be directed to the failover backend.
+        In case where 'failoverRatio' is not set or all the VMs in the backup
+        backend are unhealthy, the traffic will be directed back to the primary
+        backend in the "force" mode, where traffic will be spread to the healthy
+        VMs with the best effort, or to all VMs when no VM is healthy.
+        This field is only used with l4 load balancing.
+        """
+elif False:
+    RegionBackendServiceFailoverPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionBackendServiceFailoverPolicyArgs:
@@ -17524,6 +23657,20 @@ class RegionBackendServiceFailoverPolicyArgs:
         pulumi.set(self, "failover_ratio", value)
 
 
+if not MYPY:
+    class RegionBackendServiceIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    RegionBackendServiceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionBackendServiceIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -17573,6 +23720,20 @@ class RegionBackendServiceIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class RegionBackendServiceIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    RegionBackendServiceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionBackendServiceIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -17621,6 +23782,26 @@ class RegionBackendServiceIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class RegionBackendServiceIapArgsDict(TypedDict):
+        oauth2_client_id: pulumi.Input[str]
+        """
+        OAuth2 Client ID for IAP
+        """
+        oauth2_client_secret: pulumi.Input[str]
+        """
+        OAuth2 Client Secret for IAP
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        oauth2_client_secret_sha256: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        OAuth2 Client Secret SHA-256 for IAP
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+elif False:
+    RegionBackendServiceIapArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionBackendServiceIapArgs:
@@ -17681,6 +23862,22 @@ class RegionBackendServiceIapArgs:
         pulumi.set(self, "oauth2_client_secret_sha256", value)
 
 
+if not MYPY:
+    class RegionBackendServiceLogConfigArgsDict(TypedDict):
+        enable: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable logging for the load balancer traffic served by this backend service.
+        """
+        sample_rate: NotRequired[pulumi.Input[float]]
+        """
+        This field can only be specified if logging is enabled for this backend service. The value of
+        the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+        where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+        The default value is 1.0.
+        """
+elif False:
+    RegionBackendServiceLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionBackendServiceLogConfigArgs:
     def __init__(__self__, *,
@@ -17725,6 +23922,83 @@ class RegionBackendServiceLogConfigArgs:
     def sample_rate(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "sample_rate", value)
 
+
+if not MYPY:
+    class RegionBackendServiceOutlierDetectionArgsDict(TypedDict):
+        base_ejection_time: NotRequired[pulumi.Input['RegionBackendServiceOutlierDetectionBaseEjectionTimeArgsDict']]
+        """
+        The base time that a host is ejected for. The real time is equal to the base
+        time multiplied by the number of times the host has been ejected. Defaults to
+        30000ms or 30s.
+        Structure is documented below.
+        """
+        consecutive_errors: NotRequired[pulumi.Input[int]]
+        """
+        Number of errors before a host is ejected from the connection pool. When the
+        backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+        Defaults to 5.
+        """
+        consecutive_gateway_failure: NotRequired[pulumi.Input[int]]
+        """
+        The number of consecutive gateway failures (502, 503, 504 status or connection
+        errors that are mapped to one of those status codes) before a consecutive
+        gateway failure ejection occurs. Defaults to 5.
+        """
+        enforcing_consecutive_errors: NotRequired[pulumi.Input[int]]
+        """
+        The percentage chance that a host will be actually ejected when an outlier
+        status is detected through consecutive 5xx. This setting can be used to disable
+        ejection or to ramp it up slowly. Defaults to 100.
+        """
+        enforcing_consecutive_gateway_failure: NotRequired[pulumi.Input[int]]
+        """
+        The percentage chance that a host will be actually ejected when an outlier
+        status is detected through consecutive gateway failures. This setting can be
+        used to disable ejection or to ramp it up slowly. Defaults to 0.
+        """
+        enforcing_success_rate: NotRequired[pulumi.Input[int]]
+        """
+        The percentage chance that a host will be actually ejected when an outlier
+        status is detected through success rate statistics. This setting can be used to
+        disable ejection or to ramp it up slowly. Defaults to 100.
+        """
+        interval: NotRequired[pulumi.Input['RegionBackendServiceOutlierDetectionIntervalArgsDict']]
+        """
+        Time interval between ejection sweep analysis. This can result in both new
+        ejections as well as hosts being returned to service. Defaults to 10 seconds.
+        Structure is documented below.
+        """
+        max_ejection_percent: NotRequired[pulumi.Input[int]]
+        """
+        Maximum percentage of hosts in the load balancing pool for the backend service
+        that can be ejected. Defaults to 10%.
+        """
+        success_rate_minimum_hosts: NotRequired[pulumi.Input[int]]
+        """
+        The number of hosts in a cluster that must have enough request volume to detect
+        success rate outliers. If the number of hosts is less than this setting, outlier
+        detection via success rate statistics is not performed for any host in the
+        cluster. Defaults to 5.
+        """
+        success_rate_request_volume: NotRequired[pulumi.Input[int]]
+        """
+        The minimum number of total requests that must be collected in one interval (as
+        defined by the interval duration above) to include this host in success rate
+        based outlier detection. If the volume is lower than this setting, outlier
+        detection via success rate statistics is not performed for that host. Defaults
+        to 100.
+        """
+        success_rate_stdev_factor: NotRequired[pulumi.Input[int]]
+        """
+        This factor is used to determine the ejection threshold for success rate outlier
+        ejection. The ejection threshold is the difference between the mean success
+        rate, and the product of this factor and the standard deviation of the mean
+        success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+        by a thousand to get a double. That is, if the desired factor is 1.9, the
+        runtime value should be 1900. Defaults to 1900.
+        """
+elif False:
+    RegionBackendServiceOutlierDetectionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionBackendServiceOutlierDetectionArgs:
@@ -17965,6 +24239,22 @@ class RegionBackendServiceOutlierDetectionArgs:
         pulumi.set(self, "success_rate_stdev_factor", value)
 
 
+if not MYPY:
+    class RegionBackendServiceOutlierDetectionBaseEjectionTimeArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+        inclusive.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations
+        less than one second are represented with a 0 `seconds` field and a positive
+        `nanos` field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    RegionBackendServiceOutlierDetectionBaseEjectionTimeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionBackendServiceOutlierDetectionBaseEjectionTimeArgs:
     def __init__(__self__, *,
@@ -18008,6 +24298,22 @@ class RegionBackendServiceOutlierDetectionBaseEjectionTimeArgs:
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
+
+if not MYPY:
+    class RegionBackendServiceOutlierDetectionIntervalArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+        inclusive.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations
+        less than one second are represented with a 0 `seconds` field and a positive
+        `nanos` field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    RegionBackendServiceOutlierDetectionIntervalArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionBackendServiceOutlierDetectionIntervalArgs:
@@ -18053,6 +24359,16 @@ class RegionBackendServiceOutlierDetectionIntervalArgs:
         pulumi.set(self, "nanos", value)
 
 
+if not MYPY:
+    class RegionBackendServiceSubsettingArgsDict(TypedDict):
+        policy: pulumi.Input[str]
+        """
+        The algorithm used for subsetting.
+        Possible values are: `CONSISTENT_HASH_SUBSETTING`.
+        """
+elif False:
+    RegionBackendServiceSubsettingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionBackendServiceSubsettingArgs:
     def __init__(__self__, *,
@@ -18076,6 +24392,23 @@ class RegionBackendServiceSubsettingArgs:
     def policy(self, value: pulumi.Input[str]):
         pulumi.set(self, "policy", value)
 
+
+if not MYPY:
+    class RegionCommitmentLicenseResourceArgsDict(TypedDict):
+        license: pulumi.Input[str]
+        """
+        Any applicable license URI.
+        """
+        amount: NotRequired[pulumi.Input[str]]
+        """
+        The number of licenses purchased.
+        """
+        cores_per_license: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the core range of the instance for which this license applies.
+        """
+elif False:
+    RegionCommitmentLicenseResourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionCommitmentLicenseResourceArgs:
@@ -18130,6 +24463,27 @@ class RegionCommitmentLicenseResourceArgs:
     def cores_per_license(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cores_per_license", value)
 
+
+if not MYPY:
+    class RegionCommitmentResourceArgsDict(TypedDict):
+        accelerator_type: NotRequired[pulumi.Input[str]]
+        """
+        Name of the accelerator type resource. Applicable only when the type is ACCELERATOR.
+        """
+        amount: NotRequired[pulumi.Input[str]]
+        """
+        The amount of the resource purchased (in a type-dependent unit,
+        such as bytes). For vCPUs, this can just be an integer. For memory,
+        this must be provided in MB. Memory must be a multiple of 256 MB,
+        with up to 6.5GB of memory per every vCPU.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of resource for which this commitment applies.
+        Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
+        """
+elif False:
+    RegionCommitmentResourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionCommitmentResourceArgs:
@@ -18194,6 +24548,15 @@ class RegionCommitmentResourceArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class RegionDiskAsyncPrimaryDiskArgsDict(TypedDict):
+        disk: pulumi.Input[str]
+        """
+        Primary disk for asynchronous disk replication.
+        """
+elif False:
+    RegionDiskAsyncPrimaryDiskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionDiskAsyncPrimaryDiskArgs:
     def __init__(__self__, *,
@@ -18215,6 +24578,27 @@ class RegionDiskAsyncPrimaryDiskArgs:
     def disk(self, value: pulumi.Input[str]):
         pulumi.set(self, "disk", value)
 
+
+if not MYPY:
+    class RegionDiskDiskEncryptionKeyArgsDict(TypedDict):
+        kms_key_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the encryption key that is stored in Google Cloud KMS.
+        """
+        raw_key: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        sha256: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        encryption key that protects this resource.
+        """
+elif False:
+    RegionDiskDiskEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionDiskDiskEncryptionKeyArgs:
@@ -18279,6 +24663,16 @@ class RegionDiskDiskEncryptionKeyArgs:
         pulumi.set(self, "sha256", value)
 
 
+if not MYPY:
+    class RegionDiskGuestOsFeatureArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+        """
+elif False:
+    RegionDiskGuestOsFeatureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionDiskGuestOsFeatureArgs:
     def __init__(__self__, *,
@@ -18302,6 +24696,14 @@ class RegionDiskGuestOsFeatureArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class RegionDiskIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    RegionDiskIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionDiskIamBindingConditionArgs:
@@ -18342,6 +24744,14 @@ class RegionDiskIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class RegionDiskIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    RegionDiskIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionDiskIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -18380,6 +24790,26 @@ class RegionDiskIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class RegionDiskSourceSnapshotEncryptionKeyArgsDict(TypedDict):
+        kms_key_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the encryption key that is stored in Google Cloud KMS.
+        """
+        raw_key: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        """
+        sha256: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        encryption key that protects this resource.
+        """
+elif False:
+    RegionDiskSourceSnapshotEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionDiskSourceSnapshotEncryptionKeyArgs:
@@ -18441,6 +24871,44 @@ class RegionDiskSourceSnapshotEncryptionKeyArgs:
     def sha256(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sha256", value)
 
+
+if not MYPY:
+    class RegionHealthCheckGrpcHealthCheckArgsDict(TypedDict):
+        grpc_service_name: NotRequired[pulumi.Input[str]]
+        """
+        The gRPC service name for the health check.
+        The value of grpcServiceName has the following meanings by convention:
+        * Empty serviceName means the overall status of all services at the backend.
+        * Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+        The grpcServiceName can only be ASCII.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The port number for the health check request.
+        Must be specified if portName and portSpecification are not set
+        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        """
+        port_name: NotRequired[pulumi.Input[str]]
+        """
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        port_name are defined, port takes precedence.
+        """
+        port_specification: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how port is selected for health checking, can be one of the
+        following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, gRPC health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
+        """
+elif False:
+    RegionHealthCheckGrpcHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionHealthCheckGrpcHealthCheckArgs:
@@ -18546,6 +25014,60 @@ class RegionHealthCheckGrpcHealthCheckArgs:
     def port_specification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "port_specification", value)
 
+
+if not MYPY:
+    class RegionHealthCheckHttp2HealthCheckArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        The value of the host header in the HTTP2 health check request.
+        If left empty (default value), the public IP on behalf of which this health
+        check is performed will be used.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The TCP port number for the HTTP2 health check request.
+        The default value is 443.
+        """
+        port_name: NotRequired[pulumi.Input[str]]
+        """
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        port_name are defined, port takes precedence.
+        """
+        port_specification: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how port is selected for health checking, can be one of the
+        following values:
+
+          * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+
+          * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+
+          * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+          network endpoint is used for health checking. For other backends, the
+          port or named port specified in the Backend Service is used for health
+          checking.
+
+        If not specified, HTTP2 health check follows behavior specified in 'port' and
+        'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+        """
+        proxy_header: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the type of proxy header to append before sending data to the
+        backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+        """
+        request_path: NotRequired[pulumi.Input[str]]
+        """
+        The request path of the HTTP2 health check request.
+        The default value is /.
+        """
+        response: NotRequired[pulumi.Input[str]]
+        """
+        The bytes to match against the beginning of the response data. If left empty
+        (the default value), any response will indicate health. The response data
+        can only be ASCII.
+        """
+elif False:
+    RegionHealthCheckHttp2HealthCheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionHealthCheckHttp2HealthCheckArgs:
@@ -18708,6 +25230,59 @@ class RegionHealthCheckHttp2HealthCheckArgs:
         pulumi.set(self, "response", value)
 
 
+if not MYPY:
+    class RegionHealthCheckHttpHealthCheckArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        The value of the host header in the HTTP health check request.
+        If left empty (default value), the public IP on behalf of which this health
+        check is performed will be used.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The TCP port number for the HTTP health check request.
+        The default value is 80.
+        """
+        port_name: NotRequired[pulumi.Input[str]]
+        """
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        port_name are defined, port takes precedence.
+        """
+        port_specification: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how port is selected for health checking, can be one of the
+        following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, HTTP health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
+        """
+        proxy_header: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the type of proxy header to append before sending data to the
+        backend.
+        Default value is `NONE`.
+        Possible values are: `NONE`, `PROXY_V1`.
+        """
+        request_path: NotRequired[pulumi.Input[str]]
+        """
+        The request path of the HTTP health check request.
+        The default value is /.
+        """
+        response: NotRequired[pulumi.Input[str]]
+        """
+        The bytes to match against the beginning of the response data. If left empty
+        (the default value), any response will indicate health. The response data
+        can only be ASCII.
+        """
+elif False:
+    RegionHealthCheckHttpHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionHealthCheckHttpHealthCheckArgs:
     def __init__(__self__, *,
@@ -18866,6 +25441,59 @@ class RegionHealthCheckHttpHealthCheckArgs:
     def response(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "response", value)
 
+
+if not MYPY:
+    class RegionHealthCheckHttpsHealthCheckArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        The value of the host header in the HTTPS health check request.
+        If left empty (default value), the public IP on behalf of which this health
+        check is performed will be used.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The TCP port number for the HTTPS health check request.
+        The default value is 443.
+        """
+        port_name: NotRequired[pulumi.Input[str]]
+        """
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        port_name are defined, port takes precedence.
+        """
+        port_specification: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how port is selected for health checking, can be one of the
+        following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, HTTPS health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
+        """
+        proxy_header: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the type of proxy header to append before sending data to the
+        backend.
+        Default value is `NONE`.
+        Possible values are: `NONE`, `PROXY_V1`.
+        """
+        request_path: NotRequired[pulumi.Input[str]]
+        """
+        The request path of the HTTPS health check request.
+        The default value is /.
+        """
+        response: NotRequired[pulumi.Input[str]]
+        """
+        The bytes to match against the beginning of the response data. If left empty
+        (the default value), any response will indicate health. The response data
+        can only be ASCII.
+        """
+elif False:
+    RegionHealthCheckHttpsHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionHealthCheckHttpsHealthCheckArgs:
@@ -19026,6 +25654,16 @@ class RegionHealthCheckHttpsHealthCheckArgs:
         pulumi.set(self, "response", value)
 
 
+if not MYPY:
+    class RegionHealthCheckLogConfigArgsDict(TypedDict):
+        enable: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether or not to export logs. This is false by default,
+        which means no health check logging will be done.
+        """
+elif False:
+    RegionHealthCheckLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionHealthCheckLogConfigArgs:
     def __init__(__self__, *,
@@ -19050,6 +25688,55 @@ class RegionHealthCheckLogConfigArgs:
     def enable(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable", value)
 
+
+if not MYPY:
+    class RegionHealthCheckSslHealthCheckArgsDict(TypedDict):
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The TCP port number for the HTTP2 health check request.
+        The default value is 443.
+        """
+        port_name: NotRequired[pulumi.Input[str]]
+        """
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        port_name are defined, port takes precedence.
+        """
+        port_specification: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how port is selected for health checking, can be one of the
+        following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, HTTP2 health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
+        """
+        proxy_header: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the type of proxy header to append before sending data to the
+        backend.
+        Default value is `NONE`.
+        Possible values are: `NONE`, `PROXY_V1`.
+        """
+        request: NotRequired[pulumi.Input[str]]
+        """
+        The application data to send once the SSL connection has been
+        established (default value is empty). If both request and response are
+        empty, the connection establishment alone will indicate health. The request
+        data can only be ASCII.
+        """
+        response: NotRequired[pulumi.Input[str]]
+        """
+        The bytes to match against the beginning of the response data. If left empty
+        (the default value), any response will indicate health. The response data
+        can only be ASCII.
+        """
+elif False:
+    RegionHealthCheckSslHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionHealthCheckSslHealthCheckArgs:
@@ -19194,6 +25881,55 @@ class RegionHealthCheckSslHealthCheckArgs:
         pulumi.set(self, "response", value)
 
 
+if not MYPY:
+    class RegionHealthCheckTcpHealthCheckArgsDict(TypedDict):
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The TCP port number for the TCP health check request.
+        The default value is 80.
+        """
+        port_name: NotRequired[pulumi.Input[str]]
+        """
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        port_name are defined, port takes precedence.
+        """
+        port_specification: NotRequired[pulumi.Input[str]]
+        """
+        Specifies how port is selected for health checking, can be one of the
+        following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: The `portName` is used for health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, TCP health check follows behavior specified in `port` and
+        `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
+        """
+        proxy_header: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the type of proxy header to append before sending data to the
+        backend.
+        Default value is `NONE`.
+        Possible values are: `NONE`, `PROXY_V1`.
+        """
+        request: NotRequired[pulumi.Input[str]]
+        """
+        The application data to send once the TCP connection has been
+        established (default value is empty). If both request and response are
+        empty, the connection establishment alone will indicate health. The request
+        data can only be ASCII.
+        """
+        response: NotRequired[pulumi.Input[str]]
+        """
+        The bytes to match against the beginning of the response data. If left empty
+        (the default value), any response will indicate health. The response data
+        can only be ASCII.
+        """
+elif False:
+    RegionHealthCheckTcpHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionHealthCheckTcpHealthCheckArgs:
     def __init__(__self__, *,
@@ -19337,6 +26073,21 @@ class RegionHealthCheckTcpHealthCheckArgs:
         pulumi.set(self, "response", value)
 
 
+if not MYPY:
+    class RegionInstanceGroupManagerAllInstancesConfigArgsDict(TypedDict):
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        , The label key-value pairs that you want to patch onto the instance.
+
+        - - -
+        """
+        metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+        """
+elif False:
+    RegionInstanceGroupManagerAllInstancesConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceGroupManagerAllInstancesConfigArgs:
     def __init__(__self__, *,
@@ -19380,6 +26131,20 @@ class RegionInstanceGroupManagerAllInstancesConfigArgs:
         pulumi.set(self, "metadata", value)
 
 
+if not MYPY:
+    class RegionInstanceGroupManagerAutoHealingPoliciesArgsDict(TypedDict):
+        health_check: pulumi.Input[str]
+        """
+        The health check resource that signals autohealing.
+        """
+        initial_delay_sec: pulumi.Input[int]
+        """
+        The number of seconds that the managed instance group waits before
+        it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
+        """
+elif False:
+    RegionInstanceGroupManagerAutoHealingPoliciesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceGroupManagerAutoHealingPoliciesArgs:
     def __init__(__self__, *,
@@ -19418,6 +26183,21 @@ class RegionInstanceGroupManagerAutoHealingPoliciesArgs:
     def initial_delay_sec(self, value: pulumi.Input[int]):
         pulumi.set(self, "initial_delay_sec", value)
 
+
+if not MYPY:
+    class RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict(TypedDict):
+        default_action_on_failure: NotRequired[pulumi.Input[str]]
+        """
+        , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
+
+        - - -
+        """
+        force_update_on_repair: NotRequired[pulumi.Input[str]]
+        """
+        , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
+        """
+elif False:
+    RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs:
@@ -19462,6 +26242,20 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs:
         pulumi.set(self, "force_update_on_repair", value)
 
 
+if not MYPY:
+    class RegionInstanceGroupManagerNamedPortArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the port.
+        """
+        port: pulumi.Input[int]
+        """
+        The port number.
+        - - -
+        """
+elif False:
+    RegionInstanceGroupManagerNamedPortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceGroupManagerNamedPortArgs:
     def __init__(__self__, *,
@@ -19501,6 +26295,15 @@ class RegionInstanceGroupManagerNamedPortArgs:
         pulumi.set(self, "port", value)
 
 
+if not MYPY:
+    class RegionInstanceGroupManagerParamsArgsDict(TypedDict):
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, Any]]]
+        """
+        Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+        """
+elif False:
+    RegionInstanceGroupManagerParamsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceGroupManagerParamsArgs:
     def __init__(__self__, *,
@@ -19523,6 +26326,20 @@ class RegionInstanceGroupManagerParamsArgs:
     def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "resource_manager_tags", value)
 
+
+if not MYPY:
+    class RegionInstanceGroupManagerStandbyPolicyArgsDict(TypedDict):
+        initial_delay_sec: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
+        - - -
+        """
+elif False:
+    RegionInstanceGroupManagerStandbyPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionInstanceGroupManagerStandbyPolicyArgs:
@@ -19565,6 +26382,19 @@ class RegionInstanceGroupManagerStandbyPolicyArgs:
         pulumi.set(self, "mode", value)
 
 
+if not MYPY:
+    class RegionInstanceGroupManagerStatefulDiskArgsDict(TypedDict):
+        device_name: pulumi.Input[str]
+        """
+        , The device name of the disk to be attached.
+        """
+        delete_rule: NotRequired[pulumi.Input[str]]
+        """
+        , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+        """
+elif False:
+    RegionInstanceGroupManagerStatefulDiskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceGroupManagerStatefulDiskArgs:
     def __init__(__self__, *,
@@ -19602,6 +26432,19 @@ class RegionInstanceGroupManagerStatefulDiskArgs:
     def delete_rule(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "delete_rule", value)
 
+
+if not MYPY:
+    class RegionInstanceGroupManagerStatefulExternalIpArgsDict(TypedDict):
+        delete_rule: NotRequired[pulumi.Input[str]]
+        """
+        , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
+        """
+        interface_name: NotRequired[pulumi.Input[str]]
+        """
+        , The network interface name of the external Ip. Possible value: `nic0`.
+        """
+elif False:
+    RegionInstanceGroupManagerStatefulExternalIpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionInstanceGroupManagerStatefulExternalIpArgs:
@@ -19642,6 +26485,19 @@ class RegionInstanceGroupManagerStatefulExternalIpArgs:
         pulumi.set(self, "interface_name", value)
 
 
+if not MYPY:
+    class RegionInstanceGroupManagerStatefulInternalIpArgsDict(TypedDict):
+        delete_rule: NotRequired[pulumi.Input[str]]
+        """
+        , A value that prescribes what should happen to the internal ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the internal ip when the VM is permanently deleted from the instance group.
+        """
+        interface_name: NotRequired[pulumi.Input[str]]
+        """
+        , The network interface name of the internal Ip. Possible value: `nic0`.
+        """
+elif False:
+    RegionInstanceGroupManagerStatefulInternalIpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceGroupManagerStatefulInternalIpArgs:
     def __init__(__self__, *,
@@ -19680,6 +26536,29 @@ class RegionInstanceGroupManagerStatefulInternalIpArgs:
     def interface_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "interface_name", value)
 
+
+if not MYPY:
+    class RegionInstanceGroupManagerStatusArgsDict(TypedDict):
+        all_instances_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusAllInstancesConfigArgsDict']]]]
+        """
+        Properties to set on all instances in the group. After setting
+        allInstancesConfig on the group, you must update the group's instances to
+        apply the configuration.
+        """
+        is_stable: NotRequired[pulumi.Input[bool]]
+        """
+        A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+        """
+        statefuls: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulArgsDict']]]]
+        """
+        Stateful status of the given Instance Group Manager.
+        """
+        version_targets: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusVersionTargetArgsDict']]]]
+        """
+        A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        """
+elif False:
+    RegionInstanceGroupManagerStatusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionInstanceGroupManagerStatusArgs:
@@ -19756,6 +26635,19 @@ class RegionInstanceGroupManagerStatusArgs:
         pulumi.set(self, "version_targets", value)
 
 
+if not MYPY:
+    class RegionInstanceGroupManagerStatusAllInstancesConfigArgsDict(TypedDict):
+        current_revision: NotRequired[pulumi.Input[str]]
+        """
+        Current all-instances configuration revision. This value is in RFC3339 text format.
+        """
+        effective: NotRequired[pulumi.Input[bool]]
+        """
+        A bit indicating whether this configuration has been applied to all managed instances in the group.
+        """
+elif False:
+    RegionInstanceGroupManagerStatusAllInstancesConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceGroupManagerStatusAllInstancesConfigArgs:
     def __init__(__self__, *,
@@ -19794,6 +26686,19 @@ class RegionInstanceGroupManagerStatusAllInstancesConfigArgs:
     def effective(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "effective", value)
 
+
+if not MYPY:
+    class RegionInstanceGroupManagerStatusStatefulArgsDict(TypedDict):
+        has_stateful_config: NotRequired[pulumi.Input[bool]]
+        """
+        A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+        """
+        per_instance_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgsDict']]]]
+        """
+        Status of per-instance configs on the instances.
+        """
+elif False:
+    RegionInstanceGroupManagerStatusStatefulArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionInstanceGroupManagerStatusStatefulArgs:
@@ -19834,6 +26739,15 @@ class RegionInstanceGroupManagerStatusStatefulArgs:
         pulumi.set(self, "per_instance_configs", value)
 
 
+if not MYPY:
+    class RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgsDict(TypedDict):
+        all_effective: NotRequired[pulumi.Input[bool]]
+        """
+        A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status `EFFECTIVE` or there are no per-instance-configs.
+        """
+elif False:
+    RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs:
     def __init__(__self__, *,
@@ -19857,6 +26771,15 @@ class RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs:
         pulumi.set(self, "all_effective", value)
 
 
+if not MYPY:
+    class RegionInstanceGroupManagerStatusVersionTargetArgsDict(TypedDict):
+        is_reached: NotRequired[pulumi.Input[bool]]
+        """
+        A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        """
+elif False:
+    RegionInstanceGroupManagerStatusVersionTargetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceGroupManagerStatusVersionTargetArgs:
     def __init__(__self__, *,
@@ -19879,6 +26802,52 @@ class RegionInstanceGroupManagerStatusVersionTargetArgs:
     def is_reached(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_reached", value)
 
+
+if not MYPY:
+    class RegionInstanceGroupManagerUpdatePolicyArgsDict(TypedDict):
+        minimal_action: pulumi.Input[str]
+        """
+        Minimal action to be taken on an instance. You can specify either `NONE` to forbid any actions, `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+        """
+        type: pulumi.Input[str]
+        """
+        The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+        """
+        instance_redistribution_type: NotRequired[pulumi.Input[str]]
+        """
+        The instance redistribution policy for regional managed instance groups. Valid values are: `"PROACTIVE"`, `"NONE"`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
+        """
+        max_surge_fixed: NotRequired[pulumi.Input[int]]
+        """
+        , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. It has to be either 0 or at least equal to the number of zones.  If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
+        """
+        max_surge_percent: NotRequired[pulumi.Input[int]]
+        """
+        , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+        """
+        max_unavailable_fixed: NotRequired[pulumi.Input[int]]
+        """
+        , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
+        """
+        max_unavailable_percent: NotRequired[pulumi.Input[int]]
+        """
+        , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
+        """
+        min_ready_sec: NotRequired[pulumi.Input[int]]
+        """
+        , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        """
+        most_disruptive_allowed_action: NotRequired[pulumi.Input[str]]
+        """
+        Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        """
+        replacement_method: NotRequired[pulumi.Input[str]]
+        """
+        , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
+        - - -
+        """
+elif False:
+    RegionInstanceGroupManagerUpdatePolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionInstanceGroupManagerUpdatePolicyArgs:
@@ -20047,6 +27016,26 @@ class RegionInstanceGroupManagerUpdatePolicyArgs:
         pulumi.set(self, "replacement_method", value)
 
 
+if not MYPY:
+    class RegionInstanceGroupManagerVersionArgsDict(TypedDict):
+        instance_template: pulumi.Input[str]
+        """
+        The full URL to an instance template from which all new instances of this version will be created.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Version name.
+        """
+        target_size: NotRequired[pulumi.Input['RegionInstanceGroupManagerVersionTargetSizeArgsDict']]
+        """
+        The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+
+        > Exactly one `version` you specify must not have a `target_size` specified. During a rolling update, the instance group manager will fulfill the `target_size`
+        constraints of every other `version`, and any remaining instances will be provisioned with the version where `target_size` is unset.
+        """
+elif False:
+    RegionInstanceGroupManagerVersionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceGroupManagerVersionArgs:
     def __init__(__self__, *,
@@ -20107,6 +27096,21 @@ class RegionInstanceGroupManagerVersionArgs:
         pulumi.set(self, "target_size", value)
 
 
+if not MYPY:
+    class RegionInstanceGroupManagerVersionTargetSizeArgsDict(TypedDict):
+        fixed: NotRequired[pulumi.Input[int]]
+        """
+        , The number of instances which are managed for this version. Conflicts with `percent`.
+        """
+        percent: NotRequired[pulumi.Input[int]]
+        """
+        , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `fixed`.
+        Note that when using `percent`, rounding will be in favor of explicitly set `target_size` values; a managed instance group with 2 instances and 2 `version`s,
+        one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
+        """
+elif False:
+    RegionInstanceGroupManagerVersionTargetSizeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceGroupManagerVersionTargetSizeArgs:
     def __init__(__self__, *,
@@ -20149,6 +27153,23 @@ class RegionInstanceGroupManagerVersionTargetSizeArgs:
     def percent(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "percent", value)
 
+
+if not MYPY:
+    class RegionInstanceTemplateAdvancedMachineFeaturesArgsDict(TypedDict):
+        enable_nested_virtualization: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether the instance should have nested virtualization enabled. Defaults to false.
+        """
+        threads_per_core: NotRequired[pulumi.Input[int]]
+        """
+        The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        """
+        visible_core_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+        """
+elif False:
+    RegionInstanceTemplateAdvancedMachineFeaturesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionInstanceTemplateAdvancedMachineFeaturesArgs:
@@ -20205,6 +27226,19 @@ class RegionInstanceTemplateAdvancedMachineFeaturesArgs:
         pulumi.set(self, "visible_core_count", value)
 
 
+if not MYPY:
+    class RegionInstanceTemplateConfidentialInstanceConfigArgsDict(TypedDict):
+        confidential_instance_type: NotRequired[pulumi.Input[str]]
+        """
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        """
+        enable_confidential_compute: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `on_host_maintenance` can be set to MIGRATE if `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        """
+elif False:
+    RegionInstanceTemplateConfidentialInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceTemplateConfidentialInstanceConfigArgs:
     def __init__(__self__, *,
@@ -20243,6 +27277,130 @@ class RegionInstanceTemplateConfidentialInstanceConfigArgs:
     def enable_confidential_compute(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_confidential_compute", value)
 
+
+if not MYPY:
+    class RegionInstanceTemplateDiskArgsDict(TypedDict):
+        auto_delete: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not the disk should be auto-deleted.
+        This defaults to true.
+        """
+        boot: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates that this is a boot disk.
+        """
+        device_name: NotRequired[pulumi.Input[str]]
+        """
+        A unique device name that is reflected into the
+        /dev/  tree of a Linux operating system running within the instance. If not
+        specified, the server chooses a default device name to apply to this disk.
+        """
+        disk_encryption_key: NotRequired[pulumi.Input['RegionInstanceTemplateDiskDiskEncryptionKeyArgsDict']]
+        """
+        Encrypts or decrypts a disk using a customer-supplied encryption key.
+
+        If you are creating a new disk, this field encrypts the new disk using an encryption key that you provide. If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the customer-supplied encryption key.
+
+        If you encrypt a disk using a customer-supplied key, you must provide the same key again when you attempt to use this resource at a later time. For example, you must provide the key when you create a snapshot or an image from the disk or when you attach the disk to a virtual machine instance.
+
+        If you do not provide an encryption key, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+
+        Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt disks in a managed instance group. Structure documented below.
+        """
+        disk_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the disk. When not provided, this defaults
+        to the name of the instance.
+        """
+        disk_size_gb: NotRequired[pulumi.Input[int]]
+        """
+        The size of the image in gigabytes. If not
+        specified, it will inherit the size of its base image. For SCRATCH disks,
+        the size must be exactly 375GB.
+        """
+        disk_type: NotRequired[pulumi.Input[str]]
+        """
+        The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
+        `"pd-balanced"` or `"pd-standard"`.
+        """
+        interface: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the disk interface to use for attaching this disk,
+        which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+        and the request will fail if you attempt to attach a persistent disk in any other format
+        than SCSI. Local SSDs can use either NVME or SCSI.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A set of ket/value label pairs to assign to disk created from
+        this template
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        The mode in which to attach this disk, either READ_WRITE
+        or READ_ONLY. If you are attaching or creating a boot disk, this must
+        read-write mode.
+        """
+        provisioned_iops: NotRequired[pulumi.Input[int]]
+        """
+        Indicates how many IOPS to provision for the disk. This
+        sets the number of I/O operations per second that the disk can handle.
+        Values must be between 10,000 and 120,000. For more details, see the
+        [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        """
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        """
+        resource_policies: NotRequired[pulumi.Input[str]]
+        """
+        - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        The name (**not self_link**)
+        of the disk (such as those managed by `compute.Disk`) to attach.
+        > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        """
+        source_image: NotRequired[pulumi.Input[str]]
+        """
+        The image from which to
+        initialize this disk. This can be one of: the image's `self_link`,
+        `projects/{project}/global/images/{image}`,
+        `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+        `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+        `{project}/{image}`, `{family}`, or `{image}`.
+        > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        """
+        source_image_encryption_key: NotRequired[pulumi.Input['RegionInstanceTemplateDiskSourceImageEncryptionKeyArgsDict']]
+        """
+        The customer-supplied encryption
+        key of the source image. Required if the source image is protected by a
+        customer-supplied encryption key.
+
+        Instance templates do not store customer-supplied encryption keys, so you
+        cannot create disks for instances in a managed instance group if the source
+        images are encrypted with your own keys. Structure
+        documented below.
+        """
+        source_snapshot: NotRequired[pulumi.Input[str]]
+        """
+        The source snapshot to create this disk.
+        > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        """
+        source_snapshot_encryption_key: NotRequired[pulumi.Input['RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgsDict']]
+        """
+        The customer-supplied encryption
+        key of the source snapshot. Structure
+        documented below.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of GCE disk, can be either `"SCRATCH"` or
+        `"PERSISTENT"`.
+        """
+elif False:
+    RegionInstanceTemplateDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionInstanceTemplateDiskArgs:
@@ -20641,6 +27799,15 @@ class RegionInstanceTemplateDiskArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class RegionInstanceTemplateDiskDiskEncryptionKeyArgsDict(TypedDict):
+        kms_key_self_link: pulumi.Input[str]
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS
+        """
+elif False:
+    RegionInstanceTemplateDiskDiskEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceTemplateDiskDiskEncryptionKeyArgs:
     def __init__(__self__, *,
@@ -20662,6 +27829,22 @@ class RegionInstanceTemplateDiskDiskEncryptionKeyArgs:
     def kms_key_self_link(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_self_link", value)
 
+
+if not MYPY:
+    class RegionInstanceTemplateDiskSourceImageEncryptionKeyArgsDict(TypedDict):
+        kms_key_self_link: pulumi.Input[str]
+        """
+        The self link of the encryption key that is
+        stored in Google Cloud KMS.
+        """
+        kms_key_service_account: NotRequired[pulumi.Input[str]]
+        """
+        The service account being used for the
+        encryption request for the given KMS key. If absent, the Compute Engine
+        default service account is used.
+        """
+elif False:
+    RegionInstanceTemplateDiskSourceImageEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs:
@@ -20707,6 +27890,22 @@ class RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs:
         pulumi.set(self, "kms_key_service_account", value)
 
 
+if not MYPY:
+    class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgsDict(TypedDict):
+        kms_key_self_link: pulumi.Input[str]
+        """
+        The self link of the encryption key that is
+        stored in Google Cloud KMS.
+        """
+        kms_key_service_account: NotRequired[pulumi.Input[str]]
+        """
+        The service account being used for the
+        encryption request for the given KMS key. If absent, the Compute Engine
+        default service account is used.
+        """
+elif False:
+    RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs:
     def __init__(__self__, *,
@@ -20751,6 +27950,19 @@ class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs:
         pulumi.set(self, "kms_key_service_account", value)
 
 
+if not MYPY:
+    class RegionInstanceTemplateGuestAcceleratorArgsDict(TypedDict):
+        count: pulumi.Input[int]
+        """
+        The number of the guest accelerator cards exposed to this instance.
+        """
+        type: pulumi.Input[str]
+        """
+        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+elif False:
+    RegionInstanceTemplateGuestAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceTemplateGuestAcceleratorArgs:
     def __init__(__self__, *,
@@ -20787,6 +27999,74 @@ class RegionInstanceTemplateGuestAcceleratorArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class RegionInstanceTemplateNetworkInterfaceArgsDict(TypedDict):
+        access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAccessConfigArgsDict']]]]
+        alias_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgsDict']]]]
+        """
+        An
+        array of alias IP ranges for this network interface. Can only be specified for network
+        interfaces on subnet-mode networks. Structure documented below.
+        """
+        internal_ipv6_prefix_length: NotRequired[pulumi.Input[int]]
+        """
+        The prefix length of the primary internal IPv6 range.
+        """
+        ipv6_access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgsDict']]]]
+        """
+        An array of IPv6 access configurations for this interface.
+        Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+        specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+        """
+        ipv6_access_type: NotRequired[pulumi.Input[str]]
+        """
+        One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+        """
+        ipv6_address: NotRequired[pulumi.Input[str]]
+        """
+        An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the network_interface.
+        """
+        network: NotRequired[pulumi.Input[str]]
+        """
+        The name or self_link of the network to attach this interface to.
+        Use `network` attribute for Legacy or Auto subnetted networks and
+        `subnetwork` for custom subnetted networks.
+        """
+        network_ip: NotRequired[pulumi.Input[str]]
+        """
+        The private IP address to assign to the instance. If
+        empty, the address will be automatically assigned.
+        """
+        nic_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        """
+        queue_count: NotRequired[pulumi.Input[int]]
+        """
+        The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+        """
+        stack_type: NotRequired[pulumi.Input[str]]
+        """
+        The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+        """
+        subnetwork: NotRequired[pulumi.Input[str]]
+        """
+        the name of the subnetwork to attach this interface
+        to. The subnetwork must exist in the same `region` this instance will be
+        created in. Either `network` or `subnetwork` must be provided.
+        """
+        subnetwork_project: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the project in which the subnetwork belongs.
+        If it is not provided, the provider project is used.
+        """
+elif False:
+    RegionInstanceTemplateNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionInstanceTemplateNetworkInterfaceArgs:
@@ -21035,6 +28315,25 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
         pulumi.set(self, "subnetwork_project", value)
 
 
+if not MYPY:
+    class RegionInstanceTemplateNetworkInterfaceAccessConfigArgsDict(TypedDict):
+        nat_ip: NotRequired[pulumi.Input[str]]
+        """
+        The IP address that will be 1:1 mapped to the instance's
+        network ip. If not given, one will be generated.
+        """
+        network_tier: NotRequired[pulumi.Input[str]]
+        """
+        The service-level to be provided for IPv6 traffic when the
+        subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        """
+        public_ptr_domain_name: NotRequired[pulumi.Input[str]]
+        """
+        The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+        """
+elif False:
+    RegionInstanceTemplateNetworkInterfaceAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceTemplateNetworkInterfaceAccessConfigArgs:
     def __init__(__self__, *,
@@ -21094,6 +28393,25 @@ class RegionInstanceTemplateNetworkInterfaceAccessConfigArgs:
         pulumi.set(self, "public_ptr_domain_name", value)
 
 
+if not MYPY:
+    class RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgsDict(TypedDict):
+        ip_cidr_range: pulumi.Input[str]
+        """
+        The IP CIDR range represented by this alias IP range. This IP CIDR range
+        must belong to the specified subnetwork and cannot contain IP addresses reserved by
+        system or used by other network interfaces. At the time of writing only a
+        netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+        error.
+        """
+        subnetwork_range_name: NotRequired[pulumi.Input[str]]
+        """
+        The subnetwork secondary range name specifying
+        the secondary range from which to allocate the IP CIDR range for this alias IP
+        range. If left unspecified, the primary range of the subnetwork will be used.
+        """
+elif False:
+    RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs:
     def __init__(__self__, *,
@@ -21143,6 +28461,31 @@ class RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs:
     def subnetwork_range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork_range_name", value)
 
+
+if not MYPY:
+    class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgsDict(TypedDict):
+        network_tier: pulumi.Input[str]
+        """
+        The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+        """
+        external_ipv6: NotRequired[pulumi.Input[str]]
+        """
+        The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+        """
+        external_ipv6_prefix_length: NotRequired[pulumi.Input[str]]
+        """
+        The prefix length of the external IPv6 range.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of this access configuration.
+        """
+        public_ptr_domain_name: NotRequired[pulumi.Input[str]]
+        """
+        The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+        """
+elif False:
+    RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
@@ -21230,6 +28573,15 @@ class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
         pulumi.set(self, "public_ptr_domain_name", value)
 
 
+if not MYPY:
+    class RegionInstanceTemplateNetworkPerformanceConfigArgsDict(TypedDict):
+        total_egress_bandwidth_tier: pulumi.Input[str]
+        """
+        The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+        """
+elif False:
+    RegionInstanceTemplateNetworkPerformanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceTemplateNetworkPerformanceConfigArgs:
     def __init__(__self__, *,
@@ -21251,6 +28603,20 @@ class RegionInstanceTemplateNetworkPerformanceConfigArgs:
     def total_egress_bandwidth_tier(self, value: pulumi.Input[str]):
         pulumi.set(self, "total_egress_bandwidth_tier", value)
 
+
+if not MYPY:
+    class RegionInstanceTemplateReservationAffinityArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        The type of reservation from which this instance can consume resources.
+        """
+        specific_reservation: NotRequired[pulumi.Input['RegionInstanceTemplateReservationAffinitySpecificReservationArgsDict']]
+        """
+        Specifies the label selector for the reservation to use..
+        Structure is documented below.
+        """
+elif False:
+    RegionInstanceTemplateReservationAffinityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionInstanceTemplateReservationAffinityArgs:
@@ -21292,6 +28658,19 @@ class RegionInstanceTemplateReservationAffinityArgs:
         pulumi.set(self, "specific_reservation", value)
 
 
+if not MYPY:
+    class RegionInstanceTemplateReservationAffinitySpecificReservationArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Corresponds to the label values of a reservation resource.
+        """
+elif False:
+    RegionInstanceTemplateReservationAffinitySpecificReservationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceTemplateReservationAffinitySpecificReservationArgs:
     def __init__(__self__, *,
@@ -21328,6 +28707,70 @@ class RegionInstanceTemplateReservationAffinitySpecificReservationArgs:
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class RegionInstanceTemplateSchedulingArgsDict(TypedDict):
+        automatic_restart: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether the instance should be
+        automatically restarted if it is terminated by Compute Engine (not
+        terminated by a user). This defaults to true.
+        """
+        instance_termination_action: NotRequired[pulumi.Input[str]]
+        """
+        Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        """
+        local_ssd_recovery_timeouts: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict']]]]
+        """
+        Specifies the maximum amount of time a Local Ssd Vm should wait while
+          recovery of the Local Ssd state is attempted. Its value should be in
+          between 0 and 168 hours with hour granularity and the default value being 1
+          hour.
+        """
+        maintenance_interval: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+        """
+        max_run_duration: NotRequired[pulumi.Input['RegionInstanceTemplateSchedulingMaxRunDurationArgsDict']]
+        """
+        The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        """
+        min_node_cpus: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of cpus for the instance.
+        """
+        node_affinities: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingNodeAffinityArgsDict']]]]
+        """
+        Specifies node affinities or anti-affinities
+        to determine which sole-tenant nodes your instances and managed instance
+        groups will use as host systems. Read more on sole-tenant node creation
+        [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+        Structure documented below.
+        """
+        on_host_maintenance: NotRequired[pulumi.Input[str]]
+        """
+        Defines the maintenance behavior for this
+        instance.
+        """
+        on_instance_stop_action: NotRequired[pulumi.Input['RegionInstanceTemplateSchedulingOnInstanceStopActionArgsDict']]
+        """
+        Defines the behaviour for instances with the instance_termination_action.
+        """
+        preemptible: NotRequired[pulumi.Input[bool]]
+        """
+        Allows instance to be preempted. This defaults to
+        false. Read more on this
+        [here](https://cloud.google.com/compute/docs/instances/preemptible).
+        """
+        provisioning_model: NotRequired[pulumi.Input[str]]
+        """
+        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
+        `preemptible` should be `true` and `automatic_restart` should be
+        `false`. For more info about
+        `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+        """
+elif False:
+    RegionInstanceTemplateSchedulingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionInstanceTemplateSchedulingArgs:
@@ -21542,6 +28985,23 @@ class RegionInstanceTemplateSchedulingArgs:
         pulumi.set(self, "provisioning_model", value)
 
 
+if not MYPY:
+    class RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
     def __init__(__self__, *,
@@ -21587,6 +29047,24 @@ class RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
+
+if not MYPY:
+    class RegionInstanceTemplateSchedulingMaxRunDurationArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second. Must be from 0 to
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+        """
+elif False:
+    RegionInstanceTemplateSchedulingMaxRunDurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionInstanceTemplateSchedulingMaxRunDurationArgs:
@@ -21635,6 +29113,21 @@ class RegionInstanceTemplateSchedulingMaxRunDurationArgs:
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
+
+if not MYPY:
+    class RegionInstanceTemplateSchedulingNodeAffinityArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The key for the node affinity label.
+        """
+        operator: pulumi.Input[str]
+        """
+        The operator. Can be `IN` for node-affinities
+        or `NOT_IN` for anti-affinities.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+elif False:
+    RegionInstanceTemplateSchedulingNodeAffinityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionInstanceTemplateSchedulingNodeAffinityArgs:
@@ -21686,6 +29179,15 @@ class RegionInstanceTemplateSchedulingNodeAffinityArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class RegionInstanceTemplateSchedulingOnInstanceStopActionArgsDict(TypedDict):
+        discard_local_ssd: NotRequired[pulumi.Input[bool]]
+        """
+        If true, the contents of any attached Local SSD disks will be discarded.
+        """
+elif False:
+    RegionInstanceTemplateSchedulingOnInstanceStopActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceTemplateSchedulingOnInstanceStopActionArgs:
     def __init__(__self__, *,
@@ -21708,6 +29210,29 @@ class RegionInstanceTemplateSchedulingOnInstanceStopActionArgs:
     def discard_local_ssd(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "discard_local_ssd", value)
 
+
+if not MYPY:
+    class RegionInstanceTemplateServiceAccountArgsDict(TypedDict):
+        scopes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of service scopes. Both OAuth2 URLs and gcloud
+        short names are supported. To allow full access to all Cloud APIs, use the
+        `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+
+        The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
+        explains that access scopes are the legacy method of specifying permissions for your instance.
+        To follow best practices you should create a dedicated service account with the minimum permissions the VM requires.
+        To use a dedicated service account this field should be configured as a list containing the `cloud-platform` scope.
+        See [Authenticate workloads using service accounts best practices](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#best_practices)
+        and [Best practices for using service accounts](https://cloud.google.com/iam/docs/best-practices-service-accounts#single-purpose).
+        """
+        email: NotRequired[pulumi.Input[str]]
+        """
+        The service account e-mail address. If not given, the
+        default Google Compute Engine service account is used.
+        """
+elif False:
+    RegionInstanceTemplateServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionInstanceTemplateServiceAccountArgs:
@@ -21767,6 +29292,23 @@ class RegionInstanceTemplateServiceAccountArgs:
         pulumi.set(self, "email", value)
 
 
+if not MYPY:
+    class RegionInstanceTemplateShieldedInstanceConfigArgsDict(TypedDict):
+        enable_integrity_monitoring: NotRequired[pulumi.Input[bool]]
+        """
+        - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+        """
+        enable_secure_boot: NotRequired[pulumi.Input[bool]]
+        """
+        - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+        """
+        enable_vtpm: NotRequired[pulumi.Input[bool]]
+        """
+        - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+        """
+elif False:
+    RegionInstanceTemplateShieldedInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionInstanceTemplateShieldedInstanceConfigArgs:
     def __init__(__self__, *,
@@ -21821,6 +29363,33 @@ class RegionInstanceTemplateShieldedInstanceConfigArgs:
     def enable_vtpm(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_vtpm", value)
 
+
+if not MYPY:
+    class RegionNetworkEndpointGroupAppEngineArgsDict(TypedDict):
+        service: NotRequired[pulumi.Input[str]]
+        """
+        Optional serving service.
+        The service name must be 1-63 characters long, and comply with RFC1035.
+        Example value: "default", "my-service".
+        """
+        url_mask: NotRequired[pulumi.Input[str]]
+        """
+        A template to parse service and version fields from a request URL.
+        URL mask allows for routing to multiple App Engine services without
+        having to create multiple Network Endpoint Groups and backend services.
+        For example, the request URLs "foo1-dot-appname.appspot.com/v1" and
+        "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with
+        URL mask "-dot-appname.appspot.com/". The URL mask will parse
+        them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Optional serving version.
+        The version must be 1-63 characters long, and comply with RFC1035.
+        Example value: "v1", "v2".
+        """
+elif False:
+    RegionNetworkEndpointGroupAppEngineArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionNetworkEndpointGroupAppEngineArgs:
@@ -21897,6 +29466,26 @@ class RegionNetworkEndpointGroupAppEngineArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class RegionNetworkEndpointGroupCloudFunctionArgsDict(TypedDict):
+        function: NotRequired[pulumi.Input[str]]
+        """
+        A user-defined name of the Cloud Function.
+        The function name is case-sensitive and must be 1-63 characters long.
+        Example value: "func1".
+        """
+        url_mask: NotRequired[pulumi.Input[str]]
+        """
+        A template to parse function field from a request URL. URL mask allows
+        for routing to multiple Cloud Functions without having to create
+        multiple Network Endpoint Groups and backend services.
+        For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+        can be backed by the same Serverless NEG with URL mask "/". The URL mask
+        will parse them to { function = "function1" } and { function = "function2" } respectively.
+        """
+elif False:
+    RegionNetworkEndpointGroupCloudFunctionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionNetworkEndpointGroupCloudFunctionArgs:
     def __init__(__self__, *,
@@ -21949,6 +29538,34 @@ class RegionNetworkEndpointGroupCloudFunctionArgs:
     def url_mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url_mask", value)
 
+
+if not MYPY:
+    class RegionNetworkEndpointGroupCloudRunArgsDict(TypedDict):
+        service: NotRequired[pulumi.Input[str]]
+        """
+        Cloud Run service is the main resource of Cloud Run.
+        The service must be 1-63 characters long, and comply with RFC1035.
+        Example value: "run-service".
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        Cloud Run tag represents the "named-revision" to provide
+        additional fine-grained traffic routing information.
+        The tag must be 1-63 characters long, and comply with RFC1035.
+        Example value: "revision-0010".
+        """
+        url_mask: NotRequired[pulumi.Input[str]]
+        """
+        A template to parse service and tag fields from a request URL.
+        URL mask allows for routing to multiple Run services without having
+        to create multiple network endpoint groups and backend services.
+        For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2"
+        an be backed by the same Serverless Network Endpoint Group (NEG) with
+        URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" }
+        and { service="bar2", tag="foo2" } respectively.
+        """
+elif False:
+    RegionNetworkEndpointGroupCloudRunArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionNetworkEndpointGroupCloudRunArgs:
@@ -22026,6 +29643,34 @@ class RegionNetworkEndpointGroupCloudRunArgs:
     def url_mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url_mask", value)
 
+
+if not MYPY:
+    class RegionNetworkEndpointGroupServerlessDeploymentArgsDict(TypedDict):
+        platform: pulumi.Input[str]
+        """
+        The platform of the NEG backend target(s). Possible values:
+        API Gateway: apigateway.googleapis.com
+        """
+        resource: NotRequired[pulumi.Input[str]]
+        """
+        The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask.
+        The resource identified by this value is platform-specific and is as follows: API Gateway: The gateway ID, App Engine: The service name,
+        Cloud Functions: The function name, Cloud Run: The service name
+        """
+        url_mask: NotRequired[pulumi.Input[str]]
+        """
+        A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+        on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+        The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+        App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        The optional resource version. The version identified by this value is platform-specific and is follows:
+        API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
+        """
+elif False:
+    RegionNetworkEndpointGroupServerlessDeploymentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionNetworkEndpointGroupServerlessDeploymentArgs:
@@ -22110,6 +29755,61 @@ class RegionNetworkEndpointGroupServerlessDeploymentArgs:
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class RegionNetworkFirewallPolicyRuleMatchArgsDict(TypedDict):
+        layer4_configs: pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgsDict']]]
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        """
+        dest_address_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+        """
+        dest_fqdns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+        """
+        dest_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        """
+        dest_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+        """
+        dest_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Name of the Google Cloud Threat Intelligence list.
+        """
+        src_address_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+        """
+        src_fqdns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+        """
+        src_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        """
+        src_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+        """
+        src_secure_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgsDict']]]]
+        """
+        List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        """
+        src_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Name of the Google Cloud Threat Intelligence list.
+
+        The `layer4_configs` block supports:
+        """
+elif False:
+    RegionNetworkFirewallPolicyRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionNetworkFirewallPolicyRuleMatchArgs:
@@ -22313,6 +30013,19 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
         pulumi.set(self, "src_threat_intelligences", value)
 
 
+if not MYPY:
+    class RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgsDict(TypedDict):
+        ip_protocol: pulumi.Input[str]
+        """
+        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+        """
+elif False:
+    RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs:
     def __init__(__self__, *,
@@ -22350,6 +30063,19 @@ class RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs:
     def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ports", value)
 
+
+if not MYPY:
+    class RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+        """
+elif False:
+    RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs:
@@ -22389,6 +30115,19 @@ class RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs:
         pulumi.set(self, "state", value)
 
 
+if not MYPY:
+    class RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+        """
+elif False:
+    RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionNetworkFirewallPolicyRuleTargetSecureTagArgs:
     def __init__(__self__, *,
@@ -22426,6 +30165,30 @@ class RegionNetworkFirewallPolicyRuleTargetSecureTagArgs:
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
 
+
+if not MYPY:
+    class RegionPerInstanceConfigPreservedStateArgsDict(TypedDict):
+        disks: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateDiskArgsDict']]]]
+        """
+        Stateful disks for the instance.
+        Structure is documented below.
+        """
+        external_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpArgsDict']]]]
+        """
+        Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
+        Structure is documented below.
+        """
+        internal_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpArgsDict']]]]
+        """
+        Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
+        Structure is documented below.
+        """
+        metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Preserved metadata defined for this instance. This is a list of key->value pairs.
+        """
+elif False:
+    RegionPerInstanceConfigPreservedStateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionPerInstanceConfigPreservedStateArgs:
@@ -22503,6 +30266,36 @@ class RegionPerInstanceConfigPreservedStateArgs:
     def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
 
+
+if not MYPY:
+    class RegionPerInstanceConfigPreservedStateDiskArgsDict(TypedDict):
+        device_name: pulumi.Input[str]
+        """
+        A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
+        """
+        source: pulumi.Input[str]
+        """
+        The URI of an existing persistent disk to attach under the specified device-name in the format
+        `projects/project-id/zones/zone/disks/disk-name`.
+        """
+        delete_rule: NotRequired[pulumi.Input[str]]
+        """
+        A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
+        The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+        `NEVER` - detach the disk when the VM is deleted, but do not delete the disk.
+        `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
+        deleted from the instance group.
+        Default value is `NEVER`.
+        Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        The mode of the disk.
+        Default value is `READ_WRITE`.
+        Possible values are: `READ_ONLY`, `READ_WRITE`.
+        """
+elif False:
+    RegionPerInstanceConfigPreservedStateDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionPerInstanceConfigPreservedStateDiskArgs:
@@ -22591,6 +30384,26 @@ class RegionPerInstanceConfigPreservedStateDiskArgs:
         pulumi.set(self, "mode", value)
 
 
+if not MYPY:
+    class RegionPerInstanceConfigPreservedStateExternalIpArgsDict(TypedDict):
+        interface_name: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        auto_delete: NotRequired[pulumi.Input[str]]
+        """
+        These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+        Default value is `NEVER`.
+        Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
+        """
+        ip_address: NotRequired[pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgsDict']]
+        """
+        Ip address representation
+        Structure is documented below.
+        """
+elif False:
+    RegionPerInstanceConfigPreservedStateExternalIpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionPerInstanceConfigPreservedStateExternalIpArgs:
     def __init__(__self__, *,
@@ -22651,6 +30464,15 @@ class RegionPerInstanceConfigPreservedStateExternalIpArgs:
         pulumi.set(self, "ip_address", value)
 
 
+if not MYPY:
+    class RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the reservation for this IP address.
+        """
+elif False:
+    RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgs:
     def __init__(__self__, *,
@@ -22673,6 +30495,26 @@ class RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgs:
     def address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "address", value)
 
+
+if not MYPY:
+    class RegionPerInstanceConfigPreservedStateInternalIpArgsDict(TypedDict):
+        interface_name: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        auto_delete: NotRequired[pulumi.Input[str]]
+        """
+        These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+        Default value is `NEVER`.
+        Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
+        """
+        ip_address: NotRequired[pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgsDict']]
+        """
+        Ip address representation
+        Structure is documented below.
+        """
+elif False:
+    RegionPerInstanceConfigPreservedStateInternalIpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionPerInstanceConfigPreservedStateInternalIpArgs:
@@ -22734,6 +30576,15 @@ class RegionPerInstanceConfigPreservedStateInternalIpArgs:
         pulumi.set(self, "ip_address", value)
 
 
+if not MYPY:
+    class RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the reservation for this IP address.
+        """
+elif False:
+    RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgs:
     def __init__(__self__, *,
@@ -22756,6 +30607,19 @@ class RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgs:
     def address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "address", value)
 
+
+if not MYPY:
+    class RegionSecurityPolicyDdosProtectionConfigArgsDict(TypedDict):
+        ddos_protection: pulumi.Input[str]
+        """
+        Google Cloud Armor offers the following options to help protect systems against DDoS attacks:
+        - STANDARD: basic always-on protection for network load balancers, protocol forwarding, or VMs with public IP addresses.
+        - ADVANCED: additional protections for Managed Protection Plus subscribers who use network load balancers, protocol forwarding, or VMs with public IP addresses.
+        - ADVANCED_PREVIEW: flag to enable the security policy in preview mode.
+        Possible values are: `ADVANCED`, `ADVANCED_PREVIEW`, `STANDARD`.
+        """
+elif False:
+    RegionSecurityPolicyDdosProtectionConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionSecurityPolicyDdosProtectionConfigArgs:
@@ -22786,6 +30650,28 @@ class RegionSecurityPolicyDdosProtectionConfigArgs:
     def ddos_protection(self, value: pulumi.Input[str]):
         pulumi.set(self, "ddos_protection", value)
 
+
+if not MYPY:
+    class RegionSecurityPolicyRuleMatchArgsDict(TypedDict):
+        config: NotRequired[pulumi.Input['RegionSecurityPolicyRuleMatchConfigArgsDict']]
+        """
+        The configuration options available when specifying versionedExpr.
+        This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
+        Structure is documented below.
+        """
+        expr: NotRequired[pulumi.Input['RegionSecurityPolicyRuleMatchExprArgsDict']]
+        """
+        User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+        Structure is documented below.
+        """
+        versioned_expr: NotRequired[pulumi.Input[str]]
+        """
+        Preconfigured versioned expression. If this field is specified, config must also be specified.
+        Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
+        Possible values are: `SRC_IPS_V1`.
+        """
+elif False:
+    RegionSecurityPolicyRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionSecurityPolicyRuleMatchArgs:
@@ -22852,6 +30738,15 @@ class RegionSecurityPolicyRuleMatchArgs:
         pulumi.set(self, "versioned_expr", value)
 
 
+if not MYPY:
+    class RegionSecurityPolicyRuleMatchConfigArgsDict(TypedDict):
+        src_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
+        """
+elif False:
+    RegionSecurityPolicyRuleMatchConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionSecurityPolicyRuleMatchConfigArgs:
     def __init__(__self__, *,
@@ -22875,6 +30770,15 @@ class RegionSecurityPolicyRuleMatchConfigArgs:
         pulumi.set(self, "src_ip_ranges", value)
 
 
+if not MYPY:
+    class RegionSecurityPolicyRuleMatchExprArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+        """
+elif False:
+    RegionSecurityPolicyRuleMatchExprArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionSecurityPolicyRuleMatchExprArgs:
     def __init__(__self__, *,
@@ -22896,6 +30800,44 @@ class RegionSecurityPolicyRuleMatchExprArgs:
     def expression(self, value: pulumi.Input[str]):
         pulumi.set(self, "expression", value)
 
+
+if not MYPY:
+    class RegionSecurityPolicyRuleNetworkMatchArgsDict(TypedDict):
+        dest_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+        """
+        dest_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+        """
+        ip_protocols: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+        """
+        src_asns: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        BGP Autonomous System Number associated with the source IP address.
+        """
+        src_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+        """
+        src_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+        """
+        src_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+        """
+        user_defined_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgsDict']]]]
+        """
+        User-defined fields. Each element names a defined field and lists the matching values for that field.
+        Structure is documented below.
+        """
+elif False:
+    RegionSecurityPolicyRuleNetworkMatchArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionSecurityPolicyRuleNetworkMatchArgs:
@@ -23034,6 +30976,19 @@ class RegionSecurityPolicyRuleNetworkMatchArgs:
         pulumi.set(self, "user_defined_fields", value)
 
 
+if not MYPY:
+    class RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the user-defined field, as given in the definition.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+        """
+elif False:
+    RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs:
     def __init__(__self__, *,
@@ -23073,6 +31028,16 @@ class RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict(TypedDict):
+        exclusions: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgsDict']]]]
+        """
+        An exclusion to apply during preconfigured WAF evaluation.
+        Structure is documented below.
+        """
+elif False:
+    RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionSecurityPolicyRulePreconfiguredWafConfigArgs:
     def __init__(__self__, *,
@@ -23097,6 +31062,42 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigArgs:
     def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]]]):
         pulumi.set(self, "exclusions", value)
 
+
+if not MYPY:
+    class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgsDict(TypedDict):
+        target_rule_set: pulumi.Input[str]
+        """
+        Target WAF rule set to apply the preconfigured WAF exclusion.
+        """
+        request_cookies: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgsDict']]]]
+        """
+        Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+        Structure is documented below.
+        """
+        request_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgsDict']]]]
+        """
+        Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+        Structure is documented below.
+        """
+        request_query_params: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgsDict']]]]
+        """
+        Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+        Note that the parameter can be in the query string or in the POST body.
+        Structure is documented below.
+        """
+        request_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgsDict']]]]
+        """
+        Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+        When specifying this field, the query or fragment part should be excluded.
+        Structure is documented below.
+        """
+        target_rule_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+        If omitted, it refers to all the rule IDs under the WAF rule set.
+        """
+elif False:
+    RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
@@ -23214,6 +31215,27 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
         pulumi.set(self, "target_rule_ids", value)
 
 
+if not MYPY:
+    class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgsDict(TypedDict):
+        operator: pulumi.Input[str]
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value.
+        Possible values are: `CONTAINS`, `ENDS_WITH`, `EQUALS`, `EQUALS_ANY`, `STARTS_WITH`.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+elif False:
+    RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs:
     def __init__(__self__, *,
@@ -23267,6 +31289,27 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgsDict(TypedDict):
+        operator: pulumi.Input[str]
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value.
+        Possible values are: `CONTAINS`, `ENDS_WITH`, `EQUALS`, `EQUALS_ANY`, `STARTS_WITH`.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+elif False:
+    RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs:
@@ -23322,6 +31365,27 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgsDict(TypedDict):
+        operator: pulumi.Input[str]
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value.
+        Possible values are: `CONTAINS`, `ENDS_WITH`, `EQUALS`, `EQUALS_ANY`, `STARTS_WITH`.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+elif False:
+    RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs:
     def __init__(__self__, *,
@@ -23376,6 +31440,27 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamAr
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgsDict(TypedDict):
+        operator: pulumi.Input[str]
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value.
+        Possible values are: `CONTAINS`, `ENDS_WITH`, `EQUALS`, `EQUALS_ANY`, `STARTS_WITH`.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+elif False:
+    RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
     def __init__(__self__, *,
@@ -23429,6 +31514,65 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class RegionSecurityPolicyRuleRateLimitOptionsArgsDict(TypedDict):
+        ban_duration_sec: NotRequired[pulumi.Input[int]]
+        """
+        Can only be specified if the action for the rule is "rate_based_ban".
+        If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+        """
+        ban_threshold: NotRequired[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsBanThresholdArgsDict']]
+        """
+        Can only be specified if the action for the rule is "rate_based_ban".
+        If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+        Structure is documented below.
+        """
+        conform_action: NotRequired[pulumi.Input[str]]
+        """
+        Action to take for requests that are under the configured rate limit threshold.
+        Valid option is "allow" only.
+        """
+        enforce_on_key: NotRequired[pulumi.Input[str]]
+        """
+        Determines the key to enforce the rateLimitThreshold on. Possible values are:
+        * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured.
+        * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+        * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+        * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+        * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+        * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+        * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+        * REGION_CODE: The country/region from which the request originates.
+        * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+        * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+        Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `USER_IP`.
+        """
+        enforce_on_key_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgsDict']]]]
+        """
+        If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
+        You can specify up to 3 enforceOnKeyConfigs.
+        If enforceOnKeyConfigs is specified, enforceOnKey must not be specified.
+        Structure is documented below.
+        """
+        enforce_on_key_name: NotRequired[pulumi.Input[str]]
+        """
+        Rate limit key name applicable only for the following key types:
+        HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+        HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        """
+        exceed_action: NotRequired[pulumi.Input[str]]
+        """
+        Action to take for requests that are above the configured rate limit threshold, to deny with a specified HTTP response code.
+        Valid options are deny(STATUS), where valid values for STATUS are 403, 404, 429, and 502.
+        """
+        rate_limit_threshold: NotRequired[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgsDict']]
+        """
+        Threshold at which to begin ratelimiting.
+        Structure is documented below.
+        """
+elif False:
+    RegionSecurityPolicyRuleRateLimitOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionSecurityPolicyRuleRateLimitOptionsArgs:
@@ -23609,6 +31753,19 @@ class RegionSecurityPolicyRuleRateLimitOptionsArgs:
         pulumi.set(self, "rate_limit_threshold", value)
 
 
+if not MYPY:
+    class RegionSecurityPolicyRuleRateLimitOptionsBanThresholdArgsDict(TypedDict):
+        count: NotRequired[pulumi.Input[int]]
+        """
+        Number of HTTP(S) requests for calculating the threshold.
+        """
+        interval_sec: NotRequired[pulumi.Input[int]]
+        """
+        Interval over which the threshold is computed.
+        """
+elif False:
+    RegionSecurityPolicyRuleRateLimitOptionsBanThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionSecurityPolicyRuleRateLimitOptionsBanThresholdArgs:
     def __init__(__self__, *,
@@ -23647,6 +31804,32 @@ class RegionSecurityPolicyRuleRateLimitOptionsBanThresholdArgs:
     def interval_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "interval_sec", value)
 
+
+if not MYPY:
+    class RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgsDict(TypedDict):
+        enforce_on_key_name: NotRequired[pulumi.Input[str]]
+        """
+        Rate limit key name applicable only for the following key types:
+        HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+        HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        """
+        enforce_on_key_type: NotRequired[pulumi.Input[str]]
+        """
+        Determines the key to enforce the rateLimitThreshold on. Possible values are:
+        * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured.
+        * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+        * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+        * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+        * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+        * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+        * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+        * REGION_CODE: The country/region from which the request originates.
+        * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+        * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+        Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `USER_IP`.
+        """
+elif False:
+    RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
@@ -23713,6 +31896,19 @@ class RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
         pulumi.set(self, "enforce_on_key_type", value)
 
 
+if not MYPY:
+    class RegionSecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgsDict(TypedDict):
+        count: NotRequired[pulumi.Input[int]]
+        """
+        Number of HTTP(S) requests for calculating the threshold.
+        """
+        interval_sec: NotRequired[pulumi.Input[int]]
+        """
+        Interval over which the threshold is computed.
+        """
+elif False:
+    RegionSecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionSecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs:
     def __init__(__self__, *,
@@ -23751,6 +31947,38 @@ class RegionSecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs:
     def interval_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "interval_sec", value)
 
+
+if not MYPY:
+    class RegionSecurityPolicyUserDefinedFieldArgsDict(TypedDict):
+        base: pulumi.Input[str]
+        """
+        The base relative to which 'offset' is measured. Possible values are:
+        - IPV4: Points to the beginning of the IPv4 header.
+        - IPV6: Points to the beginning of the IPv6 header.
+        - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
+        - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
+        Possible values are: `IPV4`, `IPV6`, `TCP`, `UDP`.
+        """
+        mask: NotRequired[pulumi.Input[str]]
+        """
+        If specified, apply this mask (bitwise AND) to the field to ignore bits before matching.
+        Encoded as a hexadecimal number (starting with "0x").
+        The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of this field. Must be unique within the policy.
+        """
+        offset: NotRequired[pulumi.Input[int]]
+        """
+        Offset of the first byte of the field (in network byte order) relative to 'base'.
+        """
+        size: NotRequired[pulumi.Input[int]]
+        """
+        Size of the field in bytes. Valid values: 1-4.
+        """
+elif False:
+    RegionSecurityPolicyUserDefinedFieldArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionSecurityPolicyUserDefinedFieldArgs:
@@ -23851,6 +32079,58 @@ class RegionSecurityPolicyUserDefinedFieldArgs:
     def size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size", value)
 
+
+if not MYPY:
+    class RegionUrlMapDefaultRouteActionArgsDict(TypedDict):
+        cors_policy: NotRequired[pulumi.Input['RegionUrlMapDefaultRouteActionCorsPolicyArgsDict']]
+        """
+        The specification for allowing client side cross-origin requests. Please see
+        [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+        Structure is documented below.
+        """
+        fault_injection_policy: NotRequired[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgsDict']]
+        """
+        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service.
+        Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
+        timeout and retryPolicy is ignored by clients that are configured with a faultInjectionPolicy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+        Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: [Routing and traffic management features](https://cloud.google.com/load-balancing/docs/features#routing-traffic-management).
+        Structure is documented below.
+        """
+        request_mirror_policy: NotRequired[pulumi.Input['RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgsDict']]
+        """
+        Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+        The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+        Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        retry_policy: NotRequired[pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyArgsDict']]
+        """
+        Specifies the retry policy associated with this route.
+        Structure is documented below.
+        """
+        timeout: NotRequired[pulumi.Input['RegionUrlMapDefaultRouteActionTimeoutArgsDict']]
+        """
+        Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
+        If not specified, this field uses the largest timeout among all backend services associated with the route.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        url_rewrite: NotRequired[pulumi.Input['RegionUrlMapDefaultRouteActionUrlRewriteArgsDict']]
+        """
+        The spec to modify the URL of the request, before forwarding the request to the matched service.
+        urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers.
+        Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        weighted_backend_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceArgsDict']]]]
+        """
+        A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
+        After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+        Structure is documented below.
+        """
+elif False:
+    RegionUrlMapDefaultRouteActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapDefaultRouteActionArgs:
@@ -24009,6 +32289,48 @@ class RegionUrlMapDefaultRouteActionArgs:
         pulumi.set(self, "weighted_backend_services", value)
 
 
+if not MYPY:
+    class RegionUrlMapDefaultRouteActionCorsPolicyArgsDict(TypedDict):
+        allow_credentials: NotRequired[pulumi.Input[bool]]
+        """
+        In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+        Default is false.
+        """
+        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Allow-Headers header.
+        """
+        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Allow-Methods header.
+        """
+        allow_origin_regexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        please see en.cppreference.com/w/cpp/regex/ecmascript
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        allow_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the list of origins that will be allowed to do CORS requests.
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+        """
+        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Expose-Headers header.
+        """
+        max_age: NotRequired[pulumi.Input[int]]
+        """
+        Specifies how long results of a preflight request can be cached in seconds.
+        This translates to the Access-Control-Max-Age header.
+        """
+elif False:
+    RegionUrlMapDefaultRouteActionCorsPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapDefaultRouteActionCorsPolicyArgs:
     def __init__(__self__, *,
@@ -24154,6 +32476,21 @@ class RegionUrlMapDefaultRouteActionCorsPolicyArgs:
         pulumi.set(self, "max_age", value)
 
 
+if not MYPY:
+    class RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgsDict(TypedDict):
+        abort: NotRequired[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgsDict']]
+        """
+        The specification for how client requests are aborted as part of fault injection.
+        Structure is documented below.
+        """
+        delay: NotRequired[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgsDict']]
+        """
+        The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        Structure is documented below.
+        """
+elif False:
+    RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs:
     def __init__(__self__, *,
@@ -24196,6 +32533,21 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs:
     def delay(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs']]):
         pulumi.set(self, "delay", value)
 
+
+if not MYPY:
+    class RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgsDict(TypedDict):
+        http_status: NotRequired[pulumi.Input[int]]
+        """
+        The HTTP status code used to abort the request.
+        The value must be between 200 and 599 inclusive.
+        """
+        percentage: NotRequired[pulumi.Input[float]]
+        """
+        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+elif False:
+    RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgs:
@@ -24240,6 +32592,21 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgs:
         pulumi.set(self, "percentage", value)
 
 
+if not MYPY:
+    class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgsDict(TypedDict):
+        fixed_delay: NotRequired[pulumi.Input['RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict']]
+        """
+        Specifies the value of the fixed delay interval.
+        Structure is documented below.
+        """
+        percentage: NotRequired[pulumi.Input[float]]
+        """
+        The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+elif False:
+    RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs:
     def __init__(__self__, *,
@@ -24282,6 +32649,21 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs:
     def percentage(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "percentage", value)
 
+
+if not MYPY:
+    class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict(TypedDict):
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        seconds: NotRequired[pulumi.Input[str]]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+elif False:
+    RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
@@ -24326,6 +32708,17 @@ class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
         pulumi.set(self, "seconds", value)
 
 
+if not MYPY:
+    class RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgsDict(TypedDict):
+        backend_service: NotRequired[pulumi.Input[str]]
+        """
+        The full or partial URL to the RegionBackendService resource being mirrored to.
+        The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
+        Serverless NEG backends are not currently supported as a mirrored backend service.
+        """
+elif False:
+    RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs:
     def __init__(__self__, *,
@@ -24352,6 +32745,37 @@ class RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs:
     def backend_service(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "backend_service", value)
 
+
+if not MYPY:
+    class RegionUrlMapDefaultRouteActionRetryPolicyArgsDict(TypedDict):
+        num_retries: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        """
+        per_try_timeout: NotRequired[pulumi.Input['RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgsDict']]
+        """
+        Specifies a non-zero timeout per retry attempt.
+        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+        will use the largest timeout among all backend services associated with the route.
+        Structure is documented below.
+        """
+        retry_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies one or more conditions when this retry policy applies.
+        Valid values are listed below. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true: cancelled, deadline-exceeded, internal, resource-exhausted, unavailable.
+        - 5xx : retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams.
+        - gateway-error : Similar to 5xx, but only applies to response codes 502, 503 or 504.
+        - connect-failure : a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts.
+        - retriable-4xx : a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409.
+        - refused-stream : a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+        - cancelled : a retry is attempted if the gRPC status code in the response header is set to cancelled.
+        - deadline-exceeded : a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded.
+        - internal :  a retry is attempted if the gRPC status code in the response header is set to internal.
+        - resource-exhausted : a retry is attempted if the gRPC status code in the response header is set to resource-exhausted.
+        - unavailable : a retry is attempted if the gRPC status code in the response header is set to unavailable.
+        """
+elif False:
+    RegionUrlMapDefaultRouteActionRetryPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapDefaultRouteActionRetryPolicyArgs:
@@ -24436,6 +32860,21 @@ class RegionUrlMapDefaultRouteActionRetryPolicyArgs:
         pulumi.set(self, "retry_conditions", value)
 
 
+if not MYPY:
+    class RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgsDict(TypedDict):
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        seconds: NotRequired[pulumi.Input[str]]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+elif False:
+    RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs:
     def __init__(__self__, *,
@@ -24479,6 +32918,19 @@ class RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs:
         pulumi.set(self, "seconds", value)
 
 
+if not MYPY:
+    class RegionUrlMapDefaultRouteActionTimeoutArgsDict(TypedDict):
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        seconds: NotRequired[pulumi.Input[str]]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+elif False:
+    RegionUrlMapDefaultRouteActionTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapDefaultRouteActionTimeoutArgs:
     def __init__(__self__, *,
@@ -24517,6 +32969,21 @@ class RegionUrlMapDefaultRouteActionTimeoutArgs:
     def seconds(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "seconds", value)
 
+
+if not MYPY:
+    class RegionUrlMapDefaultRouteActionUrlRewriteArgsDict(TypedDict):
+        host_rewrite: NotRequired[pulumi.Input[str]]
+        """
+        Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
+        The value must be from 1 to 255 characters.
+        """
+        path_prefix_rewrite: NotRequired[pulumi.Input[str]]
+        """
+        Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
+        The value must be from 1 to 1024 characters.
+        """
+elif False:
+    RegionUrlMapDefaultRouteActionUrlRewriteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapDefaultRouteActionUrlRewriteArgs:
@@ -24560,6 +33027,29 @@ class RegionUrlMapDefaultRouteActionUrlRewriteArgs:
     def path_prefix_rewrite(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_prefix_rewrite", value)
 
+
+if not MYPY:
+    class RegionUrlMapDefaultRouteActionWeightedBackendServiceArgsDict(TypedDict):
+        backend_service: NotRequired[pulumi.Input[str]]
+        """
+        The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
+        """
+        header_action: NotRequired[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgsDict']]
+        """
+        Specifies changes to request and response headers that need to take effect for the selected backendService.
+        headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+        headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        weight: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) .
+        The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy.
+        The value must be from 0 to 1000.
+        """
+elif False:
+    RegionUrlMapDefaultRouteActionWeightedBackendServiceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs:
@@ -24627,6 +33117,29 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs:
     def weight(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "weight", value)
 
+
+if not MYPY:
+    class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgsDict(TypedDict):
+        request_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict']]]]
+        """
+        Headers to add to a matching request before forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        request_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        """
+        response_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict']]]]
+        """
+        Headers to add the response before sending the response back to the client.
+        Structure is documented below.
+        """
+        response_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the response before sending the response back to the client.
+        """
+elif False:
+    RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
@@ -24703,6 +33216,24 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
         pulumi.set(self, "response_headers_to_removes", value)
 
 
+if not MYPY:
+    class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict(TypedDict):
+        header_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the header.
+        """
+        header_value: NotRequired[pulumi.Input[str]]
+        """
+        The value of the header to add.
+        """
+        replace: NotRequired[pulumi.Input[bool]]
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+elif False:
+    RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs:
     def __init__(__self__, *,
@@ -24760,6 +33291,24 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHea
         pulumi.set(self, "replace", value)
 
 
+if not MYPY:
+    class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict(TypedDict):
+        header_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the header.
+        """
+        header_value: NotRequired[pulumi.Input[str]]
+        """
+        The value of the header to add.
+        """
+        replace: NotRequired[pulumi.Input[bool]]
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+elif False:
+    RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs:
     def __init__(__self__, *,
@@ -24816,6 +33365,57 @@ class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHe
     def replace(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "replace", value)
 
+
+if not MYPY:
+    class RegionUrlMapDefaultUrlRedirectArgsDict(TypedDict):
+        strip_query: pulumi.Input[bool]
+        """
+        If set to true, any accompanying query portion of the original URL is removed prior
+        to redirecting the request. If set to false, the query portion of the original URL is
+        retained.
+        This field is required to ensure an empty block is not set. The normal default value is false.
+        """
+        host_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The host that will be used in the redirect response instead of the one that was
+        supplied in the request. The value must be between 1 and 255 characters.
+        """
+        https_redirect: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, the URL scheme in the redirected request is set to https. If set to
+        false, the URL scheme of the redirected request will remain the same as that of the
+        request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+        true for TargetHttpsProxy is not permitted. The default is set to false.
+        """
+        path_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The path that will be used in the redirect response instead of the one that was
+        supplied in the request. pathRedirect cannot be supplied together with
+        prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+        original request will be used for the redirect. The value must be between 1 and 1024
+        characters.
+        """
+        prefix_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+        retaining the remaining portion of the URL before redirecting the request.
+        prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+        neither. If neither is supplied, the path of the original request will be used for
+        the redirect. The value must be between 1 and 1024 characters.
+        """
+        redirect_response_code: NotRequired[pulumi.Input[str]]
+        """
+        The HTTP Status code to use for this RedirectAction. Supported values are:
+        * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+        * FOUND, which corresponds to 302.
+        * SEE_OTHER which corresponds to 303.
+        * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+        will be retained.
+        * PERMANENT_REDIRECT, which corresponds to 308. In this case,
+        the request method will be retained.
+        """
+elif False:
+    RegionUrlMapDefaultUrlRedirectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapDefaultUrlRedirectArgs:
@@ -24963,6 +33563,28 @@ class RegionUrlMapDefaultUrlRedirectArgs:
         pulumi.set(self, "redirect_response_code", value)
 
 
+if not MYPY:
+    class RegionUrlMapHostRuleArgsDict(TypedDict):
+        hosts: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The list of host patterns to match. They must be valid
+        hostnames, except * will match any string of ([a-z0-9-.]*). In
+        that case, * must be the first character and must be followed in
+        the pattern by either - or ..
+        """
+        path_matcher: pulumi.Input[str]
+        """
+        The name of the PathMatcher to use to match the path portion of
+        the URL if the hostRule matches the URL's host portion.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of this HostRule. Provide this property
+        when you create the resource.
+        """
+elif False:
+    RegionUrlMapHostRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapHostRuleArgs:
     def __init__(__self__, *,
@@ -25025,6 +33647,52 @@ class RegionUrlMapHostRuleArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name to which this PathMatcher is referred by the HostRule.
+        """
+        default_service: NotRequired[pulumi.Input[str]]
+        """
+        A reference to a RegionBackendService resource. This will be used if
+        none of the pathRules defined by this PathMatcher is matched by
+        the URL's path portion.
+        """
+        default_url_redirect: NotRequired[pulumi.Input['RegionUrlMapPathMatcherDefaultUrlRedirectArgsDict']]
+        """
+        When none of the specified hostRules match, the request is redirected to a URL specified
+        by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+        defaultRouteAction must not be set.
+        Structure is documented below.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of this resource.
+        """
+        path_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleArgsDict']]]]
+        """
+        The list of path rules. Use this list instead of routeRules when routing based
+        on simple path matching is all that's required. The order by which path rules
+        are specified does not matter. Matches are always done on the longest-path-first
+        basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
+        irrespective of the order in which those paths appear in this list. Within a
+        given pathMatcher, only one of pathRules or routeRules must be set.
+        Structure is documented below.
+        """
+        route_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleArgsDict']]]]
+        """
+        The list of ordered HTTP route rules. Use this list instead of pathRules when
+        advanced route matching and routing actions are desired. The order of specifying
+        routeRules matters: the first rule that matches will cause its specified routing
+        action to take effect. Within a given pathMatcher, only one of pathRules or
+        routeRules must be set. routeRules are not supported in UrlMaps intended for
+        External load balancers.
+        Structure is documented below.
+        """
+elif False:
+    RegionUrlMapPathMatcherArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherArgs:
@@ -25161,6 +33829,57 @@ class RegionUrlMapPathMatcherArgs:
     def route_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleArgs']]]]):
         pulumi.set(self, "route_rules", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherDefaultUrlRedirectArgsDict(TypedDict):
+        strip_query: pulumi.Input[bool]
+        """
+        If set to true, any accompanying query portion of the original URL is removed prior
+        to redirecting the request. If set to false, the query portion of the original URL is
+        retained.
+        This field is required to ensure an empty block is not set. The normal default value is false.
+        """
+        host_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The host that will be used in the redirect response instead of the one that was
+        supplied in the request. The value must be between 1 and 255 characters.
+        """
+        https_redirect: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, the URL scheme in the redirected request is set to https. If set to
+        false, the URL scheme of the redirected request will remain the same as that of the
+        request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+        true for TargetHttpsProxy is not permitted. The default is set to false.
+        """
+        path_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The path that will be used in the redirect response instead of the one that was
+        supplied in the request. pathRedirect cannot be supplied together with
+        prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+        original request will be used for the redirect. The value must be between 1 and 1024
+        characters.
+        """
+        prefix_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+        retaining the remaining portion of the URL before redirecting the request.
+        prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+        neither. If neither is supplied, the path of the original request will be used for
+        the redirect. The value must be between 1 and 1024 characters.
+        """
+        redirect_response_code: NotRequired[pulumi.Input[str]]
+        """
+        The HTTP Status code to use for this RedirectAction. Supported values are:
+        * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+        * FOUND, which corresponds to 302.
+        * SEE_OTHER which corresponds to 303.
+        * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+        will be retained.
+        * PERMANENT_REDIRECT, which corresponds to 308. In this case,
+        the request method will be retained.
+        """
+elif False:
+    RegionUrlMapPathMatcherDefaultUrlRedirectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherDefaultUrlRedirectArgs:
@@ -25308,6 +34027,45 @@ class RegionUrlMapPathMatcherDefaultUrlRedirectArgs:
         pulumi.set(self, "redirect_response_code", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherPathRuleArgsDict(TypedDict):
+        paths: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The list of path patterns to match. Each must start with / and the only place a
+        \\* is allowed is at the end following a /. The string fed to the path matcher
+        does not include any text after the first ? or #, and those chars are not
+        allowed here.
+        """
+        route_action: NotRequired[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionArgsDict']]
+        """
+        In response to a matching path, the load balancer performs advanced routing
+        actions like URL rewrites, header transformations, etc. prior to forwarding the
+        request to the selected backend. If routeAction specifies any
+        weightedBackendServices, service must not be set. Conversely if service is set,
+        routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+        or urlRedirect must be set.
+        Structure is documented below.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        The region backend service resource to which traffic is
+        directed if this rule is matched. If routeAction is additionally specified,
+        advanced routing actions like URL Rewrites, etc. take effect prior to sending
+        the request to the backend. However, if service is specified, routeAction cannot
+        contain any weightedBackendService s. Conversely, if routeAction specifies any
+        weightedBackendServices, service must not be specified. Only one of urlRedirect,
+        service or routeAction.weightedBackendService must be set.
+        """
+        url_redirect: NotRequired[pulumi.Input['RegionUrlMapPathMatcherPathRuleUrlRedirectArgsDict']]
+        """
+        When a path pattern is matched, the request is redirected to a URL specified
+        by urlRedirect. If urlRedirect is specified, service or routeAction must not
+        be set.
+        Structure is documented below.
+        """
+elif False:
+    RegionUrlMapPathMatcherPathRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherPathRuleArgs:
     def __init__(__self__, *,
@@ -25413,6 +34171,67 @@ class RegionUrlMapPathMatcherPathRuleArgs:
     def url_redirect(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleUrlRedirectArgs']]):
         pulumi.set(self, "url_redirect", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherPathRuleRouteActionArgsDict(TypedDict):
+        cors_policy: NotRequired[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgsDict']]
+        """
+        The specification for allowing client side cross-origin requests. Please see W3C
+        Recommendation for Cross Origin Resource Sharing
+        Structure is documented below.
+        """
+        fault_injection_policy: NotRequired[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgsDict']]
+        """
+        The specification for fault injection introduced into traffic to test the
+        resiliency of clients to backend service failure. As part of fault injection,
+        when clients send requests to a backend service, delays can be introduced by
+        Loadbalancer on a percentage of requests before sending those request to the
+        backend service. Similarly requests from clients can be aborted by the
+        Loadbalancer for a percentage of requests. timeout and retry_policy will be
+        ignored by clients that are configured with a fault_injection_policy.
+        Structure is documented below.
+        """
+        request_mirror_policy: NotRequired[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgsDict']]
+        """
+        Specifies the policy on how requests intended for the route's backends are
+        shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+        responses from the shadow service. Prior to sending traffic to the shadow
+        service, the host / authority header is suffixed with -shadow.
+        Structure is documented below.
+        """
+        retry_policy: NotRequired[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgsDict']]
+        """
+        Specifies the retry policy associated with this route.
+        Structure is documented below.
+        """
+        timeout: NotRequired[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgsDict']]
+        """
+        Specifies the timeout for the selected route. Timeout is computed from the time
+        the request is has been fully processed (i.e. end-of-stream) up until the
+        response has been completely processed. Timeout includes all retries. If not
+        specified, the default value is 15 seconds.
+        Structure is documented below.
+        """
+        url_rewrite: NotRequired[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgsDict']]
+        """
+        The spec to modify the URL of the request, prior to forwarding the request to
+        the matched service
+        Structure is documented below.
+        """
+        weighted_backend_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgsDict']]]]
+        """
+        A list of weighted backend services to send traffic to when a route match
+        occurs. The weights determine the fraction of traffic that flows to their
+        corresponding backend service. If all traffic needs to go to a single backend
+        service, there must be one  weightedBackendService with weight set to a non 0
+        number. Once a backendService is identified and before forwarding the request to
+        the backend service, advanced routing actions like Url rewrites and header
+        transformations are applied depending on additional settings specified in this
+        HttpRouteAction.
+        Structure is documented below.
+        """
+elif False:
+    RegionUrlMapPathMatcherPathRuleRouteActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherPathRuleRouteActionArgs:
@@ -25589,6 +34408,48 @@ class RegionUrlMapPathMatcherPathRuleRouteActionArgs:
         pulumi.set(self, "weighted_backend_services", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgsDict(TypedDict):
+        disabled: pulumi.Input[bool]
+        """
+        If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+        """
+        allow_credentials: NotRequired[pulumi.Input[bool]]
+        """
+        In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+        Default is false.
+        """
+        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Allow-Headers header.
+        """
+        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Allow-Methods header.
+        """
+        allow_origin_regexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        please see en.cppreference.com/w/cpp/regex/ecmascript
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        allow_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the list of origins that will be allowed to do CORS requests.
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Expose-Headers header.
+        """
+        max_age: NotRequired[pulumi.Input[int]]
+        """
+        Specifies how long results of a preflight request can be cached in seconds.
+        This translates to the Access-Control-Max-Age header.
+        """
+elif False:
+    RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs:
     def __init__(__self__, *,
@@ -25733,6 +34594,21 @@ class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs:
         pulumi.set(self, "max_age", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgsDict(TypedDict):
+        abort: NotRequired[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgsDict']]
+        """
+        The specification for how client requests are aborted as part of fault injection.
+        Structure is documented below.
+        """
+        delay: NotRequired[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgsDict']]
+        """
+        The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        Structure is documented below.
+        """
+elif False:
+    RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs:
     def __init__(__self__, *,
@@ -25776,6 +34652,21 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs:
         pulumi.set(self, "delay", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgsDict(TypedDict):
+        http_status: pulumi.Input[int]
+        """
+        The HTTP status code used to abort the request.
+        The value must be between 200 and 599 inclusive.
+        """
+        percentage: pulumi.Input[float]
+        """
+        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+elif False:
+    RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs:
     def __init__(__self__, *,
@@ -25817,6 +34708,21 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs:
         pulumi.set(self, "percentage", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgsDict(TypedDict):
+        fixed_delay: pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict']
+        """
+        Specifies the value of the fixed delay interval.
+        Structure is documented below.
+        """
+        percentage: pulumi.Input[float]
+        """
+        The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+elif False:
+    RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs:
     def __init__(__self__, *,
@@ -25857,6 +34763,21 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs:
     def percentage(self, value: pulumi.Input[float]):
         pulumi.set(self, "percentage", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict(TypedDict):
+        seconds: pulumi.Input[str]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
@@ -25900,6 +34821,17 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDe
         pulumi.set(self, "nanos", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgsDict(TypedDict):
+        backend_service: pulumi.Input[str]
+        """
+        The full or partial URL to the RegionBackendService resource being mirrored to.
+        The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
+        Serverless NEG backends are not currently supported as a mirrored backend service.
+        """
+elif False:
+    RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs:
     def __init__(__self__, *,
@@ -25925,6 +34857,37 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs:
     def backend_service(self, value: pulumi.Input[str]):
         pulumi.set(self, "backend_service", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgsDict(TypedDict):
+        num_retries: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        """
+        per_try_timeout: NotRequired[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgsDict']]
+        """
+        Specifies a non-zero timeout per retry attempt.
+        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+        will use the largest timeout among all backend services associated with the route.
+        Structure is documented below.
+        """
+        retry_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies one or more conditions when this retry policy applies.
+        Valid values are listed below. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true: cancelled, deadline-exceeded, internal, resource-exhausted, unavailable.
+        - 5xx : retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams.
+        - gateway-error : Similar to 5xx, but only applies to response codes 502, 503 or 504.
+        - connect-failure : a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts.
+        - retriable-4xx : a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409.
+        - refused-stream : a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+        - cancelled : a retry is attempted if the gRPC status code in the response header is set to cancelled.
+        - deadline-exceeded : a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded.
+        - internal :  a retry is attempted if the gRPC status code in the response header is set to internal.
+        - resource-exhausted : a retry is attempted if the gRPC status code in the response header is set to resource-exhausted.
+        - unavailable : a retry is attempted if the gRPC status code in the response header is set to unavailable.
+        """
+elif False:
+    RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs:
@@ -26009,6 +34972,21 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs:
         pulumi.set(self, "retry_conditions", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgsDict(TypedDict):
+        seconds: pulumi.Input[str]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs:
     def __init__(__self__, *,
@@ -26051,6 +35029,19 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs:
         pulumi.set(self, "nanos", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgsDict(TypedDict):
+        seconds: pulumi.Input[str]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs:
     def __init__(__self__, *,
@@ -26088,6 +35079,21 @@ class RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs:
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgsDict(TypedDict):
+        host_rewrite: NotRequired[pulumi.Input[str]]
+        """
+        Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
+        The value must be from 1 to 255 characters.
+        """
+        path_prefix_rewrite: NotRequired[pulumi.Input[str]]
+        """
+        Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
+        The value must be from 1 to 1024 characters.
+        """
+elif False:
+    RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs:
@@ -26131,6 +35137,29 @@ class RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs:
     def path_prefix_rewrite(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_prefix_rewrite", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgsDict(TypedDict):
+        backend_service: pulumi.Input[str]
+        """
+        The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
+        """
+        weight: pulumi.Input[int]
+        """
+        Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) .
+        The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy.
+        The value must be from 0 to 1000.
+        """
+        header_action: NotRequired[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgsDict']]
+        """
+        Specifies changes to request and response headers that need to take effect for the selected backendService.
+        headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+        headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        Structure is documented below.
+        """
+elif False:
+    RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs:
@@ -26196,6 +35225,29 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs:
     def header_action(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs']]):
         pulumi.set(self, "header_action", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgsDict(TypedDict):
+        request_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict']]]]
+        """
+        Headers to add to a matching request before forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        request_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        """
+        response_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict']]]]
+        """
+        Headers to add the response before sending the response back to the client.
+        Structure is documented below.
+        """
+        response_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the response before sending the response back to the client.
+        """
+elif False:
+    RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs:
@@ -26272,6 +35324,24 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActi
         pulumi.set(self, "response_headers_to_removes", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the header.
+        """
+        header_value: pulumi.Input[str]
+        """
+        The value of the header to add.
+        """
+        replace: pulumi.Input[bool]
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+elif False:
+    RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs:
     def __init__(__self__, *,
@@ -26326,6 +35396,24 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActi
         pulumi.set(self, "replace", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the header.
+        """
+        header_value: pulumi.Input[str]
+        """
+        The value of the header to add.
+        """
+        replace: pulumi.Input[bool]
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+elif False:
+    RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs:
     def __init__(__self__, *,
@@ -26379,6 +35467,60 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActi
     def replace(self, value: pulumi.Input[bool]):
         pulumi.set(self, "replace", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherPathRuleUrlRedirectArgsDict(TypedDict):
+        strip_query: pulumi.Input[bool]
+        """
+        If set to true, any accompanying query portion of the original URL is removed
+        prior to redirecting the request. If set to false, the query portion of the
+        original URL is retained.
+        This field is required to ensure an empty block is not set. The normal default value is false.
+        """
+        host_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The host that will be used in the redirect response instead of the one
+        that was supplied in the request. The value must be between 1 and 255
+        characters.
+        """
+        https_redirect: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, the URL scheme in the redirected request is set to https.
+        If set to false, the URL scheme of the redirected request will remain the
+        same as that of the request. This must only be set for UrlMaps used in
+        TargetHttpProxys. Setting this true for TargetHttpsProxy is not
+        permitted. The default is set to false.
+        """
+        path_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The path that will be used in the redirect response instead of the one
+        that was supplied in the request. pathRedirect cannot be supplied
+        together with prefixRedirect. Supply one alone or neither. If neither is
+        supplied, the path of the original request will be used for the redirect.
+        The value must be between 1 and 1024 characters.
+        """
+        prefix_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The prefix that replaces the prefixMatch specified in the
+        HttpRouteRuleMatch, retaining the remaining portion of the URL before
+        redirecting the request. prefixRedirect cannot be supplied together with
+        pathRedirect. Supply one alone or neither. If neither is supplied, the
+        path of the original request will be used for the redirect. The value
+        must be between 1 and 1024 characters.
+        """
+        redirect_response_code: NotRequired[pulumi.Input[str]]
+        """
+        The HTTP Status code to use for this RedirectAction. Supported values are:
+        * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+        * FOUND, which corresponds to 302.
+        * SEE_OTHER which corresponds to 303.
+        * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+        will be retained.
+        * PERMANENT_REDIRECT, which corresponds to 308. In this case,
+        the request method will be retained.
+        """
+elif False:
+    RegionUrlMapPathMatcherPathRuleUrlRedirectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherPathRuleUrlRedirectArgs:
@@ -26531,6 +35673,67 @@ class RegionUrlMapPathMatcherPathRuleUrlRedirectArgs:
     def redirect_response_code(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "redirect_response_code", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleArgsDict(TypedDict):
+        priority: pulumi.Input[int]
+        """
+        For routeRules within a given pathMatcher, priority determines the order
+        in which load balancer will interpret routeRules. RouteRules are evaluated
+        in order of priority, from the lowest to highest number. The priority of
+        a rule decreases as its number increases (1, 2, 3, N+1). The first rule
+        that matches the request is applied.
+        You cannot configure two or more routeRules with the same priority.
+        Priority for each rule must be set to a number between 0 and
+        2147483647 inclusive.
+        Priority numbers can have gaps, which enable you to add or remove rules
+        in the future without affecting the rest of the rules. For example,
+        1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which
+        you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the
+        future without any impact on existing rules.
+        """
+        header_action: NotRequired[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionArgsDict']]
+        """
+        Specifies changes to request and response headers that need to take effect for
+        the selected backendService. The headerAction specified here are applied before
+        the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
+        outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
+        Structure is documented below.
+        """
+        match_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleArgsDict']]]]
+        """
+        The rules for determining a match.
+        Structure is documented below.
+        """
+        route_action: NotRequired[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionArgsDict']]
+        """
+        In response to a matching matchRule, the load balancer performs advanced routing
+        actions like URL rewrites, header transformations, etc. prior to forwarding the
+        request to the selected backend. If  routeAction specifies any
+        weightedBackendServices, service must not be set. Conversely if service is set,
+        routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+        or urlRedirect must be set.
+        Structure is documented below.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        The region backend service resource to which traffic is
+        directed if this rule is matched. If routeAction is additionally specified,
+        advanced routing actions like URL Rewrites, etc. take effect prior to sending
+        the request to the backend. However, if service is specified, routeAction cannot
+        contain any weightedBackendService s. Conversely, if routeAction specifies any
+        weightedBackendServices, service must not be specified. Only one of urlRedirect,
+        service or routeAction.weightedBackendService must be set.
+        """
+        url_redirect: NotRequired[pulumi.Input['RegionUrlMapPathMatcherRouteRuleUrlRedirectArgsDict']]
+        """
+        When this rule is matched, the request is redirected to a URL specified by
+        urlRedirect. If urlRedirect is specified, service or routeAction must not be
+        set.
+        Structure is documented below.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleArgs:
@@ -26698,6 +35901,29 @@ class RegionUrlMapPathMatcherRouteRuleArgs:
         pulumi.set(self, "url_redirect", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleHeaderActionArgsDict(TypedDict):
+        request_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgsDict']]]]
+        """
+        Headers to add to a matching request before forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        request_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        """
+        response_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgsDict']]]]
+        """
+        Headers to add the response before sending the response back to the client.
+        Structure is documented below.
+        """
+        response_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the response before sending the response back to the client.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleHeaderActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleHeaderActionArgs:
     def __init__(__self__, *,
@@ -26773,6 +35999,24 @@ class RegionUrlMapPathMatcherRouteRuleHeaderActionArgs:
         pulumi.set(self, "response_headers_to_removes", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the header.
+        """
+        header_value: pulumi.Input[str]
+        """
+        The value of the header to add.
+        """
+        replace: pulumi.Input[bool]
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs:
     def __init__(__self__, *,
@@ -26827,6 +36071,24 @@ class RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs:
         pulumi.set(self, "replace", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the header.
+        """
+        header_value: pulumi.Input[str]
+        """
+        The value of the header to add.
+        """
+        replace: pulumi.Input[bool]
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs:
     def __init__(__self__, *,
@@ -26880,6 +36142,77 @@ class RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs:
     def replace(self, value: pulumi.Input[bool]):
         pulumi.set(self, "replace", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleMatchRuleArgsDict(TypedDict):
+        full_path_match: NotRequired[pulumi.Input[str]]
+        """
+        For satisfying the matchRule condition, the path of the request must exactly
+        match the value specified in fullPathMatch after removing any query parameters
+        and anchor that may be part of the original URL. FullPathMatch must be between 1
+        and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
+        be specified.
+        """
+        header_matches: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgsDict']]]]
+        """
+        Specifies a list of header match criteria, all of which must match corresponding
+        headers in the request.
+        Structure is documented below.
+        """
+        ignore_case: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies that prefixMatch and fullPathMatch matches are case sensitive.
+        Defaults to false.
+        """
+        metadata_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgsDict']]]]
+        """
+        Opaque filter criteria used by Loadbalancer to restrict routing configuration to
+        a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
+        clients present node metadata. If a match takes place, the relevant routing
+        configuration is made available to those proxies. For each metadataFilter in
+        this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the
+        filterLabels must match the corresponding label provided in the metadata. If its
+        filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match
+        with corresponding labels in the provided metadata. metadataFilters specified
+        here can be overrides those specified in ForwardingRule that refers to this
+        UrlMap. metadataFilters only applies to Loadbalancers that have their
+        loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        Structure is documented below.
+        """
+        path_template_match: NotRequired[pulumi.Input[str]]
+        """
+        For satisfying the matchRule condition, the path of the request
+        must match the wildcard pattern specified in pathTemplateMatch
+        after removing any query parameters and anchor that may be part
+        of the original URL.
+        pathTemplateMatch must be between 1 and 255 characters
+        (inclusive).  The pattern specified by pathTemplateMatch may
+        have at most 5 wildcard operators and at most 5 variable
+        captures in total.
+        """
+        prefix_match: NotRequired[pulumi.Input[str]]
+        """
+        For satisfying the matchRule condition, the request's path must begin with the
+        specified prefixMatch. prefixMatch must begin with a /. The value must be
+        between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
+        regexMatch must be specified.
+        """
+        query_parameter_matches: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgsDict']]]]
+        """
+        Specifies a list of query parameter match criteria, all of which must match
+        corresponding query parameters in the request.
+        Structure is documented below.
+        """
+        regex_match: NotRequired[pulumi.Input[str]]
+        """
+        For satisfying the matchRule condition, the path of the request must satisfy the
+        regular expression specified in regexMatch after removing any query parameters
+        and anchor supplied with the original URL. For regular expression grammar please
+        see en.cppreference.com/w/cpp/regex/ecmascript  Only one of prefixMatch,
+        fullPathMatch or regexMatch must be specified.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleMatchRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
@@ -27084,6 +36417,69 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
         pulumi.set(self, "regex_match", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the HTTP header to match. For matching against the HTTP request's
+        authority, use a headerMatch with the header name ":authority". For matching a
+        request's method, use the headerName ":method".
+        """
+        exact_match: NotRequired[pulumi.Input[str]]
+        """
+        The value should exactly match contents of exactMatch. Only one of exactMatch,
+        prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
+        """
+        invert_match: NotRequired[pulumi.Input[bool]]
+        """
+        If set to false, the headerMatch is considered a match if the match criteria
+        above are met. If set to true, the headerMatch is considered a match if the
+        match criteria above are NOT met. Defaults to false.
+        """
+        prefix_match: NotRequired[pulumi.Input[str]]
+        """
+        The value of the header must start with the contents of prefixMatch. Only one of
+        exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+        must be set.
+        """
+        present_match: NotRequired[pulumi.Input[bool]]
+        """
+        A header with the contents of headerName must exist. The match takes place
+        whether or not the request's header has a value or not. Only one of exactMatch,
+        prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
+        """
+        range_match: NotRequired[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgsDict']]
+        """
+        The header value must be an integer and its value must be in the range specified
+        in rangeMatch. If the header does not contain an integer, number or is empty,
+        the match fails. For example for a range [-5, 0]
+        * -3 will match
+        * 0 will not match
+        * 0.25 will not match
+        * -3someString will not match.
+        Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+        rangeMatch must be set.
+        Structure is documented below.
+        """
+        regex_match: NotRequired[pulumi.Input[str]]
+        """
+        The value of the header must match the regular expression specified in
+        regexMatch. For regular expression grammar, please see:
+        en.cppreference.com/w/cpp/regex/ecmascript  For matching against a port
+        specified in the HTTP request, use a headerMatch with headerName set to PORT and
+        a regular expression that satisfies the RFC2616 Host header's port specifier.
+        Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+        rangeMatch must be set.
+        """
+        suffix_match: NotRequired[pulumi.Input[str]]
+        """
+        The value of the header must end with the contents of suffixMatch. Only one of
+        exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+        must be set.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
     def __init__(__self__, *,
@@ -27270,6 +36666,19 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
         pulumi.set(self, "suffix_match", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgsDict(TypedDict):
+        range_end: pulumi.Input[int]
+        """
+        The end of the range (exclusive).
+        """
+        range_start: pulumi.Input[int]
+        """
+        The start of the range (inclusive).
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs:
     def __init__(__self__, *,
@@ -27306,6 +36715,28 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs:
     def range_start(self, value: pulumi.Input[int]):
         pulumi.set(self, "range_start", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgsDict(TypedDict):
+        filter_labels: pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgsDict']]]
+        """
+        The list of label value pairs that must match labels in the provided metadata
+        based on filterMatchCriteria  This list must not be empty and can have at the
+        most 64 entries.
+        Structure is documented below.
+        """
+        filter_match_criteria: pulumi.Input[str]
+        """
+        Specifies how individual filterLabel matches within the list of filterLabels
+        contribute towards the overall metadataFilter match. Supported values are:
+        * MATCH_ANY: At least one of the filterLabels must have a matching label in the
+        provided metadata.
+        * MATCH_ALL: All filterLabels must have matching labels in
+        the provided metadata.
+        Possible values are: `MATCH_ALL`, `MATCH_ANY`.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
@@ -27362,6 +36793,21 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
         pulumi.set(self, "filter_match_criteria", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of metadata label. The name can have a maximum length of 1024 characters
+        and must be at least 1 character long.
+        """
+        value: pulumi.Input[str]
+        """
+        The value of the label must match the specified value. value can have a maximum
+        length of 1024 characters.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs:
     def __init__(__self__, *,
@@ -27402,6 +36848,35 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the query parameter to match. The query parameter must exist in the
+        request, in the absence of which the request match fails.
+        """
+        exact_match: NotRequired[pulumi.Input[str]]
+        """
+        The queryParameterMatch matches if the value of the parameter exactly matches
+        the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
+        must be set.
+        """
+        present_match: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies that the queryParameterMatch matches if the request contains the query
+        parameter, irrespective of whether the parameter has a value or not. Only one of
+        presentMatch, exactMatch and regexMatch must be set.
+        """
+        regex_match: NotRequired[pulumi.Input[str]]
+        """
+        The queryParameterMatch matches if the value of the parameter matches the
+        regular expression specified by regexMatch. For the regular expression grammar,
+        please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+        exactMatch and regexMatch must be set.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs:
@@ -27488,6 +36963,67 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs:
     def regex_match(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "regex_match", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleRouteActionArgsDict(TypedDict):
+        cors_policy: NotRequired[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgsDict']]
+        """
+        The specification for allowing client side cross-origin requests. Please see W3C
+        Recommendation for Cross Origin Resource Sharing
+        Structure is documented below.
+        """
+        fault_injection_policy: NotRequired[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgsDict']]
+        """
+        The specification for fault injection introduced into traffic to test the
+        resiliency of clients to backend service failure. As part of fault injection,
+        when clients send requests to a backend service, delays can be introduced by
+        Loadbalancer on a percentage of requests before sending those request to the
+        backend service. Similarly requests from clients can be aborted by the
+        Loadbalancer for a percentage of requests. timeout and retry_policy will be
+        ignored by clients that are configured with a fault_injection_policy.
+        Structure is documented below.
+        """
+        request_mirror_policy: NotRequired[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgsDict']]
+        """
+        Specifies the policy on how requests intended for the route's backends are
+        shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+        responses from the shadow service. Prior to sending traffic to the shadow
+        service, the host / authority header is suffixed with -shadow.
+        Structure is documented below.
+        """
+        retry_policy: NotRequired[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgsDict']]
+        """
+        Specifies the retry policy associated with this route.
+        Structure is documented below.
+        """
+        timeout: NotRequired[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgsDict']]
+        """
+        Specifies the timeout for the selected route. Timeout is computed from the time
+        the request is has been fully processed (i.e. end-of-stream) up until the
+        response has been completely processed. Timeout includes all retries. If not
+        specified, the default value is 15 seconds.
+        Structure is documented below.
+        """
+        url_rewrite: NotRequired[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgsDict']]
+        """
+        The spec to modify the URL of the request, prior to forwarding the request to
+        the matched service
+        Structure is documented below.
+        """
+        weighted_backend_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgsDict']]]]
+        """
+        A list of weighted backend services to send traffic to when a route match
+        occurs. The weights determine the fraction of traffic that flows to their
+        corresponding backend service. If all traffic needs to go to a single backend
+        service, there must be one  weightedBackendService with weight set to a non 0
+        number. Once a backendService is identified and before forwarding the request to
+        the backend service, advanced routing actions like Url rewrites and header
+        transformations are applied depending on additional settings specified in this
+        HttpRouteAction.
+        Structure is documented below.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleRouteActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleRouteActionArgs:
@@ -27664,6 +37200,48 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionArgs:
         pulumi.set(self, "weighted_backend_services", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgsDict(TypedDict):
+        allow_credentials: NotRequired[pulumi.Input[bool]]
+        """
+        In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+        Default is false.
+        """
+        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Allow-Headers header.
+        """
+        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Allow-Methods header.
+        """
+        allow_origin_regexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        please see en.cppreference.com/w/cpp/regex/ecmascript
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        allow_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the list of origins that will be allowed to do CORS requests.
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+        """
+        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Expose-Headers header.
+        """
+        max_age: NotRequired[pulumi.Input[int]]
+        """
+        Specifies how long results of a preflight request can be cached in seconds.
+        This translates to the Access-Control-Max-Age header.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgs:
     def __init__(__self__, *,
@@ -27809,6 +37387,21 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgs:
         pulumi.set(self, "max_age", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgsDict(TypedDict):
+        abort: NotRequired[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgsDict']]
+        """
+        The specification for how client requests are aborted as part of fault injection.
+        Structure is documented below.
+        """
+        delay: NotRequired[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgsDict']]
+        """
+        The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        Structure is documented below.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs:
     def __init__(__self__, *,
@@ -27851,6 +37444,21 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs:
     def delay(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs']]):
         pulumi.set(self, "delay", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgsDict(TypedDict):
+        http_status: NotRequired[pulumi.Input[int]]
+        """
+        The HTTP status code used to abort the request.
+        The value must be between 200 and 599 inclusive.
+        """
+        percentage: NotRequired[pulumi.Input[float]]
+        """
+        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs:
@@ -27895,6 +37503,21 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs:
         pulumi.set(self, "percentage", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgsDict(TypedDict):
+        fixed_delay: NotRequired[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict']]
+        """
+        Specifies the value of the fixed delay interval.
+        Structure is documented below.
+        """
+        percentage: NotRequired[pulumi.Input[float]]
+        """
+        The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs:
     def __init__(__self__, *,
@@ -27938,6 +37561,21 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs:
         pulumi.set(self, "percentage", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict(TypedDict):
+        seconds: pulumi.Input[str]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
     def __init__(__self__, *,
@@ -27980,6 +37618,17 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedD
         pulumi.set(self, "nanos", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgsDict(TypedDict):
+        backend_service: pulumi.Input[str]
+        """
+        The full or partial URL to the RegionBackendService resource being mirrored to.
+        The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
+        Serverless NEG backends are not currently supported as a mirrored backend service.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs:
     def __init__(__self__, *,
@@ -28005,6 +37654,37 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs:
     def backend_service(self, value: pulumi.Input[str]):
         pulumi.set(self, "backend_service", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgsDict(TypedDict):
+        num_retries: pulumi.Input[int]
+        """
+        Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        """
+        per_try_timeout: NotRequired[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgsDict']]
+        """
+        Specifies a non-zero timeout per retry attempt.
+        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+        will use the largest timeout among all backend services associated with the route.
+        Structure is documented below.
+        """
+        retry_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies one or more conditions when this retry policy applies.
+        Valid values are listed below. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true: cancelled, deadline-exceeded, internal, resource-exhausted, unavailable.
+        - 5xx : retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams.
+        - gateway-error : Similar to 5xx, but only applies to response codes 502, 503 or 504.
+        - connect-failure : a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts.
+        - retriable-4xx : a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409.
+        - refused-stream : a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+        - cancelled : a retry is attempted if the gRPC status code in the response header is set to cancelled.
+        - deadline-exceeded : a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded.
+        - internal :  a retry is attempted if the gRPC status code in the response header is set to internal.
+        - resource-exhausted : a retry is attempted if the gRPC status code in the response header is set to resource-exhausted.
+        - unavailable : a retry is attempted if the gRPC status code in the response header is set to unavailable.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs:
@@ -28088,6 +37768,21 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs:
         pulumi.set(self, "retry_conditions", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgsDict(TypedDict):
+        seconds: pulumi.Input[str]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs:
     def __init__(__self__, *,
@@ -28130,6 +37825,19 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs:
         pulumi.set(self, "nanos", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgsDict(TypedDict):
+        seconds: pulumi.Input[str]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgs:
     def __init__(__self__, *,
@@ -28167,6 +37875,35 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgs:
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgsDict(TypedDict):
+        host_rewrite: NotRequired[pulumi.Input[str]]
+        """
+        Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
+        The value must be from 1 to 255 characters.
+        """
+        path_prefix_rewrite: NotRequired[pulumi.Input[str]]
+        """
+        Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
+        The value must be from 1 to 1024 characters.
+        """
+        path_template_rewrite: NotRequired[pulumi.Input[str]]
+        """
+        Prior to forwarding the request to the selected origin, if the
+        request matched a pathTemplateMatch, the matching portion of the
+        request's path is replaced re-written using the pattern specified
+        by pathTemplateRewrite.
+        pathTemplateRewrite must be between 1 and 255 characters
+        (inclusive), must start with a '/', and must only use variables
+        captured by the route's pathTemplate matchers.
+        pathTemplateRewrite may only be used when all of a route's
+        MatchRules specify pathTemplate.
+        Only one of pathPrefixRewrite and pathTemplateRewrite may be
+        specified.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
@@ -28247,6 +37984,29 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
         pulumi.set(self, "path_template_rewrite", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgsDict(TypedDict):
+        backend_service: pulumi.Input[str]
+        """
+        The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
+        """
+        weight: pulumi.Input[int]
+        """
+        Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) .
+        The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy.
+        The value must be from 0 to 1000.
+        """
+        header_action: NotRequired[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgsDict']]
+        """
+        Specifies changes to request and response headers that need to take effect for the selected backendService.
+        headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+        headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        Structure is documented below.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs:
     def __init__(__self__, *,
@@ -28311,6 +38071,29 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs:
     def header_action(self, value: Optional[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs']]):
         pulumi.set(self, "header_action", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgsDict(TypedDict):
+        request_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict']]]]
+        """
+        Headers to add to a matching request before forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        request_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        """
+        response_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict']]]]
+        """
+        Headers to add the response before sending the response back to the client.
+        Structure is documented below.
+        """
+        response_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the response before sending the response back to the client.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs:
@@ -28387,6 +38170,24 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
         pulumi.set(self, "response_headers_to_removes", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the header.
+        """
+        header_value: pulumi.Input[str]
+        """
+        The value of the header to add.
+        """
+        replace: pulumi.Input[bool]
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs:
     def __init__(__self__, *,
@@ -28441,6 +38242,24 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
         pulumi.set(self, "replace", value)
 
 
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the header.
+        """
+        header_value: pulumi.Input[str]
+        """
+        The value of the header to add.
+        """
+        replace: pulumi.Input[bool]
+        """
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+        The default value is false.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs:
     def __init__(__self__, *,
@@ -28494,6 +38313,60 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
     def replace(self, value: pulumi.Input[bool]):
         pulumi.set(self, "replace", value)
 
+
+if not MYPY:
+    class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgsDict(TypedDict):
+        host_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The host that will be used in the redirect response instead of the one
+        that was supplied in the request. The value must be between 1 and 255
+        characters.
+        """
+        https_redirect: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, the URL scheme in the redirected request is set to https.
+        If set to false, the URL scheme of the redirected request will remain the
+        same as that of the request. This must only be set for UrlMaps used in
+        TargetHttpProxys. Setting this true for TargetHttpsProxy is not
+        permitted. The default is set to false.
+        """
+        path_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The path that will be used in the redirect response instead of the one
+        that was supplied in the request. pathRedirect cannot be supplied
+        together with prefixRedirect. Supply one alone or neither. If neither is
+        supplied, the path of the original request will be used for the redirect.
+        The value must be between 1 and 1024 characters.
+        """
+        prefix_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The prefix that replaces the prefixMatch specified in the
+        HttpRouteRuleMatch, retaining the remaining portion of the URL before
+        redirecting the request. prefixRedirect cannot be supplied together with
+        pathRedirect. Supply one alone or neither. If neither is supplied, the
+        path of the original request will be used for the redirect. The value
+        must be between 1 and 1024 characters.
+        """
+        redirect_response_code: NotRequired[pulumi.Input[str]]
+        """
+        The HTTP Status code to use for this RedirectAction. Supported values are:
+        * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+        * FOUND, which corresponds to 302.
+        * SEE_OTHER which corresponds to 303.
+        * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+        will be retained.
+        * PERMANENT_REDIRECT, which corresponds to 308. In this case,
+        the request method will be retained.
+        """
+        strip_query: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, any accompanying query portion of the original URL is removed
+        prior to redirecting the request. If set to false, the query portion of the
+        original URL is retained.
+        This field is required to ensure an empty block is not set. The normal default value is false.
+        """
+elif False:
+    RegionUrlMapPathMatcherRouteRuleUrlRedirectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs:
@@ -28648,6 +38521,27 @@ class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs:
         pulumi.set(self, "strip_query", value)
 
 
+if not MYPY:
+    class RegionUrlMapTestArgsDict(TypedDict):
+        host: pulumi.Input[str]
+        """
+        Host portion of the URL.
+        """
+        path: pulumi.Input[str]
+        """
+        Path portion of the URL.
+        """
+        service: pulumi.Input[str]
+        """
+        A reference to expected RegionBackendService resource the given URL should be mapped to.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of this test case.
+        """
+elif False:
+    RegionUrlMapTestArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegionUrlMapTestArgs:
     def __init__(__self__, *,
@@ -28716,6 +38610,21 @@ class RegionUrlMapTestArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class ReservationShareSettingsArgsDict(TypedDict):
+        project_maps: NotRequired[pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArgsDict']]]]
+        """
+        A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        Structure is documented below.
+        """
+        share_type: NotRequired[pulumi.Input[str]]
+        """
+        Type of sharing for this shared-reservation
+        Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
+        """
+elif False:
+    ReservationShareSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ReservationShareSettingsArgs:
     def __init__(__self__, *,
@@ -28759,6 +38668,19 @@ class ReservationShareSettingsArgs:
         pulumi.set(self, "share_type", value)
 
 
+if not MYPY:
+    class ReservationShareSettingsProjectMapArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        The project id/number, should be same as the key of this project config in the project map.
+        """
+elif False:
+    ReservationShareSettingsProjectMapArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ReservationShareSettingsProjectMapArgs:
     def __init__(__self__, *,
@@ -28796,6 +38718,25 @@ class ReservationShareSettingsProjectMapArgs:
     def project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id", value)
 
+
+if not MYPY:
+    class ReservationSpecificReservationArgsDict(TypedDict):
+        count: pulumi.Input[int]
+        """
+        The number of resources that are allocated.
+        """
+        instance_properties: pulumi.Input['ReservationSpecificReservationInstancePropertiesArgsDict']
+        """
+        The instance properties for the reservation.
+        Structure is documented below.
+        """
+        in_use_count: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        How many instances are in use.
+        """
+elif False:
+    ReservationSpecificReservationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ReservationSpecificReservationArgs:
@@ -28853,6 +38794,33 @@ class ReservationSpecificReservationArgs:
     def in_use_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "in_use_count", value)
 
+
+if not MYPY:
+    class ReservationSpecificReservationInstancePropertiesArgsDict(TypedDict):
+        machine_type: pulumi.Input[str]
+        """
+        The name of the machine type to reserve.
+        """
+        guest_accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgsDict']]]]
+        """
+        Guest accelerator type and count.
+        Structure is documented below.
+        """
+        local_ssds: NotRequired[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesLocalSsdArgsDict']]]]
+        """
+        The amount of local ssd to reserve with each instance. This
+        reserves disks of type `local-ssd`.
+        Structure is documented below.
+        """
+        min_cpu_platform: NotRequired[pulumi.Input[str]]
+        """
+        The minimum CPU platform for the reservation. For example,
+        `"Intel Skylake"`. See
+        the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+        for information on available CPU platforms.
+        """
+elif False:
+    ReservationSpecificReservationInstancePropertiesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ReservationSpecificReservationInstancePropertiesArgs:
@@ -28936,6 +38904,23 @@ class ReservationSpecificReservationInstancePropertiesArgs:
         pulumi.set(self, "min_cpu_platform", value)
 
 
+if not MYPY:
+    class ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgsDict(TypedDict):
+        accelerator_count: pulumi.Input[int]
+        """
+        The number of the guest accelerator cards exposed to
+        this instance.
+        """
+        accelerator_type: pulumi.Input[str]
+        """
+        The full or partial URL of the accelerator type to
+        attach to this instance. For example:
+        `projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100`
+        If you are creating an instance template, specify only the accelerator name.
+        """
+elif False:
+    ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs:
     def __init__(__self__, *,
@@ -28980,6 +38965,23 @@ class ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs:
     def accelerator_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "accelerator_type", value)
 
+
+if not MYPY:
+    class ReservationSpecificReservationInstancePropertiesLocalSsdArgsDict(TypedDict):
+        disk_size_gb: pulumi.Input[int]
+        """
+        The size of the disk in base-2 GB.
+
+        - - -
+        """
+        interface: NotRequired[pulumi.Input[str]]
+        """
+        The disk interface to use for attaching this disk.
+        Default value is `SCSI`.
+        Possible values are: `SCSI`, `NVME`.
+        """
+elif False:
+    ReservationSpecificReservationInstancePropertiesLocalSsdArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ReservationSpecificReservationInstancePropertiesLocalSsdArgs:
@@ -29027,6 +39029,15 @@ class ReservationSpecificReservationInstancePropertiesLocalSsdArgs:
         pulumi.set(self, "interface", value)
 
 
+if not MYPY:
+    class ResourcePolicyDiskConsistencyGroupPolicyArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Enable disk consistency on the resource policy.
+        """
+elif False:
+    ResourcePolicyDiskConsistencyGroupPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ResourcePolicyDiskConsistencyGroupPolicyArgs:
     def __init__(__self__, *,
@@ -29048,6 +39059,34 @@ class ResourcePolicyDiskConsistencyGroupPolicyArgs:
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class ResourcePolicyGroupPlacementPolicyArgsDict(TypedDict):
+        availability_domain_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of availability domains instances will be spread across. If two instances are in different
+        availability domain, they will not be put in the same low latency network
+        """
+        collocation: NotRequired[pulumi.Input[str]]
+        """
+        Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
+        Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
+        with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
+        attached.
+        Possible values are: `COLLOCATED`.
+        """
+        max_distance: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the number of max logical switches.
+        """
+        vm_count: NotRequired[pulumi.Input[int]]
+        """
+        Number of VMs in this placement group. Google does not recommend that you use this field
+        unless you use a compact policy and you want your policy to work only if it contains this
+        exact number of VMs.
+        """
+elif False:
+    ResourcePolicyGroupPlacementPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ResourcePolicyGroupPlacementPolicyArgs:
@@ -29133,6 +39172,34 @@ class ResourcePolicyGroupPlacementPolicyArgs:
     def vm_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "vm_count", value)
 
+
+if not MYPY:
+    class ResourcePolicyInstanceSchedulePolicyArgsDict(TypedDict):
+        time_zone: pulumi.Input[str]
+        """
+        Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
+        from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        """
+        expiration_time: NotRequired[pulumi.Input[str]]
+        """
+        The expiration time of the schedule. The timestamp is an RFC3339 string.
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        The start time of the schedule. The timestamp is an RFC3339 string.
+        """
+        vm_start_schedule: NotRequired[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgsDict']]
+        """
+        Specifies the schedule for starting instances.
+        Structure is documented below.
+        """
+        vm_stop_schedule: NotRequired[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgsDict']]
+        """
+        Specifies the schedule for stopping instances.
+        Structure is documented below.
+        """
+elif False:
+    ResourcePolicyInstanceSchedulePolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ResourcePolicyInstanceSchedulePolicyArgs:
@@ -29226,6 +39293,15 @@ class ResourcePolicyInstanceSchedulePolicyArgs:
         pulumi.set(self, "vm_stop_schedule", value)
 
 
+if not MYPY:
+    class ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgsDict(TypedDict):
+        schedule: pulumi.Input[str]
+        """
+        Specifies the frequency for the operation, using the unix-cron format.
+        """
+elif False:
+    ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs:
     def __init__(__self__, *,
@@ -29248,6 +39324,15 @@ class ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs:
         pulumi.set(self, "schedule", value)
 
 
+if not MYPY:
+    class ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgsDict(TypedDict):
+        schedule: pulumi.Input[str]
+        """
+        Specifies the frequency for the operation, using the unix-cron format.
+        """
+elif False:
+    ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs:
     def __init__(__self__, *,
@@ -29269,6 +39354,26 @@ class ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs:
     def schedule(self, value: pulumi.Input[str]):
         pulumi.set(self, "schedule", value)
 
+
+if not MYPY:
+    class ResourcePolicySnapshotSchedulePolicyArgsDict(TypedDict):
+        schedule: pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleArgsDict']
+        """
+        Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+        Structure is documented below.
+        """
+        retention_policy: NotRequired[pulumi.Input['ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgsDict']]
+        """
+        Retention policy applied to snapshots created by this resource policy.
+        Structure is documented below.
+        """
+        snapshot_properties: NotRequired[pulumi.Input['ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgsDict']]
+        """
+        Properties with which the snapshots are created, such as labels.
+        Structure is documented below.
+        """
+elif False:
+    ResourcePolicySnapshotSchedulePolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ResourcePolicySnapshotSchedulePolicyArgs:
@@ -29330,6 +39435,22 @@ class ResourcePolicySnapshotSchedulePolicyArgs:
         pulumi.set(self, "snapshot_properties", value)
 
 
+if not MYPY:
+    class ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgsDict(TypedDict):
+        max_retention_days: pulumi.Input[int]
+        """
+        Maximum age of the snapshot that is allowed to be kept.
+        """
+        on_source_disk_delete: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the behavior to apply to scheduled snapshots when
+        the source disk is deleted.
+        Default value is `KEEP_AUTO_SNAPSHOTS`.
+        Possible values are: `KEEP_AUTO_SNAPSHOTS`, `APPLY_RETENTION_POLICY`.
+        """
+elif False:
+    ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs:
     def __init__(__self__, *,
@@ -29373,6 +39494,26 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs:
     def on_source_disk_delete(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "on_source_disk_delete", value)
 
+
+if not MYPY:
+    class ResourcePolicySnapshotSchedulePolicyScheduleArgsDict(TypedDict):
+        daily_schedule: NotRequired[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgsDict']]
+        """
+        The policy will execute every nth day at the specified time.
+        Structure is documented below.
+        """
+        hourly_schedule: NotRequired[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgsDict']]
+        """
+        The policy will execute every nth hour starting at the specified time.
+        Structure is documented below.
+        """
+        weekly_schedule: NotRequired[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgsDict']]
+        """
+        Allows specifying a snapshot time for each day of the week.
+        Structure is documented below.
+        """
+elif False:
+    ResourcePolicySnapshotSchedulePolicyScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ResourcePolicySnapshotSchedulePolicyScheduleArgs:
@@ -29435,6 +39576,21 @@ class ResourcePolicySnapshotSchedulePolicyScheduleArgs:
         pulumi.set(self, "weekly_schedule", value)
 
 
+if not MYPY:
+    class ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgsDict(TypedDict):
+        days_in_cycle: pulumi.Input[int]
+        """
+        Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
+        """
+        start_time: pulumi.Input[str]
+        """
+        This must be in UTC format that resolves to one of
+        00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example,
+        both 13:00-5 and 08:00 are valid.
+        """
+elif False:
+    ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs:
     def __init__(__self__, *,
@@ -29475,6 +39631,22 @@ class ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs:
     def start_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "start_time", value)
 
+
+if not MYPY:
+    class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgsDict(TypedDict):
+        hours_in_cycle: pulumi.Input[int]
+        """
+        The number of hours between snapshots.
+        """
+        start_time: pulumi.Input[str]
+        """
+        Time within the window to start the operations.
+        It must be in an hourly format "HH:MM",
+        where HH : [00-23] and MM : [00] GMT.
+        eg: 21:00
+        """
+elif False:
+    ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs:
@@ -29519,6 +39691,16 @@ class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs:
         pulumi.set(self, "start_time", value)
 
 
+if not MYPY:
+    class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgsDict(TypedDict):
+        day_of_weeks: pulumi.Input[Sequence[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgsDict']]]
+        """
+        May contain up to seven (one for each day of the week) snapshot times.
+        Structure is documented below.
+        """
+elif False:
+    ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs:
     def __init__(__self__, *,
@@ -29542,6 +39724,21 @@ class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs:
     def day_of_weeks(self, value: pulumi.Input[Sequence[pulumi.Input['ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs']]]):
         pulumi.set(self, "day_of_weeks", value)
 
+
+if not MYPY:
+    class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgsDict(TypedDict):
+        day: pulumi.Input[str]
+        """
+        The day of the week to create the snapshot. e.g. MONDAY
+        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        """
+        start_time: pulumi.Input[str]
+        """
+        Time within the window to start the operations.
+        It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+        """
+elif False:
+    ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs:
@@ -29583,6 +39780,30 @@ class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs:
     def start_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "start_time", value)
 
+
+if not MYPY:
+    class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgsDict(TypedDict):
+        chain_name: NotRequired[pulumi.Input[str]]
+        """
+        Creates the new snapshot in the snapshot chain labeled with the
+        specified name. The chain name must be 1-63 characters long and comply
+        with RFC1035.
+        """
+        guest_flush: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to perform a 'guest aware' snapshot.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A set of key-value pairs.
+        """
+        storage_locations: NotRequired[pulumi.Input[str]]
+        """
+        Cloud Storage bucket location to store the auto snapshot
+        (regional or multi-regional)
+        """
+elif False:
+    ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs:
@@ -29660,6 +39881,62 @@ class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs:
     def storage_locations(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "storage_locations", value)
 
+
+if not MYPY:
+    class RouterBgpArgsDict(TypedDict):
+        asn: pulumi.Input[int]
+        """
+        Local BGP Autonomous System Number (ASN). Must be an RFC6996
+        private ASN, either 16-bit or 32-bit. The value will be fixed for
+        this router resource. All VPN tunnels that link to this router
+        will have the same local ASN.
+        """
+        advertise_mode: NotRequired[pulumi.Input[str]]
+        """
+        User-specified flag to indicate which mode to use for advertisement.
+        Default value is `DEFAULT`.
+        Possible values are: `DEFAULT`, `CUSTOM`.
+        """
+        advertised_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        User-specified list of prefix groups to advertise in custom mode.
+        This field can only be populated if advertiseMode is CUSTOM and
+        is advertised to all peers of the router. These groups will be
+        advertised in addition to any specified prefixes. Leave this field
+        blank to advertise no custom groups.
+        This enum field has the one valid value: ALL_SUBNETS
+        """
+        advertised_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['RouterBgpAdvertisedIpRangeArgsDict']]]]
+        """
+        User-specified list of individual IP ranges to advertise in
+        custom mode. This field can only be populated if advertiseMode
+        is CUSTOM and is advertised to all peers of the router. These IP
+        ranges will be advertised in addition to any specified groups.
+        Leave this field blank to advertise no custom IP ranges.
+        Structure is documented below.
+        """
+        identifier_range: NotRequired[pulumi.Input[str]]
+        """
+        Explicitly specifies a range of valid BGP Identifiers for this Router.
+        It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+        size at least /30, even if the BGP sessions are over IPv6. It must
+        not overlap with any IPv4 BGP session ranges. Other vendors commonly
+        call this router ID.
+        """
+        keepalive_interval: NotRequired[pulumi.Input[int]]
+        """
+        The interval in seconds between BGP keepalive messages that are sent
+        to the peer. Hold time is three times the interval at which keepalive
+        messages are sent, and the hold time is the maximum number of seconds
+        allowed to elapse between successive keepalive messages that BGP
+        receives from a peer.
+        BGP will use the smaller of either the local hold time value or the
+        peer's hold time value as the hold time for the BGP connection
+        between the two peers. If set, this value must be between 20 and 60.
+        The default is 20.
+        """
+elif False:
+    RouterBgpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RouterBgpArgs:
@@ -29817,6 +40094,20 @@ class RouterBgpArgs:
         pulumi.set(self, "keepalive_interval", value)
 
 
+if not MYPY:
+    class RouterBgpAdvertisedIpRangeArgsDict(TypedDict):
+        range: pulumi.Input[str]
+        """
+        The IP range to advertise. The value must be a
+        CIDR-formatted string.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        User-specified description for the IP range.
+        """
+elif False:
+    RouterBgpAdvertisedIpRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RouterBgpAdvertisedIpRangeArgs:
     def __init__(__self__, *,
@@ -29857,6 +40148,20 @@ class RouterBgpAdvertisedIpRangeArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class RouterNatLogConfigArgsDict(TypedDict):
+        enable: pulumi.Input[bool]
+        """
+        Indicates whether or not to export logs.
+        """
+        filter: pulumi.Input[str]
+        """
+        Specifies the desired filtering of logs on this NAT.
+        Possible values are: `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, `ALL`.
+        """
+elif False:
+    RouterNatLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RouterNatLogConfigArgs:
     def __init__(__self__, *,
@@ -29895,6 +40200,35 @@ class RouterNatLogConfigArgs:
     def filter(self, value: pulumi.Input[str]):
         pulumi.set(self, "filter", value)
 
+
+if not MYPY:
+    class RouterNatRuleArgsDict(TypedDict):
+        match: pulumi.Input[str]
+        """
+        CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+        If it evaluates to true, the corresponding action is enforced.
+        The following examples are valid match expressions for public NAT:
+        "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"
+        "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+        The following example is a valid match expression for private NAT:
+        "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+        """
+        rule_number: pulumi.Input[int]
+        """
+        An integer uniquely identifying a rule in the list.
+        The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+        """
+        action: NotRequired[pulumi.Input['RouterNatRuleActionArgsDict']]
+        """
+        The action to be enforced for traffic that matches this rule.
+        Structure is documented below.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of this rule.
+        """
+elif False:
+    RouterNatRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RouterNatRuleArgs:
@@ -29980,6 +40314,36 @@ class RouterNatRuleArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class RouterNatRuleActionArgsDict(TypedDict):
+        source_nat_active_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of URLs of the IP resources used for this NAT rule.
+        These IP addresses must be valid static external IP addresses assigned to the project.
+        This field is used for public NAT.
+        """
+        source_nat_active_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+        These subnetworks must have purpose set to PRIVATE_NAT.
+        This field is used for private NAT.
+        """
+        source_nat_drain_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of URLs of the IP resources to be drained.
+        These IPs must be valid static external IPs that have been assigned to the NAT.
+        These IPs should be used for updating/patching a NAT rule only.
+        This field is used for public NAT.
+        """
+        source_nat_drain_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of URLs of subnetworks representing source ranges to be drained.
+        This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+        This field is used for private NAT.
+        """
+elif False:
+    RouterNatRuleActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RouterNatRuleActionArgs:
@@ -30070,6 +40434,29 @@ class RouterNatRuleActionArgs:
         pulumi.set(self, "source_nat_drain_ranges", value)
 
 
+if not MYPY:
+    class RouterNatSubnetworkArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Self-link of subnetwork to NAT
+        """
+        source_ip_ranges_to_nats: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of options for which source IPs in the subnetwork
+        should have NAT enabled. Supported values include:
+        `ALL_IP_RANGES`, `LIST_OF_SECONDARY_IP_RANGES`,
+        `PRIMARY_IP_RANGE`.
+        """
+        secondary_ip_range_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of the secondary ranges of the subnetwork that are allowed
+        to use NAT. This can be populated only if
+        `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
+        sourceIpRangesToNat
+        """
+elif False:
+    RouterNatSubnetworkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RouterNatSubnetworkArgs:
     def __init__(__self__, *,
@@ -30135,6 +40522,20 @@ class RouterNatSubnetworkArgs:
         pulumi.set(self, "secondary_ip_range_names", value)
 
 
+if not MYPY:
+    class RouterPeerAdvertisedIpRangeArgsDict(TypedDict):
+        range: pulumi.Input[str]
+        """
+        The IP range to advertise. The value must be a
+        CIDR-formatted string.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        User-specified description for the IP range.
+        """
+elif False:
+    RouterPeerAdvertisedIpRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RouterPeerAdvertisedIpRangeArgs:
     def __init__(__self__, *,
@@ -30174,6 +40575,44 @@ class RouterPeerAdvertisedIpRangeArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class RouterPeerBfdArgsDict(TypedDict):
+        session_initialization_mode: pulumi.Input[str]
+        """
+        The BFD session initialization mode for this BGP peer.
+        If set to `ACTIVE`, the Cloud Router will initiate the BFD session
+        for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
+        for the peer router to initiate the BFD session for this BGP peer.
+        If set to `DISABLED`, BFD is disabled for this BGP peer.
+        Possible values are: `ACTIVE`, `DISABLED`, `PASSIVE`.
+        """
+        min_receive_interval: NotRequired[pulumi.Input[int]]
+        """
+        The minimum interval, in milliseconds, between BFD control packets
+        received from the peer router. The actual value is negotiated
+        between the two routers and is equal to the greater of this value
+        and the transmit interval of the other router. If set, this value
+        must be between 1000 and 30000.
+        """
+        min_transmit_interval: NotRequired[pulumi.Input[int]]
+        """
+        The minimum interval, in milliseconds, between BFD control packets
+        transmitted to the peer router. The actual value is negotiated
+        between the two routers and is equal to the greater of this value
+        and the corresponding receive interval of the other router. If set,
+        this value must be between 1000 and 30000.
+        """
+        multiplier: NotRequired[pulumi.Input[int]]
+        """
+        The number of consecutive BFD packets that must be missed before
+        BFD declares that a peer is unavailable. If set, the value must
+        be a value between 5 and 16.
+
+        <a name="nested_md5_authentication_key"></a>The `md5_authentication_key` block supports:
+        """
+elif False:
+    RouterPeerBfdArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RouterPeerBfdArgs:
@@ -30279,6 +40718,24 @@ class RouterPeerBfdArgs:
         pulumi.set(self, "multiplier", value)
 
 
+if not MYPY:
+    class RouterPeerMd5AuthenticationKeyArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Value of the key.
+        """
+        name: pulumi.Input[str]
+        """
+        Name of this BGP peer. The name must be 1-63 characters long,
+        and comply with RFC1035. Specifically, the name must be 1-63 characters
+        long and match the regular expression `a-z?` which
+        means the first character must be a lowercase letter, and all
+        following characters must be a dash, lowercase letter, or digit,
+        except the last character, which cannot be a dash.
+        """
+elif False:
+    RouterPeerMd5AuthenticationKeyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RouterPeerMd5AuthenticationKeyArgs:
     def __init__(__self__, *,
@@ -30326,6 +40783,21 @@ class RouterPeerMd5AuthenticationKeyArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class SecurityPolicyAdaptiveProtectionConfigArgsDict(TypedDict):
+        auto_deploy_config: NotRequired[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgsDict']]
+        """
+        Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+
+        <a name="nested_layer_7_ddos_defense_config"></a>The `layer_7_ddos_defense_config` block supports:
+        """
+        layer7_ddos_defense_config: NotRequired[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgsDict']]
+        """
+        Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        """
+elif False:
+    SecurityPolicyAdaptiveProtectionConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecurityPolicyAdaptiveProtectionConfigArgs:
     def __init__(__self__, *,
@@ -30368,6 +40840,27 @@ class SecurityPolicyAdaptiveProtectionConfigArgs:
     def layer7_ddos_defense_config(self, value: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs']]):
         pulumi.set(self, "layer7_ddos_defense_config", value)
 
+
+if not MYPY:
+    class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgsDict(TypedDict):
+        confidence_threshold: NotRequired[pulumi.Input[float]]
+        """
+        Rules are only automatically deployed for alerts on potential attacks with confidence scores greater than this threshold.
+        """
+        expiration_sec: NotRequired[pulumi.Input[int]]
+        """
+        Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
+        """
+        impacted_baseline_threshold: NotRequired[pulumi.Input[float]]
+        """
+        Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
+        """
+        load_threshold: NotRequired[pulumi.Input[float]]
+        """
+        Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
+        """
+elif False:
+    SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs:
@@ -30440,6 +40933,19 @@ class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs:
         pulumi.set(self, "load_threshold", value)
 
 
+if not MYPY:
+    class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgsDict(TypedDict):
+        enable: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, enables CAAP for L7 DDoS detection.
+        """
+        rule_visibility: NotRequired[pulumi.Input[str]]
+        """
+        Rule visibility. Supported values include: "STANDARD", "PREMIUM".
+        """
+elif False:
+    SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
     def __init__(__self__, *,
@@ -30478,6 +40984,33 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
     def rule_visibility(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "rule_visibility", value)
 
+
+if not MYPY:
+    class SecurityPolicyAdvancedOptionsConfigArgsDict(TypedDict):
+        json_custom_config: NotRequired[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgsDict']]
+        """
+        Custom configuration to apply the JSON parsing. Only applicable when
+        `json_parsing` is set to `STANDARD`. Structure is documented below.
+        """
+        json_parsing: NotRequired[pulumi.Input[str]]
+        """
+        Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
+        * `DISABLED` - Don't parse JSON payloads in POST bodies.
+        * `STANDARD` - Parse JSON payloads in POST bodies.
+        * `STANDARD_WITH_GRAPHQL` - Parse JSON and GraphQL payloads in POST bodies.
+        """
+        log_level: NotRequired[pulumi.Input[str]]
+        """
+        Log level to use. Defaults to `NORMAL`.
+        * `NORMAL` - Normal log level.
+        * `VERBOSE` - Verbose log level.
+        """
+        user_ip_request_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+        """
+elif False:
+    SecurityPolicyAdvancedOptionsConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecurityPolicyAdvancedOptionsConfigArgs:
@@ -30562,6 +41095,18 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
         pulumi.set(self, "user_ip_request_headers", value)
 
 
+if not MYPY:
+    class SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgsDict(TypedDict):
+        content_types: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of custom Content-Type header values to apply the JSON parsing. The
+        format of the Content-Type header values is defined in
+        [RFC 1341](https://www.ietf.org/rfc/rfc1341.txt). When configuring a custom Content-Type header
+        value, only the type/subtype needs to be specified, and the parameters should be excluded.
+        """
+elif False:
+    SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs:
     def __init__(__self__, *,
@@ -30590,6 +41135,15 @@ class SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs:
         pulumi.set(self, "content_types", value)
 
 
+if not MYPY:
+    class SecurityPolicyRecaptchaOptionsConfigArgsDict(TypedDict):
+        redirect_site_key: pulumi.Input[str]
+        """
+        A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of `GOOGLE_RECAPTCHA` under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+        """
+elif False:
+    SecurityPolicyRecaptchaOptionsConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecurityPolicyRecaptchaOptionsConfigArgs:
     def __init__(__self__, *,
@@ -30611,6 +41165,50 @@ class SecurityPolicyRecaptchaOptionsConfigArgs:
     def redirect_site_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "redirect_site_key", value)
 
+
+if not MYPY:
+    class SecurityPolicyRuleArgsDict(TypedDict):
+        action: pulumi.Input[str]
+        """
+        Action to take when `match` matches the request. Valid values:
+        """
+        match: pulumi.Input['SecurityPolicyRuleMatchArgsDict']
+        """
+        A match condition that incoming traffic is evaluated against.
+        If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
+        """
+        priority: pulumi.Input[int]
+        """
+        An unique positive integer indicating the priority of evaluation for a rule.
+        Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of this rule. Max size is 64.
+        """
+        header_action: NotRequired[pulumi.Input['SecurityPolicyRuleHeaderActionArgsDict']]
+        """
+        Additional actions that are performed on headers. Structure is documented below.
+        """
+        preconfigured_waf_config: NotRequired[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgsDict']]
+        """
+        Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if `evaluatePreconfiguredWaf()` is not used, this field will have no effect. Structure is documented below.
+        """
+        preview: NotRequired[pulumi.Input[bool]]
+        """
+        When set to true, the `action` specified above is not enforced.
+        Stackdriver logs for requests that trigger a preview action are annotated as such.
+        """
+        rate_limit_options: NotRequired[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgsDict']]
+        """
+        Must be specified if the `action` is `rate_based_ban` or `throttle`. Cannot be specified for other actions. Structure is documented below.
+        """
+        redirect_options: NotRequired[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgsDict']]
+        """
+        Can be specified if the `action` is `redirect`. Cannot be specified for other actions. Structure is documented below.
+        """
+elif False:
+    SecurityPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecurityPolicyRuleArgs:
@@ -30766,6 +41364,15 @@ class SecurityPolicyRuleArgs:
         pulumi.set(self, "redirect_options", value)
 
 
+if not MYPY:
+    class SecurityPolicyRuleHeaderActionArgsDict(TypedDict):
+        request_headers_to_adds: pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleHeaderActionRequestHeadersToAddArgsDict']]]
+        """
+        The list of request headers to add or overwrite if they're already present. Structure is documented below.
+        """
+elif False:
+    SecurityPolicyRuleHeaderActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecurityPolicyRuleHeaderActionArgs:
     def __init__(__self__, *,
@@ -30787,6 +41394,19 @@ class SecurityPolicyRuleHeaderActionArgs:
     def request_headers_to_adds(self, value: pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs']]]):
         pulumi.set(self, "request_headers_to_adds", value)
 
+
+if not MYPY:
+    class SecurityPolicyRuleHeaderActionRequestHeadersToAddArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the header to set.
+        """
+        header_value: NotRequired[pulumi.Input[str]]
+        """
+        The value to set the named header to.
+        """
+elif False:
+    SecurityPolicyRuleHeaderActionRequestHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs:
@@ -30825,6 +41445,33 @@ class SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs:
     def header_value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "header_value", value)
 
+
+if not MYPY:
+    class SecurityPolicyRuleMatchArgsDict(TypedDict):
+        config: NotRequired[pulumi.Input['SecurityPolicyRuleMatchConfigArgsDict']]
+        """
+        The configuration options available when specifying versionedExpr.
+        This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
+        Structure is documented below.
+        """
+        expr: NotRequired[pulumi.Input['SecurityPolicyRuleMatchExprArgsDict']]
+        """
+        User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+        Structure is documented below.
+        """
+        expr_options: NotRequired[pulumi.Input['SecurityPolicyRuleMatchExprOptionsArgsDict']]
+        """
+        The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+        Structure is documented below.
+        """
+        versioned_expr: NotRequired[pulumi.Input[str]]
+        """
+        Preconfigured versioned expression. If this field is specified, config must also be specified.
+        Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
+        Possible values are: `SRC_IPS_V1`.
+        """
+elif False:
+    SecurityPolicyRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecurityPolicyRuleMatchArgs:
@@ -30909,6 +41556,15 @@ class SecurityPolicyRuleMatchArgs:
         pulumi.set(self, "versioned_expr", value)
 
 
+if not MYPY:
+    class SecurityPolicyRuleMatchConfigArgsDict(TypedDict):
+        src_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
+        """
+elif False:
+    SecurityPolicyRuleMatchConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecurityPolicyRuleMatchConfigArgs:
     def __init__(__self__, *,
@@ -30932,6 +41588,15 @@ class SecurityPolicyRuleMatchConfigArgs:
         pulumi.set(self, "src_ip_ranges", value)
 
 
+if not MYPY:
+    class SecurityPolicyRuleMatchExprArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+        """
+elif False:
+    SecurityPolicyRuleMatchExprArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecurityPolicyRuleMatchExprArgs:
     def __init__(__self__, *,
@@ -30953,6 +41618,16 @@ class SecurityPolicyRuleMatchExprArgs:
     def expression(self, value: pulumi.Input[str]):
         pulumi.set(self, "expression", value)
 
+
+if not MYPY:
+    class SecurityPolicyRuleMatchExprOptionsArgsDict(TypedDict):
+        recaptcha_options: pulumi.Input['SecurityPolicyRuleMatchExprOptionsRecaptchaOptionsArgsDict']
+        """
+        reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
+        Structure is documented below.
+        """
+elif False:
+    SecurityPolicyRuleMatchExprOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecurityPolicyRuleMatchExprOptionsArgs:
@@ -30977,6 +41652,19 @@ class SecurityPolicyRuleMatchExprOptionsArgs:
     def recaptcha_options(self, value: pulumi.Input['SecurityPolicyRuleMatchExprOptionsRecaptchaOptionsArgs']):
         pulumi.set(self, "recaptcha_options", value)
 
+
+if not MYPY:
+    class SecurityPolicyRuleMatchExprOptionsRecaptchaOptionsArgsDict(TypedDict):
+        action_token_site_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+        """
+        session_token_site_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+        """
+elif False:
+    SecurityPolicyRuleMatchExprOptionsRecaptchaOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecurityPolicyRuleMatchExprOptionsRecaptchaOptionsArgs:
@@ -31017,6 +41705,16 @@ class SecurityPolicyRuleMatchExprOptionsRecaptchaOptionsArgs:
         pulumi.set(self, "session_token_site_keys", value)
 
 
+if not MYPY:
+    class SecurityPolicyRulePreconfiguredWafConfigArgsDict(TypedDict):
+        exclusions: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgsDict']]]]
+        """
+        An exclusion to apply during preconfigured WAF evaluation.
+        Structure is documented below.
+        """
+elif False:
+    SecurityPolicyRulePreconfiguredWafConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecurityPolicyRulePreconfiguredWafConfigArgs:
     def __init__(__self__, *,
@@ -31041,6 +41739,42 @@ class SecurityPolicyRulePreconfiguredWafConfigArgs:
     def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]]]):
         pulumi.set(self, "exclusions", value)
 
+
+if not MYPY:
+    class SecurityPolicyRulePreconfiguredWafConfigExclusionArgsDict(TypedDict):
+        target_rule_set: pulumi.Input[str]
+        """
+        Target WAF rule set to apply the preconfigured WAF exclusion.
+        """
+        request_cookies: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgsDict']]]]
+        """
+        Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+        Structure is documented below.
+        """
+        request_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgsDict']]]]
+        """
+        Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+        Structure is documented below.
+        """
+        request_query_params: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgsDict']]]]
+        """
+        Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+        Note that the parameter can be in the query string or in the POST body.
+        Structure is documented below.
+        """
+        request_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgsDict']]]]
+        """
+        Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+        When specifying this field, the query or fragment part should be excluded.
+        Structure is documented below.
+        """
+        target_rule_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+        If omitted, it refers to all the rule IDs under the WAF rule set.
+        """
+elif False:
+    SecurityPolicyRulePreconfiguredWafConfigExclusionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
@@ -31158,6 +41892,26 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
         pulumi.set(self, "target_rule_ids", value)
 
 
+if not MYPY:
+    class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgsDict(TypedDict):
+        operator: pulumi.Input[str]
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+elif False:
+    SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs:
     def __init__(__self__, *,
@@ -31209,6 +41963,26 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgsDict(TypedDict):
+        operator: pulumi.Input[str]
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+elif False:
+    SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs:
@@ -31262,6 +42036,26 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgsDict(TypedDict):
+        operator: pulumi.Input[str]
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+elif False:
+    SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs:
     def __init__(__self__, *,
@@ -31314,6 +42108,26 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgsDict(TypedDict):
+        operator: pulumi.Input[str]
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+elif False:
+    SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
     def __init__(__self__, *,
@@ -31365,6 +42179,70 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class SecurityPolicyRuleRateLimitOptionsArgsDict(TypedDict):
+        ban_duration_sec: NotRequired[pulumi.Input[int]]
+        """
+        Can only be specified if the action for the rule is "rate_based_ban".
+        If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+        """
+        ban_threshold: NotRequired[pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArgsDict']]
+        """
+        Can only be specified if the action for the rule is "rate_based_ban".
+        If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+        Structure is documented below.
+        """
+        conform_action: NotRequired[pulumi.Input[str]]
+        """
+        Action to take for requests that are under the configured rate limit threshold.
+        Valid option is "allow" only.
+        """
+        enforce_on_key: NotRequired[pulumi.Input[str]]
+        """
+        Determines the key to enforce the rateLimitThreshold on. Possible values are:
+        * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured.
+        * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+        * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+        * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+        * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+        * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+        * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+        * REGION_CODE: The country/region from which the request originates.
+        * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+        * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+        Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `USER_IP`.
+        """
+        enforce_on_key_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgsDict']]]]
+        """
+        If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
+        You can specify up to 3 enforceOnKeyConfigs.
+        If enforceOnKeyConfigs is specified, enforceOnKey must not be specified.
+        Structure is documented below.
+        """
+        enforce_on_key_name: NotRequired[pulumi.Input[str]]
+        """
+        Rate limit key name applicable only for the following key types:
+        HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+        HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        """
+        exceed_action: NotRequired[pulumi.Input[str]]
+        """
+        Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint.
+        Valid options are deny(STATUS), where valid values for STATUS are 403, 404, 429, and 502.
+        """
+        exceed_redirect_options: NotRequired[pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgsDict']]
+        """
+        Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        Structure is documented below.
+        """
+        rate_limit_threshold: NotRequired[pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgsDict']]
+        """
+        Threshold at which to begin ratelimiting.
+        Structure is documented below.
+        """
+elif False:
+    SecurityPolicyRuleRateLimitOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecurityPolicyRuleRateLimitOptionsArgs:
@@ -31563,6 +42441,19 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
         pulumi.set(self, "rate_limit_threshold", value)
 
 
+if not MYPY:
+    class SecurityPolicyRuleRateLimitOptionsBanThresholdArgsDict(TypedDict):
+        count: NotRequired[pulumi.Input[int]]
+        """
+        Number of HTTP(S) requests for calculating the threshold.
+        """
+        interval_sec: NotRequired[pulumi.Input[int]]
+        """
+        Interval over which the threshold is computed.
+        """
+elif False:
+    SecurityPolicyRuleRateLimitOptionsBanThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecurityPolicyRuleRateLimitOptionsBanThresholdArgs:
     def __init__(__self__, *,
@@ -31601,6 +42492,32 @@ class SecurityPolicyRuleRateLimitOptionsBanThresholdArgs:
     def interval_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "interval_sec", value)
 
+
+if not MYPY:
+    class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgsDict(TypedDict):
+        enforce_on_key_name: NotRequired[pulumi.Input[str]]
+        """
+        Rate limit key name applicable only for the following key types:
+        HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+        HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        """
+        enforce_on_key_type: NotRequired[pulumi.Input[str]]
+        """
+        Determines the key to enforce the rateLimitThreshold on. Possible values are:
+        * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured.
+        * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+        * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+        * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+        * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+        * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+        * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+        * REGION_CODE: The country/region from which the request originates.
+        * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+        * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+        Possible values are: `ALL`, `IP`, `HTTP_HEADER`, `XFF_IP`, `HTTP_COOKIE`, `HTTP_PATH`, `SNI`, `REGION_CODE`, `TLS_JA3_FINGERPRINT`, `USER_IP`.
+        """
+elif False:
+    SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
@@ -31667,6 +42584,19 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
         pulumi.set(self, "enforce_on_key_type", value)
 
 
+if not MYPY:
+    class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgsDict(TypedDict):
+        target: NotRequired[pulumi.Input[str]]
+        """
+        Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of the redirect action.
+        """
+elif False:
+    SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs:
     def __init__(__self__, *,
@@ -31706,6 +42636,19 @@ class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgsDict(TypedDict):
+        count: NotRequired[pulumi.Input[int]]
+        """
+        Number of HTTP(S) requests for calculating the threshold.
+        """
+        interval_sec: NotRequired[pulumi.Input[int]]
+        """
+        Interval over which the threshold is computed.
+        """
+elif False:
+    SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs:
     def __init__(__self__, *,
@@ -31744,6 +42687,22 @@ class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs:
     def interval_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "interval_sec", value)
 
+
+if not MYPY:
+    class SecurityPolicyRuleRedirectOptionsArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type of redirect action.
+
+        * `EXTERNAL_302`: Redirect to an external address, configured in `target`.
+        * `GOOGLE_RECAPTCHA`: Redirect to Google reCAPTCHA.
+        """
+        target: NotRequired[pulumi.Input[str]]
+        """
+        External redirection target when `EXTERNAL_302` is set in `type`.
+        """
+elif False:
+    SecurityPolicyRuleRedirectOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecurityPolicyRuleRedirectOptionsArgs:
@@ -31789,6 +42748,21 @@ class SecurityPolicyRuleRedirectOptionsArgs:
         pulumi.set(self, "target", value)
 
 
+if not MYPY:
+    class SecurityScanConfigAuthenticationArgsDict(TypedDict):
+        custom_account: NotRequired[pulumi.Input['SecurityScanConfigAuthenticationCustomAccountArgsDict']]
+        """
+        Describes authentication configuration that uses a custom account.
+        Structure is documented below.
+        """
+        google_account: NotRequired[pulumi.Input['SecurityScanConfigAuthenticationGoogleAccountArgsDict']]
+        """
+        Describes authentication configuration that uses a Google account.
+        Structure is documented below.
+        """
+elif False:
+    SecurityScanConfigAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecurityScanConfigAuthenticationArgs:
     def __init__(__self__, *,
@@ -31831,6 +42805,25 @@ class SecurityScanConfigAuthenticationArgs:
     def google_account(self, value: Optional[pulumi.Input['SecurityScanConfigAuthenticationGoogleAccountArgs']]):
         pulumi.set(self, "google_account", value)
 
+
+if not MYPY:
+    class SecurityScanConfigAuthenticationCustomAccountArgsDict(TypedDict):
+        login_url: pulumi.Input[str]
+        """
+        The login form URL of the website.
+        """
+        password: pulumi.Input[str]
+        """
+        The password of the custom account. The credential is stored encrypted
+        in GCP.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        username: pulumi.Input[str]
+        """
+        The user name of the custom account.
+        """
+elif False:
+    SecurityScanConfigAuthenticationCustomAccountArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecurityScanConfigAuthenticationCustomAccountArgs:
@@ -31888,6 +42881,21 @@ class SecurityScanConfigAuthenticationCustomAccountArgs:
         pulumi.set(self, "username", value)
 
 
+if not MYPY:
+    class SecurityScanConfigAuthenticationGoogleAccountArgsDict(TypedDict):
+        password: pulumi.Input[str]
+        """
+        The password of the Google account. The credential is stored encrypted
+        in GCP.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        username: pulumi.Input[str]
+        """
+        The user name of the Google account.
+        """
+elif False:
+    SecurityScanConfigAuthenticationGoogleAccountArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecurityScanConfigAuthenticationGoogleAccountArgs:
     def __init__(__self__, *,
@@ -31928,6 +42936,21 @@ class SecurityScanConfigAuthenticationGoogleAccountArgs:
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class SecurityScanConfigScheduleArgsDict(TypedDict):
+        interval_duration_days: pulumi.Input[int]
+        """
+        The duration of time between executions in days
+        """
+        schedule_time: NotRequired[pulumi.Input[str]]
+        """
+        A timestamp indicates when the next run will be scheduled. The value is refreshed
+        by the server after each run. If unspecified, it will default to current server time,
+        which means the scan will be scheduled to start immediately.
+        """
+elif False:
+    SecurityScanConfigScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecurityScanConfigScheduleArgs:
@@ -31970,6 +42993,22 @@ class SecurityScanConfigScheduleArgs:
     def schedule_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "schedule_time", value)
 
+
+if not MYPY:
+    class ServiceAttachmentConnectedEndpointArgsDict(TypedDict):
+        endpoint: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The URL of the consumer forwarding rule.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The status of the connection from the consumer forwarding rule to
+        this service attachment.
+        """
+elif False:
+    ServiceAttachmentConnectedEndpointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceAttachmentConnectedEndpointArgs:
@@ -32015,6 +43054,26 @@ class ServiceAttachmentConnectedEndpointArgs:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
+
+if not MYPY:
+    class ServiceAttachmentConsumerAcceptListArgsDict(TypedDict):
+        connection_limit: pulumi.Input[int]
+        """
+        The number of consumer forwarding rules the consumer project can
+        create.
+        """
+        network_url: NotRequired[pulumi.Input[str]]
+        """
+        The network that is allowed to connect to this service attachment.
+        Only one of project_id_or_num and network_url may be set.
+        """
+        project_id_or_num: NotRequired[pulumi.Input[str]]
+        """
+        A project that is allowed to connect to this service attachment.
+        Only one of project_id_or_num and network_url may be set.
+        """
+elif False:
+    ServiceAttachmentConsumerAcceptListArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceAttachmentConsumerAcceptListArgs:
@@ -32076,6 +43135,14 @@ class ServiceAttachmentConsumerAcceptListArgs:
         pulumi.set(self, "project_id_or_num", value)
 
 
+if not MYPY:
+    class SnapshotIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    SnapshotIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SnapshotIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -32115,6 +43182,14 @@ class SnapshotIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class SnapshotIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    SnapshotIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SnapshotIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -32153,6 +43228,32 @@ class SnapshotIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class SnapshotSnapshotEncryptionKeyArgsDict(TypedDict):
+        kms_key_self_link: NotRequired[pulumi.Input[str]]
+        """
+        The name of the encryption key that is stored in Google Cloud KMS.
+        """
+        kms_key_service_account: NotRequired[pulumi.Input[str]]
+        """
+        The service account used for the encryption request for the given KMS key.
+        If absent, the Compute Engine Service Agent service account is used.
+        """
+        raw_key: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        sha256: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        encryption key that protects this resource.
+        """
+elif False:
+    SnapshotSnapshotEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SnapshotSnapshotEncryptionKeyArgs:
@@ -32235,6 +43336,22 @@ class SnapshotSnapshotEncryptionKeyArgs:
         pulumi.set(self, "sha256", value)
 
 
+if not MYPY:
+    class SnapshotSourceDiskEncryptionKeyArgsDict(TypedDict):
+        kms_key_service_account: NotRequired[pulumi.Input[str]]
+        """
+        The service account used for the encryption request for the given KMS key.
+        If absent, the Compute Engine Service Agent service account is used.
+        """
+        raw_key: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+elif False:
+    SnapshotSourceDiskEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SnapshotSourceDiskEncryptionKeyArgs:
     def __init__(__self__, *,
@@ -32279,6 +43396,27 @@ class SnapshotSourceDiskEncryptionKeyArgs:
     def raw_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "raw_key", value)
 
+
+if not MYPY:
+    class SubnetworkIAMBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    SubnetworkIAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SubnetworkIAMBindingConditionArgs:
@@ -32341,6 +43479,27 @@ class SubnetworkIAMBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class SubnetworkIAMMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    SubnetworkIAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SubnetworkIAMMemberConditionArgs:
     def __init__(__self__, *,
@@ -32401,6 +43560,47 @@ class SubnetworkIAMMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class SubnetworkLogConfigArgsDict(TypedDict):
+        aggregation_interval: NotRequired[pulumi.Input[str]]
+        """
+        Can only be specified if VPC flow logging for this subnetwork is enabled.
+        Toggles the aggregation interval for collecting flow logs. Increasing the
+        interval time will reduce the amount of generated flow logs for long
+        lasting connections. Default is an interval of 5 seconds per connection.
+        Default value is `INTERVAL_5_SEC`.
+        Possible values are: `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, `INTERVAL_15_MIN`.
+        """
+        filter_expr: NotRequired[pulumi.Input[str]]
+        """
+        Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
+        https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+        The default value is 'true', which evaluates to include everything.
+        """
+        flow_sampling: NotRequired[pulumi.Input[float]]
+        """
+        Can only be specified if VPC flow logging for this subnetwork is enabled.
+        The value of the field must be in [0, 1]. Set the sampling rate of VPC
+        flow logs within the subnetwork where 1.0 means all collected logs are
+        reported and 0.0 means no logs are reported. Default is 0.5 which means
+        half of all collected logs are reported.
+        """
+        metadata: NotRequired[pulumi.Input[str]]
+        """
+        Can only be specified if VPC flow logging for this subnetwork is enabled.
+        Configures whether metadata fields should be added to the reported VPC
+        flow logs.
+        Default value is `INCLUDE_ALL_METADATA`.
+        Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, `CUSTOM_METADATA`.
+        """
+        metadata_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of metadata fields that should be added to reported logs.
+        Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
+        """
+elif False:
+    SubnetworkLogConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SubnetworkLogConfigArgs:
@@ -32521,6 +43721,25 @@ class SubnetworkLogConfigArgs:
         pulumi.set(self, "metadata_fields", value)
 
 
+if not MYPY:
+    class SubnetworkSecondaryIpRangeArgsDict(TypedDict):
+        ip_cidr_range: pulumi.Input[str]
+        """
+        The range of IP addresses belonging to this subnetwork secondary
+        range. Provide this property when you create the subnetwork.
+        Ranges must be unique and non-overlapping with all primary and
+        secondary IP ranges within a network. Only IPv4 is supported.
+        """
+        range_name: pulumi.Input[str]
+        """
+        The name associated with this subnetwork secondary range, used
+        when adding an alias IP range to a VM instance. The name must
+        be 1-63 characters long, and comply with RFC1035. The name
+        must be unique within the subnetwork.
+        """
+elif False:
+    SubnetworkSecondaryIpRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SubnetworkSecondaryIpRangeArgs:
     def __init__(__self__, *,
@@ -32569,6 +43788,61 @@ class SubnetworkSecondaryIpRangeArgs:
     def range_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "range_name", value)
 
+
+if not MYPY:
+    class URLMapDefaultRouteActionArgsDict(TypedDict):
+        cors_policy: NotRequired[pulumi.Input['URLMapDefaultRouteActionCorsPolicyArgsDict']]
+        """
+        The specification for allowing client side cross-origin requests. Please see
+        [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+        Structure is documented below.
+        """
+        fault_injection_policy: NotRequired[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyArgsDict']]
+        """
+        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
+        percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
+        by the Loadbalancer for a percentage of requests.
+        timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+        Structure is documented below.
+        """
+        request_mirror_policy: NotRequired[pulumi.Input['URLMapDefaultRouteActionRequestMirrorPolicyArgsDict']]
+        """
+        Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+        Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
+        the host / authority header is suffixed with -shadow.
+        Structure is documented below.
+        """
+        retry_policy: NotRequired[pulumi.Input['URLMapDefaultRouteActionRetryPolicyArgsDict']]
+        """
+        Specifies the retry policy associated with this route.
+        Structure is documented below.
+        """
+        timeout: NotRequired[pulumi.Input['URLMapDefaultRouteActionTimeoutArgsDict']]
+        """
+        Specifies the timeout for the selected route. Timeout is computed from the time the request has been
+        fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
+        If not specified, will use the largest timeout among all backend services associated with the route.
+        Structure is documented below.
+        """
+        url_rewrite: NotRequired[pulumi.Input['URLMapDefaultRouteActionUrlRewriteArgsDict']]
+        """
+        The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+        Structure is documented below.
+        """
+        weighted_backend_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceArgsDict']]]]
+        """
+        A list of weighted backend services to send traffic to when a route match occurs.
+        The weights determine the fraction of traffic that flows to their corresponding backend service.
+        If all traffic needs to go to a single backend service, there must be one weightedBackendService
+        with weight set to a non 0 number.
+        Once a backendService is identified and before forwarding the request to the backend service,
+        advanced routing actions like Url rewrites and header transformations are applied depending on
+        additional settings specified in this HttpRouteAction.
+        Structure is documented below.
+        """
+elif False:
+    URLMapDefaultRouteActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapDefaultRouteActionArgs:
@@ -32733,6 +44007,48 @@ class URLMapDefaultRouteActionArgs:
         pulumi.set(self, "weighted_backend_services", value)
 
 
+if not MYPY:
+    class URLMapDefaultRouteActionCorsPolicyArgsDict(TypedDict):
+        allow_credentials: NotRequired[pulumi.Input[bool]]
+        """
+        In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+        This translates to the Access-Control-Allow-Credentials header.
+        """
+        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Allow-Headers header.
+        """
+        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Allow-Methods header.
+        """
+        allow_origin_regexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the regular expression patterns that match allowed origins. For regular expression grammar
+        please see en.cppreference.com/w/cpp/regex/ecmascript
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        allow_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the list of origins that will be allowed to do CORS requests.
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+        """
+        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Expose-Headers header.
+        """
+        max_age: NotRequired[pulumi.Input[int]]
+        """
+        Specifies how long results of a preflight request can be cached in seconds.
+        This translates to the Access-Control-Max-Age header.
+        """
+elif False:
+    URLMapDefaultRouteActionCorsPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapDefaultRouteActionCorsPolicyArgs:
     def __init__(__self__, *,
@@ -32878,6 +44194,21 @@ class URLMapDefaultRouteActionCorsPolicyArgs:
         pulumi.set(self, "max_age", value)
 
 
+if not MYPY:
+    class URLMapDefaultRouteActionFaultInjectionPolicyArgsDict(TypedDict):
+        abort: NotRequired[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyAbortArgsDict']]
+        """
+        The specification for how client requests are aborted as part of fault injection.
+        Structure is documented below.
+        """
+        delay: NotRequired[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayArgsDict']]
+        """
+        The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        Structure is documented below.
+        """
+elif False:
+    URLMapDefaultRouteActionFaultInjectionPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapDefaultRouteActionFaultInjectionPolicyArgs:
     def __init__(__self__, *,
@@ -32920,6 +44251,21 @@ class URLMapDefaultRouteActionFaultInjectionPolicyArgs:
     def delay(self, value: Optional[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs']]):
         pulumi.set(self, "delay", value)
 
+
+if not MYPY:
+    class URLMapDefaultRouteActionFaultInjectionPolicyAbortArgsDict(TypedDict):
+        http_status: NotRequired[pulumi.Input[int]]
+        """
+        The HTTP status code used to abort the request.
+        The value must be between 200 and 599 inclusive.
+        """
+        percentage: NotRequired[pulumi.Input[float]]
+        """
+        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+elif False:
+    URLMapDefaultRouteActionFaultInjectionPolicyAbortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs:
@@ -32964,6 +44310,21 @@ class URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs:
         pulumi.set(self, "percentage", value)
 
 
+if not MYPY:
+    class URLMapDefaultRouteActionFaultInjectionPolicyDelayArgsDict(TypedDict):
+        fixed_delay: NotRequired[pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict']]
+        """
+        Specifies the value of the fixed delay interval.
+        Structure is documented below.
+        """
+        percentage: NotRequired[pulumi.Input[float]]
+        """
+        The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+elif False:
+    URLMapDefaultRouteActionFaultInjectionPolicyDelayArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs:
     def __init__(__self__, *,
@@ -33006,6 +44367,21 @@ class URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs:
     def percentage(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "percentage", value)
 
+
+if not MYPY:
+    class URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict(TypedDict):
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        seconds: NotRequired[pulumi.Input[str]]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+elif False:
+    URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
@@ -33050,6 +44426,15 @@ class URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
         pulumi.set(self, "seconds", value)
 
 
+if not MYPY:
+    class URLMapDefaultRouteActionRequestMirrorPolicyArgsDict(TypedDict):
+        backend_service: pulumi.Input[str]
+        """
+        The full or partial URL to the BackendService resource being mirrored to.
+        """
+elif False:
+    URLMapDefaultRouteActionRequestMirrorPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapDefaultRouteActionRequestMirrorPolicyArgs:
     def __init__(__self__, *,
@@ -33071,6 +44456,40 @@ class URLMapDefaultRouteActionRequestMirrorPolicyArgs:
     def backend_service(self, value: pulumi.Input[str]):
         pulumi.set(self, "backend_service", value)
 
+
+if not MYPY:
+    class URLMapDefaultRouteActionRetryPolicyArgsDict(TypedDict):
+        num_retries: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        """
+        per_try_timeout: NotRequired[pulumi.Input['URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgsDict']]
+        """
+        Specifies a non-zero timeout per retry attempt.
+        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+        will use the largest timeout among all backend services associated with the route.
+        Structure is documented below.
+        """
+        retry_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specfies one or more conditions when this retry rule applies. Valid values are:
+        * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+        or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+        * connection failure, and refused streams.
+        * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+        * connect-failure: Loadbalancer will retry on failures connecting to backend services,
+        for example due to connection timeouts.
+        * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+        Currently the only retriable error supported is 409.
+        * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+        This reset type indicates that it is safe to retry.
+        * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+        * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+        * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+        * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+        """
+elif False:
+    URLMapDefaultRouteActionRetryPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapDefaultRouteActionRetryPolicyArgs:
@@ -33161,6 +44580,21 @@ class URLMapDefaultRouteActionRetryPolicyArgs:
         pulumi.set(self, "retry_conditions", value)
 
 
+if not MYPY:
+    class URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgsDict(TypedDict):
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        seconds: NotRequired[pulumi.Input[str]]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+elif False:
+    URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs:
     def __init__(__self__, *,
@@ -33204,6 +44638,21 @@ class URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs:
         pulumi.set(self, "seconds", value)
 
 
+if not MYPY:
+    class URLMapDefaultRouteActionTimeoutArgsDict(TypedDict):
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        seconds: NotRequired[pulumi.Input[str]]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+elif False:
+    URLMapDefaultRouteActionTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapDefaultRouteActionTimeoutArgs:
     def __init__(__self__, *,
@@ -33246,6 +44695,23 @@ class URLMapDefaultRouteActionTimeoutArgs:
     def seconds(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "seconds", value)
 
+
+if not MYPY:
+    class URLMapDefaultRouteActionUrlRewriteArgsDict(TypedDict):
+        host_rewrite: NotRequired[pulumi.Input[str]]
+        """
+        Prior to forwarding the request to the selected service, the request's host header is replaced
+        with contents of hostRewrite.
+        The value must be between 1 and 255 characters.
+        """
+        path_prefix_rewrite: NotRequired[pulumi.Input[str]]
+        """
+        Prior to forwarding the request to the selected backend service, the matching portion of the
+        request's path is replaced by pathPrefixRewrite.
+        The value must be between 1 and 1024 characters.
+        """
+elif False:
+    URLMapDefaultRouteActionUrlRewriteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapDefaultRouteActionUrlRewriteArgs:
@@ -33293,6 +44759,34 @@ class URLMapDefaultRouteActionUrlRewriteArgs:
     def path_prefix_rewrite(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_prefix_rewrite", value)
 
+
+if not MYPY:
+    class URLMapDefaultRouteActionWeightedBackendServiceArgsDict(TypedDict):
+        backend_service: NotRequired[pulumi.Input[str]]
+        """
+        The full or partial URL to the default BackendService resource. Before forwarding the
+        request to backendService, the loadbalancer applies any relevant headerActions
+        specified as part of this backendServiceWeight.
+        """
+        header_action: NotRequired[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgsDict']]
+        """
+        Specifies changes to request and response headers that need to take effect for
+        the selected backendService.
+        headerAction specified here take effect before headerAction in the enclosing
+        HttpRouteRule, PathMatcher and UrlMap.
+        Structure is documented below.
+        """
+        weight: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the fraction of traffic sent to backendService, computed as
+        weight / (sum of all weightedBackendService weights in routeAction) .
+        The selection of a backend service is determined only for new traffic. Once a user's request
+        has been directed to a backendService, subsequent requests will be sent to the same backendService
+        as determined by the BackendService's session affinity policy.
+        The value must be between 0 and 1000
+        """
+elif False:
+    URLMapDefaultRouteActionWeightedBackendServiceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapDefaultRouteActionWeightedBackendServiceArgs:
@@ -33370,6 +44864,31 @@ class URLMapDefaultRouteActionWeightedBackendServiceArgs:
     def weight(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "weight", value)
 
+
+if not MYPY:
+    class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgsDict(TypedDict):
+        request_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict']]]]
+        """
+        Headers to add to a matching request prior to forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        request_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the request prior to
+        forwarding the request to the backendService.
+        """
+        response_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict']]]]
+        """
+        Headers to add the response prior to sending the response back to the client.
+        Structure is documented below.
+        """
+        response_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the response prior to sending the
+        response back to the client.
+        """
+elif False:
+    URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
@@ -33450,6 +44969,24 @@ class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
         pulumi.set(self, "response_headers_to_removes", value)
 
 
+if not MYPY:
+    class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict(TypedDict):
+        header_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the header to add.
+        """
+        header_value: NotRequired[pulumi.Input[str]]
+        """
+        The value of the header to add.
+        """
+        replace: NotRequired[pulumi.Input[bool]]
+        """
+        If false, headerValue is appended to any values that already exist for the header.
+        If true, headerValue is set for the header, discarding any values that were set for that header.
+        """
+elif False:
+    URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs:
     def __init__(__self__, *,
@@ -33507,6 +45044,24 @@ class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersTo
         pulumi.set(self, "replace", value)
 
 
+if not MYPY:
+    class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict(TypedDict):
+        header_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the header to add.
+        """
+        header_value: NotRequired[pulumi.Input[str]]
+        """
+        The value of the header to add.
+        """
+        replace: NotRequired[pulumi.Input[bool]]
+        """
+        If false, headerValue is appended to any values that already exist for the header.
+        If true, headerValue is set for the header, discarding any values that were set for that header.
+        """
+elif False:
+    URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs:
     def __init__(__self__, *,
@@ -33563,6 +45118,57 @@ class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersT
     def replace(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "replace", value)
 
+
+if not MYPY:
+    class URLMapDefaultUrlRedirectArgsDict(TypedDict):
+        strip_query: pulumi.Input[bool]
+        """
+        If set to true, any accompanying query portion of the original URL is removed prior
+        to redirecting the request. If set to false, the query portion of the original URL is
+        retained. The default is set to false.
+        This field is required to ensure an empty block is not set. The normal default value is false.
+        """
+        host_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The host that will be used in the redirect response instead of the one that was
+        supplied in the request. The value must be between 1 and 255 characters.
+        """
+        https_redirect: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, the URL scheme in the redirected request is set to https. If set to
+        false, the URL scheme of the redirected request will remain the same as that of the
+        request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+        true for TargetHttpsProxy is not permitted. The default is set to false.
+        """
+        path_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The path that will be used in the redirect response instead of the one that was
+        supplied in the request. pathRedirect cannot be supplied together with
+        prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+        original request will be used for the redirect. The value must be between 1 and 1024
+        characters.
+        """
+        prefix_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+        retaining the remaining portion of the URL before redirecting the request.
+        prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+        neither. If neither is supplied, the path of the original request will be used for
+        the redirect. The value must be between 1 and 1024 characters.
+        """
+        redirect_response_code: NotRequired[pulumi.Input[str]]
+        """
+        The HTTP Status code to use for this RedirectAction. Supported values are:
+        * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+        * FOUND, which corresponds to 302.
+        * SEE_OTHER which corresponds to 303.
+        * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+        will be retained.
+        * PERMANENT_REDIRECT, which corresponds to 308. In this case,
+        the request method will be retained.
+        """
+elif False:
+    URLMapDefaultUrlRedirectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapDefaultUrlRedirectArgs:
@@ -33710,6 +45316,31 @@ class URLMapDefaultUrlRedirectArgs:
         pulumi.set(self, "redirect_response_code", value)
 
 
+if not MYPY:
+    class URLMapHeaderActionArgsDict(TypedDict):
+        request_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionRequestHeadersToAddArgsDict']]]]
+        """
+        Headers to add to a matching request prior to forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        request_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the request prior to
+        forwarding the request to the backendService.
+        """
+        response_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapHeaderActionResponseHeadersToAddArgsDict']]]]
+        """
+        Headers to add the response prior to sending the response back to the client.
+        Structure is documented below.
+        """
+        response_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the response prior to sending the
+        response back to the client.
+        """
+elif False:
+    URLMapHeaderActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapHeaderActionArgs:
     def __init__(__self__, *,
@@ -33789,6 +45420,24 @@ class URLMapHeaderActionArgs:
         pulumi.set(self, "response_headers_to_removes", value)
 
 
+if not MYPY:
+    class URLMapHeaderActionRequestHeadersToAddArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the header to add.
+        """
+        header_value: pulumi.Input[str]
+        """
+        The value of the header to add.
+        """
+        replace: pulumi.Input[bool]
+        """
+        If false, headerValue is appended to any values that already exist for the header.
+        If true, headerValue is set for the header, discarding any values that were set for that header.
+        """
+elif False:
+    URLMapHeaderActionRequestHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapHeaderActionRequestHeadersToAddArgs:
     def __init__(__self__, *,
@@ -33843,6 +45492,24 @@ class URLMapHeaderActionRequestHeadersToAddArgs:
         pulumi.set(self, "replace", value)
 
 
+if not MYPY:
+    class URLMapHeaderActionResponseHeadersToAddArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the header to add.
+        """
+        header_value: pulumi.Input[str]
+        """
+        The value of the header to add.
+        """
+        replace: pulumi.Input[bool]
+        """
+        If false, headerValue is appended to any values that already exist for the header.
+        If true, headerValue is set for the header, discarding any values that were set for that header.
+        """
+elif False:
+    URLMapHeaderActionResponseHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapHeaderActionResponseHeadersToAddArgs:
     def __init__(__self__, *,
@@ -33896,6 +45563,27 @@ class URLMapHeaderActionResponseHeadersToAddArgs:
     def replace(self, value: pulumi.Input[bool]):
         pulumi.set(self, "replace", value)
 
+
+if not MYPY:
+    class URLMapHostRuleArgsDict(TypedDict):
+        hosts: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The list of host patterns to match. They must be valid hostnames, except * will
+        match any string of ([a-z0-9-.]*). In that case, * must be the first character
+        and must be followed in the pattern by either - or ..
+        """
+        path_matcher: pulumi.Input[str]
+        """
+        The name of the PathMatcher to use to match the path portion of the URL if the
+        hostRule matches the URL's host portion.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of this resource. Provide this property when you create
+        the resource.
+        """
+elif False:
+    URLMapHostRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapHostRuleArgs:
@@ -33957,6 +45645,67 @@ class URLMapHostRuleArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name to which this PathMatcher is referred by the HostRule.
+        """
+        default_route_action: NotRequired[pulumi.Input['URLMapPathMatcherDefaultRouteActionArgsDict']]
+        """
+        defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+        advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+        to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+        Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        Structure is documented below.
+        """
+        default_service: NotRequired[pulumi.Input[str]]
+        """
+        The backend service or backend bucket to use when none of the given paths match.
+        """
+        default_url_redirect: NotRequired[pulumi.Input['URLMapPathMatcherDefaultUrlRedirectArgsDict']]
+        """
+        When none of the specified hostRules match, the request is redirected to a URL specified
+        by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+        defaultRouteAction must not be set.
+        Structure is documented below.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of this resource. Provide this property when you create
+        the resource.
+        """
+        header_action: NotRequired[pulumi.Input['URLMapPathMatcherHeaderActionArgsDict']]
+        """
+        Specifies changes to request and response headers that need to take effect for
+        the selected backendService. HeaderAction specified here are applied after the
+        matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap
+        Structure is documented below.
+        """
+        path_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleArgsDict']]]]
+        """
+        The list of path rules. Use this list instead of routeRules when routing based
+        on simple path matching is all that's required. The order by which path rules
+        are specified does not matter. Matches are always done on the longest-path-first
+        basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
+        irrespective of the order in which those paths appear in this list. Within a
+        given pathMatcher, only one of pathRules or routeRules must be set.
+        Structure is documented below.
+        """
+        route_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleArgsDict']]]]
+        """
+        The list of ordered HTTP route rules. Use this list instead of pathRules when
+        advanced route matching and routing actions are desired. The order of specifying
+        routeRules matters: the first rule that matches will cause its specified routing
+        action to take effect. Within a given pathMatcher, only one of pathRules or
+        routeRules must be set. routeRules are not supported in UrlMaps intended for
+        External load balancers.
+        Structure is documented below.
+        """
+elif False:
+    URLMapPathMatcherArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherArgs:
@@ -34140,6 +45889,61 @@ class URLMapPathMatcherArgs:
         pulumi.set(self, "route_rules", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherDefaultRouteActionArgsDict(TypedDict):
+        cors_policy: NotRequired[pulumi.Input['URLMapPathMatcherDefaultRouteActionCorsPolicyArgsDict']]
+        """
+        The specification for allowing client side cross-origin requests. Please see
+        [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+        Structure is documented below.
+        """
+        fault_injection_policy: NotRequired[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgsDict']]
+        """
+        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
+        percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
+        by the Loadbalancer for a percentage of requests.
+        timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+        Structure is documented below.
+        """
+        request_mirror_policy: NotRequired[pulumi.Input['URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgsDict']]
+        """
+        Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+        Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
+        the host / authority header is suffixed with -shadow.
+        Structure is documented below.
+        """
+        retry_policy: NotRequired[pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyArgsDict']]
+        """
+        Specifies the retry policy associated with this route.
+        Structure is documented below.
+        """
+        timeout: NotRequired[pulumi.Input['URLMapPathMatcherDefaultRouteActionTimeoutArgsDict']]
+        """
+        Specifies the timeout for the selected route. Timeout is computed from the time the request has been
+        fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
+        If not specified, will use the largest timeout among all backend services associated with the route.
+        Structure is documented below.
+        """
+        url_rewrite: NotRequired[pulumi.Input['URLMapPathMatcherDefaultRouteActionUrlRewriteArgsDict']]
+        """
+        The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+        Structure is documented below.
+        """
+        weighted_backend_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgsDict']]]]
+        """
+        A list of weighted backend services to send traffic to when a route match occurs.
+        The weights determine the fraction of traffic that flows to their corresponding backend service.
+        If all traffic needs to go to a single backend service, there must be one weightedBackendService
+        with weight set to a non 0 number.
+        Once a backendService is identified and before forwarding the request to the backend service,
+        advanced routing actions like Url rewrites and header transformations are applied depending on
+        additional settings specified in this HttpRouteAction.
+        Structure is documented below.
+        """
+elif False:
+    URLMapPathMatcherDefaultRouteActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherDefaultRouteActionArgs:
     def __init__(__self__, *,
@@ -34303,6 +46107,48 @@ class URLMapPathMatcherDefaultRouteActionArgs:
         pulumi.set(self, "weighted_backend_services", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherDefaultRouteActionCorsPolicyArgsDict(TypedDict):
+        allow_credentials: NotRequired[pulumi.Input[bool]]
+        """
+        In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+        This translates to the Access-Control-Allow-Credentials header.
+        """
+        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Allow-Headers header.
+        """
+        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Allow-Methods header.
+        """
+        allow_origin_regexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the regular expression patterns that match allowed origins. For regular expression grammar
+        please see en.cppreference.com/w/cpp/regex/ecmascript
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        allow_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the list of origins that will be allowed to do CORS requests.
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+        """
+        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Expose-Headers header.
+        """
+        max_age: NotRequired[pulumi.Input[int]]
+        """
+        Specifies how long results of a preflight request can be cached in seconds.
+        This translates to the Access-Control-Max-Age header.
+        """
+elif False:
+    URLMapPathMatcherDefaultRouteActionCorsPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherDefaultRouteActionCorsPolicyArgs:
     def __init__(__self__, *,
@@ -34448,6 +46294,21 @@ class URLMapPathMatcherDefaultRouteActionCorsPolicyArgs:
         pulumi.set(self, "max_age", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgsDict(TypedDict):
+        abort: NotRequired[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgsDict']]
+        """
+        The specification for how client requests are aborted as part of fault injection.
+        Structure is documented below.
+        """
+        delay: NotRequired[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgsDict']]
+        """
+        The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        Structure is documented below.
+        """
+elif False:
+    URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs:
     def __init__(__self__, *,
@@ -34490,6 +46351,21 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs:
     def delay(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs']]):
         pulumi.set(self, "delay", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgsDict(TypedDict):
+        http_status: NotRequired[pulumi.Input[int]]
+        """
+        The HTTP status code used to abort the request.
+        The value must be between 200 and 599 inclusive.
+        """
+        percentage: NotRequired[pulumi.Input[float]]
+        """
+        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+elif False:
+    URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs:
@@ -34534,6 +46410,21 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs:
         pulumi.set(self, "percentage", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgsDict(TypedDict):
+        fixed_delay: NotRequired[pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict']]
+        """
+        Specifies the value of the fixed delay interval.
+        Structure is documented below.
+        """
+        percentage: NotRequired[pulumi.Input[float]]
+        """
+        The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+elif False:
+    URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs:
     def __init__(__self__, *,
@@ -34576,6 +46467,21 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs:
     def percentage(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "percentage", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict(TypedDict):
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        seconds: NotRequired[pulumi.Input[str]]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+elif False:
+    URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
@@ -34620,6 +46526,15 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs
         pulumi.set(self, "seconds", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgsDict(TypedDict):
+        backend_service: pulumi.Input[str]
+        """
+        The full or partial URL to the BackendService resource being mirrored to.
+        """
+elif False:
+    URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs:
     def __init__(__self__, *,
@@ -34641,6 +46556,40 @@ class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs:
     def backend_service(self, value: pulumi.Input[str]):
         pulumi.set(self, "backend_service", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherDefaultRouteActionRetryPolicyArgsDict(TypedDict):
+        num_retries: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        """
+        per_try_timeout: NotRequired[pulumi.Input['URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgsDict']]
+        """
+        Specifies a non-zero timeout per retry attempt.
+        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+        will use the largest timeout among all backend services associated with the route.
+        Structure is documented below.
+        """
+        retry_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specfies one or more conditions when this retry rule applies. Valid values are:
+        * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+        or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+        * connection failure, and refused streams.
+        * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+        * connect-failure: Loadbalancer will retry on failures connecting to backend services,
+        for example due to connection timeouts.
+        * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+        Currently the only retriable error supported is 409.
+        * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+        This reset type indicates that it is safe to retry.
+        * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+        * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+        * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+        * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+        """
+elif False:
+    URLMapPathMatcherDefaultRouteActionRetryPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherDefaultRouteActionRetryPolicyArgs:
@@ -34731,6 +46680,21 @@ class URLMapPathMatcherDefaultRouteActionRetryPolicyArgs:
         pulumi.set(self, "retry_conditions", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgsDict(TypedDict):
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        seconds: NotRequired[pulumi.Input[str]]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+elif False:
+    URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs:
     def __init__(__self__, *,
@@ -34774,6 +46738,21 @@ class URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs:
         pulumi.set(self, "seconds", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherDefaultRouteActionTimeoutArgsDict(TypedDict):
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        seconds: NotRequired[pulumi.Input[str]]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+elif False:
+    URLMapPathMatcherDefaultRouteActionTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherDefaultRouteActionTimeoutArgs:
     def __init__(__self__, *,
@@ -34816,6 +46795,23 @@ class URLMapPathMatcherDefaultRouteActionTimeoutArgs:
     def seconds(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "seconds", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherDefaultRouteActionUrlRewriteArgsDict(TypedDict):
+        host_rewrite: NotRequired[pulumi.Input[str]]
+        """
+        Prior to forwarding the request to the selected service, the request's host header is replaced
+        with contents of hostRewrite.
+        The value must be between 1 and 255 characters.
+        """
+        path_prefix_rewrite: NotRequired[pulumi.Input[str]]
+        """
+        Prior to forwarding the request to the selected backend service, the matching portion of the
+        request's path is replaced by pathPrefixRewrite.
+        The value must be between 1 and 1024 characters.
+        """
+elif False:
+    URLMapPathMatcherDefaultRouteActionUrlRewriteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherDefaultRouteActionUrlRewriteArgs:
@@ -34863,6 +46859,34 @@ class URLMapPathMatcherDefaultRouteActionUrlRewriteArgs:
     def path_prefix_rewrite(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_prefix_rewrite", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgsDict(TypedDict):
+        backend_service: NotRequired[pulumi.Input[str]]
+        """
+        The full or partial URL to the default BackendService resource. Before forwarding the
+        request to backendService, the loadbalancer applies any relevant headerActions
+        specified as part of this backendServiceWeight.
+        """
+        header_action: NotRequired[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgsDict']]
+        """
+        Specifies changes to request and response headers that need to take effect for
+        the selected backendService.
+        headerAction specified here take effect before headerAction in the enclosing
+        HttpRouteRule, PathMatcher and UrlMap.
+        Structure is documented below.
+        """
+        weight: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the fraction of traffic sent to backendService, computed as
+        weight / (sum of all weightedBackendService weights in routeAction) .
+        The selection of a backend service is determined only for new traffic. Once a user's request
+        has been directed to a backendService, subsequent requests will be sent to the same backendService
+        as determined by the BackendService's session affinity policy.
+        The value must be between 0 and 1000
+        """
+elif False:
+    URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs:
@@ -34940,6 +46964,31 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs:
     def weight(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "weight", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgsDict(TypedDict):
+        request_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict']]]]
+        """
+        Headers to add to a matching request prior to forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        request_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the request prior to
+        forwarding the request to the backendService.
+        """
+        response_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict']]]]
+        """
+        Headers to add the response prior to sending the response back to the client.
+        Structure is documented below.
+        """
+        response_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the response prior to sending the
+        response back to the client.
+        """
+elif False:
+    URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
@@ -35020,6 +47069,24 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs:
         pulumi.set(self, "response_headers_to_removes", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict(TypedDict):
+        header_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the header to add.
+        """
+        header_value: NotRequired[pulumi.Input[str]]
+        """
+        The value of the header to add.
+        """
+        replace: NotRequired[pulumi.Input[bool]]
+        """
+        If false, headerValue is appended to any values that already exist for the header.
+        If true, headerValue is set for the header, discarding any values that were set for that header.
+        """
+elif False:
+    URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs:
     def __init__(__self__, *,
@@ -35077,6 +47144,24 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionReque
         pulumi.set(self, "replace", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict(TypedDict):
+        header_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the header to add.
+        """
+        header_value: NotRequired[pulumi.Input[str]]
+        """
+        The value of the header to add.
+        """
+        replace: NotRequired[pulumi.Input[bool]]
+        """
+        If false, headerValue is appended to any values that already exist for the header.
+        If true, headerValue is set for the header, discarding any values that were set for that header.
+        """
+elif False:
+    URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs:
     def __init__(__self__, *,
@@ -35133,6 +47218,57 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRespo
     def replace(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "replace", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherDefaultUrlRedirectArgsDict(TypedDict):
+        strip_query: pulumi.Input[bool]
+        """
+        If set to true, any accompanying query portion of the original URL is removed prior
+        to redirecting the request. If set to false, the query portion of the original URL is
+        retained. The default is set to false.
+        This field is required to ensure an empty block is not set. The normal default value is false.
+        """
+        host_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The host that will be used in the redirect response instead of the one that was
+        supplied in the request. The value must be between 1 and 255 characters.
+        """
+        https_redirect: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, the URL scheme in the redirected request is set to https. If set to
+        false, the URL scheme of the redirected request will remain the same as that of the
+        request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+        true for TargetHttpsProxy is not permitted. The default is set to false.
+        """
+        path_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The path that will be used in the redirect response instead of the one that was
+        supplied in the request. pathRedirect cannot be supplied together with
+        prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+        original request will be used for the redirect. The value must be between 1 and 1024
+        characters.
+        """
+        prefix_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+        retaining the remaining portion of the URL before redirecting the request.
+        prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+        neither. If neither is supplied, the path of the original request will be used for
+        the redirect. The value must be between 1 and 1024 characters.
+        """
+        redirect_response_code: NotRequired[pulumi.Input[str]]
+        """
+        The HTTP Status code to use for this RedirectAction. Supported values are:
+        * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+        * FOUND, which corresponds to 302.
+        * SEE_OTHER which corresponds to 303.
+        * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+        will be retained.
+        * PERMANENT_REDIRECT, which corresponds to 308. In this case,
+        the request method will be retained.
+        """
+elif False:
+    URLMapPathMatcherDefaultUrlRedirectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherDefaultUrlRedirectArgs:
@@ -35280,6 +47416,31 @@ class URLMapPathMatcherDefaultUrlRedirectArgs:
         pulumi.set(self, "redirect_response_code", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherHeaderActionArgsDict(TypedDict):
+        request_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionRequestHeadersToAddArgsDict']]]]
+        """
+        Headers to add to a matching request prior to forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        request_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the request prior to
+        forwarding the request to the backendService.
+        """
+        response_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherHeaderActionResponseHeadersToAddArgsDict']]]]
+        """
+        Headers to add the response prior to sending the response back to the client.
+        Structure is documented below.
+        """
+        response_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the response prior to sending the
+        response back to the client.
+        """
+elif False:
+    URLMapPathMatcherHeaderActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherHeaderActionArgs:
     def __init__(__self__, *,
@@ -35359,6 +47520,24 @@ class URLMapPathMatcherHeaderActionArgs:
         pulumi.set(self, "response_headers_to_removes", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherHeaderActionRequestHeadersToAddArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the header to add.
+        """
+        header_value: pulumi.Input[str]
+        """
+        The value of the header to add.
+        """
+        replace: pulumi.Input[bool]
+        """
+        If false, headerValue is appended to any values that already exist for the header.
+        If true, headerValue is set for the header, discarding any values that were set for that header.
+        """
+elif False:
+    URLMapPathMatcherHeaderActionRequestHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherHeaderActionRequestHeadersToAddArgs:
     def __init__(__self__, *,
@@ -35413,6 +47592,24 @@ class URLMapPathMatcherHeaderActionRequestHeadersToAddArgs:
         pulumi.set(self, "replace", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherHeaderActionResponseHeadersToAddArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the header to add.
+        """
+        header_value: pulumi.Input[str]
+        """
+        The value of the header to add.
+        """
+        replace: pulumi.Input[bool]
+        """
+        If false, headerValue is appended to any values that already exist for the header.
+        If true, headerValue is set for the header, discarding any values that were set for that header.
+        """
+elif False:
+    URLMapPathMatcherHeaderActionResponseHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherHeaderActionResponseHeadersToAddArgs:
     def __init__(__self__, *,
@@ -35466,6 +47663,39 @@ class URLMapPathMatcherHeaderActionResponseHeadersToAddArgs:
     def replace(self, value: pulumi.Input[bool]):
         pulumi.set(self, "replace", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherPathRuleArgsDict(TypedDict):
+        paths: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The list of path patterns to match. Each must start with / and the only place a
+        \\* is allowed is at the end following a /. The string fed to the path matcher
+        does not include any text after the first ? or #, and those chars are not
+        allowed here.
+        """
+        route_action: NotRequired[pulumi.Input['URLMapPathMatcherPathRuleRouteActionArgsDict']]
+        """
+        In response to a matching path, the load balancer performs advanced routing
+        actions like URL rewrites, header transformations, etc. prior to forwarding the
+        request to the selected backend. If routeAction specifies any
+        weightedBackendServices, service must not be set. Conversely if service is set,
+        routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+        or urlRedirect must be set.
+        Structure is documented below.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        The backend service or backend bucket to use if any of the given paths match.
+        """
+        url_redirect: NotRequired[pulumi.Input['URLMapPathMatcherPathRuleUrlRedirectArgsDict']]
+        """
+        When a path pattern is matched, the request is redirected to a URL specified
+        by urlRedirect. If urlRedirect is specified, service or routeAction must not
+        be set.
+        Structure is documented below.
+        """
+elif False:
+    URLMapPathMatcherPathRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherPathRuleArgs:
@@ -35560,6 +47790,67 @@ class URLMapPathMatcherPathRuleArgs:
     def url_redirect(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleUrlRedirectArgs']]):
         pulumi.set(self, "url_redirect", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherPathRuleRouteActionArgsDict(TypedDict):
+        cors_policy: NotRequired[pulumi.Input['URLMapPathMatcherPathRuleRouteActionCorsPolicyArgsDict']]
+        """
+        The specification for allowing client side cross-origin requests. Please see W3C
+        Recommendation for Cross Origin Resource Sharing
+        Structure is documented below.
+        """
+        fault_injection_policy: NotRequired[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgsDict']]
+        """
+        The specification for fault injection introduced into traffic to test the
+        resiliency of clients to backend service failure. As part of fault injection,
+        when clients send requests to a backend service, delays can be introduced by
+        Loadbalancer on a percentage of requests before sending those request to the
+        backend service. Similarly requests from clients can be aborted by the
+        Loadbalancer for a percentage of requests. timeout and retry_policy will be
+        ignored by clients that are configured with a fault_injection_policy.
+        Structure is documented below.
+        """
+        request_mirror_policy: NotRequired[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgsDict']]
+        """
+        Specifies the policy on how requests intended for the route's backends are
+        shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+        responses from the shadow service. Prior to sending traffic to the shadow
+        service, the host / authority header is suffixed with -shadow.
+        Structure is documented below.
+        """
+        retry_policy: NotRequired[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyArgsDict']]
+        """
+        Specifies the retry policy associated with this route.
+        Structure is documented below.
+        """
+        timeout: NotRequired[pulumi.Input['URLMapPathMatcherPathRuleRouteActionTimeoutArgsDict']]
+        """
+        Specifies the timeout for the selected route. Timeout is computed from the time
+        the request is has been fully processed (i.e. end-of-stream) up until the
+        response has been completely processed. Timeout includes all retries. If not
+        specified, the default value is 15 seconds.
+        Structure is documented below.
+        """
+        url_rewrite: NotRequired[pulumi.Input['URLMapPathMatcherPathRuleRouteActionUrlRewriteArgsDict']]
+        """
+        The spec to modify the URL of the request, prior to forwarding the request to
+        the matched service
+        Structure is documented below.
+        """
+        weighted_backend_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgsDict']]]]
+        """
+        A list of weighted backend services to send traffic to when a route match
+        occurs. The weights determine the fraction of traffic that flows to their
+        corresponding backend service. If all traffic needs to go to a single backend
+        service, there must be one  weightedBackendService with weight set to a non 0
+        number. Once a backendService is identified and before forwarding the request to
+        the backend service, advanced routing actions like Url rewrites and header
+        transformations are applied depending on additional settings specified in this
+        HttpRouteAction.
+        Structure is documented below.
+        """
+elif False:
+    URLMapPathMatcherPathRuleRouteActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherPathRuleRouteActionArgs:
@@ -35736,6 +48027,48 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
         pulumi.set(self, "weighted_backend_services", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherPathRuleRouteActionCorsPolicyArgsDict(TypedDict):
+        disabled: pulumi.Input[bool]
+        """
+        If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+        """
+        allow_credentials: NotRequired[pulumi.Input[bool]]
+        """
+        In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+        This translates to the Access-Control-Allow-Credentials header.
+        """
+        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Allow-Headers header.
+        """
+        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Allow-Methods header.
+        """
+        allow_origin_regexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the regular expression patterns that match allowed origins. For regular expression grammar
+        please see en.cppreference.com/w/cpp/regex/ecmascript
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        allow_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the list of origins that will be allowed to do CORS requests.
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Expose-Headers header.
+        """
+        max_age: NotRequired[pulumi.Input[int]]
+        """
+        Specifies how long results of a preflight request can be cached in seconds.
+        This translates to the Access-Control-Max-Age header.
+        """
+elif False:
+    URLMapPathMatcherPathRuleRouteActionCorsPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs:
     def __init__(__self__, *,
@@ -35880,6 +48213,21 @@ class URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs:
         pulumi.set(self, "max_age", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgsDict(TypedDict):
+        abort: NotRequired[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgsDict']]
+        """
+        The specification for how client requests are aborted as part of fault injection.
+        Structure is documented below.
+        """
+        delay: NotRequired[pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgsDict']]
+        """
+        The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        Structure is documented below.
+        """
+elif False:
+    URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs:
     def __init__(__self__, *,
@@ -35923,6 +48271,21 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs:
         pulumi.set(self, "delay", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgsDict(TypedDict):
+        http_status: pulumi.Input[int]
+        """
+        The HTTP status code used to abort the request.
+        The value must be between 200 and 599 inclusive.
+        """
+        percentage: pulumi.Input[float]
+        """
+        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+elif False:
+    URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs:
     def __init__(__self__, *,
@@ -35964,6 +48327,21 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs:
         pulumi.set(self, "percentage", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgsDict(TypedDict):
+        fixed_delay: pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict']
+        """
+        Specifies the value of the fixed delay interval.
+        Structure is documented below.
+        """
+        percentage: pulumi.Input[float]
+        """
+        The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+elif False:
+    URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs:
     def __init__(__self__, *,
@@ -36004,6 +48382,21 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs:
     def percentage(self, value: pulumi.Input[float]):
         pulumi.set(self, "percentage", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict(TypedDict):
+        seconds: pulumi.Input[str]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
@@ -36047,6 +48440,15 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArg
         pulumi.set(self, "nanos", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgsDict(TypedDict):
+        backend_service: pulumi.Input[str]
+        """
+        The full or partial URL to the BackendService resource being mirrored to.
+        """
+elif False:
+    URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs:
     def __init__(__self__, *,
@@ -36068,6 +48470,40 @@ class URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs:
     def backend_service(self, value: pulumi.Input[str]):
         pulumi.set(self, "backend_service", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherPathRuleRouteActionRetryPolicyArgsDict(TypedDict):
+        num_retries: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        """
+        per_try_timeout: NotRequired[pulumi.Input['URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgsDict']]
+        """
+        Specifies a non-zero timeout per retry attempt.
+        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+        will use the largest timeout among all backend services associated with the route.
+        Structure is documented below.
+        """
+        retry_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specfies one or more conditions when this retry rule applies. Valid values are:
+        * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+        or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+        * connection failure, and refused streams.
+        * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+        * connect-failure: Loadbalancer will retry on failures connecting to backend services,
+        for example due to connection timeouts.
+        * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+        Currently the only retriable error supported is 409.
+        * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+        This reset type indicates that it is safe to retry.
+        * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+        * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+        * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+        * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+        """
+elif False:
+    URLMapPathMatcherPathRuleRouteActionRetryPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs:
@@ -36158,6 +48594,21 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs:
         pulumi.set(self, "retry_conditions", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgsDict(TypedDict):
+        seconds: pulumi.Input[str]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs:
     def __init__(__self__, *,
@@ -36200,6 +48651,21 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs:
         pulumi.set(self, "nanos", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherPathRuleRouteActionTimeoutArgsDict(TypedDict):
+        seconds: pulumi.Input[str]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    URLMapPathMatcherPathRuleRouteActionTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherPathRuleRouteActionTimeoutArgs:
     def __init__(__self__, *,
@@ -36241,6 +48707,23 @@ class URLMapPathMatcherPathRuleRouteActionTimeoutArgs:
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherPathRuleRouteActionUrlRewriteArgsDict(TypedDict):
+        host_rewrite: NotRequired[pulumi.Input[str]]
+        """
+        Prior to forwarding the request to the selected service, the request's host header is replaced
+        with contents of hostRewrite.
+        The value must be between 1 and 255 characters.
+        """
+        path_prefix_rewrite: NotRequired[pulumi.Input[str]]
+        """
+        Prior to forwarding the request to the selected backend service, the matching portion of the
+        request's path is replaced by pathPrefixRewrite.
+        The value must be between 1 and 1024 characters.
+        """
+elif False:
+    URLMapPathMatcherPathRuleRouteActionUrlRewriteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs:
@@ -36288,6 +48771,34 @@ class URLMapPathMatcherPathRuleRouteActionUrlRewriteArgs:
     def path_prefix_rewrite(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_prefix_rewrite", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgsDict(TypedDict):
+        backend_service: pulumi.Input[str]
+        """
+        The full or partial URL to the default BackendService resource. Before forwarding the
+        request to backendService, the loadbalancer applies any relevant headerActions
+        specified as part of this backendServiceWeight.
+        """
+        weight: pulumi.Input[int]
+        """
+        Specifies the fraction of traffic sent to backendService, computed as
+        weight / (sum of all weightedBackendService weights in routeAction) .
+        The selection of a backend service is determined only for new traffic. Once a user's request
+        has been directed to a backendService, subsequent requests will be sent to the same backendService
+        as determined by the BackendService's session affinity policy.
+        The value must be between 0 and 1000
+        """
+        header_action: NotRequired[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgsDict']]
+        """
+        Specifies changes to request and response headers that need to take effect for
+        the selected backendService.
+        headerAction specified here take effect before headerAction in the enclosing
+        HttpRouteRule, PathMatcher and UrlMap.
+        Structure is documented below.
+        """
+elif False:
+    URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs:
@@ -36363,6 +48874,31 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs:
     def header_action(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs']]):
         pulumi.set(self, "header_action", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgsDict(TypedDict):
+        request_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict']]]]
+        """
+        Headers to add to a matching request prior to forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        request_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the request prior to
+        forwarding the request to the backendService.
+        """
+        response_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict']]]]
+        """
+        Headers to add the response prior to sending the response back to the client.
+        Structure is documented below.
+        """
+        response_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the response prior to sending the
+        response back to the client.
+        """
+elif False:
+    URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs:
@@ -36443,6 +48979,24 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs
         pulumi.set(self, "response_headers_to_removes", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the header to add.
+        """
+        header_value: pulumi.Input[str]
+        """
+        The value of the header to add.
+        """
+        replace: pulumi.Input[bool]
+        """
+        If false, headerValue is appended to any values that already exist for the header.
+        If true, headerValue is set for the header, discarding any values that were set for that header.
+        """
+elif False:
+    URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs:
     def __init__(__self__, *,
@@ -36497,6 +49051,24 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequ
         pulumi.set(self, "replace", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the header to add.
+        """
+        header_value: pulumi.Input[str]
+        """
+        The value of the header to add.
+        """
+        replace: pulumi.Input[bool]
+        """
+        If false, headerValue is appended to any values that already exist for the header.
+        If true, headerValue is set for the header, discarding any values that were set for that header.
+        """
+elif False:
+    URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs:
     def __init__(__self__, *,
@@ -36550,6 +49122,49 @@ class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResp
     def replace(self, value: pulumi.Input[bool]):
         pulumi.set(self, "replace", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherPathRuleUrlRedirectArgsDict(TypedDict):
+        strip_query: pulumi.Input[bool]
+        """
+        If set to true, any accompanying query portion of the original URL is removed
+        prior to redirecting the request. If set to false, the query portion of the
+        original URL is retained. Defaults to false.
+        """
+        host_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The host that will be used in the redirect response instead of the one that was
+        supplied in the request. The value must be between 1 and 255 characters.
+        """
+        https_redirect: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, the URL scheme in the redirected request is set to https. If set
+        to false, the URL scheme of the redirected request will remain the same as that
+        of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+        Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+        """
+        path_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The path that will be used in the redirect response instead of the one that was
+        supplied in the request. Only one of pathRedirect or prefixRedirect must be
+        specified. The value must be between 1 and 1024 characters.
+        """
+        prefix_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+        retaining the remaining portion of the URL before redirecting the request.
+        """
+        redirect_response_code: NotRequired[pulumi.Input[str]]
+        """
+        The HTTP Status code to use for this RedirectAction. Supported values are:
+        * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+        * FOUND, which corresponds to 302.
+        * SEE_OTHER which corresponds to 303.
+        * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.
+        * PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+        """
+elif False:
+    URLMapPathMatcherPathRuleUrlRedirectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherPathRuleUrlRedirectArgs:
@@ -36680,6 +49295,67 @@ class URLMapPathMatcherPathRuleUrlRedirectArgs:
     def redirect_response_code(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "redirect_response_code", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherRouteRuleArgsDict(TypedDict):
+        priority: pulumi.Input[int]
+        """
+        For routeRules within a given pathMatcher, priority determines the order
+        in which load balancer will interpret routeRules. RouteRules are evaluated
+        in order of priority, from the lowest to highest number. The priority of
+        a rule decreases as its number increases (1, 2, 3, N+1). The first rule
+        that matches the request is applied.
+        You cannot configure two or more routeRules with the same priority.
+        Priority for each rule must be set to a number between 0 and
+        2147483647 inclusive.
+        Priority numbers can have gaps, which enable you to add or remove rules
+        in the future without affecting the rest of the rules. For example,
+        1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which
+        you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the
+        future without any impact on existing rules.
+        """
+        header_action: NotRequired[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionArgsDict']]
+        """
+        Specifies changes to request and response headers that need to take effect for
+        the selected backendService. The headerAction specified here are applied before
+        the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
+        outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
+        Structure is documented below.
+        """
+        match_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleArgsDict']]]]
+        """
+        The rules for determining a match.
+        Structure is documented below.
+        """
+        route_action: NotRequired[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionArgsDict']]
+        """
+        In response to a matching matchRule, the load balancer performs advanced routing
+        actions like URL rewrites, header transformations, etc. prior to forwarding the
+        request to the selected backend. If  routeAction specifies any
+        weightedBackendServices, service must not be set. Conversely if service is set,
+        routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+        or urlRedirect must be set.
+        Structure is documented below.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        The backend service resource to which traffic is
+        directed if this rule is matched. If routeAction is additionally specified,
+        advanced routing actions like URL Rewrites, etc. take effect prior to sending
+        the request to the backend. However, if service is specified, routeAction cannot
+        contain any weightedBackendService s. Conversely, if routeAction specifies any
+        weightedBackendServices, service must not be specified. Only one of urlRedirect,
+        service or routeAction.weightedBackendService must be set.
+        """
+        url_redirect: NotRequired[pulumi.Input['URLMapPathMatcherRouteRuleUrlRedirectArgsDict']]
+        """
+        When this rule is matched, the request is redirected to a URL specified by
+        urlRedirect. If urlRedirect is specified, service or routeAction must not be
+        set.
+        Structure is documented below.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleArgs:
@@ -36847,6 +49523,31 @@ class URLMapPathMatcherRouteRuleArgs:
         pulumi.set(self, "url_redirect", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherRouteRuleHeaderActionArgsDict(TypedDict):
+        request_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgsDict']]]]
+        """
+        Headers to add to a matching request prior to forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        request_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the request prior to
+        forwarding the request to the backendService.
+        """
+        response_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgsDict']]]]
+        """
+        Headers to add the response prior to sending the response back to the client.
+        Structure is documented below.
+        """
+        response_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the response prior to sending the
+        response back to the client.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleHeaderActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleHeaderActionArgs:
     def __init__(__self__, *,
@@ -36926,6 +49627,24 @@ class URLMapPathMatcherRouteRuleHeaderActionArgs:
         pulumi.set(self, "response_headers_to_removes", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the header to add.
+        """
+        header_value: pulumi.Input[str]
+        """
+        The value of the header to add.
+        """
+        replace: pulumi.Input[bool]
+        """
+        If false, headerValue is appended to any values that already exist for the header.
+        If true, headerValue is set for the header, discarding any values that were set for that header.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs:
     def __init__(__self__, *,
@@ -36980,6 +49699,24 @@ class URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs:
         pulumi.set(self, "replace", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the header to add.
+        """
+        header_value: pulumi.Input[str]
+        """
+        The value of the header to add.
+        """
+        replace: pulumi.Input[bool]
+        """
+        If false, headerValue is appended to any values that already exist for the header.
+        If true, headerValue is set for the header, discarding any values that were set for that header.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs:
     def __init__(__self__, *,
@@ -37033,6 +49770,77 @@ class URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs:
     def replace(self, value: pulumi.Input[bool]):
         pulumi.set(self, "replace", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherRouteRuleMatchRuleArgsDict(TypedDict):
+        full_path_match: NotRequired[pulumi.Input[str]]
+        """
+        For satisfying the matchRule condition, the path of the request must exactly
+        match the value specified in fullPathMatch after removing any query parameters
+        and anchor that may be part of the original URL. FullPathMatch must be between 1
+        and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
+        be specified.
+        """
+        header_matches: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgsDict']]]]
+        """
+        Specifies a list of header match criteria, all of which must match corresponding
+        headers in the request.
+        Structure is documented below.
+        """
+        ignore_case: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies that prefixMatch and fullPathMatch matches are case sensitive.
+        Defaults to false.
+        """
+        metadata_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgsDict']]]]
+        """
+        Opaque filter criteria used by Loadbalancer to restrict routing configuration to
+        a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
+        clients present node metadata. If a match takes place, the relevant routing
+        configuration is made available to those proxies. For each metadataFilter in
+        this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the
+        filterLabels must match the corresponding label provided in the metadata. If its
+        filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match
+        with corresponding labels in the provided metadata. metadataFilters specified
+        here can be overrides those specified in ForwardingRule that refers to this
+        UrlMap. metadataFilters only applies to Loadbalancers that have their
+        loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        Structure is documented below.
+        """
+        path_template_match: NotRequired[pulumi.Input[str]]
+        """
+        For satisfying the matchRule condition, the path of the request
+        must match the wildcard pattern specified in pathTemplateMatch
+        after removing any query parameters and anchor that may be part
+        of the original URL.
+        pathTemplateMatch must be between 1 and 255 characters
+        (inclusive).  The pattern specified by pathTemplateMatch may
+        have at most 5 wildcard operators and at most 5 variable
+        captures in total.
+        """
+        prefix_match: NotRequired[pulumi.Input[str]]
+        """
+        For satisfying the matchRule condition, the request's path must begin with the
+        specified prefixMatch. prefixMatch must begin with a /. The value must be
+        between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
+        regexMatch must be specified.
+        """
+        query_parameter_matches: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgsDict']]]]
+        """
+        Specifies a list of query parameter match criteria, all of which must match
+        corresponding query parameters in the request.
+        Structure is documented below.
+        """
+        regex_match: NotRequired[pulumi.Input[str]]
+        """
+        For satisfying the matchRule condition, the path of the request must satisfy the
+        regular expression specified in regexMatch after removing any query parameters
+        and anchor supplied with the original URL. For regular expression grammar please
+        see en.cppreference.com/w/cpp/regex/ecmascript  Only one of prefixMatch,
+        fullPathMatch or regexMatch must be specified.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleMatchRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleMatchRuleArgs:
@@ -37237,6 +50045,66 @@ class URLMapPathMatcherRouteRuleMatchRuleArgs:
         pulumi.set(self, "regex_match", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the HTTP header to match. For matching against the HTTP request's
+        authority, use a headerMatch with the header name ":authority". For matching a
+        request's method, use the headerName ":method".
+        """
+        exact_match: NotRequired[pulumi.Input[str]]
+        """
+        The value should exactly match contents of exactMatch. Only one of exactMatch,
+        prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
+        """
+        invert_match: NotRequired[pulumi.Input[bool]]
+        """
+        If set to false, the headerMatch is considered a match if the match criteria
+        above are met. If set to true, the headerMatch is considered a match if the
+        match criteria above are NOT met. Defaults to false.
+        """
+        prefix_match: NotRequired[pulumi.Input[str]]
+        """
+        The value of the header must start with the contents of prefixMatch. Only one of
+        exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+        must be set.
+        """
+        present_match: NotRequired[pulumi.Input[bool]]
+        """
+        A header with the contents of headerName must exist. The match takes place
+        whether or not the request's header has a value or not. Only one of exactMatch,
+        prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
+        """
+        range_match: NotRequired[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgsDict']]
+        """
+        The header value must be an integer and its value must be in the range specified
+        in rangeMatch. If the header does not contain an integer, number or is empty,
+        the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
+        not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
+        exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+        must be set.
+        Structure is documented below.
+        """
+        regex_match: NotRequired[pulumi.Input[str]]
+        """
+        The value of the header must match the regular expression specified in
+        regexMatch. For regular expression grammar, please see:
+        en.cppreference.com/w/cpp/regex/ecmascript  For matching against a port
+        specified in the HTTP request, use a headerMatch with headerName set to PORT and
+        a regular expression that satisfies the RFC2616 Host header's port specifier.
+        Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+        rangeMatch must be set.
+        """
+        suffix_match: NotRequired[pulumi.Input[str]]
+        """
+        The value of the header must end with the contents of suffixMatch. Only one of
+        exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+        must be set.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
     def __init__(__self__, *,
@@ -37417,6 +50285,19 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
         pulumi.set(self, "suffix_match", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgsDict(TypedDict):
+        range_end: pulumi.Input[int]
+        """
+        The end of the range (exclusive).
+        """
+        range_start: pulumi.Input[int]
+        """
+        The start of the range (inclusive).
+        """
+elif False:
+    URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs:
     def __init__(__self__, *,
@@ -37453,6 +50334,28 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs:
     def range_start(self, value: pulumi.Input[int]):
         pulumi.set(self, "range_start", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgsDict(TypedDict):
+        filter_labels: pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgsDict']]]
+        """
+        The list of label value pairs that must match labels in the provided metadata
+        based on filterMatchCriteria  This list must not be empty and can have at the
+        most 64 entries.
+        Structure is documented below.
+        """
+        filter_match_criteria: pulumi.Input[str]
+        """
+        Specifies how individual filterLabel matches within the list of filterLabels
+        contribute towards the overall metadataFilter match. Supported values are:
+        - MATCH_ANY: At least one of the filterLabels must have a matching label in the
+        provided metadata.
+        - MATCH_ALL: All filterLabels must have matching labels in
+        the provided metadata.
+        Possible values are: `MATCH_ALL`, `MATCH_ANY`.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
@@ -37509,6 +50412,21 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
         pulumi.set(self, "filter_match_criteria", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of metadata label. The name can have a maximum length of 1024 characters
+        and must be at least 1 character long.
+        """
+        value: pulumi.Input[str]
+        """
+        The value of the label must match the specified value. value can have a maximum
+        length of 1024 characters.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs:
     def __init__(__self__, *,
@@ -37549,6 +50467,35 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the query parameter to match. The query parameter must exist in the
+        request, in the absence of which the request match fails.
+        """
+        exact_match: NotRequired[pulumi.Input[str]]
+        """
+        The queryParameterMatch matches if the value of the parameter exactly matches
+        the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
+        must be set.
+        """
+        present_match: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies that the queryParameterMatch matches if the request contains the query
+        parameter, irrespective of whether the parameter has a value or not. Only one of
+        presentMatch, exactMatch and regexMatch must be set.
+        """
+        regex_match: NotRequired[pulumi.Input[str]]
+        """
+        The queryParameterMatch matches if the value of the parameter matches the
+        regular expression specified by regexMatch. For the regular expression grammar,
+        please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+        exactMatch and regexMatch must be set.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs:
@@ -37635,6 +50582,67 @@ class URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs:
     def regex_match(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "regex_match", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherRouteRuleRouteActionArgsDict(TypedDict):
+        cors_policy: NotRequired[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgsDict']]
+        """
+        The specification for allowing client side cross-origin requests. Please see W3C
+        Recommendation for Cross Origin Resource Sharing
+        Structure is documented below.
+        """
+        fault_injection_policy: NotRequired[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgsDict']]
+        """
+        The specification for fault injection introduced into traffic to test the
+        resiliency of clients to backend service failure. As part of fault injection,
+        when clients send requests to a backend service, delays can be introduced by
+        Loadbalancer on a percentage of requests before sending those request to the
+        backend service. Similarly requests from clients can be aborted by the
+        Loadbalancer for a percentage of requests. timeout and retry_policy will be
+        ignored by clients that are configured with a fault_injection_policy.
+        Structure is documented below.
+        """
+        request_mirror_policy: NotRequired[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgsDict']]
+        """
+        Specifies the policy on how requests intended for the route's backends are
+        shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+        responses from the shadow service. Prior to sending traffic to the shadow
+        service, the host / authority header is suffixed with -shadow.
+        Structure is documented below.
+        """
+        retry_policy: NotRequired[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgsDict']]
+        """
+        Specifies the retry policy associated with this route.
+        Structure is documented below.
+        """
+        timeout: NotRequired[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionTimeoutArgsDict']]
+        """
+        Specifies the timeout for the selected route. Timeout is computed from the time
+        the request is has been fully processed (i.e. end-of-stream) up until the
+        response has been completely processed. Timeout includes all retries. If not
+        specified, the default value is 15 seconds.
+        Structure is documented below.
+        """
+        url_rewrite: NotRequired[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgsDict']]
+        """
+        The spec to modify the URL of the request, prior to forwarding the request to
+        the matched service
+        Structure is documented below.
+        """
+        weighted_backend_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgsDict']]]]
+        """
+        A list of weighted backend services to send traffic to when a route match
+        occurs. The weights determine the fraction of traffic that flows to their
+        corresponding backend service. If all traffic needs to go to a single backend
+        service, there must be one  weightedBackendService with weight set to a non 0
+        number. Once a backendService is identified and before forwarding the request to
+        the backend service, advanced routing actions like Url rewrites and header
+        transformations are applied depending on additional settings specified in this
+        HttpRouteAction.
+        Structure is documented below.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleRouteActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleRouteActionArgs:
@@ -37811,6 +50819,48 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
         pulumi.set(self, "weighted_backend_services", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgsDict(TypedDict):
+        allow_credentials: NotRequired[pulumi.Input[bool]]
+        """
+        In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+        This translates to the Access-Control-Allow-Credentials header.
+        """
+        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Allow-Headers header.
+        """
+        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Allow-Methods header.
+        """
+        allow_origin_regexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the regular expression patterns that match allowed origins. For regular expression grammar
+        please see en.cppreference.com/w/cpp/regex/ecmascript
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        allow_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the list of origins that will be allowed to do CORS requests.
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+        """
+        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the content for the Access-Control-Expose-Headers header.
+        """
+        max_age: NotRequired[pulumi.Input[int]]
+        """
+        Specifies how long results of a preflight request can be cached in seconds.
+        This translates to the Access-Control-Max-Age header.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs:
     def __init__(__self__, *,
@@ -37956,6 +51006,21 @@ class URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs:
         pulumi.set(self, "max_age", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgsDict(TypedDict):
+        abort: NotRequired[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgsDict']]
+        """
+        The specification for how client requests are aborted as part of fault injection.
+        Structure is documented below.
+        """
+        delay: NotRequired[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgsDict']]
+        """
+        The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        Structure is documented below.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs:
     def __init__(__self__, *,
@@ -37998,6 +51063,21 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs:
     def delay(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs']]):
         pulumi.set(self, "delay", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgsDict(TypedDict):
+        http_status: NotRequired[pulumi.Input[int]]
+        """
+        The HTTP status code used to abort the request.
+        The value must be between 200 and 599 inclusive.
+        """
+        percentage: NotRequired[pulumi.Input[float]]
+        """
+        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs:
@@ -38042,6 +51122,21 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs:
         pulumi.set(self, "percentage", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgsDict(TypedDict):
+        fixed_delay: NotRequired[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict']]
+        """
+        Specifies the value of the fixed delay interval.
+        Structure is documented below.
+        """
+        percentage: NotRequired[pulumi.Input[float]]
+        """
+        The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs:
     def __init__(__self__, *,
@@ -38085,6 +51180,21 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs:
         pulumi.set(self, "percentage", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict(TypedDict):
+        seconds: pulumi.Input[str]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
     def __init__(__self__, *,
@@ -38127,6 +51237,15 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayAr
         pulumi.set(self, "nanos", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgsDict(TypedDict):
+        backend_service: pulumi.Input[str]
+        """
+        The full or partial URL to the BackendService resource being mirrored to.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs:
     def __init__(__self__, *,
@@ -38148,6 +51267,40 @@ class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs:
     def backend_service(self, value: pulumi.Input[str]):
         pulumi.set(self, "backend_service", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgsDict(TypedDict):
+        num_retries: pulumi.Input[int]
+        """
+        Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        """
+        per_try_timeout: NotRequired[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgsDict']]
+        """
+        Specifies a non-zero timeout per retry attempt.
+        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+        will use the largest timeout among all backend services associated with the route.
+        Structure is documented below.
+        """
+        retry_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specfies one or more conditions when this retry rule applies. Valid values are:
+        * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+        or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+        * connection failure, and refused streams.
+        * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+        * connect-failure: Loadbalancer will retry on failures connecting to backend services,
+        for example due to connection timeouts.
+        * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+        Currently the only retriable error supported is 409.
+        * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+        This reset type indicates that it is safe to retry.
+        * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+        * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+        * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+        * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+        """
+elif False:
+    URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs:
@@ -38237,6 +51390,21 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs:
         pulumi.set(self, "retry_conditions", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgsDict(TypedDict):
+        seconds: pulumi.Input[str]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs:
     def __init__(__self__, *,
@@ -38279,6 +51447,21 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs:
         pulumi.set(self, "nanos", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherRouteRuleRouteActionTimeoutArgsDict(TypedDict):
+        seconds: pulumi.Input[str]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleRouteActionTimeoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleRouteActionTimeoutArgs:
     def __init__(__self__, *,
@@ -38320,6 +51503,37 @@ class URLMapPathMatcherRouteRuleRouteActionTimeoutArgs:
     def nanos(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nanos", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgsDict(TypedDict):
+        host_rewrite: NotRequired[pulumi.Input[str]]
+        """
+        Prior to forwarding the request to the selected service, the request's host header is replaced
+        with contents of hostRewrite.
+        The value must be between 1 and 255 characters.
+        """
+        path_prefix_rewrite: NotRequired[pulumi.Input[str]]
+        """
+        Prior to forwarding the request to the selected backend service, the matching portion of the
+        request's path is replaced by pathPrefixRewrite.
+        The value must be between 1 and 1024 characters.
+        """
+        path_template_rewrite: NotRequired[pulumi.Input[str]]
+        """
+        Prior to forwarding the request to the selected origin, if the
+        request matched a pathTemplateMatch, the matching portion of the
+        request's path is replaced re-written using the pattern specified
+        by pathTemplateRewrite.
+        pathTemplateRewrite must be between 1 and 255 characters
+        (inclusive), must start with a '/', and must only use variables
+        captured by the route's pathTemplate matchers.
+        pathTemplateRewrite may only be used when all of a route's
+        MatchRules specify pathTemplate.
+        Only one of pathPrefixRewrite and pathTemplateRewrite may be
+        specified.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
@@ -38404,6 +51618,34 @@ class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
         pulumi.set(self, "path_template_rewrite", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgsDict(TypedDict):
+        backend_service: pulumi.Input[str]
+        """
+        The full or partial URL to the default BackendService resource. Before forwarding the
+        request to backendService, the loadbalancer applies any relevant headerActions
+        specified as part of this backendServiceWeight.
+        """
+        weight: pulumi.Input[int]
+        """
+        Specifies the fraction of traffic sent to backendService, computed as
+        weight / (sum of all weightedBackendService weights in routeAction) .
+        The selection of a backend service is determined only for new traffic. Once a user's request
+        has been directed to a backendService, subsequent requests will be sent to the same backendService
+        as determined by the BackendService's session affinity policy.
+        The value must be between 0 and 1000
+        """
+        header_action: NotRequired[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgsDict']]
+        """
+        Specifies changes to request and response headers that need to take effect for
+        the selected backendService.
+        headerAction specified here take effect before headerAction in the enclosing
+        HttpRouteRule, PathMatcher and UrlMap.
+        Structure is documented below.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs:
     def __init__(__self__, *,
@@ -38478,6 +51720,31 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs:
     def header_action(self, value: Optional[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs']]):
         pulumi.set(self, "header_action", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgsDict(TypedDict):
+        request_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict']]]]
+        """
+        Headers to add to a matching request prior to forwarding the request to the backendService.
+        Structure is documented below.
+        """
+        request_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the request prior to
+        forwarding the request to the backendService.
+        """
+        response_headers_to_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict']]]]
+        """
+        Headers to add the response prior to sending the response back to the client.
+        Structure is documented below.
+        """
+        response_headers_to_removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of header names for headers that need to be removed from the response prior to sending the
+        response back to the client.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs:
@@ -38558,6 +51825,24 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArg
         pulumi.set(self, "response_headers_to_removes", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the header to add.
+        """
+        header_value: pulumi.Input[str]
+        """
+        The value of the header to add.
+        """
+        replace: pulumi.Input[bool]
+        """
+        If false, headerValue is appended to any values that already exist for the header.
+        If true, headerValue is set for the header, discarding any values that were set for that header.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs:
     def __init__(__self__, *,
@@ -38612,6 +51897,24 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionReq
         pulumi.set(self, "replace", value)
 
 
+if not MYPY:
+    class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the header to add.
+        """
+        header_value: pulumi.Input[str]
+        """
+        The value of the header to add.
+        """
+        replace: pulumi.Input[bool]
+        """
+        If false, headerValue is appended to any values that already exist for the header.
+        If true, headerValue is set for the header, discarding any values that were set for that header.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs:
     def __init__(__self__, *,
@@ -38665,6 +51968,49 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRes
     def replace(self, value: pulumi.Input[bool]):
         pulumi.set(self, "replace", value)
 
+
+if not MYPY:
+    class URLMapPathMatcherRouteRuleUrlRedirectArgsDict(TypedDict):
+        host_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The host that will be used in the redirect response instead of the one that was
+        supplied in the request. The value must be between 1 and 255 characters.
+        """
+        https_redirect: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, the URL scheme in the redirected request is set to https. If set
+        to false, the URL scheme of the redirected request will remain the same as that
+        of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+        Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+        """
+        path_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The path that will be used in the redirect response instead of the one that was
+        supplied in the request. Only one of pathRedirect or prefixRedirect must be
+        specified. The value must be between 1 and 1024 characters.
+        """
+        prefix_redirect: NotRequired[pulumi.Input[str]]
+        """
+        The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+        retaining the remaining portion of the URL before redirecting the request.
+        """
+        redirect_response_code: NotRequired[pulumi.Input[str]]
+        """
+        The HTTP Status code to use for this RedirectAction. Supported values are:
+        * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+        * FOUND, which corresponds to 302.
+        * SEE_OTHER which corresponds to 303.
+        * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.
+        * PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+        """
+        strip_query: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, any accompanying query portion of the original URL is removed
+        prior to redirecting the request. If set to false, the query portion of the
+        original URL is retained. Defaults to false.
+        """
+elif False:
+    URLMapPathMatcherRouteRuleUrlRedirectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapPathMatcherRouteRuleUrlRedirectArgs:
@@ -38796,6 +52142,27 @@ class URLMapPathMatcherRouteRuleUrlRedirectArgs:
     def strip_query(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "strip_query", value)
 
+
+if not MYPY:
+    class URLMapTestArgsDict(TypedDict):
+        host: pulumi.Input[str]
+        """
+        Host portion of the URL.
+        """
+        path: pulumi.Input[str]
+        """
+        Path portion of the URL.
+        """
+        service: pulumi.Input[str]
+        """
+        The backend service or backend bucket link that should be matched by this test.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of this test case.
+        """
+elif False:
+    URLMapTestArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class URLMapTestArgs:

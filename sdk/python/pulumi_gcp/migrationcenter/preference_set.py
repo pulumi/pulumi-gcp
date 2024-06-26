@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -297,7 +302,7 @@ class PreferenceSet(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  preference_set_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 virtual_machine_preferences: Optional[pulumi.Input[pulumi.InputType['PreferenceSetVirtualMachinePreferencesArgs']]] = None,
+                 virtual_machine_preferences: Optional[pulumi.Input[Union['PreferenceSetVirtualMachinePreferencesArgs', 'PreferenceSetVirtualMachinePreferencesArgsDict']]] = None,
                  __props__=None):
         """
         Manages the PreferenceSet resource.
@@ -321,13 +326,13 @@ class PreferenceSet(pulumi.CustomResource):
             preference_set_id="preference-set-test",
             description="Terraform integration test description",
             display_name="Terraform integration test display",
-            virtual_machine_preferences=gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesArgs(
-                vmware_engine_preferences=gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs(
-                    cpu_overcommit_ratio=1.5,
-                ),
-                sizing_optimization_strategy="SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
-                target_product="COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
-            ))
+            virtual_machine_preferences={
+                "vmwareEnginePreferences": {
+                    "cpuOvercommitRatio": 1.5,
+                },
+                "sizingOptimizationStrategy": "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
+                "targetProduct": "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
+            })
         ```
         ### Preference Set Full
 
@@ -340,35 +345,35 @@ class PreferenceSet(pulumi.CustomResource):
             preference_set_id="preference-set-test",
             description="Terraform integration test description",
             display_name="Terraform integration test display",
-            virtual_machine_preferences=gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesArgs(
-                vmware_engine_preferences=gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs(
-                    cpu_overcommit_ratio=1.5,
-                    storage_deduplication_compression_ratio=1.3,
-                    commitment_plan="ON_DEMAND",
-                ),
-                sizing_optimization_strategy="SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
-                target_product="COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
-                commitment_plan="COMMITMENT_PLAN_ONE_YEAR",
-                region_preferences=gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs(
-                    preferred_regions=["us-central1"],
-                ),
-                sole_tenancy_preferences=gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs(
-                    commitment_plan="ON_DEMAND",
-                    cpu_overcommit_ratio=1.2,
-                    host_maintenance_policy="HOST_MAINTENANCE_POLICY_DEFAULT",
-                    node_types=[gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs(
-                        node_name="tf-test",
-                    )],
-                ),
-                compute_engine_preferences=gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs(
-                    license_type="LICENSE_TYPE_BRING_YOUR_OWN_LICENSE",
-                    machine_preferences=gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs(
-                        allowed_machine_series=[gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs(
-                            code="C3",
-                        )],
-                    ),
-                ),
-            ))
+            virtual_machine_preferences={
+                "vmwareEnginePreferences": {
+                    "cpuOvercommitRatio": 1.5,
+                    "storageDeduplicationCompressionRatio": 1.3,
+                    "commitmentPlan": "ON_DEMAND",
+                },
+                "sizingOptimizationStrategy": "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
+                "targetProduct": "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
+                "commitmentPlan": "COMMITMENT_PLAN_ONE_YEAR",
+                "regionPreferences": {
+                    "preferredRegions": ["us-central1"],
+                },
+                "soleTenancyPreferences": {
+                    "commitmentPlan": "ON_DEMAND",
+                    "cpuOvercommitRatio": 1.2,
+                    "hostMaintenancePolicy": "HOST_MAINTENANCE_POLICY_DEFAULT",
+                    "nodeTypes": [{
+                        "nodeName": "tf-test",
+                    }],
+                },
+                "computeEnginePreferences": {
+                    "licenseType": "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE",
+                    "machinePreferences": {
+                        "allowedMachineSeries": [{
+                            "code": "C3",
+                        }],
+                    },
+                },
+            })
         ```
 
         ## Import
@@ -406,7 +411,7 @@ class PreferenceSet(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['PreferenceSetVirtualMachinePreferencesArgs']] virtual_machine_preferences: VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
+        :param pulumi.Input[Union['PreferenceSetVirtualMachinePreferencesArgs', 'PreferenceSetVirtualMachinePreferencesArgsDict']] virtual_machine_preferences: VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
                Structure is documented below.
         """
         ...
@@ -437,13 +442,13 @@ class PreferenceSet(pulumi.CustomResource):
             preference_set_id="preference-set-test",
             description="Terraform integration test description",
             display_name="Terraform integration test display",
-            virtual_machine_preferences=gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesArgs(
-                vmware_engine_preferences=gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs(
-                    cpu_overcommit_ratio=1.5,
-                ),
-                sizing_optimization_strategy="SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
-                target_product="COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
-            ))
+            virtual_machine_preferences={
+                "vmwareEnginePreferences": {
+                    "cpuOvercommitRatio": 1.5,
+                },
+                "sizingOptimizationStrategy": "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
+                "targetProduct": "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
+            })
         ```
         ### Preference Set Full
 
@@ -456,35 +461,35 @@ class PreferenceSet(pulumi.CustomResource):
             preference_set_id="preference-set-test",
             description="Terraform integration test description",
             display_name="Terraform integration test display",
-            virtual_machine_preferences=gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesArgs(
-                vmware_engine_preferences=gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs(
-                    cpu_overcommit_ratio=1.5,
-                    storage_deduplication_compression_ratio=1.3,
-                    commitment_plan="ON_DEMAND",
-                ),
-                sizing_optimization_strategy="SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
-                target_product="COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
-                commitment_plan="COMMITMENT_PLAN_ONE_YEAR",
-                region_preferences=gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs(
-                    preferred_regions=["us-central1"],
-                ),
-                sole_tenancy_preferences=gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs(
-                    commitment_plan="ON_DEMAND",
-                    cpu_overcommit_ratio=1.2,
-                    host_maintenance_policy="HOST_MAINTENANCE_POLICY_DEFAULT",
-                    node_types=[gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs(
-                        node_name="tf-test",
-                    )],
-                ),
-                compute_engine_preferences=gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs(
-                    license_type="LICENSE_TYPE_BRING_YOUR_OWN_LICENSE",
-                    machine_preferences=gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs(
-                        allowed_machine_series=[gcp.migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs(
-                            code="C3",
-                        )],
-                    ),
-                ),
-            ))
+            virtual_machine_preferences={
+                "vmwareEnginePreferences": {
+                    "cpuOvercommitRatio": 1.5,
+                    "storageDeduplicationCompressionRatio": 1.3,
+                    "commitmentPlan": "ON_DEMAND",
+                },
+                "sizingOptimizationStrategy": "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
+                "targetProduct": "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
+                "commitmentPlan": "COMMITMENT_PLAN_ONE_YEAR",
+                "regionPreferences": {
+                    "preferredRegions": ["us-central1"],
+                },
+                "soleTenancyPreferences": {
+                    "commitmentPlan": "ON_DEMAND",
+                    "cpuOvercommitRatio": 1.2,
+                    "hostMaintenancePolicy": "HOST_MAINTENANCE_POLICY_DEFAULT",
+                    "nodeTypes": [{
+                        "nodeName": "tf-test",
+                    }],
+                },
+                "computeEnginePreferences": {
+                    "licenseType": "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE",
+                    "machinePreferences": {
+                        "allowedMachineSeries": [{
+                            "code": "C3",
+                        }],
+                    },
+                },
+            })
         ```
 
         ## Import
@@ -531,7 +536,7 @@ class PreferenceSet(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  preference_set_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 virtual_machine_preferences: Optional[pulumi.Input[pulumi.InputType['PreferenceSetVirtualMachinePreferencesArgs']]] = None,
+                 virtual_machine_preferences: Optional[pulumi.Input[Union['PreferenceSetVirtualMachinePreferencesArgs', 'PreferenceSetVirtualMachinePreferencesArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -572,7 +577,7 @@ class PreferenceSet(pulumi.CustomResource):
             preference_set_id: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            virtual_machine_preferences: Optional[pulumi.Input[pulumi.InputType['PreferenceSetVirtualMachinePreferencesArgs']]] = None) -> 'PreferenceSet':
+            virtual_machine_preferences: Optional[pulumi.Input[Union['PreferenceSetVirtualMachinePreferencesArgs', 'PreferenceSetVirtualMachinePreferencesArgsDict']]] = None) -> 'PreferenceSet':
         """
         Get an existing PreferenceSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -592,7 +597,7 @@ class PreferenceSet(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] update_time: Output only. The timestamp when the preference set was last updated.
-        :param pulumi.Input[pulumi.InputType['PreferenceSetVirtualMachinePreferencesArgs']] virtual_machine_preferences: VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
+        :param pulumi.Input[Union['PreferenceSetVirtualMachinePreferencesArgs', 'PreferenceSetVirtualMachinePreferencesArgsDict']] virtual_machine_preferences: VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

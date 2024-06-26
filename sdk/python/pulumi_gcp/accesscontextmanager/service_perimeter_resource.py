@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['ServicePerimeterResourceArgs', 'ServicePerimeterResource']
@@ -155,9 +160,9 @@ class ServicePerimeterResource(pulumi.CustomResource):
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/restrict_all"),
             title="restrict_all",
-            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
-                restricted_services=["storage.googleapis.com"],
-            ))
+            status={
+                "restrictedServices": ["storage.googleapis.com"],
+            })
         service_perimeter_resource = gcp.accesscontextmanager.ServicePerimeterResource("service-perimeter-resource",
             perimeter_name=service_perimeter_resource_service_perimeter.name,
             resource="projects/987654321")
@@ -229,9 +234,9 @@ class ServicePerimeterResource(pulumi.CustomResource):
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/restrict_all"),
             title="restrict_all",
-            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
-                restricted_services=["storage.googleapis.com"],
-            ))
+            status={
+                "restrictedServices": ["storage.googleapis.com"],
+            })
         service_perimeter_resource = gcp.accesscontextmanager.ServicePerimeterResource("service-perimeter-resource",
             perimeter_name=service_perimeter_resource_service_perimeter.name,
             resource="projects/987654321")

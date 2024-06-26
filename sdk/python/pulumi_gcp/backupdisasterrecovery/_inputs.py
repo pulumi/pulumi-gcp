@@ -4,15 +4,39 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ManagementServerManagementUriArgs',
+    'ManagementServerManagementUriArgsDict',
     'ManagementServerNetworkArgs',
+    'ManagementServerNetworkArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ManagementServerManagementUriArgsDict(TypedDict):
+        api: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The management console api endpoint.
+        """
+        web_ui: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The management console webUi.
+        """
+elif False:
+    ManagementServerManagementUriArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagementServerManagementUriArgs:
@@ -56,6 +80,23 @@ class ManagementServerManagementUriArgs:
     def web_ui(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "web_ui", value)
 
+
+if not MYPY:
+    class ManagementServerNetworkArgsDict(TypedDict):
+        network: pulumi.Input[str]
+        """
+        Network with format `projects/{{project_id}}/global/networks/{{network_id}}`
+        """
+        peering_mode: NotRequired[pulumi.Input[str]]
+        """
+        Type of Network peeringMode
+        Default value is `PRIVATE_SERVICE_ACCESS`.
+        Possible values are: `PRIVATE_SERVICE_ACCESS`.
+
+        - - -
+        """
+elif False:
+    ManagementServerNetworkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagementServerNetworkArgs:

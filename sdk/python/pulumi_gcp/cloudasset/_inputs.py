@@ -4,22 +4,62 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'FolderFeedConditionArgs',
+    'FolderFeedConditionArgsDict',
     'FolderFeedFeedOutputConfigArgs',
+    'FolderFeedFeedOutputConfigArgsDict',
     'FolderFeedFeedOutputConfigPubsubDestinationArgs',
+    'FolderFeedFeedOutputConfigPubsubDestinationArgsDict',
     'OrganizationFeedConditionArgs',
+    'OrganizationFeedConditionArgsDict',
     'OrganizationFeedFeedOutputConfigArgs',
+    'OrganizationFeedFeedOutputConfigArgsDict',
     'OrganizationFeedFeedOutputConfigPubsubDestinationArgs',
+    'OrganizationFeedFeedOutputConfigPubsubDestinationArgsDict',
     'ProjectFeedConditionArgs',
+    'ProjectFeedConditionArgsDict',
     'ProjectFeedFeedOutputConfigArgs',
+    'ProjectFeedFeedOutputConfigArgsDict',
     'ProjectFeedFeedOutputConfigPubsubDestinationArgs',
+    'ProjectFeedFeedOutputConfigPubsubDestinationArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class FolderFeedConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the expression. This is a longer text which describes the expression,
+        e.g. when hovered over it in a UI.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        String indicating the location of the expression for error reporting, e.g. a file
+        name and a position in the file.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title for the expression, i.e. a short string describing its purpose.
+        This can be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    FolderFeedConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FolderFeedConditionArgs:
@@ -97,6 +137,16 @@ class FolderFeedConditionArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class FolderFeedFeedOutputConfigArgsDict(TypedDict):
+        pubsub_destination: pulumi.Input['FolderFeedFeedOutputConfigPubsubDestinationArgsDict']
+        """
+        Destination on Cloud Pubsub.
+        Structure is documented below.
+        """
+elif False:
+    FolderFeedFeedOutputConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FolderFeedFeedOutputConfigArgs:
     def __init__(__self__, *,
@@ -120,6 +170,17 @@ class FolderFeedFeedOutputConfigArgs:
     def pubsub_destination(self, value: pulumi.Input['FolderFeedFeedOutputConfigPubsubDestinationArgs']):
         pulumi.set(self, "pubsub_destination", value)
 
+
+if not MYPY:
+    class FolderFeedFeedOutputConfigPubsubDestinationArgsDict(TypedDict):
+        topic: pulumi.Input[str]
+        """
+        Destination on Cloud Pubsub topic.
+
+        - - -
+        """
+elif False:
+    FolderFeedFeedOutputConfigPubsubDestinationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FolderFeedFeedOutputConfigPubsubDestinationArgs:
@@ -146,6 +207,30 @@ class FolderFeedFeedOutputConfigPubsubDestinationArgs:
     def topic(self, value: pulumi.Input[str]):
         pulumi.set(self, "topic", value)
 
+
+if not MYPY:
+    class OrganizationFeedConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the expression. This is a longer text which describes the expression,
+        e.g. when hovered over it in a UI.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        String indicating the location of the expression for error reporting, e.g. a file
+        name and a position in the file.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title for the expression, i.e. a short string describing its purpose.
+        This can be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    OrganizationFeedConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OrganizationFeedConditionArgs:
@@ -223,6 +308,16 @@ class OrganizationFeedConditionArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class OrganizationFeedFeedOutputConfigArgsDict(TypedDict):
+        pubsub_destination: pulumi.Input['OrganizationFeedFeedOutputConfigPubsubDestinationArgsDict']
+        """
+        Destination on Cloud Pubsub.
+        Structure is documented below.
+        """
+elif False:
+    OrganizationFeedFeedOutputConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OrganizationFeedFeedOutputConfigArgs:
     def __init__(__self__, *,
@@ -246,6 +341,17 @@ class OrganizationFeedFeedOutputConfigArgs:
     def pubsub_destination(self, value: pulumi.Input['OrganizationFeedFeedOutputConfigPubsubDestinationArgs']):
         pulumi.set(self, "pubsub_destination", value)
 
+
+if not MYPY:
+    class OrganizationFeedFeedOutputConfigPubsubDestinationArgsDict(TypedDict):
+        topic: pulumi.Input[str]
+        """
+        Destination on Cloud Pubsub topic.
+
+        - - -
+        """
+elif False:
+    OrganizationFeedFeedOutputConfigPubsubDestinationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OrganizationFeedFeedOutputConfigPubsubDestinationArgs:
@@ -272,6 +378,30 @@ class OrganizationFeedFeedOutputConfigPubsubDestinationArgs:
     def topic(self, value: pulumi.Input[str]):
         pulumi.set(self, "topic", value)
 
+
+if not MYPY:
+    class ProjectFeedConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the expression. This is a longer text which describes the expression,
+        e.g. when hovered over it in a UI.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        String indicating the location of the expression for error reporting, e.g. a file
+        name and a position in the file.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title for the expression, i.e. a short string describing its purpose.
+        This can be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    ProjectFeedConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectFeedConditionArgs:
@@ -349,6 +479,16 @@ class ProjectFeedConditionArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class ProjectFeedFeedOutputConfigArgsDict(TypedDict):
+        pubsub_destination: pulumi.Input['ProjectFeedFeedOutputConfigPubsubDestinationArgsDict']
+        """
+        Destination on Cloud Pubsub.
+        Structure is documented below.
+        """
+elif False:
+    ProjectFeedFeedOutputConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectFeedFeedOutputConfigArgs:
     def __init__(__self__, *,
@@ -372,6 +512,17 @@ class ProjectFeedFeedOutputConfigArgs:
     def pubsub_destination(self, value: pulumi.Input['ProjectFeedFeedOutputConfigPubsubDestinationArgs']):
         pulumi.set(self, "pubsub_destination", value)
 
+
+if not MYPY:
+    class ProjectFeedFeedOutputConfigPubsubDestinationArgsDict(TypedDict):
+        topic: pulumi.Input[str]
+        """
+        Destination on Cloud Pubsub topic.
+
+        - - -
+        """
+elif False:
+    ProjectFeedFeedOutputConfigPubsubDestinationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectFeedFeedOutputConfigPubsubDestinationArgs:

@@ -4,33 +4,74 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AccessBoundaryPolicyRuleArgs',
+    'AccessBoundaryPolicyRuleArgsDict',
     'AccessBoundaryPolicyRuleAccessBoundaryRuleArgs',
+    'AccessBoundaryPolicyRuleAccessBoundaryRuleArgsDict',
     'AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs',
+    'AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgsDict',
     'DenyPolicyRuleArgs',
+    'DenyPolicyRuleArgsDict',
     'DenyPolicyRuleDenyRuleArgs',
+    'DenyPolicyRuleDenyRuleArgsDict',
     'DenyPolicyRuleDenyRuleDenialConditionArgs',
+    'DenyPolicyRuleDenyRuleDenialConditionArgsDict',
     'WorkforcePoolAccessRestrictionsArgs',
+    'WorkforcePoolAccessRestrictionsArgsDict',
     'WorkforcePoolAccessRestrictionsAllowedServiceArgs',
+    'WorkforcePoolAccessRestrictionsAllowedServiceArgsDict',
     'WorkforcePoolProviderExtraAttributesOauth2ClientArgs',
+    'WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict',
     'WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs',
+    'WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgsDict',
     'WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs',
+    'WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgsDict',
     'WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs',
+    'WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgsDict',
     'WorkforcePoolProviderOidcArgs',
+    'WorkforcePoolProviderOidcArgsDict',
     'WorkforcePoolProviderOidcClientSecretArgs',
+    'WorkforcePoolProviderOidcClientSecretArgsDict',
     'WorkforcePoolProviderOidcClientSecretValueArgs',
+    'WorkforcePoolProviderOidcClientSecretValueArgsDict',
     'WorkforcePoolProviderOidcWebSsoConfigArgs',
+    'WorkforcePoolProviderOidcWebSsoConfigArgsDict',
     'WorkforcePoolProviderSamlArgs',
+    'WorkforcePoolProviderSamlArgsDict',
     'WorkloadIdentityPoolProviderAwsArgs',
+    'WorkloadIdentityPoolProviderAwsArgsDict',
     'WorkloadIdentityPoolProviderOidcArgs',
+    'WorkloadIdentityPoolProviderOidcArgsDict',
     'WorkloadIdentityPoolProviderSamlArgs',
+    'WorkloadIdentityPoolProviderSamlArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AccessBoundaryPolicyRuleArgsDict(TypedDict):
+        access_boundary_rule: NotRequired[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArgsDict']]
+        """
+        An access boundary rule in an IAM policy.
+        Structure is documented below.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the rule.
+        """
+elif False:
+    AccessBoundaryPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessBoundaryPolicyRuleArgs:
@@ -72,6 +113,24 @@ class AccessBoundaryPolicyRuleArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class AccessBoundaryPolicyRuleAccessBoundaryRuleArgsDict(TypedDict):
+        availability_condition: NotRequired[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgsDict']]
+        """
+        The availability condition further constrains the access allowed by the access boundary rule.
+        Structure is documented below.
+        """
+        available_permissions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of permissions that may be allowed for use on the specified resource.
+        """
+        available_resource: NotRequired[pulumi.Input[str]]
+        """
+        The full resource name of a Google Cloud resource entity.
+        """
+elif False:
+    AccessBoundaryPolicyRuleAccessBoundaryRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessBoundaryPolicyRuleAccessBoundaryRuleArgs:
@@ -129,6 +188,32 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleArgs:
     def available_resource(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "available_resource", value)
 
+
+if not MYPY:
+    class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the expression. This is a longer text which describes the expression,
+        e.g. when hovered over it in a UI.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        String indicating the location of the expression for error reporting,
+        e.g. a file name and a position in the file.
+
+        - - -
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title for the expression, i.e. a short string describing its purpose.
+        This can be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
@@ -210,6 +295,20 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class DenyPolicyRuleArgsDict(TypedDict):
+        deny_rule: NotRequired[pulumi.Input['DenyPolicyRuleDenyRuleArgsDict']]
+        """
+        A deny rule in an IAM deny policy.
+        Structure is documented below.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the rule.
+        """
+elif False:
+    DenyPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DenyPolicyRuleArgs:
     def __init__(__self__, *,
@@ -250,6 +349,36 @@ class DenyPolicyRuleArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class DenyPolicyRuleDenyRuleArgsDict(TypedDict):
+        denial_condition: NotRequired[pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgsDict']]
+        """
+        User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+        Structure is documented below.
+        """
+        denied_permissions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
+        where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
+        """
+        denied_principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The identities that are prevented from using one or more permissions on Google Cloud resources.
+        """
+        exception_permissions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the permissions that this rule excludes from the set of denied permissions given by deniedPermissions.
+        If a permission appears in deniedPermissions and in exceptionPermissions then it will not be denied.
+        The excluded permissions can be specified using the same syntax as deniedPermissions.
+        """
+        exception_principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The identities that are excluded from the deny rule, even if they are listed in the deniedPrincipals.
+        For example, you could add a Google group to the deniedPrincipals, then exclude specific users who belong to that group.
+        """
+elif False:
+    DenyPolicyRuleDenyRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DenyPolicyRuleDenyRuleArgs:
@@ -348,6 +477,32 @@ class DenyPolicyRuleDenyRuleArgs:
         pulumi.set(self, "exception_principals", value)
 
 
+if not MYPY:
+    class DenyPolicyRuleDenyRuleDenialConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the expression. This is a longer text which describes the expression,
+        e.g. when hovered over it in a UI.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        String indicating the location of the expression for error reporting,
+        e.g. a file name and a position in the file.
+
+        - - -
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title for the expression, i.e. a short string describing its purpose.
+        This can be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    DenyPolicyRuleDenyRuleDenialConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DenyPolicyRuleDenyRuleDenialConditionArgs:
     def __init__(__self__, *,
@@ -428,6 +583,22 @@ class DenyPolicyRuleDenyRuleDenialConditionArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class WorkforcePoolAccessRestrictionsArgsDict(TypedDict):
+        allowed_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkforcePoolAccessRestrictionsAllowedServiceArgsDict']]]]
+        """
+        Services allowed for web sign-in with the workforce pool.
+        If not set by default there are no restrictions.
+        Structure is documented below.
+        """
+        disable_programmatic_signin: NotRequired[pulumi.Input[bool]]
+        """
+        Disable programmatic sign-in by disabling token issue via the Security Token API endpoint.
+        See [Security Token Service API](https://cloud.google.com/iam/docs/reference/sts/rest).
+        """
+elif False:
+    WorkforcePoolAccessRestrictionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkforcePoolAccessRestrictionsArgs:
     def __init__(__self__, *,
@@ -473,6 +644,16 @@ class WorkforcePoolAccessRestrictionsArgs:
         pulumi.set(self, "disable_programmatic_signin", value)
 
 
+if not MYPY:
+    class WorkforcePoolAccessRestrictionsAllowedServiceArgsDict(TypedDict):
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        Domain name of the service.
+        Example: console.cloud.google
+        """
+elif False:
+    WorkforcePoolAccessRestrictionsAllowedServiceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkforcePoolAccessRestrictionsAllowedServiceArgs:
     def __init__(__self__, *,
@@ -497,6 +678,35 @@ class WorkforcePoolAccessRestrictionsAllowedServiceArgs:
     def domain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "domain", value)
 
+
+if not MYPY:
+    class WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict(TypedDict):
+        attributes_type: pulumi.Input[str]
+        """
+        Represents the IdP and type of claims that should be fetched.
+        * AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
+        in ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.
+        See https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on
+        'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'. Possible values: ["AZURE_AD_GROUPS_MAIL"]
+        """
+        client_id: pulumi.Input[str]
+        """
+        The OAuth 2.0 client ID for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+        """
+        client_secret: pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgsDict']
+        """
+        The OAuth 2.0 client secret for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
+        """
+        issuer_uri: pulumi.Input[str]
+        """
+        The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
+        """
+        query_parameters: NotRequired[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgsDict']]
+        """
+        Represents the parameters to control which claims are fetched from an IdP.
+        """
+elif False:
+    WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkforcePoolProviderExtraAttributesOauth2ClientArgs:
@@ -589,6 +799,16 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientArgs:
         pulumi.set(self, "query_parameters", value)
 
 
+if not MYPY:
+    class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgsDict(TypedDict):
+        value: NotRequired[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgsDict']]
+        """
+        The value of the client secret.
+        Structure is documented below.
+        """
+elif False:
+    WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs:
     def __init__(__self__, *,
@@ -613,6 +833,20 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs:
     def value(self, value: Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs']]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgsDict(TypedDict):
+        plain_text: pulumi.Input[str]
+        """
+        The plain text of the client secret value.
+        """
+        thumbprint: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A thumbprint to represent the current client secret value.
+        """
+elif False:
+    WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs:
@@ -654,6 +888,17 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs:
         pulumi.set(self, "thumbprint", value)
 
 
+if not MYPY:
+    class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgsDict(TypedDict):
+        filter: NotRequired[pulumi.Input[str]]
+        """
+        The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
+        filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
+        groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+        """
+elif False:
+    WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs:
     def __init__(__self__, *,
@@ -680,6 +925,55 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs:
     def filter(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "filter", value)
 
+
+if not MYPY:
+    class WorkforcePoolProviderOidcArgsDict(TypedDict):
+        client_id: pulumi.Input[str]
+        """
+        The client ID. Must match the audience claim of the JWT issued by the identity provider.
+        """
+        issuer_uri: pulumi.Input[str]
+        """
+        The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+        """
+        client_secret: NotRequired[pulumi.Input['WorkforcePoolProviderOidcClientSecretArgsDict']]
+        """
+        The optional client secret. Required to enable Authorization Code flow for web sign-in.
+        Structure is documented below.
+        """
+        jwks_json: NotRequired[pulumi.Input[str]]
+        """
+        OIDC JWKs in JSON String format. For details on definition of a
+        JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+        use the `jwks_uri` from the discovery document fetched from the
+        .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
+        keys are supported. The JWK must use following format and include only
+        the following fields:
+        ```
+        {
+        "keys": [
+        {
+        "kty": "RSA/EC",
+        "alg": "<algorithm>",
+        "use": "sig",
+        "kid": "<key-id>",
+        "n": "",
+        "e": "",
+        "x": "",
+        "y": "",
+        "crv": ""
+        }
+        ]
+        }
+        ```
+        """
+        web_sso_config: NotRequired[pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgsDict']]
+        """
+        Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
+        Structure is documented below.
+        """
+elif False:
+    WorkforcePoolProviderOidcArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkforcePoolProviderOidcArgs:
@@ -814,6 +1108,16 @@ class WorkforcePoolProviderOidcArgs:
         pulumi.set(self, "web_sso_config", value)
 
 
+if not MYPY:
+    class WorkforcePoolProviderOidcClientSecretArgsDict(TypedDict):
+        value: NotRequired[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgsDict']]
+        """
+        The value of the client secret.
+        Structure is documented below.
+        """
+elif False:
+    WorkforcePoolProviderOidcClientSecretArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkforcePoolProviderOidcClientSecretArgs:
     def __init__(__self__, *,
@@ -838,6 +1142,20 @@ class WorkforcePoolProviderOidcClientSecretArgs:
     def value(self, value: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgs']]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class WorkforcePoolProviderOidcClientSecretValueArgsDict(TypedDict):
+        plain_text: pulumi.Input[str]
+        """
+        The plain text of the client secret value.
+        """
+        thumbprint: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A thumbprint to represent the current client secret value.
+        """
+elif False:
+    WorkforcePoolProviderOidcClientSecretValueArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkforcePoolProviderOidcClientSecretValueArgs:
@@ -878,6 +1196,33 @@ class WorkforcePoolProviderOidcClientSecretValueArgs:
     def thumbprint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "thumbprint", value)
 
+
+if not MYPY:
+    class WorkforcePoolProviderOidcWebSsoConfigArgsDict(TypedDict):
+        assertion_claims_behavior: pulumi.Input[str]
+        """
+        The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+        * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
+        * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
+        Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
+        """
+        response_type: pulumi.Input[str]
+        """
+        The Response Type to request for in the OIDC Authorization Request for web sign-in.
+        The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
+        * CODE: The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
+        * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
+        Possible values are: `CODE`, `ID_TOKEN`.
+        """
+        additional_scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
+        Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+
+        <a name="nested_extra_attributes_oauth2_client"></a>The `extra_attributes_oauth2_client` block supports:
+        """
+elif False:
+    WorkforcePoolProviderOidcWebSsoConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkforcePoolProviderOidcWebSsoConfigArgs:
@@ -952,6 +1297,27 @@ class WorkforcePoolProviderOidcWebSsoConfigArgs:
         pulumi.set(self, "additional_scopes", value)
 
 
+if not MYPY:
+    class WorkforcePoolProviderSamlArgsDict(TypedDict):
+        idp_metadata_xml: pulumi.Input[str]
+        """
+        SAML Identity provider configuration metadata xml doc.
+        The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
+        The max size of the acceptable xml document will be bounded to 128k characters.
+        The metadata xml document should satisfy the following constraints:
+        1) Must contain an Identity Provider Entity ID.
+        2) Must contain at least one non-expired signing key certificate.
+        3) For each signing key:
+        a) Valid from should be no more than 7 days from now.
+        b) Valid to should be no more than 10 years in the future.
+        4) Up to 3 IdP signing keys are allowed in the metadata xml.
+        When updating the provider's metadata xml, at least one non-expired signing key
+        must overlap with the existing metadata. This requirement is skipped if there are
+        no non-expired signing keys present in the existing metadata.
+        """
+elif False:
+    WorkforcePoolProviderSamlArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkforcePoolProviderSamlArgs:
     def __init__(__self__, *,
@@ -998,6 +1364,15 @@ class WorkforcePoolProviderSamlArgs:
         pulumi.set(self, "idp_metadata_xml", value)
 
 
+if not MYPY:
+    class WorkloadIdentityPoolProviderAwsArgsDict(TypedDict):
+        account_id: pulumi.Input[str]
+        """
+        The AWS account ID.
+        """
+elif False:
+    WorkloadIdentityPoolProviderAwsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkloadIdentityPoolProviderAwsArgs:
     def __init__(__self__, *,
@@ -1019,6 +1394,55 @@ class WorkloadIdentityPoolProviderAwsArgs:
     def account_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "account_id", value)
 
+
+if not MYPY:
+    class WorkloadIdentityPoolProviderOidcArgsDict(TypedDict):
+        issuer_uri: pulumi.Input[str]
+        """
+        The OIDC issuer URL.
+        """
+        allowed_audiences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange
+        requests are rejected if the token audience does not match one of the configured
+        values. Each audience may be at most 256 characters. A maximum of 10 audiences may
+        be configured.
+        If this list is empty, the OIDC token audience must be equal to the full canonical
+        resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
+        For example:
+        ```
+        //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+        https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+        ```
+        """
+        jwks_json: NotRequired[pulumi.Input[str]]
+        """
+        OIDC JWKs in JSON String format. For details on definition of a
+        JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+        use the `jwks_uri` from the discovery document fetched from the
+        .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
+        keys are supported. The JWK must use following format and include only
+        the following fields:
+        ```
+        {
+        "keys": [
+        {
+        "kty": "RSA/EC",
+        "alg": "<algorithm>",
+        "use": "sig",
+        "kid": "<key-id>",
+        "n": "",
+        "e": "",
+        "x": "",
+        "y": "",
+        "crv": ""
+        }
+        ]
+        }
+        ```
+        """
+elif False:
+    WorkloadIdentityPoolProviderOidcArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkloadIdentityPoolProviderOidcArgs:
@@ -1137,6 +1561,15 @@ class WorkloadIdentityPoolProviderOidcArgs:
     def jwks_json(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "jwks_json", value)
 
+
+if not MYPY:
+    class WorkloadIdentityPoolProviderSamlArgsDict(TypedDict):
+        idp_metadata_xml: pulumi.Input[str]
+        """
+        SAML Identity provider configuration metadata xml doc.
+        """
+elif False:
+    WorkloadIdentityPoolProviderSamlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkloadIdentityPoolProviderSamlArgs:

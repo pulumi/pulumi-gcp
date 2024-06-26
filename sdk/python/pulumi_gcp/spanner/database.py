@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -397,7 +402,7 @@ class Database(pulumi.CustomResource):
                  ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_drop_protection: Optional[pulumi.Input[bool]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -482,7 +487,7 @@ class Database(pulumi.CustomResource):
                error in any statement, the database is not created.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
-        :param pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']] encryption_config: Encryption configuration for the database
+        :param pulumi.Input[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[str] instance: The instance to create the database on.
                
@@ -591,7 +596,7 @@ class Database(pulumi.CustomResource):
                  ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_drop_protection: Optional[pulumi.Input[bool]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -631,7 +636,7 @@ class Database(pulumi.CustomResource):
             ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             enable_drop_protection: Optional[pulumi.Input[bool]] = None,
-            encryption_config: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']]] = None,
+            encryption_config: Optional[pulumi.Input[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']]] = None,
             instance: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -653,7 +658,7 @@ class Database(pulumi.CustomResource):
                error in any statement, the database is not created.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
-        :param pulumi.Input[pulumi.InputType['DatabaseEncryptionConfigArgs']] encryption_config: Encryption configuration for the database
+        :param pulumi.Input[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[str] instance: The instance to create the database on.
                

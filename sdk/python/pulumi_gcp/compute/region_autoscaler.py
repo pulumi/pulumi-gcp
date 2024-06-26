@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -284,7 +289,7 @@ class RegionAutoscaler(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['RegionAutoscalerAutoscalingPolicyArgs']]] = None,
+                 autoscaling_policy: Optional[pulumi.Input[Union['RegionAutoscalerAutoscalingPolicyArgs', 'RegionAutoscalerAutoscalingPolicyArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -315,18 +320,18 @@ class RegionAutoscaler(pulumi.CustomResource):
         foobar_instance_template = gcp.compute.InstanceTemplate("foobar",
             name="my-instance-template",
             machine_type="e2-standard-4",
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image="debian-cloud/debian-11",
-                disk_size_gb=250,
-            )],
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network="default",
-                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs(
-                    network_tier="PREMIUM",
-                )],
-            )],
-            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
-                scopes=[
+            disks=[{
+                "sourceImage": "debian-cloud/debian-11",
+                "diskSizeGb": 250,
+            }],
+            network_interfaces=[{
+                "network": "default",
+                "accessConfigs": [{
+                    "networkTier": "PREMIUM",
+                }],
+            }],
+            service_account={
+                "scopes": [
                     "https://www.googleapis.com/auth/devstorage.read_only",
                     "https://www.googleapis.com/auth/logging.write",
                     "https://www.googleapis.com/auth/monitoring.write",
@@ -335,29 +340,29 @@ class RegionAutoscaler(pulumi.CustomResource):
                     "https://www.googleapis.com/auth/servicecontrol",
                     "https://www.googleapis.com/auth/trace.append",
                 ],
-            ))
+            })
         foobar_target_pool = gcp.compute.TargetPool("foobar", name="my-target-pool")
         foobar_region_instance_group_manager = gcp.compute.RegionInstanceGroupManager("foobar",
             name="my-region-igm",
             region="us-central1",
-            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
-                instance_template=foobar_instance_template.id,
-                name="primary",
-            )],
+            versions=[{
+                "instanceTemplate": foobar_instance_template.id,
+                "name": "primary",
+            }],
             target_pools=[foobar_target_pool.id],
             base_instance_name="foobar")
         foobar = gcp.compute.RegionAutoscaler("foobar",
             name="my-region-autoscaler",
             region="us-central1",
             target=foobar_region_instance_group_manager.id,
-            autoscaling_policy=gcp.compute.RegionAutoscalerAutoscalingPolicyArgs(
-                max_replicas=5,
-                min_replicas=1,
-                cooldown_period=60,
-                cpu_utilization=gcp.compute.RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs(
-                    target=0.5,
-                ),
-            ))
+            autoscaling_policy={
+                "maxReplicas": 5,
+                "minReplicas": 1,
+                "cooldownPeriod": 60,
+                "cpuUtilization": {
+                    "target": 0.5,
+                },
+            })
         debian9 = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         ```
@@ -394,7 +399,7 @@ class RegionAutoscaler(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RegionAutoscalerAutoscalingPolicyArgs']] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
+        :param pulumi.Input[Union['RegionAutoscalerAutoscalingPolicyArgs', 'RegionAutoscalerAutoscalingPolicyArgsDict']] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
                If none of these are specified, the default will be to autoscale based
@@ -439,18 +444,18 @@ class RegionAutoscaler(pulumi.CustomResource):
         foobar_instance_template = gcp.compute.InstanceTemplate("foobar",
             name="my-instance-template",
             machine_type="e2-standard-4",
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image="debian-cloud/debian-11",
-                disk_size_gb=250,
-            )],
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network="default",
-                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs(
-                    network_tier="PREMIUM",
-                )],
-            )],
-            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
-                scopes=[
+            disks=[{
+                "sourceImage": "debian-cloud/debian-11",
+                "diskSizeGb": 250,
+            }],
+            network_interfaces=[{
+                "network": "default",
+                "accessConfigs": [{
+                    "networkTier": "PREMIUM",
+                }],
+            }],
+            service_account={
+                "scopes": [
                     "https://www.googleapis.com/auth/devstorage.read_only",
                     "https://www.googleapis.com/auth/logging.write",
                     "https://www.googleapis.com/auth/monitoring.write",
@@ -459,29 +464,29 @@ class RegionAutoscaler(pulumi.CustomResource):
                     "https://www.googleapis.com/auth/servicecontrol",
                     "https://www.googleapis.com/auth/trace.append",
                 ],
-            ))
+            })
         foobar_target_pool = gcp.compute.TargetPool("foobar", name="my-target-pool")
         foobar_region_instance_group_manager = gcp.compute.RegionInstanceGroupManager("foobar",
             name="my-region-igm",
             region="us-central1",
-            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
-                instance_template=foobar_instance_template.id,
-                name="primary",
-            )],
+            versions=[{
+                "instanceTemplate": foobar_instance_template.id,
+                "name": "primary",
+            }],
             target_pools=[foobar_target_pool.id],
             base_instance_name="foobar")
         foobar = gcp.compute.RegionAutoscaler("foobar",
             name="my-region-autoscaler",
             region="us-central1",
             target=foobar_region_instance_group_manager.id,
-            autoscaling_policy=gcp.compute.RegionAutoscalerAutoscalingPolicyArgs(
-                max_replicas=5,
-                min_replicas=1,
-                cooldown_period=60,
-                cpu_utilization=gcp.compute.RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs(
-                    target=0.5,
-                ),
-            ))
+            autoscaling_policy={
+                "maxReplicas": 5,
+                "minReplicas": 1,
+                "cooldownPeriod": 60,
+                "cpuUtilization": {
+                    "target": 0.5,
+                },
+            })
         debian9 = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         ```
@@ -531,7 +536,7 @@ class RegionAutoscaler(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['RegionAutoscalerAutoscalingPolicyArgs']]] = None,
+                 autoscaling_policy: Optional[pulumi.Input[Union['RegionAutoscalerAutoscalingPolicyArgs', 'RegionAutoscalerAutoscalingPolicyArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -568,7 +573,7 @@ class RegionAutoscaler(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['RegionAutoscalerAutoscalingPolicyArgs']]] = None,
+            autoscaling_policy: Optional[pulumi.Input[Union['RegionAutoscalerAutoscalingPolicyArgs', 'RegionAutoscalerAutoscalingPolicyArgsDict']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -583,7 +588,7 @@ class RegionAutoscaler(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RegionAutoscalerAutoscalingPolicyArgs']] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
+        :param pulumi.Input[Union['RegionAutoscalerAutoscalingPolicyArgs', 'RegionAutoscalerAutoscalingPolicyArgsDict']] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
                If none of these are specified, the default will be to autoscale based

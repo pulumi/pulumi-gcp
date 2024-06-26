@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -396,11 +401,11 @@ class AiFeatureStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 online_serving_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreOnlineServingConfigArgs']]] = None,
+                 online_serving_config: Optional[pulumi.Input[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict']]] = None,
                  online_storage_ttl_days: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -428,12 +433,12 @@ class AiFeatureStore(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
+            online_serving_config={
+                "fixedNodeCount": 2,
+            },
+            encryption_spec={
+                "kmsKeyName": "kms-name",
+            },
             force_destroy=True)
         ```
         ### Vertex Ai Featurestore With Beta Fields
@@ -448,12 +453,12 @@ class AiFeatureStore(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
+            online_serving_config={
+                "fixedNodeCount": 2,
+            },
+            encryption_spec={
+                "kmsKeyName": "kms-name",
+            },
             online_storage_ttl_days=30,
             force_destroy=True)
         ```
@@ -469,15 +474,15 @@ class AiFeatureStore(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                scaling=gcp.vertex.AiFeatureStoreOnlineServingConfigScalingArgs(
-                    min_node_count=2,
-                    max_node_count=10,
-                ),
-            ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
+            online_serving_config={
+                "scaling": {
+                    "minNodeCount": 2,
+                    "maxNodeCount": 10,
+                },
+            },
+            encryption_spec={
+                "kmsKeyName": "kms-name",
+            },
             force_destroy=True)
         ```
 
@@ -513,7 +518,7 @@ class AiFeatureStore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AiFeatureStoreEncryptionSpecArgs']] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
+        :param pulumi.Input[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict']] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[bool] force_destroy: If set to true, any EntityTypes and Features for this Featurestore will also be deleted
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Featurestore.
@@ -521,7 +526,7 @@ class AiFeatureStore(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-        :param pulumi.Input[pulumi.InputType['AiFeatureStoreOnlineServingConfigArgs']] online_serving_config: Config for online serving resources.
+        :param pulumi.Input[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict']] online_serving_config: Config for online serving resources.
                Structure is documented below.
         :param pulumi.Input[int] online_storage_ttl_days: TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -557,12 +562,12 @@ class AiFeatureStore(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
+            online_serving_config={
+                "fixedNodeCount": 2,
+            },
+            encryption_spec={
+                "kmsKeyName": "kms-name",
+            },
             force_destroy=True)
         ```
         ### Vertex Ai Featurestore With Beta Fields
@@ -577,12 +582,12 @@ class AiFeatureStore(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
+            online_serving_config={
+                "fixedNodeCount": 2,
+            },
+            encryption_spec={
+                "kmsKeyName": "kms-name",
+            },
             online_storage_ttl_days=30,
             force_destroy=True)
         ```
@@ -598,15 +603,15 @@ class AiFeatureStore(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                scaling=gcp.vertex.AiFeatureStoreOnlineServingConfigScalingArgs(
-                    min_node_count=2,
-                    max_node_count=10,
-                ),
-            ),
-            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
+            online_serving_config={
+                "scaling": {
+                    "minNodeCount": 2,
+                    "maxNodeCount": 10,
+                },
+            },
+            encryption_spec={
+                "kmsKeyName": "kms-name",
+            },
             force_destroy=True)
         ```
 
@@ -655,11 +660,11 @@ class AiFeatureStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 online_serving_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreOnlineServingConfigArgs']]] = None,
+                 online_serving_config: Optional[pulumi.Input[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict']]] = None,
                  online_storage_ttl_days: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -699,12 +704,12 @@ class AiFeatureStore(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEncryptionSpecArgs']]] = None,
+            encryption_spec: Optional[pulumi.Input[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            online_serving_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreOnlineServingConfigArgs']]] = None,
+            online_serving_config: Optional[pulumi.Input[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict']]] = None,
             online_storage_ttl_days: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -719,7 +724,7 @@ class AiFeatureStore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['AiFeatureStoreEncryptionSpecArgs']] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
+        :param pulumi.Input[Union['AiFeatureStoreEncryptionSpecArgs', 'AiFeatureStoreEncryptionSpecArgsDict']] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[bool] force_destroy: If set to true, any EntityTypes and Features for this Featurestore will also be deleted
@@ -728,7 +733,7 @@ class AiFeatureStore(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-        :param pulumi.Input[pulumi.InputType['AiFeatureStoreOnlineServingConfigArgs']] online_serving_config: Config for online serving resources.
+        :param pulumi.Input[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict']] online_serving_config: Config for online serving resources.
                Structure is documented below.
         :param pulumi.Input[int] online_storage_ttl_days: TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.

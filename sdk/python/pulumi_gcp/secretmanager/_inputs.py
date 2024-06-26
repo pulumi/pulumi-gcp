@@ -4,23 +4,54 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'SecretIamBindingConditionArgs',
+    'SecretIamBindingConditionArgsDict',
     'SecretIamMemberConditionArgs',
+    'SecretIamMemberConditionArgsDict',
     'SecretReplicationArgs',
+    'SecretReplicationArgsDict',
     'SecretReplicationAutoArgs',
+    'SecretReplicationAutoArgsDict',
     'SecretReplicationAutoCustomerManagedEncryptionArgs',
+    'SecretReplicationAutoCustomerManagedEncryptionArgsDict',
     'SecretReplicationUserManagedArgs',
+    'SecretReplicationUserManagedArgsDict',
     'SecretReplicationUserManagedReplicaArgs',
+    'SecretReplicationUserManagedReplicaArgsDict',
     'SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs',
+    'SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgsDict',
     'SecretRotationArgs',
+    'SecretRotationArgsDict',
     'SecretTopicArgs',
+    'SecretTopicArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class SecretIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    SecretIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecretIamBindingConditionArgs:
@@ -71,6 +102,20 @@ class SecretIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class SecretIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    SecretIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecretIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -120,6 +165,21 @@ class SecretIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class SecretReplicationArgsDict(TypedDict):
+        auto: NotRequired[pulumi.Input['SecretReplicationAutoArgsDict']]
+        """
+        The Secret will automatically be replicated without any restrictions.
+        Structure is documented below.
+        """
+        user_managed: NotRequired[pulumi.Input['SecretReplicationUserManagedArgsDict']]
+        """
+        The Secret will be replicated to the regions specified by the user.
+        Structure is documented below.
+        """
+elif False:
+    SecretReplicationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecretReplicationArgs:
     def __init__(__self__, *,
@@ -163,6 +223,18 @@ class SecretReplicationArgs:
         pulumi.set(self, "user_managed", value)
 
 
+if not MYPY:
+    class SecretReplicationAutoArgsDict(TypedDict):
+        customer_managed_encryption: NotRequired[pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArgsDict']]
+        """
+        The customer-managed encryption configuration of the Secret.
+        If no configuration is provided, Google-managed default
+        encryption is used.
+        Structure is documented below.
+        """
+elif False:
+    SecretReplicationAutoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecretReplicationAutoArgs:
     def __init__(__self__, *,
@@ -192,6 +264,17 @@ class SecretReplicationAutoArgs:
         pulumi.set(self, "customer_managed_encryption", value)
 
 
+if not MYPY:
+    class SecretReplicationAutoCustomerManagedEncryptionArgsDict(TypedDict):
+        kms_key_name: pulumi.Input[str]
+        """
+        Describes the Cloud KMS encryption key that will be used to protect destination secret.
+
+        - - -
+        """
+elif False:
+    SecretReplicationAutoCustomerManagedEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecretReplicationAutoCustomerManagedEncryptionArgs:
     def __init__(__self__, *,
@@ -218,6 +301,16 @@ class SecretReplicationAutoCustomerManagedEncryptionArgs:
         pulumi.set(self, "kms_key_name", value)
 
 
+if not MYPY:
+    class SecretReplicationUserManagedArgsDict(TypedDict):
+        replicas: pulumi.Input[Sequence[pulumi.Input['SecretReplicationUserManagedReplicaArgsDict']]]
+        """
+        The list of Replicas for this Secret. Cannot be empty.
+        Structure is documented below.
+        """
+elif False:
+    SecretReplicationUserManagedArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecretReplicationUserManagedArgs:
     def __init__(__self__, *,
@@ -241,6 +334,20 @@ class SecretReplicationUserManagedArgs:
     def replicas(self, value: pulumi.Input[Sequence[pulumi.Input['SecretReplicationUserManagedReplicaArgs']]]):
         pulumi.set(self, "replicas", value)
 
+
+if not MYPY:
+    class SecretReplicationUserManagedReplicaArgsDict(TypedDict):
+        location: pulumi.Input[str]
+        """
+        The canonical IDs of the location to replicate data. For example: "us-east1".
+        """
+        customer_managed_encryption: NotRequired[pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgsDict']]
+        """
+        Customer Managed Encryption for the secret.
+        Structure is documented below.
+        """
+elif False:
+    SecretReplicationUserManagedReplicaArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecretReplicationUserManagedReplicaArgs:
@@ -282,6 +389,17 @@ class SecretReplicationUserManagedReplicaArgs:
         pulumi.set(self, "customer_managed_encryption", value)
 
 
+if not MYPY:
+    class SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgsDict(TypedDict):
+        kms_key_name: pulumi.Input[str]
+        """
+        Describes the Cloud KMS encryption key that will be used to protect destination secret.
+
+        - - -
+        """
+elif False:
+    SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs:
     def __init__(__self__, *,
@@ -307,6 +425,21 @@ class SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs:
     def kms_key_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_name", value)
 
+
+if not MYPY:
+    class SecretRotationArgsDict(TypedDict):
+        next_rotation_time: NotRequired[pulumi.Input[str]]
+        """
+        Timestamp in UTC at which the Secret is scheduled to rotate.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        rotation_period: NotRequired[pulumi.Input[str]]
+        """
+        The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
+        If rotationPeriod is set, `next_rotation_time` must be set. `next_rotation_time` will be advanced by this period when the service automatically sends rotation notifications.
+        """
+elif False:
+    SecretRotationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecretRotationArgs:
@@ -350,6 +483,16 @@ class SecretRotationArgs:
     def rotation_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "rotation_period", value)
 
+
+if not MYPY:
+    class SecretTopicArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+        For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
+        """
+elif False:
+    SecretTopicArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecretTopicArgs:

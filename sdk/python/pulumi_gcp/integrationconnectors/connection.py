@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -828,22 +833,22 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_config: Optional[pulumi.Input[pulumi.InputType['ConnectionAuthConfigArgs']]] = None,
-                 config_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConfigVariableArgs']]]]] = None,
+                 auth_config: Optional[pulumi.Input[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict']]] = None,
+                 config_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict']]]]] = None,
                  connector_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionDestinationConfigArgs']]]]] = None,
-                 eventing_config: Optional[pulumi.Input[pulumi.InputType['ConnectionEventingConfigArgs']]] = None,
+                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDestinationConfigArgs', 'ConnectionDestinationConfigArgsDict']]]]] = None,
+                 eventing_config: Optional[pulumi.Input[Union['ConnectionEventingConfigArgs', 'ConnectionEventingConfigArgsDict']]] = None,
                  eventing_enablement_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 lock_config: Optional[pulumi.Input[pulumi.InputType['ConnectionLockConfigArgs']]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['ConnectionLogConfigArgs']]] = None,
+                 lock_config: Optional[pulumi.Input[Union['ConnectionLockConfigArgs', 'ConnectionLockConfigArgsDict']]] = None,
+                 log_config: Optional[pulumi.Input[Union['ConnectionLogConfigArgs', 'ConnectionLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['ConnectionNodeConfigArgs']]] = None,
+                 node_config: Optional[pulumi.Input[Union['ConnectionNodeConfigArgs', 'ConnectionNodeConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 ssl_config: Optional[pulumi.Input[pulumi.InputType['ConnectionSslConfigArgs']]] = None,
+                 ssl_config: Optional[pulumi.Input[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict']]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -870,14 +875,14 @@ class Connection(pulumi.CustomResource):
             connector_version=f"projects/{test_project.project_id}/locations/global/providers/gcp/connectors/pubsub/versions/1",
             description="tf created description",
             config_variables=[
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
-                    key="project_id",
-                    string_value="connectors-example",
-                ),
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
-                    key="topic_id",
-                    string_value="test",
-                ),
+                {
+                    "key": "project_id",
+                    "stringValue": "connectors-example",
+                },
+                {
+                    "key": "topic_id",
+                    "stringValue": "test",
+                },
             ])
         ```
         ### Integration Connectors Connection Advanced
@@ -889,13 +894,13 @@ class Connection(pulumi.CustomResource):
         test_project = gcp.organizations.get_project()
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="test-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                        location="us-central1",
-                    )],
-                ),
-            ))
+            replication={
+                "userManaged": {
+                    "replicas": [{
+                        "location": "us-central1",
+                    }],
+                },
+            })
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,
             secret_data="dummypassword")
@@ -911,208 +916,208 @@ class Connection(pulumi.CustomResource):
             service_account=f"{test_project.number}-compute@developer.gserviceaccount.com",
             connector_version=f"projects/{test_project.project_id}/locations/global/providers/zendesk/connectors/zendesk/versions/1",
             config_variables=[
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
-                    key="proxy_enabled",
-                    boolean_value=False,
-                ),
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
-                    key="sample_integer_value",
-                    integer_value=1,
-                ),
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
-                    key="sample_encryption_key_value",
-                    encryption_key_value=gcp.integrationconnectors.ConnectionConfigVariableEncryptionKeyValueArgs(
-                        type="GOOGLE_MANAGED",
-                        kms_key_name="sampleKMSKkey",
-                    ),
-                ),
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
-                    key="sample_secret_value",
-                    secret_value=gcp.integrationconnectors.ConnectionConfigVariableSecretValueArgs(
-                        secret_version=secret_version_basic.name,
-                    ),
-                ),
+                {
+                    "key": "proxy_enabled",
+                    "booleanValue": False,
+                },
+                {
+                    "key": "sample_integer_value",
+                    "integerValue": 1,
+                },
+                {
+                    "key": "sample_encryption_key_value",
+                    "encryptionKeyValue": {
+                        "type": "GOOGLE_MANAGED",
+                        "kmsKeyName": "sampleKMSKkey",
+                    },
+                },
+                {
+                    "key": "sample_secret_value",
+                    "secretValue": {
+                        "secretVersion": secret_version_basic.name,
+                    },
+                },
             ],
             suspended=False,
-            auth_config=gcp.integrationconnectors.ConnectionAuthConfigArgs(
-                additional_variables=[
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
-                        key="sample_string",
-                        string_value="sampleString",
-                    ),
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
-                        key="sample_boolean",
-                        boolean_value=False,
-                    ),
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
-                        key="sample_integer",
-                        integer_value=1,
-                    ),
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
-                        key="sample_secret_value",
-                        secret_value=gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableSecretValueArgs(
-                            secret_version=secret_version_basic.name,
-                        ),
-                    ),
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
-                        key="sample_encryption_key_value",
-                        encryption_key_value=gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs(
-                            type="GOOGLE_MANAGED",
-                            kms_key_name="sampleKMSKkey",
-                        ),
-                    ),
+            auth_config={
+                "additionalVariables": [
+                    {
+                        "key": "sample_string",
+                        "stringValue": "sampleString",
+                    },
+                    {
+                        "key": "sample_boolean",
+                        "booleanValue": False,
+                    },
+                    {
+                        "key": "sample_integer",
+                        "integerValue": 1,
+                    },
+                    {
+                        "key": "sample_secret_value",
+                        "secretValue": {
+                            "secretVersion": secret_version_basic.name,
+                        },
+                    },
+                    {
+                        "key": "sample_encryption_key_value",
+                        "encryptionKeyValue": {
+                            "type": "GOOGLE_MANAGED",
+                            "kmsKeyName": "sampleKMSKkey",
+                        },
+                    },
                 ],
-                auth_type="USER_PASSWORD",
-                auth_key="sampleAuthKey",
-                user_password=gcp.integrationconnectors.ConnectionAuthConfigUserPasswordArgs(
-                    username="user@xyz.com",
-                    password=gcp.integrationconnectors.ConnectionAuthConfigUserPasswordPasswordArgs(
-                        secret_version=secret_version_basic.name,
-                    ),
-                ),
-            ),
-            destination_configs=[gcp.integrationconnectors.ConnectionDestinationConfigArgs(
-                key="url",
-                destinations=[gcp.integrationconnectors.ConnectionDestinationConfigDestinationArgs(
-                    host="https://test.zendesk.com",
-                    port=80,
-                )],
-            )],
-            lock_config=gcp.integrationconnectors.ConnectionLockConfigArgs(
-                locked=False,
-                reason="Its not locked",
-            ),
-            log_config=gcp.integrationconnectors.ConnectionLogConfigArgs(
-                enabled=True,
-            ),
-            node_config=gcp.integrationconnectors.ConnectionNodeConfigArgs(
-                min_node_count=2,
-                max_node_count=50,
-            ),
+                "authType": "USER_PASSWORD",
+                "authKey": "sampleAuthKey",
+                "userPassword": {
+                    "username": "user@xyz.com",
+                    "password": {
+                        "secretVersion": secret_version_basic.name,
+                    },
+                },
+            },
+            destination_configs=[{
+                "key": "url",
+                "destinations": [{
+                    "host": "https://test.zendesk.com",
+                    "port": 80,
+                }],
+            }],
+            lock_config={
+                "locked": False,
+                "reason": "Its not locked",
+            },
+            log_config={
+                "enabled": True,
+            },
+            node_config={
+                "minNodeCount": 2,
+                "maxNodeCount": 50,
+            },
             labels={
                 "foo": "bar",
             },
-            ssl_config=gcp.integrationconnectors.ConnectionSslConfigArgs(
-                additional_variables=[
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
-                        key="sample_string",
-                        string_value="sampleString",
-                    ),
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
-                        key="sample_boolean",
-                        boolean_value=False,
-                    ),
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
-                        key="sample_integer",
-                        integer_value=1,
-                    ),
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
-                        key="sample_secret_value",
-                        secret_value=gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableSecretValueArgs(
-                            secret_version=secret_version_basic.name,
-                        ),
-                    ),
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
-                        key="sample_encryption_key_value",
-                        encryption_key_value=gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs(
-                            type="GOOGLE_MANAGED",
-                            kms_key_name="sampleKMSKkey",
-                        ),
-                    ),
+            ssl_config={
+                "additionalVariables": [
+                    {
+                        "key": "sample_string",
+                        "stringValue": "sampleString",
+                    },
+                    {
+                        "key": "sample_boolean",
+                        "booleanValue": False,
+                    },
+                    {
+                        "key": "sample_integer",
+                        "integerValue": 1,
+                    },
+                    {
+                        "key": "sample_secret_value",
+                        "secretValue": {
+                            "secretVersion": secret_version_basic.name,
+                        },
+                    },
+                    {
+                        "key": "sample_encryption_key_value",
+                        "encryptionKeyValue": {
+                            "type": "GOOGLE_MANAGED",
+                            "kmsKeyName": "sampleKMSKkey",
+                        },
+                    },
                 ],
-                client_cert_type="PEM",
-                client_certificate=gcp.integrationconnectors.ConnectionSslConfigClientCertificateArgs(
-                    secret_version=secret_version_basic.name,
-                ),
-                client_private_key=gcp.integrationconnectors.ConnectionSslConfigClientPrivateKeyArgs(
-                    secret_version=secret_version_basic.name,
-                ),
-                client_private_key_pass=gcp.integrationconnectors.ConnectionSslConfigClientPrivateKeyPassArgs(
-                    secret_version=secret_version_basic.name,
-                ),
-                private_server_certificate=gcp.integrationconnectors.ConnectionSslConfigPrivateServerCertificateArgs(
-                    secret_version=secret_version_basic.name,
-                ),
-                server_cert_type="PEM",
-                trust_model="PRIVATE",
-                type="TLS",
-                use_ssl=True,
-            ),
+                "clientCertType": "PEM",
+                "clientCertificate": {
+                    "secretVersion": secret_version_basic.name,
+                },
+                "clientPrivateKey": {
+                    "secretVersion": secret_version_basic.name,
+                },
+                "clientPrivateKeyPass": {
+                    "secretVersion": secret_version_basic.name,
+                },
+                "privateServerCertificate": {
+                    "secretVersion": secret_version_basic.name,
+                },
+                "serverCertType": "PEM",
+                "trustModel": "PRIVATE",
+                "type": "TLS",
+                "useSsl": True,
+            },
             eventing_enablement_type="EVENTING_AND_CONNECTION",
-            eventing_config=gcp.integrationconnectors.ConnectionEventingConfigArgs(
-                additional_variables=[
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
-                        key="sample_string",
-                        string_value="sampleString",
-                    ),
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
-                        key="sample_boolean",
-                        boolean_value=False,
-                    ),
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
-                        key="sample_integer",
-                        integer_value=1,
-                    ),
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
-                        key="sample_secret_value",
-                        secret_value=gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableSecretValueArgs(
-                            secret_version=secret_version_basic.name,
-                        ),
-                    ),
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
-                        key="sample_encryption_key_value",
-                        encryption_key_value=gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs(
-                            type="GOOGLE_MANAGED",
-                            kms_key_name="sampleKMSKkey",
-                        ),
-                    ),
+            eventing_config={
+                "additionalVariables": [
+                    {
+                        "key": "sample_string",
+                        "stringValue": "sampleString",
+                    },
+                    {
+                        "key": "sample_boolean",
+                        "booleanValue": False,
+                    },
+                    {
+                        "key": "sample_integer",
+                        "integerValue": 1,
+                    },
+                    {
+                        "key": "sample_secret_value",
+                        "secretValue": {
+                            "secretVersion": secret_version_basic.name,
+                        },
+                    },
+                    {
+                        "key": "sample_encryption_key_value",
+                        "encryptionKeyValue": {
+                            "type": "GOOGLE_MANAGED",
+                            "kmsKeyName": "sampleKMSKkey",
+                        },
+                    },
                 ],
-                registration_destination_config=gcp.integrationconnectors.ConnectionEventingConfigRegistrationDestinationConfigArgs(
-                    key="registration_destination_config",
-                    destinations=[gcp.integrationconnectors.ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs(
-                        host="https://test.zendesk.com",
-                        port=80,
-                    )],
-                ),
-                auth_config=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigArgs(
-                    auth_type="USER_PASSWORD",
-                    auth_key="sampleAuthKey",
-                    user_password=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigUserPasswordArgs(
-                        username="user@xyz.com",
-                        password=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs(
-                            secret_version=secret_version_basic.name,
-                        ),
-                    ),
-                    additional_variables=[
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
-                            key="sample_string",
-                            string_value="sampleString",
-                        ),
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
-                            key="sample_boolean",
-                            boolean_value=False,
-                        ),
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
-                            key="sample_integer",
-                            integer_value=1,
-                        ),
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
-                            key="sample_secret_value",
-                            secret_value=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs(
-                                secret_version=secret_version_basic.name,
-                            ),
-                        ),
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
-                            key="sample_encryption_key_value",
-                            encryption_key_value=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs(
-                                type="GOOGLE_MANAGED",
-                                kms_key_name="sampleKMSKkey",
-                            ),
-                        ),
+                "registrationDestinationConfig": {
+                    "key": "registration_destination_config",
+                    "destinations": [{
+                        "host": "https://test.zendesk.com",
+                        "port": 80,
+                    }],
+                },
+                "authConfig": {
+                    "authType": "USER_PASSWORD",
+                    "authKey": "sampleAuthKey",
+                    "userPassword": {
+                        "username": "user@xyz.com",
+                        "password": {
+                            "secretVersion": secret_version_basic.name,
+                        },
+                    },
+                    "additionalVariables": [
+                        {
+                            "key": "sample_string",
+                            "stringValue": "sampleString",
+                        },
+                        {
+                            "key": "sample_boolean",
+                            "booleanValue": False,
+                        },
+                        {
+                            "key": "sample_integer",
+                            "integerValue": 1,
+                        },
+                        {
+                            "key": "sample_secret_value",
+                            "secretValue": {
+                                "secretVersion": secret_version_basic.name,
+                            },
+                        },
+                        {
+                            "key": "sample_encryption_key_value",
+                            "encryptionKeyValue": {
+                                "type": "GOOGLE_MANAGED",
+                                "kmsKeyName": "sampleKMSKkey",
+                            },
+                        },
                     ],
-                ),
-                enrichment_enabled=True,
-            ))
+                },
+                "enrichmentEnabled": True,
+            })
         ```
 
         ## Import
@@ -1141,15 +1146,15 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionAuthConfigArgs']] auth_config: authConfig for the connection.
+        :param pulumi.Input[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict']] auth_config: authConfig for the connection.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConfigVariableArgs']]]] config_variables: Config Variables for the connection.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict']]]] config_variables: Config Variables for the connection.
                Structure is documented below.
         :param pulumi.Input[str] connector_version: connectorVersion of the Connector.
         :param pulumi.Input[str] description: An arbitrary description for the Conection.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionDestinationConfigArgs']]]] destination_configs: Define the Connectors target endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDestinationConfigArgs', 'ConnectionDestinationConfigArgsDict']]]] destination_configs: Define the Connectors target endpoint.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionEventingConfigArgs']] eventing_config: Eventing Configuration of a connection
+        :param pulumi.Input[Union['ConnectionEventingConfigArgs', 'ConnectionEventingConfigArgsDict']] eventing_config: Eventing Configuration of a connection
                Structure is documented below.
         :param pulumi.Input[str] eventing_enablement_type: Eventing enablement type. Will be nil if eventing is not enabled.
                Possible values are: `EVENTING_AND_CONNECTION`, `ONLY_EVENTING`.
@@ -1158,20 +1163,20 @@ class Connection(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location in which Connection needs to be created.
-        :param pulumi.Input[pulumi.InputType['ConnectionLockConfigArgs']] lock_config: Determines whether or no a connection is locked. If locked, a reason must be specified.
+        :param pulumi.Input[Union['ConnectionLockConfigArgs', 'ConnectionLockConfigArgsDict']] lock_config: Determines whether or no a connection is locked. If locked, a reason must be specified.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionLogConfigArgs']] log_config: Log configuration for the connection.
+        :param pulumi.Input[Union['ConnectionLogConfigArgs', 'ConnectionLogConfigArgsDict']] log_config: Log configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of Connection needs to be created.
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['ConnectionNodeConfigArgs']] node_config: Node configuration for the connection.
+        :param pulumi.Input[Union['ConnectionNodeConfigArgs', 'ConnectionNodeConfigArgsDict']] node_config: Node configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_account: Service account needed for runtime plane to access Google Cloud resources.
-        :param pulumi.Input[pulumi.InputType['ConnectionSslConfigArgs']] ssl_config: SSL Configuration of a connection
+        :param pulumi.Input[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict']] ssl_config: SSL Configuration of a connection
                Structure is documented below.
         :param pulumi.Input[bool] suspended: Suspended indicates if a user has suspended a connection or not.
         """
@@ -1205,14 +1210,14 @@ class Connection(pulumi.CustomResource):
             connector_version=f"projects/{test_project.project_id}/locations/global/providers/gcp/connectors/pubsub/versions/1",
             description="tf created description",
             config_variables=[
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
-                    key="project_id",
-                    string_value="connectors-example",
-                ),
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
-                    key="topic_id",
-                    string_value="test",
-                ),
+                {
+                    "key": "project_id",
+                    "stringValue": "connectors-example",
+                },
+                {
+                    "key": "topic_id",
+                    "stringValue": "test",
+                },
             ])
         ```
         ### Integration Connectors Connection Advanced
@@ -1224,13 +1229,13 @@ class Connection(pulumi.CustomResource):
         test_project = gcp.organizations.get_project()
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="test-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                        location="us-central1",
-                    )],
-                ),
-            ))
+            replication={
+                "userManaged": {
+                    "replicas": [{
+                        "location": "us-central1",
+                    }],
+                },
+            })
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,
             secret_data="dummypassword")
@@ -1246,208 +1251,208 @@ class Connection(pulumi.CustomResource):
             service_account=f"{test_project.number}-compute@developer.gserviceaccount.com",
             connector_version=f"projects/{test_project.project_id}/locations/global/providers/zendesk/connectors/zendesk/versions/1",
             config_variables=[
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
-                    key="proxy_enabled",
-                    boolean_value=False,
-                ),
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
-                    key="sample_integer_value",
-                    integer_value=1,
-                ),
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
-                    key="sample_encryption_key_value",
-                    encryption_key_value=gcp.integrationconnectors.ConnectionConfigVariableEncryptionKeyValueArgs(
-                        type="GOOGLE_MANAGED",
-                        kms_key_name="sampleKMSKkey",
-                    ),
-                ),
-                gcp.integrationconnectors.ConnectionConfigVariableArgs(
-                    key="sample_secret_value",
-                    secret_value=gcp.integrationconnectors.ConnectionConfigVariableSecretValueArgs(
-                        secret_version=secret_version_basic.name,
-                    ),
-                ),
+                {
+                    "key": "proxy_enabled",
+                    "booleanValue": False,
+                },
+                {
+                    "key": "sample_integer_value",
+                    "integerValue": 1,
+                },
+                {
+                    "key": "sample_encryption_key_value",
+                    "encryptionKeyValue": {
+                        "type": "GOOGLE_MANAGED",
+                        "kmsKeyName": "sampleKMSKkey",
+                    },
+                },
+                {
+                    "key": "sample_secret_value",
+                    "secretValue": {
+                        "secretVersion": secret_version_basic.name,
+                    },
+                },
             ],
             suspended=False,
-            auth_config=gcp.integrationconnectors.ConnectionAuthConfigArgs(
-                additional_variables=[
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
-                        key="sample_string",
-                        string_value="sampleString",
-                    ),
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
-                        key="sample_boolean",
-                        boolean_value=False,
-                    ),
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
-                        key="sample_integer",
-                        integer_value=1,
-                    ),
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
-                        key="sample_secret_value",
-                        secret_value=gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableSecretValueArgs(
-                            secret_version=secret_version_basic.name,
-                        ),
-                    ),
-                    gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableArgs(
-                        key="sample_encryption_key_value",
-                        encryption_key_value=gcp.integrationconnectors.ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs(
-                            type="GOOGLE_MANAGED",
-                            kms_key_name="sampleKMSKkey",
-                        ),
-                    ),
+            auth_config={
+                "additionalVariables": [
+                    {
+                        "key": "sample_string",
+                        "stringValue": "sampleString",
+                    },
+                    {
+                        "key": "sample_boolean",
+                        "booleanValue": False,
+                    },
+                    {
+                        "key": "sample_integer",
+                        "integerValue": 1,
+                    },
+                    {
+                        "key": "sample_secret_value",
+                        "secretValue": {
+                            "secretVersion": secret_version_basic.name,
+                        },
+                    },
+                    {
+                        "key": "sample_encryption_key_value",
+                        "encryptionKeyValue": {
+                            "type": "GOOGLE_MANAGED",
+                            "kmsKeyName": "sampleKMSKkey",
+                        },
+                    },
                 ],
-                auth_type="USER_PASSWORD",
-                auth_key="sampleAuthKey",
-                user_password=gcp.integrationconnectors.ConnectionAuthConfigUserPasswordArgs(
-                    username="user@xyz.com",
-                    password=gcp.integrationconnectors.ConnectionAuthConfigUserPasswordPasswordArgs(
-                        secret_version=secret_version_basic.name,
-                    ),
-                ),
-            ),
-            destination_configs=[gcp.integrationconnectors.ConnectionDestinationConfigArgs(
-                key="url",
-                destinations=[gcp.integrationconnectors.ConnectionDestinationConfigDestinationArgs(
-                    host="https://test.zendesk.com",
-                    port=80,
-                )],
-            )],
-            lock_config=gcp.integrationconnectors.ConnectionLockConfigArgs(
-                locked=False,
-                reason="Its not locked",
-            ),
-            log_config=gcp.integrationconnectors.ConnectionLogConfigArgs(
-                enabled=True,
-            ),
-            node_config=gcp.integrationconnectors.ConnectionNodeConfigArgs(
-                min_node_count=2,
-                max_node_count=50,
-            ),
+                "authType": "USER_PASSWORD",
+                "authKey": "sampleAuthKey",
+                "userPassword": {
+                    "username": "user@xyz.com",
+                    "password": {
+                        "secretVersion": secret_version_basic.name,
+                    },
+                },
+            },
+            destination_configs=[{
+                "key": "url",
+                "destinations": [{
+                    "host": "https://test.zendesk.com",
+                    "port": 80,
+                }],
+            }],
+            lock_config={
+                "locked": False,
+                "reason": "Its not locked",
+            },
+            log_config={
+                "enabled": True,
+            },
+            node_config={
+                "minNodeCount": 2,
+                "maxNodeCount": 50,
+            },
             labels={
                 "foo": "bar",
             },
-            ssl_config=gcp.integrationconnectors.ConnectionSslConfigArgs(
-                additional_variables=[
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
-                        key="sample_string",
-                        string_value="sampleString",
-                    ),
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
-                        key="sample_boolean",
-                        boolean_value=False,
-                    ),
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
-                        key="sample_integer",
-                        integer_value=1,
-                    ),
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
-                        key="sample_secret_value",
-                        secret_value=gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableSecretValueArgs(
-                            secret_version=secret_version_basic.name,
-                        ),
-                    ),
-                    gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableArgs(
-                        key="sample_encryption_key_value",
-                        encryption_key_value=gcp.integrationconnectors.ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs(
-                            type="GOOGLE_MANAGED",
-                            kms_key_name="sampleKMSKkey",
-                        ),
-                    ),
+            ssl_config={
+                "additionalVariables": [
+                    {
+                        "key": "sample_string",
+                        "stringValue": "sampleString",
+                    },
+                    {
+                        "key": "sample_boolean",
+                        "booleanValue": False,
+                    },
+                    {
+                        "key": "sample_integer",
+                        "integerValue": 1,
+                    },
+                    {
+                        "key": "sample_secret_value",
+                        "secretValue": {
+                            "secretVersion": secret_version_basic.name,
+                        },
+                    },
+                    {
+                        "key": "sample_encryption_key_value",
+                        "encryptionKeyValue": {
+                            "type": "GOOGLE_MANAGED",
+                            "kmsKeyName": "sampleKMSKkey",
+                        },
+                    },
                 ],
-                client_cert_type="PEM",
-                client_certificate=gcp.integrationconnectors.ConnectionSslConfigClientCertificateArgs(
-                    secret_version=secret_version_basic.name,
-                ),
-                client_private_key=gcp.integrationconnectors.ConnectionSslConfigClientPrivateKeyArgs(
-                    secret_version=secret_version_basic.name,
-                ),
-                client_private_key_pass=gcp.integrationconnectors.ConnectionSslConfigClientPrivateKeyPassArgs(
-                    secret_version=secret_version_basic.name,
-                ),
-                private_server_certificate=gcp.integrationconnectors.ConnectionSslConfigPrivateServerCertificateArgs(
-                    secret_version=secret_version_basic.name,
-                ),
-                server_cert_type="PEM",
-                trust_model="PRIVATE",
-                type="TLS",
-                use_ssl=True,
-            ),
+                "clientCertType": "PEM",
+                "clientCertificate": {
+                    "secretVersion": secret_version_basic.name,
+                },
+                "clientPrivateKey": {
+                    "secretVersion": secret_version_basic.name,
+                },
+                "clientPrivateKeyPass": {
+                    "secretVersion": secret_version_basic.name,
+                },
+                "privateServerCertificate": {
+                    "secretVersion": secret_version_basic.name,
+                },
+                "serverCertType": "PEM",
+                "trustModel": "PRIVATE",
+                "type": "TLS",
+                "useSsl": True,
+            },
             eventing_enablement_type="EVENTING_AND_CONNECTION",
-            eventing_config=gcp.integrationconnectors.ConnectionEventingConfigArgs(
-                additional_variables=[
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
-                        key="sample_string",
-                        string_value="sampleString",
-                    ),
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
-                        key="sample_boolean",
-                        boolean_value=False,
-                    ),
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
-                        key="sample_integer",
-                        integer_value=1,
-                    ),
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
-                        key="sample_secret_value",
-                        secret_value=gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableSecretValueArgs(
-                            secret_version=secret_version_basic.name,
-                        ),
-                    ),
-                    gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableArgs(
-                        key="sample_encryption_key_value",
-                        encryption_key_value=gcp.integrationconnectors.ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs(
-                            type="GOOGLE_MANAGED",
-                            kms_key_name="sampleKMSKkey",
-                        ),
-                    ),
+            eventing_config={
+                "additionalVariables": [
+                    {
+                        "key": "sample_string",
+                        "stringValue": "sampleString",
+                    },
+                    {
+                        "key": "sample_boolean",
+                        "booleanValue": False,
+                    },
+                    {
+                        "key": "sample_integer",
+                        "integerValue": 1,
+                    },
+                    {
+                        "key": "sample_secret_value",
+                        "secretValue": {
+                            "secretVersion": secret_version_basic.name,
+                        },
+                    },
+                    {
+                        "key": "sample_encryption_key_value",
+                        "encryptionKeyValue": {
+                            "type": "GOOGLE_MANAGED",
+                            "kmsKeyName": "sampleKMSKkey",
+                        },
+                    },
                 ],
-                registration_destination_config=gcp.integrationconnectors.ConnectionEventingConfigRegistrationDestinationConfigArgs(
-                    key="registration_destination_config",
-                    destinations=[gcp.integrationconnectors.ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs(
-                        host="https://test.zendesk.com",
-                        port=80,
-                    )],
-                ),
-                auth_config=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigArgs(
-                    auth_type="USER_PASSWORD",
-                    auth_key="sampleAuthKey",
-                    user_password=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigUserPasswordArgs(
-                        username="user@xyz.com",
-                        password=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs(
-                            secret_version=secret_version_basic.name,
-                        ),
-                    ),
-                    additional_variables=[
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
-                            key="sample_string",
-                            string_value="sampleString",
-                        ),
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
-                            key="sample_boolean",
-                            boolean_value=False,
-                        ),
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
-                            key="sample_integer",
-                            integer_value=1,
-                        ),
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
-                            key="sample_secret_value",
-                            secret_value=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs(
-                                secret_version=secret_version_basic.name,
-                            ),
-                        ),
-                        gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableArgs(
-                            key="sample_encryption_key_value",
-                            encryption_key_value=gcp.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs(
-                                type="GOOGLE_MANAGED",
-                                kms_key_name="sampleKMSKkey",
-                            ),
-                        ),
+                "registrationDestinationConfig": {
+                    "key": "registration_destination_config",
+                    "destinations": [{
+                        "host": "https://test.zendesk.com",
+                        "port": 80,
+                    }],
+                },
+                "authConfig": {
+                    "authType": "USER_PASSWORD",
+                    "authKey": "sampleAuthKey",
+                    "userPassword": {
+                        "username": "user@xyz.com",
+                        "password": {
+                            "secretVersion": secret_version_basic.name,
+                        },
+                    },
+                    "additionalVariables": [
+                        {
+                            "key": "sample_string",
+                            "stringValue": "sampleString",
+                        },
+                        {
+                            "key": "sample_boolean",
+                            "booleanValue": False,
+                        },
+                        {
+                            "key": "sample_integer",
+                            "integerValue": 1,
+                        },
+                        {
+                            "key": "sample_secret_value",
+                            "secretValue": {
+                                "secretVersion": secret_version_basic.name,
+                            },
+                        },
+                        {
+                            "key": "sample_encryption_key_value",
+                            "encryptionKeyValue": {
+                                "type": "GOOGLE_MANAGED",
+                                "kmsKeyName": "sampleKMSKkey",
+                            },
+                        },
                     ],
-                ),
-                enrichment_enabled=True,
-            ))
+                },
+                "enrichmentEnabled": True,
+            })
         ```
 
         ## Import
@@ -1489,22 +1494,22 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_config: Optional[pulumi.Input[pulumi.InputType['ConnectionAuthConfigArgs']]] = None,
-                 config_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConfigVariableArgs']]]]] = None,
+                 auth_config: Optional[pulumi.Input[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict']]] = None,
+                 config_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict']]]]] = None,
                  connector_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionDestinationConfigArgs']]]]] = None,
-                 eventing_config: Optional[pulumi.Input[pulumi.InputType['ConnectionEventingConfigArgs']]] = None,
+                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDestinationConfigArgs', 'ConnectionDestinationConfigArgsDict']]]]] = None,
+                 eventing_config: Optional[pulumi.Input[Union['ConnectionEventingConfigArgs', 'ConnectionEventingConfigArgsDict']]] = None,
                  eventing_enablement_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 lock_config: Optional[pulumi.Input[pulumi.InputType['ConnectionLockConfigArgs']]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['ConnectionLogConfigArgs']]] = None,
+                 lock_config: Optional[pulumi.Input[Union['ConnectionLockConfigArgs', 'ConnectionLockConfigArgsDict']]] = None,
+                 log_config: Optional[pulumi.Input[Union['ConnectionLogConfigArgs', 'ConnectionLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['ConnectionNodeConfigArgs']]] = None,
+                 node_config: Optional[pulumi.Input[Union['ConnectionNodeConfigArgs', 'ConnectionNodeConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 ssl_config: Optional[pulumi.Input[pulumi.InputType['ConnectionSslConfigArgs']]] = None,
+                 ssl_config: Optional[pulumi.Input[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict']]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1559,31 +1564,31 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_config: Optional[pulumi.Input[pulumi.InputType['ConnectionAuthConfigArgs']]] = None,
-            config_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConfigVariableArgs']]]]] = None,
+            auth_config: Optional[pulumi.Input[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict']]] = None,
+            config_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict']]]]] = None,
             connection_revision: Optional[pulumi.Input[str]] = None,
             connector_version: Optional[pulumi.Input[str]] = None,
-            connector_version_infra_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConnectorVersionInfraConfigArgs']]]]] = None,
+            connector_version_infra_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionConnectorVersionInfraConfigArgs', 'ConnectionConnectorVersionInfraConfigArgsDict']]]]] = None,
             connector_version_launch_stage: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionDestinationConfigArgs']]]]] = None,
+            destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDestinationConfigArgs', 'ConnectionDestinationConfigArgsDict']]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            eventing_config: Optional[pulumi.Input[pulumi.InputType['ConnectionEventingConfigArgs']]] = None,
+            eventing_config: Optional[pulumi.Input[Union['ConnectionEventingConfigArgs', 'ConnectionEventingConfigArgsDict']]] = None,
             eventing_enablement_type: Optional[pulumi.Input[str]] = None,
-            eventing_runtime_datas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionEventingRuntimeDataArgs']]]]] = None,
+            eventing_runtime_datas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionEventingRuntimeDataArgs', 'ConnectionEventingRuntimeDataArgsDict']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            lock_config: Optional[pulumi.Input[pulumi.InputType['ConnectionLockConfigArgs']]] = None,
-            log_config: Optional[pulumi.Input[pulumi.InputType['ConnectionLogConfigArgs']]] = None,
+            lock_config: Optional[pulumi.Input[Union['ConnectionLockConfigArgs', 'ConnectionLockConfigArgsDict']]] = None,
+            log_config: Optional[pulumi.Input[Union['ConnectionLogConfigArgs', 'ConnectionLogConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            node_config: Optional[pulumi.Input[pulumi.InputType['ConnectionNodeConfigArgs']]] = None,
+            node_config: Optional[pulumi.Input[Union['ConnectionNodeConfigArgs', 'ConnectionNodeConfigArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             service_directory: Optional[pulumi.Input[str]] = None,
-            ssl_config: Optional[pulumi.Input[pulumi.InputType['ConnectionSslConfigArgs']]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionStatusArgs']]]]] = None,
+            ssl_config: Optional[pulumi.Input[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict']]] = None,
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionStatusArgs', 'ConnectionStatusArgsDict']]]]] = None,
             subscription_type: Optional[pulumi.Input[str]] = None,
             suspended: Optional[pulumi.Input[bool]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Connection':
@@ -1594,40 +1599,40 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionAuthConfigArgs']] auth_config: authConfig for the connection.
+        :param pulumi.Input[Union['ConnectionAuthConfigArgs', 'ConnectionAuthConfigArgsDict']] auth_config: authConfig for the connection.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConfigVariableArgs']]]] config_variables: Config Variables for the connection.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict']]]] config_variables: Config Variables for the connection.
                Structure is documented below.
         :param pulumi.Input[str] connection_revision: Connection revision. This field is only updated when the connection is created or updated by User.
         :param pulumi.Input[str] connector_version: connectorVersion of the Connector.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionConnectorVersionInfraConfigArgs']]]] connector_version_infra_configs: This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionConnectorVersionInfraConfigArgs', 'ConnectionConnectorVersionInfraConfigArgsDict']]]] connector_version_infra_configs: This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
                Structure is documented below.
         :param pulumi.Input[str] connector_version_launch_stage: Flag to mark the version indicating the launch stage.
         :param pulumi.Input[str] create_time: Time the Namespace was created in UTC.
         :param pulumi.Input[str] description: An arbitrary description for the Conection.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionDestinationConfigArgs']]]] destination_configs: Define the Connectors target endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDestinationConfigArgs', 'ConnectionDestinationConfigArgsDict']]]] destination_configs: Define the Connectors target endpoint.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['ConnectionEventingConfigArgs']] eventing_config: Eventing Configuration of a connection
+        :param pulumi.Input[Union['ConnectionEventingConfigArgs', 'ConnectionEventingConfigArgsDict']] eventing_config: Eventing Configuration of a connection
                Structure is documented below.
         :param pulumi.Input[str] eventing_enablement_type: Eventing enablement type. Will be nil if eventing is not enabled.
                Possible values are: `EVENTING_AND_CONNECTION`, `ONLY_EVENTING`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionEventingRuntimeDataArgs']]]] eventing_runtime_datas: Eventing Runtime Data.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionEventingRuntimeDataArgs', 'ConnectionEventingRuntimeDataArgsDict']]]] eventing_runtime_datas: Eventing Runtime Data.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location in which Connection needs to be created.
-        :param pulumi.Input[pulumi.InputType['ConnectionLockConfigArgs']] lock_config: Determines whether or no a connection is locked. If locked, a reason must be specified.
+        :param pulumi.Input[Union['ConnectionLockConfigArgs', 'ConnectionLockConfigArgsDict']] lock_config: Determines whether or no a connection is locked. If locked, a reason must be specified.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionLogConfigArgs']] log_config: Log configuration for the connection.
+        :param pulumi.Input[Union['ConnectionLogConfigArgs', 'ConnectionLogConfigArgsDict']] log_config: Log configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of Connection needs to be created.
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['ConnectionNodeConfigArgs']] node_config: Node configuration for the connection.
+        :param pulumi.Input[Union['ConnectionNodeConfigArgs', 'ConnectionNodeConfigArgsDict']] node_config: Node configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1636,9 +1641,9 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] service_account: Service account needed for runtime plane to access Google Cloud resources.
         :param pulumi.Input[str] service_directory: The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address.
                e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
-        :param pulumi.Input[pulumi.InputType['ConnectionSslConfigArgs']] ssl_config: SSL Configuration of a connection
+        :param pulumi.Input[Union['ConnectionSslConfigArgs', 'ConnectionSslConfigArgsDict']] ssl_config: SSL Configuration of a connection
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionStatusArgs']]]] statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionStatusArgs', 'ConnectionStatusArgsDict']]]] statuses: (Output)
                Current status of eventing.
                Structure is documented below.
         :param pulumi.Input[str] subscription_type: This subscription type enum states the subscription type of the project.

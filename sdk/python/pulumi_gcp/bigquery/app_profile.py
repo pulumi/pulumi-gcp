@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -380,8 +385,8 @@ class AppProfile(pulumi.CustomResource):
                  multi_cluster_routing_cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']]] = None,
-                 standard_isolation: Optional[pulumi.Input[pulumi.InputType['AppProfileStandardIsolationArgs']]] = None,
+                 single_cluster_routing: Optional[pulumi.Input[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict']]] = None,
+                 standard_isolation: Optional[pulumi.Input[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict']]] = None,
                  __props__=None):
         """
         App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
@@ -401,24 +406,24 @@ class AppProfile(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="bt-instance",
             clusters=[
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-1",
-                    zone="us-central1-a",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-2",
-                    zone="us-central1-b",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-3",
-                    zone="us-central1-c",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
+                {
+                    "clusterId": "cluster-1",
+                    "zone": "us-central1-a",
+                    "numNodes": 3,
+                    "storageType": "HDD",
+                },
+                {
+                    "clusterId": "cluster-2",
+                    "zone": "us-central1-b",
+                    "numNodes": 3,
+                    "storageType": "HDD",
+                },
+                {
+                    "clusterId": "cluster-3",
+                    "zone": "us-central1-c",
+                    "numNodes": 3,
+                    "storageType": "HDD",
+                },
             ],
             deletion_protection=True)
         ap = gcp.bigquery.AppProfile("ap",
@@ -435,20 +440,20 @@ class AppProfile(pulumi.CustomResource):
 
         instance = gcp.bigtable.Instance("instance",
             name="bt-instance",
-            clusters=[gcp.bigtable.InstanceClusterArgs(
-                cluster_id="cluster-1",
-                zone="us-central1-b",
-                num_nodes=3,
-                storage_type="HDD",
-            )],
+            clusters=[{
+                "clusterId": "cluster-1",
+                "zone": "us-central1-b",
+                "numNodes": 3,
+                "storageType": "HDD",
+            }],
             deletion_protection=True)
         ap = gcp.bigquery.AppProfile("ap",
             instance=instance.name,
             app_profile_id="bt-profile",
-            single_cluster_routing=gcp.bigquery.AppProfileSingleClusterRoutingArgs(
-                cluster_id="cluster-1",
-                allow_transactional_writes=True,
-            ),
+            single_cluster_routing={
+                "clusterId": "cluster-1",
+                "allowTransactionalWrites": True,
+            },
             ignore_warnings=True)
         ```
         ### Bigtable App Profile Multicluster
@@ -460,24 +465,24 @@ class AppProfile(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="bt-instance",
             clusters=[
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-1",
-                    zone="us-central1-a",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-2",
-                    zone="us-central1-b",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-3",
-                    zone="us-central1-c",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
+                {
+                    "clusterId": "cluster-1",
+                    "zone": "us-central1-a",
+                    "numNodes": 3,
+                    "storageType": "HDD",
+                },
+                {
+                    "clusterId": "cluster-2",
+                    "zone": "us-central1-b",
+                    "numNodes": 3,
+                    "storageType": "HDD",
+                },
+                {
+                    "clusterId": "cluster-3",
+                    "zone": "us-central1-c",
+                    "numNodes": 3,
+                    "storageType": "HDD",
+                },
             ],
             deletion_protection=True)
         ap = gcp.bigquery.AppProfile("ap",
@@ -498,23 +503,23 @@ class AppProfile(pulumi.CustomResource):
 
         instance = gcp.bigtable.Instance("instance",
             name="bt-instance",
-            clusters=[gcp.bigtable.InstanceClusterArgs(
-                cluster_id="cluster-1",
-                zone="us-central1-b",
-                num_nodes=3,
-                storage_type="HDD",
-            )],
+            clusters=[{
+                "clusterId": "cluster-1",
+                "zone": "us-central1-b",
+                "numNodes": 3,
+                "storageType": "HDD",
+            }],
             deletion_protection=True)
         ap = gcp.bigquery.AppProfile("ap",
             instance=instance.name,
             app_profile_id="bt-profile",
-            single_cluster_routing=gcp.bigquery.AppProfileSingleClusterRoutingArgs(
-                cluster_id="cluster-1",
-                allow_transactional_writes=True,
-            ),
-            standard_isolation=gcp.bigquery.AppProfileStandardIsolationArgs(
-                priority="PRIORITY_LOW",
-            ),
+            single_cluster_routing={
+                "clusterId": "cluster-1",
+                "allowTransactionalWrites": True,
+            },
+            standard_isolation={
+                "priority": "PRIORITY_LOW",
+            },
             ignore_warnings=True)
         ```
 
@@ -558,9 +563,9 @@ class AppProfile(pulumi.CustomResource):
                consistency to improve availability.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']] single_cluster_routing: Use a single-cluster routing policy.
+        :param pulumi.Input[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict']] single_cluster_routing: Use a single-cluster routing policy.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AppProfileStandardIsolationArgs']] standard_isolation: The standard options used for isolating this app profile's traffic from other use cases.
+        :param pulumi.Input[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict']] standard_isolation: The standard options used for isolating this app profile's traffic from other use cases.
                Structure is documented below.
         """
         ...
@@ -587,24 +592,24 @@ class AppProfile(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="bt-instance",
             clusters=[
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-1",
-                    zone="us-central1-a",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-2",
-                    zone="us-central1-b",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-3",
-                    zone="us-central1-c",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
+                {
+                    "clusterId": "cluster-1",
+                    "zone": "us-central1-a",
+                    "numNodes": 3,
+                    "storageType": "HDD",
+                },
+                {
+                    "clusterId": "cluster-2",
+                    "zone": "us-central1-b",
+                    "numNodes": 3,
+                    "storageType": "HDD",
+                },
+                {
+                    "clusterId": "cluster-3",
+                    "zone": "us-central1-c",
+                    "numNodes": 3,
+                    "storageType": "HDD",
+                },
             ],
             deletion_protection=True)
         ap = gcp.bigquery.AppProfile("ap",
@@ -621,20 +626,20 @@ class AppProfile(pulumi.CustomResource):
 
         instance = gcp.bigtable.Instance("instance",
             name="bt-instance",
-            clusters=[gcp.bigtable.InstanceClusterArgs(
-                cluster_id="cluster-1",
-                zone="us-central1-b",
-                num_nodes=3,
-                storage_type="HDD",
-            )],
+            clusters=[{
+                "clusterId": "cluster-1",
+                "zone": "us-central1-b",
+                "numNodes": 3,
+                "storageType": "HDD",
+            }],
             deletion_protection=True)
         ap = gcp.bigquery.AppProfile("ap",
             instance=instance.name,
             app_profile_id="bt-profile",
-            single_cluster_routing=gcp.bigquery.AppProfileSingleClusterRoutingArgs(
-                cluster_id="cluster-1",
-                allow_transactional_writes=True,
-            ),
+            single_cluster_routing={
+                "clusterId": "cluster-1",
+                "allowTransactionalWrites": True,
+            },
             ignore_warnings=True)
         ```
         ### Bigtable App Profile Multicluster
@@ -646,24 +651,24 @@ class AppProfile(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="bt-instance",
             clusters=[
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-1",
-                    zone="us-central1-a",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-2",
-                    zone="us-central1-b",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
-                gcp.bigtable.InstanceClusterArgs(
-                    cluster_id="cluster-3",
-                    zone="us-central1-c",
-                    num_nodes=3,
-                    storage_type="HDD",
-                ),
+                {
+                    "clusterId": "cluster-1",
+                    "zone": "us-central1-a",
+                    "numNodes": 3,
+                    "storageType": "HDD",
+                },
+                {
+                    "clusterId": "cluster-2",
+                    "zone": "us-central1-b",
+                    "numNodes": 3,
+                    "storageType": "HDD",
+                },
+                {
+                    "clusterId": "cluster-3",
+                    "zone": "us-central1-c",
+                    "numNodes": 3,
+                    "storageType": "HDD",
+                },
             ],
             deletion_protection=True)
         ap = gcp.bigquery.AppProfile("ap",
@@ -684,23 +689,23 @@ class AppProfile(pulumi.CustomResource):
 
         instance = gcp.bigtable.Instance("instance",
             name="bt-instance",
-            clusters=[gcp.bigtable.InstanceClusterArgs(
-                cluster_id="cluster-1",
-                zone="us-central1-b",
-                num_nodes=3,
-                storage_type="HDD",
-            )],
+            clusters=[{
+                "clusterId": "cluster-1",
+                "zone": "us-central1-b",
+                "numNodes": 3,
+                "storageType": "HDD",
+            }],
             deletion_protection=True)
         ap = gcp.bigquery.AppProfile("ap",
             instance=instance.name,
             app_profile_id="bt-profile",
-            single_cluster_routing=gcp.bigquery.AppProfileSingleClusterRoutingArgs(
-                cluster_id="cluster-1",
-                allow_transactional_writes=True,
-            ),
-            standard_isolation=gcp.bigquery.AppProfileStandardIsolationArgs(
-                priority="PRIORITY_LOW",
-            ),
+            single_cluster_routing={
+                "clusterId": "cluster-1",
+                "allowTransactionalWrites": True,
+            },
+            standard_isolation={
+                "priority": "PRIORITY_LOW",
+            },
             ignore_warnings=True)
         ```
 
@@ -750,8 +755,8 @@ class AppProfile(pulumi.CustomResource):
                  multi_cluster_routing_cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']]] = None,
-                 standard_isolation: Optional[pulumi.Input[pulumi.InputType['AppProfileStandardIsolationArgs']]] = None,
+                 single_cluster_routing: Optional[pulumi.Input[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict']]] = None,
+                 standard_isolation: Optional[pulumi.Input[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -791,8 +796,8 @@ class AppProfile(pulumi.CustomResource):
             multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']]] = None,
-            standard_isolation: Optional[pulumi.Input[pulumi.InputType['AppProfileStandardIsolationArgs']]] = None) -> 'AppProfile':
+            single_cluster_routing: Optional[pulumi.Input[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict']]] = None,
+            standard_isolation: Optional[pulumi.Input[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict']]] = None) -> 'AppProfile':
         """
         Get an existing AppProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -815,9 +820,9 @@ class AppProfile(pulumi.CustomResource):
         :param pulumi.Input[str] name: The unique name of the requested app profile. Values are of the form `projects/<project>/instances/<instance>/appProfiles/<appProfileId>`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']] single_cluster_routing: Use a single-cluster routing policy.
+        :param pulumi.Input[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict']] single_cluster_routing: Use a single-cluster routing policy.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AppProfileStandardIsolationArgs']] standard_isolation: The standard options used for isolating this app profile's traffic from other use cases.
+        :param pulumi.Input[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict']] standard_isolation: The standard options used for isolating this app profile's traffic from other use cases.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

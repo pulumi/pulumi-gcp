@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -364,13 +369,13 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 capacity_config: Optional[pulumi.Input[pulumi.InputType['ClusterCapacityConfigArgs']]] = None,
+                 capacity_config: Optional[pulumi.Input[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 gcp_config: Optional[pulumi.Input[pulumi.InputType['ClusterGcpConfigArgs']]] = None,
+                 gcp_config: Optional[pulumi.Input[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rebalance_config: Optional[pulumi.Input[pulumi.InputType['ClusterRebalanceConfigArgs']]] = None,
+                 rebalance_config: Optional[pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -385,20 +390,20 @@ class Cluster(pulumi.CustomResource):
         example = gcp.managedkafka.Cluster("example",
             cluster_id="my-cluster",
             location="us-central1",
-            capacity_config=gcp.managedkafka.ClusterCapacityConfigArgs(
-                vcpu_count="3",
-                memory_bytes="3221225472",
-            ),
-            gcp_config=gcp.managedkafka.ClusterGcpConfigArgs(
-                access_config=gcp.managedkafka.ClusterGcpConfigAccessConfigArgs(
-                    network_configs=[gcp.managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArgs(
-                        subnet=f"projects/{project.number}/regions/us-central1/subnetworks/default",
-                    )],
-                ),
-            ),
-            rebalance_config=gcp.managedkafka.ClusterRebalanceConfigArgs(
-                mode="NO_REBALANCE",
-            ),
+            capacity_config={
+                "vcpuCount": "3",
+                "memoryBytes": "3221225472",
+            },
+            gcp_config={
+                "accessConfig": {
+                    "networkConfigs": [{
+                        "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
+                    }],
+                },
+            },
+            rebalance_config={
+                "mode": "NO_REBALANCE",
+            },
             labels={
                 "key": "value",
             })
@@ -419,18 +424,18 @@ class Cluster(pulumi.CustomResource):
         example = gcp.managedkafka.Cluster("example",
             cluster_id="my-cluster",
             location="us-central1",
-            capacity_config=gcp.managedkafka.ClusterCapacityConfigArgs(
-                vcpu_count="3",
-                memory_bytes="3221225472",
-            ),
-            gcp_config=gcp.managedkafka.ClusterGcpConfigArgs(
-                access_config=gcp.managedkafka.ClusterGcpConfigAccessConfigArgs(
-                    network_configs=[gcp.managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArgs(
-                        subnet=f"projects/{project.number}/regions/us-central1/subnetworks/default",
-                    )],
-                ),
-                kms_key=key.id,
-            ))
+            capacity_config={
+                "vcpuCount": "3",
+                "memoryBytes": "3221225472",
+            },
+            gcp_config={
+                "accessConfig": {
+                    "networkConfigs": [{
+                        "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
+                    }],
+                },
+                "kmsKey": key.id,
+            })
         kafka_service_identity = gcp.projects.ServiceIdentity("kafka_service_identity",
             project=project.project_id,
             service="managedkafka.googleapis.com")
@@ -466,17 +471,17 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClusterCapacityConfigArgs']] capacity_config: A capacity configuration of a Kafka cluster.
+        :param pulumi.Input[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict']] capacity_config: A capacity configuration of a Kafka cluster.
                Structure is documented below.
         :param pulumi.Input[str] cluster_id: The ID to use for the cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `a-z?` to comply with RFC 1035. This value is structured like: `my-cluster-id`.
-        :param pulumi.Input[pulumi.InputType['ClusterGcpConfigArgs']] gcp_config: Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
+        :param pulumi.Input[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict']] gcp_config: Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
                underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
                characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
                configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] location: ID of the location of the Apache Kafka for BigQuery resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
-        :param pulumi.Input[pulumi.InputType['ClusterRebalanceConfigArgs']] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
+        :param pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
         """
         ...
     @overload
@@ -497,20 +502,20 @@ class Cluster(pulumi.CustomResource):
         example = gcp.managedkafka.Cluster("example",
             cluster_id="my-cluster",
             location="us-central1",
-            capacity_config=gcp.managedkafka.ClusterCapacityConfigArgs(
-                vcpu_count="3",
-                memory_bytes="3221225472",
-            ),
-            gcp_config=gcp.managedkafka.ClusterGcpConfigArgs(
-                access_config=gcp.managedkafka.ClusterGcpConfigAccessConfigArgs(
-                    network_configs=[gcp.managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArgs(
-                        subnet=f"projects/{project.number}/regions/us-central1/subnetworks/default",
-                    )],
-                ),
-            ),
-            rebalance_config=gcp.managedkafka.ClusterRebalanceConfigArgs(
-                mode="NO_REBALANCE",
-            ),
+            capacity_config={
+                "vcpuCount": "3",
+                "memoryBytes": "3221225472",
+            },
+            gcp_config={
+                "accessConfig": {
+                    "networkConfigs": [{
+                        "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
+                    }],
+                },
+            },
+            rebalance_config={
+                "mode": "NO_REBALANCE",
+            },
             labels={
                 "key": "value",
             })
@@ -531,18 +536,18 @@ class Cluster(pulumi.CustomResource):
         example = gcp.managedkafka.Cluster("example",
             cluster_id="my-cluster",
             location="us-central1",
-            capacity_config=gcp.managedkafka.ClusterCapacityConfigArgs(
-                vcpu_count="3",
-                memory_bytes="3221225472",
-            ),
-            gcp_config=gcp.managedkafka.ClusterGcpConfigArgs(
-                access_config=gcp.managedkafka.ClusterGcpConfigAccessConfigArgs(
-                    network_configs=[gcp.managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArgs(
-                        subnet=f"projects/{project.number}/regions/us-central1/subnetworks/default",
-                    )],
-                ),
-                kms_key=key.id,
-            ))
+            capacity_config={
+                "vcpuCount": "3",
+                "memoryBytes": "3221225472",
+            },
+            gcp_config={
+                "accessConfig": {
+                    "networkConfigs": [{
+                        "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
+                    }],
+                },
+                "kmsKey": key.id,
+            })
         kafka_service_identity = gcp.projects.ServiceIdentity("kafka_service_identity",
             project=project.project_id,
             service="managedkafka.googleapis.com")
@@ -591,13 +596,13 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 capacity_config: Optional[pulumi.Input[pulumi.InputType['ClusterCapacityConfigArgs']]] = None,
+                 capacity_config: Optional[pulumi.Input[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 gcp_config: Optional[pulumi.Input[pulumi.InputType['ClusterGcpConfigArgs']]] = None,
+                 gcp_config: Optional[pulumi.Input[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rebalance_config: Optional[pulumi.Input[pulumi.InputType['ClusterRebalanceConfigArgs']]] = None,
+                 rebalance_config: Optional[pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -640,17 +645,17 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            capacity_config: Optional[pulumi.Input[pulumi.InputType['ClusterCapacityConfigArgs']]] = None,
+            capacity_config: Optional[pulumi.Input[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict']]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            gcp_config: Optional[pulumi.Input[pulumi.InputType['ClusterGcpConfigArgs']]] = None,
+            gcp_config: Optional[pulumi.Input[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            rebalance_config: Optional[pulumi.Input[pulumi.InputType['ClusterRebalanceConfigArgs']]] = None,
+            rebalance_config: Optional[pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Cluster':
         """
@@ -660,12 +665,12 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClusterCapacityConfigArgs']] capacity_config: A capacity configuration of a Kafka cluster.
+        :param pulumi.Input[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict']] capacity_config: A capacity configuration of a Kafka cluster.
                Structure is documented below.
         :param pulumi.Input[str] cluster_id: The ID to use for the cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `a-z?` to comply with RFC 1035. This value is structured like: `my-cluster-id`.
         :param pulumi.Input[str] create_time: The time when the cluster was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['ClusterGcpConfigArgs']] gcp_config: Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
+        :param pulumi.Input[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict']] gcp_config: Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
                underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
@@ -675,7 +680,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['ClusterRebalanceConfigArgs']] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
+        :param pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
         :param pulumi.Input[str] state: The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
         :param pulumi.Input[str] update_time: The time when the cluster was last updated.
         """

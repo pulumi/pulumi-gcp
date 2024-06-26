@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['IamPolicyArgs', 'IamPolicy']
@@ -193,10 +198,10 @@ class IamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigquery.dataOwner",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.bigquery.IamPolicy("policy",
             project=test["project"],
             dataset_id=test["datasetId"],
@@ -210,15 +215,15 @@ class IamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigquery.dataOwner",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.bigquery.IamPolicy("policy",
             project=test["project"],
             dataset_id=test["datasetId"],
@@ -251,11 +256,11 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"],
-            condition=gcp.bigquery.IamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## bigquery.IamMember
 
@@ -283,11 +288,11 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             role="roles/bigquery.dataOwner",
             member="user:jane@example.com",
-            condition=gcp.bigquery.IamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## bigquery.IamPolicy
@@ -296,10 +301,10 @@ class IamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigquery.dataOwner",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.bigquery.IamPolicy("policy",
             project=test["project"],
             dataset_id=test["datasetId"],
@@ -313,15 +318,15 @@ class IamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigquery.dataOwner",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.bigquery.IamPolicy("policy",
             project=test["project"],
             dataset_id=test["datasetId"],
@@ -354,11 +359,11 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"],
-            condition=gcp.bigquery.IamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## bigquery.IamMember
 
@@ -386,11 +391,11 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             role="roles/bigquery.dataOwner",
             member="user:jane@example.com",
-            condition=gcp.bigquery.IamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import
@@ -467,10 +472,10 @@ class IamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigquery.dataOwner",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.bigquery.IamPolicy("policy",
             project=test["project"],
             dataset_id=test["datasetId"],
@@ -484,15 +489,15 @@ class IamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigquery.dataOwner",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.bigquery.IamPolicy("policy",
             project=test["project"],
             dataset_id=test["datasetId"],
@@ -525,11 +530,11 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"],
-            condition=gcp.bigquery.IamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## bigquery.IamMember
 
@@ -557,11 +562,11 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             role="roles/bigquery.dataOwner",
             member="user:jane@example.com",
-            condition=gcp.bigquery.IamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## bigquery.IamPolicy
@@ -570,10 +575,10 @@ class IamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigquery.dataOwner",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.bigquery.IamPolicy("policy",
             project=test["project"],
             dataset_id=test["datasetId"],
@@ -587,15 +592,15 @@ class IamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/bigquery.dataOwner",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/bigquery.dataOwner",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.bigquery.IamPolicy("policy",
             project=test["project"],
             dataset_id=test["datasetId"],
@@ -628,11 +633,11 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             role="roles/bigquery.dataOwner",
             members=["user:jane@example.com"],
-            condition=gcp.bigquery.IamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## bigquery.IamMember
 
@@ -660,11 +665,11 @@ class IamPolicy(pulumi.CustomResource):
             table_id=test["tableId"],
             role="roles/bigquery.dataOwner",
             member="user:jane@example.com",
-            condition=gcp.bigquery.IamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import

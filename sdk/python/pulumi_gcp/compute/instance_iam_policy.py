@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['InstanceIAMPolicyArgs', 'InstanceIAMPolicy']
@@ -218,10 +223,10 @@ class InstanceIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.osLogin",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.osLogin",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.compute.InstanceIAMPolicy("policy",
             project=default["project"],
             zone=default["zone"],
@@ -235,15 +240,15 @@ class InstanceIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.osLogin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.osLogin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.compute.InstanceIAMPolicy("policy",
             project=default["project"],
             zone=default["zone"],
@@ -276,11 +281,11 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             instance_name=default["name"],
             role="roles/compute.osLogin",
             members=["user:jane@example.com"],
-            condition=gcp.compute.InstanceIAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## compute.InstanceIAMMember
 
@@ -308,11 +313,11 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             instance_name=default["name"],
             role="roles/compute.osLogin",
             member="user:jane@example.com",
-            condition=gcp.compute.InstanceIAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## compute.InstanceIAMPolicy
@@ -321,10 +326,10 @@ class InstanceIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.osLogin",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.osLogin",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.compute.InstanceIAMPolicy("policy",
             project=default["project"],
             zone=default["zone"],
@@ -338,15 +343,15 @@ class InstanceIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.osLogin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.osLogin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.compute.InstanceIAMPolicy("policy",
             project=default["project"],
             zone=default["zone"],
@@ -379,11 +384,11 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             instance_name=default["name"],
             role="roles/compute.osLogin",
             members=["user:jane@example.com"],
-            condition=gcp.compute.InstanceIAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## compute.InstanceIAMMember
 
@@ -411,11 +416,11 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             instance_name=default["name"],
             role="roles/compute.osLogin",
             member="user:jane@example.com",
-            condition=gcp.compute.InstanceIAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import
@@ -496,10 +501,10 @@ class InstanceIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.osLogin",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.osLogin",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.compute.InstanceIAMPolicy("policy",
             project=default["project"],
             zone=default["zone"],
@@ -513,15 +518,15 @@ class InstanceIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.osLogin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.osLogin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.compute.InstanceIAMPolicy("policy",
             project=default["project"],
             zone=default["zone"],
@@ -554,11 +559,11 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             instance_name=default["name"],
             role="roles/compute.osLogin",
             members=["user:jane@example.com"],
-            condition=gcp.compute.InstanceIAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## compute.InstanceIAMMember
 
@@ -586,11 +591,11 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             instance_name=default["name"],
             role="roles/compute.osLogin",
             member="user:jane@example.com",
-            condition=gcp.compute.InstanceIAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## compute.InstanceIAMPolicy
@@ -599,10 +604,10 @@ class InstanceIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.osLogin",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.osLogin",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.compute.InstanceIAMPolicy("policy",
             project=default["project"],
             zone=default["zone"],
@@ -616,15 +621,15 @@ class InstanceIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.osLogin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.osLogin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.compute.InstanceIAMPolicy("policy",
             project=default["project"],
             zone=default["zone"],
@@ -657,11 +662,11 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             instance_name=default["name"],
             role="roles/compute.osLogin",
             members=["user:jane@example.com"],
-            condition=gcp.compute.InstanceIAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## compute.InstanceIAMMember
 
@@ -689,11 +694,11 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             instance_name=default["name"],
             role="roles/compute.osLogin",
             member="user:jane@example.com",
-            condition=gcp.compute.InstanceIAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import

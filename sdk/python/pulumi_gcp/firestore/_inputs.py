@@ -4,28 +4,60 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'BackupScheduleDailyRecurrenceArgs',
+    'BackupScheduleDailyRecurrenceArgsDict',
     'BackupScheduleWeeklyRecurrenceArgs',
+    'BackupScheduleWeeklyRecurrenceArgsDict',
     'DatabaseCmekConfigArgs',
+    'DatabaseCmekConfigArgsDict',
     'FieldIndexConfigArgs',
+    'FieldIndexConfigArgsDict',
     'FieldIndexConfigIndexArgs',
+    'FieldIndexConfigIndexArgsDict',
     'FieldTtlConfigArgs',
+    'FieldTtlConfigArgsDict',
     'IndexFieldArgs',
+    'IndexFieldArgsDict',
     'IndexFieldVectorConfigArgs',
+    'IndexFieldVectorConfigArgsDict',
     'IndexFieldVectorConfigFlatArgs',
+    'IndexFieldVectorConfigFlatArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class BackupScheduleDailyRecurrenceArgsDict(TypedDict):
+        pass
+elif False:
+    BackupScheduleDailyRecurrenceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BackupScheduleDailyRecurrenceArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class BackupScheduleWeeklyRecurrenceArgsDict(TypedDict):
+        day: NotRequired[pulumi.Input[str]]
+        """
+        The day of week to run.
+        Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        """
+elif False:
+    BackupScheduleWeeklyRecurrenceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BackupScheduleWeeklyRecurrenceArgs:
@@ -51,6 +83,34 @@ class BackupScheduleWeeklyRecurrenceArgs:
     def day(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "day", value)
 
+
+if not MYPY:
+    class DatabaseCmekConfigArgsDict(TypedDict):
+        kms_key_name: pulumi.Input[str]
+        """
+        The resource ID of a Cloud KMS key. If set, the database created will
+        be a Customer-managed Encryption Key (CMEK) database encrypted with
+        this key. This feature is allowlist only in initial launch.
+        Only keys in the same location as this database are allowed to be used
+        for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS
+        multi-region us. For Firestore's eur3 multi-region, this corresponds to
+        Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
+        This value should be the KMS key resource ID in the format of
+        `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        How to retrive this resource ID is listed at
+        https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
+        """
+        active_key_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (Output)
+        Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
+        During key rotation (https://cloud.google.com/kms/docs/key-rotation), there can be
+        multiple in-use key versions.
+        The expected format is
+        `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
+        """
+elif False:
+    DatabaseCmekConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatabaseCmekConfigArgs:
@@ -120,6 +180,16 @@ class DatabaseCmekConfigArgs:
         pulumi.set(self, "active_key_versions", value)
 
 
+if not MYPY:
+    class FieldIndexConfigArgsDict(TypedDict):
+        indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArgsDict']]]]
+        """
+        The indexes to configure on the field. Order or array contains must be specified.
+        Structure is documented below.
+        """
+elif False:
+    FieldIndexConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FieldIndexConfigArgs:
     def __init__(__self__, *,
@@ -144,6 +214,31 @@ class FieldIndexConfigArgs:
     def indexes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]]]):
         pulumi.set(self, "indexes", value)
 
+
+if not MYPY:
+    class FieldIndexConfigIndexArgsDict(TypedDict):
+        array_config: NotRequired[pulumi.Input[str]]
+        """
+        Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
+        be specified.
+        Possible values are: `CONTAINS`.
+        """
+        order: NotRequired[pulumi.Input[str]]
+        """
+        Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=, !=.
+        Only one of `order` and `arrayConfig` can be specified.
+        Possible values are: `ASCENDING`, `DESCENDING`.
+        """
+        query_scope: NotRequired[pulumi.Input[str]]
+        """
+        The scope at which a query is run. Collection scoped queries require you specify
+        the collection at query time. Collection group scope allows queries across all
+        collections with the same id.
+        Default value is `COLLECTION`.
+        Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+        """
+elif False:
+    FieldIndexConfigIndexArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FieldIndexConfigIndexArgs:
@@ -216,6 +311,16 @@ class FieldIndexConfigIndexArgs:
         pulumi.set(self, "query_scope", value)
 
 
+if not MYPY:
+    class FieldTtlConfigArgsDict(TypedDict):
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The state of TTL (time-to-live) configuration for documents that have this Field set.
+        """
+elif False:
+    FieldTtlConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FieldTtlConfigArgs:
     def __init__(__self__, *,
@@ -240,6 +345,33 @@ class FieldTtlConfigArgs:
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
 
+
+if not MYPY:
+    class IndexFieldArgsDict(TypedDict):
+        array_config: NotRequired[pulumi.Input[str]]
+        """
+        Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+        `vectorConfig` can be specified.
+        Possible values are: `CONTAINS`.
+        """
+        field_path: NotRequired[pulumi.Input[str]]
+        """
+        Name of the field.
+        """
+        order: NotRequired[pulumi.Input[str]]
+        """
+        Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
+        Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
+        Possible values are: `ASCENDING`, `DESCENDING`.
+        """
+        vector_config: NotRequired[pulumi.Input['IndexFieldVectorConfigArgsDict']]
+        """
+        Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+        `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
+        Structure is documented below.
+        """
+elif False:
+    IndexFieldArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IndexFieldArgs:
@@ -324,6 +456,22 @@ class IndexFieldArgs:
         pulumi.set(self, "vector_config", value)
 
 
+if not MYPY:
+    class IndexFieldVectorConfigArgsDict(TypedDict):
+        dimension: NotRequired[pulumi.Input[int]]
+        """
+        The resulting index will only include vectors of this dimension, and can be used for vector search
+        with the same dimension.
+        """
+        flat: NotRequired[pulumi.Input['IndexFieldVectorConfigFlatArgsDict']]
+        """
+        Indicates the vector index is a flat index.
+
+        - - -
+        """
+elif False:
+    IndexFieldVectorConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class IndexFieldVectorConfigArgs:
     def __init__(__self__, *,
@@ -368,6 +516,12 @@ class IndexFieldVectorConfigArgs:
     def flat(self, value: Optional[pulumi.Input['IndexFieldVectorConfigFlatArgs']]):
         pulumi.set(self, "flat", value)
 
+
+if not MYPY:
+    class IndexFieldVectorConfigFlatArgsDict(TypedDict):
+        pass
+elif False:
+    IndexFieldVectorConfigFlatArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IndexFieldVectorConfigFlatArgs:

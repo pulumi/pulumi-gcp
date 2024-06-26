@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -284,11 +289,11 @@ class OrganizationPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 boolean_policy: Optional[pulumi.Input[pulumi.InputType['OrganizationPolicyBooleanPolicyArgs']]] = None,
+                 boolean_policy: Optional[pulumi.Input[Union['OrganizationPolicyBooleanPolicyArgs', 'OrganizationPolicyBooleanPolicyArgsDict']]] = None,
                  constraint: Optional[pulumi.Input[str]] = None,
-                 list_policy: Optional[pulumi.Input[pulumi.InputType['OrganizationPolicyListPolicyArgs']]] = None,
+                 list_policy: Optional[pulumi.Input[Union['OrganizationPolicyListPolicyArgs', 'OrganizationPolicyListPolicyArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 restore_policy: Optional[pulumi.Input[pulumi.InputType['OrganizationPolicyRestorePolicyArgs']]] = None,
+                 restore_policy: Optional[pulumi.Input[Union['OrganizationPolicyRestorePolicyArgs', 'OrganizationPolicyRestorePolicyArgsDict']]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -313,9 +318,9 @@ class OrganizationPolicy(pulumi.CustomResource):
         serial_port_policy = gcp.projects.OrganizationPolicy("serial_port_policy",
             project="your-project-id",
             constraint="compute.disableSerialPortAccess",
-            boolean_policy=gcp.projects.OrganizationPolicyBooleanPolicyArgs(
-                enforced=True,
-            ))
+            boolean_policy={
+                "enforced": True,
+            })
         ```
 
         To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
@@ -327,11 +332,11 @@ class OrganizationPolicy(pulumi.CustomResource):
         services_policy = gcp.projects.OrganizationPolicy("services_policy",
             project="your-project-id",
             constraint="serviceuser.services",
-            list_policy=gcp.projects.OrganizationPolicyListPolicyArgs(
-                allow=gcp.projects.OrganizationPolicyListPolicyAllowArgs(
-                    all=True,
-                ),
-            ))
+            list_policy={
+                "allow": {
+                    "all": True,
+                },
+            })
         ```
 
         Or to deny some services, use the following instead:
@@ -343,12 +348,12 @@ class OrganizationPolicy(pulumi.CustomResource):
         services_policy = gcp.projects.OrganizationPolicy("services_policy",
             project="your-project-id",
             constraint="serviceuser.services",
-            list_policy=gcp.projects.OrganizationPolicyListPolicyArgs(
-                suggested_value="compute.googleapis.com",
-                deny=gcp.projects.OrganizationPolicyListPolicyDenyArgs(
-                    values=["cloudresourcemanager.googleapis.com"],
-                ),
-            ))
+            list_policy={
+                "suggestedValue": "compute.googleapis.com",
+                "deny": {
+                    "values": ["cloudresourcemanager.googleapis.com"],
+                },
+            })
         ```
 
         To restore the default project organization policy, use the following instead:
@@ -360,9 +365,9 @@ class OrganizationPolicy(pulumi.CustomResource):
         services_policy = gcp.projects.OrganizationPolicy("services_policy",
             project="your-project-id",
             constraint="serviceuser.services",
-            restore_policy=gcp.projects.OrganizationPolicyRestorePolicyArgs(
-                default=True,
-            ))
+            restore_policy={
+                "default": True,
+            })
         ```
 
         ## Import
@@ -391,13 +396,13 @@ class OrganizationPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['OrganizationPolicyBooleanPolicyArgs']] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+        :param pulumi.Input[Union['OrganizationPolicyBooleanPolicyArgs', 'OrganizationPolicyBooleanPolicyArgsDict']] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.
         :param pulumi.Input[str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
                
                - - -
-        :param pulumi.Input[pulumi.InputType['OrganizationPolicyListPolicyArgs']] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
+        :param pulumi.Input[Union['OrganizationPolicyListPolicyArgs', 'OrganizationPolicyListPolicyArgsDict']] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
         :param pulumi.Input[str] project: The project id of the project to set the policy for.
-        :param pulumi.Input[pulumi.InputType['OrganizationPolicyRestorePolicyArgs']] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
+        :param pulumi.Input[Union['OrganizationPolicyRestorePolicyArgs', 'OrganizationPolicyRestorePolicyArgsDict']] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
                
                > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
                effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
@@ -433,9 +438,9 @@ class OrganizationPolicy(pulumi.CustomResource):
         serial_port_policy = gcp.projects.OrganizationPolicy("serial_port_policy",
             project="your-project-id",
             constraint="compute.disableSerialPortAccess",
-            boolean_policy=gcp.projects.OrganizationPolicyBooleanPolicyArgs(
-                enforced=True,
-            ))
+            boolean_policy={
+                "enforced": True,
+            })
         ```
 
         To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
@@ -447,11 +452,11 @@ class OrganizationPolicy(pulumi.CustomResource):
         services_policy = gcp.projects.OrganizationPolicy("services_policy",
             project="your-project-id",
             constraint="serviceuser.services",
-            list_policy=gcp.projects.OrganizationPolicyListPolicyArgs(
-                allow=gcp.projects.OrganizationPolicyListPolicyAllowArgs(
-                    all=True,
-                ),
-            ))
+            list_policy={
+                "allow": {
+                    "all": True,
+                },
+            })
         ```
 
         Or to deny some services, use the following instead:
@@ -463,12 +468,12 @@ class OrganizationPolicy(pulumi.CustomResource):
         services_policy = gcp.projects.OrganizationPolicy("services_policy",
             project="your-project-id",
             constraint="serviceuser.services",
-            list_policy=gcp.projects.OrganizationPolicyListPolicyArgs(
-                suggested_value="compute.googleapis.com",
-                deny=gcp.projects.OrganizationPolicyListPolicyDenyArgs(
-                    values=["cloudresourcemanager.googleapis.com"],
-                ),
-            ))
+            list_policy={
+                "suggestedValue": "compute.googleapis.com",
+                "deny": {
+                    "values": ["cloudresourcemanager.googleapis.com"],
+                },
+            })
         ```
 
         To restore the default project organization policy, use the following instead:
@@ -480,9 +485,9 @@ class OrganizationPolicy(pulumi.CustomResource):
         services_policy = gcp.projects.OrganizationPolicy("services_policy",
             project="your-project-id",
             constraint="serviceuser.services",
-            restore_policy=gcp.projects.OrganizationPolicyRestorePolicyArgs(
-                default=True,
-            ))
+            restore_policy={
+                "default": True,
+            })
         ```
 
         ## Import
@@ -524,11 +529,11 @@ class OrganizationPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 boolean_policy: Optional[pulumi.Input[pulumi.InputType['OrganizationPolicyBooleanPolicyArgs']]] = None,
+                 boolean_policy: Optional[pulumi.Input[Union['OrganizationPolicyBooleanPolicyArgs', 'OrganizationPolicyBooleanPolicyArgsDict']]] = None,
                  constraint: Optional[pulumi.Input[str]] = None,
-                 list_policy: Optional[pulumi.Input[pulumi.InputType['OrganizationPolicyListPolicyArgs']]] = None,
+                 list_policy: Optional[pulumi.Input[Union['OrganizationPolicyListPolicyArgs', 'OrganizationPolicyListPolicyArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 restore_policy: Optional[pulumi.Input[pulumi.InputType['OrganizationPolicyRestorePolicyArgs']]] = None,
+                 restore_policy: Optional[pulumi.Input[Union['OrganizationPolicyRestorePolicyArgs', 'OrganizationPolicyRestorePolicyArgsDict']]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -561,12 +566,12 @@ class OrganizationPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            boolean_policy: Optional[pulumi.Input[pulumi.InputType['OrganizationPolicyBooleanPolicyArgs']]] = None,
+            boolean_policy: Optional[pulumi.Input[Union['OrganizationPolicyBooleanPolicyArgs', 'OrganizationPolicyBooleanPolicyArgsDict']]] = None,
             constraint: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            list_policy: Optional[pulumi.Input[pulumi.InputType['OrganizationPolicyListPolicyArgs']]] = None,
+            list_policy: Optional[pulumi.Input[Union['OrganizationPolicyListPolicyArgs', 'OrganizationPolicyListPolicyArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            restore_policy: Optional[pulumi.Input[pulumi.InputType['OrganizationPolicyRestorePolicyArgs']]] = None,
+            restore_policy: Optional[pulumi.Input[Union['OrganizationPolicyRestorePolicyArgs', 'OrganizationPolicyRestorePolicyArgsDict']]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[int]] = None) -> 'OrganizationPolicy':
         """
@@ -576,14 +581,14 @@ class OrganizationPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['OrganizationPolicyBooleanPolicyArgs']] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.
+        :param pulumi.Input[Union['OrganizationPolicyBooleanPolicyArgs', 'OrganizationPolicyBooleanPolicyArgsDict']] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.
         :param pulumi.Input[str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
                
                - - -
         :param pulumi.Input[str] etag: (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
-        :param pulumi.Input[pulumi.InputType['OrganizationPolicyListPolicyArgs']] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
+        :param pulumi.Input[Union['OrganizationPolicyListPolicyArgs', 'OrganizationPolicyListPolicyArgsDict']] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
         :param pulumi.Input[str] project: The project id of the project to set the policy for.
-        :param pulumi.Input[pulumi.InputType['OrganizationPolicyRestorePolicyArgs']] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
+        :param pulumi.Input[Union['OrganizationPolicyRestorePolicyArgs', 'OrganizationPolicyRestorePolicyArgsDict']] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
                
                > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
                effectively be unset. This is represented in the UI as the constraint being 'Inherited'.

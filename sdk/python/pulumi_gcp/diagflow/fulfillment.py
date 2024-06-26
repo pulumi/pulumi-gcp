@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -237,8 +242,8 @@ class Fulfillment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FulfillmentFeatureArgs']]]]] = None,
-                 generic_web_service: Optional[pulumi.Input[pulumi.InputType['FulfillmentGenericWebServiceArgs']]] = None,
+                 features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FulfillmentFeatureArgs', 'FulfillmentFeatureArgsDict']]]]] = None,
+                 generic_web_service: Optional[pulumi.Input[Union['FulfillmentGenericWebServiceArgs', 'FulfillmentGenericWebServiceArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -265,14 +270,14 @@ class Fulfillment(pulumi.CustomResource):
         basic_fulfillment = gcp.diagflow.Fulfillment("basic_fulfillment",
             display_name="basic-fulfillment",
             enabled=True,
-            generic_web_service=gcp.diagflow.FulfillmentGenericWebServiceArgs(
-                uri="https://google.com",
-                username="admin",
-                password="password",
-                request_headers={
+            generic_web_service={
+                "uri": "https://google.com",
+                "username": "admin",
+                "password": "password",
+                "requestHeaders": {
                     "name": "wrench",
                 },
-            ),
+            },
             opts = pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
 
@@ -295,9 +300,9 @@ class Fulfillment(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[bool] enabled: Whether fulfillment is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FulfillmentFeatureArgs']]]] features: The field defines whether the fulfillment is enabled for certain features.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FulfillmentFeatureArgs', 'FulfillmentFeatureArgsDict']]]] features: The field defines whether the fulfillment is enabled for certain features.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['FulfillmentGenericWebServiceArgs']] generic_web_service: Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
+        :param pulumi.Input[Union['FulfillmentGenericWebServiceArgs', 'FulfillmentGenericWebServiceArgsDict']] generic_web_service: Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -332,14 +337,14 @@ class Fulfillment(pulumi.CustomResource):
         basic_fulfillment = gcp.diagflow.Fulfillment("basic_fulfillment",
             display_name="basic-fulfillment",
             enabled=True,
-            generic_web_service=gcp.diagflow.FulfillmentGenericWebServiceArgs(
-                uri="https://google.com",
-                username="admin",
-                password="password",
-                request_headers={
+            generic_web_service={
+                "uri": "https://google.com",
+                "username": "admin",
+                "password": "password",
+                "requestHeaders": {
                     "name": "wrench",
                 },
-            ),
+            },
             opts = pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
 
@@ -372,8 +377,8 @@ class Fulfillment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FulfillmentFeatureArgs']]]]] = None,
-                 generic_web_service: Optional[pulumi.Input[pulumi.InputType['FulfillmentGenericWebServiceArgs']]] = None,
+                 features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FulfillmentFeatureArgs', 'FulfillmentFeatureArgsDict']]]]] = None,
+                 generic_web_service: Optional[pulumi.Input[Union['FulfillmentGenericWebServiceArgs', 'FulfillmentGenericWebServiceArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -404,8 +409,8 @@ class Fulfillment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FulfillmentFeatureArgs']]]]] = None,
-            generic_web_service: Optional[pulumi.Input[pulumi.InputType['FulfillmentGenericWebServiceArgs']]] = None,
+            features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FulfillmentFeatureArgs', 'FulfillmentFeatureArgsDict']]]]] = None,
+            generic_web_service: Optional[pulumi.Input[Union['FulfillmentGenericWebServiceArgs', 'FulfillmentGenericWebServiceArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'Fulfillment':
         """
@@ -420,9 +425,9 @@ class Fulfillment(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[bool] enabled: Whether fulfillment is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FulfillmentFeatureArgs']]]] features: The field defines whether the fulfillment is enabled for certain features.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FulfillmentFeatureArgs', 'FulfillmentFeatureArgsDict']]]] features: The field defines whether the fulfillment is enabled for certain features.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['FulfillmentGenericWebServiceArgs']] generic_web_service: Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
+        :param pulumi.Input[Union['FulfillmentGenericWebServiceArgs', 'FulfillmentGenericWebServiceArgsDict']] generic_web_service: Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
                Structure is documented below.
         :param pulumi.Input[str] name: The unique identifier of the fulfillment.
                Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment

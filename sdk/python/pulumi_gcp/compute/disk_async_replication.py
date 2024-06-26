@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -105,7 +110,7 @@ class DiskAsyncReplication(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  primary_disk: Optional[pulumi.Input[str]] = None,
-                 secondary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncReplicationSecondaryDiskArgs']]] = None,
+                 secondary_disk: Optional[pulumi.Input[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']]] = None,
                  __props__=None):
         """
         Starts and stops asynchronous persistent disk replication. For more information
@@ -117,7 +122,7 @@ class DiskAsyncReplication(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] primary_disk: The primary disk (source of replication).
-        :param pulumi.Input[pulumi.InputType['DiskAsyncReplicationSecondaryDiskArgs']] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+        :param pulumi.Input[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
                
                The `secondary_disk` block includes:
         """
@@ -150,7 +155,7 @@ class DiskAsyncReplication(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  primary_disk: Optional[pulumi.Input[str]] = None,
-                 secondary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncReplicationSecondaryDiskArgs']]] = None,
+                 secondary_disk: Optional[pulumi.Input[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -177,7 +182,7 @@ class DiskAsyncReplication(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             primary_disk: Optional[pulumi.Input[str]] = None,
-            secondary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncReplicationSecondaryDiskArgs']]] = None) -> 'DiskAsyncReplication':
+            secondary_disk: Optional[pulumi.Input[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']]] = None) -> 'DiskAsyncReplication':
         """
         Get an existing DiskAsyncReplication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -186,7 +191,7 @@ class DiskAsyncReplication(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] primary_disk: The primary disk (source of replication).
-        :param pulumi.Input[pulumi.InputType['DiskAsyncReplicationSecondaryDiskArgs']] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+        :param pulumi.Input[Union['DiskAsyncReplicationSecondaryDiskArgs', 'DiskAsyncReplicationSecondaryDiskArgsDict']] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
                
                The `secondary_disk` block includes:
         """

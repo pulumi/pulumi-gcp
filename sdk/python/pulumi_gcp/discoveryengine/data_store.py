@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -423,7 +428,7 @@ class DataStore(pulumi.CustomResource):
                  create_advanced_site_search: Optional[pulumi.Input[bool]] = None,
                  data_store_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 document_processing_config: Optional[pulumi.Input[pulumi.InputType['DataStoreDocumentProcessingConfigArgs']]] = None,
+                 document_processing_config: Optional[pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']]] = None,
                  industry_vertical: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -471,17 +476,17 @@ class DataStore(pulumi.CustomResource):
             content_config="NO_CONTENT",
             solution_types=["SOLUTION_TYPE_SEARCH"],
             create_advanced_site_search=False,
-            document_processing_config=gcp.discoveryengine.DataStoreDocumentProcessingConfigArgs(
-                default_parsing_config=gcp.discoveryengine.DataStoreDocumentProcessingConfigDefaultParsingConfigArgs(
-                    digital_parsing_config=gcp.discoveryengine.DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs(),
-                ),
-                parsing_config_overrides=[gcp.discoveryengine.DataStoreDocumentProcessingConfigParsingConfigOverrideArgs(
-                    file_type="pdf",
-                    ocr_parsing_config=gcp.discoveryengine.DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs(
-                        use_native_text=True,
-                    ),
-                )],
-            ))
+            document_processing_config={
+                "defaultParsingConfig": {
+                    "digitalParsingConfig": {},
+                },
+                "parsingConfigOverrides": [{
+                    "fileType": "pdf",
+                    "ocrParsingConfig": {
+                        "useNativeText": True,
+                    },
+                }],
+            })
         ```
 
         ## Import
@@ -521,7 +526,7 @@ class DataStore(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
-        :param pulumi.Input[pulumi.InputType['DataStoreDocumentProcessingConfigArgs']] document_processing_config: Configuration for Document understanding and enrichment.
+        :param pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']] document_processing_config: Configuration for Document understanding and enrichment.
                Structure is documented below.
         :param pulumi.Input[str] industry_vertical: The industry vertical that the data store registers.
                Possible values are: `GENERIC`, `MEDIA`.
@@ -580,17 +585,17 @@ class DataStore(pulumi.CustomResource):
             content_config="NO_CONTENT",
             solution_types=["SOLUTION_TYPE_SEARCH"],
             create_advanced_site_search=False,
-            document_processing_config=gcp.discoveryengine.DataStoreDocumentProcessingConfigArgs(
-                default_parsing_config=gcp.discoveryengine.DataStoreDocumentProcessingConfigDefaultParsingConfigArgs(
-                    digital_parsing_config=gcp.discoveryengine.DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs(),
-                ),
-                parsing_config_overrides=[gcp.discoveryengine.DataStoreDocumentProcessingConfigParsingConfigOverrideArgs(
-                    file_type="pdf",
-                    ocr_parsing_config=gcp.discoveryengine.DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs(
-                        use_native_text=True,
-                    ),
-                )],
-            ))
+            document_processing_config={
+                "defaultParsingConfig": {
+                    "digitalParsingConfig": {},
+                },
+                "parsingConfigOverrides": [{
+                    "fileType": "pdf",
+                    "ocrParsingConfig": {
+                        "useNativeText": True,
+                    },
+                }],
+            })
         ```
 
         ## Import
@@ -636,7 +641,7 @@ class DataStore(pulumi.CustomResource):
                  create_advanced_site_search: Optional[pulumi.Input[bool]] = None,
                  data_store_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 document_processing_config: Optional[pulumi.Input[pulumi.InputType['DataStoreDocumentProcessingConfigArgs']]] = None,
+                 document_processing_config: Optional[pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']]] = None,
                  industry_vertical: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -688,7 +693,7 @@ class DataStore(pulumi.CustomResource):
             data_store_id: Optional[pulumi.Input[str]] = None,
             default_schema_id: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            document_processing_config: Optional[pulumi.Input[pulumi.InputType['DataStoreDocumentProcessingConfigArgs']]] = None,
+            document_processing_config: Optional[pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']]] = None,
             industry_vertical: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -714,7 +719,7 @@ class DataStore(pulumi.CustomResource):
         :param pulumi.Input[str] default_schema_id: The id of the default Schema associated with this data store.
         :param pulumi.Input[str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
-        :param pulumi.Input[pulumi.InputType['DataStoreDocumentProcessingConfigArgs']] document_processing_config: Configuration for Document understanding and enrichment.
+        :param pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']] document_processing_config: Configuration for Document understanding and enrichment.
                Structure is documented below.
         :param pulumi.Input[str] industry_vertical: The industry vertical that the data store registers.
                Possible values are: `GENERIC`, `MEDIA`.

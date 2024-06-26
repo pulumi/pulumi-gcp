@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -1002,29 +1007,29 @@ class Trigger(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_config: Optional[pulumi.Input[pulumi.InputType['TriggerApprovalConfigArgs']]] = None,
-                 bitbucket_server_trigger_config: Optional[pulumi.Input[pulumi.InputType['TriggerBitbucketServerTriggerConfigArgs']]] = None,
-                 build: Optional[pulumi.Input[pulumi.InputType['TriggerBuildArgs']]] = None,
+                 approval_config: Optional[pulumi.Input[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict']]] = None,
+                 bitbucket_server_trigger_config: Optional[pulumi.Input[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict']]] = None,
+                 build: Optional[pulumi.Input[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
-                 git_file_source: Optional[pulumi.Input[pulumi.InputType['TriggerGitFileSourceArgs']]] = None,
-                 github: Optional[pulumi.Input[pulumi.InputType['TriggerGithubArgs']]] = None,
+                 git_file_source: Optional[pulumi.Input[Union['TriggerGitFileSourceArgs', 'TriggerGitFileSourceArgsDict']]] = None,
+                 github: Optional[pulumi.Input[Union['TriggerGithubArgs', 'TriggerGithubArgsDict']]] = None,
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_build_logs: Optional[pulumi.Input[str]] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pubsub_config: Optional[pulumi.Input[pulumi.InputType['TriggerPubsubConfigArgs']]] = None,
-                 repository_event_config: Optional[pulumi.Input[pulumi.InputType['TriggerRepositoryEventConfigArgs']]] = None,
+                 pubsub_config: Optional[pulumi.Input[Union['TriggerPubsubConfigArgs', 'TriggerPubsubConfigArgsDict']]] = None,
+                 repository_event_config: Optional[pulumi.Input[Union['TriggerRepositoryEventConfigArgs', 'TriggerRepositoryEventConfigArgsDict']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 source_to_build: Optional[pulumi.Input[pulumi.InputType['TriggerSourceToBuildArgs']]] = None,
+                 source_to_build: Optional[pulumi.Input[Union['TriggerSourceToBuildArgs', 'TriggerSourceToBuildArgsDict']]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 trigger_template: Optional[pulumi.Input[pulumi.InputType['TriggerTriggerTemplateArgs']]] = None,
-                 webhook_config: Optional[pulumi.Input[pulumi.InputType['TriggerWebhookConfigArgs']]] = None,
+                 trigger_template: Optional[pulumi.Input[Union['TriggerTriggerTemplateArgs', 'TriggerTriggerTemplateArgsDict']]] = None,
+                 webhook_config: Optional[pulumi.Input[Union['TriggerWebhookConfigArgs', 'TriggerWebhookConfigArgsDict']]] = None,
                  __props__=None):
         """
         Configuration for an automated build in response to source repository changes.
@@ -1047,10 +1052,10 @@ class Trigger(pulumi.CustomResource):
 
         filename_trigger = gcp.cloudbuild.Trigger("filename-trigger",
             location="us-central1",
-            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
-                branch_name="main",
-                repo_name="my-repo",
-            ),
+            trigger_template={
+                "branchName": "main",
+                "repoName": "my-repo",
+            },
             substitutions={
                 "_FOO": "bar",
                 "_BAZ": "qux",
@@ -1066,95 +1071,95 @@ class Trigger(pulumi.CustomResource):
         build_trigger = gcp.cloudbuild.Trigger("build-trigger",
             name="my-trigger",
             location="global",
-            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
-                branch_name="main",
-                repo_name="my-repo",
-            ),
-            build=gcp.cloudbuild.TriggerBuildArgs(
-                steps=[
-                    gcp.cloudbuild.TriggerBuildStepArgs(
-                        name="gcr.io/cloud-builders/gsutil",
-                        args=[
+            trigger_template={
+                "branchName": "main",
+                "repoName": "my-repo",
+            },
+            build={
+                "steps": [
+                    {
+                        "name": "gcr.io/cloud-builders/gsutil",
+                        "args": [
                             "cp",
                             "gs://mybucket/remotefile.zip",
                             "localfile.zip",
                         ],
-                        timeout="120s",
-                        secret_envs=["MY_SECRET"],
-                    ),
-                    gcp.cloudbuild.TriggerBuildStepArgs(
-                        name="ubuntu",
-                        script="echo hello",
-                    ),
+                        "timeout": "120s",
+                        "secretEnvs": ["MY_SECRET"],
+                    },
+                    {
+                        "name": "ubuntu",
+                        "script": "echo hello",
+                    },
                 ],
-                source=gcp.cloudbuild.TriggerBuildSourceArgs(
-                    storage_source=gcp.cloudbuild.TriggerBuildSourceStorageSourceArgs(
-                        bucket="mybucket",
-                        object="source_code.tar.gz",
-                    ),
-                ),
-                tags=[
+                "source": {
+                    "storageSource": {
+                        "bucket": "mybucket",
+                        "object": "source_code.tar.gz",
+                    },
+                },
+                "tags": [
                     "build",
                     "newFeature",
                 ],
-                substitutions={
+                "substitutions": {
                     "_FOO": "bar",
                     "_BAZ": "qux",
                 },
-                queue_ttl="20s",
-                logs_bucket="gs://mybucket/logs",
-                secrets=[gcp.cloudbuild.TriggerBuildSecretArgs(
-                    kms_key_name="projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
-                    secret_env={
+                "queueTtl": "20s",
+                "logsBucket": "gs://mybucket/logs",
+                "secrets": [{
+                    "kmsKeyName": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
+                    "secretEnv": {
                         "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
                     },
-                )],
-                available_secrets=gcp.cloudbuild.TriggerBuildAvailableSecretsArgs(
-                    secret_managers=[gcp.cloudbuild.TriggerBuildAvailableSecretsSecretManagerArgs(
-                        env="MY_SECRET",
-                        version_name="projects/myProject/secrets/mySecret/versions/latest",
-                    )],
-                ),
-                artifacts=gcp.cloudbuild.TriggerBuildArtifactsArgs(
-                    images=["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
-                    objects=gcp.cloudbuild.TriggerBuildArtifactsObjectsArgs(
-                        location="gs://bucket/path/to/somewhere/",
-                        paths=["path"],
-                    ),
-                    npm_packages=[gcp.cloudbuild.TriggerBuildArtifactsNpmPackageArgs(
-                        package_path="package.json",
-                        repository="https://us-west1-npm.pkg.dev/myProject/quickstart-nodejs-repo",
-                    )],
-                    python_packages=[gcp.cloudbuild.TriggerBuildArtifactsPythonPackageArgs(
-                        paths=["dist/*"],
-                        repository="https://us-west1-python.pkg.dev/myProject/quickstart-python-repo",
-                    )],
-                    maven_artifacts=[gcp.cloudbuild.TriggerBuildArtifactsMavenArtifactArgs(
-                        repository="https://us-west1-maven.pkg.dev/myProject/quickstart-java-repo",
-                        path="/workspace/my-app/target/my-app-1.0.SNAPSHOT.jar",
-                        artifact_id="my-app",
-                        group_id="com.mycompany.app",
-                        version="1.0",
-                    )],
-                ),
-                options=gcp.cloudbuild.TriggerBuildOptionsArgs(
-                    source_provenance_hashes=["MD5"],
-                    requested_verify_option="VERIFIED",
-                    machine_type="N1_HIGHCPU_8",
-                    disk_size_gb=100,
-                    substitution_option="ALLOW_LOOSE",
-                    dynamic_substitutions=True,
-                    log_streaming_option="STREAM_OFF",
-                    worker_pool="pool",
-                    logging="LEGACY",
-                    envs=["ekey = evalue"],
-                    secret_envs=["secretenv = svalue"],
-                    volumes=[gcp.cloudbuild.TriggerBuildOptionsVolumeArgs(
-                        name="v1",
-                        path="v1",
-                    )],
-                ),
-            ))
+                }],
+                "availableSecrets": {
+                    "secretManagers": [{
+                        "env": "MY_SECRET",
+                        "versionName": "projects/myProject/secrets/mySecret/versions/latest",
+                    }],
+                },
+                "artifacts": {
+                    "images": ["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
+                    "objects": {
+                        "location": "gs://bucket/path/to/somewhere/",
+                        "paths": ["path"],
+                    },
+                    "npmPackages": [{
+                        "packagePath": "package.json",
+                        "repository": "https://us-west1-npm.pkg.dev/myProject/quickstart-nodejs-repo",
+                    }],
+                    "pythonPackages": [{
+                        "paths": ["dist/*"],
+                        "repository": "https://us-west1-python.pkg.dev/myProject/quickstart-python-repo",
+                    }],
+                    "mavenArtifacts": [{
+                        "repository": "https://us-west1-maven.pkg.dev/myProject/quickstart-java-repo",
+                        "path": "/workspace/my-app/target/my-app-1.0.SNAPSHOT.jar",
+                        "artifactId": "my-app",
+                        "groupId": "com.mycompany.app",
+                        "version": "1.0",
+                    }],
+                },
+                "options": {
+                    "sourceProvenanceHashes": ["MD5"],
+                    "requestedVerifyOption": "VERIFIED",
+                    "machineType": "N1_HIGHCPU_8",
+                    "diskSizeGb": 100,
+                    "substitutionOption": "ALLOW_LOOSE",
+                    "dynamicSubstitutions": True,
+                    "logStreamingOption": "STREAM_OFF",
+                    "workerPool": "pool",
+                    "logging": "LEGACY",
+                    "envs": ["ekey = evalue"],
+                    "secretEnvs": ["secretenv = svalue"],
+                    "volumes": [{
+                        "name": "v1",
+                        "path": "v1",
+                    }],
+                },
+            })
         ```
         ### Cloudbuild Trigger Service Account
 
@@ -1173,10 +1178,10 @@ class Trigger(pulumi.CustomResource):
             role="roles/logging.logWriter",
             member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         service_account_trigger = gcp.cloudbuild.Trigger("service-account-trigger",
-            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
-                branch_name="main",
-                repo_name="my-repo",
-            ),
+            trigger_template={
+                "branchName": "main",
+                "repoName": "my-repo",
+            },
             service_account=cloudbuild_service_account.id,
             filename="cloudbuild.yaml",
             opts = pulumi.ResourceOptions(depends_on=[
@@ -1194,13 +1199,13 @@ class Trigger(pulumi.CustomResource):
             location="us-central1",
             name="include-build-logs-trigger",
             filename="cloudbuild.yaml",
-            github=gcp.cloudbuild.TriggerGithubArgs(
-                owner="hashicorp",
-                name="terraform-provider-google-beta",
-                push=gcp.cloudbuild.TriggerGithubPushArgs(
-                    branch="^main$",
-                ),
-            ),
+            github={
+                "owner": "hashicorp",
+                "name": "terraform-provider-google-beta",
+                "push": {
+                    "branch": "^main$",
+                },
+            },
             include_build_logs="INCLUDE_BUILD_LOGS_WITH_STATUS")
         ```
         ### Cloudbuild Trigger Pubsub Config
@@ -1214,20 +1219,20 @@ class Trigger(pulumi.CustomResource):
             location="us-central1",
             name="pubsub-trigger",
             description="acceptance test example pubsub build trigger",
-            pubsub_config=gcp.cloudbuild.TriggerPubsubConfigArgs(
-                topic=mytopic.id,
-            ),
-            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
-                uri="https://hashicorp/terraform-provider-google-beta",
-                ref="refs/heads/main",
-                repo_type="GITHUB",
-            ),
-            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
-                path="cloudbuild.yaml",
-                uri="https://hashicorp/terraform-provider-google-beta",
-                revision="refs/heads/main",
-                repo_type="GITHUB",
-            ),
+            pubsub_config={
+                "topic": mytopic.id,
+            },
+            source_to_build={
+                "uri": "https://hashicorp/terraform-provider-google-beta",
+                "ref": "refs/heads/main",
+                "repoType": "GITHUB",
+            },
+            git_file_source={
+                "path": "cloudbuild.yaml",
+                "uri": "https://hashicorp/terraform-provider-google-beta",
+                "revision": "refs/heads/main",
+                "repoType": "GITHUB",
+            },
             substitutions={
                 "_ACTION": "$(body.message.data.action)",
             },
@@ -1241,21 +1246,21 @@ class Trigger(pulumi.CustomResource):
 
         webhook_trigger_secret_key = gcp.secretmanager.Secret("webhook_trigger_secret_key",
             secret_id="webhook-trigger-secret-key",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                        location="us-central1",
-                    )],
-                ),
-            ))
+            replication={
+                "userManaged": {
+                    "replicas": [{
+                        "location": "us-central1",
+                    }],
+                },
+            })
         webhook_trigger_secret_key_data = gcp.secretmanager.SecretVersion("webhook_trigger_secret_key_data",
             secret=webhook_trigger_secret_key.id,
             secret_data="secretkeygoeshere")
         project = gcp.organizations.get_project()
-        secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=[f"serviceAccount:service-{project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
-        )])
+        secret_accessor = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": [f"serviceAccount:service-{project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
+        }])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
             project=webhook_trigger_secret_key.project,
             secret_id=webhook_trigger_secret_key.secret_id,
@@ -1263,20 +1268,20 @@ class Trigger(pulumi.CustomResource):
         webhook_config_trigger = gcp.cloudbuild.Trigger("webhook-config-trigger",
             name="webhook-trigger",
             description="acceptance test example webhook build trigger",
-            webhook_config=gcp.cloudbuild.TriggerWebhookConfigArgs(
-                secret=webhook_trigger_secret_key_data.id,
-            ),
-            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
-                uri="https://hashicorp/terraform-provider-google-beta",
-                ref="refs/heads/main",
-                repo_type="GITHUB",
-            ),
-            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
-                path="cloudbuild.yaml",
-                uri="https://hashicorp/terraform-provider-google-beta",
-                revision="refs/heads/main",
-                repo_type="GITHUB",
-            ))
+            webhook_config={
+                "secret": webhook_trigger_secret_key_data.id,
+            },
+            source_to_build={
+                "uri": "https://hashicorp/terraform-provider-google-beta",
+                "ref": "refs/heads/main",
+                "repoType": "GITHUB",
+            },
+            git_file_source={
+                "path": "cloudbuild.yaml",
+                "uri": "https://hashicorp/terraform-provider-google-beta",
+                "revision": "refs/heads/main",
+                "repoType": "GITHUB",
+            })
         ```
         ### Cloudbuild Trigger Manual
 
@@ -1286,20 +1291,20 @@ class Trigger(pulumi.CustomResource):
 
         manual_trigger = gcp.cloudbuild.Trigger("manual-trigger",
             name="manual-trigger",
-            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
-                uri="https://hashicorp/terraform-provider-google-beta",
-                ref="refs/heads/main",
-                repo_type="GITHUB",
-            ),
-            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
-                path="cloudbuild.yaml",
-                uri="https://hashicorp/terraform-provider-google-beta",
-                revision="refs/heads/main",
-                repo_type="GITHUB",
-            ),
-            approval_config=gcp.cloudbuild.TriggerApprovalConfigArgs(
-                approval_required=True,
-            ))
+            source_to_build={
+                "uri": "https://hashicorp/terraform-provider-google-beta",
+                "ref": "refs/heads/main",
+                "repoType": "GITHUB",
+            },
+            git_file_source={
+                "path": "cloudbuild.yaml",
+                "uri": "https://hashicorp/terraform-provider-google-beta",
+                "revision": "refs/heads/main",
+                "repoType": "GITHUB",
+            },
+            approval_config={
+                "approvalRequired": True,
+            })
         ```
         ### Cloudbuild Trigger Manual Github Enterprise
 
@@ -1309,19 +1314,19 @@ class Trigger(pulumi.CustomResource):
 
         manual_ghe_trigger = gcp.cloudbuild.Trigger("manual-ghe-trigger",
             name="",
-            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
-                uri="https://hashicorp/terraform-provider-google-beta",
-                ref="refs/heads/main",
-                repo_type="GITHUB",
-                github_enterprise_config="projects/myProject/locations/global/githubEnterpriseConfigs/configID",
-            ),
-            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
-                path="cloudbuild.yaml",
-                uri="https://hashicorp/terraform-provider-google-beta",
-                revision="refs/heads/main",
-                repo_type="GITHUB",
-                github_enterprise_config="projects/myProject/locations/global/githubEnterpriseConfigs/configID",
-            ))
+            source_to_build={
+                "uri": "https://hashicorp/terraform-provider-google-beta",
+                "ref": "refs/heads/main",
+                "repoType": "GITHUB",
+                "githubEnterpriseConfig": "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+            },
+            git_file_source={
+                "path": "cloudbuild.yaml",
+                "uri": "https://hashicorp/terraform-provider-google-beta",
+                "revision": "refs/heads/main",
+                "repoType": "GITHUB",
+                "githubEnterpriseConfig": "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+            })
         ```
         ### Cloudbuild Trigger Manual Bitbucket Server
 
@@ -1331,19 +1336,19 @@ class Trigger(pulumi.CustomResource):
 
         manual_bitbucket_trigger = gcp.cloudbuild.Trigger("manual-bitbucket-trigger",
             name="terraform-manual-bbs-trigger",
-            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
-                uri="https://bbs.com/scm/stag/test-repo.git",
-                ref="refs/heads/main",
-                repo_type="BITBUCKET_SERVER",
-                bitbucket_server_config="projects/myProject/locations/global/bitbucketServerConfigs/configID",
-            ),
-            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
-                path="cloudbuild.yaml",
-                uri="https://bbs.com/scm/stag/test-repo.git",
-                revision="refs/heads/main",
-                repo_type="BITBUCKET_SERVER",
-                bitbucket_server_config="projects/myProject/locations/global/bitbucketServerConfigs/configID",
-            ))
+            source_to_build={
+                "uri": "https://bbs.com/scm/stag/test-repo.git",
+                "ref": "refs/heads/main",
+                "repoType": "BITBUCKET_SERVER",
+                "bitbucketServerConfig": "projects/myProject/locations/global/bitbucketServerConfigs/configID",
+            },
+            git_file_source={
+                "path": "cloudbuild.yaml",
+                "uri": "https://bbs.com/scm/stag/test-repo.git",
+                "revision": "refs/heads/main",
+                "repoType": "BITBUCKET_SERVER",
+                "bitbucketServerConfig": "projects/myProject/locations/global/bitbucketServerConfigs/configID",
+            })
         ```
         ### Cloudbuild Trigger Repo
 
@@ -1354,24 +1359,24 @@ class Trigger(pulumi.CustomResource):
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-central1",
             name="my-connection",
-            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
-                app_installation_id=123123,
-                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
-                    oauth_token_secret_version="projects/my-project/secrets/github-pat-secret/versions/latest",
-                ),
-            ))
+            github_config={
+                "appInstallationId": 123123,
+                "authorizerCredential": {
+                    "oauthTokenSecretVersion": "projects/my-project/secrets/github-pat-secret/versions/latest",
+                },
+            })
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
             name="my-repo",
             parent_connection=my_connection.id,
             remote_uri="https://github.com/myuser/my-repo.git")
         repo_trigger = gcp.cloudbuild.Trigger("repo-trigger",
             location="us-central1",
-            repository_event_config=gcp.cloudbuild.TriggerRepositoryEventConfigArgs(
-                repository=my_repository.id,
-                push=gcp.cloudbuild.TriggerRepositoryEventConfigPushArgs(
-                    branch="feature-.*",
-                ),
-            ),
+            repository_event_config={
+                "repository": my_repository.id,
+                "push": {
+                    "branch": "feature-.*",
+                },
+            },
             filename="cloudbuild.yaml")
         ```
         ### Cloudbuild Trigger Bitbucket Server Push
@@ -1383,15 +1388,15 @@ class Trigger(pulumi.CustomResource):
         bbs_push_trigger = gcp.cloudbuild.Trigger("bbs-push-trigger",
             name="bbs-push-trigger",
             location="us-central1",
-            bitbucket_server_trigger_config=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigArgs(
-                repo_slug="bbs-push-trigger",
-                project_key="STAG",
-                bitbucket_server_config_resource="projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
-                push=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigPushArgs(
-                    tag="^0.1.*",
-                    invert_regex=True,
-                ),
-            ),
+            bitbucket_server_trigger_config={
+                "repoSlug": "bbs-push-trigger",
+                "projectKey": "STAG",
+                "bitbucketServerConfigResource": "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+                "push": {
+                    "tag": "^0.1.*",
+                    "invertRegex": True,
+                },
+            },
             filename="cloudbuild.yaml")
         ```
         ### Cloudbuild Trigger Bitbucket Server Pull Request
@@ -1403,16 +1408,16 @@ class Trigger(pulumi.CustomResource):
         bbs_pull_request_trigger = gcp.cloudbuild.Trigger("bbs-pull-request-trigger",
             name="ghe-trigger",
             location="us-central1",
-            bitbucket_server_trigger_config=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigArgs(
-                repo_slug="terraform-provider-google",
-                project_key="STAG",
-                bitbucket_server_config_resource="projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
-                pull_request=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigPullRequestArgs(
-                    branch="^master$",
-                    invert_regex=False,
-                    comment_control="COMMENTS_ENABLED",
-                ),
-            ),
+            bitbucket_server_trigger_config={
+                "repoSlug": "terraform-provider-google",
+                "projectKey": "STAG",
+                "bitbucketServerConfigResource": "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+                "pullRequest": {
+                    "branch": "^master$",
+                    "invertRegex": False,
+                    "commentControl": "COMMENTS_ENABLED",
+                },
+            },
             filename="cloudbuild.yaml")
         ```
         ### Cloudbuild Trigger Github Enterprise
@@ -1424,14 +1429,14 @@ class Trigger(pulumi.CustomResource):
         ghe_trigger = gcp.cloudbuild.Trigger("ghe-trigger",
             name="ghe-trigger",
             location="us-central1",
-            github=gcp.cloudbuild.TriggerGithubArgs(
-                owner="hashicorp",
-                name="terraform-provider-google",
-                push=gcp.cloudbuild.TriggerGithubPushArgs(
-                    branch="^main$",
-                ),
-                enterprise_config_resource_name="projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID",
-            ),
+            github={
+                "owner": "hashicorp",
+                "name": "terraform-provider-google",
+                "push": {
+                    "branch": "^main$",
+                },
+                "enterpriseConfigResourceName": "projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID",
+            },
             filename="cloudbuild.yaml")
         ```
         ### Cloudbuild Trigger Allow Failure
@@ -1443,72 +1448,72 @@ class Trigger(pulumi.CustomResource):
         allow_failure_trigger = gcp.cloudbuild.Trigger("allow-failure-trigger",
             name="my-trigger",
             location="global",
-            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
-                branch_name="main",
-                repo_name="my-repo",
-            ),
-            build=gcp.cloudbuild.TriggerBuildArgs(
-                steps=[gcp.cloudbuild.TriggerBuildStepArgs(
-                    name="ubuntu",
-                    args=[
+            trigger_template={
+                "branchName": "main",
+                "repoName": "my-repo",
+            },
+            build={
+                "steps": [{
+                    "name": "ubuntu",
+                    "args": [
                         "-c",
                         "exit 1",
                     ],
-                    allow_failure=True,
-                )],
-                source=gcp.cloudbuild.TriggerBuildSourceArgs(
-                    storage_source=gcp.cloudbuild.TriggerBuildSourceStorageSourceArgs(
-                        bucket="mybucket",
-                        object="source_code.tar.gz",
-                    ),
-                ),
-                tags=[
+                    "allowFailure": True,
+                }],
+                "source": {
+                    "storageSource": {
+                        "bucket": "mybucket",
+                        "object": "source_code.tar.gz",
+                    },
+                },
+                "tags": [
                     "build",
                     "newFeature",
                 ],
-                substitutions={
+                "substitutions": {
                     "_FOO": "bar",
                     "_BAZ": "qux",
                 },
-                queue_ttl="20s",
-                logs_bucket="gs://mybucket/logs",
-                secrets=[gcp.cloudbuild.TriggerBuildSecretArgs(
-                    kms_key_name="projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
-                    secret_env={
+                "queueTtl": "20s",
+                "logsBucket": "gs://mybucket/logs",
+                "secrets": [{
+                    "kmsKeyName": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
+                    "secretEnv": {
                         "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
                     },
-                )],
-                available_secrets=gcp.cloudbuild.TriggerBuildAvailableSecretsArgs(
-                    secret_managers=[gcp.cloudbuild.TriggerBuildAvailableSecretsSecretManagerArgs(
-                        env="MY_SECRET",
-                        version_name="projects/myProject/secrets/mySecret/versions/latest",
-                    )],
-                ),
-                artifacts=gcp.cloudbuild.TriggerBuildArtifactsArgs(
-                    images=["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
-                    objects=gcp.cloudbuild.TriggerBuildArtifactsObjectsArgs(
-                        location="gs://bucket/path/to/somewhere/",
-                        paths=["path"],
-                    ),
-                ),
-                options=gcp.cloudbuild.TriggerBuildOptionsArgs(
-                    source_provenance_hashes=["MD5"],
-                    requested_verify_option="VERIFIED",
-                    machine_type="N1_HIGHCPU_8",
-                    disk_size_gb=100,
-                    substitution_option="ALLOW_LOOSE",
-                    dynamic_substitutions=True,
-                    log_streaming_option="STREAM_OFF",
-                    worker_pool="pool",
-                    logging="LEGACY",
-                    envs=["ekey = evalue"],
-                    secret_envs=["secretenv = svalue"],
-                    volumes=[gcp.cloudbuild.TriggerBuildOptionsVolumeArgs(
-                        name="v1",
-                        path="v1",
-                    )],
-                ),
-            ))
+                }],
+                "availableSecrets": {
+                    "secretManagers": [{
+                        "env": "MY_SECRET",
+                        "versionName": "projects/myProject/secrets/mySecret/versions/latest",
+                    }],
+                },
+                "artifacts": {
+                    "images": ["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
+                    "objects": {
+                        "location": "gs://bucket/path/to/somewhere/",
+                        "paths": ["path"],
+                    },
+                },
+                "options": {
+                    "sourceProvenanceHashes": ["MD5"],
+                    "requestedVerifyOption": "VERIFIED",
+                    "machineType": "N1_HIGHCPU_8",
+                    "diskSizeGb": 100,
+                    "substitutionOption": "ALLOW_LOOSE",
+                    "dynamicSubstitutions": True,
+                    "logStreamingOption": "STREAM_OFF",
+                    "workerPool": "pool",
+                    "logging": "LEGACY",
+                    "envs": ["ekey = evalue"],
+                    "secretEnvs": ["secretenv = svalue"],
+                    "volumes": [{
+                        "name": "v1",
+                        "path": "v1",
+                    }],
+                },
+            })
         ```
         ### Cloudbuild Trigger Allow Exit Codes
 
@@ -1519,75 +1524,75 @@ class Trigger(pulumi.CustomResource):
         allow_exit_codes_trigger = gcp.cloudbuild.Trigger("allow-exit-codes-trigger",
             name="my-trigger",
             location="global",
-            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
-                branch_name="main",
-                repo_name="my-repo",
-            ),
-            build=gcp.cloudbuild.TriggerBuildArgs(
-                steps=[gcp.cloudbuild.TriggerBuildStepArgs(
-                    name="ubuntu",
-                    args=[
+            trigger_template={
+                "branchName": "main",
+                "repoName": "my-repo",
+            },
+            build={
+                "steps": [{
+                    "name": "ubuntu",
+                    "args": [
                         "-c",
                         "exit 1",
                     ],
-                    allow_exit_codes=[
+                    "allowExitCodes": [
                         1,
                         3,
                     ],
-                )],
-                source=gcp.cloudbuild.TriggerBuildSourceArgs(
-                    storage_source=gcp.cloudbuild.TriggerBuildSourceStorageSourceArgs(
-                        bucket="mybucket",
-                        object="source_code.tar.gz",
-                    ),
-                ),
-                tags=[
+                }],
+                "source": {
+                    "storageSource": {
+                        "bucket": "mybucket",
+                        "object": "source_code.tar.gz",
+                    },
+                },
+                "tags": [
                     "build",
                     "newFeature",
                 ],
-                substitutions={
+                "substitutions": {
                     "_FOO": "bar",
                     "_BAZ": "qux",
                 },
-                queue_ttl="20s",
-                logs_bucket="gs://mybucket/logs",
-                secrets=[gcp.cloudbuild.TriggerBuildSecretArgs(
-                    kms_key_name="projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
-                    secret_env={
+                "queueTtl": "20s",
+                "logsBucket": "gs://mybucket/logs",
+                "secrets": [{
+                    "kmsKeyName": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
+                    "secretEnv": {
                         "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
                     },
-                )],
-                available_secrets=gcp.cloudbuild.TriggerBuildAvailableSecretsArgs(
-                    secret_managers=[gcp.cloudbuild.TriggerBuildAvailableSecretsSecretManagerArgs(
-                        env="MY_SECRET",
-                        version_name="projects/myProject/secrets/mySecret/versions/latest",
-                    )],
-                ),
-                artifacts=gcp.cloudbuild.TriggerBuildArtifactsArgs(
-                    images=["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
-                    objects=gcp.cloudbuild.TriggerBuildArtifactsObjectsArgs(
-                        location="gs://bucket/path/to/somewhere/",
-                        paths=["path"],
-                    ),
-                ),
-                options=gcp.cloudbuild.TriggerBuildOptionsArgs(
-                    source_provenance_hashes=["MD5"],
-                    requested_verify_option="VERIFIED",
-                    machine_type="N1_HIGHCPU_8",
-                    disk_size_gb=100,
-                    substitution_option="ALLOW_LOOSE",
-                    dynamic_substitutions=True,
-                    log_streaming_option="STREAM_OFF",
-                    worker_pool="pool",
-                    logging="LEGACY",
-                    envs=["ekey = evalue"],
-                    secret_envs=["secretenv = svalue"],
-                    volumes=[gcp.cloudbuild.TriggerBuildOptionsVolumeArgs(
-                        name="v1",
-                        path="v1",
-                    )],
-                ),
-            ))
+                }],
+                "availableSecrets": {
+                    "secretManagers": [{
+                        "env": "MY_SECRET",
+                        "versionName": "projects/myProject/secrets/mySecret/versions/latest",
+                    }],
+                },
+                "artifacts": {
+                    "images": ["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
+                    "objects": {
+                        "location": "gs://bucket/path/to/somewhere/",
+                        "paths": ["path"],
+                    },
+                },
+                "options": {
+                    "sourceProvenanceHashes": ["MD5"],
+                    "requestedVerifyOption": "VERIFIED",
+                    "machineType": "N1_HIGHCPU_8",
+                    "diskSizeGb": 100,
+                    "substitutionOption": "ALLOW_LOOSE",
+                    "dynamicSubstitutions": True,
+                    "logStreamingOption": "STREAM_OFF",
+                    "workerPool": "pool",
+                    "logging": "LEGACY",
+                    "envs": ["ekey = evalue"],
+                    "secretEnvs": ["secretenv = svalue"],
+                    "volumes": [{
+                        "name": "v1",
+                        "path": "v1",
+                    }],
+                },
+            })
         ```
         ### Cloudbuild Trigger Pubsub With Repo
 
@@ -1598,12 +1603,12 @@ class Trigger(pulumi.CustomResource):
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-central1",
             name="my-connection",
-            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
-                app_installation_id=123123,
-                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
-                    oauth_token_secret_version="projects/my-project/secrets/github-pat-secret/versions/latest",
-                ),
-            ))
+            github_config={
+                "appInstallationId": 123123,
+                "authorizerCredential": {
+                    "oauthTokenSecretVersion": "projects/my-project/secrets/github-pat-secret/versions/latest",
+                },
+            })
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
             name="my-repo",
             parent_connection=my_connection.id,
@@ -1612,20 +1617,20 @@ class Trigger(pulumi.CustomResource):
         pubsub_with_repo_trigger = gcp.cloudbuild.Trigger("pubsub-with-repo-trigger",
             name="pubsub-with-repo-trigger",
             location="us-central1",
-            pubsub_config=gcp.cloudbuild.TriggerPubsubConfigArgs(
-                topic=mytopic.id,
-            ),
-            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
-                repository=my_repository.id,
-                ref="refs/heads/main",
-                repo_type="GITHUB",
-            ),
-            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
-                path="cloudbuild.yaml",
-                repository=my_repository.id,
-                revision="refs/heads/main",
-                repo_type="GITHUB",
-            ))
+            pubsub_config={
+                "topic": mytopic.id,
+            },
+            source_to_build={
+                "repository": my_repository.id,
+                "ref": "refs/heads/main",
+                "repoType": "GITHUB",
+            },
+            git_file_source={
+                "path": "cloudbuild.yaml",
+                "repository": my_repository.id,
+                "revision": "refs/heads/main",
+                "repoType": "GITHUB",
+            })
         ```
 
         ## Import
@@ -1660,13 +1665,13 @@ class Trigger(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['TriggerApprovalConfigArgs']] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
+        :param pulumi.Input[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict']] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
                Builds created by this trigger will require approval before they execute.
                Any user with a Cloud Build Approver role for the project can approve a build.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['TriggerBitbucketServerTriggerConfigArgs']] bitbucket_server_trigger_config: BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+        :param pulumi.Input[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict']] bitbucket_server_trigger_config: BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['TriggerBuildArgs']] build: Contents of the build template. Either a filename or build template must be provided.
+        :param pulumi.Input[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']] build: Contents of the build template. Either a filename or build template must be provided.
                Structure is documented below.
         :param pulumi.Input[str] description: Human-readable description of the trigger.
         :param pulumi.Input[bool] disabled: Whether the trigger is disabled or not. If true, the trigger will never result in a build.
@@ -1674,9 +1679,9 @@ class Trigger(pulumi.CustomResource):
                Either a filename or build template must be provided. Set this only when using trigger_template or github.
                When using Pub/Sub, Webhook or Manual set the file name using git_file_source instead.
         :param pulumi.Input[str] filter: A Common Expression Language string. Used only with Pub/Sub and Webhook.
-        :param pulumi.Input[pulumi.InputType['TriggerGitFileSourceArgs']] git_file_source: The file source describing the local or remote Build template.
+        :param pulumi.Input[Union['TriggerGitFileSourceArgs', 'TriggerGitFileSourceArgsDict']] git_file_source: The file source describing the local or remote Build template.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['TriggerGithubArgs']] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+        :param pulumi.Input[Union['TriggerGithubArgs', 'TriggerGithubArgsDict']] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
                One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
@@ -1704,18 +1709,18 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the trigger. Must be unique within the project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['TriggerPubsubConfigArgs']] pubsub_config: PubsubConfig describes the configuration of a trigger that creates
+        :param pulumi.Input[Union['TriggerPubsubConfigArgs', 'TriggerPubsubConfigArgsDict']] pubsub_config: PubsubConfig describes the configuration of a trigger that creates
                a build whenever a Pub/Sub message is published.
                One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['TriggerRepositoryEventConfigArgs']] repository_event_config: The configuration of a trigger that creates a build whenever an event from Repo API is received.
+        :param pulumi.Input[Union['TriggerRepositoryEventConfigArgs', 'TriggerRepositoryEventConfigArgsDict']] repository_event_config: The configuration of a trigger that creates a build whenever an event from Repo API is received.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account used for all user-controlled operations including
                triggers.patch, triggers.run, builds.create, and builds.cancel.
                If no service account is set, then the standard Cloud Build service account
                ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
                Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
-        :param pulumi.Input[pulumi.InputType['TriggerSourceToBuildArgs']] source_to_build: The repo and ref of the repository from which to build.
+        :param pulumi.Input[Union['TriggerSourceToBuildArgs', 'TriggerSourceToBuildArgsDict']] source_to_build: The repo and ref of the repository from which to build.
                This field is used only for those triggers that do not respond to SCM events.
                Triggers that respond to such events build source at whatever commit caused the event.
                This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
@@ -1723,13 +1728,13 @@ class Trigger(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions data for Build resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a BuildTrigger
-        :param pulumi.Input[pulumi.InputType['TriggerTriggerTemplateArgs']] trigger_template: Template describing the types of source changes to trigger a build.
+        :param pulumi.Input[Union['TriggerTriggerTemplateArgs', 'TriggerTriggerTemplateArgsDict']] trigger_template: Template describing the types of source changes to trigger a build.
                Branch and tag names in trigger templates are interpreted as regular
                expressions. Any branch or tag change that matches that regular
                expression will trigger a build.
                One of `trigger_template`, `github`, `pubsub_config`, `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['TriggerWebhookConfigArgs']] webhook_config: WebhookConfig describes the configuration of a trigger that creates
+        :param pulumi.Input[Union['TriggerWebhookConfigArgs', 'TriggerWebhookConfigArgsDict']] webhook_config: WebhookConfig describes the configuration of a trigger that creates
                a build whenever a webhook is sent to a trigger's webhook URL.
                One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
@@ -1761,10 +1766,10 @@ class Trigger(pulumi.CustomResource):
 
         filename_trigger = gcp.cloudbuild.Trigger("filename-trigger",
             location="us-central1",
-            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
-                branch_name="main",
-                repo_name="my-repo",
-            ),
+            trigger_template={
+                "branchName": "main",
+                "repoName": "my-repo",
+            },
             substitutions={
                 "_FOO": "bar",
                 "_BAZ": "qux",
@@ -1780,95 +1785,95 @@ class Trigger(pulumi.CustomResource):
         build_trigger = gcp.cloudbuild.Trigger("build-trigger",
             name="my-trigger",
             location="global",
-            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
-                branch_name="main",
-                repo_name="my-repo",
-            ),
-            build=gcp.cloudbuild.TriggerBuildArgs(
-                steps=[
-                    gcp.cloudbuild.TriggerBuildStepArgs(
-                        name="gcr.io/cloud-builders/gsutil",
-                        args=[
+            trigger_template={
+                "branchName": "main",
+                "repoName": "my-repo",
+            },
+            build={
+                "steps": [
+                    {
+                        "name": "gcr.io/cloud-builders/gsutil",
+                        "args": [
                             "cp",
                             "gs://mybucket/remotefile.zip",
                             "localfile.zip",
                         ],
-                        timeout="120s",
-                        secret_envs=["MY_SECRET"],
-                    ),
-                    gcp.cloudbuild.TriggerBuildStepArgs(
-                        name="ubuntu",
-                        script="echo hello",
-                    ),
+                        "timeout": "120s",
+                        "secretEnvs": ["MY_SECRET"],
+                    },
+                    {
+                        "name": "ubuntu",
+                        "script": "echo hello",
+                    },
                 ],
-                source=gcp.cloudbuild.TriggerBuildSourceArgs(
-                    storage_source=gcp.cloudbuild.TriggerBuildSourceStorageSourceArgs(
-                        bucket="mybucket",
-                        object="source_code.tar.gz",
-                    ),
-                ),
-                tags=[
+                "source": {
+                    "storageSource": {
+                        "bucket": "mybucket",
+                        "object": "source_code.tar.gz",
+                    },
+                },
+                "tags": [
                     "build",
                     "newFeature",
                 ],
-                substitutions={
+                "substitutions": {
                     "_FOO": "bar",
                     "_BAZ": "qux",
                 },
-                queue_ttl="20s",
-                logs_bucket="gs://mybucket/logs",
-                secrets=[gcp.cloudbuild.TriggerBuildSecretArgs(
-                    kms_key_name="projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
-                    secret_env={
+                "queueTtl": "20s",
+                "logsBucket": "gs://mybucket/logs",
+                "secrets": [{
+                    "kmsKeyName": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
+                    "secretEnv": {
                         "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
                     },
-                )],
-                available_secrets=gcp.cloudbuild.TriggerBuildAvailableSecretsArgs(
-                    secret_managers=[gcp.cloudbuild.TriggerBuildAvailableSecretsSecretManagerArgs(
-                        env="MY_SECRET",
-                        version_name="projects/myProject/secrets/mySecret/versions/latest",
-                    )],
-                ),
-                artifacts=gcp.cloudbuild.TriggerBuildArtifactsArgs(
-                    images=["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
-                    objects=gcp.cloudbuild.TriggerBuildArtifactsObjectsArgs(
-                        location="gs://bucket/path/to/somewhere/",
-                        paths=["path"],
-                    ),
-                    npm_packages=[gcp.cloudbuild.TriggerBuildArtifactsNpmPackageArgs(
-                        package_path="package.json",
-                        repository="https://us-west1-npm.pkg.dev/myProject/quickstart-nodejs-repo",
-                    )],
-                    python_packages=[gcp.cloudbuild.TriggerBuildArtifactsPythonPackageArgs(
-                        paths=["dist/*"],
-                        repository="https://us-west1-python.pkg.dev/myProject/quickstart-python-repo",
-                    )],
-                    maven_artifacts=[gcp.cloudbuild.TriggerBuildArtifactsMavenArtifactArgs(
-                        repository="https://us-west1-maven.pkg.dev/myProject/quickstart-java-repo",
-                        path="/workspace/my-app/target/my-app-1.0.SNAPSHOT.jar",
-                        artifact_id="my-app",
-                        group_id="com.mycompany.app",
-                        version="1.0",
-                    )],
-                ),
-                options=gcp.cloudbuild.TriggerBuildOptionsArgs(
-                    source_provenance_hashes=["MD5"],
-                    requested_verify_option="VERIFIED",
-                    machine_type="N1_HIGHCPU_8",
-                    disk_size_gb=100,
-                    substitution_option="ALLOW_LOOSE",
-                    dynamic_substitutions=True,
-                    log_streaming_option="STREAM_OFF",
-                    worker_pool="pool",
-                    logging="LEGACY",
-                    envs=["ekey = evalue"],
-                    secret_envs=["secretenv = svalue"],
-                    volumes=[gcp.cloudbuild.TriggerBuildOptionsVolumeArgs(
-                        name="v1",
-                        path="v1",
-                    )],
-                ),
-            ))
+                }],
+                "availableSecrets": {
+                    "secretManagers": [{
+                        "env": "MY_SECRET",
+                        "versionName": "projects/myProject/secrets/mySecret/versions/latest",
+                    }],
+                },
+                "artifacts": {
+                    "images": ["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
+                    "objects": {
+                        "location": "gs://bucket/path/to/somewhere/",
+                        "paths": ["path"],
+                    },
+                    "npmPackages": [{
+                        "packagePath": "package.json",
+                        "repository": "https://us-west1-npm.pkg.dev/myProject/quickstart-nodejs-repo",
+                    }],
+                    "pythonPackages": [{
+                        "paths": ["dist/*"],
+                        "repository": "https://us-west1-python.pkg.dev/myProject/quickstart-python-repo",
+                    }],
+                    "mavenArtifacts": [{
+                        "repository": "https://us-west1-maven.pkg.dev/myProject/quickstart-java-repo",
+                        "path": "/workspace/my-app/target/my-app-1.0.SNAPSHOT.jar",
+                        "artifactId": "my-app",
+                        "groupId": "com.mycompany.app",
+                        "version": "1.0",
+                    }],
+                },
+                "options": {
+                    "sourceProvenanceHashes": ["MD5"],
+                    "requestedVerifyOption": "VERIFIED",
+                    "machineType": "N1_HIGHCPU_8",
+                    "diskSizeGb": 100,
+                    "substitutionOption": "ALLOW_LOOSE",
+                    "dynamicSubstitutions": True,
+                    "logStreamingOption": "STREAM_OFF",
+                    "workerPool": "pool",
+                    "logging": "LEGACY",
+                    "envs": ["ekey = evalue"],
+                    "secretEnvs": ["secretenv = svalue"],
+                    "volumes": [{
+                        "name": "v1",
+                        "path": "v1",
+                    }],
+                },
+            })
         ```
         ### Cloudbuild Trigger Service Account
 
@@ -1887,10 +1892,10 @@ class Trigger(pulumi.CustomResource):
             role="roles/logging.logWriter",
             member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         service_account_trigger = gcp.cloudbuild.Trigger("service-account-trigger",
-            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
-                branch_name="main",
-                repo_name="my-repo",
-            ),
+            trigger_template={
+                "branchName": "main",
+                "repoName": "my-repo",
+            },
             service_account=cloudbuild_service_account.id,
             filename="cloudbuild.yaml",
             opts = pulumi.ResourceOptions(depends_on=[
@@ -1908,13 +1913,13 @@ class Trigger(pulumi.CustomResource):
             location="us-central1",
             name="include-build-logs-trigger",
             filename="cloudbuild.yaml",
-            github=gcp.cloudbuild.TriggerGithubArgs(
-                owner="hashicorp",
-                name="terraform-provider-google-beta",
-                push=gcp.cloudbuild.TriggerGithubPushArgs(
-                    branch="^main$",
-                ),
-            ),
+            github={
+                "owner": "hashicorp",
+                "name": "terraform-provider-google-beta",
+                "push": {
+                    "branch": "^main$",
+                },
+            },
             include_build_logs="INCLUDE_BUILD_LOGS_WITH_STATUS")
         ```
         ### Cloudbuild Trigger Pubsub Config
@@ -1928,20 +1933,20 @@ class Trigger(pulumi.CustomResource):
             location="us-central1",
             name="pubsub-trigger",
             description="acceptance test example pubsub build trigger",
-            pubsub_config=gcp.cloudbuild.TriggerPubsubConfigArgs(
-                topic=mytopic.id,
-            ),
-            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
-                uri="https://hashicorp/terraform-provider-google-beta",
-                ref="refs/heads/main",
-                repo_type="GITHUB",
-            ),
-            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
-                path="cloudbuild.yaml",
-                uri="https://hashicorp/terraform-provider-google-beta",
-                revision="refs/heads/main",
-                repo_type="GITHUB",
-            ),
+            pubsub_config={
+                "topic": mytopic.id,
+            },
+            source_to_build={
+                "uri": "https://hashicorp/terraform-provider-google-beta",
+                "ref": "refs/heads/main",
+                "repoType": "GITHUB",
+            },
+            git_file_source={
+                "path": "cloudbuild.yaml",
+                "uri": "https://hashicorp/terraform-provider-google-beta",
+                "revision": "refs/heads/main",
+                "repoType": "GITHUB",
+            },
             substitutions={
                 "_ACTION": "$(body.message.data.action)",
             },
@@ -1955,21 +1960,21 @@ class Trigger(pulumi.CustomResource):
 
         webhook_trigger_secret_key = gcp.secretmanager.Secret("webhook_trigger_secret_key",
             secret_id="webhook-trigger-secret-key",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                        location="us-central1",
-                    )],
-                ),
-            ))
+            replication={
+                "userManaged": {
+                    "replicas": [{
+                        "location": "us-central1",
+                    }],
+                },
+            })
         webhook_trigger_secret_key_data = gcp.secretmanager.SecretVersion("webhook_trigger_secret_key_data",
             secret=webhook_trigger_secret_key.id,
             secret_data="secretkeygoeshere")
         project = gcp.organizations.get_project()
-        secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=[f"serviceAccount:service-{project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
-        )])
+        secret_accessor = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": [f"serviceAccount:service-{project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
+        }])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
             project=webhook_trigger_secret_key.project,
             secret_id=webhook_trigger_secret_key.secret_id,
@@ -1977,20 +1982,20 @@ class Trigger(pulumi.CustomResource):
         webhook_config_trigger = gcp.cloudbuild.Trigger("webhook-config-trigger",
             name="webhook-trigger",
             description="acceptance test example webhook build trigger",
-            webhook_config=gcp.cloudbuild.TriggerWebhookConfigArgs(
-                secret=webhook_trigger_secret_key_data.id,
-            ),
-            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
-                uri="https://hashicorp/terraform-provider-google-beta",
-                ref="refs/heads/main",
-                repo_type="GITHUB",
-            ),
-            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
-                path="cloudbuild.yaml",
-                uri="https://hashicorp/terraform-provider-google-beta",
-                revision="refs/heads/main",
-                repo_type="GITHUB",
-            ))
+            webhook_config={
+                "secret": webhook_trigger_secret_key_data.id,
+            },
+            source_to_build={
+                "uri": "https://hashicorp/terraform-provider-google-beta",
+                "ref": "refs/heads/main",
+                "repoType": "GITHUB",
+            },
+            git_file_source={
+                "path": "cloudbuild.yaml",
+                "uri": "https://hashicorp/terraform-provider-google-beta",
+                "revision": "refs/heads/main",
+                "repoType": "GITHUB",
+            })
         ```
         ### Cloudbuild Trigger Manual
 
@@ -2000,20 +2005,20 @@ class Trigger(pulumi.CustomResource):
 
         manual_trigger = gcp.cloudbuild.Trigger("manual-trigger",
             name="manual-trigger",
-            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
-                uri="https://hashicorp/terraform-provider-google-beta",
-                ref="refs/heads/main",
-                repo_type="GITHUB",
-            ),
-            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
-                path="cloudbuild.yaml",
-                uri="https://hashicorp/terraform-provider-google-beta",
-                revision="refs/heads/main",
-                repo_type="GITHUB",
-            ),
-            approval_config=gcp.cloudbuild.TriggerApprovalConfigArgs(
-                approval_required=True,
-            ))
+            source_to_build={
+                "uri": "https://hashicorp/terraform-provider-google-beta",
+                "ref": "refs/heads/main",
+                "repoType": "GITHUB",
+            },
+            git_file_source={
+                "path": "cloudbuild.yaml",
+                "uri": "https://hashicorp/terraform-provider-google-beta",
+                "revision": "refs/heads/main",
+                "repoType": "GITHUB",
+            },
+            approval_config={
+                "approvalRequired": True,
+            })
         ```
         ### Cloudbuild Trigger Manual Github Enterprise
 
@@ -2023,19 +2028,19 @@ class Trigger(pulumi.CustomResource):
 
         manual_ghe_trigger = gcp.cloudbuild.Trigger("manual-ghe-trigger",
             name="",
-            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
-                uri="https://hashicorp/terraform-provider-google-beta",
-                ref="refs/heads/main",
-                repo_type="GITHUB",
-                github_enterprise_config="projects/myProject/locations/global/githubEnterpriseConfigs/configID",
-            ),
-            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
-                path="cloudbuild.yaml",
-                uri="https://hashicorp/terraform-provider-google-beta",
-                revision="refs/heads/main",
-                repo_type="GITHUB",
-                github_enterprise_config="projects/myProject/locations/global/githubEnterpriseConfigs/configID",
-            ))
+            source_to_build={
+                "uri": "https://hashicorp/terraform-provider-google-beta",
+                "ref": "refs/heads/main",
+                "repoType": "GITHUB",
+                "githubEnterpriseConfig": "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+            },
+            git_file_source={
+                "path": "cloudbuild.yaml",
+                "uri": "https://hashicorp/terraform-provider-google-beta",
+                "revision": "refs/heads/main",
+                "repoType": "GITHUB",
+                "githubEnterpriseConfig": "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+            })
         ```
         ### Cloudbuild Trigger Manual Bitbucket Server
 
@@ -2045,19 +2050,19 @@ class Trigger(pulumi.CustomResource):
 
         manual_bitbucket_trigger = gcp.cloudbuild.Trigger("manual-bitbucket-trigger",
             name="terraform-manual-bbs-trigger",
-            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
-                uri="https://bbs.com/scm/stag/test-repo.git",
-                ref="refs/heads/main",
-                repo_type="BITBUCKET_SERVER",
-                bitbucket_server_config="projects/myProject/locations/global/bitbucketServerConfigs/configID",
-            ),
-            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
-                path="cloudbuild.yaml",
-                uri="https://bbs.com/scm/stag/test-repo.git",
-                revision="refs/heads/main",
-                repo_type="BITBUCKET_SERVER",
-                bitbucket_server_config="projects/myProject/locations/global/bitbucketServerConfigs/configID",
-            ))
+            source_to_build={
+                "uri": "https://bbs.com/scm/stag/test-repo.git",
+                "ref": "refs/heads/main",
+                "repoType": "BITBUCKET_SERVER",
+                "bitbucketServerConfig": "projects/myProject/locations/global/bitbucketServerConfigs/configID",
+            },
+            git_file_source={
+                "path": "cloudbuild.yaml",
+                "uri": "https://bbs.com/scm/stag/test-repo.git",
+                "revision": "refs/heads/main",
+                "repoType": "BITBUCKET_SERVER",
+                "bitbucketServerConfig": "projects/myProject/locations/global/bitbucketServerConfigs/configID",
+            })
         ```
         ### Cloudbuild Trigger Repo
 
@@ -2068,24 +2073,24 @@ class Trigger(pulumi.CustomResource):
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-central1",
             name="my-connection",
-            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
-                app_installation_id=123123,
-                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
-                    oauth_token_secret_version="projects/my-project/secrets/github-pat-secret/versions/latest",
-                ),
-            ))
+            github_config={
+                "appInstallationId": 123123,
+                "authorizerCredential": {
+                    "oauthTokenSecretVersion": "projects/my-project/secrets/github-pat-secret/versions/latest",
+                },
+            })
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
             name="my-repo",
             parent_connection=my_connection.id,
             remote_uri="https://github.com/myuser/my-repo.git")
         repo_trigger = gcp.cloudbuild.Trigger("repo-trigger",
             location="us-central1",
-            repository_event_config=gcp.cloudbuild.TriggerRepositoryEventConfigArgs(
-                repository=my_repository.id,
-                push=gcp.cloudbuild.TriggerRepositoryEventConfigPushArgs(
-                    branch="feature-.*",
-                ),
-            ),
+            repository_event_config={
+                "repository": my_repository.id,
+                "push": {
+                    "branch": "feature-.*",
+                },
+            },
             filename="cloudbuild.yaml")
         ```
         ### Cloudbuild Trigger Bitbucket Server Push
@@ -2097,15 +2102,15 @@ class Trigger(pulumi.CustomResource):
         bbs_push_trigger = gcp.cloudbuild.Trigger("bbs-push-trigger",
             name="bbs-push-trigger",
             location="us-central1",
-            bitbucket_server_trigger_config=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigArgs(
-                repo_slug="bbs-push-trigger",
-                project_key="STAG",
-                bitbucket_server_config_resource="projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
-                push=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigPushArgs(
-                    tag="^0.1.*",
-                    invert_regex=True,
-                ),
-            ),
+            bitbucket_server_trigger_config={
+                "repoSlug": "bbs-push-trigger",
+                "projectKey": "STAG",
+                "bitbucketServerConfigResource": "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+                "push": {
+                    "tag": "^0.1.*",
+                    "invertRegex": True,
+                },
+            },
             filename="cloudbuild.yaml")
         ```
         ### Cloudbuild Trigger Bitbucket Server Pull Request
@@ -2117,16 +2122,16 @@ class Trigger(pulumi.CustomResource):
         bbs_pull_request_trigger = gcp.cloudbuild.Trigger("bbs-pull-request-trigger",
             name="ghe-trigger",
             location="us-central1",
-            bitbucket_server_trigger_config=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigArgs(
-                repo_slug="terraform-provider-google",
-                project_key="STAG",
-                bitbucket_server_config_resource="projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
-                pull_request=gcp.cloudbuild.TriggerBitbucketServerTriggerConfigPullRequestArgs(
-                    branch="^master$",
-                    invert_regex=False,
-                    comment_control="COMMENTS_ENABLED",
-                ),
-            ),
+            bitbucket_server_trigger_config={
+                "repoSlug": "terraform-provider-google",
+                "projectKey": "STAG",
+                "bitbucketServerConfigResource": "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+                "pullRequest": {
+                    "branch": "^master$",
+                    "invertRegex": False,
+                    "commentControl": "COMMENTS_ENABLED",
+                },
+            },
             filename="cloudbuild.yaml")
         ```
         ### Cloudbuild Trigger Github Enterprise
@@ -2138,14 +2143,14 @@ class Trigger(pulumi.CustomResource):
         ghe_trigger = gcp.cloudbuild.Trigger("ghe-trigger",
             name="ghe-trigger",
             location="us-central1",
-            github=gcp.cloudbuild.TriggerGithubArgs(
-                owner="hashicorp",
-                name="terraform-provider-google",
-                push=gcp.cloudbuild.TriggerGithubPushArgs(
-                    branch="^main$",
-                ),
-                enterprise_config_resource_name="projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID",
-            ),
+            github={
+                "owner": "hashicorp",
+                "name": "terraform-provider-google",
+                "push": {
+                    "branch": "^main$",
+                },
+                "enterpriseConfigResourceName": "projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID",
+            },
             filename="cloudbuild.yaml")
         ```
         ### Cloudbuild Trigger Allow Failure
@@ -2157,72 +2162,72 @@ class Trigger(pulumi.CustomResource):
         allow_failure_trigger = gcp.cloudbuild.Trigger("allow-failure-trigger",
             name="my-trigger",
             location="global",
-            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
-                branch_name="main",
-                repo_name="my-repo",
-            ),
-            build=gcp.cloudbuild.TriggerBuildArgs(
-                steps=[gcp.cloudbuild.TriggerBuildStepArgs(
-                    name="ubuntu",
-                    args=[
+            trigger_template={
+                "branchName": "main",
+                "repoName": "my-repo",
+            },
+            build={
+                "steps": [{
+                    "name": "ubuntu",
+                    "args": [
                         "-c",
                         "exit 1",
                     ],
-                    allow_failure=True,
-                )],
-                source=gcp.cloudbuild.TriggerBuildSourceArgs(
-                    storage_source=gcp.cloudbuild.TriggerBuildSourceStorageSourceArgs(
-                        bucket="mybucket",
-                        object="source_code.tar.gz",
-                    ),
-                ),
-                tags=[
+                    "allowFailure": True,
+                }],
+                "source": {
+                    "storageSource": {
+                        "bucket": "mybucket",
+                        "object": "source_code.tar.gz",
+                    },
+                },
+                "tags": [
                     "build",
                     "newFeature",
                 ],
-                substitutions={
+                "substitutions": {
                     "_FOO": "bar",
                     "_BAZ": "qux",
                 },
-                queue_ttl="20s",
-                logs_bucket="gs://mybucket/logs",
-                secrets=[gcp.cloudbuild.TriggerBuildSecretArgs(
-                    kms_key_name="projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
-                    secret_env={
+                "queueTtl": "20s",
+                "logsBucket": "gs://mybucket/logs",
+                "secrets": [{
+                    "kmsKeyName": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
+                    "secretEnv": {
                         "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
                     },
-                )],
-                available_secrets=gcp.cloudbuild.TriggerBuildAvailableSecretsArgs(
-                    secret_managers=[gcp.cloudbuild.TriggerBuildAvailableSecretsSecretManagerArgs(
-                        env="MY_SECRET",
-                        version_name="projects/myProject/secrets/mySecret/versions/latest",
-                    )],
-                ),
-                artifacts=gcp.cloudbuild.TriggerBuildArtifactsArgs(
-                    images=["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
-                    objects=gcp.cloudbuild.TriggerBuildArtifactsObjectsArgs(
-                        location="gs://bucket/path/to/somewhere/",
-                        paths=["path"],
-                    ),
-                ),
-                options=gcp.cloudbuild.TriggerBuildOptionsArgs(
-                    source_provenance_hashes=["MD5"],
-                    requested_verify_option="VERIFIED",
-                    machine_type="N1_HIGHCPU_8",
-                    disk_size_gb=100,
-                    substitution_option="ALLOW_LOOSE",
-                    dynamic_substitutions=True,
-                    log_streaming_option="STREAM_OFF",
-                    worker_pool="pool",
-                    logging="LEGACY",
-                    envs=["ekey = evalue"],
-                    secret_envs=["secretenv = svalue"],
-                    volumes=[gcp.cloudbuild.TriggerBuildOptionsVolumeArgs(
-                        name="v1",
-                        path="v1",
-                    )],
-                ),
-            ))
+                }],
+                "availableSecrets": {
+                    "secretManagers": [{
+                        "env": "MY_SECRET",
+                        "versionName": "projects/myProject/secrets/mySecret/versions/latest",
+                    }],
+                },
+                "artifacts": {
+                    "images": ["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
+                    "objects": {
+                        "location": "gs://bucket/path/to/somewhere/",
+                        "paths": ["path"],
+                    },
+                },
+                "options": {
+                    "sourceProvenanceHashes": ["MD5"],
+                    "requestedVerifyOption": "VERIFIED",
+                    "machineType": "N1_HIGHCPU_8",
+                    "diskSizeGb": 100,
+                    "substitutionOption": "ALLOW_LOOSE",
+                    "dynamicSubstitutions": True,
+                    "logStreamingOption": "STREAM_OFF",
+                    "workerPool": "pool",
+                    "logging": "LEGACY",
+                    "envs": ["ekey = evalue"],
+                    "secretEnvs": ["secretenv = svalue"],
+                    "volumes": [{
+                        "name": "v1",
+                        "path": "v1",
+                    }],
+                },
+            })
         ```
         ### Cloudbuild Trigger Allow Exit Codes
 
@@ -2233,75 +2238,75 @@ class Trigger(pulumi.CustomResource):
         allow_exit_codes_trigger = gcp.cloudbuild.Trigger("allow-exit-codes-trigger",
             name="my-trigger",
             location="global",
-            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
-                branch_name="main",
-                repo_name="my-repo",
-            ),
-            build=gcp.cloudbuild.TriggerBuildArgs(
-                steps=[gcp.cloudbuild.TriggerBuildStepArgs(
-                    name="ubuntu",
-                    args=[
+            trigger_template={
+                "branchName": "main",
+                "repoName": "my-repo",
+            },
+            build={
+                "steps": [{
+                    "name": "ubuntu",
+                    "args": [
                         "-c",
                         "exit 1",
                     ],
-                    allow_exit_codes=[
+                    "allowExitCodes": [
                         1,
                         3,
                     ],
-                )],
-                source=gcp.cloudbuild.TriggerBuildSourceArgs(
-                    storage_source=gcp.cloudbuild.TriggerBuildSourceStorageSourceArgs(
-                        bucket="mybucket",
-                        object="source_code.tar.gz",
-                    ),
-                ),
-                tags=[
+                }],
+                "source": {
+                    "storageSource": {
+                        "bucket": "mybucket",
+                        "object": "source_code.tar.gz",
+                    },
+                },
+                "tags": [
                     "build",
                     "newFeature",
                 ],
-                substitutions={
+                "substitutions": {
                     "_FOO": "bar",
                     "_BAZ": "qux",
                 },
-                queue_ttl="20s",
-                logs_bucket="gs://mybucket/logs",
-                secrets=[gcp.cloudbuild.TriggerBuildSecretArgs(
-                    kms_key_name="projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
-                    secret_env={
+                "queueTtl": "20s",
+                "logsBucket": "gs://mybucket/logs",
+                "secrets": [{
+                    "kmsKeyName": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
+                    "secretEnv": {
                         "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
                     },
-                )],
-                available_secrets=gcp.cloudbuild.TriggerBuildAvailableSecretsArgs(
-                    secret_managers=[gcp.cloudbuild.TriggerBuildAvailableSecretsSecretManagerArgs(
-                        env="MY_SECRET",
-                        version_name="projects/myProject/secrets/mySecret/versions/latest",
-                    )],
-                ),
-                artifacts=gcp.cloudbuild.TriggerBuildArtifactsArgs(
-                    images=["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
-                    objects=gcp.cloudbuild.TriggerBuildArtifactsObjectsArgs(
-                        location="gs://bucket/path/to/somewhere/",
-                        paths=["path"],
-                    ),
-                ),
-                options=gcp.cloudbuild.TriggerBuildOptionsArgs(
-                    source_provenance_hashes=["MD5"],
-                    requested_verify_option="VERIFIED",
-                    machine_type="N1_HIGHCPU_8",
-                    disk_size_gb=100,
-                    substitution_option="ALLOW_LOOSE",
-                    dynamic_substitutions=True,
-                    log_streaming_option="STREAM_OFF",
-                    worker_pool="pool",
-                    logging="LEGACY",
-                    envs=["ekey = evalue"],
-                    secret_envs=["secretenv = svalue"],
-                    volumes=[gcp.cloudbuild.TriggerBuildOptionsVolumeArgs(
-                        name="v1",
-                        path="v1",
-                    )],
-                ),
-            ))
+                }],
+                "availableSecrets": {
+                    "secretManagers": [{
+                        "env": "MY_SECRET",
+                        "versionName": "projects/myProject/secrets/mySecret/versions/latest",
+                    }],
+                },
+                "artifacts": {
+                    "images": ["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
+                    "objects": {
+                        "location": "gs://bucket/path/to/somewhere/",
+                        "paths": ["path"],
+                    },
+                },
+                "options": {
+                    "sourceProvenanceHashes": ["MD5"],
+                    "requestedVerifyOption": "VERIFIED",
+                    "machineType": "N1_HIGHCPU_8",
+                    "diskSizeGb": 100,
+                    "substitutionOption": "ALLOW_LOOSE",
+                    "dynamicSubstitutions": True,
+                    "logStreamingOption": "STREAM_OFF",
+                    "workerPool": "pool",
+                    "logging": "LEGACY",
+                    "envs": ["ekey = evalue"],
+                    "secretEnvs": ["secretenv = svalue"],
+                    "volumes": [{
+                        "name": "v1",
+                        "path": "v1",
+                    }],
+                },
+            })
         ```
         ### Cloudbuild Trigger Pubsub With Repo
 
@@ -2312,12 +2317,12 @@ class Trigger(pulumi.CustomResource):
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-central1",
             name="my-connection",
-            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
-                app_installation_id=123123,
-                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
-                    oauth_token_secret_version="projects/my-project/secrets/github-pat-secret/versions/latest",
-                ),
-            ))
+            github_config={
+                "appInstallationId": 123123,
+                "authorizerCredential": {
+                    "oauthTokenSecretVersion": "projects/my-project/secrets/github-pat-secret/versions/latest",
+                },
+            })
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
             name="my-repo",
             parent_connection=my_connection.id,
@@ -2326,20 +2331,20 @@ class Trigger(pulumi.CustomResource):
         pubsub_with_repo_trigger = gcp.cloudbuild.Trigger("pubsub-with-repo-trigger",
             name="pubsub-with-repo-trigger",
             location="us-central1",
-            pubsub_config=gcp.cloudbuild.TriggerPubsubConfigArgs(
-                topic=mytopic.id,
-            ),
-            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
-                repository=my_repository.id,
-                ref="refs/heads/main",
-                repo_type="GITHUB",
-            ),
-            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
-                path="cloudbuild.yaml",
-                repository=my_repository.id,
-                revision="refs/heads/main",
-                repo_type="GITHUB",
-            ))
+            pubsub_config={
+                "topic": mytopic.id,
+            },
+            source_to_build={
+                "repository": my_repository.id,
+                "ref": "refs/heads/main",
+                "repoType": "GITHUB",
+            },
+            git_file_source={
+                "path": "cloudbuild.yaml",
+                "repository": my_repository.id,
+                "revision": "refs/heads/main",
+                "repoType": "GITHUB",
+            })
         ```
 
         ## Import
@@ -2387,29 +2392,29 @@ class Trigger(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_config: Optional[pulumi.Input[pulumi.InputType['TriggerApprovalConfigArgs']]] = None,
-                 bitbucket_server_trigger_config: Optional[pulumi.Input[pulumi.InputType['TriggerBitbucketServerTriggerConfigArgs']]] = None,
-                 build: Optional[pulumi.Input[pulumi.InputType['TriggerBuildArgs']]] = None,
+                 approval_config: Optional[pulumi.Input[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict']]] = None,
+                 bitbucket_server_trigger_config: Optional[pulumi.Input[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict']]] = None,
+                 build: Optional[pulumi.Input[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
-                 git_file_source: Optional[pulumi.Input[pulumi.InputType['TriggerGitFileSourceArgs']]] = None,
-                 github: Optional[pulumi.Input[pulumi.InputType['TriggerGithubArgs']]] = None,
+                 git_file_source: Optional[pulumi.Input[Union['TriggerGitFileSourceArgs', 'TriggerGitFileSourceArgsDict']]] = None,
+                 github: Optional[pulumi.Input[Union['TriggerGithubArgs', 'TriggerGithubArgsDict']]] = None,
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_build_logs: Optional[pulumi.Input[str]] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pubsub_config: Optional[pulumi.Input[pulumi.InputType['TriggerPubsubConfigArgs']]] = None,
-                 repository_event_config: Optional[pulumi.Input[pulumi.InputType['TriggerRepositoryEventConfigArgs']]] = None,
+                 pubsub_config: Optional[pulumi.Input[Union['TriggerPubsubConfigArgs', 'TriggerPubsubConfigArgsDict']]] = None,
+                 repository_event_config: Optional[pulumi.Input[Union['TriggerRepositoryEventConfigArgs', 'TriggerRepositoryEventConfigArgsDict']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 source_to_build: Optional[pulumi.Input[pulumi.InputType['TriggerSourceToBuildArgs']]] = None,
+                 source_to_build: Optional[pulumi.Input[Union['TriggerSourceToBuildArgs', 'TriggerSourceToBuildArgsDict']]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 trigger_template: Optional[pulumi.Input[pulumi.InputType['TriggerTriggerTemplateArgs']]] = None,
-                 webhook_config: Optional[pulumi.Input[pulumi.InputType['TriggerWebhookConfigArgs']]] = None,
+                 trigger_template: Optional[pulumi.Input[Union['TriggerTriggerTemplateArgs', 'TriggerTriggerTemplateArgsDict']]] = None,
+                 webhook_config: Optional[pulumi.Input[Union['TriggerWebhookConfigArgs', 'TriggerWebhookConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2454,31 +2459,31 @@ class Trigger(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            approval_config: Optional[pulumi.Input[pulumi.InputType['TriggerApprovalConfigArgs']]] = None,
-            bitbucket_server_trigger_config: Optional[pulumi.Input[pulumi.InputType['TriggerBitbucketServerTriggerConfigArgs']]] = None,
-            build: Optional[pulumi.Input[pulumi.InputType['TriggerBuildArgs']]] = None,
+            approval_config: Optional[pulumi.Input[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict']]] = None,
+            bitbucket_server_trigger_config: Optional[pulumi.Input[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict']]] = None,
+            build: Optional[pulumi.Input[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             filename: Optional[pulumi.Input[str]] = None,
             filter: Optional[pulumi.Input[str]] = None,
-            git_file_source: Optional[pulumi.Input[pulumi.InputType['TriggerGitFileSourceArgs']]] = None,
-            github: Optional[pulumi.Input[pulumi.InputType['TriggerGithubArgs']]] = None,
+            git_file_source: Optional[pulumi.Input[Union['TriggerGitFileSourceArgs', 'TriggerGitFileSourceArgsDict']]] = None,
+            github: Optional[pulumi.Input[Union['TriggerGithubArgs', 'TriggerGithubArgsDict']]] = None,
             ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             include_build_logs: Optional[pulumi.Input[str]] = None,
             included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            pubsub_config: Optional[pulumi.Input[pulumi.InputType['TriggerPubsubConfigArgs']]] = None,
-            repository_event_config: Optional[pulumi.Input[pulumi.InputType['TriggerRepositoryEventConfigArgs']]] = None,
+            pubsub_config: Optional[pulumi.Input[Union['TriggerPubsubConfigArgs', 'TriggerPubsubConfigArgsDict']]] = None,
+            repository_event_config: Optional[pulumi.Input[Union['TriggerRepositoryEventConfigArgs', 'TriggerRepositoryEventConfigArgsDict']]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
-            source_to_build: Optional[pulumi.Input[pulumi.InputType['TriggerSourceToBuildArgs']]] = None,
+            source_to_build: Optional[pulumi.Input[Union['TriggerSourceToBuildArgs', 'TriggerSourceToBuildArgsDict']]] = None,
             substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             trigger_id: Optional[pulumi.Input[str]] = None,
-            trigger_template: Optional[pulumi.Input[pulumi.InputType['TriggerTriggerTemplateArgs']]] = None,
-            webhook_config: Optional[pulumi.Input[pulumi.InputType['TriggerWebhookConfigArgs']]] = None) -> 'Trigger':
+            trigger_template: Optional[pulumi.Input[Union['TriggerTriggerTemplateArgs', 'TriggerTriggerTemplateArgsDict']]] = None,
+            webhook_config: Optional[pulumi.Input[Union['TriggerWebhookConfigArgs', 'TriggerWebhookConfigArgsDict']]] = None) -> 'Trigger':
         """
         Get an existing Trigger resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2486,13 +2491,13 @@ class Trigger(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['TriggerApprovalConfigArgs']] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
+        :param pulumi.Input[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict']] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
                Builds created by this trigger will require approval before they execute.
                Any user with a Cloud Build Approver role for the project can approve a build.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['TriggerBitbucketServerTriggerConfigArgs']] bitbucket_server_trigger_config: BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+        :param pulumi.Input[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict']] bitbucket_server_trigger_config: BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['TriggerBuildArgs']] build: Contents of the build template. Either a filename or build template must be provided.
+        :param pulumi.Input[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']] build: Contents of the build template. Either a filename or build template must be provided.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Time when the trigger was created.
         :param pulumi.Input[str] description: Human-readable description of the trigger.
@@ -2501,9 +2506,9 @@ class Trigger(pulumi.CustomResource):
                Either a filename or build template must be provided. Set this only when using trigger_template or github.
                When using Pub/Sub, Webhook or Manual set the file name using git_file_source instead.
         :param pulumi.Input[str] filter: A Common Expression Language string. Used only with Pub/Sub and Webhook.
-        :param pulumi.Input[pulumi.InputType['TriggerGitFileSourceArgs']] git_file_source: The file source describing the local or remote Build template.
+        :param pulumi.Input[Union['TriggerGitFileSourceArgs', 'TriggerGitFileSourceArgsDict']] git_file_source: The file source describing the local or remote Build template.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['TriggerGithubArgs']] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
+        :param pulumi.Input[Union['TriggerGithubArgs', 'TriggerGithubArgsDict']] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
                One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
@@ -2531,18 +2536,18 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the trigger. Must be unique within the project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['TriggerPubsubConfigArgs']] pubsub_config: PubsubConfig describes the configuration of a trigger that creates
+        :param pulumi.Input[Union['TriggerPubsubConfigArgs', 'TriggerPubsubConfigArgsDict']] pubsub_config: PubsubConfig describes the configuration of a trigger that creates
                a build whenever a Pub/Sub message is published.
                One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['TriggerRepositoryEventConfigArgs']] repository_event_config: The configuration of a trigger that creates a build whenever an event from Repo API is received.
+        :param pulumi.Input[Union['TriggerRepositoryEventConfigArgs', 'TriggerRepositoryEventConfigArgsDict']] repository_event_config: The configuration of a trigger that creates a build whenever an event from Repo API is received.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account used for all user-controlled operations including
                triggers.patch, triggers.run, builds.create, and builds.cancel.
                If no service account is set, then the standard Cloud Build service account
                ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
                Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
-        :param pulumi.Input[pulumi.InputType['TriggerSourceToBuildArgs']] source_to_build: The repo and ref of the repository from which to build.
+        :param pulumi.Input[Union['TriggerSourceToBuildArgs', 'TriggerSourceToBuildArgsDict']] source_to_build: The repo and ref of the repository from which to build.
                This field is used only for those triggers that do not respond to SCM events.
                Triggers that respond to such events build source at whatever commit caused the event.
                This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
@@ -2551,13 +2556,13 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions data for Build resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a BuildTrigger
         :param pulumi.Input[str] trigger_id: The unique identifier for the trigger.
-        :param pulumi.Input[pulumi.InputType['TriggerTriggerTemplateArgs']] trigger_template: Template describing the types of source changes to trigger a build.
+        :param pulumi.Input[Union['TriggerTriggerTemplateArgs', 'TriggerTriggerTemplateArgsDict']] trigger_template: Template describing the types of source changes to trigger a build.
                Branch and tag names in trigger templates are interpreted as regular
                expressions. Any branch or tag change that matches that regular
                expression will trigger a build.
                One of `trigger_template`, `github`, `pubsub_config`, `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['TriggerWebhookConfigArgs']] webhook_config: WebhookConfig describes the configuration of a trigger that creates
+        :param pulumi.Input[Union['TriggerWebhookConfigArgs', 'TriggerWebhookConfigArgsDict']] webhook_config: WebhookConfig describes the configuration of a trigger that creates
                a build whenever a webhook is sent to a trigger's webhook URL.
                One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.

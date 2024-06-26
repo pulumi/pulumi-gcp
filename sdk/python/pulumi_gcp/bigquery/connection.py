@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -508,18 +513,18 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws: Optional[pulumi.Input[pulumi.InputType['ConnectionAwsArgs']]] = None,
-                 azure: Optional[pulumi.Input[pulumi.InputType['ConnectionAzureArgs']]] = None,
-                 cloud_resource: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']]] = None,
-                 cloud_spanner: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArgs']]] = None,
-                 cloud_sql: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']]] = None,
+                 aws: Optional[pulumi.Input[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict']]] = None,
+                 azure: Optional[pulumi.Input[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict']]] = None,
+                 cloud_resource: Optional[pulumi.Input[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']]] = None,
+                 cloud_spanner: Optional[pulumi.Input[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']]] = None,
+                 cloud_sql: Optional[pulumi.Input[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spark: Optional[pulumi.Input[pulumi.InputType['ConnectionSparkArgs']]] = None,
+                 spark: Optional[pulumi.Input[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict']]] = None,
                  __props__=None):
         """
         A connection allows BigQuery connections to external data sources..
@@ -543,7 +548,7 @@ class Connection(pulumi.CustomResource):
             location="US",
             friendly_name="👋",
             description="a riveting description",
-            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs())
+            cloud_resource={})
         ```
         ### Bigquery Connection Basic
 
@@ -556,9 +561,9 @@ class Connection(pulumi.CustomResource):
             name="my-database-instance",
             database_version="POSTGRES_11",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ),
+            settings={
+                "tier": "db-f1-micro",
+            },
             deletion_protection=True)
         db = gcp.sql.Database("db",
             instance=instance.name,
@@ -574,15 +579,15 @@ class Connection(pulumi.CustomResource):
             friendly_name="👋",
             description="a riveting description",
             location="US",
-            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
-                instance_id=instance.connection_name,
-                database=db.name,
-                type="POSTGRES",
-                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
-                    username=user.name,
-                    password=user.password,
-                ),
-            ))
+            cloud_sql={
+                "instanceId": instance.connection_name,
+                "database": db.name,
+                "type": "POSTGRES",
+                "credential": {
+                    "username": user.name,
+                    "password": user.password,
+                },
+            })
         ```
         ### Bigquery Connection Full
 
@@ -595,9 +600,9 @@ class Connection(pulumi.CustomResource):
             name="my-database-instance",
             database_version="POSTGRES_11",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ),
+            settings={
+                "tier": "db-f1-micro",
+            },
             deletion_protection=True)
         db = gcp.sql.Database("db",
             instance=instance.name,
@@ -614,15 +619,15 @@ class Connection(pulumi.CustomResource):
             location="US",
             friendly_name="👋",
             description="a riveting description",
-            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
-                instance_id=instance.connection_name,
-                database=db.name,
-                type="POSTGRES",
-                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
-                    username=user.name,
-                    password=user.password,
-                ),
-            ))
+            cloud_sql={
+                "instanceId": instance.connection_name,
+                "database": db.name,
+                "type": "POSTGRES",
+                "credential": {
+                    "username": user.name,
+                    "password": user.password,
+                },
+            })
         ```
         ### Bigquery Connection Aws
 
@@ -635,11 +640,11 @@ class Connection(pulumi.CustomResource):
             location="aws-us-east-1",
             friendly_name="👋",
             description="a riveting description",
-            aws=gcp.bigquery.ConnectionAwsArgs(
-                access_role=gcp.bigquery.ConnectionAwsAccessRoleArgs(
-                    iam_role_id="arn:aws:iam::999999999999:role/omnirole",
-                ),
-            ))
+            aws={
+                "accessRole": {
+                    "iamRoleId": "arn:aws:iam::999999999999:role/omnirole",
+                },
+            })
         ```
         ### Bigquery Connection Azure
 
@@ -652,10 +657,10 @@ class Connection(pulumi.CustomResource):
             location="azure-eastus2",
             friendly_name="👋",
             description="a riveting description",
-            azure=gcp.bigquery.ConnectionAzureArgs(
-                customer_tenant_id="customer-tenant-id",
-                federated_application_client_id="b43eeeee-eeee-eeee-eeee-a480155501ce",
-            ))
+            azure={
+                "customerTenantId": "customer-tenant-id",
+                "federatedApplicationClientId": "b43eeeee-eeee-eeee-eeee-a480155501ce",
+            })
         ```
         ### Bigquery Connection Cloudspanner
 
@@ -668,10 +673,10 @@ class Connection(pulumi.CustomResource):
             location="US",
             friendly_name="👋",
             description="a riveting description",
-            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
-                database="projects/project/instances/instance/databases/database",
-                database_role="database_role",
-            ))
+            cloud_spanner={
+                "database": "projects/project/instances/instance/databases/database",
+                "databaseRole": "database_role",
+            })
         ```
         ### Bigquery Connection Cloudspanner Databoost
 
@@ -684,12 +689,12 @@ class Connection(pulumi.CustomResource):
             location="US",
             friendly_name="👋",
             description="a riveting description",
-            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
-                database="projects/project/instances/instance/databases/database",
-                use_parallelism=True,
-                use_data_boost=True,
-                max_parallelism=100,
-            ))
+            cloud_spanner={
+                "database": "projects/project/instances/instance/databases/database",
+                "useParallelism": True,
+                "useDataBoost": True,
+                "maxParallelism": 100,
+            })
         ```
         ### Bigquery Connection Spark
 
@@ -700,30 +705,30 @@ class Connection(pulumi.CustomResource):
         basic = gcp.dataproc.Cluster("basic",
             name="my-connection",
             region="us-central1",
-            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
-                software_config=gcp.dataproc.ClusterClusterConfigSoftwareConfigArgs(
-                    override_properties={
+            cluster_config={
+                "softwareConfig": {
+                    "overrideProperties": {
                         "dataproc:dataproc.allow.zero.workers": "true",
                     },
-                ),
-                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
-                    num_instances=1,
-                    machine_type="e2-standard-2",
-                    disk_config=gcp.dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs(
-                        boot_disk_size_gb=35,
-                    ),
-                ),
-            ))
+                },
+                "masterConfig": {
+                    "numInstances": 1,
+                    "machineType": "e2-standard-2",
+                    "diskConfig": {
+                        "bootDiskSizeGb": 35,
+                    },
+                },
+            })
         connection = gcp.bigquery.Connection("connection",
             connection_id="my-connection",
             location="US",
             friendly_name="👋",
             description="a riveting description",
-            spark=gcp.bigquery.ConnectionSparkArgs(
-                spark_history_server_config=gcp.bigquery.ConnectionSparkSparkHistoryServerConfigArgs(
-                    dataproc_cluster=basic.id,
-                ),
-            ))
+            spark={
+                "sparkHistoryServerConfig": {
+                    "dataprocCluster": basic.id,
+                },
+            })
         ```
         ### Bigquery Connection Kms
 
@@ -735,9 +740,9 @@ class Connection(pulumi.CustomResource):
             name="my-database-instance",
             database_version="POSTGRES_11",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ),
+            settings={
+                "tier": "db-f1-micro",
+            },
             deletion_protection=True)
         db = gcp.sql.Database("db",
             instance=instance.name,
@@ -751,15 +756,15 @@ class Connection(pulumi.CustomResource):
             description="a riveting description",
             location="US",
             kms_key_name="projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
-            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
-                instance_id=instance.connection_name,
-                database=db.name,
-                type="POSTGRES",
-                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
-                    username=user.name,
-                    password=user.password,
-                ),
-            ))
+            cloud_sql={
+                "instanceId": instance.connection_name,
+                "database": db.name,
+                "type": "POSTGRES",
+                "credential": {
+                    "username": user.name,
+                    "password": user.password,
+                },
+            })
         ```
 
         ## Import
@@ -788,15 +793,15 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionAwsArgs']] aws: Connection properties specific to Amazon Web Services.
+        :param pulumi.Input[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict']] aws: Connection properties specific to Amazon Web Services.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionAzureArgs']] azure: Container for connection properties specific to Azure.
+        :param pulumi.Input[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict']] azure: Container for connection properties specific to Azure.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']] cloud_resource: Container for connection properties for delegation of access to GCP resources.
+        :param pulumi.Input[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']] cloud_resource: Container for connection properties for delegation of access to GCP resources.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArgs']] cloud_spanner: Connection properties specific to Cloud Spanner
+        :param pulumi.Input[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']] cloud_spanner: Connection properties specific to Cloud Spanner
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']] cloud_sql: Connection properties specific to the Cloud SQL.
+        :param pulumi.Input[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']] cloud_sql: Connection properties specific to the Cloud SQL.
                Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: A descriptive description for the connection
@@ -812,7 +817,7 @@ class Connection(pulumi.CustomResource):
                Azure allowed regions are azure-eastus2
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['ConnectionSparkArgs']] spark: Container for connection properties to execute stored procedures for Apache Spark. resources.
+        :param pulumi.Input[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict']] spark: Container for connection properties to execute stored procedures for Apache Spark. resources.
                Structure is documented below.
         """
         ...
@@ -843,7 +848,7 @@ class Connection(pulumi.CustomResource):
             location="US",
             friendly_name="👋",
             description="a riveting description",
-            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs())
+            cloud_resource={})
         ```
         ### Bigquery Connection Basic
 
@@ -856,9 +861,9 @@ class Connection(pulumi.CustomResource):
             name="my-database-instance",
             database_version="POSTGRES_11",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ),
+            settings={
+                "tier": "db-f1-micro",
+            },
             deletion_protection=True)
         db = gcp.sql.Database("db",
             instance=instance.name,
@@ -874,15 +879,15 @@ class Connection(pulumi.CustomResource):
             friendly_name="👋",
             description="a riveting description",
             location="US",
-            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
-                instance_id=instance.connection_name,
-                database=db.name,
-                type="POSTGRES",
-                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
-                    username=user.name,
-                    password=user.password,
-                ),
-            ))
+            cloud_sql={
+                "instanceId": instance.connection_name,
+                "database": db.name,
+                "type": "POSTGRES",
+                "credential": {
+                    "username": user.name,
+                    "password": user.password,
+                },
+            })
         ```
         ### Bigquery Connection Full
 
@@ -895,9 +900,9 @@ class Connection(pulumi.CustomResource):
             name="my-database-instance",
             database_version="POSTGRES_11",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ),
+            settings={
+                "tier": "db-f1-micro",
+            },
             deletion_protection=True)
         db = gcp.sql.Database("db",
             instance=instance.name,
@@ -914,15 +919,15 @@ class Connection(pulumi.CustomResource):
             location="US",
             friendly_name="👋",
             description="a riveting description",
-            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
-                instance_id=instance.connection_name,
-                database=db.name,
-                type="POSTGRES",
-                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
-                    username=user.name,
-                    password=user.password,
-                ),
-            ))
+            cloud_sql={
+                "instanceId": instance.connection_name,
+                "database": db.name,
+                "type": "POSTGRES",
+                "credential": {
+                    "username": user.name,
+                    "password": user.password,
+                },
+            })
         ```
         ### Bigquery Connection Aws
 
@@ -935,11 +940,11 @@ class Connection(pulumi.CustomResource):
             location="aws-us-east-1",
             friendly_name="👋",
             description="a riveting description",
-            aws=gcp.bigquery.ConnectionAwsArgs(
-                access_role=gcp.bigquery.ConnectionAwsAccessRoleArgs(
-                    iam_role_id="arn:aws:iam::999999999999:role/omnirole",
-                ),
-            ))
+            aws={
+                "accessRole": {
+                    "iamRoleId": "arn:aws:iam::999999999999:role/omnirole",
+                },
+            })
         ```
         ### Bigquery Connection Azure
 
@@ -952,10 +957,10 @@ class Connection(pulumi.CustomResource):
             location="azure-eastus2",
             friendly_name="👋",
             description="a riveting description",
-            azure=gcp.bigquery.ConnectionAzureArgs(
-                customer_tenant_id="customer-tenant-id",
-                federated_application_client_id="b43eeeee-eeee-eeee-eeee-a480155501ce",
-            ))
+            azure={
+                "customerTenantId": "customer-tenant-id",
+                "federatedApplicationClientId": "b43eeeee-eeee-eeee-eeee-a480155501ce",
+            })
         ```
         ### Bigquery Connection Cloudspanner
 
@@ -968,10 +973,10 @@ class Connection(pulumi.CustomResource):
             location="US",
             friendly_name="👋",
             description="a riveting description",
-            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
-                database="projects/project/instances/instance/databases/database",
-                database_role="database_role",
-            ))
+            cloud_spanner={
+                "database": "projects/project/instances/instance/databases/database",
+                "databaseRole": "database_role",
+            })
         ```
         ### Bigquery Connection Cloudspanner Databoost
 
@@ -984,12 +989,12 @@ class Connection(pulumi.CustomResource):
             location="US",
             friendly_name="👋",
             description="a riveting description",
-            cloud_spanner=gcp.bigquery.ConnectionCloudSpannerArgs(
-                database="projects/project/instances/instance/databases/database",
-                use_parallelism=True,
-                use_data_boost=True,
-                max_parallelism=100,
-            ))
+            cloud_spanner={
+                "database": "projects/project/instances/instance/databases/database",
+                "useParallelism": True,
+                "useDataBoost": True,
+                "maxParallelism": 100,
+            })
         ```
         ### Bigquery Connection Spark
 
@@ -1000,30 +1005,30 @@ class Connection(pulumi.CustomResource):
         basic = gcp.dataproc.Cluster("basic",
             name="my-connection",
             region="us-central1",
-            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
-                software_config=gcp.dataproc.ClusterClusterConfigSoftwareConfigArgs(
-                    override_properties={
+            cluster_config={
+                "softwareConfig": {
+                    "overrideProperties": {
                         "dataproc:dataproc.allow.zero.workers": "true",
                     },
-                ),
-                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
-                    num_instances=1,
-                    machine_type="e2-standard-2",
-                    disk_config=gcp.dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs(
-                        boot_disk_size_gb=35,
-                    ),
-                ),
-            ))
+                },
+                "masterConfig": {
+                    "numInstances": 1,
+                    "machineType": "e2-standard-2",
+                    "diskConfig": {
+                        "bootDiskSizeGb": 35,
+                    },
+                },
+            })
         connection = gcp.bigquery.Connection("connection",
             connection_id="my-connection",
             location="US",
             friendly_name="👋",
             description="a riveting description",
-            spark=gcp.bigquery.ConnectionSparkArgs(
-                spark_history_server_config=gcp.bigquery.ConnectionSparkSparkHistoryServerConfigArgs(
-                    dataproc_cluster=basic.id,
-                ),
-            ))
+            spark={
+                "sparkHistoryServerConfig": {
+                    "dataprocCluster": basic.id,
+                },
+            })
         ```
         ### Bigquery Connection Kms
 
@@ -1035,9 +1040,9 @@ class Connection(pulumi.CustomResource):
             name="my-database-instance",
             database_version="POSTGRES_11",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ),
+            settings={
+                "tier": "db-f1-micro",
+            },
             deletion_protection=True)
         db = gcp.sql.Database("db",
             instance=instance.name,
@@ -1051,15 +1056,15 @@ class Connection(pulumi.CustomResource):
             description="a riveting description",
             location="US",
             kms_key_name="projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
-            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
-                instance_id=instance.connection_name,
-                database=db.name,
-                type="POSTGRES",
-                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
-                    username=user.name,
-                    password=user.password,
-                ),
-            ))
+            cloud_sql={
+                "instanceId": instance.connection_name,
+                "database": db.name,
+                "type": "POSTGRES",
+                "credential": {
+                    "username": user.name,
+                    "password": user.password,
+                },
+            })
         ```
 
         ## Import
@@ -1101,18 +1106,18 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws: Optional[pulumi.Input[pulumi.InputType['ConnectionAwsArgs']]] = None,
-                 azure: Optional[pulumi.Input[pulumi.InputType['ConnectionAzureArgs']]] = None,
-                 cloud_resource: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']]] = None,
-                 cloud_spanner: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArgs']]] = None,
-                 cloud_sql: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']]] = None,
+                 aws: Optional[pulumi.Input[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict']]] = None,
+                 azure: Optional[pulumi.Input[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict']]] = None,
+                 cloud_resource: Optional[pulumi.Input[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']]] = None,
+                 cloud_spanner: Optional[pulumi.Input[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']]] = None,
+                 cloud_sql: Optional[pulumi.Input[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spark: Optional[pulumi.Input[pulumi.InputType['ConnectionSparkArgs']]] = None,
+                 spark: Optional[pulumi.Input[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1146,11 +1151,11 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aws: Optional[pulumi.Input[pulumi.InputType['ConnectionAwsArgs']]] = None,
-            azure: Optional[pulumi.Input[pulumi.InputType['ConnectionAzureArgs']]] = None,
-            cloud_resource: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']]] = None,
-            cloud_spanner: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArgs']]] = None,
-            cloud_sql: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']]] = None,
+            aws: Optional[pulumi.Input[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict']]] = None,
+            azure: Optional[pulumi.Input[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict']]] = None,
+            cloud_resource: Optional[pulumi.Input[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']]] = None,
+            cloud_spanner: Optional[pulumi.Input[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']]] = None,
+            cloud_sql: Optional[pulumi.Input[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']]] = None,
             connection_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             friendly_name: Optional[pulumi.Input[str]] = None,
@@ -1159,7 +1164,7 @@ class Connection(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            spark: Optional[pulumi.Input[pulumi.InputType['ConnectionSparkArgs']]] = None) -> 'Connection':
+            spark: Optional[pulumi.Input[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict']]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1167,15 +1172,15 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionAwsArgs']] aws: Connection properties specific to Amazon Web Services.
+        :param pulumi.Input[Union['ConnectionAwsArgs', 'ConnectionAwsArgsDict']] aws: Connection properties specific to Amazon Web Services.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionAzureArgs']] azure: Container for connection properties specific to Azure.
+        :param pulumi.Input[Union['ConnectionAzureArgs', 'ConnectionAzureArgsDict']] azure: Container for connection properties specific to Azure.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionCloudResourceArgs']] cloud_resource: Container for connection properties for delegation of access to GCP resources.
+        :param pulumi.Input[Union['ConnectionCloudResourceArgs', 'ConnectionCloudResourceArgsDict']] cloud_resource: Container for connection properties for delegation of access to GCP resources.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionCloudSpannerArgs']] cloud_spanner: Connection properties specific to Cloud Spanner
+        :param pulumi.Input[Union['ConnectionCloudSpannerArgs', 'ConnectionCloudSpannerArgsDict']] cloud_spanner: Connection properties specific to Cloud Spanner
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']] cloud_sql: Connection properties specific to the Cloud SQL.
+        :param pulumi.Input[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']] cloud_sql: Connection properties specific to the Cloud SQL.
                Structure is documented below.
         :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: A descriptive description for the connection
@@ -1194,7 +1199,7 @@ class Connection(pulumi.CustomResource):
                "projects/{project_id}/locations/{location_id}/connections/{connectionId}"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['ConnectionSparkArgs']] spark: Container for connection properties to execute stored procedures for Apache Spark. resources.
+        :param pulumi.Input[Union['ConnectionSparkArgs', 'ConnectionSparkArgsDict']] spark: Container for connection properties to execute stored procedures for Apache Spark. resources.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

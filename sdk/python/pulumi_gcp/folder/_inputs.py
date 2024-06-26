@@ -4,22 +4,77 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AccessApprovalSettingsEnrolledServiceArgs',
+    'AccessApprovalSettingsEnrolledServiceArgsDict',
     'IAMBindingConditionArgs',
+    'IAMBindingConditionArgsDict',
     'IAMMemberConditionArgs',
+    'IAMMemberConditionArgsDict',
     'IamAuditConfigAuditLogConfigArgs',
+    'IamAuditConfigAuditLogConfigArgsDict',
     'OrganizationPolicyBooleanPolicyArgs',
+    'OrganizationPolicyBooleanPolicyArgsDict',
     'OrganizationPolicyListPolicyArgs',
+    'OrganizationPolicyListPolicyArgsDict',
     'OrganizationPolicyListPolicyAllowArgs',
+    'OrganizationPolicyListPolicyAllowArgsDict',
     'OrganizationPolicyListPolicyDenyArgs',
+    'OrganizationPolicyListPolicyDenyArgsDict',
     'OrganizationPolicyRestorePolicyArgs',
+    'OrganizationPolicyRestorePolicyArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AccessApprovalSettingsEnrolledServiceArgsDict(TypedDict):
+        cloud_product: pulumi.Input[str]
+        """
+        The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
+        * all
+        * App Engine
+        * BigQuery
+        * Cloud Bigtable
+        * Cloud Key Management Service
+        * Compute Engine
+        * Cloud Dataflow
+        * Cloud Identity and Access Management
+        * Cloud Pub/Sub
+        * Cloud Storage
+        * Persistent Disk
+        Note: These values are supported as input, but considered a legacy format:
+        * all
+        * appengine.googleapis.com
+        * bigquery.googleapis.com
+        * bigtable.googleapis.com
+        * cloudkms.googleapis.com
+        * compute.googleapis.com
+        * dataflow.googleapis.com
+        * iam.googleapis.com
+        * pubsub.googleapis.com
+        * storage.googleapis.com
+        """
+        enrollment_level: NotRequired[pulumi.Input[str]]
+        """
+        The enrollment level of the service.
+        Default value is `BLOCK_ALL`.
+        Possible values are: `BLOCK_ALL`.
+
+        - - -
+        """
+elif False:
+    AccessApprovalSettingsEnrolledServiceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessApprovalSettingsEnrolledServiceArgs:
@@ -111,6 +166,14 @@ class AccessApprovalSettingsEnrolledServiceArgs:
         pulumi.set(self, "enrollment_level", value)
 
 
+if not MYPY:
+    class IAMBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    IAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class IAMBindingConditionArgs:
     def __init__(__self__, *,
@@ -149,6 +212,27 @@ class IAMBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class IAMMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    IAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IAMMemberConditionArgs:
@@ -211,6 +295,19 @@ class IAMMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class IamAuditConfigAuditLogConfigArgsDict(TypedDict):
+        log_type: pulumi.Input[str]
+        """
+        Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+        """
+        exempted_members: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
+        """
+elif False:
+    IamAuditConfigAuditLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class IamAuditConfigAuditLogConfigArgs:
     def __init__(__self__, *,
@@ -249,6 +346,15 @@ class IamAuditConfigAuditLogConfigArgs:
         pulumi.set(self, "exempted_members", value)
 
 
+if not MYPY:
+    class OrganizationPolicyBooleanPolicyArgsDict(TypedDict):
+        enforced: pulumi.Input[bool]
+        """
+        If true, then the Policy is enforced. If false, then any configuration is acceptable.
+        """
+elif False:
+    OrganizationPolicyBooleanPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OrganizationPolicyBooleanPolicyArgs:
     def __init__(__self__, *,
@@ -270,6 +376,30 @@ class OrganizationPolicyBooleanPolicyArgs:
     def enforced(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enforced", value)
 
+
+if not MYPY:
+    class OrganizationPolicyListPolicyArgsDict(TypedDict):
+        allow: NotRequired[pulumi.Input['OrganizationPolicyListPolicyAllowArgsDict']]
+        """
+        or `deny` - (Optional) One or the other must be set.
+        """
+        deny: NotRequired[pulumi.Input['OrganizationPolicyListPolicyDenyArgsDict']]
+        """
+        One or the other must be set.
+        """
+        inherit_from_parent: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, the values from the effective Policy of the parent resource
+        are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+
+        The `allow` or `deny` blocks support:
+        """
+        suggested_value: NotRequired[pulumi.Input[str]]
+        """
+        The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
+        """
+elif False:
+    OrganizationPolicyListPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OrganizationPolicyListPolicyArgs:
@@ -348,6 +478,19 @@ class OrganizationPolicyListPolicyArgs:
         pulumi.set(self, "suggested_value", value)
 
 
+if not MYPY:
+    class OrganizationPolicyListPolicyAllowArgsDict(TypedDict):
+        all: NotRequired[pulumi.Input[bool]]
+        """
+        The policy allows or denies all values.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The policy can define specific values that are allowed or denied.
+        """
+elif False:
+    OrganizationPolicyListPolicyAllowArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OrganizationPolicyListPolicyAllowArgs:
     def __init__(__self__, *,
@@ -387,6 +530,19 @@ class OrganizationPolicyListPolicyAllowArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class OrganizationPolicyListPolicyDenyArgsDict(TypedDict):
+        all: NotRequired[pulumi.Input[bool]]
+        """
+        The policy allows or denies all values.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The policy can define specific values that are allowed or denied.
+        """
+elif False:
+    OrganizationPolicyListPolicyDenyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OrganizationPolicyListPolicyDenyArgs:
     def __init__(__self__, *,
@@ -425,6 +581,15 @@ class OrganizationPolicyListPolicyDenyArgs:
     def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class OrganizationPolicyRestorePolicyArgsDict(TypedDict):
+        default: pulumi.Input[bool]
+        """
+        May only be set to true. If set, then the default Policy is restored.
+        """
+elif False:
+    OrganizationPolicyRestorePolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OrganizationPolicyRestorePolicyArgs:

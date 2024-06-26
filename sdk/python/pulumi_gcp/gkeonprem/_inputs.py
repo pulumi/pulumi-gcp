@@ -4,136 +4,275 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'BareMetalAdminClusterClusterOperationsArgs',
+    'BareMetalAdminClusterClusterOperationsArgsDict',
     'BareMetalAdminClusterControlPlaneArgs',
+    'BareMetalAdminClusterControlPlaneArgsDict',
     'BareMetalAdminClusterControlPlaneApiServerArgArgs',
+    'BareMetalAdminClusterControlPlaneApiServerArgArgsDict',
     'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs',
+    'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgsDict',
     'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs',
+    'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgsDict',
     'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs',
+    'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict',
     'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs',
+    'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgsDict',
     'BareMetalAdminClusterFleetArgs',
+    'BareMetalAdminClusterFleetArgsDict',
     'BareMetalAdminClusterLoadBalancerArgs',
+    'BareMetalAdminClusterLoadBalancerArgsDict',
     'BareMetalAdminClusterLoadBalancerManualLbConfigArgs',
+    'BareMetalAdminClusterLoadBalancerManualLbConfigArgsDict',
     'BareMetalAdminClusterLoadBalancerPortConfigArgs',
+    'BareMetalAdminClusterLoadBalancerPortConfigArgsDict',
     'BareMetalAdminClusterLoadBalancerVipConfigArgs',
+    'BareMetalAdminClusterLoadBalancerVipConfigArgsDict',
     'BareMetalAdminClusterMaintenanceConfigArgs',
+    'BareMetalAdminClusterMaintenanceConfigArgsDict',
     'BareMetalAdminClusterNetworkConfigArgs',
+    'BareMetalAdminClusterNetworkConfigArgsDict',
     'BareMetalAdminClusterNetworkConfigIslandModeCidrArgs',
+    'BareMetalAdminClusterNetworkConfigIslandModeCidrArgsDict',
     'BareMetalAdminClusterNodeAccessConfigArgs',
+    'BareMetalAdminClusterNodeAccessConfigArgsDict',
     'BareMetalAdminClusterNodeConfigArgs',
+    'BareMetalAdminClusterNodeConfigArgsDict',
     'BareMetalAdminClusterProxyArgs',
+    'BareMetalAdminClusterProxyArgsDict',
     'BareMetalAdminClusterSecurityConfigArgs',
+    'BareMetalAdminClusterSecurityConfigArgsDict',
     'BareMetalAdminClusterSecurityConfigAuthorizationArgs',
+    'BareMetalAdminClusterSecurityConfigAuthorizationArgsDict',
     'BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs',
+    'BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgsDict',
     'BareMetalAdminClusterStatusArgs',
+    'BareMetalAdminClusterStatusArgsDict',
     'BareMetalAdminClusterStatusConditionArgs',
+    'BareMetalAdminClusterStatusConditionArgsDict',
     'BareMetalAdminClusterStorageArgs',
+    'BareMetalAdminClusterStorageArgsDict',
     'BareMetalAdminClusterStorageLvpNodeMountsConfigArgs',
+    'BareMetalAdminClusterStorageLvpNodeMountsConfigArgsDict',
     'BareMetalAdminClusterStorageLvpShareConfigArgs',
+    'BareMetalAdminClusterStorageLvpShareConfigArgsDict',
     'BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs',
+    'BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgsDict',
     'BareMetalAdminClusterValidationCheckArgs',
+    'BareMetalAdminClusterValidationCheckArgsDict',
     'BareMetalAdminClusterValidationCheckStatusArgs',
+    'BareMetalAdminClusterValidationCheckStatusArgsDict',
     'BareMetalAdminClusterValidationCheckStatusResultArgs',
+    'BareMetalAdminClusterValidationCheckStatusResultArgsDict',
     'BareMetalClusterBinaryAuthorizationArgs',
+    'BareMetalClusterBinaryAuthorizationArgsDict',
     'BareMetalClusterClusterOperationsArgs',
+    'BareMetalClusterClusterOperationsArgsDict',
     'BareMetalClusterControlPlaneArgs',
+    'BareMetalClusterControlPlaneArgsDict',
     'BareMetalClusterControlPlaneApiServerArgArgs',
+    'BareMetalClusterControlPlaneApiServerArgArgsDict',
     'BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs',
+    'BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgsDict',
     'BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs',
+    'BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgsDict',
     'BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs',
+    'BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict',
     'BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs',
+    'BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgsDict',
     'BareMetalClusterFleetArgs',
+    'BareMetalClusterFleetArgsDict',
     'BareMetalClusterLoadBalancerArgs',
+    'BareMetalClusterLoadBalancerArgsDict',
     'BareMetalClusterLoadBalancerBgpLbConfigArgs',
+    'BareMetalClusterLoadBalancerBgpLbConfigArgsDict',
     'BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs',
+    'BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgsDict',
     'BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs',
+    'BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgsDict',
     'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs',
+    'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgsDict',
     'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs',
+    'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict',
     'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs',
+    'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgsDict',
     'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs',
+    'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict',
     'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs',
+    'BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict',
     'BareMetalClusterLoadBalancerManualLbConfigArgs',
+    'BareMetalClusterLoadBalancerManualLbConfigArgsDict',
     'BareMetalClusterLoadBalancerMetalLbConfigArgs',
+    'BareMetalClusterLoadBalancerMetalLbConfigArgsDict',
     'BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs',
+    'BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgsDict',
     'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs',
+    'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgsDict',
     'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs',
+    'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict',
     'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs',
+    'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict',
     'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs',
+    'BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict',
     'BareMetalClusterLoadBalancerPortConfigArgs',
+    'BareMetalClusterLoadBalancerPortConfigArgsDict',
     'BareMetalClusterLoadBalancerVipConfigArgs',
+    'BareMetalClusterLoadBalancerVipConfigArgsDict',
     'BareMetalClusterMaintenanceConfigArgs',
+    'BareMetalClusterMaintenanceConfigArgsDict',
     'BareMetalClusterNetworkConfigArgs',
+    'BareMetalClusterNetworkConfigArgsDict',
     'BareMetalClusterNetworkConfigIslandModeCidrArgs',
+    'BareMetalClusterNetworkConfigIslandModeCidrArgsDict',
     'BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs',
+    'BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgsDict',
     'BareMetalClusterNetworkConfigSrIovConfigArgs',
+    'BareMetalClusterNetworkConfigSrIovConfigArgsDict',
     'BareMetalClusterNodeAccessConfigArgs',
+    'BareMetalClusterNodeAccessConfigArgsDict',
     'BareMetalClusterNodeConfigArgs',
+    'BareMetalClusterNodeConfigArgsDict',
     'BareMetalClusterOsEnvironmentConfigArgs',
+    'BareMetalClusterOsEnvironmentConfigArgsDict',
     'BareMetalClusterProxyArgs',
+    'BareMetalClusterProxyArgsDict',
     'BareMetalClusterSecurityConfigArgs',
+    'BareMetalClusterSecurityConfigArgsDict',
     'BareMetalClusterSecurityConfigAuthorizationArgs',
+    'BareMetalClusterSecurityConfigAuthorizationArgsDict',
     'BareMetalClusterSecurityConfigAuthorizationAdminUserArgs',
+    'BareMetalClusterSecurityConfigAuthorizationAdminUserArgsDict',
     'BareMetalClusterStatusArgs',
+    'BareMetalClusterStatusArgsDict',
     'BareMetalClusterStatusConditionArgs',
+    'BareMetalClusterStatusConditionArgsDict',
     'BareMetalClusterStorageArgs',
+    'BareMetalClusterStorageArgsDict',
     'BareMetalClusterStorageLvpNodeMountsConfigArgs',
+    'BareMetalClusterStorageLvpNodeMountsConfigArgsDict',
     'BareMetalClusterStorageLvpShareConfigArgs',
+    'BareMetalClusterStorageLvpShareConfigArgsDict',
     'BareMetalClusterStorageLvpShareConfigLvpConfigArgs',
+    'BareMetalClusterStorageLvpShareConfigLvpConfigArgsDict',
     'BareMetalClusterUpgradePolicyArgs',
+    'BareMetalClusterUpgradePolicyArgsDict',
     'BareMetalClusterValidationCheckArgs',
+    'BareMetalClusterValidationCheckArgsDict',
     'BareMetalClusterValidationCheckStatusArgs',
+    'BareMetalClusterValidationCheckStatusArgsDict',
     'BareMetalClusterValidationCheckStatusResultArgs',
+    'BareMetalClusterValidationCheckStatusResultArgsDict',
     'BareMetalNodePoolNodePoolConfigArgs',
+    'BareMetalNodePoolNodePoolConfigArgsDict',
     'BareMetalNodePoolNodePoolConfigNodeConfigArgs',
+    'BareMetalNodePoolNodePoolConfigNodeConfigArgsDict',
     'BareMetalNodePoolNodePoolConfigTaintArgs',
+    'BareMetalNodePoolNodePoolConfigTaintArgsDict',
     'BareMetalNodePoolStatusArgs',
+    'BareMetalNodePoolStatusArgsDict',
     'BareMetalNodePoolStatusConditionArgs',
+    'BareMetalNodePoolStatusConditionArgsDict',
     'VMwareClusterAntiAffinityGroupsArgs',
+    'VMwareClusterAntiAffinityGroupsArgsDict',
     'VMwareClusterAuthorizationArgs',
+    'VMwareClusterAuthorizationArgsDict',
     'VMwareClusterAuthorizationAdminUserArgs',
+    'VMwareClusterAuthorizationAdminUserArgsDict',
     'VMwareClusterAutoRepairConfigArgs',
+    'VMwareClusterAutoRepairConfigArgsDict',
     'VMwareClusterControlPlaneNodeArgs',
+    'VMwareClusterControlPlaneNodeArgsDict',
     'VMwareClusterControlPlaneNodeAutoResizeConfigArgs',
+    'VMwareClusterControlPlaneNodeAutoResizeConfigArgsDict',
     'VMwareClusterControlPlaneNodeVsphereConfigArgs',
+    'VMwareClusterControlPlaneNodeVsphereConfigArgsDict',
     'VMwareClusterDataplaneV2Args',
+    'VMwareClusterDataplaneV2ArgsDict',
     'VMwareClusterFleetArgs',
+    'VMwareClusterFleetArgsDict',
     'VMwareClusterLoadBalancerArgs',
+    'VMwareClusterLoadBalancerArgsDict',
     'VMwareClusterLoadBalancerF5ConfigArgs',
+    'VMwareClusterLoadBalancerF5ConfigArgsDict',
     'VMwareClusterLoadBalancerManualLbConfigArgs',
+    'VMwareClusterLoadBalancerManualLbConfigArgsDict',
     'VMwareClusterLoadBalancerMetalLbConfigArgs',
+    'VMwareClusterLoadBalancerMetalLbConfigArgsDict',
     'VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs',
+    'VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgsDict',
     'VMwareClusterLoadBalancerVipConfigArgs',
+    'VMwareClusterLoadBalancerVipConfigArgsDict',
     'VMwareClusterNetworkConfigArgs',
+    'VMwareClusterNetworkConfigArgsDict',
     'VMwareClusterNetworkConfigControlPlaneV2ConfigArgs',
+    'VMwareClusterNetworkConfigControlPlaneV2ConfigArgsDict',
     'VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs',
+    'VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgsDict',
     'VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs',
+    'VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgsDict',
     'VMwareClusterNetworkConfigDhcpIpConfigArgs',
+    'VMwareClusterNetworkConfigDhcpIpConfigArgsDict',
     'VMwareClusterNetworkConfigHostConfigArgs',
+    'VMwareClusterNetworkConfigHostConfigArgsDict',
     'VMwareClusterNetworkConfigStaticIpConfigArgs',
+    'VMwareClusterNetworkConfigStaticIpConfigArgsDict',
     'VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs',
+    'VMwareClusterNetworkConfigStaticIpConfigIpBlockArgsDict',
     'VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs',
+    'VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgsDict',
     'VMwareClusterStatusArgs',
+    'VMwareClusterStatusArgsDict',
     'VMwareClusterStatusConditionArgs',
+    'VMwareClusterStatusConditionArgsDict',
     'VMwareClusterStorageArgs',
+    'VMwareClusterStorageArgsDict',
     'VMwareClusterUpgradePolicyArgs',
+    'VMwareClusterUpgradePolicyArgsDict',
     'VMwareClusterValidationCheckArgs',
+    'VMwareClusterValidationCheckArgsDict',
     'VMwareClusterValidationCheckStatusArgs',
+    'VMwareClusterValidationCheckStatusArgsDict',
     'VMwareClusterValidationCheckStatusResultArgs',
+    'VMwareClusterValidationCheckStatusResultArgsDict',
     'VMwareClusterVcenterArgs',
+    'VMwareClusterVcenterArgsDict',
     'VMwareNodePoolConfigArgs',
+    'VMwareNodePoolConfigArgsDict',
     'VMwareNodePoolConfigTaintArgs',
+    'VMwareNodePoolConfigTaintArgsDict',
     'VMwareNodePoolConfigVsphereConfigArgs',
+    'VMwareNodePoolConfigVsphereConfigArgsDict',
     'VMwareNodePoolConfigVsphereConfigTagArgs',
+    'VMwareNodePoolConfigVsphereConfigTagArgsDict',
     'VMwareNodePoolNodePoolAutoscalingArgs',
+    'VMwareNodePoolNodePoolAutoscalingArgsDict',
     'VMwareNodePoolStatusArgs',
+    'VMwareNodePoolStatusArgsDict',
     'VMwareNodePoolStatusConditionArgs',
+    'VMwareNodePoolStatusConditionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class BareMetalAdminClusterClusterOperationsArgsDict(TypedDict):
+        enable_application_logs: NotRequired[pulumi.Input[bool]]
+        """
+        Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
+        """
+elif False:
+    BareMetalAdminClusterClusterOperationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalAdminClusterClusterOperationsArgs:
@@ -157,6 +296,24 @@ class BareMetalAdminClusterClusterOperationsArgs:
     def enable_application_logs(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_application_logs", value)
 
+
+if not MYPY:
+    class BareMetalAdminClusterControlPlaneArgsDict(TypedDict):
+        control_plane_node_pool_config: pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgsDict']
+        """
+        Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
+        Structure is documented below.
+        """
+        api_server_args: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArgsDict']]]]
+        """
+        Customizes the default API server args. Only a subset of
+        customized flags are supported. Please refer to the API server
+        documentation below to know the exact format:
+        https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+        Structure is documented below.
+        """
+elif False:
+    BareMetalAdminClusterControlPlaneArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalAdminClusterControlPlaneArgs:
@@ -206,6 +363,19 @@ class BareMetalAdminClusterControlPlaneArgs:
         pulumi.set(self, "api_server_args", value)
 
 
+if not MYPY:
+    class BareMetalAdminClusterControlPlaneApiServerArgArgsDict(TypedDict):
+        argument: pulumi.Input[str]
+        """
+        The argument name as it appears on the API Server command line please make sure to remove the leading dashes.
+        """
+        value: pulumi.Input[str]
+        """
+        The value of the arg as it will be passed to the API Server command line.
+        """
+elif False:
+    BareMetalAdminClusterControlPlaneApiServerArgArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalAdminClusterControlPlaneApiServerArgArgs:
     def __init__(__self__, *,
@@ -243,6 +413,16 @@ class BareMetalAdminClusterControlPlaneApiServerArgArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgsDict(TypedDict):
+        node_pool_config: pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgsDict']
+        """
+        The generic configuration for a node pool running the control plane.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs:
     def __init__(__self__, *,
@@ -266,6 +446,38 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs:
     def node_pool_config(self, value: pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs']):
         pulumi.set(self, "node_pool_config", value)
 
+
+if not MYPY:
+    class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgsDict(TypedDict):
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The map of Kubernetes labels (key/value pairs) to be applied to
+        each node. These will added in addition to any default label(s)
+        that Kubernetes may apply to the node. In case of conflict in
+        label keys, the applied set may differ depending on the Kubernetes
+        version -- it's best to assume the behavior is undefined and
+        conflicts should be avoided. For more information, including usage
+        and the valid values, see:
+        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]
+        """
+        The list of machine addresses in the Bare Metal Node Pool.
+        Structure is documented below.
+        """
+        operating_system: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the nodes operating system (default: LINUX).
+        """
+        taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgsDict']]]]
+        """
+        The initial taints assigned to nodes of this node pool.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
@@ -360,6 +572,29 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
         pulumi.set(self, "taints", value)
 
 
+if not MYPY:
+    class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict(TypedDict):
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The map of Kubernetes labels (key/value pairs) to be applied to
+        each node. These will added in addition to any default label(s)
+        that Kubernetes may apply to the node. In case of conflict in
+        label keys, the applied set may differ depending on the Kubernetes
+        version -- it's best to assume the behavior is undefined and
+        conflicts should be avoided. For more information, including usage
+        and the valid values, see:
+        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        node_ip: NotRequired[pulumi.Input[str]]
+        """
+        The default IPv4 address for SSH access and Kubernetes node.
+        Example: 192.168.0.1
+        """
+elif False:
+    BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs:
     def __init__(__self__, *,
@@ -419,6 +654,24 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigN
         pulumi.set(self, "node_ip", value)
 
 
+if not MYPY:
+    class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgsDict(TypedDict):
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the nodes operating system (default: LINUX).
+        Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+        """
+        key: NotRequired[pulumi.Input[str]]
+        """
+        Key associated with the effect.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value associated with the effect.
+        """
+elif False:
+    BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs:
     def __init__(__self__, *,
@@ -476,6 +729,18 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigT
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class BareMetalAdminClusterFleetArgsDict(TypedDict):
+        membership: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The name of the managed Hub Membership resource associated to this cluster.
+        Membership names are formatted as
+        `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+        """
+elif False:
+    BareMetalAdminClusterFleetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalAdminClusterFleetArgs:
     def __init__(__self__, *,
@@ -504,6 +769,26 @@ class BareMetalAdminClusterFleetArgs:
     def membership(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "membership", value)
 
+
+if not MYPY:
+    class BareMetalAdminClusterLoadBalancerArgsDict(TypedDict):
+        port_config: pulumi.Input['BareMetalAdminClusterLoadBalancerPortConfigArgsDict']
+        """
+        Specifies the load balancer ports.
+        Structure is documented below.
+        """
+        vip_config: pulumi.Input['BareMetalAdminClusterLoadBalancerVipConfigArgsDict']
+        """
+        Specified the Bare Metal Load Balancer Config
+        Structure is documented below.
+        """
+        manual_lb_config: NotRequired[pulumi.Input['BareMetalAdminClusterLoadBalancerManualLbConfigArgsDict']]
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+elif False:
+    BareMetalAdminClusterLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalAdminClusterLoadBalancerArgs:
@@ -564,6 +849,15 @@ class BareMetalAdminClusterLoadBalancerArgs:
         pulumi.set(self, "manual_lb_config", value)
 
 
+if not MYPY:
+    class BareMetalAdminClusterLoadBalancerManualLbConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether manual load balancing is enabled.
+        """
+elif False:
+    BareMetalAdminClusterLoadBalancerManualLbConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalAdminClusterLoadBalancerManualLbConfigArgs:
     def __init__(__self__, *,
@@ -585,6 +879,15 @@ class BareMetalAdminClusterLoadBalancerManualLbConfigArgs:
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class BareMetalAdminClusterLoadBalancerPortConfigArgsDict(TypedDict):
+        control_plane_load_balancer_port: pulumi.Input[int]
+        """
+        The port that control plane hosted load balancers will listen on.
+        """
+elif False:
+    BareMetalAdminClusterLoadBalancerPortConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalAdminClusterLoadBalancerPortConfigArgs:
@@ -608,6 +911,15 @@ class BareMetalAdminClusterLoadBalancerPortConfigArgs:
         pulumi.set(self, "control_plane_load_balancer_port", value)
 
 
+if not MYPY:
+    class BareMetalAdminClusterLoadBalancerVipConfigArgsDict(TypedDict):
+        control_plane_vip: pulumi.Input[str]
+        """
+        The VIP which you previously set aside for the Kubernetes API of this Bare Metal Admin Cluster.
+        """
+elif False:
+    BareMetalAdminClusterLoadBalancerVipConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalAdminClusterLoadBalancerVipConfigArgs:
     def __init__(__self__, *,
@@ -629,6 +941,18 @@ class BareMetalAdminClusterLoadBalancerVipConfigArgs:
     def control_plane_vip(self, value: pulumi.Input[str]):
         pulumi.set(self, "control_plane_vip", value)
 
+
+if not MYPY:
+    class BareMetalAdminClusterMaintenanceConfigArgsDict(TypedDict):
+        maintenance_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        All IPv4 address from these ranges will be placed into maintenance mode.
+        Nodes in maintenance mode will be cordoned and drained. When both of these
+        are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set
+        on the node resource.
+        """
+elif False:
+    BareMetalAdminClusterMaintenanceConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalAdminClusterMaintenanceConfigArgs:
@@ -658,6 +982,16 @@ class BareMetalAdminClusterMaintenanceConfigArgs:
         pulumi.set(self, "maintenance_address_cidr_blocks", value)
 
 
+if not MYPY:
+    class BareMetalAdminClusterNetworkConfigArgsDict(TypedDict):
+        island_mode_cidr: NotRequired[pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArgsDict']]
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+elif False:
+    BareMetalAdminClusterNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalAdminClusterNetworkConfigArgs:
     def __init__(__self__, *,
@@ -682,6 +1016,19 @@ class BareMetalAdminClusterNetworkConfigArgs:
     def island_mode_cidr(self, value: Optional[pulumi.Input['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs']]):
         pulumi.set(self, "island_mode_cidr", value)
 
+
+if not MYPY:
+    class BareMetalAdminClusterNetworkConfigIslandModeCidrArgsDict(TypedDict):
+        pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+        """
+        service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+        """
+elif False:
+    BareMetalAdminClusterNetworkConfigIslandModeCidrArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalAdminClusterNetworkConfigIslandModeCidrArgs:
@@ -720,6 +1067,16 @@ class BareMetalAdminClusterNetworkConfigIslandModeCidrArgs:
         pulumi.set(self, "service_address_cidr_blocks", value)
 
 
+if not MYPY:
+    class BareMetalAdminClusterNodeAccessConfigArgsDict(TypedDict):
+        login_user: NotRequired[pulumi.Input[str]]
+        """
+        LoginUser is the user name used to access node machines.
+        It defaults to "root" if not set.
+        """
+elif False:
+    BareMetalAdminClusterNodeAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalAdminClusterNodeAccessConfigArgs:
     def __init__(__self__, *,
@@ -745,6 +1102,16 @@ class BareMetalAdminClusterNodeAccessConfigArgs:
         pulumi.set(self, "login_user", value)
 
 
+if not MYPY:
+    class BareMetalAdminClusterNodeConfigArgsDict(TypedDict):
+        max_pods_per_node: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of pods a node can run. The size of the CIDR range
+        assigned to the node will be derived from this parameter.
+        """
+elif False:
+    BareMetalAdminClusterNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalAdminClusterNodeConfigArgs:
     def __init__(__self__, *,
@@ -769,6 +1136,23 @@ class BareMetalAdminClusterNodeConfigArgs:
     def max_pods_per_node(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_pods_per_node", value)
 
+
+if not MYPY:
+    class BareMetalAdminClusterProxyArgsDict(TypedDict):
+        uri: pulumi.Input[str]
+        """
+        Specifies the address of your proxy server.
+        Examples: http://domain
+        WARNING: Do not provide credentials in the format
+        http://(username:password@)domain these will be rejected by the server.
+        """
+        no_proxies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IPs, hostnames, and domains that should skip the proxy.
+        Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+        """
+elif False:
+    BareMetalAdminClusterProxyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalAdminClusterProxyArgs:
@@ -816,6 +1200,16 @@ class BareMetalAdminClusterProxyArgs:
         pulumi.set(self, "no_proxies", value)
 
 
+if not MYPY:
+    class BareMetalAdminClusterSecurityConfigArgsDict(TypedDict):
+        authorization: NotRequired[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationArgsDict']]
+        """
+        Configures user access to the Bare Metal User cluster.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalAdminClusterSecurityConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalAdminClusterSecurityConfigArgs:
     def __init__(__self__, *,
@@ -841,6 +1235,16 @@ class BareMetalAdminClusterSecurityConfigArgs:
         pulumi.set(self, "authorization", value)
 
 
+if not MYPY:
+    class BareMetalAdminClusterSecurityConfigAuthorizationArgsDict(TypedDict):
+        admin_users: pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgsDict']]]
+        """
+        Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalAdminClusterSecurityConfigAuthorizationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalAdminClusterSecurityConfigAuthorizationArgs:
     def __init__(__self__, *,
@@ -865,6 +1269,15 @@ class BareMetalAdminClusterSecurityConfigAuthorizationArgs:
         pulumi.set(self, "admin_users", value)
 
 
+if not MYPY:
+    class BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgsDict(TypedDict):
+        username: pulumi.Input[str]
+        """
+        The name of the user, e.g. `my-gcp-id@gmail.com`.
+        """
+elif False:
+    BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs:
     def __init__(__self__, *,
@@ -886,6 +1299,26 @@ class BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs:
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class BareMetalAdminClusterStatusArgsDict(TypedDict):
+        conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArgsDict']]]]
+        """
+        (Output)
+        ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+        Structure is documented below.
+        """
+        error_message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human-friendly representation of the error message from the admin cluster
+        controller. The error message can be temporary as the admin cluster
+        controller creates a cluster or node pool. If the error message persists
+        for a longer period of time, it can be used to surface error message to
+        indicate real problems requiring user intervention.
+        """
+elif False:
+    BareMetalAdminClusterStatusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalAdminClusterStatusArgs:
@@ -939,6 +1372,35 @@ class BareMetalAdminClusterStatusArgs:
     def error_message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "error_message", value)
 
+
+if not MYPY:
+    class BareMetalAdminClusterStatusConditionArgsDict(TypedDict):
+        last_transition_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Last time the condition transit from one status to another.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        Human-readable message indicating details about last transition.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A human-readable message of the check failure.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The lifecycle state of the condition.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of the condition.
+        (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+        """
+elif False:
+    BareMetalAdminClusterStatusConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalAdminClusterStatusConditionArgs:
@@ -1035,6 +1497,25 @@ class BareMetalAdminClusterStatusConditionArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class BareMetalAdminClusterStorageArgsDict(TypedDict):
+        lvp_node_mounts_config: pulumi.Input['BareMetalAdminClusterStorageLvpNodeMountsConfigArgsDict']
+        """
+        Specifies the config for local PersistentVolumes backed
+        by mounted node disks. These disks need to be formatted and mounted by the
+        user, which can be done before or after cluster creation.
+        Structure is documented below.
+        """
+        lvp_share_config: pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigArgsDict']
+        """
+        Specifies the config for local PersistentVolumes backed by
+        subdirectories in a shared filesystem. These subdirectores are
+        automatically created during cluster creation.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalAdminClusterStorageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalAdminClusterStorageArgs:
     def __init__(__self__, *,
@@ -1084,6 +1565,19 @@ class BareMetalAdminClusterStorageArgs:
         pulumi.set(self, "lvp_share_config", value)
 
 
+if not MYPY:
+    class BareMetalAdminClusterStorageLvpNodeMountsConfigArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        The host machine path.
+        """
+        storage_class: pulumi.Input[str]
+        """
+        The StorageClass name that PVs will be created with.
+        """
+elif False:
+    BareMetalAdminClusterStorageLvpNodeMountsConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalAdminClusterStorageLvpNodeMountsConfigArgs:
     def __init__(__self__, *,
@@ -1120,6 +1614,20 @@ class BareMetalAdminClusterStorageLvpNodeMountsConfigArgs:
     def storage_class(self, value: pulumi.Input[str]):
         pulumi.set(self, "storage_class", value)
 
+
+if not MYPY:
+    class BareMetalAdminClusterStorageLvpShareConfigArgsDict(TypedDict):
+        lvp_config: pulumi.Input['BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgsDict']
+        """
+        Defines the machine path and storage class for the LVP Share.
+        Structure is documented below.
+        """
+        shared_path_pv_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of subdirectories to create under path.
+        """
+elif False:
+    BareMetalAdminClusterStorageLvpShareConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalAdminClusterStorageLvpShareConfigArgs:
@@ -1161,6 +1669,19 @@ class BareMetalAdminClusterStorageLvpShareConfigArgs:
         pulumi.set(self, "shared_path_pv_count", value)
 
 
+if not MYPY:
+    class BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        The host machine path.
+        """
+        storage_class: pulumi.Input[str]
+        """
+        The StorageClass name that PVs will be created with.
+        """
+elif False:
+    BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs:
     def __init__(__self__, *,
@@ -1197,6 +1718,27 @@ class BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs:
     def storage_class(self, value: pulumi.Input[str]):
         pulumi.set(self, "storage_class", value)
 
+
+if not MYPY:
+    class BareMetalAdminClusterValidationCheckArgsDict(TypedDict):
+        options: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Options used for the validation check.
+        """
+        scenario: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The scenario when the preflight checks were run..
+        """
+        statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArgsDict']]]]
+        """
+        (Output)
+        Specifies the detailed validation check status
+        Structure is documented below.
+        """
+elif False:
+    BareMetalAdminClusterValidationCheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalAdminClusterValidationCheckArgs:
@@ -1261,6 +1803,17 @@ class BareMetalAdminClusterValidationCheckArgs:
         pulumi.set(self, "statuses", value)
 
 
+if not MYPY:
+    class BareMetalAdminClusterValidationCheckStatusArgsDict(TypedDict):
+        results: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArgsDict']]]]
+        """
+        (Output)
+        Individual checks which failed as part of the Preflight check execution.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalAdminClusterValidationCheckStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalAdminClusterValidationCheckStatusArgs:
     def __init__(__self__, *,
@@ -1287,6 +1840,35 @@ class BareMetalAdminClusterValidationCheckStatusArgs:
     def results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArgs']]]]):
         pulumi.set(self, "results", value)
 
+
+if not MYPY:
+    class BareMetalAdminClusterValidationCheckStatusResultArgsDict(TypedDict):
+        category: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The category of the validation.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        A human readable description of this Bare Metal Admin Cluster.
+        """
+        details: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Detailed failure information, which might be unformatted.
+        """
+        options: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Options used for the validation check.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A human-readable message of the check failure.
+        """
+elif False:
+    BareMetalAdminClusterValidationCheckStatusResultArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalAdminClusterValidationCheckStatusResultArgs:
@@ -1383,6 +1965,17 @@ class BareMetalAdminClusterValidationCheckStatusResultArgs:
         pulumi.set(self, "reason", value)
 
 
+if not MYPY:
+    class BareMetalClusterBinaryAuthorizationArgsDict(TypedDict):
+        evaluation_mode: NotRequired[pulumi.Input[str]]
+        """
+        Mode of operation for binauthz policy evaluation. If unspecified,
+        defaults to DISABLED.
+        Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
+        """
+elif False:
+    BareMetalClusterBinaryAuthorizationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterBinaryAuthorizationArgs:
     def __init__(__self__, *,
@@ -1410,6 +2003,15 @@ class BareMetalClusterBinaryAuthorizationArgs:
         pulumi.set(self, "evaluation_mode", value)
 
 
+if not MYPY:
+    class BareMetalClusterClusterOperationsArgsDict(TypedDict):
+        enable_application_logs: NotRequired[pulumi.Input[bool]]
+        """
+        Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
+        """
+elif False:
+    BareMetalClusterClusterOperationsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterClusterOperationsArgs:
     def __init__(__self__, *,
@@ -1432,6 +2034,24 @@ class BareMetalClusterClusterOperationsArgs:
     def enable_application_logs(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_application_logs", value)
 
+
+if not MYPY:
+    class BareMetalClusterControlPlaneArgsDict(TypedDict):
+        control_plane_node_pool_config: pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgsDict']
+        """
+        Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
+        Structure is documented below.
+        """
+        api_server_args: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArgsDict']]]]
+        """
+        Customizes the default API server args. Only a subset of
+        customized flags are supported. Please refer to the API server
+        documentation below to know the exact format:
+        https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+        Structure is documented below.
+        """
+elif False:
+    BareMetalClusterControlPlaneArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalClusterControlPlaneArgs:
@@ -1481,6 +2101,19 @@ class BareMetalClusterControlPlaneArgs:
         pulumi.set(self, "api_server_args", value)
 
 
+if not MYPY:
+    class BareMetalClusterControlPlaneApiServerArgArgsDict(TypedDict):
+        argument: pulumi.Input[str]
+        """
+        The argument name as it appears on the API Server command line please make sure to remove the leading dashes.
+        """
+        value: pulumi.Input[str]
+        """
+        The value of the arg as it will be passed to the API Server command line.
+        """
+elif False:
+    BareMetalClusterControlPlaneApiServerArgArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterControlPlaneApiServerArgArgs:
     def __init__(__self__, *,
@@ -1518,6 +2151,16 @@ class BareMetalClusterControlPlaneApiServerArgArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgsDict(TypedDict):
+        node_pool_config: pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgsDict']
+        """
+        The generic configuration for a node pool running the control plane.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs:
     def __init__(__self__, *,
@@ -1541,6 +2184,38 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs:
     def node_pool_config(self, value: pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs']):
         pulumi.set(self, "node_pool_config", value)
 
+
+if not MYPY:
+    class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgsDict(TypedDict):
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The map of Kubernetes labels (key/value pairs) to be applied to
+        each node. These will added in addition to any default label(s)
+        that Kubernetes may apply to the node. In case of conflict in
+        label keys, the applied set may differ depending on the Kubernetes
+        version -- it's best to assume the behavior is undefined and
+        conflicts should be avoided. For more information, including usage
+        and the valid values, see:
+        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]
+        """
+        The list of machine addresses in the Bare Metal Node Pool.
+        Structure is documented below.
+        """
+        operating_system: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the nodes operating system (default: LINUX).
+        """
+        taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgsDict']]]]
+        """
+        The initial taints assigned to nodes of this node pool.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
@@ -1635,6 +2310,29 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
         pulumi.set(self, "taints", value)
 
 
+if not MYPY:
+    class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict(TypedDict):
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The map of Kubernetes labels (key/value pairs) to be applied to
+        each node. These will added in addition to any default label(s)
+        that Kubernetes may apply to the node. In case of conflict in
+        label keys, the applied set may differ depending on the Kubernetes
+        version -- it's best to assume the behavior is undefined and
+        conflicts should be avoided. For more information, including usage
+        and the valid values, see:
+        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        node_ip: NotRequired[pulumi.Input[str]]
+        """
+        The default IPv4 address for SSH access and Kubernetes node.
+        Example: 192.168.0.1
+        """
+elif False:
+    BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs:
     def __init__(__self__, *,
@@ -1694,6 +2392,24 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeCo
         pulumi.set(self, "node_ip", value)
 
 
+if not MYPY:
+    class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgsDict(TypedDict):
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the nodes operating system (default: LINUX).
+        Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+        """
+        key: NotRequired[pulumi.Input[str]]
+        """
+        Key associated with the effect.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value associated with the effect.
+        """
+elif False:
+    BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs:
     def __init__(__self__, *,
@@ -1751,6 +2467,18 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintA
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class BareMetalClusterFleetArgsDict(TypedDict):
+        membership: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The name of the managed Hub Membership resource associated to this cluster.
+        Membership names are formatted as
+        `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+        """
+elif False:
+    BareMetalClusterFleetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterFleetArgs:
     def __init__(__self__, *,
@@ -1779,6 +2507,36 @@ class BareMetalClusterFleetArgs:
     def membership(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "membership", value)
 
+
+if not MYPY:
+    class BareMetalClusterLoadBalancerArgsDict(TypedDict):
+        port_config: pulumi.Input['BareMetalClusterLoadBalancerPortConfigArgsDict']
+        """
+        Specifies the load balancer ports.
+        Structure is documented below.
+        """
+        vip_config: pulumi.Input['BareMetalClusterLoadBalancerVipConfigArgsDict']
+        """
+        Specified the Bare Metal Load Balancer Config
+        Structure is documented below.
+        """
+        bgp_lb_config: NotRequired[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigArgsDict']]
+        """
+        Configuration for BGP typed load balancers.
+        Structure is documented below.
+        """
+        manual_lb_config: NotRequired[pulumi.Input['BareMetalClusterLoadBalancerManualLbConfigArgsDict']]
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        metal_lb_config: NotRequired[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigArgsDict']]
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+elif False:
+    BareMetalClusterLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalClusterLoadBalancerArgs:
@@ -1875,6 +2633,39 @@ class BareMetalClusterLoadBalancerArgs:
         pulumi.set(self, "metal_lb_config", value)
 
 
+if not MYPY:
+    class BareMetalClusterLoadBalancerBgpLbConfigArgsDict(TypedDict):
+        address_pools: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgsDict']]]
+        """
+        AddressPools is a list of non-overlapping IP pools used by load balancer
+        typed services. All addresses must be routable to load balancer nodes.
+        IngressVIP must be included in the pools.
+        Structure is documented below.
+        """
+        asn: pulumi.Input[int]
+        """
+        BGP autonomous system number (ASN) of the cluster.
+        This field can be updated after cluster creation.
+        """
+        bgp_peer_configs: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgsDict']]]
+        """
+        The list of BGP peers that the cluster will connect to.
+        At least one peer must be configured for each control plane node.
+        Control plane nodes will connect to these peers to advertise the control
+        plane VIP. The Services load balancer also uses these peers by default.
+        This field can be updated after cluster creation.
+        Structure is documented below.
+        """
+        load_balancer_node_pool_config: NotRequired[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgsDict']]
+        """
+        Specifies the node pool running data plane load balancing. L2 connectivity
+        is required among nodes in this pool. If missing, the control plane node
+        pool is used for data plane load balancing.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalClusterLoadBalancerBgpLbConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterLoadBalancerBgpLbConfigArgs:
     def __init__(__self__, *,
@@ -1967,6 +2758,28 @@ class BareMetalClusterLoadBalancerBgpLbConfigArgs:
         pulumi.set(self, "load_balancer_node_pool_config", value)
 
 
+if not MYPY:
+    class BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgsDict(TypedDict):
+        addresses: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The addresses that are part of this pool. Each address must be either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5).
+        """
+        pool: pulumi.Input[str]
+        """
+        The name of the address pool.
+        """
+        avoid_buggy_ips: NotRequired[pulumi.Input[bool]]
+        """
+        If true, avoid using IPs ending in .0 or .255.
+        This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses.
+        """
+        manual_assign: NotRequired[pulumi.Input[str]]
+        """
+        If true, prevent IP addresses from being automatically assigned.
+        """
+elif False:
+    BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs:
     def __init__(__self__, *,
@@ -2038,6 +2851,28 @@ class BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs:
         pulumi.set(self, "manual_assign", value)
 
 
+if not MYPY:
+    class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgsDict(TypedDict):
+        asn: pulumi.Input[int]
+        """
+        BGP autonomous system number (ASN) for the network that contains the
+        external peer device.
+        """
+        ip_address: pulumi.Input[str]
+        """
+        The IP address of the external peer device.
+        """
+        control_plane_nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The IP address of the control plane node that connects to the external
+        peer.
+        If you don't specify any control plane nodes, all control plane nodes
+        can connect to the external peer. If you specify one or more IP addresses,
+        only the nodes specified participate in peering sessions.
+        """
+elif False:
+    BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs:
     def __init__(__self__, *,
@@ -2101,6 +2936,16 @@ class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs:
         pulumi.set(self, "control_plane_nodes", value)
 
 
+if not MYPY:
+    class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgsDict(TypedDict):
+        node_pool_config: NotRequired[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict']]
+        """
+        The generic configuration for a node pool running a load balancer.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs:
     def __init__(__self__, *,
@@ -2125,6 +2970,43 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs:
     def node_pool_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]):
         pulumi.set(self, "node_pool_config", value)
 
+
+if not MYPY:
+    class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict(TypedDict):
+        kubelet_config: NotRequired[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgsDict']]
+        """
+        The modifiable kubelet configurations for the baremetal machines.
+        Structure is documented below.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The map of Kubernetes labels (key/value pairs) to be applied to
+        each node. These will added in addition to any default label(s)
+        that Kubernetes may apply to the node. In case of conflict in
+        label keys, the applied set may differ depending on the Kubernetes
+        version -- it's best to assume the behavior is undefined and
+        conflicts should be avoided. For more information, including usage
+        and the valid values, see:
+        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]
+        """
+        The list of machine addresses in the Bare Metal Node Pool.
+        Structure is documented below.
+        """
+        operating_system: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the nodes operating system (default: LINUX).
+        """
+        taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict']]]]
+        """
+        The initial taints assigned to nodes of this node pool.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs:
@@ -2237,6 +3119,36 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         pulumi.set(self, "taints", value)
 
 
+if not MYPY:
+    class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgsDict(TypedDict):
+        registry_burst: NotRequired[pulumi.Input[int]]
+        """
+        The maximum size of bursty pulls, temporarily allows pulls to burst to this
+        number, while still not exceeding registry_pull_qps.
+        The value must not be a negative number.
+        Updating this field may impact scalability by changing the amount of
+        traffic produced by image pulls.
+        Defaults to 10.
+        """
+        registry_pull_qps: NotRequired[pulumi.Input[int]]
+        """
+        The limit of registry pulls per second.
+        Setting this value to 0 means no limit.
+        Updating this field may impact scalability by changing the amount of
+        traffic produced by image pulls.
+        Defaults to 5.
+        """
+        serialize_image_pulls_disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Prevents the Kubelet from pulling multiple images at a time.
+        We recommend *not* changing the default value on nodes that run docker
+        daemon with version  < 1.9 or an Another Union File System (Aufs) storage
+        backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has
+        more details.
+        """
+elif False:
+    BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs:
     def __init__(__self__, *,
@@ -2318,6 +3230,29 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         pulumi.set(self, "serialize_image_pulls_disabled", value)
 
 
+if not MYPY:
+    class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict(TypedDict):
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The map of Kubernetes labels (key/value pairs) to be applied to
+        each node. These will added in addition to any default label(s)
+        that Kubernetes may apply to the node. In case of conflict in
+        label keys, the applied set may differ depending on the Kubernetes
+        version -- it's best to assume the behavior is undefined and
+        conflicts should be avoided. For more information, including usage
+        and the valid values, see:
+        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        node_ip: NotRequired[pulumi.Input[str]]
+        """
+        The default IPv4 address for SSH access and Kubernetes node.
+        Example: 192.168.0.1
+        """
+elif False:
+    BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs:
     def __init__(__self__, *,
@@ -2377,6 +3312,24 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         pulumi.set(self, "node_ip", value)
 
 
+if not MYPY:
+    class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict(TypedDict):
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the nodes operating system (default: LINUX).
+        Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+        """
+        key: NotRequired[pulumi.Input[str]]
+        """
+        Key associated with the effect.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value associated with the effect.
+        """
+elif False:
+    BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs:
     def __init__(__self__, *,
@@ -2434,6 +3387,15 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class BareMetalClusterLoadBalancerManualLbConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether manual load balancing is enabled.
+        """
+elif False:
+    BareMetalClusterLoadBalancerManualLbConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterLoadBalancerManualLbConfigArgs:
     def __init__(__self__, *,
@@ -2455,6 +3417,23 @@ class BareMetalClusterLoadBalancerManualLbConfigArgs:
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class BareMetalClusterLoadBalancerMetalLbConfigArgsDict(TypedDict):
+        address_pools: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgsDict']]]
+        """
+        AddressPools is a list of non-overlapping IP pools used by load balancer
+        typed services. All addresses must be routable to load balancer nodes.
+        IngressVIP must be included in the pools.
+        Structure is documented below.
+        """
+        load_balancer_node_pool_config: NotRequired[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgsDict']]
+        """
+        Specifies the load balancer's node pool configuration.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalClusterLoadBalancerMetalLbConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalClusterLoadBalancerMetalLbConfigArgs:
@@ -2501,6 +3480,28 @@ class BareMetalClusterLoadBalancerMetalLbConfigArgs:
     def load_balancer_node_pool_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs']]):
         pulumi.set(self, "load_balancer_node_pool_config", value)
 
+
+if not MYPY:
+    class BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgsDict(TypedDict):
+        addresses: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The addresses that are part of this pool. Each address must be either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5).
+        """
+        pool: pulumi.Input[str]
+        """
+        The name of the address pool.
+        """
+        avoid_buggy_ips: NotRequired[pulumi.Input[bool]]
+        """
+        If true, avoid using IPs ending in .0 or .255.
+        This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses.
+        """
+        manual_assign: NotRequired[pulumi.Input[bool]]
+        """
+        If true, prevent IP addresses from being automatically assigned.
+        """
+elif False:
+    BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs:
@@ -2573,6 +3574,16 @@ class BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs:
         pulumi.set(self, "manual_assign", value)
 
 
+if not MYPY:
+    class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgsDict(TypedDict):
+        node_pool_config: NotRequired[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict']]
+        """
+        The generic configuration for a node pool running a load balancer.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs:
     def __init__(__self__, *,
@@ -2597,6 +3608,38 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs:
     def node_pool_config(self, value: Optional[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]):
         pulumi.set(self, "node_pool_config", value)
 
+
+if not MYPY:
+    class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict(TypedDict):
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The map of Kubernetes labels (key/value pairs) to be applied to
+        each node. These will added in addition to any default label(s)
+        that Kubernetes may apply to the node. In case of conflict in
+        label keys, the applied set may differ depending on the Kubernetes
+        version -- it's best to assume the behavior is undefined and
+        conflicts should be avoided. For more information, including usage
+        and the valid values, see:
+        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]
+        """
+        The list of machine addresses in the Bare Metal Node Pool.
+        Structure is documented below.
+        """
+        operating_system: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the nodes operating system (default: LINUX).
+        """
+        taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict']]]]
+        """
+        The initial taints assigned to nodes of this node pool.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs:
@@ -2691,6 +3734,29 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
         pulumi.set(self, "taints", value)
 
 
+if not MYPY:
+    class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict(TypedDict):
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The map of Kubernetes labels (key/value pairs) to be applied to
+        each node. These will added in addition to any default label(s)
+        that Kubernetes may apply to the node. In case of conflict in
+        label keys, the applied set may differ depending on the Kubernetes
+        version -- it's best to assume the behavior is undefined and
+        conflicts should be avoided. For more information, including usage
+        and the valid values, see:
+        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        node_ip: NotRequired[pulumi.Input[str]]
+        """
+        The default IPv4 address for SSH access and Kubernetes node.
+        Example: 192.168.0.1
+        """
+elif False:
+    BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs:
     def __init__(__self__, *,
@@ -2750,6 +3816,24 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
         pulumi.set(self, "node_ip", value)
 
 
+if not MYPY:
+    class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict(TypedDict):
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the nodes operating system (default: LINUX).
+        Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+        """
+        key: NotRequired[pulumi.Input[str]]
+        """
+        Key associated with the effect.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value associated with the effect.
+        """
+elif False:
+    BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs:
     def __init__(__self__, *,
@@ -2807,6 +3891,15 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class BareMetalClusterLoadBalancerPortConfigArgsDict(TypedDict):
+        control_plane_load_balancer_port: pulumi.Input[int]
+        """
+        The port that control plane hosted load balancers will listen on.
+        """
+elif False:
+    BareMetalClusterLoadBalancerPortConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterLoadBalancerPortConfigArgs:
     def __init__(__self__, *,
@@ -2828,6 +3921,19 @@ class BareMetalClusterLoadBalancerPortConfigArgs:
     def control_plane_load_balancer_port(self, value: pulumi.Input[int]):
         pulumi.set(self, "control_plane_load_balancer_port", value)
 
+
+if not MYPY:
+    class BareMetalClusterLoadBalancerVipConfigArgsDict(TypedDict):
+        control_plane_vip: pulumi.Input[str]
+        """
+        The VIP which you previously set aside for the Kubernetes API of this Bare Metal User Cluster.
+        """
+        ingress_vip: pulumi.Input[str]
+        """
+        The VIP which you previously set aside for ingress traffic into this Bare Metal User Cluster.
+        """
+elif False:
+    BareMetalClusterLoadBalancerVipConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalClusterLoadBalancerVipConfigArgs:
@@ -2866,6 +3972,18 @@ class BareMetalClusterLoadBalancerVipConfigArgs:
         pulumi.set(self, "ingress_vip", value)
 
 
+if not MYPY:
+    class BareMetalClusterMaintenanceConfigArgsDict(TypedDict):
+        maintenance_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        All IPv4 address from these ranges will be placed into maintenance mode.
+        Nodes in maintenance mode will be cordoned and drained. When both of these
+        are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set
+        on the node resource.
+        """
+elif False:
+    BareMetalClusterMaintenanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterMaintenanceConfigArgs:
     def __init__(__self__, *,
@@ -2893,6 +4011,33 @@ class BareMetalClusterMaintenanceConfigArgs:
     def maintenance_address_cidr_blocks(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "maintenance_address_cidr_blocks", value)
 
+
+if not MYPY:
+    class BareMetalClusterNetworkConfigArgsDict(TypedDict):
+        advanced_networking: NotRequired[pulumi.Input[bool]]
+        """
+        Enables the use of advanced Anthos networking features, such as Bundled
+        Load Balancing with BGP or the egress NAT gateway.
+        Setting configuration for advanced networking features will automatically
+        set this flag.
+        """
+        island_mode_cidr: NotRequired[pulumi.Input['BareMetalClusterNetworkConfigIslandModeCidrArgsDict']]
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        multiple_network_interfaces_config: NotRequired[pulumi.Input['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgsDict']]
+        """
+        Configuration for multiple network interfaces.
+        Structure is documented below.
+        """
+        sr_iov_config: NotRequired[pulumi.Input['BareMetalClusterNetworkConfigSrIovConfigArgsDict']]
+        """
+        Configuration for SR-IOV.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalClusterNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalClusterNetworkConfigArgs:
@@ -2977,6 +4122,19 @@ class BareMetalClusterNetworkConfigArgs:
         pulumi.set(self, "sr_iov_config", value)
 
 
+if not MYPY:
+    class BareMetalClusterNetworkConfigIslandModeCidrArgsDict(TypedDict):
+        pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+        """
+        service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+        """
+elif False:
+    BareMetalClusterNetworkConfigIslandModeCidrArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterNetworkConfigIslandModeCidrArgs:
     def __init__(__self__, *,
@@ -3014,6 +4172,17 @@ class BareMetalClusterNetworkConfigIslandModeCidrArgs:
         pulumi.set(self, "service_address_cidr_blocks", value)
 
 
+if not MYPY:
+    class BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable multiple network interfaces for your pods.
+        When set network_config.advanced_networking is automatically
+        set to true.
+        """
+elif False:
+    BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs:
     def __init__(__self__, *,
@@ -3041,6 +4210,15 @@ class BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs:
         pulumi.set(self, "enabled", value)
 
 
+if not MYPY:
+    class BareMetalClusterNetworkConfigSrIovConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to install the SR-IOV operator.
+        """
+elif False:
+    BareMetalClusterNetworkConfigSrIovConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterNetworkConfigSrIovConfigArgs:
     def __init__(__self__, *,
@@ -3063,6 +4241,16 @@ class BareMetalClusterNetworkConfigSrIovConfigArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class BareMetalClusterNodeAccessConfigArgsDict(TypedDict):
+        login_user: NotRequired[pulumi.Input[str]]
+        """
+        LoginUser is the user name used to access node machines.
+        It defaults to "root" if not set.
+        """
+elif False:
+    BareMetalClusterNodeAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalClusterNodeAccessConfigArgs:
@@ -3088,6 +4276,21 @@ class BareMetalClusterNodeAccessConfigArgs:
     def login_user(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "login_user", value)
 
+
+if not MYPY:
+    class BareMetalClusterNodeConfigArgsDict(TypedDict):
+        container_runtime: NotRequired[pulumi.Input[str]]
+        """
+        The available runtimes that can be used to run containers in a Bare Metal User Cluster.
+        Possible values are: `CONTAINER_RUNTIME_UNSPECIFIED`, `DOCKER`, `CONTAINERD`.
+        """
+        max_pods_per_node: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of pods a node can run. The size of the CIDR range
+        assigned to the node will be derived from this parameter.
+        """
+elif False:
+    BareMetalClusterNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalClusterNodeConfigArgs:
@@ -3132,6 +4335,16 @@ class BareMetalClusterNodeConfigArgs:
         pulumi.set(self, "max_pods_per_node", value)
 
 
+if not MYPY:
+    class BareMetalClusterOsEnvironmentConfigArgsDict(TypedDict):
+        package_repo_excluded: pulumi.Input[bool]
+        """
+        Whether the package repo should not be included when initializing
+        bare metal machines.
+        """
+elif False:
+    BareMetalClusterOsEnvironmentConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterOsEnvironmentConfigArgs:
     def __init__(__self__, *,
@@ -3155,6 +4368,23 @@ class BareMetalClusterOsEnvironmentConfigArgs:
     def package_repo_excluded(self, value: pulumi.Input[bool]):
         pulumi.set(self, "package_repo_excluded", value)
 
+
+if not MYPY:
+    class BareMetalClusterProxyArgsDict(TypedDict):
+        uri: pulumi.Input[str]
+        """
+        Specifies the address of your proxy server.
+        Examples: http://domain
+        WARNING: Do not provide credentials in the format
+        http://(username:password@)domain these will be rejected by the server.
+        """
+        no_proxies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IPs, hostnames, and domains that should skip the proxy.
+        Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+        """
+elif False:
+    BareMetalClusterProxyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalClusterProxyArgs:
@@ -3202,6 +4432,16 @@ class BareMetalClusterProxyArgs:
         pulumi.set(self, "no_proxies", value)
 
 
+if not MYPY:
+    class BareMetalClusterSecurityConfigArgsDict(TypedDict):
+        authorization: NotRequired[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationArgsDict']]
+        """
+        Configures user access to the Bare Metal User cluster.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalClusterSecurityConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterSecurityConfigArgs:
     def __init__(__self__, *,
@@ -3227,6 +4467,16 @@ class BareMetalClusterSecurityConfigArgs:
         pulumi.set(self, "authorization", value)
 
 
+if not MYPY:
+    class BareMetalClusterSecurityConfigAuthorizationArgsDict(TypedDict):
+        admin_users: pulumi.Input[Sequence[pulumi.Input['BareMetalClusterSecurityConfigAuthorizationAdminUserArgsDict']]]
+        """
+        Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalClusterSecurityConfigAuthorizationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterSecurityConfigAuthorizationArgs:
     def __init__(__self__, *,
@@ -3251,6 +4501,15 @@ class BareMetalClusterSecurityConfigAuthorizationArgs:
         pulumi.set(self, "admin_users", value)
 
 
+if not MYPY:
+    class BareMetalClusterSecurityConfigAuthorizationAdminUserArgsDict(TypedDict):
+        username: pulumi.Input[str]
+        """
+        The name of the user, e.g. `my-gcp-id@gmail.com`.
+        """
+elif False:
+    BareMetalClusterSecurityConfigAuthorizationAdminUserArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterSecurityConfigAuthorizationAdminUserArgs:
     def __init__(__self__, *,
@@ -3272,6 +4531,26 @@ class BareMetalClusterSecurityConfigAuthorizationAdminUserArgs:
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class BareMetalClusterStatusArgsDict(TypedDict):
+        conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusConditionArgsDict']]]]
+        """
+        (Output)
+        ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
+        Structure is documented below.
+        """
+        error_message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human-friendly representation of the error message from the user cluster
+        controller. The error message can be temporary as the user cluster
+        controller creates a cluster or node pool. If the error message persists
+        for a longer period of time, it can be used to surface error message to
+        indicate real problems requiring user intervention.
+        """
+elif False:
+    BareMetalClusterStatusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalClusterStatusArgs:
@@ -3325,6 +4604,35 @@ class BareMetalClusterStatusArgs:
     def error_message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "error_message", value)
 
+
+if not MYPY:
+    class BareMetalClusterStatusConditionArgsDict(TypedDict):
+        last_transition_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Last time the condition transit from one status to another.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        Human-readable message indicating details about last transition.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A human-readable message of the check failure.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The lifecycle state of the condition.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of the condition.
+        (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+        """
+elif False:
+    BareMetalClusterStatusConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalClusterStatusConditionArgs:
@@ -3421,6 +4729,25 @@ class BareMetalClusterStatusConditionArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class BareMetalClusterStorageArgsDict(TypedDict):
+        lvp_node_mounts_config: pulumi.Input['BareMetalClusterStorageLvpNodeMountsConfigArgsDict']
+        """
+        Specifies the config for local PersistentVolumes backed
+        by mounted node disks. These disks need to be formatted and mounted by the
+        user, which can be done before or after cluster creation.
+        Structure is documented below.
+        """
+        lvp_share_config: pulumi.Input['BareMetalClusterStorageLvpShareConfigArgsDict']
+        """
+        Specifies the config for local PersistentVolumes backed by
+        subdirectories in a shared filesystem. These subdirectores are
+        automatically created during cluster creation.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalClusterStorageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterStorageArgs:
     def __init__(__self__, *,
@@ -3470,6 +4797,21 @@ class BareMetalClusterStorageArgs:
         pulumi.set(self, "lvp_share_config", value)
 
 
+if not MYPY:
+    class BareMetalClusterStorageLvpNodeMountsConfigArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        The host machine path.
+        """
+        storage_class: pulumi.Input[str]
+        """
+        The StorageClass name that PVs will be created with.
+
+        - - -
+        """
+elif False:
+    BareMetalClusterStorageLvpNodeMountsConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterStorageLvpNodeMountsConfigArgs:
     def __init__(__self__, *,
@@ -3511,6 +4853,20 @@ class BareMetalClusterStorageLvpNodeMountsConfigArgs:
         pulumi.set(self, "storage_class", value)
 
 
+if not MYPY:
+    class BareMetalClusterStorageLvpShareConfigArgsDict(TypedDict):
+        lvp_config: pulumi.Input['BareMetalClusterStorageLvpShareConfigLvpConfigArgsDict']
+        """
+        Defines the machine path and storage class for the LVP Share.
+        Structure is documented below.
+        """
+        shared_path_pv_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of subdirectories to create under path.
+        """
+elif False:
+    BareMetalClusterStorageLvpShareConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterStorageLvpShareConfigArgs:
     def __init__(__self__, *,
@@ -3551,6 +4907,19 @@ class BareMetalClusterStorageLvpShareConfigArgs:
         pulumi.set(self, "shared_path_pv_count", value)
 
 
+if not MYPY:
+    class BareMetalClusterStorageLvpShareConfigLvpConfigArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        The host machine path.
+        """
+        storage_class: pulumi.Input[str]
+        """
+        The StorageClass name that PVs will be created with.
+        """
+elif False:
+    BareMetalClusterStorageLvpShareConfigLvpConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterStorageLvpShareConfigLvpConfigArgs:
     def __init__(__self__, *,
@@ -3588,6 +4957,16 @@ class BareMetalClusterStorageLvpShareConfigLvpConfigArgs:
         pulumi.set(self, "storage_class", value)
 
 
+if not MYPY:
+    class BareMetalClusterUpgradePolicyArgsDict(TypedDict):
+        policy: NotRequired[pulumi.Input[str]]
+        """
+        Specifies which upgrade policy to use.
+        Possible values are: `SERIAL`, `CONCURRENT`.
+        """
+elif False:
+    BareMetalClusterUpgradePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterUpgradePolicyArgs:
     def __init__(__self__, *,
@@ -3612,6 +4991,27 @@ class BareMetalClusterUpgradePolicyArgs:
     def policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "policy", value)
 
+
+if not MYPY:
+    class BareMetalClusterValidationCheckArgsDict(TypedDict):
+        options: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Options used for the validation check.
+        """
+        scenario: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The scenario when the preflight checks were run..
+        """
+        statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArgsDict']]]]
+        """
+        (Output)
+        Specifies the detailed validation check status
+        Structure is documented below.
+        """
+elif False:
+    BareMetalClusterValidationCheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalClusterValidationCheckArgs:
@@ -3676,6 +5076,17 @@ class BareMetalClusterValidationCheckArgs:
         pulumi.set(self, "statuses", value)
 
 
+if not MYPY:
+    class BareMetalClusterValidationCheckStatusArgsDict(TypedDict):
+        results: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArgsDict']]]]
+        """
+        (Output)
+        Individual checks which failed as part of the Preflight check execution.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalClusterValidationCheckStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalClusterValidationCheckStatusArgs:
     def __init__(__self__, *,
@@ -3702,6 +5113,36 @@ class BareMetalClusterValidationCheckStatusArgs:
     def results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArgs']]]]):
         pulumi.set(self, "results", value)
 
+
+if not MYPY:
+    class BareMetalClusterValidationCheckStatusResultArgsDict(TypedDict):
+        category: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The category of the validation.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The description of the validation check.
+        """
+        details: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Detailed failure information, which might be unformatted.
+        """
+        options: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Options used for the validation check.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A human-readable message of the check failure.
+        """
+elif False:
+    BareMetalClusterValidationCheckStatusResultArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalClusterValidationCheckStatusResultArgs:
@@ -3800,6 +5241,38 @@ class BareMetalClusterValidationCheckStatusResultArgs:
         pulumi.set(self, "reason", value)
 
 
+if not MYPY:
+    class BareMetalNodePoolNodePoolConfigArgsDict(TypedDict):
+        node_configs: pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigNodeConfigArgsDict']]]
+        """
+        The list of machine addresses in the Bare Metal Node Pool.
+        Structure is documented below.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The map of Kubernetes labels (key/value pairs) to be applied to
+        each node. These will added in addition to any default label(s)
+        that Kubernetes may apply to the node. In case of conflict in
+        label keys, the applied set may differ depending on the Kubernetes
+        version -- it's best to assume the behavior is undefined and
+        conflicts should be avoided. For more information, including usage
+        and the valid values, see:
+        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        operating_system: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the nodes operating system (default: LINUX).
+        """
+        taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArgsDict']]]]
+        """
+        The initial taints assigned to nodes of this node pool.
+        Structure is documented below.
+        """
+elif False:
+    BareMetalNodePoolNodePoolConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalNodePoolNodePoolConfigArgs:
     def __init__(__self__, *,
@@ -3892,6 +5365,29 @@ class BareMetalNodePoolNodePoolConfigArgs:
         pulumi.set(self, "taints", value)
 
 
+if not MYPY:
+    class BareMetalNodePoolNodePoolConfigNodeConfigArgsDict(TypedDict):
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The map of Kubernetes labels (key/value pairs) to be applied to
+        each node. These will added in addition to any default label(s)
+        that Kubernetes may apply to the node. In case of conflict in
+        label keys, the applied set may differ depending on the Kubernetes
+        version -- it's best to assume the behavior is undefined and
+        conflicts should be avoided. For more information, including usage
+        and the valid values, see:
+        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        node_ip: NotRequired[pulumi.Input[str]]
+        """
+        The default IPv4 address for SSH access and Kubernetes node.
+        Example: 192.168.0.1
+        """
+elif False:
+    BareMetalNodePoolNodePoolConfigNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalNodePoolNodePoolConfigNodeConfigArgs:
     def __init__(__self__, *,
@@ -3950,6 +5446,26 @@ class BareMetalNodePoolNodePoolConfigNodeConfigArgs:
     def node_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "node_ip", value)
 
+
+if not MYPY:
+    class BareMetalNodePoolNodePoolConfigTaintArgsDict(TypedDict):
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the nodes operating system (default: LINUX).
+        Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+
+        - - -
+        """
+        key: NotRequired[pulumi.Input[str]]
+        """
+        Key associated with the effect.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value associated with the effect.
+        """
+elif False:
+    BareMetalNodePoolNodePoolConfigTaintArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalNodePoolNodePoolConfigTaintArgs:
@@ -4012,6 +5528,26 @@ class BareMetalNodePoolNodePoolConfigTaintArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class BareMetalNodePoolStatusArgsDict(TypedDict):
+        conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArgsDict']]]]
+        """
+        (Output)
+        ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
+        Structure is documented below.
+        """
+        error_message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human-friendly representation of the error message from the user cluster
+        controller. The error message can be temporary as the user cluster
+        controller creates a cluster or node pool. If the error message persists
+        for a longer period of time, it can be used to surface error message to
+        indicate real problems requiring user intervention.
+        """
+elif False:
+    BareMetalNodePoolStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BareMetalNodePoolStatusArgs:
     def __init__(__self__, *,
@@ -4064,6 +5600,34 @@ class BareMetalNodePoolStatusArgs:
     def error_message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "error_message", value)
 
+
+if not MYPY:
+    class BareMetalNodePoolStatusConditionArgsDict(TypedDict):
+        last_transition_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Last time the condition transit from one status to another.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        Human-readable message indicating details about last transition.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        Machine-readable message indicating details about last transition.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The lifecycle state of the condition.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type of the condition.
+        (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+        """
+elif False:
+    BareMetalNodePoolStatusConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BareMetalNodePoolStatusConditionArgs:
@@ -4158,6 +5722,17 @@ class BareMetalNodePoolStatusConditionArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class VMwareClusterAntiAffinityGroupsArgsDict(TypedDict):
+        aag_config_disabled: pulumi.Input[bool]
+        """
+        Spread nodes across at least three physical hosts (requires at least three
+        hosts).
+        Enabled by default.
+        """
+elif False:
+    VMwareClusterAntiAffinityGroupsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareClusterAntiAffinityGroupsArgs:
     def __init__(__self__, *,
@@ -4183,6 +5758,17 @@ class VMwareClusterAntiAffinityGroupsArgs:
     def aag_config_disabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "aag_config_disabled", value)
 
+
+if not MYPY:
+    class VMwareClusterAuthorizationArgsDict(TypedDict):
+        admin_users: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArgsDict']]]]
+        """
+        Users that will be granted the cluster-admin role on the cluster, providing
+        full access to the cluster.
+        Structure is documented below.
+        """
+elif False:
+    VMwareClusterAuthorizationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareClusterAuthorizationArgs:
@@ -4211,6 +5797,15 @@ class VMwareClusterAuthorizationArgs:
         pulumi.set(self, "admin_users", value)
 
 
+if not MYPY:
+    class VMwareClusterAuthorizationAdminUserArgsDict(TypedDict):
+        username: pulumi.Input[str]
+        """
+        The name of the user, e.g. `my-gcp-id@gmail.com`.
+        """
+elif False:
+    VMwareClusterAuthorizationAdminUserArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareClusterAuthorizationAdminUserArgs:
     def __init__(__self__, *,
@@ -4233,6 +5828,15 @@ class VMwareClusterAuthorizationAdminUserArgs:
         pulumi.set(self, "username", value)
 
 
+if not MYPY:
+    class VMwareClusterAutoRepairConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether auto repair is enabled.
+        """
+elif False:
+    VMwareClusterAutoRepairConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareClusterAutoRepairConfigArgs:
     def __init__(__self__, *,
@@ -4254,6 +5858,37 @@ class VMwareClusterAutoRepairConfigArgs:
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class VMwareClusterControlPlaneNodeArgsDict(TypedDict):
+        auto_resize_config: NotRequired[pulumi.Input['VMwareClusterControlPlaneNodeAutoResizeConfigArgsDict']]
+        """
+        AutoResizeConfig provides auto resizing configurations.
+        Structure is documented below.
+        """
+        cpus: NotRequired[pulumi.Input[int]]
+        """
+        The number of CPUs for each admin cluster node that serve as control planes
+        for this VMware User Cluster. (default: 4 CPUs)
+        """
+        memory: NotRequired[pulumi.Input[int]]
+        """
+        The megabytes of memory for each admin cluster node that serves as a
+        control plane for this VMware User Cluster (default: 8192 MB memory).
+        """
+        replicas: NotRequired[pulumi.Input[int]]
+        """
+        The number of control plane nodes for this VMware User Cluster.
+        (default: 1 replica).
+        """
+        vsphere_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArgsDict']]]]
+        """
+        (Output)
+        Vsphere-specific config.
+        Structure is documented below.
+        """
+elif False:
+    VMwareClusterControlPlaneNodeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareClusterControlPlaneNodeArgs:
@@ -4354,6 +5989,17 @@ class VMwareClusterControlPlaneNodeArgs:
         pulumi.set(self, "vsphere_configs", value)
 
 
+if not MYPY:
+    class VMwareClusterControlPlaneNodeAutoResizeConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether to enable control plane node auto resizing.
+
+        <a name="nested_vsphere_config"></a>The `vsphere_config` block contains:
+        """
+elif False:
+    VMwareClusterControlPlaneNodeAutoResizeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareClusterControlPlaneNodeAutoResizeConfigArgs:
     def __init__(__self__, *,
@@ -4379,6 +6025,19 @@ class VMwareClusterControlPlaneNodeAutoResizeConfigArgs:
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class VMwareClusterControlPlaneNodeVsphereConfigArgsDict(TypedDict):
+        datastore: NotRequired[pulumi.Input[str]]
+        """
+        The Vsphere datastore used by the Control Plane Node.
+        """
+        storage_policy_name: NotRequired[pulumi.Input[str]]
+        """
+        The Vsphere storage policy used by the control plane Node.
+        """
+elif False:
+    VMwareClusterControlPlaneNodeVsphereConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareClusterControlPlaneNodeVsphereConfigArgs:
@@ -4418,6 +6077,23 @@ class VMwareClusterControlPlaneNodeVsphereConfigArgs:
     def storage_policy_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "storage_policy_name", value)
 
+
+if not MYPY:
+    class VMwareClusterDataplaneV2ArgsDict(TypedDict):
+        advanced_networking: NotRequired[pulumi.Input[bool]]
+        """
+        Enable advanced networking which requires dataplane_v2_enabled to be set true.
+        """
+        dataplane_v2_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enables Dataplane V2.
+        """
+        windows_dataplane_v2_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable Dataplane V2 for clusters with Windows nodes.
+        """
+elif False:
+    VMwareClusterDataplaneV2ArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareClusterDataplaneV2Args:
@@ -4474,6 +6150,18 @@ class VMwareClusterDataplaneV2Args:
         pulumi.set(self, "windows_dataplane_v2_enabled", value)
 
 
+if not MYPY:
+    class VMwareClusterFleetArgsDict(TypedDict):
+        membership: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The name of the managed Hub Membership resource associated to this cluster.
+        Membership names are formatted as
+        `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+        """
+elif False:
+    VMwareClusterFleetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareClusterFleetArgs:
     def __init__(__self__, *,
@@ -4502,6 +6190,31 @@ class VMwareClusterFleetArgs:
     def membership(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "membership", value)
 
+
+if not MYPY:
+    class VMwareClusterLoadBalancerArgsDict(TypedDict):
+        f5_config: NotRequired[pulumi.Input['VMwareClusterLoadBalancerF5ConfigArgsDict']]
+        """
+        Configuration for F5 Big IP typed load balancers.
+        Structure is documented below.
+        """
+        manual_lb_config: NotRequired[pulumi.Input['VMwareClusterLoadBalancerManualLbConfigArgsDict']]
+        """
+        Manually configured load balancers.
+        Structure is documented below.
+        """
+        metal_lb_config: NotRequired[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigArgsDict']]
+        """
+        Configuration for MetalLB typed load balancers.
+        Structure is documented below.
+        """
+        vip_config: NotRequired[pulumi.Input['VMwareClusterLoadBalancerVipConfigArgsDict']]
+        """
+        The VIPs used by the load balancer.
+        Structure is documented below.
+        """
+elif False:
+    VMwareClusterLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareClusterLoadBalancerArgs:
@@ -4582,6 +6295,25 @@ class VMwareClusterLoadBalancerArgs:
         pulumi.set(self, "vip_config", value)
 
 
+if not MYPY:
+    class VMwareClusterLoadBalancerF5ConfigArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        The load balancer's IP address.
+        """
+        partition: NotRequired[pulumi.Input[str]]
+        """
+        he preexisting partition to be used by the load balancer. T
+        his partition is usually created for the admin cluster for example:
+        'my-f5-admin-partition'.
+        """
+        snat_pool: NotRequired[pulumi.Input[str]]
+        """
+        The pool name. Only necessary, if using SNAT.
+        """
+elif False:
+    VMwareClusterLoadBalancerF5ConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareClusterLoadBalancerF5ConfigArgs:
     def __init__(__self__, *,
@@ -4640,6 +6372,31 @@ class VMwareClusterLoadBalancerF5ConfigArgs:
     def snat_pool(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "snat_pool", value)
 
+
+if not MYPY:
+    class VMwareClusterLoadBalancerManualLbConfigArgsDict(TypedDict):
+        control_plane_node_port: NotRequired[pulumi.Input[int]]
+        """
+        NodePort for control plane service. The Kubernetes API server in the admin
+        cluster is implemented as a Service of type NodePort (ex. 30968).
+        """
+        ingress_http_node_port: NotRequired[pulumi.Input[int]]
+        """
+        NodePort for ingress service's http. The ingress service in the admin
+        cluster is implemented as a Service of type NodePort (ex. 32527).
+        """
+        ingress_https_node_port: NotRequired[pulumi.Input[int]]
+        """
+        NodePort for ingress service's https. The ingress service in the admin
+        cluster is implemented as a Service of type NodePort (ex. 30139).
+        """
+        konnectivity_server_node_port: NotRequired[pulumi.Input[int]]
+        """
+        NodePort for konnectivity server service running as a sidecar in each
+        kube-apiserver pod (ex. 30564).
+        """
+elif False:
+    VMwareClusterLoadBalancerManualLbConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareClusterLoadBalancerManualLbConfigArgs:
@@ -4720,6 +6477,18 @@ class VMwareClusterLoadBalancerManualLbConfigArgs:
         pulumi.set(self, "konnectivity_server_node_port", value)
 
 
+if not MYPY:
+    class VMwareClusterLoadBalancerMetalLbConfigArgsDict(TypedDict):
+        address_pools: pulumi.Input[Sequence[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgsDict']]]
+        """
+        AddressPools is a list of non-overlapping IP pools used by load balancer
+        typed services. All addresses must be routable to load balancer nodes.
+        IngressVIP must be included in the pools.
+        Structure is documented below.
+        """
+elif False:
+    VMwareClusterLoadBalancerMetalLbConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareClusterLoadBalancerMetalLbConfigArgs:
     def __init__(__self__, *,
@@ -4747,6 +6516,33 @@ class VMwareClusterLoadBalancerMetalLbConfigArgs:
     def address_pools(self, value: pulumi.Input[Sequence[pulumi.Input['VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs']]]):
         pulumi.set(self, "address_pools", value)
 
+
+if not MYPY:
+    class VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgsDict(TypedDict):
+        addresses: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The addresses that are part of this pool. Each address
+        must be either in the CIDR form (1.2.3.0/24) or range
+        form (1.2.3.1-1.2.3.5).
+        """
+        pool: pulumi.Input[str]
+        """
+        The name of the address pool.
+        """
+        avoid_buggy_ips: NotRequired[pulumi.Input[bool]]
+        """
+        If true, avoid using IPs ending in .0 or .255.
+        This avoids buggy consumer devices mistakenly dropping IPv4 traffic for
+        those special IP addresses.
+        """
+        manual_assign: NotRequired[pulumi.Input[bool]]
+        """
+        If true, prevent IP addresses from being automatically assigned.
+
+        <a name="nested_dataplane_v2"></a>The `dataplane_v2` block supports:
+        """
+elif False:
+    VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs:
@@ -4829,6 +6625,21 @@ class VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs:
         pulumi.set(self, "manual_assign", value)
 
 
+if not MYPY:
+    class VMwareClusterLoadBalancerVipConfigArgsDict(TypedDict):
+        control_plane_vip: NotRequired[pulumi.Input[str]]
+        """
+        The VIP which you previously set aside for the Kubernetes API of this cluster.
+        """
+        ingress_vip: NotRequired[pulumi.Input[str]]
+        """
+        The VIP which you previously set aside for ingress traffic into this cluster.
+
+        <a name="nested_f5_config"></a>The `f5_config` block supports:
+        """
+elif False:
+    VMwareClusterLoadBalancerVipConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareClusterLoadBalancerVipConfigArgs:
     def __init__(__self__, *,
@@ -4871,6 +6682,46 @@ class VMwareClusterLoadBalancerVipConfigArgs:
     def ingress_vip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ingress_vip", value)
 
+
+if not MYPY:
+    class VMwareClusterNetworkConfigArgsDict(TypedDict):
+        pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges.
+        Only a single range is supported. This field cannot be changed after creation.
+        """
+        service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        All services in the cluster are assigned an RFC1918 IPv4 address
+        from these ranges. Only a single range is supported.. This field
+        cannot be changed after creation.
+        """
+        control_plane_v2_config: NotRequired[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigArgsDict']]
+        """
+        Configuration for control plane V2 mode.
+        Structure is documented below.
+        """
+        dhcp_ip_config: NotRequired[pulumi.Input['VMwareClusterNetworkConfigDhcpIpConfigArgsDict']]
+        """
+        Configuration settings for a DHCP IP configuration.
+        Structure is documented below.
+        """
+        host_config: NotRequired[pulumi.Input['VMwareClusterNetworkConfigHostConfigArgsDict']]
+        """
+        Represents common network settings irrespective of the host's IP address.
+        Structure is documented below.
+        """
+        static_ip_config: NotRequired[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigArgsDict']]
+        """
+        Configuration settings for a static IP configuration.
+        Structure is documented below.
+        """
+        vcenter_network: NotRequired[pulumi.Input[str]]
+        """
+        vcenter_network specifies vCenter network name. Inherited from the admin cluster.
+        """
+elif False:
+    VMwareClusterNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareClusterNetworkConfigArgs:
@@ -5003,6 +6854,15 @@ class VMwareClusterNetworkConfigArgs:
         pulumi.set(self, "vcenter_network", value)
 
 
+if not MYPY:
+    class VMwareClusterNetworkConfigControlPlaneV2ConfigArgsDict(TypedDict):
+        control_plane_ip_block: NotRequired[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgsDict']]
+        """
+        Static IP addresses for the control plane nodes.
+        """
+elif False:
+    VMwareClusterNetworkConfigControlPlaneV2ConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareClusterNetworkConfigControlPlaneV2ConfigArgs:
     def __init__(__self__, *,
@@ -5025,6 +6885,24 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigArgs:
     def control_plane_ip_block(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs']]):
         pulumi.set(self, "control_plane_ip_block", value)
 
+
+if not MYPY:
+    class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgsDict(TypedDict):
+        gateway: NotRequired[pulumi.Input[str]]
+        """
+        The network gateway used by the VMware User Cluster.
+        """
+        ips: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgsDict']]]]
+        """
+        The node's network configurations used by the VMware User Cluster.
+        Structure is documented below.
+        """
+        netmask: NotRequired[pulumi.Input[str]]
+        """
+        The netmask used by the VMware User Cluster.
+        """
+elif False:
+    VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs:
@@ -5083,6 +6961,19 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs:
         pulumi.set(self, "netmask", value)
 
 
+if not MYPY:
+    class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgsDict(TypedDict):
+        hostname: NotRequired[pulumi.Input[str]]
+        """
+        Hostname of the machine. VM's name will be used if this field is empty.
+        """
+        ip: NotRequired[pulumi.Input[str]]
+        """
+        IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+        """
+elif False:
+    VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs:
     def __init__(__self__, *,
@@ -5122,6 +7013,16 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs:
         pulumi.set(self, "ip", value)
 
 
+if not MYPY:
+    class VMwareClusterNetworkConfigDhcpIpConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        enabled is a flag to mark if DHCP IP allocation is
+        used for VMware user clusters.
+        """
+elif False:
+    VMwareClusterNetworkConfigDhcpIpConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareClusterNetworkConfigDhcpIpConfigArgs:
     def __init__(__self__, *,
@@ -5145,6 +7046,25 @@ class VMwareClusterNetworkConfigDhcpIpConfigArgs:
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class VMwareClusterNetworkConfigHostConfigArgsDict(TypedDict):
+        dns_search_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        DNS search domains.
+
+        <a name="nested_control_plane_v2_config"></a>The `control_plane_v2_config` block supports:
+        """
+        dns_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        DNS servers.
+        """
+        ntp_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        NTP servers.
+        """
+elif False:
+    VMwareClusterNetworkConfigHostConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareClusterNetworkConfigHostConfigArgs:
@@ -5205,6 +7125,16 @@ class VMwareClusterNetworkConfigHostConfigArgs:
         pulumi.set(self, "ntp_servers", value)
 
 
+if not MYPY:
+    class VMwareClusterNetworkConfigStaticIpConfigArgsDict(TypedDict):
+        ip_blocks: pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockArgsDict']]]
+        """
+        Represents the configuration values for static IP allocation to nodes.
+        Structure is documented below.
+        """
+elif False:
+    VMwareClusterNetworkConfigStaticIpConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareClusterNetworkConfigStaticIpConfigArgs:
     def __init__(__self__, *,
@@ -5228,6 +7158,24 @@ class VMwareClusterNetworkConfigStaticIpConfigArgs:
     def ip_blocks(self, value: pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs']]]):
         pulumi.set(self, "ip_blocks", value)
 
+
+if not MYPY:
+    class VMwareClusterNetworkConfigStaticIpConfigIpBlockArgsDict(TypedDict):
+        gateway: pulumi.Input[str]
+        """
+        The network gateway used by the VMware User Cluster.
+        """
+        ips: pulumi.Input[Sequence[pulumi.Input['VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgsDict']]]
+        """
+        The node's network configurations used by the VMware User Cluster.
+        Structure is documented below.
+        """
+        netmask: pulumi.Input[str]
+        """
+        The netmask used by the VMware User Cluster.
+        """
+elif False:
+    VMwareClusterNetworkConfigStaticIpConfigIpBlockArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs:
@@ -5283,6 +7231,19 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs:
         pulumi.set(self, "netmask", value)
 
 
+if not MYPY:
+    class VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+        """
+        hostname: NotRequired[pulumi.Input[str]]
+        """
+        Hostname of the machine. VM's name will be used if this field is empty.
+        """
+elif False:
+    VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs:
     def __init__(__self__, *,
@@ -5320,6 +7281,26 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs:
     def hostname(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "hostname", value)
 
+
+if not MYPY:
+    class VMwareClusterStatusArgsDict(TypedDict):
+        conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusConditionArgsDict']]]]
+        """
+        (Output)
+        ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
+        Structure is documented below.
+        """
+        error_message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human-friendly representation of the error message from the user cluster
+        controller. The error message can be temporary as the user cluster
+        controller creates a cluster or node pool. If the error message persists
+        for a longer period of time, it can be used to surface error message to
+        indicate real problems requiring user intervention.
+        """
+elif False:
+    VMwareClusterStatusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareClusterStatusArgs:
@@ -5373,6 +7354,37 @@ class VMwareClusterStatusArgs:
     def error_message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "error_message", value)
 
+
+if not MYPY:
+    class VMwareClusterStatusConditionArgsDict(TypedDict):
+        last_transition_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Last time the condition transit from one status to another.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human-readable message indicating details about last transition.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Machine-readable message indicating details about last transition.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The lifecycle state of the condition.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Type of the condition.
+        (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+        """
+elif False:
+    VMwareClusterStatusConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareClusterStatusConditionArgs:
@@ -5473,6 +7485,16 @@ class VMwareClusterStatusConditionArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class VMwareClusterStorageArgsDict(TypedDict):
+        vsphere_csi_disabled: pulumi.Input[bool]
+        """
+        Whether or not to deploy vSphere CSI components in the VMware User Cluster.
+        Enabled by default.
+        """
+elif False:
+    VMwareClusterStorageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareClusterStorageArgs:
     def __init__(__self__, *,
@@ -5497,6 +7519,15 @@ class VMwareClusterStorageArgs:
         pulumi.set(self, "vsphere_csi_disabled", value)
 
 
+if not MYPY:
+    class VMwareClusterUpgradePolicyArgsDict(TypedDict):
+        control_plane_only: NotRequired[pulumi.Input[bool]]
+        """
+        Controls whether the upgrade applies to the control plane only.
+        """
+elif False:
+    VMwareClusterUpgradePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareClusterUpgradePolicyArgs:
     def __init__(__self__, *,
@@ -5519,6 +7550,27 @@ class VMwareClusterUpgradePolicyArgs:
     def control_plane_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "control_plane_only", value)
 
+
+if not MYPY:
+    class VMwareClusterValidationCheckArgsDict(TypedDict):
+        options: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Options used for the validation check.
+        """
+        scenario: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The scenario when the preflight checks were run..
+        """
+        statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArgsDict']]]]
+        """
+        (Output)
+        Specifies the detailed validation check status
+        Structure is documented below.
+        """
+elif False:
+    VMwareClusterValidationCheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareClusterValidationCheckArgs:
@@ -5583,6 +7635,17 @@ class VMwareClusterValidationCheckArgs:
         pulumi.set(self, "statuses", value)
 
 
+if not MYPY:
+    class VMwareClusterValidationCheckStatusArgsDict(TypedDict):
+        results: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArgsDict']]]]
+        """
+        (Output)
+        Individual checks which failed as part of the Preflight check execution.
+        Structure is documented below.
+        """
+elif False:
+    VMwareClusterValidationCheckStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareClusterValidationCheckStatusArgs:
     def __init__(__self__, *,
@@ -5609,6 +7672,36 @@ class VMwareClusterValidationCheckStatusArgs:
     def results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArgs']]]]):
         pulumi.set(self, "results", value)
 
+
+if not MYPY:
+    class VMwareClusterValidationCheckStatusResultArgsDict(TypedDict):
+        category: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The category of the validation.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The description of the validation check.
+        """
+        details: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Detailed failure information, which might be unformatted.
+        """
+        options: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Options used for the validation check.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Machine-readable message indicating details about last transition.
+        """
+elif False:
+    VMwareClusterValidationCheckStatusResultArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareClusterValidationCheckStatusResultArgs:
@@ -5706,6 +7799,44 @@ class VMwareClusterValidationCheckStatusResultArgs:
     def reason(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "reason", value)
 
+
+if not MYPY:
+    class VMwareClusterVcenterArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The vCenter IP address.
+        """
+        ca_cert_data: NotRequired[pulumi.Input[str]]
+        """
+        Contains the vCenter CA certificate public key for SSL verification.
+        """
+        cluster: NotRequired[pulumi.Input[str]]
+        """
+        The name of the vCenter cluster for the user cluster.
+        """
+        datacenter: NotRequired[pulumi.Input[str]]
+        """
+        The name of the vCenter datacenter for the user cluster.
+        """
+        datastore: NotRequired[pulumi.Input[str]]
+        """
+        The name of the vCenter datastore for the user cluster.
+        """
+        folder: NotRequired[pulumi.Input[str]]
+        """
+        The name of the vCenter folder for the user cluster.
+        """
+        resource_pool: NotRequired[pulumi.Input[str]]
+        """
+        The name of the vCenter resource pool for the user cluster.
+        """
+        storage_policy_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the vCenter storage policy for the user cluster.
+        """
+elif False:
+    VMwareClusterVcenterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareClusterVcenterArgs:
@@ -5843,6 +7974,60 @@ class VMwareClusterVcenterArgs:
     def storage_policy_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "storage_policy_name", value)
 
+
+if not MYPY:
+    class VMwareNodePoolConfigArgsDict(TypedDict):
+        image_type: pulumi.Input[str]
+        """
+        The OS image to be used for each node in a node pool.
+        Currently `cos`, `ubuntu`, `ubuntu_containerd` and `windows` are supported.
+        """
+        boot_disk_size_gb: NotRequired[pulumi.Input[int]]
+        """
+        VMware disk size to be used during creation.
+        """
+        cpus: NotRequired[pulumi.Input[int]]
+        """
+        The number of CPUs for each node in the node pool.
+        """
+        enable_load_balancer: NotRequired[pulumi.Input[bool]]
+        """
+        Allow node pool traffic to be load balanced. Only works for clusters with
+        MetalLB load balancers.
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        The OS image name in vCenter, only valid when using Windows.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The map of Kubernetes labels (key/value pairs) to be applied to each node.
+        These will added in addition to any default label(s) that
+        Kubernetes may apply to the node.
+        In case of conflict in label keys, the applied set may differ depending on
+        the Kubernetes version -- it's best to assume the behavior is undefined
+        and conflicts should be avoided.
+        """
+        memory_mb: NotRequired[pulumi.Input[int]]
+        """
+        The megabytes of memory for each node in the node pool.
+        """
+        replicas: NotRequired[pulumi.Input[int]]
+        """
+        The number of nodes in the node pool.
+        """
+        taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArgsDict']]]]
+        """
+        The initial taints assigned to nodes of this node pool.
+        Structure is documented below.
+        """
+        vsphere_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgsDict']]]]
+        """
+        Specifies the vSphere config for node pool.
+        Structure is documented below.
+        """
+elif False:
+    VMwareNodePoolConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareNodePoolConfigArgs:
@@ -6028,6 +8213,24 @@ class VMwareNodePoolConfigArgs:
         pulumi.set(self, "vsphere_configs", value)
 
 
+if not MYPY:
+    class VMwareNodePoolConfigTaintArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Key associated with the effect.
+        """
+        value: pulumi.Input[str]
+        """
+        Value associated with the effect.
+        """
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        Available taint effects.
+        Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+        """
+elif False:
+    VMwareNodePoolConfigTaintArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareNodePoolConfigTaintArgs:
     def __init__(__self__, *,
@@ -6082,6 +8285,24 @@ class VMwareNodePoolConfigTaintArgs:
     def effect(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "effect", value)
 
+
+if not MYPY:
+    class VMwareNodePoolConfigVsphereConfigArgsDict(TypedDict):
+        datastore: NotRequired[pulumi.Input[str]]
+        """
+        The name of the vCenter datastore. Inherited from the user cluster.
+        """
+        host_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Vsphere host groups to apply to all VMs in the node pool
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArgsDict']]]]
+        """
+        Tags to apply to VMs.
+        Structure is documented below.
+        """
+elif False:
+    VMwareNodePoolConfigVsphereConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareNodePoolConfigVsphereConfigArgs:
@@ -6140,6 +8361,21 @@ class VMwareNodePoolConfigVsphereConfigArgs:
         pulumi.set(self, "tags", value)
 
 
+if not MYPY:
+    class VMwareNodePoolConfigVsphereConfigTagArgsDict(TypedDict):
+        category: NotRequired[pulumi.Input[str]]
+        """
+        The Vsphere tag category.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        The Vsphere tag name.
+
+        - - -
+        """
+elif False:
+    VMwareNodePoolConfigVsphereConfigTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareNodePoolConfigVsphereConfigTagArgs:
     def __init__(__self__, *,
@@ -6183,6 +8419,19 @@ class VMwareNodePoolConfigVsphereConfigTagArgs:
         pulumi.set(self, "tag", value)
 
 
+if not MYPY:
+    class VMwareNodePoolNodePoolAutoscalingArgsDict(TypedDict):
+        max_replicas: pulumi.Input[int]
+        """
+        Maximum number of replicas in the NodePool.
+        """
+        min_replicas: pulumi.Input[int]
+        """
+        Minimum number of replicas in the NodePool.
+        """
+elif False:
+    VMwareNodePoolNodePoolAutoscalingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VMwareNodePoolNodePoolAutoscalingArgs:
     def __init__(__self__, *,
@@ -6219,6 +8468,26 @@ class VMwareNodePoolNodePoolAutoscalingArgs:
     def min_replicas(self, value: pulumi.Input[int]):
         pulumi.set(self, "min_replicas", value)
 
+
+if not MYPY:
+    class VMwareNodePoolStatusArgsDict(TypedDict):
+        conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArgsDict']]]]
+        """
+        (Output)
+        ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
+        Structure is documented below.
+        """
+        error_message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human-friendly representation of the error message from the user cluster
+        controller. The error message can be temporary as the user cluster
+        controller creates a cluster or node pool. If the error message persists
+        for a longer period of time, it can be used to surface error message to
+        indicate real problems requiring user intervention.
+        """
+elif False:
+    VMwareNodePoolStatusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareNodePoolStatusArgs:
@@ -6272,6 +8541,37 @@ class VMwareNodePoolStatusArgs:
     def error_message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "error_message", value)
 
+
+if not MYPY:
+    class VMwareNodePoolStatusConditionArgsDict(TypedDict):
+        last_transition_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Last time the condition transit from one status to another.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human-readable message indicating details about last transition.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Machine-readable message indicating details about last transition.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The lifecycle state of the condition.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Type of the condition.
+        (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+        """
+elif False:
+    VMwareNodePoolStatusConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VMwareNodePoolStatusConditionArgs:

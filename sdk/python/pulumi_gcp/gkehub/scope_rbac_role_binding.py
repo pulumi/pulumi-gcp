@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -402,7 +407,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
                  group: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[pulumi.InputType['ScopeRbacRoleBindingRoleArgs']]] = None,
+                 role: Optional[pulumi.Input[Union['ScopeRbacRoleBindingRoleArgs', 'ScopeRbacRoleBindingRoleArgsDict']]] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
                  scope_rbac_role_binding_id: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None,
@@ -429,9 +434,9 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
             scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_75092",
             scope_id=scope.scope_id,
             user="test-email@gmail.com",
-            role=gcp.gkehub.ScopeRbacRoleBindingRoleArgs(
-                predefined_role="ADMIN",
-            ),
+            role={
+                "predefinedRole": "ADMIN",
+            },
             labels={
                 "key": "value",
             },
@@ -468,7 +473,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
                other automatically. group is the group, as seen by the kubernetes cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
                in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['ScopeRbacRoleBindingRoleArgs']] role: Role to bind to the principal.
+        :param pulumi.Input[Union['ScopeRbacRoleBindingRoleArgs', 'ScopeRbacRoleBindingRoleArgsDict']] role: Role to bind to the principal.
                Structure is documented below.
         :param pulumi.Input[str] scope_id: Id of the scope
         :param pulumi.Input[str] scope_rbac_role_binding_id: The client-provided identifier of the RBAC Role Binding.
@@ -504,9 +509,9 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
             scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_75092",
             scope_id=scope.scope_id,
             user="test-email@gmail.com",
-            role=gcp.gkehub.ScopeRbacRoleBindingRoleArgs(
-                predefined_role="ADMIN",
-            ),
+            role={
+                "predefinedRole": "ADMIN",
+            },
             labels={
                 "key": "value",
             },
@@ -555,7 +560,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
                  group: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[pulumi.InputType['ScopeRbacRoleBindingRoleArgs']]] = None,
+                 role: Optional[pulumi.Input[Union['ScopeRbacRoleBindingRoleArgs', 'ScopeRbacRoleBindingRoleArgsDict']]] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
                  scope_rbac_role_binding_id: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None,
@@ -609,10 +614,10 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            role: Optional[pulumi.Input[pulumi.InputType['ScopeRbacRoleBindingRoleArgs']]] = None,
+            role: Optional[pulumi.Input[Union['ScopeRbacRoleBindingRoleArgs', 'ScopeRbacRoleBindingRoleArgsDict']]] = None,
             scope_id: Optional[pulumi.Input[str]] = None,
             scope_rbac_role_binding_id: Optional[pulumi.Input[str]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScopeRbacRoleBindingStateArgs']]]]] = None,
+            states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScopeRbacRoleBindingStateArgs', 'ScopeRbacRoleBindingStateArgsDict']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             user: Optional[pulumi.Input[str]] = None) -> 'ScopeRbacRoleBinding':
@@ -633,11 +638,11 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name for the RBAC Role Binding
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['ScopeRbacRoleBindingRoleArgs']] role: Role to bind to the principal.
+        :param pulumi.Input[Union['ScopeRbacRoleBindingRoleArgs', 'ScopeRbacRoleBindingRoleArgsDict']] role: Role to bind to the principal.
                Structure is documented below.
         :param pulumi.Input[str] scope_id: Id of the scope
         :param pulumi.Input[str] scope_rbac_role_binding_id: The client-provided identifier of the RBAC Role Binding.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScopeRbacRoleBindingStateArgs']]]] states: State of the RBAC Role Binding resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScopeRbacRoleBindingStateArgs', 'ScopeRbacRoleBindingStateArgsDict']]]] states: State of the RBAC Role Binding resource.
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the RBAC Role Binding was updated in UTC.

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -224,7 +229,7 @@ class ManagementServer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerNetworkArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagementServerNetworkArgs', 'ManagementServerNetworkArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -252,10 +257,10 @@ class ManagementServer(pulumi.CustomResource):
             location="us-central1",
             name="ms-console",
             type="BACKUP_RESTORE",
-            networks=[gcp.backupdisasterrecovery.ManagementServerNetworkArgs(
-                network=default.id,
-                peering_mode="PRIVATE_SERVICE_ACCESS",
-            )],
+            networks=[{
+                "network": default.id,
+                "peeringMode": "PRIVATE_SERVICE_ACCESS",
+            }],
             opts = pulumi.ResourceOptions(depends_on=[default_connection]))
         ```
 
@@ -287,7 +292,7 @@ class ManagementServer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location for the management server (management console)
         :param pulumi.Input[str] name: The name of management server (management console)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerNetworkArgs']]]] networks: Network details to create management server (management console).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ManagementServerNetworkArgs', 'ManagementServerNetworkArgsDict']]]] networks: Network details to create management server (management console).
                Structure is documented below.
         :param pulumi.Input[str] type: The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
         """
@@ -321,10 +326,10 @@ class ManagementServer(pulumi.CustomResource):
             location="us-central1",
             name="ms-console",
             type="BACKUP_RESTORE",
-            networks=[gcp.backupdisasterrecovery.ManagementServerNetworkArgs(
-                network=default.id,
-                peering_mode="PRIVATE_SERVICE_ACCESS",
-            )],
+            networks=[{
+                "network": default.id,
+                "peeringMode": "PRIVATE_SERVICE_ACCESS",
+            }],
             opts = pulumi.ResourceOptions(depends_on=[default_connection]))
         ```
 
@@ -369,7 +374,7 @@ class ManagementServer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerNetworkArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagementServerNetworkArgs', 'ManagementServerNetworkArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -403,9 +408,9 @@ class ManagementServer(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             location: Optional[pulumi.Input[str]] = None,
-            management_uris: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerManagementUriArgs']]]]] = None,
+            management_uris: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagementServerManagementUriArgs', 'ManagementServerManagementUriArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerNetworkArgs']]]]] = None,
+            networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagementServerNetworkArgs', 'ManagementServerNetworkArgsDict']]]]] = None,
             oauth2_client_id: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'ManagementServer':
@@ -417,10 +422,10 @@ class ManagementServer(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location for the management server (management console)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerManagementUriArgs']]]] management_uris: The management console URI
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ManagementServerManagementUriArgs', 'ManagementServerManagementUriArgsDict']]]] management_uris: The management console URI
                Structure is documented below.
         :param pulumi.Input[str] name: The name of management server (management console)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagementServerNetworkArgs']]]] networks: Network details to create management server (management console).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ManagementServerNetworkArgs', 'ManagementServerNetworkArgsDict']]]] networks: Network details to create management server (management console).
                Structure is documented below.
         :param pulumi.Input[str] oauth2_client_id: The oauth2ClientId of management console.
         :param pulumi.Input[str] type: The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]

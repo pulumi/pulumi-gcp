@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -319,7 +324,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias: Optional[pulumi.Input[str]] = None,
                  cert: Optional[pulumi.Input[str]] = None,
-                 certs_info: Optional[pulumi.Input[pulumi.InputType['KeystoresAliasesKeyCertFileCertsInfoArgs']]] = None,
+                 certs_info: Optional[pulumi.Input[Union['KeystoresAliasesKeyCertFileCertsInfoArgs', 'KeystoresAliasesKeyCertFileCertsInfoArgsDict']]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  keystore: Optional[pulumi.Input[str]] = None,
@@ -360,7 +365,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['KeystoresAliasesKeyCertFileCertsInfoArgs']] certs_info: Chain of certificates under this alias.
+        :param pulumi.Input[Union['KeystoresAliasesKeyCertFileCertsInfoArgs', 'KeystoresAliasesKeyCertFileCertsInfoArgsDict']] certs_info: Chain of certificates under this alias.
                Structure is documented below.
         :param pulumi.Input[str] environment: Environment associated with the alias
         :param pulumi.Input[str] key: Private Key content, omit if uploading to truststore
@@ -418,7 +423,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias: Optional[pulumi.Input[str]] = None,
                  cert: Optional[pulumi.Input[str]] = None,
-                 certs_info: Optional[pulumi.Input[pulumi.InputType['KeystoresAliasesKeyCertFileCertsInfoArgs']]] = None,
+                 certs_info: Optional[pulumi.Input[Union['KeystoresAliasesKeyCertFileCertsInfoArgs', 'KeystoresAliasesKeyCertFileCertsInfoArgsDict']]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  keystore: Optional[pulumi.Input[str]] = None,
@@ -466,7 +471,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             alias: Optional[pulumi.Input[str]] = None,
             cert: Optional[pulumi.Input[str]] = None,
-            certs_info: Optional[pulumi.Input[pulumi.InputType['KeystoresAliasesKeyCertFileCertsInfoArgs']]] = None,
+            certs_info: Optional[pulumi.Input[Union['KeystoresAliasesKeyCertFileCertsInfoArgs', 'KeystoresAliasesKeyCertFileCertsInfoArgsDict']]] = None,
             environment: Optional[pulumi.Input[str]] = None,
             key: Optional[pulumi.Input[str]] = None,
             keystore: Optional[pulumi.Input[str]] = None,
@@ -485,7 +490,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['KeystoresAliasesKeyCertFileCertsInfoArgs']] certs_info: Chain of certificates under this alias.
+        :param pulumi.Input[Union['KeystoresAliasesKeyCertFileCertsInfoArgs', 'KeystoresAliasesKeyCertFileCertsInfoArgsDict']] certs_info: Chain of certificates under this alias.
                Structure is documented below.
         :param pulumi.Input[str] environment: Environment associated with the alias
         :param pulumi.Input[str] key: Private Key content, omit if uploading to truststore

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['UserWorkloadsSecretArgs', 'UserWorkloadsSecret']
@@ -213,11 +218,11 @@ class UserWorkloadsSecret(pulumi.CustomResource):
             name="example-environment",
             project="example-project",
             region="us-central1",
-            config=gcp.composer.EnvironmentConfigArgs(
-                software_config=gcp.composer.EnvironmentConfigSoftwareConfigArgs(
-                    image_version="example-image-version",
-                ),
-            ))
+            config={
+                "softwareConfig": {
+                    "imageVersion": "example-image-version",
+                },
+            })
         example_user_workloads_secret = gcp.composer.UserWorkloadsSecret("example",
             name="example-secret",
             project="example-project",
@@ -280,11 +285,11 @@ class UserWorkloadsSecret(pulumi.CustomResource):
             name="example-environment",
             project="example-project",
             region="us-central1",
-            config=gcp.composer.EnvironmentConfigArgs(
-                software_config=gcp.composer.EnvironmentConfigSoftwareConfigArgs(
-                    image_version="example-image-version",
-                ),
-            ))
+            config={
+                "softwareConfig": {
+                    "imageVersion": "example-image-version",
+                },
+            })
         example_user_workloads_secret = gcp.composer.UserWorkloadsSecret("example",
             name="example-secret",
             project="example-project",

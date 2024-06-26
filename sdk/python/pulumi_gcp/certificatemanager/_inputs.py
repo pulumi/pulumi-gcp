@@ -4,25 +4,54 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'CertificateIssuanceConfigCertificateAuthorityConfigArgs',
+    'CertificateIssuanceConfigCertificateAuthorityConfigArgsDict',
     'CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs',
+    'CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgsDict',
     'CertificateManagedArgs',
+    'CertificateManagedArgsDict',
     'CertificateManagedAuthorizationAttemptInfoArgs',
+    'CertificateManagedAuthorizationAttemptInfoArgsDict',
     'CertificateManagedProvisioningIssueArgs',
+    'CertificateManagedProvisioningIssueArgsDict',
     'CertificateMapGclbTargetArgs',
+    'CertificateMapGclbTargetArgsDict',
     'CertificateMapGclbTargetIpConfigArgs',
+    'CertificateMapGclbTargetIpConfigArgsDict',
     'CertificateSelfManagedArgs',
+    'CertificateSelfManagedArgsDict',
     'DnsAuthorizationDnsResourceRecordArgs',
+    'DnsAuthorizationDnsResourceRecordArgsDict',
     'TrustConfigTrustStoreArgs',
+    'TrustConfigTrustStoreArgsDict',
     'TrustConfigTrustStoreIntermediateCaArgs',
+    'TrustConfigTrustStoreIntermediateCaArgsDict',
     'TrustConfigTrustStoreTrustAnchorArgs',
+    'TrustConfigTrustStoreTrustAnchorArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class CertificateIssuanceConfigCertificateAuthorityConfigArgsDict(TypedDict):
+        certificate_authority_service_config: NotRequired[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgsDict']]
+        """
+        Defines a CertificateAuthorityServiceConfig.
+        Structure is documented below.
+        """
+elif False:
+    CertificateIssuanceConfigCertificateAuthorityConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CertificateIssuanceConfigCertificateAuthorityConfigArgs:
@@ -48,6 +77,19 @@ class CertificateIssuanceConfigCertificateAuthorityConfigArgs:
     def certificate_authority_service_config(self, value: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs']]):
         pulumi.set(self, "certificate_authority_service_config", value)
 
+
+if not MYPY:
+    class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgsDict(TypedDict):
+        ca_pool: pulumi.Input[str]
+        """
+        A CA pool resource used to issue a certificate.
+        The CA pool string has a relative resource path following the form
+        "projects/{project}/locations/{location}/caPools/{caPool}".
+
+        - - -
+        """
+elif False:
+    CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs:
@@ -78,6 +120,47 @@ class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthoritySer
     def ca_pool(self, value: pulumi.Input[str]):
         pulumi.set(self, "ca_pool", value)
 
+
+if not MYPY:
+    class CertificateManagedArgsDict(TypedDict):
+        authorization_attempt_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgsDict']]]]
+        """
+        (Output)
+        Detailed state of the latest authorization attempt for each domain
+        specified for this Managed Certificate.
+        Structure is documented below.
+
+
+        <a name="nested_provisioning_issue"></a>The `provisioning_issue` block contains:
+        """
+        dns_authorizations: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+        """
+        domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The domains for which a managed SSL certificate will be generated.
+        Wildcard domains are only supported with DNS challenge resolution
+        """
+        issuance_config: NotRequired[pulumi.Input[str]]
+        """
+        The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
+        If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+        Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+        """
+        provisioning_issues: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgsDict']]]]
+        """
+        (Output)
+        Information about issues with provisioning this Managed Certificate.
+        Structure is documented below.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        State of the domain for managed certificate issuance.
+        """
+elif False:
+    CertificateManagedArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CertificateManagedArgs:
@@ -206,6 +289,29 @@ class CertificateManagedArgs:
         pulumi.set(self, "state", value)
 
 
+if not MYPY:
+    class CertificateManagedAuthorizationAttemptInfoArgsDict(TypedDict):
+        details: NotRequired[pulumi.Input[str]]
+        """
+        Human readable explanation for reaching the state. Provided to help
+        address the configuration issues.
+        Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
+        """
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        Domain name of the authorization attempt.
+        """
+        failure_reason: NotRequired[pulumi.Input[str]]
+        """
+        Reason for failure of the authorization attempt for the domain.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        State of the domain for managed certificate issuance.
+        """
+elif False:
+    CertificateManagedAuthorizationAttemptInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CertificateManagedAuthorizationAttemptInfoArgs:
     def __init__(__self__, *,
@@ -281,6 +387,21 @@ class CertificateManagedAuthorizationAttemptInfoArgs:
         pulumi.set(self, "state", value)
 
 
+if not MYPY:
+    class CertificateManagedProvisioningIssueArgsDict(TypedDict):
+        details: NotRequired[pulumi.Input[str]]
+        """
+        Human readable explanation about the issue. Provided to help address
+        the configuration issues.
+        Not guaranteed to be stable. For programmatic access use 'reason' field.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        Reason for provisioning failures.
+        """
+elif False:
+    CertificateManagedProvisioningIssueArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CertificateManagedProvisioningIssueArgs:
     def __init__(__self__, *,
@@ -323,6 +444,28 @@ class CertificateManagedProvisioningIssueArgs:
     def reason(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "reason", value)
 
+
+if not MYPY:
+    class CertificateMapGclbTargetArgsDict(TypedDict):
+        ip_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgsDict']]]]
+        """
+        An IP configuration where this Certificate Map is serving
+        Structure is documented below.
+        """
+        target_https_proxy: NotRequired[pulumi.Input[str]]
+        """
+        Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
+        This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+        `targetSslProxy` may be set.
+        """
+        target_ssl_proxy: NotRequired[pulumi.Input[str]]
+        """
+        Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
+        This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+        `targetSslProxy` may be set.
+        """
+elif False:
+    CertificateMapGclbTargetArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CertificateMapGclbTargetArgs:
@@ -389,6 +532,19 @@ class CertificateMapGclbTargetArgs:
         pulumi.set(self, "target_ssl_proxy", value)
 
 
+if not MYPY:
+    class CertificateMapGclbTargetIpConfigArgsDict(TypedDict):
+        ip_address: NotRequired[pulumi.Input[str]]
+        """
+        An external IP address
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        A list of ports
+        """
+elif False:
+    CertificateMapGclbTargetIpConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CertificateMapGclbTargetIpConfigArgs:
     def __init__(__self__, *,
@@ -427,6 +583,39 @@ class CertificateMapGclbTargetIpConfigArgs:
     def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "ports", value)
 
+
+if not MYPY:
+    class CertificateSelfManagedArgsDict(TypedDict):
+        certificate_pem: NotRequired[pulumi.Input[str]]
+        """
+        (Optional, Deprecated)
+        The certificate chain in PEM-encoded form.
+        Leaf certificate comes first, followed by intermediate ones if any.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+
+        > **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
+        """
+        pem_certificate: NotRequired[pulumi.Input[str]]
+        """
+        The certificate chain in PEM-encoded form.
+        Leaf certificate comes first, followed by intermediate ones if any.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        pem_private_key: NotRequired[pulumi.Input[str]]
+        """
+        The private key of the leaf certificate in PEM-encoded form.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        private_key_pem: NotRequired[pulumi.Input[str]]
+        """
+        (Optional, Deprecated)
+        The private key of the leaf certificate in PEM-encoded form.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+
+        > **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
+        """
+elif False:
+    CertificateSelfManagedArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CertificateSelfManagedArgs:
@@ -531,6 +720,35 @@ class CertificateSelfManagedArgs:
         pulumi.set(self, "private_key_pem", value)
 
 
+if not MYPY:
+    class DnsAuthorizationDnsResourceRecordArgsDict(TypedDict):
+        data: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Data of the DNS Resource Record.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the resource; provided by the client when the resource is created.
+        The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+        and all following characters must be a dash, underscore, letter or digit.
+
+
+        - - -
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+        be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+        FIXED_RECORD DNS authorization uses DNS-01 validation method
+        PER_PROJECT_RECORD DNS authorization allows for independent management
+        of Google-managed certificates with DNS authorization across multiple
+        projects.
+        Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+        """
+elif False:
+    DnsAuthorizationDnsResourceRecordArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DnsAuthorizationDnsResourceRecordArgs:
     def __init__(__self__, *,
@@ -610,6 +828,22 @@ class DnsAuthorizationDnsResourceRecordArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class TrustConfigTrustStoreArgsDict(TypedDict):
+        intermediate_cas: NotRequired[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArgsDict']]]]
+        """
+        Set of intermediate CA certificates used for the path building phase of chain validation.
+        The field is currently not supported if trust config is used for the workload certificate feature.
+        Structure is documented below.
+        """
+        trust_anchors: NotRequired[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArgsDict']]]]
+        """
+        List of Trust Anchors to be used while performing validation against a given TrustStore.
+        Structure is documented below.
+        """
+elif False:
+    TrustConfigTrustStoreArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TrustConfigTrustStoreArgs:
     def __init__(__self__, *,
@@ -655,6 +889,17 @@ class TrustConfigTrustStoreArgs:
         pulumi.set(self, "trust_anchors", value)
 
 
+if not MYPY:
+    class TrustConfigTrustStoreIntermediateCaArgsDict(TypedDict):
+        pem_certificate: NotRequired[pulumi.Input[str]]
+        """
+        PEM intermediate certificate used for building up paths for validation.
+        Each certificate provided in PEM format may occupy up to 5kB.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+elif False:
+    TrustConfigTrustStoreIntermediateCaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TrustConfigTrustStoreIntermediateCaArgs:
     def __init__(__self__, *,
@@ -681,6 +926,17 @@ class TrustConfigTrustStoreIntermediateCaArgs:
     def pem_certificate(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pem_certificate", value)
 
+
+if not MYPY:
+    class TrustConfigTrustStoreTrustAnchorArgsDict(TypedDict):
+        pem_certificate: NotRequired[pulumi.Input[str]]
+        """
+        PEM root certificate of the PKI used for validation.
+        Each certificate provided in PEM format may occupy up to 5kB.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+elif False:
+    TrustConfigTrustStoreTrustAnchorArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TrustConfigTrustStoreTrustAnchorArgs:

@@ -4,25 +4,62 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'VolumeBackupConfigArgs',
+    'VolumeBackupConfigArgsDict',
     'VolumeExportPolicyArgs',
+    'VolumeExportPolicyArgsDict',
     'VolumeExportPolicyRuleArgs',
+    'VolumeExportPolicyRuleArgsDict',
     'VolumeMountOptionArgs',
+    'VolumeMountOptionArgsDict',
     'VolumeReplicationDestinationVolumeParametersArgs',
+    'VolumeReplicationDestinationVolumeParametersArgsDict',
     'VolumeReplicationTransferStatArgs',
+    'VolumeReplicationTransferStatArgsDict',
     'VolumeRestoreParametersArgs',
+    'VolumeRestoreParametersArgsDict',
     'VolumeSnapshotPolicyArgs',
+    'VolumeSnapshotPolicyArgsDict',
     'VolumeSnapshotPolicyDailyScheduleArgs',
+    'VolumeSnapshotPolicyDailyScheduleArgsDict',
     'VolumeSnapshotPolicyHourlyScheduleArgs',
+    'VolumeSnapshotPolicyHourlyScheduleArgsDict',
     'VolumeSnapshotPolicyMonthlyScheduleArgs',
+    'VolumeSnapshotPolicyMonthlyScheduleArgsDict',
     'VolumeSnapshotPolicyWeeklyScheduleArgs',
+    'VolumeSnapshotPolicyWeeklyScheduleArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class VolumeBackupConfigArgsDict(TypedDict):
+        backup_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
+        """
+        backup_vault: NotRequired[pulumi.Input[str]]
+        """
+        ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
+        Format: `projects/{{projectId}}/locations/{{location}}/backupVaults/{{backupVaultName}}`
+        """
+        scheduled_backup_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
+        """
+elif False:
+    VolumeBackupConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VolumeBackupConfigArgs:
@@ -81,6 +118,16 @@ class VolumeBackupConfigArgs:
         pulumi.set(self, "scheduled_backup_enabled", value)
 
 
+if not MYPY:
+    class VolumeExportPolicyArgsDict(TypedDict):
+        rules: pulumi.Input[Sequence[pulumi.Input['VolumeExportPolicyRuleArgsDict']]]
+        """
+        Export rules (up to 5) control NFS volume access.
+        Structure is documented below.
+        """
+elif False:
+    VolumeExportPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VolumeExportPolicyArgs:
     def __init__(__self__, *,
@@ -104,6 +151,56 @@ class VolumeExportPolicyArgs:
     def rules(self, value: pulumi.Input[Sequence[pulumi.Input['VolumeExportPolicyRuleArgs']]]):
         pulumi.set(self, "rules", value)
 
+
+if not MYPY:
+    class VolumeExportPolicyRuleArgsDict(TypedDict):
+        access_type: NotRequired[pulumi.Input[str]]
+        """
+        Defines the access type for clients matching the `allowedClients` specification.
+        Possible values are: `READ_ONLY`, `READ_WRITE`, `READ_NONE`.
+        """
+        allowed_clients: NotRequired[pulumi.Input[str]]
+        """
+        Defines the client ingress specification (allowed clients) as a comma seperated list with IPv4 CIDRs or IPv4 host addresses.
+        """
+        has_root_access: NotRequired[pulumi.Input[str]]
+        """
+        If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
+        """
+        kerberos5_read_only: NotRequired[pulumi.Input[bool]]
+        """
+        If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode.
+        """
+        kerberos5_read_write: NotRequired[pulumi.Input[bool]]
+        """
+        If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode. The 'kerberos5ReadOnly' value is ignored if this is enabled.
+        """
+        kerberos5i_read_only: NotRequired[pulumi.Input[bool]]
+        """
+        If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'integrity' kerberos security mode.
+        """
+        kerberos5i_read_write: NotRequired[pulumi.Input[bool]]
+        """
+        If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'integrity' kerberos security mode. The 'kerberos5iReadOnly' value is ignored if this is enabled.
+        """
+        kerberos5p_read_only: NotRequired[pulumi.Input[bool]]
+        """
+        If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'privacy' kerberos security mode.
+        """
+        kerberos5p_read_write: NotRequired[pulumi.Input[bool]]
+        """
+        If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'privacy' kerberos security mode. The 'kerberos5pReadOnly' value is ignored if this is enabled.
+        """
+        nfsv3: NotRequired[pulumi.Input[bool]]
+        """
+        Enable to apply the export rule to NFSV3 clients.
+        """
+        nfsv4: NotRequired[pulumi.Input[bool]]
+        """
+        Enable to apply the export rule to NFSV4.1 clients.
+        """
+elif False:
+    VolumeExportPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VolumeExportPolicyRuleArgs:
@@ -290,6 +387,33 @@ class VolumeExportPolicyRuleArgs:
         pulumi.set(self, "nfsv4", value)
 
 
+if not MYPY:
+    class VolumeMountOptionArgsDict(TypedDict):
+        export: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Export path of the volume.
+        """
+        export_full: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Full export path of the volume.
+        Format for NFS volumes: `<export_ip>:/<shareName>`
+        Format for SMB volumes: `\\\\\\\\netbios_prefix-four_random_hex_letters.domain_name\\\\shareName`
+        """
+        instructions: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human-readable mount instructions.
+        """
+        protocol: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Protocol to mount with.
+        """
+elif False:
+    VolumeMountOptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VolumeMountOptionArgs:
     def __init__(__self__, *,
@@ -373,6 +497,27 @@ class VolumeMountOptionArgs:
         pulumi.set(self, "protocol", value)
 
 
+if not MYPY:
+    class VolumeReplicationDestinationVolumeParametersArgsDict(TypedDict):
+        storage_pool: pulumi.Input[str]
+        """
+        Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description for the destination volume.
+        """
+        share_name: NotRequired[pulumi.Input[str]]
+        """
+        Share name for destination volume. If not specified, name of source volume's share name will be used.
+        """
+        volume_id: NotRequired[pulumi.Input[str]]
+        """
+        Name for the destination volume to be created. If not specified, the name of the source volume will be used.
+        """
+elif False:
+    VolumeReplicationDestinationVolumeParametersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VolumeReplicationDestinationVolumeParametersArgs:
     def __init__(__self__, *,
@@ -442,6 +587,53 @@ class VolumeReplicationDestinationVolumeParametersArgs:
     def volume_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "volume_id", value)
 
+
+if not MYPY:
+    class VolumeReplicationTransferStatArgsDict(TypedDict):
+        lag_duration: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The elapsed time since the creation of the snapshot on the source volume that was last replicated
+        to the destination volume. Lag time represents the difference in age of the destination volume
+        data in relation to the source volume data.
+        """
+        last_transfer_bytes: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Size of last completed transfer in bytes.
+        """
+        last_transfer_duration: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Time taken during last completed transfer.
+        """
+        last_transfer_end_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Time when last transfer completed. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+        """
+        last_transfer_error: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A message describing the cause of the last transfer failure.
+        """
+        total_transfer_duration: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Total time taken so far during current transfer.
+        """
+        transfer_bytes: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Number of bytes transferred so far in current transfer.
+        """
+        update_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Time when progress was updated last. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
+        """
+elif False:
+    VolumeReplicationTransferStatArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VolumeReplicationTransferStatArgs:
@@ -598,6 +790,23 @@ class VolumeReplicationTransferStatArgs:
         pulumi.set(self, "update_time", value)
 
 
+if not MYPY:
+    class VolumeRestoreParametersArgsDict(TypedDict):
+        source_backup: NotRequired[pulumi.Input[str]]
+        """
+        Full name of the snapshot to use for creating this volume.
+        `source_snapshot` and `source_backup` cannot be used simultaneously.
+        Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
+        """
+        source_snapshot: NotRequired[pulumi.Input[str]]
+        """
+        Full name of the snapshot to use for creating this volume.
+        `source_snapshot` and `source_backup` cannot be used simultaneously.
+        Format: `projects/{{project}}/locations/{{location}}/volumes/{{volume}}/snapshots/{{snapshot}}`.
+        """
+elif False:
+    VolumeRestoreParametersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VolumeRestoreParametersArgs:
     def __init__(__self__, *,
@@ -644,6 +853,36 @@ class VolumeRestoreParametersArgs:
     def source_snapshot(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_snapshot", value)
 
+
+if not MYPY:
+    class VolumeSnapshotPolicyArgsDict(TypedDict):
+        daily_schedule: NotRequired[pulumi.Input['VolumeSnapshotPolicyDailyScheduleArgsDict']]
+        """
+        Daily schedule policy.
+        Structure is documented below.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enables automated snapshot creation according to defined schedule. Default is false.
+        To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
+        """
+        hourly_schedule: NotRequired[pulumi.Input['VolumeSnapshotPolicyHourlyScheduleArgsDict']]
+        """
+        Hourly schedule policy.
+        Structure is documented below.
+        """
+        monthly_schedule: NotRequired[pulumi.Input['VolumeSnapshotPolicyMonthlyScheduleArgsDict']]
+        """
+        Monthly schedule policy.
+        Structure is documented below.
+        """
+        weekly_schedule: NotRequired[pulumi.Input['VolumeSnapshotPolicyWeeklyScheduleArgsDict']]
+        """
+        Weekly schedule policy.
+        Structure is documented below.
+        """
+elif False:
+    VolumeSnapshotPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VolumeSnapshotPolicyArgs:
@@ -742,6 +981,23 @@ class VolumeSnapshotPolicyArgs:
         pulumi.set(self, "weekly_schedule", value)
 
 
+if not MYPY:
+    class VolumeSnapshotPolicyDailyScheduleArgsDict(TypedDict):
+        snapshots_to_keep: pulumi.Input[int]
+        """
+        The maximum number of snapshots to keep for the daily schedule.
+        """
+        hour: NotRequired[pulumi.Input[int]]
+        """
+        Set the hour to create the snapshot (0-23), defaults to midnight (0).
+        """
+        minute: NotRequired[pulumi.Input[int]]
+        """
+        Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
+        """
+elif False:
+    VolumeSnapshotPolicyDailyScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VolumeSnapshotPolicyDailyScheduleArgs:
     def __init__(__self__, *,
@@ -796,6 +1052,19 @@ class VolumeSnapshotPolicyDailyScheduleArgs:
         pulumi.set(self, "minute", value)
 
 
+if not MYPY:
+    class VolumeSnapshotPolicyHourlyScheduleArgsDict(TypedDict):
+        snapshots_to_keep: pulumi.Input[int]
+        """
+        The maximum number of snapshots to keep for the hourly schedule.
+        """
+        minute: NotRequired[pulumi.Input[int]]
+        """
+        Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
+        """
+elif False:
+    VolumeSnapshotPolicyHourlyScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VolumeSnapshotPolicyHourlyScheduleArgs:
     def __init__(__self__, *,
@@ -833,6 +1102,27 @@ class VolumeSnapshotPolicyHourlyScheduleArgs:
     def minute(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "minute", value)
 
+
+if not MYPY:
+    class VolumeSnapshotPolicyMonthlyScheduleArgsDict(TypedDict):
+        snapshots_to_keep: pulumi.Input[int]
+        """
+        The maximum number of snapshots to keep for the monthly schedule
+        """
+        days_of_month: NotRequired[pulumi.Input[str]]
+        """
+        Set the day or days of the month to make a snapshot (1-31). Accepts a comma separated number of days. Defaults to '1'.
+        """
+        hour: NotRequired[pulumi.Input[int]]
+        """
+        Set the hour to create the snapshot (0-23), defaults to midnight (0).
+        """
+        minute: NotRequired[pulumi.Input[int]]
+        """
+        Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
+        """
+elif False:
+    VolumeSnapshotPolicyMonthlyScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VolumeSnapshotPolicyMonthlyScheduleArgs:
@@ -903,6 +1193,27 @@ class VolumeSnapshotPolicyMonthlyScheduleArgs:
     def minute(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "minute", value)
 
+
+if not MYPY:
+    class VolumeSnapshotPolicyWeeklyScheduleArgsDict(TypedDict):
+        snapshots_to_keep: pulumi.Input[int]
+        """
+        The maximum number of snapshots to keep for the weekly schedule.
+        """
+        day: NotRequired[pulumi.Input[str]]
+        """
+        Set the day or days of the week to make a snapshot. Accepts a comma separated days of the week. Defaults to 'Sunday'.
+        """
+        hour: NotRequired[pulumi.Input[int]]
+        """
+        Set the hour to create the snapshot (0-23), defaults to midnight (0).
+        """
+        minute: NotRequired[pulumi.Input[int]]
+        """
+        Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
+        """
+elif False:
+    VolumeSnapshotPolicyWeeklyScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VolumeSnapshotPolicyWeeklyScheduleArgs:

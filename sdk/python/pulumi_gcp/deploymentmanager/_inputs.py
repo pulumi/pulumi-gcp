@@ -4,17 +4,41 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'DeploymentLabelArgs',
+    'DeploymentLabelArgsDict',
     'DeploymentTargetArgs',
+    'DeploymentTargetArgsDict',
     'DeploymentTargetConfigArgs',
+    'DeploymentTargetConfigArgsDict',
     'DeploymentTargetImportArgs',
+    'DeploymentTargetImportArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class DeploymentLabelArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        Key for label.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value of label.
+        """
+elif False:
+    DeploymentLabelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DeploymentLabelArgs:
@@ -54,6 +78,23 @@ class DeploymentLabelArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DeploymentTargetArgsDict(TypedDict):
+        config: pulumi.Input['DeploymentTargetConfigArgsDict']
+        """
+        The root configuration file to use for this deployment.
+        Structure is documented below.
+        """
+        imports: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeploymentTargetImportArgsDict']]]]
+        """
+        Specifies import files for this configuration. This can be
+        used to import templates or other files. For example, you might
+        import a text file in order to use the file in a template.
+        Structure is documented below.
+        """
+elif False:
+    DeploymentTargetArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DeploymentTargetArgs:
@@ -101,6 +142,15 @@ class DeploymentTargetArgs:
         pulumi.set(self, "imports", value)
 
 
+if not MYPY:
+    class DeploymentTargetConfigArgsDict(TypedDict):
+        content: pulumi.Input[str]
+        """
+        The full YAML contents of your configuration file.
+        """
+elif False:
+    DeploymentTargetConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DeploymentTargetConfigArgs:
     def __init__(__self__, *,
@@ -122,6 +172,22 @@ class DeploymentTargetConfigArgs:
     def content(self, value: pulumi.Input[str]):
         pulumi.set(self, "content", value)
 
+
+if not MYPY:
+    class DeploymentTargetImportArgsDict(TypedDict):
+        content: NotRequired[pulumi.Input[str]]
+        """
+        The full contents of the template that you want to import.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the template to import, as declared in the YAML
+        configuration.
+
+        - - -
+        """
+elif False:
+    DeploymentTargetImportArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DeploymentTargetImportArgs:

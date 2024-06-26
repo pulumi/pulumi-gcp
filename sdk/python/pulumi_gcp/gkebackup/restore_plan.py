@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -383,7 +388,7 @@ class RestorePlan(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 restore_config: Optional[pulumi.Input[pulumi.InputType['RestorePlanRestoreConfigArgs']]] = None,
+                 restore_config: Optional[pulumi.Input[Union['RestorePlanRestoreConfigArgs', 'RestorePlanRestoreConfigArgsDict']]] = None,
                  __props__=None):
         """
         Represents a Restore Plan instance.
@@ -406,14 +411,14 @@ class RestorePlan(pulumi.CustomResource):
             name="restore-all-ns-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection="",
             network="default",
             subnetwork="default")
@@ -421,25 +426,25 @@ class RestorePlan(pulumi.CustomResource):
             name="restore-all-ns",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         all_ns = gcp.gkebackup.RestorePlan("all_ns",
             name="restore-all-ns",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                all_namespaces=True,
-                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
-                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    all_group_kinds=True,
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-            ))
+            restore_config={
+                "allNamespaces": True,
+                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
+                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
+                "clusterResourceRestoreScope": {
+                    "allGroupKinds": True,
+                },
+                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
+            })
         ```
         ### Gkebackup Restoreplan Rollback Namespace
 
@@ -451,14 +456,14 @@ class RestorePlan(pulumi.CustomResource):
             name="rollback-ns-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection="",
             network="default",
             subnetwork="default")
@@ -466,36 +471,36 @@ class RestorePlan(pulumi.CustomResource):
             name="rollback-ns",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         rollback_ns = gcp.gkebackup.RestorePlan("rollback_ns",
             name="rollback-ns-rp",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                selected_namespaces=gcp.gkebackup.RestorePlanRestoreConfigSelectedNamespacesArgs(
-                    namespaces=["my-ns"],
-                ),
-                namespaced_resource_restore_mode="DELETE_AND_RESTORE",
-                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    selected_group_kinds=[
-                        gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs(
-                            resource_group="apiextension.k8s.io",
-                            resource_kind="CustomResourceDefinition",
-                        ),
-                        gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs(
-                            resource_group="storage.k8s.io",
-                            resource_kind="StorageClass",
-                        ),
+            restore_config={
+                "selectedNamespaces": {
+                    "namespaces": ["my-ns"],
+                },
+                "namespacedResourceRestoreMode": "DELETE_AND_RESTORE",
+                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
+                "clusterResourceRestoreScope": {
+                    "selectedGroupKinds": [
+                        {
+                            "resourceGroup": "apiextension.k8s.io",
+                            "resourceKind": "CustomResourceDefinition",
+                        },
+                        {
+                            "resourceGroup": "storage.k8s.io",
+                            "resourceKind": "StorageClass",
+                        },
                     ],
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-            ))
+                },
+                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
+            })
         ```
         ### Gkebackup Restoreplan Protected Application
 
@@ -507,14 +512,14 @@ class RestorePlan(pulumi.CustomResource):
             name="rollback-app-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection="",
             network="default",
             subnetwork="default")
@@ -522,29 +527,29 @@ class RestorePlan(pulumi.CustomResource):
             name="rollback-app",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         rollback_app = gcp.gkebackup.RestorePlan("rollback_app",
             name="rollback-app-rp",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                selected_applications=gcp.gkebackup.RestorePlanRestoreConfigSelectedApplicationsArgs(
-                    namespaced_names=[gcp.gkebackup.RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs(
-                        name="my-app",
-                        namespace="my-ns",
-                    )],
-                ),
-                namespaced_resource_restore_mode="DELETE_AND_RESTORE",
-                volume_data_restore_policy="REUSE_VOLUME_HANDLE_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    no_group_kinds=True,
-                ),
-            ))
+            restore_config={
+                "selectedApplications": {
+                    "namespacedNames": [{
+                        "name": "my-app",
+                        "namespace": "my-ns",
+                    }],
+                },
+                "namespacedResourceRestoreMode": "DELETE_AND_RESTORE",
+                "volumeDataRestorePolicy": "REUSE_VOLUME_HANDLE_FROM_BACKUP",
+                "clusterResourceRestoreScope": {
+                    "noGroupKinds": True,
+                },
+            })
         ```
         ### Gkebackup Restoreplan All Cluster Resources
 
@@ -556,14 +561,14 @@ class RestorePlan(pulumi.CustomResource):
             name="all-groupkinds-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection="",
             network="default",
             subnetwork="default")
@@ -571,24 +576,24 @@ class RestorePlan(pulumi.CustomResource):
             name="all-groupkinds",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         all_cluster_resources = gcp.gkebackup.RestorePlan("all_cluster_resources",
             name="all-groupkinds-rp",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                no_namespaces=True,
-                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    all_group_kinds=True,
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-            ))
+            restore_config={
+                "noNamespaces": True,
+                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
+                "clusterResourceRestoreScope": {
+                    "allGroupKinds": True,
+                },
+                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
+            })
         ```
         ### Gkebackup Restoreplan Rename Namespace
 
@@ -600,14 +605,14 @@ class RestorePlan(pulumi.CustomResource):
             name="rename-ns-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection="",
             network="default",
             subnetwork="default")
@@ -615,53 +620,53 @@ class RestorePlan(pulumi.CustomResource):
             name="rename-ns",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         rename_ns = gcp.gkebackup.RestorePlan("rename_ns",
             name="rename-ns-rp",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                selected_namespaces=gcp.gkebackup.RestorePlanRestoreConfigSelectedNamespacesArgs(
-                    namespaces=["ns1"],
-                ),
-                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
-                volume_data_restore_policy="REUSE_VOLUME_HANDLE_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    no_group_kinds=True,
-                ),
-                transformation_rules=[
-                    gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleArgs(
-                        description="rename namespace from ns1 to ns2",
-                        resource_filter=gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs(
-                            group_kinds=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs(
-                                resource_kind="Namespace",
-                            )],
-                            json_path=".metadata[?(@.name == 'ns1')]",
-                        ),
-                        field_actions=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleFieldActionArgs(
-                            op="REPLACE",
-                            path="/metadata/name",
-                            value="ns2",
-                        )],
-                    ),
-                    gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleArgs(
-                        description="move all resources from ns1 to ns2",
-                        resource_filter=gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs(
-                            namespaces=["ns1"],
-                        ),
-                        field_actions=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleFieldActionArgs(
-                            op="REPLACE",
-                            path="/metadata/namespace",
-                            value="ns2",
-                        )],
-                    ),
+            restore_config={
+                "selectedNamespaces": {
+                    "namespaces": ["ns1"],
+                },
+                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
+                "volumeDataRestorePolicy": "REUSE_VOLUME_HANDLE_FROM_BACKUP",
+                "clusterResourceRestoreScope": {
+                    "noGroupKinds": True,
+                },
+                "transformationRules": [
+                    {
+                        "description": "rename namespace from ns1 to ns2",
+                        "resourceFilter": {
+                            "groupKinds": [{
+                                "resourceKind": "Namespace",
+                            }],
+                            "jsonPath": ".metadata[?(@.name == 'ns1')]",
+                        },
+                        "fieldActions": [{
+                            "op": "REPLACE",
+                            "path": "/metadata/name",
+                            "value": "ns2",
+                        }],
+                    },
+                    {
+                        "description": "move all resources from ns1 to ns2",
+                        "resourceFilter": {
+                            "namespaces": ["ns1"],
+                        },
+                        "fieldActions": [{
+                            "op": "REPLACE",
+                            "path": "/metadata/namespace",
+                            "value": "ns2",
+                        }],
+                    },
                 ],
-            ))
+            })
         ```
         ### Gkebackup Restoreplan Second Transformation
 
@@ -673,14 +678,14 @@ class RestorePlan(pulumi.CustomResource):
             name="transform-rule-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection="",
             network="default",
             subnetwork="default")
@@ -688,11 +693,11 @@ class RestorePlan(pulumi.CustomResource):
             name="transform-rule",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         transform_rule = gcp.gkebackup.RestorePlan("transform_rule",
             name="transform-rule-rp",
             description="copy nginx env variables",
@@ -702,35 +707,35 @@ class RestorePlan(pulumi.CustomResource):
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                excluded_namespaces=gcp.gkebackup.RestorePlanRestoreConfigExcludedNamespacesArgs(
-                    namespaces=["my-ns"],
-                ),
-                namespaced_resource_restore_mode="DELETE_AND_RESTORE",
-                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    excluded_group_kinds=[gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs(
-                        resource_group="apiextension.k8s.io",
-                        resource_kind="CustomResourceDefinition",
-                    )],
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-                transformation_rules=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleArgs(
-                    description="Copy environment variables from the nginx container to the install init container.",
-                    resource_filter=gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs(
-                        group_kinds=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs(
-                            resource_kind="Pod",
-                            resource_group="",
-                        )],
-                        json_path=".metadata[?(@.name == 'nginx')]",
-                    ),
-                    field_actions=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleFieldActionArgs(
-                        op="COPY",
-                        path="/spec/initContainers/0/env",
-                        from_path="/spec/containers/0/env",
-                    )],
-                )],
-            ))
+            restore_config={
+                "excludedNamespaces": {
+                    "namespaces": ["my-ns"],
+                },
+                "namespacedResourceRestoreMode": "DELETE_AND_RESTORE",
+                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
+                "clusterResourceRestoreScope": {
+                    "excludedGroupKinds": [{
+                        "resourceGroup": "apiextension.k8s.io",
+                        "resourceKind": "CustomResourceDefinition",
+                    }],
+                },
+                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
+                "transformationRules": [{
+                    "description": "Copy environment variables from the nginx container to the install init container.",
+                    "resourceFilter": {
+                        "groupKinds": [{
+                            "resourceKind": "Pod",
+                            "resourceGroup": "",
+                        }],
+                        "jsonPath": ".metadata[?(@.name == 'nginx')]",
+                    },
+                    "fieldActions": [{
+                        "op": "COPY",
+                        "path": "/spec/initContainers/0/env",
+                        "fromPath": "/spec/containers/0/env",
+                    }],
+                }],
+            })
         ```
         ### Gkebackup Restoreplan Gitops Mode
 
@@ -742,14 +747,14 @@ class RestorePlan(pulumi.CustomResource):
             name="gitops-mode-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection="",
             network="default",
             subnetwork="default")
@@ -757,25 +762,25 @@ class RestorePlan(pulumi.CustomResource):
             name="gitops-mode",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         gitops_mode = gcp.gkebackup.RestorePlan("gitops_mode",
             name="gitops-mode",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                all_namespaces=True,
-                namespaced_resource_restore_mode="MERGE_SKIP_ON_CONFLICT",
-                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    all_group_kinds=True,
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-            ))
+            restore_config={
+                "allNamespaces": True,
+                "namespacedResourceRestoreMode": "MERGE_SKIP_ON_CONFLICT",
+                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
+                "clusterResourceRestoreScope": {
+                    "allGroupKinds": True,
+                },
+                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
+            })
         ```
         ### Gkebackup Restoreplan Restore Order
 
@@ -787,14 +792,14 @@ class RestorePlan(pulumi.CustomResource):
             name="restore-order-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection="",
             network="default",
             subnetwork="default")
@@ -802,49 +807,49 @@ class RestorePlan(pulumi.CustomResource):
             name="restore-order",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         restore_order = gcp.gkebackup.RestorePlan("restore_order",
             name="restore-order",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                all_namespaces=True,
-                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
-                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    all_group_kinds=True,
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-                restore_order=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderArgs(
-                    group_kind_dependencies=[
-                        gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs(
-                            satisfying=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs(
-                                resource_group="stable.example.com",
-                                resource_kind="kindA",
-                            ),
-                            requiring=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs(
-                                resource_group="stable.example.com",
-                                resource_kind="kindB",
-                            ),
-                        ),
-                        gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs(
-                            satisfying=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs(
-                                resource_group="stable.example.com",
-                                resource_kind="kindB",
-                            ),
-                            requiring=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs(
-                                resource_group="stable.example.com",
-                                resource_kind="kindC",
-                            ),
-                        ),
+            restore_config={
+                "allNamespaces": True,
+                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
+                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
+                "clusterResourceRestoreScope": {
+                    "allGroupKinds": True,
+                },
+                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
+                "restoreOrder": {
+                    "groupKindDependencies": [
+                        {
+                            "satisfying": {
+                                "resourceGroup": "stable.example.com",
+                                "resourceKind": "kindA",
+                            },
+                            "requiring": {
+                                "resourceGroup": "stable.example.com",
+                                "resourceKind": "kindB",
+                            },
+                        },
+                        {
+                            "satisfying": {
+                                "resourceGroup": "stable.example.com",
+                                "resourceKind": "kindB",
+                            },
+                            "requiring": {
+                                "resourceGroup": "stable.example.com",
+                                "resourceKind": "kindC",
+                            },
+                        },
                     ],
-                ),
-            ))
+                },
+            })
         ```
         ### Gkebackup Restoreplan Volume Res
 
@@ -856,14 +861,14 @@ class RestorePlan(pulumi.CustomResource):
             name="volume-res-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection="",
             network="default",
             subnetwork="default")
@@ -871,29 +876,29 @@ class RestorePlan(pulumi.CustomResource):
             name="volume-res",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         volume_res = gcp.gkebackup.RestorePlan("volume_res",
             name="volume-res",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                all_namespaces=True,
-                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
-                volume_data_restore_policy="NO_VOLUME_DATA_RESTORATION",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    all_group_kinds=True,
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-                volume_data_restore_policy_bindings=[gcp.gkebackup.RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs(
-                    policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
-                    volume_type="GCE_PERSISTENT_DISK",
-                )],
-            ))
+            restore_config={
+                "allNamespaces": True,
+                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
+                "volumeDataRestorePolicy": "NO_VOLUME_DATA_RESTORATION",
+                "clusterResourceRestoreScope": {
+                    "allGroupKinds": True,
+                },
+                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
+                "volumeDataRestorePolicyBindings": [{
+                    "policy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
+                    "volumeType": "GCE_PERSISTENT_DISK",
+                }],
+            })
         ```
 
         ## Import
@@ -931,7 +936,7 @@ class RestorePlan(pulumi.CustomResource):
                your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] location: The region of the Restore Plan.
         :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
-        :param pulumi.Input[pulumi.InputType['RestorePlanRestoreConfigArgs']] restore_config: Defines the configuration of Restores created via this RestorePlan.
+        :param pulumi.Input[Union['RestorePlanRestoreConfigArgs', 'RestorePlanRestoreConfigArgsDict']] restore_config: Defines the configuration of Restores created via this RestorePlan.
                Structure is documented below.
         """
         ...
@@ -961,14 +966,14 @@ class RestorePlan(pulumi.CustomResource):
             name="restore-all-ns-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection="",
             network="default",
             subnetwork="default")
@@ -976,25 +981,25 @@ class RestorePlan(pulumi.CustomResource):
             name="restore-all-ns",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         all_ns = gcp.gkebackup.RestorePlan("all_ns",
             name="restore-all-ns",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                all_namespaces=True,
-                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
-                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    all_group_kinds=True,
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-            ))
+            restore_config={
+                "allNamespaces": True,
+                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
+                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
+                "clusterResourceRestoreScope": {
+                    "allGroupKinds": True,
+                },
+                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
+            })
         ```
         ### Gkebackup Restoreplan Rollback Namespace
 
@@ -1006,14 +1011,14 @@ class RestorePlan(pulumi.CustomResource):
             name="rollback-ns-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection="",
             network="default",
             subnetwork="default")
@@ -1021,36 +1026,36 @@ class RestorePlan(pulumi.CustomResource):
             name="rollback-ns",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         rollback_ns = gcp.gkebackup.RestorePlan("rollback_ns",
             name="rollback-ns-rp",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                selected_namespaces=gcp.gkebackup.RestorePlanRestoreConfigSelectedNamespacesArgs(
-                    namespaces=["my-ns"],
-                ),
-                namespaced_resource_restore_mode="DELETE_AND_RESTORE",
-                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    selected_group_kinds=[
-                        gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs(
-                            resource_group="apiextension.k8s.io",
-                            resource_kind="CustomResourceDefinition",
-                        ),
-                        gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs(
-                            resource_group="storage.k8s.io",
-                            resource_kind="StorageClass",
-                        ),
+            restore_config={
+                "selectedNamespaces": {
+                    "namespaces": ["my-ns"],
+                },
+                "namespacedResourceRestoreMode": "DELETE_AND_RESTORE",
+                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
+                "clusterResourceRestoreScope": {
+                    "selectedGroupKinds": [
+                        {
+                            "resourceGroup": "apiextension.k8s.io",
+                            "resourceKind": "CustomResourceDefinition",
+                        },
+                        {
+                            "resourceGroup": "storage.k8s.io",
+                            "resourceKind": "StorageClass",
+                        },
                     ],
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-            ))
+                },
+                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
+            })
         ```
         ### Gkebackup Restoreplan Protected Application
 
@@ -1062,14 +1067,14 @@ class RestorePlan(pulumi.CustomResource):
             name="rollback-app-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection="",
             network="default",
             subnetwork="default")
@@ -1077,29 +1082,29 @@ class RestorePlan(pulumi.CustomResource):
             name="rollback-app",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         rollback_app = gcp.gkebackup.RestorePlan("rollback_app",
             name="rollback-app-rp",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                selected_applications=gcp.gkebackup.RestorePlanRestoreConfigSelectedApplicationsArgs(
-                    namespaced_names=[gcp.gkebackup.RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs(
-                        name="my-app",
-                        namespace="my-ns",
-                    )],
-                ),
-                namespaced_resource_restore_mode="DELETE_AND_RESTORE",
-                volume_data_restore_policy="REUSE_VOLUME_HANDLE_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    no_group_kinds=True,
-                ),
-            ))
+            restore_config={
+                "selectedApplications": {
+                    "namespacedNames": [{
+                        "name": "my-app",
+                        "namespace": "my-ns",
+                    }],
+                },
+                "namespacedResourceRestoreMode": "DELETE_AND_RESTORE",
+                "volumeDataRestorePolicy": "REUSE_VOLUME_HANDLE_FROM_BACKUP",
+                "clusterResourceRestoreScope": {
+                    "noGroupKinds": True,
+                },
+            })
         ```
         ### Gkebackup Restoreplan All Cluster Resources
 
@@ -1111,14 +1116,14 @@ class RestorePlan(pulumi.CustomResource):
             name="all-groupkinds-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection="",
             network="default",
             subnetwork="default")
@@ -1126,24 +1131,24 @@ class RestorePlan(pulumi.CustomResource):
             name="all-groupkinds",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         all_cluster_resources = gcp.gkebackup.RestorePlan("all_cluster_resources",
             name="all-groupkinds-rp",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                no_namespaces=True,
-                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    all_group_kinds=True,
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-            ))
+            restore_config={
+                "noNamespaces": True,
+                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
+                "clusterResourceRestoreScope": {
+                    "allGroupKinds": True,
+                },
+                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
+            })
         ```
         ### Gkebackup Restoreplan Rename Namespace
 
@@ -1155,14 +1160,14 @@ class RestorePlan(pulumi.CustomResource):
             name="rename-ns-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection="",
             network="default",
             subnetwork="default")
@@ -1170,53 +1175,53 @@ class RestorePlan(pulumi.CustomResource):
             name="rename-ns",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         rename_ns = gcp.gkebackup.RestorePlan("rename_ns",
             name="rename-ns-rp",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                selected_namespaces=gcp.gkebackup.RestorePlanRestoreConfigSelectedNamespacesArgs(
-                    namespaces=["ns1"],
-                ),
-                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
-                volume_data_restore_policy="REUSE_VOLUME_HANDLE_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    no_group_kinds=True,
-                ),
-                transformation_rules=[
-                    gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleArgs(
-                        description="rename namespace from ns1 to ns2",
-                        resource_filter=gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs(
-                            group_kinds=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs(
-                                resource_kind="Namespace",
-                            )],
-                            json_path=".metadata[?(@.name == 'ns1')]",
-                        ),
-                        field_actions=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleFieldActionArgs(
-                            op="REPLACE",
-                            path="/metadata/name",
-                            value="ns2",
-                        )],
-                    ),
-                    gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleArgs(
-                        description="move all resources from ns1 to ns2",
-                        resource_filter=gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs(
-                            namespaces=["ns1"],
-                        ),
-                        field_actions=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleFieldActionArgs(
-                            op="REPLACE",
-                            path="/metadata/namespace",
-                            value="ns2",
-                        )],
-                    ),
+            restore_config={
+                "selectedNamespaces": {
+                    "namespaces": ["ns1"],
+                },
+                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
+                "volumeDataRestorePolicy": "REUSE_VOLUME_HANDLE_FROM_BACKUP",
+                "clusterResourceRestoreScope": {
+                    "noGroupKinds": True,
+                },
+                "transformationRules": [
+                    {
+                        "description": "rename namespace from ns1 to ns2",
+                        "resourceFilter": {
+                            "groupKinds": [{
+                                "resourceKind": "Namespace",
+                            }],
+                            "jsonPath": ".metadata[?(@.name == 'ns1')]",
+                        },
+                        "fieldActions": [{
+                            "op": "REPLACE",
+                            "path": "/metadata/name",
+                            "value": "ns2",
+                        }],
+                    },
+                    {
+                        "description": "move all resources from ns1 to ns2",
+                        "resourceFilter": {
+                            "namespaces": ["ns1"],
+                        },
+                        "fieldActions": [{
+                            "op": "REPLACE",
+                            "path": "/metadata/namespace",
+                            "value": "ns2",
+                        }],
+                    },
                 ],
-            ))
+            })
         ```
         ### Gkebackup Restoreplan Second Transformation
 
@@ -1228,14 +1233,14 @@ class RestorePlan(pulumi.CustomResource):
             name="transform-rule-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection="",
             network="default",
             subnetwork="default")
@@ -1243,11 +1248,11 @@ class RestorePlan(pulumi.CustomResource):
             name="transform-rule",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         transform_rule = gcp.gkebackup.RestorePlan("transform_rule",
             name="transform-rule-rp",
             description="copy nginx env variables",
@@ -1257,35 +1262,35 @@ class RestorePlan(pulumi.CustomResource):
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                excluded_namespaces=gcp.gkebackup.RestorePlanRestoreConfigExcludedNamespacesArgs(
-                    namespaces=["my-ns"],
-                ),
-                namespaced_resource_restore_mode="DELETE_AND_RESTORE",
-                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    excluded_group_kinds=[gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs(
-                        resource_group="apiextension.k8s.io",
-                        resource_kind="CustomResourceDefinition",
-                    )],
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-                transformation_rules=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleArgs(
-                    description="Copy environment variables from the nginx container to the install init container.",
-                    resource_filter=gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs(
-                        group_kinds=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs(
-                            resource_kind="Pod",
-                            resource_group="",
-                        )],
-                        json_path=".metadata[?(@.name == 'nginx')]",
-                    ),
-                    field_actions=[gcp.gkebackup.RestorePlanRestoreConfigTransformationRuleFieldActionArgs(
-                        op="COPY",
-                        path="/spec/initContainers/0/env",
-                        from_path="/spec/containers/0/env",
-                    )],
-                )],
-            ))
+            restore_config={
+                "excludedNamespaces": {
+                    "namespaces": ["my-ns"],
+                },
+                "namespacedResourceRestoreMode": "DELETE_AND_RESTORE",
+                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
+                "clusterResourceRestoreScope": {
+                    "excludedGroupKinds": [{
+                        "resourceGroup": "apiextension.k8s.io",
+                        "resourceKind": "CustomResourceDefinition",
+                    }],
+                },
+                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
+                "transformationRules": [{
+                    "description": "Copy environment variables from the nginx container to the install init container.",
+                    "resourceFilter": {
+                        "groupKinds": [{
+                            "resourceKind": "Pod",
+                            "resourceGroup": "",
+                        }],
+                        "jsonPath": ".metadata[?(@.name == 'nginx')]",
+                    },
+                    "fieldActions": [{
+                        "op": "COPY",
+                        "path": "/spec/initContainers/0/env",
+                        "fromPath": "/spec/containers/0/env",
+                    }],
+                }],
+            })
         ```
         ### Gkebackup Restoreplan Gitops Mode
 
@@ -1297,14 +1302,14 @@ class RestorePlan(pulumi.CustomResource):
             name="gitops-mode-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection="",
             network="default",
             subnetwork="default")
@@ -1312,25 +1317,25 @@ class RestorePlan(pulumi.CustomResource):
             name="gitops-mode",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         gitops_mode = gcp.gkebackup.RestorePlan("gitops_mode",
             name="gitops-mode",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                all_namespaces=True,
-                namespaced_resource_restore_mode="MERGE_SKIP_ON_CONFLICT",
-                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    all_group_kinds=True,
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-            ))
+            restore_config={
+                "allNamespaces": True,
+                "namespacedResourceRestoreMode": "MERGE_SKIP_ON_CONFLICT",
+                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
+                "clusterResourceRestoreScope": {
+                    "allGroupKinds": True,
+                },
+                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
+            })
         ```
         ### Gkebackup Restoreplan Restore Order
 
@@ -1342,14 +1347,14 @@ class RestorePlan(pulumi.CustomResource):
             name="restore-order-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection="",
             network="default",
             subnetwork="default")
@@ -1357,49 +1362,49 @@ class RestorePlan(pulumi.CustomResource):
             name="restore-order",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         restore_order = gcp.gkebackup.RestorePlan("restore_order",
             name="restore-order",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                all_namespaces=True,
-                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
-                volume_data_restore_policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    all_group_kinds=True,
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-                restore_order=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderArgs(
-                    group_kind_dependencies=[
-                        gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs(
-                            satisfying=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs(
-                                resource_group="stable.example.com",
-                                resource_kind="kindA",
-                            ),
-                            requiring=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs(
-                                resource_group="stable.example.com",
-                                resource_kind="kindB",
-                            ),
-                        ),
-                        gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs(
-                            satisfying=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs(
-                                resource_group="stable.example.com",
-                                resource_kind="kindB",
-                            ),
-                            requiring=gcp.gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs(
-                                resource_group="stable.example.com",
-                                resource_kind="kindC",
-                            ),
-                        ),
+            restore_config={
+                "allNamespaces": True,
+                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
+                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
+                "clusterResourceRestoreScope": {
+                    "allGroupKinds": True,
+                },
+                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
+                "restoreOrder": {
+                    "groupKindDependencies": [
+                        {
+                            "satisfying": {
+                                "resourceGroup": "stable.example.com",
+                                "resourceKind": "kindA",
+                            },
+                            "requiring": {
+                                "resourceGroup": "stable.example.com",
+                                "resourceKind": "kindB",
+                            },
+                        },
+                        {
+                            "satisfying": {
+                                "resourceGroup": "stable.example.com",
+                                "resourceKind": "kindB",
+                            },
+                            "requiring": {
+                                "resourceGroup": "stable.example.com",
+                                "resourceKind": "kindC",
+                            },
+                        },
                     ],
-                ),
-            ))
+                },
+            })
         ```
         ### Gkebackup Restoreplan Volume Res
 
@@ -1411,14 +1416,14 @@ class RestorePlan(pulumi.CustomResource):
             name="volume-res-cluster",
             location="us-central1",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
-            addons_config=gcp.container.ClusterAddonsConfigArgs(
-                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
-                    enabled=True,
-                ),
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
+            addons_config={
+                "gkeBackupAgentConfig": {
+                    "enabled": True,
+                },
+            },
             deletion_protection="",
             network="default",
             subnetwork="default")
@@ -1426,29 +1431,29 @@ class RestorePlan(pulumi.CustomResource):
             name="volume-res",
             cluster=primary.id,
             location="us-central1",
-            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
-                include_volume_data=True,
-                include_secrets=True,
-                all_namespaces=True,
-            ))
+            backup_config={
+                "includeVolumeData": True,
+                "includeSecrets": True,
+                "allNamespaces": True,
+            })
         volume_res = gcp.gkebackup.RestorePlan("volume_res",
             name="volume-res",
             location="us-central1",
             backup_plan=basic.id,
             cluster=primary.id,
-            restore_config=gcp.gkebackup.RestorePlanRestoreConfigArgs(
-                all_namespaces=True,
-                namespaced_resource_restore_mode="FAIL_ON_CONFLICT",
-                volume_data_restore_policy="NO_VOLUME_DATA_RESTORATION",
-                cluster_resource_restore_scope=gcp.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs(
-                    all_group_kinds=True,
-                ),
-                cluster_resource_conflict_policy="USE_EXISTING_VERSION",
-                volume_data_restore_policy_bindings=[gcp.gkebackup.RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs(
-                    policy="RESTORE_VOLUME_DATA_FROM_BACKUP",
-                    volume_type="GCE_PERSISTENT_DISK",
-                )],
-            ))
+            restore_config={
+                "allNamespaces": True,
+                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
+                "volumeDataRestorePolicy": "NO_VOLUME_DATA_RESTORATION",
+                "clusterResourceRestoreScope": {
+                    "allGroupKinds": True,
+                },
+                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
+                "volumeDataRestorePolicyBindings": [{
+                    "policy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
+                    "volumeType": "GCE_PERSISTENT_DISK",
+                }],
+            })
         ```
 
         ## Import
@@ -1497,7 +1502,7 @@ class RestorePlan(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 restore_config: Optional[pulumi.Input[pulumi.InputType['RestorePlanRestoreConfigArgs']]] = None,
+                 restore_config: Optional[pulumi.Input[Union['RestorePlanRestoreConfigArgs', 'RestorePlanRestoreConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1549,7 +1554,7 @@ class RestorePlan(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            restore_config: Optional[pulumi.Input[pulumi.InputType['RestorePlanRestoreConfigArgs']]] = None,
+            restore_config: Optional[pulumi.Input[Union['RestorePlanRestoreConfigArgs', 'RestorePlanRestoreConfigArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             state_reason: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'RestorePlan':
@@ -1572,7 +1577,7 @@ class RestorePlan(pulumi.CustomResource):
         :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['RestorePlanRestoreConfigArgs']] restore_config: Defines the configuration of Restores created via this RestorePlan.
+        :param pulumi.Input[Union['RestorePlanRestoreConfigArgs', 'RestorePlanRestoreConfigArgsDict']] restore_config: Defines the configuration of Restores created via this RestorePlan.
                Structure is documented below.
         :param pulumi.Input[str] state: The State of the RestorePlan.
         :param pulumi.Input[str] state_reason: Detailed description of why RestorePlan is in its current state.

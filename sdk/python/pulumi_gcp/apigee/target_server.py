@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -318,7 +323,7 @@ class TargetServer(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
-                 s_sl_info: Optional[pulumi.Input[pulumi.InputType['TargetServerSSlInfoArgs']]] = None,
+                 s_sl_info: Optional[pulumi.Input[Union['TargetServerSSlInfoArgs', 'TargetServerSSlInfoArgsDict']]] = None,
                  __props__=None):
         """
         TargetServer configuration. TargetServers are used to decouple a proxy TargetEndpoint HTTPTargetConnections from concrete URLs for backend services.
@@ -423,7 +428,7 @@ class TargetServer(pulumi.CustomResource):
         :param pulumi.Input[int] port: The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
         :param pulumi.Input[str] protocol: Immutable. The protocol used by this TargetServer.
                Possible values are: `HTTP`, `HTTP2`, `GRPC_TARGET`, `GRPC`, `EXTERNAL_CALLOUT`.
-        :param pulumi.Input[pulumi.InputType['TargetServerSSlInfoArgs']] s_sl_info: Specifies TLS configuration info for this TargetServer. The JSON name is sSLInfo for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
+        :param pulumi.Input[Union['TargetServerSSlInfoArgs', 'TargetServerSSlInfoArgsDict']] s_sl_info: Specifies TLS configuration info for this TargetServer. The JSON name is sSLInfo for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
                Structure is documented below.
         """
         ...
@@ -543,7 +548,7 @@ class TargetServer(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
-                 s_sl_info: Optional[pulumi.Input[pulumi.InputType['TargetServerSSlInfoArgs']]] = None,
+                 s_sl_info: Optional[pulumi.Input[Union['TargetServerSSlInfoArgs', 'TargetServerSSlInfoArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -584,7 +589,7 @@ class TargetServer(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[int]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
-            s_sl_info: Optional[pulumi.Input[pulumi.InputType['TargetServerSSlInfoArgs']]] = None) -> 'TargetServer':
+            s_sl_info: Optional[pulumi.Input[Union['TargetServerSSlInfoArgs', 'TargetServerSSlInfoArgsDict']]] = None) -> 'TargetServer':
         """
         Get an existing TargetServer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -604,7 +609,7 @@ class TargetServer(pulumi.CustomResource):
         :param pulumi.Input[int] port: The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
         :param pulumi.Input[str] protocol: Immutable. The protocol used by this TargetServer.
                Possible values are: `HTTP`, `HTTP2`, `GRPC_TARGET`, `GRPC`, `EXTERNAL_CALLOUT`.
-        :param pulumi.Input[pulumi.InputType['TargetServerSSlInfoArgs']] s_sl_info: Specifies TLS configuration info for this TargetServer. The JSON name is sSLInfo for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
+        :param pulumi.Input[Union['TargetServerSSlInfoArgs', 'TargetServerSSlInfoArgsDict']] s_sl_info: Specifies TLS configuration info for this TargetServer. The JSON name is sSLInfo for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

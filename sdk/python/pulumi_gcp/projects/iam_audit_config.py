@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -147,7 +152,7 @@ class IAMAuditConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]]] = None,
+                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IAMAuditConfigAuditLogConfigArgs', 'IAMAuditConfigAuditLogConfigArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -180,10 +185,10 @@ class IAMAuditConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -195,15 +200,15 @@ class IAMAuditConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -231,11 +236,11 @@ class IAMAuditConfig(pulumi.CustomResource):
             project="your-project-id",
             role="roles/container.admin",
             members=["user:jane@example.com"],
-            condition=gcp.projects.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMMember
@@ -260,11 +265,11 @@ class IAMAuditConfig(pulumi.CustomResource):
             project="your-project-id",
             role="roles/firebase.admin",
             member="user:jane@example.com",
-            condition=gcp.projects.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMAuditConfig
@@ -277,13 +282,13 @@ class IAMAuditConfig(pulumi.CustomResource):
             project="your-project-id",
             service="allServices",
             audit_log_configs=[
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="ADMIN_READ",
-                ),
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="DATA_READ",
-                    exempted_members=["user:joebloggs@example.com"],
-                ),
+                {
+                    "logType": "ADMIN_READ",
+                },
+                {
+                    "logType": "DATA_READ",
+                    "exemptedMembers": ["user:joebloggs@example.com"],
+                },
             ])
         ```
 
@@ -301,10 +306,10 @@ class IAMAuditConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -316,15 +321,15 @@ class IAMAuditConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -352,11 +357,11 @@ class IAMAuditConfig(pulumi.CustomResource):
             project="your-project-id",
             role="roles/container.admin",
             members=["user:jane@example.com"],
-            condition=gcp.projects.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMMember
@@ -381,11 +386,11 @@ class IAMAuditConfig(pulumi.CustomResource):
             project="your-project-id",
             role="roles/firebase.admin",
             member="user:jane@example.com",
-            condition=gcp.projects.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMAuditConfig
@@ -398,13 +403,13 @@ class IAMAuditConfig(pulumi.CustomResource):
             project="your-project-id",
             service="allServices",
             audit_log_configs=[
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="ADMIN_READ",
-                ),
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="DATA_READ",
-                    exempted_members=["user:joebloggs@example.com"],
-                ),
+                {
+                    "logType": "ADMIN_READ",
+                },
+                {
+                    "logType": "DATA_READ",
+                    "exemptedMembers": ["user:joebloggs@example.com"],
+                },
             ])
         ```
 
@@ -436,7 +441,7 @@ class IAMAuditConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IAMAuditConfigAuditLogConfigArgs', 'IAMAuditConfigAuditLogConfigArgsDict']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] project: The project id of the target project. This is not
                inferred from the provider.
         :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
@@ -476,10 +481,10 @@ class IAMAuditConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -491,15 +496,15 @@ class IAMAuditConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -527,11 +532,11 @@ class IAMAuditConfig(pulumi.CustomResource):
             project="your-project-id",
             role="roles/container.admin",
             members=["user:jane@example.com"],
-            condition=gcp.projects.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMMember
@@ -556,11 +561,11 @@ class IAMAuditConfig(pulumi.CustomResource):
             project="your-project-id",
             role="roles/firebase.admin",
             member="user:jane@example.com",
-            condition=gcp.projects.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMAuditConfig
@@ -573,13 +578,13 @@ class IAMAuditConfig(pulumi.CustomResource):
             project="your-project-id",
             service="allServices",
             audit_log_configs=[
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="ADMIN_READ",
-                ),
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="DATA_READ",
-                    exempted_members=["user:joebloggs@example.com"],
-                ),
+                {
+                    "logType": "ADMIN_READ",
+                },
+                {
+                    "logType": "DATA_READ",
+                    "exemptedMembers": ["user:joebloggs@example.com"],
+                },
             ])
         ```
 
@@ -597,10 +602,10 @@ class IAMAuditConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/editor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -612,15 +617,15 @@ class IAMAuditConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/compute.admin",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/compute.admin",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         project = gcp.projects.IAMPolicy("project",
             project="your-project-id",
             policy_data=admin.policy_data)
@@ -648,11 +653,11 @@ class IAMAuditConfig(pulumi.CustomResource):
             project="your-project-id",
             role="roles/container.admin",
             members=["user:jane@example.com"],
-            condition=gcp.projects.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMMember
@@ -677,11 +682,11 @@ class IAMAuditConfig(pulumi.CustomResource):
             project="your-project-id",
             role="roles/firebase.admin",
             member="user:jane@example.com",
-            condition=gcp.projects.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## projects.IAMAuditConfig
@@ -694,13 +699,13 @@ class IAMAuditConfig(pulumi.CustomResource):
             project="your-project-id",
             service="allServices",
             audit_log_configs=[
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="ADMIN_READ",
-                ),
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    log_type="DATA_READ",
-                    exempted_members=["user:joebloggs@example.com"],
-                ),
+                {
+                    "logType": "ADMIN_READ",
+                },
+                {
+                    "logType": "DATA_READ",
+                    "exemptedMembers": ["user:joebloggs@example.com"],
+                },
             ])
         ```
 
@@ -745,7 +750,7 @@ class IAMAuditConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]]] = None,
+                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IAMAuditConfigAuditLogConfigArgs', 'IAMAuditConfigAuditLogConfigArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -777,7 +782,7 @@ class IAMAuditConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]]] = None,
+            audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IAMAuditConfigAuditLogConfigArgs', 'IAMAuditConfigAuditLogConfigArgsDict']]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             service: Optional[pulumi.Input[str]] = None) -> 'IAMAuditConfig':
@@ -788,7 +793,7 @@ class IAMAuditConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IAMAuditConfigAuditLogConfigArgs', 'IAMAuditConfigAuditLogConfigArgsDict']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
         :param pulumi.Input[str] project: The project id of the target project. This is not
                inferred from the provider.

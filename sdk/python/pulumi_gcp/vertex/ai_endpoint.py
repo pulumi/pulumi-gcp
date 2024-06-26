@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -468,7 +473,7 @@ class AiEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiEndpointEncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -515,9 +520,9 @@ class AiEndpoint(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
-            encryption_spec=gcp.vertex.AiEndpointEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
+            encryption_spec={
+                "kmsKeyName": "kms-name",
+            },
             opts = pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
             crypto_key_id="kms-name",
@@ -553,7 +558,7 @@ class AiEndpoint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the Endpoint.
         :param pulumi.Input[str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-        :param pulumi.Input[pulumi.InputType['AiEndpointEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
+        :param pulumi.Input[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -613,9 +618,9 @@ class AiEndpoint(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
-            encryption_spec=gcp.vertex.AiEndpointEncryptionSpecArgs(
-                kms_key_name="kms-name",
-            ),
+            encryption_spec={
+                "kmsKeyName": "kms-name",
+            },
             opts = pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
             crypto_key_id="kms-name",
@@ -664,7 +669,7 @@ class AiEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiEndpointEncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -713,11 +718,11 @@ class AiEndpoint(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            deployed_models: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiEndpointDeployedModelArgs']]]]] = None,
+            deployed_models: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiEndpointDeployedModelArgs', 'AiEndpointDeployedModelArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiEndpointEncryptionSpecArgs']]] = None,
+            encryption_spec: Optional[pulumi.Input[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -737,12 +742,12 @@ class AiEndpoint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: (Output)
                Output only. Timestamp when the DeployedModel was created.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiEndpointDeployedModelArgs']]]] deployed_models: Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiEndpointDeployedModelArgs', 'AiEndpointDeployedModelArgsDict']]]] deployed_models: Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the Endpoint.
         :param pulumi.Input[str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['AiEndpointEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
+        :param pulumi.Input[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -333,7 +338,7 @@ class Group(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 group_key: Optional[pulumi.Input[pulumi.InputType['GroupGroupKeyArgs']]] = None,
+                 group_key: Optional[pulumi.Input[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']]] = None,
                  initial_group_config: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -365,9 +370,9 @@ class Group(pulumi.CustomResource):
             display_name="my-identity-group",
             initial_group_config="WITH_INITIAL_OWNER",
             parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
-                id="my-identity-group@example.com",
-            ),
+            group_key={
+                "id": "my-identity-group@example.com",
+            },
             labels={
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             })
@@ -389,7 +394,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An extended description to help users determine the purpose of a Group. Must not be longer than 4,096 characters.
         :param pulumi.Input[str] display_name: The display name of the Group.
-        :param pulumi.Input[pulumi.InputType['GroupGroupKeyArgs']] group_key: EntityKey of the Group.
+        :param pulumi.Input[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']] group_key: EntityKey of the Group.
                Structure is documented below.
         :param pulumi.Input[str] initial_group_config: The initial configuration options for creating a Group. See the [API
                reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig) for possible
@@ -437,9 +442,9 @@ class Group(pulumi.CustomResource):
             display_name="my-identity-group",
             initial_group_config="WITH_INITIAL_OWNER",
             parent="customers/A01b123xz",
-            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
-                id="my-identity-group@example.com",
-            ),
+            group_key={
+                "id": "my-identity-group@example.com",
+            },
             labels={
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             })
@@ -474,7 +479,7 @@ class Group(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 group_key: Optional[pulumi.Input[pulumi.InputType['GroupGroupKeyArgs']]] = None,
+                 group_key: Optional[pulumi.Input[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']]] = None,
                  initial_group_config: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -513,11 +518,11 @@ class Group(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_group_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupAdditionalGroupKeyArgs']]]]] = None,
+            additional_group_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupAdditionalGroupKeyArgs', 'GroupAdditionalGroupKeyArgsDict']]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            group_key: Optional[pulumi.Input[pulumi.InputType['GroupGroupKeyArgs']]] = None,
+            group_key: Optional[pulumi.Input[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']]] = None,
             initial_group_config: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -530,12 +535,12 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupAdditionalGroupKeyArgs']]]] additional_group_keys: Additional group keys associated with the Group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupAdditionalGroupKeyArgs', 'GroupAdditionalGroupKeyArgsDict']]]] additional_group_keys: Additional group keys associated with the Group
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time when the Group was created.
         :param pulumi.Input[str] description: An extended description to help users determine the purpose of a Group. Must not be longer than 4,096 characters.
         :param pulumi.Input[str] display_name: The display name of the Group.
-        :param pulumi.Input[pulumi.InputType['GroupGroupKeyArgs']] group_key: EntityKey of the Group.
+        :param pulumi.Input[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']] group_key: EntityKey of the Group.
                Structure is documented below.
         :param pulumi.Input[str] initial_group_config: The initial configuration options for creating a Group. See the [API
                reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig) for possible

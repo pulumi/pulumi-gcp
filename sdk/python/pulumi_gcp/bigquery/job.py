@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -411,15 +416,15 @@ class Job(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 copy: Optional[pulumi.Input[pulumi.InputType['JobCopyArgs']]] = None,
-                 extract: Optional[pulumi.Input[pulumi.InputType['JobExtractArgs']]] = None,
+                 copy: Optional[pulumi.Input[Union['JobCopyArgs', 'JobCopyArgsDict']]] = None,
+                 extract: Optional[pulumi.Input[Union['JobExtractArgs', 'JobExtractArgsDict']]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  job_timeout_ms: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 load: Optional[pulumi.Input[pulumi.InputType['JobLoadArgs']]] = None,
+                 load: Optional[pulumi.Input[Union['JobLoadArgs', 'JobLoadArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 query: Optional[pulumi.Input[pulumi.InputType['JobQueryArgs']]] = None,
+                 query: Optional[pulumi.Input[Union['JobQueryArgs', 'JobQueryArgsDict']]] = None,
                  __props__=None):
         """
         Jobs are actions that BigQuery runs on your behalf to load data, export data, query data, or copy data.
@@ -453,19 +458,19 @@ class Job(pulumi.CustomResource):
             labels={
                 "example-label": "example-value",
             },
-            query=gcp.bigquery.JobQueryArgs(
-                query="SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-                destination_table=gcp.bigquery.JobQueryDestinationTableArgs(
-                    project_id=foo.project,
-                    dataset_id=foo.dataset_id,
-                    table_id=foo.table_id,
-                ),
-                allow_large_results=True,
-                flatten_results=True,
-                script_options=gcp.bigquery.JobQueryScriptOptionsArgs(
-                    key_result_statement="LAST",
-                ),
-            ))
+            query={
+                "query": "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+                "destinationTable": {
+                    "projectId": foo.project,
+                    "datasetId": foo.dataset_id,
+                    "tableId": foo.table_id,
+                },
+                "allowLargeResults": True,
+                "flattenResults": True,
+                "scriptOptions": {
+                    "keyResultStatement": "LAST",
+                },
+            })
         ```
         ### Bigquery Job Query Table Reference
 
@@ -487,20 +492,20 @@ class Job(pulumi.CustomResource):
             labels={
                 "example-label": "example-value",
             },
-            query=gcp.bigquery.JobQueryArgs(
-                query="SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-                destination_table=gcp.bigquery.JobQueryDestinationTableArgs(
-                    table_id=foo.id,
-                ),
-                default_dataset=gcp.bigquery.JobQueryDefaultDatasetArgs(
-                    dataset_id=bar.id,
-                ),
-                allow_large_results=True,
-                flatten_results=True,
-                script_options=gcp.bigquery.JobQueryScriptOptionsArgs(
-                    key_result_statement="LAST",
-                ),
-            ))
+            query={
+                "query": "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+                "destinationTable": {
+                    "tableId": foo.id,
+                },
+                "defaultDataset": {
+                    "datasetId": bar.id,
+                },
+                "allowLargeResults": True,
+                "flattenResults": True,
+                "scriptOptions": {
+                    "keyResultStatement": "LAST",
+                },
+            })
         ```
         ### Bigquery Job Load
 
@@ -522,21 +527,21 @@ class Job(pulumi.CustomResource):
             labels={
                 "my_job": "load",
             },
-            load=gcp.bigquery.JobLoadArgs(
-                source_uris=["gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv"],
-                destination_table=gcp.bigquery.JobLoadDestinationTableArgs(
-                    project_id=foo.project,
-                    dataset_id=foo.dataset_id,
-                    table_id=foo.table_id,
-                ),
-                skip_leading_rows=1,
-                schema_update_options=[
+            load={
+                "sourceUris": ["gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv"],
+                "destinationTable": {
+                    "projectId": foo.project,
+                    "datasetId": foo.dataset_id,
+                    "tableId": foo.table_id,
+                },
+                "skipLeadingRows": 1,
+                "schemaUpdateOptions": [
                     "ALLOW_FIELD_RELAXATION",
                     "ALLOW_FIELD_ADDITION",
                 ],
-                write_disposition="WRITE_APPEND",
-                autodetect=True,
-            ))
+                "writeDisposition": "WRITE_APPEND",
+                "autodetect": True,
+            })
         ```
         ### Bigquery Job Load Geojson
 
@@ -569,18 +574,18 @@ class Job(pulumi.CustomResource):
             labels={
                 "my_job": "load",
             },
-            load=gcp.bigquery.JobLoadArgs(
-                source_uris=[pulumi.Output.all(object.bucket, object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
-                destination_table=gcp.bigquery.JobLoadDestinationTableArgs(
-                    project_id=foo.project,
-                    dataset_id=foo.dataset_id,
-                    table_id=foo.table_id,
-                ),
-                write_disposition="WRITE_TRUNCATE",
-                autodetect=True,
-                source_format="NEWLINE_DELIMITED_JSON",
-                json_extension="GEOJSON",
-            ),
+            load={
+                "sourceUris": [pulumi.Output.all(object.bucket, object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
+                "destinationTable": {
+                    "projectId": foo.project,
+                    "datasetId": foo.dataset_id,
+                    "tableId": foo.table_id,
+                },
+                "writeDisposition": "WRITE_TRUNCATE",
+                "autodetect": True,
+                "sourceFormat": "NEWLINE_DELIMITED_JSON",
+                "jsonExtension": "GEOJSON",
+            },
             opts = pulumi.ResourceOptions(depends_on=[object]))
         ```
         ### Bigquery Job Load Parquet
@@ -611,25 +616,25 @@ class Job(pulumi.CustomResource):
             labels={
                 "my_job": "load",
             },
-            load=gcp.bigquery.JobLoadArgs(
-                source_uris=[pulumi.Output.all(test_bucket_object.bucket, test_bucket_object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
-                destination_table=gcp.bigquery.JobLoadDestinationTableArgs(
-                    project_id=test_table.project,
-                    dataset_id=test_table.dataset_id,
-                    table_id=test_table.table_id,
-                ),
-                schema_update_options=[
+            load={
+                "sourceUris": [pulumi.Output.all(test_bucket_object.bucket, test_bucket_object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
+                "destinationTable": {
+                    "projectId": test_table.project,
+                    "datasetId": test_table.dataset_id,
+                    "tableId": test_table.table_id,
+                },
+                "schemaUpdateOptions": [
                     "ALLOW_FIELD_RELAXATION",
                     "ALLOW_FIELD_ADDITION",
                 ],
-                write_disposition="WRITE_APPEND",
-                source_format="PARQUET",
-                autodetect=True,
-                parquet_options=gcp.bigquery.JobLoadParquetOptionsArgs(
-                    enum_as_string=True,
-                    enable_list_inference=True,
-                ),
-            ))
+                "writeDisposition": "WRITE_APPEND",
+                "sourceFormat": "PARQUET",
+                "autodetect": True,
+                "parquetOptions": {
+                    "enumAsString": True,
+                    "enableListInference": True,
+                },
+            })
         ```
         ### Bigquery Job Copy
 
@@ -707,34 +712,34 @@ class Job(pulumi.CustomResource):
           }
         ]
         \"\"\",
-            encryption_configuration=gcp.bigquery.TableEncryptionConfigurationArgs(
-                kms_key_name=crypto_key.id,
-            ),
+            encryption_configuration={
+                "kmsKeyName": crypto_key.id,
+            },
             opts = pulumi.ResourceOptions(depends_on=[encrypt_role]))
         job = gcp.bigquery.Job("job",
             job_id="job_copy",
-            copy=gcp.bigquery.JobCopyArgs(
-                source_tables=[
-                    gcp.bigquery.JobCopySourceTableArgs(
-                        project_id=source[0].project,
-                        dataset_id=source[0].dataset_id,
-                        table_id=source[0].table_id,
-                    ),
-                    gcp.bigquery.JobCopySourceTableArgs(
-                        project_id=source[1].project,
-                        dataset_id=source[1].dataset_id,
-                        table_id=source[1].table_id,
-                    ),
+            copy={
+                "sourceTables": [
+                    {
+                        "projectId": source[0].project,
+                        "datasetId": source[0].dataset_id,
+                        "tableId": source[0].table_id,
+                    },
+                    {
+                        "projectId": source[1].project,
+                        "datasetId": source[1].dataset_id,
+                        "tableId": source[1].table_id,
+                    },
                 ],
-                destination_table=gcp.bigquery.JobCopyDestinationTableArgs(
-                    project_id=dest.project,
-                    dataset_id=dest.dataset_id,
-                    table_id=dest.table_id,
-                ),
-                destination_encryption_configuration=gcp.bigquery.JobCopyDestinationEncryptionConfigurationArgs(
-                    kms_key_name=crypto_key.id,
-                ),
-            ),
+                "destinationTable": {
+                    "projectId": dest.project,
+                    "datasetId": dest.dataset_id,
+                    "tableId": dest.table_id,
+                },
+                "destinationEncryptionConfiguration": {
+                    "kmsKeyName": crypto_key.id,
+                },
+            },
             opts = pulumi.ResourceOptions(depends_on=[encrypt_role]))
         ```
         ### Bigquery Job Extract
@@ -776,16 +781,16 @@ class Job(pulumi.CustomResource):
             force_destroy=True)
         job = gcp.bigquery.Job("job",
             job_id="job_extract",
-            extract=gcp.bigquery.JobExtractArgs(
-                destination_uris=[dest.url.apply(lambda url: f"{url}/extract")],
-                source_table=gcp.bigquery.JobExtractSourceTableArgs(
-                    project_id=source_one.project,
-                    dataset_id=source_one.dataset_id,
-                    table_id=source_one.table_id,
-                ),
-                destination_format="NEWLINE_DELIMITED_JSON",
-                compression="GZIP",
-            ))
+            extract={
+                "destinationUris": [dest.url.apply(lambda url: f"{url}/extract")],
+                "sourceTable": {
+                    "projectId": source_one.project,
+                    "datasetId": source_one.dataset_id,
+                    "tableId": source_one.table_id,
+                },
+                "destinationFormat": "NEWLINE_DELIMITED_JSON",
+                "compression": "GZIP",
+            })
         ```
 
         ## Import
@@ -832,16 +837,16 @@ class Job(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['JobCopyArgs']] copy: Copies a table.
-        :param pulumi.Input[pulumi.InputType['JobExtractArgs']] extract: Configures an extract job.
+        :param pulumi.Input[Union['JobCopyArgs', 'JobCopyArgsDict']] copy: Copies a table.
+        :param pulumi.Input[Union['JobExtractArgs', 'JobExtractArgsDict']] extract: Configures an extract job.
         :param pulumi.Input[str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input[str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
                non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
                'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['JobLoadArgs']] load: Configures a load job.
+        :param pulumi.Input[Union['JobLoadArgs', 'JobLoadArgsDict']] load: Configures a load job.
         :param pulumi.Input[str] location: Specifies where the error occurred, if present.
-        :param pulumi.Input[pulumi.InputType['JobQueryArgs']] query: Configures a query job.
+        :param pulumi.Input[Union['JobQueryArgs', 'JobQueryArgsDict']] query: Configures a query job.
         """
         ...
     @overload
@@ -881,19 +886,19 @@ class Job(pulumi.CustomResource):
             labels={
                 "example-label": "example-value",
             },
-            query=gcp.bigquery.JobQueryArgs(
-                query="SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-                destination_table=gcp.bigquery.JobQueryDestinationTableArgs(
-                    project_id=foo.project,
-                    dataset_id=foo.dataset_id,
-                    table_id=foo.table_id,
-                ),
-                allow_large_results=True,
-                flatten_results=True,
-                script_options=gcp.bigquery.JobQueryScriptOptionsArgs(
-                    key_result_statement="LAST",
-                ),
-            ))
+            query={
+                "query": "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+                "destinationTable": {
+                    "projectId": foo.project,
+                    "datasetId": foo.dataset_id,
+                    "tableId": foo.table_id,
+                },
+                "allowLargeResults": True,
+                "flattenResults": True,
+                "scriptOptions": {
+                    "keyResultStatement": "LAST",
+                },
+            })
         ```
         ### Bigquery Job Query Table Reference
 
@@ -915,20 +920,20 @@ class Job(pulumi.CustomResource):
             labels={
                 "example-label": "example-value",
             },
-            query=gcp.bigquery.JobQueryArgs(
-                query="SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-                destination_table=gcp.bigquery.JobQueryDestinationTableArgs(
-                    table_id=foo.id,
-                ),
-                default_dataset=gcp.bigquery.JobQueryDefaultDatasetArgs(
-                    dataset_id=bar.id,
-                ),
-                allow_large_results=True,
-                flatten_results=True,
-                script_options=gcp.bigquery.JobQueryScriptOptionsArgs(
-                    key_result_statement="LAST",
-                ),
-            ))
+            query={
+                "query": "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+                "destinationTable": {
+                    "tableId": foo.id,
+                },
+                "defaultDataset": {
+                    "datasetId": bar.id,
+                },
+                "allowLargeResults": True,
+                "flattenResults": True,
+                "scriptOptions": {
+                    "keyResultStatement": "LAST",
+                },
+            })
         ```
         ### Bigquery Job Load
 
@@ -950,21 +955,21 @@ class Job(pulumi.CustomResource):
             labels={
                 "my_job": "load",
             },
-            load=gcp.bigquery.JobLoadArgs(
-                source_uris=["gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv"],
-                destination_table=gcp.bigquery.JobLoadDestinationTableArgs(
-                    project_id=foo.project,
-                    dataset_id=foo.dataset_id,
-                    table_id=foo.table_id,
-                ),
-                skip_leading_rows=1,
-                schema_update_options=[
+            load={
+                "sourceUris": ["gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv"],
+                "destinationTable": {
+                    "projectId": foo.project,
+                    "datasetId": foo.dataset_id,
+                    "tableId": foo.table_id,
+                },
+                "skipLeadingRows": 1,
+                "schemaUpdateOptions": [
                     "ALLOW_FIELD_RELAXATION",
                     "ALLOW_FIELD_ADDITION",
                 ],
-                write_disposition="WRITE_APPEND",
-                autodetect=True,
-            ))
+                "writeDisposition": "WRITE_APPEND",
+                "autodetect": True,
+            })
         ```
         ### Bigquery Job Load Geojson
 
@@ -997,18 +1002,18 @@ class Job(pulumi.CustomResource):
             labels={
                 "my_job": "load",
             },
-            load=gcp.bigquery.JobLoadArgs(
-                source_uris=[pulumi.Output.all(object.bucket, object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
-                destination_table=gcp.bigquery.JobLoadDestinationTableArgs(
-                    project_id=foo.project,
-                    dataset_id=foo.dataset_id,
-                    table_id=foo.table_id,
-                ),
-                write_disposition="WRITE_TRUNCATE",
-                autodetect=True,
-                source_format="NEWLINE_DELIMITED_JSON",
-                json_extension="GEOJSON",
-            ),
+            load={
+                "sourceUris": [pulumi.Output.all(object.bucket, object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
+                "destinationTable": {
+                    "projectId": foo.project,
+                    "datasetId": foo.dataset_id,
+                    "tableId": foo.table_id,
+                },
+                "writeDisposition": "WRITE_TRUNCATE",
+                "autodetect": True,
+                "sourceFormat": "NEWLINE_DELIMITED_JSON",
+                "jsonExtension": "GEOJSON",
+            },
             opts = pulumi.ResourceOptions(depends_on=[object]))
         ```
         ### Bigquery Job Load Parquet
@@ -1039,25 +1044,25 @@ class Job(pulumi.CustomResource):
             labels={
                 "my_job": "load",
             },
-            load=gcp.bigquery.JobLoadArgs(
-                source_uris=[pulumi.Output.all(test_bucket_object.bucket, test_bucket_object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
-                destination_table=gcp.bigquery.JobLoadDestinationTableArgs(
-                    project_id=test_table.project,
-                    dataset_id=test_table.dataset_id,
-                    table_id=test_table.table_id,
-                ),
-                schema_update_options=[
+            load={
+                "sourceUris": [pulumi.Output.all(test_bucket_object.bucket, test_bucket_object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
+                "destinationTable": {
+                    "projectId": test_table.project,
+                    "datasetId": test_table.dataset_id,
+                    "tableId": test_table.table_id,
+                },
+                "schemaUpdateOptions": [
                     "ALLOW_FIELD_RELAXATION",
                     "ALLOW_FIELD_ADDITION",
                 ],
-                write_disposition="WRITE_APPEND",
-                source_format="PARQUET",
-                autodetect=True,
-                parquet_options=gcp.bigquery.JobLoadParquetOptionsArgs(
-                    enum_as_string=True,
-                    enable_list_inference=True,
-                ),
-            ))
+                "writeDisposition": "WRITE_APPEND",
+                "sourceFormat": "PARQUET",
+                "autodetect": True,
+                "parquetOptions": {
+                    "enumAsString": True,
+                    "enableListInference": True,
+                },
+            })
         ```
         ### Bigquery Job Copy
 
@@ -1135,34 +1140,34 @@ class Job(pulumi.CustomResource):
           }
         ]
         \"\"\",
-            encryption_configuration=gcp.bigquery.TableEncryptionConfigurationArgs(
-                kms_key_name=crypto_key.id,
-            ),
+            encryption_configuration={
+                "kmsKeyName": crypto_key.id,
+            },
             opts = pulumi.ResourceOptions(depends_on=[encrypt_role]))
         job = gcp.bigquery.Job("job",
             job_id="job_copy",
-            copy=gcp.bigquery.JobCopyArgs(
-                source_tables=[
-                    gcp.bigquery.JobCopySourceTableArgs(
-                        project_id=source[0].project,
-                        dataset_id=source[0].dataset_id,
-                        table_id=source[0].table_id,
-                    ),
-                    gcp.bigquery.JobCopySourceTableArgs(
-                        project_id=source[1].project,
-                        dataset_id=source[1].dataset_id,
-                        table_id=source[1].table_id,
-                    ),
+            copy={
+                "sourceTables": [
+                    {
+                        "projectId": source[0].project,
+                        "datasetId": source[0].dataset_id,
+                        "tableId": source[0].table_id,
+                    },
+                    {
+                        "projectId": source[1].project,
+                        "datasetId": source[1].dataset_id,
+                        "tableId": source[1].table_id,
+                    },
                 ],
-                destination_table=gcp.bigquery.JobCopyDestinationTableArgs(
-                    project_id=dest.project,
-                    dataset_id=dest.dataset_id,
-                    table_id=dest.table_id,
-                ),
-                destination_encryption_configuration=gcp.bigquery.JobCopyDestinationEncryptionConfigurationArgs(
-                    kms_key_name=crypto_key.id,
-                ),
-            ),
+                "destinationTable": {
+                    "projectId": dest.project,
+                    "datasetId": dest.dataset_id,
+                    "tableId": dest.table_id,
+                },
+                "destinationEncryptionConfiguration": {
+                    "kmsKeyName": crypto_key.id,
+                },
+            },
             opts = pulumi.ResourceOptions(depends_on=[encrypt_role]))
         ```
         ### Bigquery Job Extract
@@ -1204,16 +1209,16 @@ class Job(pulumi.CustomResource):
             force_destroy=True)
         job = gcp.bigquery.Job("job",
             job_id="job_extract",
-            extract=gcp.bigquery.JobExtractArgs(
-                destination_uris=[dest.url.apply(lambda url: f"{url}/extract")],
-                source_table=gcp.bigquery.JobExtractSourceTableArgs(
-                    project_id=source_one.project,
-                    dataset_id=source_one.dataset_id,
-                    table_id=source_one.table_id,
-                ),
-                destination_format="NEWLINE_DELIMITED_JSON",
-                compression="GZIP",
-            ))
+            extract={
+                "destinationUris": [dest.url.apply(lambda url: f"{url}/extract")],
+                "sourceTable": {
+                    "projectId": source_one.project,
+                    "datasetId": source_one.dataset_id,
+                    "tableId": source_one.table_id,
+                },
+                "destinationFormat": "NEWLINE_DELIMITED_JSON",
+                "compression": "GZIP",
+            })
         ```
 
         ## Import
@@ -1273,15 +1278,15 @@ class Job(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 copy: Optional[pulumi.Input[pulumi.InputType['JobCopyArgs']]] = None,
-                 extract: Optional[pulumi.Input[pulumi.InputType['JobExtractArgs']]] = None,
+                 copy: Optional[pulumi.Input[Union['JobCopyArgs', 'JobCopyArgsDict']]] = None,
+                 extract: Optional[pulumi.Input[Union['JobExtractArgs', 'JobExtractArgsDict']]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  job_timeout_ms: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 load: Optional[pulumi.Input[pulumi.InputType['JobLoadArgs']]] = None,
+                 load: Optional[pulumi.Input[Union['JobLoadArgs', 'JobLoadArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 query: Optional[pulumi.Input[pulumi.InputType['JobQueryArgs']]] = None,
+                 query: Optional[pulumi.Input[Union['JobQueryArgs', 'JobQueryArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1319,19 +1324,19 @@ class Job(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            copy: Optional[pulumi.Input[pulumi.InputType['JobCopyArgs']]] = None,
+            copy: Optional[pulumi.Input[Union['JobCopyArgs', 'JobCopyArgsDict']]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            extract: Optional[pulumi.Input[pulumi.InputType['JobExtractArgs']]] = None,
+            extract: Optional[pulumi.Input[Union['JobExtractArgs', 'JobExtractArgsDict']]] = None,
             job_id: Optional[pulumi.Input[str]] = None,
             job_timeout_ms: Optional[pulumi.Input[str]] = None,
             job_type: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            load: Optional[pulumi.Input[pulumi.InputType['JobLoadArgs']]] = None,
+            load: Optional[pulumi.Input[Union['JobLoadArgs', 'JobLoadArgsDict']]] = None,
             location: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            query: Optional[pulumi.Input[pulumi.InputType['JobQueryArgs']]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobStatusArgs']]]]] = None,
+            query: Optional[pulumi.Input[Union['JobQueryArgs', 'JobQueryArgsDict']]] = None,
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']]]]] = None,
             user_email: Optional[pulumi.Input[str]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
@@ -1340,10 +1345,10 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['JobCopyArgs']] copy: Copies a table.
+        :param pulumi.Input[Union['JobCopyArgs', 'JobCopyArgsDict']] copy: Copies a table.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: (Output)
                All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['JobExtractArgs']] extract: Configures an extract job.
+        :param pulumi.Input[Union['JobExtractArgs', 'JobExtractArgsDict']] extract: Configures an extract job.
         :param pulumi.Input[str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input[str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
         :param pulumi.Input[str] job_type: (Output)
@@ -1351,13 +1356,13 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
                non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
                'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['JobLoadArgs']] load: Configures a load job.
+        :param pulumi.Input[Union['JobLoadArgs', 'JobLoadArgsDict']] load: Configures a load job.
         :param pulumi.Input[str] location: Specifies where the error occurred, if present.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: (Output)
                The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['JobQueryArgs']] query: Configures a query job.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobStatusArgs']]]] statuses: The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+        :param pulumi.Input[Union['JobQueryArgs', 'JobQueryArgsDict']] query: Configures a query job.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']]]] statuses: The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
                Structure is documented below.
         :param pulumi.Input[str] user_email: Email address of the user who ran the job.
         """

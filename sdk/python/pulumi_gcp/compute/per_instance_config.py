@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -397,7 +402,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                  minimal_action: Optional[pulumi.Input[str]] = None,
                  most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 preserved_state: Optional[pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArgs']]] = None,
+                 preserved_state: Optional[pulumi.Input[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remove_instance_on_destroy: Optional[pulumi.Input[bool]] = None,
                  remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -431,28 +436,28 @@ class PerInstanceConfig(pulumi.CustomResource):
                 "foo",
                 "bar",
             ],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=my_image.self_link,
-                auto_delete=True,
-                boot=True,
-            )],
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network="default",
-            )],
-            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
-                scopes=[
+            disks=[{
+                "sourceImage": my_image.self_link,
+                "autoDelete": True,
+                "boot": True,
+            }],
+            network_interfaces=[{
+                "network": "default",
+            }],
+            service_account={
+                "scopes": [
                     "userinfo-email",
                     "compute-ro",
                     "storage-ro",
                 ],
-            ))
+            })
         igm_no_tp = gcp.compute.InstanceGroupManager("igm-no-tp",
             description="Test instance group manager",
             name="my-igm",
-            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
-                name="prod",
-                instance_template=igm_basic.self_link,
-            )],
+            versions=[{
+                "name": "prod",
+                "instanceTemplate": igm_basic.self_link,
+            }],
             base_instance_name="igm-no-tp",
             zone="us-central1-c",
             target_size=2)
@@ -466,17 +471,17 @@ class PerInstanceConfig(pulumi.CustomResource):
             zone=igm["zone"],
             instance_group_manager=igm["name"],
             name="instance-1",
-            preserved_state=gcp.compute.PerInstanceConfigPreservedStateArgs(
-                metadata={
+            preserved_state={
+                "metadata": {
                     "foo": "bar",
                     "instance_template": igm_basic.self_link,
                 },
-                disks=[gcp.compute.PerInstanceConfigPreservedStateDiskArgs(
-                    device_name="my-stateful-disk",
-                    source=default.id,
-                    mode="READ_ONLY",
-                )],
-            ))
+                "disks": [{
+                    "deviceName": "my-stateful-disk",
+                    "source": default.id,
+                    "mode": "READ_ONLY",
+                }],
+            })
         ```
 
         ## Import
@@ -528,7 +533,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                * REFRESH
                * NONE
         :param pulumi.Input[str] name: The name for this per-instance config and its corresponding instance.
-        :param pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArgs']] preserved_state: The preserved state for this instance.
+        :param pulumi.Input[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict']] preserved_state: The preserved state for this instance.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -573,28 +578,28 @@ class PerInstanceConfig(pulumi.CustomResource):
                 "foo",
                 "bar",
             ],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=my_image.self_link,
-                auto_delete=True,
-                boot=True,
-            )],
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network="default",
-            )],
-            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
-                scopes=[
+            disks=[{
+                "sourceImage": my_image.self_link,
+                "autoDelete": True,
+                "boot": True,
+            }],
+            network_interfaces=[{
+                "network": "default",
+            }],
+            service_account={
+                "scopes": [
                     "userinfo-email",
                     "compute-ro",
                     "storage-ro",
                 ],
-            ))
+            })
         igm_no_tp = gcp.compute.InstanceGroupManager("igm-no-tp",
             description="Test instance group manager",
             name="my-igm",
-            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
-                name="prod",
-                instance_template=igm_basic.self_link,
-            )],
+            versions=[{
+                "name": "prod",
+                "instanceTemplate": igm_basic.self_link,
+            }],
             base_instance_name="igm-no-tp",
             zone="us-central1-c",
             target_size=2)
@@ -608,17 +613,17 @@ class PerInstanceConfig(pulumi.CustomResource):
             zone=igm["zone"],
             instance_group_manager=igm["name"],
             name="instance-1",
-            preserved_state=gcp.compute.PerInstanceConfigPreservedStateArgs(
-                metadata={
+            preserved_state={
+                "metadata": {
                     "foo": "bar",
                     "instance_template": igm_basic.self_link,
                 },
-                disks=[gcp.compute.PerInstanceConfigPreservedStateDiskArgs(
-                    device_name="my-stateful-disk",
-                    source=default.id,
-                    mode="READ_ONLY",
-                )],
-            ))
+                "disks": [{
+                    "deviceName": "my-stateful-disk",
+                    "source": default.id,
+                    "mode": "READ_ONLY",
+                }],
+            })
         ```
 
         ## Import
@@ -670,7 +675,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                  minimal_action: Optional[pulumi.Input[str]] = None,
                  most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 preserved_state: Optional[pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArgs']]] = None,
+                 preserved_state: Optional[pulumi.Input[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remove_instance_on_destroy: Optional[pulumi.Input[bool]] = None,
                  remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -709,7 +714,7 @@ class PerInstanceConfig(pulumi.CustomResource):
             minimal_action: Optional[pulumi.Input[str]] = None,
             most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            preserved_state: Optional[pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArgs']]] = None,
+            preserved_state: Optional[pulumi.Input[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             remove_instance_on_destroy: Optional[pulumi.Input[bool]] = None,
             remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
@@ -738,7 +743,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                * REFRESH
                * NONE
         :param pulumi.Input[str] name: The name for this per-instance config and its corresponding instance.
-        :param pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArgs']] preserved_state: The preserved state for this instance.
+        :param pulumi.Input[Union['PerInstanceConfigPreservedStateArgs', 'PerInstanceConfigPreservedStateArgsDict']] preserved_state: The preserved state for this instance.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

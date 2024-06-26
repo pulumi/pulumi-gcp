@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['RegionNetworkEndpointArgs', 'RegionNetworkEndpoint']
@@ -401,18 +406,18 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         default_instance = gcp.compute.Instance("default",
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-                subnetwork=default_subnetwork.id,
-            )],
+            network_interfaces=[{
+                "accessConfigs": [{}],
+                "subnetwork": default_subnetwork.id,
+            }],
             name="instance",
             machine_type="e2-medium",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=my_image.self_link,
-                ),
-            ))
+            boot_disk={
+                "initializeParams": {
+                    "image": my_image.self_link,
+                },
+            })
         region_network_endpoint_portmap = gcp.compute.RegionNetworkEndpoint("region_network_endpoint_portmap",
             region_network_endpoint_group=default_region_network_endpoint_group.name,
             region="us-central1",
@@ -554,18 +559,18 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         default_instance = gcp.compute.Instance("default",
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-                subnetwork=default_subnetwork.id,
-            )],
+            network_interfaces=[{
+                "accessConfigs": [{}],
+                "subnetwork": default_subnetwork.id,
+            }],
             name="instance",
             machine_type="e2-medium",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=my_image.self_link,
-                ),
-            ))
+            boot_disk={
+                "initializeParams": {
+                    "image": my_image.self_link,
+                },
+            })
         region_network_endpoint_portmap = gcp.compute.RegionNetworkEndpoint("region_network_endpoint_portmap",
             region_network_endpoint_group=default_region_network_endpoint_group.name,
             region="us-central1",

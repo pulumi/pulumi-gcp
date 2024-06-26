@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['AiFeatureGroupFeatureArgs', 'AiFeatureGroupFeature']
@@ -403,12 +408,12 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
             labels={
                 "label-one": "value-one",
             },
-            big_query=gcp.vertex.AiFeatureGroupBigQueryArgs(
-                big_query_source=gcp.vertex.AiFeatureGroupBigQueryBigQuerySourceArgs(
-                    input_uri=pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
-                ),
-                entity_id_columns=["feature_id"],
-            ))
+            big_query={
+                "bigQuerySource": {
+                    "inputUri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                },
+                "entityIdColumns": ["feature_id"],
+            })
         feature_group_feature = gcp.vertex.AiFeatureGroupFeature("feature_group_feature",
             name="example_feature",
             region="us-central1",
@@ -522,12 +527,12 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
             labels={
                 "label-one": "value-one",
             },
-            big_query=gcp.vertex.AiFeatureGroupBigQueryArgs(
-                big_query_source=gcp.vertex.AiFeatureGroupBigQueryBigQuerySourceArgs(
-                    input_uri=pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
-                ),
-                entity_id_columns=["feature_id"],
-            ))
+            big_query={
+                "bigQuerySource": {
+                    "inputUri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                },
+                "entityIdColumns": ["feature_id"],
+            })
         feature_group_feature = gcp.vertex.AiFeatureGroupFeature("feature_group_feature",
             name="example_feature",
             region="us-central1",

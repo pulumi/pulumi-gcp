@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['SnapshotArgs', 'Snapshot']
@@ -385,14 +390,14 @@ class Snapshot(pulumi.CustomResource):
             name="test-instance-for-snapshot",
             location="us-east1",
             tier="ENTERPRISE",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=1024,
-                name="share1",
-            ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                network="default",
-                modes=["MODE_IPV4"],
-            )])
+            file_shares={
+                "capacityGb": 1024,
+                "name": "share1",
+            },
+            networks=[{
+                "network": "default",
+                "modes": ["MODE_IPV4"],
+            }])
         snapshot = gcp.filestore.Snapshot("snapshot",
             name="test-snapshot",
             instance=instance.name,
@@ -408,14 +413,14 @@ class Snapshot(pulumi.CustomResource):
             name="test-instance-for-snapshot",
             location="us-west1",
             tier="ENTERPRISE",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=1024,
-                name="share1",
-            ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                network="default",
-                modes=["MODE_IPV4"],
-            )])
+            file_shares={
+                "capacityGb": 1024,
+                "name": "share1",
+            },
+            networks=[{
+                "network": "default",
+                "modes": ["MODE_IPV4"],
+            }])
         snapshot = gcp.filestore.Snapshot("snapshot",
             name="test-snapshot",
             instance=instance.name,
@@ -500,14 +505,14 @@ class Snapshot(pulumi.CustomResource):
             name="test-instance-for-snapshot",
             location="us-east1",
             tier="ENTERPRISE",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=1024,
-                name="share1",
-            ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                network="default",
-                modes=["MODE_IPV4"],
-            )])
+            file_shares={
+                "capacityGb": 1024,
+                "name": "share1",
+            },
+            networks=[{
+                "network": "default",
+                "modes": ["MODE_IPV4"],
+            }])
         snapshot = gcp.filestore.Snapshot("snapshot",
             name="test-snapshot",
             instance=instance.name,
@@ -523,14 +528,14 @@ class Snapshot(pulumi.CustomResource):
             name="test-instance-for-snapshot",
             location="us-west1",
             tier="ENTERPRISE",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=1024,
-                name="share1",
-            ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                network="default",
-                modes=["MODE_IPV4"],
-            )])
+            file_shares={
+                "capacityGb": 1024,
+                "name": "share1",
+            },
+            networks=[{
+                "network": "default",
+                "modes": ["MODE_IPV4"],
+            }])
         snapshot = gcp.filestore.Snapshot("snapshot",
             name="test-snapshot",
             instance=instance.name,

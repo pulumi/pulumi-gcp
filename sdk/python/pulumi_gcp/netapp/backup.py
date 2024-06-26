@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['BackupArgs', 'Backup']
@@ -495,9 +500,9 @@ class Backup(pulumi.CustomResource):
             storage_pool=default_storage_pool.name,
             protocols=["NFSV3"],
             deletion_policy="FORCE",
-            backup_config=gcp.netapp.VolumeBackupConfigArgs(
-                backup_vault=default_backup_vault.id,
-            ))
+            backup_config={
+                "backupVault": default_backup_vault.id,
+            })
         test_backup = gcp.netapp.Backup("test_backup",
             name="test-backup",
             location=default_backup_vault.location,
@@ -603,9 +608,9 @@ class Backup(pulumi.CustomResource):
             storage_pool=default_storage_pool.name,
             protocols=["NFSV3"],
             deletion_policy="FORCE",
-            backup_config=gcp.netapp.VolumeBackupConfigArgs(
-                backup_vault=default_backup_vault.id,
-            ))
+            backup_config={
+                "backupVault": default_backup_vault.id,
+            })
         test_backup = gcp.netapp.Backup("test_backup",
             name="test-backup",
             location=default_backup_vault.location,

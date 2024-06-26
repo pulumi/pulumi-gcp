@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -367,10 +372,10 @@ class AppConnection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_endpoint: Optional[pulumi.Input[pulumi.InputType['AppConnectionApplicationEndpointArgs']]] = None,
+                 application_endpoint: Optional[pulumi.Input[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict']]] = None,
                  connectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gateway: Optional[pulumi.Input[pulumi.InputType['AppConnectionGatewayArgs']]] = None,
+                 gateway: Optional[pulumi.Input[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -401,18 +406,18 @@ class AppConnection(pulumi.CustomResource):
             display_name="Test Service Account")
         app_connector = gcp.beyondcorp.AppConnector("app_connector",
             name="my-app-connector",
-            principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-                service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                    email=service_account.email,
-                ),
-            ))
+            principal_info={
+                "serviceAccount": {
+                    "email": service_account.email,
+                },
+            })
         app_connection = gcp.beyondcorp.AppConnection("app_connection",
             name="my-app-connection",
             type="TCP_PROXY",
-            application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArgs(
-                host="foo-host",
-                port=8080,
-            ),
+            application_endpoint={
+                "host": "foo-host",
+                "port": 8080,
+            },
             connectors=[app_connector.id])
         ```
         ### Beyondcorp App Connection Full
@@ -430,23 +435,23 @@ class AppConnection(pulumi.CustomResource):
             host_type="GCP_REGIONAL_MIG")
         app_connector = gcp.beyondcorp.AppConnector("app_connector",
             name="my-app-connector",
-            principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-                service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                    email=service_account.email,
-                ),
-            ))
+            principal_info={
+                "serviceAccount": {
+                    "email": service_account.email,
+                },
+            })
         app_connection = gcp.beyondcorp.AppConnection("app_connection",
             name="my-app-connection",
             type="TCP_PROXY",
             display_name="some display name",
-            application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArgs(
-                host="foo-host",
-                port=8080,
-            ),
+            application_endpoint={
+                "host": "foo-host",
+                "port": 8080,
+            },
             connectors=[app_connector.id],
-            gateway=gcp.beyondcorp.AppConnectionGatewayArgs(
-                app_gateway=app_gateway.id,
-            ),
+            gateway={
+                "appGateway": app_gateway.id,
+            },
             labels={
                 "foo": "bar",
                 "bar": "baz",
@@ -485,11 +490,11 @@ class AppConnection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AppConnectionApplicationEndpointArgs']] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
+        :param pulumi.Input[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict']] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
         :param pulumi.Input[str] display_name: An arbitrary user-provided name for the AppConnection.
-        :param pulumi.Input[pulumi.InputType['AppConnectionGatewayArgs']] gateway: Gateway used by the AppConnection.
+        :param pulumi.Input[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict']] gateway: Gateway used by the AppConnection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
                labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
                resource.
@@ -529,18 +534,18 @@ class AppConnection(pulumi.CustomResource):
             display_name="Test Service Account")
         app_connector = gcp.beyondcorp.AppConnector("app_connector",
             name="my-app-connector",
-            principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-                service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                    email=service_account.email,
-                ),
-            ))
+            principal_info={
+                "serviceAccount": {
+                    "email": service_account.email,
+                },
+            })
         app_connection = gcp.beyondcorp.AppConnection("app_connection",
             name="my-app-connection",
             type="TCP_PROXY",
-            application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArgs(
-                host="foo-host",
-                port=8080,
-            ),
+            application_endpoint={
+                "host": "foo-host",
+                "port": 8080,
+            },
             connectors=[app_connector.id])
         ```
         ### Beyondcorp App Connection Full
@@ -558,23 +563,23 @@ class AppConnection(pulumi.CustomResource):
             host_type="GCP_REGIONAL_MIG")
         app_connector = gcp.beyondcorp.AppConnector("app_connector",
             name="my-app-connector",
-            principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-                service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                    email=service_account.email,
-                ),
-            ))
+            principal_info={
+                "serviceAccount": {
+                    "email": service_account.email,
+                },
+            })
         app_connection = gcp.beyondcorp.AppConnection("app_connection",
             name="my-app-connection",
             type="TCP_PROXY",
             display_name="some display name",
-            application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArgs(
-                host="foo-host",
-                port=8080,
-            ),
+            application_endpoint={
+                "host": "foo-host",
+                "port": 8080,
+            },
             connectors=[app_connector.id],
-            gateway=gcp.beyondcorp.AppConnectionGatewayArgs(
-                app_gateway=app_gateway.id,
-            ),
+            gateway={
+                "appGateway": app_gateway.id,
+            },
             labels={
                 "foo": "bar",
                 "bar": "baz",
@@ -626,10 +631,10 @@ class AppConnection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_endpoint: Optional[pulumi.Input[pulumi.InputType['AppConnectionApplicationEndpointArgs']]] = None,
+                 application_endpoint: Optional[pulumi.Input[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict']]] = None,
                  connectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gateway: Optional[pulumi.Input[pulumi.InputType['AppConnectionGatewayArgs']]] = None,
+                 gateway: Optional[pulumi.Input[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -669,11 +674,11 @@ class AppConnection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_endpoint: Optional[pulumi.Input[pulumi.InputType['AppConnectionApplicationEndpointArgs']]] = None,
+            application_endpoint: Optional[pulumi.Input[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict']]] = None,
             connectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            gateway: Optional[pulumi.Input[pulumi.InputType['AppConnectionGatewayArgs']]] = None,
+            gateway: Optional[pulumi.Input[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -687,12 +692,12 @@ class AppConnection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AppConnectionApplicationEndpointArgs']] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
+        :param pulumi.Input[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict']] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
         :param pulumi.Input[str] display_name: An arbitrary user-provided name for the AppConnection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['AppConnectionGatewayArgs']] gateway: Gateway used by the AppConnection.
+        :param pulumi.Input[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict']] gateway: Gateway used by the AppConnection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
                labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
                resource.

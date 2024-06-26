@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['TargetHttpProxyArgs', 'TargetHttpProxy']
@@ -378,18 +383,18 @@ class TargetHttpProxy(pulumi.CustomResource):
         default_url_map = gcp.compute.URLMap("default",
             name="url-map",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default = gcp.compute.TargetHttpProxy("default",
             name="test-proxy",
             url_map=default_url_map.id)
@@ -415,18 +420,18 @@ class TargetHttpProxy(pulumi.CustomResource):
         default_url_map = gcp.compute.URLMap("default",
             name="url-map",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default = gcp.compute.TargetHttpProxy("default",
             name="test-http-keep-alive-timeout-proxy",
             http_keep_alive_timeout_sec=610,
@@ -440,10 +445,10 @@ class TargetHttpProxy(pulumi.CustomResource):
 
         default_url_map = gcp.compute.URLMap("default",
             name="url-map",
-            default_url_redirect=gcp.compute.URLMapDefaultUrlRedirectArgs(
-                https_redirect=True,
-                strip_query=False,
-            ))
+            default_url_redirect={
+                "httpsRedirect": True,
+                "stripQuery": False,
+            })
         default = gcp.compute.TargetHttpProxy("default",
             name="test-https-redirect-proxy",
             url_map=default_url_map.id)
@@ -537,18 +542,18 @@ class TargetHttpProxy(pulumi.CustomResource):
         default_url_map = gcp.compute.URLMap("default",
             name="url-map",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default = gcp.compute.TargetHttpProxy("default",
             name="test-proxy",
             url_map=default_url_map.id)
@@ -574,18 +579,18 @@ class TargetHttpProxy(pulumi.CustomResource):
         default_url_map = gcp.compute.URLMap("default",
             name="url-map",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default = gcp.compute.TargetHttpProxy("default",
             name="test-http-keep-alive-timeout-proxy",
             http_keep_alive_timeout_sec=610,
@@ -599,10 +604,10 @@ class TargetHttpProxy(pulumi.CustomResource):
 
         default_url_map = gcp.compute.URLMap("default",
             name="url-map",
-            default_url_redirect=gcp.compute.URLMapDefaultUrlRedirectArgs(
-                https_redirect=True,
-                strip_query=False,
-            ))
+            default_url_redirect={
+                "httpsRedirect": True,
+                "stripQuery": False,
+            })
         default = gcp.compute.TargetHttpProxy("default",
             name="test-https-redirect-proxy",
             url_map=default_url_map.id)

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -388,9 +393,9 @@ class ChatEngine(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 chat_engine_config: Optional[pulumi.Input[pulumi.InputType['ChatEngineChatEngineConfigArgs']]] = None,
+                 chat_engine_config: Optional[pulumi.Input[Union['ChatEngineChatEngineConfigArgs', 'ChatEngineChatEngineConfigArgsDict']]] = None,
                  collection_id: Optional[pulumi.Input[str]] = None,
-                 common_config: Optional[pulumi.Input[pulumi.InputType['ChatEngineCommonConfigArgs']]] = None,
+                 common_config: Optional[pulumi.Input[Union['ChatEngineCommonConfigArgs', 'ChatEngineCommonConfigArgsDict']]] = None,
                  data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  engine_id: Optional[pulumi.Input[str]] = None,
@@ -439,16 +444,16 @@ class ChatEngine(pulumi.CustomResource):
                 test_data_store.data_store_id,
                 test_data_store2.data_store_id,
             ],
-            common_config=gcp.discoveryengine.ChatEngineCommonConfigArgs(
-                company_name="test-company",
-            ),
-            chat_engine_config=gcp.discoveryengine.ChatEngineChatEngineConfigArgs(
-                agent_creation_config=gcp.discoveryengine.ChatEngineChatEngineConfigAgentCreationConfigArgs(
-                    business="test business name",
-                    default_language_code="en",
-                    time_zone="America/Los_Angeles",
-                ),
-            ))
+            common_config={
+                "companyName": "test-company",
+            },
+            chat_engine_config={
+                "agentCreationConfig": {
+                    "business": "test business name",
+                    "defaultLanguageCode": "en",
+                    "timeZone": "America/Los_Angeles",
+                },
+            })
         ```
 
         ## Import
@@ -477,10 +482,10 @@ class ChatEngine(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ChatEngineChatEngineConfigArgs']] chat_engine_config: Configurations for a chat Engine.
+        :param pulumi.Input[Union['ChatEngineChatEngineConfigArgs', 'ChatEngineChatEngineConfigArgsDict']] chat_engine_config: Configurations for a chat Engine.
                Structure is documented below.
         :param pulumi.Input[str] collection_id: The collection ID.
-        :param pulumi.Input[pulumi.InputType['ChatEngineCommonConfigArgs']] common_config: Common config spec that specifies the metadata of the engine.
+        :param pulumi.Input[Union['ChatEngineCommonConfigArgs', 'ChatEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] data_store_ids: The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
         :param pulumi.Input[str] display_name: The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[str] engine_id: The ID to use for chat engine.
@@ -535,16 +540,16 @@ class ChatEngine(pulumi.CustomResource):
                 test_data_store.data_store_id,
                 test_data_store2.data_store_id,
             ],
-            common_config=gcp.discoveryengine.ChatEngineCommonConfigArgs(
-                company_name="test-company",
-            ),
-            chat_engine_config=gcp.discoveryengine.ChatEngineChatEngineConfigArgs(
-                agent_creation_config=gcp.discoveryengine.ChatEngineChatEngineConfigAgentCreationConfigArgs(
-                    business="test business name",
-                    default_language_code="en",
-                    time_zone="America/Los_Angeles",
-                ),
-            ))
+            common_config={
+                "companyName": "test-company",
+            },
+            chat_engine_config={
+                "agentCreationConfig": {
+                    "business": "test business name",
+                    "defaultLanguageCode": "en",
+                    "timeZone": "America/Los_Angeles",
+                },
+            })
         ```
 
         ## Import
@@ -586,9 +591,9 @@ class ChatEngine(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 chat_engine_config: Optional[pulumi.Input[pulumi.InputType['ChatEngineChatEngineConfigArgs']]] = None,
+                 chat_engine_config: Optional[pulumi.Input[Union['ChatEngineChatEngineConfigArgs', 'ChatEngineChatEngineConfigArgsDict']]] = None,
                  collection_id: Optional[pulumi.Input[str]] = None,
-                 common_config: Optional[pulumi.Input[pulumi.InputType['ChatEngineCommonConfigArgs']]] = None,
+                 common_config: Optional[pulumi.Input[Union['ChatEngineCommonConfigArgs', 'ChatEngineCommonConfigArgsDict']]] = None,
                  data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  engine_id: Optional[pulumi.Input[str]] = None,
@@ -639,10 +644,10 @@ class ChatEngine(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            chat_engine_config: Optional[pulumi.Input[pulumi.InputType['ChatEngineChatEngineConfigArgs']]] = None,
-            chat_engine_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ChatEngineChatEngineMetadataArgs']]]]] = None,
+            chat_engine_config: Optional[pulumi.Input[Union['ChatEngineChatEngineConfigArgs', 'ChatEngineChatEngineConfigArgsDict']]] = None,
+            chat_engine_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ChatEngineChatEngineMetadataArgs', 'ChatEngineChatEngineMetadataArgsDict']]]]] = None,
             collection_id: Optional[pulumi.Input[str]] = None,
-            common_config: Optional[pulumi.Input[pulumi.InputType['ChatEngineCommonConfigArgs']]] = None,
+            common_config: Optional[pulumi.Input[Union['ChatEngineCommonConfigArgs', 'ChatEngineCommonConfigArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
@@ -659,12 +664,12 @@ class ChatEngine(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ChatEngineChatEngineConfigArgs']] chat_engine_config: Configurations for a chat Engine.
+        :param pulumi.Input[Union['ChatEngineChatEngineConfigArgs', 'ChatEngineChatEngineConfigArgsDict']] chat_engine_config: Configurations for a chat Engine.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ChatEngineChatEngineMetadataArgs']]]] chat_engine_metadatas: Additional information of the Chat Engine.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ChatEngineChatEngineMetadataArgs', 'ChatEngineChatEngineMetadataArgsDict']]]] chat_engine_metadatas: Additional information of the Chat Engine.
                Structure is documented below.
         :param pulumi.Input[str] collection_id: The collection ID.
-        :param pulumi.Input[pulumi.InputType['ChatEngineCommonConfigArgs']] common_config: Common config spec that specifies the metadata of the engine.
+        :param pulumi.Input[Union['ChatEngineCommonConfigArgs', 'ChatEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
         :param pulumi.Input[str] create_time: Timestamp the Engine was created at.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] data_store_ids: The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
         :param pulumi.Input[str] display_name: The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.

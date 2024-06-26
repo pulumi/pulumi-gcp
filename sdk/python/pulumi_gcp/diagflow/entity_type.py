@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -252,7 +257,7 @@ class EntityType(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityTypeEntityArgs']]]]] = None,
+                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntityTypeEntityArgs', 'EntityTypeEntityArgsDict']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -281,20 +286,20 @@ class EntityType(pulumi.CustomResource):
             display_name="",
             kind="KIND_MAP",
             entities=[
-                gcp.diagflow.EntityTypeEntityArgs(
-                    value="value1",
-                    synonyms=[
+                {
+                    "value": "value1",
+                    "synonyms": [
                         "synonym1",
                         "synonym2",
                     ],
-                ),
-                gcp.diagflow.EntityTypeEntityArgs(
-                    value="value2",
-                    synonyms=[
+                },
+                {
+                    "value": "value2",
+                    "synonyms": [
                         "synonym3",
                         "synonym4",
                     ],
-                ),
+                },
             ],
             opts = pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
@@ -315,7 +320,7 @@ class EntityType(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The name of this entity type to be displayed on the console.
         :param pulumi.Input[bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityTypeEntityArgs']]]] entities: The collection of entity entries associated with the entity type.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntityTypeEntityArgs', 'EntityTypeEntityArgsDict']]]] entities: The collection of entity entries associated with the entity type.
                Structure is documented below.
         :param pulumi.Input[str] kind: Indicates the kind of entity type.
                * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
@@ -360,20 +365,20 @@ class EntityType(pulumi.CustomResource):
             display_name="",
             kind="KIND_MAP",
             entities=[
-                gcp.diagflow.EntityTypeEntityArgs(
-                    value="value1",
-                    synonyms=[
+                {
+                    "value": "value1",
+                    "synonyms": [
                         "synonym1",
                         "synonym2",
                     ],
-                ),
-                gcp.diagflow.EntityTypeEntityArgs(
-                    value="value2",
-                    synonyms=[
+                },
+                {
+                    "value": "value2",
+                    "synonyms": [
                         "synonym3",
                         "synonym4",
                     ],
-                ),
+                },
             ],
             opts = pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
@@ -407,7 +412,7 @@ class EntityType(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityTypeEntityArgs']]]]] = None,
+                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntityTypeEntityArgs', 'EntityTypeEntityArgsDict']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -441,7 +446,7 @@ class EntityType(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
-            entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityTypeEntityArgs']]]]] = None,
+            entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntityTypeEntityArgs', 'EntityTypeEntityArgsDict']]]]] = None,
             kind: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'EntityType':
@@ -454,7 +459,7 @@ class EntityType(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The name of this entity type to be displayed on the console.
         :param pulumi.Input[bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityTypeEntityArgs']]]] entities: The collection of entity entries associated with the entity type.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntityTypeEntityArgs', 'EntityTypeEntityArgsDict']]]] entities: The collection of entity entries associated with the entity type.
                Structure is documented below.
         :param pulumi.Input[str] kind: Indicates the kind of entity type.
                * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.

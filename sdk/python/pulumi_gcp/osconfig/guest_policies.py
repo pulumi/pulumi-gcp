@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -388,14 +393,14 @@ class GuestPolicies(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assignment: Optional[pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArgs']]] = None,
+                 assignment: Optional[pulumi.Input[Union['GuestPoliciesAssignmentArgs', 'GuestPoliciesAssignmentArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  guest_policy_id: Optional[pulumi.Input[str]] = None,
-                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]]] = None,
-                 packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]]] = None,
+                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesPackageRepositoryArgs', 'GuestPoliciesPackageRepositoryArgsDict']]]]] = None,
+                 packages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesPackageArgs', 'GuestPoliciesPackageArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]]] = None,
+                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesRecipeArgs', 'GuestPoliciesRecipeArgsDict']]]]] = None,
                  __props__=None):
         """
         An OS Config resource representing a guest configuration policy. These policies represent
@@ -427,26 +432,26 @@ class GuestPolicies(pulumi.CustomResource):
                 "foo",
                 "bar",
             ],
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=my_image.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )],
+            boot_disk={
+                "initializeParams": {
+                    "image": my_image.self_link,
+                },
+            },
+            network_interfaces=[{
+                "network": "default",
+            }],
             metadata={
                 "foo": "bar",
             })
         guest_policies = gcp.osconfig.GuestPolicies("guest_policies",
             guest_policy_id="guest-policy",
-            assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
-                instances=[foobar.id],
-            ),
-            packages=[gcp.osconfig.GuestPoliciesPackageArgs(
-                name="my-package",
-                desired_state="UPDATED",
-            )])
+            assignment={
+                "instances": [foobar.id],
+            },
+            packages=[{
+                "name": "my-package",
+                "desiredState": "UPDATED",
+            }])
         ```
         ### Os Config Guest Policies Packages
 
@@ -456,57 +461,57 @@ class GuestPolicies(pulumi.CustomResource):
 
         guest_policies = gcp.osconfig.GuestPolicies("guest_policies",
             guest_policy_id="guest-policy",
-            assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
-                group_labels=[
-                    gcp.osconfig.GuestPoliciesAssignmentGroupLabelArgs(
-                        labels={
+            assignment={
+                "groupLabels": [
+                    {
+                        "labels": {
                             "color": "red",
                             "env": "test",
                         },
-                    ),
-                    gcp.osconfig.GuestPoliciesAssignmentGroupLabelArgs(
-                        labels={
+                    },
+                    {
+                        "labels": {
                             "color": "blue",
                             "env": "test",
                         },
-                    ),
+                    },
                 ],
-            ),
+            },
             packages=[
-                gcp.osconfig.GuestPoliciesPackageArgs(
-                    name="my-package",
-                    desired_state="INSTALLED",
-                ),
-                gcp.osconfig.GuestPoliciesPackageArgs(
-                    name="bad-package-1",
-                    desired_state="REMOVED",
-                ),
-                gcp.osconfig.GuestPoliciesPackageArgs(
-                    name="bad-package-2",
-                    desired_state="REMOVED",
-                    manager="APT",
-                ),
+                {
+                    "name": "my-package",
+                    "desiredState": "INSTALLED",
+                },
+                {
+                    "name": "bad-package-1",
+                    "desiredState": "REMOVED",
+                },
+                {
+                    "name": "bad-package-2",
+                    "desiredState": "REMOVED",
+                    "manager": "APT",
+                },
             ],
             package_repositories=[
-                gcp.osconfig.GuestPoliciesPackageRepositoryArgs(
-                    apt=gcp.osconfig.GuestPoliciesPackageRepositoryAptArgs(
-                        uri="https://packages.cloud.google.com/apt",
-                        archive_type="DEB",
-                        distribution="cloud-sdk-stretch",
-                        components=["main"],
-                    ),
-                ),
-                gcp.osconfig.GuestPoliciesPackageRepositoryArgs(
-                    yum=gcp.osconfig.GuestPoliciesPackageRepositoryYumArgs(
-                        id="google-cloud-sdk",
-                        display_name="Google Cloud SDK",
-                        base_url="https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64",
-                        gpg_keys=[
+                {
+                    "apt": {
+                        "uri": "https://packages.cloud.google.com/apt",
+                        "archiveType": "DEB",
+                        "distribution": "cloud-sdk-stretch",
+                        "components": ["main"],
+                    },
+                },
+                {
+                    "yum": {
+                        "id": "google-cloud-sdk",
+                        "displayName": "Google Cloud SDK",
+                        "baseUrl": "https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64",
+                        "gpgKeys": [
                             "https://packages.cloud.google.com/yum/doc/yum-key.gpg",
                             "https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg",
                         ],
-                    ),
-                ),
+                    },
+                },
             ])
         ```
         ### Os Config Guest Policies Recipes
@@ -517,29 +522,29 @@ class GuestPolicies(pulumi.CustomResource):
 
         guest_policies = gcp.osconfig.GuestPolicies("guest_policies",
             guest_policy_id="guest-policy",
-            assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
-                zones=[
+            assignment={
+                "zones": [
                     "us-east1-b",
                     "us-east1-d",
                 ],
-            ),
-            recipes=[gcp.osconfig.GuestPoliciesRecipeArgs(
-                name="guest-policy-recipe",
-                desired_state="INSTALLED",
-                artifacts=[gcp.osconfig.GuestPoliciesRecipeArtifactArgs(
-                    id="guest-policy-artifact-id",
-                    gcs=gcp.osconfig.GuestPoliciesRecipeArtifactGcsArgs(
-                        bucket="my-bucket",
-                        object="executable.msi",
-                        generation=1546030865175603,
-                    ),
-                )],
-                install_steps=[gcp.osconfig.GuestPoliciesRecipeInstallStepArgs(
-                    msi_installation=gcp.osconfig.GuestPoliciesRecipeInstallStepMsiInstallationArgs(
-                        artifact_id="guest-policy-artifact-id",
-                    ),
-                )],
-            )])
+            },
+            recipes=[{
+                "name": "guest-policy-recipe",
+                "desiredState": "INSTALLED",
+                "artifacts": [{
+                    "id": "guest-policy-artifact-id",
+                    "gcs": {
+                        "bucket": "my-bucket",
+                        "object": "executable.msi",
+                        "generation": 1546030865175603,
+                    },
+                }],
+                "installSteps": [{
+                    "msiInstallation": {
+                        "artifactId": "guest-policy-artifact-id",
+                    },
+                }],
+            }])
         ```
 
         ## Import
@@ -568,7 +573,7 @@ class GuestPolicies(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArgs']] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
+        :param pulumi.Input[Union['GuestPoliciesAssignmentArgs', 'GuestPoliciesAssignmentArgsDict']] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
                or groups of VM instances by different parameters such as labels, names, OS, or zones.
                If left empty, all VM instances underneath this policy are targeted.
                At the same level in the resource hierarchy (that is within a project), the service prevents
@@ -584,11 +589,11 @@ class GuestPolicies(pulumi.CustomResource):
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the project.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]] package_repositories: A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesPackageRepositoryArgs', 'GuestPoliciesPackageRepositoryArgsDict']]]] package_repositories: A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
                they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
                available.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]] packages: The software packages to be managed by this policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]] recipes: A list of Recipes to install on the VM instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesPackageArgs', 'GuestPoliciesPackageArgsDict']]]] packages: The software packages to be managed by this policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesRecipeArgs', 'GuestPoliciesRecipeArgsDict']]]] recipes: A list of Recipes to install on the VM instance.
         """
         ...
     @overload
@@ -626,26 +631,26 @@ class GuestPolicies(pulumi.CustomResource):
                 "foo",
                 "bar",
             ],
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=my_image.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )],
+            boot_disk={
+                "initializeParams": {
+                    "image": my_image.self_link,
+                },
+            },
+            network_interfaces=[{
+                "network": "default",
+            }],
             metadata={
                 "foo": "bar",
             })
         guest_policies = gcp.osconfig.GuestPolicies("guest_policies",
             guest_policy_id="guest-policy",
-            assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
-                instances=[foobar.id],
-            ),
-            packages=[gcp.osconfig.GuestPoliciesPackageArgs(
-                name="my-package",
-                desired_state="UPDATED",
-            )])
+            assignment={
+                "instances": [foobar.id],
+            },
+            packages=[{
+                "name": "my-package",
+                "desiredState": "UPDATED",
+            }])
         ```
         ### Os Config Guest Policies Packages
 
@@ -655,57 +660,57 @@ class GuestPolicies(pulumi.CustomResource):
 
         guest_policies = gcp.osconfig.GuestPolicies("guest_policies",
             guest_policy_id="guest-policy",
-            assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
-                group_labels=[
-                    gcp.osconfig.GuestPoliciesAssignmentGroupLabelArgs(
-                        labels={
+            assignment={
+                "groupLabels": [
+                    {
+                        "labels": {
                             "color": "red",
                             "env": "test",
                         },
-                    ),
-                    gcp.osconfig.GuestPoliciesAssignmentGroupLabelArgs(
-                        labels={
+                    },
+                    {
+                        "labels": {
                             "color": "blue",
                             "env": "test",
                         },
-                    ),
+                    },
                 ],
-            ),
+            },
             packages=[
-                gcp.osconfig.GuestPoliciesPackageArgs(
-                    name="my-package",
-                    desired_state="INSTALLED",
-                ),
-                gcp.osconfig.GuestPoliciesPackageArgs(
-                    name="bad-package-1",
-                    desired_state="REMOVED",
-                ),
-                gcp.osconfig.GuestPoliciesPackageArgs(
-                    name="bad-package-2",
-                    desired_state="REMOVED",
-                    manager="APT",
-                ),
+                {
+                    "name": "my-package",
+                    "desiredState": "INSTALLED",
+                },
+                {
+                    "name": "bad-package-1",
+                    "desiredState": "REMOVED",
+                },
+                {
+                    "name": "bad-package-2",
+                    "desiredState": "REMOVED",
+                    "manager": "APT",
+                },
             ],
             package_repositories=[
-                gcp.osconfig.GuestPoliciesPackageRepositoryArgs(
-                    apt=gcp.osconfig.GuestPoliciesPackageRepositoryAptArgs(
-                        uri="https://packages.cloud.google.com/apt",
-                        archive_type="DEB",
-                        distribution="cloud-sdk-stretch",
-                        components=["main"],
-                    ),
-                ),
-                gcp.osconfig.GuestPoliciesPackageRepositoryArgs(
-                    yum=gcp.osconfig.GuestPoliciesPackageRepositoryYumArgs(
-                        id="google-cloud-sdk",
-                        display_name="Google Cloud SDK",
-                        base_url="https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64",
-                        gpg_keys=[
+                {
+                    "apt": {
+                        "uri": "https://packages.cloud.google.com/apt",
+                        "archiveType": "DEB",
+                        "distribution": "cloud-sdk-stretch",
+                        "components": ["main"],
+                    },
+                },
+                {
+                    "yum": {
+                        "id": "google-cloud-sdk",
+                        "displayName": "Google Cloud SDK",
+                        "baseUrl": "https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64",
+                        "gpgKeys": [
                             "https://packages.cloud.google.com/yum/doc/yum-key.gpg",
                             "https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg",
                         ],
-                    ),
-                ),
+                    },
+                },
             ])
         ```
         ### Os Config Guest Policies Recipes
@@ -716,29 +721,29 @@ class GuestPolicies(pulumi.CustomResource):
 
         guest_policies = gcp.osconfig.GuestPolicies("guest_policies",
             guest_policy_id="guest-policy",
-            assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
-                zones=[
+            assignment={
+                "zones": [
                     "us-east1-b",
                     "us-east1-d",
                 ],
-            ),
-            recipes=[gcp.osconfig.GuestPoliciesRecipeArgs(
-                name="guest-policy-recipe",
-                desired_state="INSTALLED",
-                artifacts=[gcp.osconfig.GuestPoliciesRecipeArtifactArgs(
-                    id="guest-policy-artifact-id",
-                    gcs=gcp.osconfig.GuestPoliciesRecipeArtifactGcsArgs(
-                        bucket="my-bucket",
-                        object="executable.msi",
-                        generation=1546030865175603,
-                    ),
-                )],
-                install_steps=[gcp.osconfig.GuestPoliciesRecipeInstallStepArgs(
-                    msi_installation=gcp.osconfig.GuestPoliciesRecipeInstallStepMsiInstallationArgs(
-                        artifact_id="guest-policy-artifact-id",
-                    ),
-                )],
-            )])
+            },
+            recipes=[{
+                "name": "guest-policy-recipe",
+                "desiredState": "INSTALLED",
+                "artifacts": [{
+                    "id": "guest-policy-artifact-id",
+                    "gcs": {
+                        "bucket": "my-bucket",
+                        "object": "executable.msi",
+                        "generation": 1546030865175603,
+                    },
+                }],
+                "installSteps": [{
+                    "msiInstallation": {
+                        "artifactId": "guest-policy-artifact-id",
+                    },
+                }],
+            }])
         ```
 
         ## Import
@@ -780,14 +785,14 @@ class GuestPolicies(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assignment: Optional[pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArgs']]] = None,
+                 assignment: Optional[pulumi.Input[Union['GuestPoliciesAssignmentArgs', 'GuestPoliciesAssignmentArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  guest_policy_id: Optional[pulumi.Input[str]] = None,
-                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]]] = None,
-                 packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]]] = None,
+                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesPackageRepositoryArgs', 'GuestPoliciesPackageRepositoryArgsDict']]]]] = None,
+                 packages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesPackageArgs', 'GuestPoliciesPackageArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]]] = None,
+                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesRecipeArgs', 'GuestPoliciesRecipeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -822,16 +827,16 @@ class GuestPolicies(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            assignment: Optional[pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArgs']]] = None,
+            assignment: Optional[pulumi.Input[Union['GuestPoliciesAssignmentArgs', 'GuestPoliciesAssignmentArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             guest_policy_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]]] = None,
-            packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]]] = None,
+            package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesPackageRepositoryArgs', 'GuestPoliciesPackageRepositoryArgsDict']]]]] = None,
+            packages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesPackageArgs', 'GuestPoliciesPackageArgsDict']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]]] = None,
+            recipes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesRecipeArgs', 'GuestPoliciesRecipeArgsDict']]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'GuestPolicies':
         """
         Get an existing GuestPolicies resource's state with the given name, id, and optional extra
@@ -840,7 +845,7 @@ class GuestPolicies(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GuestPoliciesAssignmentArgs']] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
+        :param pulumi.Input[Union['GuestPoliciesAssignmentArgs', 'GuestPoliciesAssignmentArgsDict']] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets
                or groups of VM instances by different parameters such as labels, names, OS, or zones.
                If left empty, all VM instances underneath this policy are targeted.
                At the same level in the resource hierarchy (that is within a project), the service prevents
@@ -859,11 +864,11 @@ class GuestPolicies(pulumi.CustomResource):
                * Must end with a number or a letter.
                * Must be unique within the project.
         :param pulumi.Input[str] name: Unique name of the resource in this project using one of the following forms: projects/{project_number}/guestPolicies/{guestPolicyId}.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageRepositoryArgs']]]] package_repositories: A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesPackageRepositoryArgs', 'GuestPoliciesPackageRepositoryArgsDict']]]] package_repositories: A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
                they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
                available.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesPackageArgs']]]] packages: The software packages to be managed by this policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]] recipes: A list of Recipes to install on the VM instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesPackageArgs', 'GuestPoliciesPackageArgsDict']]]] packages: The software packages to be managed by this policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GuestPoliciesRecipeArgs', 'GuestPoliciesRecipeArgsDict']]]] recipes: A list of Recipes to install on the VM instance.
         :param pulumi.Input[str] update_time: Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
                Example: "2014-10-02T15:01:23.045123456Z".
         """

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -264,7 +269,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deidentify_config: Optional[pulumi.Input[pulumi.InputType['PreventionDeidentifyTemplateDeidentifyConfigArgs']]] = None,
+                 deidentify_config: Optional[pulumi.Input[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -291,93 +296,93 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             parent="projects/my-project-name",
             description="Description",
             display_name="Displayname",
-            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
-                info_type_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs(
-                    transformations=[
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
-                            info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
-                                name="FIRST_NAME",
-                            )],
-                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
-                                replace_with_info_type_config=True,
-                            ),
-                        ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
-                            info_types=[
-                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
-                                    name="PHONE_NUMBER",
-                                ),
-                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
-                                    name="AGE",
-                                ),
+            deidentify_config={
+                "infoTypeTransformations": {
+                    "transformations": [
+                        {
+                            "infoTypes": [{
+                                "name": "FIRST_NAME",
+                            }],
+                            "primitiveTransformation": {
+                                "replaceWithInfoTypeConfig": True,
+                            },
+                        },
+                        {
+                            "infoTypes": [
+                                {
+                                    "name": "PHONE_NUMBER",
+                                },
+                                {
+                                    "name": "AGE",
+                                },
                             ],
-                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
-                                replace_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs(
-                                    new_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs(
-                                        integer_value=9,
-                                    ),
-                                ),
-                            ),
-                        ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
-                            info_types=[
-                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
-                                    name="EMAIL_ADDRESS",
-                                ),
-                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
-                                    name="LAST_NAME",
-                                ),
+                            "primitiveTransformation": {
+                                "replaceConfig": {
+                                    "newValue": {
+                                        "integerValue": 9,
+                                    },
+                                },
+                            },
+                        },
+                        {
+                            "infoTypes": [
+                                {
+                                    "name": "EMAIL_ADDRESS",
+                                },
+                                {
+                                    "name": "LAST_NAME",
+                                },
                             ],
-                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
-                                character_mask_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs(
-                                    masking_character="X",
-                                    number_to_mask=4,
-                                    reverse_order=True,
-                                    characters_to_ignores=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs(
-                                        common_characters_to_ignore="PUNCTUATION",
-                                    )],
-                                ),
-                            ),
-                        ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
-                            info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
-                                name="DATE_OF_BIRTH",
-                            )],
-                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
-                                replace_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs(
-                                    new_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs(
-                                        date_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs(
-                                            year=2020,
-                                            month=1,
-                                            day=1,
-                                        ),
-                                    ),
-                                ),
-                            ),
-                        ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
-                            info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
-                                name="CREDIT_CARD_NUMBER",
-                            )],
-                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
-                                crypto_deterministic_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs(
-                                    context=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs(
-                                        name="sometweak",
-                                    ),
-                                    crypto_key=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs(
-                                        transient=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs(
-                                            name="beep",
-                                        ),
-                                    ),
-                                    surrogate_info_type=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs(
-                                        name="abc",
-                                    ),
-                                ),
-                            ),
-                        ),
+                            "primitiveTransformation": {
+                                "characterMaskConfig": {
+                                    "maskingCharacter": "X",
+                                    "numberToMask": 4,
+                                    "reverseOrder": True,
+                                    "charactersToIgnores": [{
+                                        "commonCharactersToIgnore": "PUNCTUATION",
+                                    }],
+                                },
+                            },
+                        },
+                        {
+                            "infoTypes": [{
+                                "name": "DATE_OF_BIRTH",
+                            }],
+                            "primitiveTransformation": {
+                                "replaceConfig": {
+                                    "newValue": {
+                                        "dateValue": {
+                                            "year": 2020,
+                                            "month": 1,
+                                            "day": 1,
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                        {
+                            "infoTypes": [{
+                                "name": "CREDIT_CARD_NUMBER",
+                            }],
+                            "primitiveTransformation": {
+                                "cryptoDeterministicConfig": {
+                                    "context": {
+                                        "name": "sometweak",
+                                    },
+                                    "cryptoKey": {
+                                        "transient": {
+                                            "name": "beep",
+                                        },
+                                    },
+                                    "surrogateInfoType": {
+                                        "name": "abc",
+                                    },
+                                },
+                            },
+                        },
                     ],
-                ),
-            ))
+                },
+            })
         ```
         ### Dlp Deidentify Template Image Transformations
 
@@ -389,31 +394,31 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             parent="projects/my-project-name",
             description="Description",
             display_name="Displayname",
-            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
-                image_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs(
-                    transforms=[
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
-                            redaction_color=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs(
-                                red=0.5,
-                                blue=1,
-                                green=0.2,
-                            ),
-                            selected_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs(
-                                info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs(
-                                    name="COLOR_INFO",
-                                    version="latest",
-                                )],
-                            ),
-                        ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
-                            all_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs(),
-                        ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
-                            all_text=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs(),
-                        ),
+            deidentify_config={
+                "imageTransformations": {
+                    "transforms": [
+                        {
+                            "redactionColor": {
+                                "red": 0.5,
+                                "blue": 1,
+                                "green": 0.2,
+                            },
+                            "selectedInfoTypes": {
+                                "infoTypes": [{
+                                    "name": "COLOR_INFO",
+                                    "version": "latest",
+                                }],
+                            },
+                        },
+                        {
+                            "allInfoTypes": {},
+                        },
+                        {
+                            "allText": {},
+                        },
                     ],
-                ),
-            ))
+                },
+            })
         ```
 
         ## Import
@@ -436,7 +441,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PreventionDeidentifyTemplateDeidentifyConfigArgs']] deidentify_config: Configuration of the deidentify template
+        :param pulumi.Input[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict']] deidentify_config: Configuration of the deidentify template
                Structure is documented below.
         :param pulumi.Input[str] description: A description of the template.
         :param pulumi.Input[str] display_name: User set display name of the template.
@@ -475,93 +480,93 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             parent="projects/my-project-name",
             description="Description",
             display_name="Displayname",
-            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
-                info_type_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs(
-                    transformations=[
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
-                            info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
-                                name="FIRST_NAME",
-                            )],
-                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
-                                replace_with_info_type_config=True,
-                            ),
-                        ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
-                            info_types=[
-                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
-                                    name="PHONE_NUMBER",
-                                ),
-                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
-                                    name="AGE",
-                                ),
+            deidentify_config={
+                "infoTypeTransformations": {
+                    "transformations": [
+                        {
+                            "infoTypes": [{
+                                "name": "FIRST_NAME",
+                            }],
+                            "primitiveTransformation": {
+                                "replaceWithInfoTypeConfig": True,
+                            },
+                        },
+                        {
+                            "infoTypes": [
+                                {
+                                    "name": "PHONE_NUMBER",
+                                },
+                                {
+                                    "name": "AGE",
+                                },
                             ],
-                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
-                                replace_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs(
-                                    new_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs(
-                                        integer_value=9,
-                                    ),
-                                ),
-                            ),
-                        ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
-                            info_types=[
-                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
-                                    name="EMAIL_ADDRESS",
-                                ),
-                                gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
-                                    name="LAST_NAME",
-                                ),
+                            "primitiveTransformation": {
+                                "replaceConfig": {
+                                    "newValue": {
+                                        "integerValue": 9,
+                                    },
+                                },
+                            },
+                        },
+                        {
+                            "infoTypes": [
+                                {
+                                    "name": "EMAIL_ADDRESS",
+                                },
+                                {
+                                    "name": "LAST_NAME",
+                                },
                             ],
-                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
-                                character_mask_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs(
-                                    masking_character="X",
-                                    number_to_mask=4,
-                                    reverse_order=True,
-                                    characters_to_ignores=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs(
-                                        common_characters_to_ignore="PUNCTUATION",
-                                    )],
-                                ),
-                            ),
-                        ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
-                            info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
-                                name="DATE_OF_BIRTH",
-                            )],
-                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
-                                replace_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs(
-                                    new_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs(
-                                        date_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs(
-                                            year=2020,
-                                            month=1,
-                                            day=1,
-                                        ),
-                                    ),
-                                ),
-                            ),
-                        ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
-                            info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs(
-                                name="CREDIT_CARD_NUMBER",
-                            )],
-                            primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
-                                crypto_deterministic_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs(
-                                    context=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs(
-                                        name="sometweak",
-                                    ),
-                                    crypto_key=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs(
-                                        transient=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs(
-                                            name="beep",
-                                        ),
-                                    ),
-                                    surrogate_info_type=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs(
-                                        name="abc",
-                                    ),
-                                ),
-                            ),
-                        ),
+                            "primitiveTransformation": {
+                                "characterMaskConfig": {
+                                    "maskingCharacter": "X",
+                                    "numberToMask": 4,
+                                    "reverseOrder": True,
+                                    "charactersToIgnores": [{
+                                        "commonCharactersToIgnore": "PUNCTUATION",
+                                    }],
+                                },
+                            },
+                        },
+                        {
+                            "infoTypes": [{
+                                "name": "DATE_OF_BIRTH",
+                            }],
+                            "primitiveTransformation": {
+                                "replaceConfig": {
+                                    "newValue": {
+                                        "dateValue": {
+                                            "year": 2020,
+                                            "month": 1,
+                                            "day": 1,
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                        {
+                            "infoTypes": [{
+                                "name": "CREDIT_CARD_NUMBER",
+                            }],
+                            "primitiveTransformation": {
+                                "cryptoDeterministicConfig": {
+                                    "context": {
+                                        "name": "sometweak",
+                                    },
+                                    "cryptoKey": {
+                                        "transient": {
+                                            "name": "beep",
+                                        },
+                                    },
+                                    "surrogateInfoType": {
+                                        "name": "abc",
+                                    },
+                                },
+                            },
+                        },
                     ],
-                ),
-            ))
+                },
+            })
         ```
         ### Dlp Deidentify Template Image Transformations
 
@@ -573,31 +578,31 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             parent="projects/my-project-name",
             description="Description",
             display_name="Displayname",
-            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
-                image_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs(
-                    transforms=[
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
-                            redaction_color=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs(
-                                red=0.5,
-                                blue=1,
-                                green=0.2,
-                            ),
-                            selected_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs(
-                                info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs(
-                                    name="COLOR_INFO",
-                                    version="latest",
-                                )],
-                            ),
-                        ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
-                            all_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs(),
-                        ),
-                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
-                            all_text=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs(),
-                        ),
+            deidentify_config={
+                "imageTransformations": {
+                    "transforms": [
+                        {
+                            "redactionColor": {
+                                "red": 0.5,
+                                "blue": 1,
+                                "green": 0.2,
+                            },
+                            "selectedInfoTypes": {
+                                "infoTypes": [{
+                                    "name": "COLOR_INFO",
+                                    "version": "latest",
+                                }],
+                            },
+                        },
+                        {
+                            "allInfoTypes": {},
+                        },
+                        {
+                            "allText": {},
+                        },
                     ],
-                ),
-            ))
+                },
+            })
         ```
 
         ## Import
@@ -633,7 +638,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deidentify_config: Optional[pulumi.Input[pulumi.InputType['PreventionDeidentifyTemplateDeidentifyConfigArgs']]] = None,
+                 deidentify_config: Optional[pulumi.Input[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -670,7 +675,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            deidentify_config: Optional[pulumi.Input[pulumi.InputType['PreventionDeidentifyTemplateDeidentifyConfigArgs']]] = None,
+            deidentify_config: Optional[pulumi.Input[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -685,7 +690,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The creation timestamp of an deidentifyTemplate. Set by the server.
-        :param pulumi.Input[pulumi.InputType['PreventionDeidentifyTemplateDeidentifyConfigArgs']] deidentify_config: Configuration of the deidentify template
+        :param pulumi.Input[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict']] deidentify_config: Configuration of the deidentify template
                Structure is documented below.
         :param pulumi.Input[str] description: A description of the template.
         :param pulumi.Input[str] display_name: User set display name of the template.

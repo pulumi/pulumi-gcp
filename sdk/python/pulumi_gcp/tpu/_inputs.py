@@ -4,24 +4,57 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'NodeNetworkEndpointArgs',
+    'NodeNetworkEndpointArgsDict',
     'NodeSchedulingConfigArgs',
+    'NodeSchedulingConfigArgsDict',
     'V2VmAcceleratorConfigArgs',
+    'V2VmAcceleratorConfigArgsDict',
     'V2VmDataDiskArgs',
+    'V2VmDataDiskArgsDict',
     'V2VmNetworkConfigArgs',
+    'V2VmNetworkConfigArgsDict',
     'V2VmNetworkEndpointArgs',
+    'V2VmNetworkEndpointArgsDict',
     'V2VmNetworkEndpointAccessConfigArgs',
+    'V2VmNetworkEndpointAccessConfigArgsDict',
     'V2VmSchedulingConfigArgs',
+    'V2VmSchedulingConfigArgsDict',
     'V2VmServiceAccountArgs',
+    'V2VmServiceAccountArgsDict',
     'V2VmShieldedInstanceConfigArgs',
+    'V2VmShieldedInstanceConfigArgsDict',
     'V2VmSymptomArgs',
+    'V2VmSymptomArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class NodeNetworkEndpointArgsDict(TypedDict):
+        ip_address: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The IP address of this network endpoint.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The port of this network endpoint.
+        """
+elif False:
+    NodeNetworkEndpointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NodeNetworkEndpointArgs:
@@ -66,6 +99,15 @@ class NodeNetworkEndpointArgs:
         pulumi.set(self, "port", value)
 
 
+if not MYPY:
+    class NodeSchedulingConfigArgsDict(TypedDict):
+        preemptible: pulumi.Input[bool]
+        """
+        Defines whether the TPU instance is preemptible.
+        """
+elif False:
+    NodeSchedulingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NodeSchedulingConfigArgs:
     def __init__(__self__, *,
@@ -87,6 +129,20 @@ class NodeSchedulingConfigArgs:
     def preemptible(self, value: pulumi.Input[bool]):
         pulumi.set(self, "preemptible", value)
 
+
+if not MYPY:
+    class V2VmAcceleratorConfigArgsDict(TypedDict):
+        topology: pulumi.Input[str]
+        """
+        Topology of TPU in chips.
+        """
+        type: pulumi.Input[str]
+        """
+        Type of TPU.
+        Possible values are: `V2`, `V3`, `V4`, `V5P`.
+        """
+elif False:
+    V2VmAcceleratorConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class V2VmAcceleratorConfigArgs:
@@ -126,6 +182,23 @@ class V2VmAcceleratorConfigArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class V2VmDataDiskArgsDict(TypedDict):
+        source_disk: pulumi.Input[str]
+        """
+        Specifies the full path to an existing disk. For example:
+        "projects/my-project/zones/us-central1-c/disks/my-disk".
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        The mode in which to attach this disk. If not specified, the default is READ_WRITE
+        mode. Only applicable to dataDisks.
+        Default value is `READ_WRITE`.
+        Possible values are: `READ_WRITE`, `READ_ONLY`.
+        """
+elif False:
+    V2VmDataDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class V2VmDataDiskArgs:
@@ -172,6 +245,35 @@ class V2VmDataDiskArgs:
     def mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mode", value)
 
+
+if not MYPY:
+    class V2VmNetworkConfigArgsDict(TypedDict):
+        can_ip_forward: NotRequired[pulumi.Input[bool]]
+        """
+        Allows the TPU node to send and receive packets with non-matching destination or source
+        IPs. This is required if you plan to use the TPU workers to forward routes.
+        """
+        enable_external_ips: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates that external IP addresses would be associated with the TPU workers. If set to
+        false, the specified subnetwork or network should have Private Google Access enabled.
+        """
+        network: NotRequired[pulumi.Input[str]]
+        """
+        The name of the network for the TPU node. It must be a preexisting Google Compute Engine
+        network. If both network and subnetwork are specified, the given subnetwork must belong
+        to the given network. If network is not specified, it will be looked up from the
+        subnetwork if one is provided, or otherwise use "default".
+        """
+        subnetwork: NotRequired[pulumi.Input[str]]
+        """
+        The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
+        Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
+        must belong to the given network. If subnetwork is not specified, the subnetwork with the
+        same name as the network will be used.
+        """
+elif False:
+    V2VmNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class V2VmNetworkConfigArgs:
@@ -260,6 +362,27 @@ class V2VmNetworkConfigArgs:
         pulumi.set(self, "subnetwork", value)
 
 
+if not MYPY:
+    class V2VmNetworkEndpointArgsDict(TypedDict):
+        access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArgsDict']]]]
+        """
+        (Output)
+        The access config for the TPU worker.
+        Structure is documented below.
+        """
+        ip_address: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The internal IP address of this network endpoint.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The port of this network endpoint.
+        """
+elif False:
+    V2VmNetworkEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class V2VmNetworkEndpointArgs:
     def __init__(__self__, *,
@@ -323,6 +446,16 @@ class V2VmNetworkEndpointArgs:
         pulumi.set(self, "port", value)
 
 
+if not MYPY:
+    class V2VmNetworkEndpointAccessConfigArgsDict(TypedDict):
+        external_ip: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        An external IP address associated with the TPU worker.
+        """
+elif False:
+    V2VmNetworkEndpointAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class V2VmNetworkEndpointAccessConfigArgs:
     def __init__(__self__, *,
@@ -347,6 +480,19 @@ class V2VmNetworkEndpointAccessConfigArgs:
     def external_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "external_ip", value)
 
+
+if not MYPY:
+    class V2VmSchedulingConfigArgsDict(TypedDict):
+        preemptible: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether the node is preemptible.
+        """
+        reserved: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the node is created under a reservation.
+        """
+elif False:
+    V2VmSchedulingConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class V2VmSchedulingConfigArgs:
@@ -386,6 +532,20 @@ class V2VmSchedulingConfigArgs:
     def reserved(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "reserved", value)
 
+
+if not MYPY:
+    class V2VmServiceAccountArgsDict(TypedDict):
+        email: NotRequired[pulumi.Input[str]]
+        """
+        Email address of the service account. If empty, default Compute service account will be used.
+        """
+        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of scopes to be made available for this service account. If empty, access to all
+        Cloud APIs will be allowed.
+        """
+elif False:
+    V2VmServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class V2VmServiceAccountArgs:
@@ -428,6 +588,15 @@ class V2VmServiceAccountArgs:
         pulumi.set(self, "scopes", value)
 
 
+if not MYPY:
+    class V2VmShieldedInstanceConfigArgsDict(TypedDict):
+        enable_secure_boot: pulumi.Input[bool]
+        """
+        Defines whether the instance has Secure Boot enabled.
+        """
+elif False:
+    V2VmShieldedInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class V2VmShieldedInstanceConfigArgs:
     def __init__(__self__, *,
@@ -449,6 +618,31 @@ class V2VmShieldedInstanceConfigArgs:
     def enable_secure_boot(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enable_secure_boot", value)
 
+
+if not MYPY:
+    class V2VmSymptomArgsDict(TypedDict):
+        create_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Timestamp when the Symptom is created.
+        """
+        details: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Detailed information of the current Symptom.
+        """
+        symptom_type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Type of the Symptom.
+        """
+        worker_id: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A string used to uniquely distinguish a worker within a TPU node.
+        """
+elif False:
+    V2VmSymptomArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class V2VmSymptomArgs:

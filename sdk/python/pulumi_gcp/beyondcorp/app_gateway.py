@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -622,7 +627,7 @@ class AppGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allocated_connections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppGatewayAllocatedConnectionArgs']]]]] = None,
+            allocated_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppGatewayAllocatedConnectionArgs', 'AppGatewayAllocatedConnectionArgsDict']]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             host_type: Optional[pulumi.Input[str]] = None,
@@ -641,7 +646,7 @@ class AppGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppGatewayAllocatedConnectionArgs']]]] allocated_connections: A list of connections allocated for the Gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppGatewayAllocatedConnectionArgs', 'AppGatewayAllocatedConnectionArgsDict']]]] allocated_connections: A list of connections allocated for the Gateway.
                Structure is documented below.
         :param pulumi.Input[str] display_name: An arbitrary user-provided name for the AppGateway.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

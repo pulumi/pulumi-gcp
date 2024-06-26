@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['RegionTargetHttpsProxyArgs', 'RegionTargetHttpsProxy']
@@ -508,9 +513,9 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         default_region_health_check = gcp.compute.RegionHealthCheck("default",
             region="us-central1",
             name="http-health-check",
-            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
-                port=80,
-            ))
+            http_health_check={
+                "port": 80,
+            })
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             region="us-central1",
             name="backend-service",
@@ -523,18 +528,18 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             name="url-map",
             description="a description",
             default_service=default_region_backend_service.id,
-            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_region_backend_service.id,
-                path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_region_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_region_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_region_backend_service.id,
+                }],
+            }])
         default = gcp.compute.RegionTargetHttpsProxy("default",
             region="us-central1",
             name="test-proxy",
@@ -553,14 +558,14 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             location="us-central1",
             name="my-trust-config",
             description="sample description for trust config",
-            trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArgs(
-                trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArgs(
-                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
-                )],
-                intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArgs(
-                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
-                )],
-            )],
+            trust_stores=[{
+                "trustAnchors": [{
+                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                }],
+                "intermediateCas": [{
+                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                }],
+            }],
             labels={
                 "foo": "bar",
             })
@@ -569,10 +574,10 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             name="my-tls-policy",
             description="my description",
             allow_open=False,
-            mtls_policy=gcp.networksecurity.ServerTlsPolicyMtlsPolicyArgs(
-                client_validation_mode="REJECT_INVALID",
-                client_validation_trust_config=default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/us-central1/trustConfigs/{name}"),
-            ))
+            mtls_policy={
+                "clientValidationMode": "REJECT_INVALID",
+                "clientValidationTrustConfig": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/us-central1/trustConfigs/{name}"),
+            })
         default_region_ssl_certificate = gcp.compute.RegionSslCertificate("default",
             region="us-central1",
             name="my-certificate",
@@ -583,9 +588,9 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             name="http-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
-                port=80,
-            ))
+            http_health_check={
+                "port": 80,
+            })
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             region="us-central1",
             name="backend-service",
@@ -599,18 +604,18 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             name="url-map",
             description="a description",
             default_service=default_region_backend_service.id,
-            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_region_backend_service.id,
-                path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_region_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_region_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_region_backend_service.id,
+                }],
+            }])
         default = gcp.compute.RegionTargetHttpsProxy("default",
             region="us-central1",
             name="test-mtls-proxy",
@@ -628,10 +633,10 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         default_certificate = gcp.certificatemanager.Certificate("default",
             name="my-certificate",
             location="us-central1",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=std.file(input="test-fixtures/cert.pem").result,
-                pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
-            ))
+            self_managed={
+                "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
+                "pemPrivateKey": std.file(input="test-fixtures/private-key.pem").result,
+            })
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             name="backend-service",
             region="us-central1",
@@ -749,9 +754,9 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         default_region_health_check = gcp.compute.RegionHealthCheck("default",
             region="us-central1",
             name="http-health-check",
-            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
-                port=80,
-            ))
+            http_health_check={
+                "port": 80,
+            })
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             region="us-central1",
             name="backend-service",
@@ -764,18 +769,18 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             name="url-map",
             description="a description",
             default_service=default_region_backend_service.id,
-            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_region_backend_service.id,
-                path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_region_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_region_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_region_backend_service.id,
+                }],
+            }])
         default = gcp.compute.RegionTargetHttpsProxy("default",
             region="us-central1",
             name="test-proxy",
@@ -794,14 +799,14 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             location="us-central1",
             name="my-trust-config",
             description="sample description for trust config",
-            trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArgs(
-                trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArgs(
-                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
-                )],
-                intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArgs(
-                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
-                )],
-            )],
+            trust_stores=[{
+                "trustAnchors": [{
+                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                }],
+                "intermediateCas": [{
+                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                }],
+            }],
             labels={
                 "foo": "bar",
             })
@@ -810,10 +815,10 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             name="my-tls-policy",
             description="my description",
             allow_open=False,
-            mtls_policy=gcp.networksecurity.ServerTlsPolicyMtlsPolicyArgs(
-                client_validation_mode="REJECT_INVALID",
-                client_validation_trust_config=default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/us-central1/trustConfigs/{name}"),
-            ))
+            mtls_policy={
+                "clientValidationMode": "REJECT_INVALID",
+                "clientValidationTrustConfig": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/us-central1/trustConfigs/{name}"),
+            })
         default_region_ssl_certificate = gcp.compute.RegionSslCertificate("default",
             region="us-central1",
             name="my-certificate",
@@ -824,9 +829,9 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             name="http-health-check",
             check_interval_sec=1,
             timeout_sec=1,
-            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
-                port=80,
-            ))
+            http_health_check={
+                "port": 80,
+            })
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             region="us-central1",
             name="backend-service",
@@ -840,18 +845,18 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             name="url-map",
             description="a description",
             default_service=default_region_backend_service.id,
-            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_region_backend_service.id,
-                path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_region_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_region_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_region_backend_service.id,
+                }],
+            }])
         default = gcp.compute.RegionTargetHttpsProxy("default",
             region="us-central1",
             name="test-mtls-proxy",
@@ -869,10 +874,10 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         default_certificate = gcp.certificatemanager.Certificate("default",
             name="my-certificate",
             location="us-central1",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=std.file(input="test-fixtures/cert.pem").result,
-                pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
-            ))
+            self_managed={
+                "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
+                "pemPrivateKey": std.file(input="test-fixtures/private-key.pem").result,
+            })
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             name="backend-service",
             region="us-central1",

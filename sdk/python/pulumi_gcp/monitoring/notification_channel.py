@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -439,7 +444,7 @@ class NotificationChannel(pulumi.CustomResource):
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sensitive_labels: Optional[pulumi.Input[pulumi.InputType['NotificationChannelSensitiveLabelsArgs']]] = None,
+                 sensitive_labels: Optional[pulumi.Input[Union['NotificationChannelSensitiveLabelsArgs', 'NotificationChannelSensitiveLabelsArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -496,9 +501,9 @@ class NotificationChannel(pulumi.CustomResource):
             labels={
                 "channel_name": "#foobar",
             },
-            sensitive_labels=gcp.monitoring.NotificationChannelSensitiveLabelsArgs(
-                auth_token="one",
-            ))
+            sensitive_labels={
+                "authToken": "one",
+            })
         ```
 
         ## Import
@@ -531,7 +536,7 @@ class NotificationChannel(pulumi.CustomResource):
                the sensitive_labels block, but cannot be configured in both places.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['NotificationChannelSensitiveLabelsArgs']] sensitive_labels: Different notification type behaviors are configured primarily using the the `labels` field on this
+        :param pulumi.Input[Union['NotificationChannelSensitiveLabelsArgs', 'NotificationChannelSensitiveLabelsArgsDict']] sensitive_labels: Different notification type behaviors are configured primarily using the the `labels` field on this
                resource. This block contains the labels which contain secrets or passwords so that they can be marked
                sensitive and hidden from plan output. The name of the field, eg: password, will be the key
                in the `labels` map in the api request.
@@ -603,9 +608,9 @@ class NotificationChannel(pulumi.CustomResource):
             labels={
                 "channel_name": "#foobar",
             },
-            sensitive_labels=gcp.monitoring.NotificationChannelSensitiveLabelsArgs(
-                auth_token="one",
-            ))
+            sensitive_labels={
+                "authToken": "one",
+            })
         ```
 
         ## Import
@@ -641,7 +646,7 @@ class NotificationChannel(pulumi.CustomResource):
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sensitive_labels: Optional[pulumi.Input[pulumi.InputType['NotificationChannelSensitiveLabelsArgs']]] = None,
+                 sensitive_labels: Optional[pulumi.Input[Union['NotificationChannelSensitiveLabelsArgs', 'NotificationChannelSensitiveLabelsArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -683,7 +688,7 @@ class NotificationChannel(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            sensitive_labels: Optional[pulumi.Input[pulumi.InputType['NotificationChannelSensitiveLabelsArgs']]] = None,
+            sensitive_labels: Optional[pulumi.Input[Union['NotificationChannelSensitiveLabelsArgs', 'NotificationChannelSensitiveLabelsArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None,
             user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             verification_status: Optional[pulumi.Input[str]] = None) -> 'NotificationChannel':
@@ -713,7 +718,7 @@ class NotificationChannel(pulumi.CustomResource):
                The [CHANNEL_ID] is automatically assigned by the server on creation.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['NotificationChannelSensitiveLabelsArgs']] sensitive_labels: Different notification type behaviors are configured primarily using the the `labels` field on this
+        :param pulumi.Input[Union['NotificationChannelSensitiveLabelsArgs', 'NotificationChannelSensitiveLabelsArgsDict']] sensitive_labels: Different notification type behaviors are configured primarily using the the `labels` field on this
                resource. This block contains the labels which contain secrets or passwords so that they can be marked
                sensitive and hidden from plan output. The name of the field, eg: password, will be the key
                in the `labels` map in the api request.

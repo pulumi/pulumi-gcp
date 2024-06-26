@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -414,13 +419,13 @@ class PatchDeployment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[str]] = None,
-                 instance_filter: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentInstanceFilterArgs']]] = None,
-                 one_time_schedule: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentOneTimeScheduleArgs']]] = None,
-                 patch_config: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentPatchConfigArgs']]] = None,
+                 instance_filter: Optional[pulumi.Input[Union['PatchDeploymentInstanceFilterArgs', 'PatchDeploymentInstanceFilterArgsDict']]] = None,
+                 one_time_schedule: Optional[pulumi.Input[Union['PatchDeploymentOneTimeScheduleArgs', 'PatchDeploymentOneTimeScheduleArgsDict']]] = None,
+                 patch_config: Optional[pulumi.Input[Union['PatchDeploymentPatchConfigArgs', 'PatchDeploymentPatchConfigArgsDict']]] = None,
                  patch_deployment_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recurring_schedule: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentRecurringScheduleArgs']]] = None,
-                 rollout: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentRolloutArgs']]] = None,
+                 recurring_schedule: Optional[pulumi.Input[Union['PatchDeploymentRecurringScheduleArgs', 'PatchDeploymentRecurringScheduleArgsDict']]] = None,
+                 rollout: Optional[pulumi.Input[Union['PatchDeploymentRolloutArgs', 'PatchDeploymentRolloutArgsDict']]] = None,
                  __props__=None):
         """
         Patch deployments are configurations that individual patch jobs use to complete a patch.
@@ -442,12 +447,12 @@ class PatchDeployment(pulumi.CustomResource):
 
         patch = gcp.osconfig.PatchDeployment("patch",
             patch_deployment_id="patch-deploy",
-            instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
-                all=True,
-            ),
-            one_time_schedule=gcp.osconfig.PatchDeploymentOneTimeScheduleArgs(
-                execute_time="2999-10-10T10:10:10.045123456Z",
-            ))
+            instance_filter={
+                "all": True,
+            },
+            one_time_schedule={
+                "executeTime": "2999-10-10T10:10:10.045123456Z",
+            })
         ```
         ### Os Config Patch Deployment Daily
 
@@ -457,20 +462,20 @@ class PatchDeployment(pulumi.CustomResource):
 
         patch = gcp.osconfig.PatchDeployment("patch",
             patch_deployment_id="patch-deploy",
-            instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
-                all=True,
-            ),
-            recurring_schedule=gcp.osconfig.PatchDeploymentRecurringScheduleArgs(
-                time_zone=gcp.osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs(
-                    id="America/New_York",
-                ),
-                time_of_day=gcp.osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs(
-                    hours=0,
-                    minutes=30,
-                    seconds=30,
-                    nanos=20,
-                ),
-            ))
+            instance_filter={
+                "all": True,
+            },
+            recurring_schedule={
+                "timeZone": {
+                    "id": "America/New_York",
+                },
+                "timeOfDay": {
+                    "hours": 0,
+                    "minutes": 30,
+                    "seconds": 30,
+                    "nanos": 20,
+                },
+            })
         ```
         ### Os Config Patch Deployment Daily Midnight
 
@@ -480,20 +485,20 @@ class PatchDeployment(pulumi.CustomResource):
 
         patch = gcp.osconfig.PatchDeployment("patch",
             patch_deployment_id="patch-deploy",
-            instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
-                all=True,
-            ),
-            recurring_schedule=gcp.osconfig.PatchDeploymentRecurringScheduleArgs(
-                time_zone=gcp.osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs(
-                    id="America/New_York",
-                ),
-                time_of_day=gcp.osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs(
-                    hours=0,
-                    minutes=0,
-                    seconds=0,
-                    nanos=0,
-                ),
-            ))
+            instance_filter={
+                "all": True,
+            },
+            recurring_schedule={
+                "timeZone": {
+                    "id": "America/New_York",
+                },
+                "timeOfDay": {
+                    "hours": 0,
+                    "minutes": 0,
+                    "seconds": 0,
+                    "nanos": 0,
+                },
+            })
         ```
         ### Os Config Patch Deployment Instance
 
@@ -512,43 +517,43 @@ class PatchDeployment(pulumi.CustomResource):
                 "foo",
                 "bar",
             ],
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=my_image.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )],
+            boot_disk={
+                "initializeParams": {
+                    "image": my_image.self_link,
+                },
+            },
+            network_interfaces=[{
+                "network": "default",
+            }],
             metadata={
                 "foo": "bar",
             })
         patch = gcp.osconfig.PatchDeployment("patch",
             patch_deployment_id="patch-deploy",
-            instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
-                instances=[foobar.id],
-            ),
-            patch_config=gcp.osconfig.PatchDeploymentPatchConfigArgs(
-                yum=gcp.osconfig.PatchDeploymentPatchConfigYumArgs(
-                    security=True,
-                    minimal=True,
-                    excludes=["bash"],
-                ),
-            ),
-            recurring_schedule=gcp.osconfig.PatchDeploymentRecurringScheduleArgs(
-                time_zone=gcp.osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs(
-                    id="America/New_York",
-                ),
-                time_of_day=gcp.osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs(
-                    hours=0,
-                    minutes=30,
-                    seconds=30,
-                    nanos=20,
-                ),
-                monthly=gcp.osconfig.PatchDeploymentRecurringScheduleMonthlyArgs(
-                    month_day=1,
-                ),
-            ))
+            instance_filter={
+                "instances": [foobar.id],
+            },
+            patch_config={
+                "yum": {
+                    "security": True,
+                    "minimal": True,
+                    "excludes": ["bash"],
+                },
+            },
+            recurring_schedule={
+                "timeZone": {
+                    "id": "America/New_York",
+                },
+                "timeOfDay": {
+                    "hours": 0,
+                    "minutes": 30,
+                    "seconds": 30,
+                    "nanos": 20,
+                },
+                "monthly": {
+                    "monthDay": 1,
+                },
+            })
         ```
         ### Os Config Patch Deployment Full
 
@@ -558,105 +563,105 @@ class PatchDeployment(pulumi.CustomResource):
 
         patch = gcp.osconfig.PatchDeployment("patch",
             patch_deployment_id="patch-deploy",
-            instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
-                group_labels=[gcp.osconfig.PatchDeploymentInstanceFilterGroupLabelArgs(
-                    labels={
+            instance_filter={
+                "groupLabels": [{
+                    "labels": {
                         "env": "dev",
                         "app": "web",
                     },
-                )],
-                instance_name_prefixes=["test-"],
-                zones=[
+                }],
+                "instanceNamePrefixes": ["test-"],
+                "zones": [
                     "us-central1-a",
                     "us-central-1c",
                 ],
-            ),
-            patch_config=gcp.osconfig.PatchDeploymentPatchConfigArgs(
-                mig_instances_allowed=True,
-                reboot_config="ALWAYS",
-                apt=gcp.osconfig.PatchDeploymentPatchConfigAptArgs(
-                    type="DIST",
-                    excludes=["python"],
-                ),
-                yum=gcp.osconfig.PatchDeploymentPatchConfigYumArgs(
-                    security=True,
-                    minimal=True,
-                    excludes=["bash"],
-                ),
-                goo=gcp.osconfig.PatchDeploymentPatchConfigGooArgs(
-                    enabled=True,
-                ),
-                zypper=gcp.osconfig.PatchDeploymentPatchConfigZypperArgs(
-                    categories=["security"],
-                ),
-                windows_update=gcp.osconfig.PatchDeploymentPatchConfigWindowsUpdateArgs(
-                    classifications=[
+            },
+            patch_config={
+                "migInstancesAllowed": True,
+                "rebootConfig": "ALWAYS",
+                "apt": {
+                    "type": "DIST",
+                    "excludes": ["python"],
+                },
+                "yum": {
+                    "security": True,
+                    "minimal": True,
+                    "excludes": ["bash"],
+                },
+                "goo": {
+                    "enabled": True,
+                },
+                "zypper": {
+                    "categories": ["security"],
+                },
+                "windowsUpdate": {
+                    "classifications": [
                         "CRITICAL",
                         "SECURITY",
                         "UPDATE",
                     ],
-                    excludes=["5012170"],
-                ),
-                pre_step=gcp.osconfig.PatchDeploymentPatchConfigPreStepArgs(
-                    linux_exec_step_config=gcp.osconfig.PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs(
-                        allowed_success_codes=[
+                    "excludes": ["5012170"],
+                },
+                "preStep": {
+                    "linuxExecStepConfig": {
+                        "allowedSuccessCodes": [
                             0,
                             3,
                         ],
-                        local_path="/tmp/pre_patch_script.sh",
-                    ),
-                    windows_exec_step_config=gcp.osconfig.PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs(
-                        interpreter="SHELL",
-                        allowed_success_codes=[
+                        "localPath": "/tmp/pre_patch_script.sh",
+                    },
+                    "windowsExecStepConfig": {
+                        "interpreter": "SHELL",
+                        "allowedSuccessCodes": [
                             0,
                             2,
                         ],
-                        local_path="C:\\\\Users\\\\user\\\\pre-patch-script.cmd",
-                    ),
-                ),
-                post_step=gcp.osconfig.PatchDeploymentPatchConfigPostStepArgs(
-                    linux_exec_step_config=gcp.osconfig.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs(
-                        gcs_object=gcp.osconfig.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs(
-                            bucket="my-patch-scripts",
-                            generation_number="1523477886880",
-                            object="linux/post_patch_script",
-                        ),
-                    ),
-                    windows_exec_step_config=gcp.osconfig.PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs(
-                        interpreter="POWERSHELL",
-                        gcs_object=gcp.osconfig.PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs(
-                            bucket="my-patch-scripts",
-                            generation_number="135920493447",
-                            object="windows/post_patch_script.ps1",
-                        ),
-                    ),
-                ),
-            ),
+                        "localPath": "C:\\\\Users\\\\user\\\\pre-patch-script.cmd",
+                    },
+                },
+                "postStep": {
+                    "linuxExecStepConfig": {
+                        "gcsObject": {
+                            "bucket": "my-patch-scripts",
+                            "generationNumber": "1523477886880",
+                            "object": "linux/post_patch_script",
+                        },
+                    },
+                    "windowsExecStepConfig": {
+                        "interpreter": "POWERSHELL",
+                        "gcsObject": {
+                            "bucket": "my-patch-scripts",
+                            "generationNumber": "135920493447",
+                            "object": "windows/post_patch_script.ps1",
+                        },
+                    },
+                },
+            },
             duration="10s",
-            recurring_schedule=gcp.osconfig.PatchDeploymentRecurringScheduleArgs(
-                time_zone=gcp.osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs(
-                    id="America/New_York",
-                ),
-                time_of_day=gcp.osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs(
-                    hours=0,
-                    minutes=30,
-                    seconds=30,
-                    nanos=20,
-                ),
-                monthly=gcp.osconfig.PatchDeploymentRecurringScheduleMonthlyArgs(
-                    week_day_of_month=gcp.osconfig.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs(
-                        week_ordinal=-1,
-                        day_of_week="TUESDAY",
-                        day_offset=3,
-                    ),
-                ),
-            ),
-            rollout=gcp.osconfig.PatchDeploymentRolloutArgs(
-                mode="ZONE_BY_ZONE",
-                disruption_budget=gcp.osconfig.PatchDeploymentRolloutDisruptionBudgetArgs(
-                    fixed=1,
-                ),
-            ))
+            recurring_schedule={
+                "timeZone": {
+                    "id": "America/New_York",
+                },
+                "timeOfDay": {
+                    "hours": 0,
+                    "minutes": 30,
+                    "seconds": 30,
+                    "nanos": 20,
+                },
+                "monthly": {
+                    "weekDayOfMonth": {
+                        "weekOrdinal": -1,
+                        "dayOfWeek": "TUESDAY",
+                        "dayOffset": 3,
+                    },
+                },
+            },
+            rollout={
+                "mode": "ZONE_BY_ZONE",
+                "disruptionBudget": {
+                    "fixed": 1,
+                },
+            })
         ```
 
         ## Import
@@ -688,18 +693,18 @@ class PatchDeployment(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the patch deployment. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] duration: Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
                digits, terminated by 's'. Example: "3.5s"
-        :param pulumi.Input[pulumi.InputType['PatchDeploymentInstanceFilterArgs']] instance_filter: VM instances to patch.
+        :param pulumi.Input[Union['PatchDeploymentInstanceFilterArgs', 'PatchDeploymentInstanceFilterArgsDict']] instance_filter: VM instances to patch.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['PatchDeploymentOneTimeScheduleArgs']] one_time_schedule: Schedule a one-time execution.
-        :param pulumi.Input[pulumi.InputType['PatchDeploymentPatchConfigArgs']] patch_config: Patch configuration that is applied.
+        :param pulumi.Input[Union['PatchDeploymentOneTimeScheduleArgs', 'PatchDeploymentOneTimeScheduleArgsDict']] one_time_schedule: Schedule a one-time execution.
+        :param pulumi.Input[Union['PatchDeploymentPatchConfigArgs', 'PatchDeploymentPatchConfigArgsDict']] patch_config: Patch configuration that is applied.
         :param pulumi.Input[str] patch_deployment_id: A name for the patch deployment in the project. When creating a name the following rules apply:
                * Must contain only lowercase letters, numbers, and hyphens.
                * Must start with a letter.
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the project.
-        :param pulumi.Input[pulumi.InputType['PatchDeploymentRecurringScheduleArgs']] recurring_schedule: Schedule recurring executions.
-        :param pulumi.Input[pulumi.InputType['PatchDeploymentRolloutArgs']] rollout: Rollout strategy of the patch job.
+        :param pulumi.Input[Union['PatchDeploymentRecurringScheduleArgs', 'PatchDeploymentRecurringScheduleArgsDict']] recurring_schedule: Schedule recurring executions.
+        :param pulumi.Input[Union['PatchDeploymentRolloutArgs', 'PatchDeploymentRolloutArgsDict']] rollout: Rollout strategy of the patch job.
         """
         ...
     @overload
@@ -727,12 +732,12 @@ class PatchDeployment(pulumi.CustomResource):
 
         patch = gcp.osconfig.PatchDeployment("patch",
             patch_deployment_id="patch-deploy",
-            instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
-                all=True,
-            ),
-            one_time_schedule=gcp.osconfig.PatchDeploymentOneTimeScheduleArgs(
-                execute_time="2999-10-10T10:10:10.045123456Z",
-            ))
+            instance_filter={
+                "all": True,
+            },
+            one_time_schedule={
+                "executeTime": "2999-10-10T10:10:10.045123456Z",
+            })
         ```
         ### Os Config Patch Deployment Daily
 
@@ -742,20 +747,20 @@ class PatchDeployment(pulumi.CustomResource):
 
         patch = gcp.osconfig.PatchDeployment("patch",
             patch_deployment_id="patch-deploy",
-            instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
-                all=True,
-            ),
-            recurring_schedule=gcp.osconfig.PatchDeploymentRecurringScheduleArgs(
-                time_zone=gcp.osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs(
-                    id="America/New_York",
-                ),
-                time_of_day=gcp.osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs(
-                    hours=0,
-                    minutes=30,
-                    seconds=30,
-                    nanos=20,
-                ),
-            ))
+            instance_filter={
+                "all": True,
+            },
+            recurring_schedule={
+                "timeZone": {
+                    "id": "America/New_York",
+                },
+                "timeOfDay": {
+                    "hours": 0,
+                    "minutes": 30,
+                    "seconds": 30,
+                    "nanos": 20,
+                },
+            })
         ```
         ### Os Config Patch Deployment Daily Midnight
 
@@ -765,20 +770,20 @@ class PatchDeployment(pulumi.CustomResource):
 
         patch = gcp.osconfig.PatchDeployment("patch",
             patch_deployment_id="patch-deploy",
-            instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
-                all=True,
-            ),
-            recurring_schedule=gcp.osconfig.PatchDeploymentRecurringScheduleArgs(
-                time_zone=gcp.osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs(
-                    id="America/New_York",
-                ),
-                time_of_day=gcp.osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs(
-                    hours=0,
-                    minutes=0,
-                    seconds=0,
-                    nanos=0,
-                ),
-            ))
+            instance_filter={
+                "all": True,
+            },
+            recurring_schedule={
+                "timeZone": {
+                    "id": "America/New_York",
+                },
+                "timeOfDay": {
+                    "hours": 0,
+                    "minutes": 0,
+                    "seconds": 0,
+                    "nanos": 0,
+                },
+            })
         ```
         ### Os Config Patch Deployment Instance
 
@@ -797,43 +802,43 @@ class PatchDeployment(pulumi.CustomResource):
                 "foo",
                 "bar",
             ],
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=my_image.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )],
+            boot_disk={
+                "initializeParams": {
+                    "image": my_image.self_link,
+                },
+            },
+            network_interfaces=[{
+                "network": "default",
+            }],
             metadata={
                 "foo": "bar",
             })
         patch = gcp.osconfig.PatchDeployment("patch",
             patch_deployment_id="patch-deploy",
-            instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
-                instances=[foobar.id],
-            ),
-            patch_config=gcp.osconfig.PatchDeploymentPatchConfigArgs(
-                yum=gcp.osconfig.PatchDeploymentPatchConfigYumArgs(
-                    security=True,
-                    minimal=True,
-                    excludes=["bash"],
-                ),
-            ),
-            recurring_schedule=gcp.osconfig.PatchDeploymentRecurringScheduleArgs(
-                time_zone=gcp.osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs(
-                    id="America/New_York",
-                ),
-                time_of_day=gcp.osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs(
-                    hours=0,
-                    minutes=30,
-                    seconds=30,
-                    nanos=20,
-                ),
-                monthly=gcp.osconfig.PatchDeploymentRecurringScheduleMonthlyArgs(
-                    month_day=1,
-                ),
-            ))
+            instance_filter={
+                "instances": [foobar.id],
+            },
+            patch_config={
+                "yum": {
+                    "security": True,
+                    "minimal": True,
+                    "excludes": ["bash"],
+                },
+            },
+            recurring_schedule={
+                "timeZone": {
+                    "id": "America/New_York",
+                },
+                "timeOfDay": {
+                    "hours": 0,
+                    "minutes": 30,
+                    "seconds": 30,
+                    "nanos": 20,
+                },
+                "monthly": {
+                    "monthDay": 1,
+                },
+            })
         ```
         ### Os Config Patch Deployment Full
 
@@ -843,105 +848,105 @@ class PatchDeployment(pulumi.CustomResource):
 
         patch = gcp.osconfig.PatchDeployment("patch",
             patch_deployment_id="patch-deploy",
-            instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
-                group_labels=[gcp.osconfig.PatchDeploymentInstanceFilterGroupLabelArgs(
-                    labels={
+            instance_filter={
+                "groupLabels": [{
+                    "labels": {
                         "env": "dev",
                         "app": "web",
                     },
-                )],
-                instance_name_prefixes=["test-"],
-                zones=[
+                }],
+                "instanceNamePrefixes": ["test-"],
+                "zones": [
                     "us-central1-a",
                     "us-central-1c",
                 ],
-            ),
-            patch_config=gcp.osconfig.PatchDeploymentPatchConfigArgs(
-                mig_instances_allowed=True,
-                reboot_config="ALWAYS",
-                apt=gcp.osconfig.PatchDeploymentPatchConfigAptArgs(
-                    type="DIST",
-                    excludes=["python"],
-                ),
-                yum=gcp.osconfig.PatchDeploymentPatchConfigYumArgs(
-                    security=True,
-                    minimal=True,
-                    excludes=["bash"],
-                ),
-                goo=gcp.osconfig.PatchDeploymentPatchConfigGooArgs(
-                    enabled=True,
-                ),
-                zypper=gcp.osconfig.PatchDeploymentPatchConfigZypperArgs(
-                    categories=["security"],
-                ),
-                windows_update=gcp.osconfig.PatchDeploymentPatchConfigWindowsUpdateArgs(
-                    classifications=[
+            },
+            patch_config={
+                "migInstancesAllowed": True,
+                "rebootConfig": "ALWAYS",
+                "apt": {
+                    "type": "DIST",
+                    "excludes": ["python"],
+                },
+                "yum": {
+                    "security": True,
+                    "minimal": True,
+                    "excludes": ["bash"],
+                },
+                "goo": {
+                    "enabled": True,
+                },
+                "zypper": {
+                    "categories": ["security"],
+                },
+                "windowsUpdate": {
+                    "classifications": [
                         "CRITICAL",
                         "SECURITY",
                         "UPDATE",
                     ],
-                    excludes=["5012170"],
-                ),
-                pre_step=gcp.osconfig.PatchDeploymentPatchConfigPreStepArgs(
-                    linux_exec_step_config=gcp.osconfig.PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs(
-                        allowed_success_codes=[
+                    "excludes": ["5012170"],
+                },
+                "preStep": {
+                    "linuxExecStepConfig": {
+                        "allowedSuccessCodes": [
                             0,
                             3,
                         ],
-                        local_path="/tmp/pre_patch_script.sh",
-                    ),
-                    windows_exec_step_config=gcp.osconfig.PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs(
-                        interpreter="SHELL",
-                        allowed_success_codes=[
+                        "localPath": "/tmp/pre_patch_script.sh",
+                    },
+                    "windowsExecStepConfig": {
+                        "interpreter": "SHELL",
+                        "allowedSuccessCodes": [
                             0,
                             2,
                         ],
-                        local_path="C:\\\\Users\\\\user\\\\pre-patch-script.cmd",
-                    ),
-                ),
-                post_step=gcp.osconfig.PatchDeploymentPatchConfigPostStepArgs(
-                    linux_exec_step_config=gcp.osconfig.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs(
-                        gcs_object=gcp.osconfig.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs(
-                            bucket="my-patch-scripts",
-                            generation_number="1523477886880",
-                            object="linux/post_patch_script",
-                        ),
-                    ),
-                    windows_exec_step_config=gcp.osconfig.PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs(
-                        interpreter="POWERSHELL",
-                        gcs_object=gcp.osconfig.PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs(
-                            bucket="my-patch-scripts",
-                            generation_number="135920493447",
-                            object="windows/post_patch_script.ps1",
-                        ),
-                    ),
-                ),
-            ),
+                        "localPath": "C:\\\\Users\\\\user\\\\pre-patch-script.cmd",
+                    },
+                },
+                "postStep": {
+                    "linuxExecStepConfig": {
+                        "gcsObject": {
+                            "bucket": "my-patch-scripts",
+                            "generationNumber": "1523477886880",
+                            "object": "linux/post_patch_script",
+                        },
+                    },
+                    "windowsExecStepConfig": {
+                        "interpreter": "POWERSHELL",
+                        "gcsObject": {
+                            "bucket": "my-patch-scripts",
+                            "generationNumber": "135920493447",
+                            "object": "windows/post_patch_script.ps1",
+                        },
+                    },
+                },
+            },
             duration="10s",
-            recurring_schedule=gcp.osconfig.PatchDeploymentRecurringScheduleArgs(
-                time_zone=gcp.osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs(
-                    id="America/New_York",
-                ),
-                time_of_day=gcp.osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs(
-                    hours=0,
-                    minutes=30,
-                    seconds=30,
-                    nanos=20,
-                ),
-                monthly=gcp.osconfig.PatchDeploymentRecurringScheduleMonthlyArgs(
-                    week_day_of_month=gcp.osconfig.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs(
-                        week_ordinal=-1,
-                        day_of_week="TUESDAY",
-                        day_offset=3,
-                    ),
-                ),
-            ),
-            rollout=gcp.osconfig.PatchDeploymentRolloutArgs(
-                mode="ZONE_BY_ZONE",
-                disruption_budget=gcp.osconfig.PatchDeploymentRolloutDisruptionBudgetArgs(
-                    fixed=1,
-                ),
-            ))
+            recurring_schedule={
+                "timeZone": {
+                    "id": "America/New_York",
+                },
+                "timeOfDay": {
+                    "hours": 0,
+                    "minutes": 30,
+                    "seconds": 30,
+                    "nanos": 20,
+                },
+                "monthly": {
+                    "weekDayOfMonth": {
+                        "weekOrdinal": -1,
+                        "dayOfWeek": "TUESDAY",
+                        "dayOffset": 3,
+                    },
+                },
+            },
+            rollout={
+                "mode": "ZONE_BY_ZONE",
+                "disruptionBudget": {
+                    "fixed": 1,
+                },
+            })
         ```
 
         ## Import
@@ -985,13 +990,13 @@ class PatchDeployment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[str]] = None,
-                 instance_filter: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentInstanceFilterArgs']]] = None,
-                 one_time_schedule: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentOneTimeScheduleArgs']]] = None,
-                 patch_config: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentPatchConfigArgs']]] = None,
+                 instance_filter: Optional[pulumi.Input[Union['PatchDeploymentInstanceFilterArgs', 'PatchDeploymentInstanceFilterArgsDict']]] = None,
+                 one_time_schedule: Optional[pulumi.Input[Union['PatchDeploymentOneTimeScheduleArgs', 'PatchDeploymentOneTimeScheduleArgsDict']]] = None,
+                 patch_config: Optional[pulumi.Input[Union['PatchDeploymentPatchConfigArgs', 'PatchDeploymentPatchConfigArgsDict']]] = None,
                  patch_deployment_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recurring_schedule: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentRecurringScheduleArgs']]] = None,
-                 rollout: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentRolloutArgs']]] = None,
+                 recurring_schedule: Optional[pulumi.Input[Union['PatchDeploymentRecurringScheduleArgs', 'PatchDeploymentRecurringScheduleArgsDict']]] = None,
+                 rollout: Optional[pulumi.Input[Union['PatchDeploymentRolloutArgs', 'PatchDeploymentRolloutArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1031,15 +1036,15 @@ class PatchDeployment(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             duration: Optional[pulumi.Input[str]] = None,
-            instance_filter: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentInstanceFilterArgs']]] = None,
+            instance_filter: Optional[pulumi.Input[Union['PatchDeploymentInstanceFilterArgs', 'PatchDeploymentInstanceFilterArgsDict']]] = None,
             last_execute_time: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            one_time_schedule: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentOneTimeScheduleArgs']]] = None,
-            patch_config: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentPatchConfigArgs']]] = None,
+            one_time_schedule: Optional[pulumi.Input[Union['PatchDeploymentOneTimeScheduleArgs', 'PatchDeploymentOneTimeScheduleArgsDict']]] = None,
+            patch_config: Optional[pulumi.Input[Union['PatchDeploymentPatchConfigArgs', 'PatchDeploymentPatchConfigArgsDict']]] = None,
             patch_deployment_id: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            recurring_schedule: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentRecurringScheduleArgs']]] = None,
-            rollout: Optional[pulumi.Input[pulumi.InputType['PatchDeploymentRolloutArgs']]] = None,
+            recurring_schedule: Optional[pulumi.Input[Union['PatchDeploymentRecurringScheduleArgs', 'PatchDeploymentRecurringScheduleArgsDict']]] = None,
+            rollout: Optional[pulumi.Input[Union['PatchDeploymentRolloutArgs', 'PatchDeploymentRolloutArgsDict']]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'PatchDeployment':
         """
         Get an existing PatchDeployment resource's state with the given name, id, and optional extra
@@ -1053,22 +1058,22 @@ class PatchDeployment(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the patch deployment. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] duration: Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
                digits, terminated by 's'. Example: "3.5s"
-        :param pulumi.Input[pulumi.InputType['PatchDeploymentInstanceFilterArgs']] instance_filter: VM instances to patch.
+        :param pulumi.Input[Union['PatchDeploymentInstanceFilterArgs', 'PatchDeploymentInstanceFilterArgsDict']] instance_filter: VM instances to patch.
                Structure is documented below.
         :param pulumi.Input[str] last_execute_time: The last time a patch job was started by this deployment. Timestamp is in RFC3339 text format.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] name: Unique name for the patch deployment resource in a project.
                The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
-        :param pulumi.Input[pulumi.InputType['PatchDeploymentOneTimeScheduleArgs']] one_time_schedule: Schedule a one-time execution.
-        :param pulumi.Input[pulumi.InputType['PatchDeploymentPatchConfigArgs']] patch_config: Patch configuration that is applied.
+        :param pulumi.Input[Union['PatchDeploymentOneTimeScheduleArgs', 'PatchDeploymentOneTimeScheduleArgsDict']] one_time_schedule: Schedule a one-time execution.
+        :param pulumi.Input[Union['PatchDeploymentPatchConfigArgs', 'PatchDeploymentPatchConfigArgsDict']] patch_config: Patch configuration that is applied.
         :param pulumi.Input[str] patch_deployment_id: A name for the patch deployment in the project. When creating a name the following rules apply:
                * Must contain only lowercase letters, numbers, and hyphens.
                * Must start with a letter.
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the project.
-        :param pulumi.Input[pulumi.InputType['PatchDeploymentRecurringScheduleArgs']] recurring_schedule: Schedule recurring executions.
-        :param pulumi.Input[pulumi.InputType['PatchDeploymentRolloutArgs']] rollout: Rollout strategy of the patch job.
+        :param pulumi.Input[Union['PatchDeploymentRecurringScheduleArgs', 'PatchDeploymentRecurringScheduleArgsDict']] recurring_schedule: Schedule recurring executions.
+        :param pulumi.Input[Union['PatchDeploymentRolloutArgs', 'PatchDeploymentRolloutArgsDict']] rollout: Rollout strategy of the patch job.
         :param pulumi.Input[str] update_time: Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """

@@ -4,17 +4,36 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'NamespaceIamBindingConditionArgs',
+    'NamespaceIamBindingConditionArgsDict',
     'NamespaceIamMemberConditionArgs',
+    'NamespaceIamMemberConditionArgsDict',
     'ServiceIamBindingConditionArgs',
+    'ServiceIamBindingConditionArgsDict',
     'ServiceIamMemberConditionArgs',
+    'ServiceIamMemberConditionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class NamespaceIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    NamespaceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NamespaceIamBindingConditionArgs:
@@ -55,6 +74,14 @@ class NamespaceIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class NamespaceIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    NamespaceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NamespaceIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -94,6 +121,14 @@ class NamespaceIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class ServiceIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    ServiceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -132,6 +167,14 @@ class ServiceIamBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class ServiceIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    ServiceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceIamMemberConditionArgs:

@@ -4,17 +4,43 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'InstanceAcceleratorArgs',
+    'InstanceAcceleratorArgsDict',
     'InstanceCryptoKeyConfigArgs',
+    'InstanceCryptoKeyConfigArgsDict',
     'InstanceEventPublishConfigArgs',
+    'InstanceEventPublishConfigArgsDict',
     'InstanceNetworkConfigArgs',
+    'InstanceNetworkConfigArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class InstanceAcceleratorArgsDict(TypedDict):
+        accelerator_type: pulumi.Input[str]
+        """
+        The type of an accelator for a CDF instance.
+        Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
+        """
+        state: pulumi.Input[str]
+        """
+        The type of an accelator for a CDF instance.
+        Possible values are: `ENABLED`, `DISABLED`.
+        """
+elif False:
+    InstanceAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceAcceleratorArgs:
@@ -57,6 +83,15 @@ class InstanceAcceleratorArgs:
         pulumi.set(self, "state", value)
 
 
+if not MYPY:
+    class InstanceCryptoKeyConfigArgsDict(TypedDict):
+        key_reference: pulumi.Input[str]
+        """
+        The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        """
+elif False:
+    InstanceCryptoKeyConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceCryptoKeyConfigArgs:
     def __init__(__self__, *,
@@ -78,6 +113,19 @@ class InstanceCryptoKeyConfigArgs:
     def key_reference(self, value: pulumi.Input[str]):
         pulumi.set(self, "key_reference", value)
 
+
+if not MYPY:
+    class InstanceEventPublishConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Option to enable Event Publishing.
+        """
+        topic: pulumi.Input[str]
+        """
+        The resource name of the Pub/Sub topic. Format: projects/{projectId}/topics/{topic_id}
+        """
+elif False:
+    InstanceEventPublishConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceEventPublishConfigArgs:
@@ -115,6 +163,22 @@ class InstanceEventPublishConfigArgs:
     def topic(self, value: pulumi.Input[str]):
         pulumi.set(self, "topic", value)
 
+
+if not MYPY:
+    class InstanceNetworkConfigArgsDict(TypedDict):
+        ip_allocation: pulumi.Input[str]
+        """
+        The IP range in CIDR notation to use for the managed Data Fusion instance
+        nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
+        """
+        network: pulumi.Input[str]
+        """
+        Name of the network in the project with which the tenant project
+        will be peered for executing pipelines. In case of shared VPC where the network resides in another host
+        project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
+        """
+elif False:
+    InstanceNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceNetworkConfigArgs:

@@ -4,34 +4,76 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ConnectionProfileAlloydbArgs',
+    'ConnectionProfileAlloydbArgsDict',
     'ConnectionProfileAlloydbSettingsArgs',
+    'ConnectionProfileAlloydbSettingsArgsDict',
     'ConnectionProfileAlloydbSettingsInitialUserArgs',
+    'ConnectionProfileAlloydbSettingsInitialUserArgsDict',
     'ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs',
+    'ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgsDict',
     'ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs',
+    'ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgsDict',
     'ConnectionProfileCloudsqlArgs',
+    'ConnectionProfileCloudsqlArgsDict',
     'ConnectionProfileCloudsqlSettingsArgs',
+    'ConnectionProfileCloudsqlSettingsArgsDict',
     'ConnectionProfileCloudsqlSettingsIpConfigArgs',
+    'ConnectionProfileCloudsqlSettingsIpConfigArgsDict',
     'ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs',
+    'ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgsDict',
     'ConnectionProfileErrorArgs',
+    'ConnectionProfileErrorArgsDict',
     'ConnectionProfileMysqlArgs',
+    'ConnectionProfileMysqlArgsDict',
     'ConnectionProfileMysqlSslArgs',
+    'ConnectionProfileMysqlSslArgsDict',
     'ConnectionProfileOracleArgs',
+    'ConnectionProfileOracleArgsDict',
     'ConnectionProfileOracleForwardSshConnectivityArgs',
+    'ConnectionProfileOracleForwardSshConnectivityArgsDict',
     'ConnectionProfileOraclePrivateConnectivityArgs',
+    'ConnectionProfileOraclePrivateConnectivityArgsDict',
     'ConnectionProfileOracleSslArgs',
+    'ConnectionProfileOracleSslArgsDict',
     'ConnectionProfileOracleStaticServiceIpConnectivityArgs',
+    'ConnectionProfileOracleStaticServiceIpConnectivityArgsDict',
     'ConnectionProfilePostgresqlArgs',
+    'ConnectionProfilePostgresqlArgsDict',
     'ConnectionProfilePostgresqlSslArgs',
+    'ConnectionProfilePostgresqlSslArgsDict',
     'PrivateConnectionErrorArgs',
+    'PrivateConnectionErrorArgsDict',
     'PrivateConnectionVpcPeeringConfigArgs',
+    'PrivateConnectionVpcPeeringConfigArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ConnectionProfileAlloydbArgsDict(TypedDict):
+        cluster_id: pulumi.Input[str]
+        """
+        Required. The AlloyDB cluster ID that this connection profile is associated with.
+        """
+        settings: NotRequired[pulumi.Input['ConnectionProfileAlloydbSettingsArgsDict']]
+        """
+        Immutable. Metadata used to create the destination AlloyDB cluster.
+        Structure is documented below.
+        """
+elif False:
+    ConnectionProfileAlloydbArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionProfileAlloydbArgs:
@@ -72,6 +114,30 @@ class ConnectionProfileAlloydbArgs:
     def settings(self, value: Optional[pulumi.Input['ConnectionProfileAlloydbSettingsArgs']]):
         pulumi.set(self, "settings", value)
 
+
+if not MYPY:
+    class ConnectionProfileAlloydbSettingsArgsDict(TypedDict):
+        initial_user: pulumi.Input['ConnectionProfileAlloydbSettingsInitialUserArgsDict']
+        """
+        Required. Input only. Initial user to setup during cluster creation.
+        Structure is documented below.
+        """
+        vpc_network: pulumi.Input[str]
+        """
+        Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
+        It is specified in the form: 'projects/{project_number}/global/networks/{network_id}'. This is required to create a cluster.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels for the AlloyDB cluster created by DMS.
+        """
+        primary_instance_settings: NotRequired[pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgsDict']]
+        """
+        Settings for the cluster's primary instance
+        Structure is documented below.
+        """
+elif False:
+    ConnectionProfileAlloydbSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionProfileAlloydbSettingsArgs:
@@ -148,6 +214,25 @@ class ConnectionProfileAlloydbSettingsArgs:
         pulumi.set(self, "primary_instance_settings", value)
 
 
+if not MYPY:
+    class ConnectionProfileAlloydbSettingsInitialUserArgsDict(TypedDict):
+        password: pulumi.Input[str]
+        """
+        The initial password for the user.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        user: pulumi.Input[str]
+        """
+        The database username.
+        """
+        password_set: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Output only. Indicates if the initialUser.password field has been set.
+        """
+elif False:
+    ConnectionProfileAlloydbSettingsInitialUserArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionProfileAlloydbSettingsInitialUserArgs:
     def __init__(__self__, *,
@@ -204,6 +289,33 @@ class ConnectionProfileAlloydbSettingsInitialUserArgs:
     def password_set(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "password_set", value)
 
+
+if not MYPY:
+    class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The database username.
+        """
+        machine_config: pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgsDict']
+        """
+        Configuration for the machines that host the underlying database engine.
+        Structure is documented below.
+        """
+        database_flags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels for the AlloyDB primary instance created by DMS.
+        """
+        private_ip: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The private IP address for the Instance. This is the connection endpoint for an end-user application.
+        """
+elif False:
+    ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs:
@@ -294,6 +406,15 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs:
         pulumi.set(self, "private_ip", value)
 
 
+if not MYPY:
+    class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgsDict(TypedDict):
+        cpu_count: pulumi.Input[int]
+        """
+        The number of CPU's in the VM instance.
+        """
+elif False:
+    ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs:
     def __init__(__self__, *,
@@ -315,6 +436,31 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs:
     def cpu_count(self, value: pulumi.Input[int]):
         pulumi.set(self, "cpu_count", value)
 
+
+if not MYPY:
+    class ConnectionProfileCloudsqlArgsDict(TypedDict):
+        cloud_sql_id: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The Cloud SQL instance ID that this connection profile is associated with.
+        """
+        private_ip: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The Cloud SQL database instance's private IP.
+        """
+        public_ip: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The Cloud SQL database instance's public IP.
+        """
+        settings: NotRequired[pulumi.Input['ConnectionProfileCloudsqlSettingsArgsDict']]
+        """
+        Immutable. Metadata used to create the destination Cloud SQL database.
+        Structure is documented below.
+        """
+elif False:
+    ConnectionProfileCloudsqlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionProfileCloudsqlArgs:
@@ -394,6 +540,88 @@ class ConnectionProfileCloudsqlArgs:
     def settings(self, value: Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsArgs']]):
         pulumi.set(self, "settings", value)
 
+
+if not MYPY:
+    class ConnectionProfileCloudsqlSettingsArgsDict(TypedDict):
+        source_id: pulumi.Input[str]
+        """
+        The Database Migration Service source connection profile ID, in the format: projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID
+        """
+        activation_policy: NotRequired[pulumi.Input[str]]
+        """
+        The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'.
+        Possible values are: `ALWAYS`, `NEVER`.
+        """
+        auto_storage_increase: NotRequired[pulumi.Input[bool]]
+        """
+        If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity.
+        If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
+        """
+        cmek_key_name: NotRequired[pulumi.Input[str]]
+        """
+        The KMS key name used for the csql instance.
+        """
+        collation: NotRequired[pulumi.Input[str]]
+        """
+        The Cloud SQL default instance level collation.
+        """
+        data_disk_size_gb: NotRequired[pulumi.Input[str]]
+        """
+        The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
+        """
+        data_disk_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of storage.
+        Possible values are: `PD_SSD`, `PD_HDD`.
+        """
+        database_flags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The database flags passed to the Cloud SQL instance at startup.
+        """
+        database_version: NotRequired[pulumi.Input[str]]
+        """
+        The database engine type and version.
+        Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+        """
+        edition: NotRequired[pulumi.Input[str]]
+        """
+        The edition of the given Cloud SQL instance.
+        Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
+        """
+        ip_config: NotRequired[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigArgsDict']]
+        """
+        The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
+        Structure is documented below.
+        """
+        root_password: NotRequired[pulumi.Input[str]]
+        """
+        Input only. Initial root password.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        root_password_set: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Output only. Indicates If this connection profile root password is stored.
+        """
+        storage_auto_resize_limit: NotRequired[pulumi.Input[str]]
+        """
+        The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+        """
+        tier: NotRequired[pulumi.Input[str]]
+        """
+        The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
+        For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
+        """
+        user_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs.
+        """
+        zone: NotRequired[pulumi.Input[str]]
+        """
+        The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
+        """
+elif False:
+    ConnectionProfileCloudsqlSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionProfileCloudsqlSettingsArgs:
@@ -691,6 +919,29 @@ class ConnectionProfileCloudsqlSettingsArgs:
         pulumi.set(self, "zone", value)
 
 
+if not MYPY:
+    class ConnectionProfileCloudsqlSettingsIpConfigArgsDict(TypedDict):
+        authorized_networks: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgsDict']]]]
+        """
+        The list of external networks that are allowed to connect to the instance using the IP.
+        Structure is documented below.
+        """
+        enable_ipv4: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the instance should be assigned an IPv4 address or not.
+        """
+        private_network: NotRequired[pulumi.Input[str]]
+        """
+        The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default.
+        This setting can be updated, but it cannot be removed after it is set.
+        """
+        require_ssl: NotRequired[pulumi.Input[bool]]
+        """
+        Whether SSL connections over IP should be enforced or not.
+        """
+elif False:
+    ConnectionProfileCloudsqlSettingsIpConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionProfileCloudsqlSettingsIpConfigArgs:
     def __init__(__self__, *,
@@ -766,6 +1017,27 @@ class ConnectionProfileCloudsqlSettingsIpConfigArgs:
         pulumi.set(self, "require_ssl", value)
 
 
+if not MYPY:
+    class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        The allowlisted value for the access control list.
+        """
+        expire_time: NotRequired[pulumi.Input[str]]
+        """
+        The time when this access control entry expires in RFC 3339 format.
+        """
+        label: NotRequired[pulumi.Input[str]]
+        """
+        A label to identify this entry.
+        """
+        ttl: NotRequired[pulumi.Input[str]]
+        """
+        Input only. The time-to-leave of this access control entry.
+        """
+elif False:
+    ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs:
     def __init__(__self__, *,
@@ -836,6 +1108,26 @@ class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs:
         pulumi.set(self, "ttl", value)
 
 
+if not MYPY:
+    class ConnectionProfileErrorArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]
+        """
+        (Output)
+        A list of messages that carry the error details.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human readable message indicating details about the current status.
+        """
+elif False:
+    ConnectionProfileErrorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionProfileErrorArgs:
     def __init__(__self__, *,
@@ -896,6 +1188,43 @@ class ConnectionProfileErrorArgs:
     def message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "message", value)
 
+
+if not MYPY:
+    class ConnectionProfileMysqlArgsDict(TypedDict):
+        host: pulumi.Input[str]
+        """
+        Required. The IP or hostname of the source MySQL database.
+        """
+        password: pulumi.Input[str]
+        """
+        Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+        This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        port: pulumi.Input[int]
+        """
+        Required. The network port of the source MySQL database.
+        """
+        username: pulumi.Input[str]
+        """
+        Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        """
+        cloud_sql_id: NotRequired[pulumi.Input[str]]
+        """
+        If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+        """
+        password_set: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Output only. Indicates If this connection profile password is stored.
+        """
+        ssl: NotRequired[pulumi.Input['ConnectionProfileMysqlSslArgsDict']]
+        """
+        SSL configuration for the destination to connect to the source database.
+        Structure is documented below.
+        """
+elif False:
+    ConnectionProfileMysqlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionProfileMysqlArgs:
@@ -1020,6 +1349,34 @@ class ConnectionProfileMysqlArgs:
         pulumi.set(self, "ssl", value)
 
 
+if not MYPY:
+    class ConnectionProfileMysqlSslArgsDict(TypedDict):
+        ca_certificate: pulumi.Input[str]
+        """
+        Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+        The replica will use this certificate to verify it's connecting to the right host.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        client_certificate: NotRequired[pulumi.Input[str]]
+        """
+        Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
+        If this field is used then the 'clientKey' field is mandatory
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        client_key: NotRequired[pulumi.Input[str]]
+        """
+        Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
+        If this field is used then the 'clientCertificate' field is mandatory.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The current connection profile state.
+        """
+elif False:
+    ConnectionProfileMysqlSslArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionProfileMysqlSslArgs:
     def __init__(__self__, *,
@@ -1103,6 +1460,58 @@ class ConnectionProfileMysqlSslArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class ConnectionProfileOracleArgsDict(TypedDict):
+        database_service: pulumi.Input[str]
+        """
+        Required. Database service for the Oracle connection.
+        """
+        host: pulumi.Input[str]
+        """
+        Required. The IP or hostname of the source Oracle database.
+        """
+        password: pulumi.Input[str]
+        """
+        Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+        This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        port: pulumi.Input[int]
+        """
+        Required. The network port of the source Oracle database.
+        """
+        username: pulumi.Input[str]
+        """
+        Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        """
+        forward_ssh_connectivity: NotRequired[pulumi.Input['ConnectionProfileOracleForwardSshConnectivityArgsDict']]
+        """
+        SSL configuration for the destination to connect to the source database.
+        Structure is documented below.
+        """
+        password_set: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Output only. Indicates If this connection profile password is stored.
+        """
+        private_connectivity: NotRequired[pulumi.Input['ConnectionProfileOraclePrivateConnectivityArgsDict']]
+        """
+        Configuration for using a private network to communicate with the source database
+        Structure is documented below.
+        """
+        ssl: NotRequired[pulumi.Input['ConnectionProfileOracleSslArgsDict']]
+        """
+        SSL configuration for the destination to connect to the source database.
+        Structure is documented below.
+        """
+        static_service_ip_connectivity: NotRequired[pulumi.Input['ConnectionProfileOracleStaticServiceIpConnectivityArgsDict']]
+        """
+        This object has no nested fields.
+        Static IP address connectivity configured on service project.
+        """
+elif False:
+    ConnectionProfileOracleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionProfileOracleArgs:
@@ -1280,6 +1689,33 @@ class ConnectionProfileOracleArgs:
         pulumi.set(self, "static_service_ip_connectivity", value)
 
 
+if not MYPY:
+    class ConnectionProfileOracleForwardSshConnectivityArgsDict(TypedDict):
+        hostname: pulumi.Input[str]
+        """
+        Required. Hostname for the SSH tunnel.
+        """
+        port: pulumi.Input[int]
+        """
+        Port for the SSH tunnel, default value is 22.
+        """
+        username: pulumi.Input[str]
+        """
+        Required. Username for the SSH tunnel.
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Input only. SSH password. Only one of `password` and `private_key` can be configured.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        private_key: NotRequired[pulumi.Input[str]]
+        """
+        Input only. SSH private key. Only one of `password` and `private_key` can be configured.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+elif False:
+    ConnectionProfileOracleForwardSshConnectivityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionProfileOracleForwardSshConnectivityArgs:
     def __init__(__self__, *,
@@ -1368,6 +1804,15 @@ class ConnectionProfileOracleForwardSshConnectivityArgs:
         pulumi.set(self, "private_key", value)
 
 
+if not MYPY:
+    class ConnectionProfileOraclePrivateConnectivityArgsDict(TypedDict):
+        private_connection: pulumi.Input[str]
+        """
+        Required. The resource name (URI) of the private connection.
+        """
+elif False:
+    ConnectionProfileOraclePrivateConnectivityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionProfileOraclePrivateConnectivityArgs:
     def __init__(__self__, *,
@@ -1389,6 +1834,34 @@ class ConnectionProfileOraclePrivateConnectivityArgs:
     def private_connection(self, value: pulumi.Input[str]):
         pulumi.set(self, "private_connection", value)
 
+
+if not MYPY:
+    class ConnectionProfileOracleSslArgsDict(TypedDict):
+        ca_certificate: pulumi.Input[str]
+        """
+        Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+        The replica will use this certificate to verify it's connecting to the right host.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        client_certificate: NotRequired[pulumi.Input[str]]
+        """
+        Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
+        If this field is used then the 'clientKey' field is mandatory
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        client_key: NotRequired[pulumi.Input[str]]
+        """
+        Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
+        If this field is used then the 'clientCertificate' field is mandatory.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The current connection profile state.
+        """
+elif False:
+    ConnectionProfileOracleSslArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionProfileOracleSslArgs:
@@ -1474,11 +1947,59 @@ class ConnectionProfileOracleSslArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ConnectionProfileOracleStaticServiceIpConnectivityArgsDict(TypedDict):
+        pass
+elif False:
+    ConnectionProfileOracleStaticServiceIpConnectivityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionProfileOracleStaticServiceIpConnectivityArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class ConnectionProfilePostgresqlArgsDict(TypedDict):
+        host: pulumi.Input[str]
+        """
+        Required. The IP or hostname of the source MySQL database.
+        """
+        password: pulumi.Input[str]
+        """
+        Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+        This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        port: pulumi.Input[int]
+        """
+        Required. The network port of the source MySQL database.
+        """
+        username: pulumi.Input[str]
+        """
+        Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        """
+        cloud_sql_id: NotRequired[pulumi.Input[str]]
+        """
+        If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+        """
+        network_architecture: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
+        """
+        password_set: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Output only. Indicates If this connection profile password is stored.
+        """
+        ssl: NotRequired[pulumi.Input['ConnectionProfilePostgresqlSslArgsDict']]
+        """
+        SSL configuration for the destination to connect to the source database.
+        Structure is documented below.
+        """
+elif False:
+    ConnectionProfilePostgresqlArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionProfilePostgresqlArgs:
@@ -1621,6 +2142,34 @@ class ConnectionProfilePostgresqlArgs:
         pulumi.set(self, "ssl", value)
 
 
+if not MYPY:
+    class ConnectionProfilePostgresqlSslArgsDict(TypedDict):
+        ca_certificate: pulumi.Input[str]
+        """
+        Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+        The replica will use this certificate to verify it's connecting to the right host.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        client_certificate: NotRequired[pulumi.Input[str]]
+        """
+        Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
+        If this field is used then the 'clientKey' field is mandatory
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        client_key: NotRequired[pulumi.Input[str]]
+        """
+        Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
+        If this field is used then the 'clientCertificate' field is mandatory.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The current connection profile state.
+        """
+elif False:
+    ConnectionProfilePostgresqlSslArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionProfilePostgresqlSslArgs:
     def __init__(__self__, *,
@@ -1705,6 +2254,19 @@ class ConnectionProfilePostgresqlSslArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class PrivateConnectionErrorArgsDict(TypedDict):
+        details: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A list of messages that carry the error details.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        A message containing more information about the error that occurred.
+        """
+elif False:
+    PrivateConnectionErrorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PrivateConnectionErrorArgs:
     def __init__(__self__, *,
@@ -1743,6 +2305,22 @@ class PrivateConnectionErrorArgs:
     def message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "message", value)
 
+
+if not MYPY:
+    class PrivateConnectionVpcPeeringConfigArgsDict(TypedDict):
+        subnet: pulumi.Input[str]
+        """
+        A free subnet for peering. (CIDR of /29)
+
+        - - -
+        """
+        vpc_name: pulumi.Input[str]
+        """
+        Fully qualified name of the VPC that Database Migration Service will peer to.
+        Format: projects/{project}/global/{networks}/{name}
+        """
+elif False:
+    PrivateConnectionVpcPeeringConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PrivateConnectionVpcPeeringConfigArgs:

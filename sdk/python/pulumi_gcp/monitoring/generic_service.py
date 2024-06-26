@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -281,7 +286,7 @@ class GenericService(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_service: Optional[pulumi.Input[pulumi.InputType['GenericServiceBasicServiceArgs']]] = None,
+                 basic_service: Optional[pulumi.Input[Union['GenericServiceBasicServiceArgs', 'GenericServiceBasicServiceArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
@@ -316,12 +321,12 @@ class GenericService(pulumi.CustomResource):
                 "my_key": "my_value",
                 "my_other_key": "my_other_value",
             },
-            basic_service=gcp.monitoring.GenericServiceBasicServiceArgs(
-                service_type="APP_ENGINE",
-                service_labels={
+            basic_service={
+                "serviceType": "APP_ENGINE",
+                "serviceLabels": {
                     "module_id": "another-module-id",
                 },
-            ))
+            })
         ```
 
         ## Import
@@ -350,7 +355,7 @@ class GenericService(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GenericServiceBasicServiceArgs']] basic_service: A well-known service type, defined by its service type and service labels.
+        :param pulumi.Input[Union['GenericServiceBasicServiceArgs', 'GenericServiceBasicServiceArgsDict']] basic_service: A well-known service type, defined by its service type and service labels.
                Valid values of service types and services labels are described at
                https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
                Structure is documented below.
@@ -404,12 +409,12 @@ class GenericService(pulumi.CustomResource):
                 "my_key": "my_value",
                 "my_other_key": "my_other_value",
             },
-            basic_service=gcp.monitoring.GenericServiceBasicServiceArgs(
-                service_type="APP_ENGINE",
-                service_labels={
+            basic_service={
+                "serviceType": "APP_ENGINE",
+                "serviceLabels": {
                     "module_id": "another-module-id",
                 },
-            ))
+            })
         ```
 
         ## Import
@@ -451,7 +456,7 @@ class GenericService(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_service: Optional[pulumi.Input[pulumi.InputType['GenericServiceBasicServiceArgs']]] = None,
+                 basic_service: Optional[pulumi.Input[Union['GenericServiceBasicServiceArgs', 'GenericServiceBasicServiceArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
@@ -484,12 +489,12 @@ class GenericService(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            basic_service: Optional[pulumi.Input[pulumi.InputType['GenericServiceBasicServiceArgs']]] = None,
+            basic_service: Optional[pulumi.Input[Union['GenericServiceBasicServiceArgs', 'GenericServiceBasicServiceArgsDict']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             service_id: Optional[pulumi.Input[str]] = None,
-            telemetries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GenericServiceTelemetryArgs']]]]] = None,
+            telemetries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenericServiceTelemetryArgs', 'GenericServiceTelemetryArgsDict']]]]] = None,
             user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'GenericService':
         """
         Get an existing GenericService resource's state with the given name, id, and optional extra
@@ -498,7 +503,7 @@ class GenericService(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GenericServiceBasicServiceArgs']] basic_service: A well-known service type, defined by its service type and service labels.
+        :param pulumi.Input[Union['GenericServiceBasicServiceArgs', 'GenericServiceBasicServiceArgsDict']] basic_service: A well-known service type, defined by its service type and service labels.
                Valid values of service types and services labels are described at
                https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
                Structure is documented below.
@@ -512,7 +517,7 @@ class GenericService(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GenericServiceTelemetryArgs']]]] telemetries: Configuration for how to query telemetry on a Service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenericServiceTelemetryArgs', 'GenericServiceTelemetryArgsDict']]]] telemetries: Configuration for how to query telemetry on a Service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: Labels which have been used to annotate the service. Label keys must start
                with a letter. Label keys and values may contain lowercase letters,

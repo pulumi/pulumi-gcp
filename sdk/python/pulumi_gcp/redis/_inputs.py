@@ -4,27 +4,67 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ClusterDiscoveryEndpointArgs',
+    'ClusterDiscoveryEndpointArgsDict',
     'ClusterDiscoveryEndpointPscConfigArgs',
+    'ClusterDiscoveryEndpointPscConfigArgsDict',
     'ClusterPscConfigArgs',
+    'ClusterPscConfigArgsDict',
     'ClusterPscConnectionArgs',
+    'ClusterPscConnectionArgsDict',
     'ClusterStateInfoArgs',
+    'ClusterStateInfoArgsDict',
     'ClusterStateInfoUpdateInfoArgs',
+    'ClusterStateInfoUpdateInfoArgsDict',
     'ClusterZoneDistributionConfigArgs',
+    'ClusterZoneDistributionConfigArgsDict',
     'InstanceMaintenancePolicyArgs',
+    'InstanceMaintenancePolicyArgsDict',
     'InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs',
+    'InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict',
     'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs',
+    'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict',
     'InstanceMaintenanceScheduleArgs',
+    'InstanceMaintenanceScheduleArgsDict',
     'InstanceNodeArgs',
+    'InstanceNodeArgsDict',
     'InstancePersistenceConfigArgs',
+    'InstancePersistenceConfigArgsDict',
     'InstanceServerCaCertArgs',
+    'InstanceServerCaCertArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ClusterDiscoveryEndpointArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        Output only. The port number of the exposed Redis endpoint.
+        """
+        psc_config: NotRequired[pulumi.Input['ClusterDiscoveryEndpointPscConfigArgsDict']]
+        """
+        Output only. Customer configuration for where the endpoint
+        is created and accessed from.
+        Structure is documented below.
+        """
+elif False:
+    ClusterDiscoveryEndpointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterDiscoveryEndpointArgs:
@@ -85,6 +125,15 @@ class ClusterDiscoveryEndpointArgs:
         pulumi.set(self, "psc_config", value)
 
 
+if not MYPY:
+    class ClusterDiscoveryEndpointPscConfigArgsDict(TypedDict):
+        network: NotRequired[pulumi.Input[str]]
+        """
+        The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
+        """
+elif False:
+    ClusterDiscoveryEndpointPscConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterDiscoveryEndpointPscConfigArgs:
     def __init__(__self__, *,
@@ -107,6 +156,19 @@ class ClusterDiscoveryEndpointPscConfigArgs:
     def network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network", value)
 
+
+if not MYPY:
+    class ClusterPscConfigArgsDict(TypedDict):
+        network: pulumi.Input[str]
+        """
+        Required. The consumer network where the network address of
+        the discovery endpoint will be reserved, in the form of
+        projects/{network_project_id_or_number}/global/networks/{network_id}.
+
+        - - -
+        """
+elif False:
+    ClusterPscConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterPscConfigArgs:
@@ -137,6 +199,31 @@ class ClusterPscConfigArgs:
     def network(self, value: pulumi.Input[str]):
         pulumi.set(self, "network", value)
 
+
+if not MYPY:
+    class ClusterPscConnectionArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+        """
+        forwarding_rule: NotRequired[pulumi.Input[str]]
+        """
+        Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
+        """
+        network: NotRequired[pulumi.Input[str]]
+        """
+        The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        Output only. The consumer projectId where the forwarding rule is created from.
+        """
+        psc_connection_id: NotRequired[pulumi.Input[str]]
+        """
+        Output only. The PSC connection id of the forwarding rule connected to the service attachment.
+        """
+elif False:
+    ClusterPscConnectionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterPscConnectionArgs:
@@ -225,6 +312,16 @@ class ClusterPscConnectionArgs:
         pulumi.set(self, "psc_connection_id", value)
 
 
+if not MYPY:
+    class ClusterStateInfoArgsDict(TypedDict):
+        update_info: NotRequired[pulumi.Input['ClusterStateInfoUpdateInfoArgsDict']]
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+elif False:
+    ClusterStateInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterStateInfoArgs:
     def __init__(__self__, *,
@@ -249,6 +346,19 @@ class ClusterStateInfoArgs:
     def update_info(self, value: Optional[pulumi.Input['ClusterStateInfoUpdateInfoArgs']]):
         pulumi.set(self, "update_info", value)
 
+
+if not MYPY:
+    class ClusterStateInfoUpdateInfoArgsDict(TypedDict):
+        target_replica_count: NotRequired[pulumi.Input[int]]
+        """
+        Target number of replica nodes per shard.
+        """
+        target_shard_count: NotRequired[pulumi.Input[int]]
+        """
+        Target number of shards for redis cluster.
+        """
+elif False:
+    ClusterStateInfoUpdateInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterStateInfoUpdateInfoArgs:
@@ -288,6 +398,21 @@ class ClusterStateInfoUpdateInfoArgs:
     def target_shard_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "target_shard_count", value)
 
+
+if not MYPY:
+    class ClusterZoneDistributionConfigArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Immutable. The mode for zone distribution for Memorystore Redis cluster.
+        If not provided, MULTI_ZONE will be used as default
+        Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
+        """
+        zone: NotRequired[pulumi.Input[str]]
+        """
+        Immutable. The zone for single zone Memorystore Redis cluster.
+        """
+elif False:
+    ClusterZoneDistributionConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterZoneDistributionConfigArgs:
@@ -331,6 +456,38 @@ class ClusterZoneDistributionConfigArgs:
     def zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone", value)
 
+
+if not MYPY:
+    class InstanceMaintenancePolicyArgsDict(TypedDict):
+        create_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The time when the policy was created.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Description of what this policy is for.
+        Create/Update methods return INVALID_ARGUMENT if the
+        length is greater than 512.
+        """
+        update_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The time when the policy was last updated.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        weekly_maintenance_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict']]]]
+        """
+        Optional. Maintenance window that is applied to resources covered by this policy.
+        Minimum 1. For the current version, the maximum number
+        of weekly_window is expected to be one.
+        Structure is documented below.
+        """
+elif False:
+    InstanceMaintenancePolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceMaintenancePolicyArgs:
@@ -425,6 +582,37 @@ class InstanceMaintenancePolicyArgs:
         pulumi.set(self, "weekly_maintenance_windows", value)
 
 
+if not MYPY:
+    class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict(TypedDict):
+        day: pulumi.Input[str]
+        """
+        Required. The day of week that maintenance updates occur.
+        - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+        - MONDAY: Monday
+        - TUESDAY: Tuesday
+        - WEDNESDAY: Wednesday
+        - THURSDAY: Thursday
+        - FRIDAY: Friday
+        - SATURDAY: Saturday
+        - SUNDAY: Sunday
+        Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        """
+        start_time: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict']
+        """
+        Required. Start time of the window in UTC time.
+        Structure is documented below.
+        """
+        duration: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. Duration of the maintenance window.
+        The current window is fixed at 1 hour.
+        A duration in seconds with up to nine fractional digits,
+        terminated by 's'. Example: "3.5s".
+        """
+elif False:
+    InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
     def __init__(__self__, *,
@@ -506,6 +694,29 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
         pulumi.set(self, "duration", value)
 
 
+if not MYPY:
+    class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict(TypedDict):
+        hours: NotRequired[pulumi.Input[int]]
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        minutes: NotRequired[pulumi.Input[int]]
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
+        seconds: NotRequired[pulumi.Input[int]]
+        """
+        Seconds of minutes of the time. Must normally be from 0 to 59.
+        An API may allow the value 60 if it allows leap-seconds.
+        """
+elif False:
+    InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
     def __init__(__self__, *,
@@ -580,6 +791,33 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
     def seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "seconds", value)
 
+
+if not MYPY:
+    class InstanceMaintenanceScheduleArgsDict(TypedDict):
+        end_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The end time of any upcoming scheduled maintenance for this instance.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        schedule_deadline_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The deadline that the maintenance schedule start time
+        can not go beyond, including reschedule.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The start time of any upcoming scheduled maintenance for this instance.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+elif False:
+    InstanceMaintenanceScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceMaintenanceScheduleArgs:
@@ -656,6 +894,21 @@ class InstanceMaintenanceScheduleArgs:
         pulumi.set(self, "start_time", value)
 
 
+if not MYPY:
+    class InstanceNodeArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Node identifying string. e.g. 'node-0', 'node-1'
+        """
+        zone: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Location of the node.
+        """
+elif False:
+    InstanceNodeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceNodeArgs:
     def __init__(__self__, *,
@@ -698,6 +951,44 @@ class InstanceNodeArgs:
     def zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone", value)
 
+
+if not MYPY:
+    class InstancePersistenceConfigArgsDict(TypedDict):
+        persistence_mode: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+        - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
+        - RDB: RDB based Persistence is enabled.
+        Possible values are: `DISABLED`, `RDB`.
+        """
+        rdb_next_snapshot_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The next time that a snapshot attempt is scheduled to occur.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+        to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        rdb_snapshot_period: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Available snapshot periods for scheduling.
+        - ONE_HOUR:	Snapshot every 1 hour.
+        - SIX_HOURS:	Snapshot every 6 hours.
+        - TWELVE_HOURS:	Snapshot every 12 hours.
+        - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
+        Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
+        """
+        rdb_snapshot_start_time: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Date and time that the first snapshot was/will be attempted,
+        and to which future snapshots will be aligned. If not provided,
+        the current time will be used.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution
+        and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+elif False:
+    InstancePersistenceConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstancePersistenceConfigArgs:
@@ -803,6 +1094,36 @@ class InstancePersistenceConfigArgs:
     def rdb_snapshot_start_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "rdb_snapshot_start_time", value)
 
+
+if not MYPY:
+    class InstanceServerCaCertArgsDict(TypedDict):
+        cert: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The certificate data in PEM format.
+        """
+        create_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The time when the certificate was created.
+        """
+        expire_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The time when the certificate expires.
+        """
+        serial_number: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Serial number, as extracted from the certificate.
+        """
+        sha1_fingerprint: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Sha1 Fingerprint of the certificate.
+        """
+elif False:
+    InstanceServerCaCertArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceServerCaCertArgs:

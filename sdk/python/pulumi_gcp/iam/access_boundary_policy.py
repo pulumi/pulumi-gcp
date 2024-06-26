@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -183,7 +188,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessBoundaryPolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessBoundaryPolicyRuleArgs', 'AccessBoundaryPolicyRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Represents a collection of access boundary policies to apply to a given resource.
@@ -211,36 +216,36 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
             title="chromeos_no_lock",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
-                        require_screen_lock=True,
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                            os_type="DESKTOP_CHROME_OS",
-                        )],
-                    ),
-                    regions=[
+            basic={
+                "conditions": [{
+                    "devicePolicy": {
+                        "requireScreenLock": True,
+                        "osConstraints": [{
+                            "osType": "DESKTOP_CHROME_OS",
+                        }],
+                    },
+                    "regions": [
                         "CH",
                         "IT",
                         "US",
                     ],
-                )],
-            ))
+                }],
+            })
         example = gcp.iam.AccessBoundaryPolicy("example",
             parent=std.urlencode_output(input=project.project_id.apply(lambda project_id: f"cloudresourcemanager.googleapis.com/projects/{project_id}")).apply(lambda invoke: invoke.result),
             name="my-ab-policy",
             display_name="My AB policy",
-            rules=[gcp.iam.AccessBoundaryPolicyRuleArgs(
-                description="AB rule",
-                access_boundary_rule=gcp.iam.AccessBoundaryPolicyRuleAccessBoundaryRuleArgs(
-                    available_resource="*",
-                    available_permissions=["*"],
-                    availability_condition=gcp.iam.AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs(
-                        title="Access level expr",
-                        expression=pulumi.Output.all(project.org_id, test_access.name).apply(lambda org_id, name: f"request.matchAccessLevels('{org_id}', ['{name}'])"),
-                    ),
-                ),
-            )])
+            rules=[{
+                "description": "AB rule",
+                "accessBoundaryRule": {
+                    "availableResource": "*",
+                    "availablePermissions": ["*"],
+                    "availabilityCondition": {
+                        "title": "Access level expr",
+                        "expression": pulumi.Output.all(project.org_id, test_access.name).apply(lambda org_id, name: f"request.matchAccessLevels('{org_id}', ['{name}'])"),
+                    },
+                },
+            }])
         ```
 
         ## Import
@@ -260,7 +265,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the rule.
         :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] parent: The attachment point is identified by its URL-encoded full resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessBoundaryPolicyRuleArgs']]]] rules: Rules to be applied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessBoundaryPolicyRuleArgs', 'AccessBoundaryPolicyRuleArgsDict']]]] rules: Rules to be applied.
                Structure is documented below.
         """
         ...
@@ -295,36 +300,36 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
             title="chromeos_no_lock",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
-                        require_screen_lock=True,
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                            os_type="DESKTOP_CHROME_OS",
-                        )],
-                    ),
-                    regions=[
+            basic={
+                "conditions": [{
+                    "devicePolicy": {
+                        "requireScreenLock": True,
+                        "osConstraints": [{
+                            "osType": "DESKTOP_CHROME_OS",
+                        }],
+                    },
+                    "regions": [
                         "CH",
                         "IT",
                         "US",
                     ],
-                )],
-            ))
+                }],
+            })
         example = gcp.iam.AccessBoundaryPolicy("example",
             parent=std.urlencode_output(input=project.project_id.apply(lambda project_id: f"cloudresourcemanager.googleapis.com/projects/{project_id}")).apply(lambda invoke: invoke.result),
             name="my-ab-policy",
             display_name="My AB policy",
-            rules=[gcp.iam.AccessBoundaryPolicyRuleArgs(
-                description="AB rule",
-                access_boundary_rule=gcp.iam.AccessBoundaryPolicyRuleAccessBoundaryRuleArgs(
-                    available_resource="*",
-                    available_permissions=["*"],
-                    availability_condition=gcp.iam.AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs(
-                        title="Access level expr",
-                        expression=pulumi.Output.all(project.org_id, test_access.name).apply(lambda org_id, name: f"request.matchAccessLevels('{org_id}', ['{name}'])"),
-                    ),
-                ),
-            )])
+            rules=[{
+                "description": "AB rule",
+                "accessBoundaryRule": {
+                    "availableResource": "*",
+                    "availablePermissions": ["*"],
+                    "availabilityCondition": {
+                        "title": "Access level expr",
+                        "expression": pulumi.Output.all(project.org_id, test_access.name).apply(lambda org_id, name: f"request.matchAccessLevels('{org_id}', ['{name}'])"),
+                    },
+                },
+            }])
         ```
 
         ## Import
@@ -357,7 +362,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessBoundaryPolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessBoundaryPolicyRuleArgs', 'AccessBoundaryPolicyRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -390,7 +395,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
             etag: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessBoundaryPolicyRuleArgs']]]]] = None) -> 'AccessBoundaryPolicy':
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessBoundaryPolicyRuleArgs', 'AccessBoundaryPolicyRuleArgsDict']]]]] = None) -> 'AccessBoundaryPolicy':
         """
         Get an existing AccessBoundaryPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -402,7 +407,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] etag: The hash of the resource. Used internally during updates.
         :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] parent: The attachment point is identified by its URL-encoded full resource name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessBoundaryPolicyRuleArgs']]]] rules: Rules to be applied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessBoundaryPolicyRuleArgs', 'AccessBoundaryPolicyRuleArgsDict']]]] rules: Rules to be applied.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

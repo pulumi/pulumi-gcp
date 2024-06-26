@@ -4,21 +4,55 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'PipelineScheduleInfoArgs',
+    'PipelineScheduleInfoArgsDict',
     'PipelineWorkloadArgs',
+    'PipelineWorkloadArgsDict',
     'PipelineWorkloadDataflowFlexTemplateRequestArgs',
+    'PipelineWorkloadDataflowFlexTemplateRequestArgsDict',
     'PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs',
+    'PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgsDict',
     'PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs',
+    'PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgsDict',
     'PipelineWorkloadDataflowLaunchTemplateRequestArgs',
+    'PipelineWorkloadDataflowLaunchTemplateRequestArgsDict',
     'PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs',
+    'PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgsDict',
     'PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs',
+    'PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class PipelineScheduleInfoArgsDict(TypedDict):
+        next_job_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        When the next Scheduler job is going to run.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        schedule: NotRequired[pulumi.Input[str]]
+        """
+        Unix-cron format of the schedule. This information is retrieved from the linked Cloud Scheduler.
+        """
+        time_zone: NotRequired[pulumi.Input[str]]
+        """
+        Timezone ID. This matches the timezone IDs used by the Cloud Scheduler API. If empty, UTC time is assumed.
+        """
+elif False:
+    PipelineScheduleInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineScheduleInfoArgs:
@@ -79,6 +113,23 @@ class PipelineScheduleInfoArgs:
         pulumi.set(self, "time_zone", value)
 
 
+if not MYPY:
+    class PipelineWorkloadArgsDict(TypedDict):
+        dataflow_flex_template_request: NotRequired[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestArgsDict']]
+        """
+        Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
+        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest
+        Structure is documented below.
+        """
+        dataflow_launch_template_request: NotRequired[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestArgsDict']]
+        """
+        Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
+        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest
+        Structure is documented below.
+        """
+elif False:
+    PipelineWorkloadArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineWorkloadArgs:
     def __init__(__self__, *,
@@ -125,6 +176,29 @@ class PipelineWorkloadArgs:
     def dataflow_launch_template_request(self, value: Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestArgs']]):
         pulumi.set(self, "dataflow_launch_template_request", value)
 
+
+if not MYPY:
+    class PipelineWorkloadDataflowFlexTemplateRequestArgsDict(TypedDict):
+        launch_parameter: pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgsDict']
+        """
+        Parameter to launch a job from a Flex Template.
+        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter
+        Structure is documented below.
+        """
+        location: pulumi.Input[str]
+        """
+        The regional endpoint to which to direct the request. For example, us-central1, us-west1.
+        """
+        project_id: pulumi.Input[str]
+        """
+        The ID of the Cloud Platform project that the job belongs to.
+        """
+        validate_only: NotRequired[pulumi.Input[bool]]
+        """
+        If true, the request is validated but not actually executed. Defaults to false.
+        """
+elif False:
+    PipelineWorkloadDataflowFlexTemplateRequestArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineWorkloadDataflowFlexTemplateRequestArgs:
@@ -197,6 +271,44 @@ class PipelineWorkloadDataflowFlexTemplateRequestArgs:
     def validate_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "validate_only", value)
 
+
+if not MYPY:
+    class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgsDict(TypedDict):
+        job_name: pulumi.Input[str]
+        """
+        The job name to use for the created job. For an update job request, the job name should be the same as the existing running job.
+        """
+        container_spec_gcs_path: NotRequired[pulumi.Input[str]]
+        """
+        Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.
+        """
+        environment: NotRequired[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgsDict']]
+        """
+        The runtime environment for the Flex Template job.
+        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment
+        Structure is documented below.
+        """
+        launch_options: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Launch options for this Flex Template job. This is a common set of options across languages and templates. This should not be used to pass job parameters.
+        'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
+        """
+        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        'The parameters for the Flex Template. Example: {"numWorkers":"5"}'
+        'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
+        """
+        transform_name_mappings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        'Use this to pass transform name mappings for streaming update jobs. Example: {"oldTransformName":"newTransformName",...}'
+        'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
+        """
+        update: NotRequired[pulumi.Input[bool]]
+        """
+        Set this to true if you are sending a request to update a running streaming job. When set, the job name should be the same as the running job.
+        """
+elif False:
+    PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs:
@@ -325,6 +437,81 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs:
     def update(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "update", value)
 
+
+if not MYPY:
+    class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgsDict(TypedDict):
+        additional_experiments: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Additional experiment flags for the job.
+        """
+        additional_user_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the labeling restrictions page. An object containing a list of key/value pairs.
+        'Example: { "name": "wrench", "mass": "1kg", "count": "3" }.'
+        'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
+        """
+        enable_streaming_engine: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable Streaming Engine for the job.
+        """
+        flexrs_goal: NotRequired[pulumi.Input[str]]
+        """
+        Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs
+        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexResourceSchedulingGoal
+        Possible values are: `FLEXRS_UNSPECIFIED`, `FLEXRS_SPEED_OPTIMIZED`, `FLEXRS_COST_OPTIMIZED`.
+        """
+        ip_configuration: NotRequired[pulumi.Input[str]]
+        """
+        Configuration for VM IPs.
+        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration
+        Possible values are: `WORKER_IP_UNSPECIFIED`, `WORKER_IP_PUBLIC`, `WORKER_IP_PRIVATE`.
+        """
+        kms_key_name: NotRequired[pulumi.Input[str]]
+        """
+        'Name for the Cloud KMS key for the job. The key format is: projects//locations//keyRings//cryptoKeys/'
+        """
+        machine_type: NotRequired[pulumi.Input[str]]
+        """
+        The machine type to use for the job. Defaults to the value from the template if not specified.
+        """
+        max_workers: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
+        """
+        network: NotRequired[pulumi.Input[str]]
+        """
+        Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
+        """
+        num_workers: NotRequired[pulumi.Input[int]]
+        """
+        The initial number of Compute Engine instances for the job.
+        """
+        service_account_email: NotRequired[pulumi.Input[str]]
+        """
+        The email address of the service account to run the job as.
+        """
+        subnetwork: NotRequired[pulumi.Input[str]]
+        """
+        Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
+        """
+        temp_location: NotRequired[pulumi.Input[str]]
+        """
+        The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
+        """
+        worker_region: NotRequired[pulumi.Input[str]]
+        """
+        The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
+        """
+        worker_zone: NotRequired[pulumi.Input[str]]
+        """
+        The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
+        """
+        zone: NotRequired[pulumi.Input[str]]
+        """
+        The Compute Engine availability zone for launching worker instances to run your pipeline. In the future, workerZone will take precedence.
+        """
+elif False:
+    PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs:
@@ -601,6 +788,33 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs:
         pulumi.set(self, "zone", value)
 
 
+if not MYPY:
+    class PipelineWorkloadDataflowLaunchTemplateRequestArgsDict(TypedDict):
+        project_id: pulumi.Input[str]
+        """
+        The ID of the Cloud Platform project that the job belongs to.
+        """
+        gcs_path: NotRequired[pulumi.Input[str]]
+        """
+        A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with 'gs://'.
+        """
+        launch_parameters: NotRequired[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgsDict']]
+        """
+        The parameters of the template to launch. This should be part of the body of the POST request.
+        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters
+        Structure is documented below.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        The regional endpoint to which to direct the request.
+        """
+        validate_only: NotRequired[pulumi.Input[bool]]
+        """
+        (Optional)
+        """
+elif False:
+    PipelineWorkloadDataflowLaunchTemplateRequestArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineWorkloadDataflowLaunchTemplateRequestArgs:
     def __init__(__self__, *,
@@ -690,6 +904,35 @@ class PipelineWorkloadDataflowLaunchTemplateRequestArgs:
     def validate_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "validate_only", value)
 
+
+if not MYPY:
+    class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgsDict(TypedDict):
+        job_name: pulumi.Input[str]
+        """
+        The job name to use for the created job.
+        """
+        environment: NotRequired[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgsDict']]
+        """
+        The runtime environment for the job.
+        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment
+        Structure is documented below.
+        """
+        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The runtime parameters to pass to the job.
+        'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
+        """
+        transform_name_mapping: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job. Only applicable when updating a pipeline.
+        'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
+        """
+        update: NotRequired[pulumi.Input[bool]]
+        """
+        If set, replace the existing pipeline with the name specified by jobName with this pipeline, preserving state.
+        """
+elif False:
+    PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs:
@@ -784,6 +1027,79 @@ class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs:
     def update(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "update", value)
 
+
+if not MYPY:
+    class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgsDict(TypedDict):
+        additional_experiments: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Additional experiment flags for the job.
+        """
+        additional_user_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the labeling restrictions page. An object containing a list of key/value pairs.
+        'Example: { "name": "wrench", "mass": "1kg", "count": "3" }.'
+        'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
+        """
+        bypass_temp_dir_validation: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to bypass the safety checks for the job's temporary directory. Use with caution.
+        """
+        enable_streaming_engine: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable Streaming Engine for the job.
+        """
+        ip_configuration: NotRequired[pulumi.Input[str]]
+        """
+        Configuration for VM IPs.
+        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration
+        Possible values are: `WORKER_IP_UNSPECIFIED`, `WORKER_IP_PUBLIC`, `WORKER_IP_PRIVATE`.
+        """
+        kms_key_name: NotRequired[pulumi.Input[str]]
+        """
+        'Name for the Cloud KMS key for the job. The key format is: projects//locations//keyRings//cryptoKeys/'
+        """
+        machine_type: NotRequired[pulumi.Input[str]]
+        """
+        The machine type to use for the job. Defaults to the value from the template if not specified.
+        """
+        max_workers: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
+        """
+        network: NotRequired[pulumi.Input[str]]
+        """
+        Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
+        """
+        num_workers: NotRequired[pulumi.Input[int]]
+        """
+        The initial number of Compute Engine instances for the job.
+        """
+        service_account_email: NotRequired[pulumi.Input[str]]
+        """
+        The email address of the service account to run the job as.
+        """
+        subnetwork: NotRequired[pulumi.Input[str]]
+        """
+        Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
+        """
+        temp_location: NotRequired[pulumi.Input[str]]
+        """
+        The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
+        """
+        worker_region: NotRequired[pulumi.Input[str]]
+        """
+        The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
+        """
+        worker_zone: NotRequired[pulumi.Input[str]]
+        """
+        The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
+        """
+        zone: NotRequired[pulumi.Input[str]]
+        """
+        The Compute Engine availability zone for launching worker instances to run your pipeline. In the future, workerZone will take precedence.
+        """
+elif False:
+    PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs:

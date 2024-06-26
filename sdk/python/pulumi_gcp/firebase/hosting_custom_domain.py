@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -632,22 +637,22 @@ class HostingCustomDomain(pulumi.CustomResource):
             name="cloud-run-service-via-hosting",
             location="us-central1",
             ingress="INGRESS_TRAFFIC_ALL",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
-                    image="us-docker.pkg.dev/cloudrun/container/hello",
-                )],
-            ))
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+            })
         default_hosting_version = gcp.firebase.HostingVersion("default",
             site_id=default.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                rewrites=[gcp.firebase.HostingVersionConfigRewriteArgs(
-                    glob="/hello/**",
-                    run=gcp.firebase.HostingVersionConfigRewriteRunArgs(
-                        service_id=default_service.name,
-                        region=default_service.location,
-                    ),
-                )],
-            ))
+            config={
+                "rewrites": [{
+                    "glob": "/hello/**",
+                    "run": {
+                        "serviceId": default_service.name,
+                        "region": default_service.location,
+                    },
+                }],
+            })
         default_hosting_release = gcp.firebase.HostingRelease("default",
             site_id=default.site_id,
             version_name=default_hosting_version.name,
@@ -758,22 +763,22 @@ class HostingCustomDomain(pulumi.CustomResource):
             name="cloud-run-service-via-hosting",
             location="us-central1",
             ingress="INGRESS_TRAFFIC_ALL",
-            template=gcp.cloudrunv2.ServiceTemplateArgs(
-                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
-                    image="us-docker.pkg.dev/cloudrun/container/hello",
-                )],
-            ))
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+            })
         default_hosting_version = gcp.firebase.HostingVersion("default",
             site_id=default.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                rewrites=[gcp.firebase.HostingVersionConfigRewriteArgs(
-                    glob="/hello/**",
-                    run=gcp.firebase.HostingVersionConfigRewriteRunArgs(
-                        service_id=default_service.name,
-                        region=default_service.location,
-                    ),
-                )],
-            ))
+            config={
+                "rewrites": [{
+                    "glob": "/hello/**",
+                    "run": {
+                        "serviceId": default_service.name,
+                        "region": default_service.location,
+                    },
+                }],
+            })
         default_hosting_release = gcp.firebase.HostingRelease("default",
             site_id=default.site_id,
             version_name=default_hosting_version.name,
@@ -878,20 +883,20 @@ class HostingCustomDomain(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cert_preference: Optional[pulumi.Input[str]] = None,
-            certs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostingCustomDomainCertArgs']]]]] = None,
+            certs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostingCustomDomainCertArgs', 'HostingCustomDomainCertArgsDict']]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             custom_domain: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             expire_time: Optional[pulumi.Input[str]] = None,
             host_state: Optional[pulumi.Input[str]] = None,
-            issues: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostingCustomDomainIssueArgs']]]]] = None,
+            issues: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostingCustomDomainIssueArgs', 'HostingCustomDomainIssueArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             ownership_state: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             redirect_target: Optional[pulumi.Input[str]] = None,
-            required_dns_updates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostingCustomDomainRequiredDnsUpdateArgs']]]]] = None,
+            required_dns_updates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostingCustomDomainRequiredDnsUpdateArgs', 'HostingCustomDomainRequiredDnsUpdateArgsDict']]]]] = None,
             site_id: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             wait_dns_verification: Optional[pulumi.Input[bool]] = None) -> 'HostingCustomDomain':
@@ -906,7 +911,7 @@ class HostingCustomDomain(pulumi.CustomResource):
                for your domain name. Spark plan `CustomDomain`s only have access to the
                `GROUPED` cert type, while Blaze plan can select any option.
                Possible values are: `GROUPED`, `PROJECT_GROUPED`, `DEDICATED`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostingCustomDomainCertArgs']]]] certs: The SSL certificate Hosting has for this `CustomDomain`'s domain name.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HostingCustomDomainCertArgs', 'HostingCustomDomainCertArgsDict']]]] certs: The SSL certificate Hosting has for this `CustomDomain`'s domain name.
                For new `CustomDomain`s, this often represents Hosting's intent to create
                a certificate, rather than an actual cert. Check the `state` field for
                more.
@@ -943,7 +948,7 @@ class HostingCustomDomain(pulumi.CustomResource):
                All requests against your `CustomDomain`'s domain name are served by
                Hosting. If the `CustomDomain`'s `OwnershipState` is also `ACTIVE`, Hosting
                serves your Hosting Site's content on the domain name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostingCustomDomainIssueArgs']]]] issues: A set of errors Hosting systems encountered when trying to establish
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HostingCustomDomainIssueArgs', 'HostingCustomDomainIssueArgsDict']]]] issues: A set of errors Hosting systems encountered when trying to establish
                Hosting's ability to serve secure content for your domain name. Resolve
                these issues to ensure your `CustomDomain` behaves properly.
                Structure is documented below.
@@ -990,7 +995,7 @@ class HostingCustomDomain(pulumi.CustomResource):
                specified, Hosting will respond to requests against this CustomDomain
                with an HTTP 301 code, and route traffic to the specified `redirect_target`
                instead.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostingCustomDomainRequiredDnsUpdateArgs']]]] required_dns_updates: A set of updates you should make to the domain name's DNS records to
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HostingCustomDomainRequiredDnsUpdateArgs', 'HostingCustomDomainRequiredDnsUpdateArgsDict']]]] required_dns_updates: A set of updates you should make to the domain name's DNS records to
                let Hosting serve secure content on its behalf.
                Structure is documented below.
         :param pulumi.Input[str] site_id: The ID of the site in which to create this custom domain association.

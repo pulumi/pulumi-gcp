@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -295,7 +300,7 @@ class DataExchangeIamMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['DataExchangeIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['DataExchangeIamMemberConditionArgs', 'DataExchangeIamMemberConditionArgsDict']]] = None,
                  data_exchange_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -323,10 +328,10 @@ class DataExchangeIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.bigqueryanalyticshub.DataExchangeIamPolicy("policy",
             project=data_exchange["project"],
             location=data_exchange["location"],
@@ -368,10 +373,10 @@ class DataExchangeIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.bigqueryanalyticshub.DataExchangeIamPolicy("policy",
             project=data_exchange["project"],
             location=data_exchange["location"],
@@ -496,10 +501,10 @@ class DataExchangeIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.bigqueryanalyticshub.DataExchangeIamPolicy("policy",
             project=data_exchange["project"],
             location=data_exchange["location"],
@@ -541,10 +546,10 @@ class DataExchangeIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.bigqueryanalyticshub.DataExchangeIamPolicy("policy",
             project=data_exchange["project"],
             location=data_exchange["location"],
@@ -633,7 +638,7 @@ class DataExchangeIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['DataExchangeIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['DataExchangeIamMemberConditionArgs', 'DataExchangeIamMemberConditionArgsDict']]] = None,
                  data_exchange_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -671,7 +676,7 @@ class DataExchangeIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['DataExchangeIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['DataExchangeIamMemberConditionArgs', 'DataExchangeIamMemberConditionArgsDict']]] = None,
             data_exchange_id: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,

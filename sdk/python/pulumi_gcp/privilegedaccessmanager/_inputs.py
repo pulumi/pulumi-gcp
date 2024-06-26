@@ -4,25 +4,57 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'EntitlementAdditionalNotificationTargetsArgs',
+    'EntitlementAdditionalNotificationTargetsArgsDict',
     'EntitlementApprovalWorkflowArgs',
+    'EntitlementApprovalWorkflowArgsDict',
     'EntitlementApprovalWorkflowManualApprovalsArgs',
+    'EntitlementApprovalWorkflowManualApprovalsArgsDict',
     'EntitlementApprovalWorkflowManualApprovalsStepArgs',
+    'EntitlementApprovalWorkflowManualApprovalsStepArgsDict',
     'EntitlementApprovalWorkflowManualApprovalsStepApproversArgs',
+    'EntitlementApprovalWorkflowManualApprovalsStepApproversArgsDict',
     'EntitlementEligibleUserArgs',
+    'EntitlementEligibleUserArgsDict',
     'EntitlementPrivilegedAccessArgs',
+    'EntitlementPrivilegedAccessArgsDict',
     'EntitlementPrivilegedAccessGcpIamAccessArgs',
+    'EntitlementPrivilegedAccessGcpIamAccessArgsDict',
     'EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs',
+    'EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgsDict',
     'EntitlementRequesterJustificationConfigArgs',
+    'EntitlementRequesterJustificationConfigArgsDict',
     'EntitlementRequesterJustificationConfigNotMandatoryArgs',
+    'EntitlementRequesterJustificationConfigNotMandatoryArgsDict',
     'EntitlementRequesterJustificationConfigUnstructuredArgs',
+    'EntitlementRequesterJustificationConfigUnstructuredArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class EntitlementAdditionalNotificationTargetsArgsDict(TypedDict):
+        admin_email_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Optional. Additional email addresses to be notified when a principal(requester) is granted access.
+        """
+        requester_email_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Optional. Additional email address to be notified about an eligible entitlement.
+        """
+elif False:
+    EntitlementAdditionalNotificationTargetsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EntitlementAdditionalNotificationTargetsArgs:
@@ -63,6 +95,22 @@ class EntitlementAdditionalNotificationTargetsArgs:
         pulumi.set(self, "requester_email_recipients", value)
 
 
+if not MYPY:
+    class EntitlementApprovalWorkflowArgsDict(TypedDict):
+        manual_approvals: pulumi.Input['EntitlementApprovalWorkflowManualApprovalsArgsDict']
+        """
+        A manual approval workflow where users who are designated as approvers need to call the ApproveGrant/DenyGrant APIs for an Grant.
+        The workflow can consist of multiple serial steps where each step defines who can act as Approver in that step and how many of those users should approve before the workflow moves to the next step.
+        This can be used to create approval workflows such as
+        * Require an approval from any user in a group G.
+        * Require an approval from any k number of users from a Group G.
+        * Require an approval from any user in a group G and then from a user U. etc.
+        A single user might be part of `approvers` ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
+        Structure is documented below.
+        """
+elif False:
+    EntitlementApprovalWorkflowArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EntitlementApprovalWorkflowArgs:
     def __init__(__self__, *,
@@ -98,6 +146,20 @@ class EntitlementApprovalWorkflowArgs:
     def manual_approvals(self, value: pulumi.Input['EntitlementApprovalWorkflowManualApprovalsArgs']):
         pulumi.set(self, "manual_approvals", value)
 
+
+if not MYPY:
+    class EntitlementApprovalWorkflowManualApprovalsArgsDict(TypedDict):
+        steps: pulumi.Input[Sequence[pulumi.Input['EntitlementApprovalWorkflowManualApprovalsStepArgsDict']]]
+        """
+        List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+        Structure is documented below.
+        """
+        require_approver_justification: NotRequired[pulumi.Input[bool]]
+        """
+        Optional. Do the approvers need to provide a justification for their actions?
+        """
+elif False:
+    EntitlementApprovalWorkflowManualApprovalsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EntitlementApprovalWorkflowManualApprovalsArgs:
@@ -138,6 +200,27 @@ class EntitlementApprovalWorkflowManualApprovalsArgs:
     def require_approver_justification(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "require_approver_justification", value)
 
+
+if not MYPY:
+    class EntitlementApprovalWorkflowManualApprovalsStepArgsDict(TypedDict):
+        approvers: pulumi.Input['EntitlementApprovalWorkflowManualApprovalsStepApproversArgsDict']
+        """
+        The potential set of approvers in this step. This list should contain at only one entry.
+        Structure is documented below.
+        """
+        approvals_needed: NotRequired[pulumi.Input[int]]
+        """
+        How many users from the above list need to approve.
+        If there are not enough distinct users in the list above then the workflow
+        will indefinitely block. Should always be greater than 0. Currently 1 is the only
+        supported value.
+        """
+        approver_email_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Optional. Additional email addresses to be notified when a grant is pending approval.
+        """
+elif False:
+    EntitlementApprovalWorkflowManualApprovalsStepArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EntitlementApprovalWorkflowManualApprovalsStepArgs:
@@ -201,6 +284,15 @@ class EntitlementApprovalWorkflowManualApprovalsStepArgs:
         pulumi.set(self, "approver_email_recipients", value)
 
 
+if not MYPY:
+    class EntitlementApprovalWorkflowManualApprovalsStepApproversArgsDict(TypedDict):
+        principals: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+        """
+elif False:
+    EntitlementApprovalWorkflowManualApprovalsStepApproversArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EntitlementApprovalWorkflowManualApprovalsStepApproversArgs:
     def __init__(__self__, *,
@@ -223,6 +315,15 @@ class EntitlementApprovalWorkflowManualApprovalsStepApproversArgs:
         pulumi.set(self, "principals", value)
 
 
+if not MYPY:
+    class EntitlementEligibleUserArgsDict(TypedDict):
+        principals: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at "https://cloud.google.com/iam/docs/principal-identifiers#v1"
+        """
+elif False:
+    EntitlementEligibleUserArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EntitlementEligibleUserArgs:
     def __init__(__self__, *,
@@ -244,6 +345,16 @@ class EntitlementEligibleUserArgs:
     def principals(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "principals", value)
 
+
+if not MYPY:
+    class EntitlementPrivilegedAccessArgsDict(TypedDict):
+        gcp_iam_access: pulumi.Input['EntitlementPrivilegedAccessGcpIamAccessArgsDict']
+        """
+        GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+        Structure is documented below.
+        """
+elif False:
+    EntitlementPrivilegedAccessArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EntitlementPrivilegedAccessArgs:
@@ -268,6 +379,24 @@ class EntitlementPrivilegedAccessArgs:
     def gcp_iam_access(self, value: pulumi.Input['EntitlementPrivilegedAccessGcpIamAccessArgs']):
         pulumi.set(self, "gcp_iam_access", value)
 
+
+if not MYPY:
+    class EntitlementPrivilegedAccessGcpIamAccessArgsDict(TypedDict):
+        resource: pulumi.Input[str]
+        """
+        Name of the resource.
+        """
+        resource_type: pulumi.Input[str]
+        """
+        The type of this resource.
+        """
+        role_bindings: pulumi.Input[Sequence[pulumi.Input['EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgsDict']]]
+        """
+        Role bindings to be created on successful grant.
+        Structure is documented below.
+        """
+elif False:
+    EntitlementPrivilegedAccessGcpIamAccessArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EntitlementPrivilegedAccessGcpIamAccessArgs:
@@ -323,6 +452,20 @@ class EntitlementPrivilegedAccessGcpIamAccessArgs:
         pulumi.set(self, "role_bindings", value)
 
 
+if not MYPY:
+    class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgsDict(TypedDict):
+        role: pulumi.Input[str]
+        """
+        IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+        """
+        condition_expression: NotRequired[pulumi.Input[str]]
+        """
+        The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
+        https://cloud.google.com/iam/docs/conditions-overview#attributes.
+        """
+elif False:
+    EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs:
     def __init__(__self__, *,
@@ -362,6 +505,21 @@ class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs:
     def condition_expression(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "condition_expression", value)
 
+
+if not MYPY:
+    class EntitlementRequesterJustificationConfigArgsDict(TypedDict):
+        not_mandatory: NotRequired[pulumi.Input['EntitlementRequesterJustificationConfigNotMandatoryArgsDict']]
+        """
+        The justification is not mandatory but can be provided in any of the supported formats.
+        """
+        unstructured: NotRequired[pulumi.Input['EntitlementRequesterJustificationConfigUnstructuredArgsDict']]
+        """
+        The requester has to provide a justification in the form of free flowing text.
+
+        - - -
+        """
+elif False:
+    EntitlementRequesterJustificationConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EntitlementRequesterJustificationConfigArgs:
@@ -406,11 +564,23 @@ class EntitlementRequesterJustificationConfigArgs:
         pulumi.set(self, "unstructured", value)
 
 
+if not MYPY:
+    class EntitlementRequesterJustificationConfigNotMandatoryArgsDict(TypedDict):
+        pass
+elif False:
+    EntitlementRequesterJustificationConfigNotMandatoryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EntitlementRequesterJustificationConfigNotMandatoryArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class EntitlementRequesterJustificationConfigUnstructuredArgsDict(TypedDict):
+        pass
+elif False:
+    EntitlementRequesterJustificationConfigUnstructuredArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EntitlementRequesterJustificationConfigUnstructuredArgs:

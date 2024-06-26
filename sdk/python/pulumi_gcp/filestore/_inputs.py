@@ -4,16 +4,51 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'InstanceFileSharesArgs',
+    'InstanceFileSharesArgsDict',
     'InstanceFileSharesNfsExportOptionArgs',
+    'InstanceFileSharesNfsExportOptionArgsDict',
     'InstanceNetworkArgs',
+    'InstanceNetworkArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class InstanceFileSharesArgsDict(TypedDict):
+        capacity_gb: pulumi.Input[int]
+        """
+        File share capacity in GiB. This must be at least 1024 GiB
+        for the standard tier, or 2560 GiB for the premium tier.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the fileshare (16 characters or less)
+        """
+        nfs_export_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgsDict']]]]
+        """
+        Nfs Export Options. There is a limit of 10 export options per file share.
+        Structure is documented below.
+        """
+        source_backup: NotRequired[pulumi.Input[str]]
+        """
+        The resource name of the backup, in the format
+        projects/{projectId}/locations/{locationId}/backups/{backupId},
+        that this file share has been restored from.
+        """
+elif False:
+    InstanceFileSharesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFileSharesArgs:
@@ -91,6 +126,43 @@ class InstanceFileSharesArgs:
     def source_backup(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_backup", value)
 
+
+if not MYPY:
+    class InstanceFileSharesNfsExportOptionArgsDict(TypedDict):
+        access_mode: NotRequired[pulumi.Input[str]]
+        """
+        Either READ_ONLY, for allowing only read requests on the exported directory,
+        or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
+        Default value is `READ_WRITE`.
+        Possible values are: `READ_ONLY`, `READ_WRITE`.
+        """
+        anon_gid: NotRequired[pulumi.Input[int]]
+        """
+        An integer representing the anonymous group id with a default value of 65534.
+        Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+        if this field is specified for other squashMode settings.
+        """
+        anon_uid: NotRequired[pulumi.Input[int]]
+        """
+        An integer representing the anonymous user id with a default value of 65534.
+        Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+        if this field is specified for other squashMode settings.
+        """
+        ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
+        Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
+        The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+        """
+        squash_mode: NotRequired[pulumi.Input[str]]
+        """
+        Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
+        for not allowing root access. The default is NO_ROOT_SQUASH.
+        Default value is `NO_ROOT_SQUASH`.
+        Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
+        """
+elif False:
+    InstanceFileSharesNfsExportOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceFileSharesNfsExportOptionArgs:
@@ -202,6 +274,42 @@ class InstanceFileSharesNfsExportOptionArgs:
     def squash_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "squash_mode", value)
 
+
+if not MYPY:
+    class InstanceNetworkArgsDict(TypedDict):
+        modes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        IP versions for which the instance has
+        IP addresses assigned.
+        Each value may be one of: `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, `MODE_IPV6`.
+        """
+        network: pulumi.Input[str]
+        """
+        The name of the GCE VPC network to which the
+        instance is connected.
+        """
+        connect_mode: NotRequired[pulumi.Input[str]]
+        """
+        The network connect mode of the Filestore instance.
+        If not provided, the connect mode defaults to
+        DIRECT_PEERING.
+        Default value is `DIRECT_PEERING`.
+        Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
+
+        - - -
+        """
+        ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (Output)
+        A list of IPv4 or IPv6 addresses.
+        """
+        reserved_ip_range: NotRequired[pulumi.Input[str]]
+        """
+        A /29 CIDR block that identifies the range of IP
+        addresses reserved for this instance.
+        """
+elif False:
+    InstanceNetworkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceNetworkArgs:

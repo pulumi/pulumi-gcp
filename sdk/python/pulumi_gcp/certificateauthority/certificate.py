@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -582,7 +587,7 @@ class Certificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  certificate_template: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['CertificateConfigArgs', 'CertificateConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -615,34 +620,34 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             pool=default.name,
             certificate_authority_id="my-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "organization": "HashiCorp",
+                        "commonName": "my-certificate-authority",
+                    },
+                    "subjectAltName": {
+                        "dnsNames": ["hashicorp.com"],
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": True,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
@@ -653,53 +658,53 @@ class Certificate(pulumi.CustomResource):
             certificate_authority=default_authority.certificate_authority_id,
             lifetime="86000s",
             name="cert-1",
-            config=gcp.certificateauthority.CertificateConfigArgs(
-                subject_config=gcp.certificateauthority.CertificateConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.CertificateConfigSubjectConfigSubjectArgs(
-                        common_name="san1.example.com",
-                        country_code="us",
-                        organization="google",
-                        organizational_unit="enterprise",
-                        locality="mountain view",
-                        province="california",
-                        street_address="1600 amphitheatre parkway",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.CertificateConfigSubjectConfigSubjectAltNameArgs(
-                        email_addresses=["email@example.com"],
-                        ip_addresses=["127.0.0.1"],
-                        uris=["http://www.ietf.org/rfc/rfc3986.txt"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.CertificateConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.CertificateConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=False,
-                        ),
-                    ),
-                    name_constraints=gcp.certificateauthority.CertificateConfigX509ConfigNameConstraintsArgs(
-                        critical=True,
-                        permitted_dns_names=["*.example.com"],
-                        excluded_dns_names=["*.deny.example.com"],
-                        permitted_ip_ranges=["10.0.0.0/8"],
-                        excluded_ip_ranges=["10.1.1.0/24"],
-                        permitted_email_addresses=[".example.com"],
-                        excluded_email_addresses=[".deny.example.com"],
-                        permitted_uris=[".example.com"],
-                        excluded_uris=[".deny.example.com"],
-                    ),
-                ),
-                public_key=gcp.certificateauthority.CertificateConfigPublicKeyArgs(
-                    format="PEM",
-                    key=std.base64encode_output(input=cert_key.public_key_pem).apply(lambda invoke: invoke.result),
-                ),
-            ))
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "commonName": "san1.example.com",
+                        "countryCode": "us",
+                        "organization": "google",
+                        "organizationalUnit": "enterprise",
+                        "locality": "mountain view",
+                        "province": "california",
+                        "streetAddress": "1600 amphitheatre parkway",
+                    },
+                    "subjectAltName": {
+                        "emailAddresses": ["email@example.com"],
+                        "ipAddresses": ["127.0.0.1"],
+                        "uris": ["http://www.ietf.org/rfc/rfc3986.txt"],
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": False,
+                        },
+                    },
+                    "nameConstraints": {
+                        "critical": True,
+                        "permittedDnsNames": ["*.example.com"],
+                        "excludedDnsNames": ["*.deny.example.com"],
+                        "permittedIpRanges": ["10.0.0.0/8"],
+                        "excludedIpRanges": ["10.1.1.0/24"],
+                        "permittedEmailAddresses": [".example.com"],
+                        "excludedEmailAddresses": [".deny.example.com"],
+                        "permittedUris": [".example.com"],
+                        "excludedUris": [".deny.example.com"],
+                    },
+                },
+                "publicKey": {
+                    "format": "PEM",
+                    "key": std.base64encode_output(input=cert_key.public_key_pem).apply(lambda invoke: invoke.result),
+                },
+            })
         ```
         ### Privateca Certificate With Template
 
@@ -716,107 +721,107 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             name="my-certificate-template",
             description="An updated sample certificate template",
-            identity_constraints=gcp.certificateauthority.CertificateTemplateIdentityConstraintsArgs(
-                allow_subject_alt_names_passthrough=True,
-                allow_subject_passthrough=True,
-                cel_expression=gcp.certificateauthority.CertificateTemplateIdentityConstraintsCelExpressionArgs(
-                    description="Always true",
-                    expression="true",
-                    location="any.file.anywhere",
-                    title="Sample expression",
-                ),
-            ),
-            passthrough_extensions=gcp.certificateauthority.CertificateTemplatePassthroughExtensionsArgs(
-                additional_extensions=[gcp.certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs(
-                    object_id_paths=[
+            identity_constraints={
+                "allowSubjectAltNamesPassthrough": True,
+                "allowSubjectPassthrough": True,
+                "celExpression": {
+                    "description": "Always true",
+                    "expression": "true",
+                    "location": "any.file.anywhere",
+                    "title": "Sample expression",
+                },
+            },
+            passthrough_extensions={
+                "additionalExtensions": [{
+                    "objectIdPaths": [
                         1,
                         6,
                     ],
-                )],
-                known_extensions=["EXTENDED_KEY_USAGE"],
-            ),
-            predefined_values=gcp.certificateauthority.CertificateTemplatePredefinedValuesArgs(
-                additional_extensions=[gcp.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionArgs(
-                    object_id=gcp.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs(
-                        object_id_paths=[
+                }],
+                "knownExtensions": ["EXTENDED_KEY_USAGE"],
+            },
+            predefined_values={
+                "additionalExtensions": [{
+                    "objectId": {
+                        "objectIdPaths": [
                             1,
                             6,
                         ],
-                    ),
-                    value="c3RyaW5nCg==",
-                    critical=True,
-                )],
-                aia_ocsp_servers=["string"],
-                ca_options=gcp.certificateauthority.CertificateTemplatePredefinedValuesCaOptionsArgs(
-                    is_ca=False,
-                    max_issuer_path_length=6,
-                ),
-                key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageArgs(
-                    base_key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs(
-                        cert_sign=False,
-                        content_commitment=True,
-                        crl_sign=False,
-                        data_encipherment=True,
-                        decipher_only=True,
-                        digital_signature=True,
-                        encipher_only=True,
-                        key_agreement=True,
-                        key_encipherment=True,
-                    ),
-                    extended_key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs(
-                        client_auth=True,
-                        code_signing=True,
-                        email_protection=True,
-                        ocsp_signing=True,
-                        server_auth=True,
-                        time_stamping=True,
-                    ),
-                    unknown_extended_key_usages=[gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs(
-                        object_id_paths=[
+                    },
+                    "value": "c3RyaW5nCg==",
+                    "critical": True,
+                }],
+                "aiaOcspServers": ["string"],
+                "caOptions": {
+                    "isCa": False,
+                    "maxIssuerPathLength": 6,
+                },
+                "keyUsage": {
+                    "baseKeyUsage": {
+                        "certSign": False,
+                        "contentCommitment": True,
+                        "crlSign": False,
+                        "dataEncipherment": True,
+                        "decipherOnly": True,
+                        "digitalSignature": True,
+                        "encipherOnly": True,
+                        "keyAgreement": True,
+                        "keyEncipherment": True,
+                    },
+                    "extendedKeyUsage": {
+                        "clientAuth": True,
+                        "codeSigning": True,
+                        "emailProtection": True,
+                        "ocspSigning": True,
+                        "serverAuth": True,
+                        "timeStamping": True,
+                    },
+                    "unknownExtendedKeyUsages": [{
+                        "objectIdPaths": [
                             1,
                             6,
                         ],
-                    )],
-                ),
-                policy_ids=[gcp.certificateauthority.CertificateTemplatePredefinedValuesPolicyIdArgs(
-                    object_id_paths=[
+                    }],
+                },
+                "policyIds": [{
+                    "objectIdPaths": [
                         1,
                         6,
                     ],
-                )],
-            ))
+                }],
+            })
         default_authority = gcp.certificateauthority.Authority("default",
             location="us-central1",
             pool=default.name,
             certificate_authority_id="my-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=False,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "organization": "HashiCorp",
+                        "commonName": "my-certificate-authority",
+                    },
+                    "subjectAltName": {
+                        "dnsNames": ["hashicorp.com"],
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": False,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
@@ -844,34 +849,34 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             pool=default.name,
             certificate_authority_id="my-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=False,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "organization": "HashiCorp",
+                        "commonName": "my-certificate-authority",
+                    },
+                    "subjectAltName": {
+                        "dnsNames": ["hashicorp.com"],
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": False,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
@@ -898,36 +903,36 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             pool=default.name,
             certificate_authority_id="my-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            digital_signature=True,
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "organization": "HashiCorp",
+                        "commonName": "my-certificate-authority",
+                    },
+                    "subjectAltName": {
+                        "dnsNames": ["hashicorp.com"],
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "digitalSignature": True,
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": True,
+                        },
+                    },
+                },
+            },
             lifetime="86400s",
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
@@ -936,37 +941,37 @@ class Certificate(pulumi.CustomResource):
             pool=default.name,
             name="my-certificate",
             lifetime="860s",
-            config=gcp.certificateauthority.CertificateConfigArgs(
-                subject_config=gcp.certificateauthority.CertificateConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.CertificateConfigSubjectConfigSubjectArgs(
-                        common_name="san1.example.com",
-                        country_code="us",
-                        organization="google",
-                        organizational_unit="enterprise",
-                        locality="mountain view",
-                        province="california",
-                        street_address="1600 amphitheatre parkway",
-                        postal_code="94109",
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.CertificateConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.CertificateConfigX509ConfigCaOptionsArgs(
-                        is_ca=False,
-                    ),
-                    key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-                public_key=gcp.certificateauthority.CertificateConfigPublicKeyArgs(
-                    format="PEM",
-                    key=std.filebase64(input="test-fixtures/rsa_public.pem").result,
-                ),
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "commonName": "san1.example.com",
+                        "countryCode": "us",
+                        "organization": "google",
+                        "organizationalUnit": "enterprise",
+                        "locality": "mountain view",
+                        "province": "california",
+                        "streetAddress": "1600 amphitheatre parkway",
+                        "postalCode": "94109",
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": False,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": True,
+                        },
+                    },
+                },
+                "publicKey": {
+                    "format": "PEM",
+                    "key": std.filebase64(input="test-fixtures/rsa_public.pem").result,
+                },
+            },
             opts = pulumi.ResourceOptions(depends_on=[default_authority]))
         ```
         ### Privateca Certificate Custom Ski
@@ -984,36 +989,36 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             pool=default.name,
             certificate_authority_id="my-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            digital_signature=True,
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "organization": "HashiCorp",
+                        "commonName": "my-certificate-authority",
+                    },
+                    "subjectAltName": {
+                        "dnsNames": ["hashicorp.com"],
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "digitalSignature": True,
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": True,
+                        },
+                    },
+                },
+            },
             lifetime="86400s",
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
@@ -1022,40 +1027,40 @@ class Certificate(pulumi.CustomResource):
             pool=default.name,
             name="my-certificate",
             lifetime="860s",
-            config=gcp.certificateauthority.CertificateConfigArgs(
-                subject_config=gcp.certificateauthority.CertificateConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.CertificateConfigSubjectConfigSubjectArgs(
-                        common_name="san1.example.com",
-                        country_code="us",
-                        organization="google",
-                        organizational_unit="enterprise",
-                        locality="mountain view",
-                        province="california",
-                        street_address="1600 amphitheatre parkway",
-                        postal_code="94109",
-                    ),
-                ),
-                subject_key_id=gcp.certificateauthority.CertificateConfigSubjectKeyIdArgs(
-                    key_id="4cf3372289b1d411b999dbb9ebcd44744b6b2fca",
-                ),
-                x509_config=gcp.certificateauthority.CertificateConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.CertificateConfigX509ConfigCaOptionsArgs(
-                        is_ca=False,
-                    ),
-                    key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-                public_key=gcp.certificateauthority.CertificateConfigPublicKeyArgs(
-                    format="PEM",
-                    key=std.filebase64(input="test-fixtures/rsa_public.pem").result,
-                ),
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "commonName": "san1.example.com",
+                        "countryCode": "us",
+                        "organization": "google",
+                        "organizationalUnit": "enterprise",
+                        "locality": "mountain view",
+                        "province": "california",
+                        "streetAddress": "1600 amphitheatre parkway",
+                        "postalCode": "94109",
+                    },
+                },
+                "subjectKeyId": {
+                    "keyId": "4cf3372289b1d411b999dbb9ebcd44744b6b2fca",
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": False,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": True,
+                        },
+                    },
+                },
+                "publicKey": {
+                    "format": "PEM",
+                    "key": std.filebase64(input="test-fixtures/rsa_public.pem").result,
+                },
+            },
             opts = pulumi.ResourceOptions(depends_on=[default_authority]))
         ```
 
@@ -1094,7 +1099,7 @@ class Certificate(pulumi.CustomResource):
                the caller must have the necessary permission to use this template. If this is
                omitted, no template will be used. This template must be in the same location
                as the Certificate.
-        :param pulumi.Input[pulumi.InputType['CertificateConfigArgs']] config: The config used to create a self-signed X.509 certificate or CSR.
+        :param pulumi.Input[Union['CertificateConfigArgs', 'CertificateConfigArgsDict']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
                
@@ -1144,34 +1149,34 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             pool=default.name,
             certificate_authority_id="my-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "organization": "HashiCorp",
+                        "commonName": "my-certificate-authority",
+                    },
+                    "subjectAltName": {
+                        "dnsNames": ["hashicorp.com"],
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": True,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
@@ -1182,53 +1187,53 @@ class Certificate(pulumi.CustomResource):
             certificate_authority=default_authority.certificate_authority_id,
             lifetime="86000s",
             name="cert-1",
-            config=gcp.certificateauthority.CertificateConfigArgs(
-                subject_config=gcp.certificateauthority.CertificateConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.CertificateConfigSubjectConfigSubjectArgs(
-                        common_name="san1.example.com",
-                        country_code="us",
-                        organization="google",
-                        organizational_unit="enterprise",
-                        locality="mountain view",
-                        province="california",
-                        street_address="1600 amphitheatre parkway",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.CertificateConfigSubjectConfigSubjectAltNameArgs(
-                        email_addresses=["email@example.com"],
-                        ip_addresses=["127.0.0.1"],
-                        uris=["http://www.ietf.org/rfc/rfc3986.txt"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.CertificateConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.CertificateConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=False,
-                        ),
-                    ),
-                    name_constraints=gcp.certificateauthority.CertificateConfigX509ConfigNameConstraintsArgs(
-                        critical=True,
-                        permitted_dns_names=["*.example.com"],
-                        excluded_dns_names=["*.deny.example.com"],
-                        permitted_ip_ranges=["10.0.0.0/8"],
-                        excluded_ip_ranges=["10.1.1.0/24"],
-                        permitted_email_addresses=[".example.com"],
-                        excluded_email_addresses=[".deny.example.com"],
-                        permitted_uris=[".example.com"],
-                        excluded_uris=[".deny.example.com"],
-                    ),
-                ),
-                public_key=gcp.certificateauthority.CertificateConfigPublicKeyArgs(
-                    format="PEM",
-                    key=std.base64encode_output(input=cert_key.public_key_pem).apply(lambda invoke: invoke.result),
-                ),
-            ))
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "commonName": "san1.example.com",
+                        "countryCode": "us",
+                        "organization": "google",
+                        "organizationalUnit": "enterprise",
+                        "locality": "mountain view",
+                        "province": "california",
+                        "streetAddress": "1600 amphitheatre parkway",
+                    },
+                    "subjectAltName": {
+                        "emailAddresses": ["email@example.com"],
+                        "ipAddresses": ["127.0.0.1"],
+                        "uris": ["http://www.ietf.org/rfc/rfc3986.txt"],
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": False,
+                        },
+                    },
+                    "nameConstraints": {
+                        "critical": True,
+                        "permittedDnsNames": ["*.example.com"],
+                        "excludedDnsNames": ["*.deny.example.com"],
+                        "permittedIpRanges": ["10.0.0.0/8"],
+                        "excludedIpRanges": ["10.1.1.0/24"],
+                        "permittedEmailAddresses": [".example.com"],
+                        "excludedEmailAddresses": [".deny.example.com"],
+                        "permittedUris": [".example.com"],
+                        "excludedUris": [".deny.example.com"],
+                    },
+                },
+                "publicKey": {
+                    "format": "PEM",
+                    "key": std.base64encode_output(input=cert_key.public_key_pem).apply(lambda invoke: invoke.result),
+                },
+            })
         ```
         ### Privateca Certificate With Template
 
@@ -1245,107 +1250,107 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             name="my-certificate-template",
             description="An updated sample certificate template",
-            identity_constraints=gcp.certificateauthority.CertificateTemplateIdentityConstraintsArgs(
-                allow_subject_alt_names_passthrough=True,
-                allow_subject_passthrough=True,
-                cel_expression=gcp.certificateauthority.CertificateTemplateIdentityConstraintsCelExpressionArgs(
-                    description="Always true",
-                    expression="true",
-                    location="any.file.anywhere",
-                    title="Sample expression",
-                ),
-            ),
-            passthrough_extensions=gcp.certificateauthority.CertificateTemplatePassthroughExtensionsArgs(
-                additional_extensions=[gcp.certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs(
-                    object_id_paths=[
+            identity_constraints={
+                "allowSubjectAltNamesPassthrough": True,
+                "allowSubjectPassthrough": True,
+                "celExpression": {
+                    "description": "Always true",
+                    "expression": "true",
+                    "location": "any.file.anywhere",
+                    "title": "Sample expression",
+                },
+            },
+            passthrough_extensions={
+                "additionalExtensions": [{
+                    "objectIdPaths": [
                         1,
                         6,
                     ],
-                )],
-                known_extensions=["EXTENDED_KEY_USAGE"],
-            ),
-            predefined_values=gcp.certificateauthority.CertificateTemplatePredefinedValuesArgs(
-                additional_extensions=[gcp.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionArgs(
-                    object_id=gcp.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs(
-                        object_id_paths=[
+                }],
+                "knownExtensions": ["EXTENDED_KEY_USAGE"],
+            },
+            predefined_values={
+                "additionalExtensions": [{
+                    "objectId": {
+                        "objectIdPaths": [
                             1,
                             6,
                         ],
-                    ),
-                    value="c3RyaW5nCg==",
-                    critical=True,
-                )],
-                aia_ocsp_servers=["string"],
-                ca_options=gcp.certificateauthority.CertificateTemplatePredefinedValuesCaOptionsArgs(
-                    is_ca=False,
-                    max_issuer_path_length=6,
-                ),
-                key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageArgs(
-                    base_key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs(
-                        cert_sign=False,
-                        content_commitment=True,
-                        crl_sign=False,
-                        data_encipherment=True,
-                        decipher_only=True,
-                        digital_signature=True,
-                        encipher_only=True,
-                        key_agreement=True,
-                        key_encipherment=True,
-                    ),
-                    extended_key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs(
-                        client_auth=True,
-                        code_signing=True,
-                        email_protection=True,
-                        ocsp_signing=True,
-                        server_auth=True,
-                        time_stamping=True,
-                    ),
-                    unknown_extended_key_usages=[gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs(
-                        object_id_paths=[
+                    },
+                    "value": "c3RyaW5nCg==",
+                    "critical": True,
+                }],
+                "aiaOcspServers": ["string"],
+                "caOptions": {
+                    "isCa": False,
+                    "maxIssuerPathLength": 6,
+                },
+                "keyUsage": {
+                    "baseKeyUsage": {
+                        "certSign": False,
+                        "contentCommitment": True,
+                        "crlSign": False,
+                        "dataEncipherment": True,
+                        "decipherOnly": True,
+                        "digitalSignature": True,
+                        "encipherOnly": True,
+                        "keyAgreement": True,
+                        "keyEncipherment": True,
+                    },
+                    "extendedKeyUsage": {
+                        "clientAuth": True,
+                        "codeSigning": True,
+                        "emailProtection": True,
+                        "ocspSigning": True,
+                        "serverAuth": True,
+                        "timeStamping": True,
+                    },
+                    "unknownExtendedKeyUsages": [{
+                        "objectIdPaths": [
                             1,
                             6,
                         ],
-                    )],
-                ),
-                policy_ids=[gcp.certificateauthority.CertificateTemplatePredefinedValuesPolicyIdArgs(
-                    object_id_paths=[
+                    }],
+                },
+                "policyIds": [{
+                    "objectIdPaths": [
                         1,
                         6,
                     ],
-                )],
-            ))
+                }],
+            })
         default_authority = gcp.certificateauthority.Authority("default",
             location="us-central1",
             pool=default.name,
             certificate_authority_id="my-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=False,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "organization": "HashiCorp",
+                        "commonName": "my-certificate-authority",
+                    },
+                    "subjectAltName": {
+                        "dnsNames": ["hashicorp.com"],
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": False,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
@@ -1373,34 +1378,34 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             pool=default.name,
             certificate_authority_id="my-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=False,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "organization": "HashiCorp",
+                        "commonName": "my-certificate-authority",
+                    },
+                    "subjectAltName": {
+                        "dnsNames": ["hashicorp.com"],
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": False,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
@@ -1427,36 +1432,36 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             pool=default.name,
             certificate_authority_id="my-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            digital_signature=True,
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "organization": "HashiCorp",
+                        "commonName": "my-certificate-authority",
+                    },
+                    "subjectAltName": {
+                        "dnsNames": ["hashicorp.com"],
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "digitalSignature": True,
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": True,
+                        },
+                    },
+                },
+            },
             lifetime="86400s",
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
@@ -1465,37 +1470,37 @@ class Certificate(pulumi.CustomResource):
             pool=default.name,
             name="my-certificate",
             lifetime="860s",
-            config=gcp.certificateauthority.CertificateConfigArgs(
-                subject_config=gcp.certificateauthority.CertificateConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.CertificateConfigSubjectConfigSubjectArgs(
-                        common_name="san1.example.com",
-                        country_code="us",
-                        organization="google",
-                        organizational_unit="enterprise",
-                        locality="mountain view",
-                        province="california",
-                        street_address="1600 amphitheatre parkway",
-                        postal_code="94109",
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.CertificateConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.CertificateConfigX509ConfigCaOptionsArgs(
-                        is_ca=False,
-                    ),
-                    key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-                public_key=gcp.certificateauthority.CertificateConfigPublicKeyArgs(
-                    format="PEM",
-                    key=std.filebase64(input="test-fixtures/rsa_public.pem").result,
-                ),
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "commonName": "san1.example.com",
+                        "countryCode": "us",
+                        "organization": "google",
+                        "organizationalUnit": "enterprise",
+                        "locality": "mountain view",
+                        "province": "california",
+                        "streetAddress": "1600 amphitheatre parkway",
+                        "postalCode": "94109",
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": False,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": True,
+                        },
+                    },
+                },
+                "publicKey": {
+                    "format": "PEM",
+                    "key": std.filebase64(input="test-fixtures/rsa_public.pem").result,
+                },
+            },
             opts = pulumi.ResourceOptions(depends_on=[default_authority]))
         ```
         ### Privateca Certificate Custom Ski
@@ -1513,36 +1518,36 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             pool=default.name,
             certificate_authority_id="my-authority",
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="HashiCorp",
-                        common_name="my-certificate-authority",
-                    ),
-                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
-                        dns_names=["hashicorp.com"],
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            digital_signature=True,
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "organization": "HashiCorp",
+                        "commonName": "my-certificate-authority",
+                    },
+                    "subjectAltName": {
+                        "dnsNames": ["hashicorp.com"],
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "digitalSignature": True,
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": True,
+                        },
+                    },
+                },
+            },
             lifetime="86400s",
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ),
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
@@ -1551,40 +1556,40 @@ class Certificate(pulumi.CustomResource):
             pool=default.name,
             name="my-certificate",
             lifetime="860s",
-            config=gcp.certificateauthority.CertificateConfigArgs(
-                subject_config=gcp.certificateauthority.CertificateConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.CertificateConfigSubjectConfigSubjectArgs(
-                        common_name="san1.example.com",
-                        country_code="us",
-                        organization="google",
-                        organizational_unit="enterprise",
-                        locality="mountain view",
-                        province="california",
-                        street_address="1600 amphitheatre parkway",
-                        postal_code="94109",
-                    ),
-                ),
-                subject_key_id=gcp.certificateauthority.CertificateConfigSubjectKeyIdArgs(
-                    key_id="4cf3372289b1d411b999dbb9ebcd44744b6b2fca",
-                ),
-                x509_config=gcp.certificateauthority.CertificateConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.CertificateConfigX509ConfigCaOptionsArgs(
-                        is_ca=False,
-                    ),
-                    key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-                public_key=gcp.certificateauthority.CertificateConfigPublicKeyArgs(
-                    format="PEM",
-                    key=std.filebase64(input="test-fixtures/rsa_public.pem").result,
-                ),
-            ),
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "commonName": "san1.example.com",
+                        "countryCode": "us",
+                        "organization": "google",
+                        "organizationalUnit": "enterprise",
+                        "locality": "mountain view",
+                        "province": "california",
+                        "streetAddress": "1600 amphitheatre parkway",
+                        "postalCode": "94109",
+                    },
+                },
+                "subjectKeyId": {
+                    "keyId": "4cf3372289b1d411b999dbb9ebcd44744b6b2fca",
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": False,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": True,
+                        },
+                    },
+                },
+                "publicKey": {
+                    "format": "PEM",
+                    "key": std.filebase64(input="test-fixtures/rsa_public.pem").result,
+                },
+            },
             opts = pulumi.ResourceOptions(depends_on=[default_authority]))
         ```
 
@@ -1629,7 +1634,7 @@ class Certificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  certificate_template: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['CertificateConfigArgs', 'CertificateConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -1682,9 +1687,9 @@ class Certificate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             certificate_authority: Optional[pulumi.Input[str]] = None,
-            certificate_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateCertificateDescriptionArgs']]]]] = None,
+            certificate_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CertificateCertificateDescriptionArgs', 'CertificateCertificateDescriptionArgsDict']]]]] = None,
             certificate_template: Optional[pulumi.Input[str]] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
+            config: Optional[pulumi.Input[Union['CertificateConfigArgs', 'CertificateConfigArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             issuer_certificate_authority: Optional[pulumi.Input[str]] = None,
@@ -1698,7 +1703,7 @@ class Certificate(pulumi.CustomResource):
             pool: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            revocation_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateRevocationDetailArgs']]]]] = None,
+            revocation_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CertificateRevocationDetailArgs', 'CertificateRevocationDetailArgsDict']]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Certificate':
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
@@ -1711,14 +1716,14 @@ class Certificate(pulumi.CustomResource):
                a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
                argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
                should be set to `my-ca`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateCertificateDescriptionArgs']]]] certificate_descriptions: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificateCertificateDescriptionArgs', 'CertificateCertificateDescriptionArgsDict']]]] certificate_descriptions: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
                Structure is documented below.
         :param pulumi.Input[str] certificate_template: The resource name for a CertificateTemplate used to issue this certificate,
                in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
                the caller must have the necessary permission to use this template. If this is
                omitted, no template will be used. This template must be in the same location
                as the Certificate.
-        :param pulumi.Input[pulumi.InputType['CertificateConfigArgs']] config: The config used to create a self-signed X.509 certificate or CSR.
+        :param pulumi.Input[Union['CertificateConfigArgs', 'CertificateConfigArgsDict']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time that this resource was created on the server.
                This is in RFC3339 text format.
@@ -1745,7 +1750,7 @@ class Certificate(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateRevocationDetailArgs']]]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificateRevocationDetailArgs', 'CertificateRevocationDetailArgsDict']]]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is
                considered revoked if and only if this field is present.
                Structure is documented below.
         :param pulumi.Input[str] update_time: Output only. The time at which this CertificateAuthority was updated.

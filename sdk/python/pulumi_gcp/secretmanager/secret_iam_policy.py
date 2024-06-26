@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['SecretIamPolicyArgs', 'SecretIamPolicy']
@@ -169,10 +174,10 @@ class SecretIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
             project=secret_basic["project"],
             secret_id=secret_basic["secretId"],
@@ -185,15 +190,15 @@ class SecretIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
             project=secret_basic["project"],
             secret_id=secret_basic["secretId"],
@@ -223,11 +228,11 @@ class SecretIamPolicy(pulumi.CustomResource):
             secret_id=secret_basic["secretId"],
             role="roles/secretmanager.secretAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.secretmanager.SecretIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## secretmanager.SecretIamMember
 
@@ -253,11 +258,11 @@ class SecretIamPolicy(pulumi.CustomResource):
             secret_id=secret_basic["secretId"],
             role="roles/secretmanager.secretAccessor",
             member="user:jane@example.com",
-            condition=gcp.secretmanager.SecretIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## secretmanager.SecretIamPolicy
@@ -266,10 +271,10 @@ class SecretIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
             project=secret_basic["project"],
             secret_id=secret_basic["secretId"],
@@ -282,15 +287,15 @@ class SecretIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
             project=secret_basic["project"],
             secret_id=secret_basic["secretId"],
@@ -320,11 +325,11 @@ class SecretIamPolicy(pulumi.CustomResource):
             secret_id=secret_basic["secretId"],
             role="roles/secretmanager.secretAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.secretmanager.SecretIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## secretmanager.SecretIamMember
 
@@ -350,11 +355,11 @@ class SecretIamPolicy(pulumi.CustomResource):
             secret_id=secret_basic["secretId"],
             role="roles/secretmanager.secretAccessor",
             member="user:jane@example.com",
-            condition=gcp.secretmanager.SecretIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import
@@ -429,10 +434,10 @@ class SecretIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
             project=secret_basic["project"],
             secret_id=secret_basic["secretId"],
@@ -445,15 +450,15 @@ class SecretIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
             project=secret_basic["project"],
             secret_id=secret_basic["secretId"],
@@ -483,11 +488,11 @@ class SecretIamPolicy(pulumi.CustomResource):
             secret_id=secret_basic["secretId"],
             role="roles/secretmanager.secretAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.secretmanager.SecretIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## secretmanager.SecretIamMember
 
@@ -513,11 +518,11 @@ class SecretIamPolicy(pulumi.CustomResource):
             secret_id=secret_basic["secretId"],
             role="roles/secretmanager.secretAccessor",
             member="user:jane@example.com",
-            condition=gcp.secretmanager.SecretIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## secretmanager.SecretIamPolicy
@@ -526,10 +531,10 @@ class SecretIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
             project=secret_basic["project"],
             secret_id=secret_basic["secretId"],
@@ -542,15 +547,15 @@ class SecretIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/secretmanager.secretAccessor",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
             project=secret_basic["project"],
             secret_id=secret_basic["secretId"],
@@ -580,11 +585,11 @@ class SecretIamPolicy(pulumi.CustomResource):
             secret_id=secret_basic["secretId"],
             role="roles/secretmanager.secretAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.secretmanager.SecretIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## secretmanager.SecretIamMember
 
@@ -610,11 +615,11 @@ class SecretIamPolicy(pulumi.CustomResource):
             secret_id=secret_basic["secretId"],
             role="roles/secretmanager.secretAccessor",
             member="user:jane@example.com",
-            condition=gcp.secretmanager.SecretIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import

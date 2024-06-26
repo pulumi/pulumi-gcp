@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -297,9 +302,9 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
-                 cmek_settings: Optional[pulumi.Input[pulumi.InputType['BillingAccountBucketConfigCmekSettingsArgs']]] = None,
+                 cmek_settings: Optional[pulumi.Input[Union['BillingAccountBucketConfigCmekSettingsArgs', 'BillingAccountBucketConfigCmekSettingsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountBucketConfigIndexConfigArgs']]]]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BillingAccountBucketConfigIndexConfigArgs', 'BillingAccountBucketConfigIndexConfigArgsDict']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -342,11 +347,11 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] billing_account: The parent resource that contains the logging bucket.
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
-        :param pulumi.Input[pulumi.InputType['BillingAccountBucketConfigCmekSettingsArgs']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+        :param pulumi.Input[Union['BillingAccountBucketConfigCmekSettingsArgs', 'BillingAccountBucketConfigCmekSettingsArgsDict']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountBucketConfigIndexConfigArgs']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BillingAccountBucketConfigIndexConfigArgs', 'BillingAccountBucketConfigIndexConfigArgsDict']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[str] location: The location of the bucket.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
         """
@@ -408,9 +413,9 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
-                 cmek_settings: Optional[pulumi.Input[pulumi.InputType['BillingAccountBucketConfigCmekSettingsArgs']]] = None,
+                 cmek_settings: Optional[pulumi.Input[Union['BillingAccountBucketConfigCmekSettingsArgs', 'BillingAccountBucketConfigCmekSettingsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountBucketConfigIndexConfigArgs']]]]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BillingAccountBucketConfigIndexConfigArgs', 'BillingAccountBucketConfigIndexConfigArgsDict']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -449,9 +454,9 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             billing_account: Optional[pulumi.Input[str]] = None,
             bucket_id: Optional[pulumi.Input[str]] = None,
-            cmek_settings: Optional[pulumi.Input[pulumi.InputType['BillingAccountBucketConfigCmekSettingsArgs']]] = None,
+            cmek_settings: Optional[pulumi.Input[Union['BillingAccountBucketConfigCmekSettingsArgs', 'BillingAccountBucketConfigCmekSettingsArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountBucketConfigIndexConfigArgs']]]]] = None,
+            index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BillingAccountBucketConfigIndexConfigArgs', 'BillingAccountBucketConfigIndexConfigArgsDict']]]]] = None,
             lifecycle_state: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -465,11 +470,11 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] billing_account: The parent resource that contains the logging bucket.
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
-        :param pulumi.Input[pulumi.InputType['BillingAccountBucketConfigCmekSettingsArgs']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+        :param pulumi.Input[Union['BillingAccountBucketConfigCmekSettingsArgs', 'BillingAccountBucketConfigCmekSettingsArgsDict']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
                key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
                updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountBucketConfigIndexConfigArgs']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BillingAccountBucketConfigIndexConfigArgs', 'BillingAccountBucketConfigIndexConfigArgsDict']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
         :param pulumi.Input[str] location: The location of the bucket.
         :param pulumi.Input[str] name: The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"

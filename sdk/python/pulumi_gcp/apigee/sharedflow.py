@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -353,7 +358,7 @@ class Sharedflow(pulumi.CustomResource):
             detect_md5hash: Optional[pulumi.Input[str]] = None,
             latest_revision_id: Optional[pulumi.Input[str]] = None,
             md5hash: Optional[pulumi.Input[str]] = None,
-            meta_datas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SharedflowMetaDataArgs']]]]] = None,
+            meta_datas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SharedflowMetaDataArgs', 'SharedflowMetaDataArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             revisions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Sharedflow':
@@ -369,7 +374,7 @@ class Sharedflow(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] latest_revision_id: The id of the most recently created revision for this shared flow.
         :param pulumi.Input[str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SharedflowMetaDataArgs']]]] meta_datas: Metadata describing the shared flow.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SharedflowMetaDataArgs', 'SharedflowMetaDataArgsDict']]]] meta_datas: Metadata describing the shared flow.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the shared flow.
         :param pulumi.Input[str] org_id: The Apigee Organization name associated with the Apigee instance.

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -316,7 +321,7 @@ class PrivateConnection(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  private_connection_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 vpc_peering_config: Optional[pulumi.Input[pulumi.InputType['PrivateConnectionVpcPeeringConfigArgs']]] = None,
+                 vpc_peering_config: Optional[pulumi.Input[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']]] = None,
                  __props__=None):
         """
         The PrivateConnection resource is used to establish private connectivity between Database Migration Service and a customer's network.
@@ -343,10 +348,10 @@ class PrivateConnection(pulumi.CustomResource):
             labels={
                 "key": "value",
             },
-            vpc_peering_config=gcp.databasemigrationservice.PrivateConnectionVpcPeeringConfigArgs(
-                vpc_name=default.id,
-                subnet="10.0.0.0/29",
-            ))
+            vpc_peering_config={
+                "vpcName": default.id,
+                "subnet": "10.0.0.0/29",
+            })
         ```
 
         ## Import
@@ -380,7 +385,7 @@ class PrivateConnection(pulumi.CustomResource):
                refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this private connection is located in.
         :param pulumi.Input[str] private_connection_id: The private connectivity identifier.
-        :param pulumi.Input[pulumi.InputType['PrivateConnectionVpcPeeringConfigArgs']] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
+        :param pulumi.Input[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between databasemigrationservice and the consumer's VPC.
                Structure is documented below.
         """
@@ -415,10 +420,10 @@ class PrivateConnection(pulumi.CustomResource):
             labels={
                 "key": "value",
             },
-            vpc_peering_config=gcp.databasemigrationservice.PrivateConnectionVpcPeeringConfigArgs(
-                vpc_name=default.id,
-                subnet="10.0.0.0/29",
-            ))
+            vpc_peering_config={
+                "vpcName": default.id,
+                "subnet": "10.0.0.0/29",
+            })
         ```
 
         ## Import
@@ -465,7 +470,7 @@ class PrivateConnection(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  private_connection_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 vpc_peering_config: Optional[pulumi.Input[pulumi.InputType['PrivateConnectionVpcPeeringConfigArgs']]] = None,
+                 vpc_peering_config: Optional[pulumi.Input[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -506,7 +511,7 @@ class PrivateConnection(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            errors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateConnectionErrorArgs']]]]] = None,
+            errors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateConnectionErrorArgs', 'PrivateConnectionErrorArgsDict']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -514,7 +519,7 @@ class PrivateConnection(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            vpc_peering_config: Optional[pulumi.Input[pulumi.InputType['PrivateConnectionVpcPeeringConfigArgs']]] = None) -> 'PrivateConnection':
+            vpc_peering_config: Optional[pulumi.Input[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']]] = None) -> 'PrivateConnection':
         """
         Get an existing PrivateConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -524,7 +529,7 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateConnectionErrorArgs']]]] errors: The PrivateConnection error in case of failure.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateConnectionErrorArgs', 'PrivateConnectionErrorArgsDict']]]] errors: The PrivateConnection error in case of failure.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
                refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -534,7 +539,7 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] state: State of the PrivateConnection.
-        :param pulumi.Input[pulumi.InputType['PrivateConnectionVpcPeeringConfigArgs']] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
+        :param pulumi.Input[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between databasemigrationservice and the consumer's VPC.
                Structure is documented below.
         """

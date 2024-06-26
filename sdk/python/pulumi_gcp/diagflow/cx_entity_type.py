@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -388,8 +393,8 @@ class CxEntityType(pulumi.CustomResource):
                  auto_expansion_mode: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeEntityArgs']]]]] = None,
-                 excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeExcludedPhraseArgs']]]]] = None,
+                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict']]]]] = None,
+                 excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeExcludedPhraseArgs', 'CxEntityTypeExcludedPhraseArgsDict']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -427,28 +432,28 @@ class CxEntityType(pulumi.CustomResource):
             avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
-                enable_speech_adaptation=True,
-            ))
+            speech_to_text_settings={
+                "enableSpeechAdaptation": True,
+            })
         basic_entity_type = gcp.diagflow.CxEntityType("basic_entity_type",
             parent=agent.id,
             display_name="MyEntity",
             kind="KIND_MAP",
             entities=[
-                gcp.diagflow.CxEntityTypeEntityArgs(
-                    value="value1",
-                    synonyms=[
+                {
+                    "value": "value1",
+                    "synonyms": [
                         "synonym1",
                         "synonym2",
                     ],
-                ),
-                gcp.diagflow.CxEntityTypeEntityArgs(
-                    value="value2",
-                    synonyms=[
+                },
+                {
+                    "value": "value2",
+                    "synonyms": [
                         "synonym3",
                         "synonym4",
                     ],
-                ),
+                },
             ],
             enable_fuzzy_extraction=False)
         ```
@@ -478,9 +483,9 @@ class CxEntityType(pulumi.CustomResource):
                Possible values: ["AUTO_EXPANSION_MODE_DEFAULT", "AUTO_EXPANSION_MODE_UNSPECIFIED"]
         :param pulumi.Input[str] display_name: The human-readable name of the entity type, unique within the agent.
         :param pulumi.Input[bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeEntityArgs']]]] entities: The collection of entity entries associated with the entity type.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict']]]] entities: The collection of entity entries associated with the entity type.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeExcludedPhraseArgs']]]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeExcludedPhraseArgs', 'CxEntityTypeExcludedPhraseArgsDict']]]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with
                entry giant(an adjective), you might consider adding giants(a noun) as an exclusion. If the kind of entity type is
                KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
         :param pulumi.Input[str] kind: Indicates whether the entity type can be automatically expanded.
@@ -533,28 +538,28 @@ class CxEntityType(pulumi.CustomResource):
             avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
-                enable_speech_adaptation=True,
-            ))
+            speech_to_text_settings={
+                "enableSpeechAdaptation": True,
+            })
         basic_entity_type = gcp.diagflow.CxEntityType("basic_entity_type",
             parent=agent.id,
             display_name="MyEntity",
             kind="KIND_MAP",
             entities=[
-                gcp.diagflow.CxEntityTypeEntityArgs(
-                    value="value1",
-                    synonyms=[
+                {
+                    "value": "value1",
+                    "synonyms": [
                         "synonym1",
                         "synonym2",
                     ],
-                ),
-                gcp.diagflow.CxEntityTypeEntityArgs(
-                    value="value2",
-                    synonyms=[
+                },
+                {
+                    "value": "value2",
+                    "synonyms": [
                         "synonym3",
                         "synonym4",
                     ],
-                ),
+                },
             ],
             enable_fuzzy_extraction=False)
         ```
@@ -595,8 +600,8 @@ class CxEntityType(pulumi.CustomResource):
                  auto_expansion_mode: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeEntityArgs']]]]] = None,
-                 excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeExcludedPhraseArgs']]]]] = None,
+                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict']]]]] = None,
+                 excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeExcludedPhraseArgs', 'CxEntityTypeExcludedPhraseArgsDict']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -639,8 +644,8 @@ class CxEntityType(pulumi.CustomResource):
             auto_expansion_mode: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
-            entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeEntityArgs']]]]] = None,
-            excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeExcludedPhraseArgs']]]]] = None,
+            entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict']]]]] = None,
+            excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeExcludedPhraseArgs', 'CxEntityTypeExcludedPhraseArgsDict']]]]] = None,
             kind: Optional[pulumi.Input[str]] = None,
             language_code: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -658,9 +663,9 @@ class CxEntityType(pulumi.CustomResource):
                Possible values: ["AUTO_EXPANSION_MODE_DEFAULT", "AUTO_EXPANSION_MODE_UNSPECIFIED"]
         :param pulumi.Input[str] display_name: The human-readable name of the entity type, unique within the agent.
         :param pulumi.Input[bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeEntityArgs']]]] entities: The collection of entity entries associated with the entity type.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeEntityArgs', 'CxEntityTypeEntityArgsDict']]]] entities: The collection of entity entries associated with the entity type.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeExcludedPhraseArgs']]]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxEntityTypeExcludedPhraseArgs', 'CxEntityTypeExcludedPhraseArgsDict']]]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with
                entry giant(an adjective), you might consider adding giants(a noun) as an exclusion. If the kind of entity type is
                KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
         :param pulumi.Input[str] kind: Indicates whether the entity type can be automatically expanded.

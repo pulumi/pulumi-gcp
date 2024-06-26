@@ -4,21 +4,65 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'TriggerDestinationArgs',
+    'TriggerDestinationArgsDict',
     'TriggerDestinationCloudRunServiceArgs',
+    'TriggerDestinationCloudRunServiceArgsDict',
     'TriggerDestinationGkeArgs',
+    'TriggerDestinationGkeArgsDict',
     'TriggerDestinationHttpEndpointArgs',
+    'TriggerDestinationHttpEndpointArgsDict',
     'TriggerDestinationNetworkConfigArgs',
+    'TriggerDestinationNetworkConfigArgsDict',
     'TriggerMatchingCriteriaArgs',
+    'TriggerMatchingCriteriaArgsDict',
     'TriggerTransportArgs',
+    'TriggerTransportArgsDict',
     'TriggerTransportPubsubArgs',
+    'TriggerTransportPubsubArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class TriggerDestinationArgsDict(TypedDict):
+        cloud_function: NotRequired[pulumi.Input[str]]
+        """
+        The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
+        """
+        cloud_run_service: NotRequired[pulumi.Input['TriggerDestinationCloudRunServiceArgsDict']]
+        """
+        Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+        """
+        gke: NotRequired[pulumi.Input['TriggerDestinationGkeArgsDict']]
+        """
+        A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+        """
+        http_endpoint: NotRequired[pulumi.Input['TriggerDestinationHttpEndpointArgsDict']]
+        """
+        An HTTP endpoint destination described by an URI.
+        """
+        network_config: NotRequired[pulumi.Input['TriggerDestinationNetworkConfigArgsDict']]
+        """
+        Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+        """
+        workflow: NotRequired[pulumi.Input[str]]
+        """
+        The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+        """
+elif False:
+    TriggerDestinationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TriggerDestinationArgs:
@@ -123,6 +167,23 @@ class TriggerDestinationArgs:
         pulumi.set(self, "workflow", value)
 
 
+if not MYPY:
+    class TriggerDestinationCloudRunServiceArgsDict(TypedDict):
+        service: pulumi.Input[str]
+        """
+        Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Required. The region the Cloud Run service is deployed in.
+        """
+elif False:
+    TriggerDestinationCloudRunServiceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerDestinationCloudRunServiceArgs:
     def __init__(__self__, *,
@@ -176,6 +237,31 @@ class TriggerDestinationCloudRunServiceArgs:
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+
+if not MYPY:
+    class TriggerDestinationGkeArgsDict(TypedDict):
+        cluster: pulumi.Input[str]
+        """
+        Required. The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
+        """
+        location: pulumi.Input[str]
+        """
+        Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+        """
+        namespace: pulumi.Input[str]
+        """
+        Required. The namespace the GKE service is running in.
+        """
+        service: pulumi.Input[str]
+        """
+        Required. Name of the GKE service.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        """
+elif False:
+    TriggerDestinationGkeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TriggerDestinationGkeArgs:
@@ -260,6 +346,15 @@ class TriggerDestinationGkeArgs:
         pulumi.set(self, "path", value)
 
 
+if not MYPY:
+    class TriggerDestinationHttpEndpointArgsDict(TypedDict):
+        uri: pulumi.Input[str]
+        """
+        Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+        """
+elif False:
+    TriggerDestinationHttpEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerDestinationHttpEndpointArgs:
     def __init__(__self__, *,
@@ -282,6 +377,15 @@ class TriggerDestinationHttpEndpointArgs:
         pulumi.set(self, "uri", value)
 
 
+if not MYPY:
+    class TriggerDestinationNetworkConfigArgsDict(TypedDict):
+        network_attachment: pulumi.Input[str]
+        """
+        Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+        """
+elif False:
+    TriggerDestinationNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerDestinationNetworkConfigArgs:
     def __init__(__self__, *,
@@ -303,6 +407,25 @@ class TriggerDestinationNetworkConfigArgs:
     def network_attachment(self, value: pulumi.Input[str]):
         pulumi.set(self, "network_attachment", value)
 
+
+if not MYPY:
+    class TriggerMatchingCriteriaArgsDict(TypedDict):
+        attribute: pulumi.Input[str]
+        """
+        Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+        """
+        value: pulumi.Input[str]
+        """
+        Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
+
+        - - -
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+        """
+elif False:
+    TriggerMatchingCriteriaArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TriggerMatchingCriteriaArgs:
@@ -361,6 +484,15 @@ class TriggerMatchingCriteriaArgs:
         pulumi.set(self, "operator", value)
 
 
+if not MYPY:
+    class TriggerTransportArgsDict(TypedDict):
+        pubsub: NotRequired[pulumi.Input['TriggerTransportPubsubArgsDict']]
+        """
+        The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+        """
+elif False:
+    TriggerTransportArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerTransportArgs:
     def __init__(__self__, *,
@@ -383,6 +515,19 @@ class TriggerTransportArgs:
     def pubsub(self, value: Optional[pulumi.Input['TriggerTransportPubsubArgs']]):
         pulumi.set(self, "pubsub", value)
 
+
+if not MYPY:
+    class TriggerTransportPubsubArgsDict(TypedDict):
+        subscription: NotRequired[pulumi.Input[str]]
+        """
+        Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+        """
+        topic: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+        """
+elif False:
+    TriggerTransportPubsubArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TriggerTransportPubsubArgs:

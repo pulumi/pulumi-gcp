@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -379,12 +384,12 @@ class Feature(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 fleet_default_member_config: Optional[pulumi.Input[pulumi.InputType['FeatureFleetDefaultMemberConfigArgs']]] = None,
+                 fleet_default_member_config: Optional[pulumi.Input[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['FeatureSpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[Union['FeatureSpecArgs', 'FeatureSpecArgsDict']]] = None,
                  __props__=None):
         """
         Feature represents the settings and status of any Hub Feature.
@@ -409,20 +414,20 @@ class Feature(pulumi.CustomResource):
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ),
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            },
             description="Membership")
         feature = gcp.gkehub.Feature("feature",
             name="multiclusteringress",
             location="global",
-            spec=gcp.gkehub.FeatureSpecArgs(
-                multiclusteringress=gcp.gkehub.FeatureSpecMulticlusteringressArgs(
-                    config_membership=membership.id,
-                ),
-            ))
+            spec={
+                "multiclusteringress": {
+                    "configMembership": membership.id,
+                },
+            })
         ```
         ### Gkehub Feature Multi Cluster Service Discovery
 
@@ -456,15 +461,15 @@ class Feature(pulumi.CustomResource):
         feature = gcp.gkehub.Feature("feature",
             name="fleetobservability",
             location="global",
-            spec=gcp.gkehub.FeatureSpecArgs(
-                fleetobservability=gcp.gkehub.FeatureSpecFleetobservabilityArgs(
-                    logging_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs(
-                        default_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs(
-                            mode="COPY",
-                        ),
-                    ),
-                ),
-            ))
+            spec={
+                "fleetobservability": {
+                    "loggingConfig": {
+                        "defaultConfig": {
+                            "mode": "COPY",
+                        },
+                    },
+                },
+            })
         ```
         ### Enable Fleet Observability For Scope Logs With Move
 
@@ -475,15 +480,15 @@ class Feature(pulumi.CustomResource):
         feature = gcp.gkehub.Feature("feature",
             name="fleetobservability",
             location="global",
-            spec=gcp.gkehub.FeatureSpecArgs(
-                fleetobservability=gcp.gkehub.FeatureSpecFleetobservabilityArgs(
-                    logging_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs(
-                        fleet_scope_logs_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs(
-                            mode="MOVE",
-                        ),
-                    ),
-                ),
-            ))
+            spec={
+                "fleetobservability": {
+                    "loggingConfig": {
+                        "fleetScopeLogsConfig": {
+                            "mode": "MOVE",
+                        },
+                    },
+                },
+            })
         ```
         ### Enable Fleet Observability For Both Default And Scope Logs
 
@@ -494,18 +499,18 @@ class Feature(pulumi.CustomResource):
         feature = gcp.gkehub.Feature("feature",
             name="fleetobservability",
             location="global",
-            spec=gcp.gkehub.FeatureSpecArgs(
-                fleetobservability=gcp.gkehub.FeatureSpecFleetobservabilityArgs(
-                    logging_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs(
-                        default_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs(
-                            mode="COPY",
-                        ),
-                        fleet_scope_logs_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs(
-                            mode="MOVE",
-                        ),
-                    ),
-                ),
-            ))
+            spec={
+                "fleetobservability": {
+                    "loggingConfig": {
+                        "defaultConfig": {
+                            "mode": "COPY",
+                        },
+                        "fleetScopeLogsConfig": {
+                            "mode": "MOVE",
+                        },
+                    },
+                },
+            })
         ```
         ### Enable Fleet Default Member Config Service Mesh
 
@@ -516,11 +521,11 @@ class Feature(pulumi.CustomResource):
         feature = gcp.gkehub.Feature("feature",
             name="servicemesh",
             location="global",
-            fleet_default_member_config=gcp.gkehub.FeatureFleetDefaultMemberConfigArgs(
-                mesh=gcp.gkehub.FeatureFleetDefaultMemberConfigMeshArgs(
-                    management="MANAGEMENT_AUTOMATIC",
-                ),
-            ))
+            fleet_default_member_config={
+                "mesh": {
+                    "management": "MANAGEMENT_AUTOMATIC",
+                },
+            })
         ```
         ### Enable Fleet Default Member Config Configmanagement
 
@@ -531,15 +536,15 @@ class Feature(pulumi.CustomResource):
         feature = gcp.gkehub.Feature("feature",
             name="configmanagement",
             location="global",
-            fleet_default_member_config=gcp.gkehub.FeatureFleetDefaultMemberConfigArgs(
-                configmanagement=gcp.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementArgs(
-                    config_sync=gcp.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs(
-                        git=gcp.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs(
-                            sync_repo="https://github.com/hashicorp/terraform",
-                        ),
-                    ),
-                ),
-            ))
+            fleet_default_member_config={
+                "configmanagement": {
+                    "configSync": {
+                        "git": {
+                            "syncRepo": "https://github.com/hashicorp/terraform",
+                        },
+                    },
+                },
+            })
         ```
         ### Enable Fleet Default Member Config Policycontroller
 
@@ -550,28 +555,28 @@ class Feature(pulumi.CustomResource):
         feature = gcp.gkehub.Feature("feature",
             name="policycontroller",
             location="global",
-            fleet_default_member_config=gcp.gkehub.FeatureFleetDefaultMemberConfigArgs(
-                policycontroller=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerArgs(
-                    policy_controller_hub_config=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs(
-                        install_spec="INSTALL_SPEC_ENABLED",
-                        exemptable_namespaces=["foo"],
-                        policy_content=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs(
-                            bundles=[gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs(
-                                bundle="policy-essentials-v2022",
-                                exempted_namespaces=[
+            fleet_default_member_config={
+                "policycontroller": {
+                    "policyControllerHubConfig": {
+                        "installSpec": "INSTALL_SPEC_ENABLED",
+                        "exemptableNamespaces": ["foo"],
+                        "policyContent": {
+                            "bundles": [{
+                                "bundle": "policy-essentials-v2022",
+                                "exemptedNamespaces": [
                                     "foo",
                                     "bar",
                                 ],
-                            )],
-                            template_library=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs(
-                                installation="ALL",
-                            ),
-                        ),
-                        audit_interval_seconds=30,
-                        referential_rules_enabled=True,
-                    ),
-                ),
-            ))
+                            }],
+                            "templateLibrary": {
+                                "installation": "ALL",
+                            },
+                        },
+                        "auditIntervalSeconds": 30,
+                        "referentialRulesEnabled": True,
+                    },
+                },
+            })
         ```
         ### Enable Fleet Default Member Config Policycontroller Full
 
@@ -582,64 +587,64 @@ class Feature(pulumi.CustomResource):
         feature = gcp.gkehub.Feature("feature",
             name="policycontroller",
             location="global",
-            fleet_default_member_config=gcp.gkehub.FeatureFleetDefaultMemberConfigArgs(
-                policycontroller=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerArgs(
-                    policy_controller_hub_config=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs(
-                        install_spec="INSTALL_SPEC_SUSPENDED",
-                        policy_content=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs(
-                            bundles=[
-                                gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs(
-                                    bundle="pci-dss-v3.2.1",
-                                    exempted_namespaces=[
+            fleet_default_member_config={
+                "policycontroller": {
+                    "policyControllerHubConfig": {
+                        "installSpec": "INSTALL_SPEC_SUSPENDED",
+                        "policyContent": {
+                            "bundles": [
+                                {
+                                    "bundle": "pci-dss-v3.2.1",
+                                    "exemptedNamespaces": [
                                         "baz",
                                         "bar",
                                     ],
-                                ),
-                                gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs(
-                                    bundle="nist-sp-800-190",
-                                    exempted_namespaces=[],
-                                ),
+                                },
+                                {
+                                    "bundle": "nist-sp-800-190",
+                                    "exemptedNamespaces": [],
+                                },
                             ],
-                            template_library=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs(
-                                installation="ALL",
-                            ),
-                        ),
-                        constraint_violation_limit=50,
-                        referential_rules_enabled=True,
-                        log_denies_enabled=True,
-                        mutation_enabled=True,
-                        deployment_configs=[
-                            gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs(
-                                component="admission",
-                                replica_count=2,
-                                pod_affinity="ANTI_AFFINITY",
-                            ),
-                            gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs(
-                                component="audit",
-                                container_resources=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs(
-                                    limits=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs(
-                                        memory="1Gi",
-                                        cpu="1.5",
-                                    ),
-                                    requests=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs(
-                                        memory="500Mi",
-                                        cpu="150m",
-                                    ),
-                                ),
-                                pod_tolerations=[gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs(
-                                    key="key1",
-                                    operator="Equal",
-                                    value="value1",
-                                    effect="NoSchedule",
-                                )],
-                            ),
+                            "templateLibrary": {
+                                "installation": "ALL",
+                            },
+                        },
+                        "constraintViolationLimit": 50,
+                        "referentialRulesEnabled": True,
+                        "logDeniesEnabled": True,
+                        "mutationEnabled": True,
+                        "deploymentConfigs": [
+                            {
+                                "component": "admission",
+                                "replicaCount": 2,
+                                "podAffinity": "ANTI_AFFINITY",
+                            },
+                            {
+                                "component": "audit",
+                                "containerResources": {
+                                    "limits": {
+                                        "memory": "1Gi",
+                                        "cpu": "1.5",
+                                    },
+                                    "requests": {
+                                        "memory": "500Mi",
+                                        "cpu": "150m",
+                                    },
+                                },
+                                "podTolerations": [{
+                                    "key": "key1",
+                                    "operator": "Equal",
+                                    "value": "value1",
+                                    "effect": "NoSchedule",
+                                }],
+                            },
                         ],
-                        monitoring=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs(
-                            backends=["PROMETHEUS"],
-                        ),
-                    ),
-                ),
-            ))
+                        "monitoring": {
+                            "backends": ["PROMETHEUS"],
+                        },
+                    },
+                },
+            })
         ```
         ### Enable Fleet Default Member Config Policycontroller Minimal
 
@@ -650,22 +655,22 @@ class Feature(pulumi.CustomResource):
         feature = gcp.gkehub.Feature("feature",
             name="policycontroller",
             location="global",
-            fleet_default_member_config=gcp.gkehub.FeatureFleetDefaultMemberConfigArgs(
-                policycontroller=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerArgs(
-                    policy_controller_hub_config=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs(
-                        install_spec="INSTALL_SPEC_ENABLED",
-                        policy_content=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs(),
-                        constraint_violation_limit=50,
-                        referential_rules_enabled=True,
-                        log_denies_enabled=True,
-                        mutation_enabled=True,
-                        deployment_configs=[gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs(
-                            component="admission",
-                        )],
-                        monitoring=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs(),
-                    ),
-                ),
-            ))
+            fleet_default_member_config={
+                "policycontroller": {
+                    "policyControllerHubConfig": {
+                        "installSpec": "INSTALL_SPEC_ENABLED",
+                        "policyContent": {},
+                        "constraintViolationLimit": 50,
+                        "referentialRulesEnabled": True,
+                        "logDeniesEnabled": True,
+                        "mutationEnabled": True,
+                        "deploymentConfigs": [{
+                            "component": "admission",
+                        }],
+                        "monitoring": {},
+                    },
+                },
+            })
         ```
         ### Gkehub Feature Clusterupgrade
 
@@ -676,14 +681,14 @@ class Feature(pulumi.CustomResource):
         feature = gcp.gkehub.Feature("feature",
             name="clusterupgrade",
             location="global",
-            spec=gcp.gkehub.FeatureSpecArgs(
-                clusterupgrade=gcp.gkehub.FeatureSpecClusterupgradeArgs(
-                    upstream_fleets=[],
-                    post_conditions=gcp.gkehub.FeatureSpecClusterupgradePostConditionsArgs(
-                        soaking="60s",
-                    ),
-                ),
-            ))
+            spec={
+                "clusterupgrade": {
+                    "upstreamFleets": [],
+                    "postConditions": {
+                        "soaking": "60s",
+                    },
+                },
+            })
         ```
 
         ## Import
@@ -712,7 +717,7 @@ class Feature(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FeatureFleetDefaultMemberConfigArgs']] fleet_default_member_config: Optional. Fleet Default Membership Configuration.
+        :param pulumi.Input[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict']] fleet_default_member_config: Optional. Fleet Default Membership Configuration.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -724,7 +729,7 @@ class Feature(pulumi.CustomResource):
         :param pulumi.Input[str] name: The full, unique name of this Feature resource
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['FeatureSpecArgs']] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+        :param pulumi.Input[Union['FeatureSpecArgs', 'FeatureSpecArgsDict']] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
                Structure is documented below.
         """
         ...
@@ -756,20 +761,20 @@ class Feature(pulumi.CustomResource):
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ),
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            },
             description="Membership")
         feature = gcp.gkehub.Feature("feature",
             name="multiclusteringress",
             location="global",
-            spec=gcp.gkehub.FeatureSpecArgs(
-                multiclusteringress=gcp.gkehub.FeatureSpecMulticlusteringressArgs(
-                    config_membership=membership.id,
-                ),
-            ))
+            spec={
+                "multiclusteringress": {
+                    "configMembership": membership.id,
+                },
+            })
         ```
         ### Gkehub Feature Multi Cluster Service Discovery
 
@@ -803,15 +808,15 @@ class Feature(pulumi.CustomResource):
         feature = gcp.gkehub.Feature("feature",
             name="fleetobservability",
             location="global",
-            spec=gcp.gkehub.FeatureSpecArgs(
-                fleetobservability=gcp.gkehub.FeatureSpecFleetobservabilityArgs(
-                    logging_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs(
-                        default_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs(
-                            mode="COPY",
-                        ),
-                    ),
-                ),
-            ))
+            spec={
+                "fleetobservability": {
+                    "loggingConfig": {
+                        "defaultConfig": {
+                            "mode": "COPY",
+                        },
+                    },
+                },
+            })
         ```
         ### Enable Fleet Observability For Scope Logs With Move
 
@@ -822,15 +827,15 @@ class Feature(pulumi.CustomResource):
         feature = gcp.gkehub.Feature("feature",
             name="fleetobservability",
             location="global",
-            spec=gcp.gkehub.FeatureSpecArgs(
-                fleetobservability=gcp.gkehub.FeatureSpecFleetobservabilityArgs(
-                    logging_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs(
-                        fleet_scope_logs_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs(
-                            mode="MOVE",
-                        ),
-                    ),
-                ),
-            ))
+            spec={
+                "fleetobservability": {
+                    "loggingConfig": {
+                        "fleetScopeLogsConfig": {
+                            "mode": "MOVE",
+                        },
+                    },
+                },
+            })
         ```
         ### Enable Fleet Observability For Both Default And Scope Logs
 
@@ -841,18 +846,18 @@ class Feature(pulumi.CustomResource):
         feature = gcp.gkehub.Feature("feature",
             name="fleetobservability",
             location="global",
-            spec=gcp.gkehub.FeatureSpecArgs(
-                fleetobservability=gcp.gkehub.FeatureSpecFleetobservabilityArgs(
-                    logging_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs(
-                        default_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs(
-                            mode="COPY",
-                        ),
-                        fleet_scope_logs_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs(
-                            mode="MOVE",
-                        ),
-                    ),
-                ),
-            ))
+            spec={
+                "fleetobservability": {
+                    "loggingConfig": {
+                        "defaultConfig": {
+                            "mode": "COPY",
+                        },
+                        "fleetScopeLogsConfig": {
+                            "mode": "MOVE",
+                        },
+                    },
+                },
+            })
         ```
         ### Enable Fleet Default Member Config Service Mesh
 
@@ -863,11 +868,11 @@ class Feature(pulumi.CustomResource):
         feature = gcp.gkehub.Feature("feature",
             name="servicemesh",
             location="global",
-            fleet_default_member_config=gcp.gkehub.FeatureFleetDefaultMemberConfigArgs(
-                mesh=gcp.gkehub.FeatureFleetDefaultMemberConfigMeshArgs(
-                    management="MANAGEMENT_AUTOMATIC",
-                ),
-            ))
+            fleet_default_member_config={
+                "mesh": {
+                    "management": "MANAGEMENT_AUTOMATIC",
+                },
+            })
         ```
         ### Enable Fleet Default Member Config Configmanagement
 
@@ -878,15 +883,15 @@ class Feature(pulumi.CustomResource):
         feature = gcp.gkehub.Feature("feature",
             name="configmanagement",
             location="global",
-            fleet_default_member_config=gcp.gkehub.FeatureFleetDefaultMemberConfigArgs(
-                configmanagement=gcp.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementArgs(
-                    config_sync=gcp.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs(
-                        git=gcp.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs(
-                            sync_repo="https://github.com/hashicorp/terraform",
-                        ),
-                    ),
-                ),
-            ))
+            fleet_default_member_config={
+                "configmanagement": {
+                    "configSync": {
+                        "git": {
+                            "syncRepo": "https://github.com/hashicorp/terraform",
+                        },
+                    },
+                },
+            })
         ```
         ### Enable Fleet Default Member Config Policycontroller
 
@@ -897,28 +902,28 @@ class Feature(pulumi.CustomResource):
         feature = gcp.gkehub.Feature("feature",
             name="policycontroller",
             location="global",
-            fleet_default_member_config=gcp.gkehub.FeatureFleetDefaultMemberConfigArgs(
-                policycontroller=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerArgs(
-                    policy_controller_hub_config=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs(
-                        install_spec="INSTALL_SPEC_ENABLED",
-                        exemptable_namespaces=["foo"],
-                        policy_content=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs(
-                            bundles=[gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs(
-                                bundle="policy-essentials-v2022",
-                                exempted_namespaces=[
+            fleet_default_member_config={
+                "policycontroller": {
+                    "policyControllerHubConfig": {
+                        "installSpec": "INSTALL_SPEC_ENABLED",
+                        "exemptableNamespaces": ["foo"],
+                        "policyContent": {
+                            "bundles": [{
+                                "bundle": "policy-essentials-v2022",
+                                "exemptedNamespaces": [
                                     "foo",
                                     "bar",
                                 ],
-                            )],
-                            template_library=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs(
-                                installation="ALL",
-                            ),
-                        ),
-                        audit_interval_seconds=30,
-                        referential_rules_enabled=True,
-                    ),
-                ),
-            ))
+                            }],
+                            "templateLibrary": {
+                                "installation": "ALL",
+                            },
+                        },
+                        "auditIntervalSeconds": 30,
+                        "referentialRulesEnabled": True,
+                    },
+                },
+            })
         ```
         ### Enable Fleet Default Member Config Policycontroller Full
 
@@ -929,64 +934,64 @@ class Feature(pulumi.CustomResource):
         feature = gcp.gkehub.Feature("feature",
             name="policycontroller",
             location="global",
-            fleet_default_member_config=gcp.gkehub.FeatureFleetDefaultMemberConfigArgs(
-                policycontroller=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerArgs(
-                    policy_controller_hub_config=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs(
-                        install_spec="INSTALL_SPEC_SUSPENDED",
-                        policy_content=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs(
-                            bundles=[
-                                gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs(
-                                    bundle="pci-dss-v3.2.1",
-                                    exempted_namespaces=[
+            fleet_default_member_config={
+                "policycontroller": {
+                    "policyControllerHubConfig": {
+                        "installSpec": "INSTALL_SPEC_SUSPENDED",
+                        "policyContent": {
+                            "bundles": [
+                                {
+                                    "bundle": "pci-dss-v3.2.1",
+                                    "exemptedNamespaces": [
                                         "baz",
                                         "bar",
                                     ],
-                                ),
-                                gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs(
-                                    bundle="nist-sp-800-190",
-                                    exempted_namespaces=[],
-                                ),
+                                },
+                                {
+                                    "bundle": "nist-sp-800-190",
+                                    "exemptedNamespaces": [],
+                                },
                             ],
-                            template_library=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs(
-                                installation="ALL",
-                            ),
-                        ),
-                        constraint_violation_limit=50,
-                        referential_rules_enabled=True,
-                        log_denies_enabled=True,
-                        mutation_enabled=True,
-                        deployment_configs=[
-                            gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs(
-                                component="admission",
-                                replica_count=2,
-                                pod_affinity="ANTI_AFFINITY",
-                            ),
-                            gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs(
-                                component="audit",
-                                container_resources=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs(
-                                    limits=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs(
-                                        memory="1Gi",
-                                        cpu="1.5",
-                                    ),
-                                    requests=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs(
-                                        memory="500Mi",
-                                        cpu="150m",
-                                    ),
-                                ),
-                                pod_tolerations=[gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs(
-                                    key="key1",
-                                    operator="Equal",
-                                    value="value1",
-                                    effect="NoSchedule",
-                                )],
-                            ),
+                            "templateLibrary": {
+                                "installation": "ALL",
+                            },
+                        },
+                        "constraintViolationLimit": 50,
+                        "referentialRulesEnabled": True,
+                        "logDeniesEnabled": True,
+                        "mutationEnabled": True,
+                        "deploymentConfigs": [
+                            {
+                                "component": "admission",
+                                "replicaCount": 2,
+                                "podAffinity": "ANTI_AFFINITY",
+                            },
+                            {
+                                "component": "audit",
+                                "containerResources": {
+                                    "limits": {
+                                        "memory": "1Gi",
+                                        "cpu": "1.5",
+                                    },
+                                    "requests": {
+                                        "memory": "500Mi",
+                                        "cpu": "150m",
+                                    },
+                                },
+                                "podTolerations": [{
+                                    "key": "key1",
+                                    "operator": "Equal",
+                                    "value": "value1",
+                                    "effect": "NoSchedule",
+                                }],
+                            },
                         ],
-                        monitoring=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs(
-                            backends=["PROMETHEUS"],
-                        ),
-                    ),
-                ),
-            ))
+                        "monitoring": {
+                            "backends": ["PROMETHEUS"],
+                        },
+                    },
+                },
+            })
         ```
         ### Enable Fleet Default Member Config Policycontroller Minimal
 
@@ -997,22 +1002,22 @@ class Feature(pulumi.CustomResource):
         feature = gcp.gkehub.Feature("feature",
             name="policycontroller",
             location="global",
-            fleet_default_member_config=gcp.gkehub.FeatureFleetDefaultMemberConfigArgs(
-                policycontroller=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerArgs(
-                    policy_controller_hub_config=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs(
-                        install_spec="INSTALL_SPEC_ENABLED",
-                        policy_content=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs(),
-                        constraint_violation_limit=50,
-                        referential_rules_enabled=True,
-                        log_denies_enabled=True,
-                        mutation_enabled=True,
-                        deployment_configs=[gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs(
-                            component="admission",
-                        )],
-                        monitoring=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs(),
-                    ),
-                ),
-            ))
+            fleet_default_member_config={
+                "policycontroller": {
+                    "policyControllerHubConfig": {
+                        "installSpec": "INSTALL_SPEC_ENABLED",
+                        "policyContent": {},
+                        "constraintViolationLimit": 50,
+                        "referentialRulesEnabled": True,
+                        "logDeniesEnabled": True,
+                        "mutationEnabled": True,
+                        "deploymentConfigs": [{
+                            "component": "admission",
+                        }],
+                        "monitoring": {},
+                    },
+                },
+            })
         ```
         ### Gkehub Feature Clusterupgrade
 
@@ -1023,14 +1028,14 @@ class Feature(pulumi.CustomResource):
         feature = gcp.gkehub.Feature("feature",
             name="clusterupgrade",
             location="global",
-            spec=gcp.gkehub.FeatureSpecArgs(
-                clusterupgrade=gcp.gkehub.FeatureSpecClusterupgradeArgs(
-                    upstream_fleets=[],
-                    post_conditions=gcp.gkehub.FeatureSpecClusterupgradePostConditionsArgs(
-                        soaking="60s",
-                    ),
-                ),
-            ))
+            spec={
+                "clusterupgrade": {
+                    "upstreamFleets": [],
+                    "postConditions": {
+                        "soaking": "60s",
+                    },
+                },
+            })
         ```
 
         ## Import
@@ -1072,12 +1077,12 @@ class Feature(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 fleet_default_member_config: Optional[pulumi.Input[pulumi.InputType['FeatureFleetDefaultMemberConfigArgs']]] = None,
+                 fleet_default_member_config: Optional[pulumi.Input[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['FeatureSpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[Union['FeatureSpecArgs', 'FeatureSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1117,15 +1122,15 @@ class Feature(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            fleet_default_member_config: Optional[pulumi.Input[pulumi.InputType['FeatureFleetDefaultMemberConfigArgs']]] = None,
+            fleet_default_member_config: Optional[pulumi.Input[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            resource_states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureResourceStateArgs']]]]] = None,
-            spec: Optional[pulumi.Input[pulumi.InputType['FeatureSpecArgs']]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureStateArgs']]]]] = None,
+            resource_states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureResourceStateArgs', 'FeatureResourceStateArgsDict']]]]] = None,
+            spec: Optional[pulumi.Input[Union['FeatureSpecArgs', 'FeatureSpecArgsDict']]] = None,
+            states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureStateArgs', 'FeatureStateArgsDict']]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Feature':
         """
         Get an existing Feature resource's state with the given name, id, and optional extra
@@ -1137,7 +1142,7 @@ class Feature(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. When the Feature resource was created.
         :param pulumi.Input[str] delete_time: Output only. When the Feature resource was deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['FeatureFleetDefaultMemberConfigArgs']] fleet_default_member_config: Optional. Fleet Default Membership Configuration.
+        :param pulumi.Input[Union['FeatureFleetDefaultMemberConfigArgs', 'FeatureFleetDefaultMemberConfigArgsDict']] fleet_default_member_config: Optional. Fleet Default Membership Configuration.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1151,11 +1156,11 @@ class Feature(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureResourceStateArgs']]]] resource_states: State of the Feature resource itself.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureResourceStateArgs', 'FeatureResourceStateArgsDict']]]] resource_states: State of the Feature resource itself.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['FeatureSpecArgs']] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+        :param pulumi.Input[Union['FeatureSpecArgs', 'FeatureSpecArgsDict']] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureStateArgs']]]] states: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureStateArgs', 'FeatureStateArgsDict']]]] states: (Output)
                Output only. The "running state" of the Feature in this Hub.
                Structure is documented below.
         :param pulumi.Input[str] update_time: (Output)

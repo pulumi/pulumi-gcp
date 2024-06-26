@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['GatewayArgs', 'Gateway']
@@ -754,10 +759,10 @@ class Gateway(pulumi.CustomResource):
         default = gcp.certificatemanager.Certificate("default",
             name="my-certificate",
             location="us-central1",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=std.file(input="test-fixtures/cert.pem").result,
-                pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
-            ))
+            self_managed={
+                "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
+                "pemPrivateKey": std.file(input="test-fixtures/private-key.pem").result,
+            })
         default_network = gcp.compute.Network("default",
             name="my-network",
             routing_mode="REGIONAL",
@@ -811,10 +816,10 @@ class Gateway(pulumi.CustomResource):
         default = gcp.certificatemanager.Certificate("default",
             name="my-certificate",
             location="us-south1",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=std.file(input="test-fixtures/cert.pem").result,
-                pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
-            ))
+            self_managed={
+                "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
+                "pemPrivateKey": std.file(input="test-fixtures/private-key.pem").result,
+            })
         default_network = gcp.compute.Network("default",
             name="my-network",
             routing_mode="REGIONAL",
@@ -994,10 +999,10 @@ class Gateway(pulumi.CustomResource):
         default = gcp.certificatemanager.Certificate("default",
             name="my-certificate",
             location="us-central1",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=std.file(input="test-fixtures/cert.pem").result,
-                pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
-            ))
+            self_managed={
+                "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
+                "pemPrivateKey": std.file(input="test-fixtures/private-key.pem").result,
+            })
         default_network = gcp.compute.Network("default",
             name="my-network",
             routing_mode="REGIONAL",
@@ -1051,10 +1056,10 @@ class Gateway(pulumi.CustomResource):
         default = gcp.certificatemanager.Certificate("default",
             name="my-certificate",
             location="us-south1",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=std.file(input="test-fixtures/cert.pem").result,
-                pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
-            ))
+            self_managed={
+                "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
+                "pemPrivateKey": std.file(input="test-fixtures/private-key.pem").result,
+            })
         default_network = gcp.compute.Network("default",
             name="my-network",
             routing_mode="REGIONAL",

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -514,7 +519,7 @@ class Entry(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_group: Optional[pulumi.Input[str]] = None,
                  entry_id: Optional[pulumi.Input[str]] = None,
-                 gcs_fileset_spec: Optional[pulumi.Input[pulumi.InputType['EntryGcsFilesetSpecArgs']]] = None,
+                 gcs_fileset_spec: Optional[pulumi.Input[Union['EntryGcsFilesetSpecArgs', 'EntryGcsFilesetSpecArgsDict']]] = None,
                  linked_resource: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -561,9 +566,9 @@ class Entry(pulumi.CustomResource):
             entry_group=entry_group.id,
             entry_id="my_entry",
             type="FILESET",
-            gcs_fileset_spec=gcp.datacatalog.EntryGcsFilesetSpecArgs(
-                file_patterns=["gs://fake_bucket/dir/*"],
-            ))
+            gcs_fileset_spec={
+                "filePatterns": ["gs://fake_bucket/dir/*"],
+            })
         ```
         ### Data Catalog Entry Full
 
@@ -641,7 +646,7 @@ class Entry(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['EntryGcsFilesetSpecArgs']] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+        :param pulumi.Input[Union['EntryGcsFilesetSpecArgs', 'EntryGcsFilesetSpecArgsDict']] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
                Structure is documented below.
         :param pulumi.Input[str] linked_resource: The resource this metadata entry refers to.
                For Google Cloud Platform resources, linkedResource is the full name of the resource.
@@ -711,9 +716,9 @@ class Entry(pulumi.CustomResource):
             entry_group=entry_group.id,
             entry_id="my_entry",
             type="FILESET",
-            gcs_fileset_spec=gcp.datacatalog.EntryGcsFilesetSpecArgs(
-                file_patterns=["gs://fake_bucket/dir/*"],
-            ))
+            gcs_fileset_spec={
+                "filePatterns": ["gs://fake_bucket/dir/*"],
+            })
         ```
         ### Data Catalog Entry Full
 
@@ -800,7 +805,7 @@ class Entry(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_group: Optional[pulumi.Input[str]] = None,
                  entry_id: Optional[pulumi.Input[str]] = None,
-                 gcs_fileset_spec: Optional[pulumi.Input[pulumi.InputType['EntryGcsFilesetSpecArgs']]] = None,
+                 gcs_fileset_spec: Optional[pulumi.Input[Union['EntryGcsFilesetSpecArgs', 'EntryGcsFilesetSpecArgsDict']]] = None,
                  linked_resource: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -843,13 +848,13 @@ class Entry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bigquery_date_sharded_specs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntryBigqueryDateShardedSpecArgs']]]]] = None,
-            bigquery_table_specs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntryBigqueryTableSpecArgs']]]]] = None,
+            bigquery_date_sharded_specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryBigqueryDateShardedSpecArgs', 'EntryBigqueryDateShardedSpecArgsDict']]]]] = None,
+            bigquery_table_specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryBigqueryTableSpecArgs', 'EntryBigqueryTableSpecArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             entry_group: Optional[pulumi.Input[str]] = None,
             entry_id: Optional[pulumi.Input[str]] = None,
-            gcs_fileset_spec: Optional[pulumi.Input[pulumi.InputType['EntryGcsFilesetSpecArgs']]] = None,
+            gcs_fileset_spec: Optional[pulumi.Input[Union['EntryGcsFilesetSpecArgs', 'EntryGcsFilesetSpecArgsDict']]] = None,
             integrated_system: Optional[pulumi.Input[str]] = None,
             linked_resource: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -864,10 +869,10 @@ class Entry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntryBigqueryDateShardedSpecArgs']]]] bigquery_date_sharded_specs: Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntryBigqueryDateShardedSpecArgs', 'EntryBigqueryDateShardedSpecArgsDict']]]] bigquery_date_sharded_specs: Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
                Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntryBigqueryTableSpecArgs']]]] bigquery_table_specs: Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EntryBigqueryTableSpecArgs', 'EntryBigqueryTableSpecArgsDict']]]] bigquery_table_specs: Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
                Structure is documented below.
         :param pulumi.Input[str] description: Entry description, which can consist of several sentences or paragraphs that describe entry contents.
         :param pulumi.Input[str] display_name: Display information such as title and description. A short name to identify the entry,
@@ -877,7 +882,7 @@ class Entry(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['EntryGcsFilesetSpecArgs']] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+        :param pulumi.Input[Union['EntryGcsFilesetSpecArgs', 'EntryGcsFilesetSpecArgsDict']] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
                Structure is documented below.
         :param pulumi.Input[str] integrated_system: This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
         :param pulumi.Input[str] linked_resource: The resource this metadata entry refers to.

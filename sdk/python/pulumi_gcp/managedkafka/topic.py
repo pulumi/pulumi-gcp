@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['TopicArgs', 'Topic']
@@ -305,17 +310,17 @@ class Topic(pulumi.CustomResource):
         cluster = gcp.managedkafka.Cluster("cluster",
             cluster_id="my-cluster",
             location="us-central1",
-            capacity_config=gcp.managedkafka.ClusterCapacityConfigArgs(
-                vcpu_count="3",
-                memory_bytes="3221225472",
-            ),
-            gcp_config=gcp.managedkafka.ClusterGcpConfigArgs(
-                access_config=gcp.managedkafka.ClusterGcpConfigAccessConfigArgs(
-                    network_configs=[gcp.managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArgs(
-                        subnet=f"projects/{project.number}/regions/us-central1/subnetworks/default",
-                    )],
-                ),
-            ))
+            capacity_config={
+                "vcpuCount": "3",
+                "memoryBytes": "3221225472",
+            },
+            gcp_config={
+                "accessConfig": {
+                    "networkConfigs": [{
+                        "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
+                    }],
+                },
+            })
         example = gcp.managedkafka.Topic("example",
             topic_id="my-topic",
             cluster=cluster.cluster_id,
@@ -384,17 +389,17 @@ class Topic(pulumi.CustomResource):
         cluster = gcp.managedkafka.Cluster("cluster",
             cluster_id="my-cluster",
             location="us-central1",
-            capacity_config=gcp.managedkafka.ClusterCapacityConfigArgs(
-                vcpu_count="3",
-                memory_bytes="3221225472",
-            ),
-            gcp_config=gcp.managedkafka.ClusterGcpConfigArgs(
-                access_config=gcp.managedkafka.ClusterGcpConfigAccessConfigArgs(
-                    network_configs=[gcp.managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArgs(
-                        subnet=f"projects/{project.number}/regions/us-central1/subnetworks/default",
-                    )],
-                ),
-            ))
+            capacity_config={
+                "vcpuCount": "3",
+                "memoryBytes": "3221225472",
+            },
+            gcp_config={
+                "accessConfig": {
+                    "networkConfigs": [{
+                        "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
+                    }],
+                },
+            })
         example = gcp.managedkafka.Topic("example",
             topic_id="my-topic",
             cluster=cluster.cluster_id,

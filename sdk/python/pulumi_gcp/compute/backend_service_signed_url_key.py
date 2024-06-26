@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['BackendServiceSignedUrlKeyArgs', 'BackendServiceSignedUrlKey']
@@ -209,20 +214,20 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
         webserver = gcp.compute.InstanceTemplate("webserver",
             name="standard-webserver",
             machine_type="e2-medium",
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network="default",
-            )],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image="debian-cloud/debian-11",
-                auto_delete=True,
-                boot=True,
-            )])
+            network_interfaces=[{
+                "network": "default",
+            }],
+            disks=[{
+                "sourceImage": "debian-cloud/debian-11",
+                "autoDelete": True,
+                "boot": True,
+            }])
         webservers = gcp.compute.InstanceGroupManager("webservers",
             name="my-webservers",
-            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
-                instance_template=webserver.id,
-                name="primary",
-            )],
+            versions=[{
+                "instanceTemplate": webserver.id,
+                "name": "primary",
+            }],
             base_instance_name="webserver",
             zone="us-central1-f",
             target_size=1)
@@ -238,9 +243,9 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
             protocol="HTTP",
             timeout_sec=10,
             enable_cdn=True,
-            backends=[gcp.compute.BackendServiceBackendArgs(
-                group=webservers.instance_group,
-            )],
+            backends=[{
+                "group": webservers.instance_group,
+            }],
             health_checks=default.id)
         backend_key = gcp.compute.BackendServiceSignedUrlKey("backend_key",
             name="test-key",
@@ -293,20 +298,20 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
         webserver = gcp.compute.InstanceTemplate("webserver",
             name="standard-webserver",
             machine_type="e2-medium",
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
-                network="default",
-            )],
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image="debian-cloud/debian-11",
-                auto_delete=True,
-                boot=True,
-            )])
+            network_interfaces=[{
+                "network": "default",
+            }],
+            disks=[{
+                "sourceImage": "debian-cloud/debian-11",
+                "autoDelete": True,
+                "boot": True,
+            }])
         webservers = gcp.compute.InstanceGroupManager("webservers",
             name="my-webservers",
-            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
-                instance_template=webserver.id,
-                name="primary",
-            )],
+            versions=[{
+                "instanceTemplate": webserver.id,
+                "name": "primary",
+            }],
             base_instance_name="webserver",
             zone="us-central1-f",
             target_size=1)
@@ -322,9 +327,9 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
             protocol="HTTP",
             timeout_sec=10,
             enable_cdn=True,
-            backends=[gcp.compute.BackendServiceBackendArgs(
-                group=webservers.instance_group,
-            )],
+            backends=[{
+                "group": webservers.instance_group,
+            }],
             health_checks=default.id)
         backend_key = gcp.compute.BackendServiceSignedUrlKey("backend_key",
             name="test-key",

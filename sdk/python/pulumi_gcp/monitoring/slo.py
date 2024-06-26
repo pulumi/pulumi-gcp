@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -534,17 +539,17 @@ class Slo(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_sli: Optional[pulumi.Input[pulumi.InputType['SloBasicSliArgs']]] = None,
+                 basic_sli: Optional[pulumi.Input[Union['SloBasicSliArgs', 'SloBasicSliArgsDict']]] = None,
                  calendar_period: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  goal: Optional[pulumi.Input[float]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 request_based_sli: Optional[pulumi.Input[pulumi.InputType['SloRequestBasedSliArgs']]] = None,
+                 request_based_sli: Optional[pulumi.Input[Union['SloRequestBasedSliArgs', 'SloRequestBasedSliArgsDict']]] = None,
                  rolling_period_days: Optional[pulumi.Input[int]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  slo_id: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 windows_based_sli: Optional[pulumi.Input[pulumi.InputType['SloWindowsBasedSliArgs']]] = None,
+                 windows_based_sli: Optional[pulumi.Input[Union['SloWindowsBasedSliArgs', 'SloWindowsBasedSliArgsDict']]] = None,
                  __props__=None):
         """
         A Service-Level Objective (SLO) describes the level of desired good
@@ -577,11 +582,11 @@ class Slo(pulumi.CustomResource):
             display_name="Test SLO for App Engine",
             goal=0.9,
             calendar_period="DAY",
-            basic_sli=gcp.monitoring.SloBasicSliArgs(
-                latency=gcp.monitoring.SloBasicSliLatencyArgs(
-                    threshold="1s",
-                ),
-            ),
+            basic_sli={
+                "latency": {
+                    "threshold": "1s",
+                },
+            },
             user_labels={
                 "my_key": "my_value",
                 "my_other_key": "my_other_value",
@@ -602,14 +607,14 @@ class Slo(pulumi.CustomResource):
             display_name="Test SLO with request based SLI (good total ratio)",
             goal=0.9,
             rolling_period_days=30,
-            request_based_sli=gcp.monitoring.SloRequestBasedSliArgs(
-                distribution_cut=gcp.monitoring.SloRequestBasedSliDistributionCutArgs(
-                    distribution_filter="metric.type=\\"serviceruntime.googleapis.com/api/request_latencies\\" resource.type=\\"api\\"  ",
-                    range=gcp.monitoring.SloRequestBasedSliDistributionCutRangeArgs(
-                        max=0.5,
-                    ),
-                ),
-            ))
+            request_based_sli={
+                "distributionCut": {
+                    "distributionFilter": "metric.type=\\"serviceruntime.googleapis.com/api/request_latencies\\" resource.type=\\"api\\"  ",
+                    "range": {
+                        "max": 0.5,
+                    },
+                },
+            })
         ```
         ### Monitoring Slo Windows Based Good Bad Metric Filter
 
@@ -626,14 +631,14 @@ class Slo(pulumi.CustomResource):
             display_name="Test SLO with window based SLI",
             goal=0.95,
             calendar_period="FORTNIGHT",
-            windows_based_sli=gcp.monitoring.SloWindowsBasedSliArgs(
-                window_period="400s",
-                good_bad_metric_filter=std.join(separator=" AND ",
+            windows_based_sli={
+                "windowPeriod": "400s",
+                "goodBadMetricFilter": std.join(separator=" AND ",
                     input=[
                         "metric.type=\\"monitoring.googleapis.com/uptime_check/check_passed\\"",
                         "resource.type=\\"uptime_url\\"",
                     ]).result,
-            ))
+            })
         ```
         ### Monitoring Slo Windows Based Metric Mean
 
@@ -650,19 +655,19 @@ class Slo(pulumi.CustomResource):
             display_name="Test SLO with window based SLI",
             goal=0.9,
             rolling_period_days=20,
-            windows_based_sli=gcp.monitoring.SloWindowsBasedSliArgs(
-                window_period="600s",
-                metric_mean_in_range=gcp.monitoring.SloWindowsBasedSliMetricMeanInRangeArgs(
-                    time_series=std.join(separator=" AND ",
+            windows_based_sli={
+                "windowPeriod": "600s",
+                "metricMeanInRange": {
+                    "timeSeries": std.join(separator=" AND ",
                         input=[
                             "metric.type=\\"agent.googleapis.com/cassandra/client_request/latency/95p\\"",
                             "resource.type=\\"gce_instance\\"",
                         ]).result,
-                    range=gcp.monitoring.SloWindowsBasedSliMetricMeanInRangeRangeArgs(
-                        max=5,
-                    ),
-                ),
-            ))
+                    "range": {
+                        "max": 5,
+                    },
+                },
+            })
         ```
         ### Monitoring Slo Windows Based Metric Sum
 
@@ -679,19 +684,19 @@ class Slo(pulumi.CustomResource):
             display_name="Test SLO with window based SLI",
             goal=0.9,
             rolling_period_days=20,
-            windows_based_sli=gcp.monitoring.SloWindowsBasedSliArgs(
-                window_period="400s",
-                metric_sum_in_range=gcp.monitoring.SloWindowsBasedSliMetricSumInRangeArgs(
-                    time_series=std.join(separator=" AND ",
+            windows_based_sli={
+                "windowPeriod": "400s",
+                "metricSumInRange": {
+                    "timeSeries": std.join(separator=" AND ",
                         input=[
                             "metric.type=\\"monitoring.googleapis.com/uptime_check/request_latency\\"",
                             "resource.type=\\"uptime_url\\"",
                         ]).result,
-                    range=gcp.monitoring.SloWindowsBasedSliMetricSumInRangeRangeArgs(
-                        max=5000,
-                    ),
-                ),
-            ))
+                    "range": {
+                        "max": 5000,
+                    },
+                },
+            })
         ```
         ### Monitoring Slo Windows Based Ratio Threshold
 
@@ -708,25 +713,25 @@ class Slo(pulumi.CustomResource):
             display_name="Test SLO with window based SLI",
             goal=0.9,
             rolling_period_days=20,
-            windows_based_sli=gcp.monitoring.SloWindowsBasedSliArgs(
-                window_period="100s",
-                good_total_ratio_threshold=gcp.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdArgs(
-                    threshold=0.1,
-                    performance=gcp.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs(
-                        distribution_cut=gcp.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs(
-                            distribution_filter=std.join(separator=" AND ",
+            windows_based_sli={
+                "windowPeriod": "100s",
+                "goodTotalRatioThreshold": {
+                    "threshold": 0.1,
+                    "performance": {
+                        "distributionCut": {
+                            "distributionFilter": std.join(separator=" AND ",
                                 input=[
                                     "metric.type=\\"serviceruntime.googleapis.com/api/request_latencies\\"",
                                     "resource.type=\\"consumed_api\\"",
                                 ]).result,
-                            range=gcp.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs(
-                                min=1,
-                                max=9,
-                            ),
-                        ),
-                    ),
-                ),
-            ))
+                            "range": {
+                                "min": 1,
+                                "max": 9,
+                            },
+                        },
+                    },
+                },
+            })
         ```
 
         ## Import
@@ -743,7 +748,7 @@ class Slo(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['SloBasicSliArgs']] basic_sli: Basic Service-Level Indicator (SLI) on a well-known service type.
+        :param pulumi.Input[Union['SloBasicSliArgs', 'SloBasicSliArgsDict']] basic_sli: Basic Service-Level Indicator (SLI) on a well-known service type.
                Performance will be computed on the basis of pre-defined metrics.
                SLIs are used to measure and calculate the quality of the Service's
                performance with respect to a single aspect of service quality.
@@ -758,7 +763,7 @@ class Slo(pulumi.CustomResource):
                to be met. 0 < goal <= 0.999
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['SloRequestBasedSliArgs']] request_based_sli: A request-based SLI defines a SLI for which atomic units of
+        :param pulumi.Input[Union['SloRequestBasedSliArgs', 'SloRequestBasedSliArgsDict']] request_based_sli: A request-based SLI defines a SLI for which atomic units of
                service are counted directly.
                A SLI describes a good service.
                It is used to measure and calculate the quality of the Service's
@@ -778,7 +783,7 @@ class Slo(pulumi.CustomResource):
                to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
                can contain only lowercase letters, numerals, underscores, and dashes. Keys
                must begin with a letter.
-        :param pulumi.Input[pulumi.InputType['SloWindowsBasedSliArgs']] windows_based_sli: A windows-based SLI defines the criteria for time windows.
+        :param pulumi.Input[Union['SloWindowsBasedSliArgs', 'SloWindowsBasedSliArgsDict']] windows_based_sli: A windows-based SLI defines the criteria for time windows.
                good_service is defined based off the count of these time windows
                for which the provided service was of good quality.
                A SLI describes a good service. It is used to measure and calculate
@@ -825,11 +830,11 @@ class Slo(pulumi.CustomResource):
             display_name="Test SLO for App Engine",
             goal=0.9,
             calendar_period="DAY",
-            basic_sli=gcp.monitoring.SloBasicSliArgs(
-                latency=gcp.monitoring.SloBasicSliLatencyArgs(
-                    threshold="1s",
-                ),
-            ),
+            basic_sli={
+                "latency": {
+                    "threshold": "1s",
+                },
+            },
             user_labels={
                 "my_key": "my_value",
                 "my_other_key": "my_other_value",
@@ -850,14 +855,14 @@ class Slo(pulumi.CustomResource):
             display_name="Test SLO with request based SLI (good total ratio)",
             goal=0.9,
             rolling_period_days=30,
-            request_based_sli=gcp.monitoring.SloRequestBasedSliArgs(
-                distribution_cut=gcp.monitoring.SloRequestBasedSliDistributionCutArgs(
-                    distribution_filter="metric.type=\\"serviceruntime.googleapis.com/api/request_latencies\\" resource.type=\\"api\\"  ",
-                    range=gcp.monitoring.SloRequestBasedSliDistributionCutRangeArgs(
-                        max=0.5,
-                    ),
-                ),
-            ))
+            request_based_sli={
+                "distributionCut": {
+                    "distributionFilter": "metric.type=\\"serviceruntime.googleapis.com/api/request_latencies\\" resource.type=\\"api\\"  ",
+                    "range": {
+                        "max": 0.5,
+                    },
+                },
+            })
         ```
         ### Monitoring Slo Windows Based Good Bad Metric Filter
 
@@ -874,14 +879,14 @@ class Slo(pulumi.CustomResource):
             display_name="Test SLO with window based SLI",
             goal=0.95,
             calendar_period="FORTNIGHT",
-            windows_based_sli=gcp.monitoring.SloWindowsBasedSliArgs(
-                window_period="400s",
-                good_bad_metric_filter=std.join(separator=" AND ",
+            windows_based_sli={
+                "windowPeriod": "400s",
+                "goodBadMetricFilter": std.join(separator=" AND ",
                     input=[
                         "metric.type=\\"monitoring.googleapis.com/uptime_check/check_passed\\"",
                         "resource.type=\\"uptime_url\\"",
                     ]).result,
-            ))
+            })
         ```
         ### Monitoring Slo Windows Based Metric Mean
 
@@ -898,19 +903,19 @@ class Slo(pulumi.CustomResource):
             display_name="Test SLO with window based SLI",
             goal=0.9,
             rolling_period_days=20,
-            windows_based_sli=gcp.monitoring.SloWindowsBasedSliArgs(
-                window_period="600s",
-                metric_mean_in_range=gcp.monitoring.SloWindowsBasedSliMetricMeanInRangeArgs(
-                    time_series=std.join(separator=" AND ",
+            windows_based_sli={
+                "windowPeriod": "600s",
+                "metricMeanInRange": {
+                    "timeSeries": std.join(separator=" AND ",
                         input=[
                             "metric.type=\\"agent.googleapis.com/cassandra/client_request/latency/95p\\"",
                             "resource.type=\\"gce_instance\\"",
                         ]).result,
-                    range=gcp.monitoring.SloWindowsBasedSliMetricMeanInRangeRangeArgs(
-                        max=5,
-                    ),
-                ),
-            ))
+                    "range": {
+                        "max": 5,
+                    },
+                },
+            })
         ```
         ### Monitoring Slo Windows Based Metric Sum
 
@@ -927,19 +932,19 @@ class Slo(pulumi.CustomResource):
             display_name="Test SLO with window based SLI",
             goal=0.9,
             rolling_period_days=20,
-            windows_based_sli=gcp.monitoring.SloWindowsBasedSliArgs(
-                window_period="400s",
-                metric_sum_in_range=gcp.monitoring.SloWindowsBasedSliMetricSumInRangeArgs(
-                    time_series=std.join(separator=" AND ",
+            windows_based_sli={
+                "windowPeriod": "400s",
+                "metricSumInRange": {
+                    "timeSeries": std.join(separator=" AND ",
                         input=[
                             "metric.type=\\"monitoring.googleapis.com/uptime_check/request_latency\\"",
                             "resource.type=\\"uptime_url\\"",
                         ]).result,
-                    range=gcp.monitoring.SloWindowsBasedSliMetricSumInRangeRangeArgs(
-                        max=5000,
-                    ),
-                ),
-            ))
+                    "range": {
+                        "max": 5000,
+                    },
+                },
+            })
         ```
         ### Monitoring Slo Windows Based Ratio Threshold
 
@@ -956,25 +961,25 @@ class Slo(pulumi.CustomResource):
             display_name="Test SLO with window based SLI",
             goal=0.9,
             rolling_period_days=20,
-            windows_based_sli=gcp.monitoring.SloWindowsBasedSliArgs(
-                window_period="100s",
-                good_total_ratio_threshold=gcp.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdArgs(
-                    threshold=0.1,
-                    performance=gcp.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs(
-                        distribution_cut=gcp.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs(
-                            distribution_filter=std.join(separator=" AND ",
+            windows_based_sli={
+                "windowPeriod": "100s",
+                "goodTotalRatioThreshold": {
+                    "threshold": 0.1,
+                    "performance": {
+                        "distributionCut": {
+                            "distributionFilter": std.join(separator=" AND ",
                                 input=[
                                     "metric.type=\\"serviceruntime.googleapis.com/api/request_latencies\\"",
                                     "resource.type=\\"consumed_api\\"",
                                 ]).result,
-                            range=gcp.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs(
-                                min=1,
-                                max=9,
-                            ),
-                        ),
-                    ),
-                ),
-            ))
+                            "range": {
+                                "min": 1,
+                                "max": 9,
+                            },
+                        },
+                    },
+                },
+            })
         ```
 
         ## Import
@@ -1004,17 +1009,17 @@ class Slo(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_sli: Optional[pulumi.Input[pulumi.InputType['SloBasicSliArgs']]] = None,
+                 basic_sli: Optional[pulumi.Input[Union['SloBasicSliArgs', 'SloBasicSliArgsDict']]] = None,
                  calendar_period: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  goal: Optional[pulumi.Input[float]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 request_based_sli: Optional[pulumi.Input[pulumi.InputType['SloRequestBasedSliArgs']]] = None,
+                 request_based_sli: Optional[pulumi.Input[Union['SloRequestBasedSliArgs', 'SloRequestBasedSliArgsDict']]] = None,
                  rolling_period_days: Optional[pulumi.Input[int]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  slo_id: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 windows_based_sli: Optional[pulumi.Input[pulumi.InputType['SloWindowsBasedSliArgs']]] = None,
+                 windows_based_sli: Optional[pulumi.Input[Union['SloWindowsBasedSliArgs', 'SloWindowsBasedSliArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1050,18 +1055,18 @@ class Slo(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            basic_sli: Optional[pulumi.Input[pulumi.InputType['SloBasicSliArgs']]] = None,
+            basic_sli: Optional[pulumi.Input[Union['SloBasicSliArgs', 'SloBasicSliArgsDict']]] = None,
             calendar_period: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             goal: Optional[pulumi.Input[float]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            request_based_sli: Optional[pulumi.Input[pulumi.InputType['SloRequestBasedSliArgs']]] = None,
+            request_based_sli: Optional[pulumi.Input[Union['SloRequestBasedSliArgs', 'SloRequestBasedSliArgsDict']]] = None,
             rolling_period_days: Optional[pulumi.Input[int]] = None,
             service: Optional[pulumi.Input[str]] = None,
             slo_id: Optional[pulumi.Input[str]] = None,
             user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            windows_based_sli: Optional[pulumi.Input[pulumi.InputType['SloWindowsBasedSliArgs']]] = None) -> 'Slo':
+            windows_based_sli: Optional[pulumi.Input[Union['SloWindowsBasedSliArgs', 'SloWindowsBasedSliArgsDict']]] = None) -> 'Slo':
         """
         Get an existing Slo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1069,7 +1074,7 @@ class Slo(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['SloBasicSliArgs']] basic_sli: Basic Service-Level Indicator (SLI) on a well-known service type.
+        :param pulumi.Input[Union['SloBasicSliArgs', 'SloBasicSliArgsDict']] basic_sli: Basic Service-Level Indicator (SLI) on a well-known service type.
                Performance will be computed on the basis of pre-defined metrics.
                SLIs are used to measure and calculate the quality of the Service's
                performance with respect to a single aspect of service quality.
@@ -1086,7 +1091,7 @@ class Slo(pulumi.CustomResource):
                projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['SloRequestBasedSliArgs']] request_based_sli: A request-based SLI defines a SLI for which atomic units of
+        :param pulumi.Input[Union['SloRequestBasedSliArgs', 'SloRequestBasedSliArgsDict']] request_based_sli: A request-based SLI defines a SLI for which atomic units of
                service are counted directly.
                A SLI describes a good service.
                It is used to measure and calculate the quality of the Service's
@@ -1106,7 +1111,7 @@ class Slo(pulumi.CustomResource):
                to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
                can contain only lowercase letters, numerals, underscores, and dashes. Keys
                must begin with a letter.
-        :param pulumi.Input[pulumi.InputType['SloWindowsBasedSliArgs']] windows_based_sli: A windows-based SLI defines the criteria for time windows.
+        :param pulumi.Input[Union['SloWindowsBasedSliArgs', 'SloWindowsBasedSliArgsDict']] windows_based_sli: A windows-based SLI defines the criteria for time windows.
                good_service is defined based off the count of these time windows
                for which the provided service was of good quality.
                A SLI describes a good service. It is used to measure and calculate

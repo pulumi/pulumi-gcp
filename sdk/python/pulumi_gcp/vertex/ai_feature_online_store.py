@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -472,13 +477,13 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigtable: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreBigtableArgs']]] = None,
-                 dedicated_serving_endpoint: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreDedicatedServingEndpointArgs']]] = None,
-                 embedding_management: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreEmbeddingManagementArgs']]] = None,
+                 bigtable: Optional[pulumi.Input[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']]] = None,
+                 dedicated_serving_endpoint: Optional[pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
+                 embedding_management: Optional[pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 optimized: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreOptimizedArgs']]] = None,
+                 optimized: Optional[pulumi.Input[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -505,13 +510,13 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            bigtable=gcp.vertex.AiFeatureOnlineStoreBigtableArgs(
-                auto_scaling=gcp.vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs(
-                    min_node_count=1,
-                    max_node_count=3,
-                    cpu_utilization_target=50,
-                ),
-            ))
+            bigtable={
+                "autoScaling": {
+                    "minNodeCount": 1,
+                    "maxNodeCount": 3,
+                    "cpuUtilizationTarget": 50,
+                },
+            })
         ```
         ### Vertex Ai Featureonlinestore With Beta Fields Optimized
 
@@ -526,13 +531,13 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            optimized=gcp.vertex.AiFeatureOnlineStoreOptimizedArgs(),
-            dedicated_serving_endpoint=gcp.vertex.AiFeatureOnlineStoreDedicatedServingEndpointArgs(
-                private_service_connect_config=gcp.vertex.AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs(
-                    enable_private_service_connect=True,
-                    project_allowlists=[project.number],
-                ),
-            ))
+            optimized={},
+            dedicated_serving_endpoint={
+                "privateServiceConnectConfig": {
+                    "enablePrivateServiceConnect": True,
+                    "projectAllowlists": [project.number],
+                },
+            })
         ```
         ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
 
@@ -546,16 +551,16 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            bigtable=gcp.vertex.AiFeatureOnlineStoreBigtableArgs(
-                auto_scaling=gcp.vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs(
-                    min_node_count=1,
-                    max_node_count=2,
-                    cpu_utilization_target=80,
-                ),
-            ),
-            embedding_management=gcp.vertex.AiFeatureOnlineStoreEmbeddingManagementArgs(
-                enabled=True,
-            ),
+            bigtable={
+                "autoScaling": {
+                    "minNodeCount": 1,
+                    "maxNodeCount": 2,
+                    "cpuUtilizationTarget": 80,
+                },
+            },
+            embedding_management={
+                "enabled": True,
+            },
             force_destroy=True)
         project = gcp.organizations.get_project()
         ```
@@ -592,11 +597,11 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreBigtableArgs']] bigtable: Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']] bigtable: Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreDedicatedServingEndpointArgs']] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreEmbeddingManagementArgs']] embedding_management: The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']] embedding_management: The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
                Structure is documented below.
                
                > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
@@ -608,7 +613,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreOptimizedArgs']] optimized: Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+        :param pulumi.Input[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict']] optimized: Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of feature online store. eg us-central1
@@ -642,13 +647,13 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            bigtable=gcp.vertex.AiFeatureOnlineStoreBigtableArgs(
-                auto_scaling=gcp.vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs(
-                    min_node_count=1,
-                    max_node_count=3,
-                    cpu_utilization_target=50,
-                ),
-            ))
+            bigtable={
+                "autoScaling": {
+                    "minNodeCount": 1,
+                    "maxNodeCount": 3,
+                    "cpuUtilizationTarget": 50,
+                },
+            })
         ```
         ### Vertex Ai Featureonlinestore With Beta Fields Optimized
 
@@ -663,13 +668,13 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            optimized=gcp.vertex.AiFeatureOnlineStoreOptimizedArgs(),
-            dedicated_serving_endpoint=gcp.vertex.AiFeatureOnlineStoreDedicatedServingEndpointArgs(
-                private_service_connect_config=gcp.vertex.AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs(
-                    enable_private_service_connect=True,
-                    project_allowlists=[project.number],
-                ),
-            ))
+            optimized={},
+            dedicated_serving_endpoint={
+                "privateServiceConnectConfig": {
+                    "enablePrivateServiceConnect": True,
+                    "projectAllowlists": [project.number],
+                },
+            })
         ```
         ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
 
@@ -683,16 +688,16 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            bigtable=gcp.vertex.AiFeatureOnlineStoreBigtableArgs(
-                auto_scaling=gcp.vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs(
-                    min_node_count=1,
-                    max_node_count=2,
-                    cpu_utilization_target=80,
-                ),
-            ),
-            embedding_management=gcp.vertex.AiFeatureOnlineStoreEmbeddingManagementArgs(
-                enabled=True,
-            ),
+            bigtable={
+                "autoScaling": {
+                    "minNodeCount": 1,
+                    "maxNodeCount": 2,
+                    "cpuUtilizationTarget": 80,
+                },
+            },
+            embedding_management={
+                "enabled": True,
+            },
             force_destroy=True)
         project = gcp.organizations.get_project()
         ```
@@ -742,13 +747,13 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigtable: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreBigtableArgs']]] = None,
-                 dedicated_serving_endpoint: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreDedicatedServingEndpointArgs']]] = None,
-                 embedding_management: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreEmbeddingManagementArgs']]] = None,
+                 bigtable: Optional[pulumi.Input[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']]] = None,
+                 dedicated_serving_endpoint: Optional[pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
+                 embedding_management: Optional[pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 optimized: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreOptimizedArgs']]] = None,
+                 optimized: Optional[pulumi.Input[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -787,16 +792,16 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bigtable: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreBigtableArgs']]] = None,
+            bigtable: Optional[pulumi.Input[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            dedicated_serving_endpoint: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreDedicatedServingEndpointArgs']]] = None,
+            dedicated_serving_endpoint: Optional[pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            embedding_management: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreEmbeddingManagementArgs']]] = None,
+            embedding_management: Optional[pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            optimized: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreOptimizedArgs']]] = None,
+            optimized: Optional[pulumi.Input[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -809,13 +814,13 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreBigtableArgs']] bigtable: Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']] bigtable: Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The timestamp of when the feature online store was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreDedicatedServingEndpointArgs']] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreEmbeddingManagementArgs']] embedding_management: The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']] embedding_management: The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
                Structure is documented below.
                
                > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
@@ -828,7 +833,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreOptimizedArgs']] optimized: Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+        :param pulumi.Input[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict']] optimized: Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource

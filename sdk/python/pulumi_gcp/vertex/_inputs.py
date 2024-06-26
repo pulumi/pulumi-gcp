@@ -4,64 +4,132 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AiDatasetEncryptionSpecArgs',
+    'AiDatasetEncryptionSpecArgsDict',
     'AiDeploymentResourcePoolDedicatedResourcesArgs',
+    'AiDeploymentResourcePoolDedicatedResourcesArgsDict',
     'AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs',
+    'AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgsDict',
     'AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs',
+    'AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgsDict',
     'AiEndpointDeployedModelArgs',
+    'AiEndpointDeployedModelArgsDict',
     'AiEndpointDeployedModelAutomaticResourceArgs',
+    'AiEndpointDeployedModelAutomaticResourceArgsDict',
     'AiEndpointDeployedModelDedicatedResourceArgs',
+    'AiEndpointDeployedModelDedicatedResourceArgsDict',
     'AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs',
+    'AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgsDict',
     'AiEndpointDeployedModelDedicatedResourceMachineSpecArgs',
+    'AiEndpointDeployedModelDedicatedResourceMachineSpecArgsDict',
     'AiEndpointDeployedModelPrivateEndpointArgs',
+    'AiEndpointDeployedModelPrivateEndpointArgsDict',
     'AiEndpointEncryptionSpecArgs',
+    'AiEndpointEncryptionSpecArgsDict',
     'AiEndpointIamBindingConditionArgs',
+    'AiEndpointIamBindingConditionArgsDict',
     'AiEndpointIamMemberConditionArgs',
+    'AiEndpointIamMemberConditionArgsDict',
     'AiFeatureGroupBigQueryArgs',
+    'AiFeatureGroupBigQueryArgsDict',
     'AiFeatureGroupBigQueryBigQuerySourceArgs',
+    'AiFeatureGroupBigQueryBigQuerySourceArgsDict',
     'AiFeatureOnlineStoreBigtableArgs',
+    'AiFeatureOnlineStoreBigtableArgsDict',
     'AiFeatureOnlineStoreBigtableAutoScalingArgs',
+    'AiFeatureOnlineStoreBigtableAutoScalingArgsDict',
     'AiFeatureOnlineStoreDedicatedServingEndpointArgs',
+    'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict',
     'AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs',
+    'AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgsDict',
     'AiFeatureOnlineStoreEmbeddingManagementArgs',
+    'AiFeatureOnlineStoreEmbeddingManagementArgsDict',
     'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs',
+    'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict',
     'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs',
+    'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict',
     'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs',
+    'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgsDict',
     'AiFeatureOnlineStoreFeatureviewSyncConfigArgs',
+    'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict',
     'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs',
+    'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict',
     'AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs',
+    'AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgsDict',
     'AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs',
+    'AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgsDict',
     'AiFeatureOnlineStoreOptimizedArgs',
+    'AiFeatureOnlineStoreOptimizedArgsDict',
     'AiFeatureStoreEncryptionSpecArgs',
+    'AiFeatureStoreEncryptionSpecArgsDict',
     'AiFeatureStoreEntityTypeIamBindingConditionArgs',
+    'AiFeatureStoreEntityTypeIamBindingConditionArgsDict',
     'AiFeatureStoreEntityTypeIamMemberConditionArgs',
+    'AiFeatureStoreEntityTypeIamMemberConditionArgsDict',
     'AiFeatureStoreEntityTypeMonitoringConfigArgs',
+    'AiFeatureStoreEntityTypeMonitoringConfigArgsDict',
     'AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs',
+    'AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgsDict',
     'AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs',
+    'AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgsDict',
     'AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs',
+    'AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgsDict',
     'AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs',
+    'AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgsDict',
     'AiFeatureStoreIamBindingConditionArgs',
+    'AiFeatureStoreIamBindingConditionArgsDict',
     'AiFeatureStoreIamMemberConditionArgs',
+    'AiFeatureStoreIamMemberConditionArgsDict',
     'AiFeatureStoreOnlineServingConfigArgs',
+    'AiFeatureStoreOnlineServingConfigArgsDict',
     'AiFeatureStoreOnlineServingConfigScalingArgs',
+    'AiFeatureStoreOnlineServingConfigScalingArgsDict',
     'AiIndexDeployedIndexArgs',
+    'AiIndexDeployedIndexArgsDict',
     'AiIndexEndpointPrivateServiceConnectConfigArgs',
+    'AiIndexEndpointPrivateServiceConnectConfigArgsDict',
     'AiIndexIndexStatArgs',
+    'AiIndexIndexStatArgsDict',
     'AiIndexMetadataArgs',
+    'AiIndexMetadataArgsDict',
     'AiIndexMetadataConfigArgs',
+    'AiIndexMetadataConfigArgsDict',
     'AiIndexMetadataConfigAlgorithmConfigArgs',
+    'AiIndexMetadataConfigAlgorithmConfigArgsDict',
     'AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs',
+    'AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgsDict',
     'AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs',
+    'AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgsDict',
     'AiMetadataStoreEncryptionSpecArgs',
+    'AiMetadataStoreEncryptionSpecArgsDict',
     'AiMetadataStoreStateArgs',
+    'AiMetadataStoreStateArgsDict',
     'AiTensorboardEncryptionSpecArgs',
+    'AiTensorboardEncryptionSpecArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AiDatasetEncryptionSpecArgsDict(TypedDict):
+        kms_key_name: NotRequired[pulumi.Input[str]]
+        """
+        Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+        Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+        """
+elif False:
+    AiDatasetEncryptionSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiDatasetEncryptionSpecArgs:
@@ -87,6 +155,29 @@ class AiDatasetEncryptionSpecArgs:
     def kms_key_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kms_key_name", value)
 
+
+if not MYPY:
+    class AiDeploymentResourcePoolDedicatedResourcesArgsDict(TypedDict):
+        machine_spec: pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgsDict']
+        """
+        The specification of a single machine used by the prediction
+        Structure is documented below.
+        """
+        min_replica_count: pulumi.Input[int]
+        """
+        The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1. If traffic against the DeployedModel increases, it may dynamically be deployed onto more replicas, and as traffic decreases, some of these extra replicas may be freed.
+        """
+        autoscaling_metric_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgsDict']]]]
+        """
+        A list of the metric specifications that overrides a resource utilization metric.
+        Structure is documented below.
+        """
+        max_replica_count: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use min_replica_count as the default value. The value of this field impacts the charge against Vertex CPU and GPU quotas. Specifically, you will be charged for max_replica_count * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
+        """
+elif False:
+    AiDeploymentResourcePoolDedicatedResourcesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiDeploymentResourcePoolDedicatedResourcesArgs:
@@ -161,6 +252,19 @@ class AiDeploymentResourcePoolDedicatedResourcesArgs:
         pulumi.set(self, "max_replica_count", value)
 
 
+if not MYPY:
+    class AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgsDict(TypedDict):
+        metric_name: pulumi.Input[str]
+        """
+        The resource metric name. Supported metrics: For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+        """
+        target: NotRequired[pulumi.Input[int]]
+        """
+        The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+        """
+elif False:
+    AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs:
     def __init__(__self__, *,
@@ -198,6 +302,23 @@ class AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs:
     def target(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "target", value)
 
+
+if not MYPY:
+    class AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgsDict(TypedDict):
+        accelerator_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of accelerators to attach to the machine.
+        """
+        accelerator_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
+        """
+        machine_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types).
+        """
+elif False:
+    AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs:
@@ -253,6 +374,73 @@ class AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs:
     def machine_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "machine_type", value)
 
+
+if not MYPY:
+    class AiEndpointDeployedModelArgsDict(TypedDict):
+        automatic_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgsDict']]]]
+        """
+        (Output)
+        A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
+        Structure is documented below.
+        """
+        create_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. Timestamp when the DeployedModel was created.
+        """
+        dedicated_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgsDict']]]]
+        """
+        (Output)
+        A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
+        Structure is documented below.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        """
+        enable_access_logging: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
+        """
+        enable_container_logging: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
+        """
+        model: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel's Endpoint.
+        """
+        model_version_id: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The version ID of the model that is deployed.
+        """
+        private_endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgsDict']]]]
+        """
+        (Output)
+        Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
+        Structure is documented below.
+        """
+        service_account: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The service account that the DeployedModel's container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn't have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
+        """
+        shared_resources: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
+        """
+elif False:
+    AiEndpointDeployedModelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiEndpointDeployedModelArgs:
@@ -481,6 +669,21 @@ class AiEndpointDeployedModelArgs:
         pulumi.set(self, "shared_resources", value)
 
 
+if not MYPY:
+    class AiEndpointDeployedModelAutomaticResourceArgsDict(TypedDict):
+        max_replica_count: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
+        """
+        min_replica_count: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
+        """
+elif False:
+    AiEndpointDeployedModelAutomaticResourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiEndpointDeployedModelAutomaticResourceArgs:
     def __init__(__self__, *,
@@ -523,6 +726,33 @@ class AiEndpointDeployedModelAutomaticResourceArgs:
     def min_replica_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_replica_count", value)
 
+
+if not MYPY:
+    class AiEndpointDeployedModelDedicatedResourceArgsDict(TypedDict):
+        autoscaling_metric_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgsDict']]]]
+        """
+        (Output)
+        The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`.
+        Structure is documented below.
+        """
+        machine_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgsDict']]]]
+        """
+        (Output)
+        The specification of a single machine used by the prediction.
+        Structure is documented below.
+        """
+        max_replica_count: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
+        """
+        min_replica_count: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
+        """
+elif False:
+    AiEndpointDeployedModelDedicatedResourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiEndpointDeployedModelDedicatedResourceArgs:
@@ -607,6 +837,21 @@ class AiEndpointDeployedModelDedicatedResourceArgs:
         pulumi.set(self, "min_replica_count", value)
 
 
+if not MYPY:
+    class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgsDict(TypedDict):
+        metric_name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+        """
+        target: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+        """
+elif False:
+    AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs:
     def __init__(__self__, *,
@@ -649,6 +894,26 @@ class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs:
     def target(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "target", value)
 
+
+if not MYPY:
+    class AiEndpointDeployedModelDedicatedResourceMachineSpecArgsDict(TypedDict):
+        accelerator_count: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The number of accelerators to attach to the machine.
+        """
+        accelerator_type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
+        """
+        machine_type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
+        """
+elif False:
+    AiEndpointDeployedModelDedicatedResourceMachineSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs:
@@ -710,6 +975,31 @@ class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs:
     def machine_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "machine_type", value)
 
+
+if not MYPY:
+    class AiEndpointDeployedModelPrivateEndpointArgsDict(TypedDict):
+        explain_http_uri: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. Http(s) path to send explain requests.
+        """
+        health_http_uri: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. Http(s) path to send health check requests.
+        """
+        predict_http_uri: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. Http(s) path to send prediction requests.
+        """
+        service_attachment: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The name of the service attachment resource. Populated if private service connect is enabled.
+        """
+elif False:
+    AiEndpointDeployedModelPrivateEndpointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiEndpointDeployedModelPrivateEndpointArgs:
@@ -790,6 +1080,15 @@ class AiEndpointDeployedModelPrivateEndpointArgs:
         pulumi.set(self, "service_attachment", value)
 
 
+if not MYPY:
+    class AiEndpointEncryptionSpecArgsDict(TypedDict):
+        kms_key_name: pulumi.Input[str]
+        """
+        Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+        """
+elif False:
+    AiEndpointEncryptionSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiEndpointEncryptionSpecArgs:
     def __init__(__self__, *,
@@ -811,6 +1110,14 @@ class AiEndpointEncryptionSpecArgs:
     def kms_key_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_name", value)
 
+
+if not MYPY:
+    class AiEndpointIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    AiEndpointIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiEndpointIamBindingConditionArgs:
@@ -851,6 +1158,14 @@ class AiEndpointIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class AiEndpointIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    AiEndpointIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiEndpointIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -889,6 +1204,20 @@ class AiEndpointIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class AiFeatureGroupBigQueryArgsDict(TypedDict):
+        big_query_source: pulumi.Input['AiFeatureGroupBigQueryBigQuerySourceArgsDict']
+        """
+        The BigQuery source URI that points to either a BigQuery Table or View.
+        Structure is documented below.
+        """
+        entity_id_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+        """
+elif False:
+    AiFeatureGroupBigQueryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiFeatureGroupBigQueryArgs:
@@ -930,6 +1259,15 @@ class AiFeatureGroupBigQueryArgs:
         pulumi.set(self, "entity_id_columns", value)
 
 
+if not MYPY:
+    class AiFeatureGroupBigQueryBigQuerySourceArgsDict(TypedDict):
+        input_uri: pulumi.Input[str]
+        """
+        BigQuery URI to a table, up to 2000 characters long. For example: `bq://projectId.bqDatasetId.bqTableId.`
+        """
+elif False:
+    AiFeatureGroupBigQueryBigQuerySourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiFeatureGroupBigQueryBigQuerySourceArgs:
     def __init__(__self__, *,
@@ -951,6 +1289,16 @@ class AiFeatureGroupBigQueryBigQuerySourceArgs:
     def input_uri(self, value: pulumi.Input[str]):
         pulumi.set(self, "input_uri", value)
 
+
+if not MYPY:
+    class AiFeatureOnlineStoreBigtableArgsDict(TypedDict):
+        auto_scaling: pulumi.Input['AiFeatureOnlineStoreBigtableAutoScalingArgsDict']
+        """
+        Autoscaling config applied to Bigtable Instance.
+        Structure is documented below.
+        """
+elif False:
+    AiFeatureOnlineStoreBigtableArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiFeatureOnlineStoreBigtableArgs:
@@ -975,6 +1323,23 @@ class AiFeatureOnlineStoreBigtableArgs:
     def auto_scaling(self, value: pulumi.Input['AiFeatureOnlineStoreBigtableAutoScalingArgs']):
         pulumi.set(self, "auto_scaling", value)
 
+
+if not MYPY:
+    class AiFeatureOnlineStoreBigtableAutoScalingArgsDict(TypedDict):
+        max_node_count: pulumi.Input[int]
+        """
+        The maximum number of nodes to scale up to. Must be greater than or equal to minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+        """
+        min_node_count: pulumi.Input[int]
+        """
+        The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+        """
+        cpu_utilization_target: NotRequired[pulumi.Input[int]]
+        """
+        A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+        """
+elif False:
+    AiFeatureOnlineStoreBigtableAutoScalingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiFeatureOnlineStoreBigtableAutoScalingArgs:
@@ -1028,6 +1393,26 @@ class AiFeatureOnlineStoreBigtableAutoScalingArgs:
     def cpu_utilization_target(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cpu_utilization_target", value)
 
+
+if not MYPY:
+    class AiFeatureOnlineStoreDedicatedServingEndpointArgsDict(TypedDict):
+        private_service_connect_config: NotRequired[pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgsDict']]
+        """
+        Private service connect config.
+        Structure is documented below.
+        """
+        public_endpoint_domain_name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Domain name to use for this FeatureOnlineStore
+        """
+        service_attachment: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Name of the service attachment resource. Applicable only if private service connect is enabled and after FeatureViewSync is created.
+        """
+elif False:
+    AiFeatureOnlineStoreDedicatedServingEndpointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiFeatureOnlineStoreDedicatedServingEndpointArgs:
@@ -1090,6 +1475,19 @@ class AiFeatureOnlineStoreDedicatedServingEndpointArgs:
         pulumi.set(self, "service_attachment", value)
 
 
+if not MYPY:
+    class AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgsDict(TypedDict):
+        enable_private_service_connect: pulumi.Input[bool]
+        """
+        If set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+        """
+        project_allowlists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of Projects from which the forwarding rule will target the service attachment.
+        """
+elif False:
+    AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs:
     def __init__(__self__, *,
@@ -1128,6 +1526,15 @@ class AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArg
         pulumi.set(self, "project_allowlists", value)
 
 
+if not MYPY:
+    class AiFeatureOnlineStoreEmbeddingManagementArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable embedding management.
+        """
+elif False:
+    AiFeatureOnlineStoreEmbeddingManagementArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiFeatureOnlineStoreEmbeddingManagementArgs:
     def __init__(__self__, *,
@@ -1150,6 +1557,19 @@ class AiFeatureOnlineStoreEmbeddingManagementArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict(TypedDict):
+        entity_id_columns: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Columns to construct entityId / row keys. Start by supporting 1 only.
+        """
+        uri: pulumi.Input[str]
+        """
+        The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
+        """
+elif False:
+    AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs:
@@ -1188,6 +1608,16 @@ class AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs:
         pulumi.set(self, "uri", value)
 
 
+if not MYPY:
+    class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict(TypedDict):
+        feature_groups: pulumi.Input[Sequence[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgsDict']]]
+        """
+        List of features that need to be synced to Online Store.
+        Structure is documented below.
+        """
+elif False:
+    AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs:
     def __init__(__self__, *,
@@ -1211,6 +1641,19 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs:
     def feature_groups(self, value: pulumi.Input[Sequence[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs']]]):
         pulumi.set(self, "feature_groups", value)
 
+
+if not MYPY:
+    class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgsDict(TypedDict):
+        feature_group_id: pulumi.Input[str]
+        """
+        Identifier of the feature group.
+        """
+        feature_ids: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Identifiers of features under the feature group.
+        """
+elif False:
+    AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs:
@@ -1249,6 +1692,16 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs:
         pulumi.set(self, "feature_ids", value)
 
 
+if not MYPY:
+    class AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict(TypedDict):
+        cron: NotRequired[pulumi.Input[str]]
+        """
+        Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+        To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
+        """
+elif False:
+    AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiFeatureOnlineStoreFeatureviewSyncConfigArgs:
     def __init__(__self__, *,
@@ -1273,6 +1726,42 @@ class AiFeatureOnlineStoreFeatureviewSyncConfigArgs:
     def cron(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cron", value)
 
+
+if not MYPY:
+    class AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict(TypedDict):
+        embedding_column: pulumi.Input[str]
+        """
+        Column of embedding. This column contains the source data to create index for vector search.
+        """
+        brute_force_config: NotRequired[pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgsDict']]
+        """
+        Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+        """
+        crowding_column: NotRequired[pulumi.Input[str]]
+        """
+        Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowdingAttribute.
+        """
+        distance_measure_type: NotRequired[pulumi.Input[str]]
+        """
+        The distance measure used in nearest neighbor search.
+        For details on allowed values, see the [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.featureOnlineStores.featureViews#DistanceMeasureType).
+        Possible values are: `SQUARED_L2_DISTANCE`, `COSINE_DISTANCE`, `DOT_PRODUCT_DISTANCE`.
+        """
+        embedding_dimension: NotRequired[pulumi.Input[int]]
+        """
+        The number of dimensions of the input embedding.
+        """
+        filter_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Columns of features that are used to filter vector search results.
+        """
+        tree_ah_config: NotRequired[pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgsDict']]
+        """
+        Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+        Structure is documented below.
+        """
+elif False:
+    AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs:
@@ -1398,11 +1887,26 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs:
         pulumi.set(self, "tree_ah_config", value)
 
 
+if not MYPY:
+    class AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgsDict(TypedDict):
+        pass
+elif False:
+    AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgsDict(TypedDict):
+        leaf_node_embedding_count: NotRequired[pulumi.Input[str]]
+        """
+        Number of embeddings on each leaf node. The default value is 1000 if not set.
+        """
+elif False:
+    AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs:
@@ -1427,11 +1931,26 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs:
         pulumi.set(self, "leaf_node_embedding_count", value)
 
 
+if not MYPY:
+    class AiFeatureOnlineStoreOptimizedArgsDict(TypedDict):
+        pass
+elif False:
+    AiFeatureOnlineStoreOptimizedArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiFeatureOnlineStoreOptimizedArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class AiFeatureStoreEncryptionSpecArgsDict(TypedDict):
+        kms_key_name: pulumi.Input[str]
+        """
+        The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
+        """
+elif False:
+    AiFeatureStoreEncryptionSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiFeatureStoreEncryptionSpecArgs:
@@ -1454,6 +1973,14 @@ class AiFeatureStoreEncryptionSpecArgs:
     def kms_key_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_name", value)
 
+
+if not MYPY:
+    class AiFeatureStoreEntityTypeIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    AiFeatureStoreEntityTypeIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiFeatureStoreEntityTypeIamBindingConditionArgs:
@@ -1494,6 +2021,14 @@ class AiFeatureStoreEntityTypeIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class AiFeatureStoreEntityTypeIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    AiFeatureStoreEntityTypeIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiFeatureStoreEntityTypeIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -1532,6 +2067,31 @@ class AiFeatureStoreEntityTypeIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class AiFeatureStoreEntityTypeMonitoringConfigArgsDict(TypedDict):
+        categorical_threshold_config: NotRequired[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgsDict']]
+        """
+        Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
+        Structure is documented below.
+        """
+        import_features_analysis: NotRequired[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgsDict']]
+        """
+        The config for ImportFeatures Analysis Based Feature Monitoring.
+        Structure is documented below.
+        """
+        numerical_threshold_config: NotRequired[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgsDict']]
+        """
+        Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
+        Structure is documented below.
+        """
+        snapshot_analysis: NotRequired[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgsDict']]
+        """
+        The config for Snapshot Analysis Based Feature Monitoring.
+        Structure is documented below.
+        """
+elif False:
+    AiFeatureStoreEntityTypeMonitoringConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiFeatureStoreEntityTypeMonitoringConfigArgs:
@@ -1612,6 +2172,15 @@ class AiFeatureStoreEntityTypeMonitoringConfigArgs:
         pulumi.set(self, "snapshot_analysis", value)
 
 
+if not MYPY:
+    class AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgsDict(TypedDict):
+        value: pulumi.Input[float]
+        """
+        Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+        """
+elif False:
+    AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs:
     def __init__(__self__, *,
@@ -1633,6 +2202,25 @@ class AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs:
     def value(self, value: pulumi.Input[float]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgsDict(TypedDict):
+        anomaly_detection_baseline: NotRequired[pulumi.Input[str]]
+        """
+        Defines the baseline to do anomaly detection for feature values imported by each [entityTypes.importFeatureValues][] operation. The value must be one of the values below:
+        * LATEST_STATS: Choose the later one statistics generated by either most recent snapshot analysis or previous import features analysis. If non of them exists, skip anomaly detection and only generate a statistics.
+        * MOST_RECENT_SNAPSHOT_STATS: Use the statistics generated by the most recent snapshot analysis if exists.
+        * PREVIOUS_IMPORT_FEATURES_STATS: Use the statistics generated by the previous import features analysis if exists.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        Whether to enable / disable / inherite default hebavior for import features analysis. The value must be one of the values below:
+        * DEFAULT: The default behavior of whether to enable the monitoring. EntityType-level config: disabled.
+        * ENABLED: Explicitly enables import features analysis. EntityType-level config: by default enables import features analysis for all Features under it.
+        * DISABLED: Explicitly disables import features analysis. EntityType-level config: by default disables import features analysis for all Features under it.
+        """
+elif False:
+    AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs:
@@ -1685,6 +2273,15 @@ class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs:
         pulumi.set(self, "state", value)
 
 
+if not MYPY:
+    class AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgsDict(TypedDict):
+        value: pulumi.Input[float]
+        """
+        Specify a threshold value that can trigger the alert. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+        """
+elif False:
+    AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs:
     def __init__(__self__, *,
@@ -1706,6 +2303,31 @@ class AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs:
     def value(self, value: pulumi.Input[float]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgsDict(TypedDict):
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
+        """
+        monitoring_interval: NotRequired[pulumi.Input[str]]
+        """
+        Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+
+        > **Warning:** `monitoring_interval` is deprecated and will be removed in a future release.
+        """
+        monitoring_interval_days: NotRequired[pulumi.Input[int]]
+        """
+        Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
+        If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
+        """
+        staleness_days: NotRequired[pulumi.Input[int]]
+        """
+        Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
+        """
+elif False:
+    AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
@@ -1790,6 +2412,14 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
         pulumi.set(self, "staleness_days", value)
 
 
+if not MYPY:
+    class AiFeatureStoreIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    AiFeatureStoreIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiFeatureStoreIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -1829,6 +2459,14 @@ class AiFeatureStoreIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class AiFeatureStoreIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    AiFeatureStoreIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiFeatureStoreIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -1867,6 +2505,20 @@ class AiFeatureStoreIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class AiFeatureStoreOnlineServingConfigArgsDict(TypedDict):
+        fixed_node_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
+        """
+        scaling: NotRequired[pulumi.Input['AiFeatureStoreOnlineServingConfigScalingArgsDict']]
+        """
+        Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+        Structure is documented below.
+        """
+elif False:
+    AiFeatureStoreOnlineServingConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiFeatureStoreOnlineServingConfigArgs:
@@ -1909,6 +2561,19 @@ class AiFeatureStoreOnlineServingConfigArgs:
         pulumi.set(self, "scaling", value)
 
 
+if not MYPY:
+    class AiFeatureStoreOnlineServingConfigScalingArgsDict(TypedDict):
+        max_node_count: pulumi.Input[int]
+        """
+        The maximum number of nodes to scale up to. Must be greater than minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+        """
+        min_node_count: pulumi.Input[int]
+        """
+        The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+        """
+elif False:
+    AiFeatureStoreOnlineServingConfigScalingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiFeatureStoreOnlineServingConfigScalingArgs:
     def __init__(__self__, *,
@@ -1945,6 +2610,21 @@ class AiFeatureStoreOnlineServingConfigScalingArgs:
     def min_node_count(self, value: pulumi.Input[int]):
         pulumi.set(self, "min_node_count", value)
 
+
+if not MYPY:
+    class AiIndexDeployedIndexArgsDict(TypedDict):
+        deployed_index_id: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The ID of the DeployedIndex in the above IndexEndpoint.
+        """
+        index_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A resource name of the IndexEndpoint.
+        """
+elif False:
+    AiIndexDeployedIndexArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiIndexDeployedIndexArgs:
@@ -1989,6 +2669,19 @@ class AiIndexDeployedIndexArgs:
         pulumi.set(self, "index_endpoint", value)
 
 
+if not MYPY:
+    class AiIndexEndpointPrivateServiceConnectConfigArgsDict(TypedDict):
+        enable_private_service_connect: pulumi.Input[bool]
+        """
+        If set to true, the IndexEndpoint is created without private service access.
+        """
+        project_allowlists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of Projects from which the forwarding rule will target the service attachment.
+        """
+elif False:
+    AiIndexEndpointPrivateServiceConnectConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiIndexEndpointPrivateServiceConnectConfigArgs:
     def __init__(__self__, *,
@@ -2026,6 +2719,21 @@ class AiIndexEndpointPrivateServiceConnectConfigArgs:
     def project_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "project_allowlists", value)
 
+
+if not MYPY:
+    class AiIndexIndexStatArgsDict(TypedDict):
+        shards_count: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The number of shards in the Index.
+        """
+        vectors_count: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The number of vectors in the Index.
+        """
+elif False:
+    AiIndexIndexStatArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiIndexIndexStatArgs:
@@ -2069,6 +2777,30 @@ class AiIndexIndexStatArgs:
     def vectors_count(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vectors_count", value)
 
+
+if not MYPY:
+    class AiIndexMetadataArgsDict(TypedDict):
+        contents_delta_uri: pulumi.Input[str]
+        """
+        Allows inserting, updating  or deleting the contents of the Matching Engine Index.
+        The string must be a valid Cloud Storage directory path. If this
+        field is set when calling IndexService.UpdateIndex, then no other
+        Index field can be also updated as part of the same call.
+        The expected structure and format of the files this URI points to is
+        described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+        """
+        config: NotRequired[pulumi.Input['AiIndexMetadataConfigArgsDict']]
+        """
+        The configuration of the Matching Engine Index.
+        Structure is documented below.
+        """
+        is_complete_overwrite: NotRequired[pulumi.Input[bool]]
+        """
+        If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
+        then existing content of the Index will be replaced by the data from the contentsDeltaUri.
+        """
+elif False:
+    AiIndexMetadataArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiIndexMetadataArgs:
@@ -2137,6 +2869,49 @@ class AiIndexMetadataArgs:
     def is_complete_overwrite(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_complete_overwrite", value)
 
+
+if not MYPY:
+    class AiIndexMetadataConfigArgsDict(TypedDict):
+        dimensions: pulumi.Input[int]
+        """
+        The number of dimensions of the input vectors.
+        """
+        algorithm_config: NotRequired[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgsDict']]
+        """
+        The configuration with regard to the algorithms used for efficient search.
+        Structure is documented below.
+        """
+        approximate_neighbors_count: NotRequired[pulumi.Input[int]]
+        """
+        The default number of neighbors to find via approximate search before exact reordering is
+        performed. Exact reordering is a procedure where results returned by an
+        approximate search algorithm are reordered via a more expensive distance computation.
+        Required if tree-AH algorithm is used.
+        """
+        distance_measure_type: NotRequired[pulumi.Input[str]]
+        """
+        The distance measure used in nearest neighbor search. The value must be one of the followings:
+        * SQUARED_L2_DISTANCE: Euclidean (L_2) Distance
+        * L1_DISTANCE: Manhattan (L_1) Distance
+        * COSINE_DISTANCE: Cosine Distance. Defined as 1 - cosine similarity.
+        * DOT_PRODUCT_DISTANCE: Dot Product Distance. Defined as a negative of the dot product
+        """
+        feature_norm_type: NotRequired[pulumi.Input[str]]
+        """
+        Type of normalization to be carried out on each vector. The value must be one of the followings:
+        * UNIT_L2_NORM: Unit L2 normalization type
+        * NONE: No normalization type is specified.
+        """
+        shard_size: NotRequired[pulumi.Input[str]]
+        """
+        Index data is split into equal parts to be processed. These are called "shards".
+        The shard size must be specified when creating an index. The value must be one of the followings:
+        * SHARD_SIZE_SMALL: Small (2GB)
+        * SHARD_SIZE_MEDIUM: Medium (20GB)
+        * SHARD_SIZE_LARGE: Large (50GB)
+        """
+elif False:
+    AiIndexMetadataConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiIndexMetadataConfigArgs:
@@ -2268,6 +3043,22 @@ class AiIndexMetadataConfigArgs:
         pulumi.set(self, "shard_size", value)
 
 
+if not MYPY:
+    class AiIndexMetadataConfigAlgorithmConfigArgsDict(TypedDict):
+        brute_force_config: NotRequired[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgsDict']]
+        """
+        Configuration options for using brute force search, which simply implements the
+        standard linear search in the database for each query.
+        """
+        tree_ah_config: NotRequired[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgsDict']]
+        """
+        Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
+        Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+        Structure is documented below.
+        """
+elif False:
+    AiIndexMetadataConfigAlgorithmConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiIndexMetadataConfigAlgorithmConfigArgs:
     def __init__(__self__, *,
@@ -2313,11 +3104,31 @@ class AiIndexMetadataConfigAlgorithmConfigArgs:
         pulumi.set(self, "tree_ah_config", value)
 
 
+if not MYPY:
+    class AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgsDict(TypedDict):
+        pass
+elif False:
+    AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgsDict(TypedDict):
+        leaf_node_embedding_count: NotRequired[pulumi.Input[int]]
+        """
+        Number of embeddings on each leaf node. The default value is 1000 if not set.
+        """
+        leaf_nodes_to_search_percent: NotRequired[pulumi.Input[int]]
+        """
+        The default percentage of leaf nodes that any query may be searched. Must be in
+        range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+        """
+elif False:
+    AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs:
@@ -2360,6 +3171,16 @@ class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs:
         pulumi.set(self, "leaf_nodes_to_search_percent", value)
 
 
+if not MYPY:
+    class AiMetadataStoreEncryptionSpecArgsDict(TypedDict):
+        kms_key_name: NotRequired[pulumi.Input[str]]
+        """
+        Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+        Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+        """
+elif False:
+    AiMetadataStoreEncryptionSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiMetadataStoreEncryptionSpecArgs:
     def __init__(__self__, *,
@@ -2385,6 +3206,16 @@ class AiMetadataStoreEncryptionSpecArgs:
         pulumi.set(self, "kms_key_name", value)
 
 
+if not MYPY:
+    class AiMetadataStoreStateArgsDict(TypedDict):
+        disk_utilization_bytes: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The disk utilization of the MetadataStore in bytes.
+        """
+elif False:
+    AiMetadataStoreStateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AiMetadataStoreStateArgs:
     def __init__(__self__, *,
@@ -2409,6 +3240,16 @@ class AiMetadataStoreStateArgs:
     def disk_utilization_bytes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_utilization_bytes", value)
 
+
+if not MYPY:
+    class AiTensorboardEncryptionSpecArgsDict(TypedDict):
+        kms_key_name: pulumi.Input[str]
+        """
+        The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+        Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+        """
+elif False:
+    AiTensorboardEncryptionSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiTensorboardEncryptionSpecArgs:

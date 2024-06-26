@@ -4,20 +4,42 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ConsumersIamBindingConditionArgs',
+    'ConsumersIamBindingConditionArgsDict',
     'ConsumersIamMemberConditionArgs',
+    'ConsumersIamMemberConditionArgsDict',
     'ServiceApiArgs',
+    'ServiceApiArgsDict',
     'ServiceApiMethodArgs',
+    'ServiceApiMethodArgsDict',
     'ServiceEndpointArgs',
+    'ServiceEndpointArgsDict',
     'ServiceIamBindingConditionArgs',
+    'ServiceIamBindingConditionArgsDict',
     'ServiceIamMemberConditionArgs',
+    'ServiceIamMemberConditionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ConsumersIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    ConsumersIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConsumersIamBindingConditionArgs:
@@ -58,6 +80,14 @@ class ConsumersIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class ConsumersIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    ConsumersIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConsumersIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -96,6 +126,27 @@ class ConsumersIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class ServiceApiArgsDict(TypedDict):
+        methods: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArgsDict']]]]
+        """
+        A list of Method objects; structure is documented below.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The simple name of the endpoint as described in the config.
+        """
+        syntax: NotRequired[pulumi.Input[str]]
+        """
+        `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
+        """
+elif False:
+    ServiceApiArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceApiArgs:
@@ -168,6 +219,27 @@ class ServiceApiArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class ServiceApiMethodArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The simple name of the endpoint as described in the config.
+        """
+        request_type: NotRequired[pulumi.Input[str]]
+        """
+        The type URL for the request to this API.
+        """
+        response_type: NotRequired[pulumi.Input[str]]
+        """
+        The type URL for the response from this API.
+        """
+        syntax: NotRequired[pulumi.Input[str]]
+        """
+        `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+        """
+elif False:
+    ServiceApiMethodArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceApiMethodArgs:
     def __init__(__self__, *,
@@ -239,6 +311,19 @@ class ServiceApiMethodArgs:
         pulumi.set(self, "syntax", value)
 
 
+if not MYPY:
+    class ServiceEndpointArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        The FQDN of the endpoint as described in the config.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The simple name of the endpoint as described in the config.
+        """
+elif False:
+    ServiceEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceEndpointArgs:
     def __init__(__self__, *,
@@ -278,6 +363,14 @@ class ServiceEndpointArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class ServiceIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    ServiceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -316,6 +409,14 @@ class ServiceIamBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class ServiceIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    ServiceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceIamMemberConditionArgs:

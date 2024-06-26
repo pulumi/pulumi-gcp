@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -216,7 +221,7 @@ class InstanceIamMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['InstanceIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['InstanceIamMemberConditionArgs', 'InstanceIamMemberConditionArgsDict']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -272,14 +277,14 @@ class InstanceIamMember(pulumi.CustomResource):
             labels={
                 "example_key": "example_value",
             },
-            network_config=gcp.datafusion.InstanceNetworkConfigArgs(
-                network="default",
-                ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
-            ),
-            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
-                accelerator_type="CDC",
-                state="ENABLED",
-            )])
+            network_config={
+                "network": "default",
+                "ipAllocation": pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
+            },
+            accelerators=[{
+                "acceleratorType": "CDC",
+                "state": "ENABLED",
+            }])
         ```
         ### Data Fusion Instance Cmek
 
@@ -302,9 +307,9 @@ class InstanceIamMember(pulumi.CustomResource):
             name="my-instance",
             region="us-central1",
             type="BASIC",
-            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
-                key_reference=crypto_key.id,
-            ),
+            crypto_key_config={
+                "keyReference": crypto_key.id,
+            },
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_member]))
         ```
         ### Data Fusion Instance Enterprise
@@ -330,10 +335,10 @@ class InstanceIamMember(pulumi.CustomResource):
             name="my-instance",
             region="us-central1",
             type="BASIC",
-            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
-                enabled=True,
-                topic=event_topic.id,
-            ))
+            event_publish_config={
+                "enabled": True,
+                "topic": event_topic.id,
+            })
         ```
         ### Data Fusion Instance Zone
 
@@ -440,14 +445,14 @@ class InstanceIamMember(pulumi.CustomResource):
             labels={
                 "example_key": "example_value",
             },
-            network_config=gcp.datafusion.InstanceNetworkConfigArgs(
-                network="default",
-                ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
-            ),
-            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
-                accelerator_type="CDC",
-                state="ENABLED",
-            )])
+            network_config={
+                "network": "default",
+                "ipAllocation": pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
+            },
+            accelerators=[{
+                "acceleratorType": "CDC",
+                "state": "ENABLED",
+            }])
         ```
         ### Data Fusion Instance Cmek
 
@@ -470,9 +475,9 @@ class InstanceIamMember(pulumi.CustomResource):
             name="my-instance",
             region="us-central1",
             type="BASIC",
-            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
-                key_reference=crypto_key.id,
-            ),
+            crypto_key_config={
+                "keyReference": crypto_key.id,
+            },
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_member]))
         ```
         ### Data Fusion Instance Enterprise
@@ -498,10 +503,10 @@ class InstanceIamMember(pulumi.CustomResource):
             name="my-instance",
             region="us-central1",
             type="BASIC",
-            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
-                enabled=True,
-                topic=event_topic.id,
-            ))
+            event_publish_config={
+                "enabled": True,
+                "topic": event_topic.id,
+            })
         ```
         ### Data Fusion Instance Zone
 
@@ -561,7 +566,7 @@ class InstanceIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['InstanceIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['InstanceIamMemberConditionArgs', 'InstanceIamMemberConditionArgsDict']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -597,7 +602,7 @@ class InstanceIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['InstanceIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['InstanceIamMemberConditionArgs', 'InstanceIamMemberConditionArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,

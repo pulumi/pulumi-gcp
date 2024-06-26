@@ -4,21 +4,61 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'PolicyDryRunSpecArgs',
+    'PolicyDryRunSpecArgsDict',
     'PolicyDryRunSpecRuleArgs',
+    'PolicyDryRunSpecRuleArgsDict',
     'PolicyDryRunSpecRuleConditionArgs',
+    'PolicyDryRunSpecRuleConditionArgsDict',
     'PolicyDryRunSpecRuleValuesArgs',
+    'PolicyDryRunSpecRuleValuesArgsDict',
     'PolicySpecArgs',
+    'PolicySpecArgsDict',
     'PolicySpecRuleArgs',
+    'PolicySpecRuleArgsDict',
     'PolicySpecRuleConditionArgs',
+    'PolicySpecRuleConditionArgsDict',
     'PolicySpecRuleValuesArgs',
+    'PolicySpecRuleValuesArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class PolicyDryRunSpecArgsDict(TypedDict):
+        etag: NotRequired[pulumi.Input[str]]
+        """
+        An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+        """
+        inherit_from_parent: NotRequired[pulumi.Input[bool]]
+        """
+        Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
+        """
+        reset: NotRequired[pulumi.Input[bool]]
+        """
+        Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['PolicyDryRunSpecRuleArgsDict']]]]
+        """
+        In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+        """
+        update_time: NotRequired[pulumi.Input[str]]
+        """
+        Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
+        """
+elif False:
+    PolicyDryRunSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PolicyDryRunSpecArgs:
@@ -107,6 +147,31 @@ class PolicyDryRunSpecArgs:
         pulumi.set(self, "update_time", value)
 
 
+if not MYPY:
+    class PolicyDryRunSpecRuleArgsDict(TypedDict):
+        allow_all: NotRequired[pulumi.Input[str]]
+        """
+        Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
+        """
+        condition: NotRequired[pulumi.Input['PolicyDryRunSpecRuleConditionArgsDict']]
+        """
+        A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+        """
+        deny_all: NotRequired[pulumi.Input[str]]
+        """
+        Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
+        """
+        enforce: NotRequired[pulumi.Input[str]]
+        """
+        If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+        """
+        values: NotRequired[pulumi.Input['PolicyDryRunSpecRuleValuesArgsDict']]
+        """
+        List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+        """
+elif False:
+    PolicyDryRunSpecRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PolicyDryRunSpecRuleArgs:
     def __init__(__self__, *,
@@ -194,6 +259,27 @@ class PolicyDryRunSpecRuleArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class PolicyDryRunSpecRuleConditionArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        expression: NotRequired[pulumi.Input[str]]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    PolicyDryRunSpecRuleConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PolicyDryRunSpecRuleConditionArgs:
     def __init__(__self__, *,
@@ -265,6 +351,19 @@ class PolicyDryRunSpecRuleConditionArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class PolicyDryRunSpecRuleValuesArgsDict(TypedDict):
+        allowed_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of values allowed at this resource.
+        """
+        denied_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of values denied at this resource.
+        """
+elif False:
+    PolicyDryRunSpecRuleValuesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PolicyDryRunSpecRuleValuesArgs:
     def __init__(__self__, *,
@@ -303,6 +402,31 @@ class PolicyDryRunSpecRuleValuesArgs:
     def denied_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "denied_values", value)
 
+
+if not MYPY:
+    class PolicySpecArgsDict(TypedDict):
+        etag: NotRequired[pulumi.Input[str]]
+        """
+        An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+        """
+        inherit_from_parent: NotRequired[pulumi.Input[bool]]
+        """
+        Determines the inheritance behavior for this `Policy`. If `inherit_from_parent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
+        """
+        reset: NotRequired[pulumi.Input[bool]]
+        """
+        Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['PolicySpecRuleArgsDict']]]]
+        """
+        Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
+        """
+        update_time: NotRequired[pulumi.Input[str]]
+        """
+        Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
+        """
+elif False:
+    PolicySpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PolicySpecArgs:
@@ -391,6 +515,31 @@ class PolicySpecArgs:
         pulumi.set(self, "update_time", value)
 
 
+if not MYPY:
+    class PolicySpecRuleArgsDict(TypedDict):
+        allow_all: NotRequired[pulumi.Input[str]]
+        """
+        Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
+        """
+        condition: NotRequired[pulumi.Input['PolicySpecRuleConditionArgsDict']]
+        """
+        A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+        """
+        deny_all: NotRequired[pulumi.Input[str]]
+        """
+        Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
+        """
+        enforce: NotRequired[pulumi.Input[str]]
+        """
+        If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+        """
+        values: NotRequired[pulumi.Input['PolicySpecRuleValuesArgsDict']]
+        """
+        List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+        """
+elif False:
+    PolicySpecRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PolicySpecRuleArgs:
     def __init__(__self__, *,
@@ -478,6 +627,27 @@ class PolicySpecRuleArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class PolicySpecRuleConditionArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        expression: NotRequired[pulumi.Input[str]]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    PolicySpecRuleConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PolicySpecRuleConditionArgs:
     def __init__(__self__, *,
@@ -548,6 +718,19 @@ class PolicySpecRuleConditionArgs:
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
 
+
+if not MYPY:
+    class PolicySpecRuleValuesArgsDict(TypedDict):
+        allowed_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of values allowed at this resource.
+        """
+        denied_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of values denied at this resource.
+        """
+elif False:
+    PolicySpecRuleValuesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PolicySpecRuleValuesArgs:

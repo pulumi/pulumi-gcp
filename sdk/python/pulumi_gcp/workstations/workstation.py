@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['WorkstationArgs', 'Workstation']
@@ -520,13 +525,13 @@ class Workstation(pulumi.CustomResource):
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
-                    machine_type="e2-standard-4",
-                    boot_disk_size_gb=35,
-                    disable_public_ip_addresses=True,
-                ),
-            ))
+            host={
+                "gceInstance": {
+                    "machineType": "e2-standard-4",
+                    "bootDiskSizeGb": 35,
+                    "disablePublicIpAddresses": True,
+                },
+            })
         default_workstation = gcp.workstations.Workstation("default",
             workstation_id="work-station",
             workstation_config_id=default_workstation_config.workstation_config_id,
@@ -625,13 +630,13 @@ class Workstation(pulumi.CustomResource):
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
-            host=gcp.workstations.WorkstationConfigHostArgs(
-                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
-                    machine_type="e2-standard-4",
-                    boot_disk_size_gb=35,
-                    disable_public_ip_addresses=True,
-                ),
-            ))
+            host={
+                "gceInstance": {
+                    "machineType": "e2-standard-4",
+                    "bootDiskSizeGb": 35,
+                    "disablePublicIpAddresses": True,
+                },
+            })
         default_workstation = gcp.workstations.Workstation("default",
             workstation_id="work-station",
             workstation_config_id=default_workstation_config.workstation_config_id,

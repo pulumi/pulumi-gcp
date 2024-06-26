@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -195,18 +200,18 @@ def get_notification_channel(display_name: Optional[str] = None,
         display_name="My Alert Policy",
         notification_channels=[basic.name],
         combiner="OR",
-        conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-            display_name="test condition",
-            condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                filter="metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
-                duration="60s",
-                comparison="COMPARISON_GT",
-                aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
-                    alignment_period="60s",
-                    per_series_aligner="ALIGN_RATE",
-                )],
-            ),
-        )])
+        conditions=[{
+            "displayName": "test condition",
+            "conditionThreshold": {
+                "filter": "metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
+                "duration": "60s",
+                "comparison": "COMPARISON_GT",
+                "aggregations": [{
+                    "alignmentPeriod": "60s",
+                    "perSeriesAligner": "ALIGN_RATE",
+                }],
+            },
+        }])
     ```
 
 
@@ -279,18 +284,18 @@ def get_notification_channel_output(display_name: Optional[pulumi.Input[Optional
         display_name="My Alert Policy",
         notification_channels=[basic.name],
         combiner="OR",
-        conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-            display_name="test condition",
-            condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                filter="metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
-                duration="60s",
-                comparison="COMPARISON_GT",
-                aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
-                    alignment_period="60s",
-                    per_series_aligner="ALIGN_RATE",
-                )],
-            ),
-        )])
+        conditions=[{
+            "displayName": "test condition",
+            "conditionThreshold": {
+                "filter": "metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
+                "duration": "60s",
+                "comparison": "COMPARISON_GT",
+                "aggregations": [{
+                    "alignmentPeriod": "60s",
+                    "perSeriesAligner": "ALIGN_RATE",
+                }],
+            },
+        }])
     ```
 
 

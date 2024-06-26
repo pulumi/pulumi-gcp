@@ -4,38 +4,103 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'BillingAccountBucketConfigCmekSettingsArgs',
+    'BillingAccountBucketConfigCmekSettingsArgsDict',
     'BillingAccountBucketConfigIndexConfigArgs',
+    'BillingAccountBucketConfigIndexConfigArgsDict',
     'BillingAccountSinkBigqueryOptionsArgs',
+    'BillingAccountSinkBigqueryOptionsArgsDict',
     'BillingAccountSinkExclusionArgs',
+    'BillingAccountSinkExclusionArgsDict',
     'FolderBucketConfigCmekSettingsArgs',
+    'FolderBucketConfigCmekSettingsArgsDict',
     'FolderBucketConfigIndexConfigArgs',
+    'FolderBucketConfigIndexConfigArgsDict',
     'FolderSinkBigqueryOptionsArgs',
+    'FolderSinkBigqueryOptionsArgsDict',
     'FolderSinkExclusionArgs',
+    'FolderSinkExclusionArgsDict',
     'LinkedDatasetBigqueryDatasetArgs',
+    'LinkedDatasetBigqueryDatasetArgsDict',
     'LogViewIamBindingConditionArgs',
+    'LogViewIamBindingConditionArgsDict',
     'LogViewIamMemberConditionArgs',
+    'LogViewIamMemberConditionArgsDict',
     'MetricBucketOptionsArgs',
+    'MetricBucketOptionsArgsDict',
     'MetricBucketOptionsExplicitBucketsArgs',
+    'MetricBucketOptionsExplicitBucketsArgsDict',
     'MetricBucketOptionsExponentialBucketsArgs',
+    'MetricBucketOptionsExponentialBucketsArgsDict',
     'MetricBucketOptionsLinearBucketsArgs',
+    'MetricBucketOptionsLinearBucketsArgsDict',
     'MetricMetricDescriptorArgs',
+    'MetricMetricDescriptorArgsDict',
     'MetricMetricDescriptorLabelArgs',
+    'MetricMetricDescriptorLabelArgsDict',
     'OrganizationBucketConfigCmekSettingsArgs',
+    'OrganizationBucketConfigCmekSettingsArgsDict',
     'OrganizationBucketConfigIndexConfigArgs',
+    'OrganizationBucketConfigIndexConfigArgsDict',
     'OrganizationSinkBigqueryOptionsArgs',
+    'OrganizationSinkBigqueryOptionsArgsDict',
     'OrganizationSinkExclusionArgs',
+    'OrganizationSinkExclusionArgsDict',
     'ProjectBucketConfigCmekSettingsArgs',
+    'ProjectBucketConfigCmekSettingsArgsDict',
     'ProjectBucketConfigIndexConfigArgs',
+    'ProjectBucketConfigIndexConfigArgsDict',
     'ProjectSinkBigqueryOptionsArgs',
+    'ProjectSinkBigqueryOptionsArgsDict',
     'ProjectSinkExclusionArgs',
+    'ProjectSinkExclusionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class BillingAccountBucketConfigCmekSettingsArgsDict(TypedDict):
+        kms_key_name: pulumi.Input[str]
+        """
+        The resource name for the configured Cloud KMS key.
+        KMS key name format:
+        "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+        To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+        The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+        See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+        """
+        kms_key_version_name: NotRequired[pulumi.Input[str]]
+        """
+        The CryptoKeyVersion resource name for the configured Cloud KMS key.
+        KMS key name format:
+        "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+        For example:
+        "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+        This is a read-only field used to convey the specific configured CryptoKeyVersion of kms_key that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
+        """
+        service_account_id: NotRequired[pulumi.Input[str]]
+        """
+        The service account associated with a project for which CMEK will apply.
+        Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+        See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+        """
+elif False:
+    BillingAccountBucketConfigCmekSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BillingAccountBucketConfigCmekSettingsArgs:
@@ -131,6 +196,20 @@ class BillingAccountBucketConfigCmekSettingsArgs:
         pulumi.set(self, "service_account_id", value)
 
 
+if not MYPY:
+    class BillingAccountBucketConfigIndexConfigArgsDict(TypedDict):
+        field_path: pulumi.Input[str]
+        """
+        The LogEntry field path to index.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        """
+        type: pulumi.Input[str]
+        """
+        The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+elif False:
+    BillingAccountBucketConfigIndexConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BillingAccountBucketConfigIndexConfigArgs:
     def __init__(__self__, *,
@@ -170,6 +249,18 @@ class BillingAccountBucketConfigIndexConfigArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class BillingAccountSinkBigqueryOptionsArgsDict(TypedDict):
+        use_partitioned_tables: pulumi.Input[bool]
+        """
+        Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
+        By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
+        tables, the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+        has to be used instead. In both cases, tables are sharded based on UTC timezone.
+        """
+elif False:
+    BillingAccountSinkBigqueryOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BillingAccountSinkBigqueryOptionsArgs:
     def __init__(__self__, *,
@@ -197,6 +288,28 @@ class BillingAccountSinkBigqueryOptionsArgs:
     def use_partitioned_tables(self, value: pulumi.Input[bool]):
         pulumi.set(self, "use_partitioned_tables", value)
 
+
+if not MYPY:
+    class BillingAccountSinkExclusionArgsDict(TypedDict):
+        filter: pulumi.Input[str]
+        """
+        An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        write a filter.
+        """
+        name: pulumi.Input[str]
+        """
+        A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        A description of this exclusion.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        If set to True, then this exclusion is disabled and it does not exclude any log entries.
+        """
+elif False:
+    BillingAccountSinkExclusionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BillingAccountSinkExclusionArgs:
@@ -268,6 +381,39 @@ class BillingAccountSinkExclusionArgs:
     def disabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disabled", value)
 
+
+if not MYPY:
+    class FolderBucketConfigCmekSettingsArgsDict(TypedDict):
+        kms_key_name: pulumi.Input[str]
+        """
+        The resource name for the configured Cloud KMS key.
+        KMS key name format:
+        "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+        To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+        The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+        See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+        """
+        kms_key_version_name: NotRequired[pulumi.Input[str]]
+        """
+        The CryptoKeyVersion resource name for the configured Cloud KMS key.
+        KMS key name format:
+        "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+        For example:
+        "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+        This is a read-only field used to convey the specific configured CryptoKeyVersion of kms_key that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"
+        """
+        service_account_id: NotRequired[pulumi.Input[str]]
+        """
+        The service account associated with a project for which CMEK will apply.
+        Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+        See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+        """
+elif False:
+    FolderBucketConfigCmekSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FolderBucketConfigCmekSettingsArgs:
@@ -363,6 +509,20 @@ class FolderBucketConfigCmekSettingsArgs:
         pulumi.set(self, "service_account_id", value)
 
 
+if not MYPY:
+    class FolderBucketConfigIndexConfigArgsDict(TypedDict):
+        field_path: pulumi.Input[str]
+        """
+        The LogEntry field path to index.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        """
+        type: pulumi.Input[str]
+        """
+        The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+elif False:
+    FolderBucketConfigIndexConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FolderBucketConfigIndexConfigArgs:
     def __init__(__self__, *,
@@ -402,6 +562,18 @@ class FolderBucketConfigIndexConfigArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class FolderSinkBigqueryOptionsArgsDict(TypedDict):
+        use_partitioned_tables: pulumi.Input[bool]
+        """
+        Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
+        By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
+        tables, the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+        has to be used instead. In both cases, tables are sharded based on UTC timezone.
+        """
+elif False:
+    FolderSinkBigqueryOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FolderSinkBigqueryOptionsArgs:
     def __init__(__self__, *,
@@ -429,6 +601,28 @@ class FolderSinkBigqueryOptionsArgs:
     def use_partitioned_tables(self, value: pulumi.Input[bool]):
         pulumi.set(self, "use_partitioned_tables", value)
 
+
+if not MYPY:
+    class FolderSinkExclusionArgsDict(TypedDict):
+        filter: pulumi.Input[str]
+        """
+        An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        write a filter.
+        """
+        name: pulumi.Input[str]
+        """
+        A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        A description of this exclusion.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        If set to True, then this exclusion is disabled and it does not exclude any log entries.
+        """
+elif False:
+    FolderSinkExclusionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FolderSinkExclusionArgs:
@@ -501,6 +695,19 @@ class FolderSinkExclusionArgs:
         pulumi.set(self, "disabled", value)
 
 
+if not MYPY:
+    class LinkedDatasetBigqueryDatasetArgsDict(TypedDict):
+        dataset_id: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The full resource name of the BigQuery dataset. The DATASET_ID will match the ID
+        of the link, so the link must match the naming restrictions of BigQuery datasets
+        (alphanumeric characters and underscores only). The dataset will have a resource path of
+        "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET_ID]"
+        """
+elif False:
+    LinkedDatasetBigqueryDatasetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LinkedDatasetBigqueryDatasetArgs:
     def __init__(__self__, *,
@@ -531,6 +738,20 @@ class LinkedDatasetBigqueryDatasetArgs:
     def dataset_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dataset_id", value)
 
+
+if not MYPY:
+    class LogViewIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    LogViewIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogViewIamBindingConditionArgs:
@@ -581,6 +802,20 @@ class LogViewIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class LogViewIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    LogViewIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogViewIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -629,6 +864,28 @@ class LogViewIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class MetricBucketOptionsArgsDict(TypedDict):
+        explicit_buckets: NotRequired[pulumi.Input['MetricBucketOptionsExplicitBucketsArgsDict']]
+        """
+        Specifies a set of buckets with arbitrary widths.
+        Structure is documented below.
+        """
+        exponential_buckets: NotRequired[pulumi.Input['MetricBucketOptionsExponentialBucketsArgsDict']]
+        """
+        Specifies an exponential sequence of buckets that have a width that is proportional to the value of
+        the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.
+        Structure is documented below.
+        """
+        linear_buckets: NotRequired[pulumi.Input['MetricBucketOptionsLinearBucketsArgsDict']]
+        """
+        Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
+        Each bucket represents a constant absolute uncertainty on the specific value in the bucket.
+        Structure is documented below.
+        """
+elif False:
+    MetricBucketOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetricBucketOptionsArgs:
@@ -695,6 +952,15 @@ class MetricBucketOptionsArgs:
         pulumi.set(self, "linear_buckets", value)
 
 
+if not MYPY:
+    class MetricBucketOptionsExplicitBucketsArgsDict(TypedDict):
+        bounds: pulumi.Input[Sequence[pulumi.Input[float]]]
+        """
+        The values must be monotonically increasing.
+        """
+elif False:
+    MetricBucketOptionsExplicitBucketsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetricBucketOptionsExplicitBucketsArgs:
     def __init__(__self__, *,
@@ -716,6 +982,23 @@ class MetricBucketOptionsExplicitBucketsArgs:
     def bounds(self, value: pulumi.Input[Sequence[pulumi.Input[float]]]):
         pulumi.set(self, "bounds", value)
 
+
+if not MYPY:
+    class MetricBucketOptionsExponentialBucketsArgsDict(TypedDict):
+        growth_factor: pulumi.Input[float]
+        """
+        Must be greater than 1.
+        """
+        num_finite_buckets: pulumi.Input[int]
+        """
+        Must be greater than 0.
+        """
+        scale: pulumi.Input[float]
+        """
+        Must be greater than 0.
+        """
+elif False:
+    MetricBucketOptionsExponentialBucketsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetricBucketOptionsExponentialBucketsArgs:
@@ -769,6 +1052,23 @@ class MetricBucketOptionsExponentialBucketsArgs:
         pulumi.set(self, "scale", value)
 
 
+if not MYPY:
+    class MetricBucketOptionsLinearBucketsArgsDict(TypedDict):
+        num_finite_buckets: pulumi.Input[int]
+        """
+        Must be greater than 0.
+        """
+        offset: pulumi.Input[float]
+        """
+        Lower bound of the first bucket.
+        """
+        width: pulumi.Input[float]
+        """
+        Must be greater than 0.
+        """
+elif False:
+    MetricBucketOptionsLinearBucketsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetricBucketOptionsLinearBucketsArgs:
     def __init__(__self__, *,
@@ -820,6 +1120,45 @@ class MetricBucketOptionsLinearBucketsArgs:
     def width(self, value: pulumi.Input[float]):
         pulumi.set(self, "width", value)
 
+
+if not MYPY:
+    class MetricMetricDescriptorArgsDict(TypedDict):
+        metric_kind: pulumi.Input[str]
+        """
+        Whether the metric records instantaneous values, changes to a value, etc.
+        Some combinations of metricKind and valueType might not be supported.
+        For counter metrics, set this to DELTA.
+        Possible values are: `DELTA`, `GAUGE`, `CUMULATIVE`.
+        """
+        value_type: pulumi.Input[str]
+        """
+        Whether the measurement is an integer, a floating-point number, etc.
+        Some combinations of metricKind and valueType might not be supported.
+        For counter metrics, set this to INT64.
+        Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, `MONEY`.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        A concise name for the metric, which can be displayed in user interfaces. Use sentence case
+        without an ending period, for example "Request count". This field is optional but it is
+        recommended to be set for any metrics associated with user-visible concepts, such as Quota.
+        """
+        labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgsDict']]]]
+        """
+        The set of labels that can be used to describe a specific instance of this metric type. For
+        example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
+        for the HTTP response code, response_code, so you can look at latencies for successful responses
+        or just for responses that failed.
+        Structure is documented below.
+        """
+        unit: NotRequired[pulumi.Input[str]]
+        """
+        The unit in which the metric value is reported. It is only applicable if the valueType is
+        `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
+        [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
+        """
+elif False:
+    MetricMetricDescriptorArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetricMetricDescriptorArgs:
@@ -934,6 +1273,25 @@ class MetricMetricDescriptorArgs:
         pulumi.set(self, "unit", value)
 
 
+if not MYPY:
+    class MetricMetricDescriptorLabelArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The label key.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        A human-readable description for the label.
+        """
+        value_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of data that can be assigned to the label.
+        Default value is `STRING`.
+        Possible values are: `BOOL`, `INT64`, `STRING`.
+        """
+elif False:
+    MetricMetricDescriptorLabelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetricMetricDescriptorLabelArgs:
     def __init__(__self__, *,
@@ -991,6 +1349,39 @@ class MetricMetricDescriptorLabelArgs:
     def value_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value_type", value)
 
+
+if not MYPY:
+    class OrganizationBucketConfigCmekSettingsArgsDict(TypedDict):
+        kms_key_name: pulumi.Input[str]
+        """
+        The resource name for the configured Cloud KMS key.
+        KMS key name format:
+        "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+        To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+        The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+        See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+        """
+        kms_key_version_name: NotRequired[pulumi.Input[str]]
+        """
+        The CryptoKeyVersion resource name for the configured Cloud KMS key.
+        KMS key name format:
+        "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+        For example:
+        "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+        This is a read-only field used to convey the specific configured CryptoKeyVersion of kms_key that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
+        """
+        service_account_id: NotRequired[pulumi.Input[str]]
+        """
+        The service account associated with a project for which CMEK will apply.
+        Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+        See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+        """
+elif False:
+    OrganizationBucketConfigCmekSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OrganizationBucketConfigCmekSettingsArgs:
@@ -1086,6 +1477,20 @@ class OrganizationBucketConfigCmekSettingsArgs:
         pulumi.set(self, "service_account_id", value)
 
 
+if not MYPY:
+    class OrganizationBucketConfigIndexConfigArgsDict(TypedDict):
+        field_path: pulumi.Input[str]
+        """
+        The LogEntry field path to index.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        """
+        type: pulumi.Input[str]
+        """
+        The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+elif False:
+    OrganizationBucketConfigIndexConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OrganizationBucketConfigIndexConfigArgs:
     def __init__(__self__, *,
@@ -1125,6 +1530,18 @@ class OrganizationBucketConfigIndexConfigArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class OrganizationSinkBigqueryOptionsArgsDict(TypedDict):
+        use_partitioned_tables: pulumi.Input[bool]
+        """
+        Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
+        By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
+        tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+        has to be used instead. In both cases, tables are sharded based on UTC timezone.
+        """
+elif False:
+    OrganizationSinkBigqueryOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OrganizationSinkBigqueryOptionsArgs:
     def __init__(__self__, *,
@@ -1152,6 +1569,28 @@ class OrganizationSinkBigqueryOptionsArgs:
     def use_partitioned_tables(self, value: pulumi.Input[bool]):
         pulumi.set(self, "use_partitioned_tables", value)
 
+
+if not MYPY:
+    class OrganizationSinkExclusionArgsDict(TypedDict):
+        filter: pulumi.Input[str]
+        """
+        An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        write a filter.
+        """
+        name: pulumi.Input[str]
+        """
+        A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        A description of this exclusion.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        If set to True, then this exclusion is disabled and it does not exclude any log entries.
+        """
+elif False:
+    OrganizationSinkExclusionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OrganizationSinkExclusionArgs:
@@ -1223,6 +1662,39 @@ class OrganizationSinkExclusionArgs:
     def disabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disabled", value)
 
+
+if not MYPY:
+    class ProjectBucketConfigCmekSettingsArgsDict(TypedDict):
+        kms_key_name: pulumi.Input[str]
+        """
+        The resource name for the configured Cloud KMS key.
+        KMS key name format:
+        `'projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]'`
+        To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+        The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+        See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+        """
+        kms_key_version_name: NotRequired[pulumi.Input[str]]
+        """
+        The CryptoKeyVersion resource name for the configured Cloud KMS key.
+        KMS key name format:
+        `'projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]'`
+        For example:
+        "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+        This is a read-only field used to convey the specific configured CryptoKeyVersion of kms_key that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The resource name of the CMEK settings.
+        """
+        service_account_id: NotRequired[pulumi.Input[str]]
+        """
+        The service account associated with a project for which CMEK will apply.
+        Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+        See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+        """
+elif False:
+    ProjectBucketConfigCmekSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectBucketConfigCmekSettingsArgs:
@@ -1318,6 +1790,20 @@ class ProjectBucketConfigCmekSettingsArgs:
         pulumi.set(self, "service_account_id", value)
 
 
+if not MYPY:
+    class ProjectBucketConfigIndexConfigArgsDict(TypedDict):
+        field_path: pulumi.Input[str]
+        """
+        The LogEntry field path to index.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        """
+        type: pulumi.Input[str]
+        """
+        The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
+        """
+elif False:
+    ProjectBucketConfigIndexConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectBucketConfigIndexConfigArgs:
     def __init__(__self__, *,
@@ -1357,6 +1843,18 @@ class ProjectBucketConfigIndexConfigArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ProjectSinkBigqueryOptionsArgsDict(TypedDict):
+        use_partitioned_tables: pulumi.Input[bool]
+        """
+        Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
+        By default, Logging creates dated tables based on the log entries' timestamps, e.g. `syslog_20170523`. With partitioned
+        tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+        has to be used instead. In both cases, tables are sharded based on UTC timezone.
+        """
+elif False:
+    ProjectSinkBigqueryOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectSinkBigqueryOptionsArgs:
     def __init__(__self__, *,
@@ -1384,6 +1882,28 @@ class ProjectSinkBigqueryOptionsArgs:
     def use_partitioned_tables(self, value: pulumi.Input[bool]):
         pulumi.set(self, "use_partitioned_tables", value)
 
+
+if not MYPY:
+    class ProjectSinkExclusionArgsDict(TypedDict):
+        filter: pulumi.Input[str]
+        """
+        An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        write a filter.
+        """
+        name: pulumi.Input[str]
+        """
+        A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        A description of this exclusion.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        If set to True, then this exclusion is disabled and it does not exclude any log entries.
+        """
+elif False:
+    ProjectSinkExclusionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectSinkExclusionArgs:

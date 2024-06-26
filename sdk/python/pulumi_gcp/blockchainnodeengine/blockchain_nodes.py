@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -362,7 +367,7 @@ class BlockchainNodes(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blockchain_node_id: Optional[pulumi.Input[str]] = None,
                  blockchain_type: Optional[pulumi.Input[str]] = None,
-                 ethereum_details: Optional[pulumi.Input[pulumi.InputType['BlockchainNodesEthereumDetailsArgs']]] = None,
+                 ethereum_details: Optional[pulumi.Input[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -388,20 +393,20 @@ class BlockchainNodes(pulumi.CustomResource):
             location="us-central1",
             blockchain_type="ETHEREUM",
             blockchain_node_id="blockchain_basic_node",
-            ethereum_details=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsArgs(
-                api_enable_admin=True,
-                api_enable_debug=True,
-                validator_config=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsValidatorConfigArgs(
-                    mev_relay_urls=[
+            ethereum_details={
+                "apiEnableAdmin": True,
+                "apiEnableDebug": True,
+                "validatorConfig": {
+                    "mevRelayUrls": [
                         "https://mev1.example.org/",
                         "https://mev2.example.org/",
                     ],
-                ),
-                node_type="ARCHIVE",
-                consensus_client="LIGHTHOUSE",
-                execution_client="ERIGON",
-                network="MAINNET",
-            ),
+                },
+                "nodeType": "ARCHIVE",
+                "consensusClient": "LIGHTHOUSE",
+                "executionClient": "ERIGON",
+                "network": "MAINNET",
+            },
             labels={
                 "environment": "dev",
             })
@@ -416,23 +421,23 @@ class BlockchainNodes(pulumi.CustomResource):
             location="us-central1",
             blockchain_type="ETHEREUM",
             blockchain_node_id="blockchain_geth_node",
-            ethereum_details=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsArgs(
-                api_enable_admin=True,
-                api_enable_debug=True,
-                validator_config=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsValidatorConfigArgs(
-                    mev_relay_urls=[
+            ethereum_details={
+                "apiEnableAdmin": True,
+                "apiEnableDebug": True,
+                "validatorConfig": {
+                    "mevRelayUrls": [
                         "https://mev1.example.org/",
                         "https://mev2.example.org/",
                     ],
-                ),
-                node_type="FULL",
-                consensus_client="LIGHTHOUSE",
-                execution_client="GETH",
-                network="MAINNET",
-                geth_details=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsGethDetailsArgs(
-                    garbage_collection_mode="FULL",
-                ),
-            ),
+                },
+                "nodeType": "FULL",
+                "consensusClient": "LIGHTHOUSE",
+                "executionClient": "GETH",
+                "network": "MAINNET",
+                "gethDetails": {
+                    "garbageCollectionMode": "FULL",
+                },
+            },
             labels={
                 "environment": "dev",
             })
@@ -470,7 +475,7 @@ class BlockchainNodes(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] blockchain_type: User-provided key-value pairs
                Possible values are: `ETHEREUM`.
-        :param pulumi.Input[pulumi.InputType['BlockchainNodesEthereumDetailsArgs']] ethereum_details: User-provided key-value pairs
+        :param pulumi.Input[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']] ethereum_details: User-provided key-value pairs
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-provided key-value pairs
                
@@ -507,20 +512,20 @@ class BlockchainNodes(pulumi.CustomResource):
             location="us-central1",
             blockchain_type="ETHEREUM",
             blockchain_node_id="blockchain_basic_node",
-            ethereum_details=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsArgs(
-                api_enable_admin=True,
-                api_enable_debug=True,
-                validator_config=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsValidatorConfigArgs(
-                    mev_relay_urls=[
+            ethereum_details={
+                "apiEnableAdmin": True,
+                "apiEnableDebug": True,
+                "validatorConfig": {
+                    "mevRelayUrls": [
                         "https://mev1.example.org/",
                         "https://mev2.example.org/",
                     ],
-                ),
-                node_type="ARCHIVE",
-                consensus_client="LIGHTHOUSE",
-                execution_client="ERIGON",
-                network="MAINNET",
-            ),
+                },
+                "nodeType": "ARCHIVE",
+                "consensusClient": "LIGHTHOUSE",
+                "executionClient": "ERIGON",
+                "network": "MAINNET",
+            },
             labels={
                 "environment": "dev",
             })
@@ -535,23 +540,23 @@ class BlockchainNodes(pulumi.CustomResource):
             location="us-central1",
             blockchain_type="ETHEREUM",
             blockchain_node_id="blockchain_geth_node",
-            ethereum_details=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsArgs(
-                api_enable_admin=True,
-                api_enable_debug=True,
-                validator_config=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsValidatorConfigArgs(
-                    mev_relay_urls=[
+            ethereum_details={
+                "apiEnableAdmin": True,
+                "apiEnableDebug": True,
+                "validatorConfig": {
+                    "mevRelayUrls": [
                         "https://mev1.example.org/",
                         "https://mev2.example.org/",
                     ],
-                ),
-                node_type="FULL",
-                consensus_client="LIGHTHOUSE",
-                execution_client="GETH",
-                network="MAINNET",
-                geth_details=gcp.blockchainnodeengine.BlockchainNodesEthereumDetailsGethDetailsArgs(
-                    garbage_collection_mode="FULL",
-                ),
-            ),
+                },
+                "nodeType": "FULL",
+                "consensusClient": "LIGHTHOUSE",
+                "executionClient": "GETH",
+                "network": "MAINNET",
+                "gethDetails": {
+                    "garbageCollectionMode": "FULL",
+                },
+            },
             labels={
                 "environment": "dev",
             })
@@ -598,7 +603,7 @@ class BlockchainNodes(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blockchain_node_id: Optional[pulumi.Input[str]] = None,
                  blockchain_type: Optional[pulumi.Input[str]] = None,
-                 ethereum_details: Optional[pulumi.Input[pulumi.InputType['BlockchainNodesEthereumDetailsArgs']]] = None,
+                 ethereum_details: Optional[pulumi.Input[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -641,10 +646,10 @@ class BlockchainNodes(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             blockchain_node_id: Optional[pulumi.Input[str]] = None,
             blockchain_type: Optional[pulumi.Input[str]] = None,
-            connection_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BlockchainNodesConnectionInfoArgs']]]]] = None,
+            connection_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BlockchainNodesConnectionInfoArgs', 'BlockchainNodesConnectionInfoArgsDict']]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            ethereum_details: Optional[pulumi.Input[pulumi.InputType['BlockchainNodesEthereumDetailsArgs']]] = None,
+            ethereum_details: Optional[pulumi.Input[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -664,11 +669,11 @@ class BlockchainNodes(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] blockchain_type: User-provided key-value pairs
                Possible values are: `ETHEREUM`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BlockchainNodesConnectionInfoArgs']]]] connection_infos: The connection information through which to interact with a blockchain node.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BlockchainNodesConnectionInfoArgs', 'BlockchainNodesConnectionInfoArgsDict']]]] connection_infos: The connection information through which to interact with a blockchain node.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The timestamp at which the blockchain node was first created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['BlockchainNodesEthereumDetailsArgs']] ethereum_details: User-provided key-value pairs
+        :param pulumi.Input[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']] ethereum_details: User-provided key-value pairs
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-provided key-value pairs
                

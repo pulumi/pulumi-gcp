@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -371,9 +376,9 @@ class Membership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authority: Optional[pulumi.Input[pulumi.InputType['MembershipAuthorityArgs']]] = None,
+                 authority: Optional[pulumi.Input[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
+                 endpoint: Optional[pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
@@ -406,11 +411,11 @@ class Membership(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="basic",
             location="us-west1",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ))
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
         ```
         ### Gkehub Membership Basic
 
@@ -427,11 +432,11 @@ class Membership(pulumi.CustomResource):
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
             membership_id="basic",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ),
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            },
             labels={
                 "env": "test",
             })
@@ -446,22 +451,22 @@ class Membership(pulumi.CustomResource):
             name="basic-cluster",
             location="us-central1-a",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
             deletion_protection=True,
             network="default",
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
             membership_id="basic",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=primary.id,
-                ),
-            ),
-            authority=gcp.gkehub.MembershipAuthorityArgs(
-                issuer=primary.id.apply(lambda id: f"https://container.googleapis.com/v1/{id}"),
-            ))
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": primary.id,
+                },
+            },
+            authority={
+                "issuer": primary.id.apply(lambda id: f"https://container.googleapis.com/v1/{id}"),
+            })
         ```
 
         ## Import
@@ -490,14 +495,14 @@ class Membership(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['MembershipAuthorityArgs']] authority: Authority encodes how Google will recognize identities from this Membership.
+        :param pulumi.Input[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']] authority: Authority encodes how Google will recognize identities from this Membership.
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
         :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
                
                > **Warning:** `description` is deprecated and will be removed in a future major release.
-        :param pulumi.Input[pulumi.InputType['MembershipEndpointArgs']] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
+        :param pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this membership.
                
@@ -545,11 +550,11 @@ class Membership(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="basic",
             location="us-west1",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ))
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
         ```
         ### Gkehub Membership Basic
 
@@ -566,11 +571,11 @@ class Membership(pulumi.CustomResource):
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
             membership_id="basic",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ),
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            },
             labels={
                 "env": "test",
             })
@@ -585,22 +590,22 @@ class Membership(pulumi.CustomResource):
             name="basic-cluster",
             location="us-central1-a",
             initial_node_count=1,
-            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
-                workload_pool="my-project-name.svc.id.goog",
-            ),
+            workload_identity_config={
+                "workloadPool": "my-project-name.svc.id.goog",
+            },
             deletion_protection=True,
             network="default",
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
             membership_id="basic",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=primary.id,
-                ),
-            ),
-            authority=gcp.gkehub.MembershipAuthorityArgs(
-                issuer=primary.id.apply(lambda id: f"https://container.googleapis.com/v1/{id}"),
-            ))
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": primary.id,
+                },
+            },
+            authority={
+                "issuer": primary.id.apply(lambda id: f"https://container.googleapis.com/v1/{id}"),
+            })
         ```
 
         ## Import
@@ -642,9 +647,9 @@ class Membership(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authority: Optional[pulumi.Input[pulumi.InputType['MembershipAuthorityArgs']]] = None,
+                 authority: Optional[pulumi.Input[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
+                 endpoint: Optional[pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
@@ -682,10 +687,10 @@ class Membership(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authority: Optional[pulumi.Input[pulumi.InputType['MembershipAuthorityArgs']]] = None,
+            authority: Optional[pulumi.Input[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
+            endpoint: Optional[pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             membership_id: Optional[pulumi.Input[str]] = None,
@@ -699,7 +704,7 @@ class Membership(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['MembershipAuthorityArgs']] authority: Authority encodes how Google will recognize identities from this Membership.
+        :param pulumi.Input[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']] authority: Authority encodes how Google will recognize identities from this Membership.
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
@@ -707,7 +712,7 @@ class Membership(pulumi.CustomResource):
                
                > **Warning:** `description` is deprecated and will be removed in a future major release.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['MembershipEndpointArgs']] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
+        :param pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this membership.
                

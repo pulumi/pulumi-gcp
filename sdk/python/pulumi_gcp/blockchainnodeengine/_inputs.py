@@ -4,19 +4,48 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'BlockchainNodesConnectionInfoArgs',
+    'BlockchainNodesConnectionInfoArgsDict',
     'BlockchainNodesConnectionInfoEndpointInfoArgs',
+    'BlockchainNodesConnectionInfoEndpointInfoArgsDict',
     'BlockchainNodesEthereumDetailsArgs',
+    'BlockchainNodesEthereumDetailsArgsDict',
     'BlockchainNodesEthereumDetailsAdditionalEndpointArgs',
+    'BlockchainNodesEthereumDetailsAdditionalEndpointArgsDict',
     'BlockchainNodesEthereumDetailsGethDetailsArgs',
+    'BlockchainNodesEthereumDetailsGethDetailsArgsDict',
     'BlockchainNodesEthereumDetailsValidatorConfigArgs',
+    'BlockchainNodesEthereumDetailsValidatorConfigArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class BlockchainNodesConnectionInfoArgsDict(TypedDict):
+        endpoint_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['BlockchainNodesConnectionInfoEndpointInfoArgsDict']]]]
+        """
+        (Output)
+        The endpoint information through which to interact with a blockchain node.
+        Structure is documented below.
+        """
+        service_attachment: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A service attachment that exposes a node, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
+        """
+elif False:
+    BlockchainNodesConnectionInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlockchainNodesConnectionInfoArgs:
@@ -63,6 +92,21 @@ class BlockchainNodesConnectionInfoArgs:
         pulumi.set(self, "service_attachment", value)
 
 
+if not MYPY:
+    class BlockchainNodesConnectionInfoEndpointInfoArgsDict(TypedDict):
+        json_rpc_api_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The assigned URL for the node JSON-RPC API endpoint.
+        """
+        websockets_api_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The assigned URL for the node WebSockets API endpoint.
+        """
+elif False:
+    BlockchainNodesConnectionInfoEndpointInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BlockchainNodesConnectionInfoEndpointInfoArgs:
     def __init__(__self__, *,
@@ -105,6 +149,55 @@ class BlockchainNodesConnectionInfoEndpointInfoArgs:
     def websockets_api_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "websockets_api_endpoint", value)
 
+
+if not MYPY:
+    class BlockchainNodesEthereumDetailsArgsDict(TypedDict):
+        additional_endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input['BlockchainNodesEthereumDetailsAdditionalEndpointArgsDict']]]]
+        """
+        (Output)
+        User-provided key-value pairs
+        Structure is documented below.
+        """
+        api_enable_admin: NotRequired[pulumi.Input[bool]]
+        """
+        Enables JSON-RPC access to functions in the admin namespace. Defaults to false.
+        """
+        api_enable_debug: NotRequired[pulumi.Input[bool]]
+        """
+        Enables JSON-RPC access to functions in the debug namespace. Defaults to false.
+        """
+        consensus_client: NotRequired[pulumi.Input[str]]
+        """
+        The consensus client
+        Possible values are: `CONSENSUS_CLIENT_UNSPECIFIED`, `LIGHTHOUSE`.
+        """
+        execution_client: NotRequired[pulumi.Input[str]]
+        """
+        The execution client
+        Possible values are: `EXECUTION_CLIENT_UNSPECIFIED`, `GETH`, `ERIGON`.
+        """
+        geth_details: NotRequired[pulumi.Input['BlockchainNodesEthereumDetailsGethDetailsArgsDict']]
+        """
+        User-provided key-value pairs
+        Structure is documented below.
+        """
+        network: NotRequired[pulumi.Input[str]]
+        """
+        The Ethereum environment being accessed.
+        Possible values are: `MAINNET`, `TESTNET_GOERLI_PRATER`, `TESTNET_SEPOLIA`.
+        """
+        node_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of Ethereum node.
+        Possible values are: `LIGHT`, `FULL`, `ARCHIVE`.
+        """
+        validator_config: NotRequired[pulumi.Input['BlockchainNodesEthereumDetailsValidatorConfigArgsDict']]
+        """
+        Configuration for validator-related parameters on the beacon client, and for any managed validator client.
+        Structure is documented below.
+        """
+elif False:
+    BlockchainNodesEthereumDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlockchainNodesEthereumDetailsArgs:
@@ -273,6 +366,23 @@ class BlockchainNodesEthereumDetailsArgs:
         pulumi.set(self, "validator_config", value)
 
 
+if not MYPY:
+    class BlockchainNodesEthereumDetailsAdditionalEndpointArgsDict(TypedDict):
+        beacon_api_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        The assigned URL for the node's Beacon API endpoint.
+        """
+        beacon_prometheus_metrics_api_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        The assigned URL for the node's Beacon Prometheus metrics endpoint.
+        """
+        execution_client_prometheus_metrics_api_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        The assigned URL for the node's execution client's Prometheus metrics endpoint.
+        """
+elif False:
+    BlockchainNodesEthereumDetailsAdditionalEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BlockchainNodesEthereumDetailsAdditionalEndpointArgs:
     def __init__(__self__, *,
@@ -328,6 +438,18 @@ class BlockchainNodesEthereumDetailsAdditionalEndpointArgs:
         pulumi.set(self, "execution_client_prometheus_metrics_api_endpoint", value)
 
 
+if not MYPY:
+    class BlockchainNodesEthereumDetailsGethDetailsArgsDict(TypedDict):
+        garbage_collection_mode: NotRequired[pulumi.Input[str]]
+        """
+        Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
+        Possible values are: `FULL`, `ARCHIVE`.
+
+        <a name="nested_additional_endpoints"></a>The `additional_endpoints` block contains:
+        """
+elif False:
+    BlockchainNodesEthereumDetailsGethDetailsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BlockchainNodesEthereumDetailsGethDetailsArgs:
     def __init__(__self__, *,
@@ -356,6 +478,15 @@ class BlockchainNodesEthereumDetailsGethDetailsArgs:
     def garbage_collection_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "garbage_collection_mode", value)
 
+
+if not MYPY:
+    class BlockchainNodesEthereumDetailsValidatorConfigArgsDict(TypedDict):
+        mev_relay_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        URLs for MEV-relay services to use for block building. When set, a managed MEV-boost service is configured on the beacon client.
+        """
+elif False:
+    BlockchainNodesEthereumDetailsValidatorConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlockchainNodesEthereumDetailsValidatorConfigArgs:

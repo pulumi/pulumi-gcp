@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['UserWorkloadsConfigMapArgs', 'UserWorkloadsConfigMap']
@@ -229,11 +234,11 @@ class UserWorkloadsConfigMap(pulumi.CustomResource):
         environment = gcp.composer.Environment("environment",
             name="test-environment",
             region="us-central1",
-            config=gcp.composer.EnvironmentConfigArgs(
-                software_config=gcp.composer.EnvironmentConfigSoftwareConfigArgs(
-                    image_version="composer-3-airflow-2",
-                ),
-            ))
+            config={
+                "softwareConfig": {
+                    "imageVersion": "composer-3-airflow-2",
+                },
+            })
         config_map = gcp.composer.UserWorkloadsConfigMap("config_map",
             name="test-config-map",
             region="us-central1",
@@ -304,11 +309,11 @@ class UserWorkloadsConfigMap(pulumi.CustomResource):
         environment = gcp.composer.Environment("environment",
             name="test-environment",
             region="us-central1",
-            config=gcp.composer.EnvironmentConfigArgs(
-                software_config=gcp.composer.EnvironmentConfigSoftwareConfigArgs(
-                    image_version="composer-3-airflow-2",
-                ),
-            ))
+            config={
+                "softwareConfig": {
+                    "imageVersion": "composer-3-airflow-2",
+                },
+            })
         config_map = gcp.composer.UserWorkloadsConfigMap("config_map",
             name="test-config-map",
             region="us-central1",

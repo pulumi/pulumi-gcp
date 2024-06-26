@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -153,9 +158,9 @@ def get_project_service_account(project: Optional[str] = None,
     bucket = gcp.storage.Bucket("bucket",
         name="kms-protected-bucket",
         location="US",
-        encryption=gcp.storage.BucketEncryptionArgs(
-            default_kms_key_name="your-crypto-key-id",
-        ),
+        encryption={
+            "defaultKmsKeyName": "your-crypto-key-id",
+        },
         opts = pulumi.ResourceOptions(depends_on=[binding]))
     ```
 
@@ -245,9 +250,9 @@ def get_project_service_account_output(project: Optional[pulumi.Input[Optional[s
     bucket = gcp.storage.Bucket("bucket",
         name="kms-protected-bucket",
         location="US",
-        encryption=gcp.storage.BucketEncryptionArgs(
-            default_kms_key_name="your-crypto-key-id",
-        ),
+        encryption={
+            "defaultKmsKeyName": "your-crypto-key-id",
+        },
         opts = pulumi.ResourceOptions(depends_on=[binding]))
     ```
 

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -827,7 +832,7 @@ class Subnetwork(pulumi.CustomResource):
                  external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  ipv6_access_type: Optional[pulumi.Input[str]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[Union['SubnetworkLogConfigArgs', 'SubnetworkLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  private_ip_google_access: Optional[pulumi.Input[bool]] = None,
@@ -836,7 +841,7 @@ class Subnetwork(pulumi.CustomResource):
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]]] = None,
+                 secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -886,10 +891,10 @@ class Subnetwork(pulumi.CustomResource):
             ip_cidr_range="10.2.0.0/16",
             region="us-central1",
             network=custom_test.id,
-            secondary_ip_ranges=[gcp.compute.SubnetworkSecondaryIpRangeArgs(
-                range_name="tf-test-secondary-range-update1",
-                ip_cidr_range="192.168.10.0/24",
-            )])
+            secondary_ip_ranges=[{
+                "rangeName": "tf-test-secondary-range-update1",
+                "ipCidrRange": "192.168.10.0/24",
+            }])
         ```
         ### Subnetwork Logging Config
 
@@ -905,11 +910,11 @@ class Subnetwork(pulumi.CustomResource):
             ip_cidr_range="10.2.0.0/16",
             region="us-central1",
             network=custom_test.id,
-            log_config=gcp.compute.SubnetworkLogConfigArgs(
-                aggregation_interval="INTERVAL_10_MIN",
-                flow_sampling=0.5,
-                metadata="INCLUDE_ALL_METADATA",
-            ))
+            log_config={
+                "aggregationInterval": "INTERVAL_10_MIN",
+                "flowSampling": 0.5,
+                "metadata": "INCLUDE_ALL_METADATA",
+            })
         ```
         ### Subnetwork Internal L7lb
 
@@ -1044,7 +1049,7 @@ class Subnetwork(pulumi.CustomResource):
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
                cannot enable direct path.
                Possible values are: `EXTERNAL`, `INTERNAL`.
-        :param pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']] log_config: This field denotes the VPC flow logging options for this subnetwork. If
+        :param pulumi.Input[Union['SubnetworkLogConfigArgs', 'SubnetworkLogConfigArgsDict']] log_config: This field denotes the VPC flow logging options for this subnetwork. If
                logging is enabled, logs are exported to Cloud Logging. Flow logging
                isn't supported if the subnet `purpose` field is set to subnetwork is
                `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
@@ -1080,7 +1085,7 @@ class Subnetwork(pulumi.CustomResource):
                An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
                A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
                Possible values are: `ACTIVE`, `BACKUP`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
                contained in this subnetwork. The primary IP of such VM must belong
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
                to either primary or secondary ranges.
@@ -1142,10 +1147,10 @@ class Subnetwork(pulumi.CustomResource):
             ip_cidr_range="10.2.0.0/16",
             region="us-central1",
             network=custom_test.id,
-            secondary_ip_ranges=[gcp.compute.SubnetworkSecondaryIpRangeArgs(
-                range_name="tf-test-secondary-range-update1",
-                ip_cidr_range="192.168.10.0/24",
-            )])
+            secondary_ip_ranges=[{
+                "rangeName": "tf-test-secondary-range-update1",
+                "ipCidrRange": "192.168.10.0/24",
+            }])
         ```
         ### Subnetwork Logging Config
 
@@ -1161,11 +1166,11 @@ class Subnetwork(pulumi.CustomResource):
             ip_cidr_range="10.2.0.0/16",
             region="us-central1",
             network=custom_test.id,
-            log_config=gcp.compute.SubnetworkLogConfigArgs(
-                aggregation_interval="INTERVAL_10_MIN",
-                flow_sampling=0.5,
-                metadata="INCLUDE_ALL_METADATA",
-            ))
+            log_config={
+                "aggregationInterval": "INTERVAL_10_MIN",
+                "flowSampling": 0.5,
+                "metadata": "INCLUDE_ALL_METADATA",
+            })
         ```
         ### Subnetwork Internal L7lb
 
@@ -1302,7 +1307,7 @@ class Subnetwork(pulumi.CustomResource):
                  external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  ipv6_access_type: Optional[pulumi.Input[str]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[Union['SubnetworkLogConfigArgs', 'SubnetworkLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  private_ip_google_access: Optional[pulumi.Input[bool]] = None,
@@ -1311,7 +1316,7 @@ class Subnetwork(pulumi.CustomResource):
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]]] = None,
+                 secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1368,7 +1373,7 @@ class Subnetwork(pulumi.CustomResource):
             ip_cidr_range: Optional[pulumi.Input[str]] = None,
             ipv6_access_type: Optional[pulumi.Input[str]] = None,
             ipv6_cidr_range: Optional[pulumi.Input[str]] = None,
-            log_config: Optional[pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']]] = None,
+            log_config: Optional[pulumi.Input[Union['SubnetworkLogConfigArgs', 'SubnetworkLogConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             private_ip_google_access: Optional[pulumi.Input[bool]] = None,
@@ -1377,7 +1382,7 @@ class Subnetwork(pulumi.CustomResource):
             purpose: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             role: Optional[pulumi.Input[str]] = None,
-            secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]]] = None,
+            secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             stack_type: Optional[pulumi.Input[str]] = None) -> 'Subnetwork':
         """
@@ -1409,7 +1414,7 @@ class Subnetwork(pulumi.CustomResource):
                cannot enable direct path.
                Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[str] ipv6_cidr_range: The range of internal IPv6 addresses that are owned by this subnetwork.
-        :param pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']] log_config: This field denotes the VPC flow logging options for this subnetwork. If
+        :param pulumi.Input[Union['SubnetworkLogConfigArgs', 'SubnetworkLogConfigArgsDict']] log_config: This field denotes the VPC flow logging options for this subnetwork. If
                logging is enabled, logs are exported to Cloud Logging. Flow logging
                isn't supported if the subnet `purpose` field is set to subnetwork is
                `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
@@ -1445,7 +1450,7 @@ class Subnetwork(pulumi.CustomResource):
                An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
                A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
                Possible values are: `ACTIVE`, `BACKUP`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
                contained in this subnetwork. The primary IP of such VM must belong
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
                to either primary or secondary ranges.

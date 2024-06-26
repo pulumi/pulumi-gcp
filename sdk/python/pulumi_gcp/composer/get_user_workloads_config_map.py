@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -107,11 +112,11 @@ def get_user_workloads_config_map(environment: Optional[str] = None,
 
     example_environment = gcp.composer.Environment("example",
         name="example-environment",
-        config=gcp.composer.EnvironmentConfigArgs(
-            software_config=gcp.composer.EnvironmentConfigSoftwareConfigArgs(
-                image_version="composer-3-airflow-2",
-            ),
-        ))
+        config={
+            "softwareConfig": {
+                "imageVersion": "composer-3-airflow-2",
+            },
+        })
     example_user_workloads_config_map = gcp.composer.UserWorkloadsConfigMap("example",
         environment=example_environment.name,
         name="example-config-map",
@@ -163,11 +168,11 @@ def get_user_workloads_config_map_output(environment: Optional[pulumi.Input[str]
 
     example_environment = gcp.composer.Environment("example",
         name="example-environment",
-        config=gcp.composer.EnvironmentConfigArgs(
-            software_config=gcp.composer.EnvironmentConfigSoftwareConfigArgs(
-                image_version="composer-3-airflow-2",
-            ),
-        ))
+        config={
+            "softwareConfig": {
+                "imageVersion": "composer-3-airflow-2",
+            },
+        })
     example_user_workloads_config_map = gcp.composer.UserWorkloadsConfigMap("example",
         environment=example_environment.name,
         name="example-config-map",

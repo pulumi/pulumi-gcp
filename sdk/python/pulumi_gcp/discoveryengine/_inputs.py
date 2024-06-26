@@ -4,26 +4,56 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ChatEngineChatEngineConfigArgs',
+    'ChatEngineChatEngineConfigArgsDict',
     'ChatEngineChatEngineConfigAgentCreationConfigArgs',
+    'ChatEngineChatEngineConfigAgentCreationConfigArgsDict',
     'ChatEngineChatEngineMetadataArgs',
+    'ChatEngineChatEngineMetadataArgsDict',
     'ChatEngineCommonConfigArgs',
+    'ChatEngineCommonConfigArgsDict',
     'DataStoreDocumentProcessingConfigArgs',
+    'DataStoreDocumentProcessingConfigArgsDict',
     'DataStoreDocumentProcessingConfigDefaultParsingConfigArgs',
+    'DataStoreDocumentProcessingConfigDefaultParsingConfigArgsDict',
     'DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs',
+    'DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgsDict',
     'DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs',
+    'DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgsDict',
     'DataStoreDocumentProcessingConfigParsingConfigOverrideArgs',
+    'DataStoreDocumentProcessingConfigParsingConfigOverrideArgsDict',
     'DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs',
+    'DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgsDict',
     'DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs',
+    'DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgsDict',
     'SearchEngineCommonConfigArgs',
+    'SearchEngineCommonConfigArgsDict',
     'SearchEngineSearchEngineConfigArgs',
+    'SearchEngineSearchEngineConfigArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ChatEngineChatEngineConfigArgsDict(TypedDict):
+        agent_creation_config: pulumi.Input['ChatEngineChatEngineConfigAgentCreationConfigArgsDict']
+        """
+        The configuration to generate the Dialogflow agent that is associated to this Engine.
+        Structure is documented below.
+        """
+elif False:
+    ChatEngineChatEngineConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ChatEngineChatEngineConfigArgs:
@@ -48,6 +78,29 @@ class ChatEngineChatEngineConfigArgs:
     def agent_creation_config(self, value: pulumi.Input['ChatEngineChatEngineConfigAgentCreationConfigArgs']):
         pulumi.set(self, "agent_creation_config", value)
 
+
+if not MYPY:
+    class ChatEngineChatEngineConfigAgentCreationConfigArgsDict(TypedDict):
+        default_language_code: pulumi.Input[str]
+        """
+        The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
+        """
+        time_zone: pulumi.Input[str]
+        """
+        The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+        """
+        business: NotRequired[pulumi.Input[str]]
+        """
+        Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
+
+        - - -
+        """
+elif False:
+    ChatEngineChatEngineConfigAgentCreationConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ChatEngineChatEngineConfigAgentCreationConfigArgs:
@@ -122,6 +175,16 @@ class ChatEngineChatEngineConfigAgentCreationConfigArgs:
         pulumi.set(self, "location", value)
 
 
+if not MYPY:
+    class ChatEngineChatEngineMetadataArgsDict(TypedDict):
+        dialogflow_agent: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The resource name of a Dialogflow agent, that this Chat Engine refers to.
+        """
+elif False:
+    ChatEngineChatEngineMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ChatEngineChatEngineMetadataArgs:
     def __init__(__self__, *,
@@ -147,6 +210,15 @@ class ChatEngineChatEngineMetadataArgs:
         pulumi.set(self, "dialogflow_agent", value)
 
 
+if not MYPY:
+    class ChatEngineCommonConfigArgsDict(TypedDict):
+        company_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
+        """
+elif False:
+    ChatEngineCommonConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ChatEngineCommonConfigArgs:
     def __init__(__self__, *,
@@ -169,6 +241,28 @@ class ChatEngineCommonConfigArgs:
     def company_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "company_name", value)
 
+
+if not MYPY:
+    class DataStoreDocumentProcessingConfigArgsDict(TypedDict):
+        default_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigArgsDict']]
+        """
+        Configurations for default Document parser. If not specified, this resource
+        will be configured to use a default DigitalParsingConfig, and the default parsing
+        config will be applied to all file types for Document parsing.
+        Structure is documented below.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The full resource name of the Document Processing Config. Format:
+        `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/documentProcessingConfig`.
+        """
+        parsing_config_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideArgsDict']]]]
+        """
+        Map from file type to override the default parsing configuration based on the file type. Supported keys:
+        """
+elif False:
+    DataStoreDocumentProcessingConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DataStoreDocumentProcessingConfigArgs:
@@ -235,6 +329,20 @@ class DataStoreDocumentProcessingConfigArgs:
         pulumi.set(self, "parsing_config_overrides", value)
 
 
+if not MYPY:
+    class DataStoreDocumentProcessingConfigDefaultParsingConfigArgsDict(TypedDict):
+        digital_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgsDict']]
+        """
+        Configurations applied to digital parser.
+        """
+        ocr_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgsDict']]
+        """
+        Configurations applied to OCR parser. Currently it only applies to PDFs.
+        Structure is documented below.
+        """
+elif False:
+    DataStoreDocumentProcessingConfigDefaultParsingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DataStoreDocumentProcessingConfigDefaultParsingConfigArgs:
     def __init__(__self__, *,
@@ -276,11 +384,26 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfigArgs:
         pulumi.set(self, "ocr_parsing_config", value)
 
 
+if not MYPY:
+    class DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgsDict(TypedDict):
+        pass
+elif False:
+    DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgsDict(TypedDict):
+        use_native_text: NotRequired[pulumi.Input[bool]]
+        """
+        If true, will use native text instead of OCR text on pages containing native text.
+        """
+elif False:
+    DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs:
@@ -304,6 +427,24 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs:
     def use_native_text(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_native_text", value)
 
+
+if not MYPY:
+    class DataStoreDocumentProcessingConfigParsingConfigOverrideArgsDict(TypedDict):
+        file_type: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        digital_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgsDict']]
+        """
+        Configurations applied to digital parser.
+        """
+        ocr_parsing_config: NotRequired[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgsDict']]
+        """
+        Configurations applied to OCR parser. Currently it only applies to PDFs.
+        Structure is documented below.
+        """
+elif False:
+    DataStoreDocumentProcessingConfigParsingConfigOverrideArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DataStoreDocumentProcessingConfigParsingConfigOverrideArgs:
@@ -361,11 +502,26 @@ class DataStoreDocumentProcessingConfigParsingConfigOverrideArgs:
         pulumi.set(self, "ocr_parsing_config", value)
 
 
+if not MYPY:
+    class DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgsDict(TypedDict):
+        pass
+elif False:
+    DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgsDict(TypedDict):
+        use_native_text: NotRequired[pulumi.Input[bool]]
+        """
+        If true, will use native text instead of OCR text on pages containing native text.
+        """
+elif False:
+    DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs:
@@ -390,6 +546,15 @@ class DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs
         pulumi.set(self, "use_native_text", value)
 
 
+if not MYPY:
+    class SearchEngineCommonConfigArgsDict(TypedDict):
+        company_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
+        """
+elif False:
+    SearchEngineCommonConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SearchEngineCommonConfigArgs:
     def __init__(__self__, *,
@@ -412,6 +577,24 @@ class SearchEngineCommonConfigArgs:
     def company_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "company_name", value)
 
+
+if not MYPY:
+    class SearchEngineSearchEngineConfigArgsDict(TypedDict):
+        search_add_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The add-on that this search engine enables.
+        Each value may be one of: `SEARCH_ADD_ON_LLM`.
+
+        - - -
+        """
+        search_tier: NotRequired[pulumi.Input[str]]
+        """
+        The search feature tier of this engine. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+        Default value is `SEARCH_TIER_STANDARD`.
+        Possible values are: `SEARCH_TIER_STANDARD`, `SEARCH_TIER_ENTERPRISE`.
+        """
+elif False:
+    SearchEngineSearchEngineConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SearchEngineSearchEngineConfigArgs:

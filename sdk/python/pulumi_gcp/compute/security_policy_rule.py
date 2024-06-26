@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -385,12 +390,12 @@ class SecurityPolicyRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 match: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRuleMatchArgs']]] = None,
-                 preconfigured_waf_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRulePreconfiguredWafConfigArgs']]] = None,
+                 match: Optional[pulumi.Input[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict']]] = None,
+                 preconfigured_waf_config: Optional[pulumi.Input[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rate_limit_options: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRuleRateLimitOptionsArgs']]] = None,
+                 rate_limit_options: Optional[pulumi.Input[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -418,12 +423,12 @@ class SecurityPolicyRule(pulumi.CustomResource):
             security_policy=default.name,
             description="new rule",
             priority=100,
-            match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=["10.10.0.0/16"],
-                ),
-            ),
+            match={
+                "versionedExpr": "SRC_IPS_V1",
+                "config": {
+                    "srcIpRanges": ["10.10.0.0/16"],
+                },
+            },
             action="allow",
             preview=True)
         ```
@@ -447,22 +452,22 @@ class SecurityPolicyRule(pulumi.CustomResource):
             description="default rule",
             action="allow",
             priority=2147483647,
-            match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=["*"],
-                ),
-            ))
+            match={
+                "versionedExpr": "SRC_IPS_V1",
+                "config": {
+                    "srcIpRanges": ["*"],
+                },
+            })
         policy_rule = gcp.compute.SecurityPolicyRule("policy_rule",
             security_policy=default.name,
             description="new rule",
             priority=100,
-            match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=["10.10.0.0/16"],
-                ),
-            ),
+            match={
+                "versionedExpr": "SRC_IPS_V1",
+                "config": {
+                    "srcIpRanges": ["10.10.0.0/16"],
+                },
+            },
             action="allow",
             preview=True)
         ```
@@ -480,27 +485,27 @@ class SecurityPolicyRule(pulumi.CustomResource):
             security_policy=default.name,
             description="new rule one",
             priority=100,
-            match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=["10.10.0.0/16"],
-                ),
-            ),
+            match={
+                "versionedExpr": "SRC_IPS_V1",
+                "config": {
+                    "srcIpRanges": ["10.10.0.0/16"],
+                },
+            },
             action="allow",
             preview=True)
         policy_rule_two = gcp.compute.SecurityPolicyRule("policy_rule_two",
             security_policy=default.name,
             description="new rule two",
             priority=101,
-            match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=[
+            match={
+                "versionedExpr": "SRC_IPS_V1",
+                "config": {
+                    "srcIpRanges": [
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
-                ),
-            ),
+                },
+            },
             action="allow",
             preview=True)
         ```
@@ -538,10 +543,10 @@ class SecurityPolicyRule(pulumi.CustomResource):
                * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
                * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[pulumi.InputType['SecurityPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against.
+        :param pulumi.Input[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['SecurityPolicyRulePreconfiguredWafConfigArgs']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+        :param pulumi.Input[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
                If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
                Structure is documented below.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
@@ -550,7 +555,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['SecurityPolicyRuleRateLimitOptionsArgs']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        :param pulumi.Input[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
                Structure is documented below.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
                
@@ -588,12 +593,12 @@ class SecurityPolicyRule(pulumi.CustomResource):
             security_policy=default.name,
             description="new rule",
             priority=100,
-            match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=["10.10.0.0/16"],
-                ),
-            ),
+            match={
+                "versionedExpr": "SRC_IPS_V1",
+                "config": {
+                    "srcIpRanges": ["10.10.0.0/16"],
+                },
+            },
             action="allow",
             preview=True)
         ```
@@ -617,22 +622,22 @@ class SecurityPolicyRule(pulumi.CustomResource):
             description="default rule",
             action="allow",
             priority=2147483647,
-            match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=["*"],
-                ),
-            ))
+            match={
+                "versionedExpr": "SRC_IPS_V1",
+                "config": {
+                    "srcIpRanges": ["*"],
+                },
+            })
         policy_rule = gcp.compute.SecurityPolicyRule("policy_rule",
             security_policy=default.name,
             description="new rule",
             priority=100,
-            match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=["10.10.0.0/16"],
-                ),
-            ),
+            match={
+                "versionedExpr": "SRC_IPS_V1",
+                "config": {
+                    "srcIpRanges": ["10.10.0.0/16"],
+                },
+            },
             action="allow",
             preview=True)
         ```
@@ -650,27 +655,27 @@ class SecurityPolicyRule(pulumi.CustomResource):
             security_policy=default.name,
             description="new rule one",
             priority=100,
-            match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=["10.10.0.0/16"],
-                ),
-            ),
+            match={
+                "versionedExpr": "SRC_IPS_V1",
+                "config": {
+                    "srcIpRanges": ["10.10.0.0/16"],
+                },
+            },
             action="allow",
             preview=True)
         policy_rule_two = gcp.compute.SecurityPolicyRule("policy_rule_two",
             security_policy=default.name,
             description="new rule two",
             priority=101,
-            match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=[
+            match={
+                "versionedExpr": "SRC_IPS_V1",
+                "config": {
+                    "srcIpRanges": [
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
-                ),
-            ),
+                },
+            },
             action="allow",
             preview=True)
         ```
@@ -716,12 +721,12 @@ class SecurityPolicyRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 match: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRuleMatchArgs']]] = None,
-                 preconfigured_waf_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRulePreconfiguredWafConfigArgs']]] = None,
+                 match: Optional[pulumi.Input[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict']]] = None,
+                 preconfigured_waf_config: Optional[pulumi.Input[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rate_limit_options: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRuleRateLimitOptionsArgs']]] = None,
+                 rate_limit_options: Optional[pulumi.Input[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -759,12 +764,12 @@ class SecurityPolicyRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             action: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            match: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRuleMatchArgs']]] = None,
-            preconfigured_waf_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRulePreconfiguredWafConfigArgs']]] = None,
+            match: Optional[pulumi.Input[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict']]] = None,
+            preconfigured_waf_config: Optional[pulumi.Input[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
             preview: Optional[pulumi.Input[bool]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            rate_limit_options: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRuleRateLimitOptionsArgs']]] = None,
+            rate_limit_options: Optional[pulumi.Input[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
             security_policy: Optional[pulumi.Input[str]] = None) -> 'SecurityPolicyRule':
         """
         Get an existing SecurityPolicyRule resource's state with the given name, id, and optional extra
@@ -780,10 +785,10 @@ class SecurityPolicyRule(pulumi.CustomResource):
                * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
                * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[pulumi.InputType['SecurityPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against.
+        :param pulumi.Input[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['SecurityPolicyRulePreconfiguredWafConfigArgs']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+        :param pulumi.Input[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict']] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
                If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
                Structure is documented below.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
@@ -792,7 +797,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['SecurityPolicyRuleRateLimitOptionsArgs']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        :param pulumi.Input[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
                Structure is documented below.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
                

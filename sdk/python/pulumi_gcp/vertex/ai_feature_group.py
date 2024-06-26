@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -324,7 +329,7 @@ class AiFeatureGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 big_query: Optional[pulumi.Input[pulumi.InputType['AiFeatureGroupBigQueryArgs']]] = None,
+                 big_query: Optional[pulumi.Input[Union['AiFeatureGroupBigQueryArgs', 'AiFeatureGroupBigQueryArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -377,12 +382,12 @@ class AiFeatureGroup(pulumi.CustomResource):
             labels={
                 "label-one": "value-one",
             },
-            big_query=gcp.vertex.AiFeatureGroupBigQueryArgs(
-                big_query_source=gcp.vertex.AiFeatureGroupBigQueryBigQuerySourceArgs(
-                    input_uri=pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
-                ),
-                entity_id_columns=["feature_id"],
-            ))
+            big_query={
+                "bigQuerySource": {
+                    "inputUri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                },
+                "entityIdColumns": ["feature_id"],
+            })
         ```
 
         ## Import
@@ -417,7 +422,7 @@ class AiFeatureGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AiFeatureGroupBigQueryArgs']] big_query: Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
+        :param pulumi.Input[Union['AiFeatureGroupBigQueryArgs', 'AiFeatureGroupBigQueryArgsDict']] big_query: Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the FeatureGroup.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your FeatureGroup.
@@ -480,12 +485,12 @@ class AiFeatureGroup(pulumi.CustomResource):
             labels={
                 "label-one": "value-one",
             },
-            big_query=gcp.vertex.AiFeatureGroupBigQueryArgs(
-                big_query_source=gcp.vertex.AiFeatureGroupBigQueryBigQuerySourceArgs(
-                    input_uri=pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
-                ),
-                entity_id_columns=["feature_id"],
-            ))
+            big_query={
+                "bigQuerySource": {
+                    "inputUri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                },
+                "entityIdColumns": ["feature_id"],
+            })
         ```
 
         ## Import
@@ -533,7 +538,7 @@ class AiFeatureGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 big_query: Optional[pulumi.Input[pulumi.InputType['AiFeatureGroupBigQueryArgs']]] = None,
+                 big_query: Optional[pulumi.Input[Union['AiFeatureGroupBigQueryArgs', 'AiFeatureGroupBigQueryArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -571,7 +576,7 @@ class AiFeatureGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            big_query: Optional[pulumi.Input[pulumi.InputType['AiFeatureGroupBigQueryArgs']]] = None,
+            big_query: Optional[pulumi.Input[Union['AiFeatureGroupBigQueryArgs', 'AiFeatureGroupBigQueryArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -589,7 +594,7 @@ class AiFeatureGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AiFeatureGroupBigQueryArgs']] big_query: Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
+        :param pulumi.Input[Union['AiFeatureGroupBigQueryArgs', 'AiFeatureGroupBigQueryArgsDict']] big_query: Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The timestamp of when the FeatureGroup was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] description: The description of the FeatureGroup.

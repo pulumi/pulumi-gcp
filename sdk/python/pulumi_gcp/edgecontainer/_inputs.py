@@ -4,37 +4,80 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ClusterAuthorizationArgs',
+    'ClusterAuthorizationArgsDict',
     'ClusterAuthorizationAdminUsersArgs',
+    'ClusterAuthorizationAdminUsersArgsDict',
     'ClusterControlPlaneArgs',
+    'ClusterControlPlaneArgsDict',
     'ClusterControlPlaneEncryptionArgs',
+    'ClusterControlPlaneEncryptionArgsDict',
     'ClusterControlPlaneEncryptionKmsStatusArgs',
+    'ClusterControlPlaneEncryptionKmsStatusArgsDict',
     'ClusterControlPlaneLocalArgs',
+    'ClusterControlPlaneLocalArgsDict',
     'ClusterControlPlaneRemoteArgs',
+    'ClusterControlPlaneRemoteArgsDict',
     'ClusterFleetArgs',
+    'ClusterFleetArgsDict',
     'ClusterMaintenanceEventArgs',
+    'ClusterMaintenanceEventArgsDict',
     'ClusterMaintenancePolicyArgs',
+    'ClusterMaintenancePolicyArgsDict',
     'ClusterMaintenancePolicyMaintenanceExclusionArgs',
+    'ClusterMaintenancePolicyMaintenanceExclusionArgsDict',
     'ClusterMaintenancePolicyMaintenanceExclusionWindowArgs',
+    'ClusterMaintenancePolicyMaintenanceExclusionWindowArgsDict',
     'ClusterMaintenancePolicyWindowArgs',
+    'ClusterMaintenancePolicyWindowArgsDict',
     'ClusterMaintenancePolicyWindowRecurringWindowArgs',
+    'ClusterMaintenancePolicyWindowRecurringWindowArgsDict',
     'ClusterMaintenancePolicyWindowRecurringWindowWindowArgs',
+    'ClusterMaintenancePolicyWindowRecurringWindowWindowArgsDict',
     'ClusterNetworkingArgs',
+    'ClusterNetworkingArgsDict',
     'ClusterSystemAddonsConfigArgs',
+    'ClusterSystemAddonsConfigArgsDict',
     'ClusterSystemAddonsConfigIngressArgs',
+    'ClusterSystemAddonsConfigIngressArgsDict',
     'NodePoolLocalDiskEncryptionArgs',
+    'NodePoolLocalDiskEncryptionArgsDict',
     'NodePoolNodeConfigArgs',
+    'NodePoolNodeConfigArgsDict',
     'VpnConnectionDetailArgs',
+    'VpnConnectionDetailArgsDict',
     'VpnConnectionDetailCloudRouterArgs',
+    'VpnConnectionDetailCloudRouterArgsDict',
     'VpnConnectionDetailCloudVpnArgs',
+    'VpnConnectionDetailCloudVpnArgsDict',
     'VpnConnectionVpcProjectArgs',
+    'VpnConnectionVpcProjectArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ClusterAuthorizationArgsDict(TypedDict):
+        admin_users: pulumi.Input['ClusterAuthorizationAdminUsersArgsDict']
+        """
+        User that will be granted the cluster-admin role on the cluster, providing
+        full access to the cluster. Currently, this is a singular field, but will
+        be expanded to allow multiple admins in the future.
+        Structure is documented below.
+        """
+elif False:
+    ClusterAuthorizationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterAuthorizationArgs:
@@ -64,6 +107,17 @@ class ClusterAuthorizationArgs:
         pulumi.set(self, "admin_users", value)
 
 
+if not MYPY:
+    class ClusterAuthorizationAdminUsersArgsDict(TypedDict):
+        username: pulumi.Input[str]
+        """
+        An active Google username.
+
+        - - -
+        """
+elif False:
+    ClusterAuthorizationAdminUsersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterAuthorizationAdminUsersArgs:
     def __init__(__self__, *,
@@ -89,6 +143,21 @@ class ClusterAuthorizationAdminUsersArgs:
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class ClusterControlPlaneArgsDict(TypedDict):
+        local: NotRequired[pulumi.Input['ClusterControlPlaneLocalArgsDict']]
+        """
+        Local control plane configuration.
+        Structure is documented below.
+        """
+        remote: NotRequired[pulumi.Input['ClusterControlPlaneRemoteArgsDict']]
+        """
+        Remote control plane configuration.
+        Structure is documented below.
+        """
+elif False:
+    ClusterControlPlaneArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterControlPlaneArgs:
@@ -132,6 +201,43 @@ class ClusterControlPlaneArgs:
     def remote(self, value: Optional[pulumi.Input['ClusterControlPlaneRemoteArgs']]):
         pulumi.set(self, "remote", value)
 
+
+if not MYPY:
+    class ClusterControlPlaneEncryptionArgsDict(TypedDict):
+        kms_key: NotRequired[pulumi.Input[str]]
+        """
+        The Cloud KMS CryptoKey e.g.
+        projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+        to use for protecting control plane disks. If not specified, a
+        Google-managed key will be used instead.
+        """
+        kms_key_active_version: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The Cloud KMS CryptoKeyVersion currently in use for protecting control
+        plane disks. Only applicable if kms_key is set.
+        """
+        kms_key_state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Availability of the Cloud KMS CryptoKey. If not `KEY_AVAILABLE`, then
+        nodes may go offline as they cannot access their local data. This can be
+        caused by a lack of permissions to use the key, or if the key is disabled
+        or deleted.
+        """
+        kms_statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArgsDict']]]]
+        """
+        (Output)
+        Error status returned by Cloud KMS when using this key. This field may be
+        populated only if `kms_key_state` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
+        If populated, this field contains the error status reported by Cloud KMS.
+        Structure is documented below.
+
+
+        <a name="nested_kms_status"></a>The `kms_status` block contains:
+        """
+elif False:
+    ClusterControlPlaneEncryptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterControlPlaneEncryptionArgs:
@@ -236,6 +342,19 @@ class ClusterControlPlaneEncryptionArgs:
         pulumi.set(self, "kms_statuses", value)
 
 
+if not MYPY:
+    class ClusterControlPlaneEncryptionKmsStatusArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[int]]
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+elif False:
+    ClusterControlPlaneEncryptionKmsStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterControlPlaneEncryptionKmsStatusArgs:
     def __init__(__self__, *,
@@ -274,6 +393,32 @@ class ClusterControlPlaneEncryptionKmsStatusArgs:
     def message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "message", value)
 
+
+if not MYPY:
+    class ClusterControlPlaneLocalArgsDict(TypedDict):
+        machine_filter: NotRequired[pulumi.Input[str]]
+        """
+        Only machines matching this filter will be allowed to host control
+        plane nodes. The filtering language accepts strings like "name=<name>",
+        and is documented here: [AIP-160](https://google.aip.dev/160).
+        """
+        node_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of nodes to serve as replicas of the Control Plane.
+        Only 1 and 3 are supported.
+        """
+        node_location: NotRequired[pulumi.Input[str]]
+        """
+        Name of the Google Distributed Cloud Edge zones where this node pool
+        will be created. For example: `us-central1-edge-customer-a`.
+        """
+        shared_deployment_policy: NotRequired[pulumi.Input[str]]
+        """
+        Policy configuration about how user applications are deployed.
+        Possible values are: `SHARED_DEPLOYMENT_POLICY_UNSPECIFIED`, `ALLOWED`, `DISALLOWED`.
+        """
+elif False:
+    ClusterControlPlaneLocalArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterControlPlaneLocalArgs:
@@ -356,6 +501,16 @@ class ClusterControlPlaneLocalArgs:
         pulumi.set(self, "shared_deployment_policy", value)
 
 
+if not MYPY:
+    class ClusterControlPlaneRemoteArgsDict(TypedDict):
+        node_location: NotRequired[pulumi.Input[str]]
+        """
+        Name of the Google Distributed Cloud Edge zones where this node pool
+        will be created. For example: `us-central1-edge-customer-a`.
+        """
+elif False:
+    ClusterControlPlaneRemoteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterControlPlaneRemoteArgs:
     def __init__(__self__, *,
@@ -380,6 +535,24 @@ class ClusterControlPlaneRemoteArgs:
     def node_location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "node_location", value)
 
+
+if not MYPY:
+    class ClusterFleetArgsDict(TypedDict):
+        project: pulumi.Input[str]
+        """
+        The name of the Fleet host project where this cluster will be registered.
+        Project names are formatted as
+        `projects/<project-number>`.
+        """
+        membership: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The name of the managed Hub Membership resource associated to this cluster.
+        Membership names are formatted as
+        `projects/<project-number>/locations/global/membership/<cluster-id>`.
+        """
+elif False:
+    ClusterFleetArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterFleetArgs:
@@ -428,6 +601,66 @@ class ClusterFleetArgs:
     def membership(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "membership", value)
 
+
+if not MYPY:
+    class ClusterMaintenanceEventArgsDict(TypedDict):
+        create_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The time when the maintenance event request was created.
+        """
+        end_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The time when the maintenance event ended, either successfully or not. If
+        the maintenance event is split into multiple maintenance windows,
+        end_time is only updated when the whole flow ends.
+        """
+        operation: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The operation for running the maintenance event. Specified in the format
+        projects/*/locations/*/operations/*. If the maintenance event is split
+        into multiple operations (e.g. due to maintenance windows), the latest
+        one is recorded.
+        """
+        schedule: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The schedule of the maintenance event.
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The time when the maintenance event started.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Indicates the maintenance event state.
+        """
+        target_version: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The target version of the cluster.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Indicates the maintenance event type.
+        """
+        update_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The time when the maintenance event message was updated.
+        """
+        uuid: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        UUID of the maintenance event.
+        """
+elif False:
+    ClusterMaintenanceEventArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterMaintenanceEventArgs:
@@ -626,6 +859,23 @@ class ClusterMaintenanceEventArgs:
         pulumi.set(self, "uuid", value)
 
 
+if not MYPY:
+    class ClusterMaintenancePolicyArgsDict(TypedDict):
+        window: pulumi.Input['ClusterMaintenancePolicyWindowArgsDict']
+        """
+        Specifies the maintenance window in which maintenance may be performed.
+        Structure is documented below.
+        """
+        maintenance_exclusions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgsDict']]]]
+        """
+        Exclusions to automatic maintenance. Non-emergency maintenance should not occur
+        in these windows. Each exclusion has a unique name and may be active or expired.
+        The max number of maintenance exclusions allowed at a given time is 3.
+        Structure is documented below.
+        """
+elif False:
+    ClusterMaintenancePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterMaintenancePolicyArgs:
     def __init__(__self__, *,
@@ -672,6 +922,20 @@ class ClusterMaintenancePolicyArgs:
         pulumi.set(self, "maintenance_exclusions", value)
 
 
+if not MYPY:
+    class ClusterMaintenancePolicyMaintenanceExclusionArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        A unique (per cluster) id for the window.
+        """
+        window: NotRequired[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionWindowArgsDict']]
+        """
+        Represents an arbitrary window of time.
+        Structure is documented below.
+        """
+elif False:
+    ClusterMaintenancePolicyMaintenanceExclusionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterMaintenancePolicyMaintenanceExclusionArgs:
     def __init__(__self__, *,
@@ -712,6 +976,20 @@ class ClusterMaintenancePolicyMaintenanceExclusionArgs:
     def window(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionWindowArgs']]):
         pulumi.set(self, "window", value)
 
+
+if not MYPY:
+    class ClusterMaintenancePolicyMaintenanceExclusionWindowArgsDict(TypedDict):
+        end_time: NotRequired[pulumi.Input[str]]
+        """
+        The time that the window ends. The end time must take place after the
+        start time.
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        The time that the window first starts.
+        """
+elif False:
+    ClusterMaintenancePolicyMaintenanceExclusionWindowArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterMaintenancePolicyMaintenanceExclusionWindowArgs:
@@ -754,6 +1032,16 @@ class ClusterMaintenancePolicyMaintenanceExclusionWindowArgs:
         pulumi.set(self, "start_time", value)
 
 
+if not MYPY:
+    class ClusterMaintenancePolicyWindowArgsDict(TypedDict):
+        recurring_window: pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowArgsDict']
+        """
+        Represents an arbitrary window of time that recurs.
+        Structure is documented below.
+        """
+elif False:
+    ClusterMaintenancePolicyWindowArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterMaintenancePolicyWindowArgs:
     def __init__(__self__, *,
@@ -777,6 +1065,22 @@ class ClusterMaintenancePolicyWindowArgs:
     def recurring_window(self, value: pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowArgs']):
         pulumi.set(self, "recurring_window", value)
 
+
+if not MYPY:
+    class ClusterMaintenancePolicyWindowRecurringWindowArgsDict(TypedDict):
+        recurrence: NotRequired[pulumi.Input[str]]
+        """
+        An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+        this window recurs. They go on for the span of time between the start and
+        end time.
+        """
+        window: NotRequired[pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowWindowArgsDict']]
+        """
+        Represents an arbitrary window of time.
+        Structure is documented below.
+        """
+elif False:
+    ClusterMaintenancePolicyWindowRecurringWindowArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterMaintenancePolicyWindowRecurringWindowArgs:
@@ -823,6 +1127,20 @@ class ClusterMaintenancePolicyWindowRecurringWindowArgs:
         pulumi.set(self, "window", value)
 
 
+if not MYPY:
+    class ClusterMaintenancePolicyWindowRecurringWindowWindowArgsDict(TypedDict):
+        end_time: NotRequired[pulumi.Input[str]]
+        """
+        The time that the window ends. The end time must take place after the
+        start time.
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        The time that the window first starts.
+        """
+elif False:
+    ClusterMaintenancePolicyWindowRecurringWindowWindowArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterMaintenancePolicyWindowRecurringWindowWindowArgs:
     def __init__(__self__, *,
@@ -863,6 +1181,42 @@ class ClusterMaintenancePolicyWindowRecurringWindowWindowArgs:
     def start_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start_time", value)
 
+
+if not MYPY:
+    class ClusterNetworkingArgsDict(TypedDict):
+        cluster_ipv4_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        All pods in the cluster are assigned an RFC1918 IPv4 address from these
+        blocks. Only a single block is supported. This field cannot be changed
+        after creation.
+        """
+        services_ipv4_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        All services in the cluster are assigned an RFC1918 IPv4 address from these
+        blocks. Only a single block is supported. This field cannot be changed
+        after creation.
+        """
+        cluster_ipv6_cidr_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        If specified, dual stack mode is enabled and all pods in the cluster are
+        assigned an IPv6 address from these blocks alongside from an IPv4
+        address. Only a single block is supported. This field cannot be changed
+        after creation.
+        """
+        network_type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        IP addressing type of this cluster i.e. SINGLESTACK_V4 vs DUALSTACK_V4_V6.
+        """
+        services_ipv6_cidr_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        If specified, dual stack mode is enabled and all services in the cluster are
+        assigned an IPv6 address from these blocks alongside from an IPv4
+        address. Only a single block is supported. This field cannot be changed
+        after creation.
+        """
+elif False:
+    ClusterNetworkingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterNetworkingArgs:
@@ -971,6 +1325,18 @@ class ClusterNetworkingArgs:
         pulumi.set(self, "services_ipv6_cidr_blocks", value)
 
 
+if not MYPY:
+    class ClusterSystemAddonsConfigArgsDict(TypedDict):
+        ingress: NotRequired[pulumi.Input['ClusterSystemAddonsConfigIngressArgsDict']]
+        """
+        Config for the Ingress add-on which allows customers to create an Ingress
+        object to manage external access to the servers in a cluster. The add-on
+        consists of istiod and istio-ingress.
+        Structure is documented below.
+        """
+elif False:
+    ClusterSystemAddonsConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterSystemAddonsConfigArgs:
     def __init__(__self__, *,
@@ -999,6 +1365,19 @@ class ClusterSystemAddonsConfigArgs:
     def ingress(self, value: Optional[pulumi.Input['ClusterSystemAddonsConfigIngressArgs']]):
         pulumi.set(self, "ingress", value)
 
+
+if not MYPY:
+    class ClusterSystemAddonsConfigIngressArgsDict(TypedDict):
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether Ingress is disabled.
+        """
+        ipv4_vip: NotRequired[pulumi.Input[str]]
+        """
+        Ingress VIP.
+        """
+elif False:
+    ClusterSystemAddonsConfigIngressArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterSystemAddonsConfigIngressArgs:
@@ -1038,6 +1417,27 @@ class ClusterSystemAddonsConfigIngressArgs:
     def ipv4_vip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ipv4_vip", value)
 
+
+if not MYPY:
+    class NodePoolLocalDiskEncryptionArgsDict(TypedDict):
+        kms_key: NotRequired[pulumi.Input[str]]
+        """
+        The Cloud KMS CryptoKey e.g. projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} to use for protecting node local disks.
+        If not specified, a Google-managed key will be used instead.
+        """
+        kms_key_active_version: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The Cloud KMS CryptoKeyVersion currently in use for protecting node local disks. Only applicable if kmsKey is set.
+        """
+        kms_key_state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Availability of the Cloud KMS CryptoKey. If not KEY_AVAILABLE, then nodes may go offline as they cannot access their local data.
+        This can be caused by a lack of permissions to use the key, or if the key is disabled or deleted.
+        """
+elif False:
+    NodePoolLocalDiskEncryptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NodePoolLocalDiskEncryptionArgs:
@@ -1102,6 +1502,15 @@ class NodePoolLocalDiskEncryptionArgs:
         pulumi.set(self, "kms_key_state", value)
 
 
+if not MYPY:
+    class NodePoolNodeConfigArgsDict(TypedDict):
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        "The Kubernetes node labels"
+        """
+elif False:
+    NodePoolNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NodePoolNodeConfigArgs:
     def __init__(__self__, *,
@@ -1124,6 +1533,33 @@ class NodePoolNodeConfigArgs:
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
+
+if not MYPY:
+    class VpnConnectionDetailArgsDict(TypedDict):
+        cloud_routers: NotRequired[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArgsDict']]]]
+        """
+        (Output)
+        The Cloud Router info.
+        Structure is documented below.
+        """
+        cloud_vpns: NotRequired[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArgsDict']]]]
+        """
+        (Output)
+        Each connection has multiple Cloud VPN gateways.
+        Structure is documented below.
+        """
+        error: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The error message. This is only populated when state=ERROR.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The current connection state.
+        """
+elif False:
+    VpnConnectionDetailArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VpnConnectionDetailArgs:
@@ -1208,6 +1644,15 @@ class VpnConnectionDetailArgs:
         pulumi.set(self, "state", value)
 
 
+if not MYPY:
+    class VpnConnectionDetailCloudRouterArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The resource name of VPN connection
+        """
+elif False:
+    VpnConnectionDetailCloudRouterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VpnConnectionDetailCloudRouterArgs:
     def __init__(__self__, *,
@@ -1230,6 +1675,16 @@ class VpnConnectionDetailCloudRouterArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class VpnConnectionDetailCloudVpnArgsDict(TypedDict):
+        gateway: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The created Cloud VPN gateway name.
+        """
+elif False:
+    VpnConnectionDetailCloudVpnArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VpnConnectionDetailCloudVpnArgs:
@@ -1255,6 +1710,15 @@ class VpnConnectionDetailCloudVpnArgs:
     def gateway(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gateway", value)
 
+
+if not MYPY:
+    class VpnConnectionVpcProjectArgsDict(TypedDict):
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        The project of the VPC to connect to. If not specified, it is the same as the cluster project.
+        """
+elif False:
+    VpnConnectionVpcProjectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VpnConnectionVpcProjectArgs:

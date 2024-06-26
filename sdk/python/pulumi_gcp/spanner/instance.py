@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -446,7 +451,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_config: Optional[pulumi.Input[pulumi.InputType['InstanceAutoscalingConfigArgs']]] = None,
+                 autoscaling_config: Optional[pulumi.Input[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -505,16 +510,16 @@ class Instance(pulumi.CustomResource):
         example = gcp.spanner.Instance("example",
             config="regional-us-central1",
             display_name="Test Spanner Instance",
-            autoscaling_config=gcp.spanner.InstanceAutoscalingConfigArgs(
-                autoscaling_limits=gcp.spanner.InstanceAutoscalingConfigAutoscalingLimitsArgs(
-                    max_processing_units=3000,
-                    min_processing_units=2000,
-                ),
-                autoscaling_targets=gcp.spanner.InstanceAutoscalingConfigAutoscalingTargetsArgs(
-                    high_priority_cpu_utilization_percent=75,
-                    storage_utilization_percent=90,
-                ),
-            ),
+            autoscaling_config={
+                "autoscalingLimits": {
+                    "maxProcessingUnits": 3000,
+                    "minProcessingUnits": 2000,
+                },
+                "autoscalingTargets": {
+                    "highPriorityCpuUtilizationPercent": 75,
+                    "storageUtilizationPercent": 90,
+                },
+            },
             labels={
                 "foo": "bar",
             })
@@ -560,7 +565,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceAutoscalingConfigArgs']] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
+        :param pulumi.Input[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
                When autoscaling is enabled, num_nodes and processing_units are treated as,
                OUTPUT_ONLY fields and reflect the current compute capacity allocated to
                the instance.
@@ -646,16 +651,16 @@ class Instance(pulumi.CustomResource):
         example = gcp.spanner.Instance("example",
             config="regional-us-central1",
             display_name="Test Spanner Instance",
-            autoscaling_config=gcp.spanner.InstanceAutoscalingConfigArgs(
-                autoscaling_limits=gcp.spanner.InstanceAutoscalingConfigAutoscalingLimitsArgs(
-                    max_processing_units=3000,
-                    min_processing_units=2000,
-                ),
-                autoscaling_targets=gcp.spanner.InstanceAutoscalingConfigAutoscalingTargetsArgs(
-                    high_priority_cpu_utilization_percent=75,
-                    storage_utilization_percent=90,
-                ),
-            ),
+            autoscaling_config={
+                "autoscalingLimits": {
+                    "maxProcessingUnits": 3000,
+                    "minProcessingUnits": 2000,
+                },
+                "autoscalingTargets": {
+                    "highPriorityCpuUtilizationPercent": 75,
+                    "storageUtilizationPercent": 90,
+                },
+            },
             labels={
                 "foo": "bar",
             })
@@ -714,7 +719,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_config: Optional[pulumi.Input[pulumi.InputType['InstanceAutoscalingConfigArgs']]] = None,
+                 autoscaling_config: Optional[pulumi.Input[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -760,7 +765,7 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoscaling_config: Optional[pulumi.Input[pulumi.InputType['InstanceAutoscalingConfigArgs']]] = None,
+            autoscaling_config: Optional[pulumi.Input[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']]] = None,
             config: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -779,7 +784,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceAutoscalingConfigArgs']] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
+        :param pulumi.Input[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']] autoscaling_config: The autoscaling configuration. Autoscaling is enabled if this field is set.
                When autoscaling is enabled, num_nodes and processing_units are treated as,
                OUTPUT_ONLY fields and reflect the current compute capacity allocated to
                the instance.

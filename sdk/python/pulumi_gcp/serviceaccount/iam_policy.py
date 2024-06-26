@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['IAMPolicyArgs', 'IAMPolicy']
@@ -138,10 +143,10 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iam.serviceAccountUser",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iam.serviceAccountUser",
+            "members": ["user:jane@example.com"],
+        }])
         sa = gcp.serviceaccount.Account("sa",
             account_id="my-service-account",
             display_name="A service account that only Jane can interact with")
@@ -178,11 +183,11 @@ class IAMPolicy(pulumi.CustomResource):
             service_account_id=sa.name,
             role="roles/iam.serviceAccountUser",
             members=["user:jane@example.com"],
-            condition=gcp.serviceaccount.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ### Service Account IAM Member
@@ -219,11 +224,11 @@ class IAMPolicy(pulumi.CustomResource):
             service_account_id=sa.name,
             role="roles/iam.serviceAccountUser",
             member="user:jane@example.com",
-            condition=gcp.serviceaccount.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ### Additional Examples
@@ -234,10 +239,10 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iam.serviceAccountUser",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iam.serviceAccountUser",
+            "members": ["user:jane@example.com"],
+        }])
         sa = gcp.serviceaccount.Account("sa",
             account_id="my-service-account",
             display_name="A service account that only Jane can interact with")
@@ -274,11 +279,11 @@ class IAMPolicy(pulumi.CustomResource):
             service_account_id=sa.name,
             role="roles/iam.serviceAccountUser",
             members=["user:jane@example.com"],
-            condition=gcp.serviceaccount.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ### Service Account IAM Member
@@ -315,11 +320,11 @@ class IAMPolicy(pulumi.CustomResource):
             service_account_id=sa.name,
             role="roles/iam.serviceAccountUser",
             member="user:jane@example.com",
-            condition=gcp.serviceaccount.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import
@@ -369,10 +374,10 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iam.serviceAccountUser",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iam.serviceAccountUser",
+            "members": ["user:jane@example.com"],
+        }])
         sa = gcp.serviceaccount.Account("sa",
             account_id="my-service-account",
             display_name="A service account that only Jane can interact with")
@@ -409,11 +414,11 @@ class IAMPolicy(pulumi.CustomResource):
             service_account_id=sa.name,
             role="roles/iam.serviceAccountUser",
             members=["user:jane@example.com"],
-            condition=gcp.serviceaccount.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ### Service Account IAM Member
@@ -450,11 +455,11 @@ class IAMPolicy(pulumi.CustomResource):
             service_account_id=sa.name,
             role="roles/iam.serviceAccountUser",
             member="user:jane@example.com",
-            condition=gcp.serviceaccount.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ### Additional Examples
@@ -465,10 +470,10 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/iam.serviceAccountUser",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/iam.serviceAccountUser",
+            "members": ["user:jane@example.com"],
+        }])
         sa = gcp.serviceaccount.Account("sa",
             account_id="my-service-account",
             display_name="A service account that only Jane can interact with")
@@ -505,11 +510,11 @@ class IAMPolicy(pulumi.CustomResource):
             service_account_id=sa.name,
             role="roles/iam.serviceAccountUser",
             members=["user:jane@example.com"],
-            condition=gcp.serviceaccount.IAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ### Service Account IAM Member
@@ -546,11 +551,11 @@ class IAMPolicy(pulumi.CustomResource):
             service_account_id=sa.name,
             role="roles/iam.serviceAccountUser",
             member="user:jane@example.com",
-            condition=gcp.serviceaccount.IAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import

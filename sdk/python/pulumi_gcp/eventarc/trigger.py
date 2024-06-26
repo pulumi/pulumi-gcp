@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -512,15 +517,15 @@ class Trigger(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  channel: Optional[pulumi.Input[str]] = None,
-                 destination: Optional[pulumi.Input[pulumi.InputType['TriggerDestinationArgs']]] = None,
+                 destination: Optional[pulumi.Input[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict']]] = None,
                  event_data_content_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]]] = None,
+                 matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 transport: Optional[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]] = None,
+                 transport: Optional[pulumi.Input[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']]] = None,
                  __props__=None):
         """
         The Eventarc Trigger resource
@@ -535,38 +540,38 @@ class Trigger(pulumi.CustomResource):
         default = gcp.cloudrun.Service("default",
             name="eventarc-service",
             location="europe-west1",
-            metadata=gcp.cloudrun.ServiceMetadataArgs(
-                namespace="my-project-name",
-            ),
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
-                        image="gcr.io/cloudrun/hello",
-                        ports=[gcp.cloudrun.ServiceTemplateSpecContainerPortArgs(
-                            container_port=8080,
-                        )],
-                    )],
-                    container_concurrency=50,
-                    timeout_seconds=100,
-                ),
-            ),
-            traffics=[gcp.cloudrun.ServiceTrafficArgs(
-                percent=100,
-                latest_revision=True,
-            )])
+            metadata={
+                "namespace": "my-project-name",
+            },
+            template={
+                "spec": {
+                    "containers": [{
+                        "image": "gcr.io/cloudrun/hello",
+                        "ports": [{
+                            "containerPort": 8080,
+                        }],
+                    }],
+                    "containerConcurrency": 50,
+                    "timeoutSeconds": 100,
+                },
+            },
+            traffics=[{
+                "percent": 100,
+                "latestRevision": True,
+            }])
         primary = gcp.eventarc.Trigger("primary",
             name="name",
             location="europe-west1",
-            matching_criterias=[gcp.eventarc.TriggerMatchingCriteriaArgs(
-                attribute="type",
-                value="google.cloud.pubsub.topic.v1.messagePublished",
-            )],
-            destination=gcp.eventarc.TriggerDestinationArgs(
-                cloud_run_service=gcp.eventarc.TriggerDestinationCloudRunServiceArgs(
-                    service=default.name,
-                    region="europe-west1",
-                ),
-            ),
+            matching_criterias=[{
+                "attribute": "type",
+                "value": "google.cloud.pubsub.topic.v1.messagePublished",
+            }],
+            destination={
+                "cloudRunService": {
+                    "service": default.name,
+                    "region": "europe-west1",
+                },
+            },
             labels={
                 "foo": "bar",
             })
@@ -602,14 +607,14 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] channel: Optional. The name of the channel associated with the trigger in
                `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from
                Eventarc SaaS partners.
-        :param pulumi.Input[pulumi.InputType['TriggerDestinationArgs']] destination: Required. Destination specifies where the events should be sent to.
+        :param pulumi.Input[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict']] destination: Required. Destination specifies where the events should be sent to.
         :param pulumi.Input[str] event_data_content_type: Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
                field. This is set to `application/json` if the value is not defined.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
                non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
                `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the
@@ -619,7 +624,7 @@ class Trigger(pulumi.CustomResource):
                https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke
                authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have
                `roles/eventarc.eventReceiver` IAM role.
-        :param pulumi.Input[pulumi.InputType['TriggerTransportArgs']] transport: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field
+        :param pulumi.Input[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']] transport: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field
                contains a reference to that transport intermediary. This information can be used for debugging purposes.
         """
         ...
@@ -641,38 +646,38 @@ class Trigger(pulumi.CustomResource):
         default = gcp.cloudrun.Service("default",
             name="eventarc-service",
             location="europe-west1",
-            metadata=gcp.cloudrun.ServiceMetadataArgs(
-                namespace="my-project-name",
-            ),
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
-                        image="gcr.io/cloudrun/hello",
-                        ports=[gcp.cloudrun.ServiceTemplateSpecContainerPortArgs(
-                            container_port=8080,
-                        )],
-                    )],
-                    container_concurrency=50,
-                    timeout_seconds=100,
-                ),
-            ),
-            traffics=[gcp.cloudrun.ServiceTrafficArgs(
-                percent=100,
-                latest_revision=True,
-            )])
+            metadata={
+                "namespace": "my-project-name",
+            },
+            template={
+                "spec": {
+                    "containers": [{
+                        "image": "gcr.io/cloudrun/hello",
+                        "ports": [{
+                            "containerPort": 8080,
+                        }],
+                    }],
+                    "containerConcurrency": 50,
+                    "timeoutSeconds": 100,
+                },
+            },
+            traffics=[{
+                "percent": 100,
+                "latestRevision": True,
+            }])
         primary = gcp.eventarc.Trigger("primary",
             name="name",
             location="europe-west1",
-            matching_criterias=[gcp.eventarc.TriggerMatchingCriteriaArgs(
-                attribute="type",
-                value="google.cloud.pubsub.topic.v1.messagePublished",
-            )],
-            destination=gcp.eventarc.TriggerDestinationArgs(
-                cloud_run_service=gcp.eventarc.TriggerDestinationCloudRunServiceArgs(
-                    service=default.name,
-                    region="europe-west1",
-                ),
-            ),
+            matching_criterias=[{
+                "attribute": "type",
+                "value": "google.cloud.pubsub.topic.v1.messagePublished",
+            }],
+            destination={
+                "cloudRunService": {
+                    "service": default.name,
+                    "region": "europe-west1",
+                },
+            },
             labels={
                 "foo": "bar",
             })
@@ -719,15 +724,15 @@ class Trigger(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  channel: Optional[pulumi.Input[str]] = None,
-                 destination: Optional[pulumi.Input[pulumi.InputType['TriggerDestinationArgs']]] = None,
+                 destination: Optional[pulumi.Input[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict']]] = None,
                  event_data_content_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]]] = None,
+                 matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 transport: Optional[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]] = None,
+                 transport: Optional[pulumi.Input[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -775,18 +780,18 @@ class Trigger(pulumi.CustomResource):
             channel: Optional[pulumi.Input[str]] = None,
             conditions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            destination: Optional[pulumi.Input[pulumi.InputType['TriggerDestinationArgs']]] = None,
+            destination: Optional[pulumi.Input[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict']]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             event_data_content_type: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]]] = None,
+            matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
-            transport: Optional[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]] = None,
+            transport: Optional[pulumi.Input[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Trigger':
         """
@@ -801,7 +806,7 @@ class Trigger(pulumi.CustomResource):
                Eventarc SaaS partners.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] conditions: Output only. The reason(s) why a trigger is in FAILED state.
         :param pulumi.Input[str] create_time: Output only. The creation time.
-        :param pulumi.Input[pulumi.InputType['TriggerDestinationArgs']] destination: Required. Destination specifies where the events should be sent to.
+        :param pulumi.Input[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict']] destination: Required. Destination specifies where the events should be sent to.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] event_data_content_type: Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
@@ -810,7 +815,7 @@ class Trigger(pulumi.CustomResource):
                non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
                `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -821,7 +826,7 @@ class Trigger(pulumi.CustomResource):
                https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke
                authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have
                `roles/eventarc.eventReceiver` IAM role.
-        :param pulumi.Input[pulumi.InputType['TriggerTransportArgs']] transport: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field
+        :param pulumi.Input[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']] transport: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field
                contains a reference to that transport intermediary. This information can be used for debugging purposes.
         :param pulumi.Input[str] uid: Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: Output only. The last-modified time.

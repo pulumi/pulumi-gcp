@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['DatabaseArgs', 'Database']
@@ -331,9 +336,9 @@ class Database(pulumi.CustomResource):
             name="my-database-instance",
             region="us-central1",
             database_version="MYSQL_8_0",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ),
+            settings={
+                "tier": "db-f1-micro",
+            },
             deletion_protection=True)
         database = gcp.sql.Database("database",
             name="my-database",
@@ -350,9 +355,9 @@ class Database(pulumi.CustomResource):
             name="my-database-instance",
             region="us-central1",
             database_version="POSTGRES_14",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-g1-small",
-            ),
+            settings={
+                "tier": "db-g1-small",
+            },
             deletion_protection=True)
         database_deletion_policy = gcp.sql.Database("database_deletion_policy",
             name="my-database",
@@ -445,9 +450,9 @@ class Database(pulumi.CustomResource):
             name="my-database-instance",
             region="us-central1",
             database_version="MYSQL_8_0",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ),
+            settings={
+                "tier": "db-f1-micro",
+            },
             deletion_protection=True)
         database = gcp.sql.Database("database",
             name="my-database",
@@ -464,9 +469,9 @@ class Database(pulumi.CustomResource):
             name="my-database-instance",
             region="us-central1",
             database_version="POSTGRES_14",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-g1-small",
-            ),
+            settings={
+                "tier": "db-g1-small",
+            },
             deletion_protection=True)
         database_deletion_policy = gcp.sql.Database("database_deletion_policy",
             name="my-database",

@@ -4,58 +4,120 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ApplicationFeatureSettingsArgs',
+    'ApplicationFeatureSettingsArgsDict',
     'ApplicationIapArgs',
+    'ApplicationIapArgsDict',
     'ApplicationUrlDispatchRuleArgs',
+    'ApplicationUrlDispatchRuleArgsDict',
     'ApplicationUrlDispatchRulesDispatchRuleArgs',
+    'ApplicationUrlDispatchRulesDispatchRuleArgsDict',
     'DomainMappingResourceRecordArgs',
+    'DomainMappingResourceRecordArgsDict',
     'DomainMappingSslSettingsArgs',
+    'DomainMappingSslSettingsArgsDict',
     'EngineSplitTrafficSplitArgs',
+    'EngineSplitTrafficSplitArgsDict',
     'FlexibleAppVersionApiConfigArgs',
+    'FlexibleAppVersionApiConfigArgsDict',
     'FlexibleAppVersionAutomaticScalingArgs',
+    'FlexibleAppVersionAutomaticScalingArgsDict',
     'FlexibleAppVersionAutomaticScalingCpuUtilizationArgs',
+    'FlexibleAppVersionAutomaticScalingCpuUtilizationArgsDict',
     'FlexibleAppVersionAutomaticScalingDiskUtilizationArgs',
+    'FlexibleAppVersionAutomaticScalingDiskUtilizationArgsDict',
     'FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs',
+    'FlexibleAppVersionAutomaticScalingNetworkUtilizationArgsDict',
     'FlexibleAppVersionAutomaticScalingRequestUtilizationArgs',
+    'FlexibleAppVersionAutomaticScalingRequestUtilizationArgsDict',
     'FlexibleAppVersionDeploymentArgs',
+    'FlexibleAppVersionDeploymentArgsDict',
     'FlexibleAppVersionDeploymentCloudBuildOptionsArgs',
+    'FlexibleAppVersionDeploymentCloudBuildOptionsArgsDict',
     'FlexibleAppVersionDeploymentContainerArgs',
+    'FlexibleAppVersionDeploymentContainerArgsDict',
     'FlexibleAppVersionDeploymentFileArgs',
+    'FlexibleAppVersionDeploymentFileArgsDict',
     'FlexibleAppVersionDeploymentZipArgs',
+    'FlexibleAppVersionDeploymentZipArgsDict',
     'FlexibleAppVersionEndpointsApiServiceArgs',
+    'FlexibleAppVersionEndpointsApiServiceArgsDict',
     'FlexibleAppVersionEntrypointArgs',
+    'FlexibleAppVersionEntrypointArgsDict',
     'FlexibleAppVersionFlexibleRuntimeSettingsArgs',
+    'FlexibleAppVersionFlexibleRuntimeSettingsArgsDict',
     'FlexibleAppVersionHandlerArgs',
+    'FlexibleAppVersionHandlerArgsDict',
     'FlexibleAppVersionHandlerScriptArgs',
+    'FlexibleAppVersionHandlerScriptArgsDict',
     'FlexibleAppVersionHandlerStaticFilesArgs',
+    'FlexibleAppVersionHandlerStaticFilesArgsDict',
     'FlexibleAppVersionLivenessCheckArgs',
+    'FlexibleAppVersionLivenessCheckArgsDict',
     'FlexibleAppVersionManualScalingArgs',
+    'FlexibleAppVersionManualScalingArgsDict',
     'FlexibleAppVersionNetworkArgs',
+    'FlexibleAppVersionNetworkArgsDict',
     'FlexibleAppVersionReadinessCheckArgs',
+    'FlexibleAppVersionReadinessCheckArgsDict',
     'FlexibleAppVersionResourcesArgs',
+    'FlexibleAppVersionResourcesArgsDict',
     'FlexibleAppVersionResourcesVolumeArgs',
+    'FlexibleAppVersionResourcesVolumeArgsDict',
     'FlexibleAppVersionVpcAccessConnectorArgs',
+    'FlexibleAppVersionVpcAccessConnectorArgsDict',
     'ServiceNetworkSettingsNetworkSettingsArgs',
+    'ServiceNetworkSettingsNetworkSettingsArgsDict',
     'StandardAppVersionAutomaticScalingArgs',
+    'StandardAppVersionAutomaticScalingArgsDict',
     'StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs',
+    'StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgsDict',
     'StandardAppVersionBasicScalingArgs',
+    'StandardAppVersionBasicScalingArgsDict',
     'StandardAppVersionDeploymentArgs',
+    'StandardAppVersionDeploymentArgsDict',
     'StandardAppVersionDeploymentFileArgs',
+    'StandardAppVersionDeploymentFileArgsDict',
     'StandardAppVersionDeploymentZipArgs',
+    'StandardAppVersionDeploymentZipArgsDict',
     'StandardAppVersionEntrypointArgs',
+    'StandardAppVersionEntrypointArgsDict',
     'StandardAppVersionHandlerArgs',
+    'StandardAppVersionHandlerArgsDict',
     'StandardAppVersionHandlerScriptArgs',
+    'StandardAppVersionHandlerScriptArgsDict',
     'StandardAppVersionHandlerStaticFilesArgs',
+    'StandardAppVersionHandlerStaticFilesArgsDict',
     'StandardAppVersionLibraryArgs',
+    'StandardAppVersionLibraryArgsDict',
     'StandardAppVersionManualScalingArgs',
+    'StandardAppVersionManualScalingArgsDict',
     'StandardAppVersionVpcAccessConnectorArgs',
+    'StandardAppVersionVpcAccessConnectorArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ApplicationFeatureSettingsArgsDict(TypedDict):
+        split_health_checks: pulumi.Input[bool]
+        """
+        Set to false to use the legacy health check instead of the readiness
+        and liveness checks.
+        """
+elif False:
+    ApplicationFeatureSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApplicationFeatureSettingsArgs:
@@ -80,6 +142,29 @@ class ApplicationFeatureSettingsArgs:
     def split_health_checks(self, value: pulumi.Input[bool]):
         pulumi.set(self, "split_health_checks", value)
 
+
+if not MYPY:
+    class ApplicationIapArgsDict(TypedDict):
+        oauth2_client_id: pulumi.Input[str]
+        """
+        OAuth2 client ID to use for the authentication flow.
+        """
+        oauth2_client_secret: pulumi.Input[str]
+        """
+        OAuth2 client secret to use for the authentication flow.
+        The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests. 
+        (default is false)
+        """
+        oauth2_client_secret_sha256: NotRequired[pulumi.Input[str]]
+        """
+        Hex-encoded SHA-256 hash of the client secret.
+        """
+elif False:
+    ApplicationIapArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApplicationIapArgs:
@@ -154,6 +239,14 @@ class ApplicationIapArgs:
         pulumi.set(self, "oauth2_client_secret_sha256", value)
 
 
+if not MYPY:
+    class ApplicationUrlDispatchRuleArgsDict(TypedDict):
+        domain: NotRequired[pulumi.Input[str]]
+        path: NotRequired[pulumi.Input[str]]
+        service: NotRequired[pulumi.Input[str]]
+elif False:
+    ApplicationUrlDispatchRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApplicationUrlDispatchRuleArgs:
     def __init__(__self__, *,
@@ -194,6 +287,28 @@ class ApplicationUrlDispatchRuleArgs:
     def service(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service", value)
 
+
+if not MYPY:
+    class ApplicationUrlDispatchRulesDispatchRuleArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
+        The sum of the lengths of the domain and path may not exceed 100 characters.
+        """
+        service: pulumi.Input[str]
+        """
+        Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
+        The sum of the lengths of the domain and path may not exceed 100 characters.
+
+        - - -
+        """
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
+        Defaults to matching all domains: "*".
+        """
+elif False:
+    ApplicationUrlDispatchRulesDispatchRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApplicationUrlDispatchRulesDispatchRuleArgs:
@@ -258,6 +373,24 @@ class ApplicationUrlDispatchRulesDispatchRuleArgs:
         pulumi.set(self, "domain", value)
 
 
+if not MYPY:
+    class DomainMappingResourceRecordArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
+        """
+        rrdata: NotRequired[pulumi.Input[str]]
+        """
+        Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Resource record type. Example: `AAAA`.
+        Possible values are: `A`, `AAAA`, `CNAME`.
+        """
+elif False:
+    DomainMappingResourceRecordArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DomainMappingResourceRecordArgs:
     def __init__(__self__, *,
@@ -314,6 +447,35 @@ class DomainMappingResourceRecordArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class DomainMappingSslSettingsArgsDict(TypedDict):
+        ssl_management_type: pulumi.Input[str]
+        """
+        SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
+        If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
+        Possible values are: `AUTOMATIC`, `MANUAL`.
+        """
+        certificate_id: NotRequired[pulumi.Input[str]]
+        """
+        ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will
+        remove SSL support.
+        By default, a managed certificate is automatically created for every domain mapping. To omit SSL support
+        or to configure SSL manually, specify `SslManagementType.MANUAL` on a `CREATE` or `UPDATE` request. You must be
+        authorized to administer the `AuthorizedCertificate` resource to manually map it to a DomainMapping resource.
+        Example: 12345.
+        """
+        pending_managed_certificate_id: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
+        managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
+        provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
+        field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the
+        `certificateId` field with an update request.
+        """
+elif False:
+    DomainMappingSslSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DomainMappingSslSettingsArgs:
@@ -393,6 +555,22 @@ class DomainMappingSslSettingsArgs:
         pulumi.set(self, "pending_managed_certificate_id", value)
 
 
+if not MYPY:
+    class EngineSplitTrafficSplitArgsDict(TypedDict):
+        allocations: pulumi.Input[Mapping[str, pulumi.Input[str]]]
+        """
+        Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
+
+        - - -
+        """
+        shard_by: NotRequired[pulumi.Input[str]]
+        """
+        Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
+        Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
+        """
+elif False:
+    EngineSplitTrafficSplitArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EngineSplitTrafficSplitArgs:
     def __init__(__self__, *,
@@ -436,6 +614,36 @@ class EngineSplitTrafficSplitArgs:
     def shard_by(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "shard_by", value)
 
+
+if not MYPY:
+    class FlexibleAppVersionApiConfigArgsDict(TypedDict):
+        script: pulumi.Input[str]
+        """
+        Path to the script from the application root directory.
+        """
+        auth_fail_action: NotRequired[pulumi.Input[str]]
+        """
+        Action to take when users access resources that require authentication.
+        Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+        Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+        """
+        login: NotRequired[pulumi.Input[str]]
+        """
+        Level of login required to access this resource.
+        Default value is `LOGIN_OPTIONAL`.
+        Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
+        """
+        security_level: NotRequired[pulumi.Input[str]]
+        """
+        Security (HTTPS) enforcement for this URL.
+        Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        URL to serve the endpoint at.
+        """
+elif False:
+    FlexibleAppVersionApiConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FlexibleAppVersionApiConfigArgs:
@@ -532,6 +740,66 @@ class FlexibleAppVersionApiConfigArgs:
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
 
+
+if not MYPY:
+    class FlexibleAppVersionAutomaticScalingArgsDict(TypedDict):
+        cpu_utilization: pulumi.Input['FlexibleAppVersionAutomaticScalingCpuUtilizationArgsDict']
+        """
+        Target scaling by CPU usage.
+        Structure is documented below.
+        """
+        cool_down_period: NotRequired[pulumi.Input[str]]
+        """
+        The time period that the Autoscaler should wait before it starts collecting information from a new instance.
+        This prevents the autoscaler from collecting information when the instance is initializing,
+        during which the collected usage would not be reliable. Default: 120s
+        """
+        disk_utilization: NotRequired[pulumi.Input['FlexibleAppVersionAutomaticScalingDiskUtilizationArgsDict']]
+        """
+        Target scaling by disk usage.
+        Structure is documented below.
+        """
+        max_concurrent_requests: NotRequired[pulumi.Input[int]]
+        """
+        Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
+        Defaults to a runtime-specific value.
+        """
+        max_idle_instances: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of idle instances that should be maintained for this version.
+        """
+        max_pending_latency: NotRequired[pulumi.Input[str]]
+        """
+        Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
+        """
+        max_total_instances: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of instances that should be started to handle requests for this version. Default: 20
+        """
+        min_idle_instances: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
+        """
+        min_pending_latency: NotRequired[pulumi.Input[str]]
+        """
+        Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
+        """
+        min_total_instances: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of running instances that should be maintained for this version. Default: 2
+        """
+        network_utilization: NotRequired[pulumi.Input['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgsDict']]
+        """
+        Target scaling by network usage.
+        Structure is documented below.
+        """
+        request_utilization: NotRequired[pulumi.Input['FlexibleAppVersionAutomaticScalingRequestUtilizationArgsDict']]
+        """
+        Target scaling by request utilization.
+        Structure is documented below.
+        """
+elif False:
+    FlexibleAppVersionAutomaticScalingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FlexibleAppVersionAutomaticScalingArgs:
@@ -745,6 +1013,19 @@ class FlexibleAppVersionAutomaticScalingArgs:
         pulumi.set(self, "request_utilization", value)
 
 
+if not MYPY:
+    class FlexibleAppVersionAutomaticScalingCpuUtilizationArgsDict(TypedDict):
+        target_utilization: pulumi.Input[float]
+        """
+        Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
+        """
+        aggregation_window_length: NotRequired[pulumi.Input[str]]
+        """
+        Period of time over which CPU utilization is calculated.
+        """
+elif False:
+    FlexibleAppVersionAutomaticScalingCpuUtilizationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FlexibleAppVersionAutomaticScalingCpuUtilizationArgs:
     def __init__(__self__, *,
@@ -782,6 +1063,27 @@ class FlexibleAppVersionAutomaticScalingCpuUtilizationArgs:
     def aggregation_window_length(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "aggregation_window_length", value)
 
+
+if not MYPY:
+    class FlexibleAppVersionAutomaticScalingDiskUtilizationArgsDict(TypedDict):
+        target_read_bytes_per_second: NotRequired[pulumi.Input[int]]
+        """
+        Target bytes read per second.
+        """
+        target_read_ops_per_second: NotRequired[pulumi.Input[int]]
+        """
+        Target ops read per seconds.
+        """
+        target_write_bytes_per_second: NotRequired[pulumi.Input[int]]
+        """
+        Target bytes written per second.
+        """
+        target_write_ops_per_second: NotRequired[pulumi.Input[int]]
+        """
+        Target ops written per second.
+        """
+elif False:
+    FlexibleAppVersionAutomaticScalingDiskUtilizationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FlexibleAppVersionAutomaticScalingDiskUtilizationArgs:
@@ -854,6 +1156,27 @@ class FlexibleAppVersionAutomaticScalingDiskUtilizationArgs:
         pulumi.set(self, "target_write_ops_per_second", value)
 
 
+if not MYPY:
+    class FlexibleAppVersionAutomaticScalingNetworkUtilizationArgsDict(TypedDict):
+        target_received_bytes_per_second: NotRequired[pulumi.Input[int]]
+        """
+        Target bytes received per second.
+        """
+        target_received_packets_per_second: NotRequired[pulumi.Input[int]]
+        """
+        Target packets received per second.
+        """
+        target_sent_bytes_per_second: NotRequired[pulumi.Input[int]]
+        """
+        Target bytes sent per second.
+        """
+        target_sent_packets_per_second: NotRequired[pulumi.Input[int]]
+        """
+        Target packets sent per second.
+        """
+elif False:
+    FlexibleAppVersionAutomaticScalingNetworkUtilizationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs:
     def __init__(__self__, *,
@@ -925,6 +1248,19 @@ class FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs:
         pulumi.set(self, "target_sent_packets_per_second", value)
 
 
+if not MYPY:
+    class FlexibleAppVersionAutomaticScalingRequestUtilizationArgsDict(TypedDict):
+        target_concurrent_requests: NotRequired[pulumi.Input[float]]
+        """
+        Target number of concurrent requests.
+        """
+        target_request_count_per_second: NotRequired[pulumi.Input[str]]
+        """
+        Target requests per second.
+        """
+elif False:
+    FlexibleAppVersionAutomaticScalingRequestUtilizationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FlexibleAppVersionAutomaticScalingRequestUtilizationArgs:
     def __init__(__self__, *,
@@ -963,6 +1299,32 @@ class FlexibleAppVersionAutomaticScalingRequestUtilizationArgs:
     def target_request_count_per_second(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_request_count_per_second", value)
 
+
+if not MYPY:
+    class FlexibleAppVersionDeploymentArgsDict(TypedDict):
+        cloud_build_options: NotRequired[pulumi.Input['FlexibleAppVersionDeploymentCloudBuildOptionsArgsDict']]
+        """
+        Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
+        Structure is documented below.
+        """
+        container: NotRequired[pulumi.Input['FlexibleAppVersionDeploymentContainerArgsDict']]
+        """
+        The Docker image for the container that runs the version.
+        Structure is documented below.
+        """
+        files: NotRequired[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgsDict']]]]
+        """
+        Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+        All files must be readable using the credentials supplied with this call.
+        Structure is documented below.
+        """
+        zip: NotRequired[pulumi.Input['FlexibleAppVersionDeploymentZipArgsDict']]
+        """
+        Zip File
+        Structure is documented below.
+        """
+elif False:
+    FlexibleAppVersionDeploymentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FlexibleAppVersionDeploymentArgs:
@@ -1045,6 +1407,20 @@ class FlexibleAppVersionDeploymentArgs:
         pulumi.set(self, "zip", value)
 
 
+if not MYPY:
+    class FlexibleAppVersionDeploymentCloudBuildOptionsArgsDict(TypedDict):
+        app_yaml_path: pulumi.Input[str]
+        """
+        Path to the yaml file used in deployment, used to determine runtime configuration details.
+        """
+        cloud_build_timeout: NotRequired[pulumi.Input[str]]
+        """
+        The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+elif False:
+    FlexibleAppVersionDeploymentCloudBuildOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FlexibleAppVersionDeploymentCloudBuildOptionsArgs:
     def __init__(__self__, *,
@@ -1085,6 +1461,16 @@ class FlexibleAppVersionDeploymentCloudBuildOptionsArgs:
         pulumi.set(self, "cloud_build_timeout", value)
 
 
+if not MYPY:
+    class FlexibleAppVersionDeploymentContainerArgsDict(TypedDict):
+        image: pulumi.Input[str]
+        """
+        URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest.
+        Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
+        """
+elif False:
+    FlexibleAppVersionDeploymentContainerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FlexibleAppVersionDeploymentContainerArgs:
     def __init__(__self__, *,
@@ -1108,6 +1494,23 @@ class FlexibleAppVersionDeploymentContainerArgs:
     def image(self, value: pulumi.Input[str]):
         pulumi.set(self, "image", value)
 
+
+if not MYPY:
+    class FlexibleAppVersionDeploymentFileArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        source_url: pulumi.Input[str]
+        """
+        Source URL
+        """
+        sha1_sum: NotRequired[pulumi.Input[str]]
+        """
+        SHA1 checksum of the file
+        """
+elif False:
+    FlexibleAppVersionDeploymentFileArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FlexibleAppVersionDeploymentFileArgs:
@@ -1162,6 +1565,19 @@ class FlexibleAppVersionDeploymentFileArgs:
         pulumi.set(self, "sha1_sum", value)
 
 
+if not MYPY:
+    class FlexibleAppVersionDeploymentZipArgsDict(TypedDict):
+        source_url: pulumi.Input[str]
+        """
+        Source URL
+        """
+        files_count: NotRequired[pulumi.Input[int]]
+        """
+        files count
+        """
+elif False:
+    FlexibleAppVersionDeploymentZipArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FlexibleAppVersionDeploymentZipArgs:
     def __init__(__self__, *,
@@ -1199,6 +1615,35 @@ class FlexibleAppVersionDeploymentZipArgs:
     def files_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "files_count", value)
 
+
+if not MYPY:
+    class FlexibleAppVersionEndpointsApiServiceArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Endpoints service name which is the name of the "service" resource in the Service Management API.
+        For example "myapi.endpoints.myproject.cloud.goog"
+        """
+        config_id: NotRequired[pulumi.Input[str]]
+        """
+        Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".
+        By default, the rollout strategy for Endpoints is "FIXED". This means that Endpoints starts up with a particular configuration ID.
+        When a new configuration is rolled out, Endpoints must be given the new configuration ID. The configId field is used to give the configuration ID
+        and is required in this case.
+        Endpoints also has a rollout strategy called "MANAGED". When using this, Endpoints fetches the latest configuration and does not need
+        the configuration ID. In this case, configId must be omitted.
+        """
+        disable_trace_sampling: NotRequired[pulumi.Input[bool]]
+        """
+        Enable or disable trace sampling. By default, this is set to false for enabled.
+        """
+        rollout_strategy: NotRequired[pulumi.Input[str]]
+        """
+        Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
+        Default value is `FIXED`.
+        Possible values are: `FIXED`, `MANAGED`.
+        """
+elif False:
+    FlexibleAppVersionEndpointsApiServiceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FlexibleAppVersionEndpointsApiServiceArgs:
@@ -1286,6 +1731,15 @@ class FlexibleAppVersionEndpointsApiServiceArgs:
         pulumi.set(self, "rollout_strategy", value)
 
 
+if not MYPY:
+    class FlexibleAppVersionEntrypointArgsDict(TypedDict):
+        shell: pulumi.Input[str]
+        """
+        The format should be a shell command that can be fed to bash -c.
+        """
+elif False:
+    FlexibleAppVersionEntrypointArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FlexibleAppVersionEntrypointArgs:
     def __init__(__self__, *,
@@ -1307,6 +1761,19 @@ class FlexibleAppVersionEntrypointArgs:
     def shell(self, value: pulumi.Input[str]):
         pulumi.set(self, "shell", value)
 
+
+if not MYPY:
+    class FlexibleAppVersionFlexibleRuntimeSettingsArgsDict(TypedDict):
+        operating_system: NotRequired[pulumi.Input[str]]
+        """
+        Operating System of the application runtime.
+        """
+        runtime_version: NotRequired[pulumi.Input[str]]
+        """
+        The runtime version of an App Engine flexible application.
+        """
+elif False:
+    FlexibleAppVersionFlexibleRuntimeSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FlexibleAppVersionFlexibleRuntimeSettingsArgs:
@@ -1346,6 +1813,48 @@ class FlexibleAppVersionFlexibleRuntimeSettingsArgs:
     def runtime_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "runtime_version", value)
 
+
+if not MYPY:
+    class FlexibleAppVersionHandlerArgsDict(TypedDict):
+        auth_fail_action: NotRequired[pulumi.Input[str]]
+        """
+        Actions to take when the user is not logged in.
+        Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+        """
+        login: NotRequired[pulumi.Input[str]]
+        """
+        Methods to restrict access to a URL based on login status.
+        Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
+        """
+        redirect_http_response_code: NotRequired[pulumi.Input[str]]
+        """
+        30x code to use when performing redirects for the secure field.
+        Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
+        """
+        script: NotRequired[pulumi.Input['FlexibleAppVersionHandlerScriptArgsDict']]
+        """
+        Executes a script to handle the requests that match this URL pattern.
+        Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
+        Structure is documented below.
+        """
+        security_level: NotRequired[pulumi.Input[str]]
+        """
+        Security (HTTPS) enforcement for this URL.
+        Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
+        """
+        static_files: NotRequired[pulumi.Input['FlexibleAppVersionHandlerStaticFilesArgsDict']]
+        """
+        Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
+        Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+        Structure is documented below.
+        """
+        url_regex: NotRequired[pulumi.Input[str]]
+        """
+        URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
+        All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
+        """
+elif False:
+    FlexibleAppVersionHandlerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FlexibleAppVersionHandlerArgs:
@@ -1484,6 +1993,15 @@ class FlexibleAppVersionHandlerArgs:
         pulumi.set(self, "url_regex", value)
 
 
+if not MYPY:
+    class FlexibleAppVersionHandlerScriptArgsDict(TypedDict):
+        script_path: pulumi.Input[str]
+        """
+        Path to the script from the application root directory.
+        """
+elif False:
+    FlexibleAppVersionHandlerScriptArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FlexibleAppVersionHandlerScriptArgs:
     def __init__(__self__, *,
@@ -1505,6 +2023,46 @@ class FlexibleAppVersionHandlerScriptArgs:
     def script_path(self, value: pulumi.Input[str]):
         pulumi.set(self, "script_path", value)
 
+
+if not MYPY:
+    class FlexibleAppVersionHandlerStaticFilesArgsDict(TypedDict):
+        application_readable: NotRequired[pulumi.Input[bool]]
+        """
+        Whether files should also be uploaded as code data. By default, files declared in static file handlers are
+        uploaded as static data and are only served to end users; they cannot be read by the application. If enabled,
+        uploads are charged against both your code and static data storage resource quotas.
+        """
+        expiration: NotRequired[pulumi.Input[str]]
+        """
+        Time a static file served by this handler should be cached by web proxies and browsers.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
+        Default is '0s'
+        """
+        http_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        HTTP headers to use for all responses from these URLs.
+        An object containing a list of "key:value" value pairs.".
+        """
+        mime_type: NotRequired[pulumi.Input[str]]
+        """
+        MIME type used to serve all files served by this handler.
+        Defaults to file-specific MIME types, which are derived from each file's filename extension.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to the static files matched by the URL pattern, from the application root directory.
+        The path can refer to text matched in groupings in the URL pattern.
+        """
+        require_matching_file: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this handler should match the request if the file referenced by the handler does not exist.
+        """
+        upload_path_regex: NotRequired[pulumi.Input[str]]
+        """
+        Regular expression that matches the file paths for all files that should be referenced by this handler.
+        """
+elif False:
+    FlexibleAppVersionHandlerStaticFilesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FlexibleAppVersionHandlerStaticFilesArgs:
@@ -1639,6 +2197,41 @@ class FlexibleAppVersionHandlerStaticFilesArgs:
         pulumi.set(self, "upload_path_regex", value)
 
 
+if not MYPY:
+    class FlexibleAppVersionLivenessCheckArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        The request path.
+        """
+        check_interval: NotRequired[pulumi.Input[str]]
+        """
+        Interval between health checks.
+        """
+        failure_threshold: NotRequired[pulumi.Input[float]]
+        """
+        Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
+        """
+        host: NotRequired[pulumi.Input[str]]
+        """
+        Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
+        """
+        initial_delay: NotRequired[pulumi.Input[str]]
+        """
+        The initial delay before starting to execute the checks. Default: "300s"
+
+        - - -
+        """
+        success_threshold: NotRequired[pulumi.Input[float]]
+        """
+        Number of consecutive successful checks required before considering the VM healthy. Default: 2.
+        """
+        timeout: NotRequired[pulumi.Input[str]]
+        """
+        Time before the check is considered failed. Default: "4s"
+        """
+elif False:
+    FlexibleAppVersionLivenessCheckArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FlexibleAppVersionLivenessCheckArgs:
     def __init__(__self__, *,
@@ -1761,6 +2354,17 @@ class FlexibleAppVersionLivenessCheckArgs:
         pulumi.set(self, "timeout", value)
 
 
+if not MYPY:
+    class FlexibleAppVersionManualScalingArgsDict(TypedDict):
+        instances: pulumi.Input[int]
+        """
+        Number of instances to assign to the service at the start.
+        **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
+        Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manual_scaling"[0].instances]` to prevent drift detection.
+        """
+elif False:
+    FlexibleAppVersionManualScalingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FlexibleAppVersionManualScalingArgs:
     def __init__(__self__, *,
@@ -1786,6 +2390,40 @@ class FlexibleAppVersionManualScalingArgs:
     def instances(self, value: pulumi.Input[int]):
         pulumi.set(self, "instances", value)
 
+
+if not MYPY:
+    class FlexibleAppVersionNetworkArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
+        """
+        forwarded_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of ports, or port pairs, to forward from the virtual machine to the application container.
+        """
+        instance_ip_mode: NotRequired[pulumi.Input[str]]
+        """
+        Prevent instances from receiving an ephemeral external IP address.
+        Possible values are: `EXTERNAL`, `INTERNAL`.
+        """
+        instance_tag: NotRequired[pulumi.Input[str]]
+        """
+        Tag to apply to the instance during creation.
+        """
+        session_affinity: NotRequired[pulumi.Input[bool]]
+        """
+        Enable session affinity.
+        """
+        subnetwork: NotRequired[pulumi.Input[str]]
+        """
+        Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.
+        If the network that the instance is being created in is a Legacy network, then the IP address is allocated from the IPv4Range.
+        If the network that the instance is being created in is an auto Subnet Mode Network, then only network name should be specified (not the subnetworkName) and the IP address is created from the IPCidrRange of the subnetwork that exists in that zone for that network.
+        If the network that the instance is being created in is a custom Subnet Mode Network, then the subnetworkName must be specified and the IP address is created from the IPCidrRange of the subnetwork.
+        If specified, the subnetwork must exist in the same region as the App Engine flexible environment application.
+        """
+elif False:
+    FlexibleAppVersionNetworkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FlexibleAppVersionNetworkArgs:
@@ -1898,6 +2536,40 @@ class FlexibleAppVersionNetworkArgs:
     def subnetwork(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork", value)
 
+
+if not MYPY:
+    class FlexibleAppVersionReadinessCheckArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        The request path.
+        """
+        app_start_timeout: NotRequired[pulumi.Input[str]]
+        """
+        A maximum time limit on application initialization, measured from moment the application successfully
+        replies to a healthcheck until it is ready to serve traffic. Default: "300s"
+        """
+        check_interval: NotRequired[pulumi.Input[str]]
+        """
+        Interval between health checks.  Default: "5s".
+        """
+        failure_threshold: NotRequired[pulumi.Input[float]]
+        """
+        Number of consecutive failed checks required before removing traffic. Default: 2.
+        """
+        host: NotRequired[pulumi.Input[str]]
+        """
+        Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
+        """
+        success_threshold: NotRequired[pulumi.Input[float]]
+        """
+        Number of consecutive successful checks required before receiving traffic. Default: 2.
+        """
+        timeout: NotRequired[pulumi.Input[str]]
+        """
+        Time before the check is considered failed. Default: "4s"
+        """
+elif False:
+    FlexibleAppVersionReadinessCheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FlexibleAppVersionReadinessCheckArgs:
@@ -2019,6 +2691,28 @@ class FlexibleAppVersionReadinessCheckArgs:
         pulumi.set(self, "timeout", value)
 
 
+if not MYPY:
+    class FlexibleAppVersionResourcesArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[int]]
+        """
+        Number of CPU cores needed.
+        """
+        disk_gb: NotRequired[pulumi.Input[int]]
+        """
+        Disk size (GB) needed.
+        """
+        memory_gb: NotRequired[pulumi.Input[float]]
+        """
+        Memory (GB) needed.
+        """
+        volumes: NotRequired[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgsDict']]]]
+        """
+        List of ports, or port pairs, to forward from the virtual machine to the application container.
+        Structure is documented below.
+        """
+elif False:
+    FlexibleAppVersionResourcesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FlexibleAppVersionResourcesArgs:
     def __init__(__self__, *,
@@ -2092,6 +2786,23 @@ class FlexibleAppVersionResourcesArgs:
         pulumi.set(self, "volumes", value)
 
 
+if not MYPY:
+    class FlexibleAppVersionResourcesVolumeArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Unique name for the volume.
+        """
+        size_gb: pulumi.Input[int]
+        """
+        Volume size in gigabytes.
+        """
+        volume_type: pulumi.Input[str]
+        """
+        Underlying volume type, e.g. 'tmpfs'.
+        """
+elif False:
+    FlexibleAppVersionResourcesVolumeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FlexibleAppVersionResourcesVolumeArgs:
     def __init__(__self__, *,
@@ -2144,6 +2855,15 @@ class FlexibleAppVersionResourcesVolumeArgs:
         pulumi.set(self, "volume_type", value)
 
 
+if not MYPY:
+    class FlexibleAppVersionVpcAccessConnectorArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        """
+elif False:
+    FlexibleAppVersionVpcAccessConnectorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FlexibleAppVersionVpcAccessConnectorArgs:
     def __init__(__self__, *,
@@ -2165,6 +2885,19 @@ class FlexibleAppVersionVpcAccessConnectorArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class ServiceNetworkSettingsNetworkSettingsArgsDict(TypedDict):
+        ingress_traffic_allowed: NotRequired[pulumi.Input[str]]
+        """
+        The ingress settings for version or service.
+        Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
+        Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+
+        - - -
+        """
+elif False:
+    ServiceNetworkSettingsNetworkSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceNetworkSettingsNetworkSettingsArgs:
@@ -2196,6 +2929,39 @@ class ServiceNetworkSettingsNetworkSettingsArgs:
     def ingress_traffic_allowed(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ingress_traffic_allowed", value)
 
+
+if not MYPY:
+    class StandardAppVersionAutomaticScalingArgsDict(TypedDict):
+        max_concurrent_requests: NotRequired[pulumi.Input[int]]
+        """
+        Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
+        Defaults to a runtime-specific value.
+        """
+        max_idle_instances: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of idle instances that should be maintained for this version.
+        """
+        max_pending_latency: NotRequired[pulumi.Input[str]]
+        """
+        Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        min_idle_instances: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
+        """
+        min_pending_latency: NotRequired[pulumi.Input[str]]
+        """
+        Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        standard_scheduler_settings: NotRequired[pulumi.Input['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgsDict']]
+        """
+        Scheduler settings for standard environment.
+        Structure is documented below.
+        """
+elif False:
+    StandardAppVersionAutomaticScalingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StandardAppVersionAutomaticScalingArgs:
@@ -2308,6 +3074,27 @@ class StandardAppVersionAutomaticScalingArgs:
         pulumi.set(self, "standard_scheduler_settings", value)
 
 
+if not MYPY:
+    class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgsDict(TypedDict):
+        max_instances: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
+        """
+        min_instances: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
+        """
+        target_cpu_utilization: NotRequired[pulumi.Input[float]]
+        """
+        Target CPU utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
+        """
+        target_throughput_utilization: NotRequired[pulumi.Input[float]]
+        """
+        Target throughput utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
+        """
+elif False:
+    StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs:
     def __init__(__self__, *,
@@ -2379,6 +3166,20 @@ class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs:
         pulumi.set(self, "target_throughput_utilization", value)
 
 
+if not MYPY:
+    class StandardAppVersionBasicScalingArgsDict(TypedDict):
+        max_instances: pulumi.Input[int]
+        """
+        Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+        """
+        idle_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Duration of time after the last request that an instance must wait before the instance is shut down.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+        """
+elif False:
+    StandardAppVersionBasicScalingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StandardAppVersionBasicScalingArgs:
     def __init__(__self__, *,
@@ -2418,6 +3219,22 @@ class StandardAppVersionBasicScalingArgs:
     def idle_timeout(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "idle_timeout", value)
 
+
+if not MYPY:
+    class StandardAppVersionDeploymentArgsDict(TypedDict):
+        files: NotRequired[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgsDict']]]]
+        """
+        Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+        All files must be readable using the credentials supplied with this call.
+        Structure is documented below.
+        """
+        zip: NotRequired[pulumi.Input['StandardAppVersionDeploymentZipArgsDict']]
+        """
+        Zip File
+        Structure is documented below.
+        """
+elif False:
+    StandardAppVersionDeploymentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StandardAppVersionDeploymentArgs:
@@ -2463,6 +3280,23 @@ class StandardAppVersionDeploymentArgs:
     def zip(self, value: Optional[pulumi.Input['StandardAppVersionDeploymentZipArgs']]):
         pulumi.set(self, "zip", value)
 
+
+if not MYPY:
+    class StandardAppVersionDeploymentFileArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        source_url: pulumi.Input[str]
+        """
+        Source URL
+        """
+        sha1_sum: NotRequired[pulumi.Input[str]]
+        """
+        SHA1 checksum of the file
+        """
+elif False:
+    StandardAppVersionDeploymentFileArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StandardAppVersionDeploymentFileArgs:
@@ -2517,6 +3351,19 @@ class StandardAppVersionDeploymentFileArgs:
         pulumi.set(self, "sha1_sum", value)
 
 
+if not MYPY:
+    class StandardAppVersionDeploymentZipArgsDict(TypedDict):
+        source_url: pulumi.Input[str]
+        """
+        Source URL
+        """
+        files_count: NotRequired[pulumi.Input[int]]
+        """
+        files count
+        """
+elif False:
+    StandardAppVersionDeploymentZipArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StandardAppVersionDeploymentZipArgs:
     def __init__(__self__, *,
@@ -2555,6 +3402,17 @@ class StandardAppVersionDeploymentZipArgs:
         pulumi.set(self, "files_count", value)
 
 
+if not MYPY:
+    class StandardAppVersionEntrypointArgsDict(TypedDict):
+        shell: pulumi.Input[str]
+        """
+        The format should be a shell command that can be fed to bash -c.
+
+        - - -
+        """
+elif False:
+    StandardAppVersionEntrypointArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StandardAppVersionEntrypointArgs:
     def __init__(__self__, *,
@@ -2580,6 +3438,47 @@ class StandardAppVersionEntrypointArgs:
     def shell(self, value: pulumi.Input[str]):
         pulumi.set(self, "shell", value)
 
+
+if not MYPY:
+    class StandardAppVersionHandlerArgsDict(TypedDict):
+        auth_fail_action: NotRequired[pulumi.Input[str]]
+        """
+        Actions to take when the user is not logged in.
+        Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+        """
+        login: NotRequired[pulumi.Input[str]]
+        """
+        Methods to restrict access to a URL based on login status.
+        Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
+        """
+        redirect_http_response_code: NotRequired[pulumi.Input[str]]
+        """
+        30x code to use when performing redirects for the secure field.
+        Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
+        """
+        script: NotRequired[pulumi.Input['StandardAppVersionHandlerScriptArgsDict']]
+        """
+        Executes a script to handle the requests that match this URL pattern.
+        Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
+        Structure is documented below.
+        """
+        security_level: NotRequired[pulumi.Input[str]]
+        """
+        Security (HTTPS) enforcement for this URL.
+        Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
+        """
+        static_files: NotRequired[pulumi.Input['StandardAppVersionHandlerStaticFilesArgsDict']]
+        """
+        Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+        Structure is documented below.
+        """
+        url_regex: NotRequired[pulumi.Input[str]]
+        """
+        URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
+        All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
+        """
+elif False:
+    StandardAppVersionHandlerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StandardAppVersionHandlerArgs:
@@ -2716,6 +3615,15 @@ class StandardAppVersionHandlerArgs:
         pulumi.set(self, "url_regex", value)
 
 
+if not MYPY:
+    class StandardAppVersionHandlerScriptArgsDict(TypedDict):
+        script_path: pulumi.Input[str]
+        """
+        Path to the script from the application root directory.
+        """
+elif False:
+    StandardAppVersionHandlerScriptArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StandardAppVersionHandlerScriptArgs:
     def __init__(__self__, *,
@@ -2737,6 +3645,44 @@ class StandardAppVersionHandlerScriptArgs:
     def script_path(self, value: pulumi.Input[str]):
         pulumi.set(self, "script_path", value)
 
+
+if not MYPY:
+    class StandardAppVersionHandlerStaticFilesArgsDict(TypedDict):
+        application_readable: NotRequired[pulumi.Input[bool]]
+        """
+        Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as
+        static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged
+        against both your code and static data storage resource quotas.
+        """
+        expiration: NotRequired[pulumi.Input[str]]
+        """
+        Time a static file served by this handler should be cached by web proxies and browsers.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
+        """
+        http_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        HTTP headers to use for all responses from these URLs.
+        An object containing a list of "key:value" value pairs.".
+        """
+        mime_type: NotRequired[pulumi.Input[str]]
+        """
+        MIME type used to serve all files served by this handler.
+        Defaults to file-specific MIME types, which are derived from each file's filename extension.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern.
+        """
+        require_matching_file: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this handler should match the request if the file referenced by the handler does not exist.
+        """
+        upload_path_regex: NotRequired[pulumi.Input[str]]
+        """
+        Regular expression that matches the file paths for all files that should be referenced by this handler.
+        """
+elif False:
+    StandardAppVersionHandlerStaticFilesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StandardAppVersionHandlerStaticFilesArgs:
@@ -2867,6 +3813,19 @@ class StandardAppVersionHandlerStaticFilesArgs:
         pulumi.set(self, "upload_path_regex", value)
 
 
+if not MYPY:
+    class StandardAppVersionLibraryArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the library. Example "django".
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Version of the library to select, or "latest".
+        """
+elif False:
+    StandardAppVersionLibraryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StandardAppVersionLibraryArgs:
     def __init__(__self__, *,
@@ -2906,6 +3865,17 @@ class StandardAppVersionLibraryArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class StandardAppVersionManualScalingArgsDict(TypedDict):
+        instances: pulumi.Input[int]
+        """
+        Number of instances to assign to the service at the start.
+        **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
+        Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manual_scaling"[0].instances]` to prevent drift detection.
+        """
+elif False:
+    StandardAppVersionManualScalingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StandardAppVersionManualScalingArgs:
     def __init__(__self__, *,
@@ -2931,6 +3901,19 @@ class StandardAppVersionManualScalingArgs:
     def instances(self, value: pulumi.Input[int]):
         pulumi.set(self, "instances", value)
 
+
+if not MYPY:
+    class StandardAppVersionVpcAccessConnectorArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        """
+        egress_setting: NotRequired[pulumi.Input[str]]
+        """
+        The egress setting for the connector, controlling what traffic is diverted through it.
+        """
+elif False:
+    StandardAppVersionVpcAccessConnectorArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StandardAppVersionVpcAccessConnectorArgs:

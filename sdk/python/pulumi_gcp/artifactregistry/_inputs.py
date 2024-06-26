@@ -4,37 +4,93 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'RepositoryCleanupPolicyArgs',
+    'RepositoryCleanupPolicyArgsDict',
     'RepositoryCleanupPolicyConditionArgs',
+    'RepositoryCleanupPolicyConditionArgsDict',
     'RepositoryCleanupPolicyMostRecentVersionsArgs',
+    'RepositoryCleanupPolicyMostRecentVersionsArgsDict',
     'RepositoryDockerConfigArgs',
+    'RepositoryDockerConfigArgsDict',
     'RepositoryIamBindingConditionArgs',
+    'RepositoryIamBindingConditionArgsDict',
     'RepositoryIamMemberConditionArgs',
+    'RepositoryIamMemberConditionArgsDict',
     'RepositoryMavenConfigArgs',
+    'RepositoryMavenConfigArgsDict',
     'RepositoryRemoteRepositoryConfigArgs',
+    'RepositoryRemoteRepositoryConfigArgsDict',
     'RepositoryRemoteRepositoryConfigAptRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigAptRepositoryArgsDict',
     'RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgsDict',
     'RepositoryRemoteRepositoryConfigDockerRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigDockerRepositoryArgsDict',
     'RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgsDict',
     'RepositoryRemoteRepositoryConfigMavenRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigMavenRepositoryArgsDict',
     'RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgsDict',
     'RepositoryRemoteRepositoryConfigNpmRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigNpmRepositoryArgsDict',
     'RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgsDict',
     'RepositoryRemoteRepositoryConfigPythonRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigPythonRepositoryArgsDict',
     'RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgsDict',
     'RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs',
+    'RepositoryRemoteRepositoryConfigUpstreamCredentialsArgsDict',
     'RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs',
+    'RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgsDict',
     'RepositoryRemoteRepositoryConfigYumRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigYumRepositoryArgsDict',
     'RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgsDict',
     'RepositoryVirtualRepositoryConfigArgs',
+    'RepositoryVirtualRepositoryConfigArgsDict',
     'RepositoryVirtualRepositoryConfigUpstreamPolicyArgs',
+    'RepositoryVirtualRepositoryConfigUpstreamPolicyArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class RepositoryCleanupPolicyArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        action: NotRequired[pulumi.Input[str]]
+        """
+        Policy action.
+        Possible values are: `DELETE`, `KEEP`.
+        """
+        condition: NotRequired[pulumi.Input['RepositoryCleanupPolicyConditionArgsDict']]
+        """
+        Policy condition for matching versions.
+        Structure is documented below.
+        """
+        most_recent_versions: NotRequired[pulumi.Input['RepositoryCleanupPolicyMostRecentVersionsArgsDict']]
+        """
+        Policy condition for retaining a minimum number of versions. May only be
+        specified with a Keep action.
+        Structure is documented below.
+        """
+elif False:
+    RepositoryCleanupPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryCleanupPolicyArgs:
@@ -113,6 +169,37 @@ class RepositoryCleanupPolicyArgs:
     def most_recent_versions(self, value: Optional[pulumi.Input['RepositoryCleanupPolicyMostRecentVersionsArgs']]):
         pulumi.set(self, "most_recent_versions", value)
 
+
+if not MYPY:
+    class RepositoryCleanupPolicyConditionArgsDict(TypedDict):
+        newer_than: NotRequired[pulumi.Input[str]]
+        """
+        Match versions newer than a duration.
+        """
+        older_than: NotRequired[pulumi.Input[str]]
+        """
+        Match versions older than a duration.
+        """
+        package_name_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Match versions by package prefix. Applied on any prefix match.
+        """
+        tag_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Match versions by tag prefix. Applied on any prefix match.
+        """
+        tag_state: NotRequired[pulumi.Input[str]]
+        """
+        Match versions by tag status.
+        Default value is `ANY`.
+        Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
+        """
+        version_name_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Match versions by version name prefix. Applied on any prefix match.
+        """
+elif False:
+    RepositoryCleanupPolicyConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryCleanupPolicyConditionArgs:
@@ -221,6 +308,19 @@ class RepositoryCleanupPolicyConditionArgs:
         pulumi.set(self, "version_name_prefixes", value)
 
 
+if not MYPY:
+    class RepositoryCleanupPolicyMostRecentVersionsArgsDict(TypedDict):
+        keep_count: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of versions to keep.
+        """
+        package_name_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Match versions by package prefix. Applied on any prefix match.
+        """
+elif False:
+    RepositoryCleanupPolicyMostRecentVersionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepositoryCleanupPolicyMostRecentVersionsArgs:
     def __init__(__self__, *,
@@ -260,6 +360,15 @@ class RepositoryCleanupPolicyMostRecentVersionsArgs:
         pulumi.set(self, "package_name_prefixes", value)
 
 
+if not MYPY:
+    class RepositoryDockerConfigArgsDict(TypedDict):
+        immutable_tags: NotRequired[pulumi.Input[bool]]
+        """
+        The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+        """
+elif False:
+    RepositoryDockerConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepositoryDockerConfigArgs:
     def __init__(__self__, *,
@@ -282,6 +391,14 @@ class RepositoryDockerConfigArgs:
     def immutable_tags(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "immutable_tags", value)
 
+
+if not MYPY:
+    class RepositoryIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    RepositoryIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryIamBindingConditionArgs:
@@ -322,6 +439,14 @@ class RepositoryIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class RepositoryIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    RepositoryIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepositoryIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -360,6 +485,22 @@ class RepositoryIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class RepositoryMavenConfigArgsDict(TypedDict):
+        allow_snapshot_overwrites: NotRequired[pulumi.Input[bool]]
+        """
+        The repository with this flag will allow publishing the same
+        snapshot versions.
+        """
+        version_policy: NotRequired[pulumi.Input[str]]
+        """
+        Version policy defines the versions that the registry will accept.
+        Default value is `VERSION_POLICY_UNSPECIFIED`.
+        Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
+        """
+elif False:
+    RepositoryMavenConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryMavenConfigArgs:
@@ -405,6 +546,55 @@ class RepositoryMavenConfigArgs:
     def version_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version_policy", value)
 
+
+if not MYPY:
+    class RepositoryRemoteRepositoryConfigArgsDict(TypedDict):
+        apt_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgsDict']]
+        """
+        Specific settings for an Apt remote repository.
+        Structure is documented below.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the remote source.
+        """
+        disable_upstream_validation: NotRequired[pulumi.Input[bool]]
+        """
+        If true, the remote repository upstream and upstream credentials will
+        not be validated.
+        """
+        docker_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgsDict']]
+        """
+        Specific settings for a Docker remote repository.
+        Structure is documented below.
+        """
+        maven_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgsDict']]
+        """
+        Specific settings for a Maven remote repository.
+        Structure is documented below.
+        """
+        npm_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgsDict']]
+        """
+        Specific settings for an Npm remote repository.
+        Structure is documented below.
+        """
+        python_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgsDict']]
+        """
+        Specific settings for a Python remote repository.
+        Structure is documented below.
+        """
+        upstream_credentials: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsArgsDict']]
+        """
+        The credentials used to access the remote repository.
+        Structure is documented below.
+        """
+        yum_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArgsDict']]
+        """
+        Specific settings for an Yum remote repository.
+        Structure is documented below.
+        """
+elif False:
+    RepositoryRemoteRepositoryConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigArgs:
@@ -573,6 +763,16 @@ class RepositoryRemoteRepositoryConfigArgs:
         pulumi.set(self, "yum_repository", value)
 
 
+if not MYPY:
+    class RepositoryRemoteRepositoryConfigAptRepositoryArgsDict(TypedDict):
+        public_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgsDict']]
+        """
+        One of the publicly available Apt repositories supported by Artifact Registry.
+        Structure is documented below.
+        """
+elif False:
+    RepositoryRemoteRepositoryConfigAptRepositoryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigAptRepositoryArgs:
     def __init__(__self__, *,
@@ -597,6 +797,20 @@ class RepositoryRemoteRepositoryConfigAptRepositoryArgs:
     def public_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']]):
         pulumi.set(self, "public_repository", value)
 
+
+if not MYPY:
+    class RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgsDict(TypedDict):
+        repository_base: pulumi.Input[str]
+        """
+        A common public repository base for Yum.
+        Possible values are: `CENTOS`, `CENTOS_DEBUG`, `CENTOS_VAULT`, `CENTOS_STREAM`, `ROCKY`, `EPEL`.
+        """
+        repository_path: pulumi.Input[str]
+        """
+        Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
+        """
+elif False:
+    RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs:
@@ -636,6 +850,22 @@ class RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs:
     def repository_path(self, value: pulumi.Input[str]):
         pulumi.set(self, "repository_path", value)
 
+
+if not MYPY:
+    class RepositoryRemoteRepositoryConfigDockerRepositoryArgsDict(TypedDict):
+        custom_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgsDict']]
+        """
+        Settings for a remote repository with a custom uri.
+        Structure is documented below.
+        """
+        public_repository: NotRequired[pulumi.Input[str]]
+        """
+        Address of the remote repository.
+        Default value is `DOCKER_HUB`.
+        Possible values are: `DOCKER_HUB`.
+        """
+elif False:
+    RepositoryRemoteRepositoryConfigDockerRepositoryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigDockerRepositoryArgs:
@@ -682,6 +912,15 @@ class RepositoryRemoteRepositoryConfigDockerRepositoryArgs:
         pulumi.set(self, "public_repository", value)
 
 
+if not MYPY:
+    class RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgsDict(TypedDict):
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        Specific uri to the registry, e.g. `"https://pypi.io"`
+        """
+elif False:
+    RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs:
     def __init__(__self__, *,
@@ -704,6 +943,22 @@ class RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs:
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
 
+
+if not MYPY:
+    class RepositoryRemoteRepositoryConfigMavenRepositoryArgsDict(TypedDict):
+        custom_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgsDict']]
+        """
+        Settings for a remote repository with a custom uri.
+        Structure is documented below.
+        """
+        public_repository: NotRequired[pulumi.Input[str]]
+        """
+        Address of the remote repository.
+        Default value is `MAVEN_CENTRAL`.
+        Possible values are: `MAVEN_CENTRAL`.
+        """
+elif False:
+    RepositoryRemoteRepositoryConfigMavenRepositoryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigMavenRepositoryArgs:
@@ -750,6 +1005,15 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryArgs:
         pulumi.set(self, "public_repository", value)
 
 
+if not MYPY:
+    class RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgsDict(TypedDict):
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        Specific uri to the registry, e.g. `"https://pypi.io"`
+        """
+elif False:
+    RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs:
     def __init__(__self__, *,
@@ -772,6 +1036,22 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs:
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
 
+
+if not MYPY:
+    class RepositoryRemoteRepositoryConfigNpmRepositoryArgsDict(TypedDict):
+        custom_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgsDict']]
+        """
+        Settings for a remote repository with a custom uri.
+        Structure is documented below.
+        """
+        public_repository: NotRequired[pulumi.Input[str]]
+        """
+        Address of the remote repository.
+        Default value is `NPMJS`.
+        Possible values are: `NPMJS`.
+        """
+elif False:
+    RepositoryRemoteRepositoryConfigNpmRepositoryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigNpmRepositoryArgs:
@@ -818,6 +1098,15 @@ class RepositoryRemoteRepositoryConfigNpmRepositoryArgs:
         pulumi.set(self, "public_repository", value)
 
 
+if not MYPY:
+    class RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgsDict(TypedDict):
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        Specific uri to the registry, e.g. `"https://pypi.io"`
+        """
+elif False:
+    RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs:
     def __init__(__self__, *,
@@ -840,6 +1129,22 @@ class RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs:
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
 
+
+if not MYPY:
+    class RepositoryRemoteRepositoryConfigPythonRepositoryArgsDict(TypedDict):
+        custom_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgsDict']]
+        """
+        Settings for a remote repository with a custom uri.
+        Structure is documented below.
+        """
+        public_repository: NotRequired[pulumi.Input[str]]
+        """
+        Address of the remote repository.
+        Default value is `PYPI`.
+        Possible values are: `PYPI`.
+        """
+elif False:
+    RepositoryRemoteRepositoryConfigPythonRepositoryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
@@ -886,6 +1191,15 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
         pulumi.set(self, "public_repository", value)
 
 
+if not MYPY:
+    class RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgsDict(TypedDict):
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        Specific uri to the registry, e.g. `"https://pypi.io"`
+        """
+elif False:
+    RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs:
     def __init__(__self__, *,
@@ -908,6 +1222,16 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs:
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
 
+
+if not MYPY:
+    class RepositoryRemoteRepositoryConfigUpstreamCredentialsArgsDict(TypedDict):
+        username_password_credentials: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgsDict']]
+        """
+        Use username and password to access the remote repository.
+        Structure is documented below.
+        """
+elif False:
+    RepositoryRemoteRepositoryConfigUpstreamCredentialsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs:
@@ -933,6 +1257,21 @@ class RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs:
     def username_password_credentials(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs']]):
         pulumi.set(self, "username_password_credentials", value)
 
+
+if not MYPY:
+    class RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgsDict(TypedDict):
+        password_secret_version: NotRequired[pulumi.Input[str]]
+        """
+        The Secret Manager key version that holds the password to access the
+        remote repository. Must be in the format of
+        `projects/{project}/secrets/{secret}/versions/{version}`.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        The username to access the remote repository.
+        """
+elif False:
+    RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs:
@@ -977,6 +1316,16 @@ class RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredent
         pulumi.set(self, "username", value)
 
 
+if not MYPY:
+    class RepositoryRemoteRepositoryConfigYumRepositoryArgsDict(TypedDict):
+        public_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgsDict']]
+        """
+        One of the publicly available Yum repositories supported by Artifact Registry.
+        Structure is documented below.
+        """
+elif False:
+    RepositoryRemoteRepositoryConfigYumRepositoryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigYumRepositoryArgs:
     def __init__(__self__, *,
@@ -1001,6 +1350,20 @@ class RepositoryRemoteRepositoryConfigYumRepositoryArgs:
     def public_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']]):
         pulumi.set(self, "public_repository", value)
 
+
+if not MYPY:
+    class RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgsDict(TypedDict):
+        repository_base: pulumi.Input[str]
+        """
+        A common public repository base for Yum.
+        Possible values are: `CENTOS`, `CENTOS_DEBUG`, `CENTOS_VAULT`, `CENTOS_STREAM`, `ROCKY`, `EPEL`.
+        """
+        repository_path: pulumi.Input[str]
+        """
+        Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
+        """
+elif False:
+    RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs:
@@ -1041,6 +1404,17 @@ class RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs:
         pulumi.set(self, "repository_path", value)
 
 
+if not MYPY:
+    class RepositoryVirtualRepositoryConfigArgsDict(TypedDict):
+        upstream_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgsDict']]]]
+        """
+        Policies that configure the upstream artifacts distributed by the Virtual
+        Repository. Upstream policies cannot be set on a standard repository.
+        Structure is documented below.
+        """
+elif False:
+    RepositoryVirtualRepositoryConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepositoryVirtualRepositoryConfigArgs:
     def __init__(__self__, *,
@@ -1067,6 +1441,24 @@ class RepositoryVirtualRepositoryConfigArgs:
     def upstream_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs']]]]):
         pulumi.set(self, "upstream_policies", value)
 
+
+if not MYPY:
+    class RepositoryVirtualRepositoryConfigUpstreamPolicyArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The user-provided ID of the upstream policy.
+        """
+        priority: NotRequired[pulumi.Input[int]]
+        """
+        Entries with a greater priority value take precedence in the pull order.
+        """
+        repository: NotRequired[pulumi.Input[str]]
+        """
+        A reference to the repository resource, for example:
+        "projects/p1/locations/us-central1/repository/repo1".
+        """
+elif False:
+    RepositoryVirtualRepositoryConfigUpstreamPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryVirtualRepositoryConfigUpstreamPolicyArgs:

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -93,7 +98,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationUrlDispatchRulesDispatchRuleArgs']]]]] = None,
+                 dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -122,29 +127,29 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
             version_id="v3",
             service="admin",
             runtime="nodejs20",
-            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
-                shell="node ./app.js",
-            ),
-            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
-                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
-                ),
-            ),
+            entrypoint={
+                "shell": "node ./app.js",
+            },
+            deployment={
+                "zip": {
+                    "sourceUrl": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                },
+            },
             env_variables={
                 "port": "8080",
             },
             delete_service_on_destroy=True)
         web_service = gcp.appengine.ApplicationUrlDispatchRules("web_service", dispatch_rules=[
-            gcp.appengine.ApplicationUrlDispatchRulesDispatchRuleArgs(
-                domain="*",
-                path="/*",
-                service="default",
-            ),
-            gcp.appengine.ApplicationUrlDispatchRulesDispatchRuleArgs(
-                domain="*",
-                path="/admin/*",
-                service=admin_v3.service,
-            ),
+            {
+                "domain": "*",
+                "path": "/*",
+                "service": "default",
+            },
+            {
+                "domain": "*",
+                "path": "/admin/*",
+                "service": admin_v3.service,
+            },
         ])
         ```
 
@@ -162,7 +167,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationUrlDispatchRulesDispatchRuleArgs']]]] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict']]]] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
                Structure is documented below.
         """
         ...
@@ -197,29 +202,29 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
             version_id="v3",
             service="admin",
             runtime="nodejs20",
-            entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
-                shell="node ./app.js",
-            ),
-            deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-                zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
-                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
-                ),
-            ),
+            entrypoint={
+                "shell": "node ./app.js",
+            },
+            deployment={
+                "zip": {
+                    "sourceUrl": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                },
+            },
             env_variables={
                 "port": "8080",
             },
             delete_service_on_destroy=True)
         web_service = gcp.appengine.ApplicationUrlDispatchRules("web_service", dispatch_rules=[
-            gcp.appengine.ApplicationUrlDispatchRulesDispatchRuleArgs(
-                domain="*",
-                path="/*",
-                service="default",
-            ),
-            gcp.appengine.ApplicationUrlDispatchRulesDispatchRuleArgs(
-                domain="*",
-                path="/admin/*",
-                service=admin_v3.service,
-            ),
+            {
+                "domain": "*",
+                "path": "/*",
+                "service": "default",
+            },
+            {
+                "domain": "*",
+                "path": "/admin/*",
+                "service": admin_v3.service,
+            },
         ])
         ```
 
@@ -250,7 +255,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationUrlDispatchRulesDispatchRuleArgs']]]]] = None,
+                 dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -275,7 +280,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationUrlDispatchRulesDispatchRuleArgs']]]]] = None,
+            dispatch_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict']]]]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'ApplicationUrlDispatchRules':
         """
         Get an existing ApplicationUrlDispatchRules resource's state with the given name, id, and optional extra
@@ -284,7 +289,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationUrlDispatchRulesDispatchRuleArgs']]]] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUrlDispatchRulesDispatchRuleArgs', 'ApplicationUrlDispatchRulesDispatchRuleArgsDict']]]] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

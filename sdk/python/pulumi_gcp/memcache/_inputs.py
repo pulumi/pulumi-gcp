@@ -4,20 +4,66 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'InstanceMaintenancePolicyArgs',
+    'InstanceMaintenancePolicyArgsDict',
     'InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs',
+    'InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict',
     'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs',
+    'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict',
     'InstanceMaintenanceScheduleArgs',
+    'InstanceMaintenanceScheduleArgsDict',
     'InstanceMemcacheNodeArgs',
+    'InstanceMemcacheNodeArgsDict',
     'InstanceMemcacheParametersArgs',
+    'InstanceMemcacheParametersArgsDict',
     'InstanceNodeConfigArgs',
+    'InstanceNodeConfigArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class InstanceMaintenancePolicyArgsDict(TypedDict):
+        weekly_maintenance_windows: pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict']]]
+        """
+        Required. Maintenance window that is applied to resources covered by this policy.
+        Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
+        is expected to be one.
+        Structure is documented below.
+        """
+        create_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The time when the policy was created.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Description of what this policy is for.
+        Create/Update methods return INVALID_ARGUMENT if the
+        length is greater than 512.
+        """
+        update_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The time when the policy was updated.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+elif False:
+    InstanceMaintenancePolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceMaintenancePolicyArgs:
@@ -111,6 +157,35 @@ class InstanceMaintenancePolicyArgs:
         pulumi.set(self, "update_time", value)
 
 
+if not MYPY:
+    class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict(TypedDict):
+        day: pulumi.Input[str]
+        """
+        Required. The day of week that maintenance updates occur.
+        - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+        - MONDAY: Monday
+        - TUESDAY: Tuesday
+        - WEDNESDAY: Wednesday
+        - THURSDAY: Thursday
+        - FRIDAY: Friday
+        - SATURDAY: Saturday
+        - SUNDAY: Sunday
+        Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        """
+        duration: pulumi.Input[str]
+        """
+        Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
+        A duration in seconds with up to nine fractional digits,
+        terminated by 's'. Example: "3.5s".
+        """
+        start_time: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict']
+        """
+        Required. Start time of the window in UTC time.
+        Structure is documented below.
+        """
+elif False:
+    InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
     def __init__(__self__, *,
@@ -187,6 +262,29 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
         pulumi.set(self, "start_time", value)
 
 
+if not MYPY:
+    class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict(TypedDict):
+        hours: NotRequired[pulumi.Input[int]]
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        minutes: NotRequired[pulumi.Input[int]]
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
+        seconds: NotRequired[pulumi.Input[int]]
+        """
+        Seconds of minutes of the time. Must normally be from 0 to 59.
+        An API may allow the value 60 if it allows leap-seconds.
+        """
+elif False:
+    InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
     def __init__(__self__, *,
@@ -262,6 +360,33 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
         pulumi.set(self, "seconds", value)
 
 
+if not MYPY:
+    class InstanceMaintenanceScheduleArgsDict(TypedDict):
+        end_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The end time of any upcoming scheduled maintenance for this instance.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        schedule_deadline_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The deadline that the maintenance schedule start time
+        can not go beyond, including reschedule.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The start time of any upcoming scheduled maintenance for this instance.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+elif False:
+    InstanceMaintenanceScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceMaintenanceScheduleArgs:
     def __init__(__self__, *,
@@ -336,6 +461,36 @@ class InstanceMaintenanceScheduleArgs:
     def start_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start_time", value)
 
+
+if not MYPY:
+    class InstanceMemcacheNodeArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
+        """
+        node_id: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The port number of the Memcached server on this node.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Current state of the Memcached node.
+        """
+        zone: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Location (GCP Zone) for the Memcached node.
+        """
+elif False:
+    InstanceMemcacheNodeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceMemcacheNodeArgs:
@@ -434,6 +589,20 @@ class InstanceMemcacheNodeArgs:
         pulumi.set(self, "zone", value)
 
 
+if not MYPY:
+    class InstanceMemcacheParametersArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        This is a unique ID associated with this set of parameters.
+        """
+        params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        User-defined set of parameters to use in the memcache process.
+        """
+elif False:
+    InstanceMemcacheParametersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceMemcacheParametersArgs:
     def __init__(__self__, *,
@@ -474,6 +643,21 @@ class InstanceMemcacheParametersArgs:
     def params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "params", value)
 
+
+if not MYPY:
+    class InstanceNodeConfigArgsDict(TypedDict):
+        cpu_count: pulumi.Input[int]
+        """
+        Number of CPUs per node.
+        """
+        memory_size_mb: pulumi.Input[int]
+        """
+        Memory size in Mebibytes for each memcache node.
+
+        - - -
+        """
+elif False:
+    InstanceNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceNodeConfigArgs:

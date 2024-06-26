@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -256,7 +261,7 @@ class FolderCustomModule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_config: Optional[pulumi.Input[pulumi.InputType['FolderCustomModuleCustomConfigArgs']]] = None,
+                 custom_config: Optional[pulumi.Input[Union['FolderCustomModuleCustomConfigArgs', 'FolderCustomModuleCustomConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enablement_state: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
@@ -289,17 +294,17 @@ class FolderCustomModule(pulumi.CustomResource):
             folder=folder.folder_id,
             display_name="basic_custom_module",
             enablement_state="ENABLED",
-            custom_config=gcp.securitycenter.FolderCustomModuleCustomConfigArgs(
-                predicate=gcp.securitycenter.FolderCustomModuleCustomConfigPredicateArgs(
-                    expression="resource.rotationPeriod > duration(\\"2592000s\\")",
-                ),
-                resource_selector=gcp.securitycenter.FolderCustomModuleCustomConfigResourceSelectorArgs(
-                    resource_types=["cloudkms.googleapis.com/CryptoKey"],
-                ),
-                description="The rotation period of the identified cryptokey resource exceeds 30 days.",
-                recommendation="Set the rotation period to at most 30 days.",
-                severity="MEDIUM",
-            ))
+            custom_config={
+                "predicate": {
+                    "expression": "resource.rotationPeriod > duration(\\"2592000s\\")",
+                },
+                "resourceSelector": {
+                    "resourceTypes": ["cloudkms.googleapis.com/CryptoKey"],
+                },
+                "description": "The rotation period of the identified cryptokey resource exceeds 30 days.",
+                "recommendation": "Set the rotation period to at most 30 days.",
+                "severity": "MEDIUM",
+            })
         ```
         ### Scc Folder Custom Module Full
 
@@ -314,31 +319,31 @@ class FolderCustomModule(pulumi.CustomResource):
             folder=folder.folder_id,
             display_name="full_custom_module",
             enablement_state="ENABLED",
-            custom_config=gcp.securitycenter.FolderCustomModuleCustomConfigArgs(
-                predicate=gcp.securitycenter.FolderCustomModuleCustomConfigPredicateArgs(
-                    expression="resource.rotationPeriod > duration(\\"2592000s\\")",
-                    title="Purpose of the expression",
-                    description="description of the expression",
-                    location="location of the expression",
-                ),
-                custom_output=gcp.securitycenter.FolderCustomModuleCustomConfigCustomOutputArgs(
-                    properties=[gcp.securitycenter.FolderCustomModuleCustomConfigCustomOutputPropertyArgs(
-                        name="duration",
-                        value_expression=gcp.securitycenter.FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs(
-                            expression="resource.rotationPeriod",
-                            title="Purpose of the expression",
-                            description="description of the expression",
-                            location="location of the expression",
-                        ),
-                    )],
-                ),
-                resource_selector=gcp.securitycenter.FolderCustomModuleCustomConfigResourceSelectorArgs(
-                    resource_types=["cloudkms.googleapis.com/CryptoKey"],
-                ),
-                severity="LOW",
-                description="Description of the custom module",
-                recommendation="Steps to resolve violation",
-            ))
+            custom_config={
+                "predicate": {
+                    "expression": "resource.rotationPeriod > duration(\\"2592000s\\")",
+                    "title": "Purpose of the expression",
+                    "description": "description of the expression",
+                    "location": "location of the expression",
+                },
+                "customOutput": {
+                    "properties": [{
+                        "name": "duration",
+                        "valueExpression": {
+                            "expression": "resource.rotationPeriod",
+                            "title": "Purpose of the expression",
+                            "description": "description of the expression",
+                            "location": "location of the expression",
+                        },
+                    }],
+                },
+                "resourceSelector": {
+                    "resourceTypes": ["cloudkms.googleapis.com/CryptoKey"],
+                },
+                "severity": "LOW",
+                "description": "Description of the custom module",
+                "recommendation": "Steps to resolve violation",
+            })
         ```
 
         ## Import
@@ -361,7 +366,7 @@ class FolderCustomModule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FolderCustomModuleCustomConfigArgs']] custom_config: The user specified custom configuration for the module.
+        :param pulumi.Input[Union['FolderCustomModuleCustomConfigArgs', 'FolderCustomModuleCustomConfigArgsDict']] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The display name of the Security Health Analytics custom module. This
                display name becomes the finding category for all findings that are
@@ -406,17 +411,17 @@ class FolderCustomModule(pulumi.CustomResource):
             folder=folder.folder_id,
             display_name="basic_custom_module",
             enablement_state="ENABLED",
-            custom_config=gcp.securitycenter.FolderCustomModuleCustomConfigArgs(
-                predicate=gcp.securitycenter.FolderCustomModuleCustomConfigPredicateArgs(
-                    expression="resource.rotationPeriod > duration(\\"2592000s\\")",
-                ),
-                resource_selector=gcp.securitycenter.FolderCustomModuleCustomConfigResourceSelectorArgs(
-                    resource_types=["cloudkms.googleapis.com/CryptoKey"],
-                ),
-                description="The rotation period of the identified cryptokey resource exceeds 30 days.",
-                recommendation="Set the rotation period to at most 30 days.",
-                severity="MEDIUM",
-            ))
+            custom_config={
+                "predicate": {
+                    "expression": "resource.rotationPeriod > duration(\\"2592000s\\")",
+                },
+                "resourceSelector": {
+                    "resourceTypes": ["cloudkms.googleapis.com/CryptoKey"],
+                },
+                "description": "The rotation period of the identified cryptokey resource exceeds 30 days.",
+                "recommendation": "Set the rotation period to at most 30 days.",
+                "severity": "MEDIUM",
+            })
         ```
         ### Scc Folder Custom Module Full
 
@@ -431,31 +436,31 @@ class FolderCustomModule(pulumi.CustomResource):
             folder=folder.folder_id,
             display_name="full_custom_module",
             enablement_state="ENABLED",
-            custom_config=gcp.securitycenter.FolderCustomModuleCustomConfigArgs(
-                predicate=gcp.securitycenter.FolderCustomModuleCustomConfigPredicateArgs(
-                    expression="resource.rotationPeriod > duration(\\"2592000s\\")",
-                    title="Purpose of the expression",
-                    description="description of the expression",
-                    location="location of the expression",
-                ),
-                custom_output=gcp.securitycenter.FolderCustomModuleCustomConfigCustomOutputArgs(
-                    properties=[gcp.securitycenter.FolderCustomModuleCustomConfigCustomOutputPropertyArgs(
-                        name="duration",
-                        value_expression=gcp.securitycenter.FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs(
-                            expression="resource.rotationPeriod",
-                            title="Purpose of the expression",
-                            description="description of the expression",
-                            location="location of the expression",
-                        ),
-                    )],
-                ),
-                resource_selector=gcp.securitycenter.FolderCustomModuleCustomConfigResourceSelectorArgs(
-                    resource_types=["cloudkms.googleapis.com/CryptoKey"],
-                ),
-                severity="LOW",
-                description="Description of the custom module",
-                recommendation="Steps to resolve violation",
-            ))
+            custom_config={
+                "predicate": {
+                    "expression": "resource.rotationPeriod > duration(\\"2592000s\\")",
+                    "title": "Purpose of the expression",
+                    "description": "description of the expression",
+                    "location": "location of the expression",
+                },
+                "customOutput": {
+                    "properties": [{
+                        "name": "duration",
+                        "valueExpression": {
+                            "expression": "resource.rotationPeriod",
+                            "title": "Purpose of the expression",
+                            "description": "description of the expression",
+                            "location": "location of the expression",
+                        },
+                    }],
+                },
+                "resourceSelector": {
+                    "resourceTypes": ["cloudkms.googleapis.com/CryptoKey"],
+                },
+                "severity": "LOW",
+                "description": "Description of the custom module",
+                "recommendation": "Steps to resolve violation",
+            })
         ```
 
         ## Import
@@ -491,7 +496,7 @@ class FolderCustomModule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_config: Optional[pulumi.Input[pulumi.InputType['FolderCustomModuleCustomConfigArgs']]] = None,
+                 custom_config: Optional[pulumi.Input[Union['FolderCustomModuleCustomConfigArgs', 'FolderCustomModuleCustomConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enablement_state: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
@@ -531,7 +536,7 @@ class FolderCustomModule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             ancestor_module: Optional[pulumi.Input[str]] = None,
-            custom_config: Optional[pulumi.Input[pulumi.InputType['FolderCustomModuleCustomConfigArgs']]] = None,
+            custom_config: Optional[pulumi.Input[Union['FolderCustomModuleCustomConfigArgs', 'FolderCustomModuleCustomConfigArgsDict']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             enablement_state: Optional[pulumi.Input[str]] = None,
             folder: Optional[pulumi.Input[str]] = None,
@@ -548,7 +553,7 @@ class FolderCustomModule(pulumi.CustomResource):
         :param pulumi.Input[str] ancestor_module: If empty, indicates that the custom module was created in the organization, folder,
                or project in which you are viewing the custom module. Otherwise, ancestor_module
                specifies the organization or folder from which the custom module is inherited.
-        :param pulumi.Input[pulumi.InputType['FolderCustomModuleCustomConfigArgs']] custom_config: The user specified custom configuration for the module.
+        :param pulumi.Input[Union['FolderCustomModuleCustomConfigArgs', 'FolderCustomModuleCustomConfigArgsDict']] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The display name of the Security Health Analytics custom module. This
                display name becomes the finding category for all findings that are

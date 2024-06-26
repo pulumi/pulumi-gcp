@@ -4,85 +4,184 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'FeatureFleetDefaultMemberConfigArgs',
+    'FeatureFleetDefaultMemberConfigArgsDict',
     'FeatureFleetDefaultMemberConfigConfigmanagementArgs',
+    'FeatureFleetDefaultMemberConfigConfigmanagementArgsDict',
     'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs',
+    'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgsDict',
     'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs',
+    'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgsDict',
     'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs',
+    'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgsDict',
     'FeatureFleetDefaultMemberConfigMeshArgs',
+    'FeatureFleetDefaultMemberConfigMeshArgsDict',
     'FeatureFleetDefaultMemberConfigPolicycontrollerArgs',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerArgsDict',
     'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgsDict',
     'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgsDict',
     'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgsDict',
     'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgsDict',
     'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgsDict',
     'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgsDict',
     'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgsDict',
     'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgsDict',
     'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgsDict',
     'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgsDict',
     'FeatureIamBindingConditionArgs',
+    'FeatureIamBindingConditionArgsDict',
     'FeatureIamMemberConditionArgs',
+    'FeatureIamMemberConditionArgsDict',
     'FeatureMembershipConfigmanagementArgs',
+    'FeatureMembershipConfigmanagementArgsDict',
     'FeatureMembershipConfigmanagementBinauthzArgs',
+    'FeatureMembershipConfigmanagementBinauthzArgsDict',
     'FeatureMembershipConfigmanagementConfigSyncArgs',
+    'FeatureMembershipConfigmanagementConfigSyncArgsDict',
     'FeatureMembershipConfigmanagementConfigSyncGitArgs',
+    'FeatureMembershipConfigmanagementConfigSyncGitArgsDict',
     'FeatureMembershipConfigmanagementConfigSyncOciArgs',
+    'FeatureMembershipConfigmanagementConfigSyncOciArgsDict',
     'FeatureMembershipConfigmanagementHierarchyControllerArgs',
+    'FeatureMembershipConfigmanagementHierarchyControllerArgsDict',
     'FeatureMembershipConfigmanagementPolicyControllerArgs',
+    'FeatureMembershipConfigmanagementPolicyControllerArgsDict',
     'FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs',
+    'FeatureMembershipConfigmanagementPolicyControllerMonitoringArgsDict',
     'FeatureMembershipMeshArgs',
+    'FeatureMembershipMeshArgsDict',
     'FeatureMembershipPolicycontrollerArgs',
+    'FeatureMembershipPolicycontrollerArgsDict',
     'FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgsDict',
     'FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgsDict',
     'FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgsDict',
     'FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgsDict',
     'FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgsDict',
     'FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgsDict',
     'FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgsDict',
     'FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgsDict',
     'FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgsDict',
     'FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgsDict',
     'FeatureResourceStateArgs',
+    'FeatureResourceStateArgsDict',
     'FeatureSpecArgs',
+    'FeatureSpecArgsDict',
     'FeatureSpecClusterupgradeArgs',
+    'FeatureSpecClusterupgradeArgsDict',
     'FeatureSpecClusterupgradeGkeUpgradeOverrideArgs',
+    'FeatureSpecClusterupgradeGkeUpgradeOverrideArgsDict',
     'FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsArgs',
+    'FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsArgsDict',
     'FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs',
+    'FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgsDict',
     'FeatureSpecClusterupgradePostConditionsArgs',
+    'FeatureSpecClusterupgradePostConditionsArgsDict',
     'FeatureSpecFleetobservabilityArgs',
+    'FeatureSpecFleetobservabilityArgsDict',
     'FeatureSpecFleetobservabilityLoggingConfigArgs',
+    'FeatureSpecFleetobservabilityLoggingConfigArgsDict',
     'FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs',
+    'FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgsDict',
     'FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs',
+    'FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgsDict',
     'FeatureSpecMulticlusteringressArgs',
+    'FeatureSpecMulticlusteringressArgsDict',
     'FeatureStateArgs',
+    'FeatureStateArgsDict',
     'FeatureStateStateArgs',
+    'FeatureStateStateArgsDict',
     'FleetDefaultClusterConfigArgs',
+    'FleetDefaultClusterConfigArgsDict',
     'FleetDefaultClusterConfigBinaryAuthorizationConfigArgs',
+    'FleetDefaultClusterConfigBinaryAuthorizationConfigArgsDict',
     'FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs',
+    'FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgsDict',
     'FleetDefaultClusterConfigSecurityPostureConfigArgs',
+    'FleetDefaultClusterConfigSecurityPostureConfigArgsDict',
     'FleetStateArgs',
+    'FleetStateArgsDict',
     'MembershipAuthorityArgs',
+    'MembershipAuthorityArgsDict',
     'MembershipBindingStateArgs',
+    'MembershipBindingStateArgsDict',
     'MembershipEndpointArgs',
+    'MembershipEndpointArgsDict',
     'MembershipEndpointGkeClusterArgs',
+    'MembershipEndpointGkeClusterArgsDict',
     'MembershipIamBindingConditionArgs',
+    'MembershipIamBindingConditionArgsDict',
     'MembershipIamMemberConditionArgs',
+    'MembershipIamMemberConditionArgsDict',
     'MembershipRbacRoleBindingRoleArgs',
+    'MembershipRbacRoleBindingRoleArgsDict',
     'MembershipRbacRoleBindingStateArgs',
+    'MembershipRbacRoleBindingStateArgsDict',
     'NamespaceStateArgs',
+    'NamespaceStateArgsDict',
     'ScopeIamBindingConditionArgs',
+    'ScopeIamBindingConditionArgsDict',
     'ScopeIamMemberConditionArgs',
+    'ScopeIamMemberConditionArgsDict',
     'ScopeRbacRoleBindingRoleArgs',
+    'ScopeRbacRoleBindingRoleArgsDict',
     'ScopeRbacRoleBindingStateArgs',
+    'ScopeRbacRoleBindingStateArgsDict',
     'ScopeStateArgs',
+    'ScopeStateArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class FeatureFleetDefaultMemberConfigArgsDict(TypedDict):
+        configmanagement: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementArgsDict']]
+        """
+        Config Management spec
+        Structure is documented below.
+        """
+        mesh: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigMeshArgsDict']]
+        """
+        Service Mesh spec
+        Structure is documented below.
+        """
+        policycontroller: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerArgsDict']]
+        """
+        Policy Controller spec
+        Structure is documented below.
+        """
+elif False:
+    FeatureFleetDefaultMemberConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigArgs:
@@ -145,6 +244,20 @@ class FeatureFleetDefaultMemberConfigArgs:
         pulumi.set(self, "policycontroller", value)
 
 
+if not MYPY:
+    class FeatureFleetDefaultMemberConfigConfigmanagementArgsDict(TypedDict):
+        config_sync: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgsDict']]
+        """
+        ConfigSync configuration for the cluster
+        Structure is documented below.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Version of ACM installed
+        """
+elif False:
+    FeatureFleetDefaultMemberConfigConfigmanagementArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigConfigmanagementArgs:
     def __init__(__self__, *,
@@ -185,6 +298,29 @@ class FeatureFleetDefaultMemberConfigConfigmanagementArgs:
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgsDict(TypedDict):
+        git: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgsDict']]
+        """
+        Git repo configuration for the cluster
+        Structure is documented below.
+        """
+        oci: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgsDict']]
+        """
+        OCI repo configuration for the cluster
+        Structure is documented below.
+        """
+        prevent_drift: NotRequired[pulumi.Input[bool]]
+        """
+        Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
+        """
+        source_format: NotRequired[pulumi.Input[str]]
+        """
+        Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
+        """
+elif False:
+    FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
@@ -260,6 +396,43 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
     def source_format(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_format", value)
 
+
+if not MYPY:
+    class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgsDict(TypedDict):
+        secret_type: pulumi.Input[str]
+        """
+        Type of secret configured for access to the Git repo
+        """
+        gcp_service_account_email: NotRequired[pulumi.Input[str]]
+        """
+        The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+        """
+        https_proxy: NotRequired[pulumi.Input[str]]
+        """
+        URL for the HTTPS Proxy to be used when communicating with the Git repo
+        """
+        policy_dir: NotRequired[pulumi.Input[str]]
+        """
+        The path within the Git repository that represents the top level of the repo to sync
+        """
+        sync_branch: NotRequired[pulumi.Input[str]]
+        """
+        The branch of the repository to sync from. Default: master
+        """
+        sync_repo: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the Git repository to use as the source of truth
+        """
+        sync_rev: NotRequired[pulumi.Input[str]]
+        """
+        Git revision (tag or hash) to check out. Default HEAD
+        """
+        sync_wait_secs: NotRequired[pulumi.Input[str]]
+        """
+        Period in seconds between consecutive syncs. Default: 15
+        """
+elif False:
+    FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs:
@@ -395,6 +568,38 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs:
         pulumi.set(self, "sync_wait_secs", value)
 
 
+if not MYPY:
+    class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgsDict(TypedDict):
+        secret_type: pulumi.Input[str]
+        """
+        Type of secret configured for access to the Git repo
+        """
+        gcp_service_account_email: NotRequired[pulumi.Input[str]]
+        """
+        The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+        """
+        policy_dir: NotRequired[pulumi.Input[str]]
+        """
+        The absolute path of the directory that contains the local resources. Default: the root directory of the image
+        """
+        sync_repo: NotRequired[pulumi.Input[str]]
+        """
+        The OCI image repository URL for the package to sync from
+        """
+        sync_wait_secs: NotRequired[pulumi.Input[str]]
+        """
+        Period in seconds between consecutive syncs. Default: 15
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        (Optional, Deprecated)
+        Version of ACM installed
+
+        > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+        """
+elif False:
+    FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs:
     def __init__(__self__, *,
@@ -507,6 +712,16 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class FeatureFleetDefaultMemberConfigMeshArgsDict(TypedDict):
+        management: pulumi.Input[str]
+        """
+        Whether to automatically manage Service Mesh
+        Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
+        """
+elif False:
+    FeatureFleetDefaultMemberConfigMeshArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigMeshArgs:
     def __init__(__self__, *,
@@ -530,6 +745,20 @@ class FeatureFleetDefaultMemberConfigMeshArgs:
     def management(self, value: pulumi.Input[str]):
         pulumi.set(self, "management", value)
 
+
+if not MYPY:
+    class FeatureFleetDefaultMemberConfigPolicycontrollerArgsDict(TypedDict):
+        policy_controller_hub_config: pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgsDict']
+        """
+        Configuration of Policy Controller
+        Structure is documented below.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Configures the version of Policy Controller
+        """
+elif False:
+    FeatureFleetDefaultMemberConfigPolicycontrollerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigPolicycontrollerArgs:
@@ -570,6 +799,55 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerArgs:
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgsDict(TypedDict):
+        install_spec: pulumi.Input[str]
+        """
+        Configures the mode of the Policy Controller installation
+        Possible values are: `INSTALL_SPEC_UNSPECIFIED`, `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED`, `INSTALL_SPEC_DETACHED`.
+        """
+        audit_interval_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Interval for Policy Controller Audit scans (in seconds). When set to 0, this disables audit functionality altogether.
+        """
+        constraint_violation_limit: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
+        """
+        deployment_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgsDict']]]]
+        """
+        Map of deployment configs to deployments ("admission", "audit", "mutation").
+        Structure is documented below.
+        """
+        exemptable_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        """
+        log_denies_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Logs all denies and dry run failures.
+        """
+        monitoring: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgsDict']]
+        """
+        Monitoring specifies the configuration of monitoring Policy Controller.
+        Structure is documented below.
+        """
+        mutation_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enables the ability to mutate resources using Policy Controller.
+        """
+        policy_content: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgsDict']]
+        """
+        Specifies the desired policy content on the cluster.
+        Structure is documented below.
+        """
+        referential_rules_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        """
+elif False:
+    FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs:
@@ -745,6 +1023,34 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigAr
         pulumi.set(self, "referential_rules_enabled", value)
 
 
+if not MYPY:
+    class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgsDict(TypedDict):
+        component: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        container_resources: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgsDict']]
+        """
+        Container resource requirements.
+        Structure is documented below.
+        """
+        pod_affinity: NotRequired[pulumi.Input[str]]
+        """
+        Pod affinity configuration.
+        Possible values are: `AFFINITY_UNSPECIFIED`, `NO_AFFINITY`, `ANTI_AFFINITY`.
+        """
+        pod_tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgsDict']]]]
+        """
+        Pod tolerations of node taints.
+        Structure is documented below.
+        """
+        replica_count: NotRequired[pulumi.Input[int]]
+        """
+        Pod replica count.
+        """
+elif False:
+    FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs:
     def __init__(__self__, *,
@@ -837,6 +1143,21 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
         pulumi.set(self, "replica_count", value)
 
 
+if not MYPY:
+    class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgsDict(TypedDict):
+        limits: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgsDict']]
+        """
+        Limits describes the maximum amount of compute resources allowed for use by the running container.
+        Structure is documented below.
+        """
+        requests: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgsDict']]
+        """
+        Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+        Structure is documented below.
+        """
+elif False:
+    FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs:
     def __init__(__self__, *,
@@ -880,6 +1201,19 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
         pulumi.set(self, "requests", value)
 
 
+if not MYPY:
+    class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[str]]
+        """
+        CPU requirement expressed in Kubernetes resource units.
+        """
+        memory: NotRequired[pulumi.Input[str]]
+        """
+        Memory requirement expressed in Kubernetes resource units.
+        """
+elif False:
+    FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs:
     def __init__(__self__, *,
@@ -919,6 +1253,19 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
         pulumi.set(self, "memory", value)
 
 
+if not MYPY:
+    class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[str]]
+        """
+        CPU requirement expressed in Kubernetes resource units.
+        """
+        memory: NotRequired[pulumi.Input[str]]
+        """
+        Memory requirement expressed in Kubernetes resource units.
+        """
+elif False:
+    FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs:
     def __init__(__self__, *,
@@ -957,6 +1304,27 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
     def memory(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "memory", value)
 
+
+if not MYPY:
+    class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgsDict(TypedDict):
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        Matches a taint effect.
+        """
+        key: NotRequired[pulumi.Input[str]]
+        """
+        Matches a taint key (not necessarily unique).
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        Matches a taint operator.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Matches a taint value.
+        """
+elif False:
+    FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs:
@@ -1029,6 +1397,16 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgsDict(TypedDict):
+        backends: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
+        Each value may be one of: `MONITORING_BACKEND_UNSPECIFIED`, `PROMETHEUS`, `CLOUD_MONITORING`.
+        """
+elif False:
+    FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs:
     def __init__(__self__, *,
@@ -1053,6 +1431,21 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMo
     def backends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "backends", value)
 
+
+if not MYPY:
+    class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgsDict(TypedDict):
+        bundles: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgsDict']]]]
+        """
+        Configures which bundles to install and their corresponding install specs.
+        Structure is documented below.
+        """
+        template_library: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgsDict']]
+        """
+        Configures the installation of the Template Library.
+        Structure is documented below.
+        """
+elif False:
+    FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs:
@@ -1097,6 +1490,19 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
         pulumi.set(self, "template_library", value)
 
 
+if not MYPY:
+    class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgsDict(TypedDict):
+        bundle: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        exempted_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The set of namespaces to be exempted from the bundle.
+        """
+elif False:
+    FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs:
     def __init__(__self__, *,
@@ -1135,6 +1541,16 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
         pulumi.set(self, "exempted_namespaces", value)
 
 
+if not MYPY:
+    class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgsDict(TypedDict):
+        installation: NotRequired[pulumi.Input[str]]
+        """
+        Configures the manner in which the template library is installed on the cluster.
+        Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+        """
+elif False:
+    FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs:
     def __init__(__self__, *,
@@ -1159,6 +1575,14 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
     def installation(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "installation", value)
 
+
+if not MYPY:
+    class FeatureIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    FeatureIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureIamBindingConditionArgs:
@@ -1199,6 +1623,14 @@ class FeatureIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class FeatureIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    FeatureIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -1237,6 +1669,31 @@ class FeatureIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class FeatureMembershipConfigmanagementArgsDict(TypedDict):
+        binauthz: NotRequired[pulumi.Input['FeatureMembershipConfigmanagementBinauthzArgsDict']]
+        """
+        Binauthz configuration for the cluster. Structure is documented below.
+        """
+        config_sync: NotRequired[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgsDict']]
+        """
+        Config Sync configuration for the cluster. Structure is documented below.
+        """
+        hierarchy_controller: NotRequired[pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgsDict']]
+        """
+        Hierarchy Controller configuration for the cluster. Structure is documented below.
+        """
+        policy_controller: NotRequired[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgsDict']]
+        """
+        Policy Controller configuration for the cluster. Structure is documented below.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Version of ACM installed.
+        """
+elif False:
+    FeatureMembershipConfigmanagementArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureMembershipConfigmanagementArgs:
@@ -1325,6 +1782,15 @@ class FeatureMembershipConfigmanagementArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class FeatureMembershipConfigmanagementBinauthzArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether binauthz is enabled in this cluster.
+        """
+elif False:
+    FeatureMembershipConfigmanagementBinauthzArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureMembershipConfigmanagementBinauthzArgs:
     def __init__(__self__, *,
@@ -1347,6 +1813,33 @@ class FeatureMembershipConfigmanagementBinauthzArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class FeatureMembershipConfigmanagementConfigSyncArgsDict(TypedDict):
+        git: NotRequired[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgsDict']]
+        """
+        (Optional) Structure is documented below.
+        """
+        metrics_gcp_service_account_email: NotRequired[pulumi.Input[str]]
+        """
+        The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+        """
+        oci: NotRequired[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgsDict']]
+        """
+        (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+
+        Use either `git` or `oci` config option.
+        """
+        prevent_drift: NotRequired[pulumi.Input[bool]]
+        """
+        Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+        """
+        source_format: NotRequired[pulumi.Input[str]]
+        """
+        Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
+        """
+elif False:
+    FeatureMembershipConfigmanagementConfigSyncArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureMembershipConfigmanagementConfigSyncArgs:
@@ -1438,6 +1931,43 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
     def source_format(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_format", value)
 
+
+if not MYPY:
+    class FeatureMembershipConfigmanagementConfigSyncGitArgsDict(TypedDict):
+        gcp_service_account_email: NotRequired[pulumi.Input[str]]
+        """
+        The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
+        """
+        https_proxy: NotRequired[pulumi.Input[str]]
+        """
+        URL for the HTTPS proxy to be used when communicating with the Git repo.
+        """
+        policy_dir: NotRequired[pulumi.Input[str]]
+        """
+        The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+        """
+        secret_type: NotRequired[pulumi.Input[str]]
+        """
+        Type of secret configured for access to the Git repo.
+        """
+        sync_branch: NotRequired[pulumi.Input[str]]
+        """
+        The branch of the repository to sync from. Default: master.
+        """
+        sync_repo: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the Git repository to use as the source of truth.
+        """
+        sync_rev: NotRequired[pulumi.Input[str]]
+        """
+        Git revision (tag or hash) to check out. Default HEAD.
+        """
+        sync_wait_secs: NotRequired[pulumi.Input[str]]
+        """
+        Period in seconds between consecutive syncs. Default: 15.
+        """
+elif False:
+    FeatureMembershipConfigmanagementConfigSyncGitArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureMembershipConfigmanagementConfigSyncGitArgs:
@@ -1574,6 +2104,31 @@ class FeatureMembershipConfigmanagementConfigSyncGitArgs:
         pulumi.set(self, "sync_wait_secs", value)
 
 
+if not MYPY:
+    class FeatureMembershipConfigmanagementConfigSyncOciArgsDict(TypedDict):
+        gcp_service_account_email: NotRequired[pulumi.Input[str]]
+        """
+        The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
+        """
+        policy_dir: NotRequired[pulumi.Input[str]]
+        """
+        The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+        """
+        secret_type: NotRequired[pulumi.Input[str]]
+        """
+        Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
+        """
+        sync_repo: NotRequired[pulumi.Input[str]]
+        """
+        The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
+        """
+        sync_wait_secs: NotRequired[pulumi.Input[str]]
+        """
+        Period in seconds(int64 format) between consecutive syncs. Default: 15.
+        """
+elif False:
+    FeatureMembershipConfigmanagementConfigSyncOciArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureMembershipConfigmanagementConfigSyncOciArgs:
     def __init__(__self__, *,
@@ -1661,6 +2216,23 @@ class FeatureMembershipConfigmanagementConfigSyncOciArgs:
         pulumi.set(self, "sync_wait_secs", value)
 
 
+if not MYPY:
+    class FeatureMembershipConfigmanagementHierarchyControllerArgsDict(TypedDict):
+        enable_hierarchical_resource_quota: NotRequired[pulumi.Input[bool]]
+        """
+        Whether hierarchical resource quota is enabled in this cluster.
+        """
+        enable_pod_tree_labels: NotRequired[pulumi.Input[bool]]
+        """
+        Whether pod tree labels are enabled in this cluster.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether Hierarchy Controller is enabled in this cluster.
+        """
+elif False:
+    FeatureMembershipConfigmanagementHierarchyControllerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureMembershipConfigmanagementHierarchyControllerArgs:
     def __init__(__self__, *,
@@ -1715,6 +2287,43 @@ class FeatureMembershipConfigmanagementHierarchyControllerArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class FeatureMembershipConfigmanagementPolicyControllerArgsDict(TypedDict):
+        audit_interval_seconds: NotRequired[pulumi.Input[str]]
+        """
+        Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        """
+        exemptable_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        """
+        log_denies_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Logs all denies and dry run failures.
+        """
+        monitoring: NotRequired[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgsDict']]
+        """
+        Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]. Default: ["cloudmonitoring", "prometheus"]
+        """
+        mutation_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+        """
+        referential_rules_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        """
+        template_library_installed: NotRequired[pulumi.Input[bool]]
+        """
+        Installs the default template library along with Policy Controller.
+        """
+elif False:
+    FeatureMembershipConfigmanagementPolicyControllerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureMembershipConfigmanagementPolicyControllerArgs:
@@ -1851,6 +2460,15 @@ class FeatureMembershipConfigmanagementPolicyControllerArgs:
         pulumi.set(self, "template_library_installed", value)
 
 
+if not MYPY:
+    class FeatureMembershipConfigmanagementPolicyControllerMonitoringArgsDict(TypedDict):
+        backends: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+        """
+elif False:
+    FeatureMembershipConfigmanagementPolicyControllerMonitoringArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs:
     def __init__(__self__, *,
@@ -1873,6 +2491,19 @@ class FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs:
     def backends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "backends", value)
 
+
+if not MYPY:
+    class FeatureMembershipMeshArgsDict(TypedDict):
+        control_plane: NotRequired[pulumi.Input[str]]
+        """
+        **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
+        """
+        management: NotRequired[pulumi.Input[str]]
+        """
+        Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
+        """
+elif False:
+    FeatureMembershipMeshArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureMembershipMeshArgs:
@@ -1917,6 +2548,19 @@ class FeatureMembershipMeshArgs:
         pulumi.set(self, "management", value)
 
 
+if not MYPY:
+    class FeatureMembershipPolicycontrollerArgsDict(TypedDict):
+        policy_controller_hub_config: pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgsDict']
+        """
+        Policy Controller configuration for the cluster. Structure is documented below.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Version of Policy Controller to install. Defaults to the latest version.
+        """
+elif False:
+    FeatureMembershipPolicycontrollerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerArgs:
     def __init__(__self__, *,
@@ -1954,6 +2598,51 @@ class FeatureMembershipPolicycontrollerArgs:
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgsDict(TypedDict):
+        audit_interval_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+        """
+        constraint_violation_limit: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
+        """
+        deployment_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgsDict']]]]
+        """
+        Map of deployment configs to deployments ("admission", "audit", "mutation").
+        """
+        exemptable_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        """
+        install_spec: NotRequired[pulumi.Input[str]]
+        """
+        Configures the mode of the Policy Controller installation. Must be one of `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED` or `INSTALL_SPEC_DETACHED`.
+        """
+        log_denies_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Logs all denies and dry run failures.
+        """
+        monitoring: NotRequired[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgsDict']]
+        """
+        Specifies the backends Policy Controller should export metrics to. Structure is documented below.
+        """
+        mutation_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+        """
+        policy_content: NotRequired[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgsDict']]
+        """
+        Specifies the desired policy content on the cluster. Structure is documented below.
+        """
+        referential_rules_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        """
+elif False:
+    FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs:
@@ -2122,6 +2811,31 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs:
         pulumi.set(self, "referential_rules_enabled", value)
 
 
+if not MYPY:
+    class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgsDict(TypedDict):
+        component_name: pulumi.Input[str]
+        """
+        The name of the component. One of `admission` `audit` or `mutation`
+        """
+        container_resources: NotRequired[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgsDict']]
+        """
+        Container resource requirements.
+        """
+        pod_affinity: NotRequired[pulumi.Input[str]]
+        """
+        Pod affinity configuration. Possible values: AFFINITY_UNSPECIFIED, NO_AFFINITY, ANTI_AFFINITY
+        """
+        pod_tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgsDict']]]]
+        """
+        Pod tolerations of node taints.
+        """
+        replica_count: NotRequired[pulumi.Input[int]]
+        """
+        Pod replica count.
+        """
+elif False:
+    FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs:
     def __init__(__self__, *,
@@ -2208,6 +2922,19 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
         pulumi.set(self, "replica_count", value)
 
 
+if not MYPY:
+    class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgsDict(TypedDict):
+        limits: NotRequired[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgsDict']]
+        """
+        Limits describes the maximum amount of compute resources allowed for use by the running container.
+        """
+        requests: NotRequired[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgsDict']]
+        """
+        Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+        """
+elif False:
+    FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs:
     def __init__(__self__, *,
@@ -2246,6 +2973,19 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
     def requests(self, value: Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs']]):
         pulumi.set(self, "requests", value)
 
+
+if not MYPY:
+    class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[str]]
+        """
+        CPU requirement expressed in Kubernetes resource units.
+        """
+        memory: NotRequired[pulumi.Input[str]]
+        """
+        Memory requirement expressed in Kubernetes resource units.
+        """
+elif False:
+    FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs:
@@ -2286,6 +3026,19 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
         pulumi.set(self, "memory", value)
 
 
+if not MYPY:
+    class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[str]]
+        """
+        CPU requirement expressed in Kubernetes resource units.
+        """
+        memory: NotRequired[pulumi.Input[str]]
+        """
+        Memory requirement expressed in Kubernetes resource units.
+        """
+elif False:
+    FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs:
     def __init__(__self__, *,
@@ -2324,6 +3077,27 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
     def memory(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "memory", value)
 
+
+if not MYPY:
+    class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgsDict(TypedDict):
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        Matches a taint effect.
+        """
+        key: NotRequired[pulumi.Input[str]]
+        """
+        Matches a taint key (not necessarily unique).
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        Matches a taint operator.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Matches a taint value.
+        """
+elif False:
+    FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs:
@@ -2396,6 +3170,15 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgsDict(TypedDict):
+        backends: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+        """
+elif False:
+    FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs:
     def __init__(__self__, *,
@@ -2418,6 +3201,19 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs:
     def backends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "backends", value)
 
+
+if not MYPY:
+    class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgsDict(TypedDict):
+        bundles: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgsDict']]]]
+        """
+        map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
+        """
+        template_library: NotRequired[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgsDict']]
+        """
+        Configures the installation of the Template Library. Structure is documented below.
+        """
+elif False:
+    FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs:
@@ -2458,6 +3254,19 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArg
         pulumi.set(self, "template_library", value)
 
 
+if not MYPY:
+    class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgsDict(TypedDict):
+        bundle_name: pulumi.Input[str]
+        """
+        The name of the bundle.
+        """
+        exempted_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The set of namespaces to be exempted from the bundle.
+        """
+elif False:
+    FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs:
     def __init__(__self__, *,
@@ -2496,6 +3305,15 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBun
         pulumi.set(self, "exempted_namespaces", value)
 
 
+if not MYPY:
+    class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgsDict(TypedDict):
+        installation: NotRequired[pulumi.Input[str]]
+        """
+        Configures the manner in which the template library is installed on the cluster. Must be one of `ALL`, `NOT_INSTALLED` or `INSTALLATION_UNSPECIFIED`. Defaults to `ALL`.
+        """
+elif False:
+    FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs:
     def __init__(__self__, *,
@@ -2518,6 +3336,22 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTem
     def installation(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "installation", value)
 
+
+if not MYPY:
+    class FeatureResourceStateArgsDict(TypedDict):
+        has_resources: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The "running state" of the Feature in this Hub.
+        Structure is documented below.
+        """
+elif False:
+    FeatureResourceStateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureResourceStateArgs:
@@ -2563,6 +3397,26 @@ class FeatureResourceStateArgs:
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
 
+
+if not MYPY:
+    class FeatureSpecArgsDict(TypedDict):
+        clusterupgrade: NotRequired[pulumi.Input['FeatureSpecClusterupgradeArgsDict']]
+        """
+        Clusterupgrade feature spec.
+        Structure is documented below.
+        """
+        fleetobservability: NotRequired[pulumi.Input['FeatureSpecFleetobservabilityArgsDict']]
+        """
+        Fleet Observability feature spec.
+        Structure is documented below.
+        """
+        multiclusteringress: NotRequired[pulumi.Input['FeatureSpecMulticlusteringressArgsDict']]
+        """
+        Multicluster Ingress-specific spec.
+        Structure is documented below.
+        """
+elif False:
+    FeatureSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureSpecArgs:
@@ -2625,6 +3479,25 @@ class FeatureSpecArgs:
         pulumi.set(self, "multiclusteringress", value)
 
 
+if not MYPY:
+    class FeatureSpecClusterupgradeArgsDict(TypedDict):
+        upstream_fleets: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Specified if other fleet should be considered as a source of upgrades. Currently, at most one upstream fleet is allowed. The fleet name should be either fleet project number or id.
+        """
+        gke_upgrade_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureSpecClusterupgradeGkeUpgradeOverrideArgsDict']]]]
+        """
+        Configuration overrides for individual upgrades.
+        Structure is documented below.
+        """
+        post_conditions: NotRequired[pulumi.Input['FeatureSpecClusterupgradePostConditionsArgsDict']]
+        """
+        Post conditions to override for the specified upgrade.
+        Structure is documented below.
+        """
+elif False:
+    FeatureSpecClusterupgradeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureSpecClusterupgradeArgs:
     def __init__(__self__, *,
@@ -2683,6 +3556,21 @@ class FeatureSpecClusterupgradeArgs:
         pulumi.set(self, "post_conditions", value)
 
 
+if not MYPY:
+    class FeatureSpecClusterupgradeGkeUpgradeOverrideArgsDict(TypedDict):
+        post_conditions: pulumi.Input['FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsArgsDict']
+        """
+        Post conditions to override for the specified upgrade.
+        Structure is documented below.
+        """
+        upgrade: pulumi.Input['FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgsDict']
+        """
+        Which upgrade to override.
+        Structure is documented below.
+        """
+elif False:
+    FeatureSpecClusterupgradeGkeUpgradeOverrideArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureSpecClusterupgradeGkeUpgradeOverrideArgs:
     def __init__(__self__, *,
@@ -2724,6 +3612,15 @@ class FeatureSpecClusterupgradeGkeUpgradeOverrideArgs:
         pulumi.set(self, "upgrade", value)
 
 
+if not MYPY:
+    class FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsArgsDict(TypedDict):
+        soaking: pulumi.Input[str]
+        """
+        Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+        """
+elif False:
+    FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsArgs:
     def __init__(__self__, *,
@@ -2745,6 +3642,19 @@ class FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsArgs:
     def soaking(self, value: pulumi.Input[str]):
         pulumi.set(self, "soaking", value)
 
+
+if not MYPY:
+    class FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the upgrade, e.g., "k8s_control_plane". It should be a valid upgrade name. It must not exceet 99 characters.
+        """
+        version: pulumi.Input[str]
+        """
+        Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
+        """
+elif False:
+    FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs:
@@ -2783,6 +3693,15 @@ class FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class FeatureSpecClusterupgradePostConditionsArgsDict(TypedDict):
+        soaking: pulumi.Input[str]
+        """
+        Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+        """
+elif False:
+    FeatureSpecClusterupgradePostConditionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureSpecClusterupgradePostConditionsArgs:
     def __init__(__self__, *,
@@ -2804,6 +3723,16 @@ class FeatureSpecClusterupgradePostConditionsArgs:
     def soaking(self, value: pulumi.Input[str]):
         pulumi.set(self, "soaking", value)
 
+
+if not MYPY:
+    class FeatureSpecFleetobservabilityArgsDict(TypedDict):
+        logging_config: NotRequired[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgsDict']]
+        """
+        Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+        Structure is documented below.
+        """
+elif False:
+    FeatureSpecFleetobservabilityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureSpecFleetobservabilityArgs:
@@ -2829,6 +3758,21 @@ class FeatureSpecFleetobservabilityArgs:
     def logging_config(self, value: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgs']]):
         pulumi.set(self, "logging_config", value)
 
+
+if not MYPY:
+    class FeatureSpecFleetobservabilityLoggingConfigArgsDict(TypedDict):
+        default_config: NotRequired[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgsDict']]
+        """
+        Specified if applying the default routing config to logs not specified in other configs.
+        Structure is documented below.
+        """
+        fleet_scope_logs_config: NotRequired[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgsDict']]
+        """
+        Specified if applying the routing config to all logs for all fleet scopes.
+        Structure is documented below.
+        """
+elif False:
+    FeatureSpecFleetobservabilityLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureSpecFleetobservabilityLoggingConfigArgs:
@@ -2873,6 +3817,16 @@ class FeatureSpecFleetobservabilityLoggingConfigArgs:
         pulumi.set(self, "fleet_scope_logs_config", value)
 
 
+if not MYPY:
+    class FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Specified if fleet logging feature is enabled.
+        Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
+        """
+elif False:
+    FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs:
     def __init__(__self__, *,
@@ -2897,6 +3851,16 @@ class FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs:
     def mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mode", value)
 
+
+if not MYPY:
+    class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Specified if fleet logging feature is enabled.
+        Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
+        """
+elif False:
+    FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs:
@@ -2923,6 +3887,15 @@ class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs:
         pulumi.set(self, "mode", value)
 
 
+if not MYPY:
+    class FeatureSpecMulticlusteringressArgsDict(TypedDict):
+        config_membership: pulumi.Input[str]
+        """
+        Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+        """
+elif False:
+    FeatureSpecMulticlusteringressArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureSpecMulticlusteringressArgs:
     def __init__(__self__, *,
@@ -2944,6 +3917,17 @@ class FeatureSpecMulticlusteringressArgs:
     def config_membership(self, value: pulumi.Input[str]):
         pulumi.set(self, "config_membership", value)
 
+
+if not MYPY:
+    class FeatureStateArgsDict(TypedDict):
+        states: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArgsDict']]]]
+        """
+        (Output)
+        Output only. The "running state" of the Feature in this Hub.
+        Structure is documented below.
+        """
+elif False:
+    FeatureStateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureStateArgs:
@@ -2971,6 +3955,26 @@ class FeatureStateArgs:
     def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArgs']]]]):
         pulumi.set(self, "states", value)
 
+
+if not MYPY:
+    class FeatureStateStateArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The high-level, machine-readable status of this Feature.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A human-readable description of the current status.
+        """
+        update_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        """
+elif False:
+    FeatureStateStateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureStateStateArgs:
@@ -3033,6 +4037,21 @@ class FeatureStateStateArgs:
         pulumi.set(self, "update_time", value)
 
 
+if not MYPY:
+    class FleetDefaultClusterConfigArgsDict(TypedDict):
+        binary_authorization_config: NotRequired[pulumi.Input['FleetDefaultClusterConfigBinaryAuthorizationConfigArgsDict']]
+        """
+        Enable/Disable binary authorization features for the cluster.
+        Structure is documented below.
+        """
+        security_posture_config: NotRequired[pulumi.Input['FleetDefaultClusterConfigSecurityPostureConfigArgsDict']]
+        """
+        Enable/Disable Security Posture features for the cluster.
+        Structure is documented below.
+        """
+elif False:
+    FleetDefaultClusterConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FleetDefaultClusterConfigArgs:
     def __init__(__self__, *,
@@ -3075,6 +4094,21 @@ class FleetDefaultClusterConfigArgs:
     def security_posture_config(self, value: Optional[pulumi.Input['FleetDefaultClusterConfigSecurityPostureConfigArgs']]):
         pulumi.set(self, "security_posture_config", value)
 
+
+if not MYPY:
+    class FleetDefaultClusterConfigBinaryAuthorizationConfigArgsDict(TypedDict):
+        evaluation_mode: NotRequired[pulumi.Input[str]]
+        """
+        Mode of operation for binauthz policy evaluation.
+        Possible values are: `DISABLED`, `POLICY_BINDINGS`.
+        """
+        policy_bindings: NotRequired[pulumi.Input[Sequence[pulumi.Input['FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgsDict']]]]
+        """
+        Binauthz policies that apply to this cluster.
+        Structure is documented below.
+        """
+elif False:
+    FleetDefaultClusterConfigBinaryAuthorizationConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FleetDefaultClusterConfigBinaryAuthorizationConfigArgs:
@@ -3119,6 +4153,17 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfigArgs:
         pulumi.set(self, "policy_bindings", value)
 
 
+if not MYPY:
+    class FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The relative resource name of the binauthz platform policy to audit. GKE
+        platform policies have the following format:
+        `projects/{project_number}/platforms/gke/policies/{policy_id}`.
+        """
+elif False:
+    FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs:
     def __init__(__self__, *,
@@ -3145,6 +4190,21 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class FleetDefaultClusterConfigSecurityPostureConfigArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        Sets which mode to use for Security Posture features.
+        Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
+        """
+        vulnerability_mode: NotRequired[pulumi.Input[str]]
+        """
+        Sets which mode to use for vulnerability scanning.
+        Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC`, `VULNERABILITY_ENTERPRISE`.
+        """
+elif False:
+    FleetDefaultClusterConfigSecurityPostureConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FleetDefaultClusterConfigSecurityPostureConfigArgs:
@@ -3189,6 +4249,16 @@ class FleetDefaultClusterConfigSecurityPostureConfigArgs:
         pulumi.set(self, "vulnerability_mode", value)
 
 
+if not MYPY:
+    class FleetStateArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Describes the state of a Fleet resource.
+        """
+elif False:
+    FleetStateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FleetStateArgs:
     def __init__(__self__, *,
@@ -3214,6 +4284,12 @@ class FleetStateArgs:
         pulumi.set(self, "code", value)
 
 
+if not MYPY:
+    class MembershipAuthorityArgsDict(TypedDict):
+        issuer: pulumi.Input[str]
+elif False:
+    MembershipAuthorityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MembershipAuthorityArgs:
     def __init__(__self__, *,
@@ -3229,6 +4305,16 @@ class MembershipAuthorityArgs:
     def issuer(self, value: pulumi.Input[str]):
         pulumi.set(self, "issuer", value)
 
+
+if not MYPY:
+    class MembershipBindingStateArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Code describes the state of a MembershipBinding resource.
+        """
+elif False:
+    MembershipBindingStateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MembershipBindingStateArgs:
@@ -3255,6 +4341,16 @@ class MembershipBindingStateArgs:
         pulumi.set(self, "code", value)
 
 
+if not MYPY:
+    class MembershipEndpointArgsDict(TypedDict):
+        gke_cluster: NotRequired[pulumi.Input['MembershipEndpointGkeClusterArgsDict']]
+        """
+        If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
+        Structure is documented below.
+        """
+elif False:
+    MembershipEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MembershipEndpointArgs:
     def __init__(__self__, *,
@@ -3280,6 +4376,12 @@ class MembershipEndpointArgs:
         pulumi.set(self, "gke_cluster", value)
 
 
+if not MYPY:
+    class MembershipEndpointGkeClusterArgsDict(TypedDict):
+        resource_link: pulumi.Input[str]
+elif False:
+    MembershipEndpointGkeClusterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MembershipEndpointGkeClusterArgs:
     def __init__(__self__, *,
@@ -3295,6 +4397,14 @@ class MembershipEndpointGkeClusterArgs:
     def resource_link(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_link", value)
 
+
+if not MYPY:
+    class MembershipIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    MembershipIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MembershipIamBindingConditionArgs:
@@ -3335,6 +4445,14 @@ class MembershipIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class MembershipIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    MembershipIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MembershipIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -3374,6 +4492,18 @@ class MembershipIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class MembershipRbacRoleBindingRoleArgsDict(TypedDict):
+        predefined_role: pulumi.Input[str]
+        """
+        PredefinedRole is an ENUM representation of the default Kubernetes Roles
+        Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
+
+        - - -
+        """
+elif False:
+    MembershipRbacRoleBindingRoleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MembershipRbacRoleBindingRoleArgs:
     def __init__(__self__, *,
@@ -3402,6 +4532,16 @@ class MembershipRbacRoleBindingRoleArgs:
         pulumi.set(self, "predefined_role", value)
 
 
+if not MYPY:
+    class MembershipRbacRoleBindingStateArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Code describes the state of a RBAC Role Binding resource.
+        """
+elif False:
+    MembershipRbacRoleBindingStateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MembershipRbacRoleBindingStateArgs:
     def __init__(__self__, *,
@@ -3427,6 +4567,16 @@ class MembershipRbacRoleBindingStateArgs:
         pulumi.set(self, "code", value)
 
 
+if not MYPY:
+    class NamespaceStateArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Code describes the state of a Namespace resource.
+        """
+elif False:
+    NamespaceStateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NamespaceStateArgs:
     def __init__(__self__, *,
@@ -3451,6 +4601,14 @@ class NamespaceStateArgs:
     def code(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "code", value)
 
+
+if not MYPY:
+    class ScopeIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    ScopeIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ScopeIamBindingConditionArgs:
@@ -3491,6 +4649,14 @@ class ScopeIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class ScopeIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    ScopeIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ScopeIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -3530,6 +4696,18 @@ class ScopeIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class ScopeRbacRoleBindingRoleArgsDict(TypedDict):
+        predefined_role: NotRequired[pulumi.Input[str]]
+        """
+        PredefinedRole is an ENUM representation of the default Kubernetes Roles
+        Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+
+        - - -
+        """
+elif False:
+    ScopeRbacRoleBindingRoleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ScopeRbacRoleBindingRoleArgs:
     def __init__(__self__, *,
@@ -3559,6 +4737,16 @@ class ScopeRbacRoleBindingRoleArgs:
         pulumi.set(self, "predefined_role", value)
 
 
+if not MYPY:
+    class ScopeRbacRoleBindingStateArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Code describes the state of a RBAC Role Binding resource.
+        """
+elif False:
+    ScopeRbacRoleBindingStateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ScopeRbacRoleBindingStateArgs:
     def __init__(__self__, *,
@@ -3583,6 +4771,16 @@ class ScopeRbacRoleBindingStateArgs:
     def code(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "code", value)
 
+
+if not MYPY:
+    class ScopeStateArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Code describes the state of a Scope resource.
+        """
+elif False:
+    ScopeStateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ScopeStateArgs:

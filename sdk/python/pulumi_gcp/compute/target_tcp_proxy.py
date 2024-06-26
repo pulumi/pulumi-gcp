@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['TargetTCPProxyArgs', 'TargetTCPProxy']
@@ -357,9 +362,9 @@ class TargetTCPProxy(pulumi.CustomResource):
             name="health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=443,
-            ))
+            tcp_health_check={
+                "port": 443,
+            })
         default_backend_service = gcp.compute.BackendService("default",
             name="backend-service",
             protocol="TCP",
@@ -446,9 +451,9 @@ class TargetTCPProxy(pulumi.CustomResource):
             name="health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=443,
-            ))
+            tcp_health_check={
+                "port": 443,
+            })
         default_backend_service = gcp.compute.BackendService("default",
             name="backend-service",
             protocol="TCP",

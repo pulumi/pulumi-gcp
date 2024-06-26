@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -1217,15 +1222,15 @@ class InstanceFromMachineImage(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageAdvancedMachineFeaturesArgs']]] = None,
+                 advanced_machine_features: Optional[pulumi.Input[Union['InstanceFromMachineImageAdvancedMachineFeaturesArgs', 'InstanceFromMachineImageAdvancedMachineFeaturesArgsDict']]] = None,
                  allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
-                 confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageConfidentialInstanceConfigArgs']]] = None,
+                 confidential_instance_config: Optional[pulumi.Input[Union['InstanceFromMachineImageConfidentialInstanceConfigArgs', 'InstanceFromMachineImageConfidentialInstanceConfigArgsDict']]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  desired_status: Optional[pulumi.Input[str]] = None,
                  enable_display: Optional[pulumi.Input[bool]] = None,
-                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageGuestAcceleratorArgs']]]]] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageGuestAcceleratorArgs', 'InstanceFromMachineImageGuestAcceleratorArgsDict']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -1233,16 +1238,16 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  metadata_startup_script: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkInterfaceArgs']]]]] = None,
-                 network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkPerformanceConfigArgs']]] = None,
-                 params: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageParamsArgs']]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageNetworkInterfaceArgs', 'InstanceFromMachineImageNetworkInterfaceArgsDict']]]]] = None,
+                 network_performance_config: Optional[pulumi.Input[Union['InstanceFromMachineImageNetworkPerformanceConfigArgs', 'InstanceFromMachineImageNetworkPerformanceConfigArgsDict']]] = None,
+                 params: Optional[pulumi.Input[Union['InstanceFromMachineImageParamsArgs', 'InstanceFromMachineImageParamsArgsDict']]] = None,
                  partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageReservationAffinityArgs']]] = None,
+                 reservation_affinity: Optional[pulumi.Input[Union['InstanceFromMachineImageReservationAffinityArgs', 'InstanceFromMachineImageReservationAffinityArgsDict']]] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
-                 scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageSchedulingArgs']]] = None,
-                 service_account: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageServiceAccountArgs']]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageShieldedInstanceConfigArgs']]] = None,
+                 scheduling: Optional[pulumi.Input[Union['InstanceFromMachineImageSchedulingArgs', 'InstanceFromMachineImageSchedulingArgsDict']]] = None,
+                 service_account: Optional[pulumi.Input[Union['InstanceFromMachineImageServiceAccountArgs', 'InstanceFromMachineImageServiceAccountArgsDict']]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[Union['InstanceFromMachineImageShieldedInstanceConfigArgs', 'InstanceFromMachineImageShieldedInstanceConfigArgsDict']]] = None,
                  source_machine_image: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -1275,15 +1280,15 @@ class InstanceFromMachineImage(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageAdvancedMachineFeaturesArgs']] advanced_machine_features: Controls for advanced machine-related behavior features.
+        :param pulumi.Input[Union['InstanceFromMachineImageAdvancedMachineFeaturesArgs', 'InstanceFromMachineImageAdvancedMachineFeaturesArgsDict']] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
-        :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageConfidentialInstanceConfigArgs']] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+        :param pulumi.Input[Union['InstanceFromMachineImageConfidentialInstanceConfigArgs', 'InstanceFromMachineImageConfidentialInstanceConfigArgsDict']] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
                to create.
         :param pulumi.Input[bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[str] description: A brief description of the resource.
         :param pulumi.Input[str] desired_status: Desired status of the instance. Either "RUNNING" or "TERMINATED".
         :param pulumi.Input[bool] enable_display: Whether the instance has virtual displays enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageGuestAcceleratorArgs', 'InstanceFromMachineImageGuestAcceleratorArgsDict']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
                labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
                exceed 253 characters. Changing this forces a new resource to be created.
@@ -1296,18 +1301,18 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[str] min_cpu_platform: The minimum CPU platform specified for the VM instance.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkInterfaceArgs']]]] network_interfaces: The networks attached to the instance.
-        :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageNetworkInterfaceArgs', 'InstanceFromMachineImageNetworkInterfaceArgsDict']]]] network_interfaces: The networks attached to the instance.
+        :param pulumi.Input[Union['InstanceFromMachineImageNetworkPerformanceConfigArgs', 'InstanceFromMachineImageNetworkPerformanceConfigArgsDict']] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
                default network performance configuration.
-        :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageParamsArgs']] params: Stores additional params passed with the request, but not persisted as part of resource payload.
+        :param pulumi.Input[Union['InstanceFromMachineImageParamsArgs', 'InstanceFromMachineImageParamsArgsDict']] params: Stores additional params passed with the request, but not persisted as part of resource payload.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] partner_metadata: Partner Metadata Map made available within the instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
                self_link nor project are provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
+        :param pulumi.Input[Union['InstanceFromMachineImageReservationAffinityArgs', 'InstanceFromMachineImageReservationAffinityArgsDict']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
-        :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageSchedulingArgs']] scheduling: The scheduling strategy being used by the instance.
-        :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageServiceAccountArgs']] service_account: The service account to attach to the instance.
-        :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageShieldedInstanceConfigArgs']] shielded_instance_config: The shielded vm config being used by the instance.
+        :param pulumi.Input[Union['InstanceFromMachineImageSchedulingArgs', 'InstanceFromMachineImageSchedulingArgsDict']] scheduling: The scheduling strategy being used by the instance.
+        :param pulumi.Input[Union['InstanceFromMachineImageServiceAccountArgs', 'InstanceFromMachineImageServiceAccountArgsDict']] service_account: The service account to attach to the instance.
+        :param pulumi.Input[Union['InstanceFromMachineImageShieldedInstanceConfigArgs', 'InstanceFromMachineImageShieldedInstanceConfigArgsDict']] shielded_instance_config: The shielded vm config being used by the instance.
         :param pulumi.Input[str] source_machine_image: Name or self link of a machine
                image to create the instance based on.
                
@@ -1369,15 +1374,15 @@ class InstanceFromMachineImage(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageAdvancedMachineFeaturesArgs']]] = None,
+                 advanced_machine_features: Optional[pulumi.Input[Union['InstanceFromMachineImageAdvancedMachineFeaturesArgs', 'InstanceFromMachineImageAdvancedMachineFeaturesArgsDict']]] = None,
                  allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
-                 confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageConfidentialInstanceConfigArgs']]] = None,
+                 confidential_instance_config: Optional[pulumi.Input[Union['InstanceFromMachineImageConfidentialInstanceConfigArgs', 'InstanceFromMachineImageConfidentialInstanceConfigArgsDict']]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  desired_status: Optional[pulumi.Input[str]] = None,
                  enable_display: Optional[pulumi.Input[bool]] = None,
-                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageGuestAcceleratorArgs']]]]] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageGuestAcceleratorArgs', 'InstanceFromMachineImageGuestAcceleratorArgsDict']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -1385,16 +1390,16 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  metadata_startup_script: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkInterfaceArgs']]]]] = None,
-                 network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkPerformanceConfigArgs']]] = None,
-                 params: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageParamsArgs']]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageNetworkInterfaceArgs', 'InstanceFromMachineImageNetworkInterfaceArgsDict']]]]] = None,
+                 network_performance_config: Optional[pulumi.Input[Union['InstanceFromMachineImageNetworkPerformanceConfigArgs', 'InstanceFromMachineImageNetworkPerformanceConfigArgsDict']]] = None,
+                 params: Optional[pulumi.Input[Union['InstanceFromMachineImageParamsArgs', 'InstanceFromMachineImageParamsArgsDict']]] = None,
                  partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageReservationAffinityArgs']]] = None,
+                 reservation_affinity: Optional[pulumi.Input[Union['InstanceFromMachineImageReservationAffinityArgs', 'InstanceFromMachineImageReservationAffinityArgsDict']]] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
-                 scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageSchedulingArgs']]] = None,
-                 service_account: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageServiceAccountArgs']]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageShieldedInstanceConfigArgs']]] = None,
+                 scheduling: Optional[pulumi.Input[Union['InstanceFromMachineImageSchedulingArgs', 'InstanceFromMachineImageSchedulingArgsDict']]] = None,
+                 service_account: Optional[pulumi.Input[Union['InstanceFromMachineImageServiceAccountArgs', 'InstanceFromMachineImageServiceAccountArgsDict']]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[Union['InstanceFromMachineImageShieldedInstanceConfigArgs', 'InstanceFromMachineImageShieldedInstanceConfigArgsDict']]] = None,
                  source_machine_image: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -1462,12 +1467,12 @@ class InstanceFromMachineImage(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageAdvancedMachineFeaturesArgs']]] = None,
+            advanced_machine_features: Optional[pulumi.Input[Union['InstanceFromMachineImageAdvancedMachineFeaturesArgs', 'InstanceFromMachineImageAdvancedMachineFeaturesArgsDict']]] = None,
             allow_stopping_for_update: Optional[pulumi.Input[bool]] = None,
-            attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageAttachedDiskArgs']]]]] = None,
-            boot_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageBootDiskArgs']]]]] = None,
+            attached_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageAttachedDiskArgs', 'InstanceFromMachineImageAttachedDiskArgsDict']]]]] = None,
+            boot_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageBootDiskArgs', 'InstanceFromMachineImageBootDiskArgsDict']]]]] = None,
             can_ip_forward: Optional[pulumi.Input[bool]] = None,
-            confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageConfidentialInstanceConfigArgs']]] = None,
+            confidential_instance_config: Optional[pulumi.Input[Union['InstanceFromMachineImageConfidentialInstanceConfigArgs', 'InstanceFromMachineImageConfidentialInstanceConfigArgsDict']]] = None,
             cpu_platform: Optional[pulumi.Input[str]] = None,
             current_status: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -1475,7 +1480,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             desired_status: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_display: Optional[pulumi.Input[bool]] = None,
-            guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageGuestAcceleratorArgs']]]]] = None,
+            guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageGuestAcceleratorArgs', 'InstanceFromMachineImageGuestAcceleratorArgsDict']]]]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -1486,19 +1491,19 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             metadata_startup_script: Optional[pulumi.Input[str]] = None,
             min_cpu_platform: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkInterfaceArgs']]]]] = None,
-            network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkPerformanceConfigArgs']]] = None,
-            params: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageParamsArgs']]] = None,
+            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageNetworkInterfaceArgs', 'InstanceFromMachineImageNetworkInterfaceArgsDict']]]]] = None,
+            network_performance_config: Optional[pulumi.Input[Union['InstanceFromMachineImageNetworkPerformanceConfigArgs', 'InstanceFromMachineImageNetworkPerformanceConfigArgsDict']]] = None,
+            params: Optional[pulumi.Input[Union['InstanceFromMachineImageParamsArgs', 'InstanceFromMachineImageParamsArgsDict']]] = None,
             partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageReservationAffinityArgs']]] = None,
+            reservation_affinity: Optional[pulumi.Input[Union['InstanceFromMachineImageReservationAffinityArgs', 'InstanceFromMachineImageReservationAffinityArgsDict']]] = None,
             resource_policies: Optional[pulumi.Input[str]] = None,
-            scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageSchedulingArgs']]] = None,
-            scratch_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageScratchDiskArgs']]]]] = None,
+            scheduling: Optional[pulumi.Input[Union['InstanceFromMachineImageSchedulingArgs', 'InstanceFromMachineImageSchedulingArgsDict']]] = None,
+            scratch_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageScratchDiskArgs', 'InstanceFromMachineImageScratchDiskArgsDict']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            service_account: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageServiceAccountArgs']]] = None,
-            shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceFromMachineImageShieldedInstanceConfigArgs']]] = None,
+            service_account: Optional[pulumi.Input[Union['InstanceFromMachineImageServiceAccountArgs', 'InstanceFromMachineImageServiceAccountArgsDict']]] = None,
+            shielded_instance_config: Optional[pulumi.Input[Union['InstanceFromMachineImageShieldedInstanceConfigArgs', 'InstanceFromMachineImageShieldedInstanceConfigArgsDict']]] = None,
             source_machine_image: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -1510,11 +1515,11 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageAdvancedMachineFeaturesArgs']] advanced_machine_features: Controls for advanced machine-related behavior features.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageAttachedDiskArgs']]]] attached_disks: List of disks attached to the instance
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageBootDiskArgs']]]] boot_disks: The boot disk for the instance.
+        :param pulumi.Input[Union['InstanceFromMachineImageAdvancedMachineFeaturesArgs', 'InstanceFromMachineImageAdvancedMachineFeaturesArgsDict']] advanced_machine_features: Controls for advanced machine-related behavior features.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageAttachedDiskArgs', 'InstanceFromMachineImageAttachedDiskArgsDict']]]] attached_disks: List of disks attached to the instance
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageBootDiskArgs', 'InstanceFromMachineImageBootDiskArgsDict']]]] boot_disks: The boot disk for the instance.
         :param pulumi.Input[bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
-        :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageConfidentialInstanceConfigArgs']] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
+        :param pulumi.Input[Union['InstanceFromMachineImageConfidentialInstanceConfigArgs', 'InstanceFromMachineImageConfidentialInstanceConfigArgsDict']] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
                to create.
         :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
         :param pulumi.Input[str] current_status: Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
@@ -1524,7 +1529,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[str] description: A brief description of the resource.
         :param pulumi.Input[str] desired_status: Desired status of the instance. Either "RUNNING" or "TERMINATED".
         :param pulumi.Input[bool] enable_display: Whether the instance has virtual displays enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageGuestAcceleratorArgs', 'InstanceFromMachineImageGuestAcceleratorArgsDict']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
                labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
                exceed 253 characters. Changing this forces a new resource to be created.
@@ -1540,21 +1545,21 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[str] min_cpu_platform: The minimum CPU platform specified for the VM instance.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkInterfaceArgs']]]] network_interfaces: The networks attached to the instance.
-        :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageNetworkInterfaceArgs', 'InstanceFromMachineImageNetworkInterfaceArgsDict']]]] network_interfaces: The networks attached to the instance.
+        :param pulumi.Input[Union['InstanceFromMachineImageNetworkPerformanceConfigArgs', 'InstanceFromMachineImageNetworkPerformanceConfigArgsDict']] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
                default network performance configuration.
-        :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageParamsArgs']] params: Stores additional params passed with the request, but not persisted as part of resource payload.
+        :param pulumi.Input[Union['InstanceFromMachineImageParamsArgs', 'InstanceFromMachineImageParamsArgsDict']] params: Stores additional params passed with the request, but not persisted as part of resource payload.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] partner_metadata: Partner Metadata Map made available within the instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
                self_link nor project are provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
+        :param pulumi.Input[Union['InstanceFromMachineImageReservationAffinityArgs', 'InstanceFromMachineImageReservationAffinityArgsDict']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
-        :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageSchedulingArgs']] scheduling: The scheduling strategy being used by the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageScratchDiskArgs']]]] scratch_disks: The scratch disks attached to the instance.
+        :param pulumi.Input[Union['InstanceFromMachineImageSchedulingArgs', 'InstanceFromMachineImageSchedulingArgsDict']] scheduling: The scheduling strategy being used by the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageScratchDiskArgs', 'InstanceFromMachineImageScratchDiskArgsDict']]]] scratch_disks: The scratch disks attached to the instance.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageServiceAccountArgs']] service_account: The service account to attach to the instance.
-        :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageShieldedInstanceConfigArgs']] shielded_instance_config: The shielded vm config being used by the instance.
+        :param pulumi.Input[Union['InstanceFromMachineImageServiceAccountArgs', 'InstanceFromMachineImageServiceAccountArgsDict']] service_account: The service account to attach to the instance.
+        :param pulumi.Input[Union['InstanceFromMachineImageShieldedInstanceConfigArgs', 'InstanceFromMachineImageShieldedInstanceConfigArgsDict']] shielded_instance_config: The shielded vm config being used by the instance.
         :param pulumi.Input[str] source_machine_image: Name or self link of a machine
                image to create the instance based on.
                

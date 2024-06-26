@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['SslCertArgs', 'SslCert']
@@ -274,9 +279,9 @@ class SslCert(pulumi.CustomResource):
         main = gcp.sql.DatabaseInstance("main",
             name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ))
+            settings={
+                "tier": "db-f1-micro",
+            })
         client_cert = gcp.sql.SslCert("client_cert",
             common_name="client-name",
             instance=main.name)
@@ -317,9 +322,9 @@ class SslCert(pulumi.CustomResource):
         main = gcp.sql.DatabaseInstance("main",
             name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
             database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ))
+            settings={
+                "tier": "db-f1-micro",
+            })
         client_cert = gcp.sql.SslCert("client_cert",
             common_name="client-name",
             instance=main.name)

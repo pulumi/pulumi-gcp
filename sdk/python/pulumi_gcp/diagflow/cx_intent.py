@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -536,10 +541,10 @@ class CxIntent(pulumi.CustomResource):
                  is_fallback: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxIntentParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxIntentParameterArgs', 'CxIntentParameterArgsDict']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
-                 training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxIntentTrainingPhraseArgs']]]]] = None,
+                 training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxIntentTrainingPhraseArgs', 'CxIntentTrainingPhraseArgsDict']]]]] = None,
                  __props__=None):
         """
         An intent represents a user's intent to interact with a conversational agent.
@@ -572,32 +577,32 @@ class CxIntent(pulumi.CustomResource):
             avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
-                enable_speech_adaptation=True,
-            ))
+            speech_to_text_settings={
+                "enableSpeechAdaptation": True,
+            })
         basic_intent = gcp.diagflow.CxIntent("basic_intent",
             parent=agent.id,
             display_name="Example",
             priority=1,
             description="Intent example",
-            training_phrases=[gcp.diagflow.CxIntentTrainingPhraseArgs(
-                parts=[
-                    gcp.diagflow.CxIntentTrainingPhrasePartArgs(
-                        text="training",
-                    ),
-                    gcp.diagflow.CxIntentTrainingPhrasePartArgs(
-                        text="phrase",
-                    ),
-                    gcp.diagflow.CxIntentTrainingPhrasePartArgs(
-                        text="example",
-                    ),
+            training_phrases=[{
+                "parts": [
+                    {
+                        "text": "training",
+                    },
+                    {
+                        "text": "phrase",
+                    },
+                    {
+                        "text": "example",
+                    },
                 ],
-                repeat_count=1,
-            )],
-            parameters=[gcp.diagflow.CxIntentParameterArgs(
-                id="param1",
-                entity_type="projects/-/locations/-/agents/-/entityTypes/sys.date",
-            )],
+                "repeatCount": 1,
+            }],
+            parameters=[{
+                "id": "param1",
+                "entityType": "projects/-/locations/-/agents/-/entityTypes/sys.date",
+            }],
             labels={
                 "label1": "value1",
                 "label2": "value2",
@@ -649,14 +654,14 @@ class CxIntent(pulumi.CustomResource):
         :param pulumi.Input[str] language_code: The language of the following fields in intent:
                Intent.training_phrases.parts.text
                If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxIntentParameterArgs']]]] parameters: The collection of parameters associated with the intent.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxIntentParameterArgs', 'CxIntentParameterArgsDict']]]] parameters: The collection of parameters associated with the intent.
                Structure is documented below.
         :param pulumi.Input[str] parent: The agent to create an intent for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[int] priority: The priority of this intent. Higher numbers represent higher priorities.
                If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the Normal priority in the console.
                If the supplied value is negative, the intent is ignored in runtime detect intent requests.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxIntentTrainingPhraseArgs']]]] training_phrases: The collection of training phrases the agent is trained on to identify the intent.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxIntentTrainingPhraseArgs', 'CxIntentTrainingPhraseArgsDict']]]] training_phrases: The collection of training phrases the agent is trained on to identify the intent.
                Structure is documented below.
         """
         ...
@@ -696,32 +701,32 @@ class CxIntent(pulumi.CustomResource):
             avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
-                enable_speech_adaptation=True,
-            ))
+            speech_to_text_settings={
+                "enableSpeechAdaptation": True,
+            })
         basic_intent = gcp.diagflow.CxIntent("basic_intent",
             parent=agent.id,
             display_name="Example",
             priority=1,
             description="Intent example",
-            training_phrases=[gcp.diagflow.CxIntentTrainingPhraseArgs(
-                parts=[
-                    gcp.diagflow.CxIntentTrainingPhrasePartArgs(
-                        text="training",
-                    ),
-                    gcp.diagflow.CxIntentTrainingPhrasePartArgs(
-                        text="phrase",
-                    ),
-                    gcp.diagflow.CxIntentTrainingPhrasePartArgs(
-                        text="example",
-                    ),
+            training_phrases=[{
+                "parts": [
+                    {
+                        "text": "training",
+                    },
+                    {
+                        "text": "phrase",
+                    },
+                    {
+                        "text": "example",
+                    },
                 ],
-                repeat_count=1,
-            )],
-            parameters=[gcp.diagflow.CxIntentParameterArgs(
-                id="param1",
-                entity_type="projects/-/locations/-/agents/-/entityTypes/sys.date",
-            )],
+                "repeatCount": 1,
+            }],
+            parameters=[{
+                "id": "param1",
+                "entityType": "projects/-/locations/-/agents/-/entityTypes/sys.date",
+            }],
             labels={
                 "label1": "value1",
                 "label2": "value2",
@@ -768,10 +773,10 @@ class CxIntent(pulumi.CustomResource):
                  is_fallback: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxIntentParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxIntentParameterArgs', 'CxIntentParameterArgsDict']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
-                 training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxIntentTrainingPhraseArgs']]]]] = None,
+                 training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxIntentTrainingPhraseArgs', 'CxIntentTrainingPhraseArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -818,11 +823,11 @@ class CxIntent(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             language_code: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxIntentParameterArgs']]]]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxIntentParameterArgs', 'CxIntentParameterArgsDict']]]]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxIntentTrainingPhraseArgs']]]]] = None) -> 'CxIntent':
+            training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxIntentTrainingPhraseArgs', 'CxIntentTrainingPhraseArgsDict']]]]] = None) -> 'CxIntent':
         """
         Get an existing CxIntent resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -858,7 +863,7 @@ class CxIntent(pulumi.CustomResource):
                If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
         :param pulumi.Input[str] name: The unique identifier of the intent.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxIntentParameterArgs']]]] parameters: The collection of parameters associated with the intent.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxIntentParameterArgs', 'CxIntentParameterArgsDict']]]] parameters: The collection of parameters associated with the intent.
                Structure is documented below.
         :param pulumi.Input[str] parent: The agent to create an intent for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -867,7 +872,7 @@ class CxIntent(pulumi.CustomResource):
                If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxIntentTrainingPhraseArgs']]]] training_phrases: The collection of training phrases the agent is trained on to identify the intent.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CxIntentTrainingPhraseArgs', 'CxIntentTrainingPhraseArgsDict']]]] training_phrases: The collection of training phrases the agent is trained on to identify the intent.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

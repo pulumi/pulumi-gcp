@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -488,7 +493,7 @@ class ObjectAccessControl(pulumi.CustomResource):
             entity_id: Optional[pulumi.Input[str]] = None,
             generation: Optional[pulumi.Input[int]] = None,
             object: Optional[pulumi.Input[str]] = None,
-            project_teams: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlProjectTeamArgs']]]]] = None,
+            project_teams: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectAccessControlProjectTeamArgs', 'ObjectAccessControlProjectTeamArgsDict']]]]] = None,
             role: Optional[pulumi.Input[str]] = None) -> 'ObjectAccessControl':
         """
         Get an existing ObjectAccessControl resource's state with the given name, id, and optional extra
@@ -512,7 +517,7 @@ class ObjectAccessControl(pulumi.CustomResource):
         :param pulumi.Input[str] entity_id: The ID for the entity
         :param pulumi.Input[int] generation: The content generation of the object, if applied to an object.
         :param pulumi.Input[str] object: The name of the object to apply the access control to.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlProjectTeamArgs']]]] project_teams: The project team associated with the entity
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectAccessControlProjectTeamArgs', 'ObjectAccessControlProjectTeamArgsDict']]]] project_teams: The project team associated with the entity
                Structure is documented below.
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`.
