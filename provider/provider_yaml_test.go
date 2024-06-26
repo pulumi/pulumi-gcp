@@ -34,6 +34,7 @@ import (
 	"github.com/pulumi/providertest/pulumitest/assertpreview"
 	"github.com/pulumi/providertest/pulumitest/opttest"
 	"github.com/pulumi/providertest/replay"
+	"github.com/pulumi/pulumi/sdk/v3/go/auto/optpreview"
 )
 
 func TestDNSRecordSetUpgrade(t *testing.T) {
@@ -949,4 +950,10 @@ func TestImport(t *testing.T) {
 			assertpreview.HasNoChanges(t, prevResult)
 		})
 	}
+}
+
+func TestFirestoreBackupScheduleNoPermadiff(t *testing.T) {
+	pt := pulumiTest(t, "test-programs/firestore-backup-schedule")
+	pt.Up()
+	pt.Preview(optpreview.ExpectNoChanges())
 }
