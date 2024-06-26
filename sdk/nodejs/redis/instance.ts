@@ -352,6 +352,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly maintenanceSchedules!: pulumi.Output<outputs.redis.InstanceMaintenanceSchedule[]>;
     /**
+     * The self service update maintenance version.
+     */
+    public readonly maintenanceVersion!: pulumi.Output<string>;
+    /**
      * Redis memory size in GiB.
      *
      *
@@ -501,6 +505,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["locationId"] = state ? state.locationId : undefined;
             resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
             resourceInputs["maintenanceSchedules"] = state ? state.maintenanceSchedules : undefined;
+            resourceInputs["maintenanceVersion"] = state ? state.maintenanceVersion : undefined;
             resourceInputs["memorySizeGb"] = state ? state.memorySizeGb : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodes"] = state ? state.nodes : undefined;
@@ -535,6 +540,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["locationId"] = args ? args.locationId : undefined;
             resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
+            resourceInputs["maintenanceVersion"] = args ? args.maintenanceVersion : undefined;
             resourceInputs["memorySizeGb"] = args ? args.memorySizeGb : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["persistenceConfig"] = args ? args.persistenceConfig : undefined;
@@ -657,6 +663,10 @@ export interface InstanceState {
      * Structure is documented below.
      */
     maintenanceSchedules?: pulumi.Input<pulumi.Input<inputs.redis.InstanceMaintenanceSchedule>[]>;
+    /**
+     * The self service update maintenance version.
+     */
+    maintenanceVersion?: pulumi.Input<string>;
     /**
      * Redis memory size in GiB.
      *
@@ -837,6 +847,10 @@ export interface InstanceArgs {
      * Structure is documented below.
      */
     maintenancePolicy?: pulumi.Input<inputs.redis.InstanceMaintenancePolicy>;
+    /**
+     * The self service update maintenance version.
+     */
+    maintenanceVersion?: pulumi.Input<string>;
     /**
      * Redis memory size in GiB.
      *

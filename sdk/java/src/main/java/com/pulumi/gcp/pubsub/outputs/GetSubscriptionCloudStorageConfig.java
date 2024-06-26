@@ -52,6 +52,13 @@ public final class GetSubscriptionCloudStorageConfig {
      */
     private String maxDuration;
     /**
+     * @return The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+     * [service agent](https://cloud.google.com/iam/docs/service-agents),
+     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+     * 
+     */
+    private String serviceAccountEmail;
+    /**
      * @return An output-only field that indicates whether or not the subscription can receive messages.
      * 
      */
@@ -111,6 +118,15 @@ public final class GetSubscriptionCloudStorageConfig {
         return this.maxDuration;
     }
     /**
+     * @return The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+     * [service agent](https://cloud.google.com/iam/docs/service-agents),
+     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+     * 
+     */
+    public String serviceAccountEmail() {
+        return this.serviceAccountEmail;
+    }
+    /**
      * @return An output-only field that indicates whether or not the subscription can receive messages.
      * 
      */
@@ -134,6 +150,7 @@ public final class GetSubscriptionCloudStorageConfig {
         private String filenameSuffix;
         private Integer maxBytes;
         private String maxDuration;
+        private String serviceAccountEmail;
         private String state;
         public Builder() {}
         public Builder(GetSubscriptionCloudStorageConfig defaults) {
@@ -145,6 +162,7 @@ public final class GetSubscriptionCloudStorageConfig {
     	      this.filenameSuffix = defaults.filenameSuffix;
     	      this.maxBytes = defaults.maxBytes;
     	      this.maxDuration = defaults.maxDuration;
+    	      this.serviceAccountEmail = defaults.serviceAccountEmail;
     	      this.state = defaults.state;
         }
 
@@ -208,6 +226,14 @@ public final class GetSubscriptionCloudStorageConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceAccountEmail(String serviceAccountEmail) {
+            if (serviceAccountEmail == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionCloudStorageConfig", "serviceAccountEmail");
+            }
+            this.serviceAccountEmail = serviceAccountEmail;
+            return this;
+        }
+        @CustomType.Setter
         public Builder state(String state) {
             if (state == null) {
               throw new MissingRequiredPropertyException("GetSubscriptionCloudStorageConfig", "state");
@@ -224,6 +250,7 @@ public final class GetSubscriptionCloudStorageConfig {
             _resultValue.filenameSuffix = filenameSuffix;
             _resultValue.maxBytes = maxBytes;
             _resultValue.maxDuration = maxDuration;
+            _resultValue.serviceAccountEmail = serviceAccountEmail;
             _resultValue.state = state;
             return _resultValue;
         }

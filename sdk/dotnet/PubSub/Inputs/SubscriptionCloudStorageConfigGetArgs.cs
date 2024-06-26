@@ -59,6 +59,14 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public Input<string>? MaxDuration { get; set; }
 
         /// <summary>
+        /// The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+        /// [service agent](https://cloud.google.com/iam/docs/service-agents),
+        /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        /// </summary>
+        [Input("serviceAccountEmail")]
+        public Input<string>? ServiceAccountEmail { get; set; }
+
+        /// <summary>
         /// (Output)
         /// An output-only field that indicates whether or not the subscription can receive messages.
         /// </summary>

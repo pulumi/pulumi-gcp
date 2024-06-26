@@ -1114,6 +1114,10 @@ type SubscriptionBigqueryConfig struct {
 	// are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
 	// and any messages with extra fields are not written and remain in the subscription's backlog.
 	DropUnknownFields *bool `pulumi:"dropUnknownFields"`
+	// The service account to use to write to BigQuery. If not specified, the Pub/Sub
+	// [service agent](https://cloud.google.com/iam/docs/service-agents),
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
 	Table string `pulumi:"table"`
 	// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
@@ -1143,6 +1147,10 @@ type SubscriptionBigqueryConfigArgs struct {
 	// are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
 	// and any messages with extra fields are not written and remain in the subscription's backlog.
 	DropUnknownFields pulumi.BoolPtrInput `pulumi:"dropUnknownFields"`
+	// The service account to use to write to BigQuery. If not specified, the Pub/Sub
+	// [service agent](https://cloud.google.com/iam/docs/service-agents),
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
 	Table pulumi.StringInput `pulumi:"table"`
 	// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
@@ -1240,6 +1248,13 @@ func (o SubscriptionBigqueryConfigOutput) DropUnknownFields() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v SubscriptionBigqueryConfig) *bool { return v.DropUnknownFields }).(pulumi.BoolPtrOutput)
 }
 
+// The service account to use to write to BigQuery. If not specified, the Pub/Sub
+// [service agent](https://cloud.google.com/iam/docs/service-agents),
+// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o SubscriptionBigqueryConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionBigqueryConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
+}
+
 // The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
 func (o SubscriptionBigqueryConfigOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v SubscriptionBigqueryConfig) string { return v.Table }).(pulumi.StringOutput)
@@ -1297,6 +1312,18 @@ func (o SubscriptionBigqueryConfigPtrOutput) DropUnknownFields() pulumi.BoolPtrO
 		}
 		return v.DropUnknownFields
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The service account to use to write to BigQuery. If not specified, the Pub/Sub
+// [service agent](https://cloud.google.com/iam/docs/service-agents),
+// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o SubscriptionBigqueryConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionBigqueryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
 }
 
 // The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
@@ -1361,6 +1388,10 @@ type SubscriptionCloudStorageConfig struct {
 	// May not exceed the subscription's acknowledgement deadline.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	MaxDuration *string `pulumi:"maxDuration"`
+	// The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+	// [service agent](https://cloud.google.com/iam/docs/service-agents),
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// (Output)
 	// An output-only field that indicates whether or not the subscription can receive messages.
 	State *string `pulumi:"state"`
@@ -1396,6 +1427,10 @@ type SubscriptionCloudStorageConfigArgs struct {
 	// May not exceed the subscription's acknowledgement deadline.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	MaxDuration pulumi.StringPtrInput `pulumi:"maxDuration"`
+	// The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+	// [service agent](https://cloud.google.com/iam/docs/service-agents),
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// (Output)
 	// An output-only field that indicates whether or not the subscription can receive messages.
 	State pulumi.StringPtrInput `pulumi:"state"`
@@ -1517,6 +1552,13 @@ func (o SubscriptionCloudStorageConfigOutput) MaxDuration() pulumi.StringPtrOutp
 	return o.ApplyT(func(v SubscriptionCloudStorageConfig) *string { return v.MaxDuration }).(pulumi.StringPtrOutput)
 }
 
+// The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+// [service agent](https://cloud.google.com/iam/docs/service-agents),
+// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o SubscriptionCloudStorageConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionCloudStorageConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
+}
+
 // (Output)
 // An output-only field that indicates whether or not the subscription can receive messages.
 func (o SubscriptionCloudStorageConfigOutput) State() pulumi.StringPtrOutput {
@@ -1618,6 +1660,18 @@ func (o SubscriptionCloudStorageConfigPtrOutput) MaxDuration() pulumi.StringPtrO
 			return nil
 		}
 		return v.MaxDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+// [service agent](https://cloud.google.com/iam/docs/service-agents),
+// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o SubscriptionCloudStorageConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmail
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4276,6 +4330,10 @@ type GetSubscriptionBigqueryConfig struct {
 	// are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
 	// and any messages with extra fields are not written and remain in the subscription's backlog.
 	DropUnknownFields bool `pulumi:"dropUnknownFields"`
+	// The service account to use to write to BigQuery. If not specified, the Pub/Sub
+	// [service agent](https://cloud.google.com/iam/docs/service-agents),
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
 	Table string `pulumi:"table"`
 	// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
@@ -4305,6 +4363,10 @@ type GetSubscriptionBigqueryConfigArgs struct {
 	// are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
 	// and any messages with extra fields are not written and remain in the subscription's backlog.
 	DropUnknownFields pulumi.BoolInput `pulumi:"dropUnknownFields"`
+	// The service account to use to write to BigQuery. If not specified, the Pub/Sub
+	// [service agent](https://cloud.google.com/iam/docs/service-agents),
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
 	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
 	Table pulumi.StringInput `pulumi:"table"`
 	// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
@@ -4376,6 +4438,13 @@ func (o GetSubscriptionBigqueryConfigOutput) DropUnknownFields() pulumi.BoolOutp
 	return o.ApplyT(func(v GetSubscriptionBigqueryConfig) bool { return v.DropUnknownFields }).(pulumi.BoolOutput)
 }
 
+// The service account to use to write to BigQuery. If not specified, the Pub/Sub
+// [service agent](https://cloud.google.com/iam/docs/service-agents),
+// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o GetSubscriptionBigqueryConfigOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionBigqueryConfig) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
 // The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
 func (o GetSubscriptionBigqueryConfigOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionBigqueryConfig) string { return v.Table }).(pulumi.StringOutput)
@@ -4437,6 +4506,10 @@ type GetSubscriptionCloudStorageConfig struct {
 	// May not exceed the subscription's acknowledgement deadline.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	MaxDuration string `pulumi:"maxDuration"`
+	// The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+	// [service agent](https://cloud.google.com/iam/docs/service-agents),
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 	// An output-only field that indicates whether or not the subscription can receive messages.
 	State string `pulumi:"state"`
 }
@@ -4470,6 +4543,10 @@ type GetSubscriptionCloudStorageConfigArgs struct {
 	// May not exceed the subscription's acknowledgement deadline.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	MaxDuration pulumi.StringInput `pulumi:"maxDuration"`
+	// The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+	// [service agent](https://cloud.google.com/iam/docs/service-agents),
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
 	// An output-only field that indicates whether or not the subscription can receive messages.
 	State pulumi.StringInput `pulumi:"state"`
 }
@@ -4563,6 +4640,13 @@ func (o GetSubscriptionCloudStorageConfigOutput) MaxBytes() pulumi.IntOutput {
 // A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 func (o GetSubscriptionCloudStorageConfigOutput) MaxDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) string { return v.MaxDuration }).(pulumi.StringOutput)
+}
+
+// The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+// [service agent](https://cloud.google.com/iam/docs/service-agents),
+// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o GetSubscriptionCloudStorageConfigOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }
 
 // An output-only field that indicates whether or not the subscription can receive messages.

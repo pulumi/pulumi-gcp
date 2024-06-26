@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
- *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                         .image("us-docker.pkg.dev/cloudrun/container/job")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
- *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                         .image("us-docker.pkg.dev/cloudrun/container/job")
  *                         .resources(JobTemplateTemplateContainerResourcesArgs.builder()
  *                             .limits(Map.ofEntries(
  *                                 Map.entry("cpu", "2"),
@@ -198,7 +198,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .build())
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
- *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                         .image("us-docker.pkg.dev/cloudrun/container/job")
  *                         .envs(                        
  *                             JobTemplateTemplateContainerEnvArgs.builder()
  *                                 .name("FOO")
@@ -306,7 +306,7 @@ import javax.annotation.Nullable;
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
- *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                         .image("us-docker.pkg.dev/cloudrun/container/job")
  *                         .build())
  *                     .vpcAccess(JobTemplateTemplateVpcAccessArgs.builder()
  *                         .connector(connector.id())
@@ -455,7 +455,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .build())
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
- *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                         .image("us-docker.pkg.dev/cloudrun/container/job")
  *                         .volumeMounts(JobTemplateTemplateContainerVolumeMountArgs.builder()
  *                             .name("a-volume")
  *                             .mountPath("/secrets")
@@ -508,7 +508,7 @@ import javax.annotation.Nullable;
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
- *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                         .image("us-docker.pkg.dev/cloudrun/container/job")
  *                         .volumeMounts(JobTemplateTemplateContainerVolumeMountArgs.builder()
  *                             .name("empty-dir-volume")
  *                             .mountPath("/mnt")
@@ -520,6 +520,51 @@ import javax.annotation.Nullable;
  *                             .medium("MEMORY")
  *                             .sizeLimit("128Mi")
  *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Cloudrunv2 Job Run Job
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Job;
+ * import com.pulumi.gcp.cloudrunv2.JobArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Job("default", JobArgs.builder()
+ *             .name("cloudrun-job")
+ *             .location("us-central1")
+ *             .startExecutionToken("start-once-created")
+ *             .template(JobTemplateArgs.builder()
+ *                 .template(JobTemplateTemplateArgs.builder()
+ *                     .containers(JobTemplateTemplateContainerArgs.builder()
+ *                         .image("us-docker.pkg.dev/cloudrun/container/job")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -929,6 +974,38 @@ public class Job extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> reconciling() {
         return this.reconciling;
+    }
+    /**
+     * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+     * execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+     * 
+     */
+    @Export(name="runExecutionToken", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> runExecutionToken;
+
+    /**
+     * @return A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+     * execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+     * 
+     */
+    public Output<Optional<String>> runExecutionToken() {
+        return Codegen.optional(this.runExecutionToken);
+    }
+    /**
+     * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+     * execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+     * 
+     */
+    @Export(name="startExecutionToken", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> startExecutionToken;
+
+    /**
+     * @return A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+     * execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+     * 
+     */
+    public Output<Optional<String>> startExecutionToken() {
+        return Codegen.optional(this.startExecutionToken);
     }
     /**
      * The template used to create executions for this Job.

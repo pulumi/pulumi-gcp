@@ -191,6 +191,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The self service update maintenance version.
+     * 
+     */
+    @Import(name="maintenanceVersion")
+    private @Nullable Output<String> maintenanceVersion;
+
+    /**
+     * @return The self service update maintenance version.
+     * 
+     */
+    public Optional<Output<String>> maintenanceVersion() {
+        return Optional.ofNullable(this.maintenanceVersion);
+    }
+
+    /**
      * Redis memory size in GiB.
      * 
      * ***
@@ -459,6 +474,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.locationId = $.locationId;
         this.maintenancePolicy = $.maintenancePolicy;
+        this.maintenanceVersion = $.maintenanceVersion;
         this.memorySizeGb = $.memorySizeGb;
         this.name = $.name;
         this.persistenceConfig = $.persistenceConfig;
@@ -713,6 +729,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder maintenancePolicy(InstanceMaintenancePolicyArgs maintenancePolicy) {
             return maintenancePolicy(Output.of(maintenancePolicy));
+        }
+
+        /**
+         * @param maintenanceVersion The self service update maintenance version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceVersion(@Nullable Output<String> maintenanceVersion) {
+            $.maintenanceVersion = maintenanceVersion;
+            return this;
+        }
+
+        /**
+         * @param maintenanceVersion The self service update maintenance version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceVersion(String maintenanceVersion) {
+            return maintenanceVersion(Output.of(maintenanceVersion));
         }
 
         /**

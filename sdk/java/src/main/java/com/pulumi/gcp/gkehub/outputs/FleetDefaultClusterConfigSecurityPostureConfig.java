@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class FleetDefaultClusterConfigSecurityPostureConfig {
     /**
      * @return Sets which mode to use for Security Posture features.
-     * Possible values are: `DISABLED`, `BASIC`.
+     * Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
      * 
      */
     private @Nullable String mode;
@@ -27,7 +27,7 @@ public final class FleetDefaultClusterConfigSecurityPostureConfig {
     private FleetDefaultClusterConfigSecurityPostureConfig() {}
     /**
      * @return Sets which mode to use for Security Posture features.
-     * Possible values are: `DISABLED`, `BASIC`.
+     * Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
      * 
      */
     public Optional<String> mode() {

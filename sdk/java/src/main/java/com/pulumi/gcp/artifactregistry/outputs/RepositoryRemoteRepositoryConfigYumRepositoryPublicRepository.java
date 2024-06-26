@@ -17,7 +17,7 @@ public final class RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository
      */
     private String repositoryBase;
     /**
-     * @return Specific repository from the base, e.g. `&#34;centos/8-stream/BaseOS/x86_64/os&#34;`
+     * @return Specific repository from the base, e.g. `&#34;pub/rocky/9/BaseOS/x86_64/os&#34;`
      * 
      */
     private String repositoryPath;
@@ -32,7 +32,7 @@ public final class RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository
         return this.repositoryBase;
     }
     /**
-     * @return Specific repository from the base, e.g. `&#34;centos/8-stream/BaseOS/x86_64/os&#34;`
+     * @return Specific repository from the base, e.g. `&#34;pub/rocky/9/BaseOS/x86_64/os&#34;`
      * 
      */
     public String repositoryPath() {

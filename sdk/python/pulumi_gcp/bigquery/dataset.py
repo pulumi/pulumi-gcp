@@ -31,6 +31,7 @@ class DatasetArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  storage_billing_model: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Dataset resource.
@@ -109,6 +110,11 @@ class DatasetArgs:
         :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
+               in the namespaced format, for example "123456789012/environment" where 123456789012 is the
+               ID of the parent organization or project resource for this tag key. Tag value is expected
+               to be the short name, for example "Production". See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+               for more details.
         :param pulumi.Input[str] storage_billing_model: Specifies the storage billing model for the dataset.
                Set this flag value to LOGICAL to use logical bytes for storage billing,
                or to PHYSICAL to use physical bytes instead.
@@ -143,6 +149,8 @@ class DatasetArgs:
             pulumi.set(__self__, "max_time_travel_hours", max_time_travel_hours)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if resource_tags is not None:
+            pulumi.set(__self__, "resource_tags", resource_tags)
         if storage_billing_model is not None:
             pulumi.set(__self__, "storage_billing_model", storage_billing_model)
 
@@ -387,6 +395,22 @@ class DatasetArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="resourceTags")
+    def resource_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
+        in the namespaced format, for example "123456789012/environment" where 123456789012 is the
+        ID of the parent organization or project resource for this tag key. Tag value is expected
+        to be the short name, for example "Production". See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+        for more details.
+        """
+        return pulumi.get(self, "resource_tags")
+
+    @resource_tags.setter
+    def resource_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_tags", value)
+
+    @property
     @pulumi.getter(name="storageBillingModel")
     def storage_billing_model(self) -> Optional[pulumi.Input[str]]:
         """
@@ -425,6 +449,7 @@ class _DatasetState:
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  storage_billing_model: Optional[pulumi.Input[str]] = None):
         """
@@ -512,6 +537,11 @@ class _DatasetState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
+               in the namespaced format, for example "123456789012/environment" where 123456789012 is the
+               ID of the parent organization or project resource for this tag key. Tag value is expected
+               to be the short name, for example "Production". See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+               for more details.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] storage_billing_model: Specifies the storage billing model for the dataset.
                Set this flag value to LOGICAL to use logical bytes for storage billing,
@@ -558,6 +588,8 @@ class _DatasetState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if resource_tags is not None:
+            pulumi.set(__self__, "resource_tags", resource_tags)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if storage_billing_model is not None:
@@ -867,6 +899,22 @@ class _DatasetState:
         pulumi.set(self, "pulumi_labels", value)
 
     @property
+    @pulumi.getter(name="resourceTags")
+    def resource_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
+        in the namespaced format, for example "123456789012/environment" where 123456789012 is the
+        ID of the parent organization or project resource for this tag key. Tag value is expected
+        to be the short name, for example "Production". See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+        for more details.
+        """
+        return pulumi.get(self, "resource_tags")
+
+    @resource_tags.setter
+    def resource_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_tags", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -914,6 +962,7 @@ class Dataset(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  storage_billing_model: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -1189,6 +1238,11 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
+               in the namespaced format, for example "123456789012/environment" where 123456789012 is the
+               ID of the parent organization or project resource for this tag key. Tag value is expected
+               to be the short name, for example "Production". See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+               for more details.
         :param pulumi.Input[str] storage_billing_model: Specifies the storage billing model for the dataset.
                Set this flag value to LOGICAL to use logical bytes for storage billing,
                or to PHYSICAL to use physical bytes instead.
@@ -1426,6 +1480,7 @@ class Dataset(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  storage_billing_model: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1453,6 +1508,7 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["max_time_travel_hours"] = max_time_travel_hours
             __props__.__dict__["project"] = project
+            __props__.__dict__["resource_tags"] = resource_tags
             __props__.__dict__["storage_billing_model"] = storage_billing_model
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["effective_labels"] = None
@@ -1492,6 +1548,7 @@ class Dataset(pulumi.CustomResource):
             max_time_travel_hours: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             storage_billing_model: Optional[pulumi.Input[str]] = None) -> 'Dataset':
         """
@@ -1584,6 +1641,11 @@ class Dataset(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
+               in the namespaced format, for example "123456789012/environment" where 123456789012 is the
+               ID of the parent organization or project resource for this tag key. Tag value is expected
+               to be the short name, for example "Production". See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+               for more details.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] storage_billing_model: Specifies the storage billing model for the dataset.
                Set this flag value to LOGICAL to use logical bytes for storage billing,
@@ -1614,6 +1676,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["max_time_travel_hours"] = max_time_travel_hours
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["resource_tags"] = resource_tags
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["storage_billing_model"] = storage_billing_model
         return Dataset(resource_name, opts=opts, __props__=__props__)
@@ -1840,6 +1903,18 @@ class Dataset(pulumi.CustomResource):
         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @property
+    @pulumi.getter(name="resourceTags")
+    def resource_tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
+        in the namespaced format, for example "123456789012/environment" where 123456789012 is the
+        ID of the parent organization or project resource for this tag key. Tag value is expected
+        to be the short name, for example "Production". See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+        for more details.
+        """
+        return pulumi.get(self, "resource_tags")
 
     @property
     @pulumi.getter(name="selfLink")

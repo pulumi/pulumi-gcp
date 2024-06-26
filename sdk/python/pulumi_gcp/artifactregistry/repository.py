@@ -846,16 +846,16 @@ class Repository(pulumi.CustomResource):
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
             location="us-central1",
-            repository_id="centos-8",
+            repository_id="rocky-9",
             description="example remote yum repository",
             format="YUM",
             mode="REMOTE_REPOSITORY",
             remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="Centos 8 remote repository",
+                description="Rocky 9 remote repository",
                 yum_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigYumRepositoryArgs(
                     public_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs(
-                        repository_base="CENTOS",
-                        repository_path="centos/8-stream/BaseOS/x86_64/os",
+                        repository_base="ROCKY",
+                        repository_path="pub/rocky/9/BaseOS/x86_64/os",
                     ),
                 ),
             ))
@@ -1342,16 +1342,16 @@ class Repository(pulumi.CustomResource):
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
             location="us-central1",
-            repository_id="centos-8",
+            repository_id="rocky-9",
             description="example remote yum repository",
             format="YUM",
             mode="REMOTE_REPOSITORY",
             remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="Centos 8 remote repository",
+                description="Rocky 9 remote repository",
                 yum_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigYumRepositoryArgs(
                     public_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs(
-                        repository_base="CENTOS",
-                        repository_path="centos/8-stream/BaseOS/x86_64/os",
+                        repository_base="ROCKY",
+                        repository_path="pub/rocky/9/BaseOS/x86_64/os",
                     ),
                 ),
             ))

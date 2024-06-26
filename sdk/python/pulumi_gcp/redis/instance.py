@@ -26,6 +26,7 @@ class InstanceArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
+                 maintenance_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  persistence_config: Optional[pulumi.Input['InstancePersistenceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -70,6 +71,7 @@ class InstanceArgs:
                be different from [locationId].
         :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for an instance.
                Structure is documented below.
+        :param pulumi.Input[str] maintenance_version: The self service update maintenance version.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input['InstancePersistenceConfigArgs'] persistence_config: Persistence configuration for an instance.
                Structure is documented below.
@@ -131,6 +133,8 @@ class InstanceArgs:
             pulumi.set(__self__, "location_id", location_id)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if maintenance_version is not None:
+            pulumi.set(__self__, "maintenance_version", maintenance_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if persistence_config is not None:
@@ -295,6 +299,18 @@ class InstanceArgs:
     @maintenance_policy.setter
     def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
+
+    @property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The self service update maintenance version.
+        """
+        return pulumi.get(self, "maintenance_version")
+
+    @maintenance_version.setter
+    def maintenance_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_version", value)
 
     @property
     @pulumi.getter
@@ -488,6 +504,7 @@ class _InstanceState:
                  location_id: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
                  maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]] = None,
+                 maintenance_version: Optional[pulumi.Input[str]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]]] = None,
@@ -549,6 +566,7 @@ class _InstanceState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]] maintenance_schedules: Upcoming maintenance schedule.
                Structure is documented below.
+        :param pulumi.Input[str] maintenance_version: The self service update maintenance version.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
                
                
@@ -641,6 +659,8 @@ class _InstanceState:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if maintenance_schedules is not None:
             pulumi.set(__self__, "maintenance_schedules", maintenance_schedules)
+        if maintenance_version is not None:
+            pulumi.set(__self__, "maintenance_version", maintenance_version)
         if memory_size_gb is not None:
             pulumi.set(__self__, "memory_size_gb", memory_size_gb)
         if name is not None:
@@ -885,6 +905,18 @@ class _InstanceState:
     @maintenance_schedules.setter
     def maintenance_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]):
         pulumi.set(self, "maintenance_schedules", value)
+
+    @property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The self service update maintenance version.
+        """
+        return pulumi.get(self, "maintenance_version")
+
+    @maintenance_version.setter
+    def maintenance_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_version", value)
 
     @property
     @pulumi.getter(name="memorySizeGb")
@@ -1182,6 +1214,7 @@ class Instance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
+                 maintenance_version: Optional[pulumi.Input[str]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  persistence_config: Optional[pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']]] = None,
@@ -1440,6 +1473,7 @@ class Instance(pulumi.CustomResource):
                be different from [locationId].
         :param pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']] maintenance_policy: Maintenance policy for an instance.
                Structure is documented below.
+        :param pulumi.Input[str] maintenance_version: The self service update maintenance version.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
                
                
@@ -1732,6 +1766,7 @@ class Instance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
+                 maintenance_version: Optional[pulumi.Input[str]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  persistence_config: Optional[pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']]] = None,
@@ -1763,6 +1798,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location_id"] = location_id
             __props__.__dict__["maintenance_policy"] = maintenance_policy
+            __props__.__dict__["maintenance_version"] = maintenance_version
             if memory_size_gb is None and not opts.urn:
                 raise TypeError("Missing required property 'memory_size_gb'")
             __props__.__dict__["memory_size_gb"] = memory_size_gb
@@ -1818,6 +1854,7 @@ class Instance(pulumi.CustomResource):
             location_id: Optional[pulumi.Input[str]] = None,
             maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
             maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]]]] = None,
+            maintenance_version: Optional[pulumi.Input[str]] = None,
             memory_size_gb: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNodeArgs']]]]] = None,
@@ -1884,6 +1921,7 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]]] maintenance_schedules: Upcoming maintenance schedule.
                Structure is documented below.
+        :param pulumi.Input[str] maintenance_version: The self service update maintenance version.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
                
                
@@ -1965,6 +2003,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["location_id"] = location_id
         __props__.__dict__["maintenance_policy"] = maintenance_policy
         __props__.__dict__["maintenance_schedules"] = maintenance_schedules
+        __props__.__dict__["maintenance_version"] = maintenance_version
         __props__.__dict__["memory_size_gb"] = memory_size_gb
         __props__.__dict__["name"] = name
         __props__.__dict__["nodes"] = nodes
@@ -2130,6 +2169,14 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "maintenance_schedules")
+
+    @property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> pulumi.Output[str]:
+        """
+        The self service update maintenance version.
+        """
+        return pulumi.get(self, "maintenance_version")
 
     @property
     @pulumi.getter(name="memorySizeGb")

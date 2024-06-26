@@ -79,8 +79,8 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly authorizedNetworks!: pulumi.Output<string[] | undefined>;
     /**
-     * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-     * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+     * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
      *
      *
      * - - -
@@ -195,8 +195,8 @@ export interface DomainState {
      */
     authorizedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-     * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+     * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
      *
      *
      * - - -
@@ -258,8 +258,8 @@ export interface DomainArgs {
      */
     authorizedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-     * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+     * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
      *
      *
      * - - -

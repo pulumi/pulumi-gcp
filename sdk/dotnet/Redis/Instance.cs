@@ -437,6 +437,12 @@ namespace Pulumi.Gcp.Redis
         public Output<ImmutableArray<Outputs.InstanceMaintenanceSchedule>> MaintenanceSchedules { get; private set; } = null!;
 
         /// <summary>
+        /// The self service update maintenance version.
+        /// </summary>
+        [Output("maintenanceVersion")]
+        public Output<string> MaintenanceVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Redis memory size in GiB.
         /// 
         /// 
@@ -727,6 +733,12 @@ namespace Pulumi.Gcp.Redis
         public Input<Inputs.InstanceMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
 
         /// <summary>
+        /// The self service update maintenance version.
+        /// </summary>
+        [Input("maintenanceVersion")]
+        public Input<string>? MaintenanceVersion { get; set; }
+
+        /// <summary>
         /// Redis memory size in GiB.
         /// 
         /// 
@@ -995,6 +1007,12 @@ namespace Pulumi.Gcp.Redis
             get => _maintenanceSchedules ?? (_maintenanceSchedules = new InputList<Inputs.InstanceMaintenanceScheduleGetArgs>());
             set => _maintenanceSchedules = value;
         }
+
+        /// <summary>
+        /// The self service update maintenance version.
+        /// </summary>
+        [Input("maintenanceVersion")]
+        public Input<string>? MaintenanceVersion { get; set; }
 
         /// <summary>
         /// Redis memory size in GiB.

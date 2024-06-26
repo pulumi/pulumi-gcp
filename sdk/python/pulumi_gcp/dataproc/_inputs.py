@@ -96,6 +96,8 @@ __all__ = [
     'MetastoreServiceNetworkConfigArgs',
     'MetastoreServiceNetworkConfigConsumerArgs',
     'MetastoreServiceScalingConfigArgs',
+    'MetastoreServiceScalingConfigAutoscalingConfigArgs',
+    'MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs',
     'MetastoreServiceScheduledBackupArgs',
     'MetastoreServiceTelemetryConfigArgs',
     'WorkflowTemplateJobArgs',
@@ -5737,17 +5739,35 @@ class MetastoreServiceNetworkConfigConsumerArgs:
 @pulumi.input_type
 class MetastoreServiceScalingConfigArgs:
     def __init__(__self__, *,
+                 autoscaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigAutoscalingConfigArgs']] = None,
                  instance_size: Optional[pulumi.Input[str]] = None,
                  scaling_factor: Optional[pulumi.Input[float]] = None):
         """
+        :param pulumi.Input['MetastoreServiceScalingConfigAutoscalingConfigArgs'] autoscaling_config: Represents the autoscaling configuration of a metastore service.
+               Structure is documented below.
         :param pulumi.Input[str] instance_size: Metastore instance sizes.
                Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
         :param pulumi.Input[float] scaling_factor: Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
         """
+        if autoscaling_config is not None:
+            pulumi.set(__self__, "autoscaling_config", autoscaling_config)
         if instance_size is not None:
             pulumi.set(__self__, "instance_size", instance_size)
         if scaling_factor is not None:
             pulumi.set(__self__, "scaling_factor", scaling_factor)
+
+    @property
+    @pulumi.getter(name="autoscalingConfig")
+    def autoscaling_config(self) -> Optional[pulumi.Input['MetastoreServiceScalingConfigAutoscalingConfigArgs']]:
+        """
+        Represents the autoscaling configuration of a metastore service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_config")
+
+    @autoscaling_config.setter
+    def autoscaling_config(self, value: Optional[pulumi.Input['MetastoreServiceScalingConfigAutoscalingConfigArgs']]):
+        pulumi.set(self, "autoscaling_config", value)
 
     @property
     @pulumi.getter(name="instanceSize")
@@ -5773,6 +5793,86 @@ class MetastoreServiceScalingConfigArgs:
     @scaling_factor.setter
     def scaling_factor(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "scaling_factor", value)
+
+
+@pulumi.input_type
+class MetastoreServiceScalingConfigAutoscalingConfigArgs:
+    def __init__(__self__, *,
+                 autoscaling_enabled: Optional[pulumi.Input[bool]] = None,
+                 limit_config: Optional[pulumi.Input['MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs']] = None):
+        """
+        :param pulumi.Input[bool] autoscaling_enabled: Defines whether autoscaling is enabled. The default value is false.
+        :param pulumi.Input['MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs'] limit_config: Represents the limit configuration of a metastore service.
+               Structure is documented below.
+        """
+        if autoscaling_enabled is not None:
+            pulumi.set(__self__, "autoscaling_enabled", autoscaling_enabled)
+        if limit_config is not None:
+            pulumi.set(__self__, "limit_config", limit_config)
+
+    @property
+    @pulumi.getter(name="autoscalingEnabled")
+    def autoscaling_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether autoscaling is enabled. The default value is false.
+        """
+        return pulumi.get(self, "autoscaling_enabled")
+
+    @autoscaling_enabled.setter
+    def autoscaling_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "autoscaling_enabled", value)
+
+    @property
+    @pulumi.getter(name="limitConfig")
+    def limit_config(self) -> Optional[pulumi.Input['MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs']]:
+        """
+        Represents the limit configuration of a metastore service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "limit_config")
+
+    @limit_config.setter
+    def limit_config(self, value: Optional[pulumi.Input['MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs']]):
+        pulumi.set(self, "limit_config", value)
+
+
+@pulumi.input_type
+class MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs:
+    def __init__(__self__, *,
+                 max_scaling_factor: Optional[pulumi.Input[float]] = None,
+                 min_scaling_factor: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[float] max_scaling_factor: The maximum scaling factor that the service will autoscale to. The default value is 6.0.
+        :param pulumi.Input[float] min_scaling_factor: The minimum scaling factor that the service will autoscale to. The default value is 0.1.
+        """
+        if max_scaling_factor is not None:
+            pulumi.set(__self__, "max_scaling_factor", max_scaling_factor)
+        if min_scaling_factor is not None:
+            pulumi.set(__self__, "min_scaling_factor", min_scaling_factor)
+
+    @property
+    @pulumi.getter(name="maxScalingFactor")
+    def max_scaling_factor(self) -> Optional[pulumi.Input[float]]:
+        """
+        The maximum scaling factor that the service will autoscale to. The default value is 6.0.
+        """
+        return pulumi.get(self, "max_scaling_factor")
+
+    @max_scaling_factor.setter
+    def max_scaling_factor(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "max_scaling_factor", value)
+
+    @property
+    @pulumi.getter(name="minScalingFactor")
+    def min_scaling_factor(self) -> Optional[pulumi.Input[float]]:
+        """
+        The minimum scaling factor that the service will autoscale to. The default value is 0.1.
+        """
+        return pulumi.get(self, "min_scaling_factor")
+
+    @min_scaling_factor.setter
+    def min_scaling_factor(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "min_scaling_factor", value)
 
 
 @pulumi.input_type

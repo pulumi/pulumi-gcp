@@ -97,6 +97,8 @@ __all__ = [
     'MetastoreServiceNetworkConfig',
     'MetastoreServiceNetworkConfigConsumer',
     'MetastoreServiceScalingConfig',
+    'MetastoreServiceScalingConfigAutoscalingConfig',
+    'MetastoreServiceScalingConfigAutoscalingConfigLimitConfig',
     'MetastoreServiceScheduledBackup',
     'MetastoreServiceTelemetryConfig',
     'WorkflowTemplateJob',
@@ -166,6 +168,8 @@ __all__ = [
     'GetMetastoreServiceNetworkConfigResult',
     'GetMetastoreServiceNetworkConfigConsumerResult',
     'GetMetastoreServiceScalingConfigResult',
+    'GetMetastoreServiceScalingConfigAutoscalingConfigResult',
+    'GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigResult',
     'GetMetastoreServiceScheduledBackupResult',
     'GetMetastoreServiceTelemetryConfigResult',
 ]
@@ -6099,7 +6103,9 @@ class MetastoreServiceScalingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "instanceSize":
+        if key == "autoscalingConfig":
+            suggest = "autoscaling_config"
+        elif key == "instanceSize":
             suggest = "instance_size"
         elif key == "scalingFactor":
             suggest = "scaling_factor"
@@ -6116,17 +6122,31 @@ class MetastoreServiceScalingConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 autoscaling_config: Optional['outputs.MetastoreServiceScalingConfigAutoscalingConfig'] = None,
                  instance_size: Optional[str] = None,
                  scaling_factor: Optional[float] = None):
         """
+        :param 'MetastoreServiceScalingConfigAutoscalingConfigArgs' autoscaling_config: Represents the autoscaling configuration of a metastore service.
+               Structure is documented below.
         :param str instance_size: Metastore instance sizes.
                Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
         :param float scaling_factor: Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
         """
+        if autoscaling_config is not None:
+            pulumi.set(__self__, "autoscaling_config", autoscaling_config)
         if instance_size is not None:
             pulumi.set(__self__, "instance_size", instance_size)
         if scaling_factor is not None:
             pulumi.set(__self__, "scaling_factor", scaling_factor)
+
+    @property
+    @pulumi.getter(name="autoscalingConfig")
+    def autoscaling_config(self) -> Optional['outputs.MetastoreServiceScalingConfigAutoscalingConfig']:
+        """
+        Represents the autoscaling configuration of a metastore service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_config")
 
     @property
     @pulumi.getter(name="instanceSize")
@@ -6144,6 +6164,108 @@ class MetastoreServiceScalingConfig(dict):
         Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
         """
         return pulumi.get(self, "scaling_factor")
+
+
+@pulumi.output_type
+class MetastoreServiceScalingConfigAutoscalingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoscalingEnabled":
+            suggest = "autoscaling_enabled"
+        elif key == "limitConfig":
+            suggest = "limit_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetastoreServiceScalingConfigAutoscalingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetastoreServiceScalingConfigAutoscalingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetastoreServiceScalingConfigAutoscalingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 autoscaling_enabled: Optional[bool] = None,
+                 limit_config: Optional['outputs.MetastoreServiceScalingConfigAutoscalingConfigLimitConfig'] = None):
+        """
+        :param bool autoscaling_enabled: Defines whether autoscaling is enabled. The default value is false.
+        :param 'MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs' limit_config: Represents the limit configuration of a metastore service.
+               Structure is documented below.
+        """
+        if autoscaling_enabled is not None:
+            pulumi.set(__self__, "autoscaling_enabled", autoscaling_enabled)
+        if limit_config is not None:
+            pulumi.set(__self__, "limit_config", limit_config)
+
+    @property
+    @pulumi.getter(name="autoscalingEnabled")
+    def autoscaling_enabled(self) -> Optional[bool]:
+        """
+        Defines whether autoscaling is enabled. The default value is false.
+        """
+        return pulumi.get(self, "autoscaling_enabled")
+
+    @property
+    @pulumi.getter(name="limitConfig")
+    def limit_config(self) -> Optional['outputs.MetastoreServiceScalingConfigAutoscalingConfigLimitConfig']:
+        """
+        Represents the limit configuration of a metastore service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "limit_config")
+
+
+@pulumi.output_type
+class MetastoreServiceScalingConfigAutoscalingConfigLimitConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxScalingFactor":
+            suggest = "max_scaling_factor"
+        elif key == "minScalingFactor":
+            suggest = "min_scaling_factor"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetastoreServiceScalingConfigAutoscalingConfigLimitConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetastoreServiceScalingConfigAutoscalingConfigLimitConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetastoreServiceScalingConfigAutoscalingConfigLimitConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_scaling_factor: Optional[float] = None,
+                 min_scaling_factor: Optional[float] = None):
+        """
+        :param float max_scaling_factor: The maximum scaling factor that the service will autoscale to. The default value is 6.0.
+        :param float min_scaling_factor: The minimum scaling factor that the service will autoscale to. The default value is 0.1.
+        """
+        if max_scaling_factor is not None:
+            pulumi.set(__self__, "max_scaling_factor", max_scaling_factor)
+        if min_scaling_factor is not None:
+            pulumi.set(__self__, "min_scaling_factor", min_scaling_factor)
+
+    @property
+    @pulumi.getter(name="maxScalingFactor")
+    def max_scaling_factor(self) -> Optional[float]:
+        """
+        The maximum scaling factor that the service will autoscale to. The default value is 6.0.
+        """
+        return pulumi.get(self, "max_scaling_factor")
+
+    @property
+    @pulumi.getter(name="minScalingFactor")
+    def min_scaling_factor(self) -> Optional[float]:
+        """
+        The minimum scaling factor that the service will autoscale to. The default value is 0.1.
+        """
+        return pulumi.get(self, "min_scaling_factor")
 
 
 @pulumi.output_type
@@ -10596,14 +10718,25 @@ class GetMetastoreServiceNetworkConfigConsumerResult(dict):
 @pulumi.output_type
 class GetMetastoreServiceScalingConfigResult(dict):
     def __init__(__self__, *,
+                 autoscaling_configs: Sequence['outputs.GetMetastoreServiceScalingConfigAutoscalingConfigResult'],
                  instance_size: str,
                  scaling_factor: float):
         """
+        :param Sequence['GetMetastoreServiceScalingConfigAutoscalingConfigArgs'] autoscaling_configs: Represents the autoscaling configuration of a metastore service.
         :param str instance_size: Metastore instance sizes. Possible values: ["EXTRA_SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA_LARGE"]
         :param float scaling_factor: Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
         """
+        pulumi.set(__self__, "autoscaling_configs", autoscaling_configs)
         pulumi.set(__self__, "instance_size", instance_size)
         pulumi.set(__self__, "scaling_factor", scaling_factor)
+
+    @property
+    @pulumi.getter(name="autoscalingConfigs")
+    def autoscaling_configs(self) -> Sequence['outputs.GetMetastoreServiceScalingConfigAutoscalingConfigResult']:
+        """
+        Represents the autoscaling configuration of a metastore service.
+        """
+        return pulumi.get(self, "autoscaling_configs")
 
     @property
     @pulumi.getter(name="instanceSize")
@@ -10620,6 +10753,64 @@ class GetMetastoreServiceScalingConfigResult(dict):
         Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
         """
         return pulumi.get(self, "scaling_factor")
+
+
+@pulumi.output_type
+class GetMetastoreServiceScalingConfigAutoscalingConfigResult(dict):
+    def __init__(__self__, *,
+                 autoscaling_enabled: bool,
+                 limit_configs: Sequence['outputs.GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigResult']):
+        """
+        :param bool autoscaling_enabled: Defines whether autoscaling is enabled. The default value is false.
+        :param Sequence['GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs'] limit_configs: Represents the limit configuration of a metastore service.
+        """
+        pulumi.set(__self__, "autoscaling_enabled", autoscaling_enabled)
+        pulumi.set(__self__, "limit_configs", limit_configs)
+
+    @property
+    @pulumi.getter(name="autoscalingEnabled")
+    def autoscaling_enabled(self) -> bool:
+        """
+        Defines whether autoscaling is enabled. The default value is false.
+        """
+        return pulumi.get(self, "autoscaling_enabled")
+
+    @property
+    @pulumi.getter(name="limitConfigs")
+    def limit_configs(self) -> Sequence['outputs.GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigResult']:
+        """
+        Represents the limit configuration of a metastore service.
+        """
+        return pulumi.get(self, "limit_configs")
+
+
+@pulumi.output_type
+class GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigResult(dict):
+    def __init__(__self__, *,
+                 max_scaling_factor: float,
+                 min_scaling_factor: float):
+        """
+        :param float max_scaling_factor: The maximum scaling factor that the service will autoscale to. The default value is 6.0.
+        :param float min_scaling_factor: The minimum scaling factor that the service will autoscale to. The default value is 0.1.
+        """
+        pulumi.set(__self__, "max_scaling_factor", max_scaling_factor)
+        pulumi.set(__self__, "min_scaling_factor", min_scaling_factor)
+
+    @property
+    @pulumi.getter(name="maxScalingFactor")
+    def max_scaling_factor(self) -> float:
+        """
+        The maximum scaling factor that the service will autoscale to. The default value is 6.0.
+        """
+        return pulumi.get(self, "max_scaling_factor")
+
+    @property
+    @pulumi.getter(name="minScalingFactor")
+    def min_scaling_factor(self) -> float:
+        """
+        The minimum scaling factor that the service will autoscale to. The default value is 0.1.
+        """
+        return pulumi.get(self, "min_scaling_factor")
 
 
 @pulumi.output_type

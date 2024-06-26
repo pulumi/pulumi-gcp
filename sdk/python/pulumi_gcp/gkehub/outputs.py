@@ -3147,7 +3147,7 @@ class FleetDefaultClusterConfigSecurityPostureConfig(dict):
                  vulnerability_mode: Optional[str] = None):
         """
         :param str mode: Sets which mode to use for Security Posture features.
-               Possible values are: `DISABLED`, `BASIC`.
+               Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
         :param str vulnerability_mode: Sets which mode to use for vulnerability scanning.
                Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC`, `VULNERABILITY_ENTERPRISE`.
         """
@@ -3161,7 +3161,7 @@ class FleetDefaultClusterConfigSecurityPostureConfig(dict):
     def mode(self) -> Optional[str]:
         """
         Sets which mode to use for Security Posture features.
-        Possible values are: `DISABLED`, `BASIC`.
+        Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
         """
         return pulumi.get(self, "mode")
 

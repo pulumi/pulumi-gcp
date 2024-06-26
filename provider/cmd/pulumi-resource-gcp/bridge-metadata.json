@@ -8027,6 +8027,26 @@
                                             },
                                             "expr": {
                                                 "maxItemsOne": true
+                                            },
+                                            "expr_options": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "recaptcha_options": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "action_token_site_keys": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "session_token_site_keys": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -8107,6 +8127,26 @@
                                 },
                                 "expr": {
                                     "maxItemsOne": true
+                                },
+                                "expr_options": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "recaptcha_options": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "action_token_site_keys": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "session_token_site_keys": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -13799,7 +13839,21 @@
                         }
                     },
                     "scaling_config": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "autoscaling_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "limit_config": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "scheduled_backup": {
                         "maxItemsOne": true
@@ -24279,6 +24333,10 @@
                 "current": "gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain",
                 "majorVersion": 7
             },
+            "google_service_networking_vpc_service_controls": {
+                "current": "gcp:servicenetworking/vpcServiceControls:VpcServiceControls",
+                "majorVersion": 7
+            },
             "google_service_usage_consumer_quota_override": {
                 "current": "gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride",
                 "majorVersion": 7
@@ -25866,6 +25924,15 @@
                         "maxItemsOne": false
                     },
                     "workload_reference": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_artifact_registry_docker_image": {
+                "current": "gcp:artifactregistry/getDockerImage:getDockerImage",
+                "majorVersion": 7,
+                "fields": {
+                    "tags": {
                         "maxItemsOne": false
                     }
                 }
@@ -28513,6 +28580,26 @@
                                             },
                                             "expr": {
                                                 "maxItemsOne": false
+                                            },
+                                            "expr_options": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "recaptcha_options": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "action_token_site_keys": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "session_token_site_keys": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -29541,7 +29628,21 @@
                         }
                     },
                     "scaling_config": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "autoscaling_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "limit_config": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "scheduled_backup": {
                         "maxItemsOne": false
@@ -33095,6 +33196,7 @@
             "gcp:servicedirectory/serviceIamPolicy:ServiceIamPolicy": 0,
             "gcp:servicenetworking/connection:Connection": 0,
             "gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain": 0,
+            "gcp:servicenetworking/vpcServiceControls:VpcServiceControls": 0,
             "gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride": 0,
             "gcp:sourcerepo/repository:Repository": 0,
             "gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding": 0,
@@ -33204,6 +33306,7 @@
             "gcp:apphub/getApplication:getApplication": 0,
             "gcp:apphub/getDiscoveredService:getDiscoveredService": 0,
             "gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload": 0,
+            "gcp:artifactregistry/getDockerImage:getDockerImage": 0,
             "gcp:artifactregistry/getRepository:getRepository": 0,
             "gcp:artifactregistry/getRepositoryIamPolicy:getRepositoryIamPolicy": 0,
             "gcp:backupdisasterrecovery/getManagementServer:getManagementServer": 0,

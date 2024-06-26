@@ -23,8 +23,8 @@ class DomainArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Domain resource.
-        :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-               https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+               of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
                
                
                - - -
@@ -58,8 +58,8 @@ class DomainArgs:
     @pulumi.getter(name="domainName")
     def domain_name(self) -> pulumi.Input[str]:
         """
-        The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-        https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+        of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 
 
         - - -
@@ -170,8 +170,8 @@ class _DomainState:
                If not specified, setupadmin will be used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_networks: The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
                If CIDR subnets overlap between networks, domain creation will fail.
-        :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-               https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+               of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
                
                
                - - -
@@ -244,8 +244,8 @@ class _DomainState:
     @pulumi.getter(name="domainName")
     def domain_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-        https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+        of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 
 
         - - -
@@ -414,8 +414,8 @@ class Domain(pulumi.CustomResource):
                If not specified, setupadmin will be used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_networks: The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
                If CIDR subnets overlap between networks, domain creation will fail.
-        :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-               https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+               of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
                
                
                - - -
@@ -552,8 +552,8 @@ class Domain(pulumi.CustomResource):
                If not specified, setupadmin will be used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_networks: The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
                If CIDR subnets overlap between networks, domain creation will fail.
-        :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-               https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+               of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
                
                
                - - -
@@ -612,8 +612,8 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="domainName")
     def domain_name(self) -> pulumi.Output[str]:
         """
-        The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-        https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+        of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 
 
         - - -

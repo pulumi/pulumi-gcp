@@ -132,6 +132,25 @@ public final class SubscriptionCloudStorageConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+     * [service agent](https://cloud.google.com/iam/docs/service-agents),
+     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+     * 
+     */
+    @Import(name="serviceAccountEmail")
+    private @Nullable Output<String> serviceAccountEmail;
+
+    /**
+     * @return The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+     * [service agent](https://cloud.google.com/iam/docs/service-agents),
+     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+     * 
+     */
+    public Optional<Output<String>> serviceAccountEmail() {
+        return Optional.ofNullable(this.serviceAccountEmail);
+    }
+
+    /**
      * (Output)
      * An output-only field that indicates whether or not the subscription can receive messages.
      * 
@@ -158,6 +177,7 @@ public final class SubscriptionCloudStorageConfigArgs extends com.pulumi.resourc
         this.filenameSuffix = $.filenameSuffix;
         this.maxBytes = $.maxBytes;
         this.maxDuration = $.maxDuration;
+        this.serviceAccountEmail = $.serviceAccountEmail;
         this.state = $.state;
     }
 
@@ -332,6 +352,31 @@ public final class SubscriptionCloudStorageConfigArgs extends com.pulumi.resourc
          */
         public Builder maxDuration(String maxDuration) {
             return maxDuration(Output.of(maxDuration));
+        }
+
+        /**
+         * @param serviceAccountEmail The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+         * [service agent](https://cloud.google.com/iam/docs/service-agents),
+         * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccountEmail(@Nullable Output<String> serviceAccountEmail) {
+            $.serviceAccountEmail = serviceAccountEmail;
+            return this;
+        }
+
+        /**
+         * @param serviceAccountEmail The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+         * [service agent](https://cloud.google.com/iam/docs/service-agents),
+         * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccountEmail(String serviceAccountEmail) {
+            return serviceAccountEmail(Output.of(serviceAccountEmail));
         }
 
         /**

@@ -294,6 +294,67 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Billing Budget Notify Project Recipient
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetBillingAccountArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.billing.Budget;
+ * import com.pulumi.gcp.billing.BudgetArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetBudgetFilterArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetAmountArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetAmountSpecifiedAmountArgs;
+ * import com.pulumi.gcp.billing.inputs.BudgetAllUpdatesRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var account = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
+ *             .billingAccount("000000-0000000-0000000-000000")
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var budget = new Budget("budget", BudgetArgs.builder()
+ *             .billingAccount(account.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+ *             .displayName("Example Billing Budget")
+ *             .budgetFilter(BudgetBudgetFilterArgs.builder()
+ *                 .projects(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .build())
+ *             .amount(BudgetAmountArgs.builder()
+ *                 .specifiedAmount(BudgetAmountSpecifiedAmountArgs.builder()
+ *                     .currencyCode("USD")
+ *                     .units("100000")
+ *                     .build())
+ *                 .build())
+ *             .allUpdatesRule(BudgetAllUpdatesRuleArgs.builder()
+ *                 .monitoringNotificationChannels()
+ *                 .enableProjectLevelRecipients(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Billing Budget Customperiod
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

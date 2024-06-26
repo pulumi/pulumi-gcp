@@ -44,6 +44,7 @@ public final class GetDatasetResult {
     private String maxTimeTravelHours;
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
+    private Map<String,String> resourceTags;
     private String selfLink;
     private String storageBillingModel;
 
@@ -115,6 +116,9 @@ public final class GetDatasetResult {
     public Map<String,String> pulumiLabels() {
         return this.pulumiLabels;
     }
+    public Map<String,String> resourceTags() {
+        return this.resourceTags;
+    }
     public String selfLink() {
         return this.selfLink;
     }
@@ -152,6 +156,7 @@ public final class GetDatasetResult {
         private String maxTimeTravelHours;
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
+        private Map<String,String> resourceTags;
         private String selfLink;
         private String storageBillingModel;
         public Builder() {}
@@ -178,6 +183,7 @@ public final class GetDatasetResult {
     	      this.maxTimeTravelHours = defaults.maxTimeTravelHours;
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
+    	      this.resourceTags = defaults.resourceTags;
     	      this.selfLink = defaults.selfLink;
     	      this.storageBillingModel = defaults.storageBillingModel;
         }
@@ -358,6 +364,14 @@ public final class GetDatasetResult {
             return this;
         }
         @CustomType.Setter
+        public Builder resourceTags(Map<String,String> resourceTags) {
+            if (resourceTags == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "resourceTags");
+            }
+            this.resourceTags = resourceTags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             if (selfLink == null) {
               throw new MissingRequiredPropertyException("GetDatasetResult", "selfLink");
@@ -396,6 +410,7 @@ public final class GetDatasetResult {
             _resultValue.maxTimeTravelHours = maxTimeTravelHours;
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.resourceTags = resourceTags;
             _resultValue.selfLink = selfLink;
             _resultValue.storageBillingModel = storageBillingModel;
             return _resultValue;

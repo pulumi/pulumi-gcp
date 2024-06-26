@@ -1660,7 +1660,7 @@ type RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository struct {
 	// A common public repository base for Yum.
 	// Possible values are: `CENTOS`, `CENTOS_DEBUG`, `CENTOS_VAULT`, `CENTOS_STREAM`, `ROCKY`, `EPEL`.
 	RepositoryBase string `pulumi:"repositoryBase"`
-	// Specific repository from the base, e.g. `"centos/8-stream/BaseOS/x86_64/os"`
+	// Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
 	RepositoryPath string `pulumi:"repositoryPath"`
 }
 
@@ -1679,7 +1679,7 @@ type RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs struct {
 	// A common public repository base for Yum.
 	// Possible values are: `CENTOS`, `CENTOS_DEBUG`, `CENTOS_VAULT`, `CENTOS_STREAM`, `ROCKY`, `EPEL`.
 	RepositoryBase pulumi.StringInput `pulumi:"repositoryBase"`
-	// Specific repository from the base, e.g. `"centos/8-stream/BaseOS/x86_64/os"`
+	// Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
 	RepositoryPath pulumi.StringInput `pulumi:"repositoryPath"`
 }
 
@@ -1766,7 +1766,7 @@ func (o RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryOutput) Rep
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository) string { return v.RepositoryBase }).(pulumi.StringOutput)
 }
 
-// Specific repository from the base, e.g. `"centos/8-stream/BaseOS/x86_64/os"`
+// Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
 func (o RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryOutput) RepositoryPath() pulumi.StringOutput {
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository) string { return v.RepositoryPath }).(pulumi.StringOutput)
 }
@@ -1806,7 +1806,7 @@ func (o RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specific repository from the base, e.g. `"centos/8-stream/BaseOS/x86_64/os"`
+// Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
 func (o RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput) RepositoryPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository) *string {
 		if v == nil {
@@ -3502,7 +3502,7 @@ type RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository struct {
 	// A common public repository base for Yum.
 	// Possible values are: `CENTOS`, `CENTOS_DEBUG`, `CENTOS_VAULT`, `CENTOS_STREAM`, `ROCKY`, `EPEL`.
 	RepositoryBase string `pulumi:"repositoryBase"`
-	// Specific repository from the base, e.g. `"centos/8-stream/BaseOS/x86_64/os"`
+	// Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
 	RepositoryPath string `pulumi:"repositoryPath"`
 }
 
@@ -3521,7 +3521,7 @@ type RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs struct {
 	// A common public repository base for Yum.
 	// Possible values are: `CENTOS`, `CENTOS_DEBUG`, `CENTOS_VAULT`, `CENTOS_STREAM`, `ROCKY`, `EPEL`.
 	RepositoryBase pulumi.StringInput `pulumi:"repositoryBase"`
-	// Specific repository from the base, e.g. `"centos/8-stream/BaseOS/x86_64/os"`
+	// Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
 	RepositoryPath pulumi.StringInput `pulumi:"repositoryPath"`
 }
 
@@ -3608,7 +3608,7 @@ func (o RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryOutput) Rep
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository) string { return v.RepositoryBase }).(pulumi.StringOutput)
 }
 
-// Specific repository from the base, e.g. `"centos/8-stream/BaseOS/x86_64/os"`
+// Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
 func (o RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryOutput) RepositoryPath() pulumi.StringOutput {
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository) string { return v.RepositoryPath }).(pulumi.StringOutput)
 }
@@ -3648,7 +3648,7 @@ func (o RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specific repository from the base, e.g. `"centos/8-stream/BaseOS/x86_64/os"`
+// Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
 func (o RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput) RepositoryPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository) *string {
 		if v == nil {
@@ -6035,7 +6035,7 @@ func (o GetRepositoryRemoteRepositoryConfigYumRepositoryArrayOutput) Index(i pul
 type GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository struct {
 	// A common public repository base for Yum. Possible values: ["CENTOS", "CENTOS_DEBUG", "CENTOS_VAULT", "CENTOS_STREAM", "ROCKY", "EPEL"]
 	RepositoryBase string `pulumi:"repositoryBase"`
-	// Specific repository from the base, e.g. '"centos/8-stream/BaseOS/x86_64/os"'
+	// Specific repository from the base, e.g. '"pub/rocky/9/BaseOS/x86_64/os"'
 	RepositoryPath string `pulumi:"repositoryPath"`
 }
 
@@ -6053,7 +6053,7 @@ type GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryInput inter
 type GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs struct {
 	// A common public repository base for Yum. Possible values: ["CENTOS", "CENTOS_DEBUG", "CENTOS_VAULT", "CENTOS_STREAM", "ROCKY", "EPEL"]
 	RepositoryBase pulumi.StringInput `pulumi:"repositoryBase"`
-	// Specific repository from the base, e.g. '"centos/8-stream/BaseOS/x86_64/os"'
+	// Specific repository from the base, e.g. '"pub/rocky/9/BaseOS/x86_64/os"'
 	RepositoryPath pulumi.StringInput `pulumi:"repositoryPath"`
 }
 
@@ -6115,7 +6115,7 @@ func (o GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryOutput) 
 	}).(pulumi.StringOutput)
 }
 
-// Specific repository from the base, e.g. '"centos/8-stream/BaseOS/x86_64/os"'
+// Specific repository from the base, e.g. '"pub/rocky/9/BaseOS/x86_64/os"'
 func (o GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryOutput) RepositoryPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository) string {
 		return v.RepositoryPath

@@ -20,6 +20,12 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// </summary>
         public readonly bool? DropUnknownFields;
         /// <summary>
+        /// The service account to use to write to BigQuery. If not specified, the Pub/Sub
+        /// [service agent](https://cloud.google.com/iam/docs/service-agents),
+        /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        /// </summary>
+        public readonly string? ServiceAccountEmail;
+        /// <summary>
         /// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
         /// </summary>
         public readonly string Table;
@@ -43,6 +49,8 @@ namespace Pulumi.Gcp.PubSub.Outputs
         private SubscriptionBigqueryConfig(
             bool? dropUnknownFields,
 
+            string? serviceAccountEmail,
+
             string table,
 
             bool? useTableSchema,
@@ -52,6 +60,7 @@ namespace Pulumi.Gcp.PubSub.Outputs
             bool? writeMetadata)
         {
             DropUnknownFields = dropUnknownFields;
+            ServiceAccountEmail = serviceAccountEmail;
             Table = table;
             UseTableSchema = useTableSchema;
             UseTopicSchema = useTopicSchema;

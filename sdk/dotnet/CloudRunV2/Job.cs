@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 {
     ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
     ///                     {
-    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/job",
     ///                     },
     ///                 },
     ///             },
@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 {
     ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
     ///                     {
-    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/job",
     ///                         Resources = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerResourcesArgs
     ///                         {
     ///                             Limits = 
@@ -147,7 +147,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 {
     ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
     ///                     {
-    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/job",
     ///                         Envs = new[]
     ///                         {
     ///                             new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerEnvArgs
@@ -254,7 +254,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 {
     ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
     ///                     {
-    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/job",
     ///                     },
     ///                 },
     ///                 VpcAccess = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVpcAccessArgs
@@ -390,7 +390,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 {
     ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
     ///                     {
-    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/job",
     ///                         VolumeMounts = new[]
     ///                         {
     ///                             new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerVolumeMountArgs
@@ -437,7 +437,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 {
     ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
     ///                     {
-    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/job",
     ///                         VolumeMounts = new[]
     ///                         {
     ///                             new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerVolumeMountArgs
@@ -458,6 +458,38 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                             Medium = "MEMORY",
     ///                             SizeLimit = "128Mi",
     ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudrunv2 Job Run Job
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Job("default", new()
+    ///     {
+    ///         Name = "cloudrun-job",
+    ///         Location = "us-central1",
+    ///         StartExecutionToken = "start-once-created",
+    ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
+    ///         {
+    ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
+    ///                     {
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/job",
     ///                     },
     ///                 },
     ///             },
@@ -659,6 +691,20 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
+        /// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+        /// execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+        /// </summary>
+        [Output("runExecutionToken")]
+        public Output<string?> RunExecutionToken { get; private set; } = null!;
+
+        /// <summary>
+        /// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+        /// execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+        /// </summary>
+        [Output("startExecutionToken")]
+        public Output<string?> StartExecutionToken { get; private set; } = null!;
+
+        /// <summary>
         /// The template used to create executions for this Job.
         /// Structure is documented below.
         /// </summary>
@@ -815,6 +861,20 @@ namespace Pulumi.Gcp.CloudRunV2
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+        /// execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+        /// </summary>
+        [Input("runExecutionToken")]
+        public Input<string>? RunExecutionToken { get; set; }
+
+        /// <summary>
+        /// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+        /// execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+        /// </summary>
+        [Input("startExecutionToken")]
+        public Input<string>? StartExecutionToken { get; set; }
 
         /// <summary>
         /// The template used to create executions for this Job.
@@ -1043,6 +1103,20 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("reconciling")]
         public Input<bool>? Reconciling { get; set; }
+
+        /// <summary>
+        /// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+        /// execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+        /// </summary>
+        [Input("runExecutionToken")]
+        public Input<string>? RunExecutionToken { get; set; }
+
+        /// <summary>
+        /// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+        /// execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+        /// </summary>
+        [Input("startExecutionToken")]
+        public Input<string>? StartExecutionToken { get; set; }
 
         /// <summary>
         /// The template used to create executions for this Job.

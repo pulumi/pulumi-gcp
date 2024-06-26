@@ -339,6 +339,156 @@ import (
 //	}
 //
 // ```
+// ### Dataproc Metastore Service Autoscaling Max Scaling Factor
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataproc.NewMetastoreService(ctx, "test_resource", &dataproc.MetastoreServiceArgs{
+//				ServiceId:    pulumi.String("test-service"),
+//				Location:     pulumi.String("us-central1"),
+//				DatabaseType: pulumi.String("SPANNER"),
+//				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
+//					Version: pulumi.String("3.1.2"),
+//				},
+//				ScalingConfig: &dataproc.MetastoreServiceScalingConfigArgs{
+//					AutoscalingConfig: &dataproc.MetastoreServiceScalingConfigAutoscalingConfigArgs{
+//						AutoscalingEnabled: pulumi.Bool(true),
+//						LimitConfig: &dataproc.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs{
+//							MaxScalingFactor: pulumi.Float64(1),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dataproc Metastore Service Autoscaling Min And Max Scaling Factor
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataproc.NewMetastoreService(ctx, "test_resource", &dataproc.MetastoreServiceArgs{
+//				ServiceId:    pulumi.String("test-service"),
+//				Location:     pulumi.String("us-central1"),
+//				DatabaseType: pulumi.String("SPANNER"),
+//				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
+//					Version: pulumi.String("3.1.2"),
+//				},
+//				ScalingConfig: &dataproc.MetastoreServiceScalingConfigArgs{
+//					AutoscalingConfig: &dataproc.MetastoreServiceScalingConfigAutoscalingConfigArgs{
+//						AutoscalingEnabled: pulumi.Bool(true),
+//						LimitConfig: &dataproc.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs{
+//							MinScalingFactor: pulumi.Float64(0.1),
+//							MaxScalingFactor: pulumi.Float64(1),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dataproc Metastore Service Autoscaling Min Scaling Factor
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataproc.NewMetastoreService(ctx, "test_resource", &dataproc.MetastoreServiceArgs{
+//				ServiceId:    pulumi.String("test-service"),
+//				Location:     pulumi.String("us-central1"),
+//				DatabaseType: pulumi.String("SPANNER"),
+//				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
+//					Version: pulumi.String("3.1.2"),
+//				},
+//				ScalingConfig: &dataproc.MetastoreServiceScalingConfigArgs{
+//					AutoscalingConfig: &dataproc.MetastoreServiceScalingConfigAutoscalingConfigArgs{
+//						AutoscalingEnabled: pulumi.Bool(true),
+//						LimitConfig: &dataproc.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs{
+//							MinScalingFactor: pulumi.Float64(0.1),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dataproc Metastore Service Autoscaling No Limit Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataproc.NewMetastoreService(ctx, "test_resource", &dataproc.MetastoreServiceArgs{
+//				ServiceId:    pulumi.String("test-service"),
+//				Location:     pulumi.String("us-central1"),
+//				DatabaseType: pulumi.String("SPANNER"),
+//				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
+//					Version: pulumi.String("3.1.2"),
+//				},
+//				ScalingConfig: &dataproc.MetastoreServiceScalingConfigArgs{
+//					AutoscalingConfig: &dataproc.MetastoreServiceScalingConfigAutoscalingConfigArgs{
+//						AutoscalingEnabled: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

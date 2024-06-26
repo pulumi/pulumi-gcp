@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSecurityPolicyRuleMatchConfigResult> Configs;
         /// <summary>
+        /// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetSecurityPolicyRuleMatchExprOptionResult> ExprOptions;
+        /// <summary>
         /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSecurityPolicyRuleMatchExprResult> Exprs;
@@ -30,11 +34,14 @@ namespace Pulumi.Gcp.Compute.Outputs
         private GetSecurityPolicyRuleMatchResult(
             ImmutableArray<Outputs.GetSecurityPolicyRuleMatchConfigResult> configs,
 
+            ImmutableArray<Outputs.GetSecurityPolicyRuleMatchExprOptionResult> exprOptions,
+
             ImmutableArray<Outputs.GetSecurityPolicyRuleMatchExprResult> exprs,
 
             string versionedExpr)
         {
             Configs = configs;
+            ExprOptions = exprOptions;
             Exprs = exprs;
             VersionedExpr = versionedExpr;
         }

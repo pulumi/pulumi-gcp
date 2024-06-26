@@ -535,7 +535,7 @@ index c3e738686..4ab0fb25d 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/composer_environment.html.markdown b/website/docs/r/composer_environment.html.markdown
-index 27acf1c3b..68be70b82 100644
+index 330f9e76b..031459626 100644
 --- a/website/docs/r/composer_environment.html.markdown
 +++ b/website/docs/r/composer_environment.html.markdown
 @@ -27,18 +27,18 @@ To get more information about Environments, see:
@@ -600,7 +600,7 @@ index 0a305240d..845f44993 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index 4a3cafcef..977f32f58 100644
+index d0c3e1249..30b3f0c3c 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
 @@ -34,9 +34,8 @@ To get more information about BackendService, see:
@@ -632,7 +632,7 @@ index a6bbbfa4b..92a6811de 100644
  ## Example Usage - Backend Service Signed Url Key
  
 diff --git a/website/docs/r/compute_disk.html.markdown b/website/docs/r/compute_disk.html.markdown
-index 71c68faa2..2a483de9a 100644
+index d845a3cf1..6000ed89a 100644
 --- a/website/docs/r/compute_disk.html.markdown
 +++ b/website/docs/r/compute_disk.html.markdown
 @@ -43,9 +43,6 @@ To get more information about Disk, see:
@@ -1171,12 +1171,12 @@ index 4a4e7be0e..3891cdef3 100644
  
  * `wait_for_instances_status` - (Optional) When used with `wait_for_instances` it specifies the status to wait for.
 diff --git a/website/docs/r/compute_region_network_endpoint_group.html.markdown b/website/docs/r/compute_region_network_endpoint_group.html.markdown
-index ef4c3cdaa..ebecc872a 100644
+index 6e1b39348..56623b409 100644
 --- a/website/docs/r/compute_region_network_endpoint_group.html.markdown
 +++ b/website/docs/r/compute_region_network_endpoint_group.html.markdown
-@@ -21,11 +21,6 @@ description: |-
- 
- A regional NEG that can support Serverless Products and proxying traffic to external backends.
+@@ -23,11 +23,6 @@ description: |-
+ A regional NEG that can support Serverless Products, proxying traffic to
+ external backends and providing traffic to the PSC port mapping endpoints.
  
 -Recreating a region network endpoint group that's in use by another resource will give a
 -`resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
@@ -1610,7 +1610,7 @@ index f18c91533..924ad4cc0 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 94443c5c1..803ba538a 100644
+index 70dfa529b..384824f8d 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:
@@ -3403,7 +3403,7 @@ index 327090b41..0b766cc2d 100644
  
  ~> **Note:** Once created, this resource cannot be updated or destroyed. These
 diff --git a/website/docs/r/redis_instance.html.markdown b/website/docs/r/redis_instance.html.markdown
-index 5dead5a6e..b816dfed8 100644
+index 3399b32cf..4b19f8a4e 100644
 --- a/website/docs/r/redis_instance.html.markdown
 +++ b/website/docs/r/redis_instance.html.markdown
 @@ -66,7 +66,7 @@ resource "google_redis_instance" "cache" {
@@ -3598,7 +3598,7 @@ index 2ac02739f..da87bdaae 100644
  
  <a name="nested_encryption_config"></a>The `encryption_config` block supports:
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index 806bcd2bd..e571081a3 100644
+index 3fbc06d8f..4a03140f7 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -10,12 +10,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3709,7 +3709,7 @@ index 21e3d32cd..5fc2cc98d 100644
  ## Example Usage
  
 diff --git a/website/docs/r/sql_user.html.markdown b/website/docs/r/sql_user.html.markdown
-index 2f23a5971..a9ad72add 100644
+index 9f2c3cde4..d350e3336 100644
 --- a/website/docs/r/sql_user.html.markdown
 +++ b/website/docs/r/sql_user.html.markdown
 @@ -9,8 +9,6 @@ description: |-

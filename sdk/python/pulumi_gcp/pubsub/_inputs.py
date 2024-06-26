@@ -291,6 +291,7 @@ class SubscriptionBigqueryConfigArgs:
     def __init__(__self__, *,
                  table: pulumi.Input[str],
                  drop_unknown_fields: Optional[pulumi.Input[bool]] = None,
+                 service_account_email: Optional[pulumi.Input[str]] = None,
                  use_table_schema: Optional[pulumi.Input[bool]] = None,
                  use_topic_schema: Optional[pulumi.Input[bool]] = None,
                  write_metadata: Optional[pulumi.Input[bool]] = None):
@@ -299,6 +300,9 @@ class SubscriptionBigqueryConfigArgs:
         :param pulumi.Input[bool] drop_unknown_fields: When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
                are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
                and any messages with extra fields are not written and remain in the subscription's backlog.
+        :param pulumi.Input[str] service_account_email: The service account to use to write to BigQuery. If not specified, the Pub/Sub
+               [service agent](https://cloud.google.com/iam/docs/service-agents),
+               service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
         :param pulumi.Input[bool] use_table_schema: When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
                must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
         :param pulumi.Input[bool] use_topic_schema: When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
@@ -309,6 +313,8 @@ class SubscriptionBigqueryConfigArgs:
         pulumi.set(__self__, "table", table)
         if drop_unknown_fields is not None:
             pulumi.set(__self__, "drop_unknown_fields", drop_unknown_fields)
+        if service_account_email is not None:
+            pulumi.set(__self__, "service_account_email", service_account_email)
         if use_table_schema is not None:
             pulumi.set(__self__, "use_table_schema", use_table_schema)
         if use_topic_schema is not None:
@@ -341,6 +347,20 @@ class SubscriptionBigqueryConfigArgs:
     @drop_unknown_fields.setter
     def drop_unknown_fields(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "drop_unknown_fields", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account to use to write to BigQuery. If not specified, the Pub/Sub
+        [service agent](https://cloud.google.com/iam/docs/service-agents),
+        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @service_account_email.setter
+    def service_account_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account_email", value)
 
     @property
     @pulumi.getter(name="useTableSchema")
@@ -392,6 +412,7 @@ class SubscriptionCloudStorageConfigArgs:
                  filename_suffix: Optional[pulumi.Input[str]] = None,
                  max_bytes: Optional[pulumi.Input[int]] = None,
                  max_duration: Optional[pulumi.Input[str]] = None,
+                 service_account_email: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] bucket: User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
@@ -405,6 +426,9 @@ class SubscriptionCloudStorageConfigArgs:
         :param pulumi.Input[str] max_duration: The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
                May not exceed the subscription's acknowledgement deadline.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param pulumi.Input[str] service_account_email: The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+               [service agent](https://cloud.google.com/iam/docs/service-agents),
+               service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
         :param pulumi.Input[str] state: (Output)
                An output-only field that indicates whether or not the subscription can receive messages.
         """
@@ -421,6 +445,8 @@ class SubscriptionCloudStorageConfigArgs:
             pulumi.set(__self__, "max_bytes", max_bytes)
         if max_duration is not None:
             pulumi.set(__self__, "max_duration", max_duration)
+        if service_account_email is not None:
+            pulumi.set(__self__, "service_account_email", service_account_email)
         if state is not None:
             pulumi.set(__self__, "state", state)
 
@@ -511,6 +537,20 @@ class SubscriptionCloudStorageConfigArgs:
     @max_duration.setter
     def max_duration(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "max_duration", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+        [service agent](https://cloud.google.com/iam/docs/service-agents),
+        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @service_account_email.setter
+    def service_account_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account_email", value)
 
     @property
     @pulumi.getter

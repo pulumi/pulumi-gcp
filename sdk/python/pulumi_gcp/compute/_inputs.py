@@ -437,6 +437,8 @@ __all__ = [
     'SecurityPolicyRuleMatchArgs',
     'SecurityPolicyRuleMatchConfigArgs',
     'SecurityPolicyRuleMatchExprArgs',
+    'SecurityPolicyRuleMatchExprOptionsArgs',
+    'SecurityPolicyRuleMatchExprOptionsRecaptchaOptionsArgs',
     'SecurityPolicyRulePreconfiguredWafConfigArgs',
     'SecurityPolicyRulePreconfiguredWafConfigExclusionArgs',
     'SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs',
@@ -30829,12 +30831,15 @@ class SecurityPolicyRuleMatchArgs:
     def __init__(__self__, *,
                  config: Optional[pulumi.Input['SecurityPolicyRuleMatchConfigArgs']] = None,
                  expr: Optional[pulumi.Input['SecurityPolicyRuleMatchExprArgs']] = None,
+                 expr_options: Optional[pulumi.Input['SecurityPolicyRuleMatchExprOptionsArgs']] = None,
                  versioned_expr: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['SecurityPolicyRuleMatchConfigArgs'] config: The configuration options available when specifying versionedExpr.
                This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
                Structure is documented below.
         :param pulumi.Input['SecurityPolicyRuleMatchExprArgs'] expr: User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+               Structure is documented below.
+        :param pulumi.Input['SecurityPolicyRuleMatchExprOptionsArgs'] expr_options: The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
                Structure is documented below.
         :param pulumi.Input[str] versioned_expr: Preconfigured versioned expression. If this field is specified, config must also be specified.
                Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
@@ -30844,6 +30849,8 @@ class SecurityPolicyRuleMatchArgs:
             pulumi.set(__self__, "config", config)
         if expr is not None:
             pulumi.set(__self__, "expr", expr)
+        if expr_options is not None:
+            pulumi.set(__self__, "expr_options", expr_options)
         if versioned_expr is not None:
             pulumi.set(__self__, "versioned_expr", versioned_expr)
 
@@ -30873,6 +30880,19 @@ class SecurityPolicyRuleMatchArgs:
     @expr.setter
     def expr(self, value: Optional[pulumi.Input['SecurityPolicyRuleMatchExprArgs']]):
         pulumi.set(self, "expr", value)
+
+    @property
+    @pulumi.getter(name="exprOptions")
+    def expr_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleMatchExprOptionsArgs']]:
+        """
+        The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+        Structure is documented below.
+        """
+        return pulumi.get(self, "expr_options")
+
+    @expr_options.setter
+    def expr_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleMatchExprOptionsArgs']]):
+        pulumi.set(self, "expr_options", value)
 
     @property
     @pulumi.getter(name="versionedExpr")
@@ -30932,6 +30952,69 @@ class SecurityPolicyRuleMatchExprArgs:
     @expression.setter
     def expression(self, value: pulumi.Input[str]):
         pulumi.set(self, "expression", value)
+
+
+@pulumi.input_type
+class SecurityPolicyRuleMatchExprOptionsArgs:
+    def __init__(__self__, *,
+                 recaptcha_options: pulumi.Input['SecurityPolicyRuleMatchExprOptionsRecaptchaOptionsArgs']):
+        """
+        :param pulumi.Input['SecurityPolicyRuleMatchExprOptionsRecaptchaOptionsArgs'] recaptcha_options: reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "recaptcha_options", recaptcha_options)
+
+    @property
+    @pulumi.getter(name="recaptchaOptions")
+    def recaptcha_options(self) -> pulumi.Input['SecurityPolicyRuleMatchExprOptionsRecaptchaOptionsArgs']:
+        """
+        reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "recaptcha_options")
+
+    @recaptcha_options.setter
+    def recaptcha_options(self, value: pulumi.Input['SecurityPolicyRuleMatchExprOptionsRecaptchaOptionsArgs']):
+        pulumi.set(self, "recaptcha_options", value)
+
+
+@pulumi.input_type
+class SecurityPolicyRuleMatchExprOptionsRecaptchaOptionsArgs:
+    def __init__(__self__, *,
+                 action_token_site_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 session_token_site_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] action_token_site_keys: A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] session_token_site_keys: A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+        """
+        if action_token_site_keys is not None:
+            pulumi.set(__self__, "action_token_site_keys", action_token_site_keys)
+        if session_token_site_keys is not None:
+            pulumi.set(__self__, "session_token_site_keys", session_token_site_keys)
+
+    @property
+    @pulumi.getter(name="actionTokenSiteKeys")
+    def action_token_site_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+        """
+        return pulumi.get(self, "action_token_site_keys")
+
+    @action_token_site_keys.setter
+    def action_token_site_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "action_token_site_keys", value)
+
+    @property
+    @pulumi.getter(name="sessionTokenSiteKeys")
+    def session_token_site_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+        """
+        return pulumi.get(self, "session_token_site_keys")
+
+    @session_token_site_keys.setter
+    def session_token_site_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "session_token_site_keys", value)
 
 
 @pulumi.input_type

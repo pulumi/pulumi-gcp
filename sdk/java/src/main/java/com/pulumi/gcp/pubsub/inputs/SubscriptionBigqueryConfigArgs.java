@@ -37,6 +37,25 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
     }
 
     /**
+     * The service account to use to write to BigQuery. If not specified, the Pub/Sub
+     * [service agent](https://cloud.google.com/iam/docs/service-agents),
+     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+     * 
+     */
+    @Import(name="serviceAccountEmail")
+    private @Nullable Output<String> serviceAccountEmail;
+
+    /**
+     * @return The service account to use to write to BigQuery. If not specified, the Pub/Sub
+     * [service agent](https://cloud.google.com/iam/docs/service-agents),
+     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+     * 
+     */
+    public Optional<Output<String>> serviceAccountEmail() {
+        return Optional.ofNullable(this.serviceAccountEmail);
+    }
+
+    /**
      * The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
      * 
      */
@@ -106,6 +125,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
 
     private SubscriptionBigqueryConfigArgs(SubscriptionBigqueryConfigArgs $) {
         this.dropUnknownFields = $.dropUnknownFields;
+        this.serviceAccountEmail = $.serviceAccountEmail;
         this.table = $.table;
         this.useTableSchema = $.useTableSchema;
         this.useTopicSchema = $.useTopicSchema;
@@ -153,6 +173,31 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
          */
         public Builder dropUnknownFields(Boolean dropUnknownFields) {
             return dropUnknownFields(Output.of(dropUnknownFields));
+        }
+
+        /**
+         * @param serviceAccountEmail The service account to use to write to BigQuery. If not specified, the Pub/Sub
+         * [service agent](https://cloud.google.com/iam/docs/service-agents),
+         * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccountEmail(@Nullable Output<String> serviceAccountEmail) {
+            $.serviceAccountEmail = serviceAccountEmail;
+            return this;
+        }
+
+        /**
+         * @param serviceAccountEmail The service account to use to write to BigQuery. If not specified, the Pub/Sub
+         * [service agent](https://cloud.google.com/iam/docs/service-agents),
+         * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccountEmail(String serviceAccountEmail) {
+            return serviceAccountEmail(Output.of(serviceAccountEmail));
         }
 
         /**

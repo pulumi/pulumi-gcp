@@ -137,6 +137,7 @@ namespace Pulumi.Gcp.BigQuery
         public readonly string MaxTimeTravelHours;
         public readonly string? Project;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
+        public readonly ImmutableDictionary<string, string> ResourceTags;
         public readonly string SelfLink;
         public readonly string StorageBillingModel;
 
@@ -184,6 +185,8 @@ namespace Pulumi.Gcp.BigQuery
 
             ImmutableDictionary<string, string> pulumiLabels,
 
+            ImmutableDictionary<string, string> resourceTags,
+
             string selfLink,
 
             string storageBillingModel)
@@ -209,6 +212,7 @@ namespace Pulumi.Gcp.BigQuery
             MaxTimeTravelHours = maxTimeTravelHours;
             Project = project;
             PulumiLabels = pulumiLabels;
+            ResourceTags = resourceTags;
             SelfLink = selfLink;
             StorageBillingModel = storageBillingModel;
         }

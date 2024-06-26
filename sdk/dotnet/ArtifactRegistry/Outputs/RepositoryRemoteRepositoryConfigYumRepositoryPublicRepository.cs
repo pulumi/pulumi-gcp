@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         /// </summary>
         public readonly string RepositoryBase;
         /// <summary>
-        /// Specific repository from the base, e.g. `"centos/8-stream/BaseOS/x86_64/os"`
+        /// Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
         /// </summary>
         public readonly string RepositoryPath;
 

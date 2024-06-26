@@ -24,8 +24,8 @@ class DomainTrustArgs:
                  selective_authentication: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a DomainTrust resource.
-        :param pulumi.Input[str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-               https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        :param pulumi.Input[str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+               of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
                
                
                - - -
@@ -56,8 +56,8 @@ class DomainTrustArgs:
     @pulumi.getter
     def domain(self) -> pulumi.Input[str]:
         """
-        The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-        https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+        of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 
 
         - - -
@@ -170,8 +170,8 @@ class _DomainTrustState:
                  trust_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DomainTrust resources.
-        :param pulumi.Input[str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-               https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        :param pulumi.Input[str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+               of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
                
                
                - - -
@@ -208,8 +208,8 @@ class _DomainTrustState:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-        https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+        of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 
 
         - - -
@@ -375,8 +375,8 @@ class DomainTrust(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-               https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        :param pulumi.Input[str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+               of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
                
                
                - - -
@@ -527,8 +527,8 @@ class DomainTrust(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-               https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        :param pulumi.Input[str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+               of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
                
                
                - - -
@@ -562,8 +562,8 @@ class DomainTrust(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[str]:
         """
-        The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-        https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+        of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 
 
         - - -

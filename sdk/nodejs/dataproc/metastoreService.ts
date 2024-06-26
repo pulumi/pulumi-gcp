@@ -196,6 +196,96 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Dataproc Metastore Service Autoscaling Max Scaling Factor
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testResource = new gcp.dataproc.MetastoreService("test_resource", {
+ *     serviceId: "test-service",
+ *     location: "us-central1",
+ *     databaseType: "SPANNER",
+ *     hiveMetastoreConfig: {
+ *         version: "3.1.2",
+ *     },
+ *     scalingConfig: {
+ *         autoscalingConfig: {
+ *             autoscalingEnabled: true,
+ *             limitConfig: {
+ *                 maxScalingFactor: 1,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Dataproc Metastore Service Autoscaling Min And Max Scaling Factor
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testResource = new gcp.dataproc.MetastoreService("test_resource", {
+ *     serviceId: "test-service",
+ *     location: "us-central1",
+ *     databaseType: "SPANNER",
+ *     hiveMetastoreConfig: {
+ *         version: "3.1.2",
+ *     },
+ *     scalingConfig: {
+ *         autoscalingConfig: {
+ *             autoscalingEnabled: true,
+ *             limitConfig: {
+ *                 minScalingFactor: 0.1,
+ *                 maxScalingFactor: 1,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Dataproc Metastore Service Autoscaling Min Scaling Factor
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testResource = new gcp.dataproc.MetastoreService("test_resource", {
+ *     serviceId: "test-service",
+ *     location: "us-central1",
+ *     databaseType: "SPANNER",
+ *     hiveMetastoreConfig: {
+ *         version: "3.1.2",
+ *     },
+ *     scalingConfig: {
+ *         autoscalingConfig: {
+ *             autoscalingEnabled: true,
+ *             limitConfig: {
+ *                 minScalingFactor: 0.1,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Dataproc Metastore Service Autoscaling No Limit Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testResource = new gcp.dataproc.MetastoreService("test_resource", {
+ *     serviceId: "test-service",
+ *     location: "us-central1",
+ *     databaseType: "SPANNER",
+ *     hiveMetastoreConfig: {
+ *         version: "3.1.2",
+ *     },
+ *     scalingConfig: {
+ *         autoscalingConfig: {
+ *             autoscalingEnabled: true,
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

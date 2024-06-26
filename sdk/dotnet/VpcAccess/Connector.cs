@@ -49,18 +49,12 @@ namespace Pulumi.Gcp.VpcAccess
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var customTestNetwork = new Gcp.Compute.Network("custom_test", new()
-    ///     {
-    ///         Name = "vpc-con",
-    ///         AutoCreateSubnetworks = false,
-    ///     });
-    /// 
     ///     var customTest = new Gcp.Compute.Subnetwork("custom_test", new()
     ///     {
     ///         Name = "vpc-con",
     ///         IpCidrRange = "10.2.0.0/28",
     ///         Region = "us-central1",
-    ///         Network = customTestNetwork.Id,
+    ///         Network = "default",
     ///     });
     /// 
     ///     var connector = new Gcp.VpcAccess.Connector("connector", new()

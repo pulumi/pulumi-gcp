@@ -386,6 +386,112 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Pubsub Subscription Push Bq Service Account
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.pubsub.Subscription;
+ * import com.pulumi.gcp.pubsub.SubscriptionArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionBigqueryConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Topic("example", TopicArgs.builder()
+ *             .name("example-topic")
+ *             .build());
+ * 
+ *         var bqWriteServiceAccount = new Account("bqWriteServiceAccount", AccountArgs.builder()
+ *             .accountId("example-bqw")
+ *             .displayName("BQ Write Service Account")
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var viewer = new IAMMember("viewer", IAMMemberArgs.builder()
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .role("roles/bigquery.metadataViewer")
+ *             .member(bqWriteServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .build());
+ * 
+ *         var editor = new IAMMember("editor", IAMMemberArgs.builder()
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .role("roles/bigquery.dataEditor")
+ *             .member(bqWriteServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .build());
+ * 
+ *         var test = new Dataset("test", DatasetArgs.builder()
+ *             .datasetId("example_dataset")
+ *             .build());
+ * 
+ *         var testTable = new Table("testTable", TableArgs.builder()
+ *             .deletionProtection(false)
+ *             .tableId("example_table")
+ *             .datasetId(test.datasetId())
+ *             .schema("""
+ * [
+ *   {
+ *     "name": "data",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE",
+ *     "description": "The data"
+ *   }
+ * ]
+ *             """)
+ *             .build());
+ * 
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
+ *             .name("example-subscription")
+ *             .topic(example.id())
+ *             .bigqueryConfig(SubscriptionBigqueryConfigArgs.builder()
+ *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -> {
+ *                     var project = values.t1;
+ *                     var datasetId = values.t2;
+ *                     var tableId = values.t3;
+ *                     return String.format("%s.%s.%s", project.applyValue(getProjectResult -> getProjectResult),datasetId,tableId);
+ *                 }))
+ *                 .serviceAccountEmail(bqWriteServiceAccount.email())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     bqWriteServiceAccount,
+ *                     viewer,
+ *                     editor)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Pubsub Subscription Push Cloudstorage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -534,6 +640,90 @@ import javax.annotation.Nullable;
  *                     example,
  *                     admin)
  *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Pubsub Subscription Push Cloudstorage Service Account
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.storage.BucketIAMMember;
+ * import com.pulumi.gcp.storage.BucketIAMMemberArgs;
+ * import com.pulumi.gcp.pubsub.Subscription;
+ * import com.pulumi.gcp.pubsub.SubscriptionArgs;
+ * import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Bucket("example", BucketArgs.builder()
+ *             .name("example-bucket")
+ *             .location("US")
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var exampleTopic = new Topic("exampleTopic", TopicArgs.builder()
+ *             .name("example-topic")
+ *             .build());
+ * 
+ *         var storageWriteServiceAccount = new Account("storageWriteServiceAccount", AccountArgs.builder()
+ *             .accountId("example-stw")
+ *             .displayName("Storage Write Service Account")
+ *             .build());
+ * 
+ *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()
+ *             .bucket(example.name())
+ *             .role("roles/storage.admin")
+ *             .member(storageWriteServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .build());
+ * 
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
+ *             .name("example-subscription")
+ *             .topic(exampleTopic.id())
+ *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
+ *                 .bucket(example.name())
+ *                 .filenamePrefix("pre-")
+ *                 .filenameSuffix("-_75413")
+ *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
+ *                 .maxBytes(1000)
+ *                 .maxDuration("300s")
+ *                 .serviceAccountEmail(storageWriteServiceAccount.email())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     storageWriteServiceAccount,
+ *                     example,
+ *                     admin)
+ *                 .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
  * 
  *     }
  * }

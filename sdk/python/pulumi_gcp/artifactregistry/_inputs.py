@@ -606,7 +606,7 @@ class RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs:
         """
         :param pulumi.Input[str] repository_base: A common public repository base for Yum.
                Possible values are: `CENTOS`, `CENTOS_DEBUG`, `CENTOS_VAULT`, `CENTOS_STREAM`, `ROCKY`, `EPEL`.
-        :param pulumi.Input[str] repository_path: Specific repository from the base, e.g. `"centos/8-stream/BaseOS/x86_64/os"`
+        :param pulumi.Input[str] repository_path: Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
         """
         pulumi.set(__self__, "repository_base", repository_base)
         pulumi.set(__self__, "repository_path", repository_path)
@@ -628,7 +628,7 @@ class RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs:
     @pulumi.getter(name="repositoryPath")
     def repository_path(self) -> pulumi.Input[str]:
         """
-        Specific repository from the base, e.g. `"centos/8-stream/BaseOS/x86_64/os"`
+        Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
         """
         return pulumi.get(self, "repository_path")
 
@@ -1010,7 +1010,7 @@ class RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs:
         """
         :param pulumi.Input[str] repository_base: A common public repository base for Yum.
                Possible values are: `CENTOS`, `CENTOS_DEBUG`, `CENTOS_VAULT`, `CENTOS_STREAM`, `ROCKY`, `EPEL`.
-        :param pulumi.Input[str] repository_path: Specific repository from the base, e.g. `"centos/8-stream/BaseOS/x86_64/os"`
+        :param pulumi.Input[str] repository_path: Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
         """
         pulumi.set(__self__, "repository_base", repository_base)
         pulumi.set(__self__, "repository_path", repository_path)
@@ -1032,7 +1032,7 @@ class RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs:
     @pulumi.getter(name="repositoryPath")
     def repository_path(self) -> pulumi.Input[str]:
         """
-        Specific repository from the base, e.g. `"centos/8-stream/BaseOS/x86_64/os"`
+        Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
         """
         return pulumi.get(self, "repository_path")
 

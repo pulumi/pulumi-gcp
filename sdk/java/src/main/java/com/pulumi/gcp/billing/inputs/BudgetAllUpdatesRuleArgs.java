@@ -39,6 +39,27 @@ public final class BudgetAllUpdatesRuleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * When set to true, and when the budget has a single project configured,
+     * notifications will be sent to project level recipients of that project.
+     * This field will be ignored if the budget has multiple or no project configured.
+     * Currently, project level recipients are the users with Owner role on a cloud project.
+     * 
+     */
+    @Import(name="enableProjectLevelRecipients")
+    private @Nullable Output<Boolean> enableProjectLevelRecipients;
+
+    /**
+     * @return When set to true, and when the budget has a single project configured,
+     * notifications will be sent to project level recipients of that project.
+     * This field will be ignored if the budget has multiple or no project configured.
+     * Currently, project level recipients are the users with Owner role on a cloud project.
+     * 
+     */
+    public Optional<Output<Boolean>> enableProjectLevelRecipients() {
+        return Optional.ofNullable(this.enableProjectLevelRecipients);
+    }
+
+    /**
      * The full resource name of a monitoring notification
      * channel in the form
      * projects/{project_id}/notificationChannels/{channel_id}.
@@ -103,6 +124,7 @@ public final class BudgetAllUpdatesRuleArgs extends com.pulumi.resources.Resourc
 
     private BudgetAllUpdatesRuleArgs(BudgetAllUpdatesRuleArgs $) {
         this.disableDefaultIamRecipients = $.disableDefaultIamRecipients;
+        this.enableProjectLevelRecipients = $.enableProjectLevelRecipients;
         this.monitoringNotificationChannels = $.monitoringNotificationChannels;
         this.pubsubTopic = $.pubsubTopic;
         this.schemaVersion = $.schemaVersion;
@@ -151,6 +173,33 @@ public final class BudgetAllUpdatesRuleArgs extends com.pulumi.resources.Resourc
          */
         public Builder disableDefaultIamRecipients(Boolean disableDefaultIamRecipients) {
             return disableDefaultIamRecipients(Output.of(disableDefaultIamRecipients));
+        }
+
+        /**
+         * @param enableProjectLevelRecipients When set to true, and when the budget has a single project configured,
+         * notifications will be sent to project level recipients of that project.
+         * This field will be ignored if the budget has multiple or no project configured.
+         * Currently, project level recipients are the users with Owner role on a cloud project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableProjectLevelRecipients(@Nullable Output<Boolean> enableProjectLevelRecipients) {
+            $.enableProjectLevelRecipients = enableProjectLevelRecipients;
+            return this;
+        }
+
+        /**
+         * @param enableProjectLevelRecipients When set to true, and when the budget has a single project configured,
+         * notifications will be sent to project level recipients of that project.
+         * This field will be ignored if the budget has multiple or no project configured.
+         * Currently, project level recipients are the users with Owner role on a cloud project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableProjectLevelRecipients(Boolean enableProjectLevelRecipients) {
+            return enableProjectLevelRecipients(Output.of(enableProjectLevelRecipients));
         }
 
         /**

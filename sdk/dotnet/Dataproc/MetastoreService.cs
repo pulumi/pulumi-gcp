@@ -287,6 +287,139 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// ### Dataproc Metastore Service Autoscaling Max Scaling Factor
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testResource = new Gcp.Dataproc.MetastoreService("test_resource", new()
+    ///     {
+    ///         ServiceId = "test-service",
+    ///         Location = "us-central1",
+    ///         DatabaseType = "SPANNER",
+    ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
+    ///         {
+    ///             Version = "3.1.2",
+    ///         },
+    ///         ScalingConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigArgs
+    ///         {
+    ///             AutoscalingConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigAutoscalingConfigArgs
+    ///             {
+    ///                 AutoscalingEnabled = true,
+    ///                 LimitConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs
+    ///                 {
+    ///                     MaxScalingFactor = 1,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dataproc Metastore Service Autoscaling Min And Max Scaling Factor
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testResource = new Gcp.Dataproc.MetastoreService("test_resource", new()
+    ///     {
+    ///         ServiceId = "test-service",
+    ///         Location = "us-central1",
+    ///         DatabaseType = "SPANNER",
+    ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
+    ///         {
+    ///             Version = "3.1.2",
+    ///         },
+    ///         ScalingConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigArgs
+    ///         {
+    ///             AutoscalingConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigAutoscalingConfigArgs
+    ///             {
+    ///                 AutoscalingEnabled = true,
+    ///                 LimitConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs
+    ///                 {
+    ///                     MinScalingFactor = 0.1,
+    ///                     MaxScalingFactor = 1,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dataproc Metastore Service Autoscaling Min Scaling Factor
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testResource = new Gcp.Dataproc.MetastoreService("test_resource", new()
+    ///     {
+    ///         ServiceId = "test-service",
+    ///         Location = "us-central1",
+    ///         DatabaseType = "SPANNER",
+    ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
+    ///         {
+    ///             Version = "3.1.2",
+    ///         },
+    ///         ScalingConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigArgs
+    ///         {
+    ///             AutoscalingConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigAutoscalingConfigArgs
+    ///             {
+    ///                 AutoscalingEnabled = true,
+    ///                 LimitConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs
+    ///                 {
+    ///                     MinScalingFactor = 0.1,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dataproc Metastore Service Autoscaling No Limit Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testResource = new Gcp.Dataproc.MetastoreService("test_resource", new()
+    ///     {
+    ///         ServiceId = "test-service",
+    ///         Location = "us-central1",
+    ///         DatabaseType = "SPANNER",
+    ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
+    ///         {
+    ///             Version = "3.1.2",
+    ///         },
+    ///         ScalingConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigArgs
+    ///         {
+    ///             AutoscalingConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigAutoscalingConfigArgs
+    ///             {
+    ///                 AutoscalingEnabled = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

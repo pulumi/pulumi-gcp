@@ -20,6 +20,11 @@ export type PeeredDnsDomain = import("./peeredDnsDomain").PeeredDnsDomain;
 export const PeeredDnsDomain: typeof import("./peeredDnsDomain").PeeredDnsDomain = null as any;
 utilities.lazyLoad(exports, ["PeeredDnsDomain"], () => require("./peeredDnsDomain"));
 
+export { VpcServiceControlsArgs, VpcServiceControlsState } from "./vpcServiceControls";
+export type VpcServiceControls = import("./vpcServiceControls").VpcServiceControls;
+export const VpcServiceControls: typeof import("./vpcServiceControls").VpcServiceControls = null as any;
+utilities.lazyLoad(exports, ["VpcServiceControls"], () => require("./vpcServiceControls"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -29,6 +34,8 @@ const _module = {
                 return new Connection(name, <any>undefined, { urn })
             case "gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain":
                 return new PeeredDnsDomain(name, <any>undefined, { urn })
+            case "gcp:servicenetworking/vpcServiceControls:VpcServiceControls":
+                return new VpcServiceControls(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -36,3 +43,4 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "servicenetworking/connection", _module)
 pulumi.runtime.registerResourceModule("gcp", "servicenetworking/peeredDnsDomain", _module)
+pulumi.runtime.registerResourceModule("gcp", "servicenetworking/vpcServiceControls", _module)

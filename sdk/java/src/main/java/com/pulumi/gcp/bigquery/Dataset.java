@@ -779,6 +779,28 @@ public class Dataset extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
+     * The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
+     * in the namespaced format, for example &#34;123456789012/environment&#34; where 123456789012 is the
+     * ID of the parent organization or project resource for this tag key. Tag value is expected
+     * to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+     * for more details.
+     * 
+     */
+    @Export(name="resourceTags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> resourceTags;
+
+    /**
+     * @return The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
+     * in the namespaced format, for example &#34;123456789012/environment&#34; where 123456789012 is the
+     * ID of the parent organization or project resource for this tag key. Tag value is expected
+     * to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+     * for more details.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> resourceTags() {
+        return Codegen.optional(this.resourceTags);
+    }
+    /**
      * The URI of the created resource.
      * 
      */

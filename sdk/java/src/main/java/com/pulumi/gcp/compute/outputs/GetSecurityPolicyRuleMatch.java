@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetSecurityPolicyRuleMatchConfig;
 import com.pulumi.gcp.compute.outputs.GetSecurityPolicyRuleMatchExpr;
+import com.pulumi.gcp.compute.outputs.GetSecurityPolicyRuleMatchExprOption;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +19,11 @@ public final class GetSecurityPolicyRuleMatch {
      * 
      */
     private List<GetSecurityPolicyRuleMatchConfig> configs;
+    /**
+     * @return The configuration options available when specifying a user defined CEVAL expression (i.e., &#39;expr&#39;).
+     * 
+     */
+    private List<GetSecurityPolicyRuleMatchExprOption> exprOptions;
     /**
      * @return User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
      * 
@@ -36,6 +42,13 @@ public final class GetSecurityPolicyRuleMatch {
      */
     public List<GetSecurityPolicyRuleMatchConfig> configs() {
         return this.configs;
+    }
+    /**
+     * @return The configuration options available when specifying a user defined CEVAL expression (i.e., &#39;expr&#39;).
+     * 
+     */
+    public List<GetSecurityPolicyRuleMatchExprOption> exprOptions() {
+        return this.exprOptions;
     }
     /**
      * @return User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
@@ -62,12 +75,14 @@ public final class GetSecurityPolicyRuleMatch {
     @CustomType.Builder
     public static final class Builder {
         private List<GetSecurityPolicyRuleMatchConfig> configs;
+        private List<GetSecurityPolicyRuleMatchExprOption> exprOptions;
         private List<GetSecurityPolicyRuleMatchExpr> exprs;
         private String versionedExpr;
         public Builder() {}
         public Builder(GetSecurityPolicyRuleMatch defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configs = defaults.configs;
+    	      this.exprOptions = defaults.exprOptions;
     	      this.exprs = defaults.exprs;
     	      this.versionedExpr = defaults.versionedExpr;
         }
@@ -82,6 +97,17 @@ public final class GetSecurityPolicyRuleMatch {
         }
         public Builder configs(GetSecurityPolicyRuleMatchConfig... configs) {
             return configs(List.of(configs));
+        }
+        @CustomType.Setter
+        public Builder exprOptions(List<GetSecurityPolicyRuleMatchExprOption> exprOptions) {
+            if (exprOptions == null) {
+              throw new MissingRequiredPropertyException("GetSecurityPolicyRuleMatch", "exprOptions");
+            }
+            this.exprOptions = exprOptions;
+            return this;
+        }
+        public Builder exprOptions(GetSecurityPolicyRuleMatchExprOption... exprOptions) {
+            return exprOptions(List.of(exprOptions));
         }
         @CustomType.Setter
         public Builder exprs(List<GetSecurityPolicyRuleMatchExpr> exprs) {
@@ -105,6 +131,7 @@ public final class GetSecurityPolicyRuleMatch {
         public GetSecurityPolicyRuleMatch build() {
             final var _resultValue = new GetSecurityPolicyRuleMatch();
             _resultValue.configs = configs;
+            _resultValue.exprOptions = exprOptions;
             _resultValue.exprs = exprs;
             _resultValue.versionedExpr = versionedExpr;
             return _resultValue;

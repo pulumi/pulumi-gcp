@@ -8,3 +8,4 @@ import typing
 from .connection import *
 from .get_peered_dns_domain import *
 from .peered_dns_domain import *
+from .vpc_service_controls import *

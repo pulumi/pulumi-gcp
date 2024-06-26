@@ -75,6 +75,7 @@ export interface GetDatasetResult {
     readonly maxTimeTravelHours: string;
     readonly project?: string;
     readonly pulumiLabels: {[key: string]: string};
+    readonly resourceTags: {[key: string]: string};
     readonly selfLink: string;
     readonly storageBillingModel: string;
 }

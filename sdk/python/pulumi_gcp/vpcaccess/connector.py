@@ -522,14 +522,11 @@ class Connector(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_test_network = gcp.compute.Network("custom_test",
-            name="vpc-con",
-            auto_create_subnetworks=False)
         custom_test = gcp.compute.Subnetwork("custom_test",
             name="vpc-con",
             ip_cidr_range="10.2.0.0/28",
             region="us-central1",
-            network=custom_test_network.id)
+            network="default")
         connector = gcp.vpcaccess.Connector("connector",
             name="vpc-con",
             subnet=gcp.vpcaccess.ConnectorSubnetArgs(
@@ -628,14 +625,11 @@ class Connector(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        custom_test_network = gcp.compute.Network("custom_test",
-            name="vpc-con",
-            auto_create_subnetworks=False)
         custom_test = gcp.compute.Subnetwork("custom_test",
             name="vpc-con",
             ip_cidr_range="10.2.0.0/28",
             region="us-central1",
-            network=custom_test_network.id)
+            network="default")
         connector = gcp.vpcaccess.Connector("connector",
             name="vpc-con",
             subnet=gcp.vpcaccess.ConnectorSubnetArgs(

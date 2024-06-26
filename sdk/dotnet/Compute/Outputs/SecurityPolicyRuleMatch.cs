@@ -25,6 +25,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleMatchExpr? Expr;
         /// <summary>
+        /// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.SecurityPolicyRuleMatchExprOptions? ExprOptions;
+        /// <summary>
         /// Preconfigured versioned expression. If this field is specified, config must also be specified.
         /// Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
         /// Possible values are: `SRC_IPS_V1`.
@@ -37,10 +42,13 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             Outputs.SecurityPolicyRuleMatchExpr? expr,
 
+            Outputs.SecurityPolicyRuleMatchExprOptions? exprOptions,
+
             string? versionedExpr)
         {
             Config = config;
             Expr = expr;
+            ExprOptions = exprOptions;
             VersionedExpr = versionedExpr;
         }
     }

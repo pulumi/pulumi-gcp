@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     template: {
  *         template: {
  *             containers: [{
- *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                 image: "us-docker.pkg.dev/cloudrun/container/job",
  *             }],
  *         },
  *     },
@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *     template: {
  *         template: {
  *             containers: [{
- *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                 image: "us-docker.pkg.dev/cloudrun/container/job",
  *                 resources: {
  *                     limits: {
  *                         cpu: "2",
@@ -92,7 +92,7 @@ import * as utilities from "../utilities";
  *                 },
  *             }],
  *             containers: [{
- *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                 image: "us-docker.pkg.dev/cloudrun/container/job",
  *                 envs: [
  *                     {
  *                         name: "FOO",
@@ -161,7 +161,7 @@ import * as utilities from "../utilities";
  *     template: {
  *         template: {
  *             containers: [{
- *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                 image: "us-docker.pkg.dev/cloudrun/container/job",
  *             }],
  *             vpcAccess: {
  *                 connector: connector.id,
@@ -243,7 +243,7 @@ import * as utilities from "../utilities";
  *                 },
  *             }],
  *             containers: [{
- *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                 image: "us-docker.pkg.dev/cloudrun/container/job",
  *                 volumeMounts: [{
  *                     name: "a-volume",
  *                     mountPath: "/secrets",
@@ -271,7 +271,7 @@ import * as utilities from "../utilities";
  *     template: {
  *         template: {
  *             containers: [{
- *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                 image: "us-docker.pkg.dev/cloudrun/container/job",
  *                 volumeMounts: [{
  *                     name: "empty-dir-volume",
  *                     mountPath: "/mnt",
@@ -283,6 +283,25 @@ import * as utilities from "../utilities";
  *                     medium: "MEMORY",
  *                     sizeLimit: "128Mi",
  *                 },
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Cloudrunv2 Job Run Job
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Job("default", {
+ *     name: "cloudrun-job",
+ *     location: "us-central1",
+ *     startExecutionToken: "start-once-created",
+ *     template: {
+ *         template: {
+ *             containers: [{
+ *                 image: "us-docker.pkg.dev/cloudrun/container/job",
  *             }],
  *         },
  *     },
@@ -458,6 +477,16 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
+     * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+     * execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+     */
+    public readonly runExecutionToken!: pulumi.Output<string | undefined>;
+    /**
+     * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+     * execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+     */
+    public readonly startExecutionToken!: pulumi.Output<string | undefined>;
+    /**
      * The template used to create executions for this Job.
      * Structure is documented below.
      */
@@ -513,6 +542,8 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["reconciling"] = state ? state.reconciling : undefined;
+            resourceInputs["runExecutionToken"] = state ? state.runExecutionToken : undefined;
+            resourceInputs["startExecutionToken"] = state ? state.startExecutionToken : undefined;
             resourceInputs["template"] = state ? state.template : undefined;
             resourceInputs["terminalConditions"] = state ? state.terminalConditions : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
@@ -534,6 +565,8 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["runExecutionToken"] = args ? args.runExecutionToken : undefined;
+            resourceInputs["startExecutionToken"] = args ? args.startExecutionToken : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -682,6 +715,16 @@ export interface JobState {
      */
     reconciling?: pulumi.Input<boolean>;
     /**
+     * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+     * execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+     */
+    runExecutionToken?: pulumi.Input<string>;
+    /**
+     * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+     * execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+     */
+    startExecutionToken?: pulumi.Input<string>;
+    /**
      * The template used to create executions for this Job.
      * Structure is documented below.
      */
@@ -756,6 +799,16 @@ export interface JobArgs {
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+     * execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+     */
+    runExecutionToken?: pulumi.Input<string>;
+    /**
+     * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+     * execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+     */
+    startExecutionToken?: pulumi.Input<string>;
     /**
      * The template used to create executions for this Job.
      * Structure is documented below.

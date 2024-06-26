@@ -25,7 +25,9 @@ class JobArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  launch_stage: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 run_execution_token: Optional[pulumi.Input[str]] = None,
+                 start_execution_token: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Job resource.
         :param pulumi.Input[str] location: The location of the cloud run job
@@ -56,6 +58,10 @@ class JobArgs:
                input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
                ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
         :param pulumi.Input[str] name: Name of the Job.
+        :param pulumi.Input[str] run_execution_token: A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+               execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+        :param pulumi.Input[str] start_execution_token: A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+               execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "template", template)
@@ -75,6 +81,10 @@ class JobArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if run_execution_token is not None:
+            pulumi.set(__self__, "run_execution_token", run_execution_token)
+        if start_execution_token is not None:
+            pulumi.set(__self__, "start_execution_token", start_execution_token)
 
     @property
     @pulumi.getter
@@ -212,6 +222,32 @@ class JobArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="runExecutionToken")
+    def run_execution_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+        execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+        """
+        return pulumi.get(self, "run_execution_token")
+
+    @run_execution_token.setter
+    def run_execution_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "run_execution_token", value)
+
+    @property
+    @pulumi.getter(name="startExecutionToken")
+    def start_execution_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+        execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+        """
+        return pulumi.get(self, "start_execution_token")
+
+    @start_execution_token.setter
+    def start_execution_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_execution_token", value)
+
 
 @pulumi.input_type
 class _JobState:
@@ -240,6 +276,8 @@ class _JobState:
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  reconciling: Optional[pulumi.Input[bool]] = None,
+                 run_execution_token: Optional[pulumi.Input[str]] = None,
+                 start_execution_token: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input['JobTemplateArgs']] = None,
                  terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
@@ -294,6 +332,10 @@ class _JobState:
                When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
                If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
                If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
+        :param pulumi.Input[str] run_execution_token: A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+               execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+        :param pulumi.Input[str] start_execution_token: A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+               execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
         :param pulumi.Input['JobTemplateArgs'] template: The template used to create executions for this Job.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]] terminal_conditions: The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
@@ -349,6 +391,10 @@ class _JobState:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if reconciling is not None:
             pulumi.set(__self__, "reconciling", reconciling)
+        if run_execution_token is not None:
+            pulumi.set(__self__, "run_execution_token", run_execution_token)
+        if start_execution_token is not None:
+            pulumi.set(__self__, "start_execution_token", start_execution_token)
         if template is not None:
             pulumi.set(__self__, "template", template)
         if terminal_conditions is not None:
@@ -667,6 +713,32 @@ class _JobState:
         pulumi.set(self, "reconciling", value)
 
     @property
+    @pulumi.getter(name="runExecutionToken")
+    def run_execution_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+        execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+        """
+        return pulumi.get(self, "run_execution_token")
+
+    @run_execution_token.setter
+    def run_execution_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "run_execution_token", value)
+
+    @property
+    @pulumi.getter(name="startExecutionToken")
+    def start_execution_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+        execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+        """
+        return pulumi.get(self, "start_execution_token")
+
+    @start_execution_token.setter
+    def start_execution_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_execution_token", value)
+
+    @property
     @pulumi.getter
     def template(self) -> Optional[pulumi.Input['JobTemplateArgs']]:
         """
@@ -731,6 +803,8 @@ class Job(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 run_execution_token: Optional[pulumi.Input[str]] = None,
+                 start_execution_token: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[pulumi.InputType['JobTemplateArgs']]] = None,
                  __props__=None):
         """
@@ -756,7 +830,7 @@ class Job(pulumi.CustomResource):
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        image="us-docker.pkg.dev/cloudrun/container/job",
                     )],
                 ),
             ))
@@ -773,7 +847,7 @@ class Job(pulumi.CustomResource):
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        image="us-docker.pkg.dev/cloudrun/container/job",
                         resources=gcp.cloudrunv2.JobTemplateTemplateContainerResourcesArgs(
                             limits={
                                 "cpu": "2",
@@ -815,7 +889,7 @@ class Job(pulumi.CustomResource):
                         ),
                     )],
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        image="us-docker.pkg.dev/cloudrun/container/job",
                         envs=[
                             gcp.cloudrunv2.JobTemplateTemplateContainerEnvArgs(
                                 name="FOO",
@@ -877,7 +951,7 @@ class Job(pulumi.CustomResource):
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        image="us-docker.pkg.dev/cloudrun/container/job",
                     )],
                     vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArgs(
                         connector=connector.id,
@@ -953,7 +1027,7 @@ class Job(pulumi.CustomResource):
                         ),
                     )],
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        image="us-docker.pkg.dev/cloudrun/container/job",
                         volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs(
                             name="a-volume",
                             mount_path="/secrets",
@@ -979,7 +1053,7 @@ class Job(pulumi.CustomResource):
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        image="us-docker.pkg.dev/cloudrun/container/job",
                         volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs(
                             name="empty-dir-volume",
                             mount_path="/mnt",
@@ -991,6 +1065,24 @@ class Job(pulumi.CustomResource):
                             medium="MEMORY",
                             size_limit="128Mi",
                         ),
+                    )],
+                ),
+            ))
+        ```
+        ### Cloudrunv2 Job Run Job
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
+            location="us-central1",
+            start_execution_token="start-once-created",
+            template=gcp.cloudrunv2.JobTemplateArgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/job",
                     )],
                 ),
             ))
@@ -1048,6 +1140,10 @@ class Job(pulumi.CustomResource):
                ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
         :param pulumi.Input[str] location: The location of the cloud run job
         :param pulumi.Input[str] name: Name of the Job.
+        :param pulumi.Input[str] run_execution_token: A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+               execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+        :param pulumi.Input[str] start_execution_token: A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+               execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
         :param pulumi.Input[pulumi.InputType['JobTemplateArgs']] template: The template used to create executions for this Job.
                Structure is documented below.
         """
@@ -1080,7 +1176,7 @@ class Job(pulumi.CustomResource):
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        image="us-docker.pkg.dev/cloudrun/container/job",
                     )],
                 ),
             ))
@@ -1097,7 +1193,7 @@ class Job(pulumi.CustomResource):
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        image="us-docker.pkg.dev/cloudrun/container/job",
                         resources=gcp.cloudrunv2.JobTemplateTemplateContainerResourcesArgs(
                             limits={
                                 "cpu": "2",
@@ -1139,7 +1235,7 @@ class Job(pulumi.CustomResource):
                         ),
                     )],
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        image="us-docker.pkg.dev/cloudrun/container/job",
                         envs=[
                             gcp.cloudrunv2.JobTemplateTemplateContainerEnvArgs(
                                 name="FOO",
@@ -1201,7 +1297,7 @@ class Job(pulumi.CustomResource):
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        image="us-docker.pkg.dev/cloudrun/container/job",
                     )],
                     vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArgs(
                         connector=connector.id,
@@ -1277,7 +1373,7 @@ class Job(pulumi.CustomResource):
                         ),
                     )],
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        image="us-docker.pkg.dev/cloudrun/container/job",
                         volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs(
                             name="a-volume",
                             mount_path="/secrets",
@@ -1303,7 +1399,7 @@ class Job(pulumi.CustomResource):
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        image="us-docker.pkg.dev/cloudrun/container/job",
                         volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs(
                             name="empty-dir-volume",
                             mount_path="/mnt",
@@ -1315,6 +1411,24 @@ class Job(pulumi.CustomResource):
                             medium="MEMORY",
                             size_limit="128Mi",
                         ),
+                    )],
+                ),
+            ))
+        ```
+        ### Cloudrunv2 Job Run Job
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
+            location="us-central1",
+            start_execution_token="start-once-created",
+            template=gcp.cloudrunv2.JobTemplateArgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/job",
                     )],
                 ),
             ))
@@ -1368,6 +1482,8 @@ class Job(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 run_execution_token: Optional[pulumi.Input[str]] = None,
+                 start_execution_token: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[pulumi.InputType['JobTemplateArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1389,6 +1505,8 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["run_execution_token"] = run_execution_token
+            __props__.__dict__["start_execution_token"] = start_execution_token
             if template is None and not opts.urn:
                 raise TypeError("Missing required property 'template'")
             __props__.__dict__["template"] = template
@@ -1446,6 +1564,8 @@ class Job(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
+            run_execution_token: Optional[pulumi.Input[str]] = None,
+            start_execution_token: Optional[pulumi.Input[str]] = None,
             template: Optional[pulumi.Input[pulumi.InputType['JobTemplateArgs']]] = None,
             terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTerminalConditionArgs']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
@@ -1505,6 +1625,10 @@ class Job(pulumi.CustomResource):
                When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
                If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
                If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
+        :param pulumi.Input[str] run_execution_token: A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+               execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+        :param pulumi.Input[str] start_execution_token: A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+               execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
         :param pulumi.Input[pulumi.InputType['JobTemplateArgs']] template: The template used to create executions for this Job.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTerminalConditionArgs']]]] terminal_conditions: The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
@@ -1540,6 +1664,8 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["reconciling"] = reconciling
+        __props__.__dict__["run_execution_token"] = run_execution_token
+        __props__.__dict__["start_execution_token"] = start_execution_token
         __props__.__dict__["template"] = template
         __props__.__dict__["terminal_conditions"] = terminal_conditions
         __props__.__dict__["uid"] = uid
@@ -1757,6 +1883,24 @@ class Job(pulumi.CustomResource):
         If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
         """
         return pulumi.get(self, "reconciling")
+
+    @property
+    @pulumi.getter(name="runExecutionToken")
+    def run_execution_token(self) -> pulumi.Output[Optional[str]]:
+        """
+        A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+        execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+        """
+        return pulumi.get(self, "run_execution_token")
+
+    @property
+    @pulumi.getter(name="startExecutionToken")
+    def start_execution_token(self) -> pulumi.Output[Optional[str]]:
+        """
+        A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+        execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+        """
+        return pulumi.get(self, "start_execution_token")
 
     @property
     @pulumi.getter

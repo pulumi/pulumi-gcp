@@ -178,6 +178,58 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Pubsub Subscription Push Bq Service Account
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.pubsub.Topic("example", {name: "example-topic"});
+ * const bqWriteServiceAccount = new gcp.serviceaccount.Account("bq_write_service_account", {
+ *     accountId: "example-bqw",
+ *     displayName: "BQ Write Service Account",
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const viewer = new gcp.projects.IAMMember("viewer", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/bigquery.metadataViewer",
+ *     member: pulumi.interpolate`serviceAccount:${bqWriteServiceAccount.email}`,
+ * });
+ * const editor = new gcp.projects.IAMMember("editor", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/bigquery.dataEditor",
+ *     member: pulumi.interpolate`serviceAccount:${bqWriteServiceAccount.email}`,
+ * });
+ * const test = new gcp.bigquery.Dataset("test", {datasetId: "example_dataset"});
+ * const testTable = new gcp.bigquery.Table("test", {
+ *     deletionProtection: false,
+ *     tableId: "example_table",
+ *     datasetId: test.datasetId,
+ *     schema: `[
+ *   {
+ *     "name": "data",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE",
+ *     "description": "The data"
+ *   }
+ * ]
+ * `,
+ * });
+ * const exampleSubscription = new gcp.pubsub.Subscription("example", {
+ *     name: "example-subscription",
+ *     topic: example.id,
+ *     bigqueryConfig: {
+ *         table: pulumi.interpolate`${testTable.project}.${testTable.datasetId}.${testTable.tableId}`,
+ *         serviceAccountEmail: bqWriteServiceAccount.email,
+ *     },
+ * }, {
+ *     dependsOn: [
+ *         bqWriteServiceAccount,
+ *         viewer,
+ *         editor,
+ *     ],
+ * });
+ * ```
  * ### Pubsub Subscription Push Cloudstorage
  *
  * ```typescript
@@ -252,6 +304,48 @@ import * as utilities from "../utilities";
  *         admin,
  *     ],
  * });
+ * ```
+ * ### Pubsub Subscription Push Cloudstorage Service Account
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.storage.Bucket("example", {
+ *     name: "example-bucket",
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const exampleTopic = new gcp.pubsub.Topic("example", {name: "example-topic"});
+ * const storageWriteServiceAccount = new gcp.serviceaccount.Account("storage_write_service_account", {
+ *     accountId: "example-stw",
+ *     displayName: "Storage Write Service Account",
+ * });
+ * const admin = new gcp.storage.BucketIAMMember("admin", {
+ *     bucket: example.name,
+ *     role: "roles/storage.admin",
+ *     member: pulumi.interpolate`serviceAccount:${storageWriteServiceAccount.email}`,
+ * });
+ * const exampleSubscription = new gcp.pubsub.Subscription("example", {
+ *     name: "example-subscription",
+ *     topic: exampleTopic.id,
+ *     cloudStorageConfig: {
+ *         bucket: example.name,
+ *         filenamePrefix: "pre-",
+ *         filenameSuffix: "-_75413",
+ *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
+ *         maxBytes: 1000,
+ *         maxDuration: "300s",
+ *         serviceAccountEmail: storageWriteServiceAccount.email,
+ *     },
+ * }, {
+ *     dependsOn: [
+ *         storageWriteServiceAccount,
+ *         example,
+ *         admin,
+ *     ],
+ * });
+ * const project = gcp.organizations.getProject({});
  * ```
  *
  * ## Import

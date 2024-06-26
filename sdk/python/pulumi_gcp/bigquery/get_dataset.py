@@ -22,7 +22,7 @@ class GetDatasetResult:
     """
     A collection of values returned by getDataset.
     """
-    def __init__(__self__, accesses=None, creation_time=None, dataset_id=None, default_collation=None, default_encryption_configurations=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, delete_contents_on_destroy=None, description=None, effective_labels=None, etag=None, external_dataset_references=None, friendly_name=None, id=None, is_case_insensitive=None, labels=None, last_modified_time=None, location=None, max_time_travel_hours=None, project=None, pulumi_labels=None, self_link=None, storage_billing_model=None):
+    def __init__(__self__, accesses=None, creation_time=None, dataset_id=None, default_collation=None, default_encryption_configurations=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, delete_contents_on_destroy=None, description=None, effective_labels=None, etag=None, external_dataset_references=None, friendly_name=None, id=None, is_case_insensitive=None, labels=None, last_modified_time=None, location=None, max_time_travel_hours=None, project=None, pulumi_labels=None, resource_tags=None, self_link=None, storage_billing_model=None):
         if accesses and not isinstance(accesses, list):
             raise TypeError("Expected argument 'accesses' to be a list")
         pulumi.set(__self__, "accesses", accesses)
@@ -86,6 +86,9 @@ class GetDatasetResult:
         if pulumi_labels and not isinstance(pulumi_labels, dict):
             raise TypeError("Expected argument 'pulumi_labels' to be a dict")
         pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if resource_tags and not isinstance(resource_tags, dict):
+            raise TypeError("Expected argument 'resource_tags' to be a dict")
+        pulumi.set(__self__, "resource_tags", resource_tags)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -202,6 +205,11 @@ class GetDatasetResult:
         return pulumi.get(self, "pulumi_labels")
 
     @property
+    @pulumi.getter(name="resourceTags")
+    def resource_tags(self) -> Mapping[str, str]:
+        return pulumi.get(self, "resource_tags")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         return pulumi.get(self, "self_link")
@@ -239,6 +247,7 @@ class AwaitableGetDatasetResult(GetDatasetResult):
             max_time_travel_hours=self.max_time_travel_hours,
             project=self.project,
             pulumi_labels=self.pulumi_labels,
+            resource_tags=self.resource_tags,
             self_link=self.self_link,
             storage_billing_model=self.storage_billing_model)
 
@@ -294,6 +303,7 @@ def get_dataset(dataset_id: Optional[str] = None,
         max_time_travel_hours=pulumi.get(__ret__, 'max_time_travel_hours'),
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
+        resource_tags=pulumi.get(__ret__, 'resource_tags'),
         self_link=pulumi.get(__ret__, 'self_link'),
         storage_billing_model=pulumi.get(__ret__, 'storage_billing_model'))
 

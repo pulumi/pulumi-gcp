@@ -426,6 +426,8 @@ type Instance struct {
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
 	MaintenanceSchedules InstanceMaintenanceScheduleArrayOutput `pulumi:"maintenanceSchedules"`
+	// The self service update maintenance version.
+	MaintenanceVersion pulumi.StringOutput `pulumi:"maintenanceVersion"`
 	// Redis memory size in GiB.
 	//
 	// ***
@@ -601,6 +603,8 @@ type instanceState struct {
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
 	MaintenanceSchedules []InstanceMaintenanceSchedule `pulumi:"maintenanceSchedules"`
+	// The self service update maintenance version.
+	MaintenanceVersion *string `pulumi:"maintenanceVersion"`
 	// Redis memory size in GiB.
 	//
 	// ***
@@ -738,6 +742,8 @@ type InstanceState struct {
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
 	MaintenanceSchedules InstanceMaintenanceScheduleArrayInput
+	// The self service update maintenance version.
+	MaintenanceVersion pulumi.StringPtrInput
 	// Redis memory size in GiB.
 	//
 	// ***
@@ -860,6 +866,8 @@ type instanceArgs struct {
 	// Maintenance policy for an instance.
 	// Structure is documented below.
 	MaintenancePolicy *InstanceMaintenancePolicy `pulumi:"maintenancePolicy"`
+	// The self service update maintenance version.
+	MaintenanceVersion *string `pulumi:"maintenanceVersion"`
 	// Redis memory size in GiB.
 	//
 	// ***
@@ -956,6 +964,8 @@ type InstanceArgs struct {
 	// Maintenance policy for an instance.
 	// Structure is documented below.
 	MaintenancePolicy InstanceMaintenancePolicyPtrInput
+	// The self service update maintenance version.
+	MaintenanceVersion pulumi.StringPtrInput
 	// Redis memory size in GiB.
 	//
 	// ***
@@ -1199,6 +1209,11 @@ func (o InstanceOutput) MaintenancePolicy() InstanceMaintenancePolicyPtrOutput {
 // Structure is documented below.
 func (o InstanceOutput) MaintenanceSchedules() InstanceMaintenanceScheduleArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceMaintenanceScheduleArrayOutput { return v.MaintenanceSchedules }).(InstanceMaintenanceScheduleArrayOutput)
+}
+
+// The self service update maintenance version.
+func (o InstanceOutput) MaintenanceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintenanceVersion }).(pulumi.StringOutput)
 }
 
 // Redis memory size in GiB.

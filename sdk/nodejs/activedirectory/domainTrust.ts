@@ -84,8 +84,8 @@ export class DomainTrust extends pulumi.CustomResource {
     }
 
     /**
-     * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-     * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+     * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
      *
      *
      * - - -
@@ -186,8 +186,8 @@ export class DomainTrust extends pulumi.CustomResource {
  */
 export interface DomainTrustState {
     /**
-     * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-     * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+     * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
      *
      *
      * - - -
@@ -232,8 +232,8 @@ export interface DomainTrustState {
  */
 export interface DomainTrustArgs {
     /**
-     * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-     * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+     * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
      *
      *
      * - - -

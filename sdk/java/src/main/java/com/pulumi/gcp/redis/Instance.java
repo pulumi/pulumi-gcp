@@ -691,6 +691,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.maintenanceSchedules;
     }
     /**
+     * The self service update maintenance version.
+     * 
+     */
+    @Export(name="maintenanceVersion", refs={String.class}, tree="[0]")
+    private Output<String> maintenanceVersion;
+
+    /**
+     * @return The self service update maintenance version.
+     * 
+     */
+    public Output<String> maintenanceVersion() {
+        return this.maintenanceVersion;
+    }
+    /**
      * Redis memory size in GiB.
      * 
      * ***

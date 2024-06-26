@@ -22,6 +22,14 @@ public final class BudgetAllUpdatesRule {
      */
     private @Nullable Boolean disableDefaultIamRecipients;
     /**
+     * @return When set to true, and when the budget has a single project configured,
+     * notifications will be sent to project level recipients of that project.
+     * This field will be ignored if the budget has multiple or no project configured.
+     * Currently, project level recipients are the users with Owner role on a cloud project.
+     * 
+     */
+    private @Nullable Boolean enableProjectLevelRecipients;
+    /**
      * @return The full resource name of a monitoring notification
      * channel in the form
      * projects/{project_id}/notificationChannels/{channel_id}.
@@ -55,6 +63,16 @@ public final class BudgetAllUpdatesRule {
      */
     public Optional<Boolean> disableDefaultIamRecipients() {
         return Optional.ofNullable(this.disableDefaultIamRecipients);
+    }
+    /**
+     * @return When set to true, and when the budget has a single project configured,
+     * notifications will be sent to project level recipients of that project.
+     * This field will be ignored if the budget has multiple or no project configured.
+     * Currently, project level recipients are the users with Owner role on a cloud project.
+     * 
+     */
+    public Optional<Boolean> enableProjectLevelRecipients() {
+        return Optional.ofNullable(this.enableProjectLevelRecipients);
     }
     /**
      * @return The full resource name of a monitoring notification
@@ -96,6 +114,7 @@ public final class BudgetAllUpdatesRule {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean disableDefaultIamRecipients;
+        private @Nullable Boolean enableProjectLevelRecipients;
         private @Nullable List<String> monitoringNotificationChannels;
         private @Nullable String pubsubTopic;
         private @Nullable String schemaVersion;
@@ -103,6 +122,7 @@ public final class BudgetAllUpdatesRule {
         public Builder(BudgetAllUpdatesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disableDefaultIamRecipients = defaults.disableDefaultIamRecipients;
+    	      this.enableProjectLevelRecipients = defaults.enableProjectLevelRecipients;
     	      this.monitoringNotificationChannels = defaults.monitoringNotificationChannels;
     	      this.pubsubTopic = defaults.pubsubTopic;
     	      this.schemaVersion = defaults.schemaVersion;
@@ -112,6 +132,12 @@ public final class BudgetAllUpdatesRule {
         public Builder disableDefaultIamRecipients(@Nullable Boolean disableDefaultIamRecipients) {
 
             this.disableDefaultIamRecipients = disableDefaultIamRecipients;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableProjectLevelRecipients(@Nullable Boolean enableProjectLevelRecipients) {
+
+            this.enableProjectLevelRecipients = enableProjectLevelRecipients;
             return this;
         }
         @CustomType.Setter
@@ -138,6 +164,7 @@ public final class BudgetAllUpdatesRule {
         public BudgetAllUpdatesRule build() {
             final var _resultValue = new BudgetAllUpdatesRule();
             _resultValue.disableDefaultIamRecipients = disableDefaultIamRecipients;
+            _resultValue.enableProjectLevelRecipients = enableProjectLevelRecipients;
             _resultValue.monitoringNotificationChannels = monitoringNotificationChannels;
             _resultValue.pubsubTopic = pubsubTopic;
             _resultValue.schemaVersion = schemaVersion;

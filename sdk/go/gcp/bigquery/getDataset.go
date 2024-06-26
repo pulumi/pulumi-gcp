@@ -84,6 +84,7 @@ type LookupDatasetResult struct {
 	MaxTimeTravelHours  string            `pulumi:"maxTimeTravelHours"`
 	Project             *string           `pulumi:"project"`
 	PulumiLabels        map[string]string `pulumi:"pulumiLabels"`
+	ResourceTags        map[string]string `pulumi:"resourceTags"`
 	SelfLink            string            `pulumi:"selfLink"`
 	StorageBillingModel string            `pulumi:"storageBillingModel"`
 }
@@ -214,6 +215,10 @@ func (o LookupDatasetResultOutput) Project() pulumi.StringPtrOutput {
 
 func (o LookupDatasetResultOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDatasetResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupDatasetResultOutput) ResourceTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDatasetResult) map[string]string { return v.ResourceTags }).(pulumi.StringMapOutput)
 }
 
 func (o LookupDatasetResultOutput) SelfLink() pulumi.StringOutput {

@@ -435,6 +435,31 @@ class Budget(pulumi.CustomResource):
                 disable_default_iam_recipients=True,
             ))
         ```
+        ### Billing Budget Notify Project Recipient
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
+        project = gcp.organizations.get_project()
+        budget = gcp.billing.Budget("budget",
+            billing_account=account.id,
+            display_name="Example Billing Budget",
+            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
+                projects=[f"projects/{project.number}"],
+            ),
+            amount=gcp.billing.BudgetAmountArgs(
+                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
+                    currency_code="USD",
+                    units="100000",
+                ),
+            ),
+            all_updates_rule=gcp.billing.BudgetAllUpdatesRuleArgs(
+                monitoring_notification_channels=[],
+                enable_project_level_recipients=True,
+            ))
+        ```
         ### Billing Budget Customperiod
 
         ```python
@@ -656,6 +681,31 @@ class Budget(pulumi.CustomResource):
             all_updates_rule=gcp.billing.BudgetAllUpdatesRuleArgs(
                 monitoring_notification_channels=[notification_channel.id],
                 disable_default_iam_recipients=True,
+            ))
+        ```
+        ### Billing Budget Notify Project Recipient
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
+        project = gcp.organizations.get_project()
+        budget = gcp.billing.Budget("budget",
+            billing_account=account.id,
+            display_name="Example Billing Budget",
+            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
+                projects=[f"projects/{project.number}"],
+            ),
+            amount=gcp.billing.BudgetAmountArgs(
+                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
+                    currency_code="USD",
+                    units="100000",
+                ),
+            ),
+            all_updates_rule=gcp.billing.BudgetAllUpdatesRuleArgs(
+                monitoring_notification_channels=[],
+                enable_project_level_recipients=True,
             ))
         ```
         ### Billing Budget Customperiod

@@ -32,14 +32,14 @@ public final class RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository
     }
 
     /**
-     * Specific repository from the base, e.g. `&#34;centos/8-stream/BaseOS/x86_64/os&#34;`
+     * Specific repository from the base, e.g. `&#34;pub/rocky/9/BaseOS/x86_64/os&#34;`
      * 
      */
     @Import(name="repositoryPath", required=true)
     private Output<String> repositoryPath;
 
     /**
-     * @return Specific repository from the base, e.g. `&#34;centos/8-stream/BaseOS/x86_64/os&#34;`
+     * @return Specific repository from the base, e.g. `&#34;pub/rocky/9/BaseOS/x86_64/os&#34;`
      * 
      */
     public Output<String> repositoryPath() {
@@ -95,7 +95,7 @@ public final class RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository
         }
 
         /**
-         * @param repositoryPath Specific repository from the base, e.g. `&#34;centos/8-stream/BaseOS/x86_64/os&#34;`
+         * @param repositoryPath Specific repository from the base, e.g. `&#34;pub/rocky/9/BaseOS/x86_64/os&#34;`
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository
         }
 
         /**
-         * @param repositoryPath Specific repository from the base, e.g. `&#34;centos/8-stream/BaseOS/x86_64/os&#34;`
+         * @param repositoryPath Specific repository from the base, e.g. `&#34;pub/rocky/9/BaseOS/x86_64/os&#34;`
          * 
          * @return builder
          * 

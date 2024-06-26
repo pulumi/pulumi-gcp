@@ -50,6 +50,8 @@ public final class GetJobResult {
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
     private Boolean reconciling;
+    private String runExecutionToken;
+    private String startExecutionToken;
     private List<GetJobTemplate> templates;
     private List<GetJobTerminalCondition> terminalConditions;
     private String uid;
@@ -135,6 +137,12 @@ public final class GetJobResult {
     public Boolean reconciling() {
         return this.reconciling;
     }
+    public String runExecutionToken() {
+        return this.runExecutionToken;
+    }
+    public String startExecutionToken() {
+        return this.startExecutionToken;
+    }
     public List<GetJobTemplate> templates() {
         return this.templates;
     }
@@ -182,6 +190,8 @@ public final class GetJobResult {
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
         private Boolean reconciling;
+        private String runExecutionToken;
+        private String startExecutionToken;
         private List<GetJobTemplate> templates;
         private List<GetJobTerminalCondition> terminalConditions;
         private String uid;
@@ -214,6 +224,8 @@ public final class GetJobResult {
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.reconciling = defaults.reconciling;
+    	      this.runExecutionToken = defaults.runExecutionToken;
+    	      this.startExecutionToken = defaults.startExecutionToken;
     	      this.templates = defaults.templates;
     	      this.terminalConditions = defaults.terminalConditions;
     	      this.uid = defaults.uid;
@@ -426,6 +438,22 @@ public final class GetJobResult {
             return this;
         }
         @CustomType.Setter
+        public Builder runExecutionToken(String runExecutionToken) {
+            if (runExecutionToken == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "runExecutionToken");
+            }
+            this.runExecutionToken = runExecutionToken;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder startExecutionToken(String startExecutionToken) {
+            if (startExecutionToken == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "startExecutionToken");
+            }
+            this.startExecutionToken = startExecutionToken;
+            return this;
+        }
+        @CustomType.Setter
         public Builder templates(List<GetJobTemplate> templates) {
             if (templates == null) {
               throw new MissingRequiredPropertyException("GetJobResult", "templates");
@@ -490,6 +518,8 @@ public final class GetJobResult {
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.reconciling = reconciling;
+            _resultValue.runExecutionToken = runExecutionToken;
+            _resultValue.startExecutionToken = startExecutionToken;
             _resultValue.templates = templates;
             _resultValue.terminalConditions = terminalConditions;
             _resultValue.uid = uid;
