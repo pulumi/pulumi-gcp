@@ -35,15 +35,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const customTestNetwork = new gcp.compute.Network("custom_test", {
- *     name: "vpc-con",
- *     autoCreateSubnetworks: false,
- * });
  * const customTest = new gcp.compute.Subnetwork("custom_test", {
  *     name: "vpc-con",
  *     ipCidrRange: "10.2.0.0/28",
  *     region: "us-central1",
- *     network: customTestNetwork.id,
+ *     network: "default",
  * });
  * const connector = new gcp.vpcaccess.Connector("connector", {
  *     name: "vpc-con",

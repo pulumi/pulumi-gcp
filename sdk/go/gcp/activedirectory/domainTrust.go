@@ -81,8 +81,8 @@ import (
 type DomainTrust struct {
 	pulumi.CustomResourceState
 
-	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	//
 	// ***
 	Domain pulumi.StringOutput `pulumi:"domain"`
@@ -161,8 +161,8 @@ func GetDomainTrust(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DomainTrust resources.
 type domainTrustState struct {
-	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	//
 	// ***
 	Domain *string `pulumi:"domain"`
@@ -187,8 +187,8 @@ type domainTrustState struct {
 }
 
 type DomainTrustState struct {
-	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	//
 	// ***
 	Domain pulumi.StringPtrInput
@@ -217,8 +217,8 @@ func (DomainTrustState) ElementType() reflect.Type {
 }
 
 type domainTrustArgs struct {
-	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	//
 	// ***
 	Domain string `pulumi:"domain"`
@@ -244,8 +244,8 @@ type domainTrustArgs struct {
 
 // The set of arguments for constructing a DomainTrust resource.
 type DomainTrustArgs struct {
-	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	//
 	// ***
 	Domain pulumi.StringInput
@@ -356,8 +356,8 @@ func (o DomainTrustOutput) ToDomainTrustOutputWithContext(ctx context.Context) D
 	return o
 }
 
-// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 //
 // ***
 func (o DomainTrustOutput) Domain() pulumi.StringOutput {

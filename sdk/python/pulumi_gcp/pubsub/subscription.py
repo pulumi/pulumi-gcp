@@ -1031,6 +1031,52 @@ class Subscription(pulumi.CustomResource):
                     editor,
                 ]))
         ```
+        ### Pubsub Subscription Push Bq Service Account
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example", name="example-topic")
+        bq_write_service_account = gcp.serviceaccount.Account("bq_write_service_account",
+            account_id="example-bqw",
+            display_name="BQ Write Service Account")
+        project = gcp.organizations.get_project()
+        viewer = gcp.projects.IAMMember("viewer",
+            project=project.project_id,
+            role="roles/bigquery.metadataViewer",
+            member=bq_write_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        editor = gcp.projects.IAMMember("editor",
+            project=project.project_id,
+            role="roles/bigquery.dataEditor",
+            member=bq_write_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        test = gcp.bigquery.Dataset("test", dataset_id="example_dataset")
+        test_table = gcp.bigquery.Table("test",
+            deletion_protection=False,
+            table_id="example_table",
+            dataset_id=test.dataset_id,
+            schema=\"\"\"[
+          {
+            "name": "data",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "The data"
+          }
+        ]
+        \"\"\")
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example.id,
+            bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
+                table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
+                service_account_email=bq_write_service_account.email,
+            ),
+            opts = pulumi.ResourceOptions(depends_on=[
+                    bq_write_service_account,
+                    viewer,
+                    editor,
+                ]))
+        ```
         ### Pubsub Subscription Push Cloudstorage
 
         ```python
@@ -1097,6 +1143,43 @@ class Subscription(pulumi.CustomResource):
                     example,
                     admin,
                 ]))
+        ```
+        ### Pubsub Subscription Push Cloudstorage Service Account
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.storage.Bucket("example",
+            name="example-bucket",
+            location="US",
+            uniform_bucket_level_access=True)
+        example_topic = gcp.pubsub.Topic("example", name="example-topic")
+        storage_write_service_account = gcp.serviceaccount.Account("storage_write_service_account",
+            account_id="example-stw",
+            display_name="Storage Write Service Account")
+        admin = gcp.storage.BucketIAMMember("admin",
+            bucket=example.name,
+            role="roles/storage.admin",
+            member=storage_write_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example_topic.id,
+            cloud_storage_config=gcp.pubsub.SubscriptionCloudStorageConfigArgs(
+                bucket=example.name,
+                filename_prefix="pre-",
+                filename_suffix="-_75413",
+                filename_datetime_format="YYYY-MM-DD/hh_mm_ssZ",
+                max_bytes=1000,
+                max_duration="300s",
+                service_account_email=storage_write_service_account.email,
+            ),
+            opts = pulumi.ResourceOptions(depends_on=[
+                    storage_write_service_account,
+                    example,
+                    admin,
+                ]))
+        project = gcp.organizations.get_project()
         ```
 
         ## Import
@@ -1376,6 +1459,52 @@ class Subscription(pulumi.CustomResource):
                     editor,
                 ]))
         ```
+        ### Pubsub Subscription Push Bq Service Account
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example", name="example-topic")
+        bq_write_service_account = gcp.serviceaccount.Account("bq_write_service_account",
+            account_id="example-bqw",
+            display_name="BQ Write Service Account")
+        project = gcp.organizations.get_project()
+        viewer = gcp.projects.IAMMember("viewer",
+            project=project.project_id,
+            role="roles/bigquery.metadataViewer",
+            member=bq_write_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        editor = gcp.projects.IAMMember("editor",
+            project=project.project_id,
+            role="roles/bigquery.dataEditor",
+            member=bq_write_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        test = gcp.bigquery.Dataset("test", dataset_id="example_dataset")
+        test_table = gcp.bigquery.Table("test",
+            deletion_protection=False,
+            table_id="example_table",
+            dataset_id=test.dataset_id,
+            schema=\"\"\"[
+          {
+            "name": "data",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "The data"
+          }
+        ]
+        \"\"\")
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example.id,
+            bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
+                table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
+                service_account_email=bq_write_service_account.email,
+            ),
+            opts = pulumi.ResourceOptions(depends_on=[
+                    bq_write_service_account,
+                    viewer,
+                    editor,
+                ]))
+        ```
         ### Pubsub Subscription Push Cloudstorage
 
         ```python
@@ -1442,6 +1571,43 @@ class Subscription(pulumi.CustomResource):
                     example,
                     admin,
                 ]))
+        ```
+        ### Pubsub Subscription Push Cloudstorage Service Account
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.storage.Bucket("example",
+            name="example-bucket",
+            location="US",
+            uniform_bucket_level_access=True)
+        example_topic = gcp.pubsub.Topic("example", name="example-topic")
+        storage_write_service_account = gcp.serviceaccount.Account("storage_write_service_account",
+            account_id="example-stw",
+            display_name="Storage Write Service Account")
+        admin = gcp.storage.BucketIAMMember("admin",
+            bucket=example.name,
+            role="roles/storage.admin",
+            member=storage_write_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example_topic.id,
+            cloud_storage_config=gcp.pubsub.SubscriptionCloudStorageConfigArgs(
+                bucket=example.name,
+                filename_prefix="pre-",
+                filename_suffix="-_75413",
+                filename_datetime_format="YYYY-MM-DD/hh_mm_ssZ",
+                max_bytes=1000,
+                max_duration="300s",
+                service_account_email=storage_write_service_account.email,
+            ),
+            opts = pulumi.ResourceOptions(depends_on=[
+                    storage_write_service_account,
+                    example,
+                    admin,
+                ]))
+        project = gcp.organizations.get_project()
         ```
 
         ## Import

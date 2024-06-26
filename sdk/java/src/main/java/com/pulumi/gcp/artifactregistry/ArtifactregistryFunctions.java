@@ -8,15 +8,282 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.artifactregistry.inputs.GetDockerImageArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagePlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryIamPolicyArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryIamPolicyPlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryPlainArgs;
+import com.pulumi.gcp.artifactregistry.outputs.GetDockerImageResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryIamPolicyResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class ArtifactregistryFunctions {
+    /**
+     * This data source fetches information from a provided Artifact Registry repository, including the fully qualified name and URI for an image, based on a the latest version of image name and optional digest or tag.
+     * 
+     * &gt; **Note**
+     * Requires one of the following OAuth scopes: `https://www.googleapis.com/auth/cloud-platform` or `https://www.googleapis.com/auth/cloud-platform.read-only`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetDockerImageArgs;
+     * import com.pulumi.gcp.cloudrunv2.Service;
+     * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+     * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myRepo = new Repository("myRepo", RepositoryArgs.builder()
+     *             .location("us-west1")
+     *             .repositoryId("my-repository")
+     *             .format("DOCKER")
+     *             .build());
+     * 
+     *         final var myImage = ArtifactregistryFunctions.getDockerImage(GetDockerImageArgs.builder()
+     *             .repository(myRepo.id())
+     *             .image("my-image")
+     *             .tag("my-tag")
+     *             .build());
+     * 
+     *         var default_ = new Service("default", ServiceArgs.builder()
+     *             .template(ServiceTemplateArgs.builder()
+     *                 .containers(ServiceTemplateContainerArgs.builder()
+     *                     .image(myImage.applyValue(getDockerImageResult -> getDockerImageResult).applyValue(myImage -> myImage.applyValue(getDockerImageResult -> getDockerImageResult.selfLink())))
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDockerImageResult> getDockerImage(GetDockerImageArgs args) {
+        return getDockerImage(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source fetches information from a provided Artifact Registry repository, including the fully qualified name and URI for an image, based on a the latest version of image name and optional digest or tag.
+     * 
+     * &gt; **Note**
+     * Requires one of the following OAuth scopes: `https://www.googleapis.com/auth/cloud-platform` or `https://www.googleapis.com/auth/cloud-platform.read-only`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetDockerImageArgs;
+     * import com.pulumi.gcp.cloudrunv2.Service;
+     * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+     * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myRepo = new Repository("myRepo", RepositoryArgs.builder()
+     *             .location("us-west1")
+     *             .repositoryId("my-repository")
+     *             .format("DOCKER")
+     *             .build());
+     * 
+     *         final var myImage = ArtifactregistryFunctions.getDockerImage(GetDockerImageArgs.builder()
+     *             .repository(myRepo.id())
+     *             .image("my-image")
+     *             .tag("my-tag")
+     *             .build());
+     * 
+     *         var default_ = new Service("default", ServiceArgs.builder()
+     *             .template(ServiceTemplateArgs.builder()
+     *                 .containers(ServiceTemplateContainerArgs.builder()
+     *                     .image(myImage.applyValue(getDockerImageResult -> getDockerImageResult).applyValue(myImage -> myImage.applyValue(getDockerImageResult -> getDockerImageResult.selfLink())))
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDockerImageResult> getDockerImagePlain(GetDockerImagePlainArgs args) {
+        return getDockerImagePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source fetches information from a provided Artifact Registry repository, including the fully qualified name and URI for an image, based on a the latest version of image name and optional digest or tag.
+     * 
+     * &gt; **Note**
+     * Requires one of the following OAuth scopes: `https://www.googleapis.com/auth/cloud-platform` or `https://www.googleapis.com/auth/cloud-platform.read-only`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetDockerImageArgs;
+     * import com.pulumi.gcp.cloudrunv2.Service;
+     * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+     * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myRepo = new Repository("myRepo", RepositoryArgs.builder()
+     *             .location("us-west1")
+     *             .repositoryId("my-repository")
+     *             .format("DOCKER")
+     *             .build());
+     * 
+     *         final var myImage = ArtifactregistryFunctions.getDockerImage(GetDockerImageArgs.builder()
+     *             .repository(myRepo.id())
+     *             .image("my-image")
+     *             .tag("my-tag")
+     *             .build());
+     * 
+     *         var default_ = new Service("default", ServiceArgs.builder()
+     *             .template(ServiceTemplateArgs.builder()
+     *                 .containers(ServiceTemplateContainerArgs.builder()
+     *                     .image(myImage.applyValue(getDockerImageResult -> getDockerImageResult).applyValue(myImage -> myImage.applyValue(getDockerImageResult -> getDockerImageResult.selfLink())))
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDockerImageResult> getDockerImage(GetDockerImageArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:artifactregistry/getDockerImage:getDockerImage", TypeShape.of(GetDockerImageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source fetches information from a provided Artifact Registry repository, including the fully qualified name and URI for an image, based on a the latest version of image name and optional digest or tag.
+     * 
+     * &gt; **Note**
+     * Requires one of the following OAuth scopes: `https://www.googleapis.com/auth/cloud-platform` or `https://www.googleapis.com/auth/cloud-platform.read-only`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetDockerImageArgs;
+     * import com.pulumi.gcp.cloudrunv2.Service;
+     * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+     * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myRepo = new Repository("myRepo", RepositoryArgs.builder()
+     *             .location("us-west1")
+     *             .repositoryId("my-repository")
+     *             .format("DOCKER")
+     *             .build());
+     * 
+     *         final var myImage = ArtifactregistryFunctions.getDockerImage(GetDockerImageArgs.builder()
+     *             .repository(myRepo.id())
+     *             .image("my-image")
+     *             .tag("my-tag")
+     *             .build());
+     * 
+     *         var default_ = new Service("default", ServiceArgs.builder()
+     *             .template(ServiceTemplateArgs.builder()
+     *                 .containers(ServiceTemplateContainerArgs.builder()
+     *                     .image(myImage.applyValue(getDockerImageResult -> getDockerImageResult).applyValue(myImage -> myImage.applyValue(getDockerImageResult -> getDockerImageResult.selfLink())))
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDockerImageResult> getDockerImagePlain(GetDockerImagePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getDockerImage:getDockerImage", TypeShape.of(GetDockerImageResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Get information about a Google Artifact Registry Repository. For more information see
      * the [official documentation](https://cloud.google.com/artifact-registry/docs/)

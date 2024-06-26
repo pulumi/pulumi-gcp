@@ -46,6 +46,12 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// </summary>
         public readonly string? MaxDuration;
         /// <summary>
+        /// The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+        /// [service agent](https://cloud.google.com/iam/docs/service-agents),
+        /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        /// </summary>
+        public readonly string? ServiceAccountEmail;
+        /// <summary>
         /// (Output)
         /// An output-only field that indicates whether or not the subscription can receive messages.
         /// </summary>
@@ -67,6 +73,8 @@ namespace Pulumi.Gcp.PubSub.Outputs
 
             string? maxDuration,
 
+            string? serviceAccountEmail,
+
             string? state)
         {
             AvroConfig = avroConfig;
@@ -76,6 +84,7 @@ namespace Pulumi.Gcp.PubSub.Outputs
             FilenameSuffix = filenameSuffix;
             MaxBytes = maxBytes;
             MaxDuration = maxDuration;
+            ServiceAccountEmail = serviceAccountEmail;
             State = state;
         }
     }

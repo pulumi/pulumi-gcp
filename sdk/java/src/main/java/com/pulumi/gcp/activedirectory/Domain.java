@@ -112,8 +112,8 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.authorizedNetworks);
     }
     /**
-     * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-     * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+     * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
      * 
      * ***
      * 
@@ -122,8 +122,8 @@ public class Domain extends com.pulumi.resources.CustomResource {
     private Output<String> domainName;
 
     /**
-     * @return The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-     * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+     * @return The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
      * 
      * ***
      * 

@@ -278,16 +278,16 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
 //				Location:     pulumi.String("us-central1"),
-//				RepositoryId: pulumi.String("centos-8"),
+//				RepositoryId: pulumi.String("rocky-9"),
 //				Description:  pulumi.String("example remote yum repository"),
 //				Format:       pulumi.String("YUM"),
 //				Mode:         pulumi.String("REMOTE_REPOSITORY"),
 //				RemoteRepositoryConfig: &artifactregistry.RepositoryRemoteRepositoryConfigArgs{
-//					Description: pulumi.String("Centos 8 remote repository"),
+//					Description: pulumi.String("Rocky 9 remote repository"),
 //					YumRepository: &artifactregistry.RepositoryRemoteRepositoryConfigYumRepositoryArgs{
 //						PublicRepository: &artifactregistry.RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs{
-//							RepositoryBase: pulumi.String("CENTOS"),
-//							RepositoryPath: pulumi.String("centos/8-stream/BaseOS/x86_64/os"),
+//							RepositoryBase: pulumi.String("ROCKY"),
+//							RepositoryPath: pulumi.String("pub/rocky/9/BaseOS/x86_64/os"),
 //						},
 //					},
 //				},

@@ -1005,6 +1005,92 @@ class MetastoreService(pulumi.CustomResource):
                 "env": "test",
             })
         ```
+        ### Dataproc Metastore Service Autoscaling Max Scaling Factor
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_resource = gcp.dataproc.MetastoreService("test_resource",
+            service_id="test-service",
+            location="us-central1",
+            database_type="SPANNER",
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+            ),
+            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
+                autoscaling_config=gcp.dataproc.MetastoreServiceScalingConfigAutoscalingConfigArgs(
+                    autoscaling_enabled=True,
+                    limit_config=gcp.dataproc.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs(
+                        max_scaling_factor=1,
+                    ),
+                ),
+            ))
+        ```
+        ### Dataproc Metastore Service Autoscaling Min And Max Scaling Factor
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_resource = gcp.dataproc.MetastoreService("test_resource",
+            service_id="test-service",
+            location="us-central1",
+            database_type="SPANNER",
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+            ),
+            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
+                autoscaling_config=gcp.dataproc.MetastoreServiceScalingConfigAutoscalingConfigArgs(
+                    autoscaling_enabled=True,
+                    limit_config=gcp.dataproc.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs(
+                        min_scaling_factor=0.1,
+                        max_scaling_factor=1,
+                    ),
+                ),
+            ))
+        ```
+        ### Dataproc Metastore Service Autoscaling Min Scaling Factor
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_resource = gcp.dataproc.MetastoreService("test_resource",
+            service_id="test-service",
+            location="us-central1",
+            database_type="SPANNER",
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+            ),
+            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
+                autoscaling_config=gcp.dataproc.MetastoreServiceScalingConfigAutoscalingConfigArgs(
+                    autoscaling_enabled=True,
+                    limit_config=gcp.dataproc.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs(
+                        min_scaling_factor=0.1,
+                    ),
+                ),
+            ))
+        ```
+        ### Dataproc Metastore Service Autoscaling No Limit Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_resource = gcp.dataproc.MetastoreService("test_resource",
+            service_id="test-service",
+            location="us-central1",
+            database_type="SPANNER",
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+            ),
+            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
+                autoscaling_config=gcp.dataproc.MetastoreServiceScalingConfigAutoscalingConfigArgs(
+                    autoscaling_enabled=True,
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -1257,6 +1343,92 @@ class MetastoreService(pulumi.CustomResource):
             labels={
                 "env": "test",
             })
+        ```
+        ### Dataproc Metastore Service Autoscaling Max Scaling Factor
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_resource = gcp.dataproc.MetastoreService("test_resource",
+            service_id="test-service",
+            location="us-central1",
+            database_type="SPANNER",
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+            ),
+            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
+                autoscaling_config=gcp.dataproc.MetastoreServiceScalingConfigAutoscalingConfigArgs(
+                    autoscaling_enabled=True,
+                    limit_config=gcp.dataproc.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs(
+                        max_scaling_factor=1,
+                    ),
+                ),
+            ))
+        ```
+        ### Dataproc Metastore Service Autoscaling Min And Max Scaling Factor
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_resource = gcp.dataproc.MetastoreService("test_resource",
+            service_id="test-service",
+            location="us-central1",
+            database_type="SPANNER",
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+            ),
+            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
+                autoscaling_config=gcp.dataproc.MetastoreServiceScalingConfigAutoscalingConfigArgs(
+                    autoscaling_enabled=True,
+                    limit_config=gcp.dataproc.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs(
+                        min_scaling_factor=0.1,
+                        max_scaling_factor=1,
+                    ),
+                ),
+            ))
+        ```
+        ### Dataproc Metastore Service Autoscaling Min Scaling Factor
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_resource = gcp.dataproc.MetastoreService("test_resource",
+            service_id="test-service",
+            location="us-central1",
+            database_type="SPANNER",
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+            ),
+            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
+                autoscaling_config=gcp.dataproc.MetastoreServiceScalingConfigAutoscalingConfigArgs(
+                    autoscaling_enabled=True,
+                    limit_config=gcp.dataproc.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs(
+                        min_scaling_factor=0.1,
+                    ),
+                ),
+            ))
+        ```
+        ### Dataproc Metastore Service Autoscaling No Limit Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_resource = gcp.dataproc.MetastoreService("test_resource",
+            service_id="test-service",
+            location="us-central1",
+            database_type="SPANNER",
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+            ),
+            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
+                autoscaling_config=gcp.dataproc.MetastoreServiceScalingConfigAutoscalingConfigArgs(
+                    autoscaling_enabled=True,
+                ),
+            ))
         ```
 
         ## Import

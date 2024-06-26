@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchConfigArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchExprArgs;
+import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchExprOptionsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -54,6 +55,23 @@ public final class SecurityPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * The configuration options available when specifying a user defined CEVAL expression (i.e., &#39;expr&#39;).
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="exprOptions")
+    private @Nullable Output<SecurityPolicyRuleMatchExprOptionsArgs> exprOptions;
+
+    /**
+     * @return The configuration options available when specifying a user defined CEVAL expression (i.e., &#39;expr&#39;).
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityPolicyRuleMatchExprOptionsArgs>> exprOptions() {
+        return Optional.ofNullable(this.exprOptions);
+    }
+
+    /**
      * Preconfigured versioned expression. If this field is specified, config must also be specified.
      * Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
      * Possible values are: `SRC_IPS_V1`.
@@ -77,6 +95,7 @@ public final class SecurityPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     private SecurityPolicyRuleMatchArgs(SecurityPolicyRuleMatchArgs $) {
         this.config = $.config;
         this.expr = $.expr;
+        this.exprOptions = $.exprOptions;
         this.versionedExpr = $.versionedExpr;
     }
 
@@ -144,6 +163,29 @@ public final class SecurityPolicyRuleMatchArgs extends com.pulumi.resources.Reso
          */
         public Builder expr(SecurityPolicyRuleMatchExprArgs expr) {
             return expr(Output.of(expr));
+        }
+
+        /**
+         * @param exprOptions The configuration options available when specifying a user defined CEVAL expression (i.e., &#39;expr&#39;).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exprOptions(@Nullable Output<SecurityPolicyRuleMatchExprOptionsArgs> exprOptions) {
+            $.exprOptions = exprOptions;
+            return this;
+        }
+
+        /**
+         * @param exprOptions The configuration options available when specifying a user defined CEVAL expression (i.e., &#39;expr&#39;).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exprOptions(SecurityPolicyRuleMatchExprOptionsArgs exprOptions) {
+            return exprOptions(Output.of(exprOptions));
         }
 
         /**

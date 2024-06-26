@@ -19,8 +19,8 @@ public final class DomainTrustArgs extends com.pulumi.resources.ResourceArgs {
     public static final DomainTrustArgs Empty = new DomainTrustArgs();
 
     /**
-     * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-     * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+     * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
      * 
      * ***
      * 
@@ -29,8 +29,8 @@ public final class DomainTrustArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> domain;
 
     /**
-     * @return The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-     * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+     * @return The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
      * 
      * ***
      * 
@@ -184,8 +184,8 @@ public final class DomainTrustArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-         * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+         * @param domain The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+         * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
          * 
          * ***
          * 
@@ -198,8 +198,8 @@ public final class DomainTrustArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-         * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+         * @param domain The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+         * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
          * 
          * ***
          * 

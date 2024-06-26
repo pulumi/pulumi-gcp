@@ -159,16 +159,16 @@ import * as utilities from "../utilities";
  *
  * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
  *     location: "us-central1",
- *     repositoryId: "centos-8",
+ *     repositoryId: "rocky-9",
  *     description: "example remote yum repository",
  *     format: "YUM",
  *     mode: "REMOTE_REPOSITORY",
  *     remoteRepositoryConfig: {
- *         description: "Centos 8 remote repository",
+ *         description: "Rocky 9 remote repository",
  *         yumRepository: {
  *             publicRepository: {
- *                 repositoryBase: "CENTOS",
- *                 repositoryPath: "centos/8-stream/BaseOS/x86_64/os",
+ *                 repositoryBase: "ROCKY",
+ *                 repositoryPath: "pub/rocky/9/BaseOS/x86_64/os",
  *             },
  *         },
  *     },

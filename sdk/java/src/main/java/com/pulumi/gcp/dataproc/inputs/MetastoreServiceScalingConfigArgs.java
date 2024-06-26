@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigAutoscalingConfigArgs;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -15,6 +16,23 @@ import javax.annotation.Nullable;
 public final class MetastoreServiceScalingConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MetastoreServiceScalingConfigArgs Empty = new MetastoreServiceScalingConfigArgs();
+
+    /**
+     * Represents the autoscaling configuration of a metastore service.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="autoscalingConfig")
+    private @Nullable Output<MetastoreServiceScalingConfigAutoscalingConfigArgs> autoscalingConfig;
+
+    /**
+     * @return Represents the autoscaling configuration of a metastore service.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<MetastoreServiceScalingConfigAutoscalingConfigArgs>> autoscalingConfig() {
+        return Optional.ofNullable(this.autoscalingConfig);
+    }
 
     /**
      * Metastore instance sizes.
@@ -51,6 +69,7 @@ public final class MetastoreServiceScalingConfigArgs extends com.pulumi.resource
     private MetastoreServiceScalingConfigArgs() {}
 
     private MetastoreServiceScalingConfigArgs(MetastoreServiceScalingConfigArgs $) {
+        this.autoscalingConfig = $.autoscalingConfig;
         this.instanceSize = $.instanceSize;
         this.scalingFactor = $.scalingFactor;
     }
@@ -71,6 +90,29 @@ public final class MetastoreServiceScalingConfigArgs extends com.pulumi.resource
 
         public Builder(MetastoreServiceScalingConfigArgs defaults) {
             $ = new MetastoreServiceScalingConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoscalingConfig Represents the autoscaling configuration of a metastore service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingConfig(@Nullable Output<MetastoreServiceScalingConfigAutoscalingConfigArgs> autoscalingConfig) {
+            $.autoscalingConfig = autoscalingConfig;
+            return this;
+        }
+
+        /**
+         * @param autoscalingConfig Represents the autoscaling configuration of a metastore service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingConfig(MetastoreServiceScalingConfigAutoscalingConfigArgs autoscalingConfig) {
+            return autoscalingConfig(Output.of(autoscalingConfig));
         }
 
         /**

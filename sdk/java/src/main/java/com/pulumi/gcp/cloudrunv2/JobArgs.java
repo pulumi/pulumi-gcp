@@ -183,6 +183,40 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+     * execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+     * 
+     */
+    @Import(name="runExecutionToken")
+    private @Nullable Output<String> runExecutionToken;
+
+    /**
+     * @return A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+     * execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+     * 
+     */
+    public Optional<Output<String>> runExecutionToken() {
+        return Optional.ofNullable(this.runExecutionToken);
+    }
+
+    /**
+     * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+     * execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+     * 
+     */
+    @Import(name="startExecutionToken")
+    private @Nullable Output<String> startExecutionToken;
+
+    /**
+     * @return A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+     * execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+     * 
+     */
+    public Optional<Output<String>> startExecutionToken() {
+        return Optional.ofNullable(this.startExecutionToken);
+    }
+
+    /**
      * The template used to create executions for this Job.
      * Structure is documented below.
      * 
@@ -211,6 +245,8 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
+        this.runExecutionToken = $.runExecutionToken;
+        this.startExecutionToken = $.startExecutionToken;
         this.template = $.template;
     }
 
@@ -443,6 +479,52 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param runExecutionToken A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+         * execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runExecutionToken(@Nullable Output<String> runExecutionToken) {
+            $.runExecutionToken = runExecutionToken;
+            return this;
+        }
+
+        /**
+         * @param runExecutionToken A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+         * execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runExecutionToken(String runExecutionToken) {
+            return runExecutionToken(Output.of(runExecutionToken));
+        }
+
+        /**
+         * @param startExecutionToken A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+         * execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startExecutionToken(@Nullable Output<String> startExecutionToken) {
+            $.startExecutionToken = startExecutionToken;
+            return this;
+        }
+
+        /**
+         * @param startExecutionToken A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+         * execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startExecutionToken(String startExecutionToken) {
+            return startExecutionToken(Output.of(startExecutionToken));
         }
 
         /**

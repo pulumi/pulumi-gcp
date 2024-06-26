@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataproc.outputs.MetastoreServiceScalingConfigAutoscalingConfig;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -12,6 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MetastoreServiceScalingConfig {
+    /**
+     * @return Represents the autoscaling configuration of a metastore service.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable MetastoreServiceScalingConfigAutoscalingConfig autoscalingConfig;
     /**
      * @return Metastore instance sizes.
      * Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
@@ -25,6 +32,14 @@ public final class MetastoreServiceScalingConfig {
     private @Nullable Double scalingFactor;
 
     private MetastoreServiceScalingConfig() {}
+    /**
+     * @return Represents the autoscaling configuration of a metastore service.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<MetastoreServiceScalingConfigAutoscalingConfig> autoscalingConfig() {
+        return Optional.ofNullable(this.autoscalingConfig);
+    }
     /**
      * @return Metastore instance sizes.
      * Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
@@ -50,15 +65,23 @@ public final class MetastoreServiceScalingConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable MetastoreServiceScalingConfigAutoscalingConfig autoscalingConfig;
         private @Nullable String instanceSize;
         private @Nullable Double scalingFactor;
         public Builder() {}
         public Builder(MetastoreServiceScalingConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoscalingConfig = defaults.autoscalingConfig;
     	      this.instanceSize = defaults.instanceSize;
     	      this.scalingFactor = defaults.scalingFactor;
         }
 
+        @CustomType.Setter
+        public Builder autoscalingConfig(@Nullable MetastoreServiceScalingConfigAutoscalingConfig autoscalingConfig) {
+
+            this.autoscalingConfig = autoscalingConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder instanceSize(@Nullable String instanceSize) {
 
@@ -73,6 +96,7 @@ public final class MetastoreServiceScalingConfig {
         }
         public MetastoreServiceScalingConfig build() {
             final var _resultValue = new MetastoreServiceScalingConfig();
+            _resultValue.autoscalingConfig = autoscalingConfig;
             _resultValue.instanceSize = instanceSize;
             _resultValue.scalingFactor = scalingFactor;
             return _resultValue;

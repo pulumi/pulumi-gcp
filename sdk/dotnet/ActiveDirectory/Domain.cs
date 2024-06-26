@@ -73,8 +73,8 @@ namespace Pulumi.Gcp.ActiveDirectory
         public Output<ImmutableArray<string>> AuthorizedNetworks { get; private set; } = null!;
 
         /// <summary>
-        /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-        /// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+        /// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
         /// 
         /// 
         /// - - -
@@ -209,8 +209,8 @@ namespace Pulumi.Gcp.ActiveDirectory
         }
 
         /// <summary>
-        /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-        /// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+        /// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
         /// 
         /// 
         /// - - -
@@ -288,8 +288,8 @@ namespace Pulumi.Gcp.ActiveDirectory
         }
 
         /// <summary>
-        /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-        /// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+        /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+        /// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
         /// 
         /// 
         /// - - -

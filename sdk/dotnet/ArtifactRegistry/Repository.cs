@@ -230,19 +230,19 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
     ///     {
     ///         Location = "us-central1",
-    ///         RepositoryId = "centos-8",
+    ///         RepositoryId = "rocky-9",
     ///         Description = "example remote yum repository",
     ///         Format = "YUM",
     ///         Mode = "REMOTE_REPOSITORY",
     ///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
     ///         {
-    ///             Description = "Centos 8 remote repository",
+    ///             Description = "Rocky 9 remote repository",
     ///             YumRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigYumRepositoryArgs
     ///             {
     ///                 PublicRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs
     ///                 {
-    ///                     RepositoryBase = "CENTOS",
-    ///                     RepositoryPath = "centos/8-stream/BaseOS/x86_64/os",
+    ///                     RepositoryBase = "ROCKY",
+    ///                     RepositoryPath = "pub/rocky/9/BaseOS/x86_64/os",
     ///                 },
     ///             },
     ///         },

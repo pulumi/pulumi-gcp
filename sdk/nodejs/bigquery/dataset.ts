@@ -383,6 +383,14 @@ export class Dataset extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
+     * in the namespaced format, for example "123456789012/environment" where 123456789012 is the
+     * ID of the parent organization or project resource for this tag key. Tag value is expected
+     * to be the short name, for example "Production". See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+     * for more details.
+     */
+    public readonly resourceTags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -427,6 +435,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["maxTimeTravelHours"] = state ? state.maxTimeTravelHours : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["resourceTags"] = state ? state.resourceTags : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["storageBillingModel"] = state ? state.storageBillingModel : undefined;
         } else {
@@ -449,6 +458,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["maxTimeTravelHours"] = args ? args.maxTimeTravelHours : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["resourceTags"] = args ? args.resourceTags : undefined;
             resourceInputs["storageBillingModel"] = args ? args.storageBillingModel : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -612,6 +622,14 @@ export interface DatasetState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
+     * in the namespaced format, for example "123456789012/environment" where 123456789012 is the
+     * ID of the parent organization or project resource for this tag key. Tag value is expected
+     * to be the short name, for example "Production". See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+     * for more details.
+     */
+    resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
@@ -748,6 +766,14 @@ export interface DatasetArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
+     * in the namespaced format, for example "123456789012/environment" where 123456789012 is the
+     * ID of the parent organization or project resource for this tag key. Tag value is expected
+     * to be the short name, for example "Production". See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+     * for more details.
+     */
+    resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specifies the storage billing model for the dataset.
      * Set this flag value to LOGICAL to use logical bytes for storage billing,

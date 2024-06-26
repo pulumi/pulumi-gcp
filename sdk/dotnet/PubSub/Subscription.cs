@@ -287,6 +287,91 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// ### Pubsub Subscription Push Bq Service Account
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///     });
+    /// 
+    ///     var bqWriteServiceAccount = new Gcp.ServiceAccount.Account("bq_write_service_account", new()
+    ///     {
+    ///         AccountId = "example-bqw",
+    ///         DisplayName = "BQ Write Service Account",
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var viewer = new Gcp.Projects.IAMMember("viewer", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/bigquery.metadataViewer",
+    ///         Member = bqWriteServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var editor = new Gcp.Projects.IAMMember("editor", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/bigquery.dataEditor",
+    ///         Member = bqWriteServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var test = new Gcp.BigQuery.Dataset("test", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var testTable = new Gcp.BigQuery.Table("test", new()
+    ///     {
+    ///         DeletionProtection = false,
+    ///         TableId = "example_table",
+    ///         DatasetId = test.DatasetId,
+    ///         Schema = @"[
+    ///   {
+    ///     ""name"": ""data"",
+    ///     ""type"": ""STRING"",
+    ///     ""mode"": ""NULLABLE"",
+    ///     ""description"": ""The data""
+    ///   }
+    /// ]
+    /// ",
+    ///     });
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("example", new()
+    ///     {
+    ///         Name = "example-subscription",
+    ///         Topic = example.Id,
+    ///         BigqueryConfig = new Gcp.PubSub.Inputs.SubscriptionBigqueryConfigArgs
+    ///         {
+    ///             Table = Output.Tuple(testTable.Project, testTable.DatasetId, testTable.TableId).Apply(values =&gt;
+    ///             {
+    ///                 var project = values.Item1;
+    ///                 var datasetId = values.Item2;
+    ///                 var tableId = values.Item3;
+    ///                 return $"{project}.{datasetId}.{tableId}";
+    ///             }),
+    ///             ServiceAccountEmail = bqWriteServiceAccount.Email,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             bqWriteServiceAccount,
+    ///             viewer,
+    ///             editor,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Pubsub Subscription Push Cloudstorage
     /// 
     /// ```csharp
@@ -398,6 +483,69 @@ namespace Pulumi.Gcp.PubSub
     ///             admin,
     ///         },
     ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Pubsub Subscription Push Cloudstorage Service Account
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.Storage.Bucket("example", new()
+    ///     {
+    ///         Name = "example-bucket",
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var exampleTopic = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///     });
+    /// 
+    ///     var storageWriteServiceAccount = new Gcp.ServiceAccount.Account("storage_write_service_account", new()
+    ///     {
+    ///         AccountId = "example-stw",
+    ///         DisplayName = "Storage Write Service Account",
+    ///     });
+    /// 
+    ///     var admin = new Gcp.Storage.BucketIAMMember("admin", new()
+    ///     {
+    ///         Bucket = example.Name,
+    ///         Role = "roles/storage.admin",
+    ///         Member = storageWriteServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("example", new()
+    ///     {
+    ///         Name = "example-subscription",
+    ///         Topic = exampleTopic.Id,
+    ///         CloudStorageConfig = new Gcp.PubSub.Inputs.SubscriptionCloudStorageConfigArgs
+    ///         {
+    ///             Bucket = example.Name,
+    ///             FilenamePrefix = "pre-",
+    ///             FilenameSuffix = "-_75413",
+    ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
+    ///             MaxBytes = 1000,
+    ///             MaxDuration = "300s",
+    ///             ServiceAccountEmail = storageWriteServiceAccount.Email,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             storageWriteServiceAccount,
+    ///             example,
+    ///             admin,
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     /// });
     /// ```

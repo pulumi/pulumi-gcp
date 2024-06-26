@@ -7177,6 +7177,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "servicenetworking/vpcServiceControls",
+  "fqn": "pulumi_gcp.servicenetworking",
+  "classes": {
+   "gcp:servicenetworking/vpcServiceControls:VpcServiceControls": "VpcServiceControls"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "serviceusage/consumerQuotaOverride",
   "fqn": "pulumi_gcp.serviceusage",
   "classes": {

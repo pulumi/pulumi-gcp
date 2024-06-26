@@ -28,6 +28,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<Inputs.SecurityPolicyRuleMatchExprGetArgs>? Expr { get; set; }
 
         /// <summary>
+        /// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+        /// Structure is documented below.
+        /// </summary>
+        [Input("exprOptions")]
+        public Input<Inputs.SecurityPolicyRuleMatchExprOptionsGetArgs>? ExprOptions { get; set; }
+
+        /// <summary>
         /// Preconfigured versioned expression. If this field is specified, config must also be specified.
         /// Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
         /// Possible values are: `SRC_IPS_V1`.

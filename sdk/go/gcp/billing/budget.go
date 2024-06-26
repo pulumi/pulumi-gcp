@@ -270,6 +270,60 @@ import (
 //	}
 //
 // ```
+// ### Billing Budget Notify Project Recipient
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/billing"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			account, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
+//				BillingAccount: pulumi.StringRef("000000-0000000-0000000-000000"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
+//				BillingAccount: pulumi.String(account.Id),
+//				DisplayName:    pulumi.String("Example Billing Budget"),
+//				BudgetFilter: &billing.BudgetBudgetFilterArgs{
+//					Projects: pulumi.StringArray{
+//						pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//					},
+//				},
+//				Amount: &billing.BudgetAmountArgs{
+//					SpecifiedAmount: &billing.BudgetAmountSpecifiedAmountArgs{
+//						CurrencyCode: pulumi.String("USD"),
+//						Units:        pulumi.String("100000"),
+//					},
+//				},
+//				AllUpdatesRule: &billing.BudgetAllUpdatesRuleArgs{
+//					MonitoringNotificationChannels: pulumi.StringArray{},
+//					EnableProjectLevelRecipients:   pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Billing Budget Customperiod
 //
 // ```go

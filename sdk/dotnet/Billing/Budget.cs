@@ -243,6 +243,51 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// });
     /// ```
+    /// ### Billing Budget Notify Project Recipient
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var account = Gcp.Organizations.GetBillingAccount.Invoke(new()
+    ///     {
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var budget = new Gcp.Billing.Budget("budget", new()
+    ///     {
+    ///         BillingAccount = account.Apply(getBillingAccountResult =&gt; getBillingAccountResult.Id),
+    ///         DisplayName = "Example Billing Budget",
+    ///         BudgetFilter = new Gcp.Billing.Inputs.BudgetBudgetFilterArgs
+    ///         {
+    ///             Projects = new[]
+    ///             {
+    ///                 $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}",
+    ///             },
+    ///         },
+    ///         Amount = new Gcp.Billing.Inputs.BudgetAmountArgs
+    ///         {
+    ///             SpecifiedAmount = new Gcp.Billing.Inputs.BudgetAmountSpecifiedAmountArgs
+    ///             {
+    ///                 CurrencyCode = "USD",
+    ///                 Units = "100000",
+    ///             },
+    ///         },
+    ///         AllUpdatesRule = new Gcp.Billing.Inputs.BudgetAllUpdatesRuleArgs
+    ///         {
+    ///             MonitoringNotificationChannels = new() { },
+    ///             EnableProjectLevelRecipients = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Billing Budget Customperiod
     /// 
     /// ```csharp

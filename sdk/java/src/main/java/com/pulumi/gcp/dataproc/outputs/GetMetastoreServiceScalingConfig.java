@@ -5,12 +5,19 @@ package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.dataproc.outputs.GetMetastoreServiceScalingConfigAutoscalingConfig;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetMetastoreServiceScalingConfig {
+    /**
+     * @return Represents the autoscaling configuration of a metastore service.
+     * 
+     */
+    private List<GetMetastoreServiceScalingConfigAutoscalingConfig> autoscalingConfigs;
     /**
      * @return Metastore instance sizes. Possible values: [&#34;EXTRA_SMALL&#34;, &#34;SMALL&#34;, &#34;MEDIUM&#34;, &#34;LARGE&#34;, &#34;EXTRA_LARGE&#34;]
      * 
@@ -23,6 +30,13 @@ public final class GetMetastoreServiceScalingConfig {
     private Double scalingFactor;
 
     private GetMetastoreServiceScalingConfig() {}
+    /**
+     * @return Represents the autoscaling configuration of a metastore service.
+     * 
+     */
+    public List<GetMetastoreServiceScalingConfigAutoscalingConfig> autoscalingConfigs() {
+        return this.autoscalingConfigs;
+    }
     /**
      * @return Metastore instance sizes. Possible values: [&#34;EXTRA_SMALL&#34;, &#34;SMALL&#34;, &#34;MEDIUM&#34;, &#34;LARGE&#34;, &#34;EXTRA_LARGE&#34;]
      * 
@@ -47,15 +61,28 @@ public final class GetMetastoreServiceScalingConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetMetastoreServiceScalingConfigAutoscalingConfig> autoscalingConfigs;
         private String instanceSize;
         private Double scalingFactor;
         public Builder() {}
         public Builder(GetMetastoreServiceScalingConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoscalingConfigs = defaults.autoscalingConfigs;
     	      this.instanceSize = defaults.instanceSize;
     	      this.scalingFactor = defaults.scalingFactor;
         }
 
+        @CustomType.Setter
+        public Builder autoscalingConfigs(List<GetMetastoreServiceScalingConfigAutoscalingConfig> autoscalingConfigs) {
+            if (autoscalingConfigs == null) {
+              throw new MissingRequiredPropertyException("GetMetastoreServiceScalingConfig", "autoscalingConfigs");
+            }
+            this.autoscalingConfigs = autoscalingConfigs;
+            return this;
+        }
+        public Builder autoscalingConfigs(GetMetastoreServiceScalingConfigAutoscalingConfig... autoscalingConfigs) {
+            return autoscalingConfigs(List.of(autoscalingConfigs));
+        }
         @CustomType.Setter
         public Builder instanceSize(String instanceSize) {
             if (instanceSize == null) {
@@ -74,6 +101,7 @@ public final class GetMetastoreServiceScalingConfig {
         }
         public GetMetastoreServiceScalingConfig build() {
             final var _resultValue = new GetMetastoreServiceScalingConfig();
+            _resultValue.autoscalingConfigs = autoscalingConfigs;
             _resultValue.instanceSize = instanceSize;
             _resultValue.scalingFactor = scalingFactor;
             return _resultValue;

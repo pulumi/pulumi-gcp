@@ -21,6 +21,14 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public Input<bool>? DropUnknownFields { get; set; }
 
         /// <summary>
+        /// The service account to use to write to BigQuery. If not specified, the Pub/Sub
+        /// [service agent](https://cloud.google.com/iam/docs/service-agents),
+        /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        /// </summary>
+        [Input("serviceAccountEmail")]
+        public Input<string>? ServiceAccountEmail { get; set; }
+
+        /// <summary>
         /// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
         /// </summary>
         [Input("table", required: true)]

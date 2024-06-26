@@ -43,7 +43,7 @@ import (
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
 //							&cloudrunv2.JobTemplateTemplateContainerArgs{
-//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/job"),
 //							},
 //						},
 //					},
@@ -78,7 +78,7 @@ import (
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
 //							&cloudrunv2.JobTemplateTemplateContainerArgs{
-//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/job"),
 //								Resources: &cloudrunv2.JobTemplateTemplateContainerResourcesArgs{
 //									Limits: pulumi.StringMap{
 //										"cpu":    pulumi.String("2"),
@@ -155,7 +155,7 @@ import (
 //						},
 //						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
 //							&cloudrunv2.JobTemplateTemplateContainerArgs{
-//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/job"),
 //								Envs: cloudrunv2.JobTemplateTemplateContainerEnvArray{
 //									&cloudrunv2.JobTemplateTemplateContainerEnvArgs{
 //										Name:  pulumi.String("FOO"),
@@ -263,7 +263,7 @@ import (
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
 //							&cloudrunv2.JobTemplateTemplateContainerArgs{
-//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/job"),
 //							},
 //						},
 //						VpcAccess: &cloudrunv2.JobTemplateTemplateVpcAccessArgs{
@@ -401,7 +401,7 @@ import (
 //						},
 //						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
 //							&cloudrunv2.JobTemplateTemplateContainerArgs{
-//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/job"),
 //								VolumeMounts: cloudrunv2.JobTemplateTemplateContainerVolumeMountArray{
 //									&cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs{
 //										Name:      pulumi.String("a-volume"),
@@ -446,7 +446,7 @@ import (
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
 //							&cloudrunv2.JobTemplateTemplateContainerArgs{
-//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/job"),
 //								VolumeMounts: cloudrunv2.JobTemplateTemplateContainerVolumeMountArray{
 //									&cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs{
 //										Name:      pulumi.String("empty-dir-volume"),
@@ -462,6 +462,42 @@ import (
 //									Medium:    pulumi.String("MEMORY"),
 //									SizeLimit: pulumi.String("128Mi"),
 //								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudrunv2 Job Run Job
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
+//				Name:                pulumi.String("cloudrun-job"),
+//				Location:            pulumi.String("us-central1"),
+//				StartExecutionToken: pulumi.String("start-once-created"),
+//				Template: &cloudrunv2.JobTemplateArgs{
+//					Template: &cloudrunv2.JobTemplateTemplateArgs{
+//						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
+//							&cloudrunv2.JobTemplateTemplateContainerArgs{
+//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/job"),
 //							},
 //						},
 //					},
@@ -574,6 +610,12 @@ type Job struct {
 	// If reconciliation succeeded, the following fields will match: observedGeneration and generation, latestSucceededExecution and latestCreatedExecution.
 	// If reconciliation failed, observedGeneration and latestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+	// execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+	RunExecutionToken pulumi.StringPtrOutput `pulumi:"runExecutionToken"`
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+	// execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+	StartExecutionToken pulumi.StringPtrOutput `pulumi:"startExecutionToken"`
 	// The template used to create executions for this Job.
 	// Structure is documented below.
 	Template JobTemplateOutput `pulumi:"template"`
@@ -699,6 +741,12 @@ type jobState struct {
 	// If reconciliation succeeded, the following fields will match: observedGeneration and generation, latestSucceededExecution and latestCreatedExecution.
 	// If reconciliation failed, observedGeneration and latestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
 	Reconciling *bool `pulumi:"reconciling"`
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+	// execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+	RunExecutionToken *string `pulumi:"runExecutionToken"`
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+	// execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+	StartExecutionToken *string `pulumi:"startExecutionToken"`
 	// The template used to create executions for this Job.
 	// Structure is documented below.
 	Template *JobTemplate `pulumi:"template"`
@@ -784,6 +832,12 @@ type JobState struct {
 	// If reconciliation succeeded, the following fields will match: observedGeneration and generation, latestSucceededExecution and latestCreatedExecution.
 	// If reconciliation failed, observedGeneration and latestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
 	Reconciling pulumi.BoolPtrInput
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+	// execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+	RunExecutionToken pulumi.StringPtrInput
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+	// execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+	StartExecutionToken pulumi.StringPtrInput
 	// The template used to create executions for this Job.
 	// Structure is documented below.
 	Template JobTemplatePtrInput
@@ -836,6 +890,12 @@ type jobArgs struct {
 	// Name of the Job.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+	// execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+	RunExecutionToken *string `pulumi:"runExecutionToken"`
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+	// execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+	StartExecutionToken *string `pulumi:"startExecutionToken"`
 	// The template used to create executions for this Job.
 	// Structure is documented below.
 	Template JobTemplate `pulumi:"template"`
@@ -878,6 +938,12 @@ type JobArgs struct {
 	// Name of the Job.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+	// execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+	RunExecutionToken pulumi.StringPtrInput
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+	// execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+	StartExecutionToken pulumi.StringPtrInput
 	// The template used to create executions for this Job.
 	// Structure is documented below.
 	Template JobTemplateInput
@@ -1112,6 +1178,18 @@ func (o JobOutput) PulumiLabels() pulumi.StringMapOutput {
 // If reconciliation failed, observedGeneration and latestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
 func (o JobOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
+}
+
+// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+// execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+func (o JobOutput) RunExecutionToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.RunExecutionToken }).(pulumi.StringPtrOutput)
+}
+
+// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
+// execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+func (o JobOutput) StartExecutionToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.StartExecutionToken }).(pulumi.StringPtrOutput)
 }
 
 // The template used to create executions for this Job.

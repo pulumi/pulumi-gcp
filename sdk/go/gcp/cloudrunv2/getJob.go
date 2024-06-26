@@ -92,6 +92,8 @@ type LookupJobResult struct {
 	Project                 *string                        `pulumi:"project"`
 	PulumiLabels            map[string]string              `pulumi:"pulumiLabels"`
 	Reconciling             bool                           `pulumi:"reconciling"`
+	RunExecutionToken       string                         `pulumi:"runExecutionToken"`
+	StartExecutionToken     string                         `pulumi:"startExecutionToken"`
 	Templates               []GetJobTemplate               `pulumi:"templates"`
 	TerminalConditions      []GetJobTerminalCondition      `pulumi:"terminalConditions"`
 	Uid                     string                         `pulumi:"uid"`
@@ -242,6 +244,14 @@ func (o LookupJobResultOutput) PulumiLabels() pulumi.StringMapOutput {
 
 func (o LookupJobResultOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupJobResult) bool { return v.Reconciling }).(pulumi.BoolOutput)
+}
+
+func (o LookupJobResultOutput) RunExecutionToken() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobResult) string { return v.RunExecutionToken }).(pulumi.StringOutput)
+}
+
+func (o LookupJobResultOutput) StartExecutionToken() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobResult) string { return v.StartExecutionToken }).(pulumi.StringOutput)
 }
 
 func (o LookupJobResultOutput) Templates() GetJobTemplateArrayOutput {

@@ -9253,7 +9253,7 @@ func (o FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutp
 
 type FleetDefaultClusterConfigSecurityPostureConfig struct {
 	// Sets which mode to use for Security Posture features.
-	// Possible values are: `DISABLED`, `BASIC`.
+	// Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
 	Mode *string `pulumi:"mode"`
 	// Sets which mode to use for vulnerability scanning.
 	// Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC`, `VULNERABILITY_ENTERPRISE`.
@@ -9273,7 +9273,7 @@ type FleetDefaultClusterConfigSecurityPostureConfigInput interface {
 
 type FleetDefaultClusterConfigSecurityPostureConfigArgs struct {
 	// Sets which mode to use for Security Posture features.
-	// Possible values are: `DISABLED`, `BASIC`.
+	// Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Sets which mode to use for vulnerability scanning.
 	// Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC`, `VULNERABILITY_ENTERPRISE`.
@@ -9358,7 +9358,7 @@ func (o FleetDefaultClusterConfigSecurityPostureConfigOutput) ToFleetDefaultClus
 }
 
 // Sets which mode to use for Security Posture features.
-// Possible values are: `DISABLED`, `BASIC`.
+// Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
 func (o FleetDefaultClusterConfigSecurityPostureConfigOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FleetDefaultClusterConfigSecurityPostureConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -9394,7 +9394,7 @@ func (o FleetDefaultClusterConfigSecurityPostureConfigPtrOutput) Elem() FleetDef
 }
 
 // Sets which mode to use for Security Posture features.
-// Possible values are: `DISABLED`, `BASIC`.
+// Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
 func (o FleetDefaultClusterConfigSecurityPostureConfigPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FleetDefaultClusterConfigSecurityPostureConfig) *string {
 		if v == nil {

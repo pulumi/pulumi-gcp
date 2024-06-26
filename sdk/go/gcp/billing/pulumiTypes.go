@@ -345,6 +345,11 @@ type BudgetAllUpdatesRule struct {
 	// those with Billing Account Administrators and Billing
 	// Account Users IAM roles for the target account.
 	DisableDefaultIamRecipients *bool `pulumi:"disableDefaultIamRecipients"`
+	// When set to true, and when the budget has a single project configured,
+	// notifications will be sent to project level recipients of that project.
+	// This field will be ignored if the budget has multiple or no project configured.
+	// Currently, project level recipients are the users with Owner role on a cloud project.
+	EnableProjectLevelRecipients *bool `pulumi:"enableProjectLevelRecipients"`
 	// The full resource name of a monitoring notification
 	// channel in the form
 	// projects/{project_id}/notificationChannels/{channel_id}.
@@ -378,6 +383,11 @@ type BudgetAllUpdatesRuleArgs struct {
 	// those with Billing Account Administrators and Billing
 	// Account Users IAM roles for the target account.
 	DisableDefaultIamRecipients pulumi.BoolPtrInput `pulumi:"disableDefaultIamRecipients"`
+	// When set to true, and when the budget has a single project configured,
+	// notifications will be sent to project level recipients of that project.
+	// This field will be ignored if the budget has multiple or no project configured.
+	// Currently, project level recipients are the users with Owner role on a cloud project.
+	EnableProjectLevelRecipients pulumi.BoolPtrInput `pulumi:"enableProjectLevelRecipients"`
 	// The full resource name of a monitoring notification
 	// channel in the form
 	// projects/{project_id}/notificationChannels/{channel_id}.
@@ -479,6 +489,14 @@ func (o BudgetAllUpdatesRuleOutput) DisableDefaultIamRecipients() pulumi.BoolPtr
 	return o.ApplyT(func(v BudgetAllUpdatesRule) *bool { return v.DisableDefaultIamRecipients }).(pulumi.BoolPtrOutput)
 }
 
+// When set to true, and when the budget has a single project configured,
+// notifications will be sent to project level recipients of that project.
+// This field will be ignored if the budget has multiple or no project configured.
+// Currently, project level recipients are the users with Owner role on a cloud project.
+func (o BudgetAllUpdatesRuleOutput) EnableProjectLevelRecipients() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetAllUpdatesRule) *bool { return v.EnableProjectLevelRecipients }).(pulumi.BoolPtrOutput)
+}
+
 // The full resource name of a monitoring notification
 // channel in the form
 // projects/{project_id}/notificationChannels/{channel_id}.
@@ -536,6 +554,19 @@ func (o BudgetAllUpdatesRulePtrOutput) DisableDefaultIamRecipients() pulumi.Bool
 			return nil
 		}
 		return v.DisableDefaultIamRecipients
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When set to true, and when the budget has a single project configured,
+// notifications will be sent to project level recipients of that project.
+// This field will be ignored if the budget has multiple or no project configured.
+// Currently, project level recipients are the users with Owner role on a cloud project.
+func (o BudgetAllUpdatesRulePtrOutput) EnableProjectLevelRecipients() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BudgetAllUpdatesRule) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableProjectLevelRecipients
 	}).(pulumi.BoolPtrOutput)
 }
 

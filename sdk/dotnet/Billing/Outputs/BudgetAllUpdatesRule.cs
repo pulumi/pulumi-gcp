@@ -21,6 +21,13 @@ namespace Pulumi.Gcp.Billing.Outputs
         /// </summary>
         public readonly bool? DisableDefaultIamRecipients;
         /// <summary>
+        /// When set to true, and when the budget has a single project configured,
+        /// notifications will be sent to project level recipients of that project.
+        /// This field will be ignored if the budget has multiple or no project configured.
+        /// Currently, project level recipients are the users with Owner role on a cloud project.
+        /// </summary>
+        public readonly bool? EnableProjectLevelRecipients;
+        /// <summary>
         /// The full resource name of a monitoring notification
         /// channel in the form
         /// projects/{project_id}/notificationChannels/{channel_id}.
@@ -45,6 +52,8 @@ namespace Pulumi.Gcp.Billing.Outputs
         private BudgetAllUpdatesRule(
             bool? disableDefaultIamRecipients,
 
+            bool? enableProjectLevelRecipients,
+
             ImmutableArray<string> monitoringNotificationChannels,
 
             string? pubsubTopic,
@@ -52,6 +61,7 @@ namespace Pulumi.Gcp.Billing.Outputs
             string? schemaVersion)
         {
             DisableDefaultIamRecipients = disableDefaultIamRecipients;
+            EnableProjectLevelRecipients = enableProjectLevelRecipients;
             MonitoringNotificationChannels = monitoringNotificationChannels;
             PubsubTopic = pubsubTopic;
             SchemaVersion = schemaVersion;

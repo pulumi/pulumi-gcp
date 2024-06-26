@@ -415,6 +415,207 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Dataproc Metastore Service Autoscaling Max Scaling Factor
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataproc.MetastoreService;
+ * import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigAutoscalingConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testResource = new MetastoreService("testResource", MetastoreServiceArgs.builder()
+ *             .serviceId("test-service")
+ *             .location("us-central1")
+ *             .databaseType("SPANNER")
+ *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
+ *                 .version("3.1.2")
+ *                 .build())
+ *             .scalingConfig(MetastoreServiceScalingConfigArgs.builder()
+ *                 .autoscalingConfig(MetastoreServiceScalingConfigAutoscalingConfigArgs.builder()
+ *                     .autoscalingEnabled(true)
+ *                     .limitConfig(MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs.builder()
+ *                         .maxScalingFactor(1)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Dataproc Metastore Service Autoscaling Min And Max Scaling Factor
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataproc.MetastoreService;
+ * import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigAutoscalingConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testResource = new MetastoreService("testResource", MetastoreServiceArgs.builder()
+ *             .serviceId("test-service")
+ *             .location("us-central1")
+ *             .databaseType("SPANNER")
+ *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
+ *                 .version("3.1.2")
+ *                 .build())
+ *             .scalingConfig(MetastoreServiceScalingConfigArgs.builder()
+ *                 .autoscalingConfig(MetastoreServiceScalingConfigAutoscalingConfigArgs.builder()
+ *                     .autoscalingEnabled(true)
+ *                     .limitConfig(MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs.builder()
+ *                         .minScalingFactor(0.1)
+ *                         .maxScalingFactor(1)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Dataproc Metastore Service Autoscaling Min Scaling Factor
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataproc.MetastoreService;
+ * import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigAutoscalingConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testResource = new MetastoreService("testResource", MetastoreServiceArgs.builder()
+ *             .serviceId("test-service")
+ *             .location("us-central1")
+ *             .databaseType("SPANNER")
+ *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
+ *                 .version("3.1.2")
+ *                 .build())
+ *             .scalingConfig(MetastoreServiceScalingConfigArgs.builder()
+ *                 .autoscalingConfig(MetastoreServiceScalingConfigAutoscalingConfigArgs.builder()
+ *                     .autoscalingEnabled(true)
+ *                     .limitConfig(MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs.builder()
+ *                         .minScalingFactor(0.1)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Dataproc Metastore Service Autoscaling No Limit Config
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataproc.MetastoreService;
+ * import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigAutoscalingConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testResource = new MetastoreService("testResource", MetastoreServiceArgs.builder()
+ *             .serviceId("test-service")
+ *             .location("us-central1")
+ *             .databaseType("SPANNER")
+ *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
+ *                 .version("3.1.2")
+ *                 .build())
+ *             .scalingConfig(MetastoreServiceScalingConfigArgs.builder()
+ *                 .autoscalingConfig(MetastoreServiceScalingConfigAutoscalingConfigArgs.builder()
+ *                     .autoscalingEnabled(true)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

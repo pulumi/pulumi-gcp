@@ -13,6 +13,338 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy struct {
+	// The specification for how client requests are aborted as part of fault injection.
+	// Structure is documented below.
+	Abort *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort `pulumi:"abort"`
+	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+	// Structure is documented below.
+	Delay *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay `pulumi:"delay"`
+}
+
+// URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs and URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs{...}
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput
+	ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs struct {
+	// The specification for how client requests are aborted as part of fault injection.
+	// Structure is documented below.
+	Abort URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrInput `pulumi:"abort"`
+	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+	// Structure is documented below.
+	Delay URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrInput `pulumi:"delay"`
+}
+
+func (URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput)
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput).ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs, URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtr and URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrInput` via:
+//
+//	        URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput
+	ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput
+}
+
+type urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrType URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs
+
+func URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtr(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrInput {
+	return (*urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrType)(v)
+}
+
+func (*urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrType) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrType) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return o.ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
+		return &v
+	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// The specification for how client requests are aborted as part of fault injection.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput) Abort() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort {
+		return v.Abort
+	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput) Delay() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
+		return v.Delay
+	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput) Elem() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy
+		return ret
+	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput)
+}
+
+// The specification for how client requests are aborted as part of fault injection.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput) Abort() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort {
+		if v == nil {
+			return nil
+		}
+		return v.Abort
+	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput) Delay() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
+		if v == nil {
+			return nil
+		}
+		return v.Delay
+	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort struct {
+	// The HTTP status code used to abort the request.
+	// The value must be between 200 and 599 inclusive.
+	HttpStatus int `pulumi:"httpStatus"`
+	// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+	// The value must be between 0.0 and 100.0 inclusive.
+	Percentage float64 `pulumi:"percentage"`
+}
+
+// URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs and URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs{...}
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput
+	ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs struct {
+	// The HTTP status code used to abort the request.
+	// The value must be between 200 and 599 inclusive.
+	HttpStatus pulumi.IntInput `pulumi:"httpStatus"`
+	// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+	// The value must be between 0.0 and 100.0 inclusive.
+	Percentage pulumi.Float64Input `pulumi:"percentage"`
+}
+
+func (URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput)
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput).ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs, URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtr and URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrInput` via:
+//
+//	        URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput
+	ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput
+}
+
+type urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrType URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs
+
+func URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtr(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrInput {
+	return (*urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrType)(v)
+}
+
+func (*urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrType) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrType) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort {
+		return &v
+	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+// The HTTP status code used to abort the request.
+// The value must be between 200 and 599 inclusive.
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput) HttpStatus() pulumi.IntOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort) int { return v.HttpStatus }).(pulumi.IntOutput)
+}
+
+// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+// The value must be between 0.0 and 100.0 inclusive.
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput) Percentage() pulumi.Float64Output {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort) float64 { return v.Percentage }).(pulumi.Float64Output)
+}
+
+type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput) ToURLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput) Elem() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort) URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort
+		return ret
+	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput)
+}
+
+// The HTTP status code used to abort the request.
+// The value must be between 200 and 599 inclusive.
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput) HttpStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.HttpStatus
+	}).(pulumi.IntPtrOutput)
+}
+
+// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+// The value must be between 0.0 and 100.0 inclusive.
+func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput) Percentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Percentage
+	}).(pulumi.Float64PtrOutput)
+}
+
 type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay struct {
 	// Specifies the value of the fixed delay interval.
 	// Structure is documented below.
@@ -31496,6 +31828,8 @@ func (o GetSecurityPolicyRuleHeaderActionRequestHeadersToAddArrayOutput) Index(i
 type GetSecurityPolicyRuleMatch struct {
 	// The configuration options available when specifying versioned_expr. This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
 	Configs []GetSecurityPolicyRuleMatchConfig `pulumi:"configs"`
+	// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+	ExprOptions []GetSecurityPolicyRuleMatchExprOption `pulumi:"exprOptions"`
 	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
 	Exprs []GetSecurityPolicyRuleMatchExpr `pulumi:"exprs"`
 	// Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding srcIpRanges field in config.
@@ -31516,6 +31850,8 @@ type GetSecurityPolicyRuleMatchInput interface {
 type GetSecurityPolicyRuleMatchArgs struct {
 	// The configuration options available when specifying versioned_expr. This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
 	Configs GetSecurityPolicyRuleMatchConfigArrayInput `pulumi:"configs"`
+	// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+	ExprOptions GetSecurityPolicyRuleMatchExprOptionArrayInput `pulumi:"exprOptions"`
 	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
 	Exprs GetSecurityPolicyRuleMatchExprArrayInput `pulumi:"exprs"`
 	// Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding srcIpRanges field in config.
@@ -31576,6 +31912,11 @@ func (o GetSecurityPolicyRuleMatchOutput) ToGetSecurityPolicyRuleMatchOutputWith
 // The configuration options available when specifying versioned_expr. This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
 func (o GetSecurityPolicyRuleMatchOutput) Configs() GetSecurityPolicyRuleMatchConfigArrayOutput {
 	return o.ApplyT(func(v GetSecurityPolicyRuleMatch) []GetSecurityPolicyRuleMatchConfig { return v.Configs }).(GetSecurityPolicyRuleMatchConfigArrayOutput)
+}
+
+// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+func (o GetSecurityPolicyRuleMatchOutput) ExprOptions() GetSecurityPolicyRuleMatchExprOptionArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleMatch) []GetSecurityPolicyRuleMatchExprOption { return v.ExprOptions }).(GetSecurityPolicyRuleMatchExprOptionArrayOutput)
 }
 
 // User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
@@ -31800,6 +32141,211 @@ func (o GetSecurityPolicyRuleMatchExprArrayOutput) Index(i pulumi.IntInput) GetS
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRuleMatchExpr {
 		return vs[0].([]GetSecurityPolicyRuleMatchExpr)[vs[1].(int)]
 	}).(GetSecurityPolicyRuleMatchExprOutput)
+}
+
+type GetSecurityPolicyRuleMatchExprOption struct {
+	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
+	RecaptchaOptions []GetSecurityPolicyRuleMatchExprOptionRecaptchaOption `pulumi:"recaptchaOptions"`
+}
+
+// GetSecurityPolicyRuleMatchExprOptionInput is an input type that accepts GetSecurityPolicyRuleMatchExprOptionArgs and GetSecurityPolicyRuleMatchExprOptionOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleMatchExprOptionInput` via:
+//
+//	GetSecurityPolicyRuleMatchExprOptionArgs{...}
+type GetSecurityPolicyRuleMatchExprOptionInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleMatchExprOptionOutput() GetSecurityPolicyRuleMatchExprOptionOutput
+	ToGetSecurityPolicyRuleMatchExprOptionOutputWithContext(context.Context) GetSecurityPolicyRuleMatchExprOptionOutput
+}
+
+type GetSecurityPolicyRuleMatchExprOptionArgs struct {
+	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
+	RecaptchaOptions GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayInput `pulumi:"recaptchaOptions"`
+}
+
+func (GetSecurityPolicyRuleMatchExprOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleMatchExprOption)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleMatchExprOptionArgs) ToGetSecurityPolicyRuleMatchExprOptionOutput() GetSecurityPolicyRuleMatchExprOptionOutput {
+	return i.ToGetSecurityPolicyRuleMatchExprOptionOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleMatchExprOptionArgs) ToGetSecurityPolicyRuleMatchExprOptionOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchExprOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleMatchExprOptionOutput)
+}
+
+// GetSecurityPolicyRuleMatchExprOptionArrayInput is an input type that accepts GetSecurityPolicyRuleMatchExprOptionArray and GetSecurityPolicyRuleMatchExprOptionArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleMatchExprOptionArrayInput` via:
+//
+//	GetSecurityPolicyRuleMatchExprOptionArray{ GetSecurityPolicyRuleMatchExprOptionArgs{...} }
+type GetSecurityPolicyRuleMatchExprOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleMatchExprOptionArrayOutput() GetSecurityPolicyRuleMatchExprOptionArrayOutput
+	ToGetSecurityPolicyRuleMatchExprOptionArrayOutputWithContext(context.Context) GetSecurityPolicyRuleMatchExprOptionArrayOutput
+}
+
+type GetSecurityPolicyRuleMatchExprOptionArray []GetSecurityPolicyRuleMatchExprOptionInput
+
+func (GetSecurityPolicyRuleMatchExprOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleMatchExprOption)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleMatchExprOptionArray) ToGetSecurityPolicyRuleMatchExprOptionArrayOutput() GetSecurityPolicyRuleMatchExprOptionArrayOutput {
+	return i.ToGetSecurityPolicyRuleMatchExprOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleMatchExprOptionArray) ToGetSecurityPolicyRuleMatchExprOptionArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchExprOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleMatchExprOptionArrayOutput)
+}
+
+type GetSecurityPolicyRuleMatchExprOptionOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleMatchExprOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleMatchExprOption)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleMatchExprOptionOutput) ToGetSecurityPolicyRuleMatchExprOptionOutput() GetSecurityPolicyRuleMatchExprOptionOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleMatchExprOptionOutput) ToGetSecurityPolicyRuleMatchExprOptionOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchExprOptionOutput {
+	return o
+}
+
+// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
+func (o GetSecurityPolicyRuleMatchExprOptionOutput) RecaptchaOptions() GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleMatchExprOption) []GetSecurityPolicyRuleMatchExprOptionRecaptchaOption {
+		return v.RecaptchaOptions
+	}).(GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput)
+}
+
+type GetSecurityPolicyRuleMatchExprOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleMatchExprOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleMatchExprOption)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleMatchExprOptionArrayOutput) ToGetSecurityPolicyRuleMatchExprOptionArrayOutput() GetSecurityPolicyRuleMatchExprOptionArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleMatchExprOptionArrayOutput) ToGetSecurityPolicyRuleMatchExprOptionArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchExprOptionArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleMatchExprOptionArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRuleMatchExprOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRuleMatchExprOption {
+		return vs[0].([]GetSecurityPolicyRuleMatchExprOption)[vs[1].(int)]
+	}).(GetSecurityPolicyRuleMatchExprOptionOutput)
+}
+
+type GetSecurityPolicyRuleMatchExprOptionRecaptchaOption struct {
+	// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created
+	ActionTokenSiteKeys []string `pulumi:"actionTokenSiteKeys"`
+	// A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+	SessionTokenSiteKeys []string `pulumi:"sessionTokenSiteKeys"`
+}
+
+// GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionInput is an input type that accepts GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArgs and GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionInput` via:
+//
+//	GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArgs{...}
+type GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput() GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput
+	ToGetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutputWithContext(context.Context) GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput
+}
+
+type GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArgs struct {
+	// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created
+	ActionTokenSiteKeys pulumi.StringArrayInput `pulumi:"actionTokenSiteKeys"`
+	// A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+	SessionTokenSiteKeys pulumi.StringArrayInput `pulumi:"sessionTokenSiteKeys"`
+}
+
+func (GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleMatchExprOptionRecaptchaOption)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArgs) ToGetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput() GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput {
+	return i.ToGetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArgs) ToGetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput)
+}
+
+// GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayInput is an input type that accepts GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArray and GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayInput` via:
+//
+//	GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArray{ GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArgs{...} }
+type GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput() GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput
+	ToGetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutputWithContext(context.Context) GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput
+}
+
+type GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArray []GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionInput
+
+func (GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleMatchExprOptionRecaptchaOption)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArray) ToGetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput() GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput {
+	return i.ToGetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArray) ToGetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput)
+}
+
+type GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRuleMatchExprOptionRecaptchaOption)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput) ToGetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput() GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput) ToGetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput {
+	return o
+}
+
+// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created
+func (o GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput) ActionTokenSiteKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleMatchExprOptionRecaptchaOption) []string { return v.ActionTokenSiteKeys }).(pulumi.StringArrayOutput)
+}
+
+// A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+func (o GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput) SessionTokenSiteKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRuleMatchExprOptionRecaptchaOption) []string { return v.SessionTokenSiteKeys }).(pulumi.StringArrayOutput)
+}
+
+type GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRuleMatchExprOptionRecaptchaOption)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput) ToGetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput() GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput) ToGetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRuleMatchExprOptionRecaptchaOption {
+		return vs[0].([]GetSecurityPolicyRuleMatchExprOptionRecaptchaOption)[vs[1].(int)]
+	}).(GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput)
 }
 
 type GetSecurityPolicyRulePreconfiguredWafConfig struct {
@@ -33690,6 +34236,10 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
@@ -34124,6 +34674,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleMatchConfigArrayInput)(nil)).Elem(), GetSecurityPolicyRuleMatchConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleMatchExprInput)(nil)).Elem(), GetSecurityPolicyRuleMatchExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleMatchExprArrayInput)(nil)).Elem(), GetSecurityPolicyRuleMatchExprArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleMatchExprOptionInput)(nil)).Elem(), GetSecurityPolicyRuleMatchExprOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleMatchExprOptionArrayInput)(nil)).Elem(), GetSecurityPolicyRuleMatchExprOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionInput)(nil)).Elem(), GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayInput)(nil)).Elem(), GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigArrayInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigExclusionArgs{})
@@ -34156,6 +34710,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput{})
@@ -34590,6 +35148,10 @@ func init() {
 	pulumi.RegisterOutputType(GetSecurityPolicyRuleMatchConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyRuleMatchExprOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyRuleMatchExprArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleMatchExprOptionOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleMatchExprOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRuleMatchExprOptionRecaptchaOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput{})

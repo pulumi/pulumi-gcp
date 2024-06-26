@@ -153,7 +153,9 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     /**
      * The user type. It determines the method to authenticate the
      * user during login. The default is the database&#39;s built-in user type. Flags
-     * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, &#34;CLOUD_IAM_GROUP&#34; or &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;.
+     * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, and &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34; for both
+     * [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype) and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
+     * MySQL also includes &#34;CLOUD_IAM_GROUP&#34;, &#34;CLOUD_IAM_GROUP_USER&#34; and &#34;CLOUD_IAM_GROUP_SERVICE_ACCOUNT&#34;.
      * 
      */
     @Import(name="type")
@@ -162,7 +164,9 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The user type. It determines the method to authenticate the
      * user during login. The default is the database&#39;s built-in user type. Flags
-     * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, &#34;CLOUD_IAM_GROUP&#34; or &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;.
+     * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, and &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34; for both
+     * [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype) and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
+     * MySQL also includes &#34;CLOUD_IAM_GROUP&#34;, &#34;CLOUD_IAM_GROUP_USER&#34; and &#34;CLOUD_IAM_GROUP_SERVICE_ACCOUNT&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -380,7 +384,9 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type The user type. It determines the method to authenticate the
          * user during login. The default is the database&#39;s built-in user type. Flags
-         * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, &#34;CLOUD_IAM_GROUP&#34; or &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;.
+         * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, and &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34; for both
+         * [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype) and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
+         * MySQL also includes &#34;CLOUD_IAM_GROUP&#34;, &#34;CLOUD_IAM_GROUP_USER&#34; and &#34;CLOUD_IAM_GROUP_SERVICE_ACCOUNT&#34;.
          * 
          * @return builder
          * 
@@ -393,7 +399,9 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type The user type. It determines the method to authenticate the
          * user during login. The default is the database&#39;s built-in user type. Flags
-         * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, &#34;CLOUD_IAM_GROUP&#34; or &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;.
+         * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, and &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34; for both
+         * [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype) and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
+         * MySQL also includes &#34;CLOUD_IAM_GROUP&#34;, &#34;CLOUD_IAM_GROUP_USER&#34; and &#34;CLOUD_IAM_GROUP_SERVICE_ACCOUNT&#34;.
          * 
          * @return builder
          * 

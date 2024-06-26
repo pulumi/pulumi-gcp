@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class MetastoreServiceScalingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Represents the autoscaling configuration of a metastore service.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("autoscalingConfig")]
+        public Input<Inputs.MetastoreServiceScalingConfigAutoscalingConfigArgs>? AutoscalingConfig { get; set; }
+
+        /// <summary>
         /// Metastore instance sizes.
         /// Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
         /// </summary>

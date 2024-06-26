@@ -21,6 +21,15 @@ namespace Pulumi.Gcp.Billing.Inputs
         [Input("disableDefaultIamRecipients")]
         public Input<bool>? DisableDefaultIamRecipients { get; set; }
 
+        /// <summary>
+        /// When set to true, and when the budget has a single project configured,
+        /// notifications will be sent to project level recipients of that project.
+        /// This field will be ignored if the budget has multiple or no project configured.
+        /// Currently, project level recipients are the users with Owner role on a cloud project.
+        /// </summary>
+        [Input("enableProjectLevelRecipients")]
+        public Input<bool>? EnableProjectLevelRecipients { get; set; }
+
         [Input("monitoringNotificationChannels")]
         private InputList<string>? _monitoringNotificationChannels;
 

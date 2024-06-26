@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetDockerImageArgs, GetDockerImageResult, GetDockerImageOutputArgs } from "./getDockerImage";
+export const getDockerImage: typeof import("./getDockerImage").getDockerImage = null as any;
+export const getDockerImageOutput: typeof import("./getDockerImage").getDockerImageOutput = null as any;
+utilities.lazyLoad(exports, ["getDockerImage","getDockerImageOutput"], () => require("./getDockerImage"));
+
 export { GetRepositoryArgs, GetRepositoryResult, GetRepositoryOutputArgs } from "./getRepository";
 export const getRepository: typeof import("./getRepository").getRepository = null as any;
 export const getRepositoryOutput: typeof import("./getRepository").getRepositoryOutput = null as any;

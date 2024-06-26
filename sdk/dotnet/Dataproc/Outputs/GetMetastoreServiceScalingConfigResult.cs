@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class GetMetastoreServiceScalingConfigResult
     {
         /// <summary>
+        /// Represents the autoscaling configuration of a metastore service.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetMetastoreServiceScalingConfigAutoscalingConfigResult> AutoscalingConfigs;
+        /// <summary>
         /// Metastore instance sizes. Possible values: ["EXTRA_SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA_LARGE"]
         /// </summary>
         public readonly string InstanceSize;
@@ -24,10 +28,13 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
         [OutputConstructor]
         private GetMetastoreServiceScalingConfigResult(
+            ImmutableArray<Outputs.GetMetastoreServiceScalingConfigAutoscalingConfigResult> autoscalingConfigs,
+
             string instanceSize,
 
             double scalingFactor)
         {
+            AutoscalingConfigs = autoscalingConfigs;
             InstanceSize = instanceSize;
             ScalingFactor = scalingFactor;
         }

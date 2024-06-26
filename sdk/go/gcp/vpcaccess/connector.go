@@ -63,18 +63,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			customTestNetwork, err := compute.NewNetwork(ctx, "custom_test", &compute.NetworkArgs{
-//				Name:                  pulumi.String("vpc-con"),
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			customTest, err := compute.NewSubnetwork(ctx, "custom_test", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("vpc-con"),
 //				IpCidrRange: pulumi.String("10.2.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     customTestNetwork.ID(),
+//				Network:     pulumi.String("default"),
 //			})
 //			if err != nil {
 //				return err

@@ -4634,7 +4634,7 @@ export namespace artifactregistry {
          */
         repositoryBase: string;
         /**
-         * Specific repository from the base, e.g. '"centos/8-stream/BaseOS/x86_64/os"'
+         * Specific repository from the base, e.g. '"pub/rocky/9/BaseOS/x86_64/os"'
          */
         repositoryPath: string;
     }
@@ -4821,7 +4821,7 @@ export namespace artifactregistry {
          */
         repositoryBase: string;
         /**
-         * Specific repository from the base, e.g. `"centos/8-stream/BaseOS/x86_64/os"`
+         * Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
          */
         repositoryPath: string;
     }
@@ -4946,7 +4946,7 @@ export namespace artifactregistry {
          */
         repositoryBase: string;
         /**
-         * Specific repository from the base, e.g. `"centos/8-stream/BaseOS/x86_64/os"`
+         * Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
          */
         repositoryPath: string;
     }
@@ -7413,6 +7413,13 @@ export namespace billing {
          * Account Users IAM roles for the target account.
          */
         disableDefaultIamRecipients?: boolean;
+        /**
+         * When set to true, and when the budget has a single project configured,
+         * notifications will be sent to project level recipients of that project.
+         * This field will be ignored if the budget has multiple or no project configured.
+         * Currently, project level recipients are the users with Owner role on a cloud project.
+         */
+        enableProjectLevelRecipients?: boolean;
         /**
          * The full resource name of a monitoring notification
          * channel in the form
@@ -25255,6 +25262,10 @@ export namespace compute {
          */
         configs: outputs.compute.GetSecurityPolicyRuleMatchConfig[];
         /**
+         * The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+         */
+        exprOptions: outputs.compute.GetSecurityPolicyRuleMatchExprOption[];
+        /**
          * User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
          */
         exprs: outputs.compute.GetSecurityPolicyRuleMatchExpr[];
@@ -25276,6 +25287,24 @@ export namespace compute {
          * Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
          */
         expression: string;
+    }
+
+    export interface GetSecurityPolicyRuleMatchExprOption {
+        /**
+         * reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
+         */
+        recaptchaOptions: outputs.compute.GetSecurityPolicyRuleMatchExprOptionRecaptchaOption[];
+    }
+
+    export interface GetSecurityPolicyRuleMatchExprOptionRecaptchaOption {
+        /**
+         * A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created
+         */
+        actionTokenSiteKeys: string[];
+        /**
+         * A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+         */
+        sessionTokenSiteKeys: string[];
     }
 
     export interface GetSecurityPolicyRulePreconfiguredWafConfig {
@@ -33764,6 +33793,11 @@ export namespace compute {
          */
         expr?: outputs.compute.SecurityPolicyRuleMatchExpr;
         /**
+         * The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+         * Structure is documented below.
+         */
+        exprOptions?: outputs.compute.SecurityPolicyRuleMatchExprOptions;
+        /**
          * Preconfigured versioned expression. If this field is specified, config must also be specified.
          * Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
          * Possible values are: `SRC_IPS_V1`.
@@ -33783,6 +33817,25 @@ export namespace compute {
          * Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
          */
         expression: string;
+    }
+
+    export interface SecurityPolicyRuleMatchExprOptions {
+        /**
+         * reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
+         * Structure is documented below.
+         */
+        recaptchaOptions: outputs.compute.SecurityPolicyRuleMatchExprOptionsRecaptchaOptions;
+    }
+
+    export interface SecurityPolicyRuleMatchExprOptionsRecaptchaOptions {
+        /**
+         * A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+         */
+        actionTokenSiteKeys?: string[];
+        /**
+         * A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+         */
+        sessionTokenSiteKeys?: string[];
     }
 
     export interface SecurityPolicyRulePreconfiguredWafConfig {
@@ -51148,6 +51201,10 @@ export namespace dataproc {
 
     export interface GetMetastoreServiceScalingConfig {
         /**
+         * Represents the autoscaling configuration of a metastore service.
+         */
+        autoscalingConfigs: outputs.dataproc.GetMetastoreServiceScalingConfigAutoscalingConfig[];
+        /**
          * Metastore instance sizes. Possible values: ["EXTRA_SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA_LARGE"]
          */
         instanceSize: string;
@@ -51155,6 +51212,28 @@ export namespace dataproc {
          * Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
          */
         scalingFactor: number;
+    }
+
+    export interface GetMetastoreServiceScalingConfigAutoscalingConfig {
+        /**
+         * Defines whether autoscaling is enabled. The default value is false.
+         */
+        autoscalingEnabled: boolean;
+        /**
+         * Represents the limit configuration of a metastore service.
+         */
+        limitConfigs: outputs.dataproc.GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig[];
+    }
+
+    export interface GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig {
+        /**
+         * The maximum scaling factor that the service will autoscale to. The default value is 6.0.
+         */
+        maxScalingFactor: number;
+        /**
+         * The minimum scaling factor that the service will autoscale to. The default value is 0.1.
+         */
+        minScalingFactor: number;
     }
 
     export interface GetMetastoreServiceScheduledBackup {
@@ -51706,6 +51785,11 @@ export namespace dataproc {
 
     export interface MetastoreServiceScalingConfig {
         /**
+         * Represents the autoscaling configuration of a metastore service.
+         * Structure is documented below.
+         */
+        autoscalingConfig?: outputs.dataproc.MetastoreServiceScalingConfigAutoscalingConfig;
+        /**
          * Metastore instance sizes.
          * Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
          */
@@ -51714,6 +51798,29 @@ export namespace dataproc {
          * Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
          */
         scalingFactor?: number;
+    }
+
+    export interface MetastoreServiceScalingConfigAutoscalingConfig {
+        /**
+         * Defines whether autoscaling is enabled. The default value is false.
+         */
+        autoscalingEnabled?: boolean;
+        /**
+         * Represents the limit configuration of a metastore service.
+         * Structure is documented below.
+         */
+        limitConfig: outputs.dataproc.MetastoreServiceScalingConfigAutoscalingConfigLimitConfig;
+    }
+
+    export interface MetastoreServiceScalingConfigAutoscalingConfigLimitConfig {
+        /**
+         * The maximum scaling factor that the service will autoscale to. The default value is 6.0.
+         */
+        maxScalingFactor: number;
+        /**
+         * The minimum scaling factor that the service will autoscale to. The default value is 0.1.
+         */
+        minScalingFactor: number;
     }
 
     export interface MetastoreServiceScheduledBackup {
@@ -60334,7 +60441,7 @@ export namespace gkehub {
     export interface FleetDefaultClusterConfigSecurityPostureConfig {
         /**
          * Sets which mode to use for Security Posture features.
-         * Possible values are: `DISABLED`, `BASIC`.
+         * Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
          */
         mode?: string;
         /**
@@ -73034,6 +73141,12 @@ export namespace pubsub {
          */
         dropUnknownFields: boolean;
         /**
+         * The service account to use to write to BigQuery. If not specified, the Pub/Sub
+         * [service agent](https://cloud.google.com/iam/docs/service-agents),
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         */
+        serviceAccountEmail: string;
+        /**
          * The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
          */
         table: string;
@@ -73086,6 +73199,12 @@ export namespace pubsub {
          * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
          */
         maxDuration: string;
+        /**
+         * The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+         * [service agent](https://cloud.google.com/iam/docs/service-agents),
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         */
+        serviceAccountEmail: string;
         /**
          * An output-only field that indicates whether or not the subscription can receive messages.
          */
@@ -73361,6 +73480,12 @@ export namespace pubsub {
          */
         dropUnknownFields?: boolean;
         /**
+         * The service account to use to write to BigQuery. If not specified, the Pub/Sub
+         * [service agent](https://cloud.google.com/iam/docs/service-agents),
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         */
+        serviceAccountEmail?: string;
+        /**
          * The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
          */
         table: string;
@@ -73414,6 +73539,12 @@ export namespace pubsub {
          * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
          */
         maxDuration?: string;
+        /**
+         * The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
+         * [service agent](https://cloud.google.com/iam/docs/service-agents),
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         */
+        serviceAccountEmail?: string;
         /**
          * (Output)
          * An output-only field that indicates whether or not the subscription can receive messages.

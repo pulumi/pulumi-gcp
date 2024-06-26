@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     {
         /// <summary>
         /// Sets which mode to use for Security Posture features.
-        /// Possible values are: `DISABLED`, `BASIC`.
+        /// Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
         /// </summary>
         public readonly string? Mode;
         /// <summary>

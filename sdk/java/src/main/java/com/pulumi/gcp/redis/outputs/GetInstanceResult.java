@@ -41,6 +41,7 @@ public final class GetInstanceResult {
     private String locationId;
     private List<GetInstanceMaintenancePolicy> maintenancePolicies;
     private List<GetInstanceMaintenanceSchedule> maintenanceSchedules;
+    private String maintenanceVersion;
     private Integer memorySizeGb;
     private String name;
     private List<GetInstanceNode> nodes;
@@ -114,6 +115,9 @@ public final class GetInstanceResult {
     }
     public List<GetInstanceMaintenanceSchedule> maintenanceSchedules() {
         return this.maintenanceSchedules;
+    }
+    public String maintenanceVersion() {
+        return this.maintenanceVersion;
     }
     public Integer memorySizeGb() {
         return this.memorySizeGb;
@@ -201,6 +205,7 @@ public final class GetInstanceResult {
         private String locationId;
         private List<GetInstanceMaintenancePolicy> maintenancePolicies;
         private List<GetInstanceMaintenanceSchedule> maintenanceSchedules;
+        private String maintenanceVersion;
         private Integer memorySizeGb;
         private String name;
         private List<GetInstanceNode> nodes;
@@ -240,6 +245,7 @@ public final class GetInstanceResult {
     	      this.locationId = defaults.locationId;
     	      this.maintenancePolicies = defaults.maintenancePolicies;
     	      this.maintenanceSchedules = defaults.maintenanceSchedules;
+    	      this.maintenanceVersion = defaults.maintenanceVersion;
     	      this.memorySizeGb = defaults.memorySizeGb;
     	      this.name = defaults.name;
     	      this.nodes = defaults.nodes;
@@ -395,6 +401,14 @@ public final class GetInstanceResult {
         }
         public Builder maintenanceSchedules(GetInstanceMaintenanceSchedule... maintenanceSchedules) {
             return maintenanceSchedules(List.of(maintenanceSchedules));
+        }
+        @CustomType.Setter
+        public Builder maintenanceVersion(String maintenanceVersion) {
+            if (maintenanceVersion == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "maintenanceVersion");
+            }
+            this.maintenanceVersion = maintenanceVersion;
+            return this;
         }
         @CustomType.Setter
         public Builder memorySizeGb(Integer memorySizeGb) {
@@ -579,6 +593,7 @@ public final class GetInstanceResult {
             _resultValue.locationId = locationId;
             _resultValue.maintenancePolicies = maintenancePolicies;
             _resultValue.maintenanceSchedules = maintenanceSchedules;
+            _resultValue.maintenanceVersion = maintenanceVersion;
             _resultValue.memorySizeGb = memorySizeGb;
             _resultValue.name = name;
             _resultValue.nodes = nodes;

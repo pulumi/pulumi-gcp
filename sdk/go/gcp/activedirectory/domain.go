@@ -72,8 +72,8 @@ type Domain struct {
 	// The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayOutput `pulumi:"authorizedNetworks"`
-	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	//
 	// ***
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
@@ -152,8 +152,8 @@ type domainState struct {
 	// The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
-	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	//
 	// ***
 	DomainName *string `pulumi:"domainName"`
@@ -189,8 +189,8 @@ type DomainState struct {
 	// The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayInput
-	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	//
 	// ***
 	DomainName pulumi.StringPtrInput
@@ -230,8 +230,8 @@ type domainArgs struct {
 	// The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
-	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	//
 	// ***
 	DomainName string `pulumi:"domainName"`
@@ -258,8 +258,8 @@ type DomainArgs struct {
 	// The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayInput
-	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	//
 	// ***
 	DomainName pulumi.StringInput
@@ -377,8 +377,8 @@ func (o DomainOutput) AuthorizedNetworks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringArrayOutput { return v.AuthorizedNetworks }).(pulumi.StringArrayOutput)
 }
 
-// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
-// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
+// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 //
 // ***
 func (o DomainOutput) DomainName() pulumi.StringOutput {

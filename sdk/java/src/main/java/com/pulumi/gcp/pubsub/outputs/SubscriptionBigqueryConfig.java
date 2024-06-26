@@ -21,6 +21,13 @@ public final class SubscriptionBigqueryConfig {
      */
     private @Nullable Boolean dropUnknownFields;
     /**
+     * @return The service account to use to write to BigQuery. If not specified, the Pub/Sub
+     * [service agent](https://cloud.google.com/iam/docs/service-agents),
+     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+     * 
+     */
+    private @Nullable String serviceAccountEmail;
+    /**
      * @return The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
      * 
      */
@@ -53,6 +60,15 @@ public final class SubscriptionBigqueryConfig {
      */
     public Optional<Boolean> dropUnknownFields() {
         return Optional.ofNullable(this.dropUnknownFields);
+    }
+    /**
+     * @return The service account to use to write to BigQuery. If not specified, the Pub/Sub
+     * [service agent](https://cloud.google.com/iam/docs/service-agents),
+     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+     * 
+     */
+    public Optional<String> serviceAccountEmail() {
+        return Optional.ofNullable(this.serviceAccountEmail);
     }
     /**
      * @return The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
@@ -96,6 +112,7 @@ public final class SubscriptionBigqueryConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean dropUnknownFields;
+        private @Nullable String serviceAccountEmail;
         private String table;
         private @Nullable Boolean useTableSchema;
         private @Nullable Boolean useTopicSchema;
@@ -104,6 +121,7 @@ public final class SubscriptionBigqueryConfig {
         public Builder(SubscriptionBigqueryConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dropUnknownFields = defaults.dropUnknownFields;
+    	      this.serviceAccountEmail = defaults.serviceAccountEmail;
     	      this.table = defaults.table;
     	      this.useTableSchema = defaults.useTableSchema;
     	      this.useTopicSchema = defaults.useTopicSchema;
@@ -114,6 +132,12 @@ public final class SubscriptionBigqueryConfig {
         public Builder dropUnknownFields(@Nullable Boolean dropUnknownFields) {
 
             this.dropUnknownFields = dropUnknownFields;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder serviceAccountEmail(@Nullable String serviceAccountEmail) {
+
+            this.serviceAccountEmail = serviceAccountEmail;
             return this;
         }
         @CustomType.Setter
@@ -145,6 +169,7 @@ public final class SubscriptionBigqueryConfig {
         public SubscriptionBigqueryConfig build() {
             final var _resultValue = new SubscriptionBigqueryConfig();
             _resultValue.dropUnknownFields = dropUnknownFields;
+            _resultValue.serviceAccountEmail = serviceAccountEmail;
             _resultValue.table = table;
             _resultValue.useTableSchema = useTableSchema;
             _resultValue.useTopicSchema = useTopicSchema;

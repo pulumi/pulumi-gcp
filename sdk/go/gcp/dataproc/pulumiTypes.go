@@ -15934,6 +15934,9 @@ func (o MetastoreServiceNetworkConfigConsumerArrayOutput) Index(i pulumi.IntInpu
 }
 
 type MetastoreServiceScalingConfig struct {
+	// Represents the autoscaling configuration of a metastore service.
+	// Structure is documented below.
+	AutoscalingConfig *MetastoreServiceScalingConfigAutoscalingConfig `pulumi:"autoscalingConfig"`
 	// Metastore instance sizes.
 	// Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
 	InstanceSize *string `pulumi:"instanceSize"`
@@ -15953,6 +15956,9 @@ type MetastoreServiceScalingConfigInput interface {
 }
 
 type MetastoreServiceScalingConfigArgs struct {
+	// Represents the autoscaling configuration of a metastore service.
+	// Structure is documented below.
+	AutoscalingConfig MetastoreServiceScalingConfigAutoscalingConfigPtrInput `pulumi:"autoscalingConfig"`
 	// Metastore instance sizes.
 	// Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
 	InstanceSize pulumi.StringPtrInput `pulumi:"instanceSize"`
@@ -16037,6 +16043,14 @@ func (o MetastoreServiceScalingConfigOutput) ToMetastoreServiceScalingConfigPtrO
 	}).(MetastoreServiceScalingConfigPtrOutput)
 }
 
+// Represents the autoscaling configuration of a metastore service.
+// Structure is documented below.
+func (o MetastoreServiceScalingConfigOutput) AutoscalingConfig() MetastoreServiceScalingConfigAutoscalingConfigPtrOutput {
+	return o.ApplyT(func(v MetastoreServiceScalingConfig) *MetastoreServiceScalingConfigAutoscalingConfig {
+		return v.AutoscalingConfig
+	}).(MetastoreServiceScalingConfigAutoscalingConfigPtrOutput)
+}
+
 // Metastore instance sizes.
 // Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
 func (o MetastoreServiceScalingConfigOutput) InstanceSize() pulumi.StringPtrOutput {
@@ -16072,6 +16086,17 @@ func (o MetastoreServiceScalingConfigPtrOutput) Elem() MetastoreServiceScalingCo
 	}).(MetastoreServiceScalingConfigOutput)
 }
 
+// Represents the autoscaling configuration of a metastore service.
+// Structure is documented below.
+func (o MetastoreServiceScalingConfigPtrOutput) AutoscalingConfig() MetastoreServiceScalingConfigAutoscalingConfigPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceScalingConfig) *MetastoreServiceScalingConfigAutoscalingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingConfig
+	}).(MetastoreServiceScalingConfigAutoscalingConfigPtrOutput)
+}
+
 // Metastore instance sizes.
 // Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
 func (o MetastoreServiceScalingConfigPtrOutput) InstanceSize() pulumi.StringPtrOutput {
@@ -16090,6 +16115,324 @@ func (o MetastoreServiceScalingConfigPtrOutput) ScalingFactor() pulumi.Float64Pt
 			return nil
 		}
 		return v.ScalingFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+type MetastoreServiceScalingConfigAutoscalingConfig struct {
+	// Defines whether autoscaling is enabled. The default value is false.
+	AutoscalingEnabled *bool `pulumi:"autoscalingEnabled"`
+	// Represents the limit configuration of a metastore service.
+	// Structure is documented below.
+	LimitConfig *MetastoreServiceScalingConfigAutoscalingConfigLimitConfig `pulumi:"limitConfig"`
+}
+
+// MetastoreServiceScalingConfigAutoscalingConfigInput is an input type that accepts MetastoreServiceScalingConfigAutoscalingConfigArgs and MetastoreServiceScalingConfigAutoscalingConfigOutput values.
+// You can construct a concrete instance of `MetastoreServiceScalingConfigAutoscalingConfigInput` via:
+//
+//	MetastoreServiceScalingConfigAutoscalingConfigArgs{...}
+type MetastoreServiceScalingConfigAutoscalingConfigInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceScalingConfigAutoscalingConfigOutput() MetastoreServiceScalingConfigAutoscalingConfigOutput
+	ToMetastoreServiceScalingConfigAutoscalingConfigOutputWithContext(context.Context) MetastoreServiceScalingConfigAutoscalingConfigOutput
+}
+
+type MetastoreServiceScalingConfigAutoscalingConfigArgs struct {
+	// Defines whether autoscaling is enabled. The default value is false.
+	AutoscalingEnabled pulumi.BoolPtrInput `pulumi:"autoscalingEnabled"`
+	// Represents the limit configuration of a metastore service.
+	// Structure is documented below.
+	LimitConfig MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrInput `pulumi:"limitConfig"`
+}
+
+func (MetastoreServiceScalingConfigAutoscalingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceScalingConfigAutoscalingConfig)(nil)).Elem()
+}
+
+func (i MetastoreServiceScalingConfigAutoscalingConfigArgs) ToMetastoreServiceScalingConfigAutoscalingConfigOutput() MetastoreServiceScalingConfigAutoscalingConfigOutput {
+	return i.ToMetastoreServiceScalingConfigAutoscalingConfigOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceScalingConfigAutoscalingConfigArgs) ToMetastoreServiceScalingConfigAutoscalingConfigOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigAutoscalingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceScalingConfigAutoscalingConfigOutput)
+}
+
+func (i MetastoreServiceScalingConfigAutoscalingConfigArgs) ToMetastoreServiceScalingConfigAutoscalingConfigPtrOutput() MetastoreServiceScalingConfigAutoscalingConfigPtrOutput {
+	return i.ToMetastoreServiceScalingConfigAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceScalingConfigAutoscalingConfigArgs) ToMetastoreServiceScalingConfigAutoscalingConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigAutoscalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceScalingConfigAutoscalingConfigOutput).ToMetastoreServiceScalingConfigAutoscalingConfigPtrOutputWithContext(ctx)
+}
+
+// MetastoreServiceScalingConfigAutoscalingConfigPtrInput is an input type that accepts MetastoreServiceScalingConfigAutoscalingConfigArgs, MetastoreServiceScalingConfigAutoscalingConfigPtr and MetastoreServiceScalingConfigAutoscalingConfigPtrOutput values.
+// You can construct a concrete instance of `MetastoreServiceScalingConfigAutoscalingConfigPtrInput` via:
+//
+//	        MetastoreServiceScalingConfigAutoscalingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetastoreServiceScalingConfigAutoscalingConfigPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceScalingConfigAutoscalingConfigPtrOutput() MetastoreServiceScalingConfigAutoscalingConfigPtrOutput
+	ToMetastoreServiceScalingConfigAutoscalingConfigPtrOutputWithContext(context.Context) MetastoreServiceScalingConfigAutoscalingConfigPtrOutput
+}
+
+type metastoreServiceScalingConfigAutoscalingConfigPtrType MetastoreServiceScalingConfigAutoscalingConfigArgs
+
+func MetastoreServiceScalingConfigAutoscalingConfigPtr(v *MetastoreServiceScalingConfigAutoscalingConfigArgs) MetastoreServiceScalingConfigAutoscalingConfigPtrInput {
+	return (*metastoreServiceScalingConfigAutoscalingConfigPtrType)(v)
+}
+
+func (*metastoreServiceScalingConfigAutoscalingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceScalingConfigAutoscalingConfig)(nil)).Elem()
+}
+
+func (i *metastoreServiceScalingConfigAutoscalingConfigPtrType) ToMetastoreServiceScalingConfigAutoscalingConfigPtrOutput() MetastoreServiceScalingConfigAutoscalingConfigPtrOutput {
+	return i.ToMetastoreServiceScalingConfigAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreServiceScalingConfigAutoscalingConfigPtrType) ToMetastoreServiceScalingConfigAutoscalingConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigAutoscalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceScalingConfigAutoscalingConfigPtrOutput)
+}
+
+type MetastoreServiceScalingConfigAutoscalingConfigOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceScalingConfigAutoscalingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceScalingConfigAutoscalingConfig)(nil)).Elem()
+}
+
+func (o MetastoreServiceScalingConfigAutoscalingConfigOutput) ToMetastoreServiceScalingConfigAutoscalingConfigOutput() MetastoreServiceScalingConfigAutoscalingConfigOutput {
+	return o
+}
+
+func (o MetastoreServiceScalingConfigAutoscalingConfigOutput) ToMetastoreServiceScalingConfigAutoscalingConfigOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigAutoscalingConfigOutput {
+	return o
+}
+
+func (o MetastoreServiceScalingConfigAutoscalingConfigOutput) ToMetastoreServiceScalingConfigAutoscalingConfigPtrOutput() MetastoreServiceScalingConfigAutoscalingConfigPtrOutput {
+	return o.ToMetastoreServiceScalingConfigAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreServiceScalingConfigAutoscalingConfigOutput) ToMetastoreServiceScalingConfigAutoscalingConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigAutoscalingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceScalingConfigAutoscalingConfig) *MetastoreServiceScalingConfigAutoscalingConfig {
+		return &v
+	}).(MetastoreServiceScalingConfigAutoscalingConfigPtrOutput)
+}
+
+// Defines whether autoscaling is enabled. The default value is false.
+func (o MetastoreServiceScalingConfigAutoscalingConfigOutput) AutoscalingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MetastoreServiceScalingConfigAutoscalingConfig) *bool { return v.AutoscalingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Represents the limit configuration of a metastore service.
+// Structure is documented below.
+func (o MetastoreServiceScalingConfigAutoscalingConfigOutput) LimitConfig() MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput {
+	return o.ApplyT(func(v MetastoreServiceScalingConfigAutoscalingConfig) *MetastoreServiceScalingConfigAutoscalingConfigLimitConfig {
+		return v.LimitConfig
+	}).(MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput)
+}
+
+type MetastoreServiceScalingConfigAutoscalingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceScalingConfigAutoscalingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceScalingConfigAutoscalingConfig)(nil)).Elem()
+}
+
+func (o MetastoreServiceScalingConfigAutoscalingConfigPtrOutput) ToMetastoreServiceScalingConfigAutoscalingConfigPtrOutput() MetastoreServiceScalingConfigAutoscalingConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceScalingConfigAutoscalingConfigPtrOutput) ToMetastoreServiceScalingConfigAutoscalingConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigAutoscalingConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceScalingConfigAutoscalingConfigPtrOutput) Elem() MetastoreServiceScalingConfigAutoscalingConfigOutput {
+	return o.ApplyT(func(v *MetastoreServiceScalingConfigAutoscalingConfig) MetastoreServiceScalingConfigAutoscalingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreServiceScalingConfigAutoscalingConfig
+		return ret
+	}).(MetastoreServiceScalingConfigAutoscalingConfigOutput)
+}
+
+// Defines whether autoscaling is enabled. The default value is false.
+func (o MetastoreServiceScalingConfigAutoscalingConfigPtrOutput) AutoscalingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceScalingConfigAutoscalingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents the limit configuration of a metastore service.
+// Structure is documented below.
+func (o MetastoreServiceScalingConfigAutoscalingConfigPtrOutput) LimitConfig() MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceScalingConfigAutoscalingConfig) *MetastoreServiceScalingConfigAutoscalingConfigLimitConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LimitConfig
+	}).(MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput)
+}
+
+type MetastoreServiceScalingConfigAutoscalingConfigLimitConfig struct {
+	// The maximum scaling factor that the service will autoscale to. The default value is 6.0.
+	MaxScalingFactor *float64 `pulumi:"maxScalingFactor"`
+	// The minimum scaling factor that the service will autoscale to. The default value is 0.1.
+	MinScalingFactor *float64 `pulumi:"minScalingFactor"`
+}
+
+// MetastoreServiceScalingConfigAutoscalingConfigLimitConfigInput is an input type that accepts MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs and MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput values.
+// You can construct a concrete instance of `MetastoreServiceScalingConfigAutoscalingConfigLimitConfigInput` via:
+//
+//	MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs{...}
+type MetastoreServiceScalingConfigAutoscalingConfigLimitConfigInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput() MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput
+	ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutputWithContext(context.Context) MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput
+}
+
+type MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs struct {
+	// The maximum scaling factor that the service will autoscale to. The default value is 6.0.
+	MaxScalingFactor pulumi.Float64PtrInput `pulumi:"maxScalingFactor"`
+	// The minimum scaling factor that the service will autoscale to. The default value is 0.1.
+	MinScalingFactor pulumi.Float64PtrInput `pulumi:"minScalingFactor"`
+}
+
+func (MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceScalingConfigAutoscalingConfigLimitConfig)(nil)).Elem()
+}
+
+func (i MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs) ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput() MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput {
+	return i.ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs) ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput)
+}
+
+func (i MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs) ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput() MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput {
+	return i.ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs) ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput).ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutputWithContext(ctx)
+}
+
+// MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrInput is an input type that accepts MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs, MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtr and MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput values.
+// You can construct a concrete instance of `MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrInput` via:
+//
+//	        MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput() MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput
+	ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutputWithContext(context.Context) MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput
+}
+
+type metastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrType MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs
+
+func MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtr(v *MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs) MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrInput {
+	return (*metastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrType)(v)
+}
+
+func (*metastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceScalingConfigAutoscalingConfigLimitConfig)(nil)).Elem()
+}
+
+func (i *metastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrType) ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput() MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput {
+	return i.ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrType) ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput)
+}
+
+type MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceScalingConfigAutoscalingConfigLimitConfig)(nil)).Elem()
+}
+
+func (o MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput) ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput() MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput {
+	return o
+}
+
+func (o MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput) ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput {
+	return o
+}
+
+func (o MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput) ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput() MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput {
+	return o.ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput) ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceScalingConfigAutoscalingConfigLimitConfig) *MetastoreServiceScalingConfigAutoscalingConfigLimitConfig {
+		return &v
+	}).(MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput)
+}
+
+// The maximum scaling factor that the service will autoscale to. The default value is 6.0.
+func (o MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput) MaxScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MetastoreServiceScalingConfigAutoscalingConfigLimitConfig) *float64 { return v.MaxScalingFactor }).(pulumi.Float64PtrOutput)
+}
+
+// The minimum scaling factor that the service will autoscale to. The default value is 0.1.
+func (o MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput) MinScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MetastoreServiceScalingConfigAutoscalingConfigLimitConfig) *float64 { return v.MinScalingFactor }).(pulumi.Float64PtrOutput)
+}
+
+type MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceScalingConfigAutoscalingConfigLimitConfig)(nil)).Elem()
+}
+
+func (o MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput) ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput() MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput) ToMetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput) Elem() MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput {
+	return o.ApplyT(func(v *MetastoreServiceScalingConfigAutoscalingConfigLimitConfig) MetastoreServiceScalingConfigAutoscalingConfigLimitConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreServiceScalingConfigAutoscalingConfigLimitConfig
+		return ret
+	}).(MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput)
+}
+
+// The maximum scaling factor that the service will autoscale to. The default value is 6.0.
+func (o MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput) MaxScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceScalingConfigAutoscalingConfigLimitConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxScalingFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The minimum scaling factor that the service will autoscale to. The default value is 0.1.
+func (o MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput) MinScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceScalingConfigAutoscalingConfigLimitConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinScalingFactor
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -27905,6 +28248,8 @@ func (o GetMetastoreServiceNetworkConfigConsumerArrayOutput) Index(i pulumi.IntI
 }
 
 type GetMetastoreServiceScalingConfig struct {
+	// Represents the autoscaling configuration of a metastore service.
+	AutoscalingConfigs []GetMetastoreServiceScalingConfigAutoscalingConfig `pulumi:"autoscalingConfigs"`
 	// Metastore instance sizes. Possible values: ["EXTRA_SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA_LARGE"]
 	InstanceSize string `pulumi:"instanceSize"`
 	// Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
@@ -27923,6 +28268,8 @@ type GetMetastoreServiceScalingConfigInput interface {
 }
 
 type GetMetastoreServiceScalingConfigArgs struct {
+	// Represents the autoscaling configuration of a metastore service.
+	AutoscalingConfigs GetMetastoreServiceScalingConfigAutoscalingConfigArrayInput `pulumi:"autoscalingConfigs"`
 	// Metastore instance sizes. Possible values: ["EXTRA_SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA_LARGE"]
 	InstanceSize pulumi.StringInput `pulumi:"instanceSize"`
 	// Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
@@ -27980,6 +28327,13 @@ func (o GetMetastoreServiceScalingConfigOutput) ToGetMetastoreServiceScalingConf
 	return o
 }
 
+// Represents the autoscaling configuration of a metastore service.
+func (o GetMetastoreServiceScalingConfigOutput) AutoscalingConfigs() GetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput {
+	return o.ApplyT(func(v GetMetastoreServiceScalingConfig) []GetMetastoreServiceScalingConfigAutoscalingConfig {
+		return v.AutoscalingConfigs
+	}).(GetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput)
+}
+
 // Metastore instance sizes. Possible values: ["EXTRA_SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA_LARGE"]
 func (o GetMetastoreServiceScalingConfigOutput) InstanceSize() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetastoreServiceScalingConfig) string { return v.InstanceSize }).(pulumi.StringOutput)
@@ -28008,6 +28362,224 @@ func (o GetMetastoreServiceScalingConfigArrayOutput) Index(i pulumi.IntInput) Ge
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetastoreServiceScalingConfig {
 		return vs[0].([]GetMetastoreServiceScalingConfig)[vs[1].(int)]
 	}).(GetMetastoreServiceScalingConfigOutput)
+}
+
+type GetMetastoreServiceScalingConfigAutoscalingConfig struct {
+	// Defines whether autoscaling is enabled. The default value is false.
+	AutoscalingEnabled bool `pulumi:"autoscalingEnabled"`
+	// Represents the limit configuration of a metastore service.
+	LimitConfigs []GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig `pulumi:"limitConfigs"`
+}
+
+// GetMetastoreServiceScalingConfigAutoscalingConfigInput is an input type that accepts GetMetastoreServiceScalingConfigAutoscalingConfigArgs and GetMetastoreServiceScalingConfigAutoscalingConfigOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceScalingConfigAutoscalingConfigInput` via:
+//
+//	GetMetastoreServiceScalingConfigAutoscalingConfigArgs{...}
+type GetMetastoreServiceScalingConfigAutoscalingConfigInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceScalingConfigAutoscalingConfigOutput() GetMetastoreServiceScalingConfigAutoscalingConfigOutput
+	ToGetMetastoreServiceScalingConfigAutoscalingConfigOutputWithContext(context.Context) GetMetastoreServiceScalingConfigAutoscalingConfigOutput
+}
+
+type GetMetastoreServiceScalingConfigAutoscalingConfigArgs struct {
+	// Defines whether autoscaling is enabled. The default value is false.
+	AutoscalingEnabled pulumi.BoolInput `pulumi:"autoscalingEnabled"`
+	// Represents the limit configuration of a metastore service.
+	LimitConfigs GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayInput `pulumi:"limitConfigs"`
+}
+
+func (GetMetastoreServiceScalingConfigAutoscalingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceScalingConfigAutoscalingConfig)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceScalingConfigAutoscalingConfigArgs) ToGetMetastoreServiceScalingConfigAutoscalingConfigOutput() GetMetastoreServiceScalingConfigAutoscalingConfigOutput {
+	return i.ToGetMetastoreServiceScalingConfigAutoscalingConfigOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceScalingConfigAutoscalingConfigArgs) ToGetMetastoreServiceScalingConfigAutoscalingConfigOutputWithContext(ctx context.Context) GetMetastoreServiceScalingConfigAutoscalingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceScalingConfigAutoscalingConfigOutput)
+}
+
+// GetMetastoreServiceScalingConfigAutoscalingConfigArrayInput is an input type that accepts GetMetastoreServiceScalingConfigAutoscalingConfigArray and GetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceScalingConfigAutoscalingConfigArrayInput` via:
+//
+//	GetMetastoreServiceScalingConfigAutoscalingConfigArray{ GetMetastoreServiceScalingConfigAutoscalingConfigArgs{...} }
+type GetMetastoreServiceScalingConfigAutoscalingConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput() GetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput
+	ToGetMetastoreServiceScalingConfigAutoscalingConfigArrayOutputWithContext(context.Context) GetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput
+}
+
+type GetMetastoreServiceScalingConfigAutoscalingConfigArray []GetMetastoreServiceScalingConfigAutoscalingConfigInput
+
+func (GetMetastoreServiceScalingConfigAutoscalingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceScalingConfigAutoscalingConfig)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceScalingConfigAutoscalingConfigArray) ToGetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput() GetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput {
+	return i.ToGetMetastoreServiceScalingConfigAutoscalingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceScalingConfigAutoscalingConfigArray) ToGetMetastoreServiceScalingConfigAutoscalingConfigArrayOutputWithContext(ctx context.Context) GetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput)
+}
+
+type GetMetastoreServiceScalingConfigAutoscalingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceScalingConfigAutoscalingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceScalingConfigAutoscalingConfig)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceScalingConfigAutoscalingConfigOutput) ToGetMetastoreServiceScalingConfigAutoscalingConfigOutput() GetMetastoreServiceScalingConfigAutoscalingConfigOutput {
+	return o
+}
+
+func (o GetMetastoreServiceScalingConfigAutoscalingConfigOutput) ToGetMetastoreServiceScalingConfigAutoscalingConfigOutputWithContext(ctx context.Context) GetMetastoreServiceScalingConfigAutoscalingConfigOutput {
+	return o
+}
+
+// Defines whether autoscaling is enabled. The default value is false.
+func (o GetMetastoreServiceScalingConfigAutoscalingConfigOutput) AutoscalingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMetastoreServiceScalingConfigAutoscalingConfig) bool { return v.AutoscalingEnabled }).(pulumi.BoolOutput)
+}
+
+// Represents the limit configuration of a metastore service.
+func (o GetMetastoreServiceScalingConfigAutoscalingConfigOutput) LimitConfigs() GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput {
+	return o.ApplyT(func(v GetMetastoreServiceScalingConfigAutoscalingConfig) []GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig {
+		return v.LimitConfigs
+	}).(GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput)
+}
+
+type GetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceScalingConfigAutoscalingConfig)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput) ToGetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput() GetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput) ToGetMetastoreServiceScalingConfigAutoscalingConfigArrayOutputWithContext(ctx context.Context) GetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput) Index(i pulumi.IntInput) GetMetastoreServiceScalingConfigAutoscalingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetastoreServiceScalingConfigAutoscalingConfig {
+		return vs[0].([]GetMetastoreServiceScalingConfigAutoscalingConfig)[vs[1].(int)]
+	}).(GetMetastoreServiceScalingConfigAutoscalingConfigOutput)
+}
+
+type GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig struct {
+	// The maximum scaling factor that the service will autoscale to. The default value is 6.0.
+	MaxScalingFactor float64 `pulumi:"maxScalingFactor"`
+	// The minimum scaling factor that the service will autoscale to. The default value is 0.1.
+	MinScalingFactor float64 `pulumi:"minScalingFactor"`
+}
+
+// GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigInput is an input type that accepts GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs and GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigInput` via:
+//
+//	GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs{...}
+type GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput() GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput
+	ToGetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutputWithContext(context.Context) GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput
+}
+
+type GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs struct {
+	// The maximum scaling factor that the service will autoscale to. The default value is 6.0.
+	MaxScalingFactor pulumi.Float64Input `pulumi:"maxScalingFactor"`
+	// The minimum scaling factor that the service will autoscale to. The default value is 0.1.
+	MinScalingFactor pulumi.Float64Input `pulumi:"minScalingFactor"`
+}
+
+func (GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs) ToGetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput() GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput {
+	return i.ToGetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs) ToGetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutputWithContext(ctx context.Context) GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput)
+}
+
+// GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayInput is an input type that accepts GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArray and GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayInput` via:
+//
+//	GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArray{ GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs{...} }
+type GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput() GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput
+	ToGetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutputWithContext(context.Context) GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput
+}
+
+type GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArray []GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigInput
+
+func (GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArray) ToGetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput() GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput {
+	return i.ToGetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArray) ToGetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutputWithContext(ctx context.Context) GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput)
+}
+
+type GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput) ToGetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput() GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput {
+	return o
+}
+
+func (o GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput) ToGetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutputWithContext(ctx context.Context) GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput {
+	return o
+}
+
+// The maximum scaling factor that the service will autoscale to. The default value is 6.0.
+func (o GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput) MaxScalingFactor() pulumi.Float64Output {
+	return o.ApplyT(func(v GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig) float64 {
+		return v.MaxScalingFactor
+	}).(pulumi.Float64Output)
+}
+
+// The minimum scaling factor that the service will autoscale to. The default value is 0.1.
+func (o GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput) MinScalingFactor() pulumi.Float64Output {
+	return o.ApplyT(func(v GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig) float64 {
+		return v.MinScalingFactor
+	}).(pulumi.Float64Output)
+}
+
+type GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput) ToGetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput() GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput) ToGetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutputWithContext(ctx context.Context) GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput) Index(i pulumi.IntInput) GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig {
+		return vs[0].([]GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig)[vs[1].(int)]
+	}).(GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput)
 }
 
 type GetMetastoreServiceScheduledBackup struct {
@@ -28404,6 +28976,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceNetworkConfigConsumerArrayInput)(nil)).Elem(), MetastoreServiceNetworkConfigConsumerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceScalingConfigInput)(nil)).Elem(), MetastoreServiceScalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceScalingConfigPtrInput)(nil)).Elem(), MetastoreServiceScalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceScalingConfigAutoscalingConfigInput)(nil)).Elem(), MetastoreServiceScalingConfigAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceScalingConfigAutoscalingConfigPtrInput)(nil)).Elem(), MetastoreServiceScalingConfigAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceScalingConfigAutoscalingConfigLimitConfigInput)(nil)).Elem(), MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrInput)(nil)).Elem(), MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceScheduledBackupInput)(nil)).Elem(), MetastoreServiceScheduledBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceScheduledBackupPtrInput)(nil)).Elem(), MetastoreServiceScheduledBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceTelemetryConfigInput)(nil)).Elem(), MetastoreServiceTelemetryConfigArgs{})
@@ -28542,6 +29118,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceNetworkConfigConsumerArrayInput)(nil)).Elem(), GetMetastoreServiceNetworkConfigConsumerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceScalingConfigInput)(nil)).Elem(), GetMetastoreServiceScalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceScalingConfigArrayInput)(nil)).Elem(), GetMetastoreServiceScalingConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceScalingConfigAutoscalingConfigInput)(nil)).Elem(), GetMetastoreServiceScalingConfigAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceScalingConfigAutoscalingConfigArrayInput)(nil)).Elem(), GetMetastoreServiceScalingConfigAutoscalingConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigInput)(nil)).Elem(), GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayInput)(nil)).Elem(), GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceScheduledBackupInput)(nil)).Elem(), GetMetastoreServiceScheduledBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceScheduledBackupArrayInput)(nil)).Elem(), GetMetastoreServiceScheduledBackupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceTelemetryConfigInput)(nil)).Elem(), GetMetastoreServiceTelemetryConfigArgs{})
@@ -28718,6 +29298,10 @@ func init() {
 	pulumi.RegisterOutputType(MetastoreServiceNetworkConfigConsumerArrayOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceScalingConfigOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceScalingConfigPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceScalingConfigAutoscalingConfigOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceScalingConfigAutoscalingConfigPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceScalingConfigAutoscalingConfigLimitConfigPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceScheduledBackupOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceScheduledBackupPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceTelemetryConfigOutput{})
@@ -28856,6 +29440,10 @@ func init() {
 	pulumi.RegisterOutputType(GetMetastoreServiceNetworkConfigConsumerArrayOutput{})
 	pulumi.RegisterOutputType(GetMetastoreServiceScalingConfigOutput{})
 	pulumi.RegisterOutputType(GetMetastoreServiceScalingConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceScalingConfigAutoscalingConfigOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceScalingConfigAutoscalingConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetMetastoreServiceScheduledBackupOutput{})
 	pulumi.RegisterOutputType(GetMetastoreServiceScheduledBackupArrayOutput{})
 	pulumi.RegisterOutputType(GetMetastoreServiceTelemetryConfigOutput{})

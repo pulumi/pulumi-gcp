@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
         public Input<string> RepositoryBase { get; set; } = null!;
 
         /// <summary>
-        /// Specific repository from the base, e.g. `"centos/8-stream/BaseOS/x86_64/os"`
+        /// Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
         /// </summary>
         [Input("repositoryPath", required: true)]
         public Input<string> RepositoryPath { get; set; } = null!;

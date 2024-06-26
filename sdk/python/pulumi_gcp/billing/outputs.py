@@ -84,6 +84,8 @@ class BudgetAllUpdatesRule(dict):
         suggest = None
         if key == "disableDefaultIamRecipients":
             suggest = "disable_default_iam_recipients"
+        elif key == "enableProjectLevelRecipients":
+            suggest = "enable_project_level_recipients"
         elif key == "monitoringNotificationChannels":
             suggest = "monitoring_notification_channels"
         elif key == "pubsubTopic":
@@ -104,6 +106,7 @@ class BudgetAllUpdatesRule(dict):
 
     def __init__(__self__, *,
                  disable_default_iam_recipients: Optional[bool] = None,
+                 enable_project_level_recipients: Optional[bool] = None,
                  monitoring_notification_channels: Optional[Sequence[str]] = None,
                  pubsub_topic: Optional[str] = None,
                  schema_version: Optional[str] = None):
@@ -112,6 +115,10 @@ class BudgetAllUpdatesRule(dict):
                when a threshold is exceeded. Default recipients are
                those with Billing Account Administrators and Billing
                Account Users IAM roles for the target account.
+        :param bool enable_project_level_recipients: When set to true, and when the budget has a single project configured,
+               notifications will be sent to project level recipients of that project.
+               This field will be ignored if the budget has multiple or no project configured.
+               Currently, project level recipients are the users with Owner role on a cloud project.
         :param Sequence[str] monitoring_notification_channels: The full resource name of a monitoring notification
                channel in the form
                projects/{project_id}/notificationChannels/{channel_id}.
@@ -126,6 +133,8 @@ class BudgetAllUpdatesRule(dict):
         """
         if disable_default_iam_recipients is not None:
             pulumi.set(__self__, "disable_default_iam_recipients", disable_default_iam_recipients)
+        if enable_project_level_recipients is not None:
+            pulumi.set(__self__, "enable_project_level_recipients", enable_project_level_recipients)
         if monitoring_notification_channels is not None:
             pulumi.set(__self__, "monitoring_notification_channels", monitoring_notification_channels)
         if pubsub_topic is not None:
@@ -143,6 +152,17 @@ class BudgetAllUpdatesRule(dict):
         Account Users IAM roles for the target account.
         """
         return pulumi.get(self, "disable_default_iam_recipients")
+
+    @property
+    @pulumi.getter(name="enableProjectLevelRecipients")
+    def enable_project_level_recipients(self) -> Optional[bool]:
+        """
+        When set to true, and when the budget has a single project configured,
+        notifications will be sent to project level recipients of that project.
+        This field will be ignored if the budget has multiple or no project configured.
+        Currently, project level recipients are the users with Owner role on a cloud project.
+        """
+        return pulumi.get(self, "enable_project_level_recipients")
 
     @property
     @pulumi.getter(name="monitoringNotificationChannels")

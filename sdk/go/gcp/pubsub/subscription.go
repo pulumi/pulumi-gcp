@@ -342,6 +342,113 @@ import (
 //	}
 //
 // ```
+// ### Pubsub Subscription Push Bq Service Account
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bqWriteServiceAccount, err := serviceaccount.NewAccount(ctx, "bq_write_service_account", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("example-bqw"),
+//				DisplayName: pulumi.String("BQ Write Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			viewer, err := projects.NewIAMMember(ctx, "viewer", &projects.IAMMemberArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/bigquery.metadataViewer"),
+//				Member: bqWriteServiceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			editor, err := projects.NewIAMMember(ctx, "editor", &projects.IAMMemberArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/bigquery.dataEditor"),
+//				Member: bqWriteServiceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testTable, err := bigquery.NewTable(ctx, "test", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				TableId:            pulumi.String("example_table"),
+//				DatasetId:          test.DatasetId,
+//				Schema: pulumi.String(`[
+//	  {
+//	    "name": "data",
+//	    "type": "STRING",
+//	    "mode": "NULLABLE",
+//	    "description": "The data"
+//	  }
+//
+// ]
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
+//				Name:  pulumi.String("example-subscription"),
+//				Topic: example.ID(),
+//				BigqueryConfig: &pubsub.SubscriptionBigqueryConfigArgs{
+//					Table: pulumi.All(testTable.Project, testTable.DatasetId, testTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//						project := _args[0].(string)
+//						datasetId := _args[1].(string)
+//						tableId := _args[2].(string)
+//						return fmt.Sprintf("%v.%v.%v", project, datasetId, tableId), nil
+//					}).(pulumi.StringOutput),
+//					ServiceAccountEmail: bqWriteServiceAccount.Email,
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				bqWriteServiceAccount,
+//				viewer,
+//				editor,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Pubsub Subscription Push Cloudstorage
 //
 // ```go
@@ -471,6 +578,85 @@ import (
 //				example,
 //				admin,
 //			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Pubsub Subscription Push Cloudstorage Service Account
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := storage.NewBucket(ctx, "example", &storage.BucketArgs{
+//				Name:                     pulumi.String("example-bucket"),
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTopic, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			storageWriteServiceAccount, err := serviceaccount.NewAccount(ctx, "storage_write_service_account", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("example-stw"),
+//				DisplayName: pulumi.String("Storage Write Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			admin, err := storage.NewBucketIAMMember(ctx, "admin", &storage.BucketIAMMemberArgs{
+//				Bucket: example.Name,
+//				Role:   pulumi.String("roles/storage.admin"),
+//				Member: storageWriteServiceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
+//				Name:  pulumi.String("example-subscription"),
+//				Topic: exampleTopic.ID(),
+//				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
+//					Bucket:                 example.Name,
+//					FilenamePrefix:         pulumi.String("pre-"),
+//					FilenameSuffix:         pulumi.String("-_75413"),
+//					FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
+//					MaxBytes:               pulumi.Int(1000),
+//					MaxDuration:            pulumi.String("300s"),
+//					ServiceAccountEmail:    storageWriteServiceAccount.Email,
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				storageWriteServiceAccount,
+//				example,
+//				admin,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.LookupProject(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}

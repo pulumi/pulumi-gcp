@@ -367,6 +367,29 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
+     * in the namespaced format, for example &#34;123456789012/environment&#34; where 123456789012 is the
+     * ID of the parent organization or project resource for this tag key. Tag value is expected
+     * to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+     * for more details.
+     * 
+     */
+    @Import(name="resourceTags")
+    private @Nullable Output<Map<String,String>> resourceTags;
+
+    /**
+     * @return The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
+     * in the namespaced format, for example &#34;123456789012/environment&#34; where 123456789012 is the
+     * ID of the parent organization or project resource for this tag key. Tag value is expected
+     * to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+     * for more details.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> resourceTags() {
+        return Optional.ofNullable(this.resourceTags);
+    }
+
+    /**
      * Specifies the storage billing model for the dataset.
      * Set this flag value to LOGICAL to use logical bytes for storage billing,
      * or to PHYSICAL to use physical bytes instead.
@@ -405,6 +428,7 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.maxTimeTravelHours = $.maxTimeTravelHours;
         this.project = $.project;
+        this.resourceTags = $.resourceTags;
         this.storageBillingModel = $.storageBillingModel;
     }
 
@@ -868,6 +892,35 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param resourceTags The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
+         * in the namespaced format, for example &#34;123456789012/environment&#34; where 123456789012 is the
+         * ID of the parent organization or project resource for this tag key. Tag value is expected
+         * to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+         * for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceTags(@Nullable Output<Map<String,String>> resourceTags) {
+            $.resourceTags = resourceTags;
+            return this;
+        }
+
+        /**
+         * @param resourceTags The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
+         * in the namespaced format, for example &#34;123456789012/environment&#34; where 123456789012 is the
+         * ID of the parent organization or project resource for this tag key. Tag value is expected
+         * to be the short name, for example &#34;Production&#34;. See [Tag definitions](https://www.terraform.io/iam/docs/tags-access-control#definitions)
+         * for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceTags(Map<String,String> resourceTags) {
+            return resourceTags(Output.of(resourceTags));
         }
 
         /**

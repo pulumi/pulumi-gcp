@@ -17,7 +17,7 @@ public final class FleetDefaultClusterConfigSecurityPostureConfigArgs extends co
 
     /**
      * Sets which mode to use for Security Posture features.
-     * Possible values are: `DISABLED`, `BASIC`.
+     * Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
      * 
      */
     @Import(name="mode")
@@ -25,7 +25,7 @@ public final class FleetDefaultClusterConfigSecurityPostureConfigArgs extends co
 
     /**
      * @return Sets which mode to use for Security Posture features.
-     * Possible values are: `DISABLED`, `BASIC`.
+     * Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -76,7 +76,7 @@ public final class FleetDefaultClusterConfigSecurityPostureConfigArgs extends co
 
         /**
          * @param mode Sets which mode to use for Security Posture features.
-         * Possible values are: `DISABLED`, `BASIC`.
+         * Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
          * 
          * @return builder
          * 
@@ -88,7 +88,7 @@ public final class FleetDefaultClusterConfigSecurityPostureConfigArgs extends co
 
         /**
          * @param mode Sets which mode to use for Security Posture features.
-         * Possible values are: `DISABLED`, `BASIC`.
+         * Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
          * 
          * @return builder
          * 

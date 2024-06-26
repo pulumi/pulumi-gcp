@@ -22,7 +22,7 @@ class GetJobResult:
     """
     A collection of values returned by getJob.
     """
-    def __init__(__self__, annotations=None, binary_authorizations=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, delete_time=None, effective_annotations=None, effective_labels=None, etag=None, execution_count=None, expire_time=None, generation=None, id=None, labels=None, last_modifier=None, latest_created_executions=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, templates=None, terminal_conditions=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, binary_authorizations=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, delete_time=None, effective_annotations=None, effective_labels=None, etag=None, execution_count=None, expire_time=None, generation=None, id=None, labels=None, last_modifier=None, latest_created_executions=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, run_execution_token=None, start_execution_token=None, templates=None, terminal_conditions=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -98,6 +98,12 @@ class GetJobResult:
         if reconciling and not isinstance(reconciling, bool):
             raise TypeError("Expected argument 'reconciling' to be a bool")
         pulumi.set(__self__, "reconciling", reconciling)
+        if run_execution_token and not isinstance(run_execution_token, str):
+            raise TypeError("Expected argument 'run_execution_token' to be a str")
+        pulumi.set(__self__, "run_execution_token", run_execution_token)
+        if start_execution_token and not isinstance(start_execution_token, str):
+            raise TypeError("Expected argument 'start_execution_token' to be a str")
+        pulumi.set(__self__, "start_execution_token", start_execution_token)
         if templates and not isinstance(templates, list):
             raise TypeError("Expected argument 'templates' to be a list")
         pulumi.set(__self__, "templates", templates)
@@ -240,6 +246,16 @@ class GetJobResult:
         return pulumi.get(self, "reconciling")
 
     @property
+    @pulumi.getter(name="runExecutionToken")
+    def run_execution_token(self) -> str:
+        return pulumi.get(self, "run_execution_token")
+
+    @property
+    @pulumi.getter(name="startExecutionToken")
+    def start_execution_token(self) -> str:
+        return pulumi.get(self, "start_execution_token")
+
+    @property
     @pulumi.getter
     def templates(self) -> Sequence['outputs.GetJobTemplateResult']:
         return pulumi.get(self, "templates")
@@ -291,6 +307,8 @@ class AwaitableGetJobResult(GetJobResult):
             project=self.project,
             pulumi_labels=self.pulumi_labels,
             reconciling=self.reconciling,
+            run_execution_token=self.run_execution_token,
+            start_execution_token=self.start_execution_token,
             templates=self.templates,
             terminal_conditions=self.terminal_conditions,
             uid=self.uid,
@@ -357,6 +375,8 @@ def get_job(location: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         reconciling=pulumi.get(__ret__, 'reconciling'),
+        run_execution_token=pulumi.get(__ret__, 'run_execution_token'),
+        start_execution_token=pulumi.get(__ret__, 'start_execution_token'),
         templates=pulumi.get(__ret__, 'templates'),
         terminal_conditions=pulumi.get(__ret__, 'terminal_conditions'),
         uid=pulumi.get(__ret__, 'uid'),

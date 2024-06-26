@@ -57,6 +57,7 @@ type LookupInstanceResult struct {
 	LocationId             string                           `pulumi:"locationId"`
 	MaintenancePolicies    []GetInstanceMaintenancePolicy   `pulumi:"maintenancePolicies"`
 	MaintenanceSchedules   []GetInstanceMaintenanceSchedule `pulumi:"maintenanceSchedules"`
+	MaintenanceVersion     string                           `pulumi:"maintenanceVersion"`
 	MemorySizeGb           int                              `pulumi:"memorySizeGb"`
 	Name                   string                           `pulumi:"name"`
 	Nodes                  []GetInstanceNode                `pulumi:"nodes"`
@@ -188,6 +189,10 @@ func (o LookupInstanceResultOutput) MaintenancePolicies() GetInstanceMaintenance
 
 func (o LookupInstanceResultOutput) MaintenanceSchedules() GetInstanceMaintenanceScheduleArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceMaintenanceSchedule { return v.MaintenanceSchedules }).(GetInstanceMaintenanceScheduleArrayOutput)
+}
+
+func (o LookupInstanceResultOutput) MaintenanceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.MaintenanceVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) MemorySizeGb() pulumi.IntOutput {
