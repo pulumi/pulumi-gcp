@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -251,7 +256,7 @@ class ConfigIamMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConfigIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['ConfigIamMemberConditionArgs', 'ConfigIamMemberConditionArgsDict']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -372,7 +377,7 @@ class ConfigIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConfigIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['ConfigIamMemberConditionArgs', 'ConfigIamMemberConditionArgsDict']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -408,7 +413,7 @@ class ConfigIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ConfigIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['ConfigIamMemberConditionArgs', 'ConfigIamMemberConditionArgsDict']]] = None,
             config: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,

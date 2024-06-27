@@ -4,54 +4,141 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'FolderCustomModuleCustomConfigArgs',
+    'FolderCustomModuleCustomConfigArgsDict',
     'FolderCustomModuleCustomConfigCustomOutputArgs',
+    'FolderCustomModuleCustomConfigCustomOutputArgsDict',
     'FolderCustomModuleCustomConfigCustomOutputPropertyArgs',
+    'FolderCustomModuleCustomConfigCustomOutputPropertyArgsDict',
     'FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs',
+    'FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict',
     'FolderCustomModuleCustomConfigPredicateArgs',
+    'FolderCustomModuleCustomConfigPredicateArgsDict',
     'FolderCustomModuleCustomConfigResourceSelectorArgs',
+    'FolderCustomModuleCustomConfigResourceSelectorArgsDict',
     'InstanceIamBindingConditionArgs',
+    'InstanceIamBindingConditionArgsDict',
     'InstanceIamMemberConditionArgs',
+    'InstanceIamMemberConditionArgsDict',
     'ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigArgs',
+    'ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict',
     'ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgs',
+    'ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgsDict',
     'ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgs',
+    'ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgsDict',
     'ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs',
+    'ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict',
     'ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgs',
+    'ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgsDict',
     'ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgs',
+    'ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgsDict',
     'ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs',
+    'ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict',
     'ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgs',
+    'ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgsDict',
     'ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgs',
+    'ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgsDict',
     'ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs',
+    'ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict',
     'ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgs',
+    'ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgsDict',
     'ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgs',
+    'ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgsDict',
     'ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgs',
+    'ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict',
     'ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgs',
+    'ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgsDict',
     'ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgs',
+    'ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgsDict',
     'ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs',
+    'ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict',
     'ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgs',
+    'ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgsDict',
     'ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgs',
+    'ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgsDict',
     'NotificationConfigStreamingConfigArgs',
+    'NotificationConfigStreamingConfigArgsDict',
     'OrganizationCustomModuleCustomConfigArgs',
+    'OrganizationCustomModuleCustomConfigArgsDict',
     'OrganizationCustomModuleCustomConfigCustomOutputArgs',
+    'OrganizationCustomModuleCustomConfigCustomOutputArgsDict',
     'OrganizationCustomModuleCustomConfigCustomOutputPropertyArgs',
+    'OrganizationCustomModuleCustomConfigCustomOutputPropertyArgsDict',
     'OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs',
+    'OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict',
     'OrganizationCustomModuleCustomConfigPredicateArgs',
+    'OrganizationCustomModuleCustomConfigPredicateArgsDict',
     'OrganizationCustomModuleCustomConfigResourceSelectorArgs',
+    'OrganizationCustomModuleCustomConfigResourceSelectorArgsDict',
     'ProjectCustomModuleCustomConfigArgs',
+    'ProjectCustomModuleCustomConfigArgsDict',
     'ProjectCustomModuleCustomConfigCustomOutputArgs',
+    'ProjectCustomModuleCustomConfigCustomOutputArgsDict',
     'ProjectCustomModuleCustomConfigCustomOutputPropertyArgs',
+    'ProjectCustomModuleCustomConfigCustomOutputPropertyArgsDict',
     'ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs',
+    'ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict',
     'ProjectCustomModuleCustomConfigPredicateArgs',
+    'ProjectCustomModuleCustomConfigPredicateArgsDict',
     'ProjectCustomModuleCustomConfigResourceSelectorArgs',
+    'ProjectCustomModuleCustomConfigResourceSelectorArgsDict',
     'SourceIamBindingConditionArgs',
+    'SourceIamBindingConditionArgsDict',
     'SourceIamMemberConditionArgs',
+    'SourceIamMemberConditionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class FolderCustomModuleCustomConfigArgsDict(TypedDict):
+        predicate: pulumi.Input['FolderCustomModuleCustomConfigPredicateArgsDict']
+        """
+        The CEL expression to evaluate to produce findings. When the expression evaluates
+        to true against a resource, a finding is generated.
+        Structure is documented below.
+        """
+        recommendation: pulumi.Input[str]
+        """
+        An explanation of the recommended steps that security teams can take to resolve
+        the detected issue. This explanation is returned with each finding generated by
+        this module in the nextSteps property of the finding JSON.
+        """
+        resource_selector: pulumi.Input['FolderCustomModuleCustomConfigResourceSelectorArgsDict']
+        """
+        The resource types that the custom module operates on. Each custom module
+        can specify up to 5 resource types.
+        Structure is documented below.
+        """
+        severity: pulumi.Input[str]
+        """
+        The severity to assign to findings generated by the module.
+        Possible values are: `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+        """
+        custom_output: NotRequired[pulumi.Input['FolderCustomModuleCustomConfigCustomOutputArgsDict']]
+        """
+        Custom output properties.
+        Structure is documented below.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Text that describes the vulnerability or misconfiguration that the custom
+        module detects. This explanation is returned with each finding instance to
+        help investigators understand the detected issue. The text must be enclosed in quotation marks.
+        """
+elif False:
+    FolderCustomModuleCustomConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FolderCustomModuleCustomConfigArgs:
@@ -172,6 +259,16 @@ class FolderCustomModuleCustomConfigArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class FolderCustomModuleCustomConfigCustomOutputArgsDict(TypedDict):
+        properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['FolderCustomModuleCustomConfigCustomOutputPropertyArgsDict']]]]
+        """
+        A list of custom output properties to add to the finding.
+        Structure is documented below.
+        """
+elif False:
+    FolderCustomModuleCustomConfigCustomOutputArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FolderCustomModuleCustomConfigCustomOutputArgs:
     def __init__(__self__, *,
@@ -196,6 +293,21 @@ class FolderCustomModuleCustomConfigCustomOutputArgs:
     def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FolderCustomModuleCustomConfigCustomOutputPropertyArgs']]]]):
         pulumi.set(self, "properties", value)
 
+
+if not MYPY:
+    class FolderCustomModuleCustomConfigCustomOutputPropertyArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the property for the custom output.
+        """
+        value_expression: NotRequired[pulumi.Input['FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict']]
+        """
+        The CEL expression for the custom output. A resource property can be specified
+        to return the value of the property or a text string enclosed in quotation marks.
+        Structure is documented below.
+        """
+elif False:
+    FolderCustomModuleCustomConfigCustomOutputPropertyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FolderCustomModuleCustomConfigCustomOutputPropertyArgs:
@@ -239,6 +351,30 @@ class FolderCustomModuleCustomConfigCustomOutputPropertyArgs:
     def value_expression(self, value: Optional[pulumi.Input['FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs']]):
         pulumi.set(self, "value_expression", value)
 
+
+if not MYPY:
+    class FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the expression. This is a longer text which describes the
+        expression, e.g. when hovered over it in a UI.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        String indicating the location of the expression for error reporting, e.g. a
+        file name and a position in the file.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title for the expression, i.e. a short string describing its purpose. This can
+        be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs:
@@ -316,6 +452,30 @@ class FolderCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class FolderCustomModuleCustomConfigPredicateArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the expression. This is a longer text which describes the
+        expression, e.g. when hovered over it in a UI.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        String indicating the location of the expression for error reporting, e.g. a
+        file name and a position in the file.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title for the expression, i.e. a short string describing its purpose. This can
+        be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    FolderCustomModuleCustomConfigPredicateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FolderCustomModuleCustomConfigPredicateArgs:
     def __init__(__self__, *,
@@ -392,6 +552,17 @@ class FolderCustomModuleCustomConfigPredicateArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class FolderCustomModuleCustomConfigResourceSelectorArgsDict(TypedDict):
+        resource_types: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The resource types to run the detector on.
+
+        - - -
+        """
+elif False:
+    FolderCustomModuleCustomConfigResourceSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FolderCustomModuleCustomConfigResourceSelectorArgs:
     def __init__(__self__, *,
@@ -417,6 +588,17 @@ class FolderCustomModuleCustomConfigResourceSelectorArgs:
     def resource_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "resource_types", value)
 
+
+if not MYPY:
+    class InstanceIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the instance.
+        """
+elif False:
+    InstanceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceIamBindingConditionArgs:
@@ -463,6 +645,17 @@ class InstanceIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class InstanceIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the instance.
+        """
+elif False:
+    InstanceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -507,6 +700,45 @@ class InstanceIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict(TypedDict):
+        custom_output: NotRequired[pulumi.Input['ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgsDict']]
+        """
+        Custom output properties.
+        Structure is documented below.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Text that describes the vulnerability or misconfiguration that the custom
+        module detects. This explanation is returned with each finding instance to
+        help investigators understand the detected issue. The text must be enclosed in quotation marks.
+        """
+        predicate: NotRequired[pulumi.Input['ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgsDict']]
+        """
+        The CEL expression to evaluate to produce findings. When the expression evaluates
+        to true against a resource, a finding is generated.
+        Structure is documented below.
+        """
+        recommendation: NotRequired[pulumi.Input[str]]
+        """
+        An explanation of the recommended steps that security teams can take to resolve
+        the detected issue. This explanation is returned with each finding generated by
+        this module in the nextSteps property of the finding JSON.
+        """
+        resource_selector: NotRequired[pulumi.Input['ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgsDict']]
+        """
+        The resource types that the custom module operates on. Each custom module
+        can specify up to 5 resource types.
+        Structure is documented below.
+        """
+        severity: NotRequired[pulumi.Input[str]]
+        """
+        The severity to assign to findings generated by the module.
+        Possible values are: `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+        """
+elif False:
+    ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigArgs:
@@ -631,6 +863,16 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigArgs:
         pulumi.set(self, "severity", value)
 
 
+if not MYPY:
+    class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgsDict(TypedDict):
+        properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgsDict']]]]
+        """
+        A list of custom output properties to add to the finding.
+        Structure is documented below.
+        """
+elif False:
+    ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgs:
     def __init__(__self__, *,
@@ -655,6 +897,21 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutpu
     def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgs']]]]):
         pulumi.set(self, "properties", value)
 
+
+if not MYPY:
+    class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the property for the custom output.
+        """
+        value_expression: NotRequired[pulumi.Input['ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict']]
+        """
+        The CEL expression for the custom output. A resource property can be specified
+        to return the value of the property or a text string enclosed in quotation marks.
+        Structure is documented below.
+        """
+elif False:
+    ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgs:
@@ -698,6 +955,30 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutpu
     def value_expression(self, value: Optional[pulumi.Input['ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs']]):
         pulumi.set(self, "value_expression", value)
 
+
+if not MYPY:
+    class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the expression. This is a longer text which describes the
+        expression, e.g. when hovered over it in a UI.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        String indicating the location of the expression for error reporting, e.g. a
+        file name and a position in the file.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title for the expression, i.e. a short string describing its purpose. This can
+        be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs:
@@ -775,6 +1056,30 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutpu
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the expression. This is a longer text which describes the
+        expression, e.g. when hovered over it in a UI.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        String indicating the location of the expression for error reporting, e.g. a
+        file name and a position in the file.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title for the expression, i.e. a short string describing its purpose. This can
+        be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgs:
     def __init__(__self__, *,
@@ -851,6 +1156,15 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigPredicateAr
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgsDict(TypedDict):
+        resource_types: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The resource types to run the detector on.
+        """
+elif False:
+    ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgs:
     def __init__(__self__, *,
@@ -872,6 +1186,45 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigResourceSel
     def resource_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "resource_types", value)
 
+
+if not MYPY:
+    class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict(TypedDict):
+        predicate: pulumi.Input['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgsDict']
+        """
+        The CEL expression to evaluate to produce findings. When the expression evaluates
+        to true against a resource, a finding is generated.
+        Structure is documented below.
+        """
+        recommendation: pulumi.Input[str]
+        """
+        An explanation of the recommended steps that security teams can take to resolve
+        the detected issue. This explanation is returned with each finding generated by
+        this module in the nextSteps property of the finding JSON.
+        """
+        resource_selector: pulumi.Input['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgsDict']
+        """
+        The resource types that the custom module operates on. Each custom module
+        can specify up to 5 resource types.
+        Structure is documented below.
+        """
+        severity: pulumi.Input[str]
+        """
+        The severity to assign to findings generated by the module.
+        Possible values are: `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+        """
+        custom_output: NotRequired[pulumi.Input['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgsDict']]
+        """
+        Custom output properties.
+        Structure is documented below.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Text that describes the vulnerability or misconfiguration that the custom
+        module detects. This explanation is returned with each finding instance to
+        help investigators understand the detected issue. The text must be enclosed in quotation marks.
+        """
+elif False:
+    ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs:
@@ -992,6 +1345,16 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgsDict(TypedDict):
+        properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgsDict']]]]
+        """
+        A list of custom output properties to add to the finding.
+        Structure is documented below.
+        """
+elif False:
+    ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgs:
     def __init__(__self__, *,
@@ -1016,6 +1379,21 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCusto
     def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgs']]]]):
         pulumi.set(self, "properties", value)
 
+
+if not MYPY:
+    class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the property for the custom output.
+        """
+        value_expression: NotRequired[pulumi.Input['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict']]
+        """
+        The CEL expression for the custom output. A resource property can be specified
+        to return the value of the property or a text string enclosed in quotation marks.
+        Structure is documented below.
+        """
+elif False:
+    ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgs:
@@ -1059,6 +1437,30 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCusto
     def value_expression(self, value: Optional[pulumi.Input['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs']]):
         pulumi.set(self, "value_expression", value)
 
+
+if not MYPY:
+    class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the expression. This is a longer text which describes the
+        expression, e.g. when hovered over it in a UI.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        String indicating the location of the expression for error reporting, e.g. a
+        file name and a position in the file.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title for the expression, i.e. a short string describing its purpose. This can
+        be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs:
@@ -1136,6 +1538,30 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCusto
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the expression. This is a longer text which describes the
+        expression, e.g. when hovered over it in a UI.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        String indicating the location of the expression for error reporting, e.g. a
+        file name and a position in the file.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title for the expression, i.e. a short string describing its purpose. This can
+        be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgs:
     def __init__(__self__, *,
@@ -1212,6 +1638,15 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigPredi
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgsDict(TypedDict):
+        resource_types: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The resource types to run the detector on.
+        """
+elif False:
+    ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgs:
     def __init__(__self__, *,
@@ -1233,6 +1668,45 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResou
     def resource_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "resource_types", value)
 
+
+if not MYPY:
+    class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict(TypedDict):
+        predicate: pulumi.Input['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgsDict']
+        """
+        The CEL expression to evaluate to produce findings. When the expression evaluates
+        to true against a resource, a finding is generated.
+        Structure is documented below.
+        """
+        recommendation: pulumi.Input[str]
+        """
+        An explanation of the recommended steps that security teams can take to resolve
+        the detected issue. This explanation is returned with each finding generated by
+        this module in the nextSteps property of the finding JSON.
+        """
+        resource_selector: pulumi.Input['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgsDict']
+        """
+        The resource types that the custom module operates on. Each custom module
+        can specify up to 5 resource types.
+        Structure is documented below.
+        """
+        severity: pulumi.Input[str]
+        """
+        The severity to assign to findings generated by the module.
+        Possible values are: `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+        """
+        custom_output: NotRequired[pulumi.Input['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgsDict']]
+        """
+        Custom output properties.
+        Structure is documented below.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Text that describes the vulnerability or misconfiguration that the custom
+        module detects. This explanation is returned with each finding instance to
+        help investigators understand the detected issue. The text must be enclosed in quotation marks.
+        """
+elif False:
+    ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgs:
@@ -1353,6 +1827,16 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgsDict(TypedDict):
+        properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgsDict']]]]
+        """
+        A list of custom output properties to add to the finding.
+        Structure is documented below.
+        """
+elif False:
+    ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgs:
     def __init__(__self__, *,
@@ -1377,6 +1861,21 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutp
     def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgs']]]]):
         pulumi.set(self, "properties", value)
 
+
+if not MYPY:
+    class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the property for the custom output.
+        """
+        value_expression: NotRequired[pulumi.Input['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict']]
+        """
+        The CEL expression for the custom output. A resource property can be specified
+        to return the value of the property or a text string enclosed in quotation marks.
+        Structure is documented below.
+        """
+elif False:
+    ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgs:
@@ -1420,6 +1919,30 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutp
     def value_expression(self, value: Optional[pulumi.Input['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs']]):
         pulumi.set(self, "value_expression", value)
 
+
+if not MYPY:
+    class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the expression. This is a longer text which describes the
+        expression, e.g. when hovered over it in a UI.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        String indicating the location of the expression for error reporting, e.g. a
+        file name and a position in the file.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title for the expression, i.e. a short string describing its purpose. This can
+        be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs:
@@ -1497,6 +2020,30 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutp
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the expression. This is a longer text which describes the
+        expression, e.g. when hovered over it in a UI.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        String indicating the location of the expression for error reporting, e.g. a
+        file name and a position in the file.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title for the expression, i.e. a short string describing its purpose. This can
+        be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgs:
     def __init__(__self__, *,
@@ -1573,6 +2120,15 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigPredicateA
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgsDict(TypedDict):
+        resource_types: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The resource types to run the detector on.
+        """
+elif False:
+    ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgs:
     def __init__(__self__, *,
@@ -1594,6 +2150,35 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigResourceSe
     def resource_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "resource_types", value)
 
+
+if not MYPY:
+    class NotificationConfigStreamingConfigArgsDict(TypedDict):
+        filter: pulumi.Input[str]
+        """
+        Expression that defines the filter to apply across create/update
+        events of assets or findings as specified by the event type. The
+        expression is a list of zero or more restrictions combined via
+        logical operators AND and OR. Parentheses are supported, and OR
+        has higher precedence than AND.
+        Restrictions have the form <field> <operator> <value> and may have
+        a - character in front of them to indicate negation. The fields
+        map to those defined in the corresponding resource.
+        The supported operators are:
+        * = for all value types.
+        * >, <, >=, <= for integer values.
+        * :, meaning substring matching, for strings.
+        The supported value types are:
+        * string literals in quotes.
+        * integer literals without quotes.
+        * boolean literals true and false without quotes.
+        See
+        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+        for information on how to write a filter.
+
+        - - -
+        """
+elif False:
+    NotificationConfigStreamingConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NotificationConfigStreamingConfigArgs:
@@ -1656,6 +2241,45 @@ class NotificationConfigStreamingConfigArgs:
     def filter(self, value: pulumi.Input[str]):
         pulumi.set(self, "filter", value)
 
+
+if not MYPY:
+    class OrganizationCustomModuleCustomConfigArgsDict(TypedDict):
+        predicate: pulumi.Input['OrganizationCustomModuleCustomConfigPredicateArgsDict']
+        """
+        The CEL expression to evaluate to produce findings. When the expression evaluates
+        to true against a resource, a finding is generated.
+        Structure is documented below.
+        """
+        recommendation: pulumi.Input[str]
+        """
+        An explanation of the recommended steps that security teams can take to resolve
+        the detected issue. This explanation is returned with each finding generated by
+        this module in the nextSteps property of the finding JSON.
+        """
+        resource_selector: pulumi.Input['OrganizationCustomModuleCustomConfigResourceSelectorArgsDict']
+        """
+        The resource types that the custom module operates on. Each custom module
+        can specify up to 5 resource types.
+        Structure is documented below.
+        """
+        severity: pulumi.Input[str]
+        """
+        The severity to assign to findings generated by the module.
+        Possible values are: `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+        """
+        custom_output: NotRequired[pulumi.Input['OrganizationCustomModuleCustomConfigCustomOutputArgsDict']]
+        """
+        Custom output properties.
+        Structure is documented below.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Text that describes the vulnerability or misconfiguration that the custom
+        module detects. This explanation is returned with each finding instance to
+        help investigators understand the detected issue. The text must be enclosed in quotation marks.
+        """
+elif False:
+    OrganizationCustomModuleCustomConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OrganizationCustomModuleCustomConfigArgs:
@@ -1776,6 +2400,16 @@ class OrganizationCustomModuleCustomConfigArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class OrganizationCustomModuleCustomConfigCustomOutputArgsDict(TypedDict):
+        properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['OrganizationCustomModuleCustomConfigCustomOutputPropertyArgsDict']]]]
+        """
+        A list of custom output properties to add to the finding.
+        Structure is documented below.
+        """
+elif False:
+    OrganizationCustomModuleCustomConfigCustomOutputArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OrganizationCustomModuleCustomConfigCustomOutputArgs:
     def __init__(__self__, *,
@@ -1800,6 +2434,21 @@ class OrganizationCustomModuleCustomConfigCustomOutputArgs:
     def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationCustomModuleCustomConfigCustomOutputPropertyArgs']]]]):
         pulumi.set(self, "properties", value)
 
+
+if not MYPY:
+    class OrganizationCustomModuleCustomConfigCustomOutputPropertyArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the property for the custom output.
+        """
+        value_expression: NotRequired[pulumi.Input['OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict']]
+        """
+        The CEL expression for the custom output. A resource property can be specified
+        to return the value of the property or a text string enclosed in quotation marks.
+        Structure is documented below.
+        """
+elif False:
+    OrganizationCustomModuleCustomConfigCustomOutputPropertyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OrganizationCustomModuleCustomConfigCustomOutputPropertyArgs:
@@ -1843,6 +2492,30 @@ class OrganizationCustomModuleCustomConfigCustomOutputPropertyArgs:
     def value_expression(self, value: Optional[pulumi.Input['OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs']]):
         pulumi.set(self, "value_expression", value)
 
+
+if not MYPY:
+    class OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the expression. This is a longer text which describes the
+        expression, e.g. when hovered over it in a UI.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        String indicating the location of the expression for error reporting, e.g. a
+        file name and a position in the file.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title for the expression, i.e. a short string describing its purpose. This can
+        be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs:
@@ -1920,6 +2593,30 @@ class OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpressionArg
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class OrganizationCustomModuleCustomConfigPredicateArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the expression. This is a longer text which describes the
+        expression, e.g. when hovered over it in a UI.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        String indicating the location of the expression for error reporting, e.g. a
+        file name and a position in the file.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title for the expression, i.e. a short string describing its purpose. This can
+        be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    OrganizationCustomModuleCustomConfigPredicateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OrganizationCustomModuleCustomConfigPredicateArgs:
     def __init__(__self__, *,
@@ -1996,6 +2693,17 @@ class OrganizationCustomModuleCustomConfigPredicateArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class OrganizationCustomModuleCustomConfigResourceSelectorArgsDict(TypedDict):
+        resource_types: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The resource types to run the detector on.
+
+        - - -
+        """
+elif False:
+    OrganizationCustomModuleCustomConfigResourceSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OrganizationCustomModuleCustomConfigResourceSelectorArgs:
     def __init__(__self__, *,
@@ -2021,6 +2729,45 @@ class OrganizationCustomModuleCustomConfigResourceSelectorArgs:
     def resource_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "resource_types", value)
 
+
+if not MYPY:
+    class ProjectCustomModuleCustomConfigArgsDict(TypedDict):
+        predicate: pulumi.Input['ProjectCustomModuleCustomConfigPredicateArgsDict']
+        """
+        The CEL expression to evaluate to produce findings. When the expression evaluates
+        to true against a resource, a finding is generated.
+        Structure is documented below.
+        """
+        recommendation: pulumi.Input[str]
+        """
+        An explanation of the recommended steps that security teams can take to resolve
+        the detected issue. This explanation is returned with each finding generated by
+        this module in the nextSteps property of the finding JSON.
+        """
+        resource_selector: pulumi.Input['ProjectCustomModuleCustomConfigResourceSelectorArgsDict']
+        """
+        The resource types that the custom module operates on. Each custom module
+        can specify up to 5 resource types.
+        Structure is documented below.
+        """
+        severity: pulumi.Input[str]
+        """
+        The severity to assign to findings generated by the module.
+        Possible values are: `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+        """
+        custom_output: NotRequired[pulumi.Input['ProjectCustomModuleCustomConfigCustomOutputArgsDict']]
+        """
+        Custom output properties.
+        Structure is documented below.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Text that describes the vulnerability or misconfiguration that the custom
+        module detects. This explanation is returned with each finding instance to
+        help investigators understand the detected issue. The text must be enclosed in quotation marks.
+        """
+elif False:
+    ProjectCustomModuleCustomConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectCustomModuleCustomConfigArgs:
@@ -2141,6 +2888,16 @@ class ProjectCustomModuleCustomConfigArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class ProjectCustomModuleCustomConfigCustomOutputArgsDict(TypedDict):
+        properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['ProjectCustomModuleCustomConfigCustomOutputPropertyArgsDict']]]]
+        """
+        A list of custom output properties to add to the finding.
+        Structure is documented below.
+        """
+elif False:
+    ProjectCustomModuleCustomConfigCustomOutputArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectCustomModuleCustomConfigCustomOutputArgs:
     def __init__(__self__, *,
@@ -2165,6 +2922,21 @@ class ProjectCustomModuleCustomConfigCustomOutputArgs:
     def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectCustomModuleCustomConfigCustomOutputPropertyArgs']]]]):
         pulumi.set(self, "properties", value)
 
+
+if not MYPY:
+    class ProjectCustomModuleCustomConfigCustomOutputPropertyArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the property for the custom output.
+        """
+        value_expression: NotRequired[pulumi.Input['ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict']]
+        """
+        The CEL expression for the custom output. A resource property can be specified
+        to return the value of the property or a text string enclosed in quotation marks.
+        Structure is documented below.
+        """
+elif False:
+    ProjectCustomModuleCustomConfigCustomOutputPropertyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectCustomModuleCustomConfigCustomOutputPropertyArgs:
@@ -2208,6 +2980,30 @@ class ProjectCustomModuleCustomConfigCustomOutputPropertyArgs:
     def value_expression(self, value: Optional[pulumi.Input['ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs']]):
         pulumi.set(self, "value_expression", value)
 
+
+if not MYPY:
+    class ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the expression. This is a longer text which describes the
+        expression, e.g. when hovered over it in a UI.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        String indicating the location of the expression for error reporting, e.g. a
+        file name and a position in the file.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title for the expression, i.e. a short string describing its purpose. This can
+        be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs:
@@ -2285,6 +3081,30 @@ class ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class ProjectCustomModuleCustomConfigPredicateArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the expression. This is a longer text which describes the
+        expression, e.g. when hovered over it in a UI.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        String indicating the location of the expression for error reporting, e.g. a
+        file name and a position in the file.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title for the expression, i.e. a short string describing its purpose. This can
+        be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    ProjectCustomModuleCustomConfigPredicateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectCustomModuleCustomConfigPredicateArgs:
     def __init__(__self__, *,
@@ -2361,6 +3181,17 @@ class ProjectCustomModuleCustomConfigPredicateArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class ProjectCustomModuleCustomConfigResourceSelectorArgsDict(TypedDict):
+        resource_types: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The resource types to run the detector on.
+
+        - - -
+        """
+elif False:
+    ProjectCustomModuleCustomConfigResourceSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectCustomModuleCustomConfigResourceSelectorArgs:
     def __init__(__self__, *,
@@ -2386,6 +3217,17 @@ class ProjectCustomModuleCustomConfigResourceSelectorArgs:
     def resource_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "resource_types", value)
 
+
+if not MYPY:
+    class SourceIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the source (max of 1024 characters).
+        """
+elif False:
+    SourceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SourceIamBindingConditionArgs:
@@ -2431,6 +3273,17 @@ class SourceIamBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class SourceIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the source (max of 1024 characters).
+        """
+elif False:
+    SourceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SourceIamMemberConditionArgs:

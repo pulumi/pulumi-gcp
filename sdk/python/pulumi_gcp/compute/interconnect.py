@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -950,7 +955,7 @@ class Interconnect(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  link_type: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 macsec: Optional[pulumi.Input[pulumi.InputType['InterconnectMacsecArgs']]] = None,
+                 macsec: Optional[pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']]] = None,
                  macsec_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
@@ -1038,7 +1043,7 @@ class Interconnect(pulumi.CustomResource):
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
                Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-        :param pulumi.Input[pulumi.InputType['InterconnectMacsecArgs']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
+        :param pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
                Structure is documented below.
         :param pulumi.Input[bool] macsec_enabled: Enable or disable MACsec on this Interconnect connection.
@@ -1144,7 +1149,7 @@ class Interconnect(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  link_type: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 macsec: Optional[pulumi.Input[pulumi.InputType['InterconnectMacsecArgs']]] = None,
+                 macsec: Optional[pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']]] = None,
                  macsec_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
@@ -1215,12 +1220,12 @@ class Interconnect(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_enabled: Optional[pulumi.Input[bool]] = None,
             available_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            circuit_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectCircuitInfoArgs']]]]] = None,
+            circuit_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectCircuitInfoArgs', 'InterconnectCircuitInfoArgsDict']]]]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             customer_name: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            expected_outages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectExpectedOutageArgs']]]]] = None,
+            expected_outages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectExpectedOutageArgs', 'InterconnectExpectedOutageArgsDict']]]]] = None,
             google_ip_address: Optional[pulumi.Input[str]] = None,
             google_reference_id: Optional[pulumi.Input[str]] = None,
             interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1229,7 +1234,7 @@ class Interconnect(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             link_type: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            macsec: Optional[pulumi.Input[pulumi.InputType['InterconnectMacsecArgs']]] = None,
+            macsec: Optional[pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']]] = None,
             macsec_enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             noc_contact_email: Optional[pulumi.Input[str]] = None,
@@ -1257,7 +1262,7 @@ class Interconnect(pulumi.CustomResource):
                MACSEC. If present then the Interconnect connection is provisioned on MACsec capable hardware
                ports. If not present then the Interconnect connection is provisioned on non-MACsec capable
                ports and MACsec isn't supported and enabling MACsec fails).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectCircuitInfoArgs']]]] circuit_infos: A list of CircuitInfo objects, that describe the individual circuits in this LAG.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectCircuitInfoArgs', 'InterconnectCircuitInfoArgsDict']]]] circuit_infos: A list of CircuitInfo objects, that describe the individual circuits in this LAG.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] customer_name: Customer name, to put in the Letter of Authorization as the party authorized to request a
@@ -1267,7 +1272,7 @@ class Interconnect(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectExpectedOutageArgs']]]] expected_outages: A list of outages expected for this Interconnect.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectExpectedOutageArgs', 'InterconnectExpectedOutageArgsDict']]]] expected_outages: A list of outages expected for this Interconnect.
                Structure is documented below.
         :param pulumi.Input[str] google_ip_address: IP address configured on the Google side of the Interconnect link.
                This can be used only for ping tests.
@@ -1295,7 +1300,7 @@ class Interconnect(pulumi.CustomResource):
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
                Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-        :param pulumi.Input[pulumi.InputType['InterconnectMacsecArgs']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
+        :param pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
                Structure is documented below.
         :param pulumi.Input[bool] macsec_enabled: Enable or disable MACsec on this Interconnect connection.

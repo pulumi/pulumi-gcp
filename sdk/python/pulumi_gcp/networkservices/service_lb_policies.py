@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -391,9 +396,9 @@ class ServiceLbPolicies(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_capacity_drain: Optional[pulumi.Input[pulumi.InputType['ServiceLbPoliciesAutoCapacityDrainArgs']]] = None,
+                 auto_capacity_drain: Optional[pulumi.Input[Union['ServiceLbPoliciesAutoCapacityDrainArgs', 'ServiceLbPoliciesAutoCapacityDrainArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 failover_config: Optional[pulumi.Input[pulumi.InputType['ServiceLbPoliciesFailoverConfigArgs']]] = None,
+                 failover_config: Optional[pulumi.Input[Union['ServiceLbPoliciesFailoverConfigArgs', 'ServiceLbPoliciesFailoverConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancing_algorithm: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -424,12 +429,12 @@ class ServiceLbPolicies(pulumi.CustomResource):
             location="global",
             description="my description",
             load_balancing_algorithm="SPRAY_TO_REGION",
-            auto_capacity_drain=gcp.networkservices.ServiceLbPoliciesAutoCapacityDrainArgs(
-                enable=True,
-            ),
-            failover_config=gcp.networkservices.ServiceLbPoliciesFailoverConfigArgs(
-                failover_health_threshold=70,
-            ),
+            auto_capacity_drain={
+                "enable": True,
+            },
+            failover_config={
+                "failoverHealthThreshold": 70,
+            },
             labels={
                 "foo": "bar",
             })
@@ -467,10 +472,10 @@ class ServiceLbPolicies(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ServiceLbPoliciesAutoCapacityDrainArgs']] auto_capacity_drain: Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.
+        :param pulumi.Input[Union['ServiceLbPoliciesAutoCapacityDrainArgs', 'ServiceLbPoliciesAutoCapacityDrainArgsDict']] auto_capacity_drain: Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.
                Structure is documented below.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
-        :param pulumi.Input[pulumi.InputType['ServiceLbPoliciesFailoverConfigArgs']] failover_config: Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
+        :param pulumi.Input[Union['ServiceLbPoliciesFailoverConfigArgs', 'ServiceLbPoliciesFailoverConfigArgsDict']] failover_config: Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the ServiceLbPolicy resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -515,12 +520,12 @@ class ServiceLbPolicies(pulumi.CustomResource):
             location="global",
             description="my description",
             load_balancing_algorithm="SPRAY_TO_REGION",
-            auto_capacity_drain=gcp.networkservices.ServiceLbPoliciesAutoCapacityDrainArgs(
-                enable=True,
-            ),
-            failover_config=gcp.networkservices.ServiceLbPoliciesFailoverConfigArgs(
-                failover_health_threshold=70,
-            ),
+            auto_capacity_drain={
+                "enable": True,
+            },
+            failover_config={
+                "failoverHealthThreshold": 70,
+            },
             labels={
                 "foo": "bar",
             })
@@ -571,9 +576,9 @@ class ServiceLbPolicies(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_capacity_drain: Optional[pulumi.Input[pulumi.InputType['ServiceLbPoliciesAutoCapacityDrainArgs']]] = None,
+                 auto_capacity_drain: Optional[pulumi.Input[Union['ServiceLbPoliciesAutoCapacityDrainArgs', 'ServiceLbPoliciesAutoCapacityDrainArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 failover_config: Optional[pulumi.Input[pulumi.InputType['ServiceLbPoliciesFailoverConfigArgs']]] = None,
+                 failover_config: Optional[pulumi.Input[Union['ServiceLbPoliciesFailoverConfigArgs', 'ServiceLbPoliciesFailoverConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancing_algorithm: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -614,11 +619,11 @@ class ServiceLbPolicies(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_capacity_drain: Optional[pulumi.Input[pulumi.InputType['ServiceLbPoliciesAutoCapacityDrainArgs']]] = None,
+            auto_capacity_drain: Optional[pulumi.Input[Union['ServiceLbPoliciesAutoCapacityDrainArgs', 'ServiceLbPoliciesAutoCapacityDrainArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            failover_config: Optional[pulumi.Input[pulumi.InputType['ServiceLbPoliciesFailoverConfigArgs']]] = None,
+            failover_config: Optional[pulumi.Input[Union['ServiceLbPoliciesFailoverConfigArgs', 'ServiceLbPoliciesFailoverConfigArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             load_balancing_algorithm: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -633,12 +638,12 @@ class ServiceLbPolicies(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ServiceLbPoliciesAutoCapacityDrainArgs']] auto_capacity_drain: Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.
+        :param pulumi.Input[Union['ServiceLbPoliciesAutoCapacityDrainArgs', 'ServiceLbPoliciesAutoCapacityDrainArgsDict']] auto_capacity_drain: Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Time the ServiceLbPolicy was created in UTC.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['ServiceLbPoliciesFailoverConfigArgs']] failover_config: Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
+        :param pulumi.Input[Union['ServiceLbPoliciesFailoverConfigArgs', 'ServiceLbPoliciesFailoverConfigArgsDict']] failover_config: Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the ServiceLbPolicy resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

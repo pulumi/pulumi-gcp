@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -623,7 +628,7 @@ class Namespace(pulumi.CustomResource):
             scope: Optional[pulumi.Input[str]] = None,
             scope_id: Optional[pulumi.Input[str]] = None,
             scope_namespace_id: Optional[pulumi.Input[str]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamespaceStateArgs']]]]] = None,
+            states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NamespaceStateArgs', 'NamespaceStateArgsDict']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Namespace':
         """
@@ -656,7 +661,7 @@ class Namespace(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] scope_namespace_id: The client-provided identifier of the namespace.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamespaceStateArgs']]]] states: State of the namespace resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NamespaceStateArgs', 'NamespaceStateArgsDict']]]] states: State of the namespace resource.
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the Namespace was updated in UTC.

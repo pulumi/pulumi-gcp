@@ -4,36 +4,96 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ApplicationAttributesArgs',
+    'ApplicationAttributesArgsDict',
     'ApplicationAttributesBusinessOwnerArgs',
+    'ApplicationAttributesBusinessOwnerArgsDict',
     'ApplicationAttributesCriticalityArgs',
+    'ApplicationAttributesCriticalityArgsDict',
     'ApplicationAttributesDeveloperOwnerArgs',
+    'ApplicationAttributesDeveloperOwnerArgsDict',
     'ApplicationAttributesEnvironmentArgs',
+    'ApplicationAttributesEnvironmentArgsDict',
     'ApplicationAttributesOperatorOwnerArgs',
+    'ApplicationAttributesOperatorOwnerArgsDict',
     'ApplicationScopeArgs',
+    'ApplicationScopeArgsDict',
     'ServiceAttributesArgs',
+    'ServiceAttributesArgsDict',
     'ServiceAttributesBusinessOwnerArgs',
+    'ServiceAttributesBusinessOwnerArgsDict',
     'ServiceAttributesCriticalityArgs',
+    'ServiceAttributesCriticalityArgsDict',
     'ServiceAttributesDeveloperOwnerArgs',
+    'ServiceAttributesDeveloperOwnerArgsDict',
     'ServiceAttributesEnvironmentArgs',
+    'ServiceAttributesEnvironmentArgsDict',
     'ServiceAttributesOperatorOwnerArgs',
+    'ServiceAttributesOperatorOwnerArgsDict',
     'ServiceServicePropertyArgs',
+    'ServiceServicePropertyArgsDict',
     'ServiceServiceReferenceArgs',
+    'ServiceServiceReferenceArgsDict',
     'WorkloadAttributesArgs',
+    'WorkloadAttributesArgsDict',
     'WorkloadAttributesBusinessOwnerArgs',
+    'WorkloadAttributesBusinessOwnerArgsDict',
     'WorkloadAttributesCriticalityArgs',
+    'WorkloadAttributesCriticalityArgsDict',
     'WorkloadAttributesDeveloperOwnerArgs',
+    'WorkloadAttributesDeveloperOwnerArgsDict',
     'WorkloadAttributesEnvironmentArgs',
+    'WorkloadAttributesEnvironmentArgsDict',
     'WorkloadAttributesOperatorOwnerArgs',
+    'WorkloadAttributesOperatorOwnerArgsDict',
     'WorkloadWorkloadPropertyArgs',
+    'WorkloadWorkloadPropertyArgsDict',
     'WorkloadWorkloadReferenceArgs',
+    'WorkloadWorkloadReferenceArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ApplicationAttributesArgsDict(TypedDict):
+        business_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationAttributesBusinessOwnerArgsDict']]]]
+        """
+        Optional. Business team that ensures user needs are met and value is delivered
+        Structure is documented below.
+        """
+        criticality: NotRequired[pulumi.Input['ApplicationAttributesCriticalityArgsDict']]
+        """
+        Criticality of the Application, Service, or Workload
+        Structure is documented below.
+        """
+        developer_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationAttributesDeveloperOwnerArgsDict']]]]
+        """
+        Optional. Developer team that owns development and coding.
+        Structure is documented below.
+        """
+        environment: NotRequired[pulumi.Input['ApplicationAttributesEnvironmentArgsDict']]
+        """
+        Environment of the Application, Service, or Workload
+        Structure is documented below.
+        """
+        operator_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationAttributesOperatorOwnerArgsDict']]]]
+        """
+        Optional. Operator team that ensures runtime and operations.
+        Structure is documented below.
+        """
+elif False:
+    ApplicationAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApplicationAttributesArgs:
@@ -132,6 +192,19 @@ class ApplicationAttributesArgs:
         pulumi.set(self, "operator_owners", value)
 
 
+if not MYPY:
+    class ApplicationAttributesBusinessOwnerArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        Required. Email address of the contacts.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Contact's name.
+        """
+elif False:
+    ApplicationAttributesBusinessOwnerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApplicationAttributesBusinessOwnerArgs:
     def __init__(__self__, *,
@@ -170,6 +243,16 @@ class ApplicationAttributesBusinessOwnerArgs:
         pulumi.set(self, "display_name", value)
 
 
+if not MYPY:
+    class ApplicationAttributesCriticalityArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Criticality type.
+        Possible values are: `MISSION_CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+        """
+elif False:
+    ApplicationAttributesCriticalityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApplicationAttributesCriticalityArgs:
     def __init__(__self__, *,
@@ -193,6 +276,19 @@ class ApplicationAttributesCriticalityArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class ApplicationAttributesDeveloperOwnerArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        Required. Email address of the contacts.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Contact's name.
+        """
+elif False:
+    ApplicationAttributesDeveloperOwnerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApplicationAttributesDeveloperOwnerArgs:
@@ -232,6 +328,16 @@ class ApplicationAttributesDeveloperOwnerArgs:
         pulumi.set(self, "display_name", value)
 
 
+if not MYPY:
+    class ApplicationAttributesEnvironmentArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Environment type.
+        Possible values are: `PRODUCTION`, `STAGING`, `TEST`, `DEVELOPMENT`.
+        """
+elif False:
+    ApplicationAttributesEnvironmentArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApplicationAttributesEnvironmentArgs:
     def __init__(__self__, *,
@@ -255,6 +361,19 @@ class ApplicationAttributesEnvironmentArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class ApplicationAttributesOperatorOwnerArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        Required. Email address of the contacts.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Contact's name.
+        """
+elif False:
+    ApplicationAttributesOperatorOwnerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApplicationAttributesOperatorOwnerArgs:
@@ -294,6 +413,20 @@ class ApplicationAttributesOperatorOwnerArgs:
         pulumi.set(self, "display_name", value)
 
 
+if not MYPY:
+    class ApplicationScopeArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Required. Scope Type.
+        Possible values:
+        REGIONAL
+        Possible values are: `REGIONAL`.
+
+        - - -
+        """
+elif False:
+    ApplicationScopeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApplicationScopeArgs:
     def __init__(__self__, *,
@@ -325,6 +458,36 @@ class ApplicationScopeArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class ServiceAttributesArgsDict(TypedDict):
+        business_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceAttributesBusinessOwnerArgsDict']]]]
+        """
+        Business team that ensures user needs are met and value is delivered
+        Structure is documented below.
+        """
+        criticality: NotRequired[pulumi.Input['ServiceAttributesCriticalityArgsDict']]
+        """
+        Criticality of the Application, Service, or Workload
+        Structure is documented below.
+        """
+        developer_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceAttributesDeveloperOwnerArgsDict']]]]
+        """
+        Developer team that owns development and coding.
+        Structure is documented below.
+        """
+        environment: NotRequired[pulumi.Input['ServiceAttributesEnvironmentArgsDict']]
+        """
+        Environment of the Application, Service, or Workload
+        Structure is documented below.
+        """
+        operator_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceAttributesOperatorOwnerArgsDict']]]]
+        """
+        Operator team that ensures runtime and operations.
+        Structure is documented below.
+        """
+elif False:
+    ServiceAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceAttributesArgs:
@@ -423,6 +586,19 @@ class ServiceAttributesArgs:
         pulumi.set(self, "operator_owners", value)
 
 
+if not MYPY:
+    class ServiceAttributesBusinessOwnerArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        Required. Email address of the contacts.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Contact's name.
+        """
+elif False:
+    ServiceAttributesBusinessOwnerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceAttributesBusinessOwnerArgs:
     def __init__(__self__, *,
@@ -461,6 +637,16 @@ class ServiceAttributesBusinessOwnerArgs:
         pulumi.set(self, "display_name", value)
 
 
+if not MYPY:
+    class ServiceAttributesCriticalityArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Criticality type.
+        Possible values are: `MISSION_CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+        """
+elif False:
+    ServiceAttributesCriticalityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceAttributesCriticalityArgs:
     def __init__(__self__, *,
@@ -484,6 +670,19 @@ class ServiceAttributesCriticalityArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class ServiceAttributesDeveloperOwnerArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        Required. Email address of the contacts.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Contact's name.
+        """
+elif False:
+    ServiceAttributesDeveloperOwnerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceAttributesDeveloperOwnerArgs:
@@ -523,6 +722,16 @@ class ServiceAttributesDeveloperOwnerArgs:
         pulumi.set(self, "display_name", value)
 
 
+if not MYPY:
+    class ServiceAttributesEnvironmentArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Environment type.
+        Possible values are: `PRODUCTION`, `STAGING`, `TEST`, `DEVELOPMENT`.
+        """
+elif False:
+    ServiceAttributesEnvironmentArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceAttributesEnvironmentArgs:
     def __init__(__self__, *,
@@ -546,6 +755,19 @@ class ServiceAttributesEnvironmentArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class ServiceAttributesOperatorOwnerArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        Required. Email address of the contacts.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Contact's name.
+        """
+elif False:
+    ServiceAttributesOperatorOwnerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceAttributesOperatorOwnerArgs:
@@ -584,6 +806,25 @@ class ServiceAttributesOperatorOwnerArgs:
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
 
+
+if not MYPY:
+    class ServiceServicePropertyArgsDict(TypedDict):
+        gcp_project: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The service project identifier that the underlying cloud resource resides in.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
+        """
+        zone: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The location that the underlying resource resides in if it is zonal, for example, us-west1-a).
+        """
+elif False:
+    ServiceServicePropertyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceServicePropertyArgs:
@@ -644,6 +885,17 @@ class ServiceServicePropertyArgs:
         pulumi.set(self, "zone", value)
 
 
+if not MYPY:
+    class ServiceServiceReferenceArgsDict(TypedDict):
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The underlying resource URI (For example, URI of Forwarding Rule, URL Map,
+        and Backend Service).
+        """
+elif False:
+    ServiceServiceReferenceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceServiceReferenceArgs:
     def __init__(__self__, *,
@@ -670,6 +922,36 @@ class ServiceServiceReferenceArgs:
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
 
+
+if not MYPY:
+    class WorkloadAttributesArgsDict(TypedDict):
+        business_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadAttributesBusinessOwnerArgsDict']]]]
+        """
+        Business team that ensures user needs are met and value is delivered
+        Structure is documented below.
+        """
+        criticality: NotRequired[pulumi.Input['WorkloadAttributesCriticalityArgsDict']]
+        """
+        Criticality of the Application, Service, or Workload
+        Structure is documented below.
+        """
+        developer_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadAttributesDeveloperOwnerArgsDict']]]]
+        """
+        Developer team that owns development and coding.
+        Structure is documented below.
+        """
+        environment: NotRequired[pulumi.Input['WorkloadAttributesEnvironmentArgsDict']]
+        """
+        Environment of the Application, Service, or Workload
+        Structure is documented below.
+        """
+        operator_owners: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadAttributesOperatorOwnerArgsDict']]]]
+        """
+        Operator team that ensures runtime and operations.
+        Structure is documented below.
+        """
+elif False:
+    WorkloadAttributesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkloadAttributesArgs:
@@ -768,6 +1050,19 @@ class WorkloadAttributesArgs:
         pulumi.set(self, "operator_owners", value)
 
 
+if not MYPY:
+    class WorkloadAttributesBusinessOwnerArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        Email address of the contacts.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Contact's name.
+        """
+elif False:
+    WorkloadAttributesBusinessOwnerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkloadAttributesBusinessOwnerArgs:
     def __init__(__self__, *,
@@ -806,6 +1101,16 @@ class WorkloadAttributesBusinessOwnerArgs:
         pulumi.set(self, "display_name", value)
 
 
+if not MYPY:
+    class WorkloadAttributesCriticalityArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Criticality type.
+        Possible values are: `MISSION_CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+        """
+elif False:
+    WorkloadAttributesCriticalityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkloadAttributesCriticalityArgs:
     def __init__(__self__, *,
@@ -829,6 +1134,19 @@ class WorkloadAttributesCriticalityArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class WorkloadAttributesDeveloperOwnerArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        Email address of the contacts.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Contact's name.
+        """
+elif False:
+    WorkloadAttributesDeveloperOwnerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkloadAttributesDeveloperOwnerArgs:
@@ -868,6 +1186,16 @@ class WorkloadAttributesDeveloperOwnerArgs:
         pulumi.set(self, "display_name", value)
 
 
+if not MYPY:
+    class WorkloadAttributesEnvironmentArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Environment type.
+        Possible values are: `PRODUCTION`, `STAGING`, `TEST`, `DEVELOPMENT`.
+        """
+elif False:
+    WorkloadAttributesEnvironmentArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkloadAttributesEnvironmentArgs:
     def __init__(__self__, *,
@@ -891,6 +1219,19 @@ class WorkloadAttributesEnvironmentArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class WorkloadAttributesOperatorOwnerArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        Email address of the contacts.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Contact's name.
+        """
+elif False:
+    WorkloadAttributesOperatorOwnerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkloadAttributesOperatorOwnerArgs:
@@ -929,6 +1270,25 @@ class WorkloadAttributesOperatorOwnerArgs:
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
 
+
+if not MYPY:
+    class WorkloadWorkloadPropertyArgsDict(TypedDict):
+        gcp_project: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
+        """
+        zone: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The location that the underlying compute resource resides in if it is zonal (e.g us-west1-a).
+        """
+elif False:
+    WorkloadWorkloadPropertyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkloadWorkloadPropertyArgs:
@@ -988,6 +1348,16 @@ class WorkloadWorkloadPropertyArgs:
     def zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone", value)
 
+
+if not MYPY:
+    class WorkloadWorkloadReferenceArgsDict(TypedDict):
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The underlying compute resource uri.
+        """
+elif False:
+    WorkloadWorkloadReferenceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkloadWorkloadReferenceArgs:

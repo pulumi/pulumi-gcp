@@ -4,35 +4,94 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AddonsConfigAddonsConfigArgs',
+    'AddonsConfigAddonsConfigArgsDict',
     'AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs',
+    'AddonsConfigAddonsConfigAdvancedApiOpsConfigArgsDict',
     'AddonsConfigAddonsConfigApiSecurityConfigArgs',
+    'AddonsConfigAddonsConfigApiSecurityConfigArgsDict',
     'AddonsConfigAddonsConfigConnectorsPlatformConfigArgs',
+    'AddonsConfigAddonsConfigConnectorsPlatformConfigArgsDict',
     'AddonsConfigAddonsConfigIntegrationConfigArgs',
+    'AddonsConfigAddonsConfigIntegrationConfigArgsDict',
     'AddonsConfigAddonsConfigMonetizationConfigArgs',
+    'AddonsConfigAddonsConfigMonetizationConfigArgsDict',
     'EnvironmentIamBindingConditionArgs',
+    'EnvironmentIamBindingConditionArgsDict',
     'EnvironmentIamMemberConditionArgs',
+    'EnvironmentIamMemberConditionArgsDict',
     'EnvironmentNodeConfigArgs',
+    'EnvironmentNodeConfigArgsDict',
     'KeystoresAliasesKeyCertFileCertsInfoArgs',
+    'KeystoresAliasesKeyCertFileCertsInfoArgsDict',
     'KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs',
+    'KeystoresAliasesKeyCertFileCertsInfoCertInfoArgsDict',
     'KeystoresAliasesPkcs12CertsInfoArgs',
+    'KeystoresAliasesPkcs12CertsInfoArgsDict',
     'KeystoresAliasesPkcs12CertsInfoCertInfoArgs',
+    'KeystoresAliasesPkcs12CertsInfoCertInfoArgsDict',
     'KeystoresAliasesSelfSignedCertCertsInfoArgs',
+    'KeystoresAliasesSelfSignedCertCertsInfoArgsDict',
     'KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs',
+    'KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgsDict',
     'KeystoresAliasesSelfSignedCertSubjectArgs',
+    'KeystoresAliasesSelfSignedCertSubjectArgsDict',
     'KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs',
+    'KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgsDict',
     'OrganizationPropertiesArgs',
+    'OrganizationPropertiesArgsDict',
     'OrganizationPropertiesPropertyArgs',
+    'OrganizationPropertiesPropertyArgsDict',
     'SharedflowMetaDataArgs',
+    'SharedflowMetaDataArgsDict',
     'TargetServerSSlInfoArgs',
+    'TargetServerSSlInfoArgsDict',
     'TargetServerSSlInfoCommonNameArgs',
+    'TargetServerSSlInfoCommonNameArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AddonsConfigAddonsConfigArgsDict(TypedDict):
+        advanced_api_ops_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigAdvancedApiOpsConfigArgsDict']]
+        """
+        Configuration for the Monetization add-on.
+        Structure is documented below.
+        """
+        api_security_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigApiSecurityConfigArgsDict']]
+        """
+        Configuration for the Monetization add-on.
+        Structure is documented below.
+        """
+        connectors_platform_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigConnectorsPlatformConfigArgsDict']]
+        """
+        Configuration for the Monetization add-on.
+        Structure is documented below.
+        """
+        integration_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigIntegrationConfigArgsDict']]
+        """
+        Configuration for the Monetization add-on.
+        Structure is documented below.
+        """
+        monetization_config: NotRequired[pulumi.Input['AddonsConfigAddonsConfigMonetizationConfigArgsDict']]
+        """
+        Configuration for the Monetization add-on.
+        Structure is documented below.
+        """
+elif False:
+    AddonsConfigAddonsConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AddonsConfigAddonsConfigArgs:
@@ -131,6 +190,15 @@ class AddonsConfigAddonsConfigArgs:
         pulumi.set(self, "monetization_config", value)
 
 
+if not MYPY:
+    class AddonsConfigAddonsConfigAdvancedApiOpsConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+elif False:
+    AddonsConfigAddonsConfigAdvancedApiOpsConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs:
     def __init__(__self__, *,
@@ -153,6 +221,20 @@ class AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class AddonsConfigAddonsConfigApiSecurityConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        expires_at: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+elif False:
+    AddonsConfigAddonsConfigApiSecurityConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AddonsConfigAddonsConfigApiSecurityConfigArgs:
@@ -195,6 +277,20 @@ class AddonsConfigAddonsConfigApiSecurityConfigArgs:
         pulumi.set(self, "expires_at", value)
 
 
+if not MYPY:
+    class AddonsConfigAddonsConfigConnectorsPlatformConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        expires_at: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+elif False:
+    AddonsConfigAddonsConfigConnectorsPlatformConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AddonsConfigAddonsConfigConnectorsPlatformConfigArgs:
     def __init__(__self__, *,
@@ -236,6 +332,15 @@ class AddonsConfigAddonsConfigConnectorsPlatformConfigArgs:
         pulumi.set(self, "expires_at", value)
 
 
+if not MYPY:
+    class AddonsConfigAddonsConfigIntegrationConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+elif False:
+    AddonsConfigAddonsConfigIntegrationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AddonsConfigAddonsConfigIntegrationConfigArgs:
     def __init__(__self__, *,
@@ -259,6 +364,15 @@ class AddonsConfigAddonsConfigIntegrationConfigArgs:
         pulumi.set(self, "enabled", value)
 
 
+if not MYPY:
+    class AddonsConfigAddonsConfigMonetizationConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+elif False:
+    AddonsConfigAddonsConfigMonetizationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AddonsConfigAddonsConfigMonetizationConfigArgs:
     def __init__(__self__, *,
@@ -281,6 +395,14 @@ class AddonsConfigAddonsConfigMonetizationConfigArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class EnvironmentIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    EnvironmentIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EnvironmentIamBindingConditionArgs:
@@ -321,6 +443,14 @@ class EnvironmentIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class EnvironmentIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    EnvironmentIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EnvironmentIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -359,6 +489,29 @@ class EnvironmentIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class EnvironmentNodeConfigArgsDict(TypedDict):
+        current_aggregate_node_count: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The current total number of gateway nodes that each environment currently has across
+        all instances.
+        """
+        max_node_count: NotRequired[pulumi.Input[str]]
+        """
+        The maximum total number of gateway nodes that the is reserved for all instances that
+        has the specified environment. If not specified, the default is determined by the
+        recommended maximum number of nodes for that gateway.
+        """
+        min_node_count: NotRequired[pulumi.Input[str]]
+        """
+        The minimum total number of gateway nodes that the is reserved for all instances that
+        has the specified environment. If not specified, the default is determined by the
+        recommended minimum number of nodes for that gateway.
+        """
+elif False:
+    EnvironmentNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EnvironmentNodeConfigArgs:
@@ -427,6 +580,17 @@ class EnvironmentNodeConfigArgs:
         pulumi.set(self, "min_node_count", value)
 
 
+if not MYPY:
+    class KeystoresAliasesKeyCertFileCertsInfoArgsDict(TypedDict):
+        cert_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoCertInfoArgsDict']]]]
+        """
+        (Output)
+        List of all properties in the object.
+        Structure is documented below.
+        """
+elif False:
+    KeystoresAliasesKeyCertFileCertsInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KeystoresAliasesKeyCertFileCertsInfoArgs:
     def __init__(__self__, *,
@@ -453,6 +617,67 @@ class KeystoresAliasesKeyCertFileCertsInfoArgs:
     def cert_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs']]]]):
         pulumi.set(self, "cert_infos", value)
 
+
+if not MYPY:
+    class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgsDict(TypedDict):
+        basic_constraints: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 basic constraints extension.
+        """
+        expiry_date: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 notAfter validity period in milliseconds since epoch.
+        """
+        is_valid: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Flag that specifies whether the certificate is valid.
+        Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+        """
+        issuer: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 issuer.
+        """
+        public_key: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Public key component of the X.509 subject public key info.
+        """
+        serial_number: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 serial number.
+        """
+        sig_alg_name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 signatureAlgorithm.
+        """
+        subject: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 subject.
+        """
+        subject_alternative_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (Output)
+        X.509 subject alternative names (SANs) extension.
+        """
+        valid_from: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 notBefore validity period in milliseconds since epoch.
+        """
+        version: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        X.509 version.
+        """
+elif False:
+    KeystoresAliasesKeyCertFileCertsInfoCertInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
@@ -661,6 +886,17 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class KeystoresAliasesPkcs12CertsInfoArgsDict(TypedDict):
+        cert_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArgsDict']]]]
+        """
+        (Output)
+        List of all properties in the object.
+        Structure is documented below.
+        """
+elif False:
+    KeystoresAliasesPkcs12CertsInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KeystoresAliasesPkcs12CertsInfoArgs:
     def __init__(__self__, *,
@@ -687,6 +923,67 @@ class KeystoresAliasesPkcs12CertsInfoArgs:
     def cert_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArgs']]]]):
         pulumi.set(self, "cert_infos", value)
 
+
+if not MYPY:
+    class KeystoresAliasesPkcs12CertsInfoCertInfoArgsDict(TypedDict):
+        basic_constraints: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 basic constraints extension.
+        """
+        expiry_date: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 notAfter validity period in milliseconds since epoch.
+        """
+        is_valid: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Flag that specifies whether the certificate is valid.
+        Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+        """
+        issuer: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 issuer.
+        """
+        public_key: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Public key component of the X.509 subject public key info.
+        """
+        serial_number: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 serial number.
+        """
+        sig_alg_name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 signatureAlgorithm.
+        """
+        subject: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 subject.
+        """
+        subject_alternative_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (Output)
+        X.509 subject alternative names (SANs) extension.
+        """
+        valid_from: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 notBefore validity period in milliseconds since epoch.
+        """
+        version: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        X.509 version.
+        """
+elif False:
+    KeystoresAliasesPkcs12CertsInfoCertInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
@@ -895,6 +1192,17 @@ class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class KeystoresAliasesSelfSignedCertCertsInfoArgsDict(TypedDict):
+        cert_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgsDict']]]]
+        """
+        (Output)
+        List of all properties in the object.
+        Structure is documented below.
+        """
+elif False:
+    KeystoresAliasesSelfSignedCertCertsInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KeystoresAliasesSelfSignedCertCertsInfoArgs:
     def __init__(__self__, *,
@@ -921,6 +1229,67 @@ class KeystoresAliasesSelfSignedCertCertsInfoArgs:
     def cert_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs']]]]):
         pulumi.set(self, "cert_infos", value)
 
+
+if not MYPY:
+    class KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgsDict(TypedDict):
+        basic_constraints: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 basic constraints extension.
+        """
+        expiry_date: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 notAfter validity period in milliseconds since epoch.
+        """
+        is_valid: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Flag that specifies whether the certificate is valid.
+        Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+        """
+        issuer: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 issuer.
+        """
+        public_key: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Public key component of the X.509 subject public key info.
+        """
+        serial_number: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 serial number.
+        """
+        sig_alg_name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 signatureAlgorithm.
+        """
+        subject: NotRequired[pulumi.Input[str]]
+        """
+        Subject details.
+        Structure is documented below.
+        """
+        subject_alternative_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (Output)
+        X.509 subject alternative names (SANs) extension.
+        """
+        valid_from: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        X.509 notBefore validity period in milliseconds since epoch.
+        """
+        version: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        X.509 version.
+        """
+elif False:
+    KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs:
@@ -1129,6 +1498,41 @@ class KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class KeystoresAliasesSelfSignedCertSubjectArgsDict(TypedDict):
+        common_name: NotRequired[pulumi.Input[str]]
+        """
+        Common name of the organization. Maximum length is 64 characters.
+        """
+        country_code: NotRequired[pulumi.Input[str]]
+        """
+        Two-letter country code. Example, IN for India, US for United States of America.
+        """
+        email: NotRequired[pulumi.Input[str]]
+        """
+        Email address. Max 255 characters.
+
+        - - -
+        """
+        locality: NotRequired[pulumi.Input[str]]
+        """
+        City or town name. Maximum length is 128 characters.
+        """
+        org: NotRequired[pulumi.Input[str]]
+        """
+        Organization name. Maximum length is 64 characters.
+        """
+        org_unit: NotRequired[pulumi.Input[str]]
+        """
+        Organization team name. Maximum length is 64 characters.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        State or district name. Maximum length is 128 characters.
+        """
+elif False:
+    KeystoresAliasesSelfSignedCertSubjectArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KeystoresAliasesSelfSignedCertSubjectArgs:
     def __init__(__self__, *,
@@ -1252,6 +1656,15 @@ class KeystoresAliasesSelfSignedCertSubjectArgs:
         pulumi.set(self, "state", value)
 
 
+if not MYPY:
+    class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgsDict(TypedDict):
+        subject_alternative_name: NotRequired[pulumi.Input[str]]
+        """
+        Subject Alternative Name
+        """
+elif False:
+    KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs:
     def __init__(__self__, *,
@@ -1274,6 +1687,16 @@ class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs:
     def subject_alternative_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subject_alternative_name", value)
 
+
+if not MYPY:
+    class OrganizationPropertiesArgsDict(TypedDict):
+        properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['OrganizationPropertiesPropertyArgsDict']]]]
+        """
+        List of all properties in the object.
+        Structure is documented below.
+        """
+elif False:
+    OrganizationPropertiesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OrganizationPropertiesArgs:
@@ -1299,6 +1722,19 @@ class OrganizationPropertiesArgs:
     def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationPropertiesPropertyArgs']]]]):
         pulumi.set(self, "properties", value)
 
+
+if not MYPY:
+    class OrganizationPropertiesPropertyArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the property.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value of the property.
+        """
+elif False:
+    OrganizationPropertiesPropertyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OrganizationPropertiesPropertyArgs:
@@ -1338,6 +1774,23 @@ class OrganizationPropertiesPropertyArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class SharedflowMetaDataArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[str]]
+        """
+        Time at which the API proxy was created, in milliseconds since epoch.
+        """
+        last_modified_at: NotRequired[pulumi.Input[str]]
+        """
+        Time at which the API proxy was most recently modified, in milliseconds since epoch.
+        """
+        sub_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of entity described
+        """
+elif False:
+    SharedflowMetaDataArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SharedflowMetaDataArgs:
@@ -1393,6 +1846,48 @@ class SharedflowMetaDataArgs:
     def sub_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sub_type", value)
 
+
+if not MYPY:
+    class TargetServerSSlInfoArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+        """
+        ciphers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+        """
+        client_auth_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enables two-way TLS.
+        """
+        common_name: NotRequired[pulumi.Input['TargetServerSSlInfoCommonNameArgsDict']]
+        """
+        The TLS Common Name of the certificate.
+        Structure is documented below.
+        """
+        ignore_validation_errors: NotRequired[pulumi.Input[bool]]
+        """
+        If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
+        """
+        key_alias: NotRequired[pulumi.Input[str]]
+        """
+        Required if clientAuthEnabled is true. The resource ID for the alias containing the private key and cert.
+        """
+        key_store: NotRequired[pulumi.Input[str]]
+        """
+        Required if clientAuthEnabled is true. The resource ID of the keystore.
+        """
+        protocols: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The TLS versioins to be used.
+        """
+        trust_store: NotRequired[pulumi.Input[str]]
+        """
+        The resource ID of the truststore.
+        """
+elif False:
+    TargetServerSSlInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TargetServerSSlInfoArgs:
@@ -1545,6 +2040,19 @@ class TargetServerSSlInfoArgs:
     def trust_store(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "trust_store", value)
 
+
+if not MYPY:
+    class TargetServerSSlInfoCommonNameArgsDict(TypedDict):
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The TLS Common Name string of the certificate.
+        """
+        wildcard_match: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether the cert should be matched against as a wildcard cert.
+        """
+elif False:
+    TargetServerSSlInfoCommonNameArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TargetServerSSlInfoCommonNameArgs:

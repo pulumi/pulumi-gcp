@@ -4,27 +4,68 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ClusterNodeTypeConfigArgs',
+    'ClusterNodeTypeConfigArgsDict',
     'ExternalAccessRuleDestinationIpRangeArgs',
+    'ExternalAccessRuleDestinationIpRangeArgsDict',
     'ExternalAccessRuleSourceIpRangeArgs',
+    'ExternalAccessRuleSourceIpRangeArgsDict',
     'NetworkPolicyExternalIpArgs',
+    'NetworkPolicyExternalIpArgsDict',
     'NetworkPolicyInternetAccessArgs',
+    'NetworkPolicyInternetAccessArgsDict',
     'NetworkVpcNetworkArgs',
+    'NetworkVpcNetworkArgsDict',
     'PrivateCloudHcxArgs',
+    'PrivateCloudHcxArgsDict',
     'PrivateCloudManagementClusterArgs',
+    'PrivateCloudManagementClusterArgsDict',
     'PrivateCloudManagementClusterNodeTypeConfigArgs',
+    'PrivateCloudManagementClusterNodeTypeConfigArgsDict',
     'PrivateCloudManagementClusterStretchedClusterConfigArgs',
+    'PrivateCloudManagementClusterStretchedClusterConfigArgsDict',
     'PrivateCloudNetworkConfigArgs',
+    'PrivateCloudNetworkConfigArgsDict',
     'PrivateCloudNsxArgs',
+    'PrivateCloudNsxArgsDict',
     'PrivateCloudVcenterArgs',
+    'PrivateCloudVcenterArgsDict',
     'SubnetDhcpAddressRangeArgs',
+    'SubnetDhcpAddressRangeArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ClusterNodeTypeConfigArgsDict(TypedDict):
+        node_count: pulumi.Input[int]
+        """
+        The number of nodes of this type in the cluster.
+        """
+        node_type_id: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        custom_core_count: NotRequired[pulumi.Input[int]]
+        """
+        Customized number of cores available to each node of the type.
+        This number must always be one of `nodeType.availableCustomCoreCounts`.
+        If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
+        Once the customer is created then corecount cannot be changed.
+        """
+elif False:
+    ClusterNodeTypeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterNodeTypeConfigArgs:
@@ -85,6 +126,21 @@ class ClusterNodeTypeConfigArgs:
         pulumi.set(self, "custom_core_count", value)
 
 
+if not MYPY:
+    class ExternalAccessRuleDestinationIpRangeArgsDict(TypedDict):
+        external_address: NotRequired[pulumi.Input[str]]
+        """
+        The name of an `ExternalAddress` resource.
+
+        - - -
+        """
+        ip_address_range: NotRequired[pulumi.Input[str]]
+        """
+        An IP address range in the CIDR format.
+        """
+elif False:
+    ExternalAccessRuleDestinationIpRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ExternalAccessRuleDestinationIpRangeArgs:
     def __init__(__self__, *,
@@ -128,6 +184,19 @@ class ExternalAccessRuleDestinationIpRangeArgs:
         pulumi.set(self, "ip_address_range", value)
 
 
+if not MYPY:
+    class ExternalAccessRuleSourceIpRangeArgsDict(TypedDict):
+        ip_address: NotRequired[pulumi.Input[str]]
+        """
+        A single IP address.
+        """
+        ip_address_range: NotRequired[pulumi.Input[str]]
+        """
+        An IP address range in the CIDR format.
+        """
+elif False:
+    ExternalAccessRuleSourceIpRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ExternalAccessRuleSourceIpRangeArgs:
     def __init__(__self__, *,
@@ -166,6 +235,20 @@ class ExternalAccessRuleSourceIpRangeArgs:
     def ip_address_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_address_range", value)
 
+
+if not MYPY:
+    class NetworkPolicyExternalIpArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        True if the service is enabled; false otherwise.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        State of the service. New values may be added to this enum when appropriate.
+        """
+elif False:
+    NetworkPolicyExternalIpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NetworkPolicyExternalIpArgs:
@@ -208,6 +291,20 @@ class NetworkPolicyExternalIpArgs:
         pulumi.set(self, "state", value)
 
 
+if not MYPY:
+    class NetworkPolicyInternetAccessArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        True if the service is enabled; false otherwise.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        State of the service. New values may be added to this enum when appropriate.
+        """
+elif False:
+    NetworkPolicyInternetAccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NetworkPolicyInternetAccessArgs:
     def __init__(__self__, *,
@@ -248,6 +345,22 @@ class NetworkPolicyInternetAccessArgs:
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
 
+
+if not MYPY:
+    class NetworkVpcNetworkArgsDict(TypedDict):
+        network: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The relative resource name of the service VPC network this VMware Engine network is attached to.
+        For example: projects/123123/global/networks/my-network
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        VMware Engine network type.
+        Possible values are: `LEGACY`, `STANDARD`.
+        """
+elif False:
+    NetworkVpcNetworkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NetworkVpcNetworkArgs:
@@ -293,6 +406,28 @@ class NetworkVpcNetworkArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class PrivateCloudHcxArgsDict(TypedDict):
+        fqdn: NotRequired[pulumi.Input[str]]
+        """
+        Fully qualified domain name of the appliance.
+        """
+        internal_ip: NotRequired[pulumi.Input[str]]
+        """
+        Internal IP address of the appliance.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        State of the appliance.
+        Possible values are: `ACTIVE`, `CREATING`.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Version of the appliance.
+        """
+elif False:
+    PrivateCloudHcxArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PrivateCloudHcxArgs:
@@ -367,6 +502,31 @@ class PrivateCloudHcxArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class PrivateCloudManagementClusterArgsDict(TypedDict):
+        cluster_id: pulumi.Input[str]
+        """
+        The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
+        * Only contains 1-63 alphanumeric characters and hyphens
+        * Begins with an alphabetical character
+        * Ends with a non-hyphen character
+        * Not formatted as a UUID
+        * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+        """
+        node_type_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgsDict']]]]
+        """
+        The map of cluster node types in this cluster,
+        where the key is canonical identifier of the node type (corresponds to the NodeType).
+        Structure is documented below.
+        """
+        stretched_cluster_config: NotRequired[pulumi.Input['PrivateCloudManagementClusterStretchedClusterConfigArgsDict']]
+        """
+        The stretched cluster configuration for the private cloud.
+        Structure is documented below.
+        """
+elif False:
+    PrivateCloudManagementClusterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PrivateCloudManagementClusterArgs:
     def __init__(__self__, *,
@@ -437,6 +597,26 @@ class PrivateCloudManagementClusterArgs:
         pulumi.set(self, "stretched_cluster_config", value)
 
 
+if not MYPY:
+    class PrivateCloudManagementClusterNodeTypeConfigArgsDict(TypedDict):
+        node_count: pulumi.Input[int]
+        """
+        The number of nodes of this type in the cluster.
+        """
+        node_type_id: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        custom_core_count: NotRequired[pulumi.Input[int]]
+        """
+        Customized number of cores available to each node of the type.
+        This number must always be one of `nodeType.availableCustomCoreCounts`.
+        If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
+        This cannot be changed once the PrivateCloud is created.
+        """
+elif False:
+    PrivateCloudManagementClusterNodeTypeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PrivateCloudManagementClusterNodeTypeConfigArgs:
     def __init__(__self__, *,
@@ -496,6 +676,21 @@ class PrivateCloudManagementClusterNodeTypeConfigArgs:
         pulumi.set(self, "custom_core_count", value)
 
 
+if not MYPY:
+    class PrivateCloudManagementClusterStretchedClusterConfigArgsDict(TypedDict):
+        preferred_location: NotRequired[pulumi.Input[str]]
+        """
+        Zone that will remain operational when connection between the two zones is lost.
+        """
+        secondary_location: NotRequired[pulumi.Input[str]]
+        """
+        Additional zone for a higher level of availability and load balancing.
+
+        - - -
+        """
+elif False:
+    PrivateCloudManagementClusterStretchedClusterConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PrivateCloudManagementClusterStretchedClusterConfigArgs:
     def __init__(__self__, *,
@@ -538,6 +733,42 @@ class PrivateCloudManagementClusterStretchedClusterConfigArgs:
     def secondary_location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secondary_location", value)
 
+
+if not MYPY:
+    class PrivateCloudNetworkConfigArgsDict(TypedDict):
+        management_cidr: pulumi.Input[str]
+        """
+        Management CIDR used by VMware management appliances.
+        """
+        dns_server_ip: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        DNS Server IP of the Private Cloud.
+        """
+        management_ip_address_layout_version: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The IP address layout version of the management IP address range.
+        Possible versions include:
+        * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
+        as it does not support all features.
+        * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
+        used by all newly created private clouds. This version supports all current features.
+        """
+        vmware_engine_network: NotRequired[pulumi.Input[str]]
+        """
+        The relative resource name of the VMware Engine network attached to the private cloud.
+        Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+        where {project} can either be a project number or a project ID.
+        """
+        vmware_engine_network_canonical: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The canonical name of the VMware Engine network in
+        the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+        """
+elif False:
+    PrivateCloudNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PrivateCloudNetworkConfigArgs:
@@ -647,6 +878,28 @@ class PrivateCloudNetworkConfigArgs:
         pulumi.set(self, "vmware_engine_network_canonical", value)
 
 
+if not MYPY:
+    class PrivateCloudNsxArgsDict(TypedDict):
+        fqdn: NotRequired[pulumi.Input[str]]
+        """
+        Fully qualified domain name of the appliance.
+        """
+        internal_ip: NotRequired[pulumi.Input[str]]
+        """
+        Internal IP address of the appliance.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        State of the appliance.
+        Possible values are: `ACTIVE`, `CREATING`.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Version of the appliance.
+        """
+elif False:
+    PrivateCloudNsxArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PrivateCloudNsxArgs:
     def __init__(__self__, *,
@@ -720,6 +973,28 @@ class PrivateCloudNsxArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class PrivateCloudVcenterArgsDict(TypedDict):
+        fqdn: NotRequired[pulumi.Input[str]]
+        """
+        Fully qualified domain name of the appliance.
+        """
+        internal_ip: NotRequired[pulumi.Input[str]]
+        """
+        Internal IP address of the appliance.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        State of the appliance.
+        Possible values are: `ACTIVE`, `CREATING`.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Version of the appliance.
+        """
+elif False:
+    PrivateCloudVcenterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PrivateCloudVcenterArgs:
     def __init__(__self__, *,
@@ -792,6 +1067,21 @@ class PrivateCloudVcenterArgs:
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class SubnetDhcpAddressRangeArgsDict(TypedDict):
+        first_address: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The first IP address of the range.
+        """
+        last_address: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The last IP address of the range.
+        """
+elif False:
+    SubnetDhcpAddressRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SubnetDhcpAddressRangeArgs:

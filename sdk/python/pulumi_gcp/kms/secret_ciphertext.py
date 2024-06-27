@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['SecretCiphertextArgs', 'SecretCiphertext']
@@ -203,18 +208,18 @@ class SecretCiphertext(pulumi.CustomResource):
             crypto_key=cryptokey.id,
             plaintext="my-secret-password")
         instance = gcp.compute.Instance("instance",
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-                network="default",
-            )],
+            network_interfaces=[{
+                "accessConfigs": [{}],
+                "network": "default",
+            }],
             name="my-instance",
             machine_type="e2-medium",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
+            boot_disk={
+                "initializeParams": {
+                    "image": "debian-cloud/debian-11",
+                },
+            },
             metadata={
                 "password": my_password.ciphertext,
             })
@@ -275,18 +280,18 @@ class SecretCiphertext(pulumi.CustomResource):
             crypto_key=cryptokey.id,
             plaintext="my-secret-password")
         instance = gcp.compute.Instance("instance",
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-                network="default",
-            )],
+            network_interfaces=[{
+                "accessConfigs": [{}],
+                "network": "default",
+            }],
             name="my-instance",
             machine_type="e2-medium",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image="debian-cloud/debian-11",
-                ),
-            ),
+            boot_disk={
+                "initializeParams": {
+                    "image": "debian-cloud/debian-11",
+                },
+            },
             metadata={
                 "password": my_password.ciphertext,
             })

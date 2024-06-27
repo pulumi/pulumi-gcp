@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -381,14 +386,14 @@ class EnterpriseKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 android_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyAndroidSettingsArgs']]] = None,
+                 android_settings: Optional[pulumi.Input[Union['EnterpriseKeyAndroidSettingsArgs', 'EnterpriseKeyAndroidSettingsArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 ios_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyIosSettingsArgs']]] = None,
+                 ios_settings: Optional[pulumi.Input[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 testing_options: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']]] = None,
-                 waf_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWafSettingsArgs']]] = None,
-                 web_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']]] = None,
+                 testing_options: Optional[pulumi.Input[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict']]] = None,
+                 waf_settings: Optional[pulumi.Input[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict']]] = None,
+                 web_settings: Optional[pulumi.Input[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict']]] = None,
                  __props__=None):
         """
         The RecaptchaEnterprise Key resource
@@ -403,14 +408,14 @@ class EnterpriseKey(pulumi.CustomResource):
 
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
-            android_settings=gcp.recaptcha.EnterpriseKeyAndroidSettingsArgs(
-                allow_all_package_names=True,
-                allowed_package_names=[],
-            ),
+            android_settings={
+                "allowAllPackageNames": True,
+                "allowedPackageNames": [],
+            },
             project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
-                testing_score=0.8,
-            ),
+            testing_options={
+                "testingScore": 0.8,
+            },
             labels={
                 "label-one": "value-one",
             })
@@ -423,14 +428,14 @@ class EnterpriseKey(pulumi.CustomResource):
 
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
-            ios_settings=gcp.recaptcha.EnterpriseKeyIosSettingsArgs(
-                allow_all_bundle_ids=True,
-                allowed_bundle_ids=[],
-            ),
+            ios_settings={
+                "allowAllBundleIds": True,
+                "allowedBundleIds": [],
+            },
             project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
-                testing_score=1,
-            ),
+            testing_options={
+                "testingScore": 1,
+            },
             labels={
                 "label-one": "value-one",
             })
@@ -444,10 +449,10 @@ class EnterpriseKey(pulumi.CustomResource):
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
             project="my-project-name",
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                integration_type="SCORE",
-                allow_all_domains=True,
-            ),
+            web_settings={
+                "integrationType": "SCORE",
+                "allowAllDomains": True,
+            },
             labels={})
         ```
         ### Waf_key
@@ -459,20 +464,20 @@ class EnterpriseKey(pulumi.CustomResource):
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
             project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
-                testing_challenge="NOCAPTCHA",
-                testing_score=0.5,
-            ),
-            waf_settings=gcp.recaptcha.EnterpriseKeyWafSettingsArgs(
-                waf_feature="CHALLENGE_PAGE",
-                waf_service="CA",
-            ),
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                integration_type="INVISIBLE",
-                allow_all_domains=True,
-                allowed_domains=[],
-                challenge_security_preference="USABILITY",
-            ),
+            testing_options={
+                "testingChallenge": "NOCAPTCHA",
+                "testingScore": 0.5,
+            },
+            waf_settings={
+                "wafFeature": "CHALLENGE_PAGE",
+                "wafService": "CA",
+            },
+            web_settings={
+                "integrationType": "INVISIBLE",
+                "allowAllDomains": True,
+                "allowedDomains": [],
+                "challengeSecurityPreference": "USABILITY",
+            },
             labels={
                 "label-one": "value-one",
             })
@@ -486,16 +491,16 @@ class EnterpriseKey(pulumi.CustomResource):
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
             project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
-                testing_challenge="NOCAPTCHA",
-                testing_score=0.5,
-            ),
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                integration_type="CHECKBOX",
-                allow_all_domains=True,
-                allowed_domains=[],
-                challenge_security_preference="USABILITY",
-            ),
+            testing_options={
+                "testingChallenge": "NOCAPTCHA",
+                "testingScore": 0.5,
+            },
+            web_settings={
+                "integrationType": "CHECKBOX",
+                "allowAllDomains": True,
+                "allowedDomains": [],
+                "challengeSecurityPreference": "USABILITY",
+            },
             labels={
                 "label-one": "value-one",
             })
@@ -509,15 +514,15 @@ class EnterpriseKey(pulumi.CustomResource):
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
             project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
-                testing_score=0.5,
-            ),
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                integration_type="SCORE",
-                allow_all_domains=True,
-                allow_amp_traffic=False,
-                allowed_domains=[],
-            ),
+            testing_options={
+                "testingScore": 0.5,
+            },
+            web_settings={
+                "integrationType": "SCORE",
+                "allowAllDomains": True,
+                "allowAmpTraffic": False,
+                "allowedDomains": [],
+            },
             labels={
                 "label-one": "value-one",
             })
@@ -549,21 +554,21 @@ class EnterpriseKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EnterpriseKeyAndroidSettingsArgs']] android_settings: Settings for keys that can be used by Android apps.
+        :param pulumi.Input[Union['EnterpriseKeyAndroidSettingsArgs', 'EnterpriseKeyAndroidSettingsArgsDict']] android_settings: Settings for keys that can be used by Android apps.
         :param pulumi.Input[str] display_name: Human-readable display name of this key. Modifiable by user.
                
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['EnterpriseKeyIosSettingsArgs']] ios_settings: Settings for keys that can be used by iOS apps.
+        :param pulumi.Input[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict']] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']] testing_options: Options for user acceptance testing.
-        :param pulumi.Input[pulumi.InputType['EnterpriseKeyWafSettingsArgs']] waf_settings: Settings specific to keys that can be used for WAF (Web Application Firewall).
-        :param pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']] web_settings: Settings for keys that can be used by websites.
+        :param pulumi.Input[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict']] testing_options: Options for user acceptance testing.
+        :param pulumi.Input[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict']] waf_settings: Settings specific to keys that can be used for WAF (Web Application Firewall).
+        :param pulumi.Input[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict']] web_settings: Settings for keys that can be used by websites.
         """
         ...
     @overload
@@ -584,14 +589,14 @@ class EnterpriseKey(pulumi.CustomResource):
 
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
-            android_settings=gcp.recaptcha.EnterpriseKeyAndroidSettingsArgs(
-                allow_all_package_names=True,
-                allowed_package_names=[],
-            ),
+            android_settings={
+                "allowAllPackageNames": True,
+                "allowedPackageNames": [],
+            },
             project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
-                testing_score=0.8,
-            ),
+            testing_options={
+                "testingScore": 0.8,
+            },
             labels={
                 "label-one": "value-one",
             })
@@ -604,14 +609,14 @@ class EnterpriseKey(pulumi.CustomResource):
 
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
-            ios_settings=gcp.recaptcha.EnterpriseKeyIosSettingsArgs(
-                allow_all_bundle_ids=True,
-                allowed_bundle_ids=[],
-            ),
+            ios_settings={
+                "allowAllBundleIds": True,
+                "allowedBundleIds": [],
+            },
             project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
-                testing_score=1,
-            ),
+            testing_options={
+                "testingScore": 1,
+            },
             labels={
                 "label-one": "value-one",
             })
@@ -625,10 +630,10 @@ class EnterpriseKey(pulumi.CustomResource):
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
             project="my-project-name",
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                integration_type="SCORE",
-                allow_all_domains=True,
-            ),
+            web_settings={
+                "integrationType": "SCORE",
+                "allowAllDomains": True,
+            },
             labels={})
         ```
         ### Waf_key
@@ -640,20 +645,20 @@ class EnterpriseKey(pulumi.CustomResource):
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
             project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
-                testing_challenge="NOCAPTCHA",
-                testing_score=0.5,
-            ),
-            waf_settings=gcp.recaptcha.EnterpriseKeyWafSettingsArgs(
-                waf_feature="CHALLENGE_PAGE",
-                waf_service="CA",
-            ),
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                integration_type="INVISIBLE",
-                allow_all_domains=True,
-                allowed_domains=[],
-                challenge_security_preference="USABILITY",
-            ),
+            testing_options={
+                "testingChallenge": "NOCAPTCHA",
+                "testingScore": 0.5,
+            },
+            waf_settings={
+                "wafFeature": "CHALLENGE_PAGE",
+                "wafService": "CA",
+            },
+            web_settings={
+                "integrationType": "INVISIBLE",
+                "allowAllDomains": True,
+                "allowedDomains": [],
+                "challengeSecurityPreference": "USABILITY",
+            },
             labels={
                 "label-one": "value-one",
             })
@@ -667,16 +672,16 @@ class EnterpriseKey(pulumi.CustomResource):
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
             project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
-                testing_challenge="NOCAPTCHA",
-                testing_score=0.5,
-            ),
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                integration_type="CHECKBOX",
-                allow_all_domains=True,
-                allowed_domains=[],
-                challenge_security_preference="USABILITY",
-            ),
+            testing_options={
+                "testingChallenge": "NOCAPTCHA",
+                "testingScore": 0.5,
+            },
+            web_settings={
+                "integrationType": "CHECKBOX",
+                "allowAllDomains": True,
+                "allowedDomains": [],
+                "challengeSecurityPreference": "USABILITY",
+            },
             labels={
                 "label-one": "value-one",
             })
@@ -690,15 +695,15 @@ class EnterpriseKey(pulumi.CustomResource):
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
             project="my-project-name",
-            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
-                testing_score=0.5,
-            ),
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                integration_type="SCORE",
-                allow_all_domains=True,
-                allow_amp_traffic=False,
-                allowed_domains=[],
-            ),
+            testing_options={
+                "testingScore": 0.5,
+            },
+            web_settings={
+                "integrationType": "SCORE",
+                "allowAllDomains": True,
+                "allowAmpTraffic": False,
+                "allowedDomains": [],
+            },
             labels={
                 "label-one": "value-one",
             })
@@ -743,14 +748,14 @@ class EnterpriseKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 android_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyAndroidSettingsArgs']]] = None,
+                 android_settings: Optional[pulumi.Input[Union['EnterpriseKeyAndroidSettingsArgs', 'EnterpriseKeyAndroidSettingsArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 ios_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyIosSettingsArgs']]] = None,
+                 ios_settings: Optional[pulumi.Input[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 testing_options: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']]] = None,
-                 waf_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWafSettingsArgs']]] = None,
-                 web_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']]] = None,
+                 testing_options: Optional[pulumi.Input[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict']]] = None,
+                 waf_settings: Optional[pulumi.Input[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict']]] = None,
+                 web_settings: Optional[pulumi.Input[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -786,18 +791,18 @@ class EnterpriseKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            android_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyAndroidSettingsArgs']]] = None,
+            android_settings: Optional[pulumi.Input[Union['EnterpriseKeyAndroidSettingsArgs', 'EnterpriseKeyAndroidSettingsArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            ios_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyIosSettingsArgs']]] = None,
+            ios_settings: Optional[pulumi.Input[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            testing_options: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']]] = None,
-            waf_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWafSettingsArgs']]] = None,
-            web_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']]] = None) -> 'EnterpriseKey':
+            testing_options: Optional[pulumi.Input[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict']]] = None,
+            waf_settings: Optional[pulumi.Input[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict']]] = None,
+            web_settings: Optional[pulumi.Input[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict']]] = None) -> 'EnterpriseKey':
         """
         Get an existing EnterpriseKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -805,7 +810,7 @@ class EnterpriseKey(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EnterpriseKeyAndroidSettingsArgs']] android_settings: Settings for keys that can be used by Android apps.
+        :param pulumi.Input[Union['EnterpriseKeyAndroidSettingsArgs', 'EnterpriseKeyAndroidSettingsArgsDict']] android_settings: Settings for keys that can be used by Android apps.
         :param pulumi.Input[str] create_time: The timestamp corresponding to the creation of this Key.
         :param pulumi.Input[str] display_name: Human-readable display name of this key. Modifiable by user.
                
@@ -813,7 +818,7 @@ class EnterpriseKey(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['EnterpriseKeyIosSettingsArgs']] ios_settings: Settings for keys that can be used by iOS apps.
+        :param pulumi.Input[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict']] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -821,9 +826,9 @@ class EnterpriseKey(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource id for the Key, which is the same as the Site Key itself.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']] testing_options: Options for user acceptance testing.
-        :param pulumi.Input[pulumi.InputType['EnterpriseKeyWafSettingsArgs']] waf_settings: Settings specific to keys that can be used for WAF (Web Application Firewall).
-        :param pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']] web_settings: Settings for keys that can be used by websites.
+        :param pulumi.Input[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict']] testing_options: Options for user acceptance testing.
+        :param pulumi.Input[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict']] waf_settings: Settings specific to keys that can be used for WAF (Web Application Firewall).
+        :param pulumi.Input[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict']] web_settings: Settings for keys that can be used by websites.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -341,7 +346,7 @@ class InstanceGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArgs']]]]] = None,
+                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupNamedPortArgs', 'InstanceGroupNamedPortArgsDict']]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -380,14 +385,14 @@ class InstanceGroup(pulumi.CustomResource):
                 test2["id"],
             ],
             named_ports=[
-                gcp.compute.InstanceGroupNamedPortArgs(
-                    name="http",
-                    port=8080,
-                ),
-                gcp.compute.InstanceGroupNamedPortArgs(
-                    name="https",
-                    port=8443,
-                ),
+                {
+                    "name": "http",
+                    "port": 8080,
+                },
+                {
+                    "name": "https",
+                    "port": 8443,
+                },
             ],
             zone="us-central1-a")
         ```
@@ -426,7 +431,7 @@ class InstanceGroup(pulumi.CustomResource):
                characters long and comply with
                [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
                include lowercase letters, numbers, and hyphens.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArgs']]]] named_ports: The named port configuration. See the section below
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupNamedPortArgs', 'InstanceGroupNamedPortArgsDict']]]] named_ports: The named port configuration. See the section below
                for details on configuration. Structure is documented below.
         :param pulumi.Input[str] network: The URL of the network the instance group is in. If
                this is different from the network where the instances are in, the creation
@@ -478,14 +483,14 @@ class InstanceGroup(pulumi.CustomResource):
                 test2["id"],
             ],
             named_ports=[
-                gcp.compute.InstanceGroupNamedPortArgs(
-                    name="http",
-                    port=8080,
-                ),
-                gcp.compute.InstanceGroupNamedPortArgs(
-                    name="https",
-                    port=8443,
-                ),
+                {
+                    "name": "http",
+                    "port": 8080,
+                },
+                {
+                    "name": "https",
+                    "port": 8443,
+                },
             ],
             zone="us-central1-a")
         ```
@@ -532,7 +537,7 @@ class InstanceGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArgs']]]]] = None,
+                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupNamedPortArgs', 'InstanceGroupNamedPortArgsDict']]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -567,7 +572,7 @@ class InstanceGroup(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArgs']]]]] = None,
+            named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupNamedPortArgs', 'InstanceGroupNamedPortArgsDict']]]]] = None,
             network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
@@ -588,7 +593,7 @@ class InstanceGroup(pulumi.CustomResource):
                characters long and comply with
                [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
                include lowercase letters, numbers, and hyphens.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArgs']]]] named_ports: The named port configuration. See the section below
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupNamedPortArgs', 'InstanceGroupNamedPortArgsDict']]]] named_ports: The named port configuration. See the section below
                for details on configuration. Structure is documented below.
         :param pulumi.Input[str] network: The URL of the network the instance group is in. If
                this is different from the network where the instances are in, the creation

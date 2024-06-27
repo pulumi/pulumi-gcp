@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['GatewaySecurityPolicyArgs', 'GatewaySecurityPolicy']
@@ -308,24 +313,24 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             name="my-basic-ca-pool",
             location="us-central1",
             tier="DEVOPS",
-            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
-                publish_ca_cert=False,
-                publish_crl=False,
-            ),
-            issuance_policy=gcp.certificateauthority.CaPoolIssuancePolicyArgs(
-                maximum_lifetime="1209600s",
-                baseline_values=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesArgs(
-                    ca_options=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs(
-                        is_ca=False,
-                    ),
-                    key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs(),
-                        extended_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-            ))
+            publishing_options={
+                "publishCaCert": False,
+                "publishCrl": False,
+            },
+            issuance_policy={
+                "maximumLifetime": "1209600s",
+                "baselineValues": {
+                    "caOptions": {
+                        "isCa": False,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {},
+                        "extendedKeyUsage": {
+                            "serverAuth": True,
+                        },
+                    },
+                },
+            })
         default_authority = gcp.certificateauthority.Authority("default",
             pool=default.name,
             certificate_authority_id="my-basic-certificate-authority",
@@ -335,31 +340,31 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True,
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="Test LLC",
-                        common_name="my-ca",
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=False,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ))
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "organization": "Test LLC",
+                        "commonName": "my-ca",
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": False,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            })
         project = gcp.organizations.get_project()
         tls_inspection_permission = gcp.certificateauthority.CaPoolIamMember("tls_inspection_permission",
             ca_pool=default.id,
@@ -456,24 +461,24 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             name="my-basic-ca-pool",
             location="us-central1",
             tier="DEVOPS",
-            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
-                publish_ca_cert=False,
-                publish_crl=False,
-            ),
-            issuance_policy=gcp.certificateauthority.CaPoolIssuancePolicyArgs(
-                maximum_lifetime="1209600s",
-                baseline_values=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesArgs(
-                    ca_options=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs(
-                        is_ca=False,
-                    ),
-                    key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs(),
-                        extended_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs(
-                            server_auth=True,
-                        ),
-                    ),
-                ),
-            ))
+            publishing_options={
+                "publishCaCert": False,
+                "publishCrl": False,
+            },
+            issuance_policy={
+                "maximumLifetime": "1209600s",
+                "baselineValues": {
+                    "caOptions": {
+                        "isCa": False,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {},
+                        "extendedKeyUsage": {
+                            "serverAuth": True,
+                        },
+                    },
+                },
+            })
         default_authority = gcp.certificateauthority.Authority("default",
             pool=default.name,
             certificate_authority_id="my-basic-certificate-authority",
@@ -483,31 +488,31 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True,
-            config=gcp.certificateauthority.AuthorityConfigArgs(
-                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
-                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
-                        organization="Test LLC",
-                        common_name="my-ca",
-                    ),
-                ),
-                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
-                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
-                        is_ca=True,
-                    ),
-                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
-                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
-                            cert_sign=True,
-                            crl_sign=True,
-                        ),
-                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
-                            server_auth=False,
-                        ),
-                    ),
-                ),
-            ),
-            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
-                algorithm="RSA_PKCS1_4096_SHA256",
-            ))
+            config={
+                "subjectConfig": {
+                    "subject": {
+                        "organization": "Test LLC",
+                        "commonName": "my-ca",
+                    },
+                },
+                "x509Config": {
+                    "caOptions": {
+                        "isCa": True,
+                    },
+                    "keyUsage": {
+                        "baseKeyUsage": {
+                            "certSign": True,
+                            "crlSign": True,
+                        },
+                        "extendedKeyUsage": {
+                            "serverAuth": False,
+                        },
+                    },
+                },
+            },
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            })
         project = gcp.organizations.get_project()
         tls_inspection_permission = gcp.certificateauthority.CaPoolIamMember("tls_inspection_permission",
             ca_pool=default.id,

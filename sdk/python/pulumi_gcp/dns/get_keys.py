@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -111,10 +116,10 @@ def get_keys(managed_zone: Optional[str] = None,
     foo = gcp.dns.ManagedZone("foo",
         name="foobar",
         dns_name="foo.bar.",
-        dnssec_config=gcp.dns.ManagedZoneDnssecConfigArgs(
-            state="on",
-            non_existence="nsec3",
-        ))
+        dnssec_config={
+            "state": "on",
+            "nonExistence": "nsec3",
+        })
     foo_dns_keys = gcp.dns.get_keys_output(managed_zone=foo.id)
     pulumi.export("fooDnsDsRecord", foo_dns_keys.key_signing_keys[0].ds_record)
     ```
@@ -162,10 +167,10 @@ def get_keys_output(managed_zone: Optional[pulumi.Input[str]] = None,
     foo = gcp.dns.ManagedZone("foo",
         name="foobar",
         dns_name="foo.bar.",
-        dnssec_config=gcp.dns.ManagedZoneDnssecConfigArgs(
-            state="on",
-            non_existence="nsec3",
-        ))
+        dnssec_config={
+            "state": "on",
+            "nonExistence": "nsec3",
+        })
     foo_dns_keys = gcp.dns.get_keys_output(managed_zone=foo.id)
     pulumi.export("fooDnsDsRecord", foo_dns_keys.key_signing_keys[0].ds_record)
     ```

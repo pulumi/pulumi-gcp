@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -598,20 +603,20 @@ class CxAgent(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_settings: Optional[pulumi.Input[pulumi.InputType['CxAgentAdvancedSettingsArgs']]] = None,
+                 advanced_settings: Optional[pulumi.Input[Union['CxAgentAdvancedSettingsArgs', 'CxAgentAdvancedSettingsArgsDict']]] = None,
                  avatar_uri: Optional[pulumi.Input[str]] = None,
                  default_language_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
-                 git_integration_settings: Optional[pulumi.Input[pulumi.InputType['CxAgentGitIntegrationSettingsArgs']]] = None,
+                 git_integration_settings: Optional[pulumi.Input[Union['CxAgentGitIntegrationSettingsArgs', 'CxAgentGitIntegrationSettingsArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
-                 speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['CxAgentSpeechToTextSettingsArgs']]] = None,
+                 speech_to_text_settings: Optional[pulumi.Input[Union['CxAgentSpeechToTextSettingsArgs', 'CxAgentSpeechToTextSettingsArgsDict']]] = None,
                  supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 text_to_speech_settings: Optional[pulumi.Input[pulumi.InputType['CxAgentTextToSpeechSettingsArgs']]] = None,
+                 text_to_speech_settings: Optional[pulumi.Input[Union['CxAgentTextToSpeechSettingsArgs', 'CxAgentTextToSpeechSettingsArgsDict']]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -650,30 +655,30 @@ class CxAgent(pulumi.CustomResource):
             avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
-                enable_speech_adaptation=True,
-            ),
-            advanced_settings=gcp.diagflow.CxAgentAdvancedSettingsArgs(
-                audio_export_gcs_destination=gcp.diagflow.CxAgentAdvancedSettingsAudioExportGcsDestinationArgs(
-                    uri=bucket.url.apply(lambda url: f"{url}/prefix-"),
-                ),
-                dtmf_settings=gcp.diagflow.CxAgentAdvancedSettingsDtmfSettingsArgs(
-                    enabled=True,
-                    max_digits=1,
-                    finish_digit="#",
-                ),
-            ),
-            git_integration_settings=gcp.diagflow.CxAgentGitIntegrationSettingsArgs(
-                github_settings=gcp.diagflow.CxAgentGitIntegrationSettingsGithubSettingsArgs(
-                    display_name="Github Repo",
-                    repository_uri="https://api.github.com/repos/githubtraining/hellogitworld",
-                    tracking_branch="main",
-                    access_token="secret-token",
-                    branches=["main"],
-                ),
-            ),
-            text_to_speech_settings=gcp.diagflow.CxAgentTextToSpeechSettingsArgs(
-                synthesize_speech_configs=json.dumps({
+            speech_to_text_settings={
+                "enableSpeechAdaptation": True,
+            },
+            advanced_settings={
+                "audioExportGcsDestination": {
+                    "uri": bucket.url.apply(lambda url: f"{url}/prefix-"),
+                },
+                "dtmfSettings": {
+                    "enabled": True,
+                    "maxDigits": 1,
+                    "finishDigit": "#",
+                },
+            },
+            git_integration_settings={
+                "githubSettings": {
+                    "displayName": "Github Repo",
+                    "repositoryUri": "https://api.github.com/repos/githubtraining/hellogitworld",
+                    "trackingBranch": "main",
+                    "accessToken": "secret-token",
+                    "branches": ["main"],
+                },
+            },
+            text_to_speech_settings={
+                "synthesizeSpeechConfigs": json.dumps({
                     "en": {
                         "voice": {
                             "name": "en-US-Neural2-A",
@@ -685,7 +690,7 @@ class CxAgent(pulumi.CustomResource):
                         },
                     },
                 }),
-            ))
+            })
         ```
 
         ## Import
@@ -714,7 +719,7 @@ class CxAgent(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CxAgentAdvancedSettingsArgs']] advanced_settings: Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        :param pulumi.Input[Union['CxAgentAdvancedSettingsArgs', 'CxAgentAdvancedSettingsArgsDict']] advanced_settings: Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
         :param pulumi.Input[str] avatar_uri: The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
@@ -724,7 +729,7 @@ class CxAgent(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The human-readable name of the agent, unique within the location.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
-        :param pulumi.Input[pulumi.InputType['CxAgentGitIntegrationSettingsArgs']] git_integration_settings: Git integration settings for this agent.
+        :param pulumi.Input[Union['CxAgentGitIntegrationSettingsArgs', 'CxAgentGitIntegrationSettingsArgsDict']] git_integration_settings: Git integration settings for this agent.
                Structure is documented below.
         :param pulumi.Input[str] location: The name of the location this agent is located in.
                > **Note:** The first time you are deploying an Agent in your project you must configure location settings.
@@ -733,10 +738,10 @@ class CxAgent(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
-        :param pulumi.Input[pulumi.InputType['CxAgentSpeechToTextSettingsArgs']] speech_to_text_settings: Settings related to speech recognition.
+        :param pulumi.Input[Union['CxAgentSpeechToTextSettingsArgs', 'CxAgentSpeechToTextSettingsArgsDict']] speech_to_text_settings: Settings related to speech recognition.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the default_language_code).
-        :param pulumi.Input[pulumi.InputType['CxAgentTextToSpeechSettingsArgs']] text_to_speech_settings: Settings related to speech synthesizing.
+        :param pulumi.Input[Union['CxAgentTextToSpeechSettingsArgs', 'CxAgentTextToSpeechSettingsArgsDict']] text_to_speech_settings: Settings related to speech synthesizing.
                Structure is documented below.
         :param pulumi.Input[str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
@@ -786,30 +791,30 @@ class CxAgent(pulumi.CustomResource):
             avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
-                enable_speech_adaptation=True,
-            ),
-            advanced_settings=gcp.diagflow.CxAgentAdvancedSettingsArgs(
-                audio_export_gcs_destination=gcp.diagflow.CxAgentAdvancedSettingsAudioExportGcsDestinationArgs(
-                    uri=bucket.url.apply(lambda url: f"{url}/prefix-"),
-                ),
-                dtmf_settings=gcp.diagflow.CxAgentAdvancedSettingsDtmfSettingsArgs(
-                    enabled=True,
-                    max_digits=1,
-                    finish_digit="#",
-                ),
-            ),
-            git_integration_settings=gcp.diagflow.CxAgentGitIntegrationSettingsArgs(
-                github_settings=gcp.diagflow.CxAgentGitIntegrationSettingsGithubSettingsArgs(
-                    display_name="Github Repo",
-                    repository_uri="https://api.github.com/repos/githubtraining/hellogitworld",
-                    tracking_branch="main",
-                    access_token="secret-token",
-                    branches=["main"],
-                ),
-            ),
-            text_to_speech_settings=gcp.diagflow.CxAgentTextToSpeechSettingsArgs(
-                synthesize_speech_configs=json.dumps({
+            speech_to_text_settings={
+                "enableSpeechAdaptation": True,
+            },
+            advanced_settings={
+                "audioExportGcsDestination": {
+                    "uri": bucket.url.apply(lambda url: f"{url}/prefix-"),
+                },
+                "dtmfSettings": {
+                    "enabled": True,
+                    "maxDigits": 1,
+                    "finishDigit": "#",
+                },
+            },
+            git_integration_settings={
+                "githubSettings": {
+                    "displayName": "Github Repo",
+                    "repositoryUri": "https://api.github.com/repos/githubtraining/hellogitworld",
+                    "trackingBranch": "main",
+                    "accessToken": "secret-token",
+                    "branches": ["main"],
+                },
+            },
+            text_to_speech_settings={
+                "synthesizeSpeechConfigs": json.dumps({
                     "en": {
                         "voice": {
                             "name": "en-US-Neural2-A",
@@ -821,7 +826,7 @@ class CxAgent(pulumi.CustomResource):
                         },
                     },
                 }),
-            ))
+            })
         ```
 
         ## Import
@@ -863,20 +868,20 @@ class CxAgent(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_settings: Optional[pulumi.Input[pulumi.InputType['CxAgentAdvancedSettingsArgs']]] = None,
+                 advanced_settings: Optional[pulumi.Input[Union['CxAgentAdvancedSettingsArgs', 'CxAgentAdvancedSettingsArgsDict']]] = None,
                  avatar_uri: Optional[pulumi.Input[str]] = None,
                  default_language_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
-                 git_integration_settings: Optional[pulumi.Input[pulumi.InputType['CxAgentGitIntegrationSettingsArgs']]] = None,
+                 git_integration_settings: Optional[pulumi.Input[Union['CxAgentGitIntegrationSettingsArgs', 'CxAgentGitIntegrationSettingsArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
-                 speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['CxAgentSpeechToTextSettingsArgs']]] = None,
+                 speech_to_text_settings: Optional[pulumi.Input[Union['CxAgentSpeechToTextSettingsArgs', 'CxAgentSpeechToTextSettingsArgsDict']]] = None,
                  supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 text_to_speech_settings: Optional[pulumi.Input[pulumi.InputType['CxAgentTextToSpeechSettingsArgs']]] = None,
+                 text_to_speech_settings: Optional[pulumi.Input[Union['CxAgentTextToSpeechSettingsArgs', 'CxAgentTextToSpeechSettingsArgsDict']]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -922,22 +927,22 @@ class CxAgent(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advanced_settings: Optional[pulumi.Input[pulumi.InputType['CxAgentAdvancedSettingsArgs']]] = None,
+            advanced_settings: Optional[pulumi.Input[Union['CxAgentAdvancedSettingsArgs', 'CxAgentAdvancedSettingsArgsDict']]] = None,
             avatar_uri: Optional[pulumi.Input[str]] = None,
             default_language_code: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             enable_spell_correction: Optional[pulumi.Input[bool]] = None,
             enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
-            git_integration_settings: Optional[pulumi.Input[pulumi.InputType['CxAgentGitIntegrationSettingsArgs']]] = None,
+            git_integration_settings: Optional[pulumi.Input[Union['CxAgentGitIntegrationSettingsArgs', 'CxAgentGitIntegrationSettingsArgsDict']]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             security_settings: Optional[pulumi.Input[str]] = None,
-            speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['CxAgentSpeechToTextSettingsArgs']]] = None,
+            speech_to_text_settings: Optional[pulumi.Input[Union['CxAgentSpeechToTextSettingsArgs', 'CxAgentSpeechToTextSettingsArgsDict']]] = None,
             start_flow: Optional[pulumi.Input[str]] = None,
             supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            text_to_speech_settings: Optional[pulumi.Input[pulumi.InputType['CxAgentTextToSpeechSettingsArgs']]] = None,
+            text_to_speech_settings: Optional[pulumi.Input[Union['CxAgentTextToSpeechSettingsArgs', 'CxAgentTextToSpeechSettingsArgsDict']]] = None,
             time_zone: Optional[pulumi.Input[str]] = None) -> 'CxAgent':
         """
         Get an existing CxAgent resource's state with the given name, id, and optional extra
@@ -946,7 +951,7 @@ class CxAgent(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CxAgentAdvancedSettingsArgs']] advanced_settings: Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        :param pulumi.Input[Union['CxAgentAdvancedSettingsArgs', 'CxAgentAdvancedSettingsArgsDict']] advanced_settings: Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
         :param pulumi.Input[str] avatar_uri: The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
@@ -956,7 +961,7 @@ class CxAgent(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The human-readable name of the agent, unique within the location.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
-        :param pulumi.Input[pulumi.InputType['CxAgentGitIntegrationSettingsArgs']] git_integration_settings: Git integration settings for this agent.
+        :param pulumi.Input[Union['CxAgentGitIntegrationSettingsArgs', 'CxAgentGitIntegrationSettingsArgsDict']] git_integration_settings: Git integration settings for this agent.
                Structure is documented below.
         :param pulumi.Input[str] location: The name of the location this agent is located in.
                > **Note:** The first time you are deploying an Agent in your project you must configure location settings.
@@ -966,11 +971,11 @@ class CxAgent(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
-        :param pulumi.Input[pulumi.InputType['CxAgentSpeechToTextSettingsArgs']] speech_to_text_settings: Settings related to speech recognition.
+        :param pulumi.Input[Union['CxAgentSpeechToTextSettingsArgs', 'CxAgentSpeechToTextSettingsArgsDict']] speech_to_text_settings: Settings related to speech recognition.
                Structure is documented below.
         :param pulumi.Input[str] start_flow: Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the default_language_code).
-        :param pulumi.Input[pulumi.InputType['CxAgentTextToSpeechSettingsArgs']] text_to_speech_settings: Settings related to speech synthesizing.
+        :param pulumi.Input[Union['CxAgentTextToSpeechSettingsArgs', 'CxAgentTextToSpeechSettingsArgsDict']] text_to_speech_settings: Settings related to speech synthesizing.
                Structure is documented below.
         :param pulumi.Input[str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.

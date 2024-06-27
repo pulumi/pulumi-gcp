@@ -4012,6 +4012,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			}
 			i.PyProject.Enabled = true
+			i.InputTypes = tfbridge.PythonInputTypeClassesAndDicts
 			return i
 		})(),
 

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -238,7 +243,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  crypto_key: Optional[pulumi.Input[str]] = None,
-                 external_protection_level_options: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionExternalProtectionLevelOptionsArgs']]] = None,
+                 external_protection_level_options: Optional[pulumi.Input[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -289,7 +294,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['CryptoKeyVersionExternalProtectionLevelOptionsArgs']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+        :param pulumi.Input[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
                Structure is documented below.
         :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
                Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
@@ -357,7 +362,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  crypto_key: Optional[pulumi.Input[str]] = None,
-                 external_protection_level_options: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionExternalProtectionLevelOptionsArgs']]] = None,
+                 external_protection_level_options: Optional[pulumi.Input[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -389,9 +394,9 @@ class CryptoKeyVersion(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             algorithm: Optional[pulumi.Input[str]] = None,
-            attestations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CryptoKeyVersionAttestationArgs']]]]] = None,
+            attestations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CryptoKeyVersionAttestationArgs', 'CryptoKeyVersionAttestationArgsDict']]]]] = None,
             crypto_key: Optional[pulumi.Input[str]] = None,
-            external_protection_level_options: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionExternalProtectionLevelOptionsArgs']]] = None,
+            external_protection_level_options: Optional[pulumi.Input[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']]] = None,
             generate_time: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             protection_level: Optional[pulumi.Input[str]] = None,
@@ -404,7 +409,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] algorithm: The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CryptoKeyVersionAttestationArgs']]]] attestations: Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CryptoKeyVersionAttestationArgs', 'CryptoKeyVersionAttestationArgsDict']]]] attestations: Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
                Only provided for key versions with protectionLevel HSM.
                Structure is documented below.
         :param pulumi.Input[str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
@@ -412,7 +417,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['CryptoKeyVersionExternalProtectionLevelOptionsArgs']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+        :param pulumi.Input[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
                Structure is documented below.
         :param pulumi.Input[str] generate_time: The time this CryptoKeyVersion key material was generated
         :param pulumi.Input[str] name: The resource name for this CryptoKeyVersion.

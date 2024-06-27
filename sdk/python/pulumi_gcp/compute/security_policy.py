@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -374,13 +379,13 @@ class SecurityPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 adaptive_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']]] = None,
-                 advanced_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdvancedOptionsConfigArgs']]] = None,
+                 adaptive_protection_config: Optional[pulumi.Input[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']]] = None,
+                 advanced_options_config: Optional[pulumi.Input[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recaptcha_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRecaptchaOptionsConfigArgs']]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
+                 recaptcha_options_config: Optional[pulumi.Input[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -399,28 +404,28 @@ class SecurityPolicy(pulumi.CustomResource):
         policy = gcp.compute.SecurityPolicy("policy",
             name="my-policy",
             rules=[
-                gcp.compute.SecurityPolicyRuleArgs(
-                    action="deny(403)",
-                    priority=1000,
-                    match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                        versioned_expr="SRC_IPS_V1",
-                        config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                            src_ip_ranges=["9.9.9.0/24"],
-                        ),
-                    ),
-                    description="Deny access to IPs in 9.9.9.0/24",
-                ),
-                gcp.compute.SecurityPolicyRuleArgs(
-                    action="allow",
-                    priority=2147483647,
-                    match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                        versioned_expr="SRC_IPS_V1",
-                        config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                            src_ip_ranges=["*"],
-                        ),
-                    ),
-                    description="default rule",
-                ),
+                {
+                    "action": "deny(403)",
+                    "priority": 1000,
+                    "match": {
+                        "versionedExpr": "SRC_IPS_V1",
+                        "config": {
+                            "srcIpRanges": ["9.9.9.0/24"],
+                        },
+                    },
+                    "description": "Deny access to IPs in 9.9.9.0/24",
+                },
+                {
+                    "action": "allow",
+                    "priority": 2147483647,
+                    "match": {
+                        "versionedExpr": "SRC_IPS_V1",
+                        "config": {
+                            "srcIpRanges": ["*"],
+                        },
+                    },
+                    "description": "default rule",
+                },
             ])
         ```
 
@@ -436,18 +441,18 @@ class SecurityPolicy(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             project="my-project-name",
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                integration_type="INVISIBLE",
-                allow_all_domains=True,
-                allowed_domains=["localhost"],
-            ))
+            web_settings={
+                "integrationType": "INVISIBLE",
+                "allowAllDomains": True,
+                "allowedDomains": ["localhost"],
+            })
         policy = gcp.compute.SecurityPolicy("policy",
             name="my-policy",
             description="basic security policy",
             type="CLOUD_ARMOR",
-            recaptcha_options_config=gcp.compute.SecurityPolicyRecaptchaOptionsConfigArgs(
-                redirect_site_key=primary.name,
-            ))
+            recaptcha_options_config={
+                "redirectSiteKey": primary.name,
+            })
         ```
 
         ### With Header Actions
@@ -459,38 +464,38 @@ class SecurityPolicy(pulumi.CustomResource):
         policy = gcp.compute.SecurityPolicy("policy",
             name="my-policy",
             rules=[
-                gcp.compute.SecurityPolicyRuleArgs(
-                    action="allow",
-                    priority=2147483647,
-                    match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                        versioned_expr="SRC_IPS_V1",
-                        config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                            src_ip_ranges=["*"],
-                        ),
-                    ),
-                    description="default rule",
-                ),
-                gcp.compute.SecurityPolicyRuleArgs(
-                    action="allow",
-                    priority=1000,
-                    match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                        expr=gcp.compute.SecurityPolicyRuleMatchExprArgs(
-                            expression="request.path.matches(\\"/login.html\\") && token.recaptcha_session.score < 0.2",
-                        ),
-                    ),
-                    header_action=gcp.compute.SecurityPolicyRuleHeaderActionArgs(
-                        request_headers_to_adds=[
-                            gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
-                                header_name="reCAPTCHA-Warning",
-                                header_value="high",
-                            ),
-                            gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
-                                header_name="X-Resource",
-                                header_value="test",
-                            ),
+                {
+                    "action": "allow",
+                    "priority": 2147483647,
+                    "match": {
+                        "versionedExpr": "SRC_IPS_V1",
+                        "config": {
+                            "srcIpRanges": ["*"],
+                        },
+                    },
+                    "description": "default rule",
+                },
+                {
+                    "action": "allow",
+                    "priority": 1000,
+                    "match": {
+                        "expr": {
+                            "expression": "request.path.matches(\\"/login.html\\") && token.recaptcha_session.score < 0.2",
+                        },
+                    },
+                    "headerAction": {
+                        "requestHeadersToAdds": [
+                            {
+                                "headerName": "reCAPTCHA-Warning",
+                                "headerValue": "high",
+                            },
+                            {
+                                "headerName": "X-Resource",
+                                "headerValue": "test",
+                            },
                         ],
-                    ),
-                ),
+                    },
+                },
             ])
         ```
 
@@ -504,33 +509,33 @@ class SecurityPolicy(pulumi.CustomResource):
         policy = gcp.compute.SecurityPolicy("policy",
             name="%s",
             description="throttle rule with enforce_on_key_configs",
-            rules=[gcp.compute.SecurityPolicyRuleArgs(
-                action="throttle",
-                priority=2147483647,
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    versioned_expr="SRC_IPS_V1",
-                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                        src_ip_ranges=["*"],
-                    ),
-                ),
-                description="default rule",
-                rate_limit_options=gcp.compute.SecurityPolicyRuleRateLimitOptionsArgs(
-                    conform_action="allow",
-                    exceed_action="redirect",
-                    enforce_on_key="",
-                    enforce_on_key_configs=[gcp.compute.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs(
-                        enforce_on_key_type="IP",
-                    )],
-                    exceed_redirect_options=gcp.compute.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs(
-                        type="EXTERNAL_302",
-                        target="<https://www.example.com>",
-                    ),
-                    rate_limit_threshold=gcp.compute.SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs(
-                        count=10,
-                        interval_sec=60,
-                    ),
-                ),
-            )])
+            rules=[{
+                "action": "throttle",
+                "priority": 2147483647,
+                "match": {
+                    "versionedExpr": "SRC_IPS_V1",
+                    "config": {
+                        "srcIpRanges": ["*"],
+                    },
+                },
+                "description": "default rule",
+                "rateLimitOptions": {
+                    "conformAction": "allow",
+                    "exceedAction": "redirect",
+                    "enforceOnKey": "",
+                    "enforceOnKeyConfigs": [{
+                        "enforceOnKeyType": "IP",
+                    }],
+                    "exceedRedirectOptions": {
+                        "type": "EXTERNAL_302",
+                        "target": "<https://www.example.com>",
+                    },
+                    "rateLimitThreshold": {
+                        "count": 10,
+                        "intervalSec": 60,
+                    },
+                },
+            }])
         ```
 
         ## Import
@@ -559,8 +564,8 @@ class SecurityPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['SecurityPolicyAdvancedOptionsConfigArgs']] advanced_options_config: [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+        :param pulumi.Input[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        :param pulumi.Input[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']] advanced_options_config: [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this security policy. Max size is 2048.
         :param pulumi.Input[str] name: The name of the security policy.
@@ -568,8 +573,8 @@ class SecurityPolicy(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['SecurityPolicyRecaptchaOptionsConfigArgs']] recaptcha_options_config: [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]] rules: The set of rules that belong to this policy. There must always be a default
+        :param pulumi.Input[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']] recaptcha_options_config: [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
         :param pulumi.Input[str] type: The type indicates the intended use of the security policy. This field can be set only at resource creation time.
@@ -603,28 +608,28 @@ class SecurityPolicy(pulumi.CustomResource):
         policy = gcp.compute.SecurityPolicy("policy",
             name="my-policy",
             rules=[
-                gcp.compute.SecurityPolicyRuleArgs(
-                    action="deny(403)",
-                    priority=1000,
-                    match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                        versioned_expr="SRC_IPS_V1",
-                        config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                            src_ip_ranges=["9.9.9.0/24"],
-                        ),
-                    ),
-                    description="Deny access to IPs in 9.9.9.0/24",
-                ),
-                gcp.compute.SecurityPolicyRuleArgs(
-                    action="allow",
-                    priority=2147483647,
-                    match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                        versioned_expr="SRC_IPS_V1",
-                        config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                            src_ip_ranges=["*"],
-                        ),
-                    ),
-                    description="default rule",
-                ),
+                {
+                    "action": "deny(403)",
+                    "priority": 1000,
+                    "match": {
+                        "versionedExpr": "SRC_IPS_V1",
+                        "config": {
+                            "srcIpRanges": ["9.9.9.0/24"],
+                        },
+                    },
+                    "description": "Deny access to IPs in 9.9.9.0/24",
+                },
+                {
+                    "action": "allow",
+                    "priority": 2147483647,
+                    "match": {
+                        "versionedExpr": "SRC_IPS_V1",
+                        "config": {
+                            "srcIpRanges": ["*"],
+                        },
+                    },
+                    "description": "default rule",
+                },
             ])
         ```
 
@@ -640,18 +645,18 @@ class SecurityPolicy(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             project="my-project-name",
-            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
-                integration_type="INVISIBLE",
-                allow_all_domains=True,
-                allowed_domains=["localhost"],
-            ))
+            web_settings={
+                "integrationType": "INVISIBLE",
+                "allowAllDomains": True,
+                "allowedDomains": ["localhost"],
+            })
         policy = gcp.compute.SecurityPolicy("policy",
             name="my-policy",
             description="basic security policy",
             type="CLOUD_ARMOR",
-            recaptcha_options_config=gcp.compute.SecurityPolicyRecaptchaOptionsConfigArgs(
-                redirect_site_key=primary.name,
-            ))
+            recaptcha_options_config={
+                "redirectSiteKey": primary.name,
+            })
         ```
 
         ### With Header Actions
@@ -663,38 +668,38 @@ class SecurityPolicy(pulumi.CustomResource):
         policy = gcp.compute.SecurityPolicy("policy",
             name="my-policy",
             rules=[
-                gcp.compute.SecurityPolicyRuleArgs(
-                    action="allow",
-                    priority=2147483647,
-                    match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                        versioned_expr="SRC_IPS_V1",
-                        config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                            src_ip_ranges=["*"],
-                        ),
-                    ),
-                    description="default rule",
-                ),
-                gcp.compute.SecurityPolicyRuleArgs(
-                    action="allow",
-                    priority=1000,
-                    match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                        expr=gcp.compute.SecurityPolicyRuleMatchExprArgs(
-                            expression="request.path.matches(\\"/login.html\\") && token.recaptcha_session.score < 0.2",
-                        ),
-                    ),
-                    header_action=gcp.compute.SecurityPolicyRuleHeaderActionArgs(
-                        request_headers_to_adds=[
-                            gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
-                                header_name="reCAPTCHA-Warning",
-                                header_value="high",
-                            ),
-                            gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
-                                header_name="X-Resource",
-                                header_value="test",
-                            ),
+                {
+                    "action": "allow",
+                    "priority": 2147483647,
+                    "match": {
+                        "versionedExpr": "SRC_IPS_V1",
+                        "config": {
+                            "srcIpRanges": ["*"],
+                        },
+                    },
+                    "description": "default rule",
+                },
+                {
+                    "action": "allow",
+                    "priority": 1000,
+                    "match": {
+                        "expr": {
+                            "expression": "request.path.matches(\\"/login.html\\") && token.recaptcha_session.score < 0.2",
+                        },
+                    },
+                    "headerAction": {
+                        "requestHeadersToAdds": [
+                            {
+                                "headerName": "reCAPTCHA-Warning",
+                                "headerValue": "high",
+                            },
+                            {
+                                "headerName": "X-Resource",
+                                "headerValue": "test",
+                            },
                         ],
-                    ),
-                ),
+                    },
+                },
             ])
         ```
 
@@ -708,33 +713,33 @@ class SecurityPolicy(pulumi.CustomResource):
         policy = gcp.compute.SecurityPolicy("policy",
             name="%s",
             description="throttle rule with enforce_on_key_configs",
-            rules=[gcp.compute.SecurityPolicyRuleArgs(
-                action="throttle",
-                priority=2147483647,
-                match=gcp.compute.SecurityPolicyRuleMatchArgs(
-                    versioned_expr="SRC_IPS_V1",
-                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
-                        src_ip_ranges=["*"],
-                    ),
-                ),
-                description="default rule",
-                rate_limit_options=gcp.compute.SecurityPolicyRuleRateLimitOptionsArgs(
-                    conform_action="allow",
-                    exceed_action="redirect",
-                    enforce_on_key="",
-                    enforce_on_key_configs=[gcp.compute.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs(
-                        enforce_on_key_type="IP",
-                    )],
-                    exceed_redirect_options=gcp.compute.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs(
-                        type="EXTERNAL_302",
-                        target="<https://www.example.com>",
-                    ),
-                    rate_limit_threshold=gcp.compute.SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs(
-                        count=10,
-                        interval_sec=60,
-                    ),
-                ),
-            )])
+            rules=[{
+                "action": "throttle",
+                "priority": 2147483647,
+                "match": {
+                    "versionedExpr": "SRC_IPS_V1",
+                    "config": {
+                        "srcIpRanges": ["*"],
+                    },
+                },
+                "description": "default rule",
+                "rateLimitOptions": {
+                    "conformAction": "allow",
+                    "exceedAction": "redirect",
+                    "enforceOnKey": "",
+                    "enforceOnKeyConfigs": [{
+                        "enforceOnKeyType": "IP",
+                    }],
+                    "exceedRedirectOptions": {
+                        "type": "EXTERNAL_302",
+                        "target": "<https://www.example.com>",
+                    },
+                    "rateLimitThreshold": {
+                        "count": 10,
+                        "intervalSec": 60,
+                    },
+                },
+            }])
         ```
 
         ## Import
@@ -776,13 +781,13 @@ class SecurityPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 adaptive_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']]] = None,
-                 advanced_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdvancedOptionsConfigArgs']]] = None,
+                 adaptive_protection_config: Optional[pulumi.Input[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']]] = None,
+                 advanced_options_config: Optional[pulumi.Input[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recaptcha_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRecaptchaOptionsConfigArgs']]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
+                 recaptcha_options_config: Optional[pulumi.Input[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -813,14 +818,14 @@ class SecurityPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            adaptive_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']]] = None,
-            advanced_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdvancedOptionsConfigArgs']]] = None,
+            adaptive_protection_config: Optional[pulumi.Input[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']]] = None,
+            advanced_options_config: Optional[pulumi.Input[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            recaptcha_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRecaptchaOptionsConfigArgs']]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
+            recaptcha_options_config: Optional[pulumi.Input[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'SecurityPolicy':
         """
@@ -830,8 +835,8 @@ class SecurityPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['SecurityPolicyAdvancedOptionsConfigArgs']] advanced_options_config: [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+        :param pulumi.Input[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
+        :param pulumi.Input[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']] advanced_options_config: [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this security policy. Max size is 2048.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource.
@@ -840,8 +845,8 @@ class SecurityPolicy(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['SecurityPolicyRecaptchaOptionsConfigArgs']] recaptcha_options_config: [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]] rules: The set of rules that belong to this policy. There must always be a default
+        :param pulumi.Input[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']] recaptcha_options_config: [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.

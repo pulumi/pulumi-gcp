@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -155,14 +160,14 @@ def get_app_engine_service(module_id: Optional[str] = None,
         version_id="v1",
         service="myapp",
         runtime="nodejs20",
-        entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
-            shell="node ./app.js",
-        ),
-        deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-            zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
-                source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
-            ),
-        ),
+        entrypoint={
+            "shell": "node ./app.js",
+        },
+        deployment={
+            "zip": {
+                "sourceUrl": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+            },
+        },
         env_variables={
             "port": "8080",
         },
@@ -236,14 +241,14 @@ def get_app_engine_service_output(module_id: Optional[pulumi.Input[str]] = None,
         version_id="v1",
         service="myapp",
         runtime="nodejs20",
-        entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
-            shell="node ./app.js",
-        ),
-        deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-            zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
-                source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
-            ),
-        ),
+        entrypoint={
+            "shell": "node ./app.js",
+        },
+        deployment={
+            "zip": {
+                "sourceUrl": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+            },
+        },
         env_variables={
             "port": "8080",
         },

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -287,13 +292,13 @@ class FeatureMembership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configmanagement: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipConfigmanagementArgs']]] = None,
+                 configmanagement: Optional[pulumi.Input[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict']]] = None,
                  feature: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership: Optional[pulumi.Input[str]] = None,
                  membership_location: Optional[pulumi.Input[str]] = None,
-                 mesh: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']]] = None,
-                 policycontroller: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipPolicycontrollerArgs']]] = None,
+                 mesh: Optional[pulumi.Input[Union['FeatureMembershipMeshArgs', 'FeatureMembershipMeshArgsDict']]] = None,
+                 policycontroller: Optional[pulumi.Input[Union['FeatureMembershipPolicycontrollerArgs', 'FeatureMembershipPolicycontrollerArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -313,11 +318,11 @@ class FeatureMembership(pulumi.CustomResource):
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ))
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
         feature = gcp.gkehub.Feature("feature",
             name="configmanagement",
             location="global",
@@ -328,14 +333,14 @@ class FeatureMembership(pulumi.CustomResource):
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
-            configmanagement=gcp.gkehub.FeatureMembershipConfigmanagementArgs(
-                version="1.6.2",
-                config_sync=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncArgs(
-                    git=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncGitArgs(
-                        sync_repo="https://github.com/hashicorp/terraform",
-                    ),
-                ),
-            ))
+            configmanagement={
+                "version": "1.6.2",
+                "configSync": {
+                    "git": {
+                        "syncRepo": "https://github.com/hashicorp/terraform",
+                    },
+                },
+            })
         ```
         ### Config Management With OCI
 
@@ -349,11 +354,11 @@ class FeatureMembership(pulumi.CustomResource):
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ))
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
         feature = gcp.gkehub.Feature("feature",
             name="configmanagement",
             location="global",
@@ -364,18 +369,18 @@ class FeatureMembership(pulumi.CustomResource):
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
-            configmanagement=gcp.gkehub.FeatureMembershipConfigmanagementArgs(
-                version="1.15.1",
-                config_sync=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncArgs(
-                    oci=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncOciArgs(
-                        sync_repo="us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",
-                        policy_dir="config-connector",
-                        sync_wait_secs="20",
-                        secret_type="gcpserviceaccount",
-                        gcp_service_account_email="sa@project-id.iam.gserviceaccount.com",
-                    ),
-                ),
-            ))
+            configmanagement={
+                "version": "1.15.1",
+                "configSync": {
+                    "oci": {
+                        "syncRepo": "us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",
+                        "policyDir": "config-connector",
+                        "syncWaitSecs": "20",
+                        "secretType": "gcpserviceaccount",
+                        "gcpServiceAccountEmail": "sa@project-id.iam.gserviceaccount.com",
+                    },
+                },
+            })
         ```
 
         ### Multi Cluster Service Discovery
@@ -404,11 +409,11 @@ class FeatureMembership(pulumi.CustomResource):
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ))
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
         feature = gcp.gkehub.Feature("feature",
             name="servicemesh",
             location="global")
@@ -416,9 +421,9 @@ class FeatureMembership(pulumi.CustomResource):
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
-            mesh=gcp.gkehub.FeatureMembershipMeshArgs(
-                management="MANAGEMENT_AUTOMATIC",
-            ))
+            mesh={
+                "management": "MANAGEMENT_AUTOMATIC",
+            })
         ```
 
         ### Config Management With Regional Membership
@@ -434,11 +439,11 @@ class FeatureMembership(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             location="us-central1",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ))
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
         feature = gcp.gkehub.Feature("feature",
             name="configmanagement",
             location="global",
@@ -450,14 +455,14 @@ class FeatureMembership(pulumi.CustomResource):
             feature=feature.name,
             membership=membership.membership_id,
             membership_location=membership.location,
-            configmanagement=gcp.gkehub.FeatureMembershipConfigmanagementArgs(
-                version="1.6.2",
-                config_sync=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncArgs(
-                    git=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncGitArgs(
-                        sync_repo="https://github.com/hashicorp/terraform",
-                    ),
-                ),
-            ))
+            configmanagement={
+                "version": "1.6.2",
+                "configSync": {
+                    "git": {
+                        "syncRepo": "https://github.com/hashicorp/terraform",
+                    },
+                },
+            })
         ```
 
         ### Policy Controller With Minimal Configuration
@@ -472,11 +477,11 @@ class FeatureMembership(pulumi.CustomResource):
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ))
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
         feature = gcp.gkehub.Feature("feature",
             name="policycontroller",
             location="global")
@@ -484,11 +489,11 @@ class FeatureMembership(pulumi.CustomResource):
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
-            policycontroller=gcp.gkehub.FeatureMembershipPolicycontrollerArgs(
-                policy_controller_hub_config=gcp.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs(
-                    install_spec="INSTALL_SPEC_ENABLED",
-                ),
-            ))
+            policycontroller={
+                "policyControllerHubConfig": {
+                    "installSpec": "INSTALL_SPEC_ENABLED",
+                },
+            })
         ```
 
         ### Policy Controller With Custom Configurations
@@ -503,11 +508,11 @@ class FeatureMembership(pulumi.CustomResource):
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ))
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
         feature = gcp.gkehub.Feature("feature",
             name="policycontroller",
             location="global")
@@ -515,22 +520,22 @@ class FeatureMembership(pulumi.CustomResource):
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
-            policycontroller=gcp.gkehub.FeatureMembershipPolicycontrollerArgs(
-                policy_controller_hub_config=gcp.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs(
-                    install_spec="INSTALL_SPEC_SUSPENDED",
-                    policy_content=gcp.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs(
-                        template_library=gcp.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs(
-                            installation="NOT_INSTALLED",
-                        ),
-                    ),
-                    constraint_violation_limit=50,
-                    audit_interval_seconds=120,
-                    referential_rules_enabled=True,
-                    log_denies_enabled=True,
-                    mutation_enabled=True,
-                ),
-                version="1.17.0",
-            ))
+            policycontroller={
+                "policyControllerHubConfig": {
+                    "installSpec": "INSTALL_SPEC_SUSPENDED",
+                    "policyContent": {
+                        "templateLibrary": {
+                            "installation": "NOT_INSTALLED",
+                        },
+                    },
+                    "constraintViolationLimit": 50,
+                    "auditIntervalSeconds": 120,
+                    "referentialRulesEnabled": True,
+                    "logDeniesEnabled": True,
+                    "mutationEnabled": True,
+                },
+                "version": "1.17.0",
+            })
         ```
 
         ## Import
@@ -559,13 +564,13 @@ class FeatureMembership(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FeatureMembershipConfigmanagementArgs']] configmanagement: Config Management-specific spec. Structure is documented below.
+        :param pulumi.Input[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict']] configmanagement: Config Management-specific spec. Structure is documented below.
         :param pulumi.Input[str] feature: The name of the feature
         :param pulumi.Input[str] location: The location of the feature
         :param pulumi.Input[str] membership: The name of the membership
         :param pulumi.Input[str] membership_location: The location of the membership, for example, "us-central1". Default is "global".
-        :param pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']] mesh: Service mesh specific spec. Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['FeatureMembershipPolicycontrollerArgs']] policycontroller: Policy Controller-specific spec. Structure is documented below.
+        :param pulumi.Input[Union['FeatureMembershipMeshArgs', 'FeatureMembershipMeshArgsDict']] mesh: Service mesh specific spec. Structure is documented below.
+        :param pulumi.Input[Union['FeatureMembershipPolicycontrollerArgs', 'FeatureMembershipPolicycontrollerArgsDict']] policycontroller: Policy Controller-specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
         ...
@@ -591,11 +596,11 @@ class FeatureMembership(pulumi.CustomResource):
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ))
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
         feature = gcp.gkehub.Feature("feature",
             name="configmanagement",
             location="global",
@@ -606,14 +611,14 @@ class FeatureMembership(pulumi.CustomResource):
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
-            configmanagement=gcp.gkehub.FeatureMembershipConfigmanagementArgs(
-                version="1.6.2",
-                config_sync=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncArgs(
-                    git=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncGitArgs(
-                        sync_repo="https://github.com/hashicorp/terraform",
-                    ),
-                ),
-            ))
+            configmanagement={
+                "version": "1.6.2",
+                "configSync": {
+                    "git": {
+                        "syncRepo": "https://github.com/hashicorp/terraform",
+                    },
+                },
+            })
         ```
         ### Config Management With OCI
 
@@ -627,11 +632,11 @@ class FeatureMembership(pulumi.CustomResource):
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ))
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
         feature = gcp.gkehub.Feature("feature",
             name="configmanagement",
             location="global",
@@ -642,18 +647,18 @@ class FeatureMembership(pulumi.CustomResource):
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
-            configmanagement=gcp.gkehub.FeatureMembershipConfigmanagementArgs(
-                version="1.15.1",
-                config_sync=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncArgs(
-                    oci=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncOciArgs(
-                        sync_repo="us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",
-                        policy_dir="config-connector",
-                        sync_wait_secs="20",
-                        secret_type="gcpserviceaccount",
-                        gcp_service_account_email="sa@project-id.iam.gserviceaccount.com",
-                    ),
-                ),
-            ))
+            configmanagement={
+                "version": "1.15.1",
+                "configSync": {
+                    "oci": {
+                        "syncRepo": "us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",
+                        "policyDir": "config-connector",
+                        "syncWaitSecs": "20",
+                        "secretType": "gcpserviceaccount",
+                        "gcpServiceAccountEmail": "sa@project-id.iam.gserviceaccount.com",
+                    },
+                },
+            })
         ```
 
         ### Multi Cluster Service Discovery
@@ -682,11 +687,11 @@ class FeatureMembership(pulumi.CustomResource):
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ))
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
         feature = gcp.gkehub.Feature("feature",
             name="servicemesh",
             location="global")
@@ -694,9 +699,9 @@ class FeatureMembership(pulumi.CustomResource):
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
-            mesh=gcp.gkehub.FeatureMembershipMeshArgs(
-                management="MANAGEMENT_AUTOMATIC",
-            ))
+            mesh={
+                "management": "MANAGEMENT_AUTOMATIC",
+            })
         ```
 
         ### Config Management With Regional Membership
@@ -712,11 +717,11 @@ class FeatureMembership(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             location="us-central1",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ))
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
         feature = gcp.gkehub.Feature("feature",
             name="configmanagement",
             location="global",
@@ -728,14 +733,14 @@ class FeatureMembership(pulumi.CustomResource):
             feature=feature.name,
             membership=membership.membership_id,
             membership_location=membership.location,
-            configmanagement=gcp.gkehub.FeatureMembershipConfigmanagementArgs(
-                version="1.6.2",
-                config_sync=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncArgs(
-                    git=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncGitArgs(
-                        sync_repo="https://github.com/hashicorp/terraform",
-                    ),
-                ),
-            ))
+            configmanagement={
+                "version": "1.6.2",
+                "configSync": {
+                    "git": {
+                        "syncRepo": "https://github.com/hashicorp/terraform",
+                    },
+                },
+            })
         ```
 
         ### Policy Controller With Minimal Configuration
@@ -750,11 +755,11 @@ class FeatureMembership(pulumi.CustomResource):
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ))
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
         feature = gcp.gkehub.Feature("feature",
             name="policycontroller",
             location="global")
@@ -762,11 +767,11 @@ class FeatureMembership(pulumi.CustomResource):
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
-            policycontroller=gcp.gkehub.FeatureMembershipPolicycontrollerArgs(
-                policy_controller_hub_config=gcp.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs(
-                    install_spec="INSTALL_SPEC_ENABLED",
-                ),
-            ))
+            policycontroller={
+                "policyControllerHubConfig": {
+                    "installSpec": "INSTALL_SPEC_ENABLED",
+                },
+            })
         ```
 
         ### Policy Controller With Custom Configurations
@@ -781,11 +786,11 @@ class FeatureMembership(pulumi.CustomResource):
             initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ))
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
         feature = gcp.gkehub.Feature("feature",
             name="policycontroller",
             location="global")
@@ -793,22 +798,22 @@ class FeatureMembership(pulumi.CustomResource):
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
-            policycontroller=gcp.gkehub.FeatureMembershipPolicycontrollerArgs(
-                policy_controller_hub_config=gcp.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs(
-                    install_spec="INSTALL_SPEC_SUSPENDED",
-                    policy_content=gcp.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs(
-                        template_library=gcp.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs(
-                            installation="NOT_INSTALLED",
-                        ),
-                    ),
-                    constraint_violation_limit=50,
-                    audit_interval_seconds=120,
-                    referential_rules_enabled=True,
-                    log_denies_enabled=True,
-                    mutation_enabled=True,
-                ),
-                version="1.17.0",
-            ))
+            policycontroller={
+                "policyControllerHubConfig": {
+                    "installSpec": "INSTALL_SPEC_SUSPENDED",
+                    "policyContent": {
+                        "templateLibrary": {
+                            "installation": "NOT_INSTALLED",
+                        },
+                    },
+                    "constraintViolationLimit": 50,
+                    "auditIntervalSeconds": 120,
+                    "referentialRulesEnabled": True,
+                    "logDeniesEnabled": True,
+                    "mutationEnabled": True,
+                },
+                "version": "1.17.0",
+            })
         ```
 
         ## Import
@@ -850,13 +855,13 @@ class FeatureMembership(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configmanagement: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipConfigmanagementArgs']]] = None,
+                 configmanagement: Optional[pulumi.Input[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict']]] = None,
                  feature: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership: Optional[pulumi.Input[str]] = None,
                  membership_location: Optional[pulumi.Input[str]] = None,
-                 mesh: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']]] = None,
-                 policycontroller: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipPolicycontrollerArgs']]] = None,
+                 mesh: Optional[pulumi.Input[Union['FeatureMembershipMeshArgs', 'FeatureMembershipMeshArgsDict']]] = None,
+                 policycontroller: Optional[pulumi.Input[Union['FeatureMembershipPolicycontrollerArgs', 'FeatureMembershipPolicycontrollerArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -891,13 +896,13 @@ class FeatureMembership(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            configmanagement: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipConfigmanagementArgs']]] = None,
+            configmanagement: Optional[pulumi.Input[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict']]] = None,
             feature: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             membership: Optional[pulumi.Input[str]] = None,
             membership_location: Optional[pulumi.Input[str]] = None,
-            mesh: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']]] = None,
-            policycontroller: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipPolicycontrollerArgs']]] = None,
+            mesh: Optional[pulumi.Input[Union['FeatureMembershipMeshArgs', 'FeatureMembershipMeshArgsDict']]] = None,
+            policycontroller: Optional[pulumi.Input[Union['FeatureMembershipPolicycontrollerArgs', 'FeatureMembershipPolicycontrollerArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'FeatureMembership':
         """
         Get an existing FeatureMembership resource's state with the given name, id, and optional extra
@@ -906,13 +911,13 @@ class FeatureMembership(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FeatureMembershipConfigmanagementArgs']] configmanagement: Config Management-specific spec. Structure is documented below.
+        :param pulumi.Input[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict']] configmanagement: Config Management-specific spec. Structure is documented below.
         :param pulumi.Input[str] feature: The name of the feature
         :param pulumi.Input[str] location: The location of the feature
         :param pulumi.Input[str] membership: The name of the membership
         :param pulumi.Input[str] membership_location: The location of the membership, for example, "us-central1". Default is "global".
-        :param pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']] mesh: Service mesh specific spec. Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['FeatureMembershipPolicycontrollerArgs']] policycontroller: Policy Controller-specific spec. Structure is documented below.
+        :param pulumi.Input[Union['FeatureMembershipMeshArgs', 'FeatureMembershipMeshArgsDict']] mesh: Service mesh specific spec. Structure is documented below.
+        :param pulumi.Input[Union['FeatureMembershipPolicycontrollerArgs', 'FeatureMembershipPolicycontrollerArgsDict']] policycontroller: Policy Controller-specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

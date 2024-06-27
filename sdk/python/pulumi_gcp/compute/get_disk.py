@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -452,10 +457,10 @@ def get_disk(name: Optional[str] = None,
 
     persistent_boot_disk = gcp.compute.get_disk(name="persistent-boot-disk",
         project="example")
-    default = gcp.compute.Instance("default", boot_disk=gcp.compute.InstanceBootDiskArgs(
-        source=persistent_boot_disk.self_link,
-        auto_delete=False,
-    ))
+    default = gcp.compute.Instance("default", boot_disk={
+        "source": persistent_boot_disk.self_link,
+        "autoDelete": False,
+    })
     ```
 
 
@@ -531,10 +536,10 @@ def get_disk_output(name: Optional[pulumi.Input[str]] = None,
 
     persistent_boot_disk = gcp.compute.get_disk(name="persistent-boot-disk",
         project="example")
-    default = gcp.compute.Instance("default", boot_disk=gcp.compute.InstanceBootDiskArgs(
-        source=persistent_boot_disk.self_link,
-        auto_delete=False,
-    ))
+    default = gcp.compute.Instance("default", boot_disk={
+        "source": persistent_boot_disk.self_link,
+        "autoDelete": False,
+    })
     ```
 
 

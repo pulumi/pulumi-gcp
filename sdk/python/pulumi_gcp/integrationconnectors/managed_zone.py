@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['ManagedZoneArgs', 'ManagedZone']
@@ -397,11 +402,11 @@ class ManagedZone(pulumi.CustomResource):
             name="tf-test-dns_29439",
             dns_name="private_87786.example.com.",
             visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                networks=[gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                    network_url=network.id,
-                )],
-            ),
+            private_visibility_config={
+                "networks": [{
+                    "networkUrl": network.id,
+                }],
+            },
             opts = pulumi.ResourceOptions(depends_on=[dns]))
         testmanagedzone = gcp.integrationconnectors.ManagedZone("testmanagedzone",
             name="test",
@@ -507,11 +512,11 @@ class ManagedZone(pulumi.CustomResource):
             name="tf-test-dns_29439",
             dns_name="private_87786.example.com.",
             visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                networks=[gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                    network_url=network.id,
-                )],
-            ),
+            private_visibility_config={
+                "networks": [{
+                    "networkUrl": network.id,
+                }],
+            },
             opts = pulumi.ResourceOptions(depends_on=[dns]))
         testmanagedzone = gcp.integrationconnectors.ManagedZone("testmanagedzone",
             name="test",

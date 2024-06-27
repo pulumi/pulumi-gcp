@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -458,12 +463,12 @@ class Metric(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
-                 bucket_options: Optional[pulumi.Input[pulumi.InputType['MetricBucketOptionsArgs']]] = None,
+                 bucket_options: Optional[pulumi.Input[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  label_extractors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 metric_descriptor: Optional[pulumi.Input[pulumi.InputType['MetricMetricDescriptorArgs']]] = None,
+                 metric_descriptor: Optional[pulumi.Input[Union['MetricMetricDescriptorArgs', 'MetricMetricDescriptorArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  value_extractor: Optional[pulumi.Input[str]] = None,
@@ -490,36 +495,36 @@ class Metric(pulumi.CustomResource):
         logging_metric = gcp.logging.Metric("logging_metric",
             name="my-(custom)/metric",
             filter="resource.type=gae_app AND severity>=ERROR",
-            metric_descriptor=gcp.logging.MetricMetricDescriptorArgs(
-                metric_kind="DELTA",
-                value_type="DISTRIBUTION",
-                unit="1",
-                labels=[
-                    gcp.logging.MetricMetricDescriptorLabelArgs(
-                        key="mass",
-                        value_type="STRING",
-                        description="amount of matter",
-                    ),
-                    gcp.logging.MetricMetricDescriptorLabelArgs(
-                        key="sku",
-                        value_type="INT64",
-                        description="Identifying number for item",
-                    ),
+            metric_descriptor={
+                "metricKind": "DELTA",
+                "valueType": "DISTRIBUTION",
+                "unit": "1",
+                "labels": [
+                    {
+                        "key": "mass",
+                        "valueType": "STRING",
+                        "description": "amount of matter",
+                    },
+                    {
+                        "key": "sku",
+                        "valueType": "INT64",
+                        "description": "Identifying number for item",
+                    },
                 ],
-                display_name="My metric",
-            ),
+                "displayName": "My metric",
+            },
             value_extractor="EXTRACT(jsonPayload.request)",
             label_extractors={
                 "mass": "EXTRACT(jsonPayload.request)",
                 "sku": "EXTRACT(jsonPayload.id)",
             },
-            bucket_options=gcp.logging.MetricBucketOptionsArgs(
-                linear_buckets=gcp.logging.MetricBucketOptionsLinearBucketsArgs(
-                    num_finite_buckets=3,
-                    width=1,
-                    offset=1,
-                ),
-            ))
+            bucket_options={
+                "linearBuckets": {
+                    "numFiniteBuckets": 3,
+                    "width": 1,
+                    "offset": 1,
+                },
+            })
         ```
         ### Logging Metric Counter Basic
 
@@ -530,10 +535,10 @@ class Metric(pulumi.CustomResource):
         logging_metric = gcp.logging.Metric("logging_metric",
             name="my-(custom)/metric",
             filter="resource.type=gae_app AND severity>=ERROR",
-            metric_descriptor=gcp.logging.MetricMetricDescriptorArgs(
-                metric_kind="DELTA",
-                value_type="INT64",
-            ))
+            metric_descriptor={
+                "metricKind": "DELTA",
+                "valueType": "INT64",
+            })
         ```
         ### Logging Metric Counter Labels
 
@@ -544,15 +549,15 @@ class Metric(pulumi.CustomResource):
         logging_metric = gcp.logging.Metric("logging_metric",
             name="my-(custom)/metric",
             filter="resource.type=gae_app AND severity>=ERROR",
-            metric_descriptor=gcp.logging.MetricMetricDescriptorArgs(
-                metric_kind="DELTA",
-                value_type="INT64",
-                labels=[gcp.logging.MetricMetricDescriptorLabelArgs(
-                    key="mass",
-                    value_type="STRING",
-                    description="amount of matter",
-                )],
-            ),
+            metric_descriptor={
+                "metricKind": "DELTA",
+                "valueType": "INT64",
+                "labels": [{
+                    "key": "mass",
+                    "valueType": "STRING",
+                    "description": "amount of matter",
+                }],
+            },
             label_extractors={
                 "mass": "EXTRACT(jsonPayload.request)",
             })
@@ -581,10 +586,10 @@ class Metric(pulumi.CustomResource):
         logging_metric = gcp.logging.Metric("logging_metric",
             name="my-(custom)/metric",
             filter="resource.type=gae_app AND severity>=ERROR",
-            metric_descriptor=gcp.logging.MetricMetricDescriptorArgs(
-                metric_kind="DELTA",
-                value_type="INT64",
-            ),
+            metric_descriptor={
+                "metricKind": "DELTA",
+                "valueType": "INT64",
+            },
             disabled=True)
         ```
 
@@ -610,7 +615,7 @@ class Metric(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_name: The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
                are supported. The bucket has to be in the same project as the metric.
-        :param pulumi.Input[pulumi.InputType['MetricBucketOptionsArgs']] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
+        :param pulumi.Input[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict']] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
                describes the bucket boundaries used to create a histogram of the extracted values.
                Structure is documented below.
         :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
@@ -625,7 +630,7 @@ class Metric(pulumi.CustomResource):
                entry field and assign as the label value. Each label key specified in the LabelDescriptor must
                have an associated extractor expression in this map. The syntax of the extractor expression is
                the same as for the valueExtractor field.
-        :param pulumi.Input[pulumi.InputType['MetricMetricDescriptorArgs']] metric_descriptor: The optional metric descriptor associated with the logs-based metric.
+        :param pulumi.Input[Union['MetricMetricDescriptorArgs', 'MetricMetricDescriptorArgsDict']] metric_descriptor: The optional metric descriptor associated with the logs-based metric.
                If unspecified, it uses a default metric descriptor with a DELTA metric kind,
                INT64 value type, with no labels and a unit of "1". Such a metric counts the
                number of log entries matching the filter expression.
@@ -673,36 +678,36 @@ class Metric(pulumi.CustomResource):
         logging_metric = gcp.logging.Metric("logging_metric",
             name="my-(custom)/metric",
             filter="resource.type=gae_app AND severity>=ERROR",
-            metric_descriptor=gcp.logging.MetricMetricDescriptorArgs(
-                metric_kind="DELTA",
-                value_type="DISTRIBUTION",
-                unit="1",
-                labels=[
-                    gcp.logging.MetricMetricDescriptorLabelArgs(
-                        key="mass",
-                        value_type="STRING",
-                        description="amount of matter",
-                    ),
-                    gcp.logging.MetricMetricDescriptorLabelArgs(
-                        key="sku",
-                        value_type="INT64",
-                        description="Identifying number for item",
-                    ),
+            metric_descriptor={
+                "metricKind": "DELTA",
+                "valueType": "DISTRIBUTION",
+                "unit": "1",
+                "labels": [
+                    {
+                        "key": "mass",
+                        "valueType": "STRING",
+                        "description": "amount of matter",
+                    },
+                    {
+                        "key": "sku",
+                        "valueType": "INT64",
+                        "description": "Identifying number for item",
+                    },
                 ],
-                display_name="My metric",
-            ),
+                "displayName": "My metric",
+            },
             value_extractor="EXTRACT(jsonPayload.request)",
             label_extractors={
                 "mass": "EXTRACT(jsonPayload.request)",
                 "sku": "EXTRACT(jsonPayload.id)",
             },
-            bucket_options=gcp.logging.MetricBucketOptionsArgs(
-                linear_buckets=gcp.logging.MetricBucketOptionsLinearBucketsArgs(
-                    num_finite_buckets=3,
-                    width=1,
-                    offset=1,
-                ),
-            ))
+            bucket_options={
+                "linearBuckets": {
+                    "numFiniteBuckets": 3,
+                    "width": 1,
+                    "offset": 1,
+                },
+            })
         ```
         ### Logging Metric Counter Basic
 
@@ -713,10 +718,10 @@ class Metric(pulumi.CustomResource):
         logging_metric = gcp.logging.Metric("logging_metric",
             name="my-(custom)/metric",
             filter="resource.type=gae_app AND severity>=ERROR",
-            metric_descriptor=gcp.logging.MetricMetricDescriptorArgs(
-                metric_kind="DELTA",
-                value_type="INT64",
-            ))
+            metric_descriptor={
+                "metricKind": "DELTA",
+                "valueType": "INT64",
+            })
         ```
         ### Logging Metric Counter Labels
 
@@ -727,15 +732,15 @@ class Metric(pulumi.CustomResource):
         logging_metric = gcp.logging.Metric("logging_metric",
             name="my-(custom)/metric",
             filter="resource.type=gae_app AND severity>=ERROR",
-            metric_descriptor=gcp.logging.MetricMetricDescriptorArgs(
-                metric_kind="DELTA",
-                value_type="INT64",
-                labels=[gcp.logging.MetricMetricDescriptorLabelArgs(
-                    key="mass",
-                    value_type="STRING",
-                    description="amount of matter",
-                )],
-            ),
+            metric_descriptor={
+                "metricKind": "DELTA",
+                "valueType": "INT64",
+                "labels": [{
+                    "key": "mass",
+                    "valueType": "STRING",
+                    "description": "amount of matter",
+                }],
+            },
             label_extractors={
                 "mass": "EXTRACT(jsonPayload.request)",
             })
@@ -764,10 +769,10 @@ class Metric(pulumi.CustomResource):
         logging_metric = gcp.logging.Metric("logging_metric",
             name="my-(custom)/metric",
             filter="resource.type=gae_app AND severity>=ERROR",
-            metric_descriptor=gcp.logging.MetricMetricDescriptorArgs(
-                metric_kind="DELTA",
-                value_type="INT64",
-            ),
+            metric_descriptor={
+                "metricKind": "DELTA",
+                "valueType": "INT64",
+            },
             disabled=True)
         ```
 
@@ -805,12 +810,12 @@ class Metric(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
-                 bucket_options: Optional[pulumi.Input[pulumi.InputType['MetricBucketOptionsArgs']]] = None,
+                 bucket_options: Optional[pulumi.Input[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  label_extractors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 metric_descriptor: Optional[pulumi.Input[pulumi.InputType['MetricMetricDescriptorArgs']]] = None,
+                 metric_descriptor: Optional[pulumi.Input[Union['MetricMetricDescriptorArgs', 'MetricMetricDescriptorArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  value_extractor: Optional[pulumi.Input[str]] = None,
@@ -846,12 +851,12 @@ class Metric(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket_name: Optional[pulumi.Input[str]] = None,
-            bucket_options: Optional[pulumi.Input[pulumi.InputType['MetricBucketOptionsArgs']]] = None,
+            bucket_options: Optional[pulumi.Input[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             filter: Optional[pulumi.Input[str]] = None,
             label_extractors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            metric_descriptor: Optional[pulumi.Input[pulumi.InputType['MetricMetricDescriptorArgs']]] = None,
+            metric_descriptor: Optional[pulumi.Input[Union['MetricMetricDescriptorArgs', 'MetricMetricDescriptorArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             value_extractor: Optional[pulumi.Input[str]] = None) -> 'Metric':
@@ -864,7 +869,7 @@ class Metric(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_name: The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
                are supported. The bucket has to be in the same project as the metric.
-        :param pulumi.Input[pulumi.InputType['MetricBucketOptionsArgs']] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
+        :param pulumi.Input[Union['MetricBucketOptionsArgs', 'MetricBucketOptionsArgsDict']] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
                describes the bucket boundaries used to create a histogram of the extracted values.
                Structure is documented below.
         :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
@@ -879,7 +884,7 @@ class Metric(pulumi.CustomResource):
                entry field and assign as the label value. Each label key specified in the LabelDescriptor must
                have an associated extractor expression in this map. The syntax of the extractor expression is
                the same as for the valueExtractor field.
-        :param pulumi.Input[pulumi.InputType['MetricMetricDescriptorArgs']] metric_descriptor: The optional metric descriptor associated with the logs-based metric.
+        :param pulumi.Input[Union['MetricMetricDescriptorArgs', 'MetricMetricDescriptorArgsDict']] metric_descriptor: The optional metric descriptor associated with the logs-based metric.
                If unspecified, it uses a default metric descriptor with a DELTA metric kind,
                INT64 value type, with no labels and a unit of "1". Such a metric counts the
                number of log entries matching the filter expression.

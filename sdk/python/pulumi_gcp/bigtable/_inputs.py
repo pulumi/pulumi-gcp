@@ -4,25 +4,59 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AuthorizedViewSubsetViewArgs',
+    'AuthorizedViewSubsetViewArgsDict',
     'AuthorizedViewSubsetViewFamilySubsetArgs',
+    'AuthorizedViewSubsetViewFamilySubsetArgsDict',
     'GCPolicyMaxAgeArgs',
+    'GCPolicyMaxAgeArgsDict',
     'GCPolicyMaxVersionArgs',
+    'GCPolicyMaxVersionArgsDict',
     'InstanceClusterArgs',
+    'InstanceClusterArgsDict',
     'InstanceClusterAutoscalingConfigArgs',
+    'InstanceClusterAutoscalingConfigArgsDict',
     'InstanceIamBindingConditionArgs',
+    'InstanceIamBindingConditionArgsDict',
     'InstanceIamMemberConditionArgs',
+    'InstanceIamMemberConditionArgsDict',
     'TableAutomatedBackupPolicyArgs',
+    'TableAutomatedBackupPolicyArgsDict',
     'TableColumnFamilyArgs',
+    'TableColumnFamilyArgsDict',
     'TableIamBindingConditionArgs',
+    'TableIamBindingConditionArgsDict',
     'TableIamMemberConditionArgs',
+    'TableIamMemberConditionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AuthorizedViewSubsetViewArgsDict(TypedDict):
+        family_subsets: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgsDict']]]]
+        """
+        A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
+
+        -----
+        """
+        row_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of Base64-encoded row prefixes to be included in the authorized view. To provide access to all rows, include the empty string as a prefix ("").
+        """
+elif False:
+    AuthorizedViewSubsetViewArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AuthorizedViewSubsetViewArgs:
@@ -66,6 +100,24 @@ class AuthorizedViewSubsetViewArgs:
     def row_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "row_prefixes", value)
 
+
+if not MYPY:
+    class AuthorizedViewSubsetViewFamilySubsetArgsDict(TypedDict):
+        family_name: pulumi.Input[str]
+        """
+        Name of the column family to be included in the authorized view. The specified column family must exist in the parent table of this authorized view.
+        """
+        qualifier_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of Base64-encoded prefixes for qualifiers of the column family to be included in the authorized view.
+        Every qualifier starting with one of these prefixes is included in the authorized view. To provide access to all qualifiers, include the empty string as a prefix ("").
+        """
+        qualifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of Base64-encoded individual exact column qualifiers of the column family to be included in the authorized view.
+        """
+elif False:
+    AuthorizedViewSubsetViewFamilySubsetArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AuthorizedViewSubsetViewFamilySubsetArgs:
@@ -123,6 +175,21 @@ class AuthorizedViewSubsetViewFamilySubsetArgs:
         pulumi.set(self, "qualifiers", value)
 
 
+if not MYPY:
+    class GCPolicyMaxAgeArgsDict(TypedDict):
+        days: NotRequired[pulumi.Input[int]]
+        """
+        Number of days before applying GC policy.
+        """
+        duration: NotRequired[pulumi.Input[str]]
+        """
+        Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
+
+        -----
+        """
+elif False:
+    GCPolicyMaxAgeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GCPolicyMaxAgeArgs:
     def __init__(__self__, *,
@@ -170,6 +237,18 @@ class GCPolicyMaxAgeArgs:
         pulumi.set(self, "duration", value)
 
 
+if not MYPY:
+    class GCPolicyMaxVersionArgsDict(TypedDict):
+        number: pulumi.Input[int]
+        """
+        Number of version before applying the GC policy.
+
+        -----
+        `gc_rules` include 2 fields:
+        """
+elif False:
+    GCPolicyMaxVersionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GCPolicyMaxVersionArgs:
     def __init__(__self__, *,
@@ -197,6 +276,52 @@ class GCPolicyMaxVersionArgs:
     def number(self, value: pulumi.Input[int]):
         pulumi.set(self, "number", value)
 
+
+if not MYPY:
+    class InstanceClusterArgsDict(TypedDict):
+        cluster_id: pulumi.Input[str]
+        """
+        The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
+        """
+        autoscaling_config: NotRequired[pulumi.Input['InstanceClusterAutoscalingConfigArgsDict']]
+        """
+        [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+        """
+        kms_key_name: NotRequired[pulumi.Input[str]]
+        """
+        Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
+
+        > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
+
+        !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
+
+        !> **Warning:** Modifying the `storage_type`, `zone` or `kms_key_name` of an existing cluster (by
+        `cluster_id`) will cause the provider to delete/recreate the entire
+        `bigtable.Instance` resource. If these values are changing, use a new
+        `cluster_id`.
+        """
+        num_nodes: NotRequired[pulumi.Input[int]]
+        """
+        The number of nodes in the cluster.
+        If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        describes the current state of the cluster.
+        """
+        storage_type: NotRequired[pulumi.Input[str]]
+        """
+        The storage type to use. One of `"SSD"` or
+        `"HDD"`. Defaults to `"SSD"`.
+        """
+        zone: NotRequired[pulumi.Input[str]]
+        """
+        The zone to create the Cloud Bigtable cluster in. If it not
+        specified, the provider zone is used. Each cluster must have a different zone in the same region. Zones that support
+        Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
+        """
+elif False:
+    InstanceClusterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceClusterArgs:
@@ -342,6 +467,29 @@ class InstanceClusterArgs:
         pulumi.set(self, "zone", value)
 
 
+if not MYPY:
+    class InstanceClusterAutoscalingConfigArgsDict(TypedDict):
+        cpu_target: pulumi.Input[int]
+        """
+        The target CPU utilization for autoscaling, in percentage. Must be between 10 and 80.
+        """
+        max_nodes: pulumi.Input[int]
+        """
+        The maximum number of nodes for autoscaling.
+        """
+        min_nodes: pulumi.Input[int]
+        """
+        The minimum number of nodes for autoscaling.
+        """
+        storage_target: NotRequired[pulumi.Input[int]]
+        """
+        The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+
+        !> **Warning**: Only one of `autoscaling_config` or `num_nodes` should be set for a cluster. If both are set, `num_nodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
+        """
+elif False:
+    InstanceClusterAutoscalingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceClusterAutoscalingConfigArgs:
     def __init__(__self__, *,
@@ -414,6 +562,14 @@ class InstanceClusterAutoscalingConfigArgs:
         pulumi.set(self, "storage_target", value)
 
 
+if not MYPY:
+    class InstanceIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    InstanceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -452,6 +608,14 @@ class InstanceIamBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class InstanceIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    InstanceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceIamMemberConditionArgs:
@@ -492,6 +656,19 @@ class InstanceIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class TableAutomatedBackupPolicyArgsDict(TypedDict):
+        frequency: NotRequired[pulumi.Input[str]]
+        """
+        How frequently automated backups should occur.
+        """
+        retention_period: NotRequired[pulumi.Input[str]]
+        """
+        How long the automated backups should be retained.
+        """
+elif False:
+    TableAutomatedBackupPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TableAutomatedBackupPolicyArgs:
     def __init__(__self__, *,
@@ -531,6 +708,15 @@ class TableAutomatedBackupPolicyArgs:
         pulumi.set(self, "retention_period", value)
 
 
+if not MYPY:
+    class TableColumnFamilyArgsDict(TypedDict):
+        family: pulumi.Input[str]
+        """
+        The name of the column family.
+        """
+elif False:
+    TableColumnFamilyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TableColumnFamilyArgs:
     def __init__(__self__, *,
@@ -552,6 +738,14 @@ class TableColumnFamilyArgs:
     def family(self, value: pulumi.Input[str]):
         pulumi.set(self, "family", value)
 
+
+if not MYPY:
+    class TableIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    TableIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TableIamBindingConditionArgs:
@@ -591,6 +785,14 @@ class TableIamBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class TableIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    TableIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TableIamMemberConditionArgs:

@@ -4,32 +4,80 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'EntryBigqueryDateShardedSpecArgs',
+    'EntryBigqueryDateShardedSpecArgsDict',
     'EntryBigqueryTableSpecArgs',
+    'EntryBigqueryTableSpecArgsDict',
     'EntryBigqueryTableSpecTableSpecArgs',
+    'EntryBigqueryTableSpecTableSpecArgsDict',
     'EntryBigqueryTableSpecViewSpecArgs',
+    'EntryBigqueryTableSpecViewSpecArgsDict',
     'EntryGcsFilesetSpecArgs',
+    'EntryGcsFilesetSpecArgsDict',
     'EntryGcsFilesetSpecSampleGcsFileSpecArgs',
+    'EntryGcsFilesetSpecSampleGcsFileSpecArgsDict',
     'EntryGroupIamBindingConditionArgs',
+    'EntryGroupIamBindingConditionArgsDict',
     'EntryGroupIamMemberConditionArgs',
+    'EntryGroupIamMemberConditionArgsDict',
     'PolicyTagIamBindingConditionArgs',
+    'PolicyTagIamBindingConditionArgsDict',
     'PolicyTagIamMemberConditionArgs',
+    'PolicyTagIamMemberConditionArgsDict',
     'TagFieldArgs',
+    'TagFieldArgsDict',
     'TagTemplateFieldArgs',
+    'TagTemplateFieldArgsDict',
     'TagTemplateFieldTypeArgs',
+    'TagTemplateFieldTypeArgsDict',
     'TagTemplateFieldTypeEnumTypeArgs',
+    'TagTemplateFieldTypeEnumTypeArgsDict',
     'TagTemplateFieldTypeEnumTypeAllowedValueArgs',
+    'TagTemplateFieldTypeEnumTypeAllowedValueArgsDict',
     'TagTemplateIamBindingConditionArgs',
+    'TagTemplateIamBindingConditionArgsDict',
     'TagTemplateIamMemberConditionArgs',
+    'TagTemplateIamMemberConditionArgsDict',
     'TaxonomyIamBindingConditionArgs',
+    'TaxonomyIamBindingConditionArgsDict',
     'TaxonomyIamMemberConditionArgs',
+    'TaxonomyIamMemberConditionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class EntryBigqueryDateShardedSpecArgsDict(TypedDict):
+        dataset: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The Data Catalog resource name of the dataset entry the current table belongs to, for example,
+        projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}
+        """
+        shard_count: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        Total number of shards.
+        """
+        table_prefix: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
+        for example, for shard MyTable20180101, the tablePrefix is MyTable.
+        """
+elif False:
+    EntryBigqueryDateShardedSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EntryBigqueryDateShardedSpecArgs:
@@ -96,6 +144,28 @@ class EntryBigqueryDateShardedSpecArgs:
         pulumi.set(self, "table_prefix", value)
 
 
+if not MYPY:
+    class EntryBigqueryTableSpecArgsDict(TypedDict):
+        table_source_type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The table source type.
+        """
+        table_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArgsDict']]]]
+        """
+        (Output)
+        Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
+        Structure is documented below.
+        """
+        view_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArgsDict']]]]
+        """
+        (Output)
+        Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
+        Structure is documented below.
+        """
+elif False:
+    EntryBigqueryTableSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EntryBigqueryTableSpecArgs:
     def __init__(__self__, *,
@@ -161,6 +231,19 @@ class EntryBigqueryTableSpecArgs:
         pulumi.set(self, "view_specs", value)
 
 
+if not MYPY:
+    class EntryBigqueryTableSpecTableSpecArgsDict(TypedDict):
+        grouped_entry: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
+        Data Catalog resource name of the date sharded grouped entry, for example,
+        projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
+        Otherwise, groupedEntry is empty.
+        """
+elif False:
+    EntryBigqueryTableSpecTableSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EntryBigqueryTableSpecTableSpecArgs:
     def __init__(__self__, *,
@@ -192,6 +275,16 @@ class EntryBigqueryTableSpecTableSpecArgs:
         pulumi.set(self, "grouped_entry", value)
 
 
+if not MYPY:
+    class EntryBigqueryTableSpecViewSpecArgsDict(TypedDict):
+        view_query: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The query that defines the table view.
+        """
+elif False:
+    EntryBigqueryTableSpecViewSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EntryBigqueryTableSpecViewSpecArgs:
     def __init__(__self__, *,
@@ -216,6 +309,34 @@ class EntryBigqueryTableSpecViewSpecArgs:
     def view_query(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "view_query", value)
 
+
+if not MYPY:
+    class EntryGcsFilesetSpecArgsDict(TypedDict):
+        file_patterns: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Patterns to identify a set of files in Google Cloud Storage.
+        See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames)
+        for more information. Note that bucket wildcards are currently not supported. Examples of valid filePatterns:
+        * gs://bucket_name/dir/*: matches all files within bucket_name/dir directory.
+        * gs://bucket_name/dir/**: matches all files in bucket_name/dir spanning all subdirectories.
+        * gs://bucket_name/file*: matches files prefixed by file in bucket_name
+        * gs://bucket_name/??.txt: matches files with two characters followed by .txt in bucket_name
+        * gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in bucket_name
+        * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucket_name
+        * gs://bucket_name/a/*/b: matches all files in bucket_name that match a/*/b pattern, such as a/c/b, a/d/b
+        * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
+        """
+        sample_gcs_file_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgsDict']]]]
+        """
+        (Output)
+        Sample files contained in this fileset, not all files contained in this fileset are represented here.
+        Structure is documented below.
+
+
+        <a name="nested_sample_gcs_file_specs"></a>The `sample_gcs_file_specs` block contains:
+        """
+elif False:
+    EntryGcsFilesetSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EntryGcsFilesetSpecArgs:
@@ -285,6 +406,19 @@ class EntryGcsFilesetSpecArgs:
         pulumi.set(self, "sample_gcs_file_specs", value)
 
 
+if not MYPY:
+    class EntryGcsFilesetSpecSampleGcsFileSpecArgsDict(TypedDict):
+        file_path: NotRequired[pulumi.Input[str]]
+        """
+        The full file path
+        """
+        size_bytes: NotRequired[pulumi.Input[int]]
+        """
+        The size of the file, in bytes.
+        """
+elif False:
+    EntryGcsFilesetSpecSampleGcsFileSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EntryGcsFilesetSpecSampleGcsFileSpecArgs:
     def __init__(__self__, *,
@@ -323,6 +457,14 @@ class EntryGcsFilesetSpecSampleGcsFileSpecArgs:
     def size_bytes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size_bytes", value)
 
+
+if not MYPY:
+    class EntryGroupIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    EntryGroupIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EntryGroupIamBindingConditionArgs:
@@ -363,6 +505,14 @@ class EntryGroupIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class EntryGroupIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    EntryGroupIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EntryGroupIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -401,6 +551,14 @@ class EntryGroupIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class PolicyTagIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    PolicyTagIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PolicyTagIamBindingConditionArgs:
@@ -441,6 +599,14 @@ class PolicyTagIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class PolicyTagIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    PolicyTagIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PolicyTagIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -479,6 +645,49 @@ class PolicyTagIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class TagFieldArgsDict(TypedDict):
+        field_name: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        bool_value: NotRequired[pulumi.Input[bool]]
+        """
+        Holds the value for a tag field with boolean type.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The display name of this field
+        """
+        double_value: NotRequired[pulumi.Input[float]]
+        """
+        Holds the value for a tag field with double type.
+        """
+        enum_value: NotRequired[pulumi.Input[str]]
+        """
+        Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
+
+        - - -
+        """
+        order: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The order of this field with respect to other fields in this tag. For example, a higher value can indicate
+        a more important field. The value can be negative. Multiple fields can have the same order, and field orders
+        within a tag do not have to be sequential.
+        """
+        string_value: NotRequired[pulumi.Input[str]]
+        """
+        Holds the value for a tag field with string type.
+        """
+        timestamp_value: NotRequired[pulumi.Input[str]]
+        """
+        Holds the value for a tag field with timestamp type.
+        """
+elif False:
+    TagFieldArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TagFieldArgs:
@@ -626,6 +835,43 @@ class TagFieldArgs:
         pulumi.set(self, "timestamp_value", value)
 
 
+if not MYPY:
+    class TagTemplateFieldArgsDict(TypedDict):
+        field_id: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        type: pulumi.Input['TagTemplateFieldTypeArgsDict']
+        """
+        The type of value this tag field can contain.
+        Structure is documented below.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        A description for this field.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        The display name for this field.
+        """
+        is_required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this is a required field. Defaults to false.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+        """
+        order: NotRequired[pulumi.Input[int]]
+        """
+        The order of this field with respect to other fields in this tag template.
+        A higher value indicates a more important field. The value can be negative.
+        Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
+        """
+elif False:
+    TagTemplateFieldArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TagTemplateFieldArgs:
     def __init__(__self__, *,
@@ -751,6 +997,23 @@ class TagTemplateFieldArgs:
         pulumi.set(self, "order", value)
 
 
+if not MYPY:
+    class TagTemplateFieldTypeArgsDict(TypedDict):
+        enum_type: NotRequired[pulumi.Input['TagTemplateFieldTypeEnumTypeArgsDict']]
+        """
+        Represents an enum type.
+        Exactly one of `primitive_type` or `enum_type` must be set
+        Structure is documented below.
+        """
+        primitive_type: NotRequired[pulumi.Input[str]]
+        """
+        Represents primitive types - string, bool etc.
+        Exactly one of `primitive_type` or `enum_type` must be set
+        Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
+        """
+elif False:
+    TagTemplateFieldTypeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TagTemplateFieldTypeArgs:
     def __init__(__self__, *,
@@ -798,6 +1061,20 @@ class TagTemplateFieldTypeArgs:
         pulumi.set(self, "primitive_type", value)
 
 
+if not MYPY:
+    class TagTemplateFieldTypeEnumTypeArgsDict(TypedDict):
+        allowed_values: pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldTypeEnumTypeAllowedValueArgsDict']]]
+        """
+        The set of allowed values for this enum. The display names of the
+        values must be case-insensitively unique within this set. Currently,
+        enum values can only be added to the list of allowed values. Deletion
+        and renaming of enum values are not supported.
+        Can have up to 500 allowed values.
+        Structure is documented below.
+        """
+elif False:
+    TagTemplateFieldTypeEnumTypeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TagTemplateFieldTypeEnumTypeArgs:
     def __init__(__self__, *,
@@ -830,6 +1107,15 @@ class TagTemplateFieldTypeEnumTypeArgs:
         pulumi.set(self, "allowed_values", value)
 
 
+if not MYPY:
+    class TagTemplateFieldTypeEnumTypeAllowedValueArgsDict(TypedDict):
+        display_name: pulumi.Input[str]
+        """
+        The display name for this template.
+        """
+elif False:
+    TagTemplateFieldTypeEnumTypeAllowedValueArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TagTemplateFieldTypeEnumTypeAllowedValueArgs:
     def __init__(__self__, *,
@@ -851,6 +1137,14 @@ class TagTemplateFieldTypeEnumTypeAllowedValueArgs:
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
 
+
+if not MYPY:
+    class TagTemplateIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    TagTemplateIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TagTemplateIamBindingConditionArgs:
@@ -891,6 +1185,14 @@ class TagTemplateIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class TagTemplateIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    TagTemplateIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TagTemplateIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -930,6 +1232,14 @@ class TagTemplateIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class TaxonomyIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    TaxonomyIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TaxonomyIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -968,6 +1278,14 @@ class TaxonomyIamBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class TaxonomyIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    TaxonomyIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TaxonomyIamMemberConditionArgs:

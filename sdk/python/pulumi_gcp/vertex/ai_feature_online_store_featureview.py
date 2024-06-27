@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -430,15 +435,15 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 big_query_source: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs']]] = None,
+                 big_query_source: Optional[pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs', 'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict']]] = None,
                  feature_online_store: Optional[pulumi.Input[str]] = None,
-                 feature_registry_source: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs']]] = None,
+                 feature_registry_source: Optional[pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs', 'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 sync_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewSyncConfigArgs']]] = None,
-                 vector_search_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs']]] = None,
+                 sync_config: Optional[pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict']]] = None,
+                 vector_search_config: Optional[pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict']]] = None,
                  __props__=None):
         """
         FeatureView is representation of values that the FeatureOnlineStore will serve based on its syncConfig.
@@ -463,13 +468,13 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            bigtable=gcp.vertex.AiFeatureOnlineStoreBigtableArgs(
-                auto_scaling=gcp.vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs(
-                    min_node_count=1,
-                    max_node_count=2,
-                    cpu_utilization_target=80,
-                ),
-            ))
+            bigtable={
+                "autoScaling": {
+                    "minNodeCount": 1,
+                    "maxNodeCount": 2,
+                    "cpuUtilizationTarget": 80,
+                },
+            })
         tf_test_dataset = gcp.bigquery.Dataset("tf-test-dataset",
             dataset_id="example_feature_view",
             friendly_name="test",
@@ -504,13 +509,13 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             name="example_feature_view",
             region="us-central1",
             feature_online_store=featureonlinestore.name,
-            sync_config=gcp.vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs(
-                cron="0 0 * * *",
-            ),
-            big_query_source=gcp.vertex.AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs(
-                uri=pulumi.Output.all(tf_test_table.project, tf_test_table.dataset_id, tf_test_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
-                entity_id_columns=["test_entity_column"],
-            ))
+            sync_config={
+                "cron": "0 0 * * *",
+            },
+            big_query_source={
+                "uri": pulumi.Output.all(tf_test_table.project, tf_test_table.dataset_id, tf_test_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                "entityIdColumns": ["test_entity_column"],
+            })
         project = gcp.organizations.get_project()
         ```
         ### Vertex Ai Featureonlinestore Featureview Feature Registry
@@ -525,13 +530,13 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            bigtable=gcp.vertex.AiFeatureOnlineStoreBigtableArgs(
-                auto_scaling=gcp.vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs(
-                    min_node_count=1,
-                    max_node_count=2,
-                    cpu_utilization_target=80,
-                ),
-            ))
+            bigtable={
+                "autoScaling": {
+                    "minNodeCount": 1,
+                    "maxNodeCount": 2,
+                    "cpuUtilizationTarget": 80,
+                },
+            })
         sample_dataset = gcp.bigquery.Dataset("sample_dataset",
             dataset_id="example_feature_view_feature_registry",
             friendly_name="test",
@@ -566,12 +571,12 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             labels={
                 "label-one": "value-one",
             },
-            big_query=gcp.vertex.AiFeatureGroupBigQueryArgs(
-                big_query_source=gcp.vertex.AiFeatureGroupBigQueryBigQuerySourceArgs(
-                    input_uri=pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
-                ),
-                entity_id_columns=["feature_id"],
-            ))
+            big_query={
+                "bigQuerySource": {
+                    "inputUri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                },
+                "entityIdColumns": ["feature_id"],
+            })
         sample_feature = gcp.vertex.AiFeatureGroupFeature("sample_feature",
             name="example_feature_view_feature_registry",
             region="us-central1",
@@ -584,15 +589,15 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             name="example_feature_view_feature_registry",
             region="us-central1",
             feature_online_store=featureonlinestore.name,
-            sync_config=gcp.vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs(
-                cron="0 0 * * *",
-            ),
-            feature_registry_source=gcp.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs(
-                feature_groups=[gcp.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs(
-                    feature_group_id=sample_feature_group.name,
-                    feature_ids=[sample_feature.name],
-                )],
-            ))
+            sync_config={
+                "cron": "0 0 * * *",
+            },
+            feature_registry_source={
+                "featureGroups": [{
+                    "featureGroupId": sample_feature_group.name,
+                    "featureIds": [sample_feature.name],
+                }],
+            })
         ```
         ### Vertex Ai Featureonlinestore Featureview With Vector Search
 
@@ -606,16 +611,16 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            bigtable=gcp.vertex.AiFeatureOnlineStoreBigtableArgs(
-                auto_scaling=gcp.vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs(
-                    min_node_count=1,
-                    max_node_count=2,
-                    cpu_utilization_target=80,
-                ),
-            ),
-            embedding_management=gcp.vertex.AiFeatureOnlineStoreEmbeddingManagementArgs(
-                enabled=True,
-            ))
+            bigtable={
+                "autoScaling": {
+                    "minNodeCount": 1,
+                    "maxNodeCount": 2,
+                    "cpuUtilizationTarget": 80,
+                },
+            },
+            embedding_management={
+                "enabled": True,
+            })
         tf_test_dataset = gcp.bigquery.Dataset("tf-test-dataset",
             dataset_id="example_feature_view_vector_search",
             friendly_name="test",
@@ -674,23 +679,23 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             name="example_feature_view_vector_search",
             region="us-central1",
             feature_online_store=featureonlinestore.name,
-            sync_config=gcp.vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs(
-                cron="0 0 * * *",
-            ),
-            big_query_source=gcp.vertex.AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs(
-                uri=pulumi.Output.all(tf_test_table.project, tf_test_table.dataset_id, tf_test_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
-                entity_id_columns=["test_entity_column"],
-            ),
-            vector_search_config=gcp.vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs(
-                embedding_column="embedding",
-                filter_columns=["country"],
-                crowding_column="test_crowding_column",
-                distance_measure_type="DOT_PRODUCT_DISTANCE",
-                tree_ah_config=gcp.vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs(
-                    leaf_node_embedding_count="1000",
-                ),
-                embedding_dimension=2,
-            ))
+            sync_config={
+                "cron": "0 0 * * *",
+            },
+            big_query_source={
+                "uri": pulumi.Output.all(tf_test_table.project, tf_test_table.dataset_id, tf_test_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                "entityIdColumns": ["test_entity_column"],
+            },
+            vector_search_config={
+                "embeddingColumn": "embedding",
+                "filterColumns": ["country"],
+                "crowdingColumn": "test_crowding_column",
+                "distanceMeasureType": "DOT_PRODUCT_DISTANCE",
+                "treeAhConfig": {
+                    "leafNodeEmbeddingCount": "1000",
+                },
+                "embeddingDimension": 2,
+            })
         project = gcp.organizations.get_project()
         ```
 
@@ -726,10 +731,10 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs']] big_query_source: Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs', 'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict']] big_query_source: Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input[str] feature_online_store: The name of the FeatureOnlineStore to use for the featureview.
-        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs']] feature_registry_source: Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs', 'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict']] feature_registry_source: Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this FeatureView.
                
@@ -742,9 +747,9 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewSyncConfigArgs']] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict']] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs']] vector_search_config: Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict']] vector_search_config: Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
                Structure is documented below.
         """
         ...
@@ -776,13 +781,13 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            bigtable=gcp.vertex.AiFeatureOnlineStoreBigtableArgs(
-                auto_scaling=gcp.vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs(
-                    min_node_count=1,
-                    max_node_count=2,
-                    cpu_utilization_target=80,
-                ),
-            ))
+            bigtable={
+                "autoScaling": {
+                    "minNodeCount": 1,
+                    "maxNodeCount": 2,
+                    "cpuUtilizationTarget": 80,
+                },
+            })
         tf_test_dataset = gcp.bigquery.Dataset("tf-test-dataset",
             dataset_id="example_feature_view",
             friendly_name="test",
@@ -817,13 +822,13 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             name="example_feature_view",
             region="us-central1",
             feature_online_store=featureonlinestore.name,
-            sync_config=gcp.vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs(
-                cron="0 0 * * *",
-            ),
-            big_query_source=gcp.vertex.AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs(
-                uri=pulumi.Output.all(tf_test_table.project, tf_test_table.dataset_id, tf_test_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
-                entity_id_columns=["test_entity_column"],
-            ))
+            sync_config={
+                "cron": "0 0 * * *",
+            },
+            big_query_source={
+                "uri": pulumi.Output.all(tf_test_table.project, tf_test_table.dataset_id, tf_test_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                "entityIdColumns": ["test_entity_column"],
+            })
         project = gcp.organizations.get_project()
         ```
         ### Vertex Ai Featureonlinestore Featureview Feature Registry
@@ -838,13 +843,13 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            bigtable=gcp.vertex.AiFeatureOnlineStoreBigtableArgs(
-                auto_scaling=gcp.vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs(
-                    min_node_count=1,
-                    max_node_count=2,
-                    cpu_utilization_target=80,
-                ),
-            ))
+            bigtable={
+                "autoScaling": {
+                    "minNodeCount": 1,
+                    "maxNodeCount": 2,
+                    "cpuUtilizationTarget": 80,
+                },
+            })
         sample_dataset = gcp.bigquery.Dataset("sample_dataset",
             dataset_id="example_feature_view_feature_registry",
             friendly_name="test",
@@ -879,12 +884,12 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             labels={
                 "label-one": "value-one",
             },
-            big_query=gcp.vertex.AiFeatureGroupBigQueryArgs(
-                big_query_source=gcp.vertex.AiFeatureGroupBigQueryBigQuerySourceArgs(
-                    input_uri=pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
-                ),
-                entity_id_columns=["feature_id"],
-            ))
+            big_query={
+                "bigQuerySource": {
+                    "inputUri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                },
+                "entityIdColumns": ["feature_id"],
+            })
         sample_feature = gcp.vertex.AiFeatureGroupFeature("sample_feature",
             name="example_feature_view_feature_registry",
             region="us-central1",
@@ -897,15 +902,15 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             name="example_feature_view_feature_registry",
             region="us-central1",
             feature_online_store=featureonlinestore.name,
-            sync_config=gcp.vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs(
-                cron="0 0 * * *",
-            ),
-            feature_registry_source=gcp.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs(
-                feature_groups=[gcp.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs(
-                    feature_group_id=sample_feature_group.name,
-                    feature_ids=[sample_feature.name],
-                )],
-            ))
+            sync_config={
+                "cron": "0 0 * * *",
+            },
+            feature_registry_source={
+                "featureGroups": [{
+                    "featureGroupId": sample_feature_group.name,
+                    "featureIds": [sample_feature.name],
+                }],
+            })
         ```
         ### Vertex Ai Featureonlinestore Featureview With Vector Search
 
@@ -919,16 +924,16 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            bigtable=gcp.vertex.AiFeatureOnlineStoreBigtableArgs(
-                auto_scaling=gcp.vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs(
-                    min_node_count=1,
-                    max_node_count=2,
-                    cpu_utilization_target=80,
-                ),
-            ),
-            embedding_management=gcp.vertex.AiFeatureOnlineStoreEmbeddingManagementArgs(
-                enabled=True,
-            ))
+            bigtable={
+                "autoScaling": {
+                    "minNodeCount": 1,
+                    "maxNodeCount": 2,
+                    "cpuUtilizationTarget": 80,
+                },
+            },
+            embedding_management={
+                "enabled": True,
+            })
         tf_test_dataset = gcp.bigquery.Dataset("tf-test-dataset",
             dataset_id="example_feature_view_vector_search",
             friendly_name="test",
@@ -987,23 +992,23 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             name="example_feature_view_vector_search",
             region="us-central1",
             feature_online_store=featureonlinestore.name,
-            sync_config=gcp.vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs(
-                cron="0 0 * * *",
-            ),
-            big_query_source=gcp.vertex.AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs(
-                uri=pulumi.Output.all(tf_test_table.project, tf_test_table.dataset_id, tf_test_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
-                entity_id_columns=["test_entity_column"],
-            ),
-            vector_search_config=gcp.vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs(
-                embedding_column="embedding",
-                filter_columns=["country"],
-                crowding_column="test_crowding_column",
-                distance_measure_type="DOT_PRODUCT_DISTANCE",
-                tree_ah_config=gcp.vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs(
-                    leaf_node_embedding_count="1000",
-                ),
-                embedding_dimension=2,
-            ))
+            sync_config={
+                "cron": "0 0 * * *",
+            },
+            big_query_source={
+                "uri": pulumi.Output.all(tf_test_table.project, tf_test_table.dataset_id, tf_test_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                "entityIdColumns": ["test_entity_column"],
+            },
+            vector_search_config={
+                "embeddingColumn": "embedding",
+                "filterColumns": ["country"],
+                "crowdingColumn": "test_crowding_column",
+                "distanceMeasureType": "DOT_PRODUCT_DISTANCE",
+                "treeAhConfig": {
+                    "leafNodeEmbeddingCount": "1000",
+                },
+                "embeddingDimension": 2,
+            })
         project = gcp.organizations.get_project()
         ```
 
@@ -1052,15 +1057,15 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 big_query_source: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs']]] = None,
+                 big_query_source: Optional[pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs', 'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict']]] = None,
                  feature_online_store: Optional[pulumi.Input[str]] = None,
-                 feature_registry_source: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs']]] = None,
+                 feature_registry_source: Optional[pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs', 'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 sync_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewSyncConfigArgs']]] = None,
-                 vector_search_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs']]] = None,
+                 sync_config: Optional[pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict']]] = None,
+                 vector_search_config: Optional[pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1099,19 +1104,19 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            big_query_source: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs']]] = None,
+            big_query_source: Optional[pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs', 'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             feature_online_store: Optional[pulumi.Input[str]] = None,
-            feature_registry_source: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs']]] = None,
+            feature_registry_source: Optional[pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs', 'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            sync_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewSyncConfigArgs']]] = None,
+            sync_config: Optional[pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict']]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            vector_search_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs']]] = None) -> 'AiFeatureOnlineStoreFeatureview':
+            vector_search_config: Optional[pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict']]] = None) -> 'AiFeatureOnlineStoreFeatureview':
         """
         Get an existing AiFeatureOnlineStoreFeatureview resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1119,12 +1124,12 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs']] big_query_source: Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs', 'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict']] big_query_source: Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The timestamp of when the featureOnlinestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] feature_online_store: The name of the FeatureOnlineStore to use for the featureview.
-        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs']] feature_registry_source: Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs', 'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict']] feature_registry_source: Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this FeatureView.
                
@@ -1139,10 +1144,10 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewSyncConfigArgs']] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict']] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
                Structure is documented below.
         :param pulumi.Input[str] update_time: The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs']] vector_search_config: Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict']] vector_search_config: Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['TargetInstanceArgs', 'TargetInstance']
@@ -428,14 +433,14 @@ class TargetInstance(pulumi.CustomResource):
             name="target-vm",
             machine_type="e2-medium",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=vmimage.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )])
+            boot_disk={
+                "initializeParams": {
+                    "image": vmimage.self_link,
+                },
+            },
+            network_interfaces=[{
+                "network": "default",
+            }])
         default = gcp.compute.TargetInstance("default",
             name="target",
             instance=target_vm.id)
@@ -453,14 +458,14 @@ class TargetInstance(pulumi.CustomResource):
             name="custom-network-target-vm",
             machine_type="e2-medium",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=vmimage.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )])
+            boot_disk={
+                "initializeParams": {
+                    "image": vmimage.self_link,
+                },
+            },
+            network_interfaces=[{
+                "network": "default",
+            }])
         custom_network = gcp.compute.TargetInstance("custom_network",
             name="custom-network",
             instance=target_vm_instance.id,
@@ -487,27 +492,27 @@ class TargetInstance(pulumi.CustomResource):
         vmimage = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         target_vm = gcp.compute.Instance("target-vm",
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-                network=default.self_link,
-                subnetwork=default_subnetwork.self_link,
-            )],
+            network_interfaces=[{
+                "accessConfigs": [{}],
+                "network": default.self_link,
+                "subnetwork": default_subnetwork.self_link,
+            }],
             name="target-vm",
             machine_type="e2-medium",
             zone="southamerica-west1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=vmimage.self_link,
-                ),
-            ))
+            boot_disk={
+                "initializeParams": {
+                    "image": vmimage.self_link,
+                },
+            })
         policyddosprotection = gcp.compute.RegionSecurityPolicy("policyddosprotection",
             region="southamerica-west1",
             name="tf-test-policyddos_85794",
             description="ddos protection security policy to set target instance",
             type="CLOUD_ARMOR_NETWORK",
-            ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
-                ddos_protection="ADVANCED_PREVIEW",
-            ))
+            ddos_protection_config={
+                "ddosProtection": "ADVANCED_PREVIEW",
+            })
         edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edge_sec_service",
             region="southamerica-west1",
             name="tf-test-edgesec_21197",
@@ -618,14 +623,14 @@ class TargetInstance(pulumi.CustomResource):
             name="target-vm",
             machine_type="e2-medium",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=vmimage.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )])
+            boot_disk={
+                "initializeParams": {
+                    "image": vmimage.self_link,
+                },
+            },
+            network_interfaces=[{
+                "network": "default",
+            }])
         default = gcp.compute.TargetInstance("default",
             name="target",
             instance=target_vm.id)
@@ -643,14 +648,14 @@ class TargetInstance(pulumi.CustomResource):
             name="custom-network-target-vm",
             machine_type="e2-medium",
             zone="us-central1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=vmimage.self_link,
-                ),
-            ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                network="default",
-            )])
+            boot_disk={
+                "initializeParams": {
+                    "image": vmimage.self_link,
+                },
+            },
+            network_interfaces=[{
+                "network": "default",
+            }])
         custom_network = gcp.compute.TargetInstance("custom_network",
             name="custom-network",
             instance=target_vm_instance.id,
@@ -677,27 +682,27 @@ class TargetInstance(pulumi.CustomResource):
         vmimage = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         target_vm = gcp.compute.Instance("target-vm",
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-                network=default.self_link,
-                subnetwork=default_subnetwork.self_link,
-            )],
+            network_interfaces=[{
+                "accessConfigs": [{}],
+                "network": default.self_link,
+                "subnetwork": default_subnetwork.self_link,
+            }],
             name="target-vm",
             machine_type="e2-medium",
             zone="southamerica-west1-a",
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                    image=vmimage.self_link,
-                ),
-            ))
+            boot_disk={
+                "initializeParams": {
+                    "image": vmimage.self_link,
+                },
+            })
         policyddosprotection = gcp.compute.RegionSecurityPolicy("policyddosprotection",
             region="southamerica-west1",
             name="tf-test-policyddos_85794",
             description="ddos protection security policy to set target instance",
             type="CLOUD_ARMOR_NETWORK",
-            ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
-                ddos_protection="ADVANCED_PREVIEW",
-            ))
+            ddos_protection_config={
+                "ddosProtection": "ADVANCED_PREVIEW",
+            })
         edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edge_sec_service",
             region="southamerica-west1",
             name="tf-test-edgesec_21197",

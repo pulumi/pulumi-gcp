@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -416,14 +421,14 @@ class Topic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ingestion_data_source_settings: Optional[pulumi.Input[pulumi.InputType['TopicIngestionDataSourceSettingsArgs']]] = None,
+                 ingestion_data_source_settings: Optional[pulumi.Input[Union['TopicIngestionDataSourceSettingsArgs', 'TopicIngestionDataSourceSettingsArgsDict']]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
-                 message_storage_policy: Optional[pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']]] = None,
+                 message_storage_policy: Optional[pulumi.Input[Union['TopicMessageStoragePolicyArgs', 'TopicMessageStoragePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schema_settings: Optional[pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']]] = None,
+                 schema_settings: Optional[pulumi.Input[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict']]] = None,
                  __props__=None):
         """
         A named resource to which messages are sent by publishers.
@@ -476,9 +481,9 @@ class Topic(pulumi.CustomResource):
 
         example = gcp.pubsub.Topic("example",
             name="example-topic",
-            message_storage_policy=gcp.pubsub.TopicMessageStoragePolicyArgs(
-                allowed_persistence_regions=["europe-west3"],
-            ))
+            message_storage_policy={
+                "allowedPersistenceRegions": ["europe-west3"],
+            })
         ```
         ### Pubsub Topic Schema Settings
 
@@ -506,10 +511,10 @@ class Topic(pulumi.CustomResource):
         \"\"\")
         example_topic = gcp.pubsub.Topic("example",
             name="example-topic",
-            schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
-                schema="projects/my-project-name/schemas/example",
-                encoding="JSON",
-            ),
+            schema_settings={
+                "schema": "projects/my-project-name/schemas/example",
+                "encoding": "JSON",
+            },
             opts = pulumi.ResourceOptions(depends_on=[example]))
         ```
         ### Pubsub Topic Ingestion Kinesis
@@ -520,14 +525,14 @@ class Topic(pulumi.CustomResource):
 
         example = gcp.pubsub.Topic("example",
             name="example-topic",
-            ingestion_data_source_settings=gcp.pubsub.TopicIngestionDataSourceSettingsArgs(
-                aws_kinesis=gcp.pubsub.TopicIngestionDataSourceSettingsAwsKinesisArgs(
-                    stream_arn="arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name",
-                    consumer_arn="arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111",
-                    aws_role_arn="arn:aws:iam::111111111111:role/fake-role-name",
-                    gcp_service_account="fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
-                ),
-            ))
+            ingestion_data_source_settings={
+                "awsKinesis": {
+                    "streamArn": "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name",
+                    "consumerArn": "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111",
+                    "awsRoleArn": "arn:aws:iam::111111111111:role/fake-role-name",
+                    "gcpServiceAccount": "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
+                },
+            })
         ```
 
         ## Import
@@ -556,7 +561,7 @@ class Topic(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['TopicIngestionDataSourceSettingsArgs']] ingestion_data_source_settings: Settings for ingestion from a data source into this topic.
+        :param pulumi.Input[Union['TopicIngestionDataSourceSettingsArgs', 'TopicIngestionDataSourceSettingsArgsDict']] ingestion_data_source_settings: Settings for ingestion from a data source into this topic.
                Structure is documented below.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access
                to messages published on this topic. Your project's PubSub service account
@@ -575,7 +580,7 @@ class Topic(pulumi.CustomResource):
                set, message retention is controlled by settings on individual subscriptions.
                The rotation period has the format of a decimal number, followed by the
                letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
-        :param pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
+        :param pulumi.Input[Union['TopicMessageStoragePolicyArgs', 'TopicMessageStoragePolicyArgsDict']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
                constraints are in effect.
                Structure is documented below.
@@ -585,7 +590,7 @@ class Topic(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']] schema_settings: Settings for validating messages published against a schema.
+        :param pulumi.Input[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict']] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
         """
         ...
@@ -645,9 +650,9 @@ class Topic(pulumi.CustomResource):
 
         example = gcp.pubsub.Topic("example",
             name="example-topic",
-            message_storage_policy=gcp.pubsub.TopicMessageStoragePolicyArgs(
-                allowed_persistence_regions=["europe-west3"],
-            ))
+            message_storage_policy={
+                "allowedPersistenceRegions": ["europe-west3"],
+            })
         ```
         ### Pubsub Topic Schema Settings
 
@@ -675,10 +680,10 @@ class Topic(pulumi.CustomResource):
         \"\"\")
         example_topic = gcp.pubsub.Topic("example",
             name="example-topic",
-            schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
-                schema="projects/my-project-name/schemas/example",
-                encoding="JSON",
-            ),
+            schema_settings={
+                "schema": "projects/my-project-name/schemas/example",
+                "encoding": "JSON",
+            },
             opts = pulumi.ResourceOptions(depends_on=[example]))
         ```
         ### Pubsub Topic Ingestion Kinesis
@@ -689,14 +694,14 @@ class Topic(pulumi.CustomResource):
 
         example = gcp.pubsub.Topic("example",
             name="example-topic",
-            ingestion_data_source_settings=gcp.pubsub.TopicIngestionDataSourceSettingsArgs(
-                aws_kinesis=gcp.pubsub.TopicIngestionDataSourceSettingsAwsKinesisArgs(
-                    stream_arn="arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name",
-                    consumer_arn="arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111",
-                    aws_role_arn="arn:aws:iam::111111111111:role/fake-role-name",
-                    gcp_service_account="fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
-                ),
-            ))
+            ingestion_data_source_settings={
+                "awsKinesis": {
+                    "streamArn": "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name",
+                    "consumerArn": "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111",
+                    "awsRoleArn": "arn:aws:iam::111111111111:role/fake-role-name",
+                    "gcpServiceAccount": "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
+                },
+            })
         ```
 
         ## Import
@@ -738,14 +743,14 @@ class Topic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ingestion_data_source_settings: Optional[pulumi.Input[pulumi.InputType['TopicIngestionDataSourceSettingsArgs']]] = None,
+                 ingestion_data_source_settings: Optional[pulumi.Input[Union['TopicIngestionDataSourceSettingsArgs', 'TopicIngestionDataSourceSettingsArgsDict']]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
-                 message_storage_policy: Optional[pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']]] = None,
+                 message_storage_policy: Optional[pulumi.Input[Union['TopicMessageStoragePolicyArgs', 'TopicMessageStoragePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schema_settings: Optional[pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']]] = None,
+                 schema_settings: Optional[pulumi.Input[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -778,15 +783,15 @@ class Topic(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            ingestion_data_source_settings: Optional[pulumi.Input[pulumi.InputType['TopicIngestionDataSourceSettingsArgs']]] = None,
+            ingestion_data_source_settings: Optional[pulumi.Input[Union['TopicIngestionDataSourceSettingsArgs', 'TopicIngestionDataSourceSettingsArgsDict']]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             message_retention_duration: Optional[pulumi.Input[str]] = None,
-            message_storage_policy: Optional[pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']]] = None,
+            message_storage_policy: Optional[pulumi.Input[Union['TopicMessageStoragePolicyArgs', 'TopicMessageStoragePolicyArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            schema_settings: Optional[pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']]] = None) -> 'Topic':
+            schema_settings: Optional[pulumi.Input[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict']]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -795,7 +800,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['TopicIngestionDataSourceSettingsArgs']] ingestion_data_source_settings: Settings for ingestion from a data source into this topic.
+        :param pulumi.Input[Union['TopicIngestionDataSourceSettingsArgs', 'TopicIngestionDataSourceSettingsArgsDict']] ingestion_data_source_settings: Settings for ingestion from a data source into this topic.
                Structure is documented below.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access
                to messages published on this topic. Your project's PubSub service account
@@ -814,7 +819,7 @@ class Topic(pulumi.CustomResource):
                set, message retention is controlled by settings on individual subscriptions.
                The rotation period has the format of a decimal number, followed by the
                letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
-        :param pulumi.Input[pulumi.InputType['TopicMessageStoragePolicyArgs']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
+        :param pulumi.Input[Union['TopicMessageStoragePolicyArgs', 'TopicMessageStoragePolicyArgsDict']] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
                constraints are in effect.
                Structure is documented below.
@@ -826,7 +831,7 @@ class Topic(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']] schema_settings: Settings for validating messages published against a schema.
+        :param pulumi.Input[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict']] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

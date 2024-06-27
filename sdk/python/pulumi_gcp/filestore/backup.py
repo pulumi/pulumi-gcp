@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['BackupArgs', 'Backup']
@@ -481,15 +486,15 @@ class Backup(pulumi.CustomResource):
             name="tf-fs-inst",
             location="us-central1-b",
             tier="BASIC_HDD",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=1024,
-                name="share1",
-            ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                network="default",
-                modes=["MODE_IPV4"],
-                connect_mode="DIRECT_PEERING",
-            )])
+            file_shares={
+                "capacityGb": 1024,
+                "name": "share1",
+            },
+            networks=[{
+                "network": "default",
+                "modes": ["MODE_IPV4"],
+                "connectMode": "DIRECT_PEERING",
+            }])
         backup = gcp.filestore.Backup("backup",
             name="tf-fs-bkup",
             location="us-central1",
@@ -577,15 +582,15 @@ class Backup(pulumi.CustomResource):
             name="tf-fs-inst",
             location="us-central1-b",
             tier="BASIC_HDD",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=1024,
-                name="share1",
-            ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                network="default",
-                modes=["MODE_IPV4"],
-                connect_mode="DIRECT_PEERING",
-            )])
+            file_shares={
+                "capacityGb": 1024,
+                "name": "share1",
+            },
+            networks=[{
+                "network": "default",
+                "modes": ["MODE_IPV4"],
+                "connectMode": "DIRECT_PEERING",
+            }])
         backup = gcp.filestore.Backup("backup",
             name="tf-fs-bkup",
             location="us-central1",

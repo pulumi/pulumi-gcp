@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -369,8 +374,8 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
                  keystore: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  sig_alg: Optional[pulumi.Input[str]] = None,
-                 subject: Optional[pulumi.Input[pulumi.InputType['KeystoresAliasesSelfSignedCertSubjectArgs']]] = None,
-                 subject_alternative_dns_names: Optional[pulumi.Input[pulumi.InputType['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs']]] = None,
+                 subject: Optional[pulumi.Input[Union['KeystoresAliasesSelfSignedCertSubjectArgs', 'KeystoresAliasesSelfSignedCertSubjectArgsDict']]] = None,
+                 subject_alternative_dns_names: Optional[pulumi.Input[Union['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs', 'KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgsDict']]] = None,
                  __props__=None):
         """
         An Environment Keystore Alias for Self Signed Certificate Format in Apigee
@@ -445,13 +450,13 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
             key_size="1024",
             sig_alg="SHA512withRSA",
             cert_validity_in_days=4,
-            subject=gcp.apigee.KeystoresAliasesSelfSignedCertSubjectArgs(
-                common_name="selfsigned_example",
-                country_code="US",
-                locality="TX",
-                org="CCE",
-                org_unit="PSO",
-            ))
+            subject={
+                "commonName": "selfsigned_example",
+                "countryCode": "US",
+                "locality": "TX",
+                "org": "CCE",
+                "orgUnit": "PSO",
+            })
         ```
 
         ## Import
@@ -483,9 +488,9 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
         :param pulumi.Input[str] keystore: The Apigee keystore name associated in an Apigee environment
         :param pulumi.Input[str] org_id: The Apigee Organization name associated with the Apigee environment
         :param pulumi.Input[str] sig_alg: Signature algorithm to generate private key. Valid values are SHA512withRSA, SHA384withRSA, and SHA256withRSA
-        :param pulumi.Input[pulumi.InputType['KeystoresAliasesSelfSignedCertSubjectArgs']] subject: Subject details.
+        :param pulumi.Input[Union['KeystoresAliasesSelfSignedCertSubjectArgs', 'KeystoresAliasesSelfSignedCertSubjectArgsDict']] subject: Subject details.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs']] subject_alternative_dns_names: List of alternative host names. Maximum length is 255 characters for each value.
+        :param pulumi.Input[Union['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs', 'KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgsDict']] subject_alternative_dns_names: List of alternative host names. Maximum length is 255 characters for each value.
         """
         ...
     @overload
@@ -566,13 +571,13 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
             key_size="1024",
             sig_alg="SHA512withRSA",
             cert_validity_in_days=4,
-            subject=gcp.apigee.KeystoresAliasesSelfSignedCertSubjectArgs(
-                common_name="selfsigned_example",
-                country_code="US",
-                locality="TX",
-                org="CCE",
-                org_unit="PSO",
-            ))
+            subject={
+                "commonName": "selfsigned_example",
+                "countryCode": "US",
+                "locality": "TX",
+                "org": "CCE",
+                "orgUnit": "PSO",
+            })
         ```
 
         ## Import
@@ -615,8 +620,8 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
                  keystore: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  sig_alg: Optional[pulumi.Input[str]] = None,
-                 subject: Optional[pulumi.Input[pulumi.InputType['KeystoresAliasesSelfSignedCertSubjectArgs']]] = None,
-                 subject_alternative_dns_names: Optional[pulumi.Input[pulumi.InputType['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs']]] = None,
+                 subject: Optional[pulumi.Input[Union['KeystoresAliasesSelfSignedCertSubjectArgs', 'KeystoresAliasesSelfSignedCertSubjectArgsDict']]] = None,
+                 subject_alternative_dns_names: Optional[pulumi.Input[Union['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs', 'KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -661,14 +666,14 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             alias: Optional[pulumi.Input[str]] = None,
             cert_validity_in_days: Optional[pulumi.Input[int]] = None,
-            certs_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeystoresAliasesSelfSignedCertCertsInfoArgs']]]]] = None,
+            certs_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KeystoresAliasesSelfSignedCertCertsInfoArgs', 'KeystoresAliasesSelfSignedCertCertsInfoArgsDict']]]]] = None,
             environment: Optional[pulumi.Input[str]] = None,
             key_size: Optional[pulumi.Input[str]] = None,
             keystore: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             sig_alg: Optional[pulumi.Input[str]] = None,
-            subject: Optional[pulumi.Input[pulumi.InputType['KeystoresAliasesSelfSignedCertSubjectArgs']]] = None,
-            subject_alternative_dns_names: Optional[pulumi.Input[pulumi.InputType['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs']]] = None,
+            subject: Optional[pulumi.Input[Union['KeystoresAliasesSelfSignedCertSubjectArgs', 'KeystoresAliasesSelfSignedCertSubjectArgsDict']]] = None,
+            subject_alternative_dns_names: Optional[pulumi.Input[Union['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs', 'KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'KeystoresAliasesSelfSignedCert':
         """
         Get an existing KeystoresAliasesSelfSignedCert resource's state with the given name, id, and optional extra
@@ -681,16 +686,16 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
                This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
                this parameter or the JSON body.
         :param pulumi.Input[int] cert_validity_in_days: Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeystoresAliasesSelfSignedCertCertsInfoArgs']]]] certs_infos: Chain of certificates under this alias.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KeystoresAliasesSelfSignedCertCertsInfoArgs', 'KeystoresAliasesSelfSignedCertCertsInfoArgsDict']]]] certs_infos: Chain of certificates under this alias.
                Structure is documented below.
         :param pulumi.Input[str] environment: The Apigee environment name
         :param pulumi.Input[str] key_size: Key size. Default and maximum value is 2048 bits.
         :param pulumi.Input[str] keystore: The Apigee keystore name associated in an Apigee environment
         :param pulumi.Input[str] org_id: The Apigee Organization name associated with the Apigee environment
         :param pulumi.Input[str] sig_alg: Signature algorithm to generate private key. Valid values are SHA512withRSA, SHA384withRSA, and SHA256withRSA
-        :param pulumi.Input[pulumi.InputType['KeystoresAliasesSelfSignedCertSubjectArgs']] subject: Subject details.
+        :param pulumi.Input[Union['KeystoresAliasesSelfSignedCertSubjectArgs', 'KeystoresAliasesSelfSignedCertSubjectArgsDict']] subject: Subject details.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs']] subject_alternative_dns_names: List of alternative host names. Maximum length is 255 characters for each value.
+        :param pulumi.Input[Union['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs', 'KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgsDict']] subject_alternative_dns_names: List of alternative host names. Maximum length is 255 characters for each value.
         :param pulumi.Input[str] type: Optional.Type of Alias
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

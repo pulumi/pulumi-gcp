@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['CryptoKeyIAMPolicyArgs', 'CryptoKeyIAMPolicy']
@@ -151,10 +156,10 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             name="crypto-key-example",
             key_ring=keyring.id,
             rotation_period="7776000s")
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/cloudkms.cryptoKeyEncrypter",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/cloudkms.cryptoKeyEncrypter",
+            "members": ["user:jane@example.com"],
+        }])
         crypto_key = gcp.kms.CryptoKeyIAMPolicy("crypto_key",
             crypto_key_id=key.id,
             policy_data=admin.policy_data)
@@ -166,15 +171,15 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/cloudkms.cryptoKeyEncrypter",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/cloudkms.cryptoKeyEncrypter",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         ```
 
         ```python
@@ -197,11 +202,11 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             crypto_key_id=key["id"],
             role="roles/cloudkms.cryptoKeyEncrypter",
             members=["user:jane@example.com"],
-            condition=gcp.kms.CryptoKeyIAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ```python
@@ -224,11 +229,11 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             crypto_key_id=key["id"],
             role="roles/cloudkms.cryptoKeyEncrypter",
             member="user:jane@example.com",
-            condition=gcp.kms.CryptoKeyIAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import
@@ -294,10 +299,10 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             name="crypto-key-example",
             key_ring=keyring.id,
             rotation_period="7776000s")
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/cloudkms.cryptoKeyEncrypter",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/cloudkms.cryptoKeyEncrypter",
+            "members": ["user:jane@example.com"],
+        }])
         crypto_key = gcp.kms.CryptoKeyIAMPolicy("crypto_key",
             crypto_key_id=key.id,
             policy_data=admin.policy_data)
@@ -309,15 +314,15 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/cloudkms.cryptoKeyEncrypter",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/cloudkms.cryptoKeyEncrypter",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         ```
 
         ```python
@@ -340,11 +345,11 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             crypto_key_id=key["id"],
             role="roles/cloudkms.cryptoKeyEncrypter",
             members=["user:jane@example.com"],
-            condition=gcp.kms.CryptoKeyIAMBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ```python
@@ -367,11 +372,11 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             crypto_key_id=key["id"],
             role="roles/cloudkms.cryptoKeyEncrypter",
             member="user:jane@example.com",
-            condition=gcp.kms.CryptoKeyIAMMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import

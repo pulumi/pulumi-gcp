@@ -4,35 +4,72 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AddressGroupIamBindingConditionArgs',
+    'AddressGroupIamBindingConditionArgsDict',
     'AddressGroupIamMemberConditionArgs',
+    'AddressGroupIamMemberConditionArgsDict',
     'AuthorizationPolicyRuleArgs',
+    'AuthorizationPolicyRuleArgsDict',
     'AuthorizationPolicyRuleDestinationArgs',
+    'AuthorizationPolicyRuleDestinationArgsDict',
     'AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs',
+    'AuthorizationPolicyRuleDestinationHttpHeaderMatchArgsDict',
     'AuthorizationPolicyRuleSourceArgs',
+    'AuthorizationPolicyRuleSourceArgsDict',
     'ClientTlsPolicyClientCertificateArgs',
+    'ClientTlsPolicyClientCertificateArgsDict',
     'ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs',
+    'ClientTlsPolicyClientCertificateCertificateProviderInstanceArgsDict',
     'ClientTlsPolicyClientCertificateGrpcEndpointArgs',
+    'ClientTlsPolicyClientCertificateGrpcEndpointArgsDict',
     'ClientTlsPolicyServerValidationCaArgs',
+    'ClientTlsPolicyServerValidationCaArgsDict',
     'ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs',
+    'ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgsDict',
     'ClientTlsPolicyServerValidationCaGrpcEndpointArgs',
+    'ClientTlsPolicyServerValidationCaGrpcEndpointArgsDict',
     'SecurityProfileThreatPreventionProfileArgs',
+    'SecurityProfileThreatPreventionProfileArgsDict',
     'SecurityProfileThreatPreventionProfileSeverityOverrideArgs',
+    'SecurityProfileThreatPreventionProfileSeverityOverrideArgsDict',
     'SecurityProfileThreatPreventionProfileThreatOverrideArgs',
+    'SecurityProfileThreatPreventionProfileThreatOverrideArgsDict',
     'ServerTlsPolicyMtlsPolicyArgs',
+    'ServerTlsPolicyMtlsPolicyArgsDict',
     'ServerTlsPolicyMtlsPolicyClientValidationCaArgs',
+    'ServerTlsPolicyMtlsPolicyClientValidationCaArgsDict',
     'ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs',
+    'ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgsDict',
     'ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs',
+    'ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgsDict',
     'ServerTlsPolicyServerCertificateArgs',
+    'ServerTlsPolicyServerCertificateArgsDict',
     'ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs',
+    'ServerTlsPolicyServerCertificateCertificateProviderInstanceArgsDict',
     'ServerTlsPolicyServerCertificateGrpcEndpointArgs',
+    'ServerTlsPolicyServerCertificateGrpcEndpointArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AddressGroupIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    AddressGroupIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AddressGroupIamBindingConditionArgs:
@@ -73,6 +110,14 @@ class AddressGroupIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class AddressGroupIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    AddressGroupIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AddressGroupIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -111,6 +156,23 @@ class AddressGroupIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class AuthorizationPolicyRuleArgsDict(TypedDict):
+        destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArgsDict']]]]
+        """
+        List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers.
+        If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
+        Structure is documented below.
+        """
+        sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArgsDict']]]]
+        """
+        List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ipBlocks match.
+        If not set, the action specified in the 'action' field will be applied without any rule checks for the source.
+        Structure is documented below.
+        """
+elif False:
+    AuthorizationPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AuthorizationPolicyRuleArgs:
@@ -158,6 +220,29 @@ class AuthorizationPolicyRuleArgs:
     def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArgs']]]]):
         pulumi.set(self, "sources", value)
 
+
+if not MYPY:
+    class AuthorizationPolicyRuleDestinationArgsDict(TypedDict):
+        hosts: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
+        """
+        methods: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of HTTP methods to match. At least one method should match. Should not be set for gRPC services.
+        """
+        ports: pulumi.Input[Sequence[pulumi.Input[int]]]
+        """
+        List of destination ports to match. At least one port should match.
+        """
+        http_header_match: NotRequired[pulumi.Input['AuthorizationPolicyRuleDestinationHttpHeaderMatchArgsDict']]
+        """
+        Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match.
+        Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
+        Structure is documented below.
+        """
+elif False:
+    AuthorizationPolicyRuleDestinationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AuthorizationPolicyRuleDestinationArgs:
@@ -231,6 +316,19 @@ class AuthorizationPolicyRuleDestinationArgs:
         pulumi.set(self, "http_header_match", value)
 
 
+if not MYPY:
+    class AuthorizationPolicyRuleDestinationHttpHeaderMatchArgsDict(TypedDict):
+        header_name: pulumi.Input[str]
+        """
+        The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
+        """
+        regex_match: pulumi.Input[str]
+        """
+        The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: en.cppreference.com/w/cpp/regex/ecmascript For matching against a port specified in the HTTP request, use a headerMatch with headerName set to Host and a regular expression that satisfies the RFC2616 Host header's port specifier.
+        """
+elif False:
+    AuthorizationPolicyRuleDestinationHttpHeaderMatchArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs:
     def __init__(__self__, *,
@@ -267,6 +365,21 @@ class AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs:
     def regex_match(self, value: pulumi.Input[str]):
         pulumi.set(self, "regex_match", value)
 
+
+if not MYPY:
+    class AuthorizationPolicyRuleSourceArgsDict(TypedDict):
+        ip_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided.
+        The IP addresses of any load balancers or proxies should be considered untrusted.
+        """
+        principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*/service-account") or a presence match "*".
+        Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
+        """
+elif False:
+    AuthorizationPolicyRuleSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AuthorizationPolicyRuleSourceArgs:
@@ -311,6 +424,21 @@ class AuthorizationPolicyRuleSourceArgs:
         pulumi.set(self, "principals", value)
 
 
+if not MYPY:
+    class ClientTlsPolicyClientCertificateArgsDict(TypedDict):
+        certificate_provider_instance: NotRequired[pulumi.Input['ClientTlsPolicyClientCertificateCertificateProviderInstanceArgsDict']]
+        """
+        The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
+        Structure is documented below.
+        """
+        grpc_endpoint: NotRequired[pulumi.Input['ClientTlsPolicyClientCertificateGrpcEndpointArgsDict']]
+        """
+        gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+        Structure is documented below.
+        """
+elif False:
+    ClientTlsPolicyClientCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientTlsPolicyClientCertificateArgs:
     def __init__(__self__, *,
@@ -354,6 +482,15 @@ class ClientTlsPolicyClientCertificateArgs:
         pulumi.set(self, "grpc_endpoint", value)
 
 
+if not MYPY:
+    class ClientTlsPolicyClientCertificateCertificateProviderInstanceArgsDict(TypedDict):
+        plugin_instance: pulumi.Input[str]
+        """
+        Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
+        """
+elif False:
+    ClientTlsPolicyClientCertificateCertificateProviderInstanceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs:
     def __init__(__self__, *,
@@ -376,6 +513,15 @@ class ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs:
         pulumi.set(self, "plugin_instance", value)
 
 
+if not MYPY:
+    class ClientTlsPolicyClientCertificateGrpcEndpointArgsDict(TypedDict):
+        target_uri: pulumi.Input[str]
+        """
+        The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+        """
+elif False:
+    ClientTlsPolicyClientCertificateGrpcEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientTlsPolicyClientCertificateGrpcEndpointArgs:
     def __init__(__self__, *,
@@ -397,6 +543,21 @@ class ClientTlsPolicyClientCertificateGrpcEndpointArgs:
     def target_uri(self, value: pulumi.Input[str]):
         pulumi.set(self, "target_uri", value)
 
+
+if not MYPY:
+    class ClientTlsPolicyServerValidationCaArgsDict(TypedDict):
+        certificate_provider_instance: NotRequired[pulumi.Input['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgsDict']]
+        """
+        The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
+        Structure is documented below.
+        """
+        grpc_endpoint: NotRequired[pulumi.Input['ClientTlsPolicyServerValidationCaGrpcEndpointArgsDict']]
+        """
+        gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+        Structure is documented below.
+        """
+elif False:
+    ClientTlsPolicyServerValidationCaArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClientTlsPolicyServerValidationCaArgs:
@@ -441,6 +602,15 @@ class ClientTlsPolicyServerValidationCaArgs:
         pulumi.set(self, "grpc_endpoint", value)
 
 
+if not MYPY:
+    class ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgsDict(TypedDict):
+        plugin_instance: pulumi.Input[str]
+        """
+        Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
+        """
+elif False:
+    ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs:
     def __init__(__self__, *,
@@ -463,6 +633,15 @@ class ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs:
         pulumi.set(self, "plugin_instance", value)
 
 
+if not MYPY:
+    class ClientTlsPolicyServerValidationCaGrpcEndpointArgsDict(TypedDict):
+        target_uri: pulumi.Input[str]
+        """
+        The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+        """
+elif False:
+    ClientTlsPolicyServerValidationCaGrpcEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClientTlsPolicyServerValidationCaGrpcEndpointArgs:
     def __init__(__self__, *,
@@ -484,6 +663,23 @@ class ClientTlsPolicyServerValidationCaGrpcEndpointArgs:
     def target_uri(self, value: pulumi.Input[str]):
         pulumi.set(self, "target_uri", value)
 
+
+if not MYPY:
+    class SecurityProfileThreatPreventionProfileArgsDict(TypedDict):
+        severity_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileSeverityOverrideArgsDict']]]]
+        """
+        The configuration for overriding threats actions by severity match.
+        Structure is documented below.
+        """
+        threat_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileThreatOverrideArgsDict']]]]
+        """
+        The configuration for overriding threats actions by threat id match.
+        If a threat is matched both by configuration provided in severity overrides
+        and threat overrides, the threat overrides action is applied.
+        Structure is documented below.
+        """
+elif False:
+    SecurityProfileThreatPreventionProfileArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecurityProfileThreatPreventionProfileArgs:
@@ -532,6 +728,21 @@ class SecurityProfileThreatPreventionProfileArgs:
         pulumi.set(self, "threat_overrides", value)
 
 
+if not MYPY:
+    class SecurityProfileThreatPreventionProfileSeverityOverrideArgsDict(TypedDict):
+        action: pulumi.Input[str]
+        """
+        Threat action override.
+        Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+        """
+        severity: pulumi.Input[str]
+        """
+        Severity level to match.
+        Possible values are: `CRITICAL`, `HIGH`, `INFORMATIONAL`, `LOW`, `MEDIUM`.
+        """
+elif False:
+    SecurityProfileThreatPreventionProfileSeverityOverrideArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecurityProfileThreatPreventionProfileSeverityOverrideArgs:
     def __init__(__self__, *,
@@ -572,6 +783,25 @@ class SecurityProfileThreatPreventionProfileSeverityOverrideArgs:
     def severity(self, value: pulumi.Input[str]):
         pulumi.set(self, "severity", value)
 
+
+if not MYPY:
+    class SecurityProfileThreatPreventionProfileThreatOverrideArgsDict(TypedDict):
+        action: pulumi.Input[str]
+        """
+        Threat action.
+        Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+        """
+        threat_id: pulumi.Input[str]
+        """
+        Vendor-specific ID of a threat to override.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Type of threat.
+        """
+elif False:
+    SecurityProfileThreatPreventionProfileThreatOverrideArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecurityProfileThreatPreventionProfileThreatOverrideArgs:
@@ -629,6 +859,29 @@ class SecurityProfileThreatPreventionProfileThreatOverrideArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class ServerTlsPolicyMtlsPolicyArgsDict(TypedDict):
+        client_validation_cas: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgsDict']]]]
+        """
+        Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
+        Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+        Structure is documented below.
+        """
+        client_validation_mode: NotRequired[pulumi.Input[str]]
+        """
+        When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
+        Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+        Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+        """
+        client_validation_trust_config: NotRequired[pulumi.Input[str]]
+        """
+        Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
+        If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
+        Allowed only if the policy is to be used with external HTTPS load balancers.
+        """
+elif False:
+    ServerTlsPolicyMtlsPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServerTlsPolicyMtlsPolicyArgs:
@@ -697,6 +950,22 @@ class ServerTlsPolicyMtlsPolicyArgs:
         pulumi.set(self, "client_validation_trust_config", value)
 
 
+if not MYPY:
+    class ServerTlsPolicyMtlsPolicyClientValidationCaArgsDict(TypedDict):
+        certificate_provider_instance: NotRequired[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgsDict']]
+        """
+        Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+        Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+        Structure is documented below.
+        """
+        grpc_endpoint: NotRequired[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgsDict']]
+        """
+        gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+        Structure is documented below.
+        """
+elif False:
+    ServerTlsPolicyMtlsPolicyClientValidationCaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServerTlsPolicyMtlsPolicyClientValidationCaArgs:
     def __init__(__self__, *,
@@ -742,6 +1011,15 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaArgs:
         pulumi.set(self, "grpc_endpoint", value)
 
 
+if not MYPY:
+    class ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgsDict(TypedDict):
+        plugin_instance: pulumi.Input[str]
+        """
+        Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
+        """
+elif False:
+    ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs:
     def __init__(__self__, *,
@@ -764,6 +1042,15 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs
         pulumi.set(self, "plugin_instance", value)
 
 
+if not MYPY:
+    class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgsDict(TypedDict):
+        target_uri: pulumi.Input[str]
+        """
+        The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+        """
+elif False:
+    ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs:
     def __init__(__self__, *,
@@ -785,6 +1072,22 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs:
     def target_uri(self, value: pulumi.Input[str]):
         pulumi.set(self, "target_uri", value)
 
+
+if not MYPY:
+    class ServerTlsPolicyServerCertificateArgsDict(TypedDict):
+        certificate_provider_instance: NotRequired[pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgsDict']]
+        """
+        Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+        Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+        Structure is documented below.
+        """
+        grpc_endpoint: NotRequired[pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArgsDict']]
+        """
+        gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+        Structure is documented below.
+        """
+elif False:
+    ServerTlsPolicyServerCertificateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServerTlsPolicyServerCertificateArgs:
@@ -831,6 +1134,15 @@ class ServerTlsPolicyServerCertificateArgs:
         pulumi.set(self, "grpc_endpoint", value)
 
 
+if not MYPY:
+    class ServerTlsPolicyServerCertificateCertificateProviderInstanceArgsDict(TypedDict):
+        plugin_instance: pulumi.Input[str]
+        """
+        Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
+        """
+elif False:
+    ServerTlsPolicyServerCertificateCertificateProviderInstanceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs:
     def __init__(__self__, *,
@@ -852,6 +1164,15 @@ class ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs:
     def plugin_instance(self, value: pulumi.Input[str]):
         pulumi.set(self, "plugin_instance", value)
 
+
+if not MYPY:
+    class ServerTlsPolicyServerCertificateGrpcEndpointArgsDict(TypedDict):
+        target_uri: pulumi.Input[str]
+        """
+        The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+        """
+elif False:
+    ServerTlsPolicyServerCertificateGrpcEndpointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServerTlsPolicyServerCertificateGrpcEndpointArgs:

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -1358,11 +1363,11 @@ class Disk(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']]] = None,
+                 async_primary_disk: Optional[pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']]] = None,
+                 disk_encryption_key: Optional[pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']]] = None,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict']]]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1377,8 +1382,8 @@ class Disk(pulumi.CustomResource):
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot: Optional[pulumi.Input[str]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
-                 source_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArgs']]] = None,
-                 source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArgs']]] = None,
+                 source_image_encryption_key: Optional[pulumi.Input[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict']]] = None,
+                 source_snapshot_encryption_key: Optional[pulumi.Input[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict']]] = None,
                  storage_pool: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -1439,9 +1444,9 @@ class Disk(pulumi.CustomResource):
             name="async-secondary-test-disk",
             type="pd-ssd",
             zone="us-east1-c",
-            async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArgs(
-                disk=primary.id,
-            ),
+            async_primary_disk={
+                "disk": primary.id,
+            },
             physical_block_size_bytes=4096)
         ```
         ### Disk Features
@@ -1458,15 +1463,15 @@ class Disk(pulumi.CustomResource):
                 "environment": "dev",
             },
             guest_os_features=[
-                gcp.compute.DiskGuestOsFeatureArgs(
-                    type="SECURE_BOOT",
-                ),
-                gcp.compute.DiskGuestOsFeatureArgs(
-                    type="MULTI_IP_SUBNET",
-                ),
-                gcp.compute.DiskGuestOsFeatureArgs(
-                    type="WINDOWS",
-                ),
+                {
+                    "type": "SECURE_BOOT",
+                },
+                {
+                    "type": "MULTI_IP_SUBNET",
+                },
+                {
+                    "type": "WINDOWS",
+                },
             ],
             licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
             physical_block_size_bytes=4096)
@@ -1504,11 +1509,11 @@ class Disk(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']] async_primary_disk: A nested object resource
+        :param pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']] async_primary_disk: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
+        :param pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
                After you encrypt a disk with a customer-supplied key, you must
                provide the same key if you use the disk later (e.g. to create a disk
                snapshot or an image, or to attach the disk to a virtual machine).
@@ -1520,7 +1525,7 @@ class Disk(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
                Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
         :param pulumi.Input[str] image: The image from which to initialize this disk. This can be
@@ -1596,10 +1601,10 @@ class Disk(pulumi.CustomResource):
                * projects/{project}/regions/{region}/disks/{disk}
                * zones/{zone}/disks/{disk}
                * regions/{region}/disks/{disk}
-        :param pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArgs']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+        :param pulumi.Input[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
                the source image is protected by a customer-supplied encryption key.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArgs']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
+        :param pulumi.Input[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
@@ -1673,9 +1678,9 @@ class Disk(pulumi.CustomResource):
             name="async-secondary-test-disk",
             type="pd-ssd",
             zone="us-east1-c",
-            async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArgs(
-                disk=primary.id,
-            ),
+            async_primary_disk={
+                "disk": primary.id,
+            },
             physical_block_size_bytes=4096)
         ```
         ### Disk Features
@@ -1692,15 +1697,15 @@ class Disk(pulumi.CustomResource):
                 "environment": "dev",
             },
             guest_os_features=[
-                gcp.compute.DiskGuestOsFeatureArgs(
-                    type="SECURE_BOOT",
-                ),
-                gcp.compute.DiskGuestOsFeatureArgs(
-                    type="MULTI_IP_SUBNET",
-                ),
-                gcp.compute.DiskGuestOsFeatureArgs(
-                    type="WINDOWS",
-                ),
+                {
+                    "type": "SECURE_BOOT",
+                },
+                {
+                    "type": "MULTI_IP_SUBNET",
+                },
+                {
+                    "type": "WINDOWS",
+                },
             ],
             licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
             physical_block_size_bytes=4096)
@@ -1751,11 +1756,11 @@ class Disk(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']]] = None,
+                 async_primary_disk: Optional[pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']]] = None,
+                 disk_encryption_key: Optional[pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']]] = None,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict']]]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1770,8 +1775,8 @@ class Disk(pulumi.CustomResource):
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot: Optional[pulumi.Input[str]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
-                 source_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArgs']]] = None,
-                 source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArgs']]] = None,
+                 source_image_encryption_key: Optional[pulumi.Input[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict']]] = None,
+                 source_snapshot_encryption_key: Optional[pulumi.Input[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict']]] = None,
                  storage_pool: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -1832,14 +1837,14 @@ class Disk(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']]] = None,
+            async_primary_disk: Optional[pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']]] = None,
+            disk_encryption_key: Optional[pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']]] = None,
             disk_id: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
-            guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]]] = None,
+            guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict']]]]] = None,
             image: Optional[pulumi.Input[str]] = None,
             interface: Optional[pulumi.Input[str]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -1860,9 +1865,9 @@ class Disk(pulumi.CustomResource):
             snapshot: Optional[pulumi.Input[str]] = None,
             source_disk: Optional[pulumi.Input[str]] = None,
             source_disk_id: Optional[pulumi.Input[str]] = None,
-            source_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArgs']]] = None,
+            source_image_encryption_key: Optional[pulumi.Input[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict']]] = None,
             source_image_id: Optional[pulumi.Input[str]] = None,
-            source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArgs']]] = None,
+            source_snapshot_encryption_key: Optional[pulumi.Input[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict']]] = None,
             source_snapshot_id: Optional[pulumi.Input[str]] = None,
             storage_pool: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
@@ -1875,12 +1880,12 @@ class Disk(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']] async_primary_disk: A nested object resource
+        :param pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']] async_primary_disk: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
+        :param pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
                After you encrypt a disk with a customer-supplied key, you must
                provide the same key if you use the disk later (e.g. to create a disk
                snapshot or an image, or to attach the disk to a virtual machine).
@@ -1894,7 +1899,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
                Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DiskGuestOsFeatureArgs', 'DiskGuestOsFeatureArgsDict']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
         :param pulumi.Input[str] image: The image from which to initialize this disk. This can be
@@ -1980,7 +1985,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] source_disk_id: The ID value of the disk used to create this image. This value may
                be used to determine whether the image was taken from the current
                or a previous instance of a given disk name.
-        :param pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArgs']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+        :param pulumi.Input[Union['DiskSourceImageEncryptionKeyArgs', 'DiskSourceImageEncryptionKeyArgsDict']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
                the source image is protected by a customer-supplied encryption key.
                Structure is documented below.
         :param pulumi.Input[str] source_image_id: The ID value of the image used to create this disk. This value
@@ -1988,7 +1993,7 @@ class Disk(pulumi.CustomResource):
                disk. For example, if you created the persistent disk from an image
                that was later deleted and recreated under the same name, the source
                image ID would identify the exact version of the image that was used.
-        :param pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArgs']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
+        :param pulumi.Input[Union['DiskSourceSnapshotEncryptionKeyArgs', 'DiskSourceSnapshotEncryptionKeyArgsDict']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.

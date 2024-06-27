@@ -4,26 +4,73 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AccessApprovalSettingsEnrolledServiceArgs',
+    'AccessApprovalSettingsEnrolledServiceArgsDict',
     'IAMBindingConditionArgs',
+    'IAMBindingConditionArgsDict',
     'IAMMemberConditionArgs',
+    'IAMMemberConditionArgsDict',
     'IamAuditConfigAuditLogConfigArgs',
+    'IamAuditConfigAuditLogConfigArgsDict',
     'PolicyBooleanPolicyArgs',
+    'PolicyBooleanPolicyArgsDict',
     'PolicyListPolicyArgs',
+    'PolicyListPolicyArgsDict',
     'PolicyListPolicyAllowArgs',
+    'PolicyListPolicyAllowArgsDict',
     'PolicyListPolicyDenyArgs',
+    'PolicyListPolicyDenyArgsDict',
     'PolicyRestorePolicyArgs',
+    'PolicyRestorePolicyArgsDict',
     'GetIAMPolicyAuditConfigArgs',
+    'GetIAMPolicyAuditConfigArgsDict',
     'GetIAMPolicyAuditConfigAuditLogConfigArgs',
+    'GetIAMPolicyAuditConfigAuditLogConfigArgsDict',
     'GetIAMPolicyBindingArgs',
+    'GetIAMPolicyBindingArgsDict',
     'GetIAMPolicyBindingConditionArgs',
+    'GetIAMPolicyBindingConditionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AccessApprovalSettingsEnrolledServiceArgsDict(TypedDict):
+        cloud_product: pulumi.Input[str]
+        """
+        The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
+        all
+        appengine.googleapis.com
+        bigquery.googleapis.com
+        bigtable.googleapis.com
+        cloudkms.googleapis.com
+        compute.googleapis.com
+        dataflow.googleapis.com
+        iam.googleapis.com
+        pubsub.googleapis.com
+        storage.googleapis.com
+        """
+        enrollment_level: NotRequired[pulumi.Input[str]]
+        """
+        The enrollment level of the service.
+        Default value is `BLOCK_ALL`.
+        Possible values are: `BLOCK_ALL`.
+
+        - - -
+        """
+elif False:
+    AccessApprovalSettingsEnrolledServiceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessApprovalSettingsEnrolledServiceArgs:
@@ -91,6 +138,14 @@ class AccessApprovalSettingsEnrolledServiceArgs:
         pulumi.set(self, "enrollment_level", value)
 
 
+if not MYPY:
+    class IAMBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    IAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class IAMBindingConditionArgs:
     def __init__(__self__, *,
@@ -129,6 +184,27 @@ class IAMBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class IAMMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    IAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IAMMemberConditionArgs:
@@ -191,6 +267,24 @@ class IAMMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class IamAuditConfigAuditLogConfigArgsDict(TypedDict):
+        log_type: pulumi.Input[str]
+        """
+        Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+        """
+        exempted_members: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Identities that do not cause logging for this type of permission.
+        Each entry can have one of the following values:
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
+elif False:
+    IamAuditConfigAuditLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class IamAuditConfigAuditLogConfigArgs:
     def __init__(__self__, *,
@@ -239,6 +333,15 @@ class IamAuditConfigAuditLogConfigArgs:
         pulumi.set(self, "exempted_members", value)
 
 
+if not MYPY:
+    class PolicyBooleanPolicyArgsDict(TypedDict):
+        enforced: pulumi.Input[bool]
+        """
+        If true, then the Policy is enforced. If false, then any configuration is acceptable.
+        """
+elif False:
+    PolicyBooleanPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PolicyBooleanPolicyArgs:
     def __init__(__self__, *,
@@ -260,6 +363,30 @@ class PolicyBooleanPolicyArgs:
     def enforced(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enforced", value)
 
+
+if not MYPY:
+    class PolicyListPolicyArgsDict(TypedDict):
+        allow: NotRequired[pulumi.Input['PolicyListPolicyAllowArgsDict']]
+        """
+        or `deny` - (Optional) One or the other must be set.
+        """
+        deny: NotRequired[pulumi.Input['PolicyListPolicyDenyArgsDict']]
+        """
+        One or the other must be set.
+        """
+        inherit_from_parent: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, the values from the effective Policy of the parent resource
+        are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+
+        The `allow` or `deny` blocks support:
+        """
+        suggested_value: NotRequired[pulumi.Input[str]]
+        """
+        The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
+        """
+elif False:
+    PolicyListPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PolicyListPolicyArgs:
@@ -338,6 +465,19 @@ class PolicyListPolicyArgs:
         pulumi.set(self, "suggested_value", value)
 
 
+if not MYPY:
+    class PolicyListPolicyAllowArgsDict(TypedDict):
+        all: NotRequired[pulumi.Input[bool]]
+        """
+        The policy allows or denies all values.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The policy can define specific values that are allowed or denied.
+        """
+elif False:
+    PolicyListPolicyAllowArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PolicyListPolicyAllowArgs:
     def __init__(__self__, *,
@@ -376,6 +516,19 @@ class PolicyListPolicyAllowArgs:
     def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class PolicyListPolicyDenyArgsDict(TypedDict):
+        all: NotRequired[pulumi.Input[bool]]
+        """
+        The policy allows or denies all values.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The policy can define specific values that are allowed or denied.
+        """
+elif False:
+    PolicyListPolicyDenyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PolicyListPolicyDenyArgs:
@@ -416,6 +569,15 @@ class PolicyListPolicyDenyArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class PolicyRestorePolicyArgsDict(TypedDict):
+        default: pulumi.Input[bool]
+        """
+        May only be set to true. If set, then the default Policy is restored.
+        """
+elif False:
+    PolicyRestorePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PolicyRestorePolicyArgs:
     def __init__(__self__, *,
@@ -437,6 +599,19 @@ class PolicyRestorePolicyArgs:
     def default(self, value: pulumi.Input[bool]):
         pulumi.set(self, "default", value)
 
+
+if not MYPY:
+    class GetIAMPolicyAuditConfigArgsDict(TypedDict):
+        audit_log_configs: Sequence['GetIAMPolicyAuditConfigAuditLogConfigArgsDict']
+        """
+        A nested block that defines the operations you'd like to log.
+        """
+        service: str
+        """
+        Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+        """
+elif False:
+    GetIAMPolicyAuditConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetIAMPolicyAuditConfigArgs:
@@ -475,6 +650,19 @@ class GetIAMPolicyAuditConfigArgs:
         pulumi.set(self, "service", value)
 
 
+if not MYPY:
+    class GetIAMPolicyAuditConfigAuditLogConfigArgsDict(TypedDict):
+        log_type: str
+        """
+        Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
+        """
+        exempted_members: NotRequired[Sequence[str]]
+        """
+        Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
+        """
+elif False:
+    GetIAMPolicyAuditConfigAuditLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetIAMPolicyAuditConfigAuditLogConfigArgs:
     def __init__(__self__, *,
@@ -512,6 +700,32 @@ class GetIAMPolicyAuditConfigAuditLogConfigArgs:
     def exempted_members(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "exempted_members", value)
 
+
+if not MYPY:
+    class GetIAMPolicyBindingArgsDict(TypedDict):
+        members: Sequence[str]
+        """
+        An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don't** support this identity.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. Some resources **don't** support this identity.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
+        role: str
+        """
+        The role/permission that will be granted to the members.
+        See the [IAM Roles](https://cloud.google.com/compute/docs/access/iam) documentation for a complete list of roles.
+        Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        condition: NotRequired['GetIAMPolicyBindingConditionArgsDict']
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+        """
+elif False:
+    GetIAMPolicyBindingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetIAMPolicyBindingArgs:
@@ -583,6 +797,23 @@ class GetIAMPolicyBindingArgs:
     def condition(self, value: Optional['GetIAMPolicyBindingConditionArgs']):
         pulumi.set(self, "condition", value)
 
+
+if not MYPY:
+    class GetIAMPolicyBindingConditionArgsDict(TypedDict):
+        expression: str
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: str
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[str]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+elif False:
+    GetIAMPolicyBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetIAMPolicyBindingConditionArgs:

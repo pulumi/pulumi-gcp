@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -757,9 +762,9 @@ class FhirStore(pulumi.CustomResource):
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_config: Optional[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]]]] = None,
-                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]]] = None,
+                 notification_config: Optional[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]] = None,
+                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]]]] = None,
+                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -794,9 +799,9 @@ class FhirStore(pulumi.CustomResource):
             disable_resource_versioning=False,
             enable_history_import=False,
             default_search_handling_strict=False,
-            notification_configs=[gcp.healthcare.FhirStoreNotificationConfigArgs(
-                pubsub_topic=topic.id,
-            )],
+            notification_configs=[{
+                "pubsubTopic": topic.id,
+            }],
             labels={
                 "label1": "labelvalue1",
             })
@@ -827,19 +832,19 @@ class FhirStore(pulumi.CustomResource):
             labels={
                 "label1": "labelvalue1",
             },
-            stream_configs=[gcp.healthcare.FhirStoreStreamConfigArgs(
-                resource_types=["Observation"],
-                bigquery_destination=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationArgs(
-                    dataset_uri=pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id).apply(lambda project, dataset_id: f"bq://{project}.{dataset_id}"),
-                    schema_config=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs(
-                        recursive_structure_depth=3,
-                        last_updated_partition_config=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs(
-                            type="HOUR",
-                            expiration_ms="1000000",
-                        ),
-                    ),
-                ),
-            )])
+            stream_configs=[{
+                "resourceTypes": ["Observation"],
+                "bigqueryDestination": {
+                    "datasetUri": pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id).apply(lambda project, dataset_id: f"bq://{project}.{dataset_id}"),
+                    "schemaConfig": {
+                        "recursiveStructureDepth": 3,
+                        "lastUpdatedPartitionConfig": {
+                            "type": "HOUR",
+                            "expirationMs": "1000000",
+                        },
+                    },
+                },
+            }])
         topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
         ```
         ### Healthcare Fhir Store Notification Configs
@@ -863,11 +868,11 @@ class FhirStore(pulumi.CustomResource):
             labels={
                 "label1": "labelvalue1",
             },
-            notification_configs=[gcp.healthcare.FhirStoreNotificationConfigArgs(
-                pubsub_topic=topic.id,
-                send_full_resource=True,
-                send_previous_resource_on_delete=True,
-            )])
+            notification_configs=[{
+                "pubsubTopic": topic.id,
+                "sendFullResource": True,
+                "sendPreviousResourceOnDelete": True,
+            }])
         ```
 
         ## Import
@@ -939,14 +944,14 @@ class FhirStore(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the FhirStore.
                ** Changing this property may recreate the FHIR store (removing all data) **
-        :param pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']] notification_config: (Optional, Deprecated)
+        :param pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']] notification_config: (Optional, Deprecated)
                A nested object resource
                Structure is documented below.
                
                > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
                this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
                resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
                from the list, the server stops streaming to that location. Before adding a new config, you must add the required
@@ -995,9 +1000,9 @@ class FhirStore(pulumi.CustomResource):
             disable_resource_versioning=False,
             enable_history_import=False,
             default_search_handling_strict=False,
-            notification_configs=[gcp.healthcare.FhirStoreNotificationConfigArgs(
-                pubsub_topic=topic.id,
-            )],
+            notification_configs=[{
+                "pubsubTopic": topic.id,
+            }],
             labels={
                 "label1": "labelvalue1",
             })
@@ -1028,19 +1033,19 @@ class FhirStore(pulumi.CustomResource):
             labels={
                 "label1": "labelvalue1",
             },
-            stream_configs=[gcp.healthcare.FhirStoreStreamConfigArgs(
-                resource_types=["Observation"],
-                bigquery_destination=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationArgs(
-                    dataset_uri=pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id).apply(lambda project, dataset_id: f"bq://{project}.{dataset_id}"),
-                    schema_config=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs(
-                        recursive_structure_depth=3,
-                        last_updated_partition_config=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs(
-                            type="HOUR",
-                            expiration_ms="1000000",
-                        ),
-                    ),
-                ),
-            )])
+            stream_configs=[{
+                "resourceTypes": ["Observation"],
+                "bigqueryDestination": {
+                    "datasetUri": pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id).apply(lambda project, dataset_id: f"bq://{project}.{dataset_id}"),
+                    "schemaConfig": {
+                        "recursiveStructureDepth": 3,
+                        "lastUpdatedPartitionConfig": {
+                            "type": "HOUR",
+                            "expirationMs": "1000000",
+                        },
+                    },
+                },
+            }])
         topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
         ```
         ### Healthcare Fhir Store Notification Configs
@@ -1064,11 +1069,11 @@ class FhirStore(pulumi.CustomResource):
             labels={
                 "label1": "labelvalue1",
             },
-            notification_configs=[gcp.healthcare.FhirStoreNotificationConfigArgs(
-                pubsub_topic=topic.id,
-                send_full_resource=True,
-                send_previous_resource_on_delete=True,
-            )])
+            notification_configs=[{
+                "pubsubTopic": topic.id,
+                "sendFullResource": True,
+                "sendPreviousResourceOnDelete": True,
+            }])
         ```
 
         ## Import
@@ -1114,9 +1119,9 @@ class FhirStore(pulumi.CustomResource):
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_config: Optional[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]]]] = None,
-                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]]] = None,
+                 notification_config: Optional[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]] = None,
+                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]]]] = None,
+                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1169,11 +1174,11 @@ class FhirStore(pulumi.CustomResource):
             enable_update_create: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notification_config: Optional[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]] = None,
-            notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]]]] = None,
+            notification_config: Optional[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]] = None,
+            notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]]]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]]] = None,
+            stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'FhirStore':
         """
         Get an existing FhirStore resource's state with the given name, id, and optional extra
@@ -1232,17 +1237,17 @@ class FhirStore(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the FhirStore.
                ** Changing this property may recreate the FHIR store (removing all data) **
-        :param pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']] notification_config: (Optional, Deprecated)
+        :param pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']] notification_config: (Optional, Deprecated)
                A nested object resource
                Structure is documented below.
                
                > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']]]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FhirStoreStreamConfigArgs', 'FhirStoreStreamConfigArgsDict']]]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
                this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
                resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
                from the list, the server stops streaming to that location. Before adding a new config, you must add the required

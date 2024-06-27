@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -1087,23 +1092,23 @@ class Table(pulumi.CustomResource):
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 encryption_configuration: Optional[pulumi.Input[pulumi.InputType['TableEncryptionConfigurationArgs']]] = None,
+                 encryption_configuration: Optional[pulumi.Input[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict']]] = None,
                  expiration_time: Optional[pulumi.Input[int]] = None,
-                 external_data_configuration: Optional[pulumi.Input[pulumi.InputType['TableExternalDataConfigurationArgs']]] = None,
+                 external_data_configuration: Optional[pulumi.Input[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 materialized_view: Optional[pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']]] = None,
+                 materialized_view: Optional[pulumi.Input[Union['TableMaterializedViewArgs', 'TableMaterializedViewArgsDict']]] = None,
                  max_staleness: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
+                 range_partitioning: Optional[pulumi.Input[Union['TableRangePartitioningArgs', 'TableRangePartitioningArgsDict']]] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
-                 table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
+                 table_constraints: Optional[pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
-                 table_replication_info: Optional[pulumi.Input[pulumi.InputType['TableTableReplicationInfoArgs']]] = None,
-                 time_partitioning: Optional[pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']]] = None,
-                 view: Optional[pulumi.Input[pulumi.InputType['TableViewArgs']]] = None,
+                 table_replication_info: Optional[pulumi.Input[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']]] = None,
+                 time_partitioning: Optional[pulumi.Input[Union['TableTimePartitioningArgs', 'TableTimePartitioningArgsDict']]] = None,
+                 view: Optional[pulumi.Input[Union['TableViewArgs', 'TableViewArgsDict']]] = None,
                  __props__=None):
         """
         Creates a table resource in a dataset for Google BigQuery. For more information see
@@ -1132,9 +1137,9 @@ class Table(pulumi.CustomResource):
         default_table = gcp.bigquery.Table("default",
             dataset_id=default.dataset_id,
             table_id="bar",
-            time_partitioning=gcp.bigquery.TableTimePartitioningArgs(
-                type="DAY",
-            ),
+            time_partitioning={
+                "type": "DAY",
+            },
             labels={
                 "env": "default",
             },
@@ -1156,14 +1161,14 @@ class Table(pulumi.CustomResource):
         sheet = gcp.bigquery.Table("sheet",
             dataset_id=default.dataset_id,
             table_id="sheet",
-            external_data_configuration=gcp.bigquery.TableExternalDataConfigurationArgs(
-                autodetect=True,
-                source_format="GOOGLE_SHEETS",
-                google_sheets_options=gcp.bigquery.TableExternalDataConfigurationGoogleSheetsOptionsArgs(
-                    skip_leading_rows=1,
-                ),
-                source_uris=["https://docs.google.com/spreadsheets/d/123456789012345"],
-            ))
+            external_data_configuration={
+                "autodetect": True,
+                "sourceFormat": "GOOGLE_SHEETS",
+                "googleSheetsOptions": {
+                    "skipLeadingRows": 1,
+                },
+                "sourceUris": ["https://docs.google.com/spreadsheets/d/123456789012345"],
+            })
         ```
 
         ## Import
@@ -1202,14 +1207,14 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `=destroy` or `=update` that would delete the instance will fail.
         :param pulumi.Input[str] description: The field description.
-        :param pulumi.Input[pulumi.InputType['TableEncryptionConfigurationArgs']] encryption_configuration: Specifies how the table should be encrypted.
+        :param pulumi.Input[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict']] encryption_configuration: Specifies how the table should be encrypted.
                If left blank, the table will be encrypted with a Google-managed key; that process
                is transparent to the user.  Structure is documented below.
         :param pulumi.Input[int] expiration_time: The time when this table expires, in
                milliseconds since the epoch. If not present, the table will persist
                indefinitely. Expired tables will be deleted and their storage
                reclaimed.
-        :param pulumi.Input[pulumi.InputType['TableExternalDataConfigurationArgs']] external_data_configuration: Describes the data format,
+        :param pulumi.Input[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']] external_data_configuration: Describes the data format,
                location, and other properties of a table stored outside of BigQuery.
                By defining these properties, the data source can then be queried as
                if it were a standard BigQuery table. Structure is documented below.
@@ -1218,7 +1223,7 @@ class Table(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']] materialized_view: If specified, configures this table as a materialized view.
+        :param pulumi.Input[Union['TableMaterializedViewArgs', 'TableMaterializedViewArgsDict']] materialized_view: If specified, configures this table as a materialized view.
                Structure is documented below.
         :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be
                returned when the table (or stale MV) is queried. Staleness encoded as a
@@ -1226,7 +1231,7 @@ class Table(pulumi.CustomResource):
                type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']] range_partitioning: If specified, configures range-based
+        :param pulumi.Input[Union['TableRangePartitioningArgs', 'TableRangePartitioningArgsDict']] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
                require a partition filter that can be used for partition elimination to be
@@ -1237,17 +1242,17 @@ class Table(pulumi.CustomResource):
                parent organization or project resource for this tag key. Tag value is
                expected to be the short name, for example "Production".
         :param pulumi.Input[str] schema: A JSON schema for the table.
-        :param pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']] table_constraints: Defines the primary key and foreign keys. 
+        :param pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[pulumi.InputType['TableTableReplicationInfoArgs']] table_replication_info: Replication info of a table created
+        :param pulumi.Input[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']] table_replication_info: Replication info of a table created
                using "AS REPLICA" DDL like:
                `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']] time_partitioning: If specified, configures time-based
+        :param pulumi.Input[Union['TableTimePartitioningArgs', 'TableTimePartitioningArgsDict']] time_partitioning: If specified, configures time-based
                partitioning for this table. Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['TableViewArgs']] view: If specified, configures this table as a view.
+        :param pulumi.Input[Union['TableViewArgs', 'TableViewArgsDict']] view: If specified, configures this table as a view.
                Structure is documented below.
         """
         ...
@@ -1283,9 +1288,9 @@ class Table(pulumi.CustomResource):
         default_table = gcp.bigquery.Table("default",
             dataset_id=default.dataset_id,
             table_id="bar",
-            time_partitioning=gcp.bigquery.TableTimePartitioningArgs(
-                type="DAY",
-            ),
+            time_partitioning={
+                "type": "DAY",
+            },
             labels={
                 "env": "default",
             },
@@ -1307,14 +1312,14 @@ class Table(pulumi.CustomResource):
         sheet = gcp.bigquery.Table("sheet",
             dataset_id=default.dataset_id,
             table_id="sheet",
-            external_data_configuration=gcp.bigquery.TableExternalDataConfigurationArgs(
-                autodetect=True,
-                source_format="GOOGLE_SHEETS",
-                google_sheets_options=gcp.bigquery.TableExternalDataConfigurationGoogleSheetsOptionsArgs(
-                    skip_leading_rows=1,
-                ),
-                source_uris=["https://docs.google.com/spreadsheets/d/123456789012345"],
-            ))
+            external_data_configuration={
+                "autodetect": True,
+                "sourceFormat": "GOOGLE_SHEETS",
+                "googleSheetsOptions": {
+                    "skipLeadingRows": 1,
+                },
+                "sourceUris": ["https://docs.google.com/spreadsheets/d/123456789012345"],
+            })
         ```
 
         ## Import
@@ -1361,23 +1366,23 @@ class Table(pulumi.CustomResource):
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 encryption_configuration: Optional[pulumi.Input[pulumi.InputType['TableEncryptionConfigurationArgs']]] = None,
+                 encryption_configuration: Optional[pulumi.Input[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict']]] = None,
                  expiration_time: Optional[pulumi.Input[int]] = None,
-                 external_data_configuration: Optional[pulumi.Input[pulumi.InputType['TableExternalDataConfigurationArgs']]] = None,
+                 external_data_configuration: Optional[pulumi.Input[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 materialized_view: Optional[pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']]] = None,
+                 materialized_view: Optional[pulumi.Input[Union['TableMaterializedViewArgs', 'TableMaterializedViewArgsDict']]] = None,
                  max_staleness: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
+                 range_partitioning: Optional[pulumi.Input[Union['TableRangePartitioningArgs', 'TableRangePartitioningArgsDict']]] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
-                 table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
+                 table_constraints: Optional[pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
-                 table_replication_info: Optional[pulumi.Input[pulumi.InputType['TableTableReplicationInfoArgs']]] = None,
-                 time_partitioning: Optional[pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']]] = None,
-                 view: Optional[pulumi.Input[pulumi.InputType['TableViewArgs']]] = None,
+                 table_replication_info: Optional[pulumi.Input[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']]] = None,
+                 time_partitioning: Optional[pulumi.Input[Union['TableTimePartitioningArgs', 'TableTimePartitioningArgsDict']]] = None,
+                 view: Optional[pulumi.Input[Union['TableViewArgs', 'TableViewArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1443,32 +1448,32 @@ class Table(pulumi.CustomResource):
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            encryption_configuration: Optional[pulumi.Input[pulumi.InputType['TableEncryptionConfigurationArgs']]] = None,
+            encryption_configuration: Optional[pulumi.Input[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             expiration_time: Optional[pulumi.Input[int]] = None,
-            external_data_configuration: Optional[pulumi.Input[pulumi.InputType['TableExternalDataConfigurationArgs']]] = None,
+            external_data_configuration: Optional[pulumi.Input[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']]] = None,
             friendly_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             last_modified_time: Optional[pulumi.Input[int]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            materialized_view: Optional[pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']]] = None,
+            materialized_view: Optional[pulumi.Input[Union['TableMaterializedViewArgs', 'TableMaterializedViewArgsDict']]] = None,
             max_staleness: Optional[pulumi.Input[str]] = None,
             num_bytes: Optional[pulumi.Input[int]] = None,
             num_long_term_bytes: Optional[pulumi.Input[int]] = None,
             num_rows: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
+            range_partitioning: Optional[pulumi.Input[Union['TableRangePartitioningArgs', 'TableRangePartitioningArgsDict']]] = None,
             require_partition_filter: Optional[pulumi.Input[bool]] = None,
             resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             schema: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
+            table_constraints: Optional[pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']]] = None,
             table_id: Optional[pulumi.Input[str]] = None,
-            table_replication_info: Optional[pulumi.Input[pulumi.InputType['TableTableReplicationInfoArgs']]] = None,
-            time_partitioning: Optional[pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']]] = None,
+            table_replication_info: Optional[pulumi.Input[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']]] = None,
+            time_partitioning: Optional[pulumi.Input[Union['TableTimePartitioningArgs', 'TableTimePartitioningArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            view: Optional[pulumi.Input[pulumi.InputType['TableViewArgs']]] = None) -> 'Table':
+            view: Optional[pulumi.Input[Union['TableViewArgs', 'TableViewArgsDict']]] = None) -> 'Table':
         """
         Get an existing Table resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1503,7 +1508,7 @@ class Table(pulumi.CustomResource):
                `external_data_configuration.connection_id`, schemas must be specified
                with `external_data_configuration.schema`. Otherwise, schemas must be
                specified with this top-level field.
-        :param pulumi.Input[pulumi.InputType['TableEncryptionConfigurationArgs']] encryption_configuration: Specifies how the table should be encrypted.
+        :param pulumi.Input[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict']] encryption_configuration: Specifies how the table should be encrypted.
                If left blank, the table will be encrypted with a Google-managed key; that process
                is transparent to the user.  Structure is documented below.
         :param pulumi.Input[str] etag: A hash of the resource.
@@ -1511,7 +1516,7 @@ class Table(pulumi.CustomResource):
                milliseconds since the epoch. If not present, the table will persist
                indefinitely. Expired tables will be deleted and their storage
                reclaimed.
-        :param pulumi.Input[pulumi.InputType['TableExternalDataConfigurationArgs']] external_data_configuration: Describes the data format,
+        :param pulumi.Input[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']] external_data_configuration: Describes the data format,
                location, and other properties of a table stored outside of BigQuery.
                By defining these properties, the data source can then be queried as
                if it were a standard BigQuery table. Structure is documented below.
@@ -1522,7 +1527,7 @@ class Table(pulumi.CustomResource):
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[int] last_modified_time: The time when this table was last modified, in milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the table resides. This value is inherited from the dataset.
-        :param pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']] materialized_view: If specified, configures this table as a materialized view.
+        :param pulumi.Input[Union['TableMaterializedViewArgs', 'TableMaterializedViewArgsDict']] materialized_view: If specified, configures this table as a materialized view.
                Structure is documented below.
         :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be
                returned when the table (or stale MV) is queried. Staleness encoded as a
@@ -1534,7 +1539,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']] range_partitioning: If specified, configures range-based
+        :param pulumi.Input[Union['TableRangePartitioningArgs', 'TableRangePartitioningArgsDict']] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
                require a partition filter that can be used for partition elimination to be
@@ -1546,18 +1551,18 @@ class Table(pulumi.CustomResource):
                expected to be the short name, for example "Production".
         :param pulumi.Input[str] schema: A JSON schema for the table.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']] table_constraints: Defines the primary key and foreign keys. 
+        :param pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
-        :param pulumi.Input[pulumi.InputType['TableTableReplicationInfoArgs']] table_replication_info: Replication info of a table created
+        :param pulumi.Input[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']] table_replication_info: Replication info of a table created
                using "AS REPLICA" DDL like:
                `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']] time_partitioning: If specified, configures time-based
+        :param pulumi.Input[Union['TableTimePartitioningArgs', 'TableTimePartitioningArgsDict']] time_partitioning: If specified, configures time-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[str] type: Describes the table type.
-        :param pulumi.Input[pulumi.InputType['TableViewArgs']] view: If specified, configures this table as a view.
+        :param pulumi.Input[Union['TableViewArgs', 'TableViewArgsDict']] view: If specified, configures this table as a view.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

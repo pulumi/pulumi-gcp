@@ -4,16 +4,40 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'DataPolicyDataMaskingPolicyArgs',
+    'DataPolicyDataMaskingPolicyArgsDict',
     'DataPolicyIamBindingConditionArgs',
+    'DataPolicyIamBindingConditionArgsDict',
     'DataPolicyIamMemberConditionArgs',
+    'DataPolicyIamMemberConditionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class DataPolicyDataMaskingPolicyArgsDict(TypedDict):
+        predefined_expression: NotRequired[pulumi.Input[str]]
+        """
+        The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
+        Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
+        """
+        routine: NotRequired[pulumi.Input[str]]
+        """
+        The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
+        """
+elif False:
+    DataPolicyDataMaskingPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DataPolicyDataMaskingPolicyArgs:
@@ -56,6 +80,14 @@ class DataPolicyDataMaskingPolicyArgs:
         pulumi.set(self, "routine", value)
 
 
+if not MYPY:
+    class DataPolicyIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    DataPolicyIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DataPolicyIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -94,6 +126,14 @@ class DataPolicyIamBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class DataPolicyIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    DataPolicyIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DataPolicyIamMemberConditionArgs:

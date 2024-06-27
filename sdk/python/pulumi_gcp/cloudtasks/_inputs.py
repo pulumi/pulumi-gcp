@@ -4,19 +4,57 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'QueueAppEngineRoutingOverrideArgs',
+    'QueueAppEngineRoutingOverrideArgsDict',
     'QueueIamBindingConditionArgs',
+    'QueueIamBindingConditionArgsDict',
     'QueueIamMemberConditionArgs',
+    'QueueIamMemberConditionArgsDict',
     'QueueRateLimitsArgs',
+    'QueueRateLimitsArgsDict',
     'QueueRetryConfigArgs',
+    'QueueRetryConfigArgsDict',
     'QueueStackdriverLoggingConfigArgs',
+    'QueueStackdriverLoggingConfigArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class QueueAppEngineRoutingOverrideArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The host that the task is sent to.
+        """
+        instance: NotRequired[pulumi.Input[str]]
+        """
+        App instance.
+        By default, the task is sent to an instance which is available when the task is attempted.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        App service.
+        By default, the task is sent to the service which is the default service when the task is attempted.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        App version.
+        By default, the task is sent to the version which is the default version when the task is attempted.
+        """
+elif False:
+    QueueAppEngineRoutingOverrideArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class QueueAppEngineRoutingOverrideArgs:
@@ -97,6 +135,14 @@ class QueueAppEngineRoutingOverrideArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class QueueIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    QueueIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class QueueIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -136,6 +182,14 @@ class QueueIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class QueueIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    QueueIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class QueueIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -174,6 +228,32 @@ class QueueIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class QueueRateLimitsArgsDict(TypedDict):
+        max_burst_size: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The max burst size.
+        Max burst size limits how fast tasks in queue are processed when many tasks are
+        in the queue and the rate is high. This field allows the queue to have a high
+        rate so processing starts shortly after a task is enqueued, but still limits
+        resource usage when many tasks are enqueued in a short period of time.
+        """
+        max_concurrent_dispatches: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of concurrent tasks that Cloud Tasks allows to
+        be dispatched for this queue. After this threshold has been
+        reached, Cloud Tasks stops dispatching tasks until the number of
+        concurrent requests decreases.
+        """
+        max_dispatches_per_second: NotRequired[pulumi.Input[float]]
+        """
+        The maximum rate at which tasks are dispatched from this queue.
+        If unspecified when the queue is created, Cloud Tasks will pick the default.
+        """
+elif False:
+    QueueRateLimitsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class QueueRateLimitsArgs:
@@ -247,6 +327,49 @@ class QueueRateLimitsArgs:
     def max_dispatches_per_second(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "max_dispatches_per_second", value)
 
+
+if not MYPY:
+    class QueueRetryConfigArgsDict(TypedDict):
+        max_attempts: NotRequired[pulumi.Input[int]]
+        """
+        Number of attempts per task.
+        Cloud Tasks will attempt the task maxAttempts times (that is, if
+        the first attempt fails, then there will be maxAttempts - 1
+        retries). Must be >= -1.
+        If unspecified when the queue is created, Cloud Tasks will pick
+        the default.
+        -1 indicates unlimited attempts.
+        """
+        max_backoff: NotRequired[pulumi.Input[str]]
+        """
+        A task will be scheduled for retry between minBackoff and
+        maxBackoff duration after it fails, if the queue's RetryConfig
+        specifies that the task should be retried.
+        """
+        max_doublings: NotRequired[pulumi.Input[int]]
+        """
+        The time between retries will double maxDoublings times.
+        A task's retry interval starts at minBackoff, then doubles maxDoublings times,
+        then increases linearly, and finally retries retries at intervals of maxBackoff
+        up to maxAttempts times.
+        """
+        max_retry_duration: NotRequired[pulumi.Input[str]]
+        """
+        If positive, maxRetryDuration specifies the time limit for
+        retrying a failed task, measured from when the task was first
+        attempted. Once maxRetryDuration time has passed and the task has
+        been attempted maxAttempts times, no further attempts will be
+        made and the task will be deleted.
+        If zero, then the task age is unlimited.
+        """
+        min_backoff: NotRequired[pulumi.Input[str]]
+        """
+        A task will be scheduled for retry between minBackoff and
+        maxBackoff duration after it fails, if the queue's RetryConfig
+        specifies that the task should be retried.
+        """
+elif False:
+    QueueRetryConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class QueueRetryConfigArgs:
@@ -370,6 +493,17 @@ class QueueRetryConfigArgs:
     def min_backoff(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "min_backoff", value)
 
+
+if not MYPY:
+    class QueueStackdriverLoggingConfigArgsDict(TypedDict):
+        sampling_ratio: pulumi.Input[float]
+        """
+        Specifies the fraction of operations to write to Stackdriver Logging.
+        This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the
+        default and means that no operations are logged.
+        """
+elif False:
+    QueueStackdriverLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class QueueStackdriverLoggingConfigArgs:

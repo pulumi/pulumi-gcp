@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -238,7 +243,7 @@ class EnvironmentIamBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['EnvironmentIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['EnvironmentIamBindingConditionArgs', 'EnvironmentIamBindingConditionArgsDict']]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -265,10 +270,10 @@ class EnvironmentIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigee.EnvironmentIamPolicy("policy",
             org_id=apigee_environment["orgId"],
             env_id=apigee_environment["name"],
@@ -307,10 +312,10 @@ class EnvironmentIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigee.EnvironmentIamPolicy("policy",
             org_id=apigee_environment["orgId"],
             env_id=apigee_environment["name"],
@@ -422,10 +427,10 @@ class EnvironmentIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigee.EnvironmentIamPolicy("policy",
             org_id=apigee_environment["orgId"],
             env_id=apigee_environment["name"],
@@ -464,10 +469,10 @@ class EnvironmentIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/viewer",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.apigee.EnvironmentIamPolicy("policy",
             org_id=apigee_environment["orgId"],
             env_id=apigee_environment["name"],
@@ -549,7 +554,7 @@ class EnvironmentIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['EnvironmentIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['EnvironmentIamBindingConditionArgs', 'EnvironmentIamBindingConditionArgsDict']]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -587,7 +592,7 @@ class EnvironmentIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['EnvironmentIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['EnvironmentIamBindingConditionArgs', 'EnvironmentIamBindingConditionArgsDict']]] = None,
             env_id: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

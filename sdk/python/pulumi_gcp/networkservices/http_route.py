@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -397,7 +402,7 @@ class HttpRoute(pulumi.CustomResource):
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -415,15 +420,15 @@ class HttpRoute(pulumi.CustomResource):
             },
             description="my description",
             hostnames=["example"],
-            rules=[gcp.networkservices.HttpRouteRuleArgs(
-                matches=[gcp.networkservices.HttpRouteRuleMatchArgs(
-                    query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
-                        query_parameter="key",
-                        exact_match="value",
-                    )],
-                    full_path_match="example",
-                )],
-            )])
+            rules=[{
+                "matches": [{
+                    "queryParameters": [{
+                        "queryParameter": "key",
+                        "exactMatch": "value",
+                    }],
+                    "fullPathMatch": "example",
+                }],
+            }])
         ```
         ### Network Services Http Route Matches And Actions
 
@@ -438,92 +443,92 @@ class HttpRoute(pulumi.CustomResource):
             },
             description="my description",
             hostnames=["example"],
-            rules=[gcp.networkservices.HttpRouteRuleArgs(
-                matches=[
-                    gcp.networkservices.HttpRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArgs(
-                            header="header",
-                            invert_match=False,
-                            regex_match="header-value",
-                        )],
-                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
-                            query_parameter="key",
-                            exact_match="value",
-                        )],
-                        prefix_match="example",
-                        ignore_case=False,
-                    ),
-                    gcp.networkservices.HttpRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArgs(
-                            header="header",
-                            invert_match=False,
-                            present_match=True,
-                        )],
-                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
-                            query_parameter="key",
-                            regex_match="value",
-                        )],
-                        regex_match="example",
-                        ignore_case=False,
-                    ),
-                    gcp.networkservices.HttpRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArgs(
-                            header="header",
-                            invert_match=False,
-                            present_match=True,
-                        )],
-                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
-                            query_parameter="key",
-                            present_match=True,
-                        )],
-                        full_path_match="example",
-                        ignore_case=False,
-                    ),
+            rules=[{
+                "matches": [
+                    {
+                        "headers": [{
+                            "header": "header",
+                            "invertMatch": False,
+                            "regexMatch": "header-value",
+                        }],
+                        "queryParameters": [{
+                            "queryParameter": "key",
+                            "exactMatch": "value",
+                        }],
+                        "prefixMatch": "example",
+                        "ignoreCase": False,
+                    },
+                    {
+                        "headers": [{
+                            "header": "header",
+                            "invertMatch": False,
+                            "presentMatch": True,
+                        }],
+                        "queryParameters": [{
+                            "queryParameter": "key",
+                            "regexMatch": "value",
+                        }],
+                        "regexMatch": "example",
+                        "ignoreCase": False,
+                    },
+                    {
+                        "headers": [{
+                            "header": "header",
+                            "invertMatch": False,
+                            "presentMatch": True,
+                        }],
+                        "queryParameters": [{
+                            "queryParameter": "key",
+                            "presentMatch": True,
+                        }],
+                        "fullPathMatch": "example",
+                        "ignoreCase": False,
+                    },
                 ],
-                action=gcp.networkservices.HttpRouteRuleActionArgs(
-                    redirect=gcp.networkservices.HttpRouteRuleActionRedirectArgs(
-                        host_redirect="new-host",
-                        path_redirect="new-path",
-                        prefix_rewrite="new-prefix",
-                        https_redirect=True,
-                        strip_query=True,
-                        port_redirect=8081,
-                    ),
-                    url_rewrite=gcp.networkservices.HttpRouteRuleActionUrlRewriteArgs(
-                        path_prefix_rewrite="new-prefix",
-                        host_rewrite="new-host",
-                    ),
-                    retry_policy=gcp.networkservices.HttpRouteRuleActionRetryPolicyArgs(
-                        retry_conditions=["server_error"],
-                        num_retries=1,
-                        per_try_timeout="1s",
-                    ),
-                    request_mirror_policy=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyArgs(
-                        destination=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestinationArgs(
-                            service_name="new",
-                            weight=1,
-                        ),
-                    ),
-                    cors_policy=gcp.networkservices.HttpRouteRuleActionCorsPolicyArgs(
-                        allow_origins=["example"],
-                        allow_methods=[
+                "action": {
+                    "redirect": {
+                        "hostRedirect": "new-host",
+                        "pathRedirect": "new-path",
+                        "prefixRewrite": "new-prefix",
+                        "httpsRedirect": True,
+                        "stripQuery": True,
+                        "portRedirect": 8081,
+                    },
+                    "urlRewrite": {
+                        "pathPrefixRewrite": "new-prefix",
+                        "hostRewrite": "new-host",
+                    },
+                    "retryPolicy": {
+                        "retryConditions": ["server_error"],
+                        "numRetries": 1,
+                        "perTryTimeout": "1s",
+                    },
+                    "requestMirrorPolicy": {
+                        "destination": {
+                            "serviceName": "new",
+                            "weight": 1,
+                        },
+                    },
+                    "corsPolicy": {
+                        "allowOrigins": ["example"],
+                        "allowMethods": [
                             "GET",
                             "PUT",
                         ],
-                        allow_headers=[
+                        "allowHeaders": [
                             "version",
                             "type",
                         ],
-                        expose_headers=[
+                        "exposeHeaders": [
                             "version",
                             "type",
                         ],
-                        max_age="1s",
-                        allow_credentials=True,
-                        disabled=False,
-                    ),
-                ),
-            )])
+                        "maxAge": "1s",
+                        "allowCredentials": True,
+                        "disabled": False,
+                    },
+                },
+            }])
         ```
         ### Network Services Http Route Actions
 
@@ -538,73 +543,73 @@ class HttpRoute(pulumi.CustomResource):
             },
             description="my description",
             hostnames=["example"],
-            rules=[gcp.networkservices.HttpRouteRuleArgs(
-                action=gcp.networkservices.HttpRouteRuleActionArgs(
-                    fault_injection_policy=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyArgs(
-                        delay=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyDelayArgs(
-                            fixed_delay="1s",
-                            percentage=1,
-                        ),
-                        abort=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyAbortArgs(
-                            http_status=500,
-                            percentage=1,
-                        ),
-                    ),
-                    url_rewrite=gcp.networkservices.HttpRouteRuleActionUrlRewriteArgs(
-                        path_prefix_rewrite="new-prefix",
-                        host_rewrite="new-host",
-                    ),
-                    retry_policy=gcp.networkservices.HttpRouteRuleActionRetryPolicyArgs(
-                        retry_conditions=["server_error"],
-                        num_retries=1,
-                        per_try_timeout="1s",
-                    ),
-                    request_mirror_policy=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyArgs(
-                        destination=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestinationArgs(
-                            service_name="new",
-                            weight=1,
-                        ),
-                    ),
-                    cors_policy=gcp.networkservices.HttpRouteRuleActionCorsPolicyArgs(
-                        allow_origins=["example"],
-                        allow_methods=[
+            rules=[{
+                "action": {
+                    "faultInjectionPolicy": {
+                        "delay": {
+                            "fixedDelay": "1s",
+                            "percentage": 1,
+                        },
+                        "abort": {
+                            "httpStatus": 500,
+                            "percentage": 1,
+                        },
+                    },
+                    "urlRewrite": {
+                        "pathPrefixRewrite": "new-prefix",
+                        "hostRewrite": "new-host",
+                    },
+                    "retryPolicy": {
+                        "retryConditions": ["server_error"],
+                        "numRetries": 1,
+                        "perTryTimeout": "1s",
+                    },
+                    "requestMirrorPolicy": {
+                        "destination": {
+                            "serviceName": "new",
+                            "weight": 1,
+                        },
+                    },
+                    "corsPolicy": {
+                        "allowOrigins": ["example"],
+                        "allowMethods": [
                             "GET",
                             "PUT",
                         ],
-                        allow_headers=[
+                        "allowHeaders": [
                             "version",
                             "type",
                         ],
-                        expose_headers=[
+                        "exposeHeaders": [
                             "version",
                             "type",
                         ],
-                        max_age="1s",
-                        allow_credentials=True,
-                        disabled=False,
-                    ),
-                    request_header_modifier=gcp.networkservices.HttpRouteRuleActionRequestHeaderModifierArgs(
-                        set={
+                        "maxAge": "1s",
+                        "allowCredentials": True,
+                        "disabled": False,
+                    },
+                    "requestHeaderModifier": {
+                        "set": {
                             "version": "1",
                             "type": "json",
                         },
-                        add={
+                        "add": {
                             "minor-version": "1",
                         },
-                        removes=["arg"],
-                    ),
-                    response_header_modifier=gcp.networkservices.HttpRouteRuleActionResponseHeaderModifierArgs(
-                        set={
+                        "removes": ["arg"],
+                    },
+                    "responseHeaderModifier": {
+                        "set": {
                             "version": "1",
                             "type": "json",
                         },
-                        add={
+                        "add": {
                             "minor-version": "1",
                         },
-                        removes=["removearg"],
-                    ),
-                ),
-            )])
+                        "removes": ["removearg"],
+                    },
+                },
+            }])
         ```
         ### Network Services Http Route Mesh Basic
 
@@ -626,15 +631,15 @@ class HttpRoute(pulumi.CustomResource):
             description="my description",
             hostnames=["example"],
             meshes=[default.id],
-            rules=[gcp.networkservices.HttpRouteRuleArgs(
-                matches=[gcp.networkservices.HttpRouteRuleMatchArgs(
-                    query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
-                        query_parameter="key",
-                        exact_match="value",
-                    )],
-                    full_path_match="example",
-                )],
-            )])
+            rules=[{
+                "matches": [{
+                    "queryParameters": [{
+                        "queryParameter": "key",
+                        "exactMatch": "value",
+                    }],
+                    "fullPathMatch": "example",
+                }],
+            }])
         ```
 
         ## Import
@@ -675,7 +680,7 @@ class HttpRoute(pulumi.CustomResource):
                by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>. The attached
                Mesh should be of a type SIDECAR.
         :param pulumi.Input[str] name: Name of the HttpRoute resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         """
         ...
@@ -700,15 +705,15 @@ class HttpRoute(pulumi.CustomResource):
             },
             description="my description",
             hostnames=["example"],
-            rules=[gcp.networkservices.HttpRouteRuleArgs(
-                matches=[gcp.networkservices.HttpRouteRuleMatchArgs(
-                    query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
-                        query_parameter="key",
-                        exact_match="value",
-                    )],
-                    full_path_match="example",
-                )],
-            )])
+            rules=[{
+                "matches": [{
+                    "queryParameters": [{
+                        "queryParameter": "key",
+                        "exactMatch": "value",
+                    }],
+                    "fullPathMatch": "example",
+                }],
+            }])
         ```
         ### Network Services Http Route Matches And Actions
 
@@ -723,92 +728,92 @@ class HttpRoute(pulumi.CustomResource):
             },
             description="my description",
             hostnames=["example"],
-            rules=[gcp.networkservices.HttpRouteRuleArgs(
-                matches=[
-                    gcp.networkservices.HttpRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArgs(
-                            header="header",
-                            invert_match=False,
-                            regex_match="header-value",
-                        )],
-                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
-                            query_parameter="key",
-                            exact_match="value",
-                        )],
-                        prefix_match="example",
-                        ignore_case=False,
-                    ),
-                    gcp.networkservices.HttpRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArgs(
-                            header="header",
-                            invert_match=False,
-                            present_match=True,
-                        )],
-                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
-                            query_parameter="key",
-                            regex_match="value",
-                        )],
-                        regex_match="example",
-                        ignore_case=False,
-                    ),
-                    gcp.networkservices.HttpRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArgs(
-                            header="header",
-                            invert_match=False,
-                            present_match=True,
-                        )],
-                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
-                            query_parameter="key",
-                            present_match=True,
-                        )],
-                        full_path_match="example",
-                        ignore_case=False,
-                    ),
+            rules=[{
+                "matches": [
+                    {
+                        "headers": [{
+                            "header": "header",
+                            "invertMatch": False,
+                            "regexMatch": "header-value",
+                        }],
+                        "queryParameters": [{
+                            "queryParameter": "key",
+                            "exactMatch": "value",
+                        }],
+                        "prefixMatch": "example",
+                        "ignoreCase": False,
+                    },
+                    {
+                        "headers": [{
+                            "header": "header",
+                            "invertMatch": False,
+                            "presentMatch": True,
+                        }],
+                        "queryParameters": [{
+                            "queryParameter": "key",
+                            "regexMatch": "value",
+                        }],
+                        "regexMatch": "example",
+                        "ignoreCase": False,
+                    },
+                    {
+                        "headers": [{
+                            "header": "header",
+                            "invertMatch": False,
+                            "presentMatch": True,
+                        }],
+                        "queryParameters": [{
+                            "queryParameter": "key",
+                            "presentMatch": True,
+                        }],
+                        "fullPathMatch": "example",
+                        "ignoreCase": False,
+                    },
                 ],
-                action=gcp.networkservices.HttpRouteRuleActionArgs(
-                    redirect=gcp.networkservices.HttpRouteRuleActionRedirectArgs(
-                        host_redirect="new-host",
-                        path_redirect="new-path",
-                        prefix_rewrite="new-prefix",
-                        https_redirect=True,
-                        strip_query=True,
-                        port_redirect=8081,
-                    ),
-                    url_rewrite=gcp.networkservices.HttpRouteRuleActionUrlRewriteArgs(
-                        path_prefix_rewrite="new-prefix",
-                        host_rewrite="new-host",
-                    ),
-                    retry_policy=gcp.networkservices.HttpRouteRuleActionRetryPolicyArgs(
-                        retry_conditions=["server_error"],
-                        num_retries=1,
-                        per_try_timeout="1s",
-                    ),
-                    request_mirror_policy=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyArgs(
-                        destination=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestinationArgs(
-                            service_name="new",
-                            weight=1,
-                        ),
-                    ),
-                    cors_policy=gcp.networkservices.HttpRouteRuleActionCorsPolicyArgs(
-                        allow_origins=["example"],
-                        allow_methods=[
+                "action": {
+                    "redirect": {
+                        "hostRedirect": "new-host",
+                        "pathRedirect": "new-path",
+                        "prefixRewrite": "new-prefix",
+                        "httpsRedirect": True,
+                        "stripQuery": True,
+                        "portRedirect": 8081,
+                    },
+                    "urlRewrite": {
+                        "pathPrefixRewrite": "new-prefix",
+                        "hostRewrite": "new-host",
+                    },
+                    "retryPolicy": {
+                        "retryConditions": ["server_error"],
+                        "numRetries": 1,
+                        "perTryTimeout": "1s",
+                    },
+                    "requestMirrorPolicy": {
+                        "destination": {
+                            "serviceName": "new",
+                            "weight": 1,
+                        },
+                    },
+                    "corsPolicy": {
+                        "allowOrigins": ["example"],
+                        "allowMethods": [
                             "GET",
                             "PUT",
                         ],
-                        allow_headers=[
+                        "allowHeaders": [
                             "version",
                             "type",
                         ],
-                        expose_headers=[
+                        "exposeHeaders": [
                             "version",
                             "type",
                         ],
-                        max_age="1s",
-                        allow_credentials=True,
-                        disabled=False,
-                    ),
-                ),
-            )])
+                        "maxAge": "1s",
+                        "allowCredentials": True,
+                        "disabled": False,
+                    },
+                },
+            }])
         ```
         ### Network Services Http Route Actions
 
@@ -823,73 +828,73 @@ class HttpRoute(pulumi.CustomResource):
             },
             description="my description",
             hostnames=["example"],
-            rules=[gcp.networkservices.HttpRouteRuleArgs(
-                action=gcp.networkservices.HttpRouteRuleActionArgs(
-                    fault_injection_policy=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyArgs(
-                        delay=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyDelayArgs(
-                            fixed_delay="1s",
-                            percentage=1,
-                        ),
-                        abort=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyAbortArgs(
-                            http_status=500,
-                            percentage=1,
-                        ),
-                    ),
-                    url_rewrite=gcp.networkservices.HttpRouteRuleActionUrlRewriteArgs(
-                        path_prefix_rewrite="new-prefix",
-                        host_rewrite="new-host",
-                    ),
-                    retry_policy=gcp.networkservices.HttpRouteRuleActionRetryPolicyArgs(
-                        retry_conditions=["server_error"],
-                        num_retries=1,
-                        per_try_timeout="1s",
-                    ),
-                    request_mirror_policy=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyArgs(
-                        destination=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestinationArgs(
-                            service_name="new",
-                            weight=1,
-                        ),
-                    ),
-                    cors_policy=gcp.networkservices.HttpRouteRuleActionCorsPolicyArgs(
-                        allow_origins=["example"],
-                        allow_methods=[
+            rules=[{
+                "action": {
+                    "faultInjectionPolicy": {
+                        "delay": {
+                            "fixedDelay": "1s",
+                            "percentage": 1,
+                        },
+                        "abort": {
+                            "httpStatus": 500,
+                            "percentage": 1,
+                        },
+                    },
+                    "urlRewrite": {
+                        "pathPrefixRewrite": "new-prefix",
+                        "hostRewrite": "new-host",
+                    },
+                    "retryPolicy": {
+                        "retryConditions": ["server_error"],
+                        "numRetries": 1,
+                        "perTryTimeout": "1s",
+                    },
+                    "requestMirrorPolicy": {
+                        "destination": {
+                            "serviceName": "new",
+                            "weight": 1,
+                        },
+                    },
+                    "corsPolicy": {
+                        "allowOrigins": ["example"],
+                        "allowMethods": [
                             "GET",
                             "PUT",
                         ],
-                        allow_headers=[
+                        "allowHeaders": [
                             "version",
                             "type",
                         ],
-                        expose_headers=[
+                        "exposeHeaders": [
                             "version",
                             "type",
                         ],
-                        max_age="1s",
-                        allow_credentials=True,
-                        disabled=False,
-                    ),
-                    request_header_modifier=gcp.networkservices.HttpRouteRuleActionRequestHeaderModifierArgs(
-                        set={
+                        "maxAge": "1s",
+                        "allowCredentials": True,
+                        "disabled": False,
+                    },
+                    "requestHeaderModifier": {
+                        "set": {
                             "version": "1",
                             "type": "json",
                         },
-                        add={
+                        "add": {
                             "minor-version": "1",
                         },
-                        removes=["arg"],
-                    ),
-                    response_header_modifier=gcp.networkservices.HttpRouteRuleActionResponseHeaderModifierArgs(
-                        set={
+                        "removes": ["arg"],
+                    },
+                    "responseHeaderModifier": {
+                        "set": {
                             "version": "1",
                             "type": "json",
                         },
-                        add={
+                        "add": {
                             "minor-version": "1",
                         },
-                        removes=["removearg"],
-                    ),
-                ),
-            )])
+                        "removes": ["removearg"],
+                    },
+                },
+            }])
         ```
         ### Network Services Http Route Mesh Basic
 
@@ -911,15 +916,15 @@ class HttpRoute(pulumi.CustomResource):
             description="my description",
             hostnames=["example"],
             meshes=[default.id],
-            rules=[gcp.networkservices.HttpRouteRuleArgs(
-                matches=[gcp.networkservices.HttpRouteRuleMatchArgs(
-                    query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
-                        query_parameter="key",
-                        exact_match="value",
-                    )],
-                    full_path_match="example",
-                )],
-            )])
+            rules=[{
+                "matches": [{
+                    "queryParameters": [{
+                        "queryParameter": "key",
+                        "exactMatch": "value",
+                    }],
+                    "fullPathMatch": "example",
+                }],
+            }])
         ```
 
         ## Import
@@ -968,7 +973,7 @@ class HttpRoute(pulumi.CustomResource):
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1017,7 +1022,7 @@ class HttpRoute(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'HttpRoute':
         """
@@ -1043,7 +1048,7 @@ class HttpRoute(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the HttpRoute resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HttpRouteRuleArgs', 'HttpRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[str] update_time: Time the HttpRoute was updated in UTC.

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -439,7 +444,7 @@ class SQuotaPreference(pulumi.CustomResource):
                  justification: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 quota_config: Optional[pulumi.Input[pulumi.InputType['SQuotaPreferenceQuotaConfigArgs']]] = None,
+                 quota_config: Optional[pulumi.Input[Union['SQuotaPreferenceQuotaConfigArgs', 'SQuotaPreferenceQuotaConfigArgsDict']]] = None,
                  quota_id: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -469,9 +474,9 @@ class SQuotaPreference(pulumi.CustomResource):
             service="compute.googleapis.com",
             quota_id="CPUS-per-project-region",
             contact_email="testuser@gmail.com",
-            quota_config=gcp.cloudquota.SQuotaPreferenceQuotaConfigArgs(
-                preferred_value="200",
-            ))
+            quota_config={
+                "preferredValue": "200",
+            })
         ```
 
         ## Import
@@ -503,7 +508,7 @@ class SQuotaPreference(pulumi.CustomResource):
         :param pulumi.Input[str] justification: The reason / justification for this quota preference.
         :param pulumi.Input[str] name: The resource name of the quota preference. Required except in the CREATE requests.
         :param pulumi.Input[str] parent: The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
-        :param pulumi.Input[pulumi.InputType['SQuotaPreferenceQuotaConfigArgs']] quota_config: The preferred quota configuration.
+        :param pulumi.Input[Union['SQuotaPreferenceQuotaConfigArgs', 'SQuotaPreferenceQuotaConfigArgsDict']] quota_config: The preferred quota configuration.
                Structure is documented below.
         :param pulumi.Input[str] quota_id: The id of the quota to which the quota preference is applied. A quota id is unique in the service.
                Example: `CPUS-per-project-region`.
@@ -541,9 +546,9 @@ class SQuotaPreference(pulumi.CustomResource):
             service="compute.googleapis.com",
             quota_id="CPUS-per-project-region",
             contact_email="testuser@gmail.com",
-            quota_config=gcp.cloudquota.SQuotaPreferenceQuotaConfigArgs(
-                preferred_value="200",
-            ))
+            quota_config={
+                "preferredValue": "200",
+            })
         ```
 
         ## Import
@@ -579,7 +584,7 @@ class SQuotaPreference(pulumi.CustomResource):
                  justification: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 quota_config: Optional[pulumi.Input[pulumi.InputType['SQuotaPreferenceQuotaConfigArgs']]] = None,
+                 quota_config: Optional[pulumi.Input[Union['SQuotaPreferenceQuotaConfigArgs', 'SQuotaPreferenceQuotaConfigArgsDict']]] = None,
                  quota_id: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -624,7 +629,7 @@ class SQuotaPreference(pulumi.CustomResource):
             justification: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
-            quota_config: Optional[pulumi.Input[pulumi.InputType['SQuotaPreferenceQuotaConfigArgs']]] = None,
+            quota_config: Optional[pulumi.Input[Union['SQuotaPreferenceQuotaConfigArgs', 'SQuotaPreferenceQuotaConfigArgsDict']]] = None,
             quota_id: Optional[pulumi.Input[str]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             service: Optional[pulumi.Input[str]] = None,
@@ -654,7 +659,7 @@ class SQuotaPreference(pulumi.CustomResource):
         :param pulumi.Input[str] justification: The reason / justification for this quota preference.
         :param pulumi.Input[str] name: The resource name of the quota preference. Required except in the CREATE requests.
         :param pulumi.Input[str] parent: The parent of the quota preference. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number]".
-        :param pulumi.Input[pulumi.InputType['SQuotaPreferenceQuotaConfigArgs']] quota_config: The preferred quota configuration.
+        :param pulumi.Input[Union['SQuotaPreferenceQuotaConfigArgs', 'SQuotaPreferenceQuotaConfigArgsDict']] quota_config: The preferred quota configuration.
                Structure is documented below.
         :param pulumi.Input[str] quota_id: The id of the quota to which the quota preference is applied. A quota id is unique in the service.
                Example: `CPUS-per-project-region`.

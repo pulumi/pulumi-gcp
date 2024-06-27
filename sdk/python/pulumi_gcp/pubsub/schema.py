@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['SchemaArgs', 'Schema']
@@ -268,10 +273,10 @@ class Schema(pulumi.CustomResource):
         }\"\"\")
         example_topic = gcp.pubsub.Topic("example",
             name="example-topic",
-            schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
-                schema="projects/my-project-name/schemas/example",
-                encoding="JSON",
-            ),
+            schema_settings={
+                "schema": "projects/my-project-name/schemas/example",
+                "encoding": "JSON",
+            },
             opts = pulumi.ResourceOptions(depends_on=[example]))
         ```
 
@@ -379,10 +384,10 @@ class Schema(pulumi.CustomResource):
         }\"\"\")
         example_topic = gcp.pubsub.Topic("example",
             name="example-topic",
-            schema_settings=gcp.pubsub.TopicSchemaSettingsArgs(
-                schema="projects/my-project-name/schemas/example",
-                encoding="JSON",
-            ),
+            schema_settings={
+                "schema": "projects/my-project-name/schemas/example",
+                "encoding": "JSON",
+            },
             opts = pulumi.ResourceOptions(depends_on=[example]))
         ```
 

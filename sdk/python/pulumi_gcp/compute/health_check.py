@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -624,16 +629,16 @@ class HealthCheck(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  check_interval_sec: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 grpc_health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckGrpcHealthCheckArgs']]] = None,
+                 grpc_health_check: Optional[pulumi.Input[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']]] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
-                 http2_health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckHttp2HealthCheckArgs']]] = None,
-                 http_health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckHttpHealthCheckArgs']]] = None,
-                 https_health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckHttpsHealthCheckArgs']]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['HealthCheckLogConfigArgs']]] = None,
+                 http2_health_check: Optional[pulumi.Input[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict']]] = None,
+                 http_health_check: Optional[pulumi.Input[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict']]] = None,
+                 https_health_check: Optional[pulumi.Input[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict']]] = None,
+                 log_config: Optional[pulumi.Input[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 ssl_health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckSslHealthCheckArgs']]] = None,
-                 tcp_health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckTcpHealthCheckArgs']]] = None,
+                 ssl_health_check: Optional[pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']]] = None,
+                 tcp_health_check: Optional[pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  unhealthy_threshold: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -672,9 +677,9 @@ class HealthCheck(pulumi.CustomResource):
             name="tcp-health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         ```
         ### Health Check Tcp Full
 
@@ -689,13 +694,13 @@ class HealthCheck(pulumi.CustomResource):
             check_interval_sec=1,
             healthy_threshold=4,
             unhealthy_threshold=5,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                request="ARE YOU HEALTHY?",
-                proxy_header="NONE",
-                response="I AM HEALTHY",
-            ))
+            tcp_health_check={
+                "portName": "health-check-port",
+                "portSpecification": "USE_NAMED_PORT",
+                "request": "ARE YOU HEALTHY?",
+                "proxyHeader": "NONE",
+                "response": "I AM HEALTHY",
+            })
         ```
         ### Health Check Ssl
 
@@ -707,9 +712,9 @@ class HealthCheck(pulumi.CustomResource):
             name="ssl-health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            ssl_health_check=gcp.compute.HealthCheckSslHealthCheckArgs(
-                port=443,
-            ))
+            ssl_health_check={
+                "port": 443,
+            })
         ```
         ### Health Check Ssl Full
 
@@ -724,13 +729,13 @@ class HealthCheck(pulumi.CustomResource):
             check_interval_sec=1,
             healthy_threshold=4,
             unhealthy_threshold=5,
-            ssl_health_check=gcp.compute.HealthCheckSslHealthCheckArgs(
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                request="ARE YOU HEALTHY?",
-                proxy_header="NONE",
-                response="I AM HEALTHY",
-            ))
+            ssl_health_check={
+                "portName": "health-check-port",
+                "portSpecification": "USE_NAMED_PORT",
+                "request": "ARE YOU HEALTHY?",
+                "proxyHeader": "NONE",
+                "response": "I AM HEALTHY",
+            })
         ```
         ### Health Check Http
 
@@ -742,9 +747,9 @@ class HealthCheck(pulumi.CustomResource):
             name="http-health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
-                port=80,
-            ))
+            http_health_check={
+                "port": 80,
+            })
         ```
         ### Health Check Http Full
 
@@ -759,14 +764,14 @@ class HealthCheck(pulumi.CustomResource):
             check_interval_sec=1,
             healthy_threshold=4,
             unhealthy_threshold=5,
-            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                host="1.2.3.4",
-                request_path="/mypath",
-                proxy_header="NONE",
-                response="I AM HEALTHY",
-            ))
+            http_health_check={
+                "portName": "health-check-port",
+                "portSpecification": "USE_NAMED_PORT",
+                "host": "1.2.3.4",
+                "requestPath": "/mypath",
+                "proxyHeader": "NONE",
+                "response": "I AM HEALTHY",
+            })
         ```
         ### Health Check Https
 
@@ -778,9 +783,9 @@ class HealthCheck(pulumi.CustomResource):
             name="https-health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            https_health_check=gcp.compute.HealthCheckHttpsHealthCheckArgs(
-                port=443,
-            ))
+            https_health_check={
+                "port": 443,
+            })
         ```
         ### Health Check Https Full
 
@@ -795,14 +800,14 @@ class HealthCheck(pulumi.CustomResource):
             check_interval_sec=1,
             healthy_threshold=4,
             unhealthy_threshold=5,
-            https_health_check=gcp.compute.HealthCheckHttpsHealthCheckArgs(
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                host="1.2.3.4",
-                request_path="/mypath",
-                proxy_header="NONE",
-                response="I AM HEALTHY",
-            ))
+            https_health_check={
+                "portName": "health-check-port",
+                "portSpecification": "USE_NAMED_PORT",
+                "host": "1.2.3.4",
+                "requestPath": "/mypath",
+                "proxyHeader": "NONE",
+                "response": "I AM HEALTHY",
+            })
         ```
         ### Health Check Http2
 
@@ -814,9 +819,9 @@ class HealthCheck(pulumi.CustomResource):
             name="http2-health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            http2_health_check=gcp.compute.HealthCheckHttp2HealthCheckArgs(
-                port=443,
-            ))
+            http2_health_check={
+                "port": 443,
+            })
         ```
         ### Health Check Http2 Full
 
@@ -831,14 +836,14 @@ class HealthCheck(pulumi.CustomResource):
             check_interval_sec=1,
             healthy_threshold=4,
             unhealthy_threshold=5,
-            http2_health_check=gcp.compute.HealthCheckHttp2HealthCheckArgs(
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                host="1.2.3.4",
-                request_path="/mypath",
-                proxy_header="NONE",
-                response="I AM HEALTHY",
-            ))
+            http2_health_check={
+                "portName": "health-check-port",
+                "portSpecification": "USE_NAMED_PORT",
+                "host": "1.2.3.4",
+                "requestPath": "/mypath",
+                "proxyHeader": "NONE",
+                "response": "I AM HEALTHY",
+            })
         ```
         ### Health Check Grpc
 
@@ -850,9 +855,9 @@ class HealthCheck(pulumi.CustomResource):
             name="grpc-health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            grpc_health_check=gcp.compute.HealthCheckGrpcHealthCheckArgs(
-                port=443,
-            ))
+            grpc_health_check={
+                "port": 443,
+            })
         ```
         ### Health Check Grpc Full
 
@@ -864,11 +869,11 @@ class HealthCheck(pulumi.CustomResource):
             name="grpc-health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            grpc_health_check=gcp.compute.HealthCheckGrpcHealthCheckArgs(
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                grpc_service_name="testservice",
-            ))
+            grpc_health_check={
+                "portName": "health-check-port",
+                "portSpecification": "USE_NAMED_PORT",
+                "grpcServiceName": "testservice",
+            })
         ```
         ### Health Check With Logging
 
@@ -880,12 +885,12 @@ class HealthCheck(pulumi.CustomResource):
             name="tcp-health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=22,
-            ),
-            log_config=gcp.compute.HealthCheckLogConfigArgs(
-                enable=True,
-            ))
+            tcp_health_check={
+                "port": 22,
+            },
+            log_config={
+                "enable": True,
+            })
         ```
 
         ## Import
@@ -918,17 +923,17 @@ class HealthCheck(pulumi.CustomResource):
                seconds.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[pulumi.InputType['HealthCheckGrpcHealthCheckArgs']] grpc_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']] grpc_health_check: A nested object resource
                Structure is documented below.
         :param pulumi.Input[int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
-        :param pulumi.Input[pulumi.InputType['HealthCheckHttp2HealthCheckArgs']] http2_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict']] http2_health_check: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['HealthCheckHttpHealthCheckArgs']] http_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict']] http_health_check: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['HealthCheckHttpsHealthCheckArgs']] https_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict']] https_health_check: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['HealthCheckLogConfigArgs']] log_config: Configure logging on this health check.
+        :param pulumi.Input[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict']] log_config: Configure logging on this health check.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -942,9 +947,9 @@ class HealthCheck(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['HealthCheckSslHealthCheckArgs']] ssl_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']] ssl_health_check: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['HealthCheckTcpHealthCheckArgs']] tcp_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']] tcp_health_check: A nested object resource
                Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure.
                The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -993,9 +998,9 @@ class HealthCheck(pulumi.CustomResource):
             name="tcp-health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=80,
-            ))
+            tcp_health_check={
+                "port": 80,
+            })
         ```
         ### Health Check Tcp Full
 
@@ -1010,13 +1015,13 @@ class HealthCheck(pulumi.CustomResource):
             check_interval_sec=1,
             healthy_threshold=4,
             unhealthy_threshold=5,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                request="ARE YOU HEALTHY?",
-                proxy_header="NONE",
-                response="I AM HEALTHY",
-            ))
+            tcp_health_check={
+                "portName": "health-check-port",
+                "portSpecification": "USE_NAMED_PORT",
+                "request": "ARE YOU HEALTHY?",
+                "proxyHeader": "NONE",
+                "response": "I AM HEALTHY",
+            })
         ```
         ### Health Check Ssl
 
@@ -1028,9 +1033,9 @@ class HealthCheck(pulumi.CustomResource):
             name="ssl-health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            ssl_health_check=gcp.compute.HealthCheckSslHealthCheckArgs(
-                port=443,
-            ))
+            ssl_health_check={
+                "port": 443,
+            })
         ```
         ### Health Check Ssl Full
 
@@ -1045,13 +1050,13 @@ class HealthCheck(pulumi.CustomResource):
             check_interval_sec=1,
             healthy_threshold=4,
             unhealthy_threshold=5,
-            ssl_health_check=gcp.compute.HealthCheckSslHealthCheckArgs(
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                request="ARE YOU HEALTHY?",
-                proxy_header="NONE",
-                response="I AM HEALTHY",
-            ))
+            ssl_health_check={
+                "portName": "health-check-port",
+                "portSpecification": "USE_NAMED_PORT",
+                "request": "ARE YOU HEALTHY?",
+                "proxyHeader": "NONE",
+                "response": "I AM HEALTHY",
+            })
         ```
         ### Health Check Http
 
@@ -1063,9 +1068,9 @@ class HealthCheck(pulumi.CustomResource):
             name="http-health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
-                port=80,
-            ))
+            http_health_check={
+                "port": 80,
+            })
         ```
         ### Health Check Http Full
 
@@ -1080,14 +1085,14 @@ class HealthCheck(pulumi.CustomResource):
             check_interval_sec=1,
             healthy_threshold=4,
             unhealthy_threshold=5,
-            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                host="1.2.3.4",
-                request_path="/mypath",
-                proxy_header="NONE",
-                response="I AM HEALTHY",
-            ))
+            http_health_check={
+                "portName": "health-check-port",
+                "portSpecification": "USE_NAMED_PORT",
+                "host": "1.2.3.4",
+                "requestPath": "/mypath",
+                "proxyHeader": "NONE",
+                "response": "I AM HEALTHY",
+            })
         ```
         ### Health Check Https
 
@@ -1099,9 +1104,9 @@ class HealthCheck(pulumi.CustomResource):
             name="https-health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            https_health_check=gcp.compute.HealthCheckHttpsHealthCheckArgs(
-                port=443,
-            ))
+            https_health_check={
+                "port": 443,
+            })
         ```
         ### Health Check Https Full
 
@@ -1116,14 +1121,14 @@ class HealthCheck(pulumi.CustomResource):
             check_interval_sec=1,
             healthy_threshold=4,
             unhealthy_threshold=5,
-            https_health_check=gcp.compute.HealthCheckHttpsHealthCheckArgs(
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                host="1.2.3.4",
-                request_path="/mypath",
-                proxy_header="NONE",
-                response="I AM HEALTHY",
-            ))
+            https_health_check={
+                "portName": "health-check-port",
+                "portSpecification": "USE_NAMED_PORT",
+                "host": "1.2.3.4",
+                "requestPath": "/mypath",
+                "proxyHeader": "NONE",
+                "response": "I AM HEALTHY",
+            })
         ```
         ### Health Check Http2
 
@@ -1135,9 +1140,9 @@ class HealthCheck(pulumi.CustomResource):
             name="http2-health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            http2_health_check=gcp.compute.HealthCheckHttp2HealthCheckArgs(
-                port=443,
-            ))
+            http2_health_check={
+                "port": 443,
+            })
         ```
         ### Health Check Http2 Full
 
@@ -1152,14 +1157,14 @@ class HealthCheck(pulumi.CustomResource):
             check_interval_sec=1,
             healthy_threshold=4,
             unhealthy_threshold=5,
-            http2_health_check=gcp.compute.HealthCheckHttp2HealthCheckArgs(
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                host="1.2.3.4",
-                request_path="/mypath",
-                proxy_header="NONE",
-                response="I AM HEALTHY",
-            ))
+            http2_health_check={
+                "portName": "health-check-port",
+                "portSpecification": "USE_NAMED_PORT",
+                "host": "1.2.3.4",
+                "requestPath": "/mypath",
+                "proxyHeader": "NONE",
+                "response": "I AM HEALTHY",
+            })
         ```
         ### Health Check Grpc
 
@@ -1171,9 +1176,9 @@ class HealthCheck(pulumi.CustomResource):
             name="grpc-health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            grpc_health_check=gcp.compute.HealthCheckGrpcHealthCheckArgs(
-                port=443,
-            ))
+            grpc_health_check={
+                "port": 443,
+            })
         ```
         ### Health Check Grpc Full
 
@@ -1185,11 +1190,11 @@ class HealthCheck(pulumi.CustomResource):
             name="grpc-health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            grpc_health_check=gcp.compute.HealthCheckGrpcHealthCheckArgs(
-                port_name="health-check-port",
-                port_specification="USE_NAMED_PORT",
-                grpc_service_name="testservice",
-            ))
+            grpc_health_check={
+                "portName": "health-check-port",
+                "portSpecification": "USE_NAMED_PORT",
+                "grpcServiceName": "testservice",
+            })
         ```
         ### Health Check With Logging
 
@@ -1201,12 +1206,12 @@ class HealthCheck(pulumi.CustomResource):
             name="tcp-health-check",
             timeout_sec=1,
             check_interval_sec=1,
-            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
-                port=22,
-            ),
-            log_config=gcp.compute.HealthCheckLogConfigArgs(
-                enable=True,
-            ))
+            tcp_health_check={
+                "port": 22,
+            },
+            log_config={
+                "enable": True,
+            })
         ```
 
         ## Import
@@ -1250,16 +1255,16 @@ class HealthCheck(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  check_interval_sec: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 grpc_health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckGrpcHealthCheckArgs']]] = None,
+                 grpc_health_check: Optional[pulumi.Input[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']]] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
-                 http2_health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckHttp2HealthCheckArgs']]] = None,
-                 http_health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckHttpHealthCheckArgs']]] = None,
-                 https_health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckHttpsHealthCheckArgs']]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['HealthCheckLogConfigArgs']]] = None,
+                 http2_health_check: Optional[pulumi.Input[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict']]] = None,
+                 http_health_check: Optional[pulumi.Input[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict']]] = None,
+                 https_health_check: Optional[pulumi.Input[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict']]] = None,
+                 log_config: Optional[pulumi.Input[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 ssl_health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckSslHealthCheckArgs']]] = None,
-                 tcp_health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckTcpHealthCheckArgs']]] = None,
+                 ssl_health_check: Optional[pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']]] = None,
+                 tcp_health_check: Optional[pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  unhealthy_threshold: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1301,17 +1306,17 @@ class HealthCheck(pulumi.CustomResource):
             check_interval_sec: Optional[pulumi.Input[int]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            grpc_health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckGrpcHealthCheckArgs']]] = None,
+            grpc_health_check: Optional[pulumi.Input[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']]] = None,
             healthy_threshold: Optional[pulumi.Input[int]] = None,
-            http2_health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckHttp2HealthCheckArgs']]] = None,
-            http_health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckHttpHealthCheckArgs']]] = None,
-            https_health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckHttpsHealthCheckArgs']]] = None,
-            log_config: Optional[pulumi.Input[pulumi.InputType['HealthCheckLogConfigArgs']]] = None,
+            http2_health_check: Optional[pulumi.Input[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict']]] = None,
+            http_health_check: Optional[pulumi.Input[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict']]] = None,
+            https_health_check: Optional[pulumi.Input[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict']]] = None,
+            log_config: Optional[pulumi.Input[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            ssl_health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckSslHealthCheckArgs']]] = None,
-            tcp_health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckTcpHealthCheckArgs']]] = None,
+            ssl_health_check: Optional[pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']]] = None,
+            tcp_health_check: Optional[pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']]] = None,
             timeout_sec: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None,
             unhealthy_threshold: Optional[pulumi.Input[int]] = None) -> 'HealthCheck':
@@ -1327,17 +1332,17 @@ class HealthCheck(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[pulumi.InputType['HealthCheckGrpcHealthCheckArgs']] grpc_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']] grpc_health_check: A nested object resource
                Structure is documented below.
         :param pulumi.Input[int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
-        :param pulumi.Input[pulumi.InputType['HealthCheckHttp2HealthCheckArgs']] http2_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict']] http2_health_check: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['HealthCheckHttpHealthCheckArgs']] http_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict']] http_health_check: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['HealthCheckHttpsHealthCheckArgs']] https_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict']] https_health_check: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['HealthCheckLogConfigArgs']] log_config: Configure logging on this health check.
+        :param pulumi.Input[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict']] log_config: Configure logging on this health check.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -1352,9 +1357,9 @@ class HealthCheck(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[pulumi.InputType['HealthCheckSslHealthCheckArgs']] ssl_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']] ssl_health_check: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['HealthCheckTcpHealthCheckArgs']] tcp_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']] tcp_health_check: A nested object resource
                Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure.
                The default value is 5 seconds.  It is invalid for timeoutSec to have

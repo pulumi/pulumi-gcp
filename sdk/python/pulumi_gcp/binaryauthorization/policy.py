@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -245,9 +250,9 @@ class Policy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admission_whitelist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAdmissionWhitelistPatternArgs']]]]] = None,
-                 cluster_admission_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyClusterAdmissionRuleArgs']]]]] = None,
-                 default_admission_rule: Optional[pulumi.Input[pulumi.InputType['PolicyDefaultAdmissionRuleArgs']]] = None,
+                 admission_whitelist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]]] = None,
+                 cluster_admission_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]]] = None,
+                 default_admission_rule: Optional[pulumi.Input[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  global_policy_evaluation_mode: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -271,30 +276,30 @@ class Policy(pulumi.CustomResource):
 
         note = gcp.containeranalysis.Note("note",
             name="test-attestor-note",
-            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                    human_readable_name="My attestor",
-                ),
-            ))
+            attestation_authority={
+                "hint": {
+                    "humanReadableName": "My attestor",
+                },
+            })
         attestor = gcp.binaryauthorization.Attestor("attestor",
             name="test-attestor",
-            attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
-                note_reference=note.name,
-            ))
+            attestation_authority_note={
+                "noteReference": note.name,
+            })
         policy = gcp.binaryauthorization.Policy("policy",
-            admission_whitelist_patterns=[gcp.binaryauthorization.PolicyAdmissionWhitelistPatternArgs(
-                name_pattern="gcr.io/google_containers/*",
-            )],
-            default_admission_rule=gcp.binaryauthorization.PolicyDefaultAdmissionRuleArgs(
-                evaluation_mode="ALWAYS_ALLOW",
-                enforcement_mode="ENFORCED_BLOCK_AND_AUDIT_LOG",
-            ),
-            cluster_admission_rules=[gcp.binaryauthorization.PolicyClusterAdmissionRuleArgs(
-                cluster="us-central1-a.prod-cluster",
-                evaluation_mode="REQUIRE_ATTESTATION",
-                enforcement_mode="ENFORCED_BLOCK_AND_AUDIT_LOG",
-                require_attestations_bies=[attestor.name],
-            )])
+            admission_whitelist_patterns=[{
+                "namePattern": "gcr.io/google_containers/*",
+            }],
+            default_admission_rule={
+                "evaluationMode": "ALWAYS_ALLOW",
+                "enforcementMode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
+            },
+            cluster_admission_rules=[{
+                "cluster": "us-central1-a.prod-cluster",
+                "evaluationMode": "REQUIRE_ATTESTATION",
+                "enforcementMode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
+                "requireAttestationsBies": [attestor.name],
+            }])
         ```
         ### Binary Authorization Policy Global Evaluation
 
@@ -304,22 +309,22 @@ class Policy(pulumi.CustomResource):
 
         note = gcp.containeranalysis.Note("note",
             name="test-attestor-note",
-            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                    human_readable_name="My attestor",
-                ),
-            ))
+            attestation_authority={
+                "hint": {
+                    "humanReadableName": "My attestor",
+                },
+            })
         attestor = gcp.binaryauthorization.Attestor("attestor",
             name="test-attestor",
-            attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
-                note_reference=note.name,
-            ))
+            attestation_authority_note={
+                "noteReference": note.name,
+            })
         policy = gcp.binaryauthorization.Policy("policy",
-            default_admission_rule=gcp.binaryauthorization.PolicyDefaultAdmissionRuleArgs(
-                evaluation_mode="REQUIRE_ATTESTATION",
-                enforcement_mode="ENFORCED_BLOCK_AND_AUDIT_LOG",
-                require_attestations_bies=[attestor.name],
-            ),
+            default_admission_rule={
+                "evaluationMode": "REQUIRE_ATTESTATION",
+                "enforcementMode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
+                "requireAttestationsBies": [attestor.name],
+            },
             global_policy_evaluation_mode="ENABLE")
         ```
 
@@ -343,13 +348,13 @@ class Policy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAdmissionWhitelistPatternArgs']]]] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
                image's admission requests will always be permitted regardless of your admission rules.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyClusterAdmissionRuleArgs']]]] cluster_admission_rules: Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]] cluster_admission_rules: Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
                must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
                denied. There can be at most one admission rule per cluster spec. Identifier format: '{{location}}.{{clusterId}}'. A
                location is either a compute zone (e.g. 'us-central1-a') or a region (e.g. 'us-central1').
-        :param pulumi.Input[pulumi.InputType['PolicyDefaultAdmissionRuleArgs']] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
+        :param pulumi.Input[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
                rule.
                Structure is documented below.
         :param pulumi.Input[str] description: A descriptive comment.
@@ -381,30 +386,30 @@ class Policy(pulumi.CustomResource):
 
         note = gcp.containeranalysis.Note("note",
             name="test-attestor-note",
-            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                    human_readable_name="My attestor",
-                ),
-            ))
+            attestation_authority={
+                "hint": {
+                    "humanReadableName": "My attestor",
+                },
+            })
         attestor = gcp.binaryauthorization.Attestor("attestor",
             name="test-attestor",
-            attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
-                note_reference=note.name,
-            ))
+            attestation_authority_note={
+                "noteReference": note.name,
+            })
         policy = gcp.binaryauthorization.Policy("policy",
-            admission_whitelist_patterns=[gcp.binaryauthorization.PolicyAdmissionWhitelistPatternArgs(
-                name_pattern="gcr.io/google_containers/*",
-            )],
-            default_admission_rule=gcp.binaryauthorization.PolicyDefaultAdmissionRuleArgs(
-                evaluation_mode="ALWAYS_ALLOW",
-                enforcement_mode="ENFORCED_BLOCK_AND_AUDIT_LOG",
-            ),
-            cluster_admission_rules=[gcp.binaryauthorization.PolicyClusterAdmissionRuleArgs(
-                cluster="us-central1-a.prod-cluster",
-                evaluation_mode="REQUIRE_ATTESTATION",
-                enforcement_mode="ENFORCED_BLOCK_AND_AUDIT_LOG",
-                require_attestations_bies=[attestor.name],
-            )])
+            admission_whitelist_patterns=[{
+                "namePattern": "gcr.io/google_containers/*",
+            }],
+            default_admission_rule={
+                "evaluationMode": "ALWAYS_ALLOW",
+                "enforcementMode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
+            },
+            cluster_admission_rules=[{
+                "cluster": "us-central1-a.prod-cluster",
+                "evaluationMode": "REQUIRE_ATTESTATION",
+                "enforcementMode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
+                "requireAttestationsBies": [attestor.name],
+            }])
         ```
         ### Binary Authorization Policy Global Evaluation
 
@@ -414,22 +419,22 @@ class Policy(pulumi.CustomResource):
 
         note = gcp.containeranalysis.Note("note",
             name="test-attestor-note",
-            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                    human_readable_name="My attestor",
-                ),
-            ))
+            attestation_authority={
+                "hint": {
+                    "humanReadableName": "My attestor",
+                },
+            })
         attestor = gcp.binaryauthorization.Attestor("attestor",
             name="test-attestor",
-            attestation_authority_note=gcp.binaryauthorization.AttestorAttestationAuthorityNoteArgs(
-                note_reference=note.name,
-            ))
+            attestation_authority_note={
+                "noteReference": note.name,
+            })
         policy = gcp.binaryauthorization.Policy("policy",
-            default_admission_rule=gcp.binaryauthorization.PolicyDefaultAdmissionRuleArgs(
-                evaluation_mode="REQUIRE_ATTESTATION",
-                enforcement_mode="ENFORCED_BLOCK_AND_AUDIT_LOG",
-                require_attestations_bies=[attestor.name],
-            ),
+            default_admission_rule={
+                "evaluationMode": "REQUIRE_ATTESTATION",
+                "enforcementMode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
+                "requireAttestationsBies": [attestor.name],
+            },
             global_policy_evaluation_mode="ENABLE")
         ```
 
@@ -466,9 +471,9 @@ class Policy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admission_whitelist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAdmissionWhitelistPatternArgs']]]]] = None,
-                 cluster_admission_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyClusterAdmissionRuleArgs']]]]] = None,
-                 default_admission_rule: Optional[pulumi.Input[pulumi.InputType['PolicyDefaultAdmissionRuleArgs']]] = None,
+                 admission_whitelist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]]] = None,
+                 cluster_admission_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]]] = None,
+                 default_admission_rule: Optional[pulumi.Input[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  global_policy_evaluation_mode: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -499,9 +504,9 @@ class Policy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admission_whitelist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAdmissionWhitelistPatternArgs']]]]] = None,
-            cluster_admission_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyClusterAdmissionRuleArgs']]]]] = None,
-            default_admission_rule: Optional[pulumi.Input[pulumi.InputType['PolicyDefaultAdmissionRuleArgs']]] = None,
+            admission_whitelist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]]] = None,
+            cluster_admission_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]]] = None,
+            default_admission_rule: Optional[pulumi.Input[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             global_policy_evaluation_mode: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'Policy':
@@ -512,13 +517,13 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyAdmissionWhitelistPatternArgs']]]] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
                image's admission requests will always be permitted regardless of your admission rules.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyClusterAdmissionRuleArgs']]]] cluster_admission_rules: Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]] cluster_admission_rules: Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
                must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
                denied. There can be at most one admission rule per cluster spec. Identifier format: '{{location}}.{{clusterId}}'. A
                location is either a compute zone (e.g. 'us-central1-a') or a region (e.g. 'us-central1').
-        :param pulumi.Input[pulumi.InputType['PolicyDefaultAdmissionRuleArgs']] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
+        :param pulumi.Input[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
                rule.
                Structure is documented below.
         :param pulumi.Input[str] description: A descriptive comment.

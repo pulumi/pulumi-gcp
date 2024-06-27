@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -249,7 +254,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  behavior: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
-                 local_data: Optional[pulumi.Input[pulumi.InputType['ResponsePolicyRuleLocalDataArgs']]] = None,
+                 local_data: Optional[pulumi.Input[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  response_policy: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
@@ -277,25 +282,25 @@ class ResponsePolicyRule(pulumi.CustomResource):
         response_policy = gcp.dns.ResponsePolicy("response-policy",
             response_policy_name="example-response-policy",
             networks=[
-                gcp.dns.ResponsePolicyNetworkArgs(
-                    network_url=network_1.id,
-                ),
-                gcp.dns.ResponsePolicyNetworkArgs(
-                    network_url=network_2.id,
-                ),
+                {
+                    "networkUrl": network_1.id,
+                },
+                {
+                    "networkUrl": network_2.id,
+                },
             ])
         example_response_policy_rule = gcp.dns.ResponsePolicyRule("example-response-policy-rule",
             response_policy=response_policy.response_policy_name,
             rule_name="example-rule",
             dns_name="dns.example.com.",
-            local_data=gcp.dns.ResponsePolicyRuleLocalDataArgs(
-                local_datas=[gcp.dns.ResponsePolicyRuleLocalDataLocalDataArgs(
-                    name="dns.example.com.",
-                    type="A",
-                    ttl=300,
-                    rrdatas=["192.0.2.91"],
-                )],
-            ))
+            local_data={
+                "localDatas": [{
+                    "name": "dns.example.com.",
+                    "type": "A",
+                    "ttl": 300,
+                    "rrdatas": ["192.0.2.91"],
+                }],
+            })
         ```
 
         ## Import
@@ -326,7 +331,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] behavior: Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         :param pulumi.Input[str] dns_name: The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
-        :param pulumi.Input[pulumi.InputType['ResponsePolicyRuleLocalDataArgs']] local_data: Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
+        :param pulumi.Input[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict']] local_data: Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
                in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -366,25 +371,25 @@ class ResponsePolicyRule(pulumi.CustomResource):
         response_policy = gcp.dns.ResponsePolicy("response-policy",
             response_policy_name="example-response-policy",
             networks=[
-                gcp.dns.ResponsePolicyNetworkArgs(
-                    network_url=network_1.id,
-                ),
-                gcp.dns.ResponsePolicyNetworkArgs(
-                    network_url=network_2.id,
-                ),
+                {
+                    "networkUrl": network_1.id,
+                },
+                {
+                    "networkUrl": network_2.id,
+                },
             ])
         example_response_policy_rule = gcp.dns.ResponsePolicyRule("example-response-policy-rule",
             response_policy=response_policy.response_policy_name,
             rule_name="example-rule",
             dns_name="dns.example.com.",
-            local_data=gcp.dns.ResponsePolicyRuleLocalDataArgs(
-                local_datas=[gcp.dns.ResponsePolicyRuleLocalDataLocalDataArgs(
-                    name="dns.example.com.",
-                    type="A",
-                    ttl=300,
-                    rrdatas=["192.0.2.91"],
-                )],
-            ))
+            local_data={
+                "localDatas": [{
+                    "name": "dns.example.com.",
+                    "type": "A",
+                    "ttl": 300,
+                    "rrdatas": ["192.0.2.91"],
+                }],
+            })
         ```
 
         ## Import
@@ -428,7 +433,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  behavior: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
-                 local_data: Optional[pulumi.Input[pulumi.InputType['ResponsePolicyRuleLocalDataArgs']]] = None,
+                 local_data: Optional[pulumi.Input[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  response_policy: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
@@ -465,7 +470,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             behavior: Optional[pulumi.Input[str]] = None,
             dns_name: Optional[pulumi.Input[str]] = None,
-            local_data: Optional[pulumi.Input[pulumi.InputType['ResponsePolicyRuleLocalDataArgs']]] = None,
+            local_data: Optional[pulumi.Input[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             response_policy: Optional[pulumi.Input[str]] = None,
             rule_name: Optional[pulumi.Input[str]] = None) -> 'ResponsePolicyRule':
@@ -478,7 +483,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] behavior: Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         :param pulumi.Input[str] dns_name: The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
-        :param pulumi.Input[pulumi.InputType['ResponsePolicyRuleLocalDataArgs']] local_data: Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
+        :param pulumi.Input[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict']] local_data: Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
                in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.

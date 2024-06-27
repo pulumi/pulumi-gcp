@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -541,7 +546,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
                  disable_proxy_access: Optional[pulumi.Input[bool]] = None,
-                 gce_setup: Optional[pulumi.Input[pulumi.InputType['InstanceGceSetupArgs']]] = None,
+                 gce_setup: Optional[pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -573,12 +578,12 @@ class Instance(pulumi.CustomResource):
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
             location="us-west1-a",
-            gce_setup=gcp.workbench.InstanceGceSetupArgs(
-                container_image=gcp.workbench.InstanceGceSetupContainerImageArgs(
-                    repository="us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310",
-                    tag="latest",
-                ),
-            ))
+            gce_setup={
+                "containerImage": {
+                    "repository": "us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310",
+                    "tag": "latest",
+                },
+            })
         ```
         ### Workbench Instance Basic Gpu
 
@@ -589,17 +594,17 @@ class Instance(pulumi.CustomResource):
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
             location="us-central1-a",
-            gce_setup=gcp.workbench.InstanceGceSetupArgs(
-                machine_type="n1-standard-1",
-                accelerator_configs=[gcp.workbench.InstanceGceSetupAcceleratorConfigArgs(
-                    type="NVIDIA_TESLA_T4",
-                    core_count="1",
-                )],
-                vm_image=gcp.workbench.InstanceGceSetupVmImageArgs(
-                    project="cloud-notebooks-managed",
-                    family="workbench-instances",
-                ),
-            ))
+            gce_setup={
+                "machineType": "n1-standard-1",
+                "acceleratorConfigs": [{
+                    "type": "NVIDIA_TESLA_T4",
+                    "coreCount": "1",
+                }],
+                "vmImage": {
+                    "project": "cloud-notebooks-managed",
+                    "family": "workbench-instances",
+                },
+            })
         ```
         ### Workbench Instance Labels Stopped
 
@@ -610,20 +615,20 @@ class Instance(pulumi.CustomResource):
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
             location="us-central1-a",
-            gce_setup=gcp.workbench.InstanceGceSetupArgs(
-                machine_type="e2-standard-4",
-                shielded_instance_config=gcp.workbench.InstanceGceSetupShieldedInstanceConfigArgs(
-                    enable_secure_boot=False,
-                    enable_vtpm=False,
-                    enable_integrity_monitoring=False,
-                ),
-                service_accounts=[gcp.workbench.InstanceGceSetupServiceAccountArgs(
-                    email="my@service-account.com",
-                )],
-                metadata={
+            gce_setup={
+                "machineType": "e2-standard-4",
+                "shieldedInstanceConfig": {
+                    "enableSecureBoot": False,
+                    "enableVtpm": False,
+                    "enableIntegrityMonitoring": False,
+                },
+                "serviceAccounts": [{
+                    "email": "my@service-account.com",
+                }],
+                "metadata": {
                     "terraform": "true",
                 },
-            ),
+            },
             instance_owners=["my@service-account.com"],
             labels={
                 "k": "val",
@@ -647,47 +652,47 @@ class Instance(pulumi.CustomResource):
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
             location="us-central1-a",
-            gce_setup=gcp.workbench.InstanceGceSetupArgs(
-                machine_type="n1-standard-4",
-                accelerator_configs=[gcp.workbench.InstanceGceSetupAcceleratorConfigArgs(
-                    type="NVIDIA_TESLA_T4",
-                    core_count="1",
-                )],
-                shielded_instance_config=gcp.workbench.InstanceGceSetupShieldedInstanceConfigArgs(
-                    enable_secure_boot=True,
-                    enable_vtpm=True,
-                    enable_integrity_monitoring=True,
-                ),
-                disable_public_ip=False,
-                service_accounts=[gcp.workbench.InstanceGceSetupServiceAccountArgs(
-                    email="my@service-account.com",
-                )],
-                boot_disk=gcp.workbench.InstanceGceSetupBootDiskArgs(
-                    disk_size_gb="310",
-                    disk_type="PD_SSD",
-                    disk_encryption="CMEK",
-                    kms_key="my-crypto-key",
-                ),
-                data_disks=gcp.workbench.InstanceGceSetupDataDisksArgs(
-                    disk_size_gb="330",
-                    disk_type="PD_SSD",
-                    disk_encryption="CMEK",
-                    kms_key="my-crypto-key",
-                ),
-                network_interfaces=[gcp.workbench.InstanceGceSetupNetworkInterfaceArgs(
-                    network=my_network.id,
-                    subnet=my_subnetwork.id,
-                    nic_type="GVNIC",
-                )],
-                metadata={
+            gce_setup={
+                "machineType": "n1-standard-4",
+                "acceleratorConfigs": [{
+                    "type": "NVIDIA_TESLA_T4",
+                    "coreCount": "1",
+                }],
+                "shieldedInstanceConfig": {
+                    "enableSecureBoot": True,
+                    "enableVtpm": True,
+                    "enableIntegrityMonitoring": True,
+                },
+                "disablePublicIp": False,
+                "serviceAccounts": [{
+                    "email": "my@service-account.com",
+                }],
+                "bootDisk": {
+                    "diskSizeGb": "310",
+                    "diskType": "PD_SSD",
+                    "diskEncryption": "CMEK",
+                    "kmsKey": "my-crypto-key",
+                },
+                "dataDisks": {
+                    "diskSizeGb": "330",
+                    "diskType": "PD_SSD",
+                    "diskEncryption": "CMEK",
+                    "kmsKey": "my-crypto-key",
+                },
+                "networkInterfaces": [{
+                    "network": my_network.id,
+                    "subnet": my_subnetwork.id,
+                    "nicType": "GVNIC",
+                }],
+                "metadata": {
                     "terraform": "true",
                 },
-                enable_ip_forwarding=True,
-                tags=[
+                "enableIpForwarding": True,
+                "tags": [
                     "abc",
                     "def",
                 ],
-            ),
+            },
             disable_proxy_access=True,
             instance_owners=["my@service-account.com"],
             labels={
@@ -724,7 +729,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
-        :param pulumi.Input[pulumi.InputType['InstanceGceSetupArgs']] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
+        :param pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
                Structure is documented below.
         :param pulumi.Input[str] instance_id: Required. User-defined unique ID of this instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: 'Optional. Input only. The owner of this instance after creation. Format:
@@ -773,12 +778,12 @@ class Instance(pulumi.CustomResource):
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
             location="us-west1-a",
-            gce_setup=gcp.workbench.InstanceGceSetupArgs(
-                container_image=gcp.workbench.InstanceGceSetupContainerImageArgs(
-                    repository="us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310",
-                    tag="latest",
-                ),
-            ))
+            gce_setup={
+                "containerImage": {
+                    "repository": "us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310",
+                    "tag": "latest",
+                },
+            })
         ```
         ### Workbench Instance Basic Gpu
 
@@ -789,17 +794,17 @@ class Instance(pulumi.CustomResource):
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
             location="us-central1-a",
-            gce_setup=gcp.workbench.InstanceGceSetupArgs(
-                machine_type="n1-standard-1",
-                accelerator_configs=[gcp.workbench.InstanceGceSetupAcceleratorConfigArgs(
-                    type="NVIDIA_TESLA_T4",
-                    core_count="1",
-                )],
-                vm_image=gcp.workbench.InstanceGceSetupVmImageArgs(
-                    project="cloud-notebooks-managed",
-                    family="workbench-instances",
-                ),
-            ))
+            gce_setup={
+                "machineType": "n1-standard-1",
+                "acceleratorConfigs": [{
+                    "type": "NVIDIA_TESLA_T4",
+                    "coreCount": "1",
+                }],
+                "vmImage": {
+                    "project": "cloud-notebooks-managed",
+                    "family": "workbench-instances",
+                },
+            })
         ```
         ### Workbench Instance Labels Stopped
 
@@ -810,20 +815,20 @@ class Instance(pulumi.CustomResource):
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
             location="us-central1-a",
-            gce_setup=gcp.workbench.InstanceGceSetupArgs(
-                machine_type="e2-standard-4",
-                shielded_instance_config=gcp.workbench.InstanceGceSetupShieldedInstanceConfigArgs(
-                    enable_secure_boot=False,
-                    enable_vtpm=False,
-                    enable_integrity_monitoring=False,
-                ),
-                service_accounts=[gcp.workbench.InstanceGceSetupServiceAccountArgs(
-                    email="my@service-account.com",
-                )],
-                metadata={
+            gce_setup={
+                "machineType": "e2-standard-4",
+                "shieldedInstanceConfig": {
+                    "enableSecureBoot": False,
+                    "enableVtpm": False,
+                    "enableIntegrityMonitoring": False,
+                },
+                "serviceAccounts": [{
+                    "email": "my@service-account.com",
+                }],
+                "metadata": {
                     "terraform": "true",
                 },
-            ),
+            },
             instance_owners=["my@service-account.com"],
             labels={
                 "k": "val",
@@ -847,47 +852,47 @@ class Instance(pulumi.CustomResource):
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
             location="us-central1-a",
-            gce_setup=gcp.workbench.InstanceGceSetupArgs(
-                machine_type="n1-standard-4",
-                accelerator_configs=[gcp.workbench.InstanceGceSetupAcceleratorConfigArgs(
-                    type="NVIDIA_TESLA_T4",
-                    core_count="1",
-                )],
-                shielded_instance_config=gcp.workbench.InstanceGceSetupShieldedInstanceConfigArgs(
-                    enable_secure_boot=True,
-                    enable_vtpm=True,
-                    enable_integrity_monitoring=True,
-                ),
-                disable_public_ip=False,
-                service_accounts=[gcp.workbench.InstanceGceSetupServiceAccountArgs(
-                    email="my@service-account.com",
-                )],
-                boot_disk=gcp.workbench.InstanceGceSetupBootDiskArgs(
-                    disk_size_gb="310",
-                    disk_type="PD_SSD",
-                    disk_encryption="CMEK",
-                    kms_key="my-crypto-key",
-                ),
-                data_disks=gcp.workbench.InstanceGceSetupDataDisksArgs(
-                    disk_size_gb="330",
-                    disk_type="PD_SSD",
-                    disk_encryption="CMEK",
-                    kms_key="my-crypto-key",
-                ),
-                network_interfaces=[gcp.workbench.InstanceGceSetupNetworkInterfaceArgs(
-                    network=my_network.id,
-                    subnet=my_subnetwork.id,
-                    nic_type="GVNIC",
-                )],
-                metadata={
+            gce_setup={
+                "machineType": "n1-standard-4",
+                "acceleratorConfigs": [{
+                    "type": "NVIDIA_TESLA_T4",
+                    "coreCount": "1",
+                }],
+                "shieldedInstanceConfig": {
+                    "enableSecureBoot": True,
+                    "enableVtpm": True,
+                    "enableIntegrityMonitoring": True,
+                },
+                "disablePublicIp": False,
+                "serviceAccounts": [{
+                    "email": "my@service-account.com",
+                }],
+                "bootDisk": {
+                    "diskSizeGb": "310",
+                    "diskType": "PD_SSD",
+                    "diskEncryption": "CMEK",
+                    "kmsKey": "my-crypto-key",
+                },
+                "dataDisks": {
+                    "diskSizeGb": "330",
+                    "diskType": "PD_SSD",
+                    "diskEncryption": "CMEK",
+                    "kmsKey": "my-crypto-key",
+                },
+                "networkInterfaces": [{
+                    "network": my_network.id,
+                    "subnet": my_subnetwork.id,
+                    "nicType": "GVNIC",
+                }],
+                "metadata": {
                     "terraform": "true",
                 },
-                enable_ip_forwarding=True,
-                tags=[
+                "enableIpForwarding": True,
+                "tags": [
                     "abc",
                     "def",
                 ],
-            ),
+            },
             disable_proxy_access=True,
             instance_owners=["my@service-account.com"],
             labels={
@@ -937,7 +942,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
                  disable_proxy_access: Optional[pulumi.Input[bool]] = None,
-                 gce_setup: Optional[pulumi.Input[pulumi.InputType['InstanceGceSetupArgs']]] = None,
+                 gce_setup: Optional[pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -991,8 +996,8 @@ class Instance(pulumi.CustomResource):
             desired_state: Optional[pulumi.Input[str]] = None,
             disable_proxy_access: Optional[pulumi.Input[bool]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            gce_setup: Optional[pulumi.Input[pulumi.InputType['InstanceGceSetupArgs']]] = None,
-            health_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceHealthInfoArgs']]]]] = None,
+            gce_setup: Optional[pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
+            health_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceHealthInfoArgs', 'InstanceHealthInfoArgsDict']]]]] = None,
             health_state: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1004,7 +1009,7 @@ class Instance(pulumi.CustomResource):
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            upgrade_histories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceUpgradeHistoryArgs']]]]] = None) -> 'Instance':
+            upgrade_histories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceUpgradeHistoryArgs', 'InstanceUpgradeHistoryArgsDict']]]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1018,9 +1023,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['InstanceGceSetupArgs']] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
+        :param pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceHealthInfoArgs']]]] health_infos: 'Output only. Additional information about instance health. Example:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceHealthInfoArgs', 'InstanceHealthInfoArgsDict']]]] health_infos: 'Output only. Additional information about instance health. Example:
                healthInfo": { "docker_proxy_agent_status": "1", "docker_status": "1", "jupyterlab_api_status":
                "-1", "jupyterlab_status": "-1", "updated": "2020-10-18 09:40:03.573409" }'
         :param pulumi.Input[str] health_state: Output only. Instance health_state.
@@ -1047,7 +1052,7 @@ class Instance(pulumi.CustomResource):
                Output only. The state of this instance upgrade history entry.
         :param pulumi.Input[str] update_time: An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
                The milliseconds portion (".SSS") is optional.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceUpgradeHistoryArgs']]]] upgrade_histories: Output only. The upgrade history of this instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceUpgradeHistoryArgs', 'InstanceUpgradeHistoryArgsDict']]]] upgrade_histories: Output only. The upgrade history of this instance.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

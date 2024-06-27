@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -678,7 +683,7 @@ class Backup(pulumi.CustomResource):
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['BackupEncryptionConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['BackupEncryptionConfigArgs', 'BackupEncryptionConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -705,9 +710,9 @@ class Backup(pulumi.CustomResource):
         default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
-            network_config=gcp.alloydb.ClusterNetworkConfigArgs(
-                network=default_network.id,
-            ))
+            network_config={
+                "network": default_network.id,
+            })
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
             address_type="INTERNAL",
@@ -739,9 +744,9 @@ class Backup(pulumi.CustomResource):
         default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
-            network_config=gcp.alloydb.ClusterNetworkConfigArgs(
-                network=default_network.id,
-            ))
+            network_config={
+                "network": default_network.id,
+            })
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
             address_type="INTERNAL",
@@ -804,7 +809,7 @@ class Backup(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_name: The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
         :param pulumi.Input[str] description: User-provided description of the backup.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Backup.
-        :param pulumi.Input[pulumi.InputType['BackupEncryptionConfigArgs']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        :param pulumi.Input[Union['BackupEncryptionConfigArgs', 'BackupEncryptionConfigArgsDict']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -846,9 +851,9 @@ class Backup(pulumi.CustomResource):
         default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
-            network_config=gcp.alloydb.ClusterNetworkConfigArgs(
-                network=default_network.id,
-            ))
+            network_config={
+                "network": default_network.id,
+            })
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
             address_type="INTERNAL",
@@ -880,9 +885,9 @@ class Backup(pulumi.CustomResource):
         default_cluster = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
-            network_config=gcp.alloydb.ClusterNetworkConfigArgs(
-                network=default_network.id,
-            ))
+            network_config={
+                "network": default_network.id,
+            })
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-cluster",
             address_type="INTERNAL",
@@ -954,7 +959,7 @@ class Backup(pulumi.CustomResource):
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['BackupEncryptionConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['BackupEncryptionConfigArgs', 'BackupEncryptionConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -1022,10 +1027,10 @@ class Backup(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            encryption_config: Optional[pulumi.Input[pulumi.InputType['BackupEncryptionConfigArgs']]] = None,
-            encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackupEncryptionInfoArgs']]]]] = None,
+            encryption_config: Optional[pulumi.Input[Union['BackupEncryptionConfigArgs', 'BackupEncryptionConfigArgsDict']]] = None,
+            encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BackupEncryptionInfoArgs', 'BackupEncryptionInfoArgsDict']]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            expiry_quantities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackupExpiryQuantityArgs']]]]] = None,
+            expiry_quantities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BackupExpiryQuantityArgs', 'BackupExpiryQuantityArgsDict']]]]] = None,
             expiry_time: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -1060,12 +1065,12 @@ class Backup(pulumi.CustomResource):
         :param pulumi.Input[str] description: User-provided description of the backup.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Backup.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['BackupEncryptionConfigArgs']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        :param pulumi.Input[Union['BackupEncryptionConfigArgs', 'BackupEncryptionConfigArgsDict']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackupEncryptionInfoArgs']]]] encryption_infos: EncryptionInfo describes the encryption information of a cluster or a backup.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BackupEncryptionInfoArgs', 'BackupEncryptionInfoArgsDict']]]] encryption_infos: EncryptionInfo describes the encryption information of a cluster or a backup.
                Structure is documented below.
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackupExpiryQuantityArgs']]]] expiry_quantities: Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BackupExpiryQuantityArgs', 'BackupExpiryQuantityArgsDict']]]] expiry_quantities: Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
                Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
                Structure is documented below.
         :param pulumi.Input[str] expiry_time: Output only. The time at which after the backup is eligible to be garbage collected.

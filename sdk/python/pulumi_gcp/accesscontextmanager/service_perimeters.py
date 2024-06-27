@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -118,7 +123,7 @@ class ServicePerimeters(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArgs']]]]] = None,
+                 service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict']]]]] = None,
                  __props__=None):
         """
         Replace all existing Service Perimeters in an Access Policy with the Service Perimeters provided. This is done atomically.
@@ -145,40 +150,40 @@ class ServicePerimeters(pulumi.CustomResource):
         service_perimeter = gcp.accesscontextmanager.ServicePerimeters("service-perimeter",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             service_perimeters=[
-                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
-                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
-                    title="",
-                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
-                        restricted_services=["storage.googleapis.com"],
-                    ),
-                ),
-                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
-                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
-                    title="",
-                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
-                        restricted_services=["bigtable.googleapis.com"],
-                    ),
-                ),
+                {
+                    "name": access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
+                    "title": "",
+                    "status": {
+                        "restrictedServices": ["storage.googleapis.com"],
+                    },
+                },
+                {
+                    "name": access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
+                    "title": "",
+                    "status": {
+                        "restrictedServices": ["bigtable.googleapis.com"],
+                    },
+                },
             ])
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
             title="chromeos_no_lock",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
-                        require_screen_lock=False,
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                            os_type="DESKTOP_CHROME_OS",
-                        )],
-                    ),
-                    regions=[
+            basic={
+                "conditions": [{
+                    "devicePolicy": {
+                        "requireScreenLock": False,
+                        "osConstraints": [{
+                            "osType": "DESKTOP_CHROME_OS",
+                        }],
+                    },
+                    "regions": [
                         "CH",
                         "IT",
                         "US",
                     ],
-                )],
-            ))
+                }],
+            })
         ```
 
         ## Import
@@ -206,7 +211,7 @@ class ServicePerimeters(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArgs']]]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict']]]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
                Structure is documented below.
         """
         ...
@@ -240,40 +245,40 @@ class ServicePerimeters(pulumi.CustomResource):
         service_perimeter = gcp.accesscontextmanager.ServicePerimeters("service-perimeter",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             service_perimeters=[
-                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
-                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
-                    title="",
-                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
-                        restricted_services=["storage.googleapis.com"],
-                    ),
-                ),
-                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
-                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
-                    title="",
-                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
-                        restricted_services=["bigtable.googleapis.com"],
-                    ),
-                ),
+                {
+                    "name": access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
+                    "title": "",
+                    "status": {
+                        "restrictedServices": ["storage.googleapis.com"],
+                    },
+                },
+                {
+                    "name": access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
+                    "title": "",
+                    "status": {
+                        "restrictedServices": ["bigtable.googleapis.com"],
+                    },
+                },
             ])
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
             title="chromeos_no_lock",
-            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
-                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
-                    device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
-                        require_screen_lock=False,
-                        os_constraints=[gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs(
-                            os_type="DESKTOP_CHROME_OS",
-                        )],
-                    ),
-                    regions=[
+            basic={
+                "conditions": [{
+                    "devicePolicy": {
+                        "requireScreenLock": False,
+                        "osConstraints": [{
+                            "osType": "DESKTOP_CHROME_OS",
+                        }],
+                    },
+                    "regions": [
                         "CH",
                         "IT",
                         "US",
                     ],
-                )],
-            ))
+                }],
+            })
         ```
 
         ## Import
@@ -310,7 +315,7 @@ class ServicePerimeters(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArgs']]]]] = None,
+                 service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -335,7 +340,7 @@ class ServicePerimeters(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             parent: Optional[pulumi.Input[str]] = None,
-            service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArgs']]]]] = None) -> 'ServicePerimeters':
+            service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict']]]]] = None) -> 'ServicePerimeters':
         """
         Get an existing ServicePerimeters resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -348,7 +353,7 @@ class ServicePerimeters(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArgs']]]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict']]]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

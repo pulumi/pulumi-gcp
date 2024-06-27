@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -381,7 +386,7 @@ class GrpcRoute(pulumi.CustomResource):
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrpcRouteRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GrpcRouteRuleArgs', 'GrpcRouteRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -399,20 +404,20 @@ class GrpcRoute(pulumi.CustomResource):
             },
             description="my description",
             hostnames=["example"],
-            rules=[gcp.networkservices.GrpcRouteRuleArgs(
-                matches=[gcp.networkservices.GrpcRouteRuleMatchArgs(
-                    headers=[gcp.networkservices.GrpcRouteRuleMatchHeaderArgs(
-                        key="key",
-                        value="value",
-                    )],
-                )],
-                action=gcp.networkservices.GrpcRouteRuleActionArgs(
-                    retry_policy=gcp.networkservices.GrpcRouteRuleActionRetryPolicyArgs(
-                        retry_conditions=["cancelled"],
-                        num_retries=1,
-                    ),
-                ),
-            )])
+            rules=[{
+                "matches": [{
+                    "headers": [{
+                        "key": "key",
+                        "value": "value",
+                    }],
+                }],
+                "action": {
+                    "retryPolicy": {
+                        "retryConditions": ["cancelled"],
+                        "numRetries": 1,
+                    },
+                },
+            }])
         ```
         ### Network Services Grpc Route Matches And Actions
 
@@ -427,43 +432,43 @@ class GrpcRoute(pulumi.CustomResource):
             },
             description="my description",
             hostnames=["example"],
-            rules=[gcp.networkservices.GrpcRouteRuleArgs(
-                matches=[
-                    gcp.networkservices.GrpcRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.GrpcRouteRuleMatchHeaderArgs(
-                            key="key",
-                            value="value",
-                        )],
-                    ),
-                    gcp.networkservices.GrpcRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.GrpcRouteRuleMatchHeaderArgs(
-                            key="key",
-                            value="value",
-                        )],
-                        method=gcp.networkservices.GrpcRouteRuleMatchMethodArgs(
-                            grpc_service="foo",
-                            grpc_method="bar",
-                            case_sensitive=True,
-                        ),
-                    ),
+            rules=[{
+                "matches": [
+                    {
+                        "headers": [{
+                            "key": "key",
+                            "value": "value",
+                        }],
+                    },
+                    {
+                        "headers": [{
+                            "key": "key",
+                            "value": "value",
+                        }],
+                        "method": {
+                            "grpcService": "foo",
+                            "grpcMethod": "bar",
+                            "caseSensitive": True,
+                        },
+                    },
                 ],
-                action=gcp.networkservices.GrpcRouteRuleActionArgs(
-                    fault_injection_policy=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyArgs(
-                        delay=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs(
-                            fixed_delay="1s",
-                            percentage=1,
-                        ),
-                        abort=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs(
-                            http_status=500,
-                            percentage=1,
-                        ),
-                    ),
-                    retry_policy=gcp.networkservices.GrpcRouteRuleActionRetryPolicyArgs(
-                        retry_conditions=["cancelled"],
-                        num_retries=1,
-                    ),
-                ),
-            )])
+                "action": {
+                    "faultInjectionPolicy": {
+                        "delay": {
+                            "fixedDelay": "1s",
+                            "percentage": 1,
+                        },
+                        "abort": {
+                            "httpStatus": 500,
+                            "percentage": 1,
+                        },
+                    },
+                    "retryPolicy": {
+                        "retryConditions": ["cancelled"],
+                        "numRetries": 1,
+                    },
+                },
+            }])
         ```
         ### Network Services Grpc Route Actions
 
@@ -478,24 +483,24 @@ class GrpcRoute(pulumi.CustomResource):
             },
             description="my description",
             hostnames=["example"],
-            rules=[gcp.networkservices.GrpcRouteRuleArgs(
-                action=gcp.networkservices.GrpcRouteRuleActionArgs(
-                    fault_injection_policy=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyArgs(
-                        delay=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs(
-                            fixed_delay="1s",
-                            percentage=1,
-                        ),
-                        abort=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs(
-                            http_status=500,
-                            percentage=1,
-                        ),
-                    ),
-                    retry_policy=gcp.networkservices.GrpcRouteRuleActionRetryPolicyArgs(
-                        retry_conditions=["cancelled"],
-                        num_retries=1,
-                    ),
-                ),
-            )])
+            rules=[{
+                "action": {
+                    "faultInjectionPolicy": {
+                        "delay": {
+                            "fixedDelay": "1s",
+                            "percentage": 1,
+                        },
+                        "abort": {
+                            "httpStatus": 500,
+                            "percentage": 1,
+                        },
+                    },
+                    "retryPolicy": {
+                        "retryConditions": ["cancelled"],
+                        "numRetries": 1,
+                    },
+                },
+            }])
         ```
 
         ## Import
@@ -532,7 +537,7 @@ class GrpcRoute(pulumi.CustomResource):
                present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
         :param pulumi.Input[str] name: Name of the GrpcRoute resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrpcRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GrpcRouteRuleArgs', 'GrpcRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         """
         ...
@@ -557,20 +562,20 @@ class GrpcRoute(pulumi.CustomResource):
             },
             description="my description",
             hostnames=["example"],
-            rules=[gcp.networkservices.GrpcRouteRuleArgs(
-                matches=[gcp.networkservices.GrpcRouteRuleMatchArgs(
-                    headers=[gcp.networkservices.GrpcRouteRuleMatchHeaderArgs(
-                        key="key",
-                        value="value",
-                    )],
-                )],
-                action=gcp.networkservices.GrpcRouteRuleActionArgs(
-                    retry_policy=gcp.networkservices.GrpcRouteRuleActionRetryPolicyArgs(
-                        retry_conditions=["cancelled"],
-                        num_retries=1,
-                    ),
-                ),
-            )])
+            rules=[{
+                "matches": [{
+                    "headers": [{
+                        "key": "key",
+                        "value": "value",
+                    }],
+                }],
+                "action": {
+                    "retryPolicy": {
+                        "retryConditions": ["cancelled"],
+                        "numRetries": 1,
+                    },
+                },
+            }])
         ```
         ### Network Services Grpc Route Matches And Actions
 
@@ -585,43 +590,43 @@ class GrpcRoute(pulumi.CustomResource):
             },
             description="my description",
             hostnames=["example"],
-            rules=[gcp.networkservices.GrpcRouteRuleArgs(
-                matches=[
-                    gcp.networkservices.GrpcRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.GrpcRouteRuleMatchHeaderArgs(
-                            key="key",
-                            value="value",
-                        )],
-                    ),
-                    gcp.networkservices.GrpcRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.GrpcRouteRuleMatchHeaderArgs(
-                            key="key",
-                            value="value",
-                        )],
-                        method=gcp.networkservices.GrpcRouteRuleMatchMethodArgs(
-                            grpc_service="foo",
-                            grpc_method="bar",
-                            case_sensitive=True,
-                        ),
-                    ),
+            rules=[{
+                "matches": [
+                    {
+                        "headers": [{
+                            "key": "key",
+                            "value": "value",
+                        }],
+                    },
+                    {
+                        "headers": [{
+                            "key": "key",
+                            "value": "value",
+                        }],
+                        "method": {
+                            "grpcService": "foo",
+                            "grpcMethod": "bar",
+                            "caseSensitive": True,
+                        },
+                    },
                 ],
-                action=gcp.networkservices.GrpcRouteRuleActionArgs(
-                    fault_injection_policy=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyArgs(
-                        delay=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs(
-                            fixed_delay="1s",
-                            percentage=1,
-                        ),
-                        abort=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs(
-                            http_status=500,
-                            percentage=1,
-                        ),
-                    ),
-                    retry_policy=gcp.networkservices.GrpcRouteRuleActionRetryPolicyArgs(
-                        retry_conditions=["cancelled"],
-                        num_retries=1,
-                    ),
-                ),
-            )])
+                "action": {
+                    "faultInjectionPolicy": {
+                        "delay": {
+                            "fixedDelay": "1s",
+                            "percentage": 1,
+                        },
+                        "abort": {
+                            "httpStatus": 500,
+                            "percentage": 1,
+                        },
+                    },
+                    "retryPolicy": {
+                        "retryConditions": ["cancelled"],
+                        "numRetries": 1,
+                    },
+                },
+            }])
         ```
         ### Network Services Grpc Route Actions
 
@@ -636,24 +641,24 @@ class GrpcRoute(pulumi.CustomResource):
             },
             description="my description",
             hostnames=["example"],
-            rules=[gcp.networkservices.GrpcRouteRuleArgs(
-                action=gcp.networkservices.GrpcRouteRuleActionArgs(
-                    fault_injection_policy=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyArgs(
-                        delay=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyDelayArgs(
-                            fixed_delay="1s",
-                            percentage=1,
-                        ),
-                        abort=gcp.networkservices.GrpcRouteRuleActionFaultInjectionPolicyAbortArgs(
-                            http_status=500,
-                            percentage=1,
-                        ),
-                    ),
-                    retry_policy=gcp.networkservices.GrpcRouteRuleActionRetryPolicyArgs(
-                        retry_conditions=["cancelled"],
-                        num_retries=1,
-                    ),
-                ),
-            )])
+            rules=[{
+                "action": {
+                    "faultInjectionPolicy": {
+                        "delay": {
+                            "fixedDelay": "1s",
+                            "percentage": 1,
+                        },
+                        "abort": {
+                            "httpStatus": 500,
+                            "percentage": 1,
+                        },
+                    },
+                    "retryPolicy": {
+                        "retryConditions": ["cancelled"],
+                        "numRetries": 1,
+                    },
+                },
+            }])
         ```
 
         ## Import
@@ -702,7 +707,7 @@ class GrpcRoute(pulumi.CustomResource):
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrpcRouteRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GrpcRouteRuleArgs', 'GrpcRouteRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -751,7 +756,7 @@ class GrpcRoute(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrpcRouteRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GrpcRouteRuleArgs', 'GrpcRouteRuleArgsDict']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'GrpcRoute':
         """
@@ -773,7 +778,7 @@ class GrpcRoute(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the GrpcRoute resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrpcRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GrpcRouteRuleArgs', 'GrpcRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[str] update_time: Time the GrpcRoute was updated in UTC.

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -1017,26 +1022,26 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']]] = None,
+                 automated_backup_policy: Optional[pulumi.Input[Union['ClusterAutomatedBackupPolicyArgs', 'ClusterAutomatedBackupPolicyArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
-                 continuous_backup_config: Optional[pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']]] = None,
+                 continuous_backup_config: Optional[pulumi.Input[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict']]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 initial_user: Optional[pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']]] = None,
+                 initial_user: Optional[pulumi.Input[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maintenance_update_policy: Optional[pulumi.Input[pulumi.InputType['ClusterMaintenanceUpdatePolicyArgs']]] = None,
+                 maintenance_update_policy: Optional[pulumi.Input[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict']]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 psc_config: Optional[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]] = None,
-                 restore_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']]] = None,
-                 restore_continuous_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']]] = None,
-                 secondary_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecondaryConfigArgs']]] = None,
+                 psc_config: Optional[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]] = None,
+                 restore_backup_source: Optional[pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']]] = None,
+                 restore_continuous_backup_source: Optional[pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']]] = None,
+                 secondary_config: Optional[pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']]] = None,
                  __props__=None):
         """
         A managed alloydb cluster.
@@ -1063,9 +1068,9 @@ class Cluster(pulumi.CustomResource):
         default = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
-            network_config=gcp.alloydb.ClusterNetworkConfigArgs(
-                network=default_network.id,
-            ))
+            network_config={
+                "network": default_network.id,
+            })
         project = gcp.organizations.get_project()
         ```
         ### Alloydb Cluster Full
@@ -1078,38 +1083,38 @@ class Cluster(pulumi.CustomResource):
         full = gcp.alloydb.Cluster("full",
             cluster_id="alloydb-cluster-full",
             location="us-central1",
-            network_config=gcp.alloydb.ClusterNetworkConfigArgs(
-                network=default.id,
-            ),
+            network_config={
+                "network": default.id,
+            },
             database_version="POSTGRES_15",
-            initial_user=gcp.alloydb.ClusterInitialUserArgs(
-                user="alloydb-cluster-full",
-                password="alloydb-cluster-full",
-            ),
-            continuous_backup_config=gcp.alloydb.ClusterContinuousBackupConfigArgs(
-                enabled=True,
-                recovery_window_days=14,
-            ),
-            automated_backup_policy=gcp.alloydb.ClusterAutomatedBackupPolicyArgs(
-                location="us-central1",
-                backup_window="1800s",
-                enabled=True,
-                weekly_schedule=gcp.alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleArgs(
-                    days_of_weeks=["MONDAY"],
-                    start_times=[gcp.alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs(
-                        hours=23,
-                        minutes=0,
-                        seconds=0,
-                        nanos=0,
-                    )],
-                ),
-                quantity_based_retention=gcp.alloydb.ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs(
-                    count=1,
-                ),
-                labels={
+            initial_user={
+                "user": "alloydb-cluster-full",
+                "password": "alloydb-cluster-full",
+            },
+            continuous_backup_config={
+                "enabled": True,
+                "recoveryWindowDays": 14,
+            },
+            automated_backup_policy={
+                "location": "us-central1",
+                "backupWindow": "1800s",
+                "enabled": True,
+                "weeklySchedule": {
+                    "daysOfWeeks": ["MONDAY"],
+                    "startTimes": [{
+                        "hours": 23,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    }],
+                },
+                "quantityBasedRetention": {
+                    "count": 1,
+                },
+                "labels": {
                     "test": "alloydb-cluster-full",
                 },
-            ),
+            },
             labels={
                 "test": "alloydb-cluster-full",
             })
@@ -1126,9 +1131,9 @@ class Cluster(pulumi.CustomResource):
             cluster_id="alloydb-source-cluster",
             location="us-central1",
             network=default.id,
-            initial_user=gcp.alloydb.ClusterInitialUserArgs(
-                password="alloydb-source-cluster",
-            ))
+            initial_user={
+                "password": "alloydb-source-cluster",
+            })
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-source-cluster",
             address_type="INTERNAL",
@@ -1143,9 +1148,9 @@ class Cluster(pulumi.CustomResource):
             cluster=source.name,
             instance_id="alloydb-instance",
             instance_type="PRIMARY",
-            machine_config=gcp.alloydb.InstanceMachineConfigArgs(
-                cpu_count=2,
-            ),
+            machine_config={
+                "cpuCount": 2,
+            },
             opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         source_backup = gcp.alloydb.Backup("source",
             backup_id="alloydb-backup",
@@ -1155,20 +1160,20 @@ class Cluster(pulumi.CustomResource):
         restored_from_backup = gcp.alloydb.Cluster("restored_from_backup",
             cluster_id="alloydb-backup-restored",
             location="us-central1",
-            network_config=gcp.alloydb.ClusterNetworkConfigArgs(
-                network=default.id,
-            ),
-            restore_backup_source=gcp.alloydb.ClusterRestoreBackupSourceArgs(
-                backup_name=source_backup.name,
-            ))
+            network_config={
+                "network": default.id,
+            },
+            restore_backup_source={
+                "backupName": source_backup.name,
+            })
         restored_via_pitr = gcp.alloydb.Cluster("restored_via_pitr",
             cluster_id="alloydb-pitr-restored",
             location="us-central1",
             network=default.id,
-            restore_continuous_backup_source=gcp.alloydb.ClusterRestoreContinuousBackupSourceArgs(
-                cluster=source.name,
-                point_in_time="2023-08-03T19:19:00.094Z",
-            ))
+            restore_continuous_backup_source={
+                "cluster": source.name,
+                "pointInTime": "2023-08-03T19:19:00.094Z",
+            })
         project = gcp.organizations.get_project()
         ```
         ### Alloydb Secondary Cluster Basic
@@ -1196,21 +1201,21 @@ class Cluster(pulumi.CustomResource):
             cluster=primary.name,
             instance_id="alloydb-primary-instance",
             instance_type="PRIMARY",
-            machine_config=gcp.alloydb.InstanceMachineConfigArgs(
-                cpu_count=2,
-            ),
+            machine_config={
+                "cpuCount": 2,
+            },
             opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         secondary = gcp.alloydb.Cluster("secondary",
             cluster_id="alloydb-secondary-cluster",
             location="us-east1",
             network=default.id,
             cluster_type="SECONDARY",
-            continuous_backup_config=gcp.alloydb.ClusterContinuousBackupConfigArgs(
-                enabled=False,
-            ),
-            secondary_config=gcp.alloydb.ClusterSecondaryConfigArgs(
-                primary_cluster_name=primary.name,
-            ),
+            continuous_backup_config={
+                "enabled": False,
+            },
+            secondary_config={
+                "primaryClusterName": primary.name,
+            },
             opts = pulumi.ResourceOptions(depends_on=[primary_instance]))
         project = gcp.organizations.get_project()
         ```
@@ -1252,13 +1257,13 @@ class Cluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
+        :param pulumi.Input[Union['ClusterAutomatedBackupPolicyArgs', 'ClusterAutomatedBackupPolicyArgsDict']] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
                Structure is documented below.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
         :param pulumi.Input[str] cluster_type: The type of cluster. If not set, defaults to PRIMARY.
                Default value is `PRIMARY`.
                Possible values are: `PRIMARY`, `SECONDARY`.
-        :param pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']] continuous_backup_config: The continuous backup config for this cluster.
+        :param pulumi.Input[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict']] continuous_backup_config: The continuous backup config for this cluster.
                If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
                Structure is documented below.
         :param pulumi.Input[str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
@@ -1266,10 +1271,10 @@ class Cluster(pulumi.CustomResource):
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
-        :param pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        :param pulumi.Input[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
-        :param pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']] initial_user: Initial user to setup during cluster creation.
+        :param pulumi.Input[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict']] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1278,24 +1283,24 @@ class Cluster(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['ClusterMaintenanceUpdatePolicyArgs']] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
+        :param pulumi.Input[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict']] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
                Structure is documented below.
         :param pulumi.Input[str] network: (Optional, Deprecated)
                The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
                
                > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
-        :param pulumi.Input[pulumi.InputType['ClusterNetworkConfigArgs']] network_config: Metadata related to network configuration.
+        :param pulumi.Input[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict']] network_config: Metadata related to network configuration.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']] psc_config: Configuration for Private Service Connect (PSC) for the cluster.
+        :param pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']] psc_config: Configuration for Private Service Connect (PSC) for the cluster.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+        :param pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+        :param pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterSecondaryConfigArgs']] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+        :param pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
                Structure is documented below.
         """
         ...
@@ -1329,9 +1334,9 @@ class Cluster(pulumi.CustomResource):
         default = gcp.alloydb.Cluster("default",
             cluster_id="alloydb-cluster",
             location="us-central1",
-            network_config=gcp.alloydb.ClusterNetworkConfigArgs(
-                network=default_network.id,
-            ))
+            network_config={
+                "network": default_network.id,
+            })
         project = gcp.organizations.get_project()
         ```
         ### Alloydb Cluster Full
@@ -1344,38 +1349,38 @@ class Cluster(pulumi.CustomResource):
         full = gcp.alloydb.Cluster("full",
             cluster_id="alloydb-cluster-full",
             location="us-central1",
-            network_config=gcp.alloydb.ClusterNetworkConfigArgs(
-                network=default.id,
-            ),
+            network_config={
+                "network": default.id,
+            },
             database_version="POSTGRES_15",
-            initial_user=gcp.alloydb.ClusterInitialUserArgs(
-                user="alloydb-cluster-full",
-                password="alloydb-cluster-full",
-            ),
-            continuous_backup_config=gcp.alloydb.ClusterContinuousBackupConfigArgs(
-                enabled=True,
-                recovery_window_days=14,
-            ),
-            automated_backup_policy=gcp.alloydb.ClusterAutomatedBackupPolicyArgs(
-                location="us-central1",
-                backup_window="1800s",
-                enabled=True,
-                weekly_schedule=gcp.alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleArgs(
-                    days_of_weeks=["MONDAY"],
-                    start_times=[gcp.alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs(
-                        hours=23,
-                        minutes=0,
-                        seconds=0,
-                        nanos=0,
-                    )],
-                ),
-                quantity_based_retention=gcp.alloydb.ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs(
-                    count=1,
-                ),
-                labels={
+            initial_user={
+                "user": "alloydb-cluster-full",
+                "password": "alloydb-cluster-full",
+            },
+            continuous_backup_config={
+                "enabled": True,
+                "recoveryWindowDays": 14,
+            },
+            automated_backup_policy={
+                "location": "us-central1",
+                "backupWindow": "1800s",
+                "enabled": True,
+                "weeklySchedule": {
+                    "daysOfWeeks": ["MONDAY"],
+                    "startTimes": [{
+                        "hours": 23,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    }],
+                },
+                "quantityBasedRetention": {
+                    "count": 1,
+                },
+                "labels": {
                     "test": "alloydb-cluster-full",
                 },
-            ),
+            },
             labels={
                 "test": "alloydb-cluster-full",
             })
@@ -1392,9 +1397,9 @@ class Cluster(pulumi.CustomResource):
             cluster_id="alloydb-source-cluster",
             location="us-central1",
             network=default.id,
-            initial_user=gcp.alloydb.ClusterInitialUserArgs(
-                password="alloydb-source-cluster",
-            ))
+            initial_user={
+                "password": "alloydb-source-cluster",
+            })
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
             name="alloydb-source-cluster",
             address_type="INTERNAL",
@@ -1409,9 +1414,9 @@ class Cluster(pulumi.CustomResource):
             cluster=source.name,
             instance_id="alloydb-instance",
             instance_type="PRIMARY",
-            machine_config=gcp.alloydb.InstanceMachineConfigArgs(
-                cpu_count=2,
-            ),
+            machine_config={
+                "cpuCount": 2,
+            },
             opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         source_backup = gcp.alloydb.Backup("source",
             backup_id="alloydb-backup",
@@ -1421,20 +1426,20 @@ class Cluster(pulumi.CustomResource):
         restored_from_backup = gcp.alloydb.Cluster("restored_from_backup",
             cluster_id="alloydb-backup-restored",
             location="us-central1",
-            network_config=gcp.alloydb.ClusterNetworkConfigArgs(
-                network=default.id,
-            ),
-            restore_backup_source=gcp.alloydb.ClusterRestoreBackupSourceArgs(
-                backup_name=source_backup.name,
-            ))
+            network_config={
+                "network": default.id,
+            },
+            restore_backup_source={
+                "backupName": source_backup.name,
+            })
         restored_via_pitr = gcp.alloydb.Cluster("restored_via_pitr",
             cluster_id="alloydb-pitr-restored",
             location="us-central1",
             network=default.id,
-            restore_continuous_backup_source=gcp.alloydb.ClusterRestoreContinuousBackupSourceArgs(
-                cluster=source.name,
-                point_in_time="2023-08-03T19:19:00.094Z",
-            ))
+            restore_continuous_backup_source={
+                "cluster": source.name,
+                "pointInTime": "2023-08-03T19:19:00.094Z",
+            })
         project = gcp.organizations.get_project()
         ```
         ### Alloydb Secondary Cluster Basic
@@ -1462,21 +1467,21 @@ class Cluster(pulumi.CustomResource):
             cluster=primary.name,
             instance_id="alloydb-primary-instance",
             instance_type="PRIMARY",
-            machine_config=gcp.alloydb.InstanceMachineConfigArgs(
-                cpu_count=2,
-            ),
+            machine_config={
+                "cpuCount": 2,
+            },
             opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         secondary = gcp.alloydb.Cluster("secondary",
             cluster_id="alloydb-secondary-cluster",
             location="us-east1",
             network=default.id,
             cluster_type="SECONDARY",
-            continuous_backup_config=gcp.alloydb.ClusterContinuousBackupConfigArgs(
-                enabled=False,
-            ),
-            secondary_config=gcp.alloydb.ClusterSecondaryConfigArgs(
-                primary_cluster_name=primary.name,
-            ),
+            continuous_backup_config={
+                "enabled": False,
+            },
+            secondary_config={
+                "primaryClusterName": primary.name,
+            },
             opts = pulumi.ResourceOptions(depends_on=[primary_instance]))
         project = gcp.organizations.get_project()
         ```
@@ -1527,26 +1532,26 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']]] = None,
+                 automated_backup_policy: Optional[pulumi.Input[Union['ClusterAutomatedBackupPolicyArgs', 'ClusterAutomatedBackupPolicyArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
-                 continuous_backup_config: Optional[pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']]] = None,
+                 continuous_backup_config: Optional[pulumi.Input[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict']]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 initial_user: Optional[pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']]] = None,
+                 initial_user: Optional[pulumi.Input[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maintenance_update_policy: Optional[pulumi.Input[pulumi.InputType['ClusterMaintenanceUpdatePolicyArgs']]] = None,
+                 maintenance_update_policy: Optional[pulumi.Input[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict']]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 psc_config: Optional[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]] = None,
-                 restore_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']]] = None,
-                 restore_continuous_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']]] = None,
-                 secondary_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecondaryConfigArgs']]] = None,
+                 psc_config: Optional[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]] = None,
+                 restore_backup_source: Optional[pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']]] = None,
+                 restore_continuous_backup_source: Optional[pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']]] = None,
+                 secondary_config: Optional[pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1605,35 +1610,35 @@ class Cluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']]] = None,
-            backup_sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBackupSourceArgs']]]]] = None,
+            automated_backup_policy: Optional[pulumi.Input[Union['ClusterAutomatedBackupPolicyArgs', 'ClusterAutomatedBackupPolicyArgsDict']]] = None,
+            backup_sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterBackupSourceArgs', 'ClusterBackupSourceArgsDict']]]]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             cluster_type: Optional[pulumi.Input[str]] = None,
-            continuous_backup_config: Optional[pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']]] = None,
-            continuous_backup_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterContinuousBackupInfoArgs']]]]] = None,
+            continuous_backup_config: Optional[pulumi.Input[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict']]] = None,
+            continuous_backup_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterContinuousBackupInfoArgs', 'ClusterContinuousBackupInfoArgsDict']]]]] = None,
             database_version: Optional[pulumi.Input[str]] = None,
             deletion_policy: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            encryption_config: Optional[pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']]] = None,
-            encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterEncryptionInfoArgs']]]]] = None,
+            encryption_config: Optional[pulumi.Input[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict']]] = None,
+            encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterEncryptionInfoArgs', 'ClusterEncryptionInfoArgsDict']]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            initial_user: Optional[pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']]] = None,
+            initial_user: Optional[pulumi.Input[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            maintenance_update_policy: Optional[pulumi.Input[pulumi.InputType['ClusterMaintenanceUpdatePolicyArgs']]] = None,
-            migration_sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterMigrationSourceArgs']]]]] = None,
+            maintenance_update_policy: Optional[pulumi.Input[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict']]] = None,
+            migration_sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterMigrationSourceArgs', 'ClusterMigrationSourceArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
-            network_config: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkConfigArgs']]] = None,
+            network_config: Optional[pulumi.Input[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            psc_config: Optional[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]] = None,
+            psc_config: Optional[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
-            restore_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']]] = None,
-            restore_continuous_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']]] = None,
-            secondary_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecondaryConfigArgs']]] = None,
+            restore_backup_source: Optional[pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']]] = None,
+            restore_continuous_backup_source: Optional[pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']]] = None,
+            secondary_config: Optional[pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'Cluster':
         """
@@ -1648,18 +1653,18 @@ class Cluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
+        :param pulumi.Input[Union['ClusterAutomatedBackupPolicyArgs', 'ClusterAutomatedBackupPolicyArgsDict']] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBackupSourceArgs']]]] backup_sources: Cluster created from backup.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBackupSourceArgs', 'ClusterBackupSourceArgsDict']]]] backup_sources: Cluster created from backup.
                Structure is documented below.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
         :param pulumi.Input[str] cluster_type: The type of cluster. If not set, defaults to PRIMARY.
                Default value is `PRIMARY`.
                Possible values are: `PRIMARY`, `SECONDARY`.
-        :param pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']] continuous_backup_config: The continuous backup config for this cluster.
+        :param pulumi.Input[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict']] continuous_backup_config: The continuous backup config for this cluster.
                If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterContinuousBackupInfoArgs']]]] continuous_backup_infos: ContinuousBackupInfo describes the continuous backup properties of a cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterContinuousBackupInfoArgs', 'ClusterContinuousBackupInfoArgsDict']]]] continuous_backup_infos: ContinuousBackupInfo describes the continuous backup properties of a cluster.
                Structure is documented below.
         :param pulumi.Input[str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
@@ -1667,13 +1672,13 @@ class Cluster(pulumi.CustomResource):
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        :param pulumi.Input[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterEncryptionInfoArgs']]]] encryption_infos: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterEncryptionInfoArgs', 'ClusterEncryptionInfoArgsDict']]]] encryption_infos: (Output)
                Output only. The encryption information for the WALs and backups required for ContinuousBackup.
                Structure is documented below.
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
-        :param pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']] initial_user: Initial user to setup during cluster creation.
+        :param pulumi.Input[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict']] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1682,9 +1687,9 @@ class Cluster(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['ClusterMaintenanceUpdatePolicyArgs']] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
+        :param pulumi.Input[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict']] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterMigrationSourceArgs']]]] migration_sources: Cluster created via DMS migration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterMigrationSourceArgs', 'ClusterMigrationSourceArgsDict']]]] migration_sources: Cluster created via DMS migration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the cluster resource.
         :param pulumi.Input[str] network: (Optional, Deprecated)
@@ -1692,22 +1697,22 @@ class Cluster(pulumi.CustomResource):
                "projects/{projectNumber}/global/networks/{network_id}".
                
                > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
-        :param pulumi.Input[pulumi.InputType['ClusterNetworkConfigArgs']] network_config: Metadata related to network configuration.
+        :param pulumi.Input[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict']] network_config: Metadata related to network configuration.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']] psc_config: Configuration for Private Service Connect (PSC) for the cluster.
+        :param pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']] psc_config: Configuration for Private Service Connect (PSC) for the cluster.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[bool] reconciling: Output only. Reconciling (https://google.aip.dev/128#reconciliation).
                Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
                This can happen due to user-triggered updates or system actions like failover or maintenance.
-        :param pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+        :param pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+        :param pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterSecondaryConfigArgs']] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
+        :param pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
                Structure is documented below.
         :param pulumi.Input[str] state: Output only. The current serving state of the cluster.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.

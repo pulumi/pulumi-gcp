@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -503,14 +508,14 @@ class Asset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dataplex_zone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 discovery_spec: Optional[pulumi.Input[pulumi.InputType['AssetDiscoverySpecArgs']]] = None,
+                 discovery_spec: Optional[pulumi.Input[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resource_spec: Optional[pulumi.Input[pulumi.InputType['AssetResourceSpecArgs']]] = None,
+                 resource_spec: Optional[pulumi.Input[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict']]] = None,
                  __props__=None):
         """
         The Dataplex Asset resource
@@ -536,25 +541,25 @@ class Asset(pulumi.CustomResource):
             location="us-west1",
             lake=basic_lake.name,
             type="RAW",
-            discovery_spec=gcp.dataplex.ZoneDiscoverySpecArgs(
-                enabled=False,
-            ),
-            resource_spec=gcp.dataplex.ZoneResourceSpecArgs(
-                location_type="SINGLE_REGION",
-            ),
+            discovery_spec={
+                "enabled": False,
+            },
+            resource_spec={
+                "locationType": "SINGLE_REGION",
+            },
             project="my-project-name")
         primary = gcp.dataplex.Asset("primary",
             name="asset",
             location="us-west1",
             lake=basic_lake.name,
             dataplex_zone=basic_zone.name,
-            discovery_spec=gcp.dataplex.AssetDiscoverySpecArgs(
-                enabled=False,
-            ),
-            resource_spec=gcp.dataplex.AssetResourceSpecArgs(
-                name="projects/my-project-name/buckets/bucket",
-                type="STORAGE_BUCKET",
-            ),
+            discovery_spec={
+                "enabled": False,
+            },
+            resource_spec={
+                "name": "projects/my-project-name/buckets/bucket",
+                "type": "STORAGE_BUCKET",
+            },
             labels={
                 "env": "foo",
                 "my-asset": "exists",
@@ -591,7 +596,7 @@ class Asset(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataplex_zone: The zone for the resource
         :param pulumi.Input[str] description: Optional. Description of the asset.
-        :param pulumi.Input[pulumi.InputType['AssetDiscoverySpecArgs']] discovery_spec: Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
+        :param pulumi.Input[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']] discovery_spec: Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
                present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
@@ -600,7 +605,7 @@ class Asset(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: The name of the asset.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[pulumi.InputType['AssetResourceSpecArgs']] resource_spec: Required. Immutable. Specification of the resource that is referenced by this asset.
+        :param pulumi.Input[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict']] resource_spec: Required. Immutable. Specification of the resource that is referenced by this asset.
         """
         ...
     @overload
@@ -632,25 +637,25 @@ class Asset(pulumi.CustomResource):
             location="us-west1",
             lake=basic_lake.name,
             type="RAW",
-            discovery_spec=gcp.dataplex.ZoneDiscoverySpecArgs(
-                enabled=False,
-            ),
-            resource_spec=gcp.dataplex.ZoneResourceSpecArgs(
-                location_type="SINGLE_REGION",
-            ),
+            discovery_spec={
+                "enabled": False,
+            },
+            resource_spec={
+                "locationType": "SINGLE_REGION",
+            },
             project="my-project-name")
         primary = gcp.dataplex.Asset("primary",
             name="asset",
             location="us-west1",
             lake=basic_lake.name,
             dataplex_zone=basic_zone.name,
-            discovery_spec=gcp.dataplex.AssetDiscoverySpecArgs(
-                enabled=False,
-            ),
-            resource_spec=gcp.dataplex.AssetResourceSpecArgs(
-                name="projects/my-project-name/buckets/bucket",
-                type="STORAGE_BUCKET",
-            ),
+            discovery_spec={
+                "enabled": False,
+            },
+            resource_spec={
+                "name": "projects/my-project-name/buckets/bucket",
+                "type": "STORAGE_BUCKET",
+            },
             labels={
                 "env": "foo",
                 "my-asset": "exists",
@@ -700,14 +705,14 @@ class Asset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dataplex_zone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 discovery_spec: Optional[pulumi.Input[pulumi.InputType['AssetDiscoverySpecArgs']]] = None,
+                 discovery_spec: Optional[pulumi.Input[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resource_spec: Optional[pulumi.Input[pulumi.InputType['AssetResourceSpecArgs']]] = None,
+                 resource_spec: Optional[pulumi.Input[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -761,8 +766,8 @@ class Asset(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             dataplex_zone: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            discovery_spec: Optional[pulumi.Input[pulumi.InputType['AssetDiscoverySpecArgs']]] = None,
-            discovery_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetDiscoveryStatusArgs']]]]] = None,
+            discovery_spec: Optional[pulumi.Input[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']]] = None,
+            discovery_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AssetDiscoveryStatusArgs', 'AssetDiscoveryStatusArgsDict']]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -771,9 +776,9 @@ class Asset(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            resource_spec: Optional[pulumi.Input[pulumi.InputType['AssetResourceSpecArgs']]] = None,
-            resource_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetResourceStatusArgs']]]]] = None,
-            security_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetSecurityStatusArgs']]]]] = None,
+            resource_spec: Optional[pulumi.Input[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict']]] = None,
+            resource_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AssetResourceStatusArgs', 'AssetResourceStatusArgsDict']]]]] = None,
+            security_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AssetSecurityStatusArgs', 'AssetSecurityStatusArgsDict']]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Asset':
@@ -787,8 +792,8 @@ class Asset(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. The time when the asset was created.
         :param pulumi.Input[str] dataplex_zone: The zone for the resource
         :param pulumi.Input[str] description: Optional. Description of the asset.
-        :param pulumi.Input[pulumi.InputType['AssetDiscoverySpecArgs']] discovery_spec: Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetDiscoveryStatusArgs']]]] discovery_statuses: Output only. Status of the discovery feature applied to data referenced by this asset.
+        :param pulumi.Input[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']] discovery_spec: Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AssetDiscoveryStatusArgs', 'AssetDiscoveryStatusArgsDict']]]] discovery_statuses: Output only. Status of the discovery feature applied to data referenced by this asset.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the asset. **Note**: This field is non-authoritative, and will only manage the labels
@@ -799,9 +804,9 @@ class Asset(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the asset.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['AssetResourceSpecArgs']] resource_spec: Required. Immutable. Specification of the resource that is referenced by this asset.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetResourceStatusArgs']]]] resource_statuses: Output only. Status of the resource referenced by this asset.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetSecurityStatusArgs']]]] security_statuses: Output only. Status of the security policy applied to resource referenced by this asset.
+        :param pulumi.Input[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict']] resource_spec: Required. Immutable. Specification of the resource that is referenced by this asset.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AssetResourceStatusArgs', 'AssetResourceStatusArgsDict']]]] resource_statuses: Output only. Status of the resource referenced by this asset.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AssetSecurityStatusArgs', 'AssetSecurityStatusArgsDict']]]] security_statuses: Output only. Status of the security policy applied to resource referenced by this asset.
         :param pulumi.Input[str] state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
         :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
         :param pulumi.Input[str] update_time: Output only. The time when the asset was last updated.

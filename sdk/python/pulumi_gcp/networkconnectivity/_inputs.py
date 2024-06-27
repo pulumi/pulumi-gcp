@@ -4,27 +4,57 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'HubRoutingVpcArgs',
+    'HubRoutingVpcArgsDict',
     'PolicyBasedRouteFilterArgs',
+    'PolicyBasedRouteFilterArgsDict',
     'PolicyBasedRouteInterconnectAttachmentArgs',
+    'PolicyBasedRouteInterconnectAttachmentArgsDict',
     'PolicyBasedRouteVirtualMachineArgs',
+    'PolicyBasedRouteVirtualMachineArgsDict',
     'PolicyBasedRouteWarningArgs',
+    'PolicyBasedRouteWarningArgsDict',
     'ServiceConnectionPolicyPscConfigArgs',
+    'ServiceConnectionPolicyPscConfigArgsDict',
     'ServiceConnectionPolicyPscConnectionArgs',
+    'ServiceConnectionPolicyPscConnectionArgsDict',
     'ServiceConnectionPolicyPscConnectionErrorArgs',
+    'ServiceConnectionPolicyPscConnectionErrorArgsDict',
     'ServiceConnectionPolicyPscConnectionErrorInfoArgs',
+    'ServiceConnectionPolicyPscConnectionErrorInfoArgsDict',
     'SpokeLinkedInterconnectAttachmentsArgs',
+    'SpokeLinkedInterconnectAttachmentsArgsDict',
     'SpokeLinkedRouterApplianceInstancesArgs',
+    'SpokeLinkedRouterApplianceInstancesArgsDict',
     'SpokeLinkedRouterApplianceInstancesInstanceArgs',
+    'SpokeLinkedRouterApplianceInstancesInstanceArgsDict',
     'SpokeLinkedVpcNetworkArgs',
+    'SpokeLinkedVpcNetworkArgsDict',
     'SpokeLinkedVpnTunnelsArgs',
+    'SpokeLinkedVpnTunnelsArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class HubRoutingVpcArgsDict(TypedDict):
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        The URI of the VPC network.
+        """
+elif False:
+    HubRoutingVpcArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HubRoutingVpcArgs:
@@ -48,6 +78,30 @@ class HubRoutingVpcArgs:
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
 
+
+if not MYPY:
+    class PolicyBasedRouteFilterArgsDict(TypedDict):
+        protocol_version: pulumi.Input[str]
+        """
+        Internet protocol versions this policy-based route applies to.
+        Possible values are: `IPV4`.
+        """
+        dest_range: NotRequired[pulumi.Input[str]]
+        """
+        The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+
+        - - -
+        """
+        ip_protocol: NotRequired[pulumi.Input[str]]
+        """
+        The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+        """
+        src_range: NotRequired[pulumi.Input[str]]
+        """
+        The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
+        """
+elif False:
+    PolicyBasedRouteFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PolicyBasedRouteFilterArgs:
@@ -125,6 +179,15 @@ class PolicyBasedRouteFilterArgs:
         pulumi.set(self, "src_range", value)
 
 
+if not MYPY:
+    class PolicyBasedRouteInterconnectAttachmentArgsDict(TypedDict):
+        region: pulumi.Input[str]
+        """
+        Cloud region to install this policy-based route on for Interconnect attachments. Use `all` to install it on all Interconnect attachments.
+        """
+elif False:
+    PolicyBasedRouteInterconnectAttachmentArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PolicyBasedRouteInterconnectAttachmentArgs:
     def __init__(__self__, *,
@@ -147,6 +210,15 @@ class PolicyBasedRouteInterconnectAttachmentArgs:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class PolicyBasedRouteVirtualMachineArgsDict(TypedDict):
+        tags: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of VM instance tags that this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
+        """
+elif False:
+    PolicyBasedRouteVirtualMachineArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PolicyBasedRouteVirtualMachineArgs:
     def __init__(__self__, *,
@@ -168,6 +240,26 @@ class PolicyBasedRouteVirtualMachineArgs:
     def tags(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "tags", value)
 
+
+if not MYPY:
+    class PolicyBasedRouteWarningArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A warning code, if applicable.
+        """
+        data: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        (Output)
+        Metadata about this warning in key: value format. The key should provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement.
+        """
+        warning_message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A human-readable description of the warning code.
+        """
+elif False:
+    PolicyBasedRouteWarningArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PolicyBasedRouteWarningArgs:
@@ -230,6 +322,19 @@ class PolicyBasedRouteWarningArgs:
         pulumi.set(self, "warning_message", value)
 
 
+if not MYPY:
+    class ServiceConnectionPolicyPscConfigArgsDict(TypedDict):
+        subnetworks: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        IDs of the subnetworks or fully qualified identifiers for the subnetworks
+        """
+        limit: NotRequired[pulumi.Input[str]]
+        """
+        Max number of PSC connections for this policy.
+        """
+elif False:
+    ServiceConnectionPolicyPscConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceConnectionPolicyPscConfigArgs:
     def __init__(__self__, *,
@@ -267,6 +372,52 @@ class ServiceConnectionPolicyPscConfigArgs:
     def limit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "limit", value)
 
+
+if not MYPY:
+    class ServiceConnectionPolicyPscConnectionArgsDict(TypedDict):
+        consumer_address: NotRequired[pulumi.Input[str]]
+        """
+        The resource reference of the consumer address.
+        """
+        consumer_forwarding_rule: NotRequired[pulumi.Input[str]]
+        """
+        The resource reference of the PSC Forwarding Rule within the consumer VPC.
+        """
+        consumer_target_project: NotRequired[pulumi.Input[str]]
+        """
+        The project where the PSC connection is created.
+        """
+        error: NotRequired[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorArgsDict']]
+        """
+        The most recent error during operating this connection.
+        Structure is documented below.
+        """
+        error_info: NotRequired[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorInfoArgsDict']]
+        """
+        The error info for the latest error during operating this connection.
+        Structure is documented below.
+        """
+        error_type: NotRequired[pulumi.Input[str]]
+        """
+        The error type indicates whether the error is consumer facing, producer
+        facing or system internal.
+        Possible values are: `CONNECTION_ERROR_TYPE_UNSPECIFIED`, `ERROR_INTERNAL`, `ERROR_CONSUMER_SIDE`, `ERROR_PRODUCER_SIDE`.
+        """
+        gce_operation: NotRequired[pulumi.Input[str]]
+        """
+        The last Compute Engine operation to setup PSC connection.
+        """
+        psc_connection_id: NotRequired[pulumi.Input[str]]
+        """
+        The PSC connection id of the PSC forwarding rule.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        The state of the PSC connection.
+        Possible values are: `STATE_UNSPECIFIED`, `ACTIVE`, `CREATING`, `DELETING`, `FAILED`.
+        """
+elif False:
+    ServiceConnectionPolicyPscConnectionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceConnectionPolicyPscConnectionArgs:
@@ -429,6 +580,24 @@ class ServiceConnectionPolicyPscConnectionArgs:
         pulumi.set(self, "state", value)
 
 
+if not MYPY:
+    class ServiceConnectionPolicyPscConnectionErrorArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[int]]
+        """
+        The status code, which should be an enum value of [google.rpc.Code][].
+        """
+        details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]
+        """
+        (Output)
+        A list of messages that carry the error details.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        A developer-facing error message.
+        """
+elif False:
+    ServiceConnectionPolicyPscConnectionErrorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceConnectionPolicyPscConnectionErrorArgs:
     def __init__(__self__, *,
@@ -486,6 +655,23 @@ class ServiceConnectionPolicyPscConnectionErrorArgs:
         pulumi.set(self, "message", value)
 
 
+if not MYPY:
+    class ServiceConnectionPolicyPscConnectionErrorInfoArgsDict(TypedDict):
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        The logical grouping to which the "reason" belongs.
+        """
+        metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Additional structured details about this error.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        The reason of the error.
+        """
+elif False:
+    ServiceConnectionPolicyPscConnectionErrorInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceConnectionPolicyPscConnectionErrorInfoArgs:
     def __init__(__self__, *,
@@ -541,6 +727,19 @@ class ServiceConnectionPolicyPscConnectionErrorInfoArgs:
         pulumi.set(self, "reason", value)
 
 
+if not MYPY:
+    class SpokeLinkedInterconnectAttachmentsArgsDict(TypedDict):
+        site_to_site_data_transfer: pulumi.Input[bool]
+        """
+        A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+        """
+        uris: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The URIs of linked interconnect attachment resources
+        """
+elif False:
+    SpokeLinkedInterconnectAttachmentsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SpokeLinkedInterconnectAttachmentsArgs:
     def __init__(__self__, *,
@@ -578,6 +777,19 @@ class SpokeLinkedInterconnectAttachmentsArgs:
         pulumi.set(self, "uris", value)
 
 
+if not MYPY:
+    class SpokeLinkedRouterApplianceInstancesArgsDict(TypedDict):
+        instances: pulumi.Input[Sequence[pulumi.Input['SpokeLinkedRouterApplianceInstancesInstanceArgsDict']]]
+        """
+        The list of router appliance instances
+        """
+        site_to_site_data_transfer: pulumi.Input[bool]
+        """
+        A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+        """
+elif False:
+    SpokeLinkedRouterApplianceInstancesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SpokeLinkedRouterApplianceInstancesArgs:
     def __init__(__self__, *,
@@ -614,6 +826,21 @@ class SpokeLinkedRouterApplianceInstancesArgs:
     def site_to_site_data_transfer(self, value: pulumi.Input[bool]):
         pulumi.set(self, "site_to_site_data_transfer", value)
 
+
+if not MYPY:
+    class SpokeLinkedRouterApplianceInstancesInstanceArgsDict(TypedDict):
+        ip_address: NotRequired[pulumi.Input[str]]
+        """
+        The IP address on the VM to use for peering.
+        """
+        virtual_machine: NotRequired[pulumi.Input[str]]
+        """
+        The URI of the virtual machine resource
+
+        - - -
+        """
+elif False:
+    SpokeLinkedRouterApplianceInstancesInstanceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SpokeLinkedRouterApplianceInstancesInstanceArgs:
@@ -658,6 +885,19 @@ class SpokeLinkedRouterApplianceInstancesInstanceArgs:
         pulumi.set(self, "virtual_machine", value)
 
 
+if not MYPY:
+    class SpokeLinkedVpcNetworkArgsDict(TypedDict):
+        uri: pulumi.Input[str]
+        """
+        The URI of the VPC network resource.
+        """
+        exclude_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        IP ranges encompassing the subnets to be excluded from peering.
+        """
+elif False:
+    SpokeLinkedVpcNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SpokeLinkedVpcNetworkArgs:
     def __init__(__self__, *,
@@ -695,6 +935,19 @@ class SpokeLinkedVpcNetworkArgs:
     def exclude_export_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "exclude_export_ranges", value)
 
+
+if not MYPY:
+    class SpokeLinkedVpnTunnelsArgsDict(TypedDict):
+        site_to_site_data_transfer: pulumi.Input[bool]
+        """
+        A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+        """
+        uris: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The URIs of linked VPN tunnel resources.
+        """
+elif False:
+    SpokeLinkedVpnTunnelsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SpokeLinkedVpnTunnelsArgs:

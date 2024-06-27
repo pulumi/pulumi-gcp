@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['CustomConstraintArgs', 'CustomConstraint']
@@ -374,11 +379,11 @@ class CustomConstraint(pulumi.CustomResource):
         bool = gcp.orgpolicy.Policy("bool",
             name=constraint.name.apply(lambda name: f"organizations/123456789/policies/{name}"),
             parent="organizations/123456789",
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
-                    enforce="TRUE",
-                )],
-            ))
+            spec={
+                "rules": [{
+                    "enforce": "TRUE",
+                }],
+            })
         ```
 
         ## Import
@@ -464,11 +469,11 @@ class CustomConstraint(pulumi.CustomResource):
         bool = gcp.orgpolicy.Policy("bool",
             name=constraint.name.apply(lambda name: f"organizations/123456789/policies/{name}"),
             parent="organizations/123456789",
-            spec=gcp.orgpolicy.PolicySpecArgs(
-                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
-                    enforce="TRUE",
-                )],
-            ))
+            spec={
+                "rules": [{
+                    "enforce": "TRUE",
+                }],
+            })
         ```
 
         ## Import

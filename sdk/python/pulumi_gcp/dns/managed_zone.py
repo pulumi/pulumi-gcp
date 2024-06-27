@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -659,19 +664,19 @@ class ManagedZone(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_logging_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneCloudLoggingConfigArgs']]] = None,
+                 cloud_logging_config: Optional[pulumi.Input[Union['ManagedZoneCloudLoggingConfigArgs', 'ManagedZoneCloudLoggingConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
-                 dnssec_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']]] = None,
+                 dnssec_config: Optional[pulumi.Input[Union['ManagedZoneDnssecConfigArgs', 'ManagedZoneDnssecConfigArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
-                 forwarding_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']]] = None,
+                 forwarding_config: Optional[pulumi.Input[Union['ManagedZoneForwardingConfigArgs', 'ManagedZoneForwardingConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 peering_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']]] = None,
-                 private_visibility_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']]] = None,
+                 peering_config: Optional[pulumi.Input[Union['ManagedZonePeeringConfigArgs', 'ManagedZonePeeringConfigArgsDict']]] = None,
+                 private_visibility_config: Optional[pulumi.Input[Union['ManagedZonePrivateVisibilityConfigArgs', 'ManagedZonePrivateVisibilityConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reverse_lookup: Optional[pulumi.Input[bool]] = None,
-                 service_directory_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']]] = None,
+                 service_directory_config: Optional[pulumi.Input[Union['ManagedZoneServiceDirectoryConfigArgs', 'ManagedZoneServiceDirectoryConfigArgsDict']]] = None,
                  visibility: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -721,16 +726,16 @@ class ManagedZone(pulumi.CustomResource):
                 "foo": "bar",
             },
             visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                networks=[
-                    gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                        network_url=network_1.id,
-                    ),
-                    gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                        network_url=network_2.id,
-                    ),
+            private_visibility_config={
+                "networks": [
+                    {
+                        "networkUrl": network_1.id,
+                    },
+                    {
+                        "networkUrl": network_2.id,
+                    },
                 ],
-            ))
+            })
         ```
         ### Dns Managed Zone Private Forwarding
 
@@ -752,26 +757,26 @@ class ManagedZone(pulumi.CustomResource):
                 "foo": "bar",
             },
             visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                networks=[
-                    gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                        network_url=network_1.id,
-                    ),
-                    gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                        network_url=network_2.id,
-                    ),
+            private_visibility_config={
+                "networks": [
+                    {
+                        "networkUrl": network_1.id,
+                    },
+                    {
+                        "networkUrl": network_2.id,
+                    },
                 ],
-            ),
-            forwarding_config=gcp.dns.ManagedZoneForwardingConfigArgs(
-                target_name_servers=[
-                    gcp.dns.ManagedZoneForwardingConfigTargetNameServerArgs(
-                        ipv4_address="172.16.1.10",
-                    ),
-                    gcp.dns.ManagedZoneForwardingConfigTargetNameServerArgs(
-                        ipv4_address="172.16.1.20",
-                    ),
+            },
+            forwarding_config={
+                "targetNameServers": [
+                    {
+                        "ipv4Address": "172.16.1.10",
+                    },
+                    {
+                        "ipv4Address": "172.16.1.20",
+                    },
                 ],
-            ))
+            })
         ```
         ### Dns Managed Zone Private Gke
 
@@ -789,38 +794,38 @@ class ManagedZone(pulumi.CustomResource):
             region="us-central1",
             private_ip_google_access=True,
             secondary_ip_ranges=[
-                gcp.compute.SubnetworkSecondaryIpRangeArgs(
-                    range_name="pod",
-                    ip_cidr_range="10.0.0.0/19",
-                ),
-                gcp.compute.SubnetworkSecondaryIpRangeArgs(
-                    range_name="svc",
-                    ip_cidr_range="10.0.32.0/22",
-                ),
+                {
+                    "rangeName": "pod",
+                    "ipCidrRange": "10.0.0.0/19",
+                },
+                {
+                    "rangeName": "svc",
+                    "ipCidrRange": "10.0.32.0/22",
+                },
             ])
         cluster_1 = gcp.container.Cluster("cluster-1",
             name="cluster-1",
             location="us-central1-c",
             initial_node_count=1,
             networking_mode="VPC_NATIVE",
-            default_snat_status=gcp.container.ClusterDefaultSnatStatusArgs(
-                disabled=True,
-            ),
+            default_snat_status={
+                "disabled": True,
+            },
             network=network_1.name,
             subnetwork=subnetwork_1.name,
-            private_cluster_config=gcp.container.ClusterPrivateClusterConfigArgs(
-                enable_private_endpoint=True,
-                enable_private_nodes=True,
-                master_ipv4_cidr_block="10.42.0.0/28",
-                master_global_access_config=gcp.container.ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            master_authorized_networks_config=gcp.container.ClusterMasterAuthorizedNetworksConfigArgs(),
-            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
-                cluster_secondary_range_name=subnetwork_1.secondary_ip_ranges[0].range_name,
-                services_secondary_range_name=subnetwork_1.secondary_ip_ranges[1].range_name,
-            ),
+            private_cluster_config={
+                "enablePrivateEndpoint": True,
+                "enablePrivateNodes": True,
+                "masterIpv4CidrBlock": "10.42.0.0/28",
+                "masterGlobalAccessConfig": {
+                    "enabled": True,
+                },
+            },
+            master_authorized_networks_config={},
+            ip_allocation_policy={
+                "clusterSecondaryRangeName": subnetwork_1.secondary_ip_ranges[0].range_name,
+                "servicesSecondaryRangeName": subnetwork_1.secondary_ip_ranges[1].range_name,
+            },
             deletion_protection=True)
         private_zone_gke = gcp.dns.ManagedZone("private-zone-gke",
             name="private-zone",
@@ -830,11 +835,11 @@ class ManagedZone(pulumi.CustomResource):
                 "foo": "bar",
             },
             visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                gke_clusters=[gcp.dns.ManagedZonePrivateVisibilityConfigGkeClusterArgs(
-                    gke_cluster_name=cluster_1.id,
-                )],
-            ))
+            private_visibility_config={
+                "gkeClusters": [{
+                    "gkeClusterName": cluster_1.id,
+                }],
+            })
         ```
         ### Dns Managed Zone Private Peering
 
@@ -853,16 +858,16 @@ class ManagedZone(pulumi.CustomResource):
             dns_name="peering.example.com.",
             description="Example private DNS peering zone",
             visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                networks=[gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                    network_url=network_source.id,
-                )],
-            ),
-            peering_config=gcp.dns.ManagedZonePeeringConfigArgs(
-                target_network=gcp.dns.ManagedZonePeeringConfigTargetNetworkArgs(
-                    network_url=network_target.id,
-                ),
-            ))
+            private_visibility_config={
+                "networks": [{
+                    "networkUrl": network_source.id,
+                }],
+            },
+            peering_config={
+                "targetNetwork": {
+                    "networkUrl": network_target.id,
+                },
+            })
         ```
         ### Dns Managed Zone Service Directory
 
@@ -878,11 +883,11 @@ class ManagedZone(pulumi.CustomResource):
             dns_name="services.example.com.",
             description="Example private DNS Service Directory zone",
             visibility="private",
-            service_directory_config=gcp.dns.ManagedZoneServiceDirectoryConfigArgs(
-                namespace=gcp.dns.ManagedZoneServiceDirectoryConfigNamespaceArgs(
-                    namespace_url=example.id,
-                ),
-            ))
+            service_directory_config={
+                "namespace": {
+                    "namespaceUrl": example.id,
+                },
+            })
         network = gcp.compute.Network("network",
             name="network",
             auto_create_subnetworks=False)
@@ -900,9 +905,9 @@ class ManagedZone(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            cloud_logging_config=gcp.dns.ManagedZoneCloudLoggingConfigArgs(
-                enable_logging=True,
-            ))
+            cloud_logging_config={
+                "enableLogging": True,
+            })
         ```
 
         ## Import
@@ -931,14 +936,14 @@ class ManagedZone(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ManagedZoneCloudLoggingConfigArgs']] cloud_logging_config: Cloud logging configuration
+        :param pulumi.Input[Union['ManagedZoneCloudLoggingConfigArgs', 'ManagedZoneCloudLoggingConfigArgsDict']] cloud_logging_config: Cloud logging configuration
                Structure is documented below.
         :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
-        :param pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']] dnssec_config: DNSSEC configuration
+        :param pulumi.Input[Union['ManagedZoneDnssecConfigArgs', 'ManagedZoneDnssecConfigArgsDict']] dnssec_config: DNSSEC configuration
                Structure is documented below.
         :param pulumi.Input[bool] force_destroy: Set this true to delete all records in the zone.
-        :param pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']] forwarding_config: The presence for this field indicates that outbound forwarding is enabled
+        :param pulumi.Input[Union['ManagedZoneForwardingConfigArgs', 'ManagedZoneForwardingConfigArgsDict']] forwarding_config: The presence for this field indicates that outbound forwarding is enabled
                for this zone. The value of this field contains the set of destinations
                to forward to.
                Structure is documented below.
@@ -950,10 +955,10 @@ class ManagedZone(pulumi.CustomResource):
                Must be unique within the project.
                
                - - -
-        :param pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']] peering_config: The presence of this field indicates that DNS Peering is enabled for this
+        :param pulumi.Input[Union['ManagedZonePeeringConfigArgs', 'ManagedZonePeeringConfigArgsDict']] peering_config: The presence of this field indicates that DNS Peering is enabled for this
                zone. The value of this field contains the network to peer with.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud
+        :param pulumi.Input[Union['ManagedZonePrivateVisibilityConfigArgs', 'ManagedZonePrivateVisibilityConfigArgsDict']] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud
                resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -961,7 +966,7 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
                lookup queries using automatically configured records for VPC resources. This only applies
                to networks listed under `private_visibility_config`.
-        :param pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+        :param pulumi.Input[Union['ManagedZoneServiceDirectoryConfigArgs', 'ManagedZoneServiceDirectoryConfigArgsDict']] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
                Structure is documented below.
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
@@ -1021,16 +1026,16 @@ class ManagedZone(pulumi.CustomResource):
                 "foo": "bar",
             },
             visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                networks=[
-                    gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                        network_url=network_1.id,
-                    ),
-                    gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                        network_url=network_2.id,
-                    ),
+            private_visibility_config={
+                "networks": [
+                    {
+                        "networkUrl": network_1.id,
+                    },
+                    {
+                        "networkUrl": network_2.id,
+                    },
                 ],
-            ))
+            })
         ```
         ### Dns Managed Zone Private Forwarding
 
@@ -1052,26 +1057,26 @@ class ManagedZone(pulumi.CustomResource):
                 "foo": "bar",
             },
             visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                networks=[
-                    gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                        network_url=network_1.id,
-                    ),
-                    gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                        network_url=network_2.id,
-                    ),
+            private_visibility_config={
+                "networks": [
+                    {
+                        "networkUrl": network_1.id,
+                    },
+                    {
+                        "networkUrl": network_2.id,
+                    },
                 ],
-            ),
-            forwarding_config=gcp.dns.ManagedZoneForwardingConfigArgs(
-                target_name_servers=[
-                    gcp.dns.ManagedZoneForwardingConfigTargetNameServerArgs(
-                        ipv4_address="172.16.1.10",
-                    ),
-                    gcp.dns.ManagedZoneForwardingConfigTargetNameServerArgs(
-                        ipv4_address="172.16.1.20",
-                    ),
+            },
+            forwarding_config={
+                "targetNameServers": [
+                    {
+                        "ipv4Address": "172.16.1.10",
+                    },
+                    {
+                        "ipv4Address": "172.16.1.20",
+                    },
                 ],
-            ))
+            })
         ```
         ### Dns Managed Zone Private Gke
 
@@ -1089,38 +1094,38 @@ class ManagedZone(pulumi.CustomResource):
             region="us-central1",
             private_ip_google_access=True,
             secondary_ip_ranges=[
-                gcp.compute.SubnetworkSecondaryIpRangeArgs(
-                    range_name="pod",
-                    ip_cidr_range="10.0.0.0/19",
-                ),
-                gcp.compute.SubnetworkSecondaryIpRangeArgs(
-                    range_name="svc",
-                    ip_cidr_range="10.0.32.0/22",
-                ),
+                {
+                    "rangeName": "pod",
+                    "ipCidrRange": "10.0.0.0/19",
+                },
+                {
+                    "rangeName": "svc",
+                    "ipCidrRange": "10.0.32.0/22",
+                },
             ])
         cluster_1 = gcp.container.Cluster("cluster-1",
             name="cluster-1",
             location="us-central1-c",
             initial_node_count=1,
             networking_mode="VPC_NATIVE",
-            default_snat_status=gcp.container.ClusterDefaultSnatStatusArgs(
-                disabled=True,
-            ),
+            default_snat_status={
+                "disabled": True,
+            },
             network=network_1.name,
             subnetwork=subnetwork_1.name,
-            private_cluster_config=gcp.container.ClusterPrivateClusterConfigArgs(
-                enable_private_endpoint=True,
-                enable_private_nodes=True,
-                master_ipv4_cidr_block="10.42.0.0/28",
-                master_global_access_config=gcp.container.ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs(
-                    enabled=True,
-                ),
-            ),
-            master_authorized_networks_config=gcp.container.ClusterMasterAuthorizedNetworksConfigArgs(),
-            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
-                cluster_secondary_range_name=subnetwork_1.secondary_ip_ranges[0].range_name,
-                services_secondary_range_name=subnetwork_1.secondary_ip_ranges[1].range_name,
-            ),
+            private_cluster_config={
+                "enablePrivateEndpoint": True,
+                "enablePrivateNodes": True,
+                "masterIpv4CidrBlock": "10.42.0.0/28",
+                "masterGlobalAccessConfig": {
+                    "enabled": True,
+                },
+            },
+            master_authorized_networks_config={},
+            ip_allocation_policy={
+                "clusterSecondaryRangeName": subnetwork_1.secondary_ip_ranges[0].range_name,
+                "servicesSecondaryRangeName": subnetwork_1.secondary_ip_ranges[1].range_name,
+            },
             deletion_protection=True)
         private_zone_gke = gcp.dns.ManagedZone("private-zone-gke",
             name="private-zone",
@@ -1130,11 +1135,11 @@ class ManagedZone(pulumi.CustomResource):
                 "foo": "bar",
             },
             visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                gke_clusters=[gcp.dns.ManagedZonePrivateVisibilityConfigGkeClusterArgs(
-                    gke_cluster_name=cluster_1.id,
-                )],
-            ))
+            private_visibility_config={
+                "gkeClusters": [{
+                    "gkeClusterName": cluster_1.id,
+                }],
+            })
         ```
         ### Dns Managed Zone Private Peering
 
@@ -1153,16 +1158,16 @@ class ManagedZone(pulumi.CustomResource):
             dns_name="peering.example.com.",
             description="Example private DNS peering zone",
             visibility="private",
-            private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                networks=[gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                    network_url=network_source.id,
-                )],
-            ),
-            peering_config=gcp.dns.ManagedZonePeeringConfigArgs(
-                target_network=gcp.dns.ManagedZonePeeringConfigTargetNetworkArgs(
-                    network_url=network_target.id,
-                ),
-            ))
+            private_visibility_config={
+                "networks": [{
+                    "networkUrl": network_source.id,
+                }],
+            },
+            peering_config={
+                "targetNetwork": {
+                    "networkUrl": network_target.id,
+                },
+            })
         ```
         ### Dns Managed Zone Service Directory
 
@@ -1178,11 +1183,11 @@ class ManagedZone(pulumi.CustomResource):
             dns_name="services.example.com.",
             description="Example private DNS Service Directory zone",
             visibility="private",
-            service_directory_config=gcp.dns.ManagedZoneServiceDirectoryConfigArgs(
-                namespace=gcp.dns.ManagedZoneServiceDirectoryConfigNamespaceArgs(
-                    namespace_url=example.id,
-                ),
-            ))
+            service_directory_config={
+                "namespace": {
+                    "namespaceUrl": example.id,
+                },
+            })
         network = gcp.compute.Network("network",
             name="network",
             auto_create_subnetworks=False)
@@ -1200,9 +1205,9 @@ class ManagedZone(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            cloud_logging_config=gcp.dns.ManagedZoneCloudLoggingConfigArgs(
-                enable_logging=True,
-            ))
+            cloud_logging_config={
+                "enableLogging": True,
+            })
         ```
 
         ## Import
@@ -1244,19 +1249,19 @@ class ManagedZone(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_logging_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneCloudLoggingConfigArgs']]] = None,
+                 cloud_logging_config: Optional[pulumi.Input[Union['ManagedZoneCloudLoggingConfigArgs', 'ManagedZoneCloudLoggingConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
-                 dnssec_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']]] = None,
+                 dnssec_config: Optional[pulumi.Input[Union['ManagedZoneDnssecConfigArgs', 'ManagedZoneDnssecConfigArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
-                 forwarding_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']]] = None,
+                 forwarding_config: Optional[pulumi.Input[Union['ManagedZoneForwardingConfigArgs', 'ManagedZoneForwardingConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 peering_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']]] = None,
-                 private_visibility_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']]] = None,
+                 peering_config: Optional[pulumi.Input[Union['ManagedZonePeeringConfigArgs', 'ManagedZonePeeringConfigArgsDict']]] = None,
+                 private_visibility_config: Optional[pulumi.Input[Union['ManagedZonePrivateVisibilityConfigArgs', 'ManagedZonePrivateVisibilityConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reverse_lookup: Optional[pulumi.Input[bool]] = None,
-                 service_directory_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']]] = None,
+                 service_directory_config: Optional[pulumi.Input[Union['ManagedZoneServiceDirectoryConfigArgs', 'ManagedZoneServiceDirectoryConfigArgsDict']]] = None,
                  visibility: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1302,24 +1307,24 @@ class ManagedZone(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cloud_logging_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneCloudLoggingConfigArgs']]] = None,
+            cloud_logging_config: Optional[pulumi.Input[Union['ManagedZoneCloudLoggingConfigArgs', 'ManagedZoneCloudLoggingConfigArgsDict']]] = None,
             creation_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             dns_name: Optional[pulumi.Input[str]] = None,
-            dnssec_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']]] = None,
+            dnssec_config: Optional[pulumi.Input[Union['ManagedZoneDnssecConfigArgs', 'ManagedZoneDnssecConfigArgsDict']]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
-            forwarding_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']]] = None,
+            forwarding_config: Optional[pulumi.Input[Union['ManagedZoneForwardingConfigArgs', 'ManagedZoneForwardingConfigArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             managed_zone_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            peering_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']]] = None,
-            private_visibility_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']]] = None,
+            peering_config: Optional[pulumi.Input[Union['ManagedZonePeeringConfigArgs', 'ManagedZonePeeringConfigArgsDict']]] = None,
+            private_visibility_config: Optional[pulumi.Input[Union['ManagedZonePrivateVisibilityConfigArgs', 'ManagedZonePrivateVisibilityConfigArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             reverse_lookup: Optional[pulumi.Input[bool]] = None,
-            service_directory_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']]] = None,
+            service_directory_config: Optional[pulumi.Input[Union['ManagedZoneServiceDirectoryConfigArgs', 'ManagedZoneServiceDirectoryConfigArgsDict']]] = None,
             visibility: Optional[pulumi.Input[str]] = None) -> 'ManagedZone':
         """
         Get an existing ManagedZone resource's state with the given name, id, and optional extra
@@ -1328,17 +1333,17 @@ class ManagedZone(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ManagedZoneCloudLoggingConfigArgs']] cloud_logging_config: Cloud logging configuration
+        :param pulumi.Input[Union['ManagedZoneCloudLoggingConfigArgs', 'ManagedZoneCloudLoggingConfigArgsDict']] cloud_logging_config: Cloud logging configuration
                Structure is documented below.
         :param pulumi.Input[str] creation_time: The time that this resource was created on the server.
                This is in RFC3339 text format.
         :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
-        :param pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']] dnssec_config: DNSSEC configuration
+        :param pulumi.Input[Union['ManagedZoneDnssecConfigArgs', 'ManagedZoneDnssecConfigArgsDict']] dnssec_config: DNSSEC configuration
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] force_destroy: Set this true to delete all records in the zone.
-        :param pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']] forwarding_config: The presence for this field indicates that outbound forwarding is enabled
+        :param pulumi.Input[Union['ManagedZoneForwardingConfigArgs', 'ManagedZoneForwardingConfigArgsDict']] forwarding_config: The presence for this field indicates that outbound forwarding is enabled
                for this zone. The value of this field contains the set of destinations
                to forward to.
                Structure is documented below.
@@ -1353,10 +1358,10 @@ class ManagedZone(pulumi.CustomResource):
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers;
                defined by the server
-        :param pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']] peering_config: The presence of this field indicates that DNS Peering is enabled for this
+        :param pulumi.Input[Union['ManagedZonePeeringConfigArgs', 'ManagedZonePeeringConfigArgsDict']] peering_config: The presence of this field indicates that DNS Peering is enabled for this
                zone. The value of this field contains the network to peer with.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud
+        :param pulumi.Input[Union['ManagedZonePrivateVisibilityConfigArgs', 'ManagedZonePrivateVisibilityConfigArgsDict']] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud
                resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1366,7 +1371,7 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
                lookup queries using automatically configured records for VPC resources. This only applies
                to networks listed under `private_visibility_config`.
-        :param pulumi.Input[pulumi.InputType['ManagedZoneServiceDirectoryConfigArgs']] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+        :param pulumi.Input[Union['ManagedZoneServiceDirectoryConfigArgs', 'ManagedZoneServiceDirectoryConfigArgsDict']] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
                Structure is documented below.
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.

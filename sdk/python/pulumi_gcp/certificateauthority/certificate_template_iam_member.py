@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -304,7 +309,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_template: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['CertificateTemplateIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['CertificateTemplateIamMemberConditionArgs', 'CertificateTemplateIamMemberConditionArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -333,10 +338,10 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/privateca.templateUser",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/privateca.templateUser",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
             certificate_template=default["id"],
             policy_data=admin.policy_data)
@@ -348,15 +353,15 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/privateca.templateUser",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/privateca.templateUser",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
             certificate_template=default["id"],
             policy_data=admin.policy_data)
@@ -383,11 +388,11 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
             certificate_template=default["id"],
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"],
-            condition=gcp.certificateauthority.CertificateTemplateIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## certificateauthority.CertificateTemplateIamMember
 
@@ -411,11 +416,11 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
             certificate_template=default["id"],
             role="roles/privateca.templateUser",
             member="user:jane@example.com",
-            condition=gcp.certificateauthority.CertificateTemplateIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## certificateauthority.CertificateTemplateIamPolicy
@@ -424,10 +429,10 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/privateca.templateUser",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/privateca.templateUser",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
             certificate_template=default["id"],
             policy_data=admin.policy_data)
@@ -439,15 +444,15 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/privateca.templateUser",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/privateca.templateUser",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
             certificate_template=default["id"],
             policy_data=admin.policy_data)
@@ -474,11 +479,11 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
             certificate_template=default["id"],
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"],
-            condition=gcp.certificateauthority.CertificateTemplateIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## certificateauthority.CertificateTemplateIamMember
 
@@ -502,11 +507,11 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
             certificate_template=default["id"],
             role="roles/privateca.templateUser",
             member="user:jane@example.com",
-            condition=gcp.certificateauthority.CertificateTemplateIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import
@@ -548,7 +553,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_template: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[pulumi.InputType['CertificateTemplateIamMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['CertificateTemplateIamMemberConditionArgs', 'CertificateTemplateIamMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -599,10 +604,10 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/privateca.templateUser",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/privateca.templateUser",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
             certificate_template=default["id"],
             policy_data=admin.policy_data)
@@ -614,15 +619,15 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/privateca.templateUser",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/privateca.templateUser",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
             certificate_template=default["id"],
             policy_data=admin.policy_data)
@@ -649,11 +654,11 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
             certificate_template=default["id"],
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"],
-            condition=gcp.certificateauthority.CertificateTemplateIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## certificateauthority.CertificateTemplateIamMember
 
@@ -677,11 +682,11 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
             certificate_template=default["id"],
             role="roles/privateca.templateUser",
             member="user:jane@example.com",
-            condition=gcp.certificateauthority.CertificateTemplateIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## certificateauthority.CertificateTemplateIamPolicy
@@ -690,10 +695,10 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/privateca.templateUser",
-            members=["user:jane@example.com"],
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/privateca.templateUser",
+            "members": ["user:jane@example.com"],
+        }])
         policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
             certificate_template=default["id"],
             policy_data=admin.policy_data)
@@ -705,15 +710,15 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            role="roles/privateca.templateUser",
-            members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ),
-        )])
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/privateca.templateUser",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            },
+        }])
         policy = gcp.certificateauthority.CertificateTemplateIamPolicy("policy",
             certificate_template=default["id"],
             policy_data=admin.policy_data)
@@ -740,11 +745,11 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
             certificate_template=default["id"],
             role="roles/privateca.templateUser",
             members=["user:jane@example.com"],
-            condition=gcp.certificateauthority.CertificateTemplateIamBindingConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
         ## certificateauthority.CertificateTemplateIamMember
 
@@ -768,11 +773,11 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
             certificate_template=default["id"],
             role="roles/privateca.templateUser",
             member="user:jane@example.com",
-            condition=gcp.certificateauthority.CertificateTemplateIamMemberConditionArgs(
-                title="expires_after_2019_12_31",
-                description="Expiring at midnight of 2019-12-31",
-                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
-            ))
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            })
         ```
 
         ## Import
@@ -827,7 +832,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_template: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['CertificateTemplateIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['CertificateTemplateIamMemberConditionArgs', 'CertificateTemplateIamMemberConditionArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -865,7 +870,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             certificate_template: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['CertificateTemplateIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['CertificateTemplateIamMemberConditionArgs', 'CertificateTemplateIamMemberConditionArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
@@ -879,7 +884,7 @@ class CertificateTemplateIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_template: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[pulumi.InputType['CertificateTemplateIamMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[Union['CertificateTemplateIamMemberConditionArgs', 'CertificateTemplateIamMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] location: The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,

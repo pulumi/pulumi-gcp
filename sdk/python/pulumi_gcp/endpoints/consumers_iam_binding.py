@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -230,7 +235,7 @@ class ConsumersIamBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConsumersIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['ConsumersIamBindingConditionArgs', 'ConsumersIamBindingConditionArgsDict']]] = None,
                  consumer_project: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -376,7 +381,7 @@ class ConsumersIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConsumersIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['ConsumersIamBindingConditionArgs', 'ConsumersIamBindingConditionArgsDict']]] = None,
                  consumer_project: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -414,7 +419,7 @@ class ConsumersIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ConsumersIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[Union['ConsumersIamBindingConditionArgs', 'ConsumersIamBindingConditionArgsDict']]] = None,
             consumer_project: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

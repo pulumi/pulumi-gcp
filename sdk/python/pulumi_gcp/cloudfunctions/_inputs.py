@@ -4,21 +4,56 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'FunctionEventTriggerArgs',
+    'FunctionEventTriggerArgsDict',
     'FunctionEventTriggerFailurePolicyArgs',
+    'FunctionEventTriggerFailurePolicyArgsDict',
     'FunctionIamBindingConditionArgs',
+    'FunctionIamBindingConditionArgsDict',
     'FunctionIamMemberConditionArgs',
+    'FunctionIamMemberConditionArgsDict',
     'FunctionSecretEnvironmentVariableArgs',
+    'FunctionSecretEnvironmentVariableArgsDict',
     'FunctionSecretVolumeArgs',
+    'FunctionSecretVolumeArgsDict',
     'FunctionSecretVolumeVersionArgs',
+    'FunctionSecretVolumeVersionArgsDict',
     'FunctionSourceRepositoryArgs',
+    'FunctionSourceRepositoryArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class FunctionEventTriggerArgsDict(TypedDict):
+        event_type: pulumi.Input[str]
+        """
+        The type of event to observe. For example: `"google.storage.object.finalize"`.
+        See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/) for a
+        full reference of accepted triggers.
+        """
+        resource: pulumi.Input[str]
+        """
+        Required. The name or partial URI of the resource from
+        which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
+        """
+        failure_policy: NotRequired[pulumi.Input['FunctionEventTriggerFailurePolicyArgsDict']]
+        """
+        Specifies policy for failed executions. Structure is documented below.
+        """
+elif False:
+    FunctionEventTriggerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FunctionEventTriggerArgs:
@@ -79,6 +114,15 @@ class FunctionEventTriggerArgs:
         pulumi.set(self, "failure_policy", value)
 
 
+if not MYPY:
+    class FunctionEventTriggerFailurePolicyArgsDict(TypedDict):
+        retry: pulumi.Input[bool]
+        """
+        Whether the function should be retried on failure. Defaults to `false`.
+        """
+elif False:
+    FunctionEventTriggerFailurePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FunctionEventTriggerFailurePolicyArgs:
     def __init__(__self__, *,
@@ -100,6 +144,14 @@ class FunctionEventTriggerFailurePolicyArgs:
     def retry(self, value: pulumi.Input[bool]):
         pulumi.set(self, "retry", value)
 
+
+if not MYPY:
+    class FunctionIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    FunctionIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FunctionIamBindingConditionArgs:
@@ -140,6 +192,14 @@ class FunctionIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class FunctionIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    FunctionIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FunctionIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -178,6 +238,27 @@ class FunctionIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class FunctionSecretEnvironmentVariableArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Name of the environment variable.
+        """
+        secret: pulumi.Input[str]
+        """
+        ID of the secret in secret manager (not the full resource name).
+        """
+        version: pulumi.Input[str]
+        """
+        Version of the secret (version number or the string "latest"). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+        """
+elif False:
+    FunctionSecretEnvironmentVariableArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FunctionSecretEnvironmentVariableArgs:
@@ -246,6 +327,27 @@ class FunctionSecretEnvironmentVariableArgs:
     def project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id", value)
 
+
+if not MYPY:
+    class FunctionSecretVolumeArgsDict(TypedDict):
+        mount_path: pulumi.Input[str]
+        """
+        The path within the container to mount the secret volume. For example, setting the mount_path as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
+        """
+        secret: pulumi.Input[str]
+        """
+        ID of the secret in secret manager (not the full resource name).
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+        """
+        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeVersionArgsDict']]]]
+        """
+        List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point. Structure is documented below.
+        """
+elif False:
+    FunctionSecretVolumeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FunctionSecretVolumeArgs:
@@ -316,6 +418,19 @@ class FunctionSecretVolumeArgs:
         pulumi.set(self, "versions", value)
 
 
+if not MYPY:
+    class FunctionSecretVolumeVersionArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as "/etc/secrets" and path as "/secret_foo" would mount the secret value file at "/etc/secrets/secret_foo".
+        """
+        version: pulumi.Input[str]
+        """
+        Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
+        """
+elif False:
+    FunctionSecretVolumeVersionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FunctionSecretVolumeVersionArgs:
     def __init__(__self__, *,
@@ -352,6 +467,23 @@ class FunctionSecretVolumeVersionArgs:
     def version(self, value: pulumi.Input[str]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class FunctionSourceRepositoryArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
+
+        * To refer to a specific commit: `https://source.developers.google.com/projects/*/repos/*/revisions/*/paths/*`
+        * To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/paths/*`. To refer to HEAD, use the `master` moveable alias.
+        * To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/*`
+        """
+        deployed_url: NotRequired[pulumi.Input[str]]
+        """
+        The URL pointing to the hosted repository where the function was defined at the time of deployment.
+        """
+elif False:
+    FunctionSourceRepositoryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FunctionSourceRepositoryArgs:

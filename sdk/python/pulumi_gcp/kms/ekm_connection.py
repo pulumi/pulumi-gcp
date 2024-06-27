@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -288,7 +293,7 @@ class EkmConnection(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_resolvers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EkmConnectionServiceResolverArgs']]]]] = None,
+                 service_resolvers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict']]]]] = None,
                  __props__=None):
         """
         `Ekm Connections` are used to control the connection settings for an `EXTERNAL_VPC` CryptoKey.
@@ -314,13 +319,13 @@ class EkmConnection(pulumi.CustomResource):
             name="ekmconnection_example",
             location="us-central1",
             key_management_mode="MANUAL",
-            service_resolvers=[gcp.kms.EkmConnectionServiceResolverArgs(
-                service_directory_service="projects/project_id/locations/us-central1/namespaces/namespace_name/services/service_name",
-                hostname="example-ekm.goog",
-                server_certificates=[gcp.kms.EkmConnectionServiceResolverServerCertificateArgs(
-                    raw_der="==HAwIBCCAr6gAwIBAgIUWR+EV4lqiV7Ql12VY==",
-                )],
-            )])
+            service_resolvers=[{
+                "serviceDirectoryService": "projects/project_id/locations/us-central1/namespaces/namespace_name/services/service_name",
+                "hostname": "example-ekm.goog",
+                "serverCertificates": [{
+                    "rawDer": "==HAwIBCCAr6gAwIBAgIUWR+EV4lqiV7Ql12VY==",
+                }],
+            }])
         ```
 
         ## Import
@@ -357,7 +362,7 @@ class EkmConnection(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location for the EkmConnection.
                A full list of valid locations can be found by running `gcloud kms locations list`.
         :param pulumi.Input[str] name: The resource name for the EkmConnection.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EkmConnectionServiceResolverArgs']]]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict']]]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
                Structure is documented below.
         """
         ...
@@ -390,13 +395,13 @@ class EkmConnection(pulumi.CustomResource):
             name="ekmconnection_example",
             location="us-central1",
             key_management_mode="MANUAL",
-            service_resolvers=[gcp.kms.EkmConnectionServiceResolverArgs(
-                service_directory_service="projects/project_id/locations/us-central1/namespaces/namespace_name/services/service_name",
-                hostname="example-ekm.goog",
-                server_certificates=[gcp.kms.EkmConnectionServiceResolverServerCertificateArgs(
-                    raw_der="==HAwIBCCAr6gAwIBAgIUWR+EV4lqiV7Ql12VY==",
-                )],
-            )])
+            service_resolvers=[{
+                "serviceDirectoryService": "projects/project_id/locations/us-central1/namespaces/namespace_name/services/service_name",
+                "hostname": "example-ekm.goog",
+                "serverCertificates": [{
+                    "rawDer": "==HAwIBCCAr6gAwIBAgIUWR+EV4lqiV7Ql12VY==",
+                }],
+            }])
         ```
 
         ## Import
@@ -444,7 +449,7 @@ class EkmConnection(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_resolvers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EkmConnectionServiceResolverArgs']]]]] = None,
+                 service_resolvers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -483,7 +488,7 @@ class EkmConnection(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            service_resolvers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EkmConnectionServiceResolverArgs']]]]] = None) -> 'EkmConnection':
+            service_resolvers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict']]]]] = None) -> 'EkmConnection':
         """
         Get an existing EkmConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -501,7 +506,7 @@ class EkmConnection(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location for the EkmConnection.
                A full list of valid locations can be found by running `gcloud kms locations list`.
         :param pulumi.Input[str] name: The resource name for the EkmConnection.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EkmConnectionServiceResolverArgs']]]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EkmConnectionServiceResolverArgs', 'EkmConnectionServiceResolverArgsDict']]]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

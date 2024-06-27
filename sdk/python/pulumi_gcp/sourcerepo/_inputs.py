@@ -4,16 +4,34 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'RepositoryIamBindingConditionArgs',
+    'RepositoryIamBindingConditionArgsDict',
     'RepositoryIamMemberConditionArgs',
+    'RepositoryIamMemberConditionArgsDict',
     'RepositoryPubsubConfigArgs',
+    'RepositoryPubsubConfigArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class RepositoryIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    RepositoryIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryIamBindingConditionArgs:
@@ -54,6 +72,14 @@ class RepositoryIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class RepositoryIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    RepositoryIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepositoryIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -92,6 +118,29 @@ class RepositoryIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class RepositoryPubsubConfigArgsDict(TypedDict):
+        message_format: pulumi.Input[str]
+        """
+        The format of the Cloud Pub/Sub messages.
+        - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
+        - JSON: The message payload is a JSON string of SourceRepoEvent.
+        Possible values are: `PROTOBUF`, `JSON`.
+        """
+        topic: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        service_account_email: NotRequired[pulumi.Input[str]]
+        """
+        Email address of the service account used for publishing Cloud Pub/Sub messages.
+        This service account needs to be in the same project as the PubsubConfig. When added,
+        the caller needs to have iam.serviceAccounts.actAs permission on this service account.
+        If unspecified, it defaults to the compute engine default service account.
+        """
+elif False:
+    RepositoryPubsubConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepositoryPubsubConfigArgs:

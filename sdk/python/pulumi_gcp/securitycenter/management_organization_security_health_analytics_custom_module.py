@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -303,7 +308,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_config: Optional[pulumi.Input[pulumi.InputType['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs']]] = None,
+                 custom_config: Optional[pulumi.Input[Union['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs', 'ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enablement_state: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -335,17 +340,17 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
             display_name="basic_custom_module",
             location="global",
             enablement_state="ENABLED",
-            custom_config=gcp.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs(
-                predicate=gcp.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgs(
-                    expression="resource.rotationPeriod > duration(\\"2592000s\\")",
-                ),
-                resource_selector=gcp.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgs(
-                    resource_types=["cloudkms.googleapis.com/CryptoKey"],
-                ),
-                description="The rotation period of the identified cryptokey resource exceeds 30 days.",
-                recommendation="Set the rotation period to at most 30 days.",
-                severity="MEDIUM",
-            ))
+            custom_config={
+                "predicate": {
+                    "expression": "resource.rotationPeriod > duration(\\"2592000s\\")",
+                },
+                "resourceSelector": {
+                    "resourceTypes": ["cloudkms.googleapis.com/CryptoKey"],
+                },
+                "description": "The rotation period of the identified cryptokey resource exceeds 30 days.",
+                "recommendation": "Set the rotation period to at most 30 days.",
+                "severity": "MEDIUM",
+            })
         ```
         ### Scc Management Organization Security Health Analytics Custom Module Full
 
@@ -358,31 +363,31 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
             display_name="full_custom_module",
             location="global",
             enablement_state="ENABLED",
-            custom_config=gcp.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs(
-                predicate=gcp.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgs(
-                    expression="resource.rotationPeriod > duration(\\"2592000s\\")",
-                    title="Purpose of the expression",
-                    description="description of the expression",
-                    location="location of the expression",
-                ),
-                custom_output=gcp.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgs(
-                    properties=[gcp.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgs(
-                        name="duration",
-                        value_expression=gcp.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs(
-                            expression="resource.rotationPeriod",
-                            title="Purpose of the expression",
-                            description="description of the expression",
-                            location="location of the expression",
-                        ),
-                    )],
-                ),
-                resource_selector=gcp.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgs(
-                    resource_types=["cloudkms.googleapis.com/CryptoKey"],
-                ),
-                severity="LOW",
-                description="Description of the custom module",
-                recommendation="Steps to resolve violation",
-            ))
+            custom_config={
+                "predicate": {
+                    "expression": "resource.rotationPeriod > duration(\\"2592000s\\")",
+                    "title": "Purpose of the expression",
+                    "description": "description of the expression",
+                    "location": "location of the expression",
+                },
+                "customOutput": {
+                    "properties": [{
+                        "name": "duration",
+                        "valueExpression": {
+                            "expression": "resource.rotationPeriod",
+                            "title": "Purpose of the expression",
+                            "description": "description of the expression",
+                            "location": "location of the expression",
+                        },
+                    }],
+                },
+                "resourceSelector": {
+                    "resourceTypes": ["cloudkms.googleapis.com/CryptoKey"],
+                },
+                "severity": "LOW",
+                "description": "Description of the custom module",
+                "recommendation": "Steps to resolve violation",
+            })
         ```
 
         ## Import
@@ -405,7 +410,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs']] custom_config: The user specified custom configuration for the module.
+        :param pulumi.Input[Union['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs', 'ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict']] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The display name of the Security Health Analytics custom module. This
                display name becomes the finding category for all findings that are
@@ -452,17 +457,17 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
             display_name="basic_custom_module",
             location="global",
             enablement_state="ENABLED",
-            custom_config=gcp.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs(
-                predicate=gcp.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgs(
-                    expression="resource.rotationPeriod > duration(\\"2592000s\\")",
-                ),
-                resource_selector=gcp.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgs(
-                    resource_types=["cloudkms.googleapis.com/CryptoKey"],
-                ),
-                description="The rotation period of the identified cryptokey resource exceeds 30 days.",
-                recommendation="Set the rotation period to at most 30 days.",
-                severity="MEDIUM",
-            ))
+            custom_config={
+                "predicate": {
+                    "expression": "resource.rotationPeriod > duration(\\"2592000s\\")",
+                },
+                "resourceSelector": {
+                    "resourceTypes": ["cloudkms.googleapis.com/CryptoKey"],
+                },
+                "description": "The rotation period of the identified cryptokey resource exceeds 30 days.",
+                "recommendation": "Set the rotation period to at most 30 days.",
+                "severity": "MEDIUM",
+            })
         ```
         ### Scc Management Organization Security Health Analytics Custom Module Full
 
@@ -475,31 +480,31 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
             display_name="full_custom_module",
             location="global",
             enablement_state="ENABLED",
-            custom_config=gcp.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs(
-                predicate=gcp.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigPredicateArgs(
-                    expression="resource.rotationPeriod > duration(\\"2592000s\\")",
-                    title="Purpose of the expression",
-                    description="description of the expression",
-                    location="location of the expression",
-                ),
-                custom_output=gcp.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputArgs(
-                    properties=[gcp.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyArgs(
-                        name="duration",
-                        value_expression=gcp.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs(
-                            expression="resource.rotationPeriod",
-                            title="Purpose of the expression",
-                            description="description of the expression",
-                            location="location of the expression",
-                        ),
-                    )],
-                ),
-                resource_selector=gcp.securitycenter.ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelectorArgs(
-                    resource_types=["cloudkms.googleapis.com/CryptoKey"],
-                ),
-                severity="LOW",
-                description="Description of the custom module",
-                recommendation="Steps to resolve violation",
-            ))
+            custom_config={
+                "predicate": {
+                    "expression": "resource.rotationPeriod > duration(\\"2592000s\\")",
+                    "title": "Purpose of the expression",
+                    "description": "description of the expression",
+                    "location": "location of the expression",
+                },
+                "customOutput": {
+                    "properties": [{
+                        "name": "duration",
+                        "valueExpression": {
+                            "expression": "resource.rotationPeriod",
+                            "title": "Purpose of the expression",
+                            "description": "description of the expression",
+                            "location": "location of the expression",
+                        },
+                    }],
+                },
+                "resourceSelector": {
+                    "resourceTypes": ["cloudkms.googleapis.com/CryptoKey"],
+                },
+                "severity": "LOW",
+                "description": "Description of the custom module",
+                "recommendation": "Steps to resolve violation",
+            })
         ```
 
         ## Import
@@ -535,7 +540,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_config: Optional[pulumi.Input[pulumi.InputType['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs']]] = None,
+                 custom_config: Optional[pulumi.Input[Union['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs', 'ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enablement_state: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -571,7 +576,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             ancestor_module: Optional[pulumi.Input[str]] = None,
-            custom_config: Optional[pulumi.Input[pulumi.InputType['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs']]] = None,
+            custom_config: Optional[pulumi.Input[Union['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs', 'ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             enablement_state: Optional[pulumi.Input[str]] = None,
             last_editor: Optional[pulumi.Input[str]] = None,
@@ -589,7 +594,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
         :param pulumi.Input[str] ancestor_module: If empty, indicates that the custom module was created in the organization, folder,
                or project in which you are viewing the custom module. Otherwise, ancestor_module
                specifies the organization or folder from which the custom module is inherited.
-        :param pulumi.Input[pulumi.InputType['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs']] custom_config: The user specified custom configuration for the module.
+        :param pulumi.Input[Union['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs', 'ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict']] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The display name of the Security Health Analytics custom module. This
                display name becomes the finding category for all findings that are

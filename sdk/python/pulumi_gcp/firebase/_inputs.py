@@ -4,36 +4,120 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ExtensionsInstanceConfigArgs',
+    'ExtensionsInstanceConfigArgsDict',
     'ExtensionsInstanceErrorStatusArgs',
+    'ExtensionsInstanceErrorStatusArgsDict',
     'ExtensionsInstanceRuntimeDataArgs',
+    'ExtensionsInstanceRuntimeDataArgsDict',
     'ExtensionsInstanceRuntimeDataFatalErrorArgs',
+    'ExtensionsInstanceRuntimeDataFatalErrorArgsDict',
     'ExtensionsInstanceRuntimeDataProcessingStateArgs',
+    'ExtensionsInstanceRuntimeDataProcessingStateArgsDict',
     'HostingCustomDomainCertArgs',
+    'HostingCustomDomainCertArgsDict',
     'HostingCustomDomainCertVerificationArgs',
+    'HostingCustomDomainCertVerificationArgsDict',
     'HostingCustomDomainCertVerificationDnsArgs',
+    'HostingCustomDomainCertVerificationDnsArgsDict',
     'HostingCustomDomainCertVerificationDnsDesiredArgs',
+    'HostingCustomDomainCertVerificationDnsDesiredArgsDict',
     'HostingCustomDomainCertVerificationDnsDesiredRecordArgs',
+    'HostingCustomDomainCertVerificationDnsDesiredRecordArgsDict',
     'HostingCustomDomainCertVerificationDnsDiscoveredArgs',
+    'HostingCustomDomainCertVerificationDnsDiscoveredArgsDict',
     'HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs',
+    'HostingCustomDomainCertVerificationDnsDiscoveredRecordArgsDict',
     'HostingCustomDomainCertVerificationHttpArgs',
+    'HostingCustomDomainCertVerificationHttpArgsDict',
     'HostingCustomDomainIssueArgs',
+    'HostingCustomDomainIssueArgsDict',
     'HostingCustomDomainRequiredDnsUpdateArgs',
+    'HostingCustomDomainRequiredDnsUpdateArgsDict',
     'HostingCustomDomainRequiredDnsUpdateDesiredArgs',
+    'HostingCustomDomainRequiredDnsUpdateDesiredArgsDict',
     'HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs',
+    'HostingCustomDomainRequiredDnsUpdateDesiredRecordArgsDict',
     'HostingCustomDomainRequiredDnsUpdateDiscoveredArgs',
+    'HostingCustomDomainRequiredDnsUpdateDiscoveredArgsDict',
     'HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs',
+    'HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgsDict',
     'HostingVersionConfigArgs',
+    'HostingVersionConfigArgsDict',
     'HostingVersionConfigRedirectArgs',
+    'HostingVersionConfigRedirectArgsDict',
     'HostingVersionConfigRewriteArgs',
+    'HostingVersionConfigRewriteArgsDict',
     'HostingVersionConfigRewriteRunArgs',
+    'HostingVersionConfigRewriteRunArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ExtensionsInstanceConfigArgsDict(TypedDict):
+        extension_ref: pulumi.Input[str]
+        """
+        The ref of the Extension from the Registry (e.g. publisher-id/awesome-extension)
+        """
+        params: pulumi.Input[Mapping[str, pulumi.Input[str]]]
+        """
+        Environment variables that may be configured for the Extension
+        """
+        allowed_event_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of extension events selected by consumer that extension is allowed to
+        emit, identified by their types.
+        """
+        create_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The time at which the Extension Instance Config was created.
+        """
+        eventarc_channel: NotRequired[pulumi.Input[str]]
+        """
+        Fully qualified Eventarc resource name that consumers should use for event triggers.
+        """
+        extension_version: NotRequired[pulumi.Input[str]]
+        """
+        The version of the Extension from the Registry (e.g. 1.0.3). If left blank, latest is assumed.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The unique identifier for this configuration.
+        """
+        populated_postinstall_content: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Postinstall instructions to be shown for this Extension, with
+        template strings representing function and parameter values substituted
+        with actual values. These strings include: ${param:FOO},
+        ${function:myFunc.url},
+        ${function:myFunc.name}, and ${function:myFunc.location}
+
+        - - -
+        """
+        system_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Params whose values are only available at deployment time.
+        Unlike other params, these will not be set as environment variables on
+        functions. See a full list of system parameters at
+        https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
+        """
+elif False:
+    ExtensionsInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ExtensionsInstanceConfigArgs:
@@ -210,6 +294,23 @@ class ExtensionsInstanceConfigArgs:
         pulumi.set(self, "system_params", value)
 
 
+if not MYPY:
+    class ExtensionsInstanceErrorStatusArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[int]]
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]
+        """
+        A list of messages that carry the error details.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        A developer-facing error message, which should be in English.
+        """
+elif False:
+    ExtensionsInstanceErrorStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ExtensionsInstanceErrorStatusArgs:
     def __init__(__self__, *,
@@ -264,6 +365,25 @@ class ExtensionsInstanceErrorStatusArgs:
     def message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "message", value)
 
+
+if not MYPY:
+    class ExtensionsInstanceRuntimeDataArgsDict(TypedDict):
+        fatal_error: NotRequired[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgsDict']]
+        """
+        The fatal error state for the extension instance
+        Structure is documented below.
+        """
+        processing_state: NotRequired[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgsDict']]
+        """
+        The processing state for the extension instance
+        Structure is documented below.
+        """
+        state_update_time: NotRequired[pulumi.Input[str]]
+        """
+        The time of the last state update.
+        """
+elif False:
+    ExtensionsInstanceRuntimeDataArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ExtensionsInstanceRuntimeDataArgs:
@@ -324,6 +444,17 @@ class ExtensionsInstanceRuntimeDataArgs:
         pulumi.set(self, "state_update_time", value)
 
 
+if not MYPY:
+    class ExtensionsInstanceRuntimeDataFatalErrorArgsDict(TypedDict):
+        error_message: NotRequired[pulumi.Input[str]]
+        """
+        The error message. This is set by the extension developer to give
+        more detail on why the extension is unusable and must be re-installed
+        or reconfigured.
+        """
+elif False:
+    ExtensionsInstanceRuntimeDataFatalErrorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ExtensionsInstanceRuntimeDataFatalErrorArgs:
     def __init__(__self__, *,
@@ -350,6 +481,22 @@ class ExtensionsInstanceRuntimeDataFatalErrorArgs:
     def error_message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "error_message", value)
 
+
+if not MYPY:
+    class ExtensionsInstanceRuntimeDataProcessingStateArgsDict(TypedDict):
+        detail_message: NotRequired[pulumi.Input[str]]
+        """
+        Details about the processing. e.g. This could include the type of
+        processing in progress or it could list errors or failures.
+        This information will be shown in the console on the detail page
+        for the extension instance.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        The processing state of the extension instance.
+        """
+elif False:
+    ExtensionsInstanceRuntimeDataProcessingStateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ExtensionsInstanceRuntimeDataProcessingStateArgs:
@@ -395,6 +542,32 @@ class ExtensionsInstanceRuntimeDataProcessingStateArgs:
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
 
+
+if not MYPY:
+    class HostingCustomDomainCertArgsDict(TypedDict):
+        state: NotRequired[pulumi.Input[str]]
+        """
+        The state of the certificate. Only the `CERT_ACTIVE` and
+        `CERT_EXPIRING_SOON` states provide SSL coverage for a domain name. If the
+        state is `PROPAGATING` and Hosting had an active cert for the domain name
+        before, that formerly-active cert provides SSL coverage for the domain name
+        until the current cert propagates.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The record's type, which determines what data the record contains.
+        """
+        verification: NotRequired[pulumi.Input['HostingCustomDomainCertVerificationArgsDict']]
+        """
+        A set of ACME challenges you can add to your DNS records or existing,
+        non-Hosting hosting provider to allow Hosting to create an SSL certificate
+        for your domain name before you point traffic toward hosting. You can use
+        thse challenges as part of a zero downtime transition from your old
+        provider to Hosting.
+        Structure is documented below.
+        """
+elif False:
+    HostingCustomDomainCertArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HostingCustomDomainCertArgs:
@@ -469,6 +642,23 @@ class HostingCustomDomainCertArgs:
         pulumi.set(self, "verification", value)
 
 
+if not MYPY:
+    class HostingCustomDomainCertVerificationArgsDict(TypedDict):
+        dns: NotRequired[pulumi.Input['HostingCustomDomainCertVerificationDnsArgsDict']]
+        """
+        A `TXT` record to add to your DNS records that confirms your intent to
+        let Hosting create an SSL cert for your domain name.
+        Structure is documented below.
+        """
+        http: NotRequired[pulumi.Input['HostingCustomDomainCertVerificationHttpArgsDict']]
+        """
+        A file to add to your existing, non-Hosting hosting service that confirms
+        your intent to let Hosting create an SSL cert for your domain name.
+        Structure is documented below.
+        """
+elif False:
+    HostingCustomDomainCertVerificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HostingCustomDomainCertVerificationArgs:
     def __init__(__self__, *,
@@ -515,6 +705,25 @@ class HostingCustomDomainCertVerificationArgs:
     def http(self, value: Optional[pulumi.Input['HostingCustomDomainCertVerificationHttpArgs']]):
         pulumi.set(self, "http", value)
 
+
+if not MYPY:
+    class HostingCustomDomainCertVerificationDnsArgsDict(TypedDict):
+        check_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The last time Hosting checked your CustomDomain's DNS records.
+        """
+        desireds: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgsDict']]]]
+        """
+        A text string to serve at the path.
+        """
+        discovereds: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgsDict']]]]
+        """
+        Whether Hosting was able to find the required file contents on the
+        specified path during its last check.
+        """
+elif False:
+    HostingCustomDomainCertVerificationDnsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HostingCustomDomainCertVerificationDnsArgs:
@@ -575,6 +784,20 @@ class HostingCustomDomainCertVerificationDnsArgs:
         pulumi.set(self, "discovereds", value)
 
 
+if not MYPY:
+    class HostingCustomDomainCertVerificationDnsDesiredArgsDict(TypedDict):
+        domain_name: NotRequired[pulumi.Input[str]]
+        """
+        The domain name the record pertains to, e.g. `foo.bar.com.`.
+        """
+        records: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgsDict']]]]
+        """
+        Records on the domain
+        Structure is documented below.
+        """
+elif False:
+    HostingCustomDomainCertVerificationDnsDesiredArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HostingCustomDomainCertVerificationDnsDesiredArgs:
     def __init__(__self__, *,
@@ -615,6 +838,33 @@ class HostingCustomDomainCertVerificationDnsDesiredArgs:
     def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgs']]]]):
         pulumi.set(self, "records", value)
 
+
+if not MYPY:
+    class HostingCustomDomainCertVerificationDnsDesiredRecordArgsDict(TypedDict):
+        domain_name: NotRequired[pulumi.Input[str]]
+        """
+        The domain name the record pertains to, e.g. `foo.bar.com.`.
+        """
+        rdata: NotRequired[pulumi.Input[str]]
+        """
+        The data of the record. The meaning of the value depends on record type:
+        - A and AAAA: IP addresses for the domain name.
+        - CNAME: Another domain to check for records.
+        - TXT: Arbitrary text strings associated with the domain name. Hosting
+        uses TXT records to determine a which Firebase Projects have
+        permission to act on the domain name's behalf.
+        - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        """
+        required_action: NotRequired[pulumi.Input[str]]
+        """
+        Indicates the a required action for this record.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The record's type, which determines what data the record contains.
+        """
+elif False:
+    HostingCustomDomainCertVerificationDnsDesiredRecordArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HostingCustomDomainCertVerificationDnsDesiredRecordArgs:
@@ -699,6 +949,20 @@ class HostingCustomDomainCertVerificationDnsDesiredRecordArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class HostingCustomDomainCertVerificationDnsDiscoveredArgsDict(TypedDict):
+        domain_name: NotRequired[pulumi.Input[str]]
+        """
+        The domain name the record pertains to, e.g. `foo.bar.com.`.
+        """
+        records: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgsDict']]]]
+        """
+        Records on the domain
+        Structure is documented below.
+        """
+elif False:
+    HostingCustomDomainCertVerificationDnsDiscoveredArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HostingCustomDomainCertVerificationDnsDiscoveredArgs:
     def __init__(__self__, *,
@@ -739,6 +1003,33 @@ class HostingCustomDomainCertVerificationDnsDiscoveredArgs:
     def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs']]]]):
         pulumi.set(self, "records", value)
 
+
+if not MYPY:
+    class HostingCustomDomainCertVerificationDnsDiscoveredRecordArgsDict(TypedDict):
+        domain_name: NotRequired[pulumi.Input[str]]
+        """
+        The domain name the record pertains to, e.g. `foo.bar.com.`.
+        """
+        rdata: NotRequired[pulumi.Input[str]]
+        """
+        The data of the record. The meaning of the value depends on record type:
+        - A and AAAA: IP addresses for the domain name.
+        - CNAME: Another domain to check for records.
+        - TXT: Arbitrary text strings associated with the domain name. Hosting
+        uses TXT records to determine a which Firebase Projects have
+        permission to act on the domain name's behalf.
+        - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        """
+        required_action: NotRequired[pulumi.Input[str]]
+        """
+        Indicates the a required action for this record.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The record's type, which determines what data the record contains.
+        """
+elif False:
+    HostingCustomDomainCertVerificationDnsDiscoveredRecordArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs:
@@ -823,6 +1114,29 @@ class HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class HostingCustomDomainCertVerificationHttpArgsDict(TypedDict):
+        desired: NotRequired[pulumi.Input[str]]
+        """
+        A text string to serve at the path.
+        """
+        discovered: NotRequired[pulumi.Input[str]]
+        """
+        Whether Hosting was able to find the required file contents on the
+        specified path during its last check.
+        """
+        last_check_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The last time Hosting systems checked for the file contents.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        The path to the file.
+        """
+elif False:
+    HostingCustomDomainCertVerificationHttpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HostingCustomDomainCertVerificationHttpArgs:
     def __init__(__self__, *,
@@ -898,6 +1212,23 @@ class HostingCustomDomainCertVerificationHttpArgs:
         pulumi.set(self, "path", value)
 
 
+if not MYPY:
+    class HostingCustomDomainIssueArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[int]]
+        """
+        The status code, which should be an enum value of `google.rpc.Code`
+        """
+        details: NotRequired[pulumi.Input[str]]
+        """
+        A list of messages that carry the error details.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        Error message
+        """
+elif False:
+    HostingCustomDomainIssueArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HostingCustomDomainIssueArgs:
     def __init__(__self__, *,
@@ -952,6 +1283,25 @@ class HostingCustomDomainIssueArgs:
     def message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "message", value)
 
+
+if not MYPY:
+    class HostingCustomDomainRequiredDnsUpdateArgsDict(TypedDict):
+        check_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The last time Hosting checked your CustomDomain's DNS records.
+        """
+        desireds: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgsDict']]]]
+        """
+        A text string to serve at the path.
+        """
+        discovereds: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgsDict']]]]
+        """
+        Whether Hosting was able to find the required file contents on the
+        specified path during its last check.
+        """
+elif False:
+    HostingCustomDomainRequiredDnsUpdateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HostingCustomDomainRequiredDnsUpdateArgs:
@@ -1012,6 +1362,20 @@ class HostingCustomDomainRequiredDnsUpdateArgs:
         pulumi.set(self, "discovereds", value)
 
 
+if not MYPY:
+    class HostingCustomDomainRequiredDnsUpdateDesiredArgsDict(TypedDict):
+        domain_name: NotRequired[pulumi.Input[str]]
+        """
+        The domain name the record pertains to, e.g. `foo.bar.com.`.
+        """
+        records: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgsDict']]]]
+        """
+        Records on the domain
+        Structure is documented below.
+        """
+elif False:
+    HostingCustomDomainRequiredDnsUpdateDesiredArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HostingCustomDomainRequiredDnsUpdateDesiredArgs:
     def __init__(__self__, *,
@@ -1052,6 +1416,33 @@ class HostingCustomDomainRequiredDnsUpdateDesiredArgs:
     def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs']]]]):
         pulumi.set(self, "records", value)
 
+
+if not MYPY:
+    class HostingCustomDomainRequiredDnsUpdateDesiredRecordArgsDict(TypedDict):
+        domain_name: NotRequired[pulumi.Input[str]]
+        """
+        The domain name the record pertains to, e.g. `foo.bar.com.`.
+        """
+        rdata: NotRequired[pulumi.Input[str]]
+        """
+        The data of the record. The meaning of the value depends on record type:
+        - A and AAAA: IP addresses for the domain name.
+        - CNAME: Another domain to check for records.
+        - TXT: Arbitrary text strings associated with the domain name. Hosting
+        uses TXT records to determine a which Firebase Projects have
+        permission to act on the domain name's behalf.
+        - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        """
+        required_action: NotRequired[pulumi.Input[str]]
+        """
+        Indicates the a required action for this record.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The record's type, which determines what data the record contains.
+        """
+elif False:
+    HostingCustomDomainRequiredDnsUpdateDesiredRecordArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs:
@@ -1136,6 +1527,20 @@ class HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class HostingCustomDomainRequiredDnsUpdateDiscoveredArgsDict(TypedDict):
+        domain_name: NotRequired[pulumi.Input[str]]
+        """
+        The domain name the record pertains to, e.g. `foo.bar.com.`.
+        """
+        records: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgsDict']]]]
+        """
+        Records on the domain
+        Structure is documented below.
+        """
+elif False:
+    HostingCustomDomainRequiredDnsUpdateDiscoveredArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HostingCustomDomainRequiredDnsUpdateDiscoveredArgs:
     def __init__(__self__, *,
@@ -1176,6 +1581,33 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredArgs:
     def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs']]]]):
         pulumi.set(self, "records", value)
 
+
+if not MYPY:
+    class HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgsDict(TypedDict):
+        domain_name: NotRequired[pulumi.Input[str]]
+        """
+        The domain name the record pertains to, e.g. `foo.bar.com.`.
+        """
+        rdata: NotRequired[pulumi.Input[str]]
+        """
+        The data of the record. The meaning of the value depends on record type:
+        - A and AAAA: IP addresses for the domain name.
+        - CNAME: Another domain to check for records.
+        - TXT: Arbitrary text strings associated with the domain name. Hosting
+        uses TXT records to determine a which Firebase Projects have
+        permission to act on the domain name's behalf.
+        - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
+        """
+        required_action: NotRequired[pulumi.Input[str]]
+        """
+        Indicates the a required action for this record.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The record's type, which determines what data the record contains.
+        """
+elif False:
+    HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs:
@@ -1260,6 +1692,23 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class HostingVersionConfigArgsDict(TypedDict):
+        redirects: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArgsDict']]]]
+        """
+        An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
+        triggers Hosting to respond with a redirect to the specified destination path.
+        Structure is documented below.
+        """
+        rewrites: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArgsDict']]]]
+        """
+        An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the
+        request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
+        Structure is documented below.
+        """
+elif False:
+    HostingVersionConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HostingVersionConfigArgs:
     def __init__(__self__, *,
@@ -1306,6 +1755,29 @@ class HostingVersionConfigArgs:
     def rewrites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]]):
         pulumi.set(self, "rewrites", value)
 
+
+if not MYPY:
+    class HostingVersionConfigRedirectArgsDict(TypedDict):
+        location: pulumi.Input[str]
+        """
+        The value to put in the HTTP location header of the response.
+        The location can contain capture group values from the pattern using a : prefix to identify
+        the segment and an optional * to capture the rest of the URL. For example:
+        """
+        status_code: pulumi.Input[int]
+        """
+        The status HTTP code to return in the response. It must be a valid 3xx status code.
+        """
+        glob: NotRequired[pulumi.Input[str]]
+        """
+        The user-supplied glob to match against the request URL path.
+        """
+        regex: NotRequired[pulumi.Input[str]]
+        """
+        The user-supplied RE2 regular expression to match against the request URL path.
+        """
+elif False:
+    HostingVersionConfigRedirectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HostingVersionConfigRedirectArgs:
@@ -1379,6 +1851,32 @@ class HostingVersionConfigRedirectArgs:
     def regex(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "regex", value)
 
+
+if not MYPY:
+    class HostingVersionConfigRewriteArgsDict(TypedDict):
+        function: NotRequired[pulumi.Input[str]]
+        """
+        The function to proxy requests to. Must match the exported function name exactly.
+        """
+        glob: NotRequired[pulumi.Input[str]]
+        """
+        The user-supplied glob to match against the request URL path.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        The URL path to rewrite the request to.
+        """
+        regex: NotRequired[pulumi.Input[str]]
+        """
+        The user-supplied RE2 regular expression to match against the request URL path.
+        """
+        run: NotRequired[pulumi.Input['HostingVersionConfigRewriteRunArgsDict']]
+        """
+        The request will be forwarded to Cloud Run.
+        Structure is documented below.
+        """
+elif False:
+    HostingVersionConfigRewriteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HostingVersionConfigRewriteArgs:
@@ -1468,6 +1966,19 @@ class HostingVersionConfigRewriteArgs:
     def run(self, value: Optional[pulumi.Input['HostingVersionConfigRewriteRunArgs']]):
         pulumi.set(self, "run", value)
 
+
+if not MYPY:
+    class HostingVersionConfigRewriteRunArgsDict(TypedDict):
+        service_id: pulumi.Input[str]
+        """
+        User-defined ID of the Cloud Run service.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
+        """
+elif False:
+    HostingVersionConfigRewriteRunArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HostingVersionConfigRewriteRunArgs:

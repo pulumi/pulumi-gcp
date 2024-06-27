@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -313,9 +318,9 @@ class Table(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['TableAutomatedBackupPolicyArgs']]] = None,
+                 automated_backup_policy: Optional[pulumi.Input[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict']]] = None,
                  change_stream_retention: Optional[pulumi.Input[str]] = None,
-                 column_families: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
+                 column_families: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TableColumnFamilyArgs', 'TableColumnFamilyArgsDict']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -335,12 +340,12 @@ class Table(pulumi.CustomResource):
 
         instance = gcp.bigtable.Instance("instance",
             name="tf-instance",
-            clusters=[gcp.bigtable.InstanceClusterArgs(
-                cluster_id="tf-instance-cluster",
-                zone="us-central1-b",
-                num_nodes=3,
-                storage_type="HDD",
-            )])
+            clusters=[{
+                "clusterId": "tf-instance-cluster",
+                "zone": "us-central1-b",
+                "numNodes": 3,
+                "storageType": "HDD",
+            }])
         table = gcp.bigtable.Table("table",
             name="tf-table",
             instance_name=instance.name,
@@ -350,12 +355,12 @@ class Table(pulumi.CustomResource):
                 "c",
             ],
             column_families=[
-                gcp.bigtable.TableColumnFamilyArgs(
-                    family="family-first",
-                ),
-                gcp.bigtable.TableColumnFamilyArgs(
-                    family="family-second",
-                ),
+                {
+                    "family": "family-first",
+                },
+                {
+                    "family": "family-second",
+                },
             ],
             change_stream_retention="24h0m0s")
         ```
@@ -388,12 +393,12 @@ class Table(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['TableAutomatedBackupPolicyArgs']] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
+        :param pulumi.Input[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict']] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
                Retention Period and Frequency to 0.
         :param pulumi.Input[str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
                
                -----
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TableColumnFamilyArgs', 'TableColumnFamilyArgsDict']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
@@ -422,12 +427,12 @@ class Table(pulumi.CustomResource):
 
         instance = gcp.bigtable.Instance("instance",
             name="tf-instance",
-            clusters=[gcp.bigtable.InstanceClusterArgs(
-                cluster_id="tf-instance-cluster",
-                zone="us-central1-b",
-                num_nodes=3,
-                storage_type="HDD",
-            )])
+            clusters=[{
+                "clusterId": "tf-instance-cluster",
+                "zone": "us-central1-b",
+                "numNodes": 3,
+                "storageType": "HDD",
+            }])
         table = gcp.bigtable.Table("table",
             name="tf-table",
             instance_name=instance.name,
@@ -437,12 +442,12 @@ class Table(pulumi.CustomResource):
                 "c",
             ],
             column_families=[
-                gcp.bigtable.TableColumnFamilyArgs(
-                    family="family-first",
-                ),
-                gcp.bigtable.TableColumnFamilyArgs(
-                    family="family-second",
-                ),
+                {
+                    "family": "family-first",
+                },
+                {
+                    "family": "family-second",
+                },
             ],
             change_stream_retention="24h0m0s")
         ```
@@ -488,9 +493,9 @@ class Table(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['TableAutomatedBackupPolicyArgs']]] = None,
+                 automated_backup_policy: Optional[pulumi.Input[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict']]] = None,
                  change_stream_retention: Optional[pulumi.Input[str]] = None,
-                 column_families: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
+                 column_families: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TableColumnFamilyArgs', 'TableColumnFamilyArgsDict']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -525,9 +530,9 @@ class Table(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['TableAutomatedBackupPolicyArgs']]] = None,
+            automated_backup_policy: Optional[pulumi.Input[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict']]] = None,
             change_stream_retention: Optional[pulumi.Input[str]] = None,
-            column_families: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
+            column_families: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TableColumnFamilyArgs', 'TableColumnFamilyArgsDict']]]]] = None,
             deletion_protection: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -540,12 +545,12 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['TableAutomatedBackupPolicyArgs']] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
+        :param pulumi.Input[Union['TableAutomatedBackupPolicyArgs', 'TableAutomatedBackupPolicyArgsDict']] automated_backup_policy: Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both
                Retention Period and Frequency to 0.
         :param pulumi.Input[str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
                
                -----
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TableColumnFamilyArgs', 'TableColumnFamilyArgsDict']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.

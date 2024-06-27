@@ -4,16 +4,35 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'RulesetMetadataArgs',
+    'RulesetMetadataArgsDict',
     'RulesetSourceArgs',
+    'RulesetSourceArgsDict',
     'RulesetSourceFileArgs',
+    'RulesetSourceFileArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class RulesetMetadataArgsDict(TypedDict):
+        services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
+        """
+elif False:
+    RulesetMetadataArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetMetadataArgs:
@@ -37,6 +56,19 @@ class RulesetMetadataArgs:
     def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "services", value)
 
+
+if not MYPY:
+    class RulesetSourceArgsDict(TypedDict):
+        files: pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArgsDict']]]
+        """
+        `File` set constituting the `Source` bundle.
+        """
+        language: NotRequired[pulumi.Input[str]]
+        """
+        `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
+        """
+elif False:
+    RulesetSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetSourceArgs:
@@ -75,6 +107,25 @@ class RulesetSourceArgs:
     def language(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "language", value)
 
+
+if not MYPY:
+    class RulesetSourceFileArgsDict(TypedDict):
+        content: pulumi.Input[str]
+        """
+        Textual Content.
+        """
+        name: pulumi.Input[str]
+        """
+        File name.
+
+        - - -
+        """
+        fingerprint: NotRequired[pulumi.Input[str]]
+        """
+        Fingerprint (e.g. github sha) associated with the `File`.
+        """
+elif False:
+    RulesetSourceFileArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RulesetSourceFileArgs:

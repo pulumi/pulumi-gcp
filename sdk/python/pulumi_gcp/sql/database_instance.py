@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -781,7 +786,7 @@ class DatabaseInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clone: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']]] = None,
+                 clone: Optional[pulumi.Input[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_key_name: Optional[pulumi.Input[str]] = None,
@@ -791,10 +796,10 @@ class DatabaseInstance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 replica_configuration: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']]] = None,
-                 restore_backup_context: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceRestoreBackupContextArgs']]] = None,
+                 replica_configuration: Optional[pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']]] = None,
+                 restore_backup_context: Optional[pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']]] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
-                 settings: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceSettingsArgs']]] = None,
+                 settings: Optional[pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
@@ -821,9 +826,9 @@ class DatabaseInstance(pulumi.CustomResource):
             name="main-instance",
             database_version="POSTGRES_15",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ))
+            settings={
+                "tier": "db-f1-micro",
+            })
         ```
 
         ### Private IP Instance
@@ -850,14 +855,14 @@ class DatabaseInstance(pulumi.CustomResource):
             name=db_name_suffix.hex.apply(lambda hex: f"private-instance-{hex}"),
             region="us-central1",
             database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
-                    ipv4_enabled=False,
-                    private_network=private_network.id,
-                    enable_private_path_for_google_cloud_services=True,
-                ),
-            ),
+            settings={
+                "tier": "db-f1-micro",
+                "ipConfiguration": {
+                    "ipv4Enabled": False,
+                    "privateNetwork": private_network.id,
+                    "enablePrivatePathForGoogleCloudServices": True,
+                },
+            },
             opts = pulumi.ResourceOptions(depends_on=[private_vpc_connection]))
         ```
 
@@ -870,13 +875,13 @@ class DatabaseInstance(pulumi.CustomResource):
         main = gcp.sql.DatabaseInstance("main",
             name="enterprise-plus-main-instance",
             database_version="MYSQL_8_0_31",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-perf-optimized-N-2",
-                edition="ENTERPRISE_PLUS",
-                data_cache_config=gcp.sql.DatabaseInstanceSettingsDataCacheConfigArgs(
-                    data_cache_enabled=True,
-                ),
-            ))
+            settings={
+                "tier": "db-perf-optimized-N-2",
+                "edition": "ENTERPRISE_PLUS",
+                "dataCacheConfig": {
+                    "dataCacheEnabled": True,
+                },
+            })
         ```
 
         ### Cloud SQL Instance with PSC connectivity
@@ -888,21 +893,21 @@ class DatabaseInstance(pulumi.CustomResource):
         main = gcp.sql.DatabaseInstance("main",
             name="psc-enabled-main-instance",
             database_version="MYSQL_8_0",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
-                    psc_configs=[gcp.sql.DatabaseInstanceSettingsIpConfigurationPscConfigArgs(
-                        psc_enabled=True,
-                        allowed_consumer_projects=["allowed-consumer-project-name"],
-                    )],
-                    ipv4_enabled=False,
-                ),
-                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
-                    enabled=True,
-                    binary_log_enabled=True,
-                ),
-                availability_type="REGIONAL",
-            ))
+            settings={
+                "tier": "db-f1-micro",
+                "ipConfiguration": {
+                    "pscConfigs": [{
+                        "pscEnabled": True,
+                        "allowedConsumerProjects": ["allowed-consumer-project-name"],
+                    }],
+                    "ipv4Enabled": False,
+                },
+                "backupConfiguration": {
+                    "enabled": True,
+                    "binaryLogEnabled": True,
+                },
+                "availabilityType": "REGIONAL",
+            })
         ```
 
         ## Import
@@ -937,7 +942,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
+        :param pulumi.Input[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, this provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
@@ -974,14 +979,14 @@ class DatabaseInstance(pulumi.CustomResource):
                the provider region will be used instead.
                
                - - -
-        :param pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']] replica_configuration: The configuration for replication. The
+        :param pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']] replica_configuration: The configuration for replication. The
                configuration is detailed below. Valid only for MySQL instances.
-        :param pulumi.Input[pulumi.InputType['DatabaseInstanceRestoreBackupContextArgs']] restore_backup_context: The context needed to restore the database to a backup run. This field will
+        :param pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
         :param pulumi.Input[str] root_password: Initial root password. Can be updated. Required for MS SQL Server.
-        :param pulumi.Input[pulumi.InputType['DatabaseInstanceSettingsArgs']] settings: The settings to use for the database. The
+        :param pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']] settings: The settings to use for the database. The
                configuration is detailed below. Required if `clone` is not set.
         """
         ...
@@ -1015,9 +1020,9 @@ class DatabaseInstance(pulumi.CustomResource):
             name="main-instance",
             database_version="POSTGRES_15",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ))
+            settings={
+                "tier": "db-f1-micro",
+            })
         ```
 
         ### Private IP Instance
@@ -1044,14 +1049,14 @@ class DatabaseInstance(pulumi.CustomResource):
             name=db_name_suffix.hex.apply(lambda hex: f"private-instance-{hex}"),
             region="us-central1",
             database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
-                    ipv4_enabled=False,
-                    private_network=private_network.id,
-                    enable_private_path_for_google_cloud_services=True,
-                ),
-            ),
+            settings={
+                "tier": "db-f1-micro",
+                "ipConfiguration": {
+                    "ipv4Enabled": False,
+                    "privateNetwork": private_network.id,
+                    "enablePrivatePathForGoogleCloudServices": True,
+                },
+            },
             opts = pulumi.ResourceOptions(depends_on=[private_vpc_connection]))
         ```
 
@@ -1064,13 +1069,13 @@ class DatabaseInstance(pulumi.CustomResource):
         main = gcp.sql.DatabaseInstance("main",
             name="enterprise-plus-main-instance",
             database_version="MYSQL_8_0_31",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-perf-optimized-N-2",
-                edition="ENTERPRISE_PLUS",
-                data_cache_config=gcp.sql.DatabaseInstanceSettingsDataCacheConfigArgs(
-                    data_cache_enabled=True,
-                ),
-            ))
+            settings={
+                "tier": "db-perf-optimized-N-2",
+                "edition": "ENTERPRISE_PLUS",
+                "dataCacheConfig": {
+                    "dataCacheEnabled": True,
+                },
+            })
         ```
 
         ### Cloud SQL Instance with PSC connectivity
@@ -1082,21 +1087,21 @@ class DatabaseInstance(pulumi.CustomResource):
         main = gcp.sql.DatabaseInstance("main",
             name="psc-enabled-main-instance",
             database_version="MYSQL_8_0",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
-                    psc_configs=[gcp.sql.DatabaseInstanceSettingsIpConfigurationPscConfigArgs(
-                        psc_enabled=True,
-                        allowed_consumer_projects=["allowed-consumer-project-name"],
-                    )],
-                    ipv4_enabled=False,
-                ),
-                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
-                    enabled=True,
-                    binary_log_enabled=True,
-                ),
-                availability_type="REGIONAL",
-            ))
+            settings={
+                "tier": "db-f1-micro",
+                "ipConfiguration": {
+                    "pscConfigs": [{
+                        "pscEnabled": True,
+                        "allowedConsumerProjects": ["allowed-consumer-project-name"],
+                    }],
+                    "ipv4Enabled": False,
+                },
+                "backupConfiguration": {
+                    "enabled": True,
+                    "binaryLogEnabled": True,
+                },
+                "availabilityType": "REGIONAL",
+            })
         ```
 
         ## Import
@@ -1144,7 +1149,7 @@ class DatabaseInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clone: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']]] = None,
+                 clone: Optional[pulumi.Input[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_key_name: Optional[pulumi.Input[str]] = None,
@@ -1154,10 +1159,10 @@ class DatabaseInstance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 replica_configuration: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']]] = None,
-                 restore_backup_context: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceRestoreBackupContextArgs']]] = None,
+                 replica_configuration: Optional[pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']]] = None,
+                 restore_backup_context: Optional[pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']]] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
-                 settings: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceSettingsArgs']]] = None,
+                 settings: Optional[pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1207,7 +1212,7 @@ class DatabaseInstance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            clone: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']]] = None,
+            clone: Optional[pulumi.Input[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']]] = None,
             connection_name: Optional[pulumi.Input[str]] = None,
             database_version: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -1215,7 +1220,7 @@ class DatabaseInstance(pulumi.CustomResource):
             encryption_key_name: Optional[pulumi.Input[str]] = None,
             first_ip_address: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
-            ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseInstanceIpAddressArgs']]]]] = None,
+            ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceIpAddressArgs', 'DatabaseInstanceIpAddressArgsDict']]]]] = None,
             maintenance_version: Optional[pulumi.Input[str]] = None,
             master_instance_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1224,13 +1229,13 @@ class DatabaseInstance(pulumi.CustomResource):
             psc_service_attachment_link: Optional[pulumi.Input[str]] = None,
             public_ip_address: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            replica_configuration: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']]] = None,
-            restore_backup_context: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceRestoreBackupContextArgs']]] = None,
+            replica_configuration: Optional[pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']]] = None,
+            restore_backup_context: Optional[pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']]] = None,
             root_password: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseInstanceServerCaCertArgs']]]]] = None,
+            server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceServerCaCertArgs', 'DatabaseInstanceServerCaCertArgsDict']]]]] = None,
             service_account_email_address: Optional[pulumi.Input[str]] = None,
-            settings: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceSettingsArgs']]] = None) -> 'DatabaseInstance':
+            settings: Optional[pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']]] = None) -> 'DatabaseInstance':
         """
         Get an existing DatabaseInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1239,7 +1244,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] available_maintenance_versions: The list of all maintenance versions applicable on the instance.
-        :param pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
+        :param pulumi.Input[Union['DatabaseInstanceCloneArgs', 'DatabaseInstanceCloneArgsDict']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, this provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
         :param pulumi.Input[str] connection_name: The connection name of the instance to be used in
@@ -1283,9 +1288,9 @@ class DatabaseInstance(pulumi.CustomResource):
                the provider region will be used instead.
                
                - - -
-        :param pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']] replica_configuration: The configuration for replication. The
+        :param pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']] replica_configuration: The configuration for replication. The
                configuration is detailed below. Valid only for MySQL instances.
-        :param pulumi.Input[pulumi.InputType['DatabaseInstanceRestoreBackupContextArgs']] restore_backup_context: The context needed to restore the database to a backup run. This field will
+        :param pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
@@ -1293,7 +1298,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the
                instance.
-        :param pulumi.Input[pulumi.InputType['DatabaseInstanceSettingsArgs']] settings: The settings to use for the database. The
+        :param pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']] settings: The settings to use for the database. The
                configuration is detailed below. Required if `clone` is not set.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

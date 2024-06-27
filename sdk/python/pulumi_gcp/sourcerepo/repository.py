@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -192,7 +197,7 @@ class Repository(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryPubsubConfigArgs']]]]] = None,
+                 pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]]] = None,
                  __props__=None):
         """
         A repository (or repo) is a Git repository storing versioned source content.
@@ -225,11 +230,11 @@ class Repository(pulumi.CustomResource):
         topic = gcp.pubsub.Topic("topic", name="my-topic")
         my_repo = gcp.sourcerepo.Repository("my-repo",
             name="my-repository",
-            pubsub_configs=[gcp.sourcerepo.RepositoryPubsubConfigArgs(
-                topic=topic.id,
-                message_format="JSON",
-                service_account_email=test_account.email,
-            )])
+            pubsub_configs=[{
+                "topic": topic.id,
+                "messageFormat": "JSON",
+                "serviceAccountEmail": test_account.email,
+            }])
         ```
 
         ## Import
@@ -259,7 +264,7 @@ class Repository(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryPubsubConfigArgs']]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
                Keyed by the topic names.
                Structure is documented below.
         """
@@ -300,11 +305,11 @@ class Repository(pulumi.CustomResource):
         topic = gcp.pubsub.Topic("topic", name="my-topic")
         my_repo = gcp.sourcerepo.Repository("my-repo",
             name="my-repository",
-            pubsub_configs=[gcp.sourcerepo.RepositoryPubsubConfigArgs(
-                topic=topic.id,
-                message_format="JSON",
-                service_account_email=test_account.email,
-            )])
+            pubsub_configs=[{
+                "topic": topic.id,
+                "messageFormat": "JSON",
+                "serviceAccountEmail": test_account.email,
+            }])
         ```
 
         ## Import
@@ -342,7 +347,7 @@ class Repository(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryPubsubConfigArgs']]]]] = None,
+                 pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -369,7 +374,7 @@ class Repository(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryPubsubConfigArgs']]]]] = None,
+            pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]]] = None,
             size: Optional[pulumi.Input[int]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'Repository':
         """
@@ -386,7 +391,7 @@ class Repository(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryPubsubConfigArgs']]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
                Keyed by the topic names.
                Structure is documented below.
         :param pulumi.Input[int] size: The disk usage of the repo, in bytes.

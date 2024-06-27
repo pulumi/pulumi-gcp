@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -441,12 +446,12 @@ class EndpointPolicy(pulumi.CustomResource):
                  authorization_policy: Optional[pulumi.Input[str]] = None,
                  client_tls_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 endpoint_matcher: Optional[pulumi.Input[pulumi.InputType['EndpointPolicyEndpointMatcherArgs']]] = None,
+                 endpoint_matcher: Optional[pulumi.Input[Union['EndpointPolicyEndpointMatcherArgs', 'EndpointPolicyEndpointMatcherArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
-                 traffic_port_selector: Optional[pulumi.Input[pulumi.InputType['EndpointPolicyTrafficPortSelectorArgs']]] = None,
+                 traffic_port_selector: Optional[pulumi.Input[Union['EndpointPolicyTrafficPortSelectorArgs', 'EndpointPolicyTrafficPortSelectorArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -465,18 +470,18 @@ class EndpointPolicy(pulumi.CustomResource):
             },
             description="my description",
             type="SIDECAR_PROXY",
-            traffic_port_selector=gcp.networkservices.EndpointPolicyTrafficPortSelectorArgs(
-                ports=["8081"],
-            ),
-            endpoint_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherArgs(
-                metadata_label_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs(
-                    metadata_label_match_criteria="MATCH_ANY",
-                    metadata_labels=[gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs(
-                        label_name="foo",
-                        label_value="bar",
-                    )],
-                ),
-            ))
+            traffic_port_selector={
+                "ports": ["8081"],
+            },
+            endpoint_matcher={
+                "metadataLabelMatcher": {
+                    "metadataLabelMatchCriteria": "MATCH_ANY",
+                    "metadataLabels": [{
+                        "labelName": "foo",
+                        "labelValue": "bar",
+                    }],
+                },
+            })
         ```
         ### Network Services Endpoint Policy Empty Match
 
@@ -491,14 +496,14 @@ class EndpointPolicy(pulumi.CustomResource):
             },
             description="my description",
             type="SIDECAR_PROXY",
-            traffic_port_selector=gcp.networkservices.EndpointPolicyTrafficPortSelectorArgs(
-                ports=["8081"],
-            ),
-            endpoint_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherArgs(
-                metadata_label_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs(
-                    metadata_label_match_criteria="MATCH_ANY",
-                ),
-            ))
+            traffic_port_selector={
+                "ports": ["8081"],
+            },
+            endpoint_matcher={
+                "metadataLabelMatcher": {
+                    "metadataLabelMatchCriteria": "MATCH_ANY",
+                },
+            })
         ```
 
         ## Import
@@ -532,7 +537,7 @@ class EndpointPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] client_tls_policy: A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
                the proxy to the actual endpoints.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
-        :param pulumi.Input[pulumi.InputType['EndpointPolicyEndpointMatcherArgs']] endpoint_matcher: Required. A matcher that selects endpoints to which the policies should be applied.
+        :param pulumi.Input[Union['EndpointPolicyEndpointMatcherArgs', 'EndpointPolicyEndpointMatcherArgsDict']] endpoint_matcher: Required. A matcher that selects endpoints to which the policies should be applied.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
                the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
@@ -540,7 +545,7 @@ class EndpointPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the EndpointPolicy resource.
         :param pulumi.Input[str] server_tls_policy: A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
                applied to terminate the inbound traffic at the identified backends.
-        :param pulumi.Input[pulumi.InputType['EndpointPolicyTrafficPortSelectorArgs']] traffic_port_selector: Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
+        :param pulumi.Input[Union['EndpointPolicyTrafficPortSelectorArgs', 'EndpointPolicyTrafficPortSelectorArgsDict']] traffic_port_selector: Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
         :param pulumi.Input[str] type: The type of endpoint policy. This is primarily used to validate the configuration.
                Possible values are: `SIDECAR_PROXY`, `GRPC_SERVER`.
         """
@@ -566,18 +571,18 @@ class EndpointPolicy(pulumi.CustomResource):
             },
             description="my description",
             type="SIDECAR_PROXY",
-            traffic_port_selector=gcp.networkservices.EndpointPolicyTrafficPortSelectorArgs(
-                ports=["8081"],
-            ),
-            endpoint_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherArgs(
-                metadata_label_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs(
-                    metadata_label_match_criteria="MATCH_ANY",
-                    metadata_labels=[gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs(
-                        label_name="foo",
-                        label_value="bar",
-                    )],
-                ),
-            ))
+            traffic_port_selector={
+                "ports": ["8081"],
+            },
+            endpoint_matcher={
+                "metadataLabelMatcher": {
+                    "metadataLabelMatchCriteria": "MATCH_ANY",
+                    "metadataLabels": [{
+                        "labelName": "foo",
+                        "labelValue": "bar",
+                    }],
+                },
+            })
         ```
         ### Network Services Endpoint Policy Empty Match
 
@@ -592,14 +597,14 @@ class EndpointPolicy(pulumi.CustomResource):
             },
             description="my description",
             type="SIDECAR_PROXY",
-            traffic_port_selector=gcp.networkservices.EndpointPolicyTrafficPortSelectorArgs(
-                ports=["8081"],
-            ),
-            endpoint_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherArgs(
-                metadata_label_matcher=gcp.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs(
-                    metadata_label_match_criteria="MATCH_ANY",
-                ),
-            ))
+            traffic_port_selector={
+                "ports": ["8081"],
+            },
+            endpoint_matcher={
+                "metadataLabelMatcher": {
+                    "metadataLabelMatchCriteria": "MATCH_ANY",
+                },
+            })
         ```
 
         ## Import
@@ -644,12 +649,12 @@ class EndpointPolicy(pulumi.CustomResource):
                  authorization_policy: Optional[pulumi.Input[str]] = None,
                  client_tls_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 endpoint_matcher: Optional[pulumi.Input[pulumi.InputType['EndpointPolicyEndpointMatcherArgs']]] = None,
+                 endpoint_matcher: Optional[pulumi.Input[Union['EndpointPolicyEndpointMatcherArgs', 'EndpointPolicyEndpointMatcherArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
-                 traffic_port_selector: Optional[pulumi.Input[pulumi.InputType['EndpointPolicyTrafficPortSelectorArgs']]] = None,
+                 traffic_port_selector: Optional[pulumi.Input[Union['EndpointPolicyTrafficPortSelectorArgs', 'EndpointPolicyTrafficPortSelectorArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -695,13 +700,13 @@ class EndpointPolicy(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            endpoint_matcher: Optional[pulumi.Input[pulumi.InputType['EndpointPolicyEndpointMatcherArgs']]] = None,
+            endpoint_matcher: Optional[pulumi.Input[Union['EndpointPolicyEndpointMatcherArgs', 'EndpointPolicyEndpointMatcherArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             server_tls_policy: Optional[pulumi.Input[str]] = None,
-            traffic_port_selector: Optional[pulumi.Input[pulumi.InputType['EndpointPolicyTrafficPortSelectorArgs']]] = None,
+            traffic_port_selector: Optional[pulumi.Input[Union['EndpointPolicyTrafficPortSelectorArgs', 'EndpointPolicyTrafficPortSelectorArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'EndpointPolicy':
         """
@@ -718,7 +723,7 @@ class EndpointPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Time the TcpRoute was created in UTC.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['EndpointPolicyEndpointMatcherArgs']] endpoint_matcher: Required. A matcher that selects endpoints to which the policies should be applied.
+        :param pulumi.Input[Union['EndpointPolicyEndpointMatcherArgs', 'EndpointPolicyEndpointMatcherArgsDict']] endpoint_matcher: Required. A matcher that selects endpoints to which the policies should be applied.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
                the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
@@ -728,7 +733,7 @@ class EndpointPolicy(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[str] server_tls_policy: A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
                applied to terminate the inbound traffic at the identified backends.
-        :param pulumi.Input[pulumi.InputType['EndpointPolicyTrafficPortSelectorArgs']] traffic_port_selector: Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
+        :param pulumi.Input[Union['EndpointPolicyTrafficPortSelectorArgs', 'EndpointPolicyTrafficPortSelectorArgsDict']] traffic_port_selector: Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
         :param pulumi.Input[str] type: The type of endpoint policy. This is primarily used to validate the configuration.
                Possible values are: `SIDECAR_PROXY`, `GRPC_SERVER`.
         :param pulumi.Input[str] update_time: Time the TcpRoute was updated in UTC.

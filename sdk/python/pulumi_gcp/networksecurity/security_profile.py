@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -404,7 +409,7 @@ class SecurityProfile(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 threat_prevention_profile: Optional[pulumi.Input[pulumi.InputType['SecurityProfileThreatPreventionProfileArgs']]] = None,
+                 threat_prevention_profile: Optional[pulumi.Input[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -444,22 +449,22 @@ class SecurityProfile(pulumi.CustomResource):
             parent="organizations/123456789",
             description="my description",
             type="THREAT_PREVENTION",
-            threat_prevention_profile=gcp.networksecurity.SecurityProfileThreatPreventionProfileArgs(
-                severity_overrides=[
-                    gcp.networksecurity.SecurityProfileThreatPreventionProfileSeverityOverrideArgs(
-                        action="ALLOW",
-                        severity="INFORMATIONAL",
-                    ),
-                    gcp.networksecurity.SecurityProfileThreatPreventionProfileSeverityOverrideArgs(
-                        action="DENY",
-                        severity="HIGH",
-                    ),
+            threat_prevention_profile={
+                "severityOverrides": [
+                    {
+                        "action": "ALLOW",
+                        "severity": "INFORMATIONAL",
+                    },
+                    {
+                        "action": "DENY",
+                        "severity": "HIGH",
+                    },
                 ],
-                threat_overrides=[gcp.networksecurity.SecurityProfileThreatPreventionProfileThreatOverrideArgs(
-                    action="ALLOW",
-                    threat_id="280647",
-                )],
-            ))
+                "threatOverrides": [{
+                    "action": "ALLOW",
+                    "threatId": "280647",
+                }],
+            })
         ```
 
         ## Import
@@ -489,7 +494,7 @@ class SecurityProfile(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] parent: The name of the parent this security profile belongs to.
                Format: organizations/{organization_id}.
-        :param pulumi.Input[pulumi.InputType['SecurityProfileThreatPreventionProfileArgs']] threat_prevention_profile: The threat prevention configuration for the security profile.
+        :param pulumi.Input[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict']] threat_prevention_profile: The threat prevention configuration for the security profile.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of security profile.
                Possible values are: `THREAT_PREVENTION`.
@@ -537,22 +542,22 @@ class SecurityProfile(pulumi.CustomResource):
             parent="organizations/123456789",
             description="my description",
             type="THREAT_PREVENTION",
-            threat_prevention_profile=gcp.networksecurity.SecurityProfileThreatPreventionProfileArgs(
-                severity_overrides=[
-                    gcp.networksecurity.SecurityProfileThreatPreventionProfileSeverityOverrideArgs(
-                        action="ALLOW",
-                        severity="INFORMATIONAL",
-                    ),
-                    gcp.networksecurity.SecurityProfileThreatPreventionProfileSeverityOverrideArgs(
-                        action="DENY",
-                        severity="HIGH",
-                    ),
+            threat_prevention_profile={
+                "severityOverrides": [
+                    {
+                        "action": "ALLOW",
+                        "severity": "INFORMATIONAL",
+                    },
+                    {
+                        "action": "DENY",
+                        "severity": "HIGH",
+                    },
                 ],
-                threat_overrides=[gcp.networksecurity.SecurityProfileThreatPreventionProfileThreatOverrideArgs(
-                    action="ALLOW",
-                    threat_id="280647",
-                )],
-            ))
+                "threatOverrides": [{
+                    "action": "ALLOW",
+                    "threatId": "280647",
+                }],
+            })
         ```
 
         ## Import
@@ -587,7 +592,7 @@ class SecurityProfile(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 threat_prevention_profile: Optional[pulumi.Input[pulumi.InputType['SecurityProfileThreatPreventionProfileArgs']]] = None,
+                 threat_prevention_profile: Optional[pulumi.Input[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -635,7 +640,7 @@ class SecurityProfile(pulumi.CustomResource):
             parent: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            threat_prevention_profile: Optional[pulumi.Input[pulumi.InputType['SecurityProfileThreatPreventionProfileArgs']]] = None,
+            threat_prevention_profile: Optional[pulumi.Input[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'SecurityProfile':
         """
@@ -666,7 +671,7 @@ class SecurityProfile(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
-        :param pulumi.Input[pulumi.InputType['SecurityProfileThreatPreventionProfileArgs']] threat_prevention_profile: The threat prevention configuration for the security profile.
+        :param pulumi.Input[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict']] threat_prevention_profile: The threat prevention configuration for the security profile.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of security profile.
                Possible values are: `THREAT_PREVENTION`.

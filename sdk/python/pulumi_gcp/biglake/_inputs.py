@@ -4,16 +4,43 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'DatabaseHiveOptionsArgs',
+    'DatabaseHiveOptionsArgsDict',
     'TableHiveOptionsArgs',
+    'TableHiveOptionsArgsDict',
     'TableHiveOptionsStorageDescriptorArgs',
+    'TableHiveOptionsStorageDescriptorArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class DatabaseHiveOptionsArgsDict(TypedDict):
+        location_uri: NotRequired[pulumi.Input[str]]
+        """
+        Cloud Storage folder URI where the database data is stored, starting with "gs://".
+        """
+        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Stores user supplied Hive database parameters. An object containing a
+        list of"key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        - - -
+        """
+elif False:
+    DatabaseHiveOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatabaseHiveOptionsArgs:
@@ -61,6 +88,26 @@ class DatabaseHiveOptionsArgs:
     def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
+
+if not MYPY:
+    class TableHiveOptionsArgsDict(TypedDict):
+        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Stores user supplied Hive table parameters. An object containing a
+        list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        storage_descriptor: NotRequired[pulumi.Input['TableHiveOptionsStorageDescriptorArgsDict']]
+        """
+        Stores physical storage information on the data.
+        Structure is documented below.
+        """
+        table_type: NotRequired[pulumi.Input[str]]
+        """
+        Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
+        """
+elif False:
+    TableHiveOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TableHiveOptionsArgs:
@@ -122,6 +169,23 @@ class TableHiveOptionsArgs:
     def table_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "table_type", value)
 
+
+if not MYPY:
+    class TableHiveOptionsStorageDescriptorArgsDict(TypedDict):
+        input_format: NotRequired[pulumi.Input[str]]
+        """
+        The fully qualified Java class name of the input format.
+        """
+        location_uri: NotRequired[pulumi.Input[str]]
+        """
+        Cloud Storage folder URI where the table data is stored, starting with "gs://".
+        """
+        output_format: NotRequired[pulumi.Input[str]]
+        """
+        The fully qualified Java class name of the output format.
+        """
+elif False:
+    TableHiveOptionsStorageDescriptorArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TableHiveOptionsStorageDescriptorArgs:

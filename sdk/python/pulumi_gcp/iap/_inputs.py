@@ -4,33 +4,81 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AppEngineServiceIamBindingConditionArgs',
+    'AppEngineServiceIamBindingConditionArgsDict',
     'AppEngineServiceIamMemberConditionArgs',
+    'AppEngineServiceIamMemberConditionArgsDict',
     'AppEngineVersionIamBindingConditionArgs',
+    'AppEngineVersionIamBindingConditionArgsDict',
     'AppEngineVersionIamMemberConditionArgs',
+    'AppEngineVersionIamMemberConditionArgsDict',
     'TunnelDestGroupIamBindingConditionArgs',
+    'TunnelDestGroupIamBindingConditionArgsDict',
     'TunnelDestGroupIamMemberConditionArgs',
+    'TunnelDestGroupIamMemberConditionArgsDict',
     'TunnelIamBindingConditionArgs',
+    'TunnelIamBindingConditionArgsDict',
     'TunnelIamMemberConditionArgs',
+    'TunnelIamMemberConditionArgsDict',
     'TunnelInstanceIAMBindingConditionArgs',
+    'TunnelInstanceIAMBindingConditionArgsDict',
     'TunnelInstanceIAMMemberConditionArgs',
+    'TunnelInstanceIAMMemberConditionArgsDict',
     'WebBackendServiceIamBindingConditionArgs',
+    'WebBackendServiceIamBindingConditionArgsDict',
     'WebBackendServiceIamMemberConditionArgs',
+    'WebBackendServiceIamMemberConditionArgsDict',
     'WebIamBindingConditionArgs',
+    'WebIamBindingConditionArgsDict',
     'WebIamMemberConditionArgs',
+    'WebIamMemberConditionArgsDict',
     'WebRegionBackendServiceIamBindingConditionArgs',
+    'WebRegionBackendServiceIamBindingConditionArgsDict',
     'WebRegionBackendServiceIamMemberConditionArgs',
+    'WebRegionBackendServiceIamMemberConditionArgsDict',
     'WebTypeAppEngingIamBindingConditionArgs',
+    'WebTypeAppEngingIamBindingConditionArgsDict',
     'WebTypeAppEngingIamMemberConditionArgs',
+    'WebTypeAppEngingIamMemberConditionArgsDict',
     'WebTypeComputeIamBindingConditionArgs',
+    'WebTypeComputeIamBindingConditionArgsDict',
     'WebTypeComputeIamMemberConditionArgs',
+    'WebTypeComputeIamMemberConditionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AppEngineServiceIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    AppEngineServiceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppEngineServiceIamBindingConditionArgs:
@@ -93,6 +141,27 @@ class AppEngineServiceIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class AppEngineServiceIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    AppEngineServiceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppEngineServiceIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -153,6 +222,27 @@ class AppEngineServiceIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class AppEngineVersionIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    AppEngineVersionIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppEngineVersionIamBindingConditionArgs:
@@ -215,6 +305,27 @@ class AppEngineVersionIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class AppEngineVersionIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    AppEngineVersionIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppEngineVersionIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -276,6 +387,20 @@ class AppEngineVersionIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class TunnelDestGroupIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    TunnelDestGroupIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TunnelDestGroupIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -325,6 +450,20 @@ class TunnelDestGroupIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class TunnelDestGroupIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    TunnelDestGroupIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TunnelDestGroupIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -373,6 +512,23 @@ class TunnelDestGroupIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class TunnelIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+elif False:
+    TunnelIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TunnelIamBindingConditionArgs:
@@ -427,6 +583,23 @@ class TunnelIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class TunnelIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+elif False:
+    TunnelIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TunnelIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -479,6 +652,27 @@ class TunnelIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class TunnelInstanceIAMBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    TunnelInstanceIAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TunnelInstanceIAMBindingConditionArgs:
@@ -541,6 +735,27 @@ class TunnelInstanceIAMBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class TunnelInstanceIAMMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    TunnelInstanceIAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TunnelInstanceIAMMemberConditionArgs:
     def __init__(__self__, *,
@@ -601,6 +816,27 @@ class TunnelInstanceIAMMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class WebBackendServiceIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    WebBackendServiceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WebBackendServiceIamBindingConditionArgs:
@@ -663,6 +899,27 @@ class WebBackendServiceIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class WebBackendServiceIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    WebBackendServiceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WebBackendServiceIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -723,6 +980,27 @@ class WebBackendServiceIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class WebIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    WebIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WebIamBindingConditionArgs:
@@ -785,6 +1063,27 @@ class WebIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class WebIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    WebIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WebIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -846,6 +1145,20 @@ class WebIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class WebRegionBackendServiceIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    WebRegionBackendServiceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WebRegionBackendServiceIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -895,6 +1208,20 @@ class WebRegionBackendServiceIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class WebRegionBackendServiceIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    WebRegionBackendServiceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WebRegionBackendServiceIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -943,6 +1270,27 @@ class WebRegionBackendServiceIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class WebTypeAppEngingIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    WebTypeAppEngingIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WebTypeAppEngingIamBindingConditionArgs:
@@ -1005,6 +1353,27 @@ class WebTypeAppEngingIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class WebTypeAppEngingIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    WebTypeAppEngingIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WebTypeAppEngingIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -1066,6 +1435,27 @@ class WebTypeAppEngingIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class WebTypeComputeIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    WebTypeComputeIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WebTypeComputeIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -1126,6 +1516,27 @@ class WebTypeComputeIamBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class WebTypeComputeIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    WebTypeComputeIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WebTypeComputeIamMemberConditionArgs:

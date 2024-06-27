@@ -4,114 +4,259 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'GuestPoliciesAssignmentArgs',
+    'GuestPoliciesAssignmentArgsDict',
     'GuestPoliciesAssignmentGroupLabelArgs',
+    'GuestPoliciesAssignmentGroupLabelArgsDict',
     'GuestPoliciesAssignmentOsTypeArgs',
+    'GuestPoliciesAssignmentOsTypeArgsDict',
     'GuestPoliciesPackageArgs',
+    'GuestPoliciesPackageArgsDict',
     'GuestPoliciesPackageRepositoryArgs',
+    'GuestPoliciesPackageRepositoryArgsDict',
     'GuestPoliciesPackageRepositoryAptArgs',
+    'GuestPoliciesPackageRepositoryAptArgsDict',
     'GuestPoliciesPackageRepositoryGooArgs',
+    'GuestPoliciesPackageRepositoryGooArgsDict',
     'GuestPoliciesPackageRepositoryYumArgs',
+    'GuestPoliciesPackageRepositoryYumArgsDict',
     'GuestPoliciesPackageRepositoryZypperArgs',
+    'GuestPoliciesPackageRepositoryZypperArgsDict',
     'GuestPoliciesRecipeArgs',
+    'GuestPoliciesRecipeArgsDict',
     'GuestPoliciesRecipeArtifactArgs',
+    'GuestPoliciesRecipeArtifactArgsDict',
     'GuestPoliciesRecipeArtifactGcsArgs',
+    'GuestPoliciesRecipeArtifactGcsArgsDict',
     'GuestPoliciesRecipeArtifactRemoteArgs',
+    'GuestPoliciesRecipeArtifactRemoteArgsDict',
     'GuestPoliciesRecipeInstallStepArgs',
+    'GuestPoliciesRecipeInstallStepArgsDict',
     'GuestPoliciesRecipeInstallStepArchiveExtractionArgs',
+    'GuestPoliciesRecipeInstallStepArchiveExtractionArgsDict',
     'GuestPoliciesRecipeInstallStepDpkgInstallationArgs',
+    'GuestPoliciesRecipeInstallStepDpkgInstallationArgsDict',
     'GuestPoliciesRecipeInstallStepFileCopyArgs',
+    'GuestPoliciesRecipeInstallStepFileCopyArgsDict',
     'GuestPoliciesRecipeInstallStepFileExecArgs',
+    'GuestPoliciesRecipeInstallStepFileExecArgsDict',
     'GuestPoliciesRecipeInstallStepMsiInstallationArgs',
+    'GuestPoliciesRecipeInstallStepMsiInstallationArgsDict',
     'GuestPoliciesRecipeInstallStepRpmInstallationArgs',
+    'GuestPoliciesRecipeInstallStepRpmInstallationArgsDict',
     'GuestPoliciesRecipeInstallStepScriptRunArgs',
+    'GuestPoliciesRecipeInstallStepScriptRunArgsDict',
     'GuestPoliciesRecipeUpdateStepArgs',
+    'GuestPoliciesRecipeUpdateStepArgsDict',
     'GuestPoliciesRecipeUpdateStepArchiveExtractionArgs',
+    'GuestPoliciesRecipeUpdateStepArchiveExtractionArgsDict',
     'GuestPoliciesRecipeUpdateStepDpkgInstallationArgs',
+    'GuestPoliciesRecipeUpdateStepDpkgInstallationArgsDict',
     'GuestPoliciesRecipeUpdateStepFileCopyArgs',
+    'GuestPoliciesRecipeUpdateStepFileCopyArgsDict',
     'GuestPoliciesRecipeUpdateStepFileExecArgs',
+    'GuestPoliciesRecipeUpdateStepFileExecArgsDict',
     'GuestPoliciesRecipeUpdateStepMsiInstallationArgs',
+    'GuestPoliciesRecipeUpdateStepMsiInstallationArgsDict',
     'GuestPoliciesRecipeUpdateStepRpmInstallationArgs',
+    'GuestPoliciesRecipeUpdateStepRpmInstallationArgsDict',
     'GuestPoliciesRecipeUpdateStepScriptRunArgs',
+    'GuestPoliciesRecipeUpdateStepScriptRunArgsDict',
     'OsPolicyAssignmentInstanceFilterArgs',
+    'OsPolicyAssignmentInstanceFilterArgsDict',
     'OsPolicyAssignmentInstanceFilterExclusionLabelArgs',
+    'OsPolicyAssignmentInstanceFilterExclusionLabelArgsDict',
     'OsPolicyAssignmentInstanceFilterInclusionLabelArgs',
+    'OsPolicyAssignmentInstanceFilterInclusionLabelArgsDict',
     'OsPolicyAssignmentInstanceFilterInventoryArgs',
+    'OsPolicyAssignmentInstanceFilterInventoryArgsDict',
     'OsPolicyAssignmentOsPolicyArgs',
+    'OsPolicyAssignmentOsPolicyArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgsDict',
     'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs',
+    'OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgsDict',
     'OsPolicyAssignmentRolloutArgs',
+    'OsPolicyAssignmentRolloutArgsDict',
     'OsPolicyAssignmentRolloutDisruptionBudgetArgs',
+    'OsPolicyAssignmentRolloutDisruptionBudgetArgsDict',
     'PatchDeploymentInstanceFilterArgs',
+    'PatchDeploymentInstanceFilterArgsDict',
     'PatchDeploymentInstanceFilterGroupLabelArgs',
+    'PatchDeploymentInstanceFilterGroupLabelArgsDict',
     'PatchDeploymentOneTimeScheduleArgs',
+    'PatchDeploymentOneTimeScheduleArgsDict',
     'PatchDeploymentPatchConfigArgs',
+    'PatchDeploymentPatchConfigArgsDict',
     'PatchDeploymentPatchConfigAptArgs',
+    'PatchDeploymentPatchConfigAptArgsDict',
     'PatchDeploymentPatchConfigGooArgs',
+    'PatchDeploymentPatchConfigGooArgsDict',
     'PatchDeploymentPatchConfigPostStepArgs',
+    'PatchDeploymentPatchConfigPostStepArgsDict',
     'PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs',
+    'PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgsDict',
     'PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs',
+    'PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgsDict',
     'PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs',
+    'PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgsDict',
     'PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs',
+    'PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgsDict',
     'PatchDeploymentPatchConfigPreStepArgs',
+    'PatchDeploymentPatchConfigPreStepArgsDict',
     'PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs',
+    'PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgsDict',
     'PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs',
+    'PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgsDict',
     'PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs',
+    'PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgsDict',
     'PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs',
+    'PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgsDict',
     'PatchDeploymentPatchConfigWindowsUpdateArgs',
+    'PatchDeploymentPatchConfigWindowsUpdateArgsDict',
     'PatchDeploymentPatchConfigYumArgs',
+    'PatchDeploymentPatchConfigYumArgsDict',
     'PatchDeploymentPatchConfigZypperArgs',
+    'PatchDeploymentPatchConfigZypperArgsDict',
     'PatchDeploymentRecurringScheduleArgs',
+    'PatchDeploymentRecurringScheduleArgsDict',
     'PatchDeploymentRecurringScheduleMonthlyArgs',
+    'PatchDeploymentRecurringScheduleMonthlyArgsDict',
     'PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs',
+    'PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgsDict',
     'PatchDeploymentRecurringScheduleTimeOfDayArgs',
+    'PatchDeploymentRecurringScheduleTimeOfDayArgsDict',
     'PatchDeploymentRecurringScheduleTimeZoneArgs',
+    'PatchDeploymentRecurringScheduleTimeZoneArgsDict',
     'PatchDeploymentRecurringScheduleWeeklyArgs',
+    'PatchDeploymentRecurringScheduleWeeklyArgsDict',
     'PatchDeploymentRolloutArgs',
+    'PatchDeploymentRolloutArgsDict',
     'PatchDeploymentRolloutDisruptionBudgetArgs',
+    'PatchDeploymentRolloutDisruptionBudgetArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class GuestPoliciesAssignmentArgsDict(TypedDict):
+        group_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgsDict']]]]
+        """
+        Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
+        for example "env=prod or env=staging".
+        Structure is documented below.
+        """
+        instance_name_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Targets VM instances whose name starts with one of these prefixes.
+        Like labels, this is another way to group VM instances when targeting configs,
+        for example prefix="prod-".
+        Only supported for project-level policies.
+        """
+        instances: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Targets any of the instances specified. Instances are specified by their URI in the form
+        zones/[ZONE]/instances/[INSTANCE_NAME].
+        Instance targeting is uncommon and is supported to facilitate the management of changes
+        by the instance or to target specific VM instances for development and testing.
+        Only supported for project-level policies and must reference instances within this project.
+        """
+        os_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgsDict']]]]
+        """
+        Targets VM instances matching at least one of the following OS types.
+        VM instances must match all supplied criteria for a given OsType to be included.
+        Structure is documented below.
+        """
+        zones: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Targets instances in any of these zones. Leave empty to target instances in any zone.
+        Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
+        """
+elif False:
+    GuestPoliciesAssignmentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GuestPoliciesAssignmentArgs:
@@ -224,6 +369,15 @@ class GuestPoliciesAssignmentArgs:
         pulumi.set(self, "zones", value)
 
 
+if not MYPY:
+    class GuestPoliciesAssignmentGroupLabelArgsDict(TypedDict):
+        labels: pulumi.Input[Mapping[str, pulumi.Input[str]]]
+        """
+        Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
+        """
+elif False:
+    GuestPoliciesAssignmentGroupLabelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuestPoliciesAssignmentGroupLabelArgs:
     def __init__(__self__, *,
@@ -245,6 +399,25 @@ class GuestPoliciesAssignmentGroupLabelArgs:
     def labels(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(self, "labels", value)
 
+
+if not MYPY:
+    class GuestPoliciesAssignmentOsTypeArgsDict(TypedDict):
+        os_architecture: NotRequired[pulumi.Input[str]]
+        """
+        Targets VM instances with OS Inventory enabled and having the following OS architecture.
+
+        - - -
+        """
+        os_short_name: NotRequired[pulumi.Input[str]]
+        """
+        Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
+        """
+        os_version: NotRequired[pulumi.Input[str]]
+        """
+        Targets VM instances with OS Inventory enabled and having the following following OS version.
+        """
+elif False:
+    GuestPoliciesAssignmentOsTypeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GuestPoliciesAssignmentOsTypeArgs:
@@ -304,6 +477,31 @@ class GuestPoliciesAssignmentOsTypeArgs:
     def os_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "os_version", value)
 
+
+if not MYPY:
+    class GuestPoliciesPackageArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the package. A package is uniquely identified for conflict validation
+        by checking the package name and the manager(s) that the package targets.
+        """
+        desired_state: NotRequired[pulumi.Input[str]]
+        """
+        The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
+        Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
+        """
+        manager: NotRequired[pulumi.Input[str]]
+        """
+        Type of package manager that can be used to install this package. If a system does not have the package manager,
+        the package is not installed or removed no error message is returned. By default, or if you specify ANY,
+        the agent attempts to install and remove this package using the default package manager.
+        This is useful when creating a policy that applies to different types of systems.
+        The default behavior is ANY.
+        Default value is `ANY`.
+        Possible values are: `ANY`, `APT`, `YUM`, `ZYPPER`, `GOO`.
+        """
+elif False:
+    GuestPoliciesPackageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GuestPoliciesPackageArgs:
@@ -374,6 +572,31 @@ class GuestPoliciesPackageArgs:
     def manager(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "manager", value)
 
+
+if not MYPY:
+    class GuestPoliciesPackageRepositoryArgsDict(TypedDict):
+        apt: NotRequired[pulumi.Input['GuestPoliciesPackageRepositoryAptArgsDict']]
+        """
+        An Apt Repository.
+        Structure is documented below.
+        """
+        goo: NotRequired[pulumi.Input['GuestPoliciesPackageRepositoryGooArgsDict']]
+        """
+        A Goo Repository.
+        Structure is documented below.
+        """
+        yum: NotRequired[pulumi.Input['GuestPoliciesPackageRepositoryYumArgsDict']]
+        """
+        A Yum Repository.
+        Structure is documented below.
+        """
+        zypper: NotRequired[pulumi.Input['GuestPoliciesPackageRepositoryZypperArgsDict']]
+        """
+        A Zypper Repository.
+        Structure is documented below.
+        """
+elif False:
+    GuestPoliciesPackageRepositoryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GuestPoliciesPackageRepositoryArgs:
@@ -453,6 +676,34 @@ class GuestPoliciesPackageRepositoryArgs:
     def zypper(self, value: Optional[pulumi.Input['GuestPoliciesPackageRepositoryZypperArgs']]):
         pulumi.set(self, "zypper", value)
 
+
+if not MYPY:
+    class GuestPoliciesPackageRepositoryAptArgsDict(TypedDict):
+        components: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of components for this repository. Must contain at least one item.
+        """
+        distribution: pulumi.Input[str]
+        """
+        Distribution of this repository.
+        """
+        uri: pulumi.Input[str]
+        """
+        URI for this repository.
+        """
+        archive_type: NotRequired[pulumi.Input[str]]
+        """
+        Type of archive files in this repository. The default behavior is DEB.
+        Default value is `DEB`.
+        Possible values are: `DEB`, `DEB_SRC`.
+        """
+        gpg_key: NotRequired[pulumi.Input[str]]
+        """
+        URI of the key file for this repository. The agent maintains a keyring at
+        /etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg containing all the keys in any applied guest policy.
+        """
+elif False:
+    GuestPoliciesPackageRepositoryAptArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GuestPoliciesPackageRepositoryAptArgs:
@@ -544,6 +795,19 @@ class GuestPoliciesPackageRepositoryAptArgs:
         pulumi.set(self, "gpg_key", value)
 
 
+if not MYPY:
+    class GuestPoliciesPackageRepositoryGooArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the repository.
+        """
+        url: pulumi.Input[str]
+        """
+        The url of the repository.
+        """
+elif False:
+    GuestPoliciesPackageRepositoryGooArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuestPoliciesPackageRepositoryGooArgs:
     def __init__(__self__, *,
@@ -580,6 +844,28 @@ class GuestPoliciesPackageRepositoryGooArgs:
     def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
 
+
+if not MYPY:
+    class GuestPoliciesPackageRepositoryYumArgsDict(TypedDict):
+        base_url: pulumi.Input[str]
+        """
+        The location of the repository directory.
+        """
+        id: pulumi.Input[str]
+        """
+        A one word, unique name for this repository. This is the repo id in the Yum config file and also the displayName
+        if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        The display name of the repository.
+        """
+        gpg_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        URIs of GPG keys.
+        """
+elif False:
+    GuestPoliciesPackageRepositoryYumArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GuestPoliciesPackageRepositoryYumArgs:
@@ -652,6 +938,28 @@ class GuestPoliciesPackageRepositoryYumArgs:
         pulumi.set(self, "gpg_keys", value)
 
 
+if not MYPY:
+    class GuestPoliciesPackageRepositoryZypperArgsDict(TypedDict):
+        base_url: pulumi.Input[str]
+        """
+        The location of the repository directory.
+        """
+        id: pulumi.Input[str]
+        """
+        A one word, unique name for this repository. This is the repo id in the zypper config file and also the displayName
+        if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        The display name of the repository.
+        """
+        gpg_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        URIs of GPG keys.
+        """
+elif False:
+    GuestPoliciesPackageRepositoryZypperArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuestPoliciesPackageRepositoryZypperArgs:
     def __init__(__self__, *,
@@ -722,6 +1030,49 @@ class GuestPoliciesPackageRepositoryZypperArgs:
     def gpg_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "gpg_keys", value)
 
+
+if not MYPY:
+    class GuestPoliciesRecipeArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+        Names are also used to identify resources which helps to determine whether guest policies have conflicts.
+        This means that requests to create multiple recipes with the same name and version are rejected since they
+        could potentially have conflicting assignments.
+        """
+        artifacts: NotRequired[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgsDict']]]]
+        """
+        Resources available to be used in the steps in the recipe.
+        Structure is documented below.
+        """
+        desired_state: NotRequired[pulumi.Input[str]]
+        """
+        Default is INSTALLED. The desired state the agent should maintain for this recipe.
+        INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
+        INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
+        if a higher version of the recipe is assigned to this instance.
+        REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+        Default value is `INSTALLED`.
+        Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
+        """
+        install_steps: NotRequired[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgsDict']]]]
+        """
+        Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
+        Any steps taken (including partially completed steps) are not rolled back.
+        Structure is documented below.
+        """
+        update_steps: NotRequired[pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgsDict']]]]
+        """
+        Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
+        Any steps taken (including partially completed steps) are not rolled back.
+        Structure is documented below.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
+        """
+elif False:
+    GuestPoliciesRecipeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GuestPoliciesRecipeArgs:
@@ -853,6 +1204,32 @@ class GuestPoliciesRecipeArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class GuestPoliciesRecipeArtifactArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        Id of the artifact, which the installation and update steps of this recipe can reference.
+        Artifacts in a recipe cannot have the same id.
+        """
+        allow_insecure: NotRequired[pulumi.Input[bool]]
+        """
+        Defaults to false. When false, recipes are subject to validations based on the artifact type:
+        Remote: A checksum must be specified, and only protocols with transport-layer security are permitted.
+        GCS: An object generation number must be specified.
+        """
+        gcs: NotRequired[pulumi.Input['GuestPoliciesRecipeArtifactGcsArgsDict']]
+        """
+        A Google Cloud Storage artifact.
+        Structure is documented below.
+        """
+        remote: NotRequired[pulumi.Input['GuestPoliciesRecipeArtifactRemoteArgsDict']]
+        """
+        A generic remote artifact.
+        Structure is documented below.
+        """
+elif False:
+    GuestPoliciesRecipeArtifactArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuestPoliciesRecipeArtifactArgs:
     def __init__(__self__, *,
@@ -933,6 +1310,26 @@ class GuestPoliciesRecipeArtifactArgs:
         pulumi.set(self, "remote", value)
 
 
+if not MYPY:
+    class GuestPoliciesRecipeArtifactGcsArgsDict(TypedDict):
+        bucket: NotRequired[pulumi.Input[str]]
+        """
+        Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+        this value would be my-bucket.
+        """
+        generation: NotRequired[pulumi.Input[int]]
+        """
+        Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
+        https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+        """
+        object: NotRequired[pulumi.Input[str]]
+        """
+        Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+        this value would be foo/bar.
+        """
+elif False:
+    GuestPoliciesRecipeArtifactGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuestPoliciesRecipeArtifactGcsArgs:
     def __init__(__self__, *,
@@ -994,6 +1391,21 @@ class GuestPoliciesRecipeArtifactGcsArgs:
         pulumi.set(self, "object", value)
 
 
+if not MYPY:
+    class GuestPoliciesRecipeArtifactRemoteArgsDict(TypedDict):
+        check_sum: NotRequired[pulumi.Input[str]]
+        """
+        Must be provided if allowInsecure is false. SHA256 checksum in hex format, to compare to the checksum of the artifact.
+        If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any
+        of the steps.
+        """
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+        """
+elif False:
+    GuestPoliciesRecipeArtifactRemoteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuestPoliciesRecipeArtifactRemoteArgs:
     def __init__(__self__, *,
@@ -1036,6 +1448,46 @@ class GuestPoliciesRecipeArtifactRemoteArgs:
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
 
+
+if not MYPY:
+    class GuestPoliciesRecipeInstallStepArgsDict(TypedDict):
+        archive_extraction: NotRequired[pulumi.Input['GuestPoliciesRecipeInstallStepArchiveExtractionArgsDict']]
+        """
+        Extracts an archive into the specified directory.
+        Structure is documented below.
+        """
+        dpkg_installation: NotRequired[pulumi.Input['GuestPoliciesRecipeInstallStepDpkgInstallationArgsDict']]
+        """
+        Installs a deb file via dpkg.
+        Structure is documented below.
+        """
+        file_copy: NotRequired[pulumi.Input['GuestPoliciesRecipeInstallStepFileCopyArgsDict']]
+        """
+        Copies a file onto the instance.
+        Structure is documented below.
+        """
+        file_exec: NotRequired[pulumi.Input['GuestPoliciesRecipeInstallStepFileExecArgsDict']]
+        """
+        Executes an artifact or local file.
+        Structure is documented below.
+        """
+        msi_installation: NotRequired[pulumi.Input['GuestPoliciesRecipeInstallStepMsiInstallationArgsDict']]
+        """
+        Installs an MSI file.
+        Structure is documented below.
+        """
+        rpm_installation: NotRequired[pulumi.Input['GuestPoliciesRecipeInstallStepRpmInstallationArgsDict']]
+        """
+        Installs an rpm file via the rpm utility.
+        Structure is documented below.
+        """
+        script_run: NotRequired[pulumi.Input['GuestPoliciesRecipeInstallStepScriptRunArgsDict']]
+        """
+        Runs commands in a shell.
+        Structure is documented below.
+        """
+elif False:
+    GuestPoliciesRecipeInstallStepArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GuestPoliciesRecipeInstallStepArgs:
@@ -1170,6 +1622,24 @@ class GuestPoliciesRecipeInstallStepArgs:
         pulumi.set(self, "script_run", value)
 
 
+if not MYPY:
+    class GuestPoliciesRecipeInstallStepArchiveExtractionArgsDict(TypedDict):
+        artifact_id: pulumi.Input[str]
+        """
+        The id of the relevant artifact in the recipe.
+        """
+        type: pulumi.Input[str]
+        """
+        The type of the archive to extract.
+        Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
+        """
+        destination: NotRequired[pulumi.Input[str]]
+        """
+        Directory to extract archive to. Defaults to / on Linux or C:\\ on Windows.
+        """
+elif False:
+    GuestPoliciesRecipeInstallStepArchiveExtractionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuestPoliciesRecipeInstallStepArchiveExtractionArgs:
     def __init__(__self__, *,
@@ -1225,6 +1695,15 @@ class GuestPoliciesRecipeInstallStepArchiveExtractionArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GuestPoliciesRecipeInstallStepDpkgInstallationArgsDict(TypedDict):
+        artifact_id: pulumi.Input[str]
+        """
+        The id of the relevant artifact in the recipe.
+        """
+elif False:
+    GuestPoliciesRecipeInstallStepDpkgInstallationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuestPoliciesRecipeInstallStepDpkgInstallationArgs:
     def __init__(__self__, *,
@@ -1246,6 +1725,33 @@ class GuestPoliciesRecipeInstallStepDpkgInstallationArgs:
     def artifact_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "artifact_id", value)
 
+
+if not MYPY:
+    class GuestPoliciesRecipeInstallStepFileCopyArgsDict(TypedDict):
+        artifact_id: pulumi.Input[str]
+        """
+        The id of the relevant artifact in the recipe.
+        """
+        destination: pulumi.Input[str]
+        """
+        The absolute path on the instance to put the file.
+        """
+        overwrite: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
+        is not overwritten and the step is considered a success. Defaults to false.
+        """
+        permissions: NotRequired[pulumi.Input[str]]
+        """
+        Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
+        for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
+        number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one
+        bit corresponds to the execute permission. Default behavior is 755.
+        Below are some examples of permissions and their associated values:
+        read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+        """
+elif False:
+    GuestPoliciesRecipeInstallStepFileCopyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GuestPoliciesRecipeInstallStepFileCopyArgs:
@@ -1328,6 +1834,27 @@ class GuestPoliciesRecipeInstallStepFileCopyArgs:
         pulumi.set(self, "permissions", value)
 
 
+if not MYPY:
+    class GuestPoliciesRecipeInstallStepFileExecArgsDict(TypedDict):
+        allowed_exit_codes: NotRequired[pulumi.Input[str]]
+        """
+        A list of possible return values that the program can return to indicate a success. Defaults to [0].
+        """
+        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Arguments to be passed to the provided executable.
+        """
+        artifact_id: NotRequired[pulumi.Input[str]]
+        """
+        The id of the relevant artifact in the recipe.
+        """
+        local_path: NotRequired[pulumi.Input[str]]
+        """
+        The absolute path of the file on the local filesystem.
+        """
+elif False:
+    GuestPoliciesRecipeInstallStepFileExecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuestPoliciesRecipeInstallStepFileExecArgs:
     def __init__(__self__, *,
@@ -1399,6 +1926,23 @@ class GuestPoliciesRecipeInstallStepFileExecArgs:
         pulumi.set(self, "local_path", value)
 
 
+if not MYPY:
+    class GuestPoliciesRecipeInstallStepMsiInstallationArgsDict(TypedDict):
+        artifact_id: pulumi.Input[str]
+        """
+        The id of the relevant artifact in the recipe.
+        """
+        allowed_exit_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+        """
+        flags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The flags to use when installing the MSI. Defaults to the install flag.
+        """
+elif False:
+    GuestPoliciesRecipeInstallStepMsiInstallationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuestPoliciesRecipeInstallStepMsiInstallationArgs:
     def __init__(__self__, *,
@@ -1453,6 +1997,15 @@ class GuestPoliciesRecipeInstallStepMsiInstallationArgs:
         pulumi.set(self, "flags", value)
 
 
+if not MYPY:
+    class GuestPoliciesRecipeInstallStepRpmInstallationArgsDict(TypedDict):
+        artifact_id: pulumi.Input[str]
+        """
+        The id of the relevant artifact in the recipe.
+        """
+elif False:
+    GuestPoliciesRecipeInstallStepRpmInstallationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuestPoliciesRecipeInstallStepRpmInstallationArgs:
     def __init__(__self__, *,
@@ -1474,6 +2027,25 @@ class GuestPoliciesRecipeInstallStepRpmInstallationArgs:
     def artifact_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "artifact_id", value)
 
+
+if not MYPY:
+    class GuestPoliciesRecipeInstallStepScriptRunArgsDict(TypedDict):
+        script: pulumi.Input[str]
+        """
+        The shell script to be executed.
+        """
+        allowed_exit_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+        """
+        interpreter: NotRequired[pulumi.Input[str]]
+        """
+        The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
+        which likely only succeed for scripts with shebang lines.
+        Possible values are: `SHELL`, `POWERSHELL`.
+        """
+elif False:
+    GuestPoliciesRecipeInstallStepScriptRunArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GuestPoliciesRecipeInstallStepScriptRunArgs:
@@ -1532,6 +2104,46 @@ class GuestPoliciesRecipeInstallStepScriptRunArgs:
     def interpreter(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "interpreter", value)
 
+
+if not MYPY:
+    class GuestPoliciesRecipeUpdateStepArgsDict(TypedDict):
+        archive_extraction: NotRequired[pulumi.Input['GuestPoliciesRecipeUpdateStepArchiveExtractionArgsDict']]
+        """
+        Extracts an archive into the specified directory.
+        Structure is documented below.
+        """
+        dpkg_installation: NotRequired[pulumi.Input['GuestPoliciesRecipeUpdateStepDpkgInstallationArgsDict']]
+        """
+        Installs a deb file via dpkg.
+        Structure is documented below.
+        """
+        file_copy: NotRequired[pulumi.Input['GuestPoliciesRecipeUpdateStepFileCopyArgsDict']]
+        """
+        Copies a file onto the instance.
+        Structure is documented below.
+        """
+        file_exec: NotRequired[pulumi.Input['GuestPoliciesRecipeUpdateStepFileExecArgsDict']]
+        """
+        Executes an artifact or local file.
+        Structure is documented below.
+        """
+        msi_installation: NotRequired[pulumi.Input['GuestPoliciesRecipeUpdateStepMsiInstallationArgsDict']]
+        """
+        Installs an MSI file.
+        Structure is documented below.
+        """
+        rpm_installation: NotRequired[pulumi.Input['GuestPoliciesRecipeUpdateStepRpmInstallationArgsDict']]
+        """
+        Installs an rpm file via the rpm utility.
+        Structure is documented below.
+        """
+        script_run: NotRequired[pulumi.Input['GuestPoliciesRecipeUpdateStepScriptRunArgsDict']]
+        """
+        Runs commands in a shell.
+        Structure is documented below.
+        """
+elif False:
+    GuestPoliciesRecipeUpdateStepArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GuestPoliciesRecipeUpdateStepArgs:
@@ -1666,6 +2278,24 @@ class GuestPoliciesRecipeUpdateStepArgs:
         pulumi.set(self, "script_run", value)
 
 
+if not MYPY:
+    class GuestPoliciesRecipeUpdateStepArchiveExtractionArgsDict(TypedDict):
+        artifact_id: pulumi.Input[str]
+        """
+        The id of the relevant artifact in the recipe.
+        """
+        type: pulumi.Input[str]
+        """
+        The type of the archive to extract.
+        Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
+        """
+        destination: NotRequired[pulumi.Input[str]]
+        """
+        Directory to extract archive to. Defaults to / on Linux or C:\\ on Windows.
+        """
+elif False:
+    GuestPoliciesRecipeUpdateStepArchiveExtractionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuestPoliciesRecipeUpdateStepArchiveExtractionArgs:
     def __init__(__self__, *,
@@ -1721,6 +2351,15 @@ class GuestPoliciesRecipeUpdateStepArchiveExtractionArgs:
         pulumi.set(self, "destination", value)
 
 
+if not MYPY:
+    class GuestPoliciesRecipeUpdateStepDpkgInstallationArgsDict(TypedDict):
+        artifact_id: pulumi.Input[str]
+        """
+        The id of the relevant artifact in the recipe.
+        """
+elif False:
+    GuestPoliciesRecipeUpdateStepDpkgInstallationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuestPoliciesRecipeUpdateStepDpkgInstallationArgs:
     def __init__(__self__, *,
@@ -1742,6 +2381,33 @@ class GuestPoliciesRecipeUpdateStepDpkgInstallationArgs:
     def artifact_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "artifact_id", value)
 
+
+if not MYPY:
+    class GuestPoliciesRecipeUpdateStepFileCopyArgsDict(TypedDict):
+        artifact_id: pulumi.Input[str]
+        """
+        The id of the relevant artifact in the recipe.
+        """
+        destination: pulumi.Input[str]
+        """
+        The absolute path on the instance to put the file.
+        """
+        overwrite: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
+        is not overwritten and the step is considered a success. Defaults to false.
+        """
+        permissions: NotRequired[pulumi.Input[str]]
+        """
+        Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
+        for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
+        number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one
+        bit corresponds to the execute permission. Default behavior is 755.
+        Below are some examples of permissions and their associated values:
+        read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+        """
+elif False:
+    GuestPoliciesRecipeUpdateStepFileCopyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GuestPoliciesRecipeUpdateStepFileCopyArgs:
@@ -1824,6 +2490,27 @@ class GuestPoliciesRecipeUpdateStepFileCopyArgs:
         pulumi.set(self, "permissions", value)
 
 
+if not MYPY:
+    class GuestPoliciesRecipeUpdateStepFileExecArgsDict(TypedDict):
+        allowed_exit_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        A list of possible return values that the program can return to indicate a success. Defaults to [0].
+        """
+        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Arguments to be passed to the provided executable.
+        """
+        artifact_id: NotRequired[pulumi.Input[str]]
+        """
+        The id of the relevant artifact in the recipe.
+        """
+        local_path: NotRequired[pulumi.Input[str]]
+        """
+        The absolute path of the file on the local filesystem.
+        """
+elif False:
+    GuestPoliciesRecipeUpdateStepFileExecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuestPoliciesRecipeUpdateStepFileExecArgs:
     def __init__(__self__, *,
@@ -1895,6 +2582,23 @@ class GuestPoliciesRecipeUpdateStepFileExecArgs:
         pulumi.set(self, "local_path", value)
 
 
+if not MYPY:
+    class GuestPoliciesRecipeUpdateStepMsiInstallationArgsDict(TypedDict):
+        artifact_id: pulumi.Input[str]
+        """
+        The id of the relevant artifact in the recipe.
+        """
+        allowed_exit_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+        """
+        flags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The flags to use when installing the MSI. Defaults to the install flag.
+        """
+elif False:
+    GuestPoliciesRecipeUpdateStepMsiInstallationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuestPoliciesRecipeUpdateStepMsiInstallationArgs:
     def __init__(__self__, *,
@@ -1949,6 +2653,15 @@ class GuestPoliciesRecipeUpdateStepMsiInstallationArgs:
         pulumi.set(self, "flags", value)
 
 
+if not MYPY:
+    class GuestPoliciesRecipeUpdateStepRpmInstallationArgsDict(TypedDict):
+        artifact_id: pulumi.Input[str]
+        """
+        The id of the relevant artifact in the recipe.
+        """
+elif False:
+    GuestPoliciesRecipeUpdateStepRpmInstallationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GuestPoliciesRecipeUpdateStepRpmInstallationArgs:
     def __init__(__self__, *,
@@ -1970,6 +2683,25 @@ class GuestPoliciesRecipeUpdateStepRpmInstallationArgs:
     def artifact_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "artifact_id", value)
 
+
+if not MYPY:
+    class GuestPoliciesRecipeUpdateStepScriptRunArgsDict(TypedDict):
+        script: pulumi.Input[str]
+        """
+        The shell script to be executed.
+        """
+        allowed_exit_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+        """
+        interpreter: NotRequired[pulumi.Input[str]]
+        """
+        The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
+        which likely only succeed for scripts with shebang lines.
+        Possible values are: `SHELL`, `POWERSHELL`.
+        """
+elif False:
+    GuestPoliciesRecipeUpdateStepScriptRunArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GuestPoliciesRecipeUpdateStepScriptRunArgs:
@@ -2028,6 +2760,36 @@ class GuestPoliciesRecipeUpdateStepScriptRunArgs:
     def interpreter(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "interpreter", value)
 
+
+if not MYPY:
+    class OsPolicyAssignmentInstanceFilterArgsDict(TypedDict):
+        all: NotRequired[pulumi.Input[bool]]
+        """
+        Target all VMs in the project. If true, no other criteria
+        is permitted.
+        """
+        exclusion_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgsDict']]]]
+        """
+        List of label sets used for VM exclusion. If
+        the list has more than one label set, the VM is excluded if any of the label
+        sets are applicable for the VM. Structure is
+        documented below.
+        """
+        inclusion_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgsDict']]]]
+        """
+        List of label sets used for VM inclusion. If
+        the list has more than one `LabelSet`, the VM is included if any of the
+        label sets are applicable for the VM. Structure is
+        documented below.
+        """
+        inventories: NotRequired[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgsDict']]]]
+        """
+        List of inventories to select VMs. A VM is
+        selected if its inventory data matches at least one of the following
+        inventories. Structure is documented below.
+        """
+elif False:
+    OsPolicyAssignmentInstanceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OsPolicyAssignmentInstanceFilterArgs:
@@ -2118,6 +2880,17 @@ class OsPolicyAssignmentInstanceFilterArgs:
         pulumi.set(self, "inventories", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentInstanceFilterExclusionLabelArgsDict(TypedDict):
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels are identified by key/value pairs in this map.
+        A VM should contain all the key/value pairs specified in this map to be
+        selected.
+        """
+elif False:
+    OsPolicyAssignmentInstanceFilterExclusionLabelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentInstanceFilterExclusionLabelArgs:
     def __init__(__self__, *,
@@ -2145,6 +2918,17 @@ class OsPolicyAssignmentInstanceFilterExclusionLabelArgs:
         pulumi.set(self, "labels", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentInstanceFilterInclusionLabelArgsDict(TypedDict):
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels are identified by key/value pairs in this map.
+        A VM should contain all the key/value pairs specified in this map to be
+        selected.
+        """
+elif False:
+    OsPolicyAssignmentInstanceFilterInclusionLabelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentInstanceFilterInclusionLabelArgs:
     def __init__(__self__, *,
@@ -2171,6 +2955,22 @@ class OsPolicyAssignmentInstanceFilterInclusionLabelArgs:
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
+
+if not MYPY:
+    class OsPolicyAssignmentInstanceFilterInventoryArgsDict(TypedDict):
+        os_short_name: pulumi.Input[str]
+        """
+        The OS short name
+        """
+        os_version: NotRequired[pulumi.Input[str]]
+        """
+        The OS version Prefix matches are supported if
+        asterisk(*) is provided as the last character. For example, to match all
+        versions with a major version of `7`, specify the following value for this
+        field `7.*` An empty string matches all OS versions.
+        """
+elif False:
+    OsPolicyAssignmentInstanceFilterInventoryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OsPolicyAssignmentInstanceFilterInventoryArgs:
@@ -2215,6 +3015,48 @@ class OsPolicyAssignmentInstanceFilterInventoryArgs:
     def os_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "os_version", value)
 
+
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The id of the OS policy with the following restrictions:
+
+        *   Must contain only lowercase letters, numbers, and hyphens.
+        *   Must start with a letter.
+        *   Must be between 1-63 characters.
+        *   Must end with a number or a letter.
+        *   Must be unique within the assignment.
+        """
+        mode: pulumi.Input[str]
+        """
+        Policy mode Possible values are: `MODE_UNSPECIFIED`,
+        `VALIDATION`, `ENFORCEMENT`.
+        """
+        resource_groups: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupArgsDict']]]
+        """
+        List of resource groups for the policy. For a
+        particular VM, resource groups are evaluated in the order specified and the
+        first resource group that is applicable is selected and the rest are
+        ignored. If none of the resource groups are applicable for a VM, the VM is
+        considered to be non-compliant w.r.t this policy. This behavior can be
+        toggled by the flag `allow_no_resource_group_match` Structure is
+        documented below.
+        """
+        allow_no_resource_group_match: NotRequired[pulumi.Input[bool]]
+        """
+        This flag determines the OS
+        policy compliance status when none of the resource groups within the policy
+        are applicable for a VM. Set this value to `true` if the policy needs to be
+        reported as compliant even if the policy has nothing to validate or enforce.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Policy description. Length of the description is
+        limited to 1024 characters.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyArgs:
@@ -2334,6 +3176,29 @@ class OsPolicyAssignmentOsPolicyArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupArgsDict(TypedDict):
+        resources: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceArgsDict']]]
+        """
+        List of resources configured for this resource
+        group. The resources are executed in the exact order specified here.
+        Structure is documented below.
+        """
+        inventory_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgsDict']]]]
+        """
+        List of inventory filters for the resource
+        group. The resources in this resource group are applied to the target VM if
+        it satisfies at least one of the following inventory filters. For example,
+        to apply this resource group to VMs running either `RHEL` or `CentOS`
+        operating systems, specify 2 items for the list with following values:
+        inventory_filters[0].os_short_name='rhel' and
+        inventory_filters[1].os_short_name='centos' If the list is empty, this
+        resource group will be applied to the target VM unconditionally. Structure
+        is documented below.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupArgs:
     def __init__(__self__, *,
@@ -2392,6 +3257,22 @@ class OsPolicyAssignmentOsPolicyResourceGroupArgs:
         pulumi.set(self, "inventory_filters", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgsDict(TypedDict):
+        os_short_name: pulumi.Input[str]
+        """
+        The OS short name
+        """
+        os_version: NotRequired[pulumi.Input[str]]
+        """
+        The OS version Prefix matches are supported if
+        asterisk(*) is provided as the last character. For example, to match all
+        versions with a major version of `7`, specify the following value for this
+        field `7.*` An empty string matches all OS versions.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs:
     def __init__(__self__, *,
@@ -2435,6 +3316,41 @@ class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs:
     def os_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "os_version", value)
 
+
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The id of the resource with the following restrictions:
+
+        *   Must contain only lowercase letters, numbers, and hyphens.
+        *   Must start with a letter.
+        *   Must be between 1-63 characters.
+        *   Must end with a number or a letter.
+        *   Must be unique within the OS policy.
+        """
+        exec_: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgsDict']]
+        """
+        Exec resource Structure is
+        documented below.
+        """
+        file: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgsDict']]
+        """
+        File resource Structure is
+        documented below.
+        """
+        pkg: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgsDict']]
+        """
+        Package resource Structure is
+        documented below.
+        """
+        repository: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgsDict']]
+        """
+        Package repository resource Structure is
+        documented below.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
@@ -2542,6 +3458,26 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
         pulumi.set(self, "repository", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgsDict(TypedDict):
+        validate: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgsDict']
+        """
+        What to run to validate this resource is in the
+        desired state. An exit code of 100 indicates "in desired state", and exit
+        code of 101 indicates "not in desired state". Any other exit code indicates
+        a failure running validate. Structure is
+        documented below.
+        """
+        enforce: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgsDict']]
+        """
+        What to run to bring this resource into the desired
+        state. An exit code of 100 indicates "success", any other exit code
+        indicates a failure running enforce. Structure is
+        documented below.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs:
     def __init__(__self__, *,
@@ -2593,6 +3529,39 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs:
     def enforce(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs']]):
         pulumi.set(self, "enforce", value)
 
+
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgsDict(TypedDict):
+        interpreter: pulumi.Input[str]
+        """
+        The script interpreter to use. Possible values
+        are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
+        """
+        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Optional arguments to pass to the source during
+        execution.
+        """
+        file: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgsDict']]
+        """
+        A remote or local file. Structure is
+        documented below.
+        """
+        output_file_path: NotRequired[pulumi.Input[str]]
+        """
+        Only recorded for enforce Exec. Path to an
+        output file (that is created by this Exec) whose content will be recorded in
+        OSPolicyResourceCompliance after a successful run. Absence or failure to
+        read this file will result in this ExecResource being non-compliant. Output
+        file size is limited to 100K bytes.
+        """
+        script: NotRequired[pulumi.Input[str]]
+        """
+        An inline script. The size of the script is limited to
+        1024 characters.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs:
@@ -2696,6 +3665,31 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs:
         pulumi.set(self, "script", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgsDict(TypedDict):
+        allow_insecure: NotRequired[pulumi.Input[bool]]
+        """
+        Defaults to false. When false, files are
+        subject to validations based on the file type: Remote: A checksum must be
+        specified. Cloud Storage: An object generation number must be specified.
+        """
+        gcs: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgsDict']]
+        """
+        A Cloud Storage object. Structure is
+        documented below.
+        """
+        local_path: NotRequired[pulumi.Input[str]]
+        """
+        A local path within the VM to use.
+        """
+        remote: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgsDict']]
+        """
+        A generic remote file. Structure is
+        documented below.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs:
     def __init__(__self__, *,
@@ -2775,6 +3769,23 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs:
         pulumi.set(self, "remote", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        Bucket of the Cloud Storage object.
+        """
+        object: pulumi.Input[str]
+        """
+        Name of the Cloud Storage object.
+        """
+        generation: NotRequired[pulumi.Input[int]]
+        """
+        Generation number of the Cloud Storage object.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs:
     def __init__(__self__, *,
@@ -2828,6 +3839,20 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs:
         pulumi.set(self, "generation", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgsDict(TypedDict):
+        uri: pulumi.Input[str]
+        """
+        URI from which to fetch the object. It should contain
+        both the protocol and path following the format `{protocol}://{location}`.
+        """
+        sha256_checksum: NotRequired[pulumi.Input[str]]
+        """
+        SHA256 checksum of the remote file.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs:
     def __init__(__self__, *,
@@ -2867,6 +3892,39 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs:
     def sha256_checksum(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sha256_checksum", value)
 
+
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgsDict(TypedDict):
+        interpreter: pulumi.Input[str]
+        """
+        The script interpreter to use. Possible values
+        are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
+        """
+        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Optional arguments to pass to the source during
+        execution.
+        """
+        file: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgsDict']]
+        """
+        A remote or local file. Structure is
+        documented below.
+        """
+        output_file_path: NotRequired[pulumi.Input[str]]
+        """
+        Only recorded for enforce Exec. Path to an
+        output file (that is created by this Exec) whose content will be recorded in
+        OSPolicyResourceCompliance after a successful run. Absence or failure to
+        read this file will result in this ExecResource being non-compliant. Output
+        file size is limited to 100K bytes.
+        """
+        script: NotRequired[pulumi.Input[str]]
+        """
+        An inline script. The size of the script is limited to
+        1024 characters.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs:
@@ -2970,6 +4028,31 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs:
         pulumi.set(self, "script", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgsDict(TypedDict):
+        allow_insecure: NotRequired[pulumi.Input[bool]]
+        """
+        Defaults to false. When false, files are
+        subject to validations based on the file type: Remote: A checksum must be
+        specified. Cloud Storage: An object generation number must be specified.
+        """
+        gcs: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgsDict']]
+        """
+        A Cloud Storage object. Structure is
+        documented below.
+        """
+        local_path: NotRequired[pulumi.Input[str]]
+        """
+        A local path within the VM to use.
+        """
+        remote: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgsDict']]
+        """
+        A generic remote file. Structure is
+        documented below.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs:
     def __init__(__self__, *,
@@ -3049,6 +4132,23 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs:
         pulumi.set(self, "remote", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        Bucket of the Cloud Storage object.
+        """
+        object: pulumi.Input[str]
+        """
+        Name of the Cloud Storage object.
+        """
+        generation: NotRequired[pulumi.Input[int]]
+        """
+        Generation number of the Cloud Storage object.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs:
     def __init__(__self__, *,
@@ -3102,6 +4202,20 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs:
         pulumi.set(self, "generation", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgsDict(TypedDict):
+        uri: pulumi.Input[str]
+        """
+        URI from which to fetch the object. It should contain
+        both the protocol and path following the format `{protocol}://{location}`.
+        """
+        sha256_checksum: NotRequired[pulumi.Input[str]]
+        """
+        SHA256 checksum of the remote file.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs:
     def __init__(__self__, *,
@@ -3141,6 +4255,41 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs:
     def sha256_checksum(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sha256_checksum", value)
 
+
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        The absolute path of the file within the VM.
+        """
+        state: pulumi.Input[str]
+        """
+        Desired state of the file. Possible values are:
+        `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
+        """
+        content: NotRequired[pulumi.Input[str]]
+        """
+        A a file with this content. The size of the content
+        is limited to 1024 characters.
+        """
+        file: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgsDict']]
+        """
+        A remote or local source. Structure is
+        documented below.
+        """
+        permissions: NotRequired[pulumi.Input[str]]
+        """
+        Consists of three octal digits which represent, in
+        order, the permissions of the owner, group, and other users for the file
+        (similarly to the numeric mode used in the linux chmod utility). Each digit
+        represents a three bit number with the 4 bit corresponding to the read
+        permissions, the 2 bit corresponds to the write bit, and the one bit
+        corresponds to the execute permission. Default behavior is 755. Below are
+        some examples of permissions and their associated values: read, write, and
+        execute: 7 read and execute: 5 read and write: 6 read only: 4
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
@@ -3247,6 +4396,31 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
         pulumi.set(self, "permissions", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgsDict(TypedDict):
+        allow_insecure: NotRequired[pulumi.Input[bool]]
+        """
+        Defaults to false. When false, files are
+        subject to validations based on the file type: Remote: A checksum must be
+        specified. Cloud Storage: An object generation number must be specified.
+        """
+        gcs: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgsDict']]
+        """
+        A Cloud Storage object. Structure is
+        documented below.
+        """
+        local_path: NotRequired[pulumi.Input[str]]
+        """
+        A local path within the VM to use.
+        """
+        remote: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgsDict']]
+        """
+        A generic remote file. Structure is
+        documented below.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs:
     def __init__(__self__, *,
@@ -3326,6 +4500,23 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs:
         pulumi.set(self, "remote", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        Bucket of the Cloud Storage object.
+        """
+        object: pulumi.Input[str]
+        """
+        Name of the Cloud Storage object.
+        """
+        generation: NotRequired[pulumi.Input[int]]
+        """
+        Generation number of the Cloud Storage object.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs:
     def __init__(__self__, *,
@@ -3379,6 +4570,20 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs:
         pulumi.set(self, "generation", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgsDict(TypedDict):
+        uri: pulumi.Input[str]
+        """
+        URI from which to fetch the object. It should contain
+        both the protocol and path following the format `{protocol}://{location}`.
+        """
+        sha256_checksum: NotRequired[pulumi.Input[str]]
+        """
+        SHA256 checksum of the remote file.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs:
     def __init__(__self__, *,
@@ -3418,6 +4623,52 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs:
     def sha256_checksum(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sha256_checksum", value)
 
+
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgsDict(TypedDict):
+        desired_state: pulumi.Input[str]
+        """
+        The desired state the agent should maintain for
+        this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
+        `REMOVED`.
+        """
+        apt: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgsDict']]
+        """
+        A package managed by Apt. Structure is
+        documented below.
+        """
+        deb: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgsDict']]
+        """
+        A deb package file. Structure is
+        documented below.
+        """
+        googet: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgsDict']]
+        """
+        A package managed by GooGet. Structure is
+        documented below.
+        """
+        msi: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgsDict']]
+        """
+        An MSI package. Structure is
+        documented below.
+        """
+        rpm: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgsDict']]
+        """
+        An rpm package file. Structure is
+        documented below.
+        """
+        yum: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgsDict']]
+        """
+        A package managed by YUM. Structure is
+        documented below.
+        """
+        zypper: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgsDict']]
+        """
+        A package managed by Zypper. Structure is
+        documented below.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
@@ -3571,6 +4822,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
         pulumi.set(self, "zypper", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Package name.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs:
     def __init__(__self__, *,
@@ -3592,6 +4852,22 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgsDict(TypedDict):
+        source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgsDict']
+        """
+        A deb package. Structure is
+        documented below.
+        """
+        pull_deps: NotRequired[pulumi.Input[bool]]
+        """
+        Whether dependencies should also be installed. -
+        install when false: `dpkg -i package` - install when true: `apt-get update
+        && apt-get -y install package.deb`
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs:
@@ -3636,6 +4912,31 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs:
     def pull_deps(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "pull_deps", value)
 
+
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgsDict(TypedDict):
+        allow_insecure: NotRequired[pulumi.Input[bool]]
+        """
+        Defaults to false. When false, files are
+        subject to validations based on the file type: Remote: A checksum must be
+        specified. Cloud Storage: An object generation number must be specified.
+        """
+        gcs: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgsDict']]
+        """
+        A Cloud Storage object. Structure is
+        documented below.
+        """
+        local_path: NotRequired[pulumi.Input[str]]
+        """
+        A local path within the VM to use.
+        """
+        remote: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgsDict']]
+        """
+        A generic remote file. Structure is
+        documented below.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs:
@@ -3716,6 +5017,23 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs:
         pulumi.set(self, "remote", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        Bucket of the Cloud Storage object.
+        """
+        object: pulumi.Input[str]
+        """
+        Name of the Cloud Storage object.
+        """
+        generation: NotRequired[pulumi.Input[int]]
+        """
+        Generation number of the Cloud Storage object.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs:
     def __init__(__self__, *,
@@ -3769,6 +5087,20 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs:
         pulumi.set(self, "generation", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgsDict(TypedDict):
+        uri: pulumi.Input[str]
+        """
+        URI from which to fetch the object. It should contain
+        both the protocol and path following the format `{protocol}://{location}`.
+        """
+        sha256_checksum: NotRequired[pulumi.Input[str]]
+        """
+        SHA256 checksum of the remote file.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs:
     def __init__(__self__, *,
@@ -3809,6 +5141,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs:
         pulumi.set(self, "sha256_checksum", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Package name.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs:
     def __init__(__self__, *,
@@ -3830,6 +5171,22 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgsDict(TypedDict):
+        source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgsDict']
+        """
+        The MSI package. Structure is
+        documented below.
+        """
+        properties: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Additional properties to use during installation.
+        This should be in the format of Property=Setting. Appended to the defaults
+        of `ACTION=INSTALL REBOOT=ReallySuppress`.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs:
@@ -3874,6 +5231,31 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs:
     def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "properties", value)
 
+
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgsDict(TypedDict):
+        allow_insecure: NotRequired[pulumi.Input[bool]]
+        """
+        Defaults to false. When false, files are
+        subject to validations based on the file type: Remote: A checksum must be
+        specified. Cloud Storage: An object generation number must be specified.
+        """
+        gcs: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgsDict']]
+        """
+        A Cloud Storage object. Structure is
+        documented below.
+        """
+        local_path: NotRequired[pulumi.Input[str]]
+        """
+        A local path within the VM to use.
+        """
+        remote: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgsDict']]
+        """
+        A generic remote file. Structure is
+        documented below.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs:
@@ -3954,6 +5336,23 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs:
         pulumi.set(self, "remote", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        Bucket of the Cloud Storage object.
+        """
+        object: pulumi.Input[str]
+        """
+        Name of the Cloud Storage object.
+        """
+        generation: NotRequired[pulumi.Input[int]]
+        """
+        Generation number of the Cloud Storage object.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs:
     def __init__(__self__, *,
@@ -4007,6 +5406,20 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs:
         pulumi.set(self, "generation", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgsDict(TypedDict):
+        uri: pulumi.Input[str]
+        """
+        URI from which to fetch the object. It should contain
+        both the protocol and path following the format `{protocol}://{location}`.
+        """
+        sha256_checksum: NotRequired[pulumi.Input[str]]
+        """
+        SHA256 checksum of the remote file.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs:
     def __init__(__self__, *,
@@ -4046,6 +5459,22 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs:
     def sha256_checksum(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sha256_checksum", value)
 
+
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgsDict(TypedDict):
+        source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgsDict']
+        """
+        An rpm package. Structure is
+        documented below.
+        """
+        pull_deps: NotRequired[pulumi.Input[bool]]
+        """
+        Whether dependencies should also be installed. -
+        install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
+        true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs:
@@ -4090,6 +5519,31 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs:
     def pull_deps(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "pull_deps", value)
 
+
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgsDict(TypedDict):
+        allow_insecure: NotRequired[pulumi.Input[bool]]
+        """
+        Defaults to false. When false, files are
+        subject to validations based on the file type: Remote: A checksum must be
+        specified. Cloud Storage: An object generation number must be specified.
+        """
+        gcs: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgsDict']]
+        """
+        A Cloud Storage object. Structure is
+        documented below.
+        """
+        local_path: NotRequired[pulumi.Input[str]]
+        """
+        A local path within the VM to use.
+        """
+        remote: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgsDict']]
+        """
+        A generic remote file. Structure is
+        documented below.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs:
@@ -4170,6 +5624,23 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs:
         pulumi.set(self, "remote", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        Bucket of the Cloud Storage object.
+        """
+        object: pulumi.Input[str]
+        """
+        Name of the Cloud Storage object.
+        """
+        generation: NotRequired[pulumi.Input[int]]
+        """
+        Generation number of the Cloud Storage object.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs:
     def __init__(__self__, *,
@@ -4223,6 +5694,20 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs:
         pulumi.set(self, "generation", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgsDict(TypedDict):
+        uri: pulumi.Input[str]
+        """
+        URI from which to fetch the object. It should contain
+        both the protocol and path following the format `{protocol}://{location}`.
+        """
+        sha256_checksum: NotRequired[pulumi.Input[str]]
+        """
+        SHA256 checksum of the remote file.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs:
     def __init__(__self__, *,
@@ -4263,6 +5748,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs:
         pulumi.set(self, "sha256_checksum", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Package name.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs:
     def __init__(__self__, *,
@@ -4285,6 +5779,15 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Package name.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs:
     def __init__(__self__, *,
@@ -4306,6 +5809,31 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs:
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgsDict(TypedDict):
+        apt: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgsDict']]
+        """
+        An Apt Repository. Structure is
+        documented below.
+        """
+        goo: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgsDict']]
+        """
+        A Goo Repository. Structure is
+        documented below.
+        """
+        yum: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgsDict']]
+        """
+        A Yum Repository. Structure is
+        documented below.
+        """
+        zypper: NotRequired[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgsDict']]
+        """
+        A Zypper Repository. Structure is
+        documented below.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs:
@@ -4385,6 +5913,34 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs:
     def zypper(self, value: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs']]):
         pulumi.set(self, "zypper", value)
 
+
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgsDict(TypedDict):
+        archive_type: pulumi.Input[str]
+        """
+        Type of archive files in this repository.
+        Possible values are: `ARCHIVE_TYPE_UNSPECIFIED`, `DEB`, `DEB_SRC`.
+        """
+        components: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of components for this repository. Must
+        contain at least one item.
+        """
+        distribution: pulumi.Input[str]
+        """
+        Distribution of this repository.
+        """
+        uri: pulumi.Input[str]
+        """
+        URI for this repository.
+        """
+        gpg_key: NotRequired[pulumi.Input[str]]
+        """
+        URI of the key file for this repository. The agent
+        maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs:
@@ -4475,6 +6031,19 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs:
         pulumi.set(self, "gpg_key", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the repository.
+        """
+        url: pulumi.Input[str]
+        """
+        The url of the repository.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs:
     def __init__(__self__, *,
@@ -4511,6 +6080,30 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs:
     def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
 
+
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgsDict(TypedDict):
+        base_url: pulumi.Input[str]
+        """
+        The location of the repository directory.
+        """
+        id: pulumi.Input[str]
+        """
+        A one word, unique name for this repository. This is the
+        `repo id` in the yum config file and also the `display_name` if
+        `display_name` is omitted. This id is also used as the unique identifier
+        when checking for resource conflicts.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        The display name of the repository.
+        """
+        gpg_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        URIs of GPG keys.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs:
@@ -4587,6 +6180,30 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs:
         pulumi.set(self, "gpg_keys", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgsDict(TypedDict):
+        base_url: pulumi.Input[str]
+        """
+        The location of the repository directory.
+        """
+        id: pulumi.Input[str]
+        """
+        A one word, unique name for this repository. This is the
+        `repo id` in the zypper config file and also the `display_name` if
+        `display_name` is omitted. This id is also used as the unique identifier
+        when checking for GuestPolicy conflicts.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        The display name of the repository.
+        """
+        gpg_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        URIs of GPG keys.
+        """
+elif False:
+    OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs:
     def __init__(__self__, *,
@@ -4662,6 +6279,25 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs:
         pulumi.set(self, "gpg_keys", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentRolloutArgsDict(TypedDict):
+        disruption_budget: pulumi.Input['OsPolicyAssignmentRolloutDisruptionBudgetArgsDict']
+        """
+        The maximum number (or percentage) of VMs
+        per zone to disrupt at any given moment. Structure is
+        documented below.
+        """
+        min_wait_duration: pulumi.Input[str]
+        """
+        This determines the minimum duration of
+        time to wait after the configuration changes are applied through the current
+        rollout. A VM continues to count towards the `disruption_budget` at least
+        until this duration of time has passed after configuration changes are
+        applied.
+        """
+elif False:
+    OsPolicyAssignmentRolloutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentRolloutArgs:
     def __init__(__self__, *,
@@ -4711,6 +6347,22 @@ class OsPolicyAssignmentRolloutArgs:
         pulumi.set(self, "min_wait_duration", value)
 
 
+if not MYPY:
+    class OsPolicyAssignmentRolloutDisruptionBudgetArgsDict(TypedDict):
+        fixed: NotRequired[pulumi.Input[int]]
+        """
+        Specifies a fixed value.
+        """
+        percent: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the relative value defined as a percentage,
+        which will be multiplied by a reference value.
+
+        --------------------------------------------------------------------------------
+        """
+elif False:
+    OsPolicyAssignmentRolloutDisruptionBudgetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OsPolicyAssignmentRolloutDisruptionBudgetArgs:
     def __init__(__self__, *,
@@ -4755,6 +6407,35 @@ class OsPolicyAssignmentRolloutDisruptionBudgetArgs:
     def percent(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "percent", value)
 
+
+if not MYPY:
+    class PatchDeploymentInstanceFilterArgsDict(TypedDict):
+        all: NotRequired[pulumi.Input[bool]]
+        """
+        Target all VM instances in the project. If true, no other criteria is permitted.
+        """
+        group_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgsDict']]]]
+        """
+        Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
+        Structure is documented below.
+        """
+        instance_name_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
+        VMs when targeting configs, for example prefix="prod-".
+        """
+        instances: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Targets any of the VM instances specified. Instances are specified by their URI in the `form zones/{{zone}}/instances/{{instance_name}}`,
+        `projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`, or
+        `https://www.googleapis.com/compute/v1/projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`
+        """
+        zones: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
+        """
+elif False:
+    PatchDeploymentInstanceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PatchDeploymentInstanceFilterArgs:
@@ -4851,6 +6532,17 @@ class PatchDeploymentInstanceFilterArgs:
         pulumi.set(self, "zones", value)
 
 
+if not MYPY:
+    class PatchDeploymentInstanceFilterGroupLabelArgsDict(TypedDict):
+        labels: pulumi.Input[Mapping[str, pulumi.Input[str]]]
+        """
+        Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
+
+        - - -
+        """
+elif False:
+    PatchDeploymentInstanceFilterGroupLabelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PatchDeploymentInstanceFilterGroupLabelArgs:
     def __init__(__self__, *,
@@ -4877,6 +6569,16 @@ class PatchDeploymentInstanceFilterGroupLabelArgs:
         pulumi.set(self, "labels", value)
 
 
+if not MYPY:
+    class PatchDeploymentOneTimeScheduleArgsDict(TypedDict):
+        execute_time: pulumi.Input[str]
+        """
+        The desired patch job execution time. A timestamp in RFC3339 UTC "Zulu" format,
+        accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        """
+elif False:
+    PatchDeploymentOneTimeScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PatchDeploymentOneTimeScheduleArgs:
     def __init__(__self__, *,
@@ -4900,6 +6602,55 @@ class PatchDeploymentOneTimeScheduleArgs:
     def execute_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "execute_time", value)
 
+
+if not MYPY:
+    class PatchDeploymentPatchConfigArgsDict(TypedDict):
+        apt: NotRequired[pulumi.Input['PatchDeploymentPatchConfigAptArgsDict']]
+        """
+        Apt update settings. Use this setting to override the default apt patch rules.
+        Structure is documented below.
+        """
+        goo: NotRequired[pulumi.Input['PatchDeploymentPatchConfigGooArgsDict']]
+        """
+        goo update settings. Use this setting to override the default goo patch rules.
+        Structure is documented below.
+        """
+        mig_instances_allowed: NotRequired[pulumi.Input[bool]]
+        """
+        Allows the patch job to run on Managed instance groups (MIGs).
+        """
+        post_step: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPostStepArgsDict']]
+        """
+        The ExecStep to run after the patch update.
+        Structure is documented below.
+        """
+        pre_step: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPreStepArgsDict']]
+        """
+        The ExecStep to run before the patch update.
+        Structure is documented below.
+        """
+        reboot_config: NotRequired[pulumi.Input[str]]
+        """
+        Post-patch reboot settings.
+        Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
+        """
+        windows_update: NotRequired[pulumi.Input['PatchDeploymentPatchConfigWindowsUpdateArgsDict']]
+        """
+        Windows update settings. Use this setting to override the default Windows patch rules.
+        Structure is documented below.
+        """
+        yum: NotRequired[pulumi.Input['PatchDeploymentPatchConfigYumArgsDict']]
+        """
+        Yum update settings. Use this setting to override the default yum patch rules.
+        Structure is documented below.
+        """
+        zypper: NotRequired[pulumi.Input['PatchDeploymentPatchConfigZypperArgsDict']]
+        """
+        zypper update settings. Use this setting to override the default zypper patch rules.
+        Structure is documented below.
+        """
+elif False:
+    PatchDeploymentPatchConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PatchDeploymentPatchConfigArgs:
@@ -5068,6 +6819,26 @@ class PatchDeploymentPatchConfigArgs:
         pulumi.set(self, "zypper", value)
 
 
+if not MYPY:
+    class PatchDeploymentPatchConfigAptArgsDict(TypedDict):
+        excludes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of packages to exclude from update. These packages will be excluded.
+        """
+        exclusive_packages: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An exclusive list of packages to be updated. These are the only packages that will be updated.
+        If these packages are not installed, they will be ignored. This field cannot be specified with
+        any other patch configuration fields.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
+        Possible values are: `DIST`, `UPGRADE`.
+        """
+elif False:
+    PatchDeploymentPatchConfigAptArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PatchDeploymentPatchConfigAptArgs:
     def __init__(__self__, *,
@@ -5129,6 +6900,15 @@ class PatchDeploymentPatchConfigAptArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class PatchDeploymentPatchConfigGooArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        goo update settings. Use this setting to override the default goo patch rules.
+        """
+elif False:
+    PatchDeploymentPatchConfigGooArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PatchDeploymentPatchConfigGooArgs:
     def __init__(__self__, *,
@@ -5150,6 +6930,21 @@ class PatchDeploymentPatchConfigGooArgs:
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class PatchDeploymentPatchConfigPostStepArgsDict(TypedDict):
+        linux_exec_step_config: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgsDict']]
+        """
+        The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+        Structure is documented below.
+        """
+        windows_exec_step_config: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgsDict']]
+        """
+        The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+        Structure is documented below.
+        """
+elif False:
+    PatchDeploymentPatchConfigPostStepArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PatchDeploymentPatchConfigPostStepArgs:
@@ -5193,6 +6988,30 @@ class PatchDeploymentPatchConfigPostStepArgs:
     def windows_exec_step_config(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs']]):
         pulumi.set(self, "windows_exec_step_config", value)
 
+
+if not MYPY:
+    class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgsDict(TypedDict):
+        allowed_success_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+        """
+        gcs_object: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgsDict']]
+        """
+        A Cloud Storage object containing the executable.
+        Structure is documented below.
+        """
+        interpreter: NotRequired[pulumi.Input[str]]
+        """
+        The script interpreter to use to run the script. If no interpreter is specified the script will
+        be executed directly, which will likely only succeed for scripts with shebang lines.
+        Possible values are: `SHELL`, `POWERSHELL`.
+        """
+        local_path: NotRequired[pulumi.Input[str]]
+        """
+        An absolute path to the executable on the VM.
+        """
+elif False:
+    PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs:
@@ -5271,6 +7090,23 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs:
         pulumi.set(self, "local_path", value)
 
 
+if not MYPY:
+    class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        Bucket of the Cloud Storage object.
+        """
+        generation_number: pulumi.Input[str]
+        """
+        Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+        """
+        object: pulumi.Input[str]
+        """
+        Name of the Cloud Storage object.
+        """
+elif False:
+    PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs:
     def __init__(__self__, *,
@@ -5322,6 +7158,30 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs:
     def object(self, value: pulumi.Input[str]):
         pulumi.set(self, "object", value)
 
+
+if not MYPY:
+    class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgsDict(TypedDict):
+        allowed_success_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+        """
+        gcs_object: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgsDict']]
+        """
+        A Cloud Storage object containing the executable.
+        Structure is documented below.
+        """
+        interpreter: NotRequired[pulumi.Input[str]]
+        """
+        The script interpreter to use to run the script. If no interpreter is specified the script will
+        be executed directly, which will likely only succeed for scripts with shebang lines.
+        Possible values are: `SHELL`, `POWERSHELL`.
+        """
+        local_path: NotRequired[pulumi.Input[str]]
+        """
+        An absolute path to the executable on the VM.
+        """
+elif False:
+    PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs:
@@ -5400,6 +7260,23 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs:
         pulumi.set(self, "local_path", value)
 
 
+if not MYPY:
+    class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        Bucket of the Cloud Storage object.
+        """
+        generation_number: pulumi.Input[str]
+        """
+        Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+        """
+        object: pulumi.Input[str]
+        """
+        Name of the Cloud Storage object.
+        """
+elif False:
+    PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs:
     def __init__(__self__, *,
@@ -5452,6 +7329,21 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs:
         pulumi.set(self, "object", value)
 
 
+if not MYPY:
+    class PatchDeploymentPatchConfigPreStepArgsDict(TypedDict):
+        linux_exec_step_config: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgsDict']]
+        """
+        The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+        Structure is documented below.
+        """
+        windows_exec_step_config: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgsDict']]
+        """
+        The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+        Structure is documented below.
+        """
+elif False:
+    PatchDeploymentPatchConfigPreStepArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PatchDeploymentPatchConfigPreStepArgs:
     def __init__(__self__, *,
@@ -5494,6 +7386,30 @@ class PatchDeploymentPatchConfigPreStepArgs:
     def windows_exec_step_config(self, value: Optional[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs']]):
         pulumi.set(self, "windows_exec_step_config", value)
 
+
+if not MYPY:
+    class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgsDict(TypedDict):
+        allowed_success_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+        """
+        gcs_object: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgsDict']]
+        """
+        A Cloud Storage object containing the executable.
+        Structure is documented below.
+        """
+        interpreter: NotRequired[pulumi.Input[str]]
+        """
+        The script interpreter to use to run the script. If no interpreter is specified the script will
+        be executed directly, which will likely only succeed for scripts with shebang lines.
+        Possible values are: `SHELL`, `POWERSHELL`.
+        """
+        local_path: NotRequired[pulumi.Input[str]]
+        """
+        An absolute path to the executable on the VM.
+        """
+elif False:
+    PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs:
@@ -5572,6 +7488,23 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs:
         pulumi.set(self, "local_path", value)
 
 
+if not MYPY:
+    class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        Bucket of the Cloud Storage object.
+        """
+        generation_number: pulumi.Input[str]
+        """
+        Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+        """
+        object: pulumi.Input[str]
+        """
+        Name of the Cloud Storage object.
+        """
+elif False:
+    PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs:
     def __init__(__self__, *,
@@ -5623,6 +7556,30 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs:
     def object(self, value: pulumi.Input[str]):
         pulumi.set(self, "object", value)
 
+
+if not MYPY:
+    class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgsDict(TypedDict):
+        allowed_success_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+        """
+        gcs_object: NotRequired[pulumi.Input['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgsDict']]
+        """
+        A Cloud Storage object containing the executable.
+        Structure is documented below.
+        """
+        interpreter: NotRequired[pulumi.Input[str]]
+        """
+        The script interpreter to use to run the script. If no interpreter is specified the script will
+        be executed directly, which will likely only succeed for scripts with shebang lines.
+        Possible values are: `SHELL`, `POWERSHELL`.
+        """
+        local_path: NotRequired[pulumi.Input[str]]
+        """
+        An absolute path to the executable on the VM.
+        """
+elif False:
+    PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs:
@@ -5701,6 +7658,23 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs:
         pulumi.set(self, "local_path", value)
 
 
+if not MYPY:
+    class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        Bucket of the Cloud Storage object.
+        """
+        generation_number: pulumi.Input[str]
+        """
+        Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+        """
+        object: pulumi.Input[str]
+        """
+        Name of the Cloud Storage object.
+        """
+elif False:
+    PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs:
     def __init__(__self__, *,
@@ -5752,6 +7726,25 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs:
     def object(self, value: pulumi.Input[str]):
         pulumi.set(self, "object", value)
 
+
+if not MYPY:
+    class PatchDeploymentPatchConfigWindowsUpdateArgsDict(TypedDict):
+        classifications: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Only apply updates of these windows update classifications. If empty, all updates are applied.
+        Each value may be one of: `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, `UPDATE`.
+        """
+        excludes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of KBs to exclude from update.
+        """
+        exclusive_patches: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An exclusive list of kbs to be updated. These are the only patches that will be updated.
+        This field must not be used with other patch configurations.
+        """
+elif False:
+    PatchDeploymentPatchConfigWindowsUpdateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PatchDeploymentPatchConfigWindowsUpdateArgs:
@@ -5811,6 +7804,29 @@ class PatchDeploymentPatchConfigWindowsUpdateArgs:
     def exclusive_patches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "exclusive_patches", value)
 
+
+if not MYPY:
+    class PatchDeploymentPatchConfigYumArgsDict(TypedDict):
+        excludes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of packages to exclude from update. These packages will be excluded.
+        """
+        exclusive_packages: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An exclusive list of packages to be updated. These are the only packages that will be updated.
+        If these packages are not installed, they will be ignored. This field cannot be specified with
+        any other patch configuration fields.
+        """
+        minimal: NotRequired[pulumi.Input[bool]]
+        """
+        Will cause patch to run yum update-minimal instead.
+        """
+        security: NotRequired[pulumi.Input[bool]]
+        """
+        Adds the --security flag to yum update. Not supported on all platforms.
+        """
+elif False:
+    PatchDeploymentPatchConfigYumArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PatchDeploymentPatchConfigYumArgs:
@@ -5886,6 +7902,36 @@ class PatchDeploymentPatchConfigYumArgs:
     def security(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "security", value)
 
+
+if not MYPY:
+    class PatchDeploymentPatchConfigZypperArgsDict(TypedDict):
+        categories: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Install only patches with these categories. Common categories include security, recommended, and feature.
+        """
+        excludes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of packages to exclude from update.
+        """
+        exclusive_patches: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command.
+        This field must not be used with any other patch configuration fields.
+        """
+        severities: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Install only patches with these severities. Common severities include critical, important, moderate, and low.
+        """
+        with_optional: NotRequired[pulumi.Input[bool]]
+        """
+        Adds the --with-optional flag to zypper patch.
+        """
+        with_update: NotRequired[pulumi.Input[bool]]
+        """
+        Adds the --with-update flag, to zypper patch.
+        """
+elif False:
+    PatchDeploymentPatchConfigZypperArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PatchDeploymentPatchConfigZypperArgs:
@@ -5991,6 +8037,54 @@ class PatchDeploymentPatchConfigZypperArgs:
     def with_update(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "with_update", value)
 
+
+if not MYPY:
+    class PatchDeploymentRecurringScheduleArgsDict(TypedDict):
+        time_of_day: pulumi.Input['PatchDeploymentRecurringScheduleTimeOfDayArgsDict']
+        """
+        Time of the day to run a recurring deployment.
+        Structure is documented below.
+        """
+        time_zone: pulumi.Input['PatchDeploymentRecurringScheduleTimeZoneArgsDict']
+        """
+        Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
+        determined by the chosen time zone.
+        Structure is documented below.
+        """
+        end_time: NotRequired[pulumi.Input[str]]
+        """
+        The end time at which a recurring patch deployment schedule is no longer active.
+        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        """
+        last_execute_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The time the last patch job ran successfully.
+        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        """
+        monthly: NotRequired[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyArgsDict']]
+        """
+        Schedule with monthly executions.
+        Structure is documented below.
+        """
+        next_execute_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The time the next patch job is scheduled to run.
+        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        The time that the recurring schedule becomes effective. Defaults to createTime of the patch deployment.
+        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        """
+        weekly: NotRequired[pulumi.Input['PatchDeploymentRecurringScheduleWeeklyArgsDict']]
+        """
+        Schedule with weekly executions.
+        Structure is documented below.
+        """
+elif False:
+    PatchDeploymentRecurringScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PatchDeploymentRecurringScheduleArgs:
@@ -6147,6 +8241,22 @@ class PatchDeploymentRecurringScheduleArgs:
         pulumi.set(self, "weekly", value)
 
 
+if not MYPY:
+    class PatchDeploymentRecurringScheduleMonthlyArgsDict(TypedDict):
+        month_day: NotRequired[pulumi.Input[int]]
+        """
+        One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
+        Months without the target day will be skipped. For example, a schedule to run "every month on the 31st"
+        will not run in February, April, June, etc.
+        """
+        week_day_of_month: NotRequired[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgsDict']]
+        """
+        Week day in a month.
+        Structure is documented below.
+        """
+elif False:
+    PatchDeploymentRecurringScheduleMonthlyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PatchDeploymentRecurringScheduleMonthlyArgs:
     def __init__(__self__, *,
@@ -6191,6 +8301,24 @@ class PatchDeploymentRecurringScheduleMonthlyArgs:
     def week_day_of_month(self, value: Optional[pulumi.Input['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs']]):
         pulumi.set(self, "week_day_of_month", value)
 
+
+if not MYPY:
+    class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgsDict(TypedDict):
+        day_of_week: pulumi.Input[str]
+        """
+        A day of the week.
+        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        """
+        week_ordinal: pulumi.Input[int]
+        """
+        Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+        """
+        day_offset: NotRequired[pulumi.Input[int]]
+        """
+        Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
+        """
+elif False:
+    PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs:
@@ -6246,6 +8374,28 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs:
     def day_offset(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "day_offset", value)
 
+
+if not MYPY:
+    class PatchDeploymentRecurringScheduleTimeOfDayArgsDict(TypedDict):
+        hours: NotRequired[pulumi.Input[int]]
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        minutes: NotRequired[pulumi.Input[int]]
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
+        seconds: NotRequired[pulumi.Input[int]]
+        """
+        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+        """
+elif False:
+    PatchDeploymentRecurringScheduleTimeOfDayArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PatchDeploymentRecurringScheduleTimeOfDayArgs:
@@ -6320,6 +8470,19 @@ class PatchDeploymentRecurringScheduleTimeOfDayArgs:
         pulumi.set(self, "seconds", value)
 
 
+if not MYPY:
+    class PatchDeploymentRecurringScheduleTimeZoneArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        IANA Time Zone Database time zone, e.g. "America/New_York".
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        IANA Time Zone Database version number, e.g. "2019a".
+        """
+elif False:
+    PatchDeploymentRecurringScheduleTimeZoneArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PatchDeploymentRecurringScheduleTimeZoneArgs:
     def __init__(__self__, *,
@@ -6358,6 +8521,16 @@ class PatchDeploymentRecurringScheduleTimeZoneArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class PatchDeploymentRecurringScheduleWeeklyArgsDict(TypedDict):
+        day_of_week: pulumi.Input[str]
+        """
+        IANA Time Zone Database time zone, e.g. "America/New_York".
+        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        """
+elif False:
+    PatchDeploymentRecurringScheduleWeeklyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PatchDeploymentRecurringScheduleWeeklyArgs:
     def __init__(__self__, *,
@@ -6381,6 +8554,25 @@ class PatchDeploymentRecurringScheduleWeeklyArgs:
     def day_of_week(self, value: pulumi.Input[str]):
         pulumi.set(self, "day_of_week", value)
 
+
+if not MYPY:
+    class PatchDeploymentRolloutArgsDict(TypedDict):
+        disruption_budget: pulumi.Input['PatchDeploymentRolloutDisruptionBudgetArgsDict']
+        """
+        The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
+        During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps.
+        A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget.
+        For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone.
+        For example, if the disruption budget has a fixed value of 10, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
+        Structure is documented below.
+        """
+        mode: pulumi.Input[str]
+        """
+        Mode of the patch rollout.
+        Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
+        """
+elif False:
+    PatchDeploymentRolloutArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PatchDeploymentRolloutArgs:
@@ -6430,6 +8622,19 @@ class PatchDeploymentRolloutArgs:
     def mode(self, value: pulumi.Input[str]):
         pulumi.set(self, "mode", value)
 
+
+if not MYPY:
+    class PatchDeploymentRolloutDisruptionBudgetArgsDict(TypedDict):
+        fixed: NotRequired[pulumi.Input[int]]
+        """
+        Specifies a fixed value.
+        """
+        percentage: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+        """
+elif False:
+    PatchDeploymentRolloutDisruptionBudgetArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PatchDeploymentRolloutDisruptionBudgetArgs:

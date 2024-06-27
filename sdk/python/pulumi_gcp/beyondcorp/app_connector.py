@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -282,7 +287,7 @@ class AppConnector(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 principal_info: Optional[pulumi.Input[pulumi.InputType['AppConnectorPrincipalInfoArgs']]] = None,
+                 principal_info: Optional[pulumi.Input[Union['AppConnectorPrincipalInfoArgs', 'AppConnectorPrincipalInfoArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -311,11 +316,11 @@ class AppConnector(pulumi.CustomResource):
             display_name="Test Service Account")
         app_connector = gcp.beyondcorp.AppConnector("app_connector",
             name="my-app-connector",
-            principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-                service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                    email=service_account.email,
-                ),
-            ))
+            principal_info={
+                "serviceAccount": {
+                    "email": service_account.email,
+                },
+            })
         ```
         ### Beyondcorp App Connector Full
 
@@ -330,11 +335,11 @@ class AppConnector(pulumi.CustomResource):
             name="my-app-connector",
             region="us-central1",
             display_name="some display name",
-            principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-                service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                    email=service_account.email,
-                ),
-            ),
+            principal_info={
+                "serviceAccount": {
+                    "email": service_account.email,
+                },
+            },
             labels={
                 "foo": "bar",
                 "bar": "baz",
@@ -378,7 +383,7 @@ class AppConnector(pulumi.CustomResource):
                labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
                resource.
         :param pulumi.Input[str] name: ID of the AppConnector.
-        :param pulumi.Input[pulumi.InputType['AppConnectorPrincipalInfoArgs']] principal_info: Principal information about the Identity of the AppConnector.
+        :param pulumi.Input[Union['AppConnectorPrincipalInfoArgs', 'AppConnectorPrincipalInfoArgsDict']] principal_info: Principal information about the Identity of the AppConnector.
                Structure is documented below.
         :param pulumi.Input[str] region: The region of the AppConnector.
         """
@@ -413,11 +418,11 @@ class AppConnector(pulumi.CustomResource):
             display_name="Test Service Account")
         app_connector = gcp.beyondcorp.AppConnector("app_connector",
             name="my-app-connector",
-            principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-                service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                    email=service_account.email,
-                ),
-            ))
+            principal_info={
+                "serviceAccount": {
+                    "email": service_account.email,
+                },
+            })
         ```
         ### Beyondcorp App Connector Full
 
@@ -432,11 +437,11 @@ class AppConnector(pulumi.CustomResource):
             name="my-app-connector",
             region="us-central1",
             display_name="some display name",
-            principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
-                service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
-                    email=service_account.email,
-                ),
-            ),
+            principal_info={
+                "serviceAccount": {
+                    "email": service_account.email,
+                },
+            },
             labels={
                 "foo": "bar",
                 "bar": "baz",
@@ -491,7 +496,7 @@ class AppConnector(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 principal_info: Optional[pulumi.Input[pulumi.InputType['AppConnectorPrincipalInfoArgs']]] = None,
+                 principal_info: Optional[pulumi.Input[Union['AppConnectorPrincipalInfoArgs', 'AppConnectorPrincipalInfoArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -530,7 +535,7 @@ class AppConnector(pulumi.CustomResource):
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            principal_info: Optional[pulumi.Input[pulumi.InputType['AppConnectorPrincipalInfoArgs']]] = None,
+            principal_info: Optional[pulumi.Input[Union['AppConnectorPrincipalInfoArgs', 'AppConnectorPrincipalInfoArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -548,7 +553,7 @@ class AppConnector(pulumi.CustomResource):
                labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
                resource.
         :param pulumi.Input[str] name: ID of the AppConnector.
-        :param pulumi.Input[pulumi.InputType['AppConnectorPrincipalInfoArgs']] principal_info: Principal information about the Identity of the AppConnector.
+        :param pulumi.Input[Union['AppConnectorPrincipalInfoArgs', 'AppConnectorPrincipalInfoArgsDict']] principal_info: Principal information about the Identity of the AppConnector.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.

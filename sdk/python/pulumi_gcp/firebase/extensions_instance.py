@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -302,7 +307,7 @@ class ExtensionsInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['ExtensionsInstanceConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -324,10 +329,10 @@ class ExtensionsInstance(pulumi.CustomResource):
         resize_image = gcp.firebase.ExtensionsInstance("resize_image",
             project="my-project-name",
             instance_id="storage-resize-images",
-            config=gcp.firebase.ExtensionsInstanceConfigArgs(
-                extension_ref="firebase/storage-resize-images",
-                extension_version="0.2.2",
-                params={
+            config={
+                "extensionRef": "firebase/storage-resize-images",
+                "extensionVersion": "0.2.2",
+                "params": {
                     "DELETE_ORIGINAL_FILE": "false",
                     "MAKE_PUBLIC": "false",
                     "IMAGE_TYPE": "false",
@@ -337,15 +342,15 @@ class ExtensionsInstance(pulumi.CustomResource):
                     "IMG_SIZES": "200x200",
                     "IMG_BUCKET": images.name,
                 },
-                system_params={
+                "systemParams": {
                     "firebaseextensions.v1beta.function/location": "",
                     "firebaseextensions.v1beta.function/maxInstances": "3000",
                     "firebaseextensions.v1beta.function/minInstances": "0",
                     "firebaseextensions.v1beta.function/vpcConnectorEgressSettings": "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED",
                 },
-                allowed_event_types=["firebase.extensions.storage-resize-images.v1.onCompletion"],
-                eventarc_channel="projects/my-project-name/locations//channels/firebase",
-            ))
+                "allowedEventTypes": ["firebase.extensions.storage-resize-images.v1.onCompletion"],
+                "eventarcChannel": "projects/my-project-name/locations//channels/firebase",
+            })
         ```
 
         ## Import
@@ -374,7 +379,7 @@ class ExtensionsInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ExtensionsInstanceConfigArgs']] config: The current Config of the Extension Instance.
+        :param pulumi.Input[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict']] config: The current Config of the Extension Instance.
                Structure is documented below.
         :param pulumi.Input[str] instance_id: The ID to use for the Extension Instance, which will become the final
                component of the instance's name.
@@ -403,10 +408,10 @@ class ExtensionsInstance(pulumi.CustomResource):
         resize_image = gcp.firebase.ExtensionsInstance("resize_image",
             project="my-project-name",
             instance_id="storage-resize-images",
-            config=gcp.firebase.ExtensionsInstanceConfigArgs(
-                extension_ref="firebase/storage-resize-images",
-                extension_version="0.2.2",
-                params={
+            config={
+                "extensionRef": "firebase/storage-resize-images",
+                "extensionVersion": "0.2.2",
+                "params": {
                     "DELETE_ORIGINAL_FILE": "false",
                     "MAKE_PUBLIC": "false",
                     "IMAGE_TYPE": "false",
@@ -416,15 +421,15 @@ class ExtensionsInstance(pulumi.CustomResource):
                     "IMG_SIZES": "200x200",
                     "IMG_BUCKET": images.name,
                 },
-                system_params={
+                "systemParams": {
                     "firebaseextensions.v1beta.function/location": "",
                     "firebaseextensions.v1beta.function/maxInstances": "3000",
                     "firebaseextensions.v1beta.function/minInstances": "0",
                     "firebaseextensions.v1beta.function/vpcConnectorEgressSettings": "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED",
                 },
-                allowed_event_types=["firebase.extensions.storage-resize-images.v1.onCompletion"],
-                eventarc_channel="projects/my-project-name/locations//channels/firebase",
-            ))
+                "allowedEventTypes": ["firebase.extensions.storage-resize-images.v1.onCompletion"],
+                "eventarcChannel": "projects/my-project-name/locations//channels/firebase",
+            })
         ```
 
         ## Import
@@ -466,7 +471,7 @@ class ExtensionsInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['ExtensionsInstanceConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -505,16 +510,16 @@ class ExtensionsInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['ExtensionsInstanceConfigArgs']]] = None,
+            config: Optional[pulumi.Input[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExtensionsInstanceErrorStatusArgs']]]]] = None,
+            error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExtensionsInstanceErrorStatusArgs', 'ExtensionsInstanceErrorStatusArgsDict']]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             last_operation_name: Optional[pulumi.Input[str]] = None,
             last_operation_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            runtime_datas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExtensionsInstanceRuntimeDataArgs']]]]] = None,
+            runtime_datas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExtensionsInstanceRuntimeDataArgs', 'ExtensionsInstanceRuntimeDataArgsDict']]]]] = None,
             service_account_email: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'ExtensionsInstance':
@@ -525,10 +530,10 @@ class ExtensionsInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ExtensionsInstanceConfigArgs']] config: The current Config of the Extension Instance.
+        :param pulumi.Input[Union['ExtensionsInstanceConfigArgs', 'ExtensionsInstanceConfigArgsDict']] config: The current Config of the Extension Instance.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time at which the Extension Instance was created.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExtensionsInstanceErrorStatusArgs']]]] error_statuses: If this Instance has `state: ERRORED`, the error messages
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExtensionsInstanceErrorStatusArgs', 'ExtensionsInstanceErrorStatusArgsDict']]]] error_statuses: If this Instance has `state: ERRORED`, the error messages
                will be found here.
                Structure is documented below.
         :param pulumi.Input[str] etag: A weak etag that is computed by the server based on other configuration
@@ -540,7 +545,7 @@ class ExtensionsInstance(pulumi.CustomResource):
                Instance
         :param pulumi.Input[str] last_operation_type: The type of the last operation that acted on the Extension Instance.
         :param pulumi.Input[str] name: The fully-qualified resource name of the Extension Instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExtensionsInstanceRuntimeDataArgs']]]] runtime_datas: Data set by the extension instance at runtime.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExtensionsInstanceRuntimeDataArgs', 'ExtensionsInstanceRuntimeDataArgsDict']]]] runtime_datas: Data set by the extension instance at runtime.
                Structure is documented below.
         :param pulumi.Input[str] service_account_email: The email of the service account to be used at runtime by compute resources
                created for the operation of the Extension instance.

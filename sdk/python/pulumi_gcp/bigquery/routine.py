@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -642,7 +647,7 @@ class Routine(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArgs']]]]] = None,
+                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoutineArgumentArgs', 'RoutineArgumentArgsDict']]]]] = None,
                  data_governance_type: Optional[pulumi.Input[str]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  definition_body: Optional[pulumi.Input[str]] = None,
@@ -651,12 +656,12 @@ class Routine(pulumi.CustomResource):
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  language: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 remote_function_options: Optional[pulumi.Input[pulumi.InputType['RoutineRemoteFunctionOptionsArgs']]] = None,
+                 remote_function_options: Optional[pulumi.Input[Union['RoutineRemoteFunctionOptionsArgs', 'RoutineRemoteFunctionOptionsArgsDict']]] = None,
                  return_table_type: Optional[pulumi.Input[str]] = None,
                  return_type: Optional[pulumi.Input[str]] = None,
                  routine_id: Optional[pulumi.Input[str]] = None,
                  routine_type: Optional[pulumi.Input[str]] = None,
-                 spark_options: Optional[pulumi.Input[pulumi.InputType['RoutineSparkOptionsArgs']]] = None,
+                 spark_options: Optional[pulumi.Input[Union['RoutineSparkOptionsArgs', 'RoutineSparkOptionsArgsDict']]] = None,
                  __props__=None):
         """
         A user-defined function or a stored procedure that belongs to a Dataset
@@ -697,14 +702,14 @@ class Routine(pulumi.CustomResource):
             language="JAVASCRIPT",
             definition_body="CREATE FUNCTION multiplyInputs return x*y;",
             arguments=[
-                gcp.bigquery.RoutineArgumentArgs(
-                    name="x",
-                    data_type="{\\"typeKind\\" :  \\"FLOAT64\\"}",
-                ),
-                gcp.bigquery.RoutineArgumentArgs(
-                    name="y",
-                    data_type="{\\"typeKind\\" :  \\"FLOAT64\\"}",
-                ),
+                {
+                    "name": "x",
+                    "dataType": "{\\"typeKind\\" :  \\"FLOAT64\\"}",
+                },
+                {
+                    "name": "y",
+                    "dataType": "{\\"typeKind\\" :  \\"FLOAT64\\"}",
+                },
             ],
             return_type="{\\"typeKind\\" :  \\"FLOAT64\\"}")
         ```
@@ -722,13 +727,13 @@ class Routine(pulumi.CustomResource):
             routine_type="TABLE_VALUED_FUNCTION",
             language="SQL",
             definition_body="SELECT 1 + value AS value\\n",
-            arguments=[gcp.bigquery.RoutineArgumentArgs(
-                name="value",
-                argument_kind="FIXED_TYPE",
-                data_type=json.dumps({
+            arguments=[{
+                "name": "value",
+                "argumentKind": "FIXED_TYPE",
+                "dataType": json.dumps({
                     "typeKind": "INT64",
                 }),
-            )],
+            }],
             return_table_type=json.dumps({
                 "columns": [{
                     "name": "value",
@@ -748,7 +753,7 @@ class Routine(pulumi.CustomResource):
         test_connection = gcp.bigquery.Connection("test",
             connection_id="connection_id",
             location="US",
-            spark=gcp.bigquery.ConnectionSparkArgs())
+            spark={})
         pyspark = gcp.bigquery.Routine("pyspark",
             dataset_id=test.dataset_id,
             routine_id="routine_id",
@@ -774,10 +779,10 @@ class Routine(pulumi.CustomResource):
           .option("writeMethod", "direct") \\
           .save("wordcount_dataset.wordcount_output")
         \"\"\",
-            spark_options=gcp.bigquery.RoutineSparkOptionsArgs(
-                connection=test_connection.name,
-                runtime_version="2.1",
-            ))
+            spark_options={
+                "connection": test_connection.name,
+                "runtimeVersion": "2.1",
+            })
         ```
         ### Bigquery Routine Pyspark Mainfile
 
@@ -789,21 +794,21 @@ class Routine(pulumi.CustomResource):
         test_connection = gcp.bigquery.Connection("test",
             connection_id="connection_id",
             location="US",
-            spark=gcp.bigquery.ConnectionSparkArgs())
+            spark={})
         pyspark_mainfile = gcp.bigquery.Routine("pyspark_mainfile",
             dataset_id=test.dataset_id,
             routine_id="routine_id",
             routine_type="PROCEDURE",
             language="PYTHON",
             definition_body="",
-            spark_options=gcp.bigquery.RoutineSparkOptionsArgs(
-                connection=test_connection.name,
-                runtime_version="2.1",
-                main_file_uri="gs://test-bucket/main.py",
-                py_file_uris=["gs://test-bucket/lib.py"],
-                file_uris=["gs://test-bucket/distribute_in_executor.json"],
-                archive_uris=["gs://test-bucket/distribute_in_executor.tar.gz"],
-            ))
+            spark_options={
+                "connection": test_connection.name,
+                "runtimeVersion": "2.1",
+                "mainFileUri": "gs://test-bucket/main.py",
+                "pyFileUris": ["gs://test-bucket/lib.py"],
+                "fileUris": ["gs://test-bucket/distribute_in_executor.json"],
+                "archiveUris": ["gs://test-bucket/distribute_in_executor.tar.gz"],
+            })
         ```
         ### Bigquery Routine Spark Jar
 
@@ -815,24 +820,24 @@ class Routine(pulumi.CustomResource):
         test_connection = gcp.bigquery.Connection("test",
             connection_id="connection_id",
             location="US",
-            spark=gcp.bigquery.ConnectionSparkArgs())
+            spark={})
         spark_jar = gcp.bigquery.Routine("spark_jar",
             dataset_id=test.dataset_id,
             routine_id="routine_id",
             routine_type="PROCEDURE",
             language="SCALA",
             definition_body="",
-            spark_options=gcp.bigquery.RoutineSparkOptionsArgs(
-                connection=test_connection.name,
-                runtime_version="2.1",
-                container_image="gcr.io/my-project-id/my-spark-image:latest",
-                main_class="com.google.test.jar.MainClass",
-                jar_uris=["gs://test-bucket/uberjar_spark_spark3.jar"],
-                properties={
+            spark_options={
+                "connection": test_connection.name,
+                "runtimeVersion": "2.1",
+                "containerImage": "gcr.io/my-project-id/my-spark-image:latest",
+                "mainClass": "com.google.test.jar.MainClass",
+                "jarUris": ["gs://test-bucket/uberjar_spark_spark3.jar"],
+                "properties": {
                     "spark.dataproc.scaling.version": "2",
                     "spark.reducer.fetchMigratedShuffle.enabled": "true",
                 },
-            ))
+            })
         ```
         ### Bigquery Routine Data Governance Type
 
@@ -848,10 +853,10 @@ class Routine(pulumi.CustomResource):
             language="SQL",
             data_governance_type="DATA_MASKING",
             definition_body="SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')",
-            arguments=[gcp.bigquery.RoutineArgumentArgs(
-                name="ssn",
-                data_type="{\\"typeKind\\" :  \\"STRING\\"}",
-            )],
+            arguments=[{
+                "name": "ssn",
+                "dataType": "{\\"typeKind\\" :  \\"STRING\\"}",
+            }],
             return_type="{\\"typeKind\\" :  \\"STRING\\"}")
         ```
         ### Bigquery Routine Remote Function
@@ -864,21 +869,21 @@ class Routine(pulumi.CustomResource):
         test_connection = gcp.bigquery.Connection("test",
             connection_id="connection_id",
             location="US",
-            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs())
+            cloud_resource={})
         remote_function = gcp.bigquery.Routine("remote_function",
             dataset_id=test.dataset_id,
             routine_id="routine_id",
             routine_type="SCALAR_FUNCTION",
             definition_body="",
             return_type="{\\"typeKind\\" :  \\"STRING\\"}",
-            remote_function_options=gcp.bigquery.RoutineRemoteFunctionOptionsArgs(
-                endpoint="https://us-east1-my_gcf_project.cloudfunctions.net/remote_add",
-                connection=test_connection.name,
-                max_batching_rows="10",
-                user_defined_context={
+            remote_function_options={
+                "endpoint": "https://us-east1-my_gcf_project.cloudfunctions.net/remote_add",
+                "connection": test_connection.name,
+                "maxBatchingRows": "10",
+                "userDefinedContext": {
                     "z": "1.5",
                 },
-            ))
+            })
         ```
 
         ## Import
@@ -907,7 +912,7 @@ class Routine(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArgs']]]] arguments: Input/output argument of a function or a stored procedure.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoutineArgumentArgs', 'RoutineArgumentArgsDict']]]] arguments: Input/output argument of a function or a stored procedure.
                Structure is documented below.
         :param pulumi.Input[str] data_governance_type: If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
                Possible values are: `DATA_MASKING`.
@@ -926,7 +931,7 @@ class Routine(pulumi.CustomResource):
                Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['RoutineRemoteFunctionOptionsArgs']] remote_function_options: Remote function specific options.
+        :param pulumi.Input[Union['RoutineRemoteFunctionOptionsArgs', 'RoutineRemoteFunctionOptionsArgsDict']] remote_function_options: Remote function specific options.
                Structure is documented below.
         :param pulumi.Input[str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
                If absent, the return table type is inferred from definitionBody at query time in each query
@@ -944,7 +949,7 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[str] routine_id: The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         :param pulumi.Input[str] routine_type: The type of routine.
                Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
-        :param pulumi.Input[pulumi.InputType['RoutineSparkOptionsArgs']] spark_options: Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
+        :param pulumi.Input[Union['RoutineSparkOptionsArgs', 'RoutineSparkOptionsArgsDict']] spark_options: Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
                Structure is documented below.
         """
         ...
@@ -992,14 +997,14 @@ class Routine(pulumi.CustomResource):
             language="JAVASCRIPT",
             definition_body="CREATE FUNCTION multiplyInputs return x*y;",
             arguments=[
-                gcp.bigquery.RoutineArgumentArgs(
-                    name="x",
-                    data_type="{\\"typeKind\\" :  \\"FLOAT64\\"}",
-                ),
-                gcp.bigquery.RoutineArgumentArgs(
-                    name="y",
-                    data_type="{\\"typeKind\\" :  \\"FLOAT64\\"}",
-                ),
+                {
+                    "name": "x",
+                    "dataType": "{\\"typeKind\\" :  \\"FLOAT64\\"}",
+                },
+                {
+                    "name": "y",
+                    "dataType": "{\\"typeKind\\" :  \\"FLOAT64\\"}",
+                },
             ],
             return_type="{\\"typeKind\\" :  \\"FLOAT64\\"}")
         ```
@@ -1017,13 +1022,13 @@ class Routine(pulumi.CustomResource):
             routine_type="TABLE_VALUED_FUNCTION",
             language="SQL",
             definition_body="SELECT 1 + value AS value\\n",
-            arguments=[gcp.bigquery.RoutineArgumentArgs(
-                name="value",
-                argument_kind="FIXED_TYPE",
-                data_type=json.dumps({
+            arguments=[{
+                "name": "value",
+                "argumentKind": "FIXED_TYPE",
+                "dataType": json.dumps({
                     "typeKind": "INT64",
                 }),
-            )],
+            }],
             return_table_type=json.dumps({
                 "columns": [{
                     "name": "value",
@@ -1043,7 +1048,7 @@ class Routine(pulumi.CustomResource):
         test_connection = gcp.bigquery.Connection("test",
             connection_id="connection_id",
             location="US",
-            spark=gcp.bigquery.ConnectionSparkArgs())
+            spark={})
         pyspark = gcp.bigquery.Routine("pyspark",
             dataset_id=test.dataset_id,
             routine_id="routine_id",
@@ -1069,10 +1074,10 @@ class Routine(pulumi.CustomResource):
           .option("writeMethod", "direct") \\
           .save("wordcount_dataset.wordcount_output")
         \"\"\",
-            spark_options=gcp.bigquery.RoutineSparkOptionsArgs(
-                connection=test_connection.name,
-                runtime_version="2.1",
-            ))
+            spark_options={
+                "connection": test_connection.name,
+                "runtimeVersion": "2.1",
+            })
         ```
         ### Bigquery Routine Pyspark Mainfile
 
@@ -1084,21 +1089,21 @@ class Routine(pulumi.CustomResource):
         test_connection = gcp.bigquery.Connection("test",
             connection_id="connection_id",
             location="US",
-            spark=gcp.bigquery.ConnectionSparkArgs())
+            spark={})
         pyspark_mainfile = gcp.bigquery.Routine("pyspark_mainfile",
             dataset_id=test.dataset_id,
             routine_id="routine_id",
             routine_type="PROCEDURE",
             language="PYTHON",
             definition_body="",
-            spark_options=gcp.bigquery.RoutineSparkOptionsArgs(
-                connection=test_connection.name,
-                runtime_version="2.1",
-                main_file_uri="gs://test-bucket/main.py",
-                py_file_uris=["gs://test-bucket/lib.py"],
-                file_uris=["gs://test-bucket/distribute_in_executor.json"],
-                archive_uris=["gs://test-bucket/distribute_in_executor.tar.gz"],
-            ))
+            spark_options={
+                "connection": test_connection.name,
+                "runtimeVersion": "2.1",
+                "mainFileUri": "gs://test-bucket/main.py",
+                "pyFileUris": ["gs://test-bucket/lib.py"],
+                "fileUris": ["gs://test-bucket/distribute_in_executor.json"],
+                "archiveUris": ["gs://test-bucket/distribute_in_executor.tar.gz"],
+            })
         ```
         ### Bigquery Routine Spark Jar
 
@@ -1110,24 +1115,24 @@ class Routine(pulumi.CustomResource):
         test_connection = gcp.bigquery.Connection("test",
             connection_id="connection_id",
             location="US",
-            spark=gcp.bigquery.ConnectionSparkArgs())
+            spark={})
         spark_jar = gcp.bigquery.Routine("spark_jar",
             dataset_id=test.dataset_id,
             routine_id="routine_id",
             routine_type="PROCEDURE",
             language="SCALA",
             definition_body="",
-            spark_options=gcp.bigquery.RoutineSparkOptionsArgs(
-                connection=test_connection.name,
-                runtime_version="2.1",
-                container_image="gcr.io/my-project-id/my-spark-image:latest",
-                main_class="com.google.test.jar.MainClass",
-                jar_uris=["gs://test-bucket/uberjar_spark_spark3.jar"],
-                properties={
+            spark_options={
+                "connection": test_connection.name,
+                "runtimeVersion": "2.1",
+                "containerImage": "gcr.io/my-project-id/my-spark-image:latest",
+                "mainClass": "com.google.test.jar.MainClass",
+                "jarUris": ["gs://test-bucket/uberjar_spark_spark3.jar"],
+                "properties": {
                     "spark.dataproc.scaling.version": "2",
                     "spark.reducer.fetchMigratedShuffle.enabled": "true",
                 },
-            ))
+            })
         ```
         ### Bigquery Routine Data Governance Type
 
@@ -1143,10 +1148,10 @@ class Routine(pulumi.CustomResource):
             language="SQL",
             data_governance_type="DATA_MASKING",
             definition_body="SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')",
-            arguments=[gcp.bigquery.RoutineArgumentArgs(
-                name="ssn",
-                data_type="{\\"typeKind\\" :  \\"STRING\\"}",
-            )],
+            arguments=[{
+                "name": "ssn",
+                "dataType": "{\\"typeKind\\" :  \\"STRING\\"}",
+            }],
             return_type="{\\"typeKind\\" :  \\"STRING\\"}")
         ```
         ### Bigquery Routine Remote Function
@@ -1159,21 +1164,21 @@ class Routine(pulumi.CustomResource):
         test_connection = gcp.bigquery.Connection("test",
             connection_id="connection_id",
             location="US",
-            cloud_resource=gcp.bigquery.ConnectionCloudResourceArgs())
+            cloud_resource={})
         remote_function = gcp.bigquery.Routine("remote_function",
             dataset_id=test.dataset_id,
             routine_id="routine_id",
             routine_type="SCALAR_FUNCTION",
             definition_body="",
             return_type="{\\"typeKind\\" :  \\"STRING\\"}",
-            remote_function_options=gcp.bigquery.RoutineRemoteFunctionOptionsArgs(
-                endpoint="https://us-east1-my_gcf_project.cloudfunctions.net/remote_add",
-                connection=test_connection.name,
-                max_batching_rows="10",
-                user_defined_context={
+            remote_function_options={
+                "endpoint": "https://us-east1-my_gcf_project.cloudfunctions.net/remote_add",
+                "connection": test_connection.name,
+                "maxBatchingRows": "10",
+                "userDefinedContext": {
                     "z": "1.5",
                 },
-            ))
+            })
         ```
 
         ## Import
@@ -1215,7 +1220,7 @@ class Routine(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArgs']]]]] = None,
+                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoutineArgumentArgs', 'RoutineArgumentArgsDict']]]]] = None,
                  data_governance_type: Optional[pulumi.Input[str]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  definition_body: Optional[pulumi.Input[str]] = None,
@@ -1224,12 +1229,12 @@ class Routine(pulumi.CustomResource):
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  language: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 remote_function_options: Optional[pulumi.Input[pulumi.InputType['RoutineRemoteFunctionOptionsArgs']]] = None,
+                 remote_function_options: Optional[pulumi.Input[Union['RoutineRemoteFunctionOptionsArgs', 'RoutineRemoteFunctionOptionsArgsDict']]] = None,
                  return_table_type: Optional[pulumi.Input[str]] = None,
                  return_type: Optional[pulumi.Input[str]] = None,
                  routine_id: Optional[pulumi.Input[str]] = None,
                  routine_type: Optional[pulumi.Input[str]] = None,
-                 spark_options: Optional[pulumi.Input[pulumi.InputType['RoutineSparkOptionsArgs']]] = None,
+                 spark_options: Optional[pulumi.Input[Union['RoutineSparkOptionsArgs', 'RoutineSparkOptionsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1274,7 +1279,7 @@ class Routine(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            arguments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArgs']]]]] = None,
+            arguments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoutineArgumentArgs', 'RoutineArgumentArgsDict']]]]] = None,
             creation_time: Optional[pulumi.Input[int]] = None,
             data_governance_type: Optional[pulumi.Input[str]] = None,
             dataset_id: Optional[pulumi.Input[str]] = None,
@@ -1285,12 +1290,12 @@ class Routine(pulumi.CustomResource):
             language: Optional[pulumi.Input[str]] = None,
             last_modified_time: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            remote_function_options: Optional[pulumi.Input[pulumi.InputType['RoutineRemoteFunctionOptionsArgs']]] = None,
+            remote_function_options: Optional[pulumi.Input[Union['RoutineRemoteFunctionOptionsArgs', 'RoutineRemoteFunctionOptionsArgsDict']]] = None,
             return_table_type: Optional[pulumi.Input[str]] = None,
             return_type: Optional[pulumi.Input[str]] = None,
             routine_id: Optional[pulumi.Input[str]] = None,
             routine_type: Optional[pulumi.Input[str]] = None,
-            spark_options: Optional[pulumi.Input[pulumi.InputType['RoutineSparkOptionsArgs']]] = None) -> 'Routine':
+            spark_options: Optional[pulumi.Input[Union['RoutineSparkOptionsArgs', 'RoutineSparkOptionsArgsDict']]] = None) -> 'Routine':
         """
         Get an existing Routine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1298,7 +1303,7 @@ class Routine(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArgs']]]] arguments: Input/output argument of a function or a stored procedure.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoutineArgumentArgs', 'RoutineArgumentArgsDict']]]] arguments: Input/output argument of a function or a stored procedure.
                Structure is documented below.
         :param pulumi.Input[int] creation_time: The time when this routine was created, in milliseconds since the
                epoch.
@@ -1321,7 +1326,7 @@ class Routine(pulumi.CustomResource):
                epoch.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['RoutineRemoteFunctionOptionsArgs']] remote_function_options: Remote function specific options.
+        :param pulumi.Input[Union['RoutineRemoteFunctionOptionsArgs', 'RoutineRemoteFunctionOptionsArgsDict']] remote_function_options: Remote function specific options.
                Structure is documented below.
         :param pulumi.Input[str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
                If absent, the return table type is inferred from definitionBody at query time in each query
@@ -1339,7 +1344,7 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[str] routine_id: The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         :param pulumi.Input[str] routine_type: The type of routine.
                Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
-        :param pulumi.Input[pulumi.InputType['RoutineSparkOptionsArgs']] spark_options: Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
+        :param pulumi.Input[Union['RoutineSparkOptionsArgs', 'RoutineSparkOptionsArgsDict']] spark_options: Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -648,17 +653,17 @@ class AzureCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 authorization: Optional[pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArgs']]] = None,
+                 authorization: Optional[pulumi.Input[Union['AzureClusterAuthorizationArgs', 'AzureClusterAuthorizationArgsDict']]] = None,
                  azure_region: Optional[pulumi.Input[str]] = None,
-                 azure_services_authentication: Optional[pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArgs']]] = None,
+                 azure_services_authentication: Optional[pulumi.Input[Union['AzureClusterAzureServicesAuthenticationArgs', 'AzureClusterAzureServicesAuthenticationArgsDict']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
-                 control_plane: Optional[pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArgs']]] = None,
+                 control_plane: Optional[pulumi.Input[Union['AzureClusterControlPlaneArgs', 'AzureClusterControlPlaneArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fleet: Optional[pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']]] = None,
+                 fleet: Optional[pulumi.Input[Union['AzureClusterFleetArgs', 'AzureClusterFleetArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']]] = None,
+                 logging_config: Optional[pulumi.Input[Union['AzureClusterLoggingConfigArgs', 'AzureClusterLoggingConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networking: Optional[pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']]] = None,
+                 networking: Optional[pulumi.Input[Union['AzureClusterNetworkingArgs', 'AzureClusterNetworkingArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -684,33 +689,33 @@ class AzureCluster(pulumi.CustomResource):
             tenant_id="12345678-1234-1234-1234-123456789111",
             project="my-project-name")
         primary = gcp.container.AzureCluster("primary",
-            authorization=gcp.container.AzureClusterAuthorizationArgs(
-                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
-                    username="mmv2@google.com",
-                )],
-                admin_groups=[gcp.container.AzureClusterAuthorizationAdminGroupArgs(
-                    group="group@domain.com",
-                )],
-            ),
+            authorization={
+                "adminUsers": [{
+                    "username": "mmv2@google.com",
+                }],
+                "adminGroups": [{
+                    "group": "group@domain.com",
+                }],
+            },
             azure_region="westus2",
             client=basic.name.apply(lambda name: f"projects/my-project-number/locations/us-west1/azureClients/{name}"),
-            control_plane=gcp.container.AzureClusterControlPlaneArgs(
-                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArgs(
-                    authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
-                ),
-                subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
-                version=versions.valid_versions[0],
-            ),
-            fleet=gcp.container.AzureClusterFleetArgs(
-                project="my-project-number",
-            ),
+            control_plane={
+                "sshConfig": {
+                    "authorizedKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
+                },
+                "subnetId": "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
+                "version": versions.valid_versions[0],
+            },
+            fleet={
+                "project": "my-project-number",
+            },
             location="us-west1",
             name="name",
-            networking=gcp.container.AzureClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.200.0.0/16"],
-                service_address_cidr_blocks=["10.32.0.0/24"],
-                virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
-            ),
+            networking={
+                "podAddressCidrBlocks": ["10.200.0.0/16"],
+                "serviceAddressCidrBlocks": ["10.32.0.0/24"],
+                "virtualNetworkId": "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
+            },
             resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
             project="my-project-name")
         ```
@@ -729,40 +734,40 @@ class AzureCluster(pulumi.CustomResource):
             tenant_id="12345678-1234-1234-1234-123456789111",
             project="my-project-name")
         primary = gcp.container.AzureCluster("primary",
-            authorization=gcp.container.AzureClusterAuthorizationArgs(
-                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
-                    username="mmv2@google.com",
-                )],
-            ),
+            authorization={
+                "adminUsers": [{
+                    "username": "mmv2@google.com",
+                }],
+            },
             azure_region="westus2",
             client=basic.name.apply(lambda name: f"projects/my-project-number/locations/us-west1/azureClients/{name}"),
-            control_plane=gcp.container.AzureClusterControlPlaneArgs(
-                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArgs(
-                    authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
-                ),
-                subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
-                version=versions.valid_versions[0],
-            ),
-            fleet=gcp.container.AzureClusterFleetArgs(
-                project="my-project-number",
-            ),
+            control_plane={
+                "sshConfig": {
+                    "authorizedKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
+                },
+                "subnetId": "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
+                "version": versions.valid_versions[0],
+            },
+            fleet={
+                "project": "my-project-number",
+            },
             location="us-west1",
             name="name",
-            networking=gcp.container.AzureClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.200.0.0/16"],
-                service_address_cidr_blocks=["10.32.0.0/24"],
-                virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
-            ),
+            networking={
+                "podAddressCidrBlocks": ["10.200.0.0/16"],
+                "serviceAddressCidrBlocks": ["10.32.0.0/24"],
+                "virtualNetworkId": "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
+            },
             resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
             project="my-project-name",
-            logging_config=gcp.container.AzureClusterLoggingConfigArgs(
-                component_config=gcp.container.AzureClusterLoggingConfigComponentConfigArgs(
-                    enable_components=[
+            logging_config={
+                "componentConfig": {
+                    "enableComponents": [
                         "system_components",
                         "workloads",
                     ],
-                ),
-            ))
+                },
+            })
         ```
 
         ## Import
@@ -797,20 +802,20 @@ class AzureCluster(pulumi.CustomResource):
                alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
                non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
                `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input[Union['AzureClusterAuthorizationArgs', 'AzureClusterAuthorizationArgsDict']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] azure_region: The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
-        :param pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArgs']] azure_services_authentication: Azure authentication configuration for management of Azure resources
+        :param pulumi.Input[Union['AzureClusterAzureServicesAuthenticationArgs', 'AzureClusterAzureServicesAuthenticationArgsDict']] azure_services_authentication: Azure authentication configuration for management of Azure resources
         :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
                `AzureCluster`. `AzureClient` names are formatted as
                `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names
                (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
-        :param pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArgs']] control_plane: Configuration related to the cluster control plane.
+        :param pulumi.Input[Union['AzureClusterControlPlaneArgs', 'AzureClusterControlPlaneArgsDict']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-        :param pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']] fleet: Fleet configuration.
+        :param pulumi.Input[Union['AzureClusterFleetArgs', 'AzureClusterFleetArgsDict']] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']] logging_config: Logging configuration.
+        :param pulumi.Input[Union['AzureClusterLoggingConfigArgs', 'AzureClusterLoggingConfigArgsDict']] logging_config: Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
+        :param pulumi.Input[Union['AzureClusterNetworkingArgs', 'AzureClusterNetworkingArgsDict']] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] resource_group_id: The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         """
@@ -842,33 +847,33 @@ class AzureCluster(pulumi.CustomResource):
             tenant_id="12345678-1234-1234-1234-123456789111",
             project="my-project-name")
         primary = gcp.container.AzureCluster("primary",
-            authorization=gcp.container.AzureClusterAuthorizationArgs(
-                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
-                    username="mmv2@google.com",
-                )],
-                admin_groups=[gcp.container.AzureClusterAuthorizationAdminGroupArgs(
-                    group="group@domain.com",
-                )],
-            ),
+            authorization={
+                "adminUsers": [{
+                    "username": "mmv2@google.com",
+                }],
+                "adminGroups": [{
+                    "group": "group@domain.com",
+                }],
+            },
             azure_region="westus2",
             client=basic.name.apply(lambda name: f"projects/my-project-number/locations/us-west1/azureClients/{name}"),
-            control_plane=gcp.container.AzureClusterControlPlaneArgs(
-                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArgs(
-                    authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
-                ),
-                subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
-                version=versions.valid_versions[0],
-            ),
-            fleet=gcp.container.AzureClusterFleetArgs(
-                project="my-project-number",
-            ),
+            control_plane={
+                "sshConfig": {
+                    "authorizedKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
+                },
+                "subnetId": "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
+                "version": versions.valid_versions[0],
+            },
+            fleet={
+                "project": "my-project-number",
+            },
             location="us-west1",
             name="name",
-            networking=gcp.container.AzureClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.200.0.0/16"],
-                service_address_cidr_blocks=["10.32.0.0/24"],
-                virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
-            ),
+            networking={
+                "podAddressCidrBlocks": ["10.200.0.0/16"],
+                "serviceAddressCidrBlocks": ["10.32.0.0/24"],
+                "virtualNetworkId": "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
+            },
             resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
             project="my-project-name")
         ```
@@ -887,40 +892,40 @@ class AzureCluster(pulumi.CustomResource):
             tenant_id="12345678-1234-1234-1234-123456789111",
             project="my-project-name")
         primary = gcp.container.AzureCluster("primary",
-            authorization=gcp.container.AzureClusterAuthorizationArgs(
-                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
-                    username="mmv2@google.com",
-                )],
-            ),
+            authorization={
+                "adminUsers": [{
+                    "username": "mmv2@google.com",
+                }],
+            },
             azure_region="westus2",
             client=basic.name.apply(lambda name: f"projects/my-project-number/locations/us-west1/azureClients/{name}"),
-            control_plane=gcp.container.AzureClusterControlPlaneArgs(
-                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArgs(
-                    authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
-                ),
-                subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
-                version=versions.valid_versions[0],
-            ),
-            fleet=gcp.container.AzureClusterFleetArgs(
-                project="my-project-number",
-            ),
+            control_plane={
+                "sshConfig": {
+                    "authorizedKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
+                },
+                "subnetId": "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
+                "version": versions.valid_versions[0],
+            },
+            fleet={
+                "project": "my-project-number",
+            },
             location="us-west1",
             name="name",
-            networking=gcp.container.AzureClusterNetworkingArgs(
-                pod_address_cidr_blocks=["10.200.0.0/16"],
-                service_address_cidr_blocks=["10.32.0.0/24"],
-                virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
-            ),
+            networking={
+                "podAddressCidrBlocks": ["10.200.0.0/16"],
+                "serviceAddressCidrBlocks": ["10.32.0.0/24"],
+                "virtualNetworkId": "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
+            },
             resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
             project="my-project-name",
-            logging_config=gcp.container.AzureClusterLoggingConfigArgs(
-                component_config=gcp.container.AzureClusterLoggingConfigComponentConfigArgs(
-                    enable_components=[
+            logging_config={
+                "componentConfig": {
+                    "enableComponents": [
                         "system_components",
                         "workloads",
                     ],
-                ),
-            ))
+                },
+            })
         ```
 
         ## Import
@@ -963,17 +968,17 @@ class AzureCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 authorization: Optional[pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArgs']]] = None,
+                 authorization: Optional[pulumi.Input[Union['AzureClusterAuthorizationArgs', 'AzureClusterAuthorizationArgsDict']]] = None,
                  azure_region: Optional[pulumi.Input[str]] = None,
-                 azure_services_authentication: Optional[pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArgs']]] = None,
+                 azure_services_authentication: Optional[pulumi.Input[Union['AzureClusterAzureServicesAuthenticationArgs', 'AzureClusterAzureServicesAuthenticationArgsDict']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
-                 control_plane: Optional[pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArgs']]] = None,
+                 control_plane: Optional[pulumi.Input[Union['AzureClusterControlPlaneArgs', 'AzureClusterControlPlaneArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fleet: Optional[pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']]] = None,
+                 fleet: Optional[pulumi.Input[Union['AzureClusterFleetArgs', 'AzureClusterFleetArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']]] = None,
+                 logging_config: Optional[pulumi.Input[Union['AzureClusterLoggingConfigArgs', 'AzureClusterLoggingConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networking: Optional[pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']]] = None,
+                 networking: Optional[pulumi.Input[Union['AzureClusterNetworkingArgs', 'AzureClusterNetworkingArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1033,28 +1038,28 @@ class AzureCluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            authorization: Optional[pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArgs']]] = None,
+            authorization: Optional[pulumi.Input[Union['AzureClusterAuthorizationArgs', 'AzureClusterAuthorizationArgsDict']]] = None,
             azure_region: Optional[pulumi.Input[str]] = None,
-            azure_services_authentication: Optional[pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArgs']]] = None,
+            azure_services_authentication: Optional[pulumi.Input[Union['AzureClusterAzureServicesAuthenticationArgs', 'AzureClusterAzureServicesAuthenticationArgsDict']]] = None,
             client: Optional[pulumi.Input[str]] = None,
-            control_plane: Optional[pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArgs']]] = None,
+            control_plane: Optional[pulumi.Input[Union['AzureClusterControlPlaneArgs', 'AzureClusterControlPlaneArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            fleet: Optional[pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']]] = None,
+            fleet: Optional[pulumi.Input[Union['AzureClusterFleetArgs', 'AzureClusterFleetArgsDict']]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            logging_config: Optional[pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']]] = None,
+            logging_config: Optional[pulumi.Input[Union['AzureClusterLoggingConfigArgs', 'AzureClusterLoggingConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            networking: Optional[pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']]] = None,
+            networking: Optional[pulumi.Input[Union['AzureClusterNetworkingArgs', 'AzureClusterNetworkingArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AzureClusterWorkloadIdentityConfigArgs']]]]] = None) -> 'AzureCluster':
+            workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AzureClusterWorkloadIdentityConfigArgs', 'AzureClusterWorkloadIdentityConfigArgsDict']]]]] = None) -> 'AzureCluster':
         """
         Get an existing AzureCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1068,30 +1073,30 @@ class AzureCluster(pulumi.CustomResource):
                alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
                non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
                `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['AzureClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input[Union['AzureClusterAuthorizationArgs', 'AzureClusterAuthorizationArgsDict']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[str] azure_region: The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
-        :param pulumi.Input[pulumi.InputType['AzureClusterAzureServicesAuthenticationArgs']] azure_services_authentication: Azure authentication configuration for management of Azure resources
+        :param pulumi.Input[Union['AzureClusterAzureServicesAuthenticationArgs', 'AzureClusterAzureServicesAuthenticationArgsDict']] azure_services_authentication: Azure authentication configuration for management of Azure resources
         :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the
                `AzureCluster`. `AzureClient` names are formatted as
                `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names
                (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
-        :param pulumi.Input[pulumi.InputType['AzureClusterControlPlaneArgs']] control_plane: Configuration related to the cluster control plane.
+        :param pulumi.Input[Union['AzureClusterControlPlaneArgs', 'AzureClusterControlPlaneArgsDict']] control_plane: Configuration related to the cluster control plane.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] endpoint: Output only. The endpoint of the cluster's API server.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']] fleet: Fleet configuration.
+        :param pulumi.Input[Union['AzureClusterFleetArgs', 'AzureClusterFleetArgsDict']] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']] logging_config: Logging configuration.
+        :param pulumi.Input[Union['AzureClusterLoggingConfigArgs', 'AzureClusterLoggingConfigArgsDict']] logging_config: Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
+        :param pulumi.Input[Union['AzureClusterNetworkingArgs', 'AzureClusterNetworkingArgsDict']] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] resource_group_id: The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the cluster.
         :param pulumi.Input[str] update_time: Output only. The time at which this cluster was last updated.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AzureClusterWorkloadIdentityConfigArgs']]]] workload_identity_configs: Output only. Workload Identity settings.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AzureClusterWorkloadIdentityConfigArgs', 'AzureClusterWorkloadIdentityConfigArgsDict']]]] workload_identity_configs: Output only. Workload Identity settings.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

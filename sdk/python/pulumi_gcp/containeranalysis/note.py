@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -365,13 +370,13 @@ class Note(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation_authority: Optional[pulumi.Input[pulumi.InputType['NoteAttestationAuthorityArgs']]] = None,
+                 attestation_authority: Optional[pulumi.Input[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']]] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 related_urls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NoteRelatedUrlArgs']]]]] = None,
+                 related_urls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict']]]]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -395,11 +400,11 @@ class Note(pulumi.CustomResource):
 
         note = gcp.containeranalysis.Note("note",
             name="attestor-note",
-            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                    human_readable_name="Attestor Note",
-                ),
-            ))
+            attestation_authority={
+                "hint": {
+                    "humanReadableName": "Attestor Note",
+                },
+            })
         ```
         ### Container Analysis Note Attestation Full
 
@@ -413,19 +418,19 @@ class Note(pulumi.CustomResource):
             long_description="a longer description of test note",
             expiration_time="2120-10-02T15:01:23.045123456Z",
             related_urls=[
-                gcp.containeranalysis.NoteRelatedUrlArgs(
-                    url="some.url",
-                    label="foo",
-                ),
-                gcp.containeranalysis.NoteRelatedUrlArgs(
-                    url="google.com",
-                ),
+                {
+                    "url": "some.url",
+                    "label": "foo",
+                },
+                {
+                    "url": "google.com",
+                },
             ],
-            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                    human_readable_name="Attestor Note",
-                ),
-            ))
+            attestation_authority={
+                "hint": {
+                    "humanReadableName": "Attestor Note",
+                },
+            })
         ```
 
         ## Import
@@ -454,7 +459,7 @@ class Note(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NoteAttestationAuthorityArgs']] attestation_authority: Note kind that represents a logical attestation "role" or "authority".
+        :param pulumi.Input[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']] attestation_authority: Note kind that represents a logical attestation "role" or "authority".
                For example, an organization might have one AttestationAuthority for
                "QA" and one for "build". This Note is intended to act strictly as a
                grouping mechanism for the attached Occurrences (Attestations). This
@@ -468,7 +473,7 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[str] long_description: A detailed description of the note
         :param pulumi.Input[str] name: The name of the note.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_note_names: Names of other notes related to this note.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NoteRelatedUrlArgs']]]] related_urls: URLs associated with this note and related metadata.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict']]]] related_urls: URLs associated with this note and related metadata.
         :param pulumi.Input[str] short_description: A one sentence description of the note.
         """
         ...
@@ -498,11 +503,11 @@ class Note(pulumi.CustomResource):
 
         note = gcp.containeranalysis.Note("note",
             name="attestor-note",
-            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                    human_readable_name="Attestor Note",
-                ),
-            ))
+            attestation_authority={
+                "hint": {
+                    "humanReadableName": "Attestor Note",
+                },
+            })
         ```
         ### Container Analysis Note Attestation Full
 
@@ -516,19 +521,19 @@ class Note(pulumi.CustomResource):
             long_description="a longer description of test note",
             expiration_time="2120-10-02T15:01:23.045123456Z",
             related_urls=[
-                gcp.containeranalysis.NoteRelatedUrlArgs(
-                    url="some.url",
-                    label="foo",
-                ),
-                gcp.containeranalysis.NoteRelatedUrlArgs(
-                    url="google.com",
-                ),
+                {
+                    "url": "some.url",
+                    "label": "foo",
+                },
+                {
+                    "url": "google.com",
+                },
             ],
-            attestation_authority=gcp.containeranalysis.NoteAttestationAuthorityArgs(
-                hint=gcp.containeranalysis.NoteAttestationAuthorityHintArgs(
-                    human_readable_name="Attestor Note",
-                ),
-            ))
+            attestation_authority={
+                "hint": {
+                    "humanReadableName": "Attestor Note",
+                },
+            })
         ```
 
         ## Import
@@ -570,13 +575,13 @@ class Note(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation_authority: Optional[pulumi.Input[pulumi.InputType['NoteAttestationAuthorityArgs']]] = None,
+                 attestation_authority: Optional[pulumi.Input[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']]] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 related_urls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NoteRelatedUrlArgs']]]]] = None,
+                 related_urls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict']]]]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -610,7 +615,7 @@ class Note(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attestation_authority: Optional[pulumi.Input[pulumi.InputType['NoteAttestationAuthorityArgs']]] = None,
+            attestation_authority: Optional[pulumi.Input[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             expiration_time: Optional[pulumi.Input[str]] = None,
             kind: Optional[pulumi.Input[str]] = None,
@@ -618,7 +623,7 @@ class Note(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            related_urls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NoteRelatedUrlArgs']]]]] = None,
+            related_urls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict']]]]] = None,
             short_description: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Note':
         """
@@ -628,7 +633,7 @@ class Note(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NoteAttestationAuthorityArgs']] attestation_authority: Note kind that represents a logical attestation "role" or "authority".
+        :param pulumi.Input[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']] attestation_authority: Note kind that represents a logical attestation "role" or "authority".
                For example, an organization might have one AttestationAuthority for
                "QA" and one for "build". This Note is intended to act strictly as a
                grouping mechanism for the attached Occurrences (Attestations). This
@@ -644,7 +649,7 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[str] long_description: A detailed description of the note
         :param pulumi.Input[str] name: The name of the note.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_note_names: Names of other notes related to this note.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NoteRelatedUrlArgs']]]] related_urls: URLs associated with this note and related metadata.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict']]]] related_urls: URLs associated with this note and related metadata.
         :param pulumi.Input[str] short_description: A one sentence description of the note.
         :param pulumi.Input[str] update_time: The time this note was last updated.
         """

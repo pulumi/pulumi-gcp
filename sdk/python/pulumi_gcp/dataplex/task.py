@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -538,15 +543,15 @@ class Task(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 execution_spec: Optional[pulumi.Input[pulumi.InputType['TaskExecutionSpecArgs']]] = None,
+                 execution_spec: Optional[pulumi.Input[Union['TaskExecutionSpecArgs', 'TaskExecutionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 notebook: Optional[pulumi.Input[pulumi.InputType['TaskNotebookArgs']]] = None,
+                 notebook: Optional[pulumi.Input[Union['TaskNotebookArgs', 'TaskNotebookArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spark: Optional[pulumi.Input[pulumi.InputType['TaskSparkArgs']]] = None,
+                 spark: Optional[pulumi.Input[Union['TaskSparkArgs', 'TaskSparkArgsDict']]] = None,
                  task_id: Optional[pulumi.Input[str]] = None,
-                 trigger_spec: Optional[pulumi.Input[pulumi.InputType['TaskTriggerSpecArgs']]] = None,
+                 trigger_spec: Optional[pulumi.Input[Union['TaskTriggerSpecArgs', 'TaskTriggerSpecArgsDict']]] = None,
                  __props__=None):
         """
         A Dataplex task represents the work that you want Dataplex to do on a schedule. It encapsulates code, parameters, and the schedule.
@@ -579,22 +584,22 @@ class Task(pulumi.CustomResource):
             labels={
                 "count": "3",
             },
-            trigger_spec=gcp.dataplex.TaskTriggerSpecArgs(
-                type="RECURRING",
-                disabled=False,
-                max_retries=3,
-                start_time="2023-10-02T15:01:23Z",
-                schedule="1 * * * *",
-            ),
-            execution_spec=gcp.dataplex.TaskExecutionSpecArgs(
-                service_account=f"{project.number}-compute@developer.gserviceaccount.com",
-                project="my-project-name",
-                max_job_execution_lifetime="100s",
-                kms_key="234jn2kjn42k3n423",
-            ),
-            spark=gcp.dataplex.TaskSparkArgs(
-                python_script_file="gs://dataproc-examples/pyspark/hello-world/hello-world.py",
-            ),
+            trigger_spec={
+                "type": "RECURRING",
+                "disabled": False,
+                "maxRetries": 3,
+                "startTime": "2023-10-02T15:01:23Z",
+                "schedule": "1 * * * *",
+            },
+            execution_spec={
+                "serviceAccount": f"{project.number}-compute@developer.gserviceaccount.com",
+                "project": "my-project-name",
+                "maxJobExecutionLifetime": "100s",
+                "kmsKey": "234jn2kjn42k3n423",
+            },
+            spark={
+                "pythonScriptFile": "gs://dataproc-examples/pyspark/hello-world/hello-world.py",
+            },
             project="my-project-name")
         ```
         ### Dataplex Task Spark
@@ -616,41 +621,41 @@ class Task(pulumi.CustomResource):
             task_id="tf-test-task_95154",
             location="us-central1",
             lake=example_spark.name,
-            trigger_spec=gcp.dataplex.TaskTriggerSpecArgs(
-                type="ON_DEMAND",
-            ),
+            trigger_spec={
+                "type": "ON_DEMAND",
+            },
             description="task-spark-terraform",
-            execution_spec=gcp.dataplex.TaskExecutionSpecArgs(
-                service_account=f"{project.number}-compute@developer.gserviceaccount.com",
-                args={
+            execution_spec={
+                "serviceAccount": f"{project.number}-compute@developer.gserviceaccount.com",
+                "args": {
                     "TASK_ARGS": "--output_location,gs://spark-job/task-result, --output_format, json",
                 },
-            ),
-            spark=gcp.dataplex.TaskSparkArgs(
-                infrastructure_spec=gcp.dataplex.TaskSparkInfrastructureSpecArgs(
-                    batch=gcp.dataplex.TaskSparkInfrastructureSpecBatchArgs(
-                        executors_count=2,
-                        max_executors_count=100,
-                    ),
-                    container_image=gcp.dataplex.TaskSparkInfrastructureSpecContainerImageArgs(
-                        image="test-image",
-                        java_jars=["test-java-jars.jar"],
-                        python_packages=["gs://bucket-name/my/path/to/lib.tar.gz"],
-                        properties={
+            },
+            spark={
+                "infrastructureSpec": {
+                    "batch": {
+                        "executorsCount": 2,
+                        "maxExecutorsCount": 100,
+                    },
+                    "containerImage": {
+                        "image": "test-image",
+                        "javaJars": ["test-java-jars.jar"],
+                        "pythonPackages": ["gs://bucket-name/my/path/to/lib.tar.gz"],
+                        "properties": {
                             "name": "wrench",
                             "mass": "1.3kg",
                             "count": "3",
                         },
-                    ),
-                    vpc_network=gcp.dataplex.TaskSparkInfrastructureSpecVpcNetworkArgs(
-                        network_tags=["test-network-tag"],
-                        sub_network=default.id,
-                    ),
-                ),
-                file_uris=["gs://terrafrom-test/test.csv"],
-                archive_uris=["gs://terraform-test/test.csv"],
-                sql_script="show databases",
-            ),
+                    },
+                    "vpcNetwork": {
+                        "networkTags": ["test-network-tag"],
+                        "subNetwork": default.id,
+                    },
+                },
+                "fileUris": ["gs://terrafrom-test/test.csv"],
+                "archiveUris": ["gs://terraform-test/test.csv"],
+                "sqlScript": "show databases",
+            },
             project="my-project-name")
         ```
         ### Dataplex Task Notebook
@@ -672,41 +677,41 @@ class Task(pulumi.CustomResource):
             task_id="tf-test-task_74000",
             location="us-central1",
             lake=example_notebook.name,
-            trigger_spec=gcp.dataplex.TaskTriggerSpecArgs(
-                type="RECURRING",
-                schedule="1 * * * *",
-            ),
-            execution_spec=gcp.dataplex.TaskExecutionSpecArgs(
-                service_account=f"{project.number}-compute@developer.gserviceaccount.com",
-                args={
+            trigger_spec={
+                "type": "RECURRING",
+                "schedule": "1 * * * *",
+            },
+            execution_spec={
+                "serviceAccount": f"{project.number}-compute@developer.gserviceaccount.com",
+                "args": {
                     "TASK_ARGS": "--output_location,gs://spark-job-jars-anrajitha/task-result, --output_format, json",
                 },
-            ),
-            notebook=gcp.dataplex.TaskNotebookArgs(
-                notebook="gs://terraform-test/test-notebook.ipynb",
-                infrastructure_spec=gcp.dataplex.TaskNotebookInfrastructureSpecArgs(
-                    batch=gcp.dataplex.TaskNotebookInfrastructureSpecBatchArgs(
-                        executors_count=2,
-                        max_executors_count=100,
-                    ),
-                    container_image=gcp.dataplex.TaskNotebookInfrastructureSpecContainerImageArgs(
-                        image="test-image",
-                        java_jars=["test-java-jars.jar"],
-                        python_packages=["gs://bucket-name/my/path/to/lib.tar.gz"],
-                        properties={
+            },
+            notebook={
+                "notebook": "gs://terraform-test/test-notebook.ipynb",
+                "infrastructureSpec": {
+                    "batch": {
+                        "executorsCount": 2,
+                        "maxExecutorsCount": 100,
+                    },
+                    "containerImage": {
+                        "image": "test-image",
+                        "javaJars": ["test-java-jars.jar"],
+                        "pythonPackages": ["gs://bucket-name/my/path/to/lib.tar.gz"],
+                        "properties": {
                             "name": "wrench",
                             "mass": "1.3kg",
                             "count": "3",
                         },
-                    ),
-                    vpc_network=gcp.dataplex.TaskNotebookInfrastructureSpecVpcNetworkArgs(
-                        network_tags=["test-network-tag"],
-                        network=default.id,
-                    ),
-                ),
-                file_uris=["gs://terraform-test/test.csv"],
-                archive_uris=["gs://terraform-test/test.csv"],
-            ),
+                    },
+                    "vpcNetwork": {
+                        "networkTags": ["test-network-tag"],
+                        "network": default.id,
+                    },
+                },
+                "fileUris": ["gs://terraform-test/test.csv"],
+                "archiveUris": ["gs://terraform-test/test.csv"],
+            },
             project="my-project-name")
         ```
 
@@ -738,18 +743,18 @@ class Task(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: User-provided description of the task.
         :param pulumi.Input[str] display_name: User friendly display name.
-        :param pulumi.Input[pulumi.InputType['TaskExecutionSpecArgs']] execution_spec: Configuration for the cluster
+        :param pulumi.Input[Union['TaskExecutionSpecArgs', 'TaskExecutionSpecArgsDict']] execution_spec: Configuration for the cluster
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
                your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] lake: The lake in which the task will be created in.
         :param pulumi.Input[str] location: The location in which the task will be created in.
-        :param pulumi.Input[pulumi.InputType['TaskNotebookArgs']] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+        :param pulumi.Input[Union['TaskNotebookArgs', 'TaskNotebookArgsDict']] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
                its memory over time.
-        :param pulumi.Input[pulumi.InputType['TaskSparkArgs']] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+        :param pulumi.Input[Union['TaskSparkArgs', 'TaskSparkArgsDict']] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
                its memory over time.
         :param pulumi.Input[str] task_id: The task Id of the task.
-        :param pulumi.Input[pulumi.InputType['TaskTriggerSpecArgs']] trigger_spec: Configuration for the cluster
+        :param pulumi.Input[Union['TaskTriggerSpecArgs', 'TaskTriggerSpecArgsDict']] trigger_spec: Configuration for the cluster
                Structure is documented below.
         """
         ...
@@ -789,22 +794,22 @@ class Task(pulumi.CustomResource):
             labels={
                 "count": "3",
             },
-            trigger_spec=gcp.dataplex.TaskTriggerSpecArgs(
-                type="RECURRING",
-                disabled=False,
-                max_retries=3,
-                start_time="2023-10-02T15:01:23Z",
-                schedule="1 * * * *",
-            ),
-            execution_spec=gcp.dataplex.TaskExecutionSpecArgs(
-                service_account=f"{project.number}-compute@developer.gserviceaccount.com",
-                project="my-project-name",
-                max_job_execution_lifetime="100s",
-                kms_key="234jn2kjn42k3n423",
-            ),
-            spark=gcp.dataplex.TaskSparkArgs(
-                python_script_file="gs://dataproc-examples/pyspark/hello-world/hello-world.py",
-            ),
+            trigger_spec={
+                "type": "RECURRING",
+                "disabled": False,
+                "maxRetries": 3,
+                "startTime": "2023-10-02T15:01:23Z",
+                "schedule": "1 * * * *",
+            },
+            execution_spec={
+                "serviceAccount": f"{project.number}-compute@developer.gserviceaccount.com",
+                "project": "my-project-name",
+                "maxJobExecutionLifetime": "100s",
+                "kmsKey": "234jn2kjn42k3n423",
+            },
+            spark={
+                "pythonScriptFile": "gs://dataproc-examples/pyspark/hello-world/hello-world.py",
+            },
             project="my-project-name")
         ```
         ### Dataplex Task Spark
@@ -826,41 +831,41 @@ class Task(pulumi.CustomResource):
             task_id="tf-test-task_95154",
             location="us-central1",
             lake=example_spark.name,
-            trigger_spec=gcp.dataplex.TaskTriggerSpecArgs(
-                type="ON_DEMAND",
-            ),
+            trigger_spec={
+                "type": "ON_DEMAND",
+            },
             description="task-spark-terraform",
-            execution_spec=gcp.dataplex.TaskExecutionSpecArgs(
-                service_account=f"{project.number}-compute@developer.gserviceaccount.com",
-                args={
+            execution_spec={
+                "serviceAccount": f"{project.number}-compute@developer.gserviceaccount.com",
+                "args": {
                     "TASK_ARGS": "--output_location,gs://spark-job/task-result, --output_format, json",
                 },
-            ),
-            spark=gcp.dataplex.TaskSparkArgs(
-                infrastructure_spec=gcp.dataplex.TaskSparkInfrastructureSpecArgs(
-                    batch=gcp.dataplex.TaskSparkInfrastructureSpecBatchArgs(
-                        executors_count=2,
-                        max_executors_count=100,
-                    ),
-                    container_image=gcp.dataplex.TaskSparkInfrastructureSpecContainerImageArgs(
-                        image="test-image",
-                        java_jars=["test-java-jars.jar"],
-                        python_packages=["gs://bucket-name/my/path/to/lib.tar.gz"],
-                        properties={
+            },
+            spark={
+                "infrastructureSpec": {
+                    "batch": {
+                        "executorsCount": 2,
+                        "maxExecutorsCount": 100,
+                    },
+                    "containerImage": {
+                        "image": "test-image",
+                        "javaJars": ["test-java-jars.jar"],
+                        "pythonPackages": ["gs://bucket-name/my/path/to/lib.tar.gz"],
+                        "properties": {
                             "name": "wrench",
                             "mass": "1.3kg",
                             "count": "3",
                         },
-                    ),
-                    vpc_network=gcp.dataplex.TaskSparkInfrastructureSpecVpcNetworkArgs(
-                        network_tags=["test-network-tag"],
-                        sub_network=default.id,
-                    ),
-                ),
-                file_uris=["gs://terrafrom-test/test.csv"],
-                archive_uris=["gs://terraform-test/test.csv"],
-                sql_script="show databases",
-            ),
+                    },
+                    "vpcNetwork": {
+                        "networkTags": ["test-network-tag"],
+                        "subNetwork": default.id,
+                    },
+                },
+                "fileUris": ["gs://terrafrom-test/test.csv"],
+                "archiveUris": ["gs://terraform-test/test.csv"],
+                "sqlScript": "show databases",
+            },
             project="my-project-name")
         ```
         ### Dataplex Task Notebook
@@ -882,41 +887,41 @@ class Task(pulumi.CustomResource):
             task_id="tf-test-task_74000",
             location="us-central1",
             lake=example_notebook.name,
-            trigger_spec=gcp.dataplex.TaskTriggerSpecArgs(
-                type="RECURRING",
-                schedule="1 * * * *",
-            ),
-            execution_spec=gcp.dataplex.TaskExecutionSpecArgs(
-                service_account=f"{project.number}-compute@developer.gserviceaccount.com",
-                args={
+            trigger_spec={
+                "type": "RECURRING",
+                "schedule": "1 * * * *",
+            },
+            execution_spec={
+                "serviceAccount": f"{project.number}-compute@developer.gserviceaccount.com",
+                "args": {
                     "TASK_ARGS": "--output_location,gs://spark-job-jars-anrajitha/task-result, --output_format, json",
                 },
-            ),
-            notebook=gcp.dataplex.TaskNotebookArgs(
-                notebook="gs://terraform-test/test-notebook.ipynb",
-                infrastructure_spec=gcp.dataplex.TaskNotebookInfrastructureSpecArgs(
-                    batch=gcp.dataplex.TaskNotebookInfrastructureSpecBatchArgs(
-                        executors_count=2,
-                        max_executors_count=100,
-                    ),
-                    container_image=gcp.dataplex.TaskNotebookInfrastructureSpecContainerImageArgs(
-                        image="test-image",
-                        java_jars=["test-java-jars.jar"],
-                        python_packages=["gs://bucket-name/my/path/to/lib.tar.gz"],
-                        properties={
+            },
+            notebook={
+                "notebook": "gs://terraform-test/test-notebook.ipynb",
+                "infrastructureSpec": {
+                    "batch": {
+                        "executorsCount": 2,
+                        "maxExecutorsCount": 100,
+                    },
+                    "containerImage": {
+                        "image": "test-image",
+                        "javaJars": ["test-java-jars.jar"],
+                        "pythonPackages": ["gs://bucket-name/my/path/to/lib.tar.gz"],
+                        "properties": {
                             "name": "wrench",
                             "mass": "1.3kg",
                             "count": "3",
                         },
-                    ),
-                    vpc_network=gcp.dataplex.TaskNotebookInfrastructureSpecVpcNetworkArgs(
-                        network_tags=["test-network-tag"],
-                        network=default.id,
-                    ),
-                ),
-                file_uris=["gs://terraform-test/test.csv"],
-                archive_uris=["gs://terraform-test/test.csv"],
-            ),
+                    },
+                    "vpcNetwork": {
+                        "networkTags": ["test-network-tag"],
+                        "network": default.id,
+                    },
+                },
+                "fileUris": ["gs://terraform-test/test.csv"],
+                "archiveUris": ["gs://terraform-test/test.csv"],
+            },
             project="my-project-name")
         ```
 
@@ -961,15 +966,15 @@ class Task(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 execution_spec: Optional[pulumi.Input[pulumi.InputType['TaskExecutionSpecArgs']]] = None,
+                 execution_spec: Optional[pulumi.Input[Union['TaskExecutionSpecArgs', 'TaskExecutionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 notebook: Optional[pulumi.Input[pulumi.InputType['TaskNotebookArgs']]] = None,
+                 notebook: Optional[pulumi.Input[Union['TaskNotebookArgs', 'TaskNotebookArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spark: Optional[pulumi.Input[pulumi.InputType['TaskSparkArgs']]] = None,
+                 spark: Optional[pulumi.Input[Union['TaskSparkArgs', 'TaskSparkArgsDict']]] = None,
                  task_id: Optional[pulumi.Input[str]] = None,
-                 trigger_spec: Optional[pulumi.Input[pulumi.InputType['TaskTriggerSpecArgs']]] = None,
+                 trigger_spec: Optional[pulumi.Input[Union['TaskTriggerSpecArgs', 'TaskTriggerSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1018,19 +1023,19 @@ class Task(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            execution_spec: Optional[pulumi.Input[pulumi.InputType['TaskExecutionSpecArgs']]] = None,
-            execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TaskExecutionStatusArgs']]]]] = None,
+            execution_spec: Optional[pulumi.Input[Union['TaskExecutionSpecArgs', 'TaskExecutionSpecArgsDict']]] = None,
+            execution_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TaskExecutionStatusArgs', 'TaskExecutionStatusArgsDict']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             lake: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notebook: Optional[pulumi.Input[pulumi.InputType['TaskNotebookArgs']]] = None,
+            notebook: Optional[pulumi.Input[Union['TaskNotebookArgs', 'TaskNotebookArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            spark: Optional[pulumi.Input[pulumi.InputType['TaskSparkArgs']]] = None,
+            spark: Optional[pulumi.Input[Union['TaskSparkArgs', 'TaskSparkArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             task_id: Optional[pulumi.Input[str]] = None,
-            trigger_spec: Optional[pulumi.Input[pulumi.InputType['TaskTriggerSpecArgs']]] = None,
+            trigger_spec: Optional[pulumi.Input[Union['TaskTriggerSpecArgs', 'TaskTriggerSpecArgsDict']]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Task':
         """
@@ -1044,9 +1049,9 @@ class Task(pulumi.CustomResource):
         :param pulumi.Input[str] description: User-provided description of the task.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['TaskExecutionSpecArgs']] execution_spec: Configuration for the cluster
+        :param pulumi.Input[Union['TaskExecutionSpecArgs', 'TaskExecutionSpecArgsDict']] execution_spec: Configuration for the cluster
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TaskExecutionStatusArgs']]]] execution_statuses: Configuration for the cluster
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TaskExecutionStatusArgs', 'TaskExecutionStatusArgsDict']]]] execution_statuses: Configuration for the cluster
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
                your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -1054,16 +1059,16 @@ class Task(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location in which the task will be created in.
         :param pulumi.Input[str] name: (Output)
                The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
-        :param pulumi.Input[pulumi.InputType['TaskNotebookArgs']] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+        :param pulumi.Input[Union['TaskNotebookArgs', 'TaskNotebookArgsDict']] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
                its memory over time.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['TaskSparkArgs']] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+        :param pulumi.Input[Union['TaskSparkArgs', 'TaskSparkArgsDict']] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
                its memory over time.
         :param pulumi.Input[str] state: (Output)
                Execution state for the job.
         :param pulumi.Input[str] task_id: The task Id of the task.
-        :param pulumi.Input[pulumi.InputType['TaskTriggerSpecArgs']] trigger_spec: Configuration for the cluster
+        :param pulumi.Input[Union['TaskTriggerSpecArgs', 'TaskTriggerSpecArgsDict']] trigger_spec: Configuration for the cluster
                Structure is documented below.
         :param pulumi.Input[str] uid: (Output)
                System generated globally unique ID for the job.

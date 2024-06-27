@@ -4,22 +4,48 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'DatabaseEncryptionConfigArgs',
+    'DatabaseEncryptionConfigArgsDict',
     'DatabaseIAMBindingConditionArgs',
+    'DatabaseIAMBindingConditionArgsDict',
     'DatabaseIAMMemberConditionArgs',
+    'DatabaseIAMMemberConditionArgsDict',
     'InstanceAutoscalingConfigArgs',
+    'InstanceAutoscalingConfigArgsDict',
     'InstanceAutoscalingConfigAutoscalingLimitsArgs',
+    'InstanceAutoscalingConfigAutoscalingLimitsArgsDict',
     'InstanceAutoscalingConfigAutoscalingTargetsArgs',
+    'InstanceAutoscalingConfigAutoscalingTargetsArgsDict',
     'InstanceConfigReplicaArgs',
+    'InstanceConfigReplicaArgsDict',
     'InstanceIAMBindingConditionArgs',
+    'InstanceIAMBindingConditionArgsDict',
     'InstanceIAMMemberConditionArgs',
+    'InstanceIAMMemberConditionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class DatabaseEncryptionConfigArgsDict(TypedDict):
+        kms_key_name: pulumi.Input[str]
+        """
+        Fully qualified name of the KMS key to use to encrypt this database. This key must exist
+        in the same location as the Spanner Database.
+        """
+elif False:
+    DatabaseEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatabaseEncryptionConfigArgs:
@@ -44,6 +70,20 @@ class DatabaseEncryptionConfigArgs:
     def kms_key_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_name", value)
 
+
+if not MYPY:
+    class DatabaseIAMBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    DatabaseIAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatabaseIAMBindingConditionArgs:
@@ -94,6 +134,20 @@ class DatabaseIAMBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class DatabaseIAMMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    DatabaseIAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatabaseIAMMemberConditionArgs:
     def __init__(__self__, *,
@@ -142,6 +196,27 @@ class DatabaseIAMMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class InstanceAutoscalingConfigArgsDict(TypedDict):
+        autoscaling_limits: NotRequired[pulumi.Input['InstanceAutoscalingConfigAutoscalingLimitsArgsDict']]
+        """
+        Defines scale in controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events. Users can define the minimum and
+        maximum compute capacity allocated to the instance, and the autoscaler will
+        only scale within that range. Users can either use nodes or processing
+        units to specify the limits, but should use the same unit to set both the
+        min_limit and max_limit.
+        Structure is documented below.
+        """
+        autoscaling_targets: NotRequired[pulumi.Input['InstanceAutoscalingConfigAutoscalingTargetsArgsDict']]
+        """
+        Defines scale in controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events
+        Structure is documented below.
+        """
+elif False:
+    InstanceAutoscalingConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceAutoscalingConfigArgs:
@@ -197,6 +272,32 @@ class InstanceAutoscalingConfigArgs:
     def autoscaling_targets(self, value: Optional[pulumi.Input['InstanceAutoscalingConfigAutoscalingTargetsArgs']]):
         pulumi.set(self, "autoscaling_targets", value)
 
+
+if not MYPY:
+    class InstanceAutoscalingConfigAutoscalingLimitsArgsDict(TypedDict):
+        max_nodes: NotRequired[pulumi.Input[int]]
+        """
+        Specifies maximum number of nodes allocated to the instance. If set, this number
+        should be greater than or equal to min_nodes.
+        """
+        max_processing_units: NotRequired[pulumi.Input[int]]
+        """
+        Specifies maximum number of processing units allocated to the instance.
+        If set, this number should be multiples of 1000 and be greater than or equal to
+        min_processing_units.
+        """
+        min_nodes: NotRequired[pulumi.Input[int]]
+        """
+        Specifies number of nodes allocated to the instance. If set, this number
+        should be greater than or equal to 1.
+        """
+        min_processing_units: NotRequired[pulumi.Input[int]]
+        """
+        Specifies minimum number of processing units allocated to the instance.
+        If set, this number should be multiples of 1000.
+        """
+elif False:
+    InstanceAutoscalingConfigAutoscalingLimitsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceAutoscalingConfigAutoscalingLimitsArgs:
@@ -279,6 +380,23 @@ class InstanceAutoscalingConfigAutoscalingLimitsArgs:
         pulumi.set(self, "min_processing_units", value)
 
 
+if not MYPY:
+    class InstanceAutoscalingConfigAutoscalingTargetsArgsDict(TypedDict):
+        high_priority_cpu_utilization_percent: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the target high priority cpu utilization percentage that the autoscaler
+        should be trying to achieve for the instance.
+        This number is on a scale from 0 (no utilization) to 100 (full utilization)..
+        """
+        storage_utilization_percent: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the target storage utilization percentage that the autoscaler
+        should be trying to achieve for the instance.
+        This number is on a scale from 0 (no utilization) to 100 (full utilization).
+        """
+elif False:
+    InstanceAutoscalingConfigAutoscalingTargetsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceAutoscalingConfigAutoscalingTargetsArgs:
     def __init__(__self__, *,
@@ -325,6 +443,29 @@ class InstanceAutoscalingConfigAutoscalingTargetsArgs:
     def storage_utilization_percent(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "storage_utilization_percent", value)
 
+
+if not MYPY:
+    class InstanceConfigReplicaArgsDict(TypedDict):
+        default_leader_location: NotRequired[pulumi.Input[bool]]
+        """
+        If true, this location is designated as the default leader location where
+        leader replicas are placed.
+
+        - - -
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        The location of the serving resources, e.g. "us-central1".
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Indicates the type of replica.  See the [replica types
+        documentation](https://cloud.google.com/spanner/docs/replication#replica_types)
+        for more details.
+        Possible values are: `READ_WRITE`, `READ_ONLY`, `WITNESS`.
+        """
+elif False:
+    InstanceConfigReplicaArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceConfigReplicaArgs:
@@ -393,6 +534,14 @@ class InstanceConfigReplicaArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class InstanceIAMBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    InstanceIAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceIAMBindingConditionArgs:
     def __init__(__self__, *,
@@ -431,6 +580,14 @@ class InstanceIAMBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class InstanceIAMMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    InstanceIAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceIAMMemberConditionArgs:

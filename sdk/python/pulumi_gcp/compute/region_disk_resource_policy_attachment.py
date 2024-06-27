@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['RegionDiskResourcePolicyAttachmentArgs', 'RegionDiskResourcePolicyAttachment']
@@ -221,14 +226,14 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         policy = gcp.compute.ResourcePolicy("policy",
             name="my-resource-policy",
             region="us-central1",
-            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
-                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
-                    daily_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs(
-                        days_in_cycle=1,
-                        start_time="04:00",
-                    ),
-                ),
-            ))
+            snapshot_schedule_policy={
+                "schedule": {
+                    "dailySchedule": {
+                        "daysInCycle": 1,
+                        "startTime": "04:00",
+                    },
+                },
+            })
         attachment = gcp.compute.RegionDiskResourcePolicyAttachment("attachment",
             name=policy.name,
             disk=ssd.name,
@@ -322,14 +327,14 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         policy = gcp.compute.ResourcePolicy("policy",
             name="my-resource-policy",
             region="us-central1",
-            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
-                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
-                    daily_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs(
-                        days_in_cycle=1,
-                        start_time="04:00",
-                    ),
-                ),
-            ))
+            snapshot_schedule_policy={
+                "schedule": {
+                    "dailySchedule": {
+                        "daysInCycle": 1,
+                        "startTime": "04:00",
+                    },
+                },
+            })
         attachment = gcp.compute.RegionDiskResourcePolicyAttachment("attachment",
             name=policy.name,
             disk=ssd.name,

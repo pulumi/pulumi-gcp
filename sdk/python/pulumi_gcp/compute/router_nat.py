@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -954,7 +959,7 @@ class RouterNat(pulumi.CustomResource):
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
                  endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']]] = None,
                  max_ports_per_vm: Optional[pulumi.Input[int]] = None,
                  min_ports_per_vm: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -963,9 +968,9 @@ class RouterNat(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict']]]]] = None,
                  source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[str]] = None,
-                 subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatSubnetworkArgs']]]]] = None,
+                 subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict']]]]] = None,
                  tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -999,19 +1004,19 @@ class RouterNat(pulumi.CustomResource):
             name="my-router",
             region=subnet.region,
             network=net.id,
-            bgp=gcp.compute.RouterBgpArgs(
-                asn=64514,
-            ))
+            bgp={
+                "asn": 64514,
+            })
         nat = gcp.compute.RouterNat("nat",
             name="my-router-nat",
             router=router.name,
             region=router.region,
             nat_ip_allocate_option="AUTO_ONLY",
             source_subnetwork_ip_ranges_to_nat="ALL_SUBNETWORKS_ALL_IP_RANGES",
-            log_config=gcp.compute.RouterNatLogConfigArgs(
-                enable=True,
-                filter="ERRORS_ONLY",
-            ))
+            log_config={
+                "enable": True,
+                "filter": "ERRORS_ONLY",
+            })
         ```
         ### Router Nat Manual Ips
 
@@ -1041,10 +1046,10 @@ class RouterNat(pulumi.CustomResource):
             nat_ip_allocate_option="MANUAL_ONLY",
             nat_ips=[__item.self_link for __item in address],
             source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
-            subnetworks=[gcp.compute.RouterNatSubnetworkArgs(
-                name=subnet.id,
-                source_ip_ranges_to_nats=["ALL_IP_RANGES"],
-            )])
+            subnetworks=[{
+                "name": subnet.id,
+                "sourceIpRangesToNats": ["ALL_IP_RANGES"],
+            }])
         ```
         ### Router Nat Rules
 
@@ -1080,21 +1085,21 @@ class RouterNat(pulumi.CustomResource):
             nat_ip_allocate_option="MANUAL_ONLY",
             nat_ips=[addr1.self_link],
             source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
-            subnetworks=[gcp.compute.RouterNatSubnetworkArgs(
-                name=subnet.id,
-                source_ip_ranges_to_nats=["ALL_IP_RANGES"],
-            )],
-            rules=[gcp.compute.RouterNatRuleArgs(
-                rule_number=100,
-                description="nat rules example",
-                match="inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')",
-                action=gcp.compute.RouterNatRuleActionArgs(
-                    source_nat_active_ips=[
+            subnetworks=[{
+                "name": subnet.id,
+                "sourceIpRangesToNats": ["ALL_IP_RANGES"],
+            }],
+            rules=[{
+                "ruleNumber": 100,
+                "description": "nat rules example",
+                "match": "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')",
+                "action": {
+                    "sourceNatActiveIps": [
                         addr2.self_link,
                         addr3.self_link,
                     ],
-                ),
-            )],
+                },
+            }],
             enable_endpoint_independent_mapping=False)
         ```
         ### Router Nat Private
@@ -1122,13 +1127,13 @@ class RouterNat(pulumi.CustomResource):
             location="global",
             description="vpc spoke for inter vpc nat",
             hub=hub.id,
-            linked_vpc_network=gcp.networkconnectivity.SpokeLinkedVpcNetworkArgs(
-                exclude_export_ranges=[
+            linked_vpc_network={
+                "excludeExportRanges": [
                     "198.51.100.0/24",
                     "10.10.0.0/16",
                 ],
-                uri=net.self_link,
-            ))
+                "uri": net.self_link,
+            })
         nat_type = gcp.compute.RouterNat("nat_type",
             name="my-router-nat",
             router=router.name,
@@ -1138,18 +1143,18 @@ class RouterNat(pulumi.CustomResource):
             enable_endpoint_independent_mapping=False,
             min_ports_per_vm=32,
             type="PRIVATE",
-            subnetworks=[gcp.compute.RouterNatSubnetworkArgs(
-                name=subnet.id,
-                source_ip_ranges_to_nats=["ALL_IP_RANGES"],
-            )],
-            rules=[gcp.compute.RouterNatRuleArgs(
-                rule_number=100,
-                description="rule for private nat",
-                match="nexthop.hub == \\"//networkconnectivity.googleapis.com/projects/acm-test-proj-123/locations/global/hubs/my-hub\\"",
-                action=gcp.compute.RouterNatRuleActionArgs(
-                    source_nat_active_ranges=[subnet.self_link],
-                ),
-            )])
+            subnetworks=[{
+                "name": subnet.id,
+                "sourceIpRangesToNats": ["ALL_IP_RANGES"],
+            }],
+            rules=[{
+                "ruleNumber": 100,
+                "description": "rule for private nat",
+                "match": "nexthop.hub == \\"//networkconnectivity.googleapis.com/projects/acm-test-proj-123/locations/global/hubs/my-hub\\"",
+                "action": {
+                    "sourceNatActiveRanges": [subnet.self_link],
+                },
+            }])
         ```
 
         ## Import
@@ -1203,7 +1208,7 @@ class RouterNat(pulumi.CustomResource):
                `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
                `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
-        :param pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']] log_config: Configuration for logging on NAT
+        :param pulumi.Input[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']] log_config: Configuration for logging on NAT
                Structure is documented below.
         :param pulumi.Input[int] max_ports_per_vm: Maximum number of ports allocated to a VM from this NAT.
                This field can only be set when enableDynamicPortAllocation is enabled.
@@ -1223,7 +1228,7 @@ class RouterNat(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatRuleArgs']]]] rules: A list of rules associated with this NAT.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict']]]] rules: A list of rules associated with this NAT.
                Structure is documented below.
         :param pulumi.Input[str] source_subnetwork_ip_ranges_to_nat: How NAT should be configured per Subnetwork.
                If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
@@ -1236,7 +1241,7 @@ class RouterNat(pulumi.CustomResource):
                ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
                other RouterNat section in any Router for this network in this region.
                Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatSubnetworkArgs']]]] subnetworks: One or more subnetwork NAT configurations. Only used if
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict']]]] subnetworks: One or more subnetwork NAT configurations. Only used if
                `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
                Structure is documented below.
         :param pulumi.Input[int] tcp_established_idle_timeout_sec: Timeout (in seconds) for TCP established connections.
@@ -1286,19 +1291,19 @@ class RouterNat(pulumi.CustomResource):
             name="my-router",
             region=subnet.region,
             network=net.id,
-            bgp=gcp.compute.RouterBgpArgs(
-                asn=64514,
-            ))
+            bgp={
+                "asn": 64514,
+            })
         nat = gcp.compute.RouterNat("nat",
             name="my-router-nat",
             router=router.name,
             region=router.region,
             nat_ip_allocate_option="AUTO_ONLY",
             source_subnetwork_ip_ranges_to_nat="ALL_SUBNETWORKS_ALL_IP_RANGES",
-            log_config=gcp.compute.RouterNatLogConfigArgs(
-                enable=True,
-                filter="ERRORS_ONLY",
-            ))
+            log_config={
+                "enable": True,
+                "filter": "ERRORS_ONLY",
+            })
         ```
         ### Router Nat Manual Ips
 
@@ -1328,10 +1333,10 @@ class RouterNat(pulumi.CustomResource):
             nat_ip_allocate_option="MANUAL_ONLY",
             nat_ips=[__item.self_link for __item in address],
             source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
-            subnetworks=[gcp.compute.RouterNatSubnetworkArgs(
-                name=subnet.id,
-                source_ip_ranges_to_nats=["ALL_IP_RANGES"],
-            )])
+            subnetworks=[{
+                "name": subnet.id,
+                "sourceIpRangesToNats": ["ALL_IP_RANGES"],
+            }])
         ```
         ### Router Nat Rules
 
@@ -1367,21 +1372,21 @@ class RouterNat(pulumi.CustomResource):
             nat_ip_allocate_option="MANUAL_ONLY",
             nat_ips=[addr1.self_link],
             source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
-            subnetworks=[gcp.compute.RouterNatSubnetworkArgs(
-                name=subnet.id,
-                source_ip_ranges_to_nats=["ALL_IP_RANGES"],
-            )],
-            rules=[gcp.compute.RouterNatRuleArgs(
-                rule_number=100,
-                description="nat rules example",
-                match="inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')",
-                action=gcp.compute.RouterNatRuleActionArgs(
-                    source_nat_active_ips=[
+            subnetworks=[{
+                "name": subnet.id,
+                "sourceIpRangesToNats": ["ALL_IP_RANGES"],
+            }],
+            rules=[{
+                "ruleNumber": 100,
+                "description": "nat rules example",
+                "match": "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')",
+                "action": {
+                    "sourceNatActiveIps": [
                         addr2.self_link,
                         addr3.self_link,
                     ],
-                ),
-            )],
+                },
+            }],
             enable_endpoint_independent_mapping=False)
         ```
         ### Router Nat Private
@@ -1409,13 +1414,13 @@ class RouterNat(pulumi.CustomResource):
             location="global",
             description="vpc spoke for inter vpc nat",
             hub=hub.id,
-            linked_vpc_network=gcp.networkconnectivity.SpokeLinkedVpcNetworkArgs(
-                exclude_export_ranges=[
+            linked_vpc_network={
+                "excludeExportRanges": [
                     "198.51.100.0/24",
                     "10.10.0.0/16",
                 ],
-                uri=net.self_link,
-            ))
+                "uri": net.self_link,
+            })
         nat_type = gcp.compute.RouterNat("nat_type",
             name="my-router-nat",
             router=router.name,
@@ -1425,18 +1430,18 @@ class RouterNat(pulumi.CustomResource):
             enable_endpoint_independent_mapping=False,
             min_ports_per_vm=32,
             type="PRIVATE",
-            subnetworks=[gcp.compute.RouterNatSubnetworkArgs(
-                name=subnet.id,
-                source_ip_ranges_to_nats=["ALL_IP_RANGES"],
-            )],
-            rules=[gcp.compute.RouterNatRuleArgs(
-                rule_number=100,
-                description="rule for private nat",
-                match="nexthop.hub == \\"//networkconnectivity.googleapis.com/projects/acm-test-proj-123/locations/global/hubs/my-hub\\"",
-                action=gcp.compute.RouterNatRuleActionArgs(
-                    source_nat_active_ranges=[subnet.self_link],
-                ),
-            )])
+            subnetworks=[{
+                "name": subnet.id,
+                "sourceIpRangesToNats": ["ALL_IP_RANGES"],
+            }],
+            rules=[{
+                "ruleNumber": 100,
+                "description": "rule for private nat",
+                "match": "nexthop.hub == \\"//networkconnectivity.googleapis.com/projects/acm-test-proj-123/locations/global/hubs/my-hub\\"",
+                "action": {
+                    "sourceNatActiveRanges": [subnet.self_link],
+                },
+            }])
         ```
 
         ## Import
@@ -1490,7 +1495,7 @@ class RouterNat(pulumi.CustomResource):
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
                  endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']]] = None,
                  max_ports_per_vm: Optional[pulumi.Input[int]] = None,
                  min_ports_per_vm: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1499,9 +1504,9 @@ class RouterNat(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict']]]]] = None,
                  source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[str]] = None,
-                 subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatSubnetworkArgs']]]]] = None,
+                 subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict']]]]] = None,
                  tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -1559,7 +1564,7 @@ class RouterNat(pulumi.CustomResource):
             enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
             endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
-            log_config: Optional[pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']]] = None,
+            log_config: Optional[pulumi.Input[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']]] = None,
             max_ports_per_vm: Optional[pulumi.Input[int]] = None,
             min_ports_per_vm: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1568,9 +1573,9 @@ class RouterNat(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             router: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict']]]]] = None,
             source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[str]] = None,
-            subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatSubnetworkArgs']]]]] = None,
+            subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict']]]]] = None,
             tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
             tcp_time_wait_timeout_sec: Optional[pulumi.Input[int]] = None,
             tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -1602,7 +1607,7 @@ class RouterNat(pulumi.CustomResource):
                `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
                `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
-        :param pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']] log_config: Configuration for logging on NAT
+        :param pulumi.Input[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']] log_config: Configuration for logging on NAT
                Structure is documented below.
         :param pulumi.Input[int] max_ports_per_vm: Maximum number of ports allocated to a VM from this NAT.
                This field can only be set when enableDynamicPortAllocation is enabled.
@@ -1622,7 +1627,7 @@ class RouterNat(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatRuleArgs']]]] rules: A list of rules associated with this NAT.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNatRuleArgs', 'RouterNatRuleArgsDict']]]] rules: A list of rules associated with this NAT.
                Structure is documented below.
         :param pulumi.Input[str] source_subnetwork_ip_ranges_to_nat: How NAT should be configured per Subnetwork.
                If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
@@ -1635,7 +1640,7 @@ class RouterNat(pulumi.CustomResource):
                ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
                other RouterNat section in any Router for this network in this region.
                Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatSubnetworkArgs']]]] subnetworks: One or more subnetwork NAT configurations. Only used if
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNatSubnetworkArgs', 'RouterNatSubnetworkArgsDict']]]] subnetworks: One or more subnetwork NAT configurations. Only used if
                `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
                Structure is documented below.
         :param pulumi.Input[int] tcp_established_idle_timeout_sec: Timeout (in seconds) for TCP established connections.

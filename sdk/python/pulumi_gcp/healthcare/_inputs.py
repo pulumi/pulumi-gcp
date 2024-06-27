@@ -4,34 +4,70 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ConsentStoreIamBindingConditionArgs',
+    'ConsentStoreIamBindingConditionArgsDict',
     'ConsentStoreIamMemberConditionArgs',
+    'ConsentStoreIamMemberConditionArgsDict',
     'DatasetIamBindingConditionArgs',
+    'DatasetIamBindingConditionArgsDict',
     'DatasetIamMemberConditionArgs',
+    'DatasetIamMemberConditionArgsDict',
     'DicomStoreIamBindingConditionArgs',
+    'DicomStoreIamBindingConditionArgsDict',
     'DicomStoreIamMemberConditionArgs',
+    'DicomStoreIamMemberConditionArgsDict',
     'DicomStoreNotificationConfigArgs',
+    'DicomStoreNotificationConfigArgsDict',
     'DicomStoreStreamConfigArgs',
+    'DicomStoreStreamConfigArgsDict',
     'DicomStoreStreamConfigBigqueryDestinationArgs',
+    'DicomStoreStreamConfigBigqueryDestinationArgsDict',
     'FhirStoreIamBindingConditionArgs',
+    'FhirStoreIamBindingConditionArgsDict',
     'FhirStoreIamMemberConditionArgs',
+    'FhirStoreIamMemberConditionArgsDict',
     'FhirStoreNotificationConfigArgs',
+    'FhirStoreNotificationConfigArgsDict',
     'FhirStoreStreamConfigArgs',
+    'FhirStoreStreamConfigArgsDict',
     'FhirStoreStreamConfigBigqueryDestinationArgs',
+    'FhirStoreStreamConfigBigqueryDestinationArgsDict',
     'FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs',
+    'FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgsDict',
     'FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs',
+    'FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgsDict',
     'Hl7StoreIamBindingConditionArgs',
+    'Hl7StoreIamBindingConditionArgsDict',
     'Hl7StoreIamMemberConditionArgs',
+    'Hl7StoreIamMemberConditionArgsDict',
     'Hl7StoreNotificationConfigArgs',
+    'Hl7StoreNotificationConfigArgsDict',
     'Hl7StoreNotificationConfigsArgs',
+    'Hl7StoreNotificationConfigsArgsDict',
     'Hl7StoreParserConfigArgs',
+    'Hl7StoreParserConfigArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ConsentStoreIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    ConsentStoreIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConsentStoreIamBindingConditionArgs:
@@ -72,6 +108,14 @@ class ConsentStoreIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class ConsentStoreIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    ConsentStoreIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConsentStoreIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -110,6 +154,14 @@ class ConsentStoreIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class DatasetIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    DatasetIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatasetIamBindingConditionArgs:
@@ -150,6 +202,14 @@ class DatasetIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class DatasetIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    DatasetIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatasetIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -188,6 +248,14 @@ class DatasetIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class DicomStoreIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    DicomStoreIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DicomStoreIamBindingConditionArgs:
@@ -228,6 +296,14 @@ class DicomStoreIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class DicomStoreIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    DicomStoreIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DicomStoreIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -266,6 +342,24 @@ class DicomStoreIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class DicomStoreNotificationConfigArgsDict(TypedDict):
+        pubsub_topic: pulumi.Input[str]
+        """
+        The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
+        PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
+        It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
+        was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
+        project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+        Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+        """
+        send_for_bulk_import: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+        """
+elif False:
+    DicomStoreNotificationConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DicomStoreNotificationConfigArgs:
@@ -315,6 +409,16 @@ class DicomStoreNotificationConfigArgs:
         pulumi.set(self, "send_for_bulk_import", value)
 
 
+if not MYPY:
+    class DicomStoreStreamConfigArgsDict(TypedDict):
+        bigquery_destination: pulumi.Input['DicomStoreStreamConfigBigqueryDestinationArgsDict']
+        """
+        BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+        Structure is documented below.
+        """
+elif False:
+    DicomStoreStreamConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DicomStoreStreamConfigArgs:
     def __init__(__self__, *,
@@ -339,6 +443,15 @@ class DicomStoreStreamConfigArgs:
         pulumi.set(self, "bigquery_destination", value)
 
 
+if not MYPY:
+    class DicomStoreStreamConfigBigqueryDestinationArgsDict(TypedDict):
+        table_uri: pulumi.Input[str]
+        """
+        a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
+        """
+elif False:
+    DicomStoreStreamConfigBigqueryDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DicomStoreStreamConfigBigqueryDestinationArgs:
     def __init__(__self__, *,
@@ -360,6 +473,14 @@ class DicomStoreStreamConfigBigqueryDestinationArgs:
     def table_uri(self, value: pulumi.Input[str]):
         pulumi.set(self, "table_uri", value)
 
+
+if not MYPY:
+    class FhirStoreIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    FhirStoreIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FhirStoreIamBindingConditionArgs:
@@ -400,6 +521,14 @@ class FhirStoreIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class FhirStoreIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    FhirStoreIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FhirStoreIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -438,6 +567,36 @@ class FhirStoreIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class FhirStoreNotificationConfigArgsDict(TypedDict):
+        pubsub_topic: pulumi.Input[str]
+        """
+        The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
+        PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
+        It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
+        was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
+        project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+        Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+        """
+        send_full_resource: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
+        Note that setting this to true does not guarantee that all resources will be sent in the format of
+        full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be
+        sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether
+        it needs to fetch the full resource as a separate operation.
+        """
+        send_previous_resource_on_delete: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to
+        true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a
+        resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always
+        check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous
+        resource as a separate operation.
+        """
+elif False:
+    FhirStoreNotificationConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FhirStoreNotificationConfigArgs:
@@ -519,6 +678,26 @@ class FhirStoreNotificationConfigArgs:
         pulumi.set(self, "send_previous_resource_on_delete", value)
 
 
+if not MYPY:
+    class FhirStoreStreamConfigArgsDict(TypedDict):
+        bigquery_destination: pulumi.Input['FhirStoreStreamConfigBigqueryDestinationArgsDict']
+        """
+        The destination BigQuery structure that contains both the dataset location and corresponding schema config.
+        The output is organized in one table per resource type. The server reuses the existing tables (if any) that
+        are named after the resource types, e.g. "Patient", "Observation". When there is no existing table for a given
+        resource type, the server attempts to create one.
+        See the [streaming config reference](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores#streamconfig) for more details.
+        Structure is documented below.
+        """
+        resource_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Supply a FHIR resource type (such as "Patient" or "Observation"). See
+        https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
+        an empty list as an intent to stream all the supported resource types in this FHIR store.
+        """
+elif False:
+    FhirStoreStreamConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FhirStoreStreamConfigArgs:
     def __init__(__self__, *,
@@ -571,6 +750,20 @@ class FhirStoreStreamConfigArgs:
         pulumi.set(self, "resource_types", value)
 
 
+if not MYPY:
+    class FhirStoreStreamConfigBigqueryDestinationArgsDict(TypedDict):
+        dataset_uri: pulumi.Input[str]
+        """
+        BigQuery URI to a dataset, up to 2000 characters long, in the format bq://projectId.bqDatasetId
+        """
+        schema_config: pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgsDict']
+        """
+        The configuration for the exported BigQuery schema.
+        Structure is documented below.
+        """
+elif False:
+    FhirStoreStreamConfigBigqueryDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FhirStoreStreamConfigBigqueryDestinationArgs:
     def __init__(__self__, *,
@@ -609,6 +802,33 @@ class FhirStoreStreamConfigBigqueryDestinationArgs:
     def schema_config(self, value: pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs']):
         pulumi.set(self, "schema_config", value)
 
+
+if not MYPY:
+    class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgsDict(TypedDict):
+        recursive_structure_depth: pulumi.Input[int]
+        """
+        The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
+        resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
+        concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
+        value 2. The maximum depth allowed is 5.
+        """
+        last_updated_partition_config: NotRequired[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgsDict']]
+        """
+        The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
+        Structure is documented below.
+        """
+        schema_type: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the output schema type.
+        * ANALYTICS: Analytics schema defined by the FHIR community.
+        See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+        * ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
+        * LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
+        Default value is `ANALYTICS`.
+        Possible values are: `ANALYTICS`, `ANALYTICS_V2`, `LOSSLESS`.
+        """
+elif False:
+    FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
@@ -684,6 +904,20 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
         pulumi.set(self, "schema_type", value)
 
 
+if not MYPY:
+    class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type of partitioning.
+        Possible values are: `PARTITION_TYPE_UNSPECIFIED`, `HOUR`, `DAY`, `MONTH`, `YEAR`.
+        """
+        expiration_ms: NotRequired[pulumi.Input[str]]
+        """
+        Number of milliseconds for which to keep the storage for a partition.
+        """
+elif False:
+    FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs:
     def __init__(__self__, *,
@@ -724,6 +958,14 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionCo
         pulumi.set(self, "expiration_ms", value)
 
 
+if not MYPY:
+    class Hl7StoreIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    Hl7StoreIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class Hl7StoreIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -762,6 +1004,14 @@ class Hl7StoreIamBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class Hl7StoreIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    Hl7StoreIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class Hl7StoreIamMemberConditionArgs:
@@ -802,6 +1052,20 @@ class Hl7StoreIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class Hl7StoreNotificationConfigArgsDict(TypedDict):
+        pubsub_topic: pulumi.Input[str]
+        """
+        The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
+        PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
+        It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
+        was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
+        project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+        Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+        """
+elif False:
+    Hl7StoreNotificationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class Hl7StoreNotificationConfigArgs:
     def __init__(__self__, *,
@@ -833,6 +1097,33 @@ class Hl7StoreNotificationConfigArgs:
     def pubsub_topic(self, value: pulumi.Input[str]):
         pulumi.set(self, "pubsub_topic", value)
 
+
+if not MYPY:
+    class Hl7StoreNotificationConfigsArgsDict(TypedDict):
+        pubsub_topic: pulumi.Input[str]
+        """
+        The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
+        PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
+        It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
+        was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
+        project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+        Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+        If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
+        """
+        filter: NotRequired[pulumi.Input[str]]
+        """
+        Restricts notifications sent for messages matching a filter. If this is empty, all messages
+        are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+        Fields/functions available for filtering are:
+        * messageType, from the MSH-9.1 field. For example, NOT messageType = "ADT".
+        * send_date or sendDate, the YYYY-MM-DD date the message was sent in the dataset's timeZone, from the MSH-7 segment. For example, send_date < "2017-01-02".
+        * sendTime, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, sendTime < "2017-01-02T00:00:00-05:00".
+        * sendFacility, the care center that the message came from, from the MSH-4 segment. For example, sendFacility = "ABC".
+        * PatientId(value, type), which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, PatientId("123456", "MRN").
+        * labels.x, a string value of the label with key x as set using the Message.labels map. For example, labels."priority"="high". The operator :* can be used to assert the existence of a label. For example, labels."priority":*.
+        """
+elif False:
+    Hl7StoreNotificationConfigsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class Hl7StoreNotificationConfigsArgs:
@@ -899,6 +1190,31 @@ class Hl7StoreNotificationConfigsArgs:
     def filter(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "filter", value)
 
+
+if not MYPY:
+    class Hl7StoreParserConfigArgsDict(TypedDict):
+        allow_null_header: NotRequired[pulumi.Input[bool]]
+        """
+        Determines whether messages with no header are allowed.
+        """
+        schema: NotRequired[pulumi.Input[str]]
+        """
+        JSON encoded string for schemas used to parse messages in this
+        store if schematized parsing is desired.
+        """
+        segment_terminator: NotRequired[pulumi.Input[str]]
+        """
+        Byte(s) to be used as the segment terminator. If this is unset, '\\r' will be used as segment terminator.
+        A base64-encoded string.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        The version of the unschematized parser to be used when a custom `schema` is not set.
+        Default value is `V1`.
+        Possible values are: `V1`, `V2`, `V3`.
+        """
+elif False:
+    Hl7StoreParserConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class Hl7StoreParserConfigArgs:

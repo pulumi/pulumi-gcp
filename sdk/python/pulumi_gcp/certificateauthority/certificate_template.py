@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -424,13 +429,13 @@ class CertificateTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 identity_constraints: Optional[pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']]] = None,
+                 identity_constraints: Optional[pulumi.Input[Union['CertificateTemplateIdentityConstraintsArgs', 'CertificateTemplateIdentityConstraintsArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maximum_lifetime: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 passthrough_extensions: Optional[pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']]] = None,
-                 predefined_values: Optional[pulumi.Input[pulumi.InputType['CertificateTemplatePredefinedValuesArgs']]] = None,
+                 passthrough_extensions: Optional[pulumi.Input[Union['CertificateTemplatePassthroughExtensionsArgs', 'CertificateTemplatePassthroughExtensionsArgsDict']]] = None,
+                 predefined_values: Optional[pulumi.Input[Union['CertificateTemplatePredefinedValuesArgs', 'CertificateTemplatePredefinedValuesArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -456,76 +461,76 @@ class CertificateTemplate(pulumi.CustomResource):
             name="my-template",
             location="us-central1",
             description="A sample certificate template",
-            identity_constraints=gcp.certificateauthority.CertificateTemplateIdentityConstraintsArgs(
-                allow_subject_alt_names_passthrough=True,
-                allow_subject_passthrough=True,
-                cel_expression=gcp.certificateauthority.CertificateTemplateIdentityConstraintsCelExpressionArgs(
-                    description="Always true",
-                    expression="true",
-                    location="any.file.anywhere",
-                    title="Sample expression",
-                ),
-            ),
+            identity_constraints={
+                "allowSubjectAltNamesPassthrough": True,
+                "allowSubjectPassthrough": True,
+                "celExpression": {
+                    "description": "Always true",
+                    "expression": "true",
+                    "location": "any.file.anywhere",
+                    "title": "Sample expression",
+                },
+            },
             maximum_lifetime="86400s",
-            passthrough_extensions=gcp.certificateauthority.CertificateTemplatePassthroughExtensionsArgs(
-                additional_extensions=[gcp.certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs(
-                    object_id_paths=[
+            passthrough_extensions={
+                "additionalExtensions": [{
+                    "objectIdPaths": [
                         1,
                         6,
                     ],
-                )],
-                known_extensions=["EXTENDED_KEY_USAGE"],
-            ),
-            predefined_values=gcp.certificateauthority.CertificateTemplatePredefinedValuesArgs(
-                additional_extensions=[gcp.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionArgs(
-                    object_id=gcp.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs(
-                        object_id_paths=[
+                }],
+                "knownExtensions": ["EXTENDED_KEY_USAGE"],
+            },
+            predefined_values={
+                "additionalExtensions": [{
+                    "objectId": {
+                        "objectIdPaths": [
                             1,
                             6,
                         ],
-                    ),
-                    value="c3RyaW5nCg==",
-                    critical=True,
-                )],
-                aia_ocsp_servers=["string"],
-                ca_options=gcp.certificateauthority.CertificateTemplatePredefinedValuesCaOptionsArgs(
-                    is_ca=False,
-                    max_issuer_path_length=6,
-                ),
-                key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageArgs(
-                    base_key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs(
-                        cert_sign=False,
-                        content_commitment=True,
-                        crl_sign=False,
-                        data_encipherment=True,
-                        decipher_only=True,
-                        digital_signature=True,
-                        encipher_only=True,
-                        key_agreement=True,
-                        key_encipherment=True,
-                    ),
-                    extended_key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs(
-                        client_auth=True,
-                        code_signing=True,
-                        email_protection=True,
-                        ocsp_signing=True,
-                        server_auth=True,
-                        time_stamping=True,
-                    ),
-                    unknown_extended_key_usages=[gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs(
-                        object_id_paths=[
+                    },
+                    "value": "c3RyaW5nCg==",
+                    "critical": True,
+                }],
+                "aiaOcspServers": ["string"],
+                "caOptions": {
+                    "isCa": False,
+                    "maxIssuerPathLength": 6,
+                },
+                "keyUsage": {
+                    "baseKeyUsage": {
+                        "certSign": False,
+                        "contentCommitment": True,
+                        "crlSign": False,
+                        "dataEncipherment": True,
+                        "decipherOnly": True,
+                        "digitalSignature": True,
+                        "encipherOnly": True,
+                        "keyAgreement": True,
+                        "keyEncipherment": True,
+                    },
+                    "extendedKeyUsage": {
+                        "clientAuth": True,
+                        "codeSigning": True,
+                        "emailProtection": True,
+                        "ocspSigning": True,
+                        "serverAuth": True,
+                        "timeStamping": True,
+                    },
+                    "unknownExtendedKeyUsages": [{
+                        "objectIdPaths": [
                             1,
                             6,
                         ],
-                    )],
-                ),
-                policy_ids=[gcp.certificateauthority.CertificateTemplatePredefinedValuesPolicyIdArgs(
-                    object_id_paths=[
+                    }],
+                },
+                "policyIds": [{
+                    "objectIdPaths": [
                         1,
                         6,
                     ],
-                )],
-            ),
+                }],
+            },
             labels={
                 "label-one": "value-one",
             })
@@ -558,7 +563,7 @@ class CertificateTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
-        :param pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
+        :param pulumi.Input[Union['CertificateTemplateIdentityConstraintsArgs', 'CertificateTemplateIdentityConstraintsArgsDict']] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -569,9 +574,9 @@ class CertificateTemplate(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] maximum_lifetime: Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
         :param pulumi.Input[str] name: The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
-        :param pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+        :param pulumi.Input[Union['CertificateTemplatePassthroughExtensionsArgs', 'CertificateTemplatePassthroughExtensionsArgsDict']] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['CertificateTemplatePredefinedValuesArgs']] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+        :param pulumi.Input[Union['CertificateTemplatePredefinedValuesArgs', 'CertificateTemplatePredefinedValuesArgsDict']] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -605,76 +610,76 @@ class CertificateTemplate(pulumi.CustomResource):
             name="my-template",
             location="us-central1",
             description="A sample certificate template",
-            identity_constraints=gcp.certificateauthority.CertificateTemplateIdentityConstraintsArgs(
-                allow_subject_alt_names_passthrough=True,
-                allow_subject_passthrough=True,
-                cel_expression=gcp.certificateauthority.CertificateTemplateIdentityConstraintsCelExpressionArgs(
-                    description="Always true",
-                    expression="true",
-                    location="any.file.anywhere",
-                    title="Sample expression",
-                ),
-            ),
+            identity_constraints={
+                "allowSubjectAltNamesPassthrough": True,
+                "allowSubjectPassthrough": True,
+                "celExpression": {
+                    "description": "Always true",
+                    "expression": "true",
+                    "location": "any.file.anywhere",
+                    "title": "Sample expression",
+                },
+            },
             maximum_lifetime="86400s",
-            passthrough_extensions=gcp.certificateauthority.CertificateTemplatePassthroughExtensionsArgs(
-                additional_extensions=[gcp.certificateauthority.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs(
-                    object_id_paths=[
+            passthrough_extensions={
+                "additionalExtensions": [{
+                    "objectIdPaths": [
                         1,
                         6,
                     ],
-                )],
-                known_extensions=["EXTENDED_KEY_USAGE"],
-            ),
-            predefined_values=gcp.certificateauthority.CertificateTemplatePredefinedValuesArgs(
-                additional_extensions=[gcp.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionArgs(
-                    object_id=gcp.certificateauthority.CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs(
-                        object_id_paths=[
+                }],
+                "knownExtensions": ["EXTENDED_KEY_USAGE"],
+            },
+            predefined_values={
+                "additionalExtensions": [{
+                    "objectId": {
+                        "objectIdPaths": [
                             1,
                             6,
                         ],
-                    ),
-                    value="c3RyaW5nCg==",
-                    critical=True,
-                )],
-                aia_ocsp_servers=["string"],
-                ca_options=gcp.certificateauthority.CertificateTemplatePredefinedValuesCaOptionsArgs(
-                    is_ca=False,
-                    max_issuer_path_length=6,
-                ),
-                key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageArgs(
-                    base_key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs(
-                        cert_sign=False,
-                        content_commitment=True,
-                        crl_sign=False,
-                        data_encipherment=True,
-                        decipher_only=True,
-                        digital_signature=True,
-                        encipher_only=True,
-                        key_agreement=True,
-                        key_encipherment=True,
-                    ),
-                    extended_key_usage=gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs(
-                        client_auth=True,
-                        code_signing=True,
-                        email_protection=True,
-                        ocsp_signing=True,
-                        server_auth=True,
-                        time_stamping=True,
-                    ),
-                    unknown_extended_key_usages=[gcp.certificateauthority.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs(
-                        object_id_paths=[
+                    },
+                    "value": "c3RyaW5nCg==",
+                    "critical": True,
+                }],
+                "aiaOcspServers": ["string"],
+                "caOptions": {
+                    "isCa": False,
+                    "maxIssuerPathLength": 6,
+                },
+                "keyUsage": {
+                    "baseKeyUsage": {
+                        "certSign": False,
+                        "contentCommitment": True,
+                        "crlSign": False,
+                        "dataEncipherment": True,
+                        "decipherOnly": True,
+                        "digitalSignature": True,
+                        "encipherOnly": True,
+                        "keyAgreement": True,
+                        "keyEncipherment": True,
+                    },
+                    "extendedKeyUsage": {
+                        "clientAuth": True,
+                        "codeSigning": True,
+                        "emailProtection": True,
+                        "ocspSigning": True,
+                        "serverAuth": True,
+                        "timeStamping": True,
+                    },
+                    "unknownExtendedKeyUsages": [{
+                        "objectIdPaths": [
                             1,
                             6,
                         ],
-                    )],
-                ),
-                policy_ids=[gcp.certificateauthority.CertificateTemplatePredefinedValuesPolicyIdArgs(
-                    object_id_paths=[
+                    }],
+                },
+                "policyIds": [{
+                    "objectIdPaths": [
                         1,
                         6,
                     ],
-                )],
-            ),
+                }],
+            },
             labels={
                 "label-one": "value-one",
             })
@@ -720,13 +725,13 @@ class CertificateTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 identity_constraints: Optional[pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']]] = None,
+                 identity_constraints: Optional[pulumi.Input[Union['CertificateTemplateIdentityConstraintsArgs', 'CertificateTemplateIdentityConstraintsArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maximum_lifetime: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 passthrough_extensions: Optional[pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']]] = None,
-                 predefined_values: Optional[pulumi.Input[pulumi.InputType['CertificateTemplatePredefinedValuesArgs']]] = None,
+                 passthrough_extensions: Optional[pulumi.Input[Union['CertificateTemplatePassthroughExtensionsArgs', 'CertificateTemplatePassthroughExtensionsArgsDict']]] = None,
+                 predefined_values: Optional[pulumi.Input[Union['CertificateTemplatePredefinedValuesArgs', 'CertificateTemplatePredefinedValuesArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -767,13 +772,13 @@ class CertificateTemplate(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            identity_constraints: Optional[pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']]] = None,
+            identity_constraints: Optional[pulumi.Input[Union['CertificateTemplateIdentityConstraintsArgs', 'CertificateTemplateIdentityConstraintsArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             maximum_lifetime: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            passthrough_extensions: Optional[pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']]] = None,
-            predefined_values: Optional[pulumi.Input[pulumi.InputType['CertificateTemplatePredefinedValuesArgs']]] = None,
+            passthrough_extensions: Optional[pulumi.Input[Union['CertificateTemplatePassthroughExtensionsArgs', 'CertificateTemplatePassthroughExtensionsArgsDict']]] = None,
+            predefined_values: Optional[pulumi.Input[Union['CertificateTemplatePredefinedValuesArgs', 'CertificateTemplatePredefinedValuesArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'CertificateTemplate':
@@ -787,7 +792,7 @@ class CertificateTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. The time at which this CertificateTemplate was created.
         :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
+        :param pulumi.Input[Union['CertificateTemplateIdentityConstraintsArgs', 'CertificateTemplateIdentityConstraintsArgsDict']] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -798,9 +803,9 @@ class CertificateTemplate(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] maximum_lifetime: Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
         :param pulumi.Input[str] name: The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
-        :param pulumi.Input[pulumi.InputType['CertificateTemplatePassthroughExtensionsArgs']] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+        :param pulumi.Input[Union['CertificateTemplatePassthroughExtensionsArgs', 'CertificateTemplatePassthroughExtensionsArgsDict']] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['CertificateTemplatePredefinedValuesArgs']] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+        :param pulumi.Input[Union['CertificateTemplatePredefinedValuesArgs', 'CertificateTemplatePredefinedValuesArgsDict']] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

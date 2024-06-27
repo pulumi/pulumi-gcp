@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -226,7 +231,7 @@ class TransferAgentPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth_limit: Optional[pulumi.Input[pulumi.InputType['TransferAgentPoolBandwidthLimitArgs']]] = None,
+                 bandwidth_limit: Optional[pulumi.Input[Union['TransferAgentPoolBandwidthLimitArgs', 'TransferAgentPoolBandwidthLimitArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -256,9 +261,9 @@ class TransferAgentPool(pulumi.CustomResource):
         example = gcp.storage.TransferAgentPool("example",
             name="agent-pool-example",
             display_name="Source A to destination Z",
-            bandwidth_limit=gcp.storage.TransferAgentPoolBandwidthLimitArgs(
-                limit_mbps="120",
-            ),
+            bandwidth_limit={
+                "limitMbps": "120",
+            },
             opts = pulumi.ResourceOptions(depends_on=[pubsub_editor_role]))
         ```
 
@@ -288,7 +293,7 @@ class TransferAgentPool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['TransferAgentPoolBandwidthLimitArgs']] bandwidth_limit: Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
+        :param pulumi.Input[Union['TransferAgentPoolBandwidthLimitArgs', 'TransferAgentPoolBandwidthLimitArgsDict']] bandwidth_limit: Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Specifies the client-specified AgentPool description.
         :param pulumi.Input[str] name: The ID of the agent pool to create.
@@ -336,9 +341,9 @@ class TransferAgentPool(pulumi.CustomResource):
         example = gcp.storage.TransferAgentPool("example",
             name="agent-pool-example",
             display_name="Source A to destination Z",
-            bandwidth_limit=gcp.storage.TransferAgentPoolBandwidthLimitArgs(
-                limit_mbps="120",
-            ),
+            bandwidth_limit={
+                "limitMbps": "120",
+            },
             opts = pulumi.ResourceOptions(depends_on=[pubsub_editor_role]))
         ```
 
@@ -381,7 +386,7 @@ class TransferAgentPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth_limit: Optional[pulumi.Input[pulumi.InputType['TransferAgentPoolBandwidthLimitArgs']]] = None,
+                 bandwidth_limit: Optional[pulumi.Input[Union['TransferAgentPoolBandwidthLimitArgs', 'TransferAgentPoolBandwidthLimitArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -409,7 +414,7 @@ class TransferAgentPool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth_limit: Optional[pulumi.Input[pulumi.InputType['TransferAgentPoolBandwidthLimitArgs']]] = None,
+            bandwidth_limit: Optional[pulumi.Input[Union['TransferAgentPoolBandwidthLimitArgs', 'TransferAgentPoolBandwidthLimitArgsDict']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -421,7 +426,7 @@ class TransferAgentPool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['TransferAgentPoolBandwidthLimitArgs']] bandwidth_limit: Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
+        :param pulumi.Input[Union['TransferAgentPoolBandwidthLimitArgs', 'TransferAgentPoolBandwidthLimitArgsDict']] bandwidth_limit: Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Specifies the client-specified AgentPool description.
         :param pulumi.Input[str] name: The ID of the agent pool to create.

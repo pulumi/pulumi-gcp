@@ -4,17 +4,53 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'InstanceHostConfigArgs',
+    'InstanceHostConfigArgsDict',
     'InstanceIamBindingConditionArgs',
+    'InstanceIamBindingConditionArgsDict',
     'InstanceIamMemberConditionArgs',
+    'InstanceIamMemberConditionArgsDict',
     'InstancePrivateConfigArgs',
+    'InstancePrivateConfigArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class InstanceHostConfigArgsDict(TypedDict):
+        api: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        API hostname.
+        """
+        git_http: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Git HTTP hostname.
+        """
+        git_ssh: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Git SSH hostname.
+        """
+        html: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        HTML hostname.
+        """
+elif False:
+    InstanceHostConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceHostConfigArgs:
@@ -95,6 +131,14 @@ class InstanceHostConfigArgs:
         pulumi.set(self, "html", value)
 
 
+if not MYPY:
+    class InstanceIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    InstanceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -134,6 +178,14 @@ class InstanceIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class InstanceIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    InstanceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -172,6 +224,29 @@ class InstanceIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class InstancePrivateConfigArgsDict(TypedDict):
+        ca_pool: pulumi.Input[str]
+        """
+        CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
+        """
+        is_private: pulumi.Input[bool]
+        """
+        'Indicate if it's private instance.'
+        """
+        http_service_attachment: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+        """
+        ssh_service_attachment: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+        """
+elif False:
+    InstancePrivateConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstancePrivateConfigArgs:

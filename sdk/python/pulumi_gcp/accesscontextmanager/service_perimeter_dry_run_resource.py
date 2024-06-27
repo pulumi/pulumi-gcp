@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['ServicePerimeterDryRunResourceArgs', 'ServicePerimeterDryRunResource']
@@ -155,9 +160,9 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/restrict_all"),
             title="restrict_all",
-            spec=gcp.accesscontextmanager.ServicePerimeterSpecArgs(
-                restricted_services=["storage.googleapis.com"],
-            ),
+            spec={
+                "restrictedServices": ["storage.googleapis.com"],
+            },
             use_explicit_dry_run_spec=True)
         service_perimeter_dry_run_resource = gcp.accesscontextmanager.ServicePerimeterDryRunResource("service-perimeter-dry-run-resource",
             perimeter_name=service_perimeter_dry_run_resource_service_perimeter.name,
@@ -230,9 +235,9 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/restrict_all"),
             title="restrict_all",
-            spec=gcp.accesscontextmanager.ServicePerimeterSpecArgs(
-                restricted_services=["storage.googleapis.com"],
-            ),
+            spec={
+                "restrictedServices": ["storage.googleapis.com"],
+            },
             use_explicit_dry_run_spec=True)
         service_perimeter_dry_run_resource = gcp.accesscontextmanager.ServicePerimeterDryRunResource("service-perimeter-dry-run-resource",
             perimeter_name=service_perimeter_dry_run_resource_service_perimeter.name,

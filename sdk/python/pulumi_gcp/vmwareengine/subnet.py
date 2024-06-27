@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -354,17 +359,17 @@ class Subnet(pulumi.CustomResource):
             location="us-west1-a",
             name="sample-pc",
             description="Sample test PC.",
-            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
-                management_cidr="192.168.50.0/24",
-                vmware_engine_network=subnet_nw.id,
-            ),
-            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
-                cluster_id="sample-mgmt-cluster",
-                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
-                    node_type_id="standard-72",
-                    node_count=3,
-                )],
-            ))
+            network_config={
+                "managementCidr": "192.168.50.0/24",
+                "vmwareEngineNetwork": subnet_nw.id,
+            },
+            management_cluster={
+                "clusterId": "sample-mgmt-cluster",
+                "nodeTypeConfigs": [{
+                    "nodeTypeId": "standard-72",
+                    "nodeCount": 3,
+                }],
+            })
         vmw_engine_subnet = gcp.vmwareengine.Subnet("vmw-engine-subnet",
             name="service-1",
             parent=subnet_pc.id,
@@ -427,17 +432,17 @@ class Subnet(pulumi.CustomResource):
             location="us-west1-a",
             name="sample-pc",
             description="Sample test PC.",
-            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
-                management_cidr="192.168.50.0/24",
-                vmware_engine_network=subnet_nw.id,
-            ),
-            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
-                cluster_id="sample-mgmt-cluster",
-                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
-                    node_type_id="standard-72",
-                    node_count=3,
-                )],
-            ))
+            network_config={
+                "managementCidr": "192.168.50.0/24",
+                "vmwareEngineNetwork": subnet_nw.id,
+            },
+            management_cluster={
+                "clusterId": "sample-mgmt-cluster",
+                "nodeTypeConfigs": [{
+                    "nodeTypeId": "standard-72",
+                    "nodeCount": 3,
+                }],
+            })
         vmw_engine_subnet = gcp.vmwareengine.Subnet("vmw-engine-subnet",
             name="service-1",
             parent=subnet_pc.id,
@@ -511,7 +516,7 @@ class Subnet(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            dhcp_address_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetDhcpAddressRangeArgs']]]]] = None,
+            dhcp_address_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetDhcpAddressRangeArgs', 'SubnetDhcpAddressRangeArgsDict']]]]] = None,
             gateway_id: Optional[pulumi.Input[str]] = None,
             gateway_ip: Optional[pulumi.Input[str]] = None,
             ip_cidr_range: Optional[pulumi.Input[str]] = None,
@@ -533,7 +538,7 @@ class Subnet(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Creation time of this resource.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
                up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetDhcpAddressRangeArgs']]]] dhcp_address_ranges: DHCP address ranges.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SubnetDhcpAddressRangeArgs', 'SubnetDhcpAddressRangeArgsDict']]]] dhcp_address_ranges: DHCP address ranges.
                Structure is documented below.
         :param pulumi.Input[str] gateway_id: The canonical identifier of the logical router that this subnet is attached to.
         :param pulumi.Input[str] gateway_ip: The IP address of the gateway of this subnet. Must fall within the IP prefix defined above.

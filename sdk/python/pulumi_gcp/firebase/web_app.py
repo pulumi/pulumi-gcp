@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['WebAppArgs', 'WebApp']
@@ -253,11 +258,11 @@ class WebApp(pulumi.CustomResource):
             project="my-project-name",
             name="api-key",
             display_name="Display Name",
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
-                    allowed_referrers=["*"],
-                ),
-            ))
+            restrictions={
+                "browserKeyRestrictions": {
+                    "allowedReferrers": ["*"],
+                },
+            })
         default = gcp.firebase.WebApp("default",
             project="my-project-name",
             display_name="Display Name",
@@ -340,11 +345,11 @@ class WebApp(pulumi.CustomResource):
             project="my-project-name",
             name="api-key",
             display_name="Display Name",
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
-                    allowed_referrers=["*"],
-                ),
-            ))
+            restrictions={
+                "browserKeyRestrictions": {
+                    "allowedReferrers": ["*"],
+                },
+            })
         default = gcp.firebase.WebApp("default",
             project="my-project-name",
             display_name="Display Name",

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -331,7 +336,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                  membership_id: Optional[pulumi.Input[str]] = None,
                  membership_rbac_role_binding_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingRoleArgs']]] = None,
+                 role: Optional[pulumi.Input[Union['MembershipRbacRoleBindingRoleArgs', 'MembershipRbacRoleBindingRoleArgsDict']]] = None,
                  user: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -352,20 +357,20 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
             membership_id="tf-test-membership_8493",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ),
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            },
             opts = pulumi.ResourceOptions(depends_on=[primary]))
         project = gcp.organizations.get_project()
         membership_rbac_role_binding = gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding",
             membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_9106",
             membership_id=membership.membership_id,
             user=f"service-{project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com",
-            role=gcp.gkehub.MembershipRbacRoleBindingRoleArgs(
-                predefined_role="ANTHOS_SUPPORT",
-            ),
+            role={
+                "predefinedRole": "ANTHOS_SUPPORT",
+            },
             location="global",
             opts = pulumi.ResourceOptions(depends_on=[membership]))
         ```
@@ -399,7 +404,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
         :param pulumi.Input[str] location: Location of the Membership
         :param pulumi.Input[str] membership_id: Id of the membership
         :param pulumi.Input[str] membership_rbac_role_binding_id: The client-provided identifier of the RBAC Role Binding.
-        :param pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingRoleArgs']] role: Role to bind to the principal.
+        :param pulumi.Input[Union['MembershipRbacRoleBindingRoleArgs', 'MembershipRbacRoleBindingRoleArgsDict']] role: Role to bind to the principal.
                Structure is documented below.
         :param pulumi.Input[str] user: Principal that is be authorized in the cluster (at least of one the oneof
                is required). Updating one will unset the other automatically.
@@ -430,20 +435,20 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
             membership_id="tf-test-membership_8493",
-            endpoint=gcp.gkehub.MembershipEndpointArgs(
-                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
-                    resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                ),
-            ),
+            endpoint={
+                "gkeCluster": {
+                    "resourceLink": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            },
             opts = pulumi.ResourceOptions(depends_on=[primary]))
         project = gcp.organizations.get_project()
         membership_rbac_role_binding = gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding",
             membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_9106",
             membership_id=membership.membership_id,
             user=f"service-{project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com",
-            role=gcp.gkehub.MembershipRbacRoleBindingRoleArgs(
-                predefined_role="ANTHOS_SUPPORT",
-            ),
+            role={
+                "predefinedRole": "ANTHOS_SUPPORT",
+            },
             location="global",
             opts = pulumi.ResourceOptions(depends_on=[membership]))
         ```
@@ -491,7 +496,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                  membership_id: Optional[pulumi.Input[str]] = None,
                  membership_rbac_role_binding_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingRoleArgs']]] = None,
+                 role: Optional[pulumi.Input[Union['MembershipRbacRoleBindingRoleArgs', 'MembershipRbacRoleBindingRoleArgsDict']]] = None,
                  user: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -541,8 +546,8 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             membership_rbac_role_binding_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            role: Optional[pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingRoleArgs']]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingStateArgs']]]]] = None,
+            role: Optional[pulumi.Input[Union['MembershipRbacRoleBindingRoleArgs', 'MembershipRbacRoleBindingRoleArgsDict']]] = None,
+            states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MembershipRbacRoleBindingStateArgs', 'MembershipRbacRoleBindingStateArgsDict']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             user: Optional[pulumi.Input[str]] = None) -> 'MembershipRbacRoleBinding':
@@ -559,9 +564,9 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
         :param pulumi.Input[str] membership_id: Id of the membership
         :param pulumi.Input[str] membership_rbac_role_binding_id: The client-provided identifier of the RBAC Role Binding.
         :param pulumi.Input[str] name: The resource name for the RBAC Role Binding
-        :param pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingRoleArgs']] role: Role to bind to the principal.
+        :param pulumi.Input[Union['MembershipRbacRoleBindingRoleArgs', 'MembershipRbacRoleBindingRoleArgsDict']] role: Role to bind to the principal.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingStateArgs']]]] states: State of the RBAC Role Binding resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MembershipRbacRoleBindingStateArgs', 'MembershipRbacRoleBindingStateArgsDict']]]] states: State of the RBAC Role Binding resource.
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the RBAC Role Binding was updated in UTC.

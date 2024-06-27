@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['OrganizationSecurityPolicyAssociationArgs', 'OrganizationSecurityPolicyAssociation']
@@ -186,23 +191,23 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             action="allow",
             direction="INGRESS",
             enable_logging=True,
-            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArgs(
-                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=[
+            match={
+                "config": {
+                    "srcIpRanges": [
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
-                    layer4_configs=[
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="tcp",
-                            ports=["22"],
-                        ),
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="icmp",
-                        ),
+                    "layer4Configs": [
+                        {
+                            "ipProtocol": "tcp",
+                            "ports": ["22"],
+                        },
+                        {
+                            "ipProtocol": "icmp",
+                        },
                     ],
-                ),
-            ),
+                },
+            },
             priority=100)
         policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policy",
             name="tf-test",
@@ -265,23 +270,23 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             action="allow",
             direction="INGRESS",
             enable_logging=True,
-            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArgs(
-                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArgs(
-                    src_ip_ranges=[
+            match={
+                "config": {
+                    "srcIpRanges": [
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
-                    layer4_configs=[
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="tcp",
-                            ports=["22"],
-                        ),
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
-                            ip_protocol="icmp",
-                        ),
+                    "layer4Configs": [
+                        {
+                            "ipProtocol": "tcp",
+                            "ports": ["22"],
+                        },
+                        {
+                            "ipProtocol": "icmp",
+                        },
                     ],
-                ),
-            ),
+                },
+            },
             priority=100)
         policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policy",
             name="tf-test",

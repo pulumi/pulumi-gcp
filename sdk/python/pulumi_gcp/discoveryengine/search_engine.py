@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -375,14 +380,14 @@ class SearchEngine(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  collection_id: Optional[pulumi.Input[str]] = None,
-                 common_config: Optional[pulumi.Input[pulumi.InputType['SearchEngineCommonConfigArgs']]] = None,
+                 common_config: Optional[pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
                  data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  engine_id: Optional[pulumi.Input[str]] = None,
                  industry_vertical: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 search_engine_config: Optional[pulumi.Input[pulumi.InputType['SearchEngineSearchEngineConfigArgs']]] = None,
+                 search_engine_config: Optional[pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']]] = None,
                  __props__=None):
         """
         Vertex AI Search and Conversation can be used to create a search engine or a chat application by connecting it with a datastore
@@ -415,7 +420,7 @@ class SearchEngine(pulumi.CustomResource):
             location=basic.location,
             display_name="Example Display Name",
             data_store_ids=[basic.data_store_id],
-            search_engine_config=gcp.discoveryengine.SearchEngineSearchEngineConfigArgs())
+            search_engine_config={})
         ```
 
         ## Import
@@ -445,7 +450,7 @@ class SearchEngine(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] collection_id: The collection ID.
-        :param pulumi.Input[pulumi.InputType['SearchEngineCommonConfigArgs']] common_config: Common config spec that specifies the metadata of the engine.
+        :param pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
         :param pulumi.Input[str] display_name: Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[str] engine_id: Unique ID to use for Search Engine App.
@@ -453,7 +458,7 @@ class SearchEngine(pulumi.CustomResource):
                If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
                Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA"]
         :param pulumi.Input[str] location: Location.
-        :param pulumi.Input[pulumi.InputType['SearchEngineSearchEngineConfigArgs']] search_engine_config: Configurations for a Search Engine.
+        :param pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']] search_engine_config: Configurations for a Search Engine.
                Structure is documented below.
         """
         ...
@@ -493,7 +498,7 @@ class SearchEngine(pulumi.CustomResource):
             location=basic.location,
             display_name="Example Display Name",
             data_store_ids=[basic.data_store_id],
-            search_engine_config=gcp.discoveryengine.SearchEngineSearchEngineConfigArgs())
+            search_engine_config={})
         ```
 
         ## Import
@@ -536,14 +541,14 @@ class SearchEngine(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  collection_id: Optional[pulumi.Input[str]] = None,
-                 common_config: Optional[pulumi.Input[pulumi.InputType['SearchEngineCommonConfigArgs']]] = None,
+                 common_config: Optional[pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
                  data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  engine_id: Optional[pulumi.Input[str]] = None,
                  industry_vertical: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 search_engine_config: Optional[pulumi.Input[pulumi.InputType['SearchEngineSearchEngineConfigArgs']]] = None,
+                 search_engine_config: Optional[pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -588,7 +593,7 @@ class SearchEngine(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             collection_id: Optional[pulumi.Input[str]] = None,
-            common_config: Optional[pulumi.Input[pulumi.InputType['SearchEngineCommonConfigArgs']]] = None,
+            common_config: Optional[pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
@@ -597,7 +602,7 @@ class SearchEngine(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            search_engine_config: Optional[pulumi.Input[pulumi.InputType['SearchEngineSearchEngineConfigArgs']]] = None,
+            search_engine_config: Optional[pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'SearchEngine':
         """
         Get an existing SearchEngine resource's state with the given name, id, and optional extra
@@ -607,7 +612,7 @@ class SearchEngine(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] collection_id: The collection ID.
-        :param pulumi.Input[pulumi.InputType['SearchEngineCommonConfigArgs']] common_config: Common config spec that specifies the metadata of the engine.
+        :param pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
         :param pulumi.Input[str] create_time: Timestamp the Engine was created at.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
         :param pulumi.Input[str] display_name: Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
@@ -620,7 +625,7 @@ class SearchEngine(pulumi.CustomResource):
                `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                This field must be a UTF-8 encoded string with a length limit of 1024
                characters.
-        :param pulumi.Input[pulumi.InputType['SearchEngineSearchEngineConfigArgs']] search_engine_config: Configurations for a Search Engine.
+        :param pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']] search_engine_config: Configurations for a Search Engine.
                Structure is documented below.
         :param pulumi.Input[str] update_time: Timestamp the Engine was last updated.
         """

@@ -4,18 +4,45 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AppConnectionApplicationEndpointArgs',
+    'AppConnectionApplicationEndpointArgsDict',
     'AppConnectionGatewayArgs',
+    'AppConnectionGatewayArgsDict',
     'AppConnectorPrincipalInfoArgs',
+    'AppConnectorPrincipalInfoArgsDict',
     'AppConnectorPrincipalInfoServiceAccountArgs',
+    'AppConnectorPrincipalInfoServiceAccountArgsDict',
     'AppGatewayAllocatedConnectionArgs',
+    'AppGatewayAllocatedConnectionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AppConnectionApplicationEndpointArgsDict(TypedDict):
+        host: pulumi.Input[str]
+        """
+        Hostname or IP address of the remote application endpoint.
+        """
+        port: pulumi.Input[int]
+        """
+        Port of the remote application endpoint.
+
+        - - -
+        """
+elif False:
+    AppConnectionApplicationEndpointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppConnectionApplicationEndpointArgs:
@@ -57,6 +84,31 @@ class AppConnectionApplicationEndpointArgs:
     def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
 
+
+if not MYPY:
+    class AppConnectionGatewayArgsDict(TypedDict):
+        app_gateway: pulumi.Input[str]
+        """
+        AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
+        """
+        ingress_port: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of hosting used by the gateway. Refer to
+        https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+        for a list of possible values.
+        """
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Server-defined URI for this resource.
+        """
+elif False:
+    AppConnectionGatewayArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppConnectionGatewayArgs:
@@ -136,6 +188,16 @@ class AppConnectionGatewayArgs:
         pulumi.set(self, "uri", value)
 
 
+if not MYPY:
+    class AppConnectorPrincipalInfoArgsDict(TypedDict):
+        service_account: pulumi.Input['AppConnectorPrincipalInfoServiceAccountArgsDict']
+        """
+        ServiceAccount represents a GCP service account.
+        Structure is documented below.
+        """
+elif False:
+    AppConnectorPrincipalInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppConnectorPrincipalInfoArgs:
     def __init__(__self__, *,
@@ -159,6 +221,17 @@ class AppConnectorPrincipalInfoArgs:
     def service_account(self, value: pulumi.Input['AppConnectorPrincipalInfoServiceAccountArgs']):
         pulumi.set(self, "service_account", value)
 
+
+if not MYPY:
+    class AppConnectorPrincipalInfoServiceAccountArgsDict(TypedDict):
+        email: pulumi.Input[str]
+        """
+        Email address of the service account.
+
+        - - -
+        """
+elif False:
+    AppConnectorPrincipalInfoServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppConnectorPrincipalInfoServiceAccountArgs:
@@ -185,6 +258,19 @@ class AppConnectorPrincipalInfoServiceAccountArgs:
     def email(self, value: pulumi.Input[str]):
         pulumi.set(self, "email", value)
 
+
+if not MYPY:
+    class AppGatewayAllocatedConnectionArgsDict(TypedDict):
+        ingress_port: NotRequired[pulumi.Input[int]]
+        """
+        The ingress port of an allocated connection.
+        """
+        psc_uri: NotRequired[pulumi.Input[str]]
+        """
+        The PSC uri of an allocated connection.
+        """
+elif False:
+    AppGatewayAllocatedConnectionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppGatewayAllocatedConnectionArgs:

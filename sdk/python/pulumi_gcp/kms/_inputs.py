@@ -4,27 +4,69 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'CryptoKeyIAMBindingConditionArgs',
+    'CryptoKeyIAMBindingConditionArgsDict',
     'CryptoKeyIAMMemberConditionArgs',
+    'CryptoKeyIAMMemberConditionArgsDict',
     'CryptoKeyPrimaryArgs',
+    'CryptoKeyPrimaryArgsDict',
     'CryptoKeyVersionAttestationArgs',
+    'CryptoKeyVersionAttestationArgsDict',
     'CryptoKeyVersionAttestationCertChainsArgs',
+    'CryptoKeyVersionAttestationCertChainsArgsDict',
     'CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs',
+    'CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgsDict',
     'CryptoKeyVersionExternalProtectionLevelOptionsArgs',
+    'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict',
     'CryptoKeyVersionTemplateArgs',
+    'CryptoKeyVersionTemplateArgsDict',
     'EkmConnectionServiceResolverArgs',
+    'EkmConnectionServiceResolverArgsDict',
     'EkmConnectionServiceResolverServerCertificateArgs',
+    'EkmConnectionServiceResolverServerCertificateArgsDict',
     'KeyRingIAMBindingConditionArgs',
+    'KeyRingIAMBindingConditionArgsDict',
     'KeyRingIAMMemberConditionArgs',
+    'KeyRingIAMMemberConditionArgsDict',
     'KeyRingImportJobAttestationArgs',
+    'KeyRingImportJobAttestationArgsDict',
     'KeyRingImportJobPublicKeyArgs',
+    'KeyRingImportJobPublicKeyArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class CryptoKeyIAMBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    CryptoKeyIAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CryptoKeyIAMBindingConditionArgs:
@@ -87,6 +129,27 @@ class CryptoKeyIAMBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class CryptoKeyIAMMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    CryptoKeyIAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CryptoKeyIAMMemberConditionArgs:
     def __init__(__self__, *,
@@ -148,6 +211,20 @@ class CryptoKeyIAMMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class CryptoKeyPrimaryArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The resource name for the CryptoKey.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The current state of the CryptoKeyVersion.
+        """
+elif False:
+    CryptoKeyPrimaryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CryptoKeyPrimaryArgs:
     def __init__(__self__, *,
@@ -188,6 +265,31 @@ class CryptoKeyPrimaryArgs:
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
 
+
+if not MYPY:
+    class CryptoKeyVersionAttestationArgsDict(TypedDict):
+        cert_chains: NotRequired[pulumi.Input['CryptoKeyVersionAttestationCertChainsArgsDict']]
+        """
+        The certificate chains needed to validate the attestation
+        Structure is documented below.
+        """
+        content: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The attestation data provided by the HSM when the key operation was performed.
+        """
+        external_protection_level_options: NotRequired[pulumi.Input['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgsDict']]
+        """
+        ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+        Structure is documented below.
+        """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The format of the attestation data.
+        """
+elif False:
+    CryptoKeyVersionAttestationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CryptoKeyVersionAttestationArgs:
@@ -272,6 +374,23 @@ class CryptoKeyVersionAttestationArgs:
         pulumi.set(self, "format", value)
 
 
+if not MYPY:
+    class CryptoKeyVersionAttestationCertChainsArgsDict(TypedDict):
+        cavium_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Cavium certificate chain corresponding to the attestation.
+        """
+        google_card_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Google card certificate chain corresponding to the attestation.
+        """
+        google_partition_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Google partition certificate chain corresponding to the attestation.
+        """
+elif False:
+    CryptoKeyVersionAttestationCertChainsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CryptoKeyVersionAttestationCertChainsArgs:
     def __init__(__self__, *,
@@ -327,6 +446,19 @@ class CryptoKeyVersionAttestationCertChainsArgs:
         pulumi.set(self, "google_partition_certs", value)
 
 
+if not MYPY:
+    class CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgsDict(TypedDict):
+        ekm_connection_key_path: NotRequired[pulumi.Input[str]]
+        """
+        The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
+        """
+        external_key_uri: NotRequired[pulumi.Input[str]]
+        """
+        The URI for an external resource that this CryptoKeyVersion represents.
+        """
+elif False:
+    CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs:
     def __init__(__self__, *,
@@ -365,6 +497,19 @@ class CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs:
     def external_key_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "external_key_uri", value)
 
+
+if not MYPY:
+    class CryptoKeyVersionExternalProtectionLevelOptionsArgsDict(TypedDict):
+        ekm_connection_key_path: NotRequired[pulumi.Input[str]]
+        """
+        The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
+        """
+        external_key_uri: NotRequired[pulumi.Input[str]]
+        """
+        The URI for an external resource that this CryptoKeyVersion represents.
+        """
+elif False:
+    CryptoKeyVersionExternalProtectionLevelOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CryptoKeyVersionExternalProtectionLevelOptionsArgs:
@@ -405,6 +550,20 @@ class CryptoKeyVersionExternalProtectionLevelOptionsArgs:
         pulumi.set(self, "external_key_uri", value)
 
 
+if not MYPY:
+    class CryptoKeyVersionTemplateArgsDict(TypedDict):
+        algorithm: pulumi.Input[str]
+        """
+        The algorithm to use when creating a version based on this template.
+        See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+        """
+        protection_level: NotRequired[pulumi.Input[str]]
+        """
+        The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
+        """
+elif False:
+    CryptoKeyVersionTemplateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CryptoKeyVersionTemplateArgs:
     def __init__(__self__, *,
@@ -444,6 +603,28 @@ class CryptoKeyVersionTemplateArgs:
     def protection_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "protection_level", value)
 
+
+if not MYPY:
+    class EkmConnectionServiceResolverArgsDict(TypedDict):
+        hostname: pulumi.Input[str]
+        """
+        Required. The hostname of the EKM replica used at TLS and HTTP layers.
+        """
+        server_certificates: pulumi.Input[Sequence[pulumi.Input['EkmConnectionServiceResolverServerCertificateArgsDict']]]
+        """
+        Required. A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
+        Structure is documented below.
+        """
+        service_directory_service: pulumi.Input[str]
+        """
+        Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*/locations/*/namespaces/*/services/*
+        """
+        endpoint_filter: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+        """
+elif False:
+    EkmConnectionServiceResolverArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EkmConnectionServiceResolverArgs:
@@ -514,6 +695,59 @@ class EkmConnectionServiceResolverArgs:
     def endpoint_filter(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "endpoint_filter", value)
 
+
+if not MYPY:
+    class EkmConnectionServiceResolverServerCertificateArgsDict(TypedDict):
+        raw_der: pulumi.Input[str]
+        """
+        Required. The raw certificate bytes in DER format. A base64-encoded string.
+        """
+        issuer: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
+        """
+        not_after_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The certificate is not valid after this time. Only present if parsed is true.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        not_before_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The certificate is not valid before this time. Only present if parsed is true.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        parsed: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Output only. True if the certificate was parsed successfully.
+        """
+        serial_number: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The certificate serial number as a hex string. Only present if parsed is true.
+        """
+        sha256_fingerprint: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
+        """
+        subject: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The subject distinguished name in RFC 2253 format. Only present if parsed is true.
+        """
+        subject_alternative_dns_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (Output)
+        Output only. The subject Alternative DNS names. Only present if parsed is true.
+
+        - - -
+        """
+elif False:
+    EkmConnectionServiceResolverServerCertificateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EkmConnectionServiceResolverServerCertificateArgs:
@@ -689,6 +923,27 @@ class EkmConnectionServiceResolverServerCertificateArgs:
         pulumi.set(self, "subject_alternative_dns_names", value)
 
 
+if not MYPY:
+    class KeyRingIAMBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    KeyRingIAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KeyRingIAMBindingConditionArgs:
     def __init__(__self__, *,
@@ -749,6 +1004,27 @@ class KeyRingIAMBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class KeyRingIAMMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    KeyRingIAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KeyRingIAMMemberConditionArgs:
@@ -811,6 +1087,22 @@ class KeyRingIAMMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class KeyRingImportJobAttestationArgsDict(TypedDict):
+        content: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The attestation data provided by the HSM when the key operation was performed.
+        A base64-encoded string.
+        """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The format of the attestation data.
+        """
+elif False:
+    KeyRingImportJobAttestationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KeyRingImportJobAttestationArgs:
     def __init__(__self__, *,
@@ -855,6 +1147,17 @@ class KeyRingImportJobAttestationArgs:
     def format(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "format", value)
 
+
+if not MYPY:
+    class KeyRingImportJobPublicKeyArgsDict(TypedDict):
+        pem: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The public key, encoded in PEM format. For more information, see the RFC 7468 sections
+        for General Considerations and Textual Encoding of Subject Public Key Info.
+        """
+elif False:
+    KeyRingImportJobPublicKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KeyRingImportJobPublicKeyArgs:

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -475,15 +480,15 @@ class Function(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 build_config: Optional[pulumi.Input[pulumi.InputType['FunctionBuildConfigArgs']]] = None,
+                 build_config: Optional[pulumi.Input[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']]] = None,
+                 event_trigger: Optional[pulumi.Input[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_config: Optional[pulumi.Input[pulumi.InputType['FunctionServiceConfigArgs']]] = None,
+                 service_config: Optional[pulumi.Input[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict']]] = None,
                  __props__=None):
         """
         A Cloud Function that contains user computation executed in response to an event.
@@ -513,21 +518,21 @@ class Function(pulumi.CustomResource):
             name="function-v2",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs16",
-                entry_point="helloHttp",
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=bucket.name,
-                        object=object.name,
-                    ),
-                ),
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-            ))
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloHttp",
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "maxInstanceCount": 1,
+                "availableMemory": "256M",
+                "timeoutSeconds": 60,
+            })
         ```
         ### Cloudfunctions2 Full
 
@@ -552,39 +557,39 @@ class Function(pulumi.CustomResource):
             name="gcf-function",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs16",
-                entry_point="helloPubSub",
-                environment_variables={
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloPubSub",
+                "environmentVariables": {
                     "BUILD_CONFIG_TEST": "build_test",
                 },
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=bucket.name,
-                        object=object.name,
-                    ),
-                ),
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=3,
-                min_instance_count=1,
-                available_memory="4Gi",
-                timeout_seconds=60,
-                max_instance_request_concurrency=80,
-                available_cpu="4",
-                environment_variables={
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "maxInstanceCount": 3,
+                "minInstanceCount": 1,
+                "availableMemory": "4Gi",
+                "timeoutSeconds": 60,
+                "maxInstanceRequestConcurrency": 80,
+                "availableCpu": "4",
+                "environmentVariables": {
                     "SERVICE_CONFIG_TEST": "config_test",
                 },
-                ingress_settings="ALLOW_INTERNAL_ONLY",
-                all_traffic_on_latest_revision=True,
-                service_account_email=account.email,
-            ),
-            event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArgs(
-                trigger_region="us-central1",
-                event_type="google.cloud.pubsub.topic.v1.messagePublished",
-                pubsub_topic=topic.id,
-                retry_policy="RETRY_POLICY_RETRY",
-            ))
+                "ingressSettings": "ALLOW_INTERNAL_ONLY",
+                "allTrafficOnLatestRevision": True,
+                "serviceAccountEmail": account.email,
+            },
+            event_trigger={
+                "triggerRegion": "us-central1",
+                "eventType": "google.cloud.pubsub.topic.v1.messagePublished",
+                "pubsubTopic": topic.id,
+                "retryPolicy": "RETRY_POLICY_RETRY",
+            })
         ```
         ### Cloudfunctions2 Scheduler Auth
 
@@ -608,22 +613,22 @@ class Function(pulumi.CustomResource):
             name="gcf-function",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs16",
-                entry_point="helloHttp",
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=bucket.name,
-                        object=object.name,
-                    ),
-                ),
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                min_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-                service_account_email=account.email,
-            ))
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloHttp",
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "minInstanceCount": 1,
+                "availableMemory": "256M",
+                "timeoutSeconds": 60,
+                "serviceAccountEmail": account.email,
+            })
         invoker = gcp.cloudfunctionsv2.FunctionIamMember("invoker",
             project=function.project,
             location=function.location,
@@ -642,14 +647,14 @@ class Function(pulumi.CustomResource):
             schedule="0 0 * * *",
             project=function.project,
             region=function.location,
-            http_target=gcp.cloudscheduler.JobHttpTargetArgs(
-                uri=function.service_config.uri,
-                http_method="POST",
-                oidc_token=gcp.cloudscheduler.JobHttpTargetOidcTokenArgs(
-                    audience=function.service_config.apply(lambda service_config: f"{service_config.uri}/"),
-                    service_account_email=account.email,
-                ),
-            ))
+            http_target={
+                "uri": function.service_config.uri,
+                "httpMethod": "POST",
+                "oidcToken": {
+                    "audience": function.service_config.apply(lambda service_config: f"{service_config.uri}/"),
+                    "serviceAccountEmail": account.email,
+                },
+            })
         ```
         ### Cloudfunctions2 Basic Gcs
 
@@ -699,40 +704,40 @@ class Function(pulumi.CustomResource):
             name="gcf-function",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs12",
-                entry_point="entryPoint",
-                environment_variables={
+            build_config={
+                "runtime": "nodejs12",
+                "entryPoint": "entryPoint",
+                "environmentVariables": {
                     "BUILD_CONFIG_TEST": "build_test",
                 },
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=source_bucket.name,
-                        object=object.name,
-                    ),
-                ),
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=3,
-                min_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-                environment_variables={
+                "source": {
+                    "storageSource": {
+                        "bucket": source_bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "maxInstanceCount": 3,
+                "minInstanceCount": 1,
+                "availableMemory": "256M",
+                "timeoutSeconds": 60,
+                "environmentVariables": {
                     "SERVICE_CONFIG_TEST": "config_test",
                 },
-                ingress_settings="ALLOW_INTERNAL_ONLY",
-                all_traffic_on_latest_revision=True,
-                service_account_email=account.email,
-            ),
-            event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArgs(
-                event_type="google.cloud.storage.object.v1.finalized",
-                retry_policy="RETRY_POLICY_RETRY",
-                service_account_email=account.email,
-                event_filters=[gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArgs(
-                    attribute="bucket",
-                    value=trigger_bucket.name,
-                )],
-            ),
+                "ingressSettings": "ALLOW_INTERNAL_ONLY",
+                "allTrafficOnLatestRevision": True,
+                "serviceAccountEmail": account.email,
+            },
+            event_trigger={
+                "eventType": "google.cloud.storage.object.v1.finalized",
+                "retryPolicy": "RETRY_POLICY_RETRY",
+                "serviceAccountEmail": account.email,
+                "eventFilters": [{
+                    "attribute": "bucket",
+                    "value": trigger_bucket.name,
+                }],
+            },
             opts = pulumi.ResourceOptions(depends_on=[
                     event_receiving,
                     artifactregistry_reader,
@@ -785,52 +790,52 @@ class Function(pulumi.CustomResource):
             name="gcf-function",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs12",
-                entry_point="entryPoint",
-                environment_variables={
+            build_config={
+                "runtime": "nodejs12",
+                "entryPoint": "entryPoint",
+                "environmentVariables": {
                     "BUILD_CONFIG_TEST": "build_test",
                 },
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=source_bucket.name,
-                        object=object.name,
-                    ),
-                ),
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=3,
-                min_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-                environment_variables={
+                "source": {
+                    "storageSource": {
+                        "bucket": source_bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "maxInstanceCount": 3,
+                "minInstanceCount": 1,
+                "availableMemory": "256M",
+                "timeoutSeconds": 60,
+                "environmentVariables": {
                     "SERVICE_CONFIG_TEST": "config_test",
                 },
-                ingress_settings="ALLOW_INTERNAL_ONLY",
-                all_traffic_on_latest_revision=True,
-                service_account_email=account.email,
-            ),
-            event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArgs(
-                trigger_region="us-central1",
-                event_type="google.cloud.audit.log.v1.written",
-                retry_policy="RETRY_POLICY_RETRY",
-                service_account_email=account.email,
-                event_filters=[
-                    gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArgs(
-                        attribute="serviceName",
-                        value="storage.googleapis.com",
-                    ),
-                    gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArgs(
-                        attribute="methodName",
-                        value="storage.objects.create",
-                    ),
-                    gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArgs(
-                        attribute="resourceName",
-                        value=audit_log_bucket.name.apply(lambda name: f"/projects/_/buckets/{name}/objects/*.txt"),
-                        operator="match-path-pattern",
-                    ),
+                "ingressSettings": "ALLOW_INTERNAL_ONLY",
+                "allTrafficOnLatestRevision": True,
+                "serviceAccountEmail": account.email,
+            },
+            event_trigger={
+                "triggerRegion": "us-central1",
+                "eventType": "google.cloud.audit.log.v1.written",
+                "retryPolicy": "RETRY_POLICY_RETRY",
+                "serviceAccountEmail": account.email,
+                "eventFilters": [
+                    {
+                        "attribute": "serviceName",
+                        "value": "storage.googleapis.com",
+                    },
+                    {
+                        "attribute": "methodName",
+                        "value": "storage.objects.create",
+                    },
+                    {
+                        "attribute": "resourceName",
+                        "value": audit_log_bucket.name.apply(lambda name: f"/projects/_/buckets/{name}/objects/*.txt"),
+                        "operator": "match-path-pattern",
+                    },
                 ],
-            ),
+            },
             opts = pulumi.ResourceOptions(depends_on=[
                     event_receiving,
                     artifactregistry_reader,
@@ -878,22 +883,22 @@ class Function(pulumi.CustomResource):
             name="function-v2",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs16",
-                entry_point="helloHttp",
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=bucket.name,
-                        object=object.name,
-                    ),
-                ),
-                service_account=account.id,
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-            ),
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloHttp",
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+                "serviceAccount": account.id,
+            },
+            service_config={
+                "maxInstanceCount": 1,
+                "availableMemory": "256M",
+                "timeoutSeconds": 60,
+            },
             opts = pulumi.ResourceOptions(depends_on=[wait60s]))
         ```
         ### Cloudfunctions2 Secret Env
@@ -913,13 +918,13 @@ class Function(pulumi.CustomResource):
             source=pulumi.FileAsset("function-source.zip"))
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                        location="us-central1",
-                    )],
-                ),
-            ))
+            replication={
+                "userManaged": {
+                    "replicas": [{
+                        "location": "us-central1",
+                    }],
+                },
+            })
         secret_secret_version = gcp.secretmanager.SecretVersion("secret",
             secret=secret.name,
             secret_data="secret",
@@ -928,27 +933,27 @@ class Function(pulumi.CustomResource):
             name="function-secret",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs16",
-                entry_point="helloHttp",
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=bucket.name,
-                        object=object.name,
-                    ),
-                ),
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-                secret_environment_variables=[gcp.cloudfunctionsv2.FunctionServiceConfigSecretEnvironmentVariableArgs(
-                    key="TEST",
-                    project_id=project,
-                    secret=secret.secret_id,
-                    version="latest",
-                )],
-            ),
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloHttp",
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "maxInstanceCount": 1,
+                "availableMemory": "256M",
+                "timeoutSeconds": 60,
+                "secretEnvironmentVariables": [{
+                    "key": "TEST",
+                    "projectId": project,
+                    "secret": secret.secret_id,
+                    "version": "latest",
+                }],
+            },
             opts = pulumi.ResourceOptions(depends_on=[secret_secret_version]))
         ```
         ### Cloudfunctions2 Secret Volume
@@ -968,13 +973,13 @@ class Function(pulumi.CustomResource):
             source=pulumi.FileAsset("function-source.zip"))
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                        location="us-central1",
-                    )],
-                ),
-            ))
+            replication={
+                "userManaged": {
+                    "replicas": [{
+                        "location": "us-central1",
+                    }],
+                },
+            })
         secret_secret_version = gcp.secretmanager.SecretVersion("secret",
             secret=secret.name,
             secret_data="secret",
@@ -983,26 +988,26 @@ class Function(pulumi.CustomResource):
             name="function-secret",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs16",
-                entry_point="helloHttp",
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=bucket.name,
-                        object=object.name,
-                    ),
-                ),
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-                secret_volumes=[gcp.cloudfunctionsv2.FunctionServiceConfigSecretVolumeArgs(
-                    mount_path="/etc/secrets",
-                    project_id=project,
-                    secret=secret.secret_id,
-                )],
-            ),
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloHttp",
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "maxInstanceCount": 1,
+                "availableMemory": "256M",
+                "timeoutSeconds": 60,
+                "secretVolumes": [{
+                    "mountPath": "/etc/secrets",
+                    "projectId": project,
+                    "secret": secret.secret_id,
+                }],
+            },
             opts = pulumi.ResourceOptions(depends_on=[secret_secret_version]))
         ```
         ### Cloudfunctions2 Private Workerpool
@@ -1023,31 +1028,31 @@ class Function(pulumi.CustomResource):
         pool = gcp.cloudbuild.WorkerPool("pool",
             name="workerpool",
             location="us-central1",
-            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
-                disk_size_gb=100,
-                machine_type="e2-standard-8",
-                no_external_ip=False,
-            ))
+            worker_config={
+                "diskSizeGb": 100,
+                "machineType": "e2-standard-8",
+                "noExternalIp": False,
+            })
         function = gcp.cloudfunctionsv2.Function("function",
             name="function-workerpool",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs16",
-                entry_point="helloHttp",
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=bucket.name,
-                        object=object.name,
-                    ),
-                ),
-                worker_pool=pool.id,
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-            ))
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloHttp",
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+                "workerPool": pool.id,
+            },
+            service_config={
+                "maxInstanceCount": 1,
+                "availableMemory": "256M",
+                "timeoutSeconds": 60,
+            })
         ```
         ### Cloudfunctions2 Cmek Docs
 
@@ -1099,22 +1104,22 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="CMEK function",
             kms_key_name="cmek-key",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs16",
-                entry_point="helloHttp",
-                docker_repository=encoded_ar_repo.id,
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=bucket.name,
-                        object=object.name,
-                    ),
-                ),
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-            ),
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloHttp",
+                "dockerRepository": encoded_ar_repo.id,
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "maxInstanceCount": 1,
+                "availableMemory": "256M",
+                "timeoutSeconds": 60,
+            },
             opts = pulumi.ResourceOptions(depends_on=[gcf_cmek_keyuser]))
         ```
 
@@ -1144,11 +1149,11 @@ class Function(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FunctionBuildConfigArgs']] build_config: Describes the Build step of the function that builds a container
+        :param pulumi.Input[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']] build_config: Describes the Build step of the function that builds a container
                from the given source.
                Structure is documented below.
         :param pulumi.Input[str] description: User-provided description of a function.
-        :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
+        :param pulumi.Input[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
                response to a condition in another service.
                Structure is documented below.
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
@@ -1165,7 +1170,7 @@ class Function(pulumi.CustomResource):
                be unique globally and match pattern `projects/*/locations/*/functions/*`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['FunctionServiceConfigArgs']] service_config: Describes the Service being deployed.
+        :param pulumi.Input[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict']] service_config: Describes the Service being deployed.
                Structure is documented below.
         """
         ...
@@ -1202,21 +1207,21 @@ class Function(pulumi.CustomResource):
             name="function-v2",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs16",
-                entry_point="helloHttp",
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=bucket.name,
-                        object=object.name,
-                    ),
-                ),
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-            ))
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloHttp",
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "maxInstanceCount": 1,
+                "availableMemory": "256M",
+                "timeoutSeconds": 60,
+            })
         ```
         ### Cloudfunctions2 Full
 
@@ -1241,39 +1246,39 @@ class Function(pulumi.CustomResource):
             name="gcf-function",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs16",
-                entry_point="helloPubSub",
-                environment_variables={
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloPubSub",
+                "environmentVariables": {
                     "BUILD_CONFIG_TEST": "build_test",
                 },
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=bucket.name,
-                        object=object.name,
-                    ),
-                ),
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=3,
-                min_instance_count=1,
-                available_memory="4Gi",
-                timeout_seconds=60,
-                max_instance_request_concurrency=80,
-                available_cpu="4",
-                environment_variables={
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "maxInstanceCount": 3,
+                "minInstanceCount": 1,
+                "availableMemory": "4Gi",
+                "timeoutSeconds": 60,
+                "maxInstanceRequestConcurrency": 80,
+                "availableCpu": "4",
+                "environmentVariables": {
                     "SERVICE_CONFIG_TEST": "config_test",
                 },
-                ingress_settings="ALLOW_INTERNAL_ONLY",
-                all_traffic_on_latest_revision=True,
-                service_account_email=account.email,
-            ),
-            event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArgs(
-                trigger_region="us-central1",
-                event_type="google.cloud.pubsub.topic.v1.messagePublished",
-                pubsub_topic=topic.id,
-                retry_policy="RETRY_POLICY_RETRY",
-            ))
+                "ingressSettings": "ALLOW_INTERNAL_ONLY",
+                "allTrafficOnLatestRevision": True,
+                "serviceAccountEmail": account.email,
+            },
+            event_trigger={
+                "triggerRegion": "us-central1",
+                "eventType": "google.cloud.pubsub.topic.v1.messagePublished",
+                "pubsubTopic": topic.id,
+                "retryPolicy": "RETRY_POLICY_RETRY",
+            })
         ```
         ### Cloudfunctions2 Scheduler Auth
 
@@ -1297,22 +1302,22 @@ class Function(pulumi.CustomResource):
             name="gcf-function",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs16",
-                entry_point="helloHttp",
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=bucket.name,
-                        object=object.name,
-                    ),
-                ),
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                min_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-                service_account_email=account.email,
-            ))
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloHttp",
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "minInstanceCount": 1,
+                "availableMemory": "256M",
+                "timeoutSeconds": 60,
+                "serviceAccountEmail": account.email,
+            })
         invoker = gcp.cloudfunctionsv2.FunctionIamMember("invoker",
             project=function.project,
             location=function.location,
@@ -1331,14 +1336,14 @@ class Function(pulumi.CustomResource):
             schedule="0 0 * * *",
             project=function.project,
             region=function.location,
-            http_target=gcp.cloudscheduler.JobHttpTargetArgs(
-                uri=function.service_config.uri,
-                http_method="POST",
-                oidc_token=gcp.cloudscheduler.JobHttpTargetOidcTokenArgs(
-                    audience=function.service_config.apply(lambda service_config: f"{service_config.uri}/"),
-                    service_account_email=account.email,
-                ),
-            ))
+            http_target={
+                "uri": function.service_config.uri,
+                "httpMethod": "POST",
+                "oidcToken": {
+                    "audience": function.service_config.apply(lambda service_config: f"{service_config.uri}/"),
+                    "serviceAccountEmail": account.email,
+                },
+            })
         ```
         ### Cloudfunctions2 Basic Gcs
 
@@ -1388,40 +1393,40 @@ class Function(pulumi.CustomResource):
             name="gcf-function",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs12",
-                entry_point="entryPoint",
-                environment_variables={
+            build_config={
+                "runtime": "nodejs12",
+                "entryPoint": "entryPoint",
+                "environmentVariables": {
                     "BUILD_CONFIG_TEST": "build_test",
                 },
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=source_bucket.name,
-                        object=object.name,
-                    ),
-                ),
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=3,
-                min_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-                environment_variables={
+                "source": {
+                    "storageSource": {
+                        "bucket": source_bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "maxInstanceCount": 3,
+                "minInstanceCount": 1,
+                "availableMemory": "256M",
+                "timeoutSeconds": 60,
+                "environmentVariables": {
                     "SERVICE_CONFIG_TEST": "config_test",
                 },
-                ingress_settings="ALLOW_INTERNAL_ONLY",
-                all_traffic_on_latest_revision=True,
-                service_account_email=account.email,
-            ),
-            event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArgs(
-                event_type="google.cloud.storage.object.v1.finalized",
-                retry_policy="RETRY_POLICY_RETRY",
-                service_account_email=account.email,
-                event_filters=[gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArgs(
-                    attribute="bucket",
-                    value=trigger_bucket.name,
-                )],
-            ),
+                "ingressSettings": "ALLOW_INTERNAL_ONLY",
+                "allTrafficOnLatestRevision": True,
+                "serviceAccountEmail": account.email,
+            },
+            event_trigger={
+                "eventType": "google.cloud.storage.object.v1.finalized",
+                "retryPolicy": "RETRY_POLICY_RETRY",
+                "serviceAccountEmail": account.email,
+                "eventFilters": [{
+                    "attribute": "bucket",
+                    "value": trigger_bucket.name,
+                }],
+            },
             opts = pulumi.ResourceOptions(depends_on=[
                     event_receiving,
                     artifactregistry_reader,
@@ -1474,52 +1479,52 @@ class Function(pulumi.CustomResource):
             name="gcf-function",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs12",
-                entry_point="entryPoint",
-                environment_variables={
+            build_config={
+                "runtime": "nodejs12",
+                "entryPoint": "entryPoint",
+                "environmentVariables": {
                     "BUILD_CONFIG_TEST": "build_test",
                 },
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=source_bucket.name,
-                        object=object.name,
-                    ),
-                ),
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=3,
-                min_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-                environment_variables={
+                "source": {
+                    "storageSource": {
+                        "bucket": source_bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "maxInstanceCount": 3,
+                "minInstanceCount": 1,
+                "availableMemory": "256M",
+                "timeoutSeconds": 60,
+                "environmentVariables": {
                     "SERVICE_CONFIG_TEST": "config_test",
                 },
-                ingress_settings="ALLOW_INTERNAL_ONLY",
-                all_traffic_on_latest_revision=True,
-                service_account_email=account.email,
-            ),
-            event_trigger=gcp.cloudfunctionsv2.FunctionEventTriggerArgs(
-                trigger_region="us-central1",
-                event_type="google.cloud.audit.log.v1.written",
-                retry_policy="RETRY_POLICY_RETRY",
-                service_account_email=account.email,
-                event_filters=[
-                    gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArgs(
-                        attribute="serviceName",
-                        value="storage.googleapis.com",
-                    ),
-                    gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArgs(
-                        attribute="methodName",
-                        value="storage.objects.create",
-                    ),
-                    gcp.cloudfunctionsv2.FunctionEventTriggerEventFilterArgs(
-                        attribute="resourceName",
-                        value=audit_log_bucket.name.apply(lambda name: f"/projects/_/buckets/{name}/objects/*.txt"),
-                        operator="match-path-pattern",
-                    ),
+                "ingressSettings": "ALLOW_INTERNAL_ONLY",
+                "allTrafficOnLatestRevision": True,
+                "serviceAccountEmail": account.email,
+            },
+            event_trigger={
+                "triggerRegion": "us-central1",
+                "eventType": "google.cloud.audit.log.v1.written",
+                "retryPolicy": "RETRY_POLICY_RETRY",
+                "serviceAccountEmail": account.email,
+                "eventFilters": [
+                    {
+                        "attribute": "serviceName",
+                        "value": "storage.googleapis.com",
+                    },
+                    {
+                        "attribute": "methodName",
+                        "value": "storage.objects.create",
+                    },
+                    {
+                        "attribute": "resourceName",
+                        "value": audit_log_bucket.name.apply(lambda name: f"/projects/_/buckets/{name}/objects/*.txt"),
+                        "operator": "match-path-pattern",
+                    },
                 ],
-            ),
+            },
             opts = pulumi.ResourceOptions(depends_on=[
                     event_receiving,
                     artifactregistry_reader,
@@ -1567,22 +1572,22 @@ class Function(pulumi.CustomResource):
             name="function-v2",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs16",
-                entry_point="helloHttp",
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=bucket.name,
-                        object=object.name,
-                    ),
-                ),
-                service_account=account.id,
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-            ),
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloHttp",
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+                "serviceAccount": account.id,
+            },
+            service_config={
+                "maxInstanceCount": 1,
+                "availableMemory": "256M",
+                "timeoutSeconds": 60,
+            },
             opts = pulumi.ResourceOptions(depends_on=[wait60s]))
         ```
         ### Cloudfunctions2 Secret Env
@@ -1602,13 +1607,13 @@ class Function(pulumi.CustomResource):
             source=pulumi.FileAsset("function-source.zip"))
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                        location="us-central1",
-                    )],
-                ),
-            ))
+            replication={
+                "userManaged": {
+                    "replicas": [{
+                        "location": "us-central1",
+                    }],
+                },
+            })
         secret_secret_version = gcp.secretmanager.SecretVersion("secret",
             secret=secret.name,
             secret_data="secret",
@@ -1617,27 +1622,27 @@ class Function(pulumi.CustomResource):
             name="function-secret",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs16",
-                entry_point="helloHttp",
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=bucket.name,
-                        object=object.name,
-                    ),
-                ),
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-                secret_environment_variables=[gcp.cloudfunctionsv2.FunctionServiceConfigSecretEnvironmentVariableArgs(
-                    key="TEST",
-                    project_id=project,
-                    secret=secret.secret_id,
-                    version="latest",
-                )],
-            ),
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloHttp",
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "maxInstanceCount": 1,
+                "availableMemory": "256M",
+                "timeoutSeconds": 60,
+                "secretEnvironmentVariables": [{
+                    "key": "TEST",
+                    "projectId": project,
+                    "secret": secret.secret_id,
+                    "version": "latest",
+                }],
+            },
             opts = pulumi.ResourceOptions(depends_on=[secret_secret_version]))
         ```
         ### Cloudfunctions2 Secret Volume
@@ -1657,13 +1662,13 @@ class Function(pulumi.CustomResource):
             source=pulumi.FileAsset("function-source.zip"))
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
-                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
-                        location="us-central1",
-                    )],
-                ),
-            ))
+            replication={
+                "userManaged": {
+                    "replicas": [{
+                        "location": "us-central1",
+                    }],
+                },
+            })
         secret_secret_version = gcp.secretmanager.SecretVersion("secret",
             secret=secret.name,
             secret_data="secret",
@@ -1672,26 +1677,26 @@ class Function(pulumi.CustomResource):
             name="function-secret",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs16",
-                entry_point="helloHttp",
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=bucket.name,
-                        object=object.name,
-                    ),
-                ),
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-                secret_volumes=[gcp.cloudfunctionsv2.FunctionServiceConfigSecretVolumeArgs(
-                    mount_path="/etc/secrets",
-                    project_id=project,
-                    secret=secret.secret_id,
-                )],
-            ),
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloHttp",
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "maxInstanceCount": 1,
+                "availableMemory": "256M",
+                "timeoutSeconds": 60,
+                "secretVolumes": [{
+                    "mountPath": "/etc/secrets",
+                    "projectId": project,
+                    "secret": secret.secret_id,
+                }],
+            },
             opts = pulumi.ResourceOptions(depends_on=[secret_secret_version]))
         ```
         ### Cloudfunctions2 Private Workerpool
@@ -1712,31 +1717,31 @@ class Function(pulumi.CustomResource):
         pool = gcp.cloudbuild.WorkerPool("pool",
             name="workerpool",
             location="us-central1",
-            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
-                disk_size_gb=100,
-                machine_type="e2-standard-8",
-                no_external_ip=False,
-            ))
+            worker_config={
+                "diskSizeGb": 100,
+                "machineType": "e2-standard-8",
+                "noExternalIp": False,
+            })
         function = gcp.cloudfunctionsv2.Function("function",
             name="function-workerpool",
             location="us-central1",
             description="a new function",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs16",
-                entry_point="helloHttp",
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=bucket.name,
-                        object=object.name,
-                    ),
-                ),
-                worker_pool=pool.id,
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-            ))
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloHttp",
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+                "workerPool": pool.id,
+            },
+            service_config={
+                "maxInstanceCount": 1,
+                "availableMemory": "256M",
+                "timeoutSeconds": 60,
+            })
         ```
         ### Cloudfunctions2 Cmek Docs
 
@@ -1788,22 +1793,22 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             description="CMEK function",
             kms_key_name="cmek-key",
-            build_config=gcp.cloudfunctionsv2.FunctionBuildConfigArgs(
-                runtime="nodejs16",
-                entry_point="helloHttp",
-                docker_repository=encoded_ar_repo.id,
-                source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceArgs(
-                    storage_source=gcp.cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs(
-                        bucket=bucket.name,
-                        object=object.name,
-                    ),
-                ),
-            ),
-            service_config=gcp.cloudfunctionsv2.FunctionServiceConfigArgs(
-                max_instance_count=1,
-                available_memory="256M",
-                timeout_seconds=60,
-            ),
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloHttp",
+                "dockerRepository": encoded_ar_repo.id,
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "maxInstanceCount": 1,
+                "availableMemory": "256M",
+                "timeoutSeconds": 60,
+            },
             opts = pulumi.ResourceOptions(depends_on=[gcf_cmek_keyuser]))
         ```
 
@@ -1846,15 +1851,15 @@ class Function(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 build_config: Optional[pulumi.Input[pulumi.InputType['FunctionBuildConfigArgs']]] = None,
+                 build_config: Optional[pulumi.Input[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']]] = None,
+                 event_trigger: Optional[pulumi.Input[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_config: Optional[pulumi.Input[pulumi.InputType['FunctionServiceConfigArgs']]] = None,
+                 service_config: Optional[pulumi.Input[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1893,18 +1898,18 @@ class Function(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            build_config: Optional[pulumi.Input[pulumi.InputType['FunctionBuildConfigArgs']]] = None,
+            build_config: Optional[pulumi.Input[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             environment: Optional[pulumi.Input[str]] = None,
-            event_trigger: Optional[pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']]] = None,
+            event_trigger: Optional[pulumi.Input[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            service_config: Optional[pulumi.Input[pulumi.InputType['FunctionServiceConfigArgs']]] = None,
+            service_config: Optional[pulumi.Input[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'Function':
@@ -1915,13 +1920,13 @@ class Function(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FunctionBuildConfigArgs']] build_config: Describes the Build step of the function that builds a container
+        :param pulumi.Input[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']] build_config: Describes the Build step of the function that builds a container
                from the given source.
                Structure is documented below.
         :param pulumi.Input[str] description: User-provided description of a function.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] environment: The environment the function is hosted on.
-        :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
+        :param pulumi.Input[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
                response to a condition in another service.
                Structure is documented below.
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
@@ -1940,7 +1945,7 @@ class Function(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['FunctionServiceConfigArgs']] service_config: Describes the Service being deployed.
+        :param pulumi.Input[Union['FunctionServiceConfigArgs', 'FunctionServiceConfigArgsDict']] service_config: Describes the Service being deployed.
                Structure is documented below.
         :param pulumi.Input[str] state: Describes the current state of the function.
         :param pulumi.Input[str] update_time: The last update timestamp of a Cloud Function.

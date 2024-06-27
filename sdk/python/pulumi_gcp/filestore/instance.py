@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -488,12 +493,12 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 file_shares: Optional[pulumi.Input[pulumi.InputType['InstanceFileSharesArgs']]] = None,
+                 file_shares: Optional[pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
@@ -522,14 +527,14 @@ class Instance(pulumi.CustomResource):
             name="test-instance",
             location="us-central1-b",
             tier="BASIC_HDD",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=1024,
-                name="share1",
-            ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                network="default",
-                modes=["MODE_IPV4"],
-            )])
+            file_shares={
+                "capacityGb": 1024,
+                "name": "share1",
+            },
+            networks=[{
+                "network": "default",
+                "modes": ["MODE_IPV4"],
+            }])
         ```
         ### Filestore Instance Full
 
@@ -541,29 +546,29 @@ class Instance(pulumi.CustomResource):
             name="test-instance",
             location="us-central1-b",
             tier="BASIC_SSD",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=2560,
-                name="share1",
-                nfs_export_options=[
-                    gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
-                        ip_ranges=["10.0.0.0/24"],
-                        access_mode="READ_WRITE",
-                        squash_mode="NO_ROOT_SQUASH",
-                    ),
-                    gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
-                        ip_ranges=["10.10.0.0/24"],
-                        access_mode="READ_ONLY",
-                        squash_mode="ROOT_SQUASH",
-                        anon_uid=123,
-                        anon_gid=456,
-                    ),
+            file_shares={
+                "capacityGb": 2560,
+                "name": "share1",
+                "nfsExportOptions": [
+                    {
+                        "ipRanges": ["10.0.0.0/24"],
+                        "accessMode": "READ_WRITE",
+                        "squashMode": "NO_ROOT_SQUASH",
+                    },
+                    {
+                        "ipRanges": ["10.10.0.0/24"],
+                        "accessMode": "READ_ONLY",
+                        "squashMode": "ROOT_SQUASH",
+                        "anonUid": 123,
+                        "anonGid": 456,
+                    },
                 ],
-            ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                network="default",
-                modes=["MODE_IPV4"],
-                connect_mode="DIRECT_PEERING",
-            )])
+            },
+            networks=[{
+                "network": "default",
+                "modes": ["MODE_IPV4"],
+                "connectMode": "DIRECT_PEERING",
+            }])
         ```
         ### Filestore Instance Protocol
 
@@ -576,14 +581,14 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             tier="ENTERPRISE",
             protocol="NFS_V4_1",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=1024,
-                name="share1",
-            ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                network="default",
-                modes=["MODE_IPV4"],
-            )])
+            file_shares={
+                "capacityGb": 1024,
+                "name": "share1",
+            },
+            networks=[{
+                "network": "default",
+                "modes": ["MODE_IPV4"],
+            }])
         ```
         ### Filestore Instance Enterprise
 
@@ -601,14 +606,14 @@ class Instance(pulumi.CustomResource):
             name="test-instance",
             location="us-central1",
             tier="ENTERPRISE",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=1024,
-                name="share1",
-            ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                network="default",
-                modes=["MODE_IPV4"],
-            )],
+            file_shares={
+                "capacityGb": 1024,
+                "name": "share1",
+            },
+            networks=[{
+                "network": "default",
+                "modes": ["MODE_IPV4"],
+            }],
             kms_key_name=filestore_key.id)
         ```
 
@@ -639,7 +644,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the instance.
-        :param pulumi.Input[pulumi.InputType['InstanceFileSharesArgs']] file_shares: File system shares on the instance. For this version, only a
+        :param pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
@@ -648,7 +653,7 @@ class Instance(pulumi.CustomResource):
                resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[str] name: The resource name of the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: VPC networks to which the instance is connected. For this version,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
         :param pulumi.Input[str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
@@ -687,14 +692,14 @@ class Instance(pulumi.CustomResource):
             name="test-instance",
             location="us-central1-b",
             tier="BASIC_HDD",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=1024,
-                name="share1",
-            ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                network="default",
-                modes=["MODE_IPV4"],
-            )])
+            file_shares={
+                "capacityGb": 1024,
+                "name": "share1",
+            },
+            networks=[{
+                "network": "default",
+                "modes": ["MODE_IPV4"],
+            }])
         ```
         ### Filestore Instance Full
 
@@ -706,29 +711,29 @@ class Instance(pulumi.CustomResource):
             name="test-instance",
             location="us-central1-b",
             tier="BASIC_SSD",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=2560,
-                name="share1",
-                nfs_export_options=[
-                    gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
-                        ip_ranges=["10.0.0.0/24"],
-                        access_mode="READ_WRITE",
-                        squash_mode="NO_ROOT_SQUASH",
-                    ),
-                    gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
-                        ip_ranges=["10.10.0.0/24"],
-                        access_mode="READ_ONLY",
-                        squash_mode="ROOT_SQUASH",
-                        anon_uid=123,
-                        anon_gid=456,
-                    ),
+            file_shares={
+                "capacityGb": 2560,
+                "name": "share1",
+                "nfsExportOptions": [
+                    {
+                        "ipRanges": ["10.0.0.0/24"],
+                        "accessMode": "READ_WRITE",
+                        "squashMode": "NO_ROOT_SQUASH",
+                    },
+                    {
+                        "ipRanges": ["10.10.0.0/24"],
+                        "accessMode": "READ_ONLY",
+                        "squashMode": "ROOT_SQUASH",
+                        "anonUid": 123,
+                        "anonGid": 456,
+                    },
                 ],
-            ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                network="default",
-                modes=["MODE_IPV4"],
-                connect_mode="DIRECT_PEERING",
-            )])
+            },
+            networks=[{
+                "network": "default",
+                "modes": ["MODE_IPV4"],
+                "connectMode": "DIRECT_PEERING",
+            }])
         ```
         ### Filestore Instance Protocol
 
@@ -741,14 +746,14 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             tier="ENTERPRISE",
             protocol="NFS_V4_1",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=1024,
-                name="share1",
-            ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                network="default",
-                modes=["MODE_IPV4"],
-            )])
+            file_shares={
+                "capacityGb": 1024,
+                "name": "share1",
+            },
+            networks=[{
+                "network": "default",
+                "modes": ["MODE_IPV4"],
+            }])
         ```
         ### Filestore Instance Enterprise
 
@@ -766,14 +771,14 @@ class Instance(pulumi.CustomResource):
             name="test-instance",
             location="us-central1",
             tier="ENTERPRISE",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=1024,
-                name="share1",
-            ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
-                network="default",
-                modes=["MODE_IPV4"],
-            )],
+            file_shares={
+                "capacityGb": 1024,
+                "name": "share1",
+            },
+            networks=[{
+                "network": "default",
+                "modes": ["MODE_IPV4"],
+            }],
             kms_key_name=filestore_key.id)
         ```
 
@@ -817,12 +822,12 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 file_shares: Optional[pulumi.Input[pulumi.InputType['InstanceFileSharesArgs']]] = None,
+                 file_shares: Optional[pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
@@ -873,12 +878,12 @@ class Instance(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            file_shares: Optional[pulumi.Input[pulumi.InputType['InstanceFileSharesArgs']]] = None,
+            file_shares: Optional[pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
+            networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -896,7 +901,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent
                simultaneous updates from overwriting each other.
-        :param pulumi.Input[pulumi.InputType['InstanceFileSharesArgs']] file_shares: File system shares on the instance. For this version, only a
+        :param pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
@@ -905,7 +910,7 @@ class Instance(pulumi.CustomResource):
                resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[str] name: The resource name of the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: VPC networks to which the instance is connected. For this version,
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
         :param pulumi.Input[str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing

@@ -4,26 +4,118 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'InstanceGceSetupArgs',
+    'InstanceGceSetupArgsDict',
     'InstanceGceSetupAcceleratorConfigArgs',
+    'InstanceGceSetupAcceleratorConfigArgsDict',
     'InstanceGceSetupBootDiskArgs',
+    'InstanceGceSetupBootDiskArgsDict',
     'InstanceGceSetupContainerImageArgs',
+    'InstanceGceSetupContainerImageArgsDict',
     'InstanceGceSetupDataDisksArgs',
+    'InstanceGceSetupDataDisksArgsDict',
     'InstanceGceSetupNetworkInterfaceArgs',
+    'InstanceGceSetupNetworkInterfaceArgsDict',
     'InstanceGceSetupServiceAccountArgs',
+    'InstanceGceSetupServiceAccountArgsDict',
     'InstanceGceSetupShieldedInstanceConfigArgs',
+    'InstanceGceSetupShieldedInstanceConfigArgsDict',
     'InstanceGceSetupVmImageArgs',
+    'InstanceGceSetupVmImageArgsDict',
     'InstanceHealthInfoArgs',
+    'InstanceHealthInfoArgsDict',
     'InstanceIamBindingConditionArgs',
+    'InstanceIamBindingConditionArgsDict',
     'InstanceIamMemberConditionArgs',
+    'InstanceIamMemberConditionArgsDict',
     'InstanceUpgradeHistoryArgs',
+    'InstanceUpgradeHistoryArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class InstanceGceSetupArgsDict(TypedDict):
+        accelerator_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceGceSetupAcceleratorConfigArgsDict']]]]
+        """
+        The hardware accelerators used on this instance. If you use accelerators, make sure that your configuration has
+        [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
+        Currently supports only one accelerator configuration.
+        Structure is documented below.
+        """
+        boot_disk: NotRequired[pulumi.Input['InstanceGceSetupBootDiskArgsDict']]
+        """
+        The definition of a boot disk.
+        Structure is documented below.
+        """
+        container_image: NotRequired[pulumi.Input['InstanceGceSetupContainerImageArgsDict']]
+        """
+        Use a container image to start the workbench instance.
+        Structure is documented below.
+        """
+        data_disks: NotRequired[pulumi.Input['InstanceGceSetupDataDisksArgsDict']]
+        """
+        Data disks attached to the VM instance. Currently supports only one data disk.
+        Structure is documented below.
+        """
+        disable_public_ip: NotRequired[pulumi.Input[bool]]
+        """
+        Optional. If true, no external IP will be assigned to this VM instance.
+        """
+        enable_ip_forwarding: NotRequired[pulumi.Input[bool]]
+        """
+        Optional. Flag to enable ip forwarding or not, default false/off.
+        https://cloud.google.com/vpc/docs/using-routes#canipforward
+        """
+        machine_type: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+        """
+        metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Optional. Custom metadata to apply to this instance.
+        """
+        network_interfaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceGceSetupNetworkInterfaceArgsDict']]]]
+        """
+        The network interfaces for the VM. Supports only one interface.
+        Structure is documented below.
+        """
+        service_accounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceGceSetupServiceAccountArgsDict']]]]
+        """
+        The service account that serves as an identity for the VM instance. Currently supports only one service account.
+        Structure is documented below.
+        """
+        shielded_instance_config: NotRequired[pulumi.Input['InstanceGceSetupShieldedInstanceConfigArgsDict']]
+        """
+        A set of Shielded Instance options. See [Images using supported Shielded
+        VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        Not all combinations are valid.
+        Structure is documented below.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Optional. The Compute Engine tags to add to instance (see [Tagging
+        instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        """
+        vm_image: NotRequired[pulumi.Input['InstanceGceSetupVmImageArgsDict']]
+        """
+        Definition of a custom Compute Engine virtual machine image for starting
+        a workbench instance with the environment installed directly on the VM.
+        Structure is documented below.
+        """
+elif False:
+    InstanceGceSetupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceGceSetupArgs:
@@ -270,6 +362,20 @@ class InstanceGceSetupArgs:
         pulumi.set(self, "vm_image", value)
 
 
+if not MYPY:
+    class InstanceGceSetupAcceleratorConfigArgsDict(TypedDict):
+        core_count: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Count of cores of this accelerator.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Type of this accelerator.
+        Possible values are: `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_A100`, `NVIDIA_A100_80GB`, `NVIDIA_L4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`.
+        """
+elif False:
+    InstanceGceSetupAcceleratorConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceGceSetupAcceleratorConfigArgs:
     def __init__(__self__, *,
@@ -310,6 +416,34 @@ class InstanceGceSetupAcceleratorConfigArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class InstanceGceSetupBootDiskArgsDict(TypedDict):
+        disk_encryption: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Input only. Disk encryption method used on the boot and
+        data disks, defaults to GMEK.
+        Possible values are: `GMEK`, `CMEK`.
+        """
+        disk_size_gb: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The size of the boot disk in GB attached to this instance,
+        up to a maximum of 64000 GB (64 TB). If not specified, this defaults to the
+        recommended value of 150GB.
+        """
+        disk_type: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Indicates the type of the disk.
+        Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+        """
+        kms_key: NotRequired[pulumi.Input[str]]
+        """
+        'Optional. The KMS key used to encrypt the disks, only
+        applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
+        Learn more about using your own encryption keys.'
+        """
+elif False:
+    InstanceGceSetupBootDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceGceSetupBootDiskArgs:
@@ -396,6 +530,20 @@ class InstanceGceSetupBootDiskArgs:
         pulumi.set(self, "kms_key", value)
 
 
+if not MYPY:
+    class InstanceGceSetupContainerImageArgsDict(TypedDict):
+        repository: pulumi.Input[str]
+        """
+        The path to the container image repository.
+        For example: gcr.io/{project_id}/{imageName}
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        The tag of the container image. If not specified, this defaults to the latest tag.
+        """
+elif False:
+    InstanceGceSetupContainerImageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceGceSetupContainerImageArgs:
     def __init__(__self__, *,
@@ -435,6 +583,34 @@ class InstanceGceSetupContainerImageArgs:
     def tag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tag", value)
 
+
+if not MYPY:
+    class InstanceGceSetupDataDisksArgsDict(TypedDict):
+        disk_encryption: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Input only. Disk encryption method used on the boot
+        and data disks, defaults to GMEK.
+        Possible values are: `GMEK`, `CMEK`.
+        """
+        disk_size_gb: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The size of the disk in GB attached to this VM instance,
+        up to a maximum of 64000 GB (64 TB). If not specified, this defaults to
+        100.
+        """
+        disk_type: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Input only. Indicates the type of the disk.
+        Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+        """
+        kms_key: NotRequired[pulumi.Input[str]]
+        """
+        'Optional. The KMS key used to encrypt the disks,
+        only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
+        Learn more about using your own encryption keys.'
+        """
+elif False:
+    InstanceGceSetupDataDisksArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceGceSetupDataDisksArgs:
@@ -521,6 +697,25 @@ class InstanceGceSetupDataDisksArgs:
         pulumi.set(self, "kms_key", value)
 
 
+if not MYPY:
+    class InstanceGceSetupNetworkInterfaceArgsDict(TypedDict):
+        network: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The name of the VPC that this VM instance is in.
+        """
+        nic_type: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The type of vNIC to be used on this interface. This
+        may be gVNIC or VirtioNet.
+        Possible values are: `VIRTIO_NET`, `GVNIC`.
+        """
+        subnet: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The name of the subnet that this VM instance is in.
+        """
+elif False:
+    InstanceGceSetupNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceGceSetupNetworkInterfaceArgs:
     def __init__(__self__, *,
@@ -580,6 +775,21 @@ class InstanceGceSetupNetworkInterfaceArgs:
         pulumi.set(self, "subnet", value)
 
 
+if not MYPY:
+    class InstanceGceSetupServiceAccountArgsDict(TypedDict):
+        email: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Email address of the service account.
+        """
+        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (Output)
+        Output only. The list of scopes to be made available for this
+        service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
+        """
+elif False:
+    InstanceGceSetupServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceGceSetupServiceAccountArgs:
     def __init__(__self__, *,
@@ -622,6 +832,31 @@ class InstanceGceSetupServiceAccountArgs:
     def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "scopes", value)
 
+
+if not MYPY:
+    class InstanceGceSetupShieldedInstanceConfigArgsDict(TypedDict):
+        enable_integrity_monitoring: NotRequired[pulumi.Input[bool]]
+        """
+        Optional. Defines whether the VM instance has integrity monitoring
+        enabled. Enables monitoring and attestation of the boot integrity of the VM
+        instance. The attestation is performed against the integrity policy baseline.
+        This baseline is initially derived from the implicitly trusted boot image
+        when the VM instance is created. Enabled by default.
+        """
+        enable_secure_boot: NotRequired[pulumi.Input[bool]]
+        """
+        Optional. Defines whether the VM instance has Secure Boot enabled.
+        Secure Boot helps ensure that the system only runs authentic software by verifying
+        the digital signature of all boot components, and halting the boot process
+        if signature verification fails. Disabled by default.
+        """
+        enable_vtpm: NotRequired[pulumi.Input[bool]]
+        """
+        Optional. Defines whether the VM instance has the vTPM enabled.
+        Enabled by default.
+        """
+elif False:
+    InstanceGceSetupShieldedInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceGceSetupShieldedInstanceConfigArgs:
@@ -694,6 +929,25 @@ class InstanceGceSetupShieldedInstanceConfigArgs:
         pulumi.set(self, "enable_vtpm", value)
 
 
+if not MYPY:
+    class InstanceGceSetupVmImageArgsDict(TypedDict):
+        family: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Use this VM image family to find the image; the newest
+        image in this family will be used.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Use VM image name to find the image.
+        """
+        project: NotRequired[pulumi.Input[str]]
+        """
+        The name of the Google Cloud project that this VM image belongs to.
+        Format: {project_id}
+        """
+elif False:
+    InstanceGceSetupVmImageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceGceSetupVmImageArgs:
     def __init__(__self__, *,
@@ -753,11 +1007,25 @@ class InstanceGceSetupVmImageArgs:
         pulumi.set(self, "project", value)
 
 
+if not MYPY:
+    class InstanceHealthInfoArgsDict(TypedDict):
+        pass
+elif False:
+    InstanceHealthInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceHealthInfoArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class InstanceIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    InstanceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceIamBindingConditionArgs:
@@ -798,6 +1066,14 @@ class InstanceIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class InstanceIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    InstanceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -836,6 +1112,49 @@ class InstanceIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class InstanceUpgradeHistoryArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Action. Rolloback or Upgrade.
+        """
+        container_image: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The container image before this instance upgrade.
+        """
+        create_time: NotRequired[pulumi.Input[str]]
+        """
+        An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
+        The milliseconds portion (".SSS") is optional.
+        """
+        framework: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The framework of this workbench instance.
+        """
+        snapshot: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The snapshot of the boot disk of this workbench instance before upgrade.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The state of this instance upgrade history entry.
+        """
+        target_version: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Target VM Version, like m63.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The version of the workbench instance before this upgrade.
+        """
+        vm_image: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The VM image before this instance upgrade.
+        """
+elif False:
+    InstanceUpgradeHistoryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceUpgradeHistoryArgs:

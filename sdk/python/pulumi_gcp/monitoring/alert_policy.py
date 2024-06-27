@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -455,11 +460,11 @@ class AlertPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_strategy: Optional[pulumi.Input[pulumi.InputType['AlertPolicyAlertStrategyArgs']]] = None,
+                 alert_strategy: Optional[pulumi.Input[Union['AlertPolicyAlertStrategyArgs', 'AlertPolicyAlertStrategyArgsDict']]] = None,
                  combiner: Optional[pulumi.Input[str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyConditionArgs']]]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertPolicyConditionArgs', 'AlertPolicyConditionArgsDict']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 documentation: Optional[pulumi.Input[pulumi.InputType['AlertPolicyDocumentationArgs']]] = None,
+                 documentation: Optional[pulumi.Input[Union['AlertPolicyDocumentationArgs', 'AlertPolicyDocumentationArgsDict']]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -488,18 +493,18 @@ class AlertPolicy(pulumi.CustomResource):
         alert_policy = gcp.monitoring.AlertPolicy("alert_policy",
             display_name="My Alert Policy",
             combiner="OR",
-            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                display_name="test condition",
-                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                    filter="metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
-                    duration="60s",
-                    comparison="COMPARISON_GT",
-                    aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
-                        alignment_period="60s",
-                        per_series_aligner="ALIGN_RATE",
-                    )],
-                ),
-            )],
+            conditions=[{
+                "displayName": "test condition",
+                "conditionThreshold": {
+                    "filter": "metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
+                    "duration": "60s",
+                    "comparison": "COMPARISON_GT",
+                    "aggregations": [{
+                        "alignmentPeriod": "60s",
+                        "perSeriesAligner": "ALIGN_RATE",
+                    }],
+                },
+            }],
             user_labels={
                 "foo": "bar",
             })
@@ -513,19 +518,19 @@ class AlertPolicy(pulumi.CustomResource):
         alert_policy = gcp.monitoring.AlertPolicy("alert_policy",
             display_name="My Alert Policy",
             combiner="OR",
-            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                display_name="test condition",
-                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                    filter="metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
-                    duration="60s",
-                    comparison="COMPARISON_GT",
-                    aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
-                        alignment_period="60s",
-                        per_series_aligner="ALIGN_RATE",
-                    )],
-                    evaluation_missing_data="EVALUATION_MISSING_DATA_INACTIVE",
-                ),
-            )],
+            conditions=[{
+                "displayName": "test condition",
+                "conditionThreshold": {
+                    "filter": "metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
+                    "duration": "60s",
+                    "comparison": "COMPARISON_GT",
+                    "aggregations": [{
+                        "alignmentPeriod": "60s",
+                        "perSeriesAligner": "ALIGN_RATE",
+                    }],
+                    "evaluationMissingData": "EVALUATION_MISSING_DATA_INACTIVE",
+                },
+            }],
             user_labels={
                 "foo": "bar",
             })
@@ -539,21 +544,21 @@ class AlertPolicy(pulumi.CustomResource):
         alert_policy = gcp.monitoring.AlertPolicy("alert_policy",
             display_name="My Alert Policy",
             combiner="OR",
-            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                display_name="test condition",
-                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                    filter="metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
-                    duration="60s",
-                    forecast_options=gcp.monitoring.AlertPolicyConditionConditionThresholdForecastOptionsArgs(
-                        forecast_horizon="3600s",
-                    ),
-                    comparison="COMPARISON_GT",
-                    aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
-                        alignment_period="60s",
-                        per_series_aligner="ALIGN_RATE",
-                    )],
-                ),
-            )],
+            conditions=[{
+                "displayName": "test condition",
+                "conditionThreshold": {
+                    "filter": "metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
+                    "duration": "60s",
+                    "forecastOptions": {
+                        "forecastHorizon": "3600s",
+                    },
+                    "comparison": "COMPARISON_GT",
+                    "aggregations": [{
+                        "alignmentPeriod": "60s",
+                        "perSeriesAligner": "ALIGN_RATE",
+                    }],
+                },
+            }],
             user_labels={
                 "foo": "bar",
             })
@@ -567,19 +572,19 @@ class AlertPolicy(pulumi.CustomResource):
         alert_policy = gcp.monitoring.AlertPolicy("alert_policy",
             display_name="My Alert Policy",
             combiner="OR",
-            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                display_name="test condition",
-                condition_prometheus_query_language=gcp.monitoring.AlertPolicyConditionConditionPrometheusQueryLanguageArgs(
-                    query="compute_googleapis_com:instance_cpu_usage_time > 0",
-                    duration="60s",
-                    evaluation_interval="60s",
-                    alert_rule="AlwaysOn",
-                    rule_group="a test",
-                ),
-            )],
-            alert_strategy=gcp.monitoring.AlertPolicyAlertStrategyArgs(
-                auto_close="1800s",
-            ))
+            conditions=[{
+                "displayName": "test condition",
+                "conditionPrometheusQueryLanguage": {
+                    "query": "compute_googleapis_com:instance_cpu_usage_time > 0",
+                    "duration": "60s",
+                    "evaluationInterval": "60s",
+                    "alertRule": "AlwaysOn",
+                    "ruleGroup": "a test",
+                },
+            }],
+            alert_strategy={
+                "autoClose": "1800s",
+            })
         ```
 
         ## Import
@@ -596,11 +601,11 @@ class AlertPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AlertPolicyAlertStrategyArgs']] alert_strategy: Control over how this alert policy's notification channels are notified.
+        :param pulumi.Input[Union['AlertPolicyAlertStrategyArgs', 'AlertPolicyAlertStrategyArgsDict']] alert_strategy: Control over how this alert policy's notification channels are notified.
         :param pulumi.Input[str] combiner: How to combine the results of multiple conditions to
                determine if an incident should be opened.
                Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyConditionArgs']]]] conditions: A list of conditions for the policy. The conditions are combined by
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertPolicyConditionArgs', 'AlertPolicyConditionArgsDict']]]] conditions: A list of conditions for the policy. The conditions are combined by
                AND or OR according to the combiner field. If the combined conditions
                evaluate to true, then an incident is created. A policy can have from
                one to six conditions.
@@ -609,7 +614,7 @@ class AlertPolicy(pulumi.CustomResource):
                dashboards, notifications, and incidents. To avoid confusion, don't use
                the same display name for multiple policies in the same project. The
                name is limited to 512 Unicode characters.
-        :param pulumi.Input[pulumi.InputType['AlertPolicyDocumentationArgs']] documentation: Documentation that is included with notifications and incidents related to this policy. Best practice is for the
+        :param pulumi.Input[Union['AlertPolicyDocumentationArgs', 'AlertPolicyDocumentationArgsDict']] documentation: Documentation that is included with notifications and incidents related to this policy. Best practice is for the
                documentation to include information to help responders understand, mitigate, escalate, and correct the underlying
                problems detected by the alerting policy. Notification channels that have limited capacity might not show this
                documentation.
@@ -652,18 +657,18 @@ class AlertPolicy(pulumi.CustomResource):
         alert_policy = gcp.monitoring.AlertPolicy("alert_policy",
             display_name="My Alert Policy",
             combiner="OR",
-            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                display_name="test condition",
-                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                    filter="metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
-                    duration="60s",
-                    comparison="COMPARISON_GT",
-                    aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
-                        alignment_period="60s",
-                        per_series_aligner="ALIGN_RATE",
-                    )],
-                ),
-            )],
+            conditions=[{
+                "displayName": "test condition",
+                "conditionThreshold": {
+                    "filter": "metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
+                    "duration": "60s",
+                    "comparison": "COMPARISON_GT",
+                    "aggregations": [{
+                        "alignmentPeriod": "60s",
+                        "perSeriesAligner": "ALIGN_RATE",
+                    }],
+                },
+            }],
             user_labels={
                 "foo": "bar",
             })
@@ -677,19 +682,19 @@ class AlertPolicy(pulumi.CustomResource):
         alert_policy = gcp.monitoring.AlertPolicy("alert_policy",
             display_name="My Alert Policy",
             combiner="OR",
-            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                display_name="test condition",
-                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                    filter="metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
-                    duration="60s",
-                    comparison="COMPARISON_GT",
-                    aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
-                        alignment_period="60s",
-                        per_series_aligner="ALIGN_RATE",
-                    )],
-                    evaluation_missing_data="EVALUATION_MISSING_DATA_INACTIVE",
-                ),
-            )],
+            conditions=[{
+                "displayName": "test condition",
+                "conditionThreshold": {
+                    "filter": "metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
+                    "duration": "60s",
+                    "comparison": "COMPARISON_GT",
+                    "aggregations": [{
+                        "alignmentPeriod": "60s",
+                        "perSeriesAligner": "ALIGN_RATE",
+                    }],
+                    "evaluationMissingData": "EVALUATION_MISSING_DATA_INACTIVE",
+                },
+            }],
             user_labels={
                 "foo": "bar",
             })
@@ -703,21 +708,21 @@ class AlertPolicy(pulumi.CustomResource):
         alert_policy = gcp.monitoring.AlertPolicy("alert_policy",
             display_name="My Alert Policy",
             combiner="OR",
-            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                display_name="test condition",
-                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                    filter="metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
-                    duration="60s",
-                    forecast_options=gcp.monitoring.AlertPolicyConditionConditionThresholdForecastOptionsArgs(
-                        forecast_horizon="3600s",
-                    ),
-                    comparison="COMPARISON_GT",
-                    aggregations=[gcp.monitoring.AlertPolicyConditionConditionThresholdAggregationArgs(
-                        alignment_period="60s",
-                        per_series_aligner="ALIGN_RATE",
-                    )],
-                ),
-            )],
+            conditions=[{
+                "displayName": "test condition",
+                "conditionThreshold": {
+                    "filter": "metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
+                    "duration": "60s",
+                    "forecastOptions": {
+                        "forecastHorizon": "3600s",
+                    },
+                    "comparison": "COMPARISON_GT",
+                    "aggregations": [{
+                        "alignmentPeriod": "60s",
+                        "perSeriesAligner": "ALIGN_RATE",
+                    }],
+                },
+            }],
             user_labels={
                 "foo": "bar",
             })
@@ -731,19 +736,19 @@ class AlertPolicy(pulumi.CustomResource):
         alert_policy = gcp.monitoring.AlertPolicy("alert_policy",
             display_name="My Alert Policy",
             combiner="OR",
-            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                display_name="test condition",
-                condition_prometheus_query_language=gcp.monitoring.AlertPolicyConditionConditionPrometheusQueryLanguageArgs(
-                    query="compute_googleapis_com:instance_cpu_usage_time > 0",
-                    duration="60s",
-                    evaluation_interval="60s",
-                    alert_rule="AlwaysOn",
-                    rule_group="a test",
-                ),
-            )],
-            alert_strategy=gcp.monitoring.AlertPolicyAlertStrategyArgs(
-                auto_close="1800s",
-            ))
+            conditions=[{
+                "displayName": "test condition",
+                "conditionPrometheusQueryLanguage": {
+                    "query": "compute_googleapis_com:instance_cpu_usage_time > 0",
+                    "duration": "60s",
+                    "evaluationInterval": "60s",
+                    "alertRule": "AlwaysOn",
+                    "ruleGroup": "a test",
+                },
+            }],
+            alert_strategy={
+                "autoClose": "1800s",
+            })
         ```
 
         ## Import
@@ -773,11 +778,11 @@ class AlertPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_strategy: Optional[pulumi.Input[pulumi.InputType['AlertPolicyAlertStrategyArgs']]] = None,
+                 alert_strategy: Optional[pulumi.Input[Union['AlertPolicyAlertStrategyArgs', 'AlertPolicyAlertStrategyArgsDict']]] = None,
                  combiner: Optional[pulumi.Input[str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyConditionArgs']]]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertPolicyConditionArgs', 'AlertPolicyConditionArgsDict']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 documentation: Optional[pulumi.Input[pulumi.InputType['AlertPolicyDocumentationArgs']]] = None,
+                 documentation: Optional[pulumi.Input[Union['AlertPolicyDocumentationArgs', 'AlertPolicyDocumentationArgsDict']]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -820,12 +825,12 @@ class AlertPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alert_strategy: Optional[pulumi.Input[pulumi.InputType['AlertPolicyAlertStrategyArgs']]] = None,
+            alert_strategy: Optional[pulumi.Input[Union['AlertPolicyAlertStrategyArgs', 'AlertPolicyAlertStrategyArgsDict']]] = None,
             combiner: Optional[pulumi.Input[str]] = None,
-            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyConditionArgs']]]]] = None,
-            creation_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyCreationRecordArgs']]]]] = None,
+            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertPolicyConditionArgs', 'AlertPolicyConditionArgsDict']]]]] = None,
+            creation_records: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertPolicyCreationRecordArgs', 'AlertPolicyCreationRecordArgsDict']]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            documentation: Optional[pulumi.Input[pulumi.InputType['AlertPolicyDocumentationArgs']]] = None,
+            documentation: Optional[pulumi.Input[Union['AlertPolicyDocumentationArgs', 'AlertPolicyDocumentationArgsDict']]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -839,16 +844,16 @@ class AlertPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AlertPolicyAlertStrategyArgs']] alert_strategy: Control over how this alert policy's notification channels are notified.
+        :param pulumi.Input[Union['AlertPolicyAlertStrategyArgs', 'AlertPolicyAlertStrategyArgsDict']] alert_strategy: Control over how this alert policy's notification channels are notified.
         :param pulumi.Input[str] combiner: How to combine the results of multiple conditions to
                determine if an incident should be opened.
                Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyConditionArgs']]]] conditions: A list of conditions for the policy. The conditions are combined by
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertPolicyConditionArgs', 'AlertPolicyConditionArgsDict']]]] conditions: A list of conditions for the policy. The conditions are combined by
                AND or OR according to the combiner field. If the combined conditions
                evaluate to true, then an incident is created. A policy can have from
                one to six conditions.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyCreationRecordArgs']]]] creation_records: A read-only record of the creation of the alerting policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertPolicyCreationRecordArgs', 'AlertPolicyCreationRecordArgsDict']]]] creation_records: A read-only record of the creation of the alerting policy.
                If provided in a call to create or update, this field will
                be ignored.
                Structure is documented below.
@@ -856,7 +861,7 @@ class AlertPolicy(pulumi.CustomResource):
                dashboards, notifications, and incidents. To avoid confusion, don't use
                the same display name for multiple policies in the same project. The
                name is limited to 512 Unicode characters.
-        :param pulumi.Input[pulumi.InputType['AlertPolicyDocumentationArgs']] documentation: Documentation that is included with notifications and incidents related to this policy. Best practice is for the
+        :param pulumi.Input[Union['AlertPolicyDocumentationArgs', 'AlertPolicyDocumentationArgsDict']] documentation: Documentation that is included with notifications and incidents related to this policy. Best practice is for the
                documentation to include information to help responders understand, mitigate, escalate, and correct the underlying
                problems detected by the alerting policy. Notification channels that have limited capacity might not show this
                documentation.

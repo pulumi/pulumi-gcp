@@ -4,146 +4,307 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'CxAgentAdvancedSettingsArgs',
+    'CxAgentAdvancedSettingsArgsDict',
     'CxAgentAdvancedSettingsAudioExportGcsDestinationArgs',
+    'CxAgentAdvancedSettingsAudioExportGcsDestinationArgsDict',
     'CxAgentAdvancedSettingsDtmfSettingsArgs',
+    'CxAgentAdvancedSettingsDtmfSettingsArgsDict',
     'CxAgentGitIntegrationSettingsArgs',
+    'CxAgentGitIntegrationSettingsArgsDict',
     'CxAgentGitIntegrationSettingsGithubSettingsArgs',
+    'CxAgentGitIntegrationSettingsGithubSettingsArgsDict',
     'CxAgentSpeechToTextSettingsArgs',
+    'CxAgentSpeechToTextSettingsArgsDict',
     'CxAgentTextToSpeechSettingsArgs',
+    'CxAgentTextToSpeechSettingsArgsDict',
     'CxEntityTypeEntityArgs',
+    'CxEntityTypeEntityArgsDict',
     'CxEntityTypeExcludedPhraseArgs',
+    'CxEntityTypeExcludedPhraseArgsDict',
     'CxEnvironmentVersionConfigArgs',
+    'CxEnvironmentVersionConfigArgsDict',
     'CxFlowAdvancedSettingsArgs',
+    'CxFlowAdvancedSettingsArgsDict',
     'CxFlowAdvancedSettingsAudioExportGcsDestinationArgs',
+    'CxFlowAdvancedSettingsAudioExportGcsDestinationArgsDict',
     'CxFlowAdvancedSettingsDtmfSettingsArgs',
+    'CxFlowAdvancedSettingsDtmfSettingsArgsDict',
     'CxFlowEventHandlerArgs',
+    'CxFlowEventHandlerArgsDict',
     'CxFlowEventHandlerTriggerFulfillmentArgs',
+    'CxFlowEventHandlerTriggerFulfillmentArgsDict',
     'CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs',
+    'CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgsDict',
     'CxFlowEventHandlerTriggerFulfillmentMessageArgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessageArgsDict',
     'CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict',
     'CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict',
     'CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict',
     'CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict',
     'CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict',
     'CxFlowEventHandlerTriggerFulfillmentMessageTextArgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessageTextArgsDict',
     'CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs',
+    'CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgsDict',
     'CxFlowNluSettingsArgs',
+    'CxFlowNluSettingsArgsDict',
     'CxFlowTransitionRouteArgs',
+    'CxFlowTransitionRouteArgsDict',
     'CxFlowTransitionRouteTriggerFulfillmentArgs',
+    'CxFlowTransitionRouteTriggerFulfillmentArgsDict',
     'CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs',
+    'CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgsDict',
     'CxFlowTransitionRouteTriggerFulfillmentMessageArgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessageArgsDict',
     'CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgsDict',
     'CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgsDict',
     'CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgsDict',
     'CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgsDict',
     'CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgsDict',
     'CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessageTextArgsDict',
     'CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs',
+    'CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgsDict',
     'CxIntentParameterArgs',
+    'CxIntentParameterArgsDict',
     'CxIntentTrainingPhraseArgs',
+    'CxIntentTrainingPhraseArgsDict',
     'CxIntentTrainingPhrasePartArgs',
+    'CxIntentTrainingPhrasePartArgsDict',
     'CxPageAdvancedSettingsArgs',
+    'CxPageAdvancedSettingsArgsDict',
     'CxPageAdvancedSettingsDtmfSettingsArgs',
+    'CxPageAdvancedSettingsDtmfSettingsArgsDict',
     'CxPageEntryFulfillmentArgs',
+    'CxPageEntryFulfillmentArgsDict',
     'CxPageEntryFulfillmentConditionalCaseArgs',
+    'CxPageEntryFulfillmentConditionalCaseArgsDict',
     'CxPageEntryFulfillmentMessageArgs',
+    'CxPageEntryFulfillmentMessageArgsDict',
     'CxPageEntryFulfillmentMessageConversationSuccessArgs',
+    'CxPageEntryFulfillmentMessageConversationSuccessArgsDict',
     'CxPageEntryFulfillmentMessageLiveAgentHandoffArgs',
+    'CxPageEntryFulfillmentMessageLiveAgentHandoffArgsDict',
     'CxPageEntryFulfillmentMessageOutputAudioTextArgs',
+    'CxPageEntryFulfillmentMessageOutputAudioTextArgsDict',
     'CxPageEntryFulfillmentMessagePlayAudioArgs',
+    'CxPageEntryFulfillmentMessagePlayAudioArgsDict',
     'CxPageEntryFulfillmentMessageTelephonyTransferCallArgs',
+    'CxPageEntryFulfillmentMessageTelephonyTransferCallArgsDict',
     'CxPageEntryFulfillmentMessageTextArgs',
+    'CxPageEntryFulfillmentMessageTextArgsDict',
     'CxPageEntryFulfillmentSetParameterActionArgs',
+    'CxPageEntryFulfillmentSetParameterActionArgsDict',
     'CxPageEventHandlerArgs',
+    'CxPageEventHandlerArgsDict',
     'CxPageEventHandlerTriggerFulfillmentArgs',
+    'CxPageEventHandlerTriggerFulfillmentArgsDict',
     'CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs',
+    'CxPageEventHandlerTriggerFulfillmentConditionalCaseArgsDict',
     'CxPageEventHandlerTriggerFulfillmentMessageArgs',
+    'CxPageEventHandlerTriggerFulfillmentMessageArgsDict',
     'CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs',
+    'CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict',
     'CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs',
+    'CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict',
     'CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs',
+    'CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict',
     'CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs',
+    'CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict',
     'CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs',
+    'CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict',
     'CxPageEventHandlerTriggerFulfillmentMessageTextArgs',
+    'CxPageEventHandlerTriggerFulfillmentMessageTextArgsDict',
     'CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs',
+    'CxPageEventHandlerTriggerFulfillmentSetParameterActionArgsDict',
     'CxPageFormArgs',
+    'CxPageFormArgsDict',
     'CxPageFormParameterArgs',
+    'CxPageFormParameterArgsDict',
     'CxPageFormParameterAdvancedSettingsArgs',
+    'CxPageFormParameterAdvancedSettingsArgsDict',
     'CxPageFormParameterAdvancedSettingsDtmfSettingsArgs',
+    'CxPageFormParameterAdvancedSettingsDtmfSettingsArgsDict',
     'CxPageFormParameterFillBehaviorArgs',
+    'CxPageFormParameterFillBehaviorArgsDict',
     'CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgsDict',
     'CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgsDict',
     'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgsDict',
     'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgsDict',
     'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgsDict',
     'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgsDict',
     'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgsDict',
     'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgsDict',
     'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgsDict',
     'CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgsDict',
     'CxPageFormParameterFillBehaviorRepromptEventHandlerArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerArgsDict',
     'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgsDict',
     'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgsDict',
     'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgsDict',
     'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict',
     'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict',
     'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict',
     'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict',
     'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict',
     'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgsDict',
     'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgsDict',
     'CxPageTransitionRouteArgs',
+    'CxPageTransitionRouteArgsDict',
     'CxPageTransitionRouteTriggerFulfillmentArgs',
+    'CxPageTransitionRouteTriggerFulfillmentArgsDict',
     'CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs',
+    'CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgsDict',
     'CxPageTransitionRouteTriggerFulfillmentMessageArgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessageArgsDict',
     'CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgsDict',
     'CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgsDict',
     'CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgsDict',
     'CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgsDict',
     'CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgsDict',
     'CxPageTransitionRouteTriggerFulfillmentMessageTextArgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessageTextArgsDict',
     'CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs',
+    'CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgsDict',
     'CxSecuritySettingsAudioExportSettingsArgs',
+    'CxSecuritySettingsAudioExportSettingsArgsDict',
     'CxSecuritySettingsInsightsExportSettingsArgs',
+    'CxSecuritySettingsInsightsExportSettingsArgsDict',
     'CxTestCaseLastTestResultArgs',
+    'CxTestCaseLastTestResultArgsDict',
     'CxTestCaseLastTestResultConversationTurnArgs',
+    'CxTestCaseLastTestResultConversationTurnArgsDict',
     'CxTestCaseLastTestResultConversationTurnUserInputArgs',
+    'CxTestCaseLastTestResultConversationTurnUserInputArgsDict',
     'CxTestCaseLastTestResultConversationTurnUserInputInputArgs',
+    'CxTestCaseLastTestResultConversationTurnUserInputInputArgsDict',
     'CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs',
+    'CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgsDict',
     'CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs',
+    'CxTestCaseLastTestResultConversationTurnUserInputInputEventArgsDict',
     'CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs',
+    'CxTestCaseLastTestResultConversationTurnUserInputInputTextArgsDict',
     'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs',
+    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgsDict',
     'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs',
+    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgsDict',
     'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs',
+    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgsDict',
     'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs',
+    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgsDict',
     'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs',
+    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgsDict',
     'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs',
+    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgsDict',
     'CxTestCaseTestCaseConversationTurnArgs',
+    'CxTestCaseTestCaseConversationTurnArgsDict',
     'CxTestCaseTestCaseConversationTurnUserInputArgs',
+    'CxTestCaseTestCaseConversationTurnUserInputArgsDict',
     'CxTestCaseTestCaseConversationTurnUserInputInputArgs',
+    'CxTestCaseTestCaseConversationTurnUserInputInputArgsDict',
     'CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs',
+    'CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgsDict',
     'CxTestCaseTestCaseConversationTurnUserInputInputEventArgs',
+    'CxTestCaseTestCaseConversationTurnUserInputInputEventArgsDict',
     'CxTestCaseTestCaseConversationTurnUserInputInputTextArgs',
+    'CxTestCaseTestCaseConversationTurnUserInputInputTextArgsDict',
     'CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs',
+    'CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgsDict',
     'CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs',
+    'CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgsDict',
     'CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs',
+    'CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgsDict',
     'CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs',
+    'CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgsDict',
     'CxTestCaseTestConfigArgs',
+    'CxTestCaseTestConfigArgsDict',
     'CxVersionNluSettingArgs',
+    'CxVersionNluSettingArgsDict',
     'CxWebhookGenericWebServiceArgs',
+    'CxWebhookGenericWebServiceArgsDict',
     'CxWebhookServiceDirectoryArgs',
+    'CxWebhookServiceDirectoryArgsDict',
     'CxWebhookServiceDirectoryGenericWebServiceArgs',
+    'CxWebhookServiceDirectoryGenericWebServiceArgsDict',
     'EntityTypeEntityArgs',
+    'EntityTypeEntityArgsDict',
     'FulfillmentFeatureArgs',
+    'FulfillmentFeatureArgsDict',
     'FulfillmentGenericWebServiceArgs',
+    'FulfillmentGenericWebServiceArgsDict',
     'IntentFollowupIntentInfoArgs',
+    'IntentFollowupIntentInfoArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class CxAgentAdvancedSettingsArgsDict(TypedDict):
+        audio_export_gcs_destination: NotRequired[pulumi.Input['CxAgentAdvancedSettingsAudioExportGcsDestinationArgsDict']]
+        """
+        If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+        * Agent level
+        * Flow level
+        Structure is documented below.
+        """
+        dtmf_settings: NotRequired[pulumi.Input['CxAgentAdvancedSettingsDtmfSettingsArgsDict']]
+        """
+        Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+        * Agent level
+        * Flow level
+        * Page level
+        * Parameter level
+        Structure is documented below.
+        """
+elif False:
+    CxAgentAdvancedSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxAgentAdvancedSettingsArgs:
@@ -200,6 +361,16 @@ class CxAgentAdvancedSettingsArgs:
         pulumi.set(self, "dtmf_settings", value)
 
 
+if not MYPY:
+    class CxAgentAdvancedSettingsAudioExportGcsDestinationArgsDict(TypedDict):
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+        Format: gs://bucket/object-name-or-prefix
+        """
+elif False:
+    CxAgentAdvancedSettingsAudioExportGcsDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxAgentAdvancedSettingsAudioExportGcsDestinationArgs:
     def __init__(__self__, *,
@@ -224,6 +395,23 @@ class CxAgentAdvancedSettingsAudioExportGcsDestinationArgs:
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
 
+
+if not MYPY:
+    class CxAgentAdvancedSettingsDtmfSettingsArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        """
+        finish_digit: NotRequired[pulumi.Input[str]]
+        """
+        The digit that terminates a DTMF digit sequence.
+        """
+        max_digits: NotRequired[pulumi.Input[int]]
+        """
+        Max length of DTMF digits.
+        """
+elif False:
+    CxAgentAdvancedSettingsDtmfSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxAgentAdvancedSettingsDtmfSettingsArgs:
@@ -280,6 +468,16 @@ class CxAgentAdvancedSettingsDtmfSettingsArgs:
         pulumi.set(self, "max_digits", value)
 
 
+if not MYPY:
+    class CxAgentGitIntegrationSettingsArgsDict(TypedDict):
+        github_settings: NotRequired[pulumi.Input['CxAgentGitIntegrationSettingsGithubSettingsArgsDict']]
+        """
+        Settings of integration with GitHub.
+        Structure is documented below.
+        """
+elif False:
+    CxAgentGitIntegrationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxAgentGitIntegrationSettingsArgs:
     def __init__(__self__, *,
@@ -304,6 +502,32 @@ class CxAgentGitIntegrationSettingsArgs:
     def github_settings(self, value: Optional[pulumi.Input['CxAgentGitIntegrationSettingsGithubSettingsArgs']]):
         pulumi.set(self, "github_settings", value)
 
+
+if not MYPY:
+    class CxAgentGitIntegrationSettingsGithubSettingsArgsDict(TypedDict):
+        access_token: NotRequired[pulumi.Input[str]]
+        """
+        The access token used to authenticate the access to the GitHub repository.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        branches: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of branches configured to be used from Dialogflow.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        The unique repository display name for the GitHub repository.
+        """
+        repository_uri: NotRequired[pulumi.Input[str]]
+        """
+        The GitHub repository URI related to the agent.
+        """
+        tracking_branch: NotRequired[pulumi.Input[str]]
+        """
+        The branch of the GitHub repository tracked for this agent.
+        """
+elif False:
+    CxAgentGitIntegrationSettingsGithubSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxAgentGitIntegrationSettingsGithubSettingsArgs:
@@ -394,6 +618,15 @@ class CxAgentGitIntegrationSettingsGithubSettingsArgs:
         pulumi.set(self, "tracking_branch", value)
 
 
+if not MYPY:
+    class CxAgentSpeechToTextSettingsArgsDict(TypedDict):
+        enable_speech_adaptation: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to use speech adaptation for speech recognition.
+        """
+elif False:
+    CxAgentSpeechToTextSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxAgentSpeechToTextSettingsArgs:
     def __init__(__self__, *,
@@ -416,6 +649,18 @@ class CxAgentSpeechToTextSettingsArgs:
     def enable_speech_adaptation(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_speech_adaptation", value)
 
+
+if not MYPY:
+    class CxAgentTextToSpeechSettingsArgsDict(TypedDict):
+        synthesize_speech_configs: NotRequired[pulumi.Input[str]]
+        """
+        Configuration of how speech should be synthesized, mapping from [language](https://cloud.google.com/dialogflow/cx/docs/reference/language) to [SynthesizeSpeechConfig](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#synthesizespeechconfig).
+        These settings affect:
+        * The phone gateway synthesize configuration set via Agent.text_to_speech_settings.
+        * How speech is synthesized when invoking session APIs. `Agent.text_to_speech_settings` only applies if `OutputAudioConfig.synthesize_speech_config` is not specified.
+        """
+elif False:
+    CxAgentTextToSpeechSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxAgentTextToSpeechSettingsArgs:
@@ -445,6 +690,24 @@ class CxAgentTextToSpeechSettingsArgs:
     def synthesize_speech_configs(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "synthesize_speech_configs", value)
 
+
+if not MYPY:
+    class CxEntityTypeEntityArgsDict(TypedDict):
+        synonyms: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
+        For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
+
+        - - -
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The primary value associated with this entity entry. For example, if the entity type is vegetable, the value could be scallions.
+        For KIND_MAP entity types: A canonical value to be used in place of synonyms.
+        For KIND_LIST entity types: A string that can contain references to other entity types (with or without aliases).
+        """
+elif False:
+    CxEntityTypeEntityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxEntityTypeEntityArgs:
@@ -495,6 +758,15 @@ class CxEntityTypeEntityArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class CxEntityTypeExcludedPhraseArgsDict(TypedDict):
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The word or phrase to be excluded.
+        """
+elif False:
+    CxEntityTypeExcludedPhraseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxEntityTypeExcludedPhraseArgs:
     def __init__(__self__, *,
@@ -517,6 +789,17 @@ class CxEntityTypeExcludedPhraseArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class CxEnvironmentVersionConfigArgsDict(TypedDict):
+        version: pulumi.Input[str]
+        """
+        Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
+
+        - - -
+        """
+elif False:
+    CxEnvironmentVersionConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxEnvironmentVersionConfigArgs:
@@ -543,6 +826,27 @@ class CxEnvironmentVersionConfigArgs:
     def version(self, value: pulumi.Input[str]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class CxFlowAdvancedSettingsArgsDict(TypedDict):
+        audio_export_gcs_destination: NotRequired[pulumi.Input['CxFlowAdvancedSettingsAudioExportGcsDestinationArgsDict']]
+        """
+        If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
+        * Agent level
+        * Flow level
+        Structure is documented below.
+        """
+        dtmf_settings: NotRequired[pulumi.Input['CxFlowAdvancedSettingsDtmfSettingsArgsDict']]
+        """
+        Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+        * Agent level
+        * Flow level
+        * Page level
+        * Parameter level
+        Structure is documented below.
+        """
+elif False:
+    CxFlowAdvancedSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxFlowAdvancedSettingsArgs:
@@ -599,6 +903,16 @@ class CxFlowAdvancedSettingsArgs:
         pulumi.set(self, "dtmf_settings", value)
 
 
+if not MYPY:
+    class CxFlowAdvancedSettingsAudioExportGcsDestinationArgsDict(TypedDict):
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+        Format: gs://bucket/object-name-or-prefix
+        """
+elif False:
+    CxFlowAdvancedSettingsAudioExportGcsDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxFlowAdvancedSettingsAudioExportGcsDestinationArgs:
     def __init__(__self__, *,
@@ -623,6 +937,23 @@ class CxFlowAdvancedSettingsAudioExportGcsDestinationArgs:
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
 
+
+if not MYPY:
+    class CxFlowAdvancedSettingsDtmfSettingsArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        """
+        finish_digit: NotRequired[pulumi.Input[str]]
+        """
+        The digit that terminates a DTMF digit sequence.
+        """
+        max_digits: NotRequired[pulumi.Input[int]]
+        """
+        Max length of DTMF digits.
+        """
+elif False:
+    CxFlowAdvancedSettingsDtmfSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxFlowAdvancedSettingsDtmfSettingsArgs:
@@ -678,6 +1009,35 @@ class CxFlowAdvancedSettingsDtmfSettingsArgs:
     def max_digits(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_digits", value)
 
+
+if not MYPY:
+    class CxFlowEventHandlerArgsDict(TypedDict):
+        event: NotRequired[pulumi.Input[str]]
+        """
+        The name of the event to handle.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The unique identifier of this event handler.
+        """
+        target_flow: NotRequired[pulumi.Input[str]]
+        """
+        The target flow to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        """
+        target_page: NotRequired[pulumi.Input[str]]
+        """
+        The target page to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        """
+        trigger_fulfillment: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentArgsDict']]
+        """
+        The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        Structure is documented below.
+        """
+elif False:
+    CxFlowEventHandlerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxFlowEventHandlerArgs:
@@ -773,6 +1133,38 @@ class CxFlowEventHandlerArgs:
     def trigger_fulfillment(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentArgs']]):
         pulumi.set(self, "trigger_fulfillment", value)
 
+
+if not MYPY:
+    class CxFlowEventHandlerTriggerFulfillmentArgsDict(TypedDict):
+        conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgsDict']]]]
+        """
+        Conditional cases for this fulfillment.
+        Structure is documented below.
+        """
+        messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageArgsDict']]]]
+        """
+        The list of rich message responses to present to the user.
+        Structure is documented below.
+        """
+        return_partial_responses: NotRequired[pulumi.Input[bool]]
+        """
+        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        """
+        set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgsDict']]]]
+        """
+        Set parameter values before executing the webhook.
+        Structure is documented below.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        """
+        webhook: NotRequired[pulumi.Input[str]]
+        """
+        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+elif False:
+    CxFlowEventHandlerTriggerFulfillmentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentArgs:
@@ -883,6 +1275,16 @@ class CxFlowEventHandlerTriggerFulfillmentArgs:
         pulumi.set(self, "webhook", value)
 
 
+if not MYPY:
+    class CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
+        cases: NotRequired[pulumi.Input[str]]
+        """
+        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+elif False:
+    CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs:
     def __init__(__self__, *,
@@ -907,6 +1309,57 @@ class CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs:
     def cases(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cases", value)
 
+
+if not MYPY:
+    class CxFlowEventHandlerTriggerFulfillmentMessageArgsDict(TypedDict):
+        channel: NotRequired[pulumi.Input[str]]
+        """
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        """
+        conversation_success: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict']]
+        """
+        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+        * In a webhook response when you determine that you handled the customer issue.
+        Structure is documented below.
+        """
+        live_agent_handoff: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
+        """
+        Indicates that the conversation should be handed off to a live agent.
+        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+        * In a webhook response when you determine that the customer issue can only be handled by a human.
+        Structure is documented below.
+        """
+        output_audio_text: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict']]
+        """
+        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        Structure is documented below.
+        """
+        payload: NotRequired[pulumi.Input[str]]
+        """
+        A custom, platform-specific payload.
+        """
+        play_audio: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict']]
+        """
+        Specifies an audio clip to be played by the client as part of the response.
+        Structure is documented below.
+        """
+        telephony_transfer_call: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
+        """
+        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        Structure is documented below.
+        """
+        text: NotRequired[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTextArgsDict']]
+        """
+        The text response message.
+        Structure is documented below.
+        """
+elif False:
+    CxFlowEventHandlerTriggerFulfillmentMessageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentMessageArgs:
@@ -1071,6 +1524,15 @@ class CxFlowEventHandlerTriggerFulfillmentMessageArgs:
         pulumi.set(self, "text", value)
 
 
+if not MYPY:
+    class CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
+        metadata: NotRequired[pulumi.Input[str]]
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+elif False:
+    CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs:
     def __init__(__self__, *,
@@ -1094,6 +1556,15 @@ class CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs:
         pulumi.set(self, "metadata", value)
 
 
+if not MYPY:
+    class CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
+        metadata: NotRequired[pulumi.Input[str]]
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+elif False:
+    CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs:
     def __init__(__self__, *,
@@ -1116,6 +1587,24 @@ class CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs:
     def metadata(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "metadata", value)
 
+
+if not MYPY:
+    class CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        ssml: NotRequired[pulumi.Input[str]]
+        """
+        The SSML text to be synthesized. For more information, see SSML.
+        """
+        text: NotRequired[pulumi.Input[str]]
+        """
+        The raw text to be synthesized.
+        """
+elif False:
+    CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs:
@@ -1174,6 +1663,20 @@ class CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs:
         pulumi.set(self, "text", value)
 
 
+if not MYPY:
+    class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
+        audio_uri: pulumi.Input[str]
+        """
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        """
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+elif False:
+    CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs:
     def __init__(__self__, *,
@@ -1214,6 +1717,15 @@ class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs:
         pulumi.set(self, "allow_playback_interruption", value)
 
 
+if not MYPY:
+    class CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
+        phone_number: pulumi.Input[str]
+        """
+        Transfer the call to a phone number in E.164 format.
+        """
+elif False:
+    CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs:
     def __init__(__self__, *,
@@ -1235,6 +1747,20 @@ class CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs:
     def phone_number(self, value: pulumi.Input[str]):
         pulumi.set(self, "phone_number", value)
 
+
+if not MYPY:
+    class CxFlowEventHandlerTriggerFulfillmentMessageTextArgsDict(TypedDict):
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A collection of text responses.
+        """
+elif False:
+    CxFlowEventHandlerTriggerFulfillmentMessageTextArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentMessageTextArgs:
@@ -1277,6 +1803,19 @@ class CxFlowEventHandlerTriggerFulfillmentMessageTextArgs:
         pulumi.set(self, "texts", value)
 
 
+if not MYPY:
+    class CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
+        parameter: NotRequired[pulumi.Input[str]]
+        """
+        Display name of the parameter.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+elif False:
+    CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs:
     def __init__(__self__, *,
@@ -1315,6 +1854,30 @@ class CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class CxFlowNluSettingsArgsDict(TypedDict):
+        classification_threshold: NotRequired[pulumi.Input[float]]
+        """
+        To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold.
+        If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
+        """
+        model_training_mode: NotRequired[pulumi.Input[str]]
+        """
+        Indicates NLU model training mode.
+        * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
+        * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
+        Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
+        """
+        model_type: NotRequired[pulumi.Input[str]]
+        """
+        Indicates the type of NLU model.
+        * MODEL_TYPE_STANDARD: Use standard NLU model.
+        * MODEL_TYPE_ADVANCED: Use advanced NLU model.
+        Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
+        """
+elif False:
+    CxFlowNluSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxFlowNluSettingsArgs:
@@ -1384,6 +1947,41 @@ class CxFlowNluSettingsArgs:
     def model_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "model_type", value)
 
+
+if not MYPY:
+    class CxFlowTransitionRouteArgsDict(TypedDict):
+        condition: NotRequired[pulumi.Input[str]]
+        """
+        The condition to evaluate against form parameters or session parameters.
+        At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+        """
+        intent: NotRequired[pulumi.Input[str]]
+        """
+        The unique identifier of an Intent.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The unique identifier of this transition route.
+        """
+        target_flow: NotRequired[pulumi.Input[str]]
+        """
+        The target flow to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        """
+        target_page: NotRequired[pulumi.Input[str]]
+        """
+        The target page to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        """
+        trigger_fulfillment: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentArgsDict']]
+        """
+        The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
+        Structure is documented below.
+        """
+elif False:
+    CxFlowTransitionRouteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxFlowTransitionRouteArgs:
@@ -1500,6 +2098,38 @@ class CxFlowTransitionRouteArgs:
         pulumi.set(self, "trigger_fulfillment", value)
 
 
+if not MYPY:
+    class CxFlowTransitionRouteTriggerFulfillmentArgsDict(TypedDict):
+        conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgsDict']]]]
+        """
+        Conditional cases for this fulfillment.
+        Structure is documented below.
+        """
+        messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageArgsDict']]]]
+        """
+        The list of rich message responses to present to the user.
+        Structure is documented below.
+        """
+        return_partial_responses: NotRequired[pulumi.Input[bool]]
+        """
+        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        """
+        set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgsDict']]]]
+        """
+        Set parameter values before executing the webhook.
+        Structure is documented below.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        """
+        webhook: NotRequired[pulumi.Input[str]]
+        """
+        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+elif False:
+    CxFlowTransitionRouteTriggerFulfillmentArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentArgs:
     def __init__(__self__, *,
@@ -1609,6 +2239,16 @@ class CxFlowTransitionRouteTriggerFulfillmentArgs:
         pulumi.set(self, "webhook", value)
 
 
+if not MYPY:
+    class CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
+        cases: NotRequired[pulumi.Input[str]]
+        """
+        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+elif False:
+    CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs:
     def __init__(__self__, *,
@@ -1633,6 +2273,57 @@ class CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs:
     def cases(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cases", value)
 
+
+if not MYPY:
+    class CxFlowTransitionRouteTriggerFulfillmentMessageArgsDict(TypedDict):
+        channel: NotRequired[pulumi.Input[str]]
+        """
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        """
+        conversation_success: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgsDict']]
+        """
+        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+        * In a webhook response when you determine that you handled the customer issue.
+        Structure is documented below.
+        """
+        live_agent_handoff: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
+        """
+        Indicates that the conversation should be handed off to a live agent.
+        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+        * In a webhook response when you determine that the customer issue can only be handled by a human.
+        Structure is documented below.
+        """
+        output_audio_text: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgsDict']]
+        """
+        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        Structure is documented below.
+        """
+        payload: NotRequired[pulumi.Input[str]]
+        """
+        A custom, platform-specific payload.
+        """
+        play_audio: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgsDict']]
+        """
+        Specifies an audio clip to be played by the client as part of the response.
+        Structure is documented below.
+        """
+        telephony_transfer_call: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
+        """
+        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        Structure is documented below.
+        """
+        text: NotRequired[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTextArgsDict']]
+        """
+        The text response message.
+        Structure is documented below.
+        """
+elif False:
+    CxFlowTransitionRouteTriggerFulfillmentMessageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentMessageArgs:
@@ -1797,6 +2488,15 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageArgs:
         pulumi.set(self, "text", value)
 
 
+if not MYPY:
+    class CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
+        metadata: NotRequired[pulumi.Input[str]]
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+elif False:
+    CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs:
     def __init__(__self__, *,
@@ -1820,6 +2520,15 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs:
         pulumi.set(self, "metadata", value)
 
 
+if not MYPY:
+    class CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
+        metadata: NotRequired[pulumi.Input[str]]
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+elif False:
+    CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs:
     def __init__(__self__, *,
@@ -1842,6 +2551,24 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs:
     def metadata(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "metadata", value)
 
+
+if not MYPY:
+    class CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        ssml: NotRequired[pulumi.Input[str]]
+        """
+        The SSML text to be synthesized. For more information, see SSML.
+        """
+        text: NotRequired[pulumi.Input[str]]
+        """
+        The raw text to be synthesized.
+        """
+elif False:
+    CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs:
@@ -1900,6 +2627,20 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs:
         pulumi.set(self, "text", value)
 
 
+if not MYPY:
+    class CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
+        audio_uri: pulumi.Input[str]
+        """
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        """
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+elif False:
+    CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs:
     def __init__(__self__, *,
@@ -1940,6 +2681,15 @@ class CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs:
         pulumi.set(self, "allow_playback_interruption", value)
 
 
+if not MYPY:
+    class CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
+        phone_number: pulumi.Input[str]
+        """
+        Transfer the call to a phone number in E.164 format.
+        """
+elif False:
+    CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs:
     def __init__(__self__, *,
@@ -1961,6 +2711,20 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs:
     def phone_number(self, value: pulumi.Input[str]):
         pulumi.set(self, "phone_number", value)
 
+
+if not MYPY:
+    class CxFlowTransitionRouteTriggerFulfillmentMessageTextArgsDict(TypedDict):
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A collection of text responses.
+        """
+elif False:
+    CxFlowTransitionRouteTriggerFulfillmentMessageTextArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs:
@@ -2003,6 +2767,19 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs:
         pulumi.set(self, "texts", value)
 
 
+if not MYPY:
+    class CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
+        parameter: NotRequired[pulumi.Input[str]]
+        """
+        Display name of the parameter.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+elif False:
+    CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs:
     def __init__(__self__, *,
@@ -2041,6 +2818,29 @@ class CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class CxIntentParameterArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        The entity type of the parameter.
+        Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
+        """
+        id: pulumi.Input[str]
+        """
+        The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+        """
+        is_list: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether the parameter represents a list of values.
+        """
+        redact: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging.
+        Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
+        """
+elif False:
+    CxIntentParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxIntentParameterArgs:
@@ -2115,6 +2915,31 @@ class CxIntentParameterArgs:
         pulumi.set(self, "redact", value)
 
 
+if not MYPY:
+    class CxIntentTrainingPhraseArgsDict(TypedDict):
+        parts: pulumi.Input[Sequence[pulumi.Input['CxIntentTrainingPhrasePartArgsDict']]]
+        """
+        The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
+        Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
+        Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated.
+        If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set.
+        If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways:
+        Part.text is set to a part of the phrase that has no parameters.
+        Part.text is set to a part of the phrase that you want to annotate, and the parameterId field is set.
+        Structure is documented below.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The unique identifier of the training phrase.
+        """
+        repeat_count: NotRequired[pulumi.Input[int]]
+        """
+        Indicates how many times this example was added to the intent.
+        """
+elif False:
+    CxIntentTrainingPhraseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxIntentTrainingPhraseArgs:
     def __init__(__self__, *,
@@ -2185,6 +3010,19 @@ class CxIntentTrainingPhraseArgs:
         pulumi.set(self, "repeat_count", value)
 
 
+if not MYPY:
+    class CxIntentTrainingPhrasePartArgsDict(TypedDict):
+        text: pulumi.Input[str]
+        """
+        The text for this part.
+        """
+        parameter_id: NotRequired[pulumi.Input[str]]
+        """
+        The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
+        """
+elif False:
+    CxIntentTrainingPhrasePartArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxIntentTrainingPhrasePartArgs:
     def __init__(__self__, *,
@@ -2223,6 +3061,20 @@ class CxIntentTrainingPhrasePartArgs:
         pulumi.set(self, "parameter_id", value)
 
 
+if not MYPY:
+    class CxPageAdvancedSettingsArgsDict(TypedDict):
+        dtmf_settings: NotRequired[pulumi.Input['CxPageAdvancedSettingsDtmfSettingsArgsDict']]
+        """
+        Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+        * Agent level
+        * Flow level
+        * Page level
+        * Parameter level
+        Structure is documented below.
+        """
+elif False:
+    CxPageAdvancedSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageAdvancedSettingsArgs:
     def __init__(__self__, *,
@@ -2255,6 +3107,23 @@ class CxPageAdvancedSettingsArgs:
     def dtmf_settings(self, value: Optional[pulumi.Input['CxPageAdvancedSettingsDtmfSettingsArgs']]):
         pulumi.set(self, "dtmf_settings", value)
 
+
+if not MYPY:
+    class CxPageAdvancedSettingsDtmfSettingsArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        """
+        finish_digit: NotRequired[pulumi.Input[str]]
+        """
+        The digit that terminates a DTMF digit sequence.
+        """
+        max_digits: NotRequired[pulumi.Input[int]]
+        """
+        Max length of DTMF digits.
+        """
+elif False:
+    CxPageAdvancedSettingsDtmfSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageAdvancedSettingsDtmfSettingsArgs:
@@ -2310,6 +3179,38 @@ class CxPageAdvancedSettingsDtmfSettingsArgs:
     def max_digits(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_digits", value)
 
+
+if not MYPY:
+    class CxPageEntryFulfillmentArgsDict(TypedDict):
+        conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentConditionalCaseArgsDict']]]]
+        """
+        Conditional cases for this fulfillment.
+        Structure is documented below.
+        """
+        messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentMessageArgsDict']]]]
+        """
+        The list of rich message responses to present to the user.
+        Structure is documented below.
+        """
+        return_partial_responses: NotRequired[pulumi.Input[bool]]
+        """
+        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        """
+        set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentSetParameterActionArgsDict']]]]
+        """
+        Set parameter values before executing the webhook.
+        Structure is documented below.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        """
+        webhook: NotRequired[pulumi.Input[str]]
+        """
+        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+elif False:
+    CxPageEntryFulfillmentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageEntryFulfillmentArgs:
@@ -2420,6 +3321,16 @@ class CxPageEntryFulfillmentArgs:
         pulumi.set(self, "webhook", value)
 
 
+if not MYPY:
+    class CxPageEntryFulfillmentConditionalCaseArgsDict(TypedDict):
+        cases: NotRequired[pulumi.Input[str]]
+        """
+        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+elif False:
+    CxPageEntryFulfillmentConditionalCaseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageEntryFulfillmentConditionalCaseArgs:
     def __init__(__self__, *,
@@ -2444,6 +3355,57 @@ class CxPageEntryFulfillmentConditionalCaseArgs:
     def cases(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cases", value)
 
+
+if not MYPY:
+    class CxPageEntryFulfillmentMessageArgsDict(TypedDict):
+        channel: NotRequired[pulumi.Input[str]]
+        """
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        """
+        conversation_success: NotRequired[pulumi.Input['CxPageEntryFulfillmentMessageConversationSuccessArgsDict']]
+        """
+        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+        * In a webhook response when you determine that you handled the customer issue.
+        Structure is documented below.
+        """
+        live_agent_handoff: NotRequired[pulumi.Input['CxPageEntryFulfillmentMessageLiveAgentHandoffArgsDict']]
+        """
+        Indicates that the conversation should be handed off to a live agent.
+        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+        * In a webhook response when you determine that the customer issue can only be handled by a human.
+        Structure is documented below.
+        """
+        output_audio_text: NotRequired[pulumi.Input['CxPageEntryFulfillmentMessageOutputAudioTextArgsDict']]
+        """
+        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        Structure is documented below.
+        """
+        payload: NotRequired[pulumi.Input[str]]
+        """
+        A custom, platform-specific payload.
+        """
+        play_audio: NotRequired[pulumi.Input['CxPageEntryFulfillmentMessagePlayAudioArgsDict']]
+        """
+        Specifies an audio clip to be played by the client as part of the response.
+        Structure is documented below.
+        """
+        telephony_transfer_call: NotRequired[pulumi.Input['CxPageEntryFulfillmentMessageTelephonyTransferCallArgsDict']]
+        """
+        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        Structure is documented below.
+        """
+        text: NotRequired[pulumi.Input['CxPageEntryFulfillmentMessageTextArgsDict']]
+        """
+        The text response message.
+        Structure is documented below.
+        """
+elif False:
+    CxPageEntryFulfillmentMessageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageEntryFulfillmentMessageArgs:
@@ -2608,6 +3570,15 @@ class CxPageEntryFulfillmentMessageArgs:
         pulumi.set(self, "text", value)
 
 
+if not MYPY:
+    class CxPageEntryFulfillmentMessageConversationSuccessArgsDict(TypedDict):
+        metadata: NotRequired[pulumi.Input[str]]
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+elif False:
+    CxPageEntryFulfillmentMessageConversationSuccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageEntryFulfillmentMessageConversationSuccessArgs:
     def __init__(__self__, *,
@@ -2631,6 +3602,15 @@ class CxPageEntryFulfillmentMessageConversationSuccessArgs:
         pulumi.set(self, "metadata", value)
 
 
+if not MYPY:
+    class CxPageEntryFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
+        metadata: NotRequired[pulumi.Input[str]]
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+elif False:
+    CxPageEntryFulfillmentMessageLiveAgentHandoffArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageEntryFulfillmentMessageLiveAgentHandoffArgs:
     def __init__(__self__, *,
@@ -2653,6 +3633,24 @@ class CxPageEntryFulfillmentMessageLiveAgentHandoffArgs:
     def metadata(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "metadata", value)
 
+
+if not MYPY:
+    class CxPageEntryFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        ssml: NotRequired[pulumi.Input[str]]
+        """
+        The SSML text to be synthesized. For more information, see SSML.
+        """
+        text: NotRequired[pulumi.Input[str]]
+        """
+        The raw text to be synthesized.
+        """
+elif False:
+    CxPageEntryFulfillmentMessageOutputAudioTextArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageEntryFulfillmentMessageOutputAudioTextArgs:
@@ -2711,6 +3709,20 @@ class CxPageEntryFulfillmentMessageOutputAudioTextArgs:
         pulumi.set(self, "text", value)
 
 
+if not MYPY:
+    class CxPageEntryFulfillmentMessagePlayAudioArgsDict(TypedDict):
+        audio_uri: pulumi.Input[str]
+        """
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        """
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+elif False:
+    CxPageEntryFulfillmentMessagePlayAudioArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageEntryFulfillmentMessagePlayAudioArgs:
     def __init__(__self__, *,
@@ -2751,6 +3763,15 @@ class CxPageEntryFulfillmentMessagePlayAudioArgs:
         pulumi.set(self, "allow_playback_interruption", value)
 
 
+if not MYPY:
+    class CxPageEntryFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
+        phone_number: pulumi.Input[str]
+        """
+        Transfer the call to a phone number in E.164 format.
+        """
+elif False:
+    CxPageEntryFulfillmentMessageTelephonyTransferCallArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageEntryFulfillmentMessageTelephonyTransferCallArgs:
     def __init__(__self__, *,
@@ -2772,6 +3793,20 @@ class CxPageEntryFulfillmentMessageTelephonyTransferCallArgs:
     def phone_number(self, value: pulumi.Input[str]):
         pulumi.set(self, "phone_number", value)
 
+
+if not MYPY:
+    class CxPageEntryFulfillmentMessageTextArgsDict(TypedDict):
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A collection of text responses.
+        """
+elif False:
+    CxPageEntryFulfillmentMessageTextArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageEntryFulfillmentMessageTextArgs:
@@ -2814,6 +3849,19 @@ class CxPageEntryFulfillmentMessageTextArgs:
         pulumi.set(self, "texts", value)
 
 
+if not MYPY:
+    class CxPageEntryFulfillmentSetParameterActionArgsDict(TypedDict):
+        parameter: NotRequired[pulumi.Input[str]]
+        """
+        Display name of the parameter.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+elif False:
+    CxPageEntryFulfillmentSetParameterActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageEntryFulfillmentSetParameterActionArgs:
     def __init__(__self__, *,
@@ -2852,6 +3900,35 @@ class CxPageEntryFulfillmentSetParameterActionArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class CxPageEventHandlerArgsDict(TypedDict):
+        event: NotRequired[pulumi.Input[str]]
+        """
+        The name of the event to handle.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The unique identifier of this event handler.
+        """
+        target_flow: NotRequired[pulumi.Input[str]]
+        """
+        The target flow to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        """
+        target_page: NotRequired[pulumi.Input[str]]
+        """
+        The target page to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        """
+        trigger_fulfillment: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentArgsDict']]
+        """
+        The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        Structure is documented below.
+        """
+elif False:
+    CxPageEventHandlerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageEventHandlerArgs:
@@ -2947,6 +4024,38 @@ class CxPageEventHandlerArgs:
     def trigger_fulfillment(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentArgs']]):
         pulumi.set(self, "trigger_fulfillment", value)
 
+
+if not MYPY:
+    class CxPageEventHandlerTriggerFulfillmentArgsDict(TypedDict):
+        conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentConditionalCaseArgsDict']]]]
+        """
+        Conditional cases for this fulfillment.
+        Structure is documented below.
+        """
+        messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageArgsDict']]]]
+        """
+        The list of rich message responses to present to the user.
+        Structure is documented below.
+        """
+        return_partial_responses: NotRequired[pulumi.Input[bool]]
+        """
+        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        """
+        set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentSetParameterActionArgsDict']]]]
+        """
+        Set parameter values before executing the webhook.
+        Structure is documented below.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        """
+        webhook: NotRequired[pulumi.Input[str]]
+        """
+        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+elif False:
+    CxPageEventHandlerTriggerFulfillmentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentArgs:
@@ -3057,6 +4166,16 @@ class CxPageEventHandlerTriggerFulfillmentArgs:
         pulumi.set(self, "webhook", value)
 
 
+if not MYPY:
+    class CxPageEventHandlerTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
+        cases: NotRequired[pulumi.Input[str]]
+        """
+        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+elif False:
+    CxPageEventHandlerTriggerFulfillmentConditionalCaseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs:
     def __init__(__self__, *,
@@ -3081,6 +4200,57 @@ class CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs:
     def cases(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cases", value)
 
+
+if not MYPY:
+    class CxPageEventHandlerTriggerFulfillmentMessageArgsDict(TypedDict):
+        channel: NotRequired[pulumi.Input[str]]
+        """
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        """
+        conversation_success: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict']]
+        """
+        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+        * In a webhook response when you determine that you handled the customer issue.
+        Structure is documented below.
+        """
+        live_agent_handoff: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
+        """
+        Indicates that the conversation should be handed off to a live agent.
+        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+        * In a webhook response when you determine that the customer issue can only be handled by a human.
+        Structure is documented below.
+        """
+        output_audio_text: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict']]
+        """
+        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        Structure is documented below.
+        """
+        payload: NotRequired[pulumi.Input[str]]
+        """
+        A custom, platform-specific payload.
+        """
+        play_audio: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict']]
+        """
+        Specifies an audio clip to be played by the client as part of the response.
+        Structure is documented below.
+        """
+        telephony_transfer_call: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
+        """
+        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        Structure is documented below.
+        """
+        text: NotRequired[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTextArgsDict']]
+        """
+        The text response message.
+        Structure is documented below.
+        """
+elif False:
+    CxPageEventHandlerTriggerFulfillmentMessageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentMessageArgs:
@@ -3245,6 +4415,15 @@ class CxPageEventHandlerTriggerFulfillmentMessageArgs:
         pulumi.set(self, "text", value)
 
 
+if not MYPY:
+    class CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
+        metadata: NotRequired[pulumi.Input[str]]
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+elif False:
+    CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs:
     def __init__(__self__, *,
@@ -3268,6 +4447,15 @@ class CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs:
         pulumi.set(self, "metadata", value)
 
 
+if not MYPY:
+    class CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
+        metadata: NotRequired[pulumi.Input[str]]
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+elif False:
+    CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs:
     def __init__(__self__, *,
@@ -3290,6 +4478,24 @@ class CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs:
     def metadata(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "metadata", value)
 
+
+if not MYPY:
+    class CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        ssml: NotRequired[pulumi.Input[str]]
+        """
+        The SSML text to be synthesized. For more information, see SSML.
+        """
+        text: NotRequired[pulumi.Input[str]]
+        """
+        The raw text to be synthesized.
+        """
+elif False:
+    CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs:
@@ -3348,6 +4554,20 @@ class CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs:
         pulumi.set(self, "text", value)
 
 
+if not MYPY:
+    class CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
+        audio_uri: pulumi.Input[str]
+        """
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        """
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+elif False:
+    CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs:
     def __init__(__self__, *,
@@ -3388,6 +4608,15 @@ class CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs:
         pulumi.set(self, "allow_playback_interruption", value)
 
 
+if not MYPY:
+    class CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
+        phone_number: pulumi.Input[str]
+        """
+        Transfer the call to a phone number in E.164 format.
+        """
+elif False:
+    CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs:
     def __init__(__self__, *,
@@ -3409,6 +4638,20 @@ class CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs:
     def phone_number(self, value: pulumi.Input[str]):
         pulumi.set(self, "phone_number", value)
 
+
+if not MYPY:
+    class CxPageEventHandlerTriggerFulfillmentMessageTextArgsDict(TypedDict):
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A collection of text responses.
+        """
+elif False:
+    CxPageEventHandlerTriggerFulfillmentMessageTextArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentMessageTextArgs:
@@ -3451,6 +4694,19 @@ class CxPageEventHandlerTriggerFulfillmentMessageTextArgs:
         pulumi.set(self, "texts", value)
 
 
+if not MYPY:
+    class CxPageEventHandlerTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
+        parameter: NotRequired[pulumi.Input[str]]
+        """
+        Display name of the parameter.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+elif False:
+    CxPageEventHandlerTriggerFulfillmentSetParameterActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs:
     def __init__(__self__, *,
@@ -3490,6 +4746,16 @@ class CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class CxPageFormArgsDict(TypedDict):
+        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterArgsDict']]]]
+        """
+        Parameters to collect from the user.
+        Structure is documented below.
+        """
+elif False:
+    CxPageFormArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageFormArgs:
     def __init__(__self__, *,
@@ -3514,6 +4780,49 @@ class CxPageFormArgs:
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
+
+if not MYPY:
+    class CxPageFormParameterArgsDict(TypedDict):
+        advanced_settings: NotRequired[pulumi.Input['CxPageFormParameterAdvancedSettingsArgsDict']]
+        """
+        Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        Structure is documented below.
+        """
+        default_value: NotRequired[pulumi.Input[str]]
+        """
+        The default value of an optional parameter. If the parameter is required, the default value will be ignored.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        The human-readable name of the parameter, unique within the form.
+        """
+        entity_type: NotRequired[pulumi.Input[str]]
+        """
+        The entity type of the parameter.
+        Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
+        """
+        fill_behavior: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorArgsDict']]
+        """
+        Defines fill behavior for the parameter.
+        Structure is documented below.
+        """
+        is_list: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether the parameter represents a list of values.
+        """
+        redact: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether the parameter content should be redacted in log.
+        If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether the parameter is required. Optional parameters will not trigger prompts; however, they are filled if the user specifies them.
+        Required parameters must be filled before form filling concludes.
+        """
+elif False:
+    CxPageFormParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageFormParameterArgs:
@@ -3662,6 +4971,20 @@ class CxPageFormParameterArgs:
         pulumi.set(self, "required", value)
 
 
+if not MYPY:
+    class CxPageFormParameterAdvancedSettingsArgsDict(TypedDict):
+        dtmf_settings: NotRequired[pulumi.Input['CxPageFormParameterAdvancedSettingsDtmfSettingsArgsDict']]
+        """
+        Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+        * Agent level
+        * Flow level
+        * Page level
+        * Parameter level
+        Structure is documented below.
+        """
+elif False:
+    CxPageFormParameterAdvancedSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageFormParameterAdvancedSettingsArgs:
     def __init__(__self__, *,
@@ -3694,6 +5017,23 @@ class CxPageFormParameterAdvancedSettingsArgs:
     def dtmf_settings(self, value: Optional[pulumi.Input['CxPageFormParameterAdvancedSettingsDtmfSettingsArgs']]):
         pulumi.set(self, "dtmf_settings", value)
 
+
+if not MYPY:
+    class CxPageFormParameterAdvancedSettingsDtmfSettingsArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        """
+        finish_digit: NotRequired[pulumi.Input[str]]
+        """
+        The digit that terminates a DTMF digit sequence.
+        """
+        max_digits: NotRequired[pulumi.Input[int]]
+        """
+        Max length of DTMF digits.
+        """
+elif False:
+    CxPageFormParameterAdvancedSettingsDtmfSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageFormParameterAdvancedSettingsDtmfSettingsArgs:
@@ -3749,6 +5089,31 @@ class CxPageFormParameterAdvancedSettingsDtmfSettingsArgs:
     def max_digits(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_digits", value)
 
+
+if not MYPY:
+    class CxPageFormParameterFillBehaviorArgsDict(TypedDict):
+        initial_prompt_fulfillment: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgsDict']]
+        """
+        The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+        Structure is documented below.
+        """
+        reprompt_event_handlers: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerArgsDict']]]]
+        """
+        The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
+        * sys.no-match-<N>, where N can be from 1 to 6
+        * sys.no-match-default
+        * sys.no-input-<N>, where N can be from 1 to 6
+        * sys.no-input-default
+        * sys.invalid-parameter
+        [initialPromptFulfillment][initialPromptFulfillment] provides the first prompt for the parameter.
+        If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the sys.no-match-1/sys.no-input-1 handler (if defined) will be called to provide a prompt. The sys.no-match-2/sys.no-input-2 handler (if defined) will respond to the next no-match/no-input event, and so on.
+        A sys.no-match-default or sys.no-input-default handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed.
+        A sys.invalid-parameter handler can be defined to handle the case where the parameter values have been invalidated by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the sys.invalid-parameter handler (if defined) will be called to provide a prompt.
+        If the event handler for the corresponding event can't be found on the parameter, initialPromptFulfillment will be re-prompted.
+        Structure is documented below.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorArgs:
@@ -3812,6 +5177,38 @@ class CxPageFormParameterFillBehaviorArgs:
     def reprompt_event_handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerArgs']]]]):
         pulumi.set(self, "reprompt_event_handlers", value)
 
+
+if not MYPY:
+    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgsDict(TypedDict):
+        conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgsDict']]]]
+        """
+        Conditional cases for this fulfillment.
+        Structure is documented below.
+        """
+        messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgsDict']]]]
+        """
+        The list of rich message responses to present to the user.
+        Structure is documented below.
+        """
+        return_partial_responses: NotRequired[pulumi.Input[bool]]
+        """
+        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        """
+        set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgsDict']]]]
+        """
+        Set parameter values before executing the webhook.
+        Structure is documented below.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        """
+        webhook: NotRequired[pulumi.Input[str]]
+        """
+        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs:
@@ -3922,6 +5319,16 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs:
         pulumi.set(self, "webhook", value)
 
 
+if not MYPY:
+    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgsDict(TypedDict):
+        cases: NotRequired[pulumi.Input[str]]
+        """
+        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs:
     def __init__(__self__, *,
@@ -3946,6 +5353,57 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs
     def cases(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cases", value)
 
+
+if not MYPY:
+    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgsDict(TypedDict):
+        channel: NotRequired[pulumi.Input[str]]
+        """
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        """
+        conversation_success: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgsDict']]
+        """
+        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+        * In a webhook response when you determine that you handled the customer issue.
+        Structure is documented below.
+        """
+        live_agent_handoff: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgsDict']]
+        """
+        Indicates that the conversation should be handed off to a live agent.
+        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+        * In a webhook response when you determine that the customer issue can only be handled by a human.
+        Structure is documented below.
+        """
+        output_audio_text: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgsDict']]
+        """
+        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        Structure is documented below.
+        """
+        payload: NotRequired[pulumi.Input[str]]
+        """
+        A custom, platform-specific payload.
+        """
+        play_audio: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgsDict']]
+        """
+        Specifies an audio clip to be played by the client as part of the response.
+        Structure is documented below.
+        """
+        telephony_transfer_call: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgsDict']]
+        """
+        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        Structure is documented below.
+        """
+        text: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgsDict']]
+        """
+        The text response message.
+        Structure is documented below.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs:
@@ -4110,6 +5568,15 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs:
         pulumi.set(self, "text", value)
 
 
+if not MYPY:
+    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgsDict(TypedDict):
+        metadata: NotRequired[pulumi.Input[str]]
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs:
     def __init__(__self__, *,
@@ -4133,6 +5600,15 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversation
         pulumi.set(self, "metadata", value)
 
 
+if not MYPY:
+    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
+        metadata: NotRequired[pulumi.Input[str]]
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs:
     def __init__(__self__, *,
@@ -4155,6 +5631,24 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHan
     def metadata(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "metadata", value)
 
+
+if not MYPY:
+    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        ssml: NotRequired[pulumi.Input[str]]
+        """
+        The SSML text to be synthesized. For more information, see SSML.
+        """
+        text: NotRequired[pulumi.Input[str]]
+        """
+        The raw text to be synthesized.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs:
@@ -4213,6 +5707,20 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioT
         pulumi.set(self, "text", value)
 
 
+if not MYPY:
+    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgsDict(TypedDict):
+        audio_uri: pulumi.Input[str]
+        """
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        """
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs:
     def __init__(__self__, *,
@@ -4253,6 +5761,15 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArg
         pulumi.set(self, "allow_playback_interruption", value)
 
 
+if not MYPY:
+    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
+        phone_number: pulumi.Input[str]
+        """
+        Transfer the call to a phone number in E.164 format.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs:
     def __init__(__self__, *,
@@ -4274,6 +5791,20 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTra
     def phone_number(self, value: pulumi.Input[str]):
         pulumi.set(self, "phone_number", value)
 
+
+if not MYPY:
+    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgsDict(TypedDict):
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A collection of text responses.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs:
@@ -4316,6 +5847,19 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs:
         pulumi.set(self, "texts", value)
 
 
+if not MYPY:
+    class CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgsDict(TypedDict):
+        parameter: NotRequired[pulumi.Input[str]]
+        """
+        Display name of the parameter.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs:
     def __init__(__self__, *,
@@ -4354,6 +5898,35 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionA
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class CxPageFormParameterFillBehaviorRepromptEventHandlerArgsDict(TypedDict):
+        event: NotRequired[pulumi.Input[str]]
+        """
+        The name of the event to handle.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The unique identifier of this event handler.
+        """
+        target_flow: NotRequired[pulumi.Input[str]]
+        """
+        The target flow to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        """
+        target_page: NotRequired[pulumi.Input[str]]
+        """
+        The target page to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        """
+        trigger_fulfillment: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgsDict']]
+        """
+        The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        Structure is documented below.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorRepromptEventHandlerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerArgs:
@@ -4449,6 +6022,38 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerArgs:
     def trigger_fulfillment(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs']]):
         pulumi.set(self, "trigger_fulfillment", value)
 
+
+if not MYPY:
+    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgsDict(TypedDict):
+        conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgsDict']]]]
+        """
+        Conditional cases for this fulfillment.
+        Structure is documented below.
+        """
+        messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgsDict']]]]
+        """
+        The list of rich message responses to present to the user.
+        Structure is documented below.
+        """
+        return_partial_responses: NotRequired[pulumi.Input[bool]]
+        """
+        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        """
+        set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgsDict']]]]
+        """
+        Set parameter values before executing the webhook.
+        Structure is documented below.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        """
+        webhook: NotRequired[pulumi.Input[str]]
+        """
+        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs:
@@ -4559,6 +6164,16 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs:
         pulumi.set(self, "webhook", value)
 
 
+if not MYPY:
+    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
+        cases: NotRequired[pulumi.Input[str]]
+        """
+        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs:
     def __init__(__self__, *,
@@ -4583,6 +6198,57 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentCondi
     def cases(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cases", value)
 
+
+if not MYPY:
+    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgsDict(TypedDict):
+        channel: NotRequired[pulumi.Input[str]]
+        """
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        """
+        conversation_success: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict']]
+        """
+        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+        * In a webhook response when you determine that you handled the customer issue.
+        Structure is documented below.
+        """
+        live_agent_handoff: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
+        """
+        Indicates that the conversation should be handed off to a live agent.
+        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+        * In a webhook response when you determine that the customer issue can only be handled by a human.
+        Structure is documented below.
+        """
+        output_audio_text: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict']]
+        """
+        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        Structure is documented below.
+        """
+        payload: NotRequired[pulumi.Input[str]]
+        """
+        A custom, platform-specific payload.
+        """
+        play_audio: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict']]
+        """
+        Specifies an audio clip to be played by the client as part of the response.
+        Structure is documented below.
+        """
+        telephony_transfer_call: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
+        """
+        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        Structure is documented below.
+        """
+        text: NotRequired[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgsDict']]
+        """
+        The text response message.
+        Structure is documented below.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs:
@@ -4747,6 +6413,15 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         pulumi.set(self, "text", value)
 
 
+if not MYPY:
+    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
+        metadata: NotRequired[pulumi.Input[str]]
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs:
     def __init__(__self__, *,
@@ -4770,6 +6445,15 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         pulumi.set(self, "metadata", value)
 
 
+if not MYPY:
+    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
+        metadata: NotRequired[pulumi.Input[str]]
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs:
     def __init__(__self__, *,
@@ -4792,6 +6476,24 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
     def metadata(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "metadata", value)
 
+
+if not MYPY:
+    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        ssml: NotRequired[pulumi.Input[str]]
+        """
+        The SSML text to be synthesized. For more information, see SSML.
+        """
+        text: NotRequired[pulumi.Input[str]]
+        """
+        The raw text to be synthesized.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs:
@@ -4850,6 +6552,20 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         pulumi.set(self, "text", value)
 
 
+if not MYPY:
+    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
+        audio_uri: pulumi.Input[str]
+        """
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        """
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs:
     def __init__(__self__, *,
@@ -4890,6 +6606,15 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         pulumi.set(self, "allow_playback_interruption", value)
 
 
+if not MYPY:
+    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
+        phone_number: pulumi.Input[str]
+        """
+        Transfer the call to a phone number in E.164 format.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs:
     def __init__(__self__, *,
@@ -4911,6 +6636,20 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
     def phone_number(self, value: pulumi.Input[str]):
         pulumi.set(self, "phone_number", value)
 
+
+if not MYPY:
+    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgsDict(TypedDict):
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A collection of text responses.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs:
@@ -4953,6 +6692,19 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         pulumi.set(self, "texts", value)
 
 
+if not MYPY:
+    class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
+        parameter: NotRequired[pulumi.Input[str]]
+        """
+        Display name of the parameter.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+elif False:
+    CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs:
     def __init__(__self__, *,
@@ -4991,6 +6743,41 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetPa
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class CxPageTransitionRouteArgsDict(TypedDict):
+        condition: NotRequired[pulumi.Input[str]]
+        """
+        The condition to evaluate against form parameters or session parameters.
+        At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+        """
+        intent: NotRequired[pulumi.Input[str]]
+        """
+        The unique identifier of an Intent.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The unique identifier of this transition route.
+        """
+        target_flow: NotRequired[pulumi.Input[str]]
+        """
+        The target flow to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        """
+        target_page: NotRequired[pulumi.Input[str]]
+        """
+        The target page to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        """
+        trigger_fulfillment: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentArgsDict']]
+        """
+        The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
+        Structure is documented below.
+        """
+elif False:
+    CxPageTransitionRouteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageTransitionRouteArgs:
@@ -5107,6 +6894,38 @@ class CxPageTransitionRouteArgs:
         pulumi.set(self, "trigger_fulfillment", value)
 
 
+if not MYPY:
+    class CxPageTransitionRouteTriggerFulfillmentArgsDict(TypedDict):
+        conditional_cases: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgsDict']]]]
+        """
+        Conditional cases for this fulfillment.
+        Structure is documented below.
+        """
+        messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageArgsDict']]]]
+        """
+        The list of rich message responses to present to the user.
+        Structure is documented below.
+        """
+        return_partial_responses: NotRequired[pulumi.Input[bool]]
+        """
+        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        """
+        set_parameter_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgsDict']]]]
+        """
+        Set parameter values before executing the webhook.
+        Structure is documented below.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        """
+        webhook: NotRequired[pulumi.Input[str]]
+        """
+        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+elif False:
+    CxPageTransitionRouteTriggerFulfillmentArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentArgs:
     def __init__(__self__, *,
@@ -5216,6 +7035,16 @@ class CxPageTransitionRouteTriggerFulfillmentArgs:
         pulumi.set(self, "webhook", value)
 
 
+if not MYPY:
+    class CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgsDict(TypedDict):
+        cases: NotRequired[pulumi.Input[str]]
+        """
+        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+elif False:
+    CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs:
     def __init__(__self__, *,
@@ -5240,6 +7069,57 @@ class CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs:
     def cases(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cases", value)
 
+
+if not MYPY:
+    class CxPageTransitionRouteTriggerFulfillmentMessageArgsDict(TypedDict):
+        channel: NotRequired[pulumi.Input[str]]
+        """
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        """
+        conversation_success: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgsDict']]
+        """
+        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+        * In a webhook response when you determine that you handled the customer issue.
+        Structure is documented below.
+        """
+        live_agent_handoff: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgsDict']]
+        """
+        Indicates that the conversation should be handed off to a live agent.
+        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+        * In a webhook response when you determine that the customer issue can only be handled by a human.
+        Structure is documented below.
+        """
+        output_audio_text: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgsDict']]
+        """
+        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        Structure is documented below.
+        """
+        payload: NotRequired[pulumi.Input[str]]
+        """
+        A custom, platform-specific payload.
+        """
+        play_audio: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgsDict']]
+        """
+        Specifies an audio clip to be played by the client as part of the response.
+        Structure is documented below.
+        """
+        telephony_transfer_call: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgsDict']]
+        """
+        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        Structure is documented below.
+        """
+        text: NotRequired[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTextArgsDict']]
+        """
+        The text response message.
+        Structure is documented below.
+        """
+elif False:
+    CxPageTransitionRouteTriggerFulfillmentMessageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentMessageArgs:
@@ -5404,6 +7284,15 @@ class CxPageTransitionRouteTriggerFulfillmentMessageArgs:
         pulumi.set(self, "text", value)
 
 
+if not MYPY:
+    class CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgsDict(TypedDict):
+        metadata: NotRequired[pulumi.Input[str]]
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+elif False:
+    CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs:
     def __init__(__self__, *,
@@ -5427,6 +7316,15 @@ class CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs:
         pulumi.set(self, "metadata", value)
 
 
+if not MYPY:
+    class CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgsDict(TypedDict):
+        metadata: NotRequired[pulumi.Input[str]]
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+elif False:
+    CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs:
     def __init__(__self__, *,
@@ -5449,6 +7347,24 @@ class CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs:
     def metadata(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "metadata", value)
 
+
+if not MYPY:
+    class CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgsDict(TypedDict):
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        ssml: NotRequired[pulumi.Input[str]]
+        """
+        The SSML text to be synthesized. For more information, see SSML.
+        """
+        text: NotRequired[pulumi.Input[str]]
+        """
+        The raw text to be synthesized.
+        """
+elif False:
+    CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs:
@@ -5507,6 +7423,20 @@ class CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs:
         pulumi.set(self, "text", value)
 
 
+if not MYPY:
+    class CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgsDict(TypedDict):
+        audio_uri: pulumi.Input[str]
+        """
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        """
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+elif False:
+    CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs:
     def __init__(__self__, *,
@@ -5547,6 +7477,15 @@ class CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs:
         pulumi.set(self, "allow_playback_interruption", value)
 
 
+if not MYPY:
+    class CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgsDict(TypedDict):
+        phone_number: pulumi.Input[str]
+        """
+        Transfer the call to a phone number in E.164 format.
+        """
+elif False:
+    CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs:
     def __init__(__self__, *,
@@ -5568,6 +7507,20 @@ class CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs:
     def phone_number(self, value: pulumi.Input[str]):
         pulumi.set(self, "phone_number", value)
 
+
+if not MYPY:
+    class CxPageTransitionRouteTriggerFulfillmentMessageTextArgsDict(TypedDict):
+        allow_playback_interruption: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A collection of text responses.
+        """
+elif False:
+    CxPageTransitionRouteTriggerFulfillmentMessageTextArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentMessageTextArgs:
@@ -5610,6 +7563,19 @@ class CxPageTransitionRouteTriggerFulfillmentMessageTextArgs:
         pulumi.set(self, "texts", value)
 
 
+if not MYPY:
+    class CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgsDict(TypedDict):
+        parameter: NotRequired[pulumi.Input[str]]
+        """
+        Display name of the parameter.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+elif False:
+    CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs:
     def __init__(__self__, *,
@@ -5648,6 +7614,31 @@ class CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class CxSecuritySettingsAudioExportSettingsArgsDict(TypedDict):
+        audio_export_pattern: NotRequired[pulumi.Input[str]]
+        """
+        Filename pattern for exported audio.
+        """
+        audio_format: NotRequired[pulumi.Input[str]]
+        """
+        File format for exported audio file. Currently only in telephony recordings.
+        * MULAW: G.711 mu-law PCM with 8kHz sample rate.
+        * MP3: MP3 file format.
+        * OGG: OGG Vorbis.
+        Possible values are: `MULAW`, `MP3`, `OGG`.
+        """
+        enable_audio_redaction: NotRequired[pulumi.Input[bool]]
+        """
+        Enable audio redaction if it is true.
+        """
+        gcs_bucket: NotRequired[pulumi.Input[str]]
+        """
+        Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
+        """
+elif False:
+    CxSecuritySettingsAudioExportSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxSecuritySettingsAudioExportSettingsArgs:
@@ -5728,6 +7719,15 @@ class CxSecuritySettingsAudioExportSettingsArgs:
         pulumi.set(self, "gcs_bucket", value)
 
 
+if not MYPY:
+    class CxSecuritySettingsInsightsExportSettingsArgsDict(TypedDict):
+        enable_insights_export: pulumi.Input[bool]
+        """
+        If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+        """
+elif False:
+    CxSecuritySettingsInsightsExportSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxSecuritySettingsInsightsExportSettingsArgs:
     def __init__(__self__, *,
@@ -5749,6 +7749,36 @@ class CxSecuritySettingsInsightsExportSettingsArgs:
     def enable_insights_export(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enable_insights_export", value)
 
+
+if not MYPY:
+    class CxTestCaseLastTestResultArgsDict(TypedDict):
+        conversation_turns: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnArgsDict']]]]
+        """
+        The conversation turns uttered during the test case replay in chronological order.
+        Structure is documented below.
+        """
+        environment: NotRequired[pulumi.Input[str]]
+        """
+        Environment where the test was run. If not set, it indicates the draft environment.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The unique identifier of the page.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        """
+        test_result: NotRequired[pulumi.Input[str]]
+        """
+        Whether the test case passed in the agent environment.
+        * PASSED: The test passed.
+        * FAILED: The test did not pass.
+        Possible values are: `PASSED`, `FAILED`.
+        """
+        test_time: NotRequired[pulumi.Input[str]]
+        """
+        The time that the test was run. A timestamp in RFC3339 text format.
+        """
+elif False:
+    CxTestCaseLastTestResultArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxTestCaseLastTestResultArgs:
@@ -5847,6 +7877,21 @@ class CxTestCaseLastTestResultArgs:
         pulumi.set(self, "test_time", value)
 
 
+if not MYPY:
+    class CxTestCaseLastTestResultConversationTurnArgsDict(TypedDict):
+        user_input: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputArgsDict']]
+        """
+        The user input.
+        Structure is documented below.
+        """
+        virtual_agent_output: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgsDict']]
+        """
+        The virtual agent output.
+        Structure is documented below.
+        """
+elif False:
+    CxTestCaseLastTestResultConversationTurnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnArgs:
     def __init__(__self__, *,
@@ -5889,6 +7934,28 @@ class CxTestCaseLastTestResultConversationTurnArgs:
     def virtual_agent_output(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs']]):
         pulumi.set(self, "virtual_agent_output", value)
 
+
+if not MYPY:
+    class CxTestCaseLastTestResultConversationTurnUserInputArgsDict(TypedDict):
+        enable_sentiment_analysis: NotRequired[pulumi.Input[bool]]
+        """
+        Whether sentiment analysis is enabled.
+        """
+        injected_parameters: NotRequired[pulumi.Input[str]]
+        """
+        Parameters that need to be injected into the conversation during intent detection.
+        """
+        input: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputArgsDict']]
+        """
+        User input. Supports text input, event input, dtmf input in the test case.
+        Structure is documented below.
+        """
+        is_webhook_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
+        """
+elif False:
+    CxTestCaseLastTestResultConversationTurnUserInputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnUserInputArgs:
@@ -5962,6 +8029,31 @@ class CxTestCaseLastTestResultConversationTurnUserInputArgs:
     def is_webhook_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_webhook_enabled", value)
 
+
+if not MYPY:
+    class CxTestCaseLastTestResultConversationTurnUserInputInputArgsDict(TypedDict):
+        dtmf: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgsDict']]
+        """
+        The DTMF event to be handled.
+        Structure is documented below.
+        """
+        event: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputEventArgsDict']]
+        """
+        The event to be triggered.
+        Structure is documented below.
+        """
+        language_code: NotRequired[pulumi.Input[str]]
+        """
+        The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
+        Note that queries in the same session do not necessarily need to specify the same language.
+        """
+        text: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputTextArgsDict']]
+        """
+        The natural language text to be processed.
+        Structure is documented below.
+        """
+elif False:
+    CxTestCaseLastTestResultConversationTurnUserInputInputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnUserInputInputArgs:
@@ -6042,6 +8134,19 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputArgs:
         pulumi.set(self, "text", value)
 
 
+if not MYPY:
+    class CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgsDict(TypedDict):
+        digits: NotRequired[pulumi.Input[str]]
+        """
+        The dtmf digits.
+        """
+        finish_digit: NotRequired[pulumi.Input[str]]
+        """
+        The finish digit (if any).
+        """
+elif False:
+    CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs:
     def __init__(__self__, *,
@@ -6081,6 +8186,15 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs:
         pulumi.set(self, "finish_digit", value)
 
 
+if not MYPY:
+    class CxTestCaseLastTestResultConversationTurnUserInputInputEventArgsDict(TypedDict):
+        event: pulumi.Input[str]
+        """
+        Name of the event.
+        """
+elif False:
+    CxTestCaseLastTestResultConversationTurnUserInputInputEventArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs:
     def __init__(__self__, *,
@@ -6103,6 +8217,15 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs:
         pulumi.set(self, "event", value)
 
 
+if not MYPY:
+    class CxTestCaseLastTestResultConversationTurnUserInputInputTextArgsDict(TypedDict):
+        text: pulumi.Input[str]
+        """
+        The natural language text to be processed. Text length must not exceed 256 characters.
+        """
+elif False:
+    CxTestCaseLastTestResultConversationTurnUserInputInputTextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs:
     def __init__(__self__, *,
@@ -6124,6 +8247,40 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs:
     def text(self, value: pulumi.Input[str]):
         pulumi.set(self, "text", value)
 
+
+if not MYPY:
+    class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgsDict(TypedDict):
+        current_page: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgsDict']]
+        """
+        The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+        Structure is documented below.
+        """
+        differences: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgsDict']]]]
+        """
+        The list of differences between the original run and the replay for this output, if any.
+        Structure is documented below.
+        """
+        session_parameters: NotRequired[pulumi.Input[str]]
+        """
+        The session parameters available to the bot at this point.
+        """
+        status: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgsDict']]
+        """
+        Response error from the agent in the test result. If set, other output is empty.
+        Structure is documented below.
+        """
+        text_responses: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgsDict']]]]
+        """
+        The text responses from the agent for the turn.
+        Structure is documented below.
+        """
+        triggered_intent: NotRequired[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgsDict']]
+        """
+        The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+        Structure is documented below.
+        """
+elif False:
+    CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs:
@@ -6238,6 +8395,21 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs:
         pulumi.set(self, "triggered_intent", value)
 
 
+if not MYPY:
+    class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgsDict(TypedDict):
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The human-readable name of the page, unique within the flow.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The unique identifier of the page.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        """
+elif False:
+    CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs:
     def __init__(__self__, *,
@@ -6280,6 +8452,25 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        A human readable description of the diff, showing the actual output vs expected output.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of diff.
+        * INTENT: The intent.
+        * PAGE: The page.
+        * PARAMETERS: The parameters.
+        * UTTERANCE: The message utterance.
+        * FLOW: The flow.
+        Possible values are: `INTENT`, `PAGE`, `PARAMETERS`, `UTTERANCE`, `FLOW`.
+        """
+elif False:
+    CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs:
@@ -6331,6 +8522,23 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[int]]
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        details: NotRequired[pulumi.Input[str]]
+        """
+        A JSON encoded list of messages that carry the error details.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        A developer-facing error message.
+        """
+elif False:
+    CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs:
@@ -6387,6 +8595,15 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs:
         pulumi.set(self, "message", value)
 
 
+if not MYPY:
+    class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgsDict(TypedDict):
+        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A collection of text responses.
+        """
+elif False:
+    CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs:
     def __init__(__self__, *,
@@ -6409,6 +8626,21 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs
     def texts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "texts", value)
 
+
+if not MYPY:
+    class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgsDict(TypedDict):
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The human-readable name of the intent, unique within the agent.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The unique identifier of the intent.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+        """
+elif False:
+    CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs:
@@ -6453,6 +8685,21 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentA
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class CxTestCaseTestCaseConversationTurnArgsDict(TypedDict):
+        user_input: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputArgsDict']]
+        """
+        The user input.
+        Structure is documented below.
+        """
+        virtual_agent_output: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgsDict']]
+        """
+        The virtual agent output.
+        Structure is documented below.
+        """
+elif False:
+    CxTestCaseTestCaseConversationTurnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnArgs:
     def __init__(__self__, *,
@@ -6495,6 +8742,28 @@ class CxTestCaseTestCaseConversationTurnArgs:
     def virtual_agent_output(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs']]):
         pulumi.set(self, "virtual_agent_output", value)
 
+
+if not MYPY:
+    class CxTestCaseTestCaseConversationTurnUserInputArgsDict(TypedDict):
+        enable_sentiment_analysis: NotRequired[pulumi.Input[bool]]
+        """
+        Whether sentiment analysis is enabled.
+        """
+        injected_parameters: NotRequired[pulumi.Input[str]]
+        """
+        Parameters that need to be injected into the conversation during intent detection.
+        """
+        input: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputArgsDict']]
+        """
+        User input. Supports text input, event input, dtmf input in the test case.
+        Structure is documented below.
+        """
+        is_webhook_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
+        """
+elif False:
+    CxTestCaseTestCaseConversationTurnUserInputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnUserInputArgs:
@@ -6568,6 +8837,31 @@ class CxTestCaseTestCaseConversationTurnUserInputArgs:
     def is_webhook_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_webhook_enabled", value)
 
+
+if not MYPY:
+    class CxTestCaseTestCaseConversationTurnUserInputInputArgsDict(TypedDict):
+        dtmf: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgsDict']]
+        """
+        The DTMF event to be handled.
+        Structure is documented below.
+        """
+        event: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputEventArgsDict']]
+        """
+        The event to be triggered.
+        Structure is documented below.
+        """
+        language_code: NotRequired[pulumi.Input[str]]
+        """
+        The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
+        Note that queries in the same session do not necessarily need to specify the same language.
+        """
+        text: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputTextArgsDict']]
+        """
+        The natural language text to be processed.
+        Structure is documented below.
+        """
+elif False:
+    CxTestCaseTestCaseConversationTurnUserInputInputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnUserInputInputArgs:
@@ -6648,6 +8942,19 @@ class CxTestCaseTestCaseConversationTurnUserInputInputArgs:
         pulumi.set(self, "text", value)
 
 
+if not MYPY:
+    class CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgsDict(TypedDict):
+        digits: NotRequired[pulumi.Input[str]]
+        """
+        The dtmf digits.
+        """
+        finish_digit: NotRequired[pulumi.Input[str]]
+        """
+        The finish digit (if any).
+        """
+elif False:
+    CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs:
     def __init__(__self__, *,
@@ -6687,6 +8994,15 @@ class CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs:
         pulumi.set(self, "finish_digit", value)
 
 
+if not MYPY:
+    class CxTestCaseTestCaseConversationTurnUserInputInputEventArgsDict(TypedDict):
+        event: pulumi.Input[str]
+        """
+        Name of the event.
+        """
+elif False:
+    CxTestCaseTestCaseConversationTurnUserInputInputEventArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnUserInputInputEventArgs:
     def __init__(__self__, *,
@@ -6709,6 +9025,15 @@ class CxTestCaseTestCaseConversationTurnUserInputInputEventArgs:
         pulumi.set(self, "event", value)
 
 
+if not MYPY:
+    class CxTestCaseTestCaseConversationTurnUserInputInputTextArgsDict(TypedDict):
+        text: pulumi.Input[str]
+        """
+        The natural language text to be processed. Text length must not exceed 256 characters.
+        """
+elif False:
+    CxTestCaseTestCaseConversationTurnUserInputInputTextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnUserInputInputTextArgs:
     def __init__(__self__, *,
@@ -6730,6 +9055,30 @@ class CxTestCaseTestCaseConversationTurnUserInputInputTextArgs:
     def text(self, value: pulumi.Input[str]):
         pulumi.set(self, "text", value)
 
+
+if not MYPY:
+    class CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgsDict(TypedDict):
+        current_page: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgsDict']]
+        """
+        The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+        Structure is documented below.
+        """
+        session_parameters: NotRequired[pulumi.Input[str]]
+        """
+        The session parameters available to the bot at this point.
+        """
+        text_responses: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgsDict']]]]
+        """
+        The text responses from the agent for the turn.
+        Structure is documented below.
+        """
+        triggered_intent: NotRequired[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgsDict']]
+        """
+        The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+        Structure is documented below.
+        """
+elif False:
+    CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs:
@@ -6808,6 +9157,21 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs:
         pulumi.set(self, "triggered_intent", value)
 
 
+if not MYPY:
+    class CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgsDict(TypedDict):
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The human-readable name of the page, unique within the flow.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The unique identifier of the page.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        """
+elif False:
+    CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs:
     def __init__(__self__, *,
@@ -6851,6 +9215,15 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgsDict(TypedDict):
+        texts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A collection of text responses.
+        """
+elif False:
+    CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs:
     def __init__(__self__, *,
@@ -6873,6 +9246,21 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs:
     def texts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "texts", value)
 
+
+if not MYPY:
+    class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgsDict(TypedDict):
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The human-readable name of the intent, unique within the agent.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The unique identifier of the intent.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+        """
+elif False:
+    CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs:
@@ -6916,6 +9304,27 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class CxTestCaseTestConfigArgsDict(TypedDict):
+        flow: NotRequired[pulumi.Input[str]]
+        """
+        Flow name to start the test case with.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
+        """
+        page: NotRequired[pulumi.Input[str]]
+        """
+        The page to start the test case with.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
+        """
+        tracking_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Session parameters to be compared when calculating differences.
+        """
+elif False:
+    CxTestCaseTestConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxTestCaseTestConfigArgs:
@@ -6979,6 +9388,30 @@ class CxTestCaseTestConfigArgs:
     def tracking_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tracking_parameters", value)
 
+
+if not MYPY:
+    class CxVersionNluSettingArgsDict(TypedDict):
+        classification_threshold: NotRequired[pulumi.Input[float]]
+        """
+        To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold. If the returned score value is less than the threshold value, then a no-match event will be triggered.
+        The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
+        """
+        model_training_mode: NotRequired[pulumi.Input[str]]
+        """
+        Indicates NLU model training mode.
+        * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
+        * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
+        Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
+        """
+        model_type: NotRequired[pulumi.Input[str]]
+        """
+        Indicates the type of NLU model.
+        * MODEL_TYPE_STANDARD: Use standard NLU model.
+        * MODEL_TYPE_ADVANCED: Use advanced NLU model.
+        Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
+        """
+elif False:
+    CxVersionNluSettingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxVersionNluSettingArgs:
@@ -7049,6 +9482,23 @@ class CxVersionNluSettingArgs:
         pulumi.set(self, "model_type", value)
 
 
+if not MYPY:
+    class CxWebhookGenericWebServiceArgsDict(TypedDict):
+        uri: pulumi.Input[str]
+        """
+        Whether to use speech adaptation for speech recognition.
+        """
+        allowed_ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+        """
+        request_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The HTTP request headers to send together with webhook requests.
+        """
+elif False:
+    CxWebhookGenericWebServiceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxWebhookGenericWebServiceArgs:
     def __init__(__self__, *,
@@ -7103,6 +9553,20 @@ class CxWebhookGenericWebServiceArgs:
         pulumi.set(self, "request_headers", value)
 
 
+if not MYPY:
+    class CxWebhookServiceDirectoryArgsDict(TypedDict):
+        generic_web_service: pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgsDict']
+        """
+        The name of Service Directory service.
+        Structure is documented below.
+        """
+        service: pulumi.Input[str]
+        """
+        The name of Service Directory service.
+        """
+elif False:
+    CxWebhookServiceDirectoryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CxWebhookServiceDirectoryArgs:
     def __init__(__self__, *,
@@ -7141,6 +9605,23 @@ class CxWebhookServiceDirectoryArgs:
     def service(self, value: pulumi.Input[str]):
         pulumi.set(self, "service", value)
 
+
+if not MYPY:
+    class CxWebhookServiceDirectoryGenericWebServiceArgsDict(TypedDict):
+        uri: pulumi.Input[str]
+        """
+        Whether to use speech adaptation for speech recognition.
+        """
+        allowed_ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+        """
+        request_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The HTTP request headers to send together with webhook requests.
+        """
+elif False:
+    CxWebhookServiceDirectoryGenericWebServiceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CxWebhookServiceDirectoryGenericWebServiceArgs:
@@ -7196,6 +9677,27 @@ class CxWebhookServiceDirectoryGenericWebServiceArgs:
         pulumi.set(self, "request_headers", value)
 
 
+if not MYPY:
+    class EntityTypeEntityArgsDict(TypedDict):
+        synonyms: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
+        could be green onions.
+        For KIND_LIST entity types:
+        * This collection must contain exactly one synonym equal to value.
+        """
+        value: pulumi.Input[str]
+        """
+        The primary value associated with this entity entry. For example, if the entity type is vegetable, the value
+        could be scallions.
+        For KIND_MAP entity types:
+        * A reference value to be used in place of synonyms.
+        For KIND_LIST entity types:
+        * A string that can contain references to other entity types (with or without aliases).
+        """
+elif False:
+    EntityTypeEntityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EntityTypeEntityArgs:
     def __init__(__self__, *,
@@ -7249,6 +9751,17 @@ class EntityTypeEntityArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class FulfillmentFeatureArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        The type of the feature that enabled for fulfillment.
+        * SMALLTALK: Fulfillment is enabled for SmallTalk.
+        Possible values are: `SMALLTALK`.
+        """
+elif False:
+    FulfillmentFeatureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FulfillmentFeatureArgs:
     def __init__(__self__, *,
@@ -7274,6 +9787,27 @@ class FulfillmentFeatureArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class FulfillmentGenericWebServiceArgsDict(TypedDict):
+        uri: pulumi.Input[str]
+        """
+        The fulfillment URI for receiving POST requests. It must use https protocol.
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        The password for HTTP Basic authentication.
+        """
+        request_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The HTTP request headers to send together with fulfillment requests.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        The user name for HTTP Basic authentication.
+        """
+elif False:
+    FulfillmentGenericWebServiceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FulfillmentGenericWebServiceArgs:
@@ -7344,6 +9878,21 @@ class FulfillmentGenericWebServiceArgs:
     def username(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class IntentFollowupIntentInfoArgsDict(TypedDict):
+        followup_intent_name: NotRequired[pulumi.Input[str]]
+        """
+        The unique identifier of the followup intent.
+        Format: projects/<Project ID>/agent/intents/<Intent ID>.
+        """
+        parent_followup_intent_name: NotRequired[pulumi.Input[str]]
+        """
+        The unique identifier of the parent intent in the chain of followup intents.
+        Format: projects/<Project ID>/agent/intents/<Intent ID>.
+        """
+elif False:
+    IntentFollowupIntentInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IntentFollowupIntentInfoArgs:

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -345,9 +350,9 @@ class PrivateCloud(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 management_cluster: Optional[pulumi.Input[pulumi.InputType['PrivateCloudManagementClusterArgs']]] = None,
+                 management_cluster: Optional[pulumi.Input[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['PrivateCloudNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -375,17 +380,17 @@ class PrivateCloud(pulumi.CustomResource):
             location="us-west1-a",
             name="sample-pc",
             description="Sample test PC.",
-            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
-                management_cidr="192.168.30.0/24",
-                vmware_engine_network=pc_nw.id,
-            ),
-            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
-                cluster_id="sample-mgmt-cluster",
-                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
-                    node_type_id="standard-72",
-                    node_count=3,
-                )],
-            ))
+            network_config={
+                "managementCidr": "192.168.30.0/24",
+                "vmwareEngineNetwork": pc_nw.id,
+            },
+            management_cluster={
+                "clusterId": "sample-mgmt-cluster",
+                "nodeTypeConfigs": [{
+                    "nodeTypeId": "standard-72",
+                    "nodeCount": 3,
+                }],
+            })
         ```
         ### Vmware Engine Private Cloud Full
 
@@ -403,18 +408,18 @@ class PrivateCloud(pulumi.CustomResource):
             name="sample-pc",
             description="Sample test PC.",
             type="TIME_LIMITED",
-            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
-                management_cidr="192.168.30.0/24",
-                vmware_engine_network=pc_nw.id,
-            ),
-            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
-                cluster_id="sample-mgmt-cluster",
-                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
-                    node_type_id="standard-72",
-                    node_count=1,
-                    custom_core_count=32,
-                )],
-            ))
+            network_config={
+                "managementCidr": "192.168.30.0/24",
+                "vmwareEngineNetwork": pc_nw.id,
+            },
+            management_cluster={
+                "clusterId": "sample-mgmt-cluster",
+                "nodeTypeConfigs": [{
+                    "nodeTypeId": "standard-72",
+                    "nodeCount": 1,
+                    "customCoreCount": 32,
+                }],
+            })
         ```
 
         ## Import
@@ -445,10 +450,10 @@ class PrivateCloud(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: User-provided description for this private cloud.
         :param pulumi.Input[str] location: The location where the PrivateCloud should reside.
-        :param pulumi.Input[pulumi.InputType['PrivateCloudManagementClusterArgs']] management_cluster: The management cluster for this private cloud. This used for creating and managing the default cluster.
+        :param pulumi.Input[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']] management_cluster: The management cluster for this private cloud. This used for creating and managing the default cluster.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the PrivateCloud.
-        :param pulumi.Input[pulumi.InputType['PrivateCloudNetworkConfigArgs']] network_config: Network configuration in the consumer project with which the peering has to be done.
+        :param pulumi.Input[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']] network_config: Network configuration in the consumer project with which the peering has to be done.
                Structure is documented below.
         :param pulumi.Input[str] type: Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
         """
@@ -482,17 +487,17 @@ class PrivateCloud(pulumi.CustomResource):
             location="us-west1-a",
             name="sample-pc",
             description="Sample test PC.",
-            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
-                management_cidr="192.168.30.0/24",
-                vmware_engine_network=pc_nw.id,
-            ),
-            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
-                cluster_id="sample-mgmt-cluster",
-                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
-                    node_type_id="standard-72",
-                    node_count=3,
-                )],
-            ))
+            network_config={
+                "managementCidr": "192.168.30.0/24",
+                "vmwareEngineNetwork": pc_nw.id,
+            },
+            management_cluster={
+                "clusterId": "sample-mgmt-cluster",
+                "nodeTypeConfigs": [{
+                    "nodeTypeId": "standard-72",
+                    "nodeCount": 3,
+                }],
+            })
         ```
         ### Vmware Engine Private Cloud Full
 
@@ -510,18 +515,18 @@ class PrivateCloud(pulumi.CustomResource):
             name="sample-pc",
             description="Sample test PC.",
             type="TIME_LIMITED",
-            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
-                management_cidr="192.168.30.0/24",
-                vmware_engine_network=pc_nw.id,
-            ),
-            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
-                cluster_id="sample-mgmt-cluster",
-                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
-                    node_type_id="standard-72",
-                    node_count=1,
-                    custom_core_count=32,
-                )],
-            ))
+            network_config={
+                "managementCidr": "192.168.30.0/24",
+                "vmwareEngineNetwork": pc_nw.id,
+            },
+            management_cluster={
+                "clusterId": "sample-mgmt-cluster",
+                "nodeTypeConfigs": [{
+                    "nodeTypeId": "standard-72",
+                    "nodeCount": 1,
+                    "customCoreCount": 32,
+                }],
+            })
         ```
 
         ## Import
@@ -565,9 +570,9 @@ class PrivateCloud(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 management_cluster: Optional[pulumi.Input[pulumi.InputType['PrivateCloudManagementClusterArgs']]] = None,
+                 management_cluster: Optional[pulumi.Input[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['PrivateCloudNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -608,17 +613,17 @@ class PrivateCloud(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            hcxes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateCloudHcxArgs']]]]] = None,
+            hcxes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudHcxArgs', 'PrivateCloudHcxArgsDict']]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            management_cluster: Optional[pulumi.Input[pulumi.InputType['PrivateCloudManagementClusterArgs']]] = None,
+            management_cluster: Optional[pulumi.Input[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network_config: Optional[pulumi.Input[pulumi.InputType['PrivateCloudNetworkConfigArgs']]] = None,
-            nsxes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateCloudNsxArgs']]]]] = None,
+            network_config: Optional[pulumi.Input[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']]] = None,
+            nsxes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudNsxArgs', 'PrivateCloudNsxArgsDict']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
-            vcenters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateCloudVcenterArgs']]]]] = None) -> 'PrivateCloud':
+            vcenters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudVcenterArgs', 'PrivateCloudVcenterArgsDict']]]]] = None) -> 'PrivateCloud':
         """
         Get an existing PrivateCloud resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -627,21 +632,21 @@ class PrivateCloud(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: User-provided description for this private cloud.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateCloudHcxArgs']]]] hcxes: Details about a HCX Cloud Manager appliance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudHcxArgs', 'PrivateCloudHcxArgsDict']]]] hcxes: Details about a HCX Cloud Manager appliance.
                Structure is documented below.
         :param pulumi.Input[str] location: The location where the PrivateCloud should reside.
-        :param pulumi.Input[pulumi.InputType['PrivateCloudManagementClusterArgs']] management_cluster: The management cluster for this private cloud. This used for creating and managing the default cluster.
+        :param pulumi.Input[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']] management_cluster: The management cluster for this private cloud. This used for creating and managing the default cluster.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the PrivateCloud.
-        :param pulumi.Input[pulumi.InputType['PrivateCloudNetworkConfigArgs']] network_config: Network configuration in the consumer project with which the peering has to be done.
+        :param pulumi.Input[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']] network_config: Network configuration in the consumer project with which the peering has to be done.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateCloudNsxArgs']]]] nsxes: Details about a NSX Manager appliance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudNsxArgs', 'PrivateCloudNsxArgsDict']]]] nsxes: Details about a NSX Manager appliance.
                Structure is documented below.
         :param pulumi.Input[str] state: State of the appliance.
                Possible values are: `ACTIVE`, `CREATING`.
         :param pulumi.Input[str] type: Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
         :param pulumi.Input[str] uid: System-generated unique identifier for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateCloudVcenterArgs']]]] vcenters: Details about a vCenter Server management appliance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudVcenterArgs', 'PrivateCloudVcenterArgsDict']]]] vcenters: Details about a vCenter Server management appliance.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

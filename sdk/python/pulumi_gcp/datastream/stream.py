@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -487,17 +492,17 @@ class Stream(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backfill_all: Optional[pulumi.Input[pulumi.InputType['StreamBackfillAllArgs']]] = None,
-                 backfill_none: Optional[pulumi.Input[pulumi.InputType['StreamBackfillNoneArgs']]] = None,
+                 backfill_all: Optional[pulumi.Input[Union['StreamBackfillAllArgs', 'StreamBackfillAllArgsDict']]] = None,
+                 backfill_none: Optional[pulumi.Input[Union['StreamBackfillNoneArgs', 'StreamBackfillNoneArgsDict']]] = None,
                  create_without_validation: Optional[pulumi.Input[bool]] = None,
                  customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
-                 destination_config: Optional[pulumi.Input[pulumi.InputType['StreamDestinationConfigArgs']]] = None,
+                 destination_config: Optional[pulumi.Input[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 source_config: Optional[pulumi.Input[pulumi.InputType['StreamSourceConfigArgs']]] = None,
+                 source_config: Optional[pulumi.Input[Union['StreamSourceConfigArgs', 'StreamSourceConfigArgsDict']]] = None,
                  stream_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -523,32 +528,32 @@ class Stream(pulumi.CustomResource):
             name="my-instance",
             database_version="MYSQL_8_0",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
-                    enabled=True,
-                    binary_log_enabled=True,
-                ),
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
-                    authorized_networks=[
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.71.242.81",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.28.29",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.6.157",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.234.134",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.239.218",
-                        ),
+            settings={
+                "tier": "db-f1-micro",
+                "backupConfiguration": {
+                    "enabled": True,
+                    "binaryLogEnabled": True,
+                },
+                "ipConfiguration": {
+                    "authorizedNetworks": [
+                        {
+                            "value": "34.71.242.81",
+                        },
+                        {
+                            "value": "34.72.28.29",
+                        },
+                        {
+                            "value": "34.67.6.157",
+                        },
+                        {
+                            "value": "34.67.234.134",
+                        },
+                        {
+                            "value": "34.72.239.218",
+                        },
                     ],
-                ),
-            ),
+                },
+            },
             deletion_protection=True)
         db = gcp.sql.Database("db",
             instance=instance.name,
@@ -565,11 +570,11 @@ class Stream(pulumi.CustomResource):
             display_name="Source connection profile",
             location="us-central1",
             connection_profile_id="source-profile",
-            mysql_profile=gcp.datastream.ConnectionProfileMysqlProfileArgs(
-                hostname=instance.public_ip_address,
-                username=user.name,
-                password=user.password,
-            ))
+            mysql_profile={
+                "hostname": instance.public_ip_address,
+                "username": user.name,
+                "password": user.password,
+            })
         bucket = gcp.storage.Bucket("bucket",
             name="my-bucket",
             location="US",
@@ -594,10 +599,10 @@ class Stream(pulumi.CustomResource):
             display_name="Connection profile",
             location="us-central1",
             connection_profile_id="destination-profile",
-            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArgs(
-                bucket=bucket.name,
-                root_path="/path",
-            ))
+            gcs_profile={
+                "bucket": bucket.name,
+                "rootPath": "/path",
+            })
         default = gcp.datastream.Stream("default",
             stream_id="my-stream",
             desired_state="NOT_STARTED",
@@ -606,79 +611,79 @@ class Stream(pulumi.CustomResource):
             labels={
                 "key": "value",
             },
-            source_config=gcp.datastream.StreamSourceConfigArgs(
-                source_connection_profile=source_connection_profile.id,
-                mysql_source_config=gcp.datastream.StreamSourceConfigMysqlSourceConfigArgs(
-                    include_objects=gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs(
-                        mysql_databases=[gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs(
-                            database="my-database",
-                            mysql_tables=[
-                                gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs(
-                                    table="includedTable",
-                                    mysql_columns=[gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs(
-                                        column="includedColumn",
-                                        data_type="VARCHAR",
-                                        collation="utf8mb4",
-                                        primary_key=False,
-                                        nullable=False,
-                                        ordinal_position=0,
-                                    )],
-                                ),
-                                gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs(
-                                    table="includedTable_2",
-                                ),
+            source_config={
+                "sourceConnectionProfile": source_connection_profile.id,
+                "mysqlSourceConfig": {
+                    "includeObjects": {
+                        "mysqlDatabases": [{
+                            "database": "my-database",
+                            "mysqlTables": [
+                                {
+                                    "table": "includedTable",
+                                    "mysqlColumns": [{
+                                        "column": "includedColumn",
+                                        "dataType": "VARCHAR",
+                                        "collation": "utf8mb4",
+                                        "primaryKey": False,
+                                        "nullable": False,
+                                        "ordinalPosition": 0,
+                                    }],
+                                },
+                                {
+                                    "table": "includedTable_2",
+                                },
                             ],
-                        )],
-                    ),
-                    exclude_objects=gcp.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs(
-                        mysql_databases=[gcp.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs(
-                            database="my-database",
-                            mysql_tables=[gcp.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs(
-                                table="excludedTable",
-                                mysql_columns=[gcp.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs(
-                                    column="excludedColumn",
-                                    data_type="VARCHAR",
-                                    collation="utf8mb4",
-                                    primary_key=False,
-                                    nullable=False,
-                                    ordinal_position=0,
-                                )],
-                            )],
-                        )],
-                    ),
-                    max_concurrent_cdc_tasks=5,
-                ),
-            ),
-            destination_config=gcp.datastream.StreamDestinationConfigArgs(
-                destination_connection_profile=destination_connection_profile.id,
-                gcs_destination_config=gcp.datastream.StreamDestinationConfigGcsDestinationConfigArgs(
-                    path="mydata",
-                    file_rotation_mb=200,
-                    file_rotation_interval="60s",
-                    json_file_format=gcp.datastream.StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs(
-                        schema_file_format="NO_SCHEMA_FILE",
-                        compression="GZIP",
-                    ),
-                ),
-            ),
-            backfill_all=gcp.datastream.StreamBackfillAllArgs(
-                mysql_excluded_objects=gcp.datastream.StreamBackfillAllMysqlExcludedObjectsArgs(
-                    mysql_databases=[gcp.datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs(
-                        database="my-database",
-                        mysql_tables=[gcp.datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs(
-                            table="excludedTable",
-                            mysql_columns=[gcp.datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs(
-                                column="excludedColumn",
-                                data_type="VARCHAR",
-                                collation="utf8mb4",
-                                primary_key=False,
-                                nullable=False,
-                                ordinal_position=0,
-                            )],
-                        )],
-                    )],
-                ),
-            ),
+                        }],
+                    },
+                    "excludeObjects": {
+                        "mysqlDatabases": [{
+                            "database": "my-database",
+                            "mysqlTables": [{
+                                "table": "excludedTable",
+                                "mysqlColumns": [{
+                                    "column": "excludedColumn",
+                                    "dataType": "VARCHAR",
+                                    "collation": "utf8mb4",
+                                    "primaryKey": False,
+                                    "nullable": False,
+                                    "ordinalPosition": 0,
+                                }],
+                            }],
+                        }],
+                    },
+                    "maxConcurrentCdcTasks": 5,
+                },
+            },
+            destination_config={
+                "destinationConnectionProfile": destination_connection_profile.id,
+                "gcsDestinationConfig": {
+                    "path": "mydata",
+                    "fileRotationMb": 200,
+                    "fileRotationInterval": "60s",
+                    "jsonFileFormat": {
+                        "schemaFileFormat": "NO_SCHEMA_FILE",
+                        "compression": "GZIP",
+                    },
+                },
+            },
+            backfill_all={
+                "mysqlExcludedObjects": {
+                    "mysqlDatabases": [{
+                        "database": "my-database",
+                        "mysqlTables": [{
+                            "table": "excludedTable",
+                            "mysqlColumns": [{
+                                "column": "excludedColumn",
+                                "dataType": "VARCHAR",
+                                "collation": "utf8mb4",
+                                "primaryKey": False,
+                                "nullable": False,
+                                "ordinalPosition": 0,
+                            }],
+                        }],
+                    }],
+                },
+            },
             customer_managed_encryption_key="kms-name",
             opts = pulumi.ResourceOptions(depends_on=[key_user]))
         ```
@@ -692,77 +697,77 @@ class Stream(pulumi.CustomResource):
             display_name="Postgresql Source",
             location="us-central1",
             connection_profile_id="source-profile",
-            postgresql_profile=gcp.datastream.ConnectionProfilePostgresqlProfileArgs(
-                hostname="hostname",
-                port=3306,
-                username="user",
-                password="pass",
-                database="postgres",
-            ))
+            postgresql_profile={
+                "hostname": "hostname",
+                "port": 3306,
+                "username": "user",
+                "password": "pass",
+                "database": "postgres",
+            })
         destination = gcp.datastream.ConnectionProfile("destination",
             display_name="BigQuery Destination",
             location="us-central1",
             connection_profile_id="destination-profile",
-            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+            bigquery_profile={})
         default = gcp.datastream.Stream("default",
             display_name="Postgres to BigQuery",
             location="us-central1",
             stream_id="my-stream",
             desired_state="RUNNING",
-            source_config=gcp.datastream.StreamSourceConfigArgs(
-                source_connection_profile=source.id,
-                postgresql_source_config=gcp.datastream.StreamSourceConfigPostgresqlSourceConfigArgs(
-                    max_concurrent_backfill_tasks=12,
-                    publication="publication",
-                    replication_slot="replication_slot",
-                    include_objects=gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs(
-                        postgresql_schemas=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs(
-                            schema="schema",
-                            postgresql_tables=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs(
-                                table="table",
-                                postgresql_columns=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs(
-                                    column="column",
-                                )],
-                            )],
-                        )],
-                    ),
-                    exclude_objects=gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs(
-                        postgresql_schemas=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs(
-                            schema="schema",
-                            postgresql_tables=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs(
-                                table="table",
-                                postgresql_columns=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs(
-                                    column="column",
-                                )],
-                            )],
-                        )],
-                    ),
-                ),
-            ),
-            destination_config=gcp.datastream.StreamDestinationConfigArgs(
-                destination_connection_profile=destination.id,
-                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
-                    data_freshness="900s",
-                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
-                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
-                            location="us-central1",
-                        ),
-                    ),
-                ),
-            ),
-            backfill_all=gcp.datastream.StreamBackfillAllArgs(
-                postgresql_excluded_objects=gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsArgs(
-                    postgresql_schemas=[gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs(
-                        schema="schema",
-                        postgresql_tables=[gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs(
-                            table="table",
-                            postgresql_columns=[gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs(
-                                column="column",
-                            )],
-                        )],
-                    )],
-                ),
-            ))
+            source_config={
+                "sourceConnectionProfile": source.id,
+                "postgresqlSourceConfig": {
+                    "maxConcurrentBackfillTasks": 12,
+                    "publication": "publication",
+                    "replicationSlot": "replication_slot",
+                    "includeObjects": {
+                        "postgresqlSchemas": [{
+                            "schema": "schema",
+                            "postgresqlTables": [{
+                                "table": "table",
+                                "postgresqlColumns": [{
+                                    "column": "column",
+                                }],
+                            }],
+                        }],
+                    },
+                    "excludeObjects": {
+                        "postgresqlSchemas": [{
+                            "schema": "schema",
+                            "postgresqlTables": [{
+                                "table": "table",
+                                "postgresqlColumns": [{
+                                    "column": "column",
+                                }],
+                            }],
+                        }],
+                    },
+                },
+            },
+            destination_config={
+                "destinationConnectionProfile": destination.id,
+                "bigqueryDestinationConfig": {
+                    "dataFreshness": "900s",
+                    "sourceHierarchyDatasets": {
+                        "datasetTemplate": {
+                            "location": "us-central1",
+                        },
+                    },
+                },
+            },
+            backfill_all={
+                "postgresqlExcludedObjects": {
+                    "postgresqlSchemas": [{
+                        "schema": "schema",
+                        "postgresqlTables": [{
+                            "table": "table",
+                            "postgresqlColumns": [{
+                                "column": "column",
+                            }],
+                        }],
+                    }],
+                },
+            })
         ```
         ### Datastream Stream Oracle
 
@@ -774,77 +779,77 @@ class Stream(pulumi.CustomResource):
             display_name="Oracle Source",
             location="us-central1",
             connection_profile_id="source-profile",
-            oracle_profile=gcp.datastream.ConnectionProfileOracleProfileArgs(
-                hostname="hostname",
-                port=1521,
-                username="user",
-                password="pass",
-                database_service="ORCL",
-            ))
+            oracle_profile={
+                "hostname": "hostname",
+                "port": 1521,
+                "username": "user",
+                "password": "pass",
+                "databaseService": "ORCL",
+            })
         destination = gcp.datastream.ConnectionProfile("destination",
             display_name="BigQuery Destination",
             location="us-central1",
             connection_profile_id="destination-profile",
-            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+            bigquery_profile={})
         stream5 = gcp.datastream.Stream("stream5",
             display_name="Oracle to BigQuery",
             location="us-central1",
             stream_id="my-stream",
             desired_state="RUNNING",
-            source_config=gcp.datastream.StreamSourceConfigArgs(
-                source_connection_profile=source.id,
-                oracle_source_config=gcp.datastream.StreamSourceConfigOracleSourceConfigArgs(
-                    max_concurrent_cdc_tasks=8,
-                    max_concurrent_backfill_tasks=12,
-                    include_objects=gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsArgs(
-                        oracle_schemas=[gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs(
-                            schema="schema",
-                            oracle_tables=[gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs(
-                                table="table",
-                                oracle_columns=[gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs(
-                                    column="column",
-                                )],
-                            )],
-                        )],
-                    ),
-                    exclude_objects=gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsArgs(
-                        oracle_schemas=[gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs(
-                            schema="schema",
-                            oracle_tables=[gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs(
-                                table="table",
-                                oracle_columns=[gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs(
-                                    column="column",
-                                )],
-                            )],
-                        )],
-                    ),
-                    drop_large_objects=gcp.datastream.StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs(),
-                ),
-            ),
-            destination_config=gcp.datastream.StreamDestinationConfigArgs(
-                destination_connection_profile=destination.id,
-                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
-                    data_freshness="900s",
-                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
-                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
-                            location="us-central1",
-                        ),
-                    ),
-                ),
-            ),
-            backfill_all=gcp.datastream.StreamBackfillAllArgs(
-                oracle_excluded_objects=gcp.datastream.StreamBackfillAllOracleExcludedObjectsArgs(
-                    oracle_schemas=[gcp.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs(
-                        schema="schema",
-                        oracle_tables=[gcp.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs(
-                            table="table",
-                            oracle_columns=[gcp.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs(
-                                column="column",
-                            )],
-                        )],
-                    )],
-                ),
-            ))
+            source_config={
+                "sourceConnectionProfile": source.id,
+                "oracleSourceConfig": {
+                    "maxConcurrentCdcTasks": 8,
+                    "maxConcurrentBackfillTasks": 12,
+                    "includeObjects": {
+                        "oracleSchemas": [{
+                            "schema": "schema",
+                            "oracleTables": [{
+                                "table": "table",
+                                "oracleColumns": [{
+                                    "column": "column",
+                                }],
+                            }],
+                        }],
+                    },
+                    "excludeObjects": {
+                        "oracleSchemas": [{
+                            "schema": "schema",
+                            "oracleTables": [{
+                                "table": "table",
+                                "oracleColumns": [{
+                                    "column": "column",
+                                }],
+                            }],
+                        }],
+                    },
+                    "dropLargeObjects": {},
+                },
+            },
+            destination_config={
+                "destinationConnectionProfile": destination.id,
+                "bigqueryDestinationConfig": {
+                    "dataFreshness": "900s",
+                    "sourceHierarchyDatasets": {
+                        "datasetTemplate": {
+                            "location": "us-central1",
+                        },
+                    },
+                },
+            },
+            backfill_all={
+                "oracleExcludedObjects": {
+                    "oracleSchemas": [{
+                        "schema": "schema",
+                        "oracleTables": [{
+                            "table": "table",
+                            "oracleColumns": [{
+                                "column": "column",
+                            }],
+                        }],
+                    }],
+                },
+            })
         ```
         ### Datastream Stream Sql Server
 
@@ -858,28 +863,28 @@ class Stream(pulumi.CustomResource):
             region="us-central1",
             root_password="root-password",
             deletion_protection=True,
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-custom-2-4096",
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
-                    authorized_networks=[
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.71.242.81",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.28.29",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.6.157",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.234.134",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.239.218",
-                        ),
+            settings={
+                "tier": "db-custom-2-4096",
+                "ipConfiguration": {
+                    "authorizedNetworks": [
+                        {
+                            "value": "34.71.242.81",
+                        },
+                        {
+                            "value": "34.72.28.29",
+                        },
+                        {
+                            "value": "34.67.6.157",
+                        },
+                        {
+                            "value": "34.67.234.134",
+                        },
+                        {
+                            "value": "34.72.239.218",
+                        },
                     ],
-                ),
-            ))
+                },
+            })
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
@@ -892,47 +897,47 @@ class Stream(pulumi.CustomResource):
             display_name="SQL Server Source",
             location="us-central1",
             connection_profile_id="source-profile",
-            sql_server_profile=gcp.datastream.ConnectionProfileSqlServerProfileArgs(
-                hostname=instance.public_ip_address,
-                port=1433,
-                username=user.name,
-                password=user.password,
-                database=db.name,
-            ))
+            sql_server_profile={
+                "hostname": instance.public_ip_address,
+                "port": 1433,
+                "username": user.name,
+                "password": user.password,
+                "database": db.name,
+            })
         destination = gcp.datastream.ConnectionProfile("destination",
             display_name="BigQuery Destination",
             location="us-central1",
             connection_profile_id="destination-profile",
-            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+            bigquery_profile={})
         default = gcp.datastream.Stream("default",
             display_name="SQL Server to BigQuery",
             location="us-central1",
             stream_id="stream",
-            source_config=gcp.datastream.StreamSourceConfigArgs(
-                source_connection_profile=source.id,
-                sql_server_source_config=gcp.datastream.StreamSourceConfigSqlServerSourceConfigArgs(
-                    include_objects=gcp.datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs(
-                        schemas=[gcp.datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs(
-                            schema="schema",
-                            tables=[gcp.datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs(
-                                table="table",
-                            )],
-                        )],
-                    ),
-                ),
-            ),
-            destination_config=gcp.datastream.StreamDestinationConfigArgs(
-                destination_connection_profile=destination.id,
-                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
-                    data_freshness="900s",
-                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
-                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
-                            location="us-central1",
-                        ),
-                    ),
-                ),
-            ),
-            backfill_none=gcp.datastream.StreamBackfillNoneArgs())
+            source_config={
+                "sourceConnectionProfile": source.id,
+                "sqlServerSourceConfig": {
+                    "includeObjects": {
+                        "schemas": [{
+                            "schema": "schema",
+                            "tables": [{
+                                "table": "table",
+                            }],
+                        }],
+                    },
+                },
+            },
+            destination_config={
+                "destinationConnectionProfile": destination.id,
+                "bigqueryDestinationConfig": {
+                    "dataFreshness": "900s",
+                    "sourceHierarchyDatasets": {
+                        "datasetTemplate": {
+                            "location": "us-central1",
+                        },
+                    },
+                },
+            },
+            backfill_none={})
         ```
         ### Datastream Stream Postgresql Bigquery Dataset Id
 
@@ -950,37 +955,37 @@ class Stream(pulumi.CustomResource):
             display_name="Connection profile",
             location="us-central1",
             connection_profile_id="dest-profile",
-            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+            bigquery_profile={})
         instance = gcp.sql.DatabaseInstance("instance",
             name="instance-name",
             database_version="MYSQL_8_0",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
-                    enabled=True,
-                    binary_log_enabled=True,
-                ),
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
-                    authorized_networks=[
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.71.242.81",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.28.29",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.6.157",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.234.134",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.239.218",
-                        ),
+            settings={
+                "tier": "db-f1-micro",
+                "backupConfiguration": {
+                    "enabled": True,
+                    "binaryLogEnabled": True,
+                },
+                "ipConfiguration": {
+                    "authorizedNetworks": [
+                        {
+                            "value": "34.71.242.81",
+                        },
+                        {
+                            "value": "34.72.28.29",
+                        },
+                        {
+                            "value": "34.67.6.157",
+                        },
+                        {
+                            "value": "34.67.234.134",
+                        },
+                        {
+                            "value": "34.72.239.218",
+                        },
                     ],
-                ),
-            ),
+                },
+            },
             deletion_protection=False)
         pwd = random.RandomPassword("pwd",
             length=16,
@@ -994,29 +999,29 @@ class Stream(pulumi.CustomResource):
             display_name="Source connection profile",
             location="us-central1",
             connection_profile_id="source-profile",
-            mysql_profile=gcp.datastream.ConnectionProfileMysqlProfileArgs(
-                hostname=instance.public_ip_address,
-                username=user.name,
-                password=user.password,
-            ))
+            mysql_profile={
+                "hostname": instance.public_ip_address,
+                "username": user.name,
+                "password": user.password,
+            })
         default = gcp.datastream.Stream("default",
             display_name="postgres to bigQuery",
             location="us-central1",
             stream_id="postgres-bigquery",
-            source_config=gcp.datastream.StreamSourceConfigArgs(
-                source_connection_profile=source_connection_profile.id,
-                mysql_source_config=gcp.datastream.StreamSourceConfigMysqlSourceConfigArgs(),
-            ),
-            destination_config=gcp.datastream.StreamDestinationConfigArgs(
-                destination_connection_profile=destination_connection_profile2.id,
-                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
-                    data_freshness="900s",
-                    single_target_dataset=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs(
-                        dataset_id=postgres.id,
-                    ),
-                ),
-            ),
-            backfill_all=gcp.datastream.StreamBackfillAllArgs())
+            source_config={
+                "sourceConnectionProfile": source_connection_profile.id,
+                "mysqlSourceConfig": {},
+            },
+            destination_config={
+                "destinationConnectionProfile": destination_connection_profile2.id,
+                "bigqueryDestinationConfig": {
+                    "dataFreshness": "900s",
+                    "singleTargetDataset": {
+                        "datasetId": postgres.id,
+                    },
+                },
+            },
+            backfill_all={})
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
@@ -1033,32 +1038,32 @@ class Stream(pulumi.CustomResource):
             name="my-instance",
             database_version="MYSQL_8_0",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
-                    enabled=True,
-                    binary_log_enabled=True,
-                ),
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
-                    authorized_networks=[
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.71.242.81",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.28.29",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.6.157",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.234.134",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.239.218",
-                        ),
+            settings={
+                "tier": "db-f1-micro",
+                "backupConfiguration": {
+                    "enabled": True,
+                    "binaryLogEnabled": True,
+                },
+                "ipConfiguration": {
+                    "authorizedNetworks": [
+                        {
+                            "value": "34.71.242.81",
+                        },
+                        {
+                            "value": "34.72.28.29",
+                        },
+                        {
+                            "value": "34.67.6.157",
+                        },
+                        {
+                            "value": "34.67.234.134",
+                        },
+                        {
+                            "value": "34.72.239.218",
+                        },
                     ],
-                ),
-            ),
+                },
+            },
             deletion_protection=True)
         db = gcp.sql.Database("db",
             instance=instance.name,
@@ -1075,11 +1080,11 @@ class Stream(pulumi.CustomResource):
             display_name="Source connection profile",
             location="us-central1",
             connection_profile_id="source-profile",
-            mysql_profile=gcp.datastream.ConnectionProfileMysqlProfileArgs(
-                hostname=instance.public_ip_address,
-                username=user.name,
-                password=user.password,
-            ))
+            mysql_profile={
+                "hostname": instance.public_ip_address,
+                "username": user.name,
+                "password": user.password,
+            })
         bq_sa = gcp.bigquery.get_default_service_account()
         bigquery_key_user = gcp.kms.CryptoKeyIAMMember("bigquery_key_user",
             crypto_key_id="bigquery-kms-name",
@@ -1089,27 +1094,27 @@ class Stream(pulumi.CustomResource):
             display_name="Connection profile",
             location="us-central1",
             connection_profile_id="destination-profile",
-            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+            bigquery_profile={})
         default = gcp.datastream.Stream("default",
             stream_id="my-stream",
             location="us-central1",
             display_name="my stream",
-            source_config=gcp.datastream.StreamSourceConfigArgs(
-                source_connection_profile=source_connection_profile.id,
-                mysql_source_config=gcp.datastream.StreamSourceConfigMysqlSourceConfigArgs(),
-            ),
-            destination_config=gcp.datastream.StreamDestinationConfigArgs(
-                destination_connection_profile=destination_connection_profile.id,
-                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
-                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
-                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
-                            location="us-central1",
-                            kms_key_name="bigquery-kms-name",
-                        ),
-                    ),
-                ),
-            ),
-            backfill_none=gcp.datastream.StreamBackfillNoneArgs(),
+            source_config={
+                "sourceConnectionProfile": source_connection_profile.id,
+                "mysqlSourceConfig": {},
+            },
+            destination_config={
+                "destinationConnectionProfile": destination_connection_profile.id,
+                "bigqueryDestinationConfig": {
+                    "sourceHierarchyDatasets": {
+                        "datasetTemplate": {
+                            "location": "us-central1",
+                            "kmsKeyName": "bigquery-kms-name",
+                        },
+                    },
+                },
+            },
+            backfill_none={},
             opts = pulumi.ResourceOptions(depends_on=[bigquery_key_user]))
         ```
 
@@ -1139,19 +1144,19 @@ class Stream(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['StreamBackfillAllArgs']] backfill_all: Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
-        :param pulumi.Input[pulumi.InputType['StreamBackfillNoneArgs']] backfill_none: Backfill strategy to disable automatic backfill for the Stream's objects.
+        :param pulumi.Input[Union['StreamBackfillAllArgs', 'StreamBackfillAllArgsDict']] backfill_all: Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
+        :param pulumi.Input[Union['StreamBackfillNoneArgs', 'StreamBackfillNoneArgsDict']] backfill_none: Backfill strategy to disable automatic backfill for the Stream's objects.
         :param pulumi.Input[bool] create_without_validation: Create the stream without validating it.
         :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
                encrypted using an internal Stream-specific encryption key provisioned through KMS.
         :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
-        :param pulumi.Input[pulumi.InputType['StreamDestinationConfigArgs']] destination_config: Destination connection profile configuration.
+        :param pulumi.Input[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict']] destination_config: Destination connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
                refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this stream is located in.
-        :param pulumi.Input[pulumi.InputType['StreamSourceConfigArgs']] source_config: Source connection profile configuration.
+        :param pulumi.Input[Union['StreamSourceConfigArgs', 'StreamSourceConfigArgsDict']] source_config: Source connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[str] stream_id: The stream identifier.
         """
@@ -1184,32 +1189,32 @@ class Stream(pulumi.CustomResource):
             name="my-instance",
             database_version="MYSQL_8_0",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
-                    enabled=True,
-                    binary_log_enabled=True,
-                ),
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
-                    authorized_networks=[
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.71.242.81",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.28.29",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.6.157",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.234.134",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.239.218",
-                        ),
+            settings={
+                "tier": "db-f1-micro",
+                "backupConfiguration": {
+                    "enabled": True,
+                    "binaryLogEnabled": True,
+                },
+                "ipConfiguration": {
+                    "authorizedNetworks": [
+                        {
+                            "value": "34.71.242.81",
+                        },
+                        {
+                            "value": "34.72.28.29",
+                        },
+                        {
+                            "value": "34.67.6.157",
+                        },
+                        {
+                            "value": "34.67.234.134",
+                        },
+                        {
+                            "value": "34.72.239.218",
+                        },
                     ],
-                ),
-            ),
+                },
+            },
             deletion_protection=True)
         db = gcp.sql.Database("db",
             instance=instance.name,
@@ -1226,11 +1231,11 @@ class Stream(pulumi.CustomResource):
             display_name="Source connection profile",
             location="us-central1",
             connection_profile_id="source-profile",
-            mysql_profile=gcp.datastream.ConnectionProfileMysqlProfileArgs(
-                hostname=instance.public_ip_address,
-                username=user.name,
-                password=user.password,
-            ))
+            mysql_profile={
+                "hostname": instance.public_ip_address,
+                "username": user.name,
+                "password": user.password,
+            })
         bucket = gcp.storage.Bucket("bucket",
             name="my-bucket",
             location="US",
@@ -1255,10 +1260,10 @@ class Stream(pulumi.CustomResource):
             display_name="Connection profile",
             location="us-central1",
             connection_profile_id="destination-profile",
-            gcs_profile=gcp.datastream.ConnectionProfileGcsProfileArgs(
-                bucket=bucket.name,
-                root_path="/path",
-            ))
+            gcs_profile={
+                "bucket": bucket.name,
+                "rootPath": "/path",
+            })
         default = gcp.datastream.Stream("default",
             stream_id="my-stream",
             desired_state="NOT_STARTED",
@@ -1267,79 +1272,79 @@ class Stream(pulumi.CustomResource):
             labels={
                 "key": "value",
             },
-            source_config=gcp.datastream.StreamSourceConfigArgs(
-                source_connection_profile=source_connection_profile.id,
-                mysql_source_config=gcp.datastream.StreamSourceConfigMysqlSourceConfigArgs(
-                    include_objects=gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs(
-                        mysql_databases=[gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs(
-                            database="my-database",
-                            mysql_tables=[
-                                gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs(
-                                    table="includedTable",
-                                    mysql_columns=[gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs(
-                                        column="includedColumn",
-                                        data_type="VARCHAR",
-                                        collation="utf8mb4",
-                                        primary_key=False,
-                                        nullable=False,
-                                        ordinal_position=0,
-                                    )],
-                                ),
-                                gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs(
-                                    table="includedTable_2",
-                                ),
+            source_config={
+                "sourceConnectionProfile": source_connection_profile.id,
+                "mysqlSourceConfig": {
+                    "includeObjects": {
+                        "mysqlDatabases": [{
+                            "database": "my-database",
+                            "mysqlTables": [
+                                {
+                                    "table": "includedTable",
+                                    "mysqlColumns": [{
+                                        "column": "includedColumn",
+                                        "dataType": "VARCHAR",
+                                        "collation": "utf8mb4",
+                                        "primaryKey": False,
+                                        "nullable": False,
+                                        "ordinalPosition": 0,
+                                    }],
+                                },
+                                {
+                                    "table": "includedTable_2",
+                                },
                             ],
-                        )],
-                    ),
-                    exclude_objects=gcp.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs(
-                        mysql_databases=[gcp.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs(
-                            database="my-database",
-                            mysql_tables=[gcp.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs(
-                                table="excludedTable",
-                                mysql_columns=[gcp.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs(
-                                    column="excludedColumn",
-                                    data_type="VARCHAR",
-                                    collation="utf8mb4",
-                                    primary_key=False,
-                                    nullable=False,
-                                    ordinal_position=0,
-                                )],
-                            )],
-                        )],
-                    ),
-                    max_concurrent_cdc_tasks=5,
-                ),
-            ),
-            destination_config=gcp.datastream.StreamDestinationConfigArgs(
-                destination_connection_profile=destination_connection_profile.id,
-                gcs_destination_config=gcp.datastream.StreamDestinationConfigGcsDestinationConfigArgs(
-                    path="mydata",
-                    file_rotation_mb=200,
-                    file_rotation_interval="60s",
-                    json_file_format=gcp.datastream.StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs(
-                        schema_file_format="NO_SCHEMA_FILE",
-                        compression="GZIP",
-                    ),
-                ),
-            ),
-            backfill_all=gcp.datastream.StreamBackfillAllArgs(
-                mysql_excluded_objects=gcp.datastream.StreamBackfillAllMysqlExcludedObjectsArgs(
-                    mysql_databases=[gcp.datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs(
-                        database="my-database",
-                        mysql_tables=[gcp.datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs(
-                            table="excludedTable",
-                            mysql_columns=[gcp.datastream.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs(
-                                column="excludedColumn",
-                                data_type="VARCHAR",
-                                collation="utf8mb4",
-                                primary_key=False,
-                                nullable=False,
-                                ordinal_position=0,
-                            )],
-                        )],
-                    )],
-                ),
-            ),
+                        }],
+                    },
+                    "excludeObjects": {
+                        "mysqlDatabases": [{
+                            "database": "my-database",
+                            "mysqlTables": [{
+                                "table": "excludedTable",
+                                "mysqlColumns": [{
+                                    "column": "excludedColumn",
+                                    "dataType": "VARCHAR",
+                                    "collation": "utf8mb4",
+                                    "primaryKey": False,
+                                    "nullable": False,
+                                    "ordinalPosition": 0,
+                                }],
+                            }],
+                        }],
+                    },
+                    "maxConcurrentCdcTasks": 5,
+                },
+            },
+            destination_config={
+                "destinationConnectionProfile": destination_connection_profile.id,
+                "gcsDestinationConfig": {
+                    "path": "mydata",
+                    "fileRotationMb": 200,
+                    "fileRotationInterval": "60s",
+                    "jsonFileFormat": {
+                        "schemaFileFormat": "NO_SCHEMA_FILE",
+                        "compression": "GZIP",
+                    },
+                },
+            },
+            backfill_all={
+                "mysqlExcludedObjects": {
+                    "mysqlDatabases": [{
+                        "database": "my-database",
+                        "mysqlTables": [{
+                            "table": "excludedTable",
+                            "mysqlColumns": [{
+                                "column": "excludedColumn",
+                                "dataType": "VARCHAR",
+                                "collation": "utf8mb4",
+                                "primaryKey": False,
+                                "nullable": False,
+                                "ordinalPosition": 0,
+                            }],
+                        }],
+                    }],
+                },
+            },
             customer_managed_encryption_key="kms-name",
             opts = pulumi.ResourceOptions(depends_on=[key_user]))
         ```
@@ -1353,77 +1358,77 @@ class Stream(pulumi.CustomResource):
             display_name="Postgresql Source",
             location="us-central1",
             connection_profile_id="source-profile",
-            postgresql_profile=gcp.datastream.ConnectionProfilePostgresqlProfileArgs(
-                hostname="hostname",
-                port=3306,
-                username="user",
-                password="pass",
-                database="postgres",
-            ))
+            postgresql_profile={
+                "hostname": "hostname",
+                "port": 3306,
+                "username": "user",
+                "password": "pass",
+                "database": "postgres",
+            })
         destination = gcp.datastream.ConnectionProfile("destination",
             display_name="BigQuery Destination",
             location="us-central1",
             connection_profile_id="destination-profile",
-            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+            bigquery_profile={})
         default = gcp.datastream.Stream("default",
             display_name="Postgres to BigQuery",
             location="us-central1",
             stream_id="my-stream",
             desired_state="RUNNING",
-            source_config=gcp.datastream.StreamSourceConfigArgs(
-                source_connection_profile=source.id,
-                postgresql_source_config=gcp.datastream.StreamSourceConfigPostgresqlSourceConfigArgs(
-                    max_concurrent_backfill_tasks=12,
-                    publication="publication",
-                    replication_slot="replication_slot",
-                    include_objects=gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs(
-                        postgresql_schemas=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs(
-                            schema="schema",
-                            postgresql_tables=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs(
-                                table="table",
-                                postgresql_columns=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs(
-                                    column="column",
-                                )],
-                            )],
-                        )],
-                    ),
-                    exclude_objects=gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs(
-                        postgresql_schemas=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs(
-                            schema="schema",
-                            postgresql_tables=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs(
-                                table="table",
-                                postgresql_columns=[gcp.datastream.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs(
-                                    column="column",
-                                )],
-                            )],
-                        )],
-                    ),
-                ),
-            ),
-            destination_config=gcp.datastream.StreamDestinationConfigArgs(
-                destination_connection_profile=destination.id,
-                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
-                    data_freshness="900s",
-                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
-                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
-                            location="us-central1",
-                        ),
-                    ),
-                ),
-            ),
-            backfill_all=gcp.datastream.StreamBackfillAllArgs(
-                postgresql_excluded_objects=gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsArgs(
-                    postgresql_schemas=[gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs(
-                        schema="schema",
-                        postgresql_tables=[gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs(
-                            table="table",
-                            postgresql_columns=[gcp.datastream.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs(
-                                column="column",
-                            )],
-                        )],
-                    )],
-                ),
-            ))
+            source_config={
+                "sourceConnectionProfile": source.id,
+                "postgresqlSourceConfig": {
+                    "maxConcurrentBackfillTasks": 12,
+                    "publication": "publication",
+                    "replicationSlot": "replication_slot",
+                    "includeObjects": {
+                        "postgresqlSchemas": [{
+                            "schema": "schema",
+                            "postgresqlTables": [{
+                                "table": "table",
+                                "postgresqlColumns": [{
+                                    "column": "column",
+                                }],
+                            }],
+                        }],
+                    },
+                    "excludeObjects": {
+                        "postgresqlSchemas": [{
+                            "schema": "schema",
+                            "postgresqlTables": [{
+                                "table": "table",
+                                "postgresqlColumns": [{
+                                    "column": "column",
+                                }],
+                            }],
+                        }],
+                    },
+                },
+            },
+            destination_config={
+                "destinationConnectionProfile": destination.id,
+                "bigqueryDestinationConfig": {
+                    "dataFreshness": "900s",
+                    "sourceHierarchyDatasets": {
+                        "datasetTemplate": {
+                            "location": "us-central1",
+                        },
+                    },
+                },
+            },
+            backfill_all={
+                "postgresqlExcludedObjects": {
+                    "postgresqlSchemas": [{
+                        "schema": "schema",
+                        "postgresqlTables": [{
+                            "table": "table",
+                            "postgresqlColumns": [{
+                                "column": "column",
+                            }],
+                        }],
+                    }],
+                },
+            })
         ```
         ### Datastream Stream Oracle
 
@@ -1435,77 +1440,77 @@ class Stream(pulumi.CustomResource):
             display_name="Oracle Source",
             location="us-central1",
             connection_profile_id="source-profile",
-            oracle_profile=gcp.datastream.ConnectionProfileOracleProfileArgs(
-                hostname="hostname",
-                port=1521,
-                username="user",
-                password="pass",
-                database_service="ORCL",
-            ))
+            oracle_profile={
+                "hostname": "hostname",
+                "port": 1521,
+                "username": "user",
+                "password": "pass",
+                "databaseService": "ORCL",
+            })
         destination = gcp.datastream.ConnectionProfile("destination",
             display_name="BigQuery Destination",
             location="us-central1",
             connection_profile_id="destination-profile",
-            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+            bigquery_profile={})
         stream5 = gcp.datastream.Stream("stream5",
             display_name="Oracle to BigQuery",
             location="us-central1",
             stream_id="my-stream",
             desired_state="RUNNING",
-            source_config=gcp.datastream.StreamSourceConfigArgs(
-                source_connection_profile=source.id,
-                oracle_source_config=gcp.datastream.StreamSourceConfigOracleSourceConfigArgs(
-                    max_concurrent_cdc_tasks=8,
-                    max_concurrent_backfill_tasks=12,
-                    include_objects=gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsArgs(
-                        oracle_schemas=[gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs(
-                            schema="schema",
-                            oracle_tables=[gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs(
-                                table="table",
-                                oracle_columns=[gcp.datastream.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs(
-                                    column="column",
-                                )],
-                            )],
-                        )],
-                    ),
-                    exclude_objects=gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsArgs(
-                        oracle_schemas=[gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs(
-                            schema="schema",
-                            oracle_tables=[gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs(
-                                table="table",
-                                oracle_columns=[gcp.datastream.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs(
-                                    column="column",
-                                )],
-                            )],
-                        )],
-                    ),
-                    drop_large_objects=gcp.datastream.StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs(),
-                ),
-            ),
-            destination_config=gcp.datastream.StreamDestinationConfigArgs(
-                destination_connection_profile=destination.id,
-                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
-                    data_freshness="900s",
-                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
-                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
-                            location="us-central1",
-                        ),
-                    ),
-                ),
-            ),
-            backfill_all=gcp.datastream.StreamBackfillAllArgs(
-                oracle_excluded_objects=gcp.datastream.StreamBackfillAllOracleExcludedObjectsArgs(
-                    oracle_schemas=[gcp.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs(
-                        schema="schema",
-                        oracle_tables=[gcp.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs(
-                            table="table",
-                            oracle_columns=[gcp.datastream.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs(
-                                column="column",
-                            )],
-                        )],
-                    )],
-                ),
-            ))
+            source_config={
+                "sourceConnectionProfile": source.id,
+                "oracleSourceConfig": {
+                    "maxConcurrentCdcTasks": 8,
+                    "maxConcurrentBackfillTasks": 12,
+                    "includeObjects": {
+                        "oracleSchemas": [{
+                            "schema": "schema",
+                            "oracleTables": [{
+                                "table": "table",
+                                "oracleColumns": [{
+                                    "column": "column",
+                                }],
+                            }],
+                        }],
+                    },
+                    "excludeObjects": {
+                        "oracleSchemas": [{
+                            "schema": "schema",
+                            "oracleTables": [{
+                                "table": "table",
+                                "oracleColumns": [{
+                                    "column": "column",
+                                }],
+                            }],
+                        }],
+                    },
+                    "dropLargeObjects": {},
+                },
+            },
+            destination_config={
+                "destinationConnectionProfile": destination.id,
+                "bigqueryDestinationConfig": {
+                    "dataFreshness": "900s",
+                    "sourceHierarchyDatasets": {
+                        "datasetTemplate": {
+                            "location": "us-central1",
+                        },
+                    },
+                },
+            },
+            backfill_all={
+                "oracleExcludedObjects": {
+                    "oracleSchemas": [{
+                        "schema": "schema",
+                        "oracleTables": [{
+                            "table": "table",
+                            "oracleColumns": [{
+                                "column": "column",
+                            }],
+                        }],
+                    }],
+                },
+            })
         ```
         ### Datastream Stream Sql Server
 
@@ -1519,28 +1524,28 @@ class Stream(pulumi.CustomResource):
             region="us-central1",
             root_password="root-password",
             deletion_protection=True,
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-custom-2-4096",
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
-                    authorized_networks=[
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.71.242.81",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.28.29",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.6.157",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.234.134",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.239.218",
-                        ),
+            settings={
+                "tier": "db-custom-2-4096",
+                "ipConfiguration": {
+                    "authorizedNetworks": [
+                        {
+                            "value": "34.71.242.81",
+                        },
+                        {
+                            "value": "34.72.28.29",
+                        },
+                        {
+                            "value": "34.67.6.157",
+                        },
+                        {
+                            "value": "34.67.234.134",
+                        },
+                        {
+                            "value": "34.72.239.218",
+                        },
                     ],
-                ),
-            ))
+                },
+            })
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
@@ -1553,47 +1558,47 @@ class Stream(pulumi.CustomResource):
             display_name="SQL Server Source",
             location="us-central1",
             connection_profile_id="source-profile",
-            sql_server_profile=gcp.datastream.ConnectionProfileSqlServerProfileArgs(
-                hostname=instance.public_ip_address,
-                port=1433,
-                username=user.name,
-                password=user.password,
-                database=db.name,
-            ))
+            sql_server_profile={
+                "hostname": instance.public_ip_address,
+                "port": 1433,
+                "username": user.name,
+                "password": user.password,
+                "database": db.name,
+            })
         destination = gcp.datastream.ConnectionProfile("destination",
             display_name="BigQuery Destination",
             location="us-central1",
             connection_profile_id="destination-profile",
-            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+            bigquery_profile={})
         default = gcp.datastream.Stream("default",
             display_name="SQL Server to BigQuery",
             location="us-central1",
             stream_id="stream",
-            source_config=gcp.datastream.StreamSourceConfigArgs(
-                source_connection_profile=source.id,
-                sql_server_source_config=gcp.datastream.StreamSourceConfigSqlServerSourceConfigArgs(
-                    include_objects=gcp.datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs(
-                        schemas=[gcp.datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs(
-                            schema="schema",
-                            tables=[gcp.datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs(
-                                table="table",
-                            )],
-                        )],
-                    ),
-                ),
-            ),
-            destination_config=gcp.datastream.StreamDestinationConfigArgs(
-                destination_connection_profile=destination.id,
-                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
-                    data_freshness="900s",
-                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
-                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
-                            location="us-central1",
-                        ),
-                    ),
-                ),
-            ),
-            backfill_none=gcp.datastream.StreamBackfillNoneArgs())
+            source_config={
+                "sourceConnectionProfile": source.id,
+                "sqlServerSourceConfig": {
+                    "includeObjects": {
+                        "schemas": [{
+                            "schema": "schema",
+                            "tables": [{
+                                "table": "table",
+                            }],
+                        }],
+                    },
+                },
+            },
+            destination_config={
+                "destinationConnectionProfile": destination.id,
+                "bigqueryDestinationConfig": {
+                    "dataFreshness": "900s",
+                    "sourceHierarchyDatasets": {
+                        "datasetTemplate": {
+                            "location": "us-central1",
+                        },
+                    },
+                },
+            },
+            backfill_none={})
         ```
         ### Datastream Stream Postgresql Bigquery Dataset Id
 
@@ -1611,37 +1616,37 @@ class Stream(pulumi.CustomResource):
             display_name="Connection profile",
             location="us-central1",
             connection_profile_id="dest-profile",
-            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+            bigquery_profile={})
         instance = gcp.sql.DatabaseInstance("instance",
             name="instance-name",
             database_version="MYSQL_8_0",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
-                    enabled=True,
-                    binary_log_enabled=True,
-                ),
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
-                    authorized_networks=[
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.71.242.81",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.28.29",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.6.157",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.234.134",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.239.218",
-                        ),
+            settings={
+                "tier": "db-f1-micro",
+                "backupConfiguration": {
+                    "enabled": True,
+                    "binaryLogEnabled": True,
+                },
+                "ipConfiguration": {
+                    "authorizedNetworks": [
+                        {
+                            "value": "34.71.242.81",
+                        },
+                        {
+                            "value": "34.72.28.29",
+                        },
+                        {
+                            "value": "34.67.6.157",
+                        },
+                        {
+                            "value": "34.67.234.134",
+                        },
+                        {
+                            "value": "34.72.239.218",
+                        },
                     ],
-                ),
-            ),
+                },
+            },
             deletion_protection=False)
         pwd = random.RandomPassword("pwd",
             length=16,
@@ -1655,29 +1660,29 @@ class Stream(pulumi.CustomResource):
             display_name="Source connection profile",
             location="us-central1",
             connection_profile_id="source-profile",
-            mysql_profile=gcp.datastream.ConnectionProfileMysqlProfileArgs(
-                hostname=instance.public_ip_address,
-                username=user.name,
-                password=user.password,
-            ))
+            mysql_profile={
+                "hostname": instance.public_ip_address,
+                "username": user.name,
+                "password": user.password,
+            })
         default = gcp.datastream.Stream("default",
             display_name="postgres to bigQuery",
             location="us-central1",
             stream_id="postgres-bigquery",
-            source_config=gcp.datastream.StreamSourceConfigArgs(
-                source_connection_profile=source_connection_profile.id,
-                mysql_source_config=gcp.datastream.StreamSourceConfigMysqlSourceConfigArgs(),
-            ),
-            destination_config=gcp.datastream.StreamDestinationConfigArgs(
-                destination_connection_profile=destination_connection_profile2.id,
-                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
-                    data_freshness="900s",
-                    single_target_dataset=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs(
-                        dataset_id=postgres.id,
-                    ),
-                ),
-            ),
-            backfill_all=gcp.datastream.StreamBackfillAllArgs())
+            source_config={
+                "sourceConnectionProfile": source_connection_profile.id,
+                "mysqlSourceConfig": {},
+            },
+            destination_config={
+                "destinationConnectionProfile": destination_connection_profile2.id,
+                "bigqueryDestinationConfig": {
+                    "dataFreshness": "900s",
+                    "singleTargetDataset": {
+                        "datasetId": postgres.id,
+                    },
+                },
+            },
+            backfill_all={})
         db = gcp.sql.Database("db",
             instance=instance.name,
             name="db")
@@ -1694,32 +1699,32 @@ class Stream(pulumi.CustomResource):
             name="my-instance",
             database_version="MYSQL_8_0",
             region="us-central1",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
-                    enabled=True,
-                    binary_log_enabled=True,
-                ),
-                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
-                    authorized_networks=[
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.71.242.81",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.28.29",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.6.157",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.67.234.134",
-                        ),
-                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
-                            value="34.72.239.218",
-                        ),
+            settings={
+                "tier": "db-f1-micro",
+                "backupConfiguration": {
+                    "enabled": True,
+                    "binaryLogEnabled": True,
+                },
+                "ipConfiguration": {
+                    "authorizedNetworks": [
+                        {
+                            "value": "34.71.242.81",
+                        },
+                        {
+                            "value": "34.72.28.29",
+                        },
+                        {
+                            "value": "34.67.6.157",
+                        },
+                        {
+                            "value": "34.67.234.134",
+                        },
+                        {
+                            "value": "34.72.239.218",
+                        },
                     ],
-                ),
-            ),
+                },
+            },
             deletion_protection=True)
         db = gcp.sql.Database("db",
             instance=instance.name,
@@ -1736,11 +1741,11 @@ class Stream(pulumi.CustomResource):
             display_name="Source connection profile",
             location="us-central1",
             connection_profile_id="source-profile",
-            mysql_profile=gcp.datastream.ConnectionProfileMysqlProfileArgs(
-                hostname=instance.public_ip_address,
-                username=user.name,
-                password=user.password,
-            ))
+            mysql_profile={
+                "hostname": instance.public_ip_address,
+                "username": user.name,
+                "password": user.password,
+            })
         bq_sa = gcp.bigquery.get_default_service_account()
         bigquery_key_user = gcp.kms.CryptoKeyIAMMember("bigquery_key_user",
             crypto_key_id="bigquery-kms-name",
@@ -1750,27 +1755,27 @@ class Stream(pulumi.CustomResource):
             display_name="Connection profile",
             location="us-central1",
             connection_profile_id="destination-profile",
-            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+            bigquery_profile={})
         default = gcp.datastream.Stream("default",
             stream_id="my-stream",
             location="us-central1",
             display_name="my stream",
-            source_config=gcp.datastream.StreamSourceConfigArgs(
-                source_connection_profile=source_connection_profile.id,
-                mysql_source_config=gcp.datastream.StreamSourceConfigMysqlSourceConfigArgs(),
-            ),
-            destination_config=gcp.datastream.StreamDestinationConfigArgs(
-                destination_connection_profile=destination_connection_profile.id,
-                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
-                    source_hierarchy_datasets=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs(
-                        dataset_template=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs(
-                            location="us-central1",
-                            kms_key_name="bigquery-kms-name",
-                        ),
-                    ),
-                ),
-            ),
-            backfill_none=gcp.datastream.StreamBackfillNoneArgs(),
+            source_config={
+                "sourceConnectionProfile": source_connection_profile.id,
+                "mysqlSourceConfig": {},
+            },
+            destination_config={
+                "destinationConnectionProfile": destination_connection_profile.id,
+                "bigqueryDestinationConfig": {
+                    "sourceHierarchyDatasets": {
+                        "datasetTemplate": {
+                            "location": "us-central1",
+                            "kmsKeyName": "bigquery-kms-name",
+                        },
+                    },
+                },
+            },
+            backfill_none={},
             opts = pulumi.ResourceOptions(depends_on=[bigquery_key_user]))
         ```
 
@@ -1813,17 +1818,17 @@ class Stream(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backfill_all: Optional[pulumi.Input[pulumi.InputType['StreamBackfillAllArgs']]] = None,
-                 backfill_none: Optional[pulumi.Input[pulumi.InputType['StreamBackfillNoneArgs']]] = None,
+                 backfill_all: Optional[pulumi.Input[Union['StreamBackfillAllArgs', 'StreamBackfillAllArgsDict']]] = None,
+                 backfill_none: Optional[pulumi.Input[Union['StreamBackfillNoneArgs', 'StreamBackfillNoneArgsDict']]] = None,
                  create_without_validation: Optional[pulumi.Input[bool]] = None,
                  customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
                  desired_state: Optional[pulumi.Input[str]] = None,
-                 destination_config: Optional[pulumi.Input[pulumi.InputType['StreamDestinationConfigArgs']]] = None,
+                 destination_config: Optional[pulumi.Input[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 source_config: Optional[pulumi.Input[pulumi.InputType['StreamSourceConfigArgs']]] = None,
+                 source_config: Optional[pulumi.Input[Union['StreamSourceConfigArgs', 'StreamSourceConfigArgsDict']]] = None,
                  stream_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1872,12 +1877,12 @@ class Stream(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backfill_all: Optional[pulumi.Input[pulumi.InputType['StreamBackfillAllArgs']]] = None,
-            backfill_none: Optional[pulumi.Input[pulumi.InputType['StreamBackfillNoneArgs']]] = None,
+            backfill_all: Optional[pulumi.Input[Union['StreamBackfillAllArgs', 'StreamBackfillAllArgsDict']]] = None,
+            backfill_none: Optional[pulumi.Input[Union['StreamBackfillNoneArgs', 'StreamBackfillNoneArgsDict']]] = None,
             create_without_validation: Optional[pulumi.Input[bool]] = None,
             customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
             desired_state: Optional[pulumi.Input[str]] = None,
-            destination_config: Optional[pulumi.Input[pulumi.InputType['StreamDestinationConfigArgs']]] = None,
+            destination_config: Optional[pulumi.Input[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1885,7 +1890,7 @@ class Stream(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            source_config: Optional[pulumi.Input[pulumi.InputType['StreamSourceConfigArgs']]] = None,
+            source_config: Optional[pulumi.Input[Union['StreamSourceConfigArgs', 'StreamSourceConfigArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             stream_id: Optional[pulumi.Input[str]] = None) -> 'Stream':
         """
@@ -1895,13 +1900,13 @@ class Stream(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['StreamBackfillAllArgs']] backfill_all: Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
-        :param pulumi.Input[pulumi.InputType['StreamBackfillNoneArgs']] backfill_none: Backfill strategy to disable automatic backfill for the Stream's objects.
+        :param pulumi.Input[Union['StreamBackfillAllArgs', 'StreamBackfillAllArgsDict']] backfill_all: Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
+        :param pulumi.Input[Union['StreamBackfillNoneArgs', 'StreamBackfillNoneArgsDict']] backfill_none: Backfill strategy to disable automatic backfill for the Stream's objects.
         :param pulumi.Input[bool] create_without_validation: Create the stream without validating it.
         :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
                encrypted using an internal Stream-specific encryption key provisioned through KMS.
         :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
-        :param pulumi.Input[pulumi.InputType['StreamDestinationConfigArgs']] destination_config: Destination connection profile configuration.
+        :param pulumi.Input[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict']] destination_config: Destination connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1911,7 +1916,7 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[str] name: The stream's name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['StreamSourceConfigArgs']] source_config: Source connection profile configuration.
+        :param pulumi.Input[Union['StreamSourceConfigArgs', 'StreamSourceConfigArgsDict']] source_config: Source connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[str] state: The state of the stream.
         :param pulumi.Input[str] stream_id: The stream identifier.

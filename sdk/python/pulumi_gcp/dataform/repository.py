@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -397,14 +402,14 @@ class Repository(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 git_remote_settings: Optional[pulumi.Input[pulumi.InputType['RepositoryGitRemoteSettingsArgs']]] = None,
+                 git_remote_settings: Optional[pulumi.Input[Union['RepositoryGitRemoteSettingsArgs', 'RepositoryGitRemoteSettingsArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 workspace_compilation_overrides: Optional[pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArgs']]] = None,
+                 workspace_compilation_overrides: Optional[pulumi.Input[Union['RepositoryWorkspaceCompilationOverridesArgs', 'RepositoryWorkspaceCompilationOverridesArgsDict']]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -417,9 +422,9 @@ class Repository(pulumi.CustomResource):
 
         secret = gcp.secretmanager.Secret("secret",
             secret_id="my-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         secret_version = gcp.secretmanager.SecretVersion("secret_version",
             secret=secret.id,
             secret_data="secret-data")
@@ -430,16 +435,16 @@ class Repository(pulumi.CustomResource):
             labels={
                 "label_foo1": "label-bar1",
             },
-            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
-                url="https://github.com/OWNER/REPOSITORY.git",
-                default_branch="main",
-                authentication_token_secret_version=secret_version.id,
-            ),
-            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
-                default_database="database",
-                schema_suffix="_suffix",
-                table_prefix="prefix_",
-            ))
+            git_remote_settings={
+                "url": "https://github.com/OWNER/REPOSITORY.git",
+                "defaultBranch": "main",
+                "authenticationTokenSecretVersion": secret_version.id,
+            },
+            workspace_compilation_overrides={
+                "defaultDatabase": "database",
+                "schemaSuffix": "_suffix",
+                "tablePrefix": "prefix_",
+            })
         ```
 
         ## Import
@@ -475,7 +480,7 @@ class Repository(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Optional. The repository's user-friendly name.
-        :param pulumi.Input[pulumi.InputType['RepositoryGitRemoteSettingsArgs']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
+        :param pulumi.Input[Union['RepositoryGitRemoteSettingsArgs', 'RepositoryGitRemoteSettingsArgsDict']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Repository user labels.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -491,7 +496,7 @@ class Repository(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
         :param pulumi.Input[str] service_account: The service account to run workflow invocations under.
-        :param pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArgs']] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        :param pulumi.Input[Union['RepositoryWorkspaceCompilationOverridesArgs', 'RepositoryWorkspaceCompilationOverridesArgsDict']] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
                Structure is documented below.
         """
         ...
@@ -511,9 +516,9 @@ class Repository(pulumi.CustomResource):
 
         secret = gcp.secretmanager.Secret("secret",
             secret_id="my-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
+            replication={
+                "auto": {},
+            })
         secret_version = gcp.secretmanager.SecretVersion("secret_version",
             secret=secret.id,
             secret_data="secret-data")
@@ -524,16 +529,16 @@ class Repository(pulumi.CustomResource):
             labels={
                 "label_foo1": "label-bar1",
             },
-            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
-                url="https://github.com/OWNER/REPOSITORY.git",
-                default_branch="main",
-                authentication_token_secret_version=secret_version.id,
-            ),
-            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
-                default_database="database",
-                schema_suffix="_suffix",
-                table_prefix="prefix_",
-            ))
+            git_remote_settings={
+                "url": "https://github.com/OWNER/REPOSITORY.git",
+                "defaultBranch": "main",
+                "authenticationTokenSecretVersion": secret_version.id,
+            },
+            workspace_compilation_overrides={
+                "defaultDatabase": "database",
+                "schemaSuffix": "_suffix",
+                "tablePrefix": "prefix_",
+            })
         ```
 
         ## Import
@@ -582,14 +587,14 @@ class Repository(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 git_remote_settings: Optional[pulumi.Input[pulumi.InputType['RepositoryGitRemoteSettingsArgs']]] = None,
+                 git_remote_settings: Optional[pulumi.Input[Union['RepositoryGitRemoteSettingsArgs', 'RepositoryGitRemoteSettingsArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 workspace_compilation_overrides: Optional[pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArgs']]] = None,
+                 workspace_compilation_overrides: Optional[pulumi.Input[Union['RepositoryWorkspaceCompilationOverridesArgs', 'RepositoryWorkspaceCompilationOverridesArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -624,7 +629,7 @@ class Repository(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            git_remote_settings: Optional[pulumi.Input[pulumi.InputType['RepositoryGitRemoteSettingsArgs']]] = None,
+            git_remote_settings: Optional[pulumi.Input[Union['RepositoryGitRemoteSettingsArgs', 'RepositoryGitRemoteSettingsArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
@@ -632,7 +637,7 @@ class Repository(pulumi.CustomResource):
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
-            workspace_compilation_overrides: Optional[pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArgs']]] = None) -> 'Repository':
+            workspace_compilation_overrides: Optional[pulumi.Input[Union['RepositoryWorkspaceCompilationOverridesArgs', 'RepositoryWorkspaceCompilationOverridesArgsDict']]] = None) -> 'Repository':
         """
         Get an existing Repository resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -642,7 +647,7 @@ class Repository(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Optional. The repository's user-friendly name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['RepositoryGitRemoteSettingsArgs']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
+        :param pulumi.Input[Union['RepositoryGitRemoteSettingsArgs', 'RepositoryGitRemoteSettingsArgsDict']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Repository user labels.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -660,7 +665,7 @@ class Repository(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[str] region: A reference to the region
         :param pulumi.Input[str] service_account: The service account to run workflow invocations under.
-        :param pulumi.Input[pulumi.InputType['RepositoryWorkspaceCompilationOverridesArgs']] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        :param pulumi.Input[Union['RepositoryWorkspaceCompilationOverridesArgs', 'RepositoryWorkspaceCompilationOverridesArgsDict']] workspace_compilation_overrides: If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

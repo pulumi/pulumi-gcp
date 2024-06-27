@@ -4,49 +4,105 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'BitbucketServerConfigConnectedRepositoryArgs',
+    'BitbucketServerConfigConnectedRepositoryArgsDict',
     'BitbucketServerConfigSecretsArgs',
+    'BitbucketServerConfigSecretsArgsDict',
     'TriggerApprovalConfigArgs',
+    'TriggerApprovalConfigArgsDict',
     'TriggerBitbucketServerTriggerConfigArgs',
+    'TriggerBitbucketServerTriggerConfigArgsDict',
     'TriggerBitbucketServerTriggerConfigPullRequestArgs',
+    'TriggerBitbucketServerTriggerConfigPullRequestArgsDict',
     'TriggerBitbucketServerTriggerConfigPushArgs',
+    'TriggerBitbucketServerTriggerConfigPushArgsDict',
     'TriggerBuildArgs',
+    'TriggerBuildArgsDict',
     'TriggerBuildArtifactsArgs',
+    'TriggerBuildArtifactsArgsDict',
     'TriggerBuildArtifactsMavenArtifactArgs',
+    'TriggerBuildArtifactsMavenArtifactArgsDict',
     'TriggerBuildArtifactsNpmPackageArgs',
+    'TriggerBuildArtifactsNpmPackageArgsDict',
     'TriggerBuildArtifactsObjectsArgs',
+    'TriggerBuildArtifactsObjectsArgsDict',
     'TriggerBuildArtifactsObjectsTimingArgs',
+    'TriggerBuildArtifactsObjectsTimingArgsDict',
     'TriggerBuildArtifactsPythonPackageArgs',
+    'TriggerBuildArtifactsPythonPackageArgsDict',
     'TriggerBuildAvailableSecretsArgs',
+    'TriggerBuildAvailableSecretsArgsDict',
     'TriggerBuildAvailableSecretsSecretManagerArgs',
+    'TriggerBuildAvailableSecretsSecretManagerArgsDict',
     'TriggerBuildOptionsArgs',
+    'TriggerBuildOptionsArgsDict',
     'TriggerBuildOptionsVolumeArgs',
+    'TriggerBuildOptionsVolumeArgsDict',
     'TriggerBuildSecretArgs',
+    'TriggerBuildSecretArgsDict',
     'TriggerBuildSourceArgs',
+    'TriggerBuildSourceArgsDict',
     'TriggerBuildSourceRepoSourceArgs',
+    'TriggerBuildSourceRepoSourceArgsDict',
     'TriggerBuildSourceStorageSourceArgs',
+    'TriggerBuildSourceStorageSourceArgsDict',
     'TriggerBuildStepArgs',
+    'TriggerBuildStepArgsDict',
     'TriggerBuildStepVolumeArgs',
+    'TriggerBuildStepVolumeArgsDict',
     'TriggerGitFileSourceArgs',
+    'TriggerGitFileSourceArgsDict',
     'TriggerGithubArgs',
+    'TriggerGithubArgsDict',
     'TriggerGithubPullRequestArgs',
+    'TriggerGithubPullRequestArgsDict',
     'TriggerGithubPushArgs',
+    'TriggerGithubPushArgsDict',
     'TriggerPubsubConfigArgs',
+    'TriggerPubsubConfigArgsDict',
     'TriggerRepositoryEventConfigArgs',
+    'TriggerRepositoryEventConfigArgsDict',
     'TriggerRepositoryEventConfigPullRequestArgs',
+    'TriggerRepositoryEventConfigPullRequestArgsDict',
     'TriggerRepositoryEventConfigPushArgs',
+    'TriggerRepositoryEventConfigPushArgsDict',
     'TriggerSourceToBuildArgs',
+    'TriggerSourceToBuildArgsDict',
     'TriggerTriggerTemplateArgs',
+    'TriggerTriggerTemplateArgsDict',
     'TriggerWebhookConfigArgs',
+    'TriggerWebhookConfigArgsDict',
     'WorkerPoolNetworkConfigArgs',
+    'WorkerPoolNetworkConfigArgsDict',
     'WorkerPoolWorkerConfigArgs',
+    'WorkerPoolWorkerConfigArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class BitbucketServerConfigConnectedRepositoryArgsDict(TypedDict):
+        project_key: pulumi.Input[str]
+        """
+        Identifier for the project storing the repository.
+        """
+        repo_slug: pulumi.Input[str]
+        """
+        Identifier for the repository.
+        """
+elif False:
+    BitbucketServerConfigConnectedRepositoryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BitbucketServerConfigConnectedRepositoryArgs:
@@ -84,6 +140,26 @@ class BitbucketServerConfigConnectedRepositoryArgs:
     def repo_slug(self, value: pulumi.Input[str]):
         pulumi.set(self, "repo_slug", value)
 
+
+if not MYPY:
+    class BitbucketServerConfigSecretsArgsDict(TypedDict):
+        admin_access_token_version_name: pulumi.Input[str]
+        """
+        The resource name for the admin access token's secret version.
+        """
+        read_access_token_version_name: pulumi.Input[str]
+        """
+        The resource name for the read access token's secret version.
+        """
+        webhook_secret_version_name: pulumi.Input[str]
+        """
+        Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
+        Changing this field will result in deleting/ recreating the resource.
+
+        - - -
+        """
+elif False:
+    BitbucketServerConfigSecretsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BitbucketServerConfigSecretsArgs:
@@ -143,6 +219,16 @@ class BitbucketServerConfigSecretsArgs:
         pulumi.set(self, "webhook_secret_version_name", value)
 
 
+if not MYPY:
+    class TriggerApprovalConfigArgsDict(TypedDict):
+        approval_required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not approval is needed. If this is set on a build, it will become pending when run,
+        and will need to be explicitly approved to start.
+        """
+elif False:
+    TriggerApprovalConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerApprovalConfigArgs:
     def __init__(__self__, *,
@@ -167,6 +253,34 @@ class TriggerApprovalConfigArgs:
     def approval_required(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "approval_required", value)
 
+
+if not MYPY:
+    class TriggerBitbucketServerTriggerConfigArgsDict(TypedDict):
+        bitbucket_server_config_resource: pulumi.Input[str]
+        """
+        The Bitbucket server config resource that this trigger config maps to.
+        """
+        project_key: pulumi.Input[str]
+        """
+        Key of the project that the repo is in. For example: The key for https://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+        """
+        repo_slug: pulumi.Input[str]
+        """
+        Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL.
+        For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in https://mybitbucket.server/projects/TEST/repos/test-repo.
+        """
+        pull_request: NotRequired[pulumi.Input['TriggerBitbucketServerTriggerConfigPullRequestArgsDict']]
+        """
+        Filter to match changes in pull requests.
+        Structure is documented below.
+        """
+        push: NotRequired[pulumi.Input['TriggerBitbucketServerTriggerConfigPushArgsDict']]
+        """
+        Filter to match changes in refs like branches, tags.
+        Structure is documented below.
+        """
+elif False:
+    TriggerBitbucketServerTriggerConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TriggerBitbucketServerTriggerConfigArgs:
@@ -258,6 +372,25 @@ class TriggerBitbucketServerTriggerConfigArgs:
         pulumi.set(self, "push", value)
 
 
+if not MYPY:
+    class TriggerBitbucketServerTriggerConfigPullRequestArgsDict(TypedDict):
+        branch: pulumi.Input[str]
+        """
+        Regex of branches to match.
+        The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+        """
+        comment_control: NotRequired[pulumi.Input[str]]
+        """
+        Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+        Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+        """
+        invert_regex: NotRequired[pulumi.Input[bool]]
+        """
+        If true, branches that do NOT match the git_ref will trigger a build.
+        """
+elif False:
+    TriggerBitbucketServerTriggerConfigPullRequestArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerBitbucketServerTriggerConfigPullRequestArgs:
     def __init__(__self__, *,
@@ -316,6 +449,23 @@ class TriggerBitbucketServerTriggerConfigPullRequestArgs:
         pulumi.set(self, "invert_regex", value)
 
 
+if not MYPY:
+    class TriggerBitbucketServerTriggerConfigPushArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        Regex of branches to match.  Specify only one of branch or tag.
+        """
+        invert_regex: NotRequired[pulumi.Input[bool]]
+        """
+        When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        Regex of tags to match.  Specify only one of branch or tag.
+        """
+elif False:
+    TriggerBitbucketServerTriggerConfigPushArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerBitbucketServerTriggerConfigPushArgs:
     def __init__(__self__, *,
@@ -370,6 +520,77 @@ class TriggerBitbucketServerTriggerConfigPushArgs:
     def tag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tag", value)
 
+
+if not MYPY:
+    class TriggerBuildArgsDict(TypedDict):
+        steps: pulumi.Input[Sequence[pulumi.Input['TriggerBuildStepArgsDict']]]
+        """
+        The operations to be performed on the workspace.
+        Structure is documented below.
+        """
+        artifacts: NotRequired[pulumi.Input['TriggerBuildArtifactsArgsDict']]
+        """
+        Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+        Structure is documented below.
+        """
+        available_secrets: NotRequired[pulumi.Input['TriggerBuildAvailableSecretsArgsDict']]
+        """
+        Secrets and secret environment variables.
+        Structure is documented below.
+        """
+        images: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of images to be pushed upon the successful completion of all build steps.
+        The images are pushed using the builder service account's credentials.
+        The digests of the pushed images will be stored in the Build resource's results field.
+        If any of the images fail to be pushed, the build status is marked FAILURE.
+        """
+        logs_bucket: NotRequired[pulumi.Input[str]]
+        """
+        Google Cloud Storage bucket where logs should be written.
+        Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
+        """
+        options: NotRequired[pulumi.Input['TriggerBuildOptionsArgsDict']]
+        """
+        Special options for this build.
+        Structure is documented below.
+        """
+        queue_ttl: NotRequired[pulumi.Input[str]]
+        """
+        TTL in queue for this build. If provided and the build is enqueued longer than this value,
+        the build will expire and the build status will be EXPIRED.
+        The TTL starts ticking from createTime.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        secrets: NotRequired[pulumi.Input[Sequence[pulumi.Input['TriggerBuildSecretArgsDict']]]]
+        """
+        Secrets to decrypt using Cloud Key Management Service.
+        Structure is documented below.
+        """
+        source: NotRequired[pulumi.Input['TriggerBuildSourceArgsDict']]
+        """
+        The location of the source files to build.
+        One of `storageSource` or `repoSource` must be provided.
+        Structure is documented below.
+        """
+        substitutions: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Substitutions data for Build resource.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Tags for annotation of a Build. These are not docker tags.
+        """
+        timeout: NotRequired[pulumi.Input[str]]
+        """
+        Amount of time that this build should be allowed to run, to second granularity.
+        If this amount of time elapses, work on the build will cease and the build status will be TIMEOUT.
+        This timeout must be equal to or greater than the sum of the timeouts for build steps within the build.
+        The expected format is the number of seconds followed by s.
+        Default time is ten minutes (600s).
+        """
+elif False:
+    TriggerBuildArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TriggerBuildArgs:
@@ -605,6 +826,48 @@ class TriggerBuildArgs:
         pulumi.set(self, "timeout", value)
 
 
+if not MYPY:
+    class TriggerBuildArtifactsArgsDict(TypedDict):
+        images: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of images to be pushed upon the successful completion of all build steps.
+        The images will be pushed using the builder service account's credentials.
+        The digests of the pushed images will be stored in the Build resource's results field.
+        If any of the images fail to be pushed, the build is marked FAILURE.
+        """
+        maven_artifacts: NotRequired[pulumi.Input[Sequence[pulumi.Input['TriggerBuildArtifactsMavenArtifactArgsDict']]]]
+        """
+        A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+        The location and generation of the uploaded objects will be stored in the Build resource's results field.
+        If any objects fail to be pushed, the build is marked FAILURE.
+        Structure is documented below.
+        """
+        npm_packages: NotRequired[pulumi.Input[Sequence[pulumi.Input['TriggerBuildArtifactsNpmPackageArgsDict']]]]
+        """
+        Npm package to upload to Artifact Registry upon successful completion of all build steps.
+        The location and generation of the uploaded objects will be stored in the Build resource's results field.
+        If any objects fail to be pushed, the build is marked FAILURE.
+        Structure is documented below.
+        """
+        objects: NotRequired[pulumi.Input['TriggerBuildArtifactsObjectsArgsDict']]
+        """
+        A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
+        Files in the workspace matching specified paths globs will be uploaded to the
+        Cloud Storage location using the builder service account's credentials.
+        The location and generation of the uploaded objects will be stored in the Build resource's results field.
+        If any objects fail to be pushed, the build is marked FAILURE.
+        Structure is documented below.
+        """
+        python_packages: NotRequired[pulumi.Input[Sequence[pulumi.Input['TriggerBuildArtifactsPythonPackageArgsDict']]]]
+        """
+        Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+        The location and generation of the uploaded objects will be stored in the Build resource's results field.
+        If any objects fail to be pushed, the build is marked FAILURE.
+        Structure is documented below.
+        """
+elif False:
+    TriggerBuildArtifactsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerBuildArtifactsArgs:
     def __init__(__self__, *,
@@ -726,6 +989,32 @@ class TriggerBuildArtifactsArgs:
         pulumi.set(self, "python_packages", value)
 
 
+if not MYPY:
+    class TriggerBuildArtifactsMavenArtifactArgsDict(TypedDict):
+        artifact_id: NotRequired[pulumi.Input[str]]
+        """
+        Maven artifactId value used when uploading the artifact to Artifact Registry.
+        """
+        group_id: NotRequired[pulumi.Input[str]]
+        """
+        Maven groupId value used when uploading the artifact to Artifact Registry.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+        """
+        repository: NotRequired[pulumi.Input[str]]
+        """
+        Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY"
+        Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Maven version value used when uploading the artifact to Artifact Registry.
+        """
+elif False:
+    TriggerBuildArtifactsMavenArtifactArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerBuildArtifactsMavenArtifactArgs:
     def __init__(__self__, *,
@@ -815,6 +1104,20 @@ class TriggerBuildArtifactsMavenArtifactArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class TriggerBuildArtifactsNpmPackageArgsDict(TypedDict):
+        package_path: NotRequired[pulumi.Input[str]]
+        """
+        Path to the package.json. e.g. workspace/path/to/package
+        """
+        repository: NotRequired[pulumi.Input[str]]
+        """
+        Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY"
+        Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+        """
+elif False:
+    TriggerBuildArtifactsNpmPackageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerBuildArtifactsNpmPackageArgs:
     def __init__(__self__, *,
@@ -855,6 +1158,30 @@ class TriggerBuildArtifactsNpmPackageArgs:
     def repository(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repository", value)
 
+
+if not MYPY:
+    class TriggerBuildArtifactsObjectsArgsDict(TypedDict):
+        location: NotRequired[pulumi.Input[str]]
+        """
+        Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+        Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+        this location as a prefix.
+        """
+        paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Path globs used to match files in the build's workspace.
+        """
+        timings: NotRequired[pulumi.Input[Sequence[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgsDict']]]]
+        """
+        (Output)
+        Output only. Stores timing information for pushing all artifact objects.
+        Structure is documented below.
+
+
+        <a name="nested_timing"></a>The `timing` block contains:
+        """
+elif False:
+    TriggerBuildArtifactsObjectsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TriggerBuildArtifactsObjectsArgs:
@@ -925,6 +1252,25 @@ class TriggerBuildArtifactsObjectsArgs:
         pulumi.set(self, "timings", value)
 
 
+if not MYPY:
+    class TriggerBuildArtifactsObjectsTimingArgsDict(TypedDict):
+        end_time: NotRequired[pulumi.Input[str]]
+        """
+        End of time span.
+
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+        nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        Start of time span.
+
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+        nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+elif False:
+    TriggerBuildArtifactsObjectsTimingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerBuildArtifactsObjectsTimingArgs:
     def __init__(__self__, *,
@@ -976,6 +1322,20 @@ class TriggerBuildArtifactsObjectsTimingArgs:
         pulumi.set(self, "start_time", value)
 
 
+if not MYPY:
+    class TriggerBuildArtifactsPythonPackageArgsDict(TypedDict):
+        paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Path globs used to match files in the build's workspace. For Python/ Twine, this is usually dist/*, and sometimes additionally an .asc file.
+        """
+        repository: NotRequired[pulumi.Input[str]]
+        """
+        Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY"
+        Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+        """
+elif False:
+    TriggerBuildArtifactsPythonPackageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerBuildArtifactsPythonPackageArgs:
     def __init__(__self__, *,
@@ -1017,6 +1377,16 @@ class TriggerBuildArtifactsPythonPackageArgs:
         pulumi.set(self, "repository", value)
 
 
+if not MYPY:
+    class TriggerBuildAvailableSecretsArgsDict(TypedDict):
+        secret_managers: pulumi.Input[Sequence[pulumi.Input['TriggerBuildAvailableSecretsSecretManagerArgsDict']]]
+        """
+        Pairs a secret environment variable with a SecretVersion in Secret Manager.
+        Structure is documented below.
+        """
+elif False:
+    TriggerBuildAvailableSecretsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerBuildAvailableSecretsArgs:
     def __init__(__self__, *,
@@ -1040,6 +1410,21 @@ class TriggerBuildAvailableSecretsArgs:
     def secret_managers(self, value: pulumi.Input[Sequence[pulumi.Input['TriggerBuildAvailableSecretsSecretManagerArgs']]]):
         pulumi.set(self, "secret_managers", value)
 
+
+if not MYPY:
+    class TriggerBuildAvailableSecretsSecretManagerArgsDict(TypedDict):
+        env: pulumi.Input[str]
+        """
+        Environment variable name to associate with the secret. Secret environment
+        variables must be unique across all of a build's secrets, and must be used
+        by at least one build step.
+        """
+        version_name: pulumi.Input[str]
+        """
+        Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
+        """
+elif False:
+    TriggerBuildAvailableSecretsSecretManagerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TriggerBuildAvailableSecretsSecretManagerArgs:
@@ -1081,6 +1466,83 @@ class TriggerBuildAvailableSecretsSecretManagerArgs:
     def version_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "version_name", value)
 
+
+if not MYPY:
+    class TriggerBuildOptionsArgsDict(TypedDict):
+        disk_size_gb: NotRequired[pulumi.Input[int]]
+        """
+        Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
+        some of the space will be used by the operating system and build utilities.
+        Also note that this is the minimum disk size that will be allocated for the build --
+        the build may run with a larger disk than requested. At present, the maximum disk size
+        is 1000GB; builds that request more than the maximum are rejected with an error.
+        """
+        dynamic_substitutions: NotRequired[pulumi.Input[bool]]
+        """
+        Option to specify whether or not to apply bash style string operations to the substitutions.
+        NOTE this is always enabled for triggered builds and cannot be overridden in the build configuration file.
+        """
+        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of global environment variable definitions that will exist for all build steps
+        in this build. If a variable is defined in both globally and in a build step,
+        the variable will use the build step value.
+        The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        """
+        log_streaming_option: NotRequired[pulumi.Input[str]]
+        """
+        Option to define build log streaming behavior to Google Cloud Storage.
+        Possible values are: `STREAM_DEFAULT`, `STREAM_ON`, `STREAM_OFF`.
+        """
+        logging: NotRequired[pulumi.Input[str]]
+        """
+        Option to specify the logging mode, which determines if and where build logs are stored.
+        Possible values are: `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, `NONE`.
+        """
+        machine_type: NotRequired[pulumi.Input[str]]
+        """
+        Compute Engine machine type on which to run the build.
+        """
+        requested_verify_option: NotRequired[pulumi.Input[str]]
+        """
+        Requested verifiability options.
+        Possible values are: `NOT_VERIFIED`, `VERIFIED`.
+        """
+        secret_envs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of global environment variables, which are encrypted using a Cloud Key Management
+        Service crypto key. These values must be specified in the build's Secret. These variables
+        will be available to all build steps in this build.
+        """
+        source_provenance_hashes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Requested hash for SourceProvenance.
+        Each value may be one of: `NONE`, `SHA256`, `MD5`.
+        """
+        substitution_option: NotRequired[pulumi.Input[str]]
+        """
+        Option to specify behavior when there is an error in the substitution checks.
+        NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
+        in the build configuration file.
+        Possible values are: `MUST_MATCH`, `ALLOW_LOOSE`.
+        """
+        volumes: NotRequired[pulumi.Input[Sequence[pulumi.Input['TriggerBuildOptionsVolumeArgsDict']]]]
+        """
+        Global list of volumes to mount for ALL build steps
+        Each volume is created as an empty volume prior to starting the build process.
+        Upon completion of the build, volumes and their contents are discarded. Global
+        volume names and paths cannot conflict with the volumes defined a build step.
+        Using a global volume in a build with only one step is not valid as it is indicative
+        of a build request with an incorrect configuration.
+        Structure is documented below.
+        """
+        worker_pool: NotRequired[pulumi.Input[str]]
+        """
+        Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
+        This field is experimental.
+        """
+elif False:
+    TriggerBuildOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TriggerBuildOptionsArgs:
@@ -1329,6 +1791,23 @@ class TriggerBuildOptionsArgs:
         pulumi.set(self, "worker_pool", value)
 
 
+if not MYPY:
+    class TriggerBuildOptionsVolumeArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the volume to mount.
+        Volume names must be unique per build step and must be valid names for Docker volumes.
+        Each named volume must be used by at least two build steps.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path at which to mount the volume.
+        Paths must be absolute and cannot conflict with other volume paths on the same
+        build step or with certain reserved volume paths.
+        """
+elif False:
+    TriggerBuildOptionsVolumeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerBuildOptionsVolumeArgs:
     def __init__(__self__, *,
@@ -1376,6 +1855,22 @@ class TriggerBuildOptionsVolumeArgs:
         pulumi.set(self, "path", value)
 
 
+if not MYPY:
+    class TriggerBuildSecretArgsDict(TypedDict):
+        kms_key_name: pulumi.Input[str]
+        """
+        Cloud KMS key name to use to decrypt these envs.
+        """
+        secret_env: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Map of environment variable name to its encrypted value.
+        Secret environment variables must be unique across all of a build's secrets,
+        and must be used by at least one build step. Values can be at most 64 KB in size.
+        There can be at most 100 secret values across all of a build's secrets.
+        """
+elif False:
+    TriggerBuildSecretArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerBuildSecretArgs:
     def __init__(__self__, *,
@@ -1420,6 +1915,21 @@ class TriggerBuildSecretArgs:
         pulumi.set(self, "secret_env", value)
 
 
+if not MYPY:
+    class TriggerBuildSourceArgsDict(TypedDict):
+        repo_source: NotRequired[pulumi.Input['TriggerBuildSourceRepoSourceArgsDict']]
+        """
+        Location of the source in a Google Cloud Source Repository.
+        Structure is documented below.
+        """
+        storage_source: NotRequired[pulumi.Input['TriggerBuildSourceStorageSourceArgsDict']]
+        """
+        Location of the source in an archive file in Google Cloud Storage.
+        Structure is documented below.
+        """
+elif False:
+    TriggerBuildSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerBuildSourceArgs:
     def __init__(__self__, *,
@@ -1462,6 +1972,50 @@ class TriggerBuildSourceArgs:
     def storage_source(self, value: Optional[pulumi.Input['TriggerBuildSourceStorageSourceArgs']]):
         pulumi.set(self, "storage_source", value)
 
+
+if not MYPY:
+    class TriggerBuildSourceRepoSourceArgsDict(TypedDict):
+        repo_name: pulumi.Input[str]
+        """
+        Name of the Cloud Source Repository.
+        """
+        branch_name: NotRequired[pulumi.Input[str]]
+        """
+        Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+        The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+        described at https://github.com/google/re2/wiki/Syntax
+        """
+        commit_sha: NotRequired[pulumi.Input[str]]
+        """
+        Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+        """
+        dir: NotRequired[pulumi.Input[str]]
+        """
+        Directory, relative to the source root, in which to run the build.
+        This must be a relative path. If a step's dir is specified and is an absolute path,
+        this value is ignored for that step's execution.
+        """
+        invert_regex: NotRequired[pulumi.Input[bool]]
+        """
+        Only trigger a build if the revision regex does NOT match the revision regex.
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        ID of the project that owns the Cloud Source Repository.
+        If omitted, the project ID requesting the build is assumed.
+        """
+        substitutions: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Substitutions to use in a triggered build. Should only be used with triggers.run
+        """
+        tag_name: NotRequired[pulumi.Input[str]]
+        """
+        Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+        The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+        described at https://github.com/google/re2/wiki/Syntax
+        """
+elif False:
+    TriggerBuildSourceRepoSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TriggerBuildSourceRepoSourceArgs:
@@ -1611,6 +2165,25 @@ class TriggerBuildSourceRepoSourceArgs:
         pulumi.set(self, "tag_name", value)
 
 
+if not MYPY:
+    class TriggerBuildSourceStorageSourceArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        Google Cloud Storage bucket containing the source.
+        """
+        object: pulumi.Input[str]
+        """
+        Google Cloud Storage object containing the source.
+        This object must be a gzipped archive file (.tar.gz) containing source to build.
+        """
+        generation: NotRequired[pulumi.Input[str]]
+        """
+        Google Cloud Storage generation for the object.
+        If the generation is omitted, the latest generation will be used
+        """
+elif False:
+    TriggerBuildSourceStorageSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerBuildSourceStorageSourceArgs:
     def __init__(__self__, *,
@@ -1667,6 +2240,121 @@ class TriggerBuildSourceStorageSourceArgs:
     def generation(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "generation", value)
 
+
+if not MYPY:
+    class TriggerBuildStepArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the container image that will run this particular build step.
+        If the image is available in the host's Docker daemon's cache, it will be
+        run directly. If not, the host will attempt to pull the image first, using
+        the builder service account's credentials if necessary.
+        The Docker daemon's cache will already have the latest versions of all of
+        the officially supported build steps (see https://github.com/GoogleCloudPlatform/cloud-builders
+        for images and examples).
+        The Docker daemon will also have cached many of the layers for some popular
+        images, like "ubuntu", "debian", but they will be refreshed at the time
+        you attempt to use them.
+        If you built an image in a previous build step, it will be stored in the
+        host's Docker daemon's cache and is available to use as the name for a
+        later build step.
+        """
+        allow_exit_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        Allow this build step to fail without failing the entire build if and
+        only if the exit code is one of the specified codes.
+        If `allowFailure` is also specified, this field will take precedence.
+        """
+        allow_failure: NotRequired[pulumi.Input[bool]]
+        """
+        Allow this build step to fail without failing the entire build.
+        If false, the entire build will fail if this step fails. Otherwise, the
+        build will succeed, but this step will still have a failure status.
+        Error information will be reported in the `failureDetail` field.
+        `allowExitCodes` takes precedence over this field.
+        """
+        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of arguments that will be presented to the step when it is started.
+        If the image used to run the step's container has an entrypoint, the args
+        are used as arguments to that entrypoint. If the image does not define an
+        entrypoint, the first element in args is used as the entrypoint, and the
+        remainder will be used as arguments.
+        """
+        dir: NotRequired[pulumi.Input[str]]
+        """
+        Working directory to use when running this step's container.
+        If this value is a relative path, it is relative to the build's working
+        directory. If this value is absolute, it may be outside the build's working
+        directory, in which case the contents of the path may not be persisted
+        across build step executions, unless a `volume` for that path is specified.
+        If the build specifies a `RepoSource` with `dir` and a step with a
+        `dir`,
+        which specifies an absolute path, the `RepoSource` `dir` is ignored
+        for the step's execution.
+        """
+        entrypoint: NotRequired[pulumi.Input[str]]
+        """
+        Entrypoint to be used instead of the build step image's
+        default entrypoint.
+        If unset, the image's default entrypoint is used
+        """
+        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of environment variable definitions to be used when
+        running a step.
+        The elements are of the form "KEY=VALUE" for the environment variable
+        "KEY" being given the value "VALUE".
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Unique identifier for this build step, used in `wait_for` to
+        reference this build step as a dependency.
+        """
+        script: NotRequired[pulumi.Input[str]]
+        """
+        A shell script to be executed in the step.
+        When script is provided, the user cannot specify the entrypoint or args.
+        """
+        secret_envs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of environment variables which are encrypted using
+        a Cloud Key
+        Management Service crypto key. These values must be specified in
+        the build's `Secret`.
+        """
+        timeout: NotRequired[pulumi.Input[str]]
+        """
+        Time limit for executing this build step. If not defined,
+        the step has no
+        time limit and will be allowed to continue to run until either it
+        completes or the build itself times out.
+        """
+        timing: NotRequired[pulumi.Input[str]]
+        """
+        Output only. Stores timing information for executing this
+        build step.
+        """
+        volumes: NotRequired[pulumi.Input[Sequence[pulumi.Input['TriggerBuildStepVolumeArgsDict']]]]
+        """
+        List of volumes to mount into the build step.
+        Each volume is created as an empty volume prior to execution of the
+        build step. Upon completion of the build, volumes and their contents
+        are discarded.
+        Using a named volume in only one step is not valid as it is
+        indicative of a build request with an incorrect configuration.
+        Structure is documented below.
+        """
+        wait_fors: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID(s) of the step(s) that this build step depends on.
+        This build step will not start until all the build steps in `wait_for`
+        have completed successfully. If `wait_for` is empty, this build step
+        will start when all previous build steps in the `Build.Steps` list
+        have completed successfully.
+        """
+elif False:
+    TriggerBuildStepArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TriggerBuildStepArgs:
@@ -2006,6 +2694,23 @@ class TriggerBuildStepArgs:
         pulumi.set(self, "wait_fors", value)
 
 
+if not MYPY:
+    class TriggerBuildStepVolumeArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the volume to mount.
+        Volume names must be unique per build step and must be valid names for Docker volumes.
+        Each named volume must be used by at least two build steps.
+        """
+        path: pulumi.Input[str]
+        """
+        Path at which to mount the volume.
+        Paths must be absolute and cannot conflict with other volume paths on the same
+        build step or with certain reserved volume paths.
+        """
+elif False:
+    TriggerBuildStepVolumeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerBuildStepVolumeArgs:
     def __init__(__self__, *,
@@ -2050,6 +2755,47 @@ class TriggerBuildStepVolumeArgs:
     def path(self, value: pulumi.Input[str]):
         pulumi.set(self, "path", value)
 
+
+if not MYPY:
+    class TriggerGitFileSourceArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        The path of the file, with the repo root as the root of the path.
+        """
+        repo_type: pulumi.Input[str]
+        """
+        The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+        Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
+        Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
+        """
+        bitbucket_server_config: NotRequired[pulumi.Input[str]]
+        """
+        The full resource name of the bitbucket server config.
+        Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+        """
+        github_enterprise_config: NotRequired[pulumi.Input[str]]
+        """
+        The full resource name of the github enterprise config.
+        Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+        """
+        repository: NotRequired[pulumi.Input[str]]
+        """
+        The fully qualified resource name of the Repo API repository. The fully qualified resource name of the Repo API repository.
+        If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+        """
+        revision: NotRequired[pulumi.Input[str]]
+        """
+        The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
+        filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
+        If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+        """
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        The URI of the repo (optional). If unspecified, the repo from which the trigger
+        invocation originated is assumed to be the repo from which to read the specified path.
+        """
+elif False:
+    TriggerGitFileSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TriggerGitFileSourceArgs:
@@ -2184,6 +2930,36 @@ class TriggerGitFileSourceArgs:
         pulumi.set(self, "uri", value)
 
 
+if not MYPY:
+    class TriggerGithubArgsDict(TypedDict):
+        enterprise_config_resource_name: NotRequired[pulumi.Input[str]]
+        """
+        The resource name of the github enterprise config that should be applied to this installation.
+        For example: "projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}"
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the repository. For example: The name for
+        https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
+        """
+        owner: NotRequired[pulumi.Input[str]]
+        """
+        Owner of the repository. For example: The owner for
+        https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
+        """
+        pull_request: NotRequired[pulumi.Input['TriggerGithubPullRequestArgsDict']]
+        """
+        filter to match changes in pull requests. Specify only one of `pull_request` or `push`.
+        Structure is documented below.
+        """
+        push: NotRequired[pulumi.Input['TriggerGithubPushArgsDict']]
+        """
+        filter to match changes in refs, like branches or tags. Specify only one of `pull_request` or `push`.
+        Structure is documented below.
+        """
+elif False:
+    TriggerGithubArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerGithubArgs:
     def __init__(__self__, *,
@@ -2281,6 +3057,25 @@ class TriggerGithubArgs:
         pulumi.set(self, "push", value)
 
 
+if not MYPY:
+    class TriggerGithubPullRequestArgsDict(TypedDict):
+        branch: pulumi.Input[str]
+        """
+        Regex of branches to match.
+        The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+        """
+        comment_control: NotRequired[pulumi.Input[str]]
+        """
+        Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+        Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+        """
+        invert_regex: NotRequired[pulumi.Input[bool]]
+        """
+        If true, branches that do NOT match the git_ref will trigger a build.
+        """
+elif False:
+    TriggerGithubPullRequestArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerGithubPullRequestArgs:
     def __init__(__self__, *,
@@ -2339,6 +3134,23 @@ class TriggerGithubPullRequestArgs:
         pulumi.set(self, "invert_regex", value)
 
 
+if not MYPY:
+    class TriggerGithubPushArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        Regex of branches to match.  Specify only one of branch or tag.
+        """
+        invert_regex: NotRequired[pulumi.Input[bool]]
+        """
+        When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        Regex of tags to match.  Specify only one of branch or tag.
+        """
+elif False:
+    TriggerGithubPushArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerGithubPushArgs:
     def __init__(__self__, *,
@@ -2393,6 +3205,30 @@ class TriggerGithubPushArgs:
     def tag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tag", value)
 
+
+if not MYPY:
+    class TriggerPubsubConfigArgsDict(TypedDict):
+        topic: pulumi.Input[str]
+        """
+        The name of the topic from which this subscription is receiving messages.
+        """
+        service_account_email: NotRequired[pulumi.Input[str]]
+        """
+        Service account that will make the push request.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Potential issues with the underlying Pub/Sub subscription configuration.
+        Only populated on get requests.
+        """
+        subscription: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. Name of the subscription.
+        """
+elif False:
+    TriggerPubsubConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TriggerPubsubConfigArgs:
@@ -2470,6 +3306,25 @@ class TriggerPubsubConfigArgs:
         pulumi.set(self, "subscription", value)
 
 
+if not MYPY:
+    class TriggerRepositoryEventConfigArgsDict(TypedDict):
+        pull_request: NotRequired[pulumi.Input['TriggerRepositoryEventConfigPullRequestArgsDict']]
+        """
+        Contains filter properties for matching Pull Requests.
+        Structure is documented below.
+        """
+        push: NotRequired[pulumi.Input['TriggerRepositoryEventConfigPushArgsDict']]
+        """
+        Contains filter properties for matching git pushes.
+        Structure is documented below.
+        """
+        repository: NotRequired[pulumi.Input[str]]
+        """
+        The resource name of the Repo API resource.
+        """
+elif False:
+    TriggerRepositoryEventConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerRepositoryEventConfigArgs:
     def __init__(__self__, *,
@@ -2528,6 +3383,25 @@ class TriggerRepositoryEventConfigArgs:
     def repository(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repository", value)
 
+
+if not MYPY:
+    class TriggerRepositoryEventConfigPullRequestArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        Regex of branches to match.
+        The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+        """
+        comment_control: NotRequired[pulumi.Input[str]]
+        """
+        Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
+        Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+        """
+        invert_regex: NotRequired[pulumi.Input[bool]]
+        """
+        If true, branches that do NOT match the git_ref will trigger a build.
+        """
+elif False:
+    TriggerRepositoryEventConfigPullRequestArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TriggerRepositoryEventConfigPullRequestArgs:
@@ -2588,6 +3462,23 @@ class TriggerRepositoryEventConfigPullRequestArgs:
         pulumi.set(self, "invert_regex", value)
 
 
+if not MYPY:
+    class TriggerRepositoryEventConfigPushArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        Regex of branches to match.  Specify only one of branch or tag.
+        """
+        invert_regex: NotRequired[pulumi.Input[bool]]
+        """
+        When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        Regex of tags to match.  Specify only one of branch or tag.
+        """
+elif False:
+    TriggerRepositoryEventConfigPushArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerRepositoryEventConfigPushArgs:
     def __init__(__self__, *,
@@ -2642,6 +3533,40 @@ class TriggerRepositoryEventConfigPushArgs:
     def tag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tag", value)
 
+
+if not MYPY:
+    class TriggerSourceToBuildArgsDict(TypedDict):
+        ref: pulumi.Input[str]
+        """
+        The branch or tag to use. Must start with "refs/" (required).
+        """
+        repo_type: pulumi.Input[str]
+        """
+        The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+        Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
+        Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
+        """
+        bitbucket_server_config: NotRequired[pulumi.Input[str]]
+        """
+        The full resource name of the bitbucket server config.
+        Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+        """
+        github_enterprise_config: NotRequired[pulumi.Input[str]]
+        """
+        The full resource name of the github enterprise config.
+        Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+        """
+        repository: NotRequired[pulumi.Input[str]]
+        """
+        The qualified resource name of the Repo API repository.
+        Either uri or repository can be specified and is required.
+        """
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        The URI of the repo.
+        """
+elif False:
+    TriggerSourceToBuildArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TriggerSourceToBuildArgs:
@@ -2753,6 +3678,45 @@ class TriggerSourceToBuildArgs:
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
 
+
+if not MYPY:
+    class TriggerTriggerTemplateArgsDict(TypedDict):
+        branch_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+        This field is a regular expression.
+        """
+        commit_sha: NotRequired[pulumi.Input[str]]
+        """
+        Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+        """
+        dir: NotRequired[pulumi.Input[str]]
+        """
+        Directory, relative to the source root, in which to run the build.
+        This must be a relative path. If a step's dir is specified and
+        is an absolute path, this value is ignored for that step's
+        execution.
+        """
+        invert_regex: NotRequired[pulumi.Input[bool]]
+        """
+        Only trigger a build if the revision regex does NOT match the revision regex.
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        ID of the project that owns the Cloud Source Repository. If
+        omitted, the project ID requesting the build is assumed.
+        """
+        repo_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
+        """
+        tag_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+        This field is a regular expression.
+        """
+elif False:
+    TriggerTriggerTemplateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TriggerTriggerTemplateArgs:
@@ -2885,6 +3849,21 @@ class TriggerTriggerTemplateArgs:
         pulumi.set(self, "tag_name", value)
 
 
+if not MYPY:
+    class TriggerWebhookConfigArgsDict(TypedDict):
+        secret: pulumi.Input[str]
+        """
+        Resource name for the secret required as a URL parameter.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Potential issues with the underlying Pub/Sub subscription configuration.
+        Only populated on get requests.
+        """
+elif False:
+    TriggerWebhookConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TriggerWebhookConfigArgs:
     def __init__(__self__, *,
@@ -2927,6 +3906,19 @@ class TriggerWebhookConfigArgs:
         pulumi.set(self, "state", value)
 
 
+if not MYPY:
+    class WorkerPoolNetworkConfigArgsDict(TypedDict):
+        peered_network: pulumi.Input[str]
+        """
+        Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See (https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+        """
+        peered_network_ip_range: NotRequired[pulumi.Input[str]]
+        """
+        Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+        """
+elif False:
+    WorkerPoolNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkerPoolNetworkConfigArgs:
     def __init__(__self__, *,
@@ -2964,6 +3956,23 @@ class WorkerPoolNetworkConfigArgs:
     def peered_network_ip_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "peered_network_ip_range", value)
 
+
+if not MYPY:
+    class WorkerPoolWorkerConfigArgsDict(TypedDict):
+        disk_size_gb: NotRequired[pulumi.Input[int]]
+        """
+        Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+        """
+        machine_type: NotRequired[pulumi.Input[str]]
+        """
+        Machine type of a worker, such as `n1-standard-1`. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+        """
+        no_external_ip: NotRequired[pulumi.Input[bool]]
+        """
+        If true, workers are created without any public address, which prevents network egress to public IPs.
+        """
+elif False:
+    WorkerPoolWorkerConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkerPoolWorkerConfigArgs:

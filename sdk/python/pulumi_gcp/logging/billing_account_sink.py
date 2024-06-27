@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -346,12 +351,12 @@ class BillingAccountSink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_options: Optional[pulumi.Input[pulumi.InputType['BillingAccountSinkBigqueryOptionsArgs']]] = None,
+                 bigquery_options: Optional[pulumi.Input[Union['BillingAccountSinkBigqueryOptionsArgs', 'BillingAccountSinkBigqueryOptionsArgsDict']]] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountSinkExclusionArgs']]]]] = None,
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BillingAccountSinkExclusionArgs', 'BillingAccountSinkExclusionArgsDict']]]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -399,7 +404,7 @@ class BillingAccountSink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BillingAccountSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input[Union['BillingAccountSinkBigqueryOptionsArgs', 'BillingAccountSinkBigqueryOptionsArgsDict']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] billing_account: The billing account exported to the sink.
         :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
@@ -412,7 +417,7 @@ class BillingAccountSink(pulumi.CustomResource):
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BillingAccountSinkExclusionArgs', 'BillingAccountSinkExclusionArgsDict']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -481,12 +486,12 @@ class BillingAccountSink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_options: Optional[pulumi.Input[pulumi.InputType['BillingAccountSinkBigqueryOptionsArgs']]] = None,
+                 bigquery_options: Optional[pulumi.Input[Union['BillingAccountSinkBigqueryOptionsArgs', 'BillingAccountSinkBigqueryOptionsArgsDict']]] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountSinkExclusionArgs']]]]] = None,
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BillingAccountSinkExclusionArgs', 'BillingAccountSinkExclusionArgsDict']]]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -521,12 +526,12 @@ class BillingAccountSink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bigquery_options: Optional[pulumi.Input[pulumi.InputType['BillingAccountSinkBigqueryOptionsArgs']]] = None,
+            bigquery_options: Optional[pulumi.Input[Union['BillingAccountSinkBigqueryOptionsArgs', 'BillingAccountSinkBigqueryOptionsArgsDict']]] = None,
             billing_account: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             destination: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
-            exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountSinkExclusionArgs']]]]] = None,
+            exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BillingAccountSinkExclusionArgs', 'BillingAccountSinkExclusionArgsDict']]]]] = None,
             filter: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             writer_identity: Optional[pulumi.Input[str]] = None) -> 'BillingAccountSink':
@@ -537,7 +542,7 @@ class BillingAccountSink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BillingAccountSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input[Union['BillingAccountSinkBigqueryOptionsArgs', 'BillingAccountSinkBigqueryOptionsArgsDict']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] billing_account: The billing account exported to the sink.
         :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
@@ -550,7 +555,7 @@ class BillingAccountSink(pulumi.CustomResource):
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BillingAccountSinkExclusionArgs', 'BillingAccountSinkExclusionArgsDict']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.

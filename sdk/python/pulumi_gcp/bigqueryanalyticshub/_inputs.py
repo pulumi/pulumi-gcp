@@ -4,21 +4,44 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'DataExchangeIamBindingConditionArgs',
+    'DataExchangeIamBindingConditionArgsDict',
     'DataExchangeIamMemberConditionArgs',
+    'DataExchangeIamMemberConditionArgsDict',
     'ListingBigqueryDatasetArgs',
+    'ListingBigqueryDatasetArgsDict',
     'ListingDataProviderArgs',
+    'ListingDataProviderArgsDict',
     'ListingIamBindingConditionArgs',
+    'ListingIamBindingConditionArgsDict',
     'ListingIamMemberConditionArgs',
+    'ListingIamMemberConditionArgsDict',
     'ListingPublisherArgs',
+    'ListingPublisherArgsDict',
     'ListingRestrictedExportConfigArgs',
+    'ListingRestrictedExportConfigArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class DataExchangeIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    DataExchangeIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DataExchangeIamBindingConditionArgs:
@@ -59,6 +82,14 @@ class DataExchangeIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class DataExchangeIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    DataExchangeIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DataExchangeIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -98,6 +129,17 @@ class DataExchangeIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class ListingBigqueryDatasetArgsDict(TypedDict):
+        dataset: pulumi.Input[str]
+        """
+        Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+
+        - - -
+        """
+elif False:
+    ListingBigqueryDatasetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ListingBigqueryDatasetArgs:
     def __init__(__self__, *,
@@ -123,6 +165,19 @@ class ListingBigqueryDatasetArgs:
     def dataset(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset", value)
 
+
+if not MYPY:
+    class ListingDataProviderArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the data provider.
+        """
+        primary_contact: NotRequired[pulumi.Input[str]]
+        """
+        Email or URL of the data provider.
+        """
+elif False:
+    ListingDataProviderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ListingDataProviderArgs:
@@ -161,6 +216,14 @@ class ListingDataProviderArgs:
     def primary_contact(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "primary_contact", value)
 
+
+if not MYPY:
+    class ListingIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    ListingIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ListingIamBindingConditionArgs:
@@ -201,6 +264,14 @@ class ListingIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class ListingIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    ListingIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ListingIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -240,6 +311,19 @@ class ListingIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class ListingPublisherArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the listing publisher.
+        """
+        primary_contact: NotRequired[pulumi.Input[str]]
+        """
+        Email or URL of the listing publisher.
+        """
+elif False:
+    ListingPublisherArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ListingPublisherArgs:
     def __init__(__self__, *,
@@ -277,6 +361,19 @@ class ListingPublisherArgs:
     def primary_contact(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "primary_contact", value)
 
+
+if not MYPY:
+    class ListingRestrictedExportConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        If true, enable restricted export.
+        """
+        restrict_query_result: NotRequired[pulumi.Input[bool]]
+        """
+        If true, restrict export of query result derived from restricted linked dataset table.
+        """
+elif False:
+    ListingRestrictedExportConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ListingRestrictedExportConfigArgs:

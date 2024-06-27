@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -349,7 +354,7 @@ class MetastoreFederation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetastoreFederationBackendMetastoreArgs']]]]] = None,
+                 backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetastoreFederationBackendMetastoreArgs', 'MetastoreFederationBackendMetastoreArgsDict']]]]] = None,
                  federation_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -371,19 +376,19 @@ class MetastoreFederation(pulumi.CustomResource):
             service_id="",
             location="us-central1",
             tier="DEVELOPER",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
-                version="3.1.2",
-                endpoint_protocol="GRPC",
-            ))
+            hive_metastore_config={
+                "version": "3.1.2",
+                "endpointProtocol": "GRPC",
+            })
         default = gcp.dataproc.MetastoreFederation("default",
             location="us-central1",
             federation_id="",
             version="3.1.2",
-            backend_metastores=[gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
-                rank="1",
-                name=default_metastore_service.id,
-                metastore_type="DATAPROC_METASTORE",
-            )])
+            backend_metastores=[{
+                "rank": "1",
+                "name": default_metastore_service.id,
+                "metastoreType": "DATAPROC_METASTORE",
+            }])
         ```
         ### Dataproc Metastore Federation Bigquery
 
@@ -395,26 +400,26 @@ class MetastoreFederation(pulumi.CustomResource):
             service_id="",
             location="us-central1",
             tier="DEVELOPER",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
-                version="3.1.2",
-                endpoint_protocol="GRPC",
-            ))
+            hive_metastore_config={
+                "version": "3.1.2",
+                "endpointProtocol": "GRPC",
+            })
         project = gcp.organizations.get_project()
         default = gcp.dataproc.MetastoreFederation("default",
             location="us-central1",
             federation_id="",
             version="3.1.2",
             backend_metastores=[
-                gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
-                    rank="2",
-                    name=project.id,
-                    metastore_type="BIGQUERY",
-                ),
-                gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
-                    rank="1",
-                    name=default_metastore_service.id,
-                    metastore_type="DATAPROC_METASTORE",
-                ),
+                {
+                    "rank": "2",
+                    "name": project.id,
+                    "metastoreType": "BIGQUERY",
+                },
+                {
+                    "rank": "1",
+                    "name": default_metastore_service.id,
+                    "metastoreType": "DATAPROC_METASTORE",
+                },
             ])
         ```
 
@@ -444,7 +449,7 @@ class MetastoreFederation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetastoreFederationBackendMetastoreArgs']]]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetastoreFederationBackendMetastoreArgs', 'MetastoreFederationBackendMetastoreArgsDict']]]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
                Structure is documented below.
         :param pulumi.Input[str] federation_id: The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -476,19 +481,19 @@ class MetastoreFederation(pulumi.CustomResource):
             service_id="",
             location="us-central1",
             tier="DEVELOPER",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
-                version="3.1.2",
-                endpoint_protocol="GRPC",
-            ))
+            hive_metastore_config={
+                "version": "3.1.2",
+                "endpointProtocol": "GRPC",
+            })
         default = gcp.dataproc.MetastoreFederation("default",
             location="us-central1",
             federation_id="",
             version="3.1.2",
-            backend_metastores=[gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
-                rank="1",
-                name=default_metastore_service.id,
-                metastore_type="DATAPROC_METASTORE",
-            )])
+            backend_metastores=[{
+                "rank": "1",
+                "name": default_metastore_service.id,
+                "metastoreType": "DATAPROC_METASTORE",
+            }])
         ```
         ### Dataproc Metastore Federation Bigquery
 
@@ -500,26 +505,26 @@ class MetastoreFederation(pulumi.CustomResource):
             service_id="",
             location="us-central1",
             tier="DEVELOPER",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
-                version="3.1.2",
-                endpoint_protocol="GRPC",
-            ))
+            hive_metastore_config={
+                "version": "3.1.2",
+                "endpointProtocol": "GRPC",
+            })
         project = gcp.organizations.get_project()
         default = gcp.dataproc.MetastoreFederation("default",
             location="us-central1",
             federation_id="",
             version="3.1.2",
             backend_metastores=[
-                gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
-                    rank="2",
-                    name=project.id,
-                    metastore_type="BIGQUERY",
-                ),
-                gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
-                    rank="1",
-                    name=default_metastore_service.id,
-                    metastore_type="DATAPROC_METASTORE",
-                ),
+                {
+                    "rank": "2",
+                    "name": project.id,
+                    "metastoreType": "BIGQUERY",
+                },
+                {
+                    "rank": "1",
+                    "name": default_metastore_service.id,
+                    "metastoreType": "DATAPROC_METASTORE",
+                },
             ])
         ```
 
@@ -562,7 +567,7 @@ class MetastoreFederation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetastoreFederationBackendMetastoreArgs']]]]] = None,
+                 backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetastoreFederationBackendMetastoreArgs', 'MetastoreFederationBackendMetastoreArgsDict']]]]] = None,
                  federation_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -608,7 +613,7 @@ class MetastoreFederation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetastoreFederationBackendMetastoreArgs']]]]] = None,
+            backend_metastores: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetastoreFederationBackendMetastoreArgs', 'MetastoreFederationBackendMetastoreArgsDict']]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             endpoint_uri: Optional[pulumi.Input[str]] = None,
             federation_id: Optional[pulumi.Input[str]] = None,
@@ -628,7 +633,7 @@ class MetastoreFederation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetastoreFederationBackendMetastoreArgs']]]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetastoreFederationBackendMetastoreArgs', 'MetastoreFederationBackendMetastoreArgsDict']]]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] endpoint_uri: The URI of the endpoint used to access the metastore federation.

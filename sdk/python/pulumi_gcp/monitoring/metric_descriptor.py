@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -483,9 +488,9 @@ class MetricDescriptor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorLabelArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict']]]]] = None,
                  launch_stage: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['MetricDescriptorMetadataArgs']]] = None,
+                 metadata: Optional[pulumi.Input[Union['MetricDescriptorMetadataArgs', 'MetricDescriptorMetadataArgsDict']]] = None,
                  metric_kind: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -516,16 +521,16 @@ class MetricDescriptor(pulumi.CustomResource):
             metric_kind="GAUGE",
             value_type="DOUBLE",
             unit="{USD}",
-            labels=[gcp.monitoring.MetricDescriptorLabelArgs(
-                key="store_id",
-                value_type="STRING",
-                description="The ID of the store.",
-            )],
+            labels=[{
+                "key": "store_id",
+                "valueType": "STRING",
+                "description": "The ID of the store.",
+            }],
             launch_stage="BETA",
-            metadata=gcp.monitoring.MetricDescriptorMetadataArgs(
-                sample_period="60s",
-                ingest_delay="30s",
-            ))
+            metadata={
+                "samplePeriod": "60s",
+                "ingestDelay": "30s",
+            })
         ```
         ### Monitoring Metric Descriptor Alert
 
@@ -543,14 +548,14 @@ class MetricDescriptor(pulumi.CustomResource):
         alert_policy = gcp.monitoring.AlertPolicy("alert_policy",
             display_name="metric-descriptor",
             combiner="OR",
-            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                display_name="test condition",
-                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                    filter=with_alert.type.apply(lambda type: f"metric.type=\\"{type}\\" AND resource.type=\\"gce_instance\\""),
-                    duration="60s",
-                    comparison="COMPARISON_GT",
-                ),
-            )])
+            conditions=[{
+                "displayName": "test condition",
+                "conditionThreshold": {
+                    "filter": with_alert.type.apply(lambda type: f"metric.type=\\"{type}\\" AND resource.type=\\"gce_instance\\""),
+                    "duration": "60s",
+                    "comparison": "COMPARISON_GT",
+                },
+            }])
         ```
 
         ## Import
@@ -572,11 +577,11 @@ class MetricDescriptor(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorLabelArgs']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
         :param pulumi.Input[str] launch_stage: The launch stage of the metric definition.
                Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
-        :param pulumi.Input[pulumi.InputType['MetricDescriptorMetadataArgs']] metadata: Metadata which can be used to guide usage of the metric.
+        :param pulumi.Input[Union['MetricDescriptorMetadataArgs', 'MetricDescriptorMetadataArgsDict']] metadata: Metadata which can be used to guide usage of the metric.
                Structure is documented below.
         :param pulumi.Input[str] metric_kind: Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
@@ -633,16 +638,16 @@ class MetricDescriptor(pulumi.CustomResource):
             metric_kind="GAUGE",
             value_type="DOUBLE",
             unit="{USD}",
-            labels=[gcp.monitoring.MetricDescriptorLabelArgs(
-                key="store_id",
-                value_type="STRING",
-                description="The ID of the store.",
-            )],
+            labels=[{
+                "key": "store_id",
+                "valueType": "STRING",
+                "description": "The ID of the store.",
+            }],
             launch_stage="BETA",
-            metadata=gcp.monitoring.MetricDescriptorMetadataArgs(
-                sample_period="60s",
-                ingest_delay="30s",
-            ))
+            metadata={
+                "samplePeriod": "60s",
+                "ingestDelay": "30s",
+            })
         ```
         ### Monitoring Metric Descriptor Alert
 
@@ -660,14 +665,14 @@ class MetricDescriptor(pulumi.CustomResource):
         alert_policy = gcp.monitoring.AlertPolicy("alert_policy",
             display_name="metric-descriptor",
             combiner="OR",
-            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
-                display_name="test condition",
-                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
-                    filter=with_alert.type.apply(lambda type: f"metric.type=\\"{type}\\" AND resource.type=\\"gce_instance\\""),
-                    duration="60s",
-                    comparison="COMPARISON_GT",
-                ),
-            )])
+            conditions=[{
+                "displayName": "test condition",
+                "conditionThreshold": {
+                    "filter": with_alert.type.apply(lambda type: f"metric.type=\\"{type}\\" AND resource.type=\\"gce_instance\\""),
+                    "duration": "60s",
+                    "comparison": "COMPARISON_GT",
+                },
+            }])
         ```
 
         ## Import
@@ -699,9 +704,9 @@ class MetricDescriptor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorLabelArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict']]]]] = None,
                  launch_stage: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['MetricDescriptorMetadataArgs']]] = None,
+                 metadata: Optional[pulumi.Input[Union['MetricDescriptorMetadataArgs', 'MetricDescriptorMetadataArgsDict']]] = None,
                  metric_kind: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -750,9 +755,9 @@ class MetricDescriptor(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorLabelArgs']]]]] = None,
+            labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict']]]]] = None,
             launch_stage: Optional[pulumi.Input[str]] = None,
-            metadata: Optional[pulumi.Input[pulumi.InputType['MetricDescriptorMetadataArgs']]] = None,
+            metadata: Optional[pulumi.Input[Union['MetricDescriptorMetadataArgs', 'MetricDescriptorMetadataArgsDict']]] = None,
             metric_kind: Optional[pulumi.Input[str]] = None,
             monitored_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -772,11 +777,11 @@ class MetricDescriptor(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorLabelArgs']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
         :param pulumi.Input[str] launch_stage: The launch stage of the metric definition.
                Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
-        :param pulumi.Input[pulumi.InputType['MetricDescriptorMetadataArgs']] metadata: Metadata which can be used to guide usage of the metric.
+        :param pulumi.Input[Union['MetricDescriptorMetadataArgs', 'MetricDescriptorMetadataArgsDict']] metadata: Metadata which can be used to guide usage of the metric.
                Structure is documented below.
         :param pulumi.Input[str] metric_kind: Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.

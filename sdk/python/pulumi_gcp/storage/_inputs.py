@@ -4,57 +4,121 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'BucketAutoclassArgs',
+    'BucketAutoclassArgsDict',
     'BucketCorArgs',
+    'BucketCorArgsDict',
     'BucketCustomPlacementConfigArgs',
+    'BucketCustomPlacementConfigArgsDict',
     'BucketEncryptionArgs',
+    'BucketEncryptionArgsDict',
     'BucketIAMBindingConditionArgs',
+    'BucketIAMBindingConditionArgsDict',
     'BucketIAMMemberConditionArgs',
+    'BucketIAMMemberConditionArgsDict',
     'BucketLifecycleRuleArgs',
+    'BucketLifecycleRuleArgsDict',
     'BucketLifecycleRuleActionArgs',
+    'BucketLifecycleRuleActionArgsDict',
     'BucketLifecycleRuleConditionArgs',
+    'BucketLifecycleRuleConditionArgsDict',
     'BucketLoggingArgs',
+    'BucketLoggingArgsDict',
     'BucketObjectCustomerEncryptionArgs',
+    'BucketObjectCustomerEncryptionArgsDict',
     'BucketObjectRetentionArgs',
+    'BucketObjectRetentionArgsDict',
     'BucketRetentionPolicyArgs',
+    'BucketRetentionPolicyArgsDict',
     'BucketSoftDeletePolicyArgs',
+    'BucketSoftDeletePolicyArgsDict',
     'BucketVersioningArgs',
+    'BucketVersioningArgsDict',
     'BucketWebsiteArgs',
+    'BucketWebsiteArgsDict',
     'DefaultObjectAccessControlProjectTeamArgs',
+    'DefaultObjectAccessControlProjectTeamArgsDict',
     'InsightsReportConfigCsvOptionsArgs',
+    'InsightsReportConfigCsvOptionsArgsDict',
     'InsightsReportConfigFrequencyOptionsArgs',
+    'InsightsReportConfigFrequencyOptionsArgsDict',
     'InsightsReportConfigFrequencyOptionsEndDateArgs',
+    'InsightsReportConfigFrequencyOptionsEndDateArgsDict',
     'InsightsReportConfigFrequencyOptionsStartDateArgs',
+    'InsightsReportConfigFrequencyOptionsStartDateArgsDict',
     'InsightsReportConfigObjectMetadataReportOptionsArgs',
+    'InsightsReportConfigObjectMetadataReportOptionsArgsDict',
     'InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs',
+    'InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgsDict',
     'InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs',
+    'InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgsDict',
     'ObjectAccessControlProjectTeamArgs',
+    'ObjectAccessControlProjectTeamArgsDict',
     'TransferAgentPoolBandwidthLimitArgs',
+    'TransferAgentPoolBandwidthLimitArgsDict',
     'TransferJobEventStreamArgs',
+    'TransferJobEventStreamArgsDict',
     'TransferJobNotificationConfigArgs',
+    'TransferJobNotificationConfigArgsDict',
     'TransferJobScheduleArgs',
+    'TransferJobScheduleArgsDict',
     'TransferJobScheduleScheduleEndDateArgs',
+    'TransferJobScheduleScheduleEndDateArgsDict',
     'TransferJobScheduleScheduleStartDateArgs',
+    'TransferJobScheduleScheduleStartDateArgsDict',
     'TransferJobScheduleStartTimeOfDayArgs',
+    'TransferJobScheduleStartTimeOfDayArgsDict',
     'TransferJobTransferSpecArgs',
+    'TransferJobTransferSpecArgsDict',
     'TransferJobTransferSpecAwsS3DataSourceArgs',
+    'TransferJobTransferSpecAwsS3DataSourceArgsDict',
     'TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs',
+    'TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgsDict',
     'TransferJobTransferSpecAzureBlobStorageDataSourceArgs',
+    'TransferJobTransferSpecAzureBlobStorageDataSourceArgsDict',
     'TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs',
+    'TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgsDict',
     'TransferJobTransferSpecGcsDataSinkArgs',
+    'TransferJobTransferSpecGcsDataSinkArgsDict',
     'TransferJobTransferSpecGcsDataSourceArgs',
+    'TransferJobTransferSpecGcsDataSourceArgsDict',
     'TransferJobTransferSpecHttpDataSourceArgs',
+    'TransferJobTransferSpecHttpDataSourceArgsDict',
     'TransferJobTransferSpecObjectConditionsArgs',
+    'TransferJobTransferSpecObjectConditionsArgsDict',
     'TransferJobTransferSpecPosixDataSinkArgs',
+    'TransferJobTransferSpecPosixDataSinkArgsDict',
     'TransferJobTransferSpecPosixDataSourceArgs',
+    'TransferJobTransferSpecPosixDataSourceArgsDict',
     'TransferJobTransferSpecTransferOptionsArgs',
+    'TransferJobTransferSpecTransferOptionsArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class BucketAutoclassArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+        """
+        terminal_storage_class: NotRequired[pulumi.Input[str]]
+        """
+        The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: `NEARLINE`, `ARCHIVE`.
+        """
+elif False:
+    BucketAutoclassArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketAutoclassArgs:
@@ -93,6 +157,27 @@ class BucketAutoclassArgs:
     def terminal_storage_class(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "terminal_storage_class", value)
 
+
+if not MYPY:
+    class BucketCorArgsDict(TypedDict):
+        max_age_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
+        """
+        methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+        """
+        origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of [Origins](https://tools.ietf.org/html/rfc6454) eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+        """
+        response_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
+        """
+elif False:
+    BucketCorArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketCorArgs:
@@ -165,6 +250,15 @@ class BucketCorArgs:
         pulumi.set(self, "response_headers", value)
 
 
+if not MYPY:
+    class BucketCustomPlacementConfigArgsDict(TypedDict):
+        data_locations: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the data_locations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
+        """
+elif False:
+    BucketCustomPlacementConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketCustomPlacementConfigArgs:
     def __init__(__self__, *,
@@ -186,6 +280,28 @@ class BucketCustomPlacementConfigArgs:
     def data_locations(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "data_locations", value)
 
+
+if not MYPY:
+    class BucketEncryptionArgsDict(TypedDict):
+        default_kms_key_name: pulumi.Input[str]
+        """
+        The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+        You must pay attention to whether the crypto key is available in the location that this bucket is created in.
+        See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
+
+        > As per [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for customer-managed encryption keys, the IAM policy for the
+        specified key must permit the [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts) for the bucket's
+        project to use the specified key for encryption and decryption operations.
+        Although the service account email address follows a well-known format, the service account is created on-demand and may not necessarily exist for your project
+        until a relevant action has occurred which triggers its creation.
+        You should use the [`storage_get_project_service_account`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
+        address for the service account when configuring IAM policy on the Cloud KMS key.
+        This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+        state of the project.
+        You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
+        """
+elif False:
+    BucketEncryptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketEncryptionArgs:
@@ -234,6 +350,27 @@ class BucketEncryptionArgs:
     def default_kms_key_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "default_kms_key_name", value)
 
+
+if not MYPY:
+    class BucketIAMBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    BucketIAMBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketIAMBindingConditionArgs:
@@ -296,6 +433,27 @@ class BucketIAMBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class BucketIAMMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+elif False:
+    BucketIAMMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketIAMMemberConditionArgs:
     def __init__(__self__, *,
@@ -357,6 +515,19 @@ class BucketIAMMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class BucketLifecycleRuleArgsDict(TypedDict):
+        action: pulumi.Input['BucketLifecycleRuleActionArgsDict']
+        """
+        The Lifecycle Rule's action configuration. A single block of this type is supported. Structure is documented below.
+        """
+        condition: pulumi.Input['BucketLifecycleRuleConditionArgsDict']
+        """
+        The Lifecycle Rule's condition configuration. A single block of this type is supported. Structure is documented below.
+        """
+elif False:
+    BucketLifecycleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketLifecycleRuleArgs:
     def __init__(__self__, *,
@@ -393,6 +564,19 @@ class BucketLifecycleRuleArgs:
     def condition(self, value: pulumi.Input['BucketLifecycleRuleConditionArgs']):
         pulumi.set(self, "condition", value)
 
+
+if not MYPY:
+    class BucketLifecycleRuleActionArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
+        """
+        storage_class: NotRequired[pulumi.Input[str]]
+        """
+        The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+        """
+elif False:
+    BucketLifecycleRuleActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketLifecycleRuleActionArgs:
@@ -431,6 +615,72 @@ class BucketLifecycleRuleActionArgs:
     def storage_class(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "storage_class", value)
 
+
+if not MYPY:
+    class BucketLifecycleRuleConditionArgsDict(TypedDict):
+        age: NotRequired[pulumi.Input[int]]
+        """
+        Minimum age of an object in days to satisfy this condition. If not supplied alongside another condition and without setting `no_age` to `true`, a default `age` of 0 will be set.
+        """
+        created_before: NotRequired[pulumi.Input[str]]
+        """
+        A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
+        """
+        custom_time_before: NotRequired[pulumi.Input[str]]
+        """
+        A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
+        """
+        days_since_custom_time: NotRequired[pulumi.Input[int]]
+        """
+        Number of days elapsed since the user-specified timestamp set on an object.
+        """
+        days_since_noncurrent_time: NotRequired[pulumi.Input[int]]
+        """
+        Number of days elapsed since the noncurrent timestamp of an object. This
+        										condition is relevant only for versioned objects.
+        """
+        matches_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        One or more matching name prefixes to satisfy this condition.
+        """
+        matches_storage_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
+        """
+        matches_suffixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        One or more matching name suffixes to satisfy this condition.
+        """
+        no_age: NotRequired[pulumi.Input[bool]]
+        """
+        While set `true`, `age` value will be omitted from requests. This prevents a default age of `0` from being applied, and if you do not have an `age` value set, setting this to `true` is strongly recommended. When unset and other conditions are set to zero values, this can result in a rule that applies your action to all files in the bucket.
+        """
+        noncurrent_time_before: NotRequired[pulumi.Input[str]]
+        """
+        Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+        """
+        num_newer_versions: NotRequired[pulumi.Input[int]]
+        """
+        Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+        """
+        send_days_since_custom_time_if_zero: NotRequired[pulumi.Input[bool]]
+        """
+        While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
+        """
+        send_days_since_noncurrent_time_if_zero: NotRequired[pulumi.Input[bool]]
+        """
+        While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
+        """
+        send_num_newer_versions_if_zero: NotRequired[pulumi.Input[bool]]
+        """
+        While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
+        """
+        with_state: NotRequired[pulumi.Input[str]]
+        """
+        Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
+        """
+elif False:
+    BucketLifecycleRuleConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketLifecycleRuleConditionArgs:
@@ -681,6 +931,20 @@ class BucketLifecycleRuleConditionArgs:
         pulumi.set(self, "with_state", value)
 
 
+if not MYPY:
+    class BucketLoggingArgsDict(TypedDict):
+        log_bucket: pulumi.Input[str]
+        """
+        The bucket that will receive log objects.
+        """
+        log_object_prefix: NotRequired[pulumi.Input[str]]
+        """
+        The object prefix for log objects. If it's not provided,
+        by default GCS sets this to this bucket's name.
+        """
+elif False:
+    BucketLoggingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketLoggingArgs:
     def __init__(__self__, *,
@@ -721,6 +985,19 @@ class BucketLoggingArgs:
         pulumi.set(self, "log_object_prefix", value)
 
 
+if not MYPY:
+    class BucketObjectCustomerEncryptionArgsDict(TypedDict):
+        encryption_key: pulumi.Input[str]
+        """
+        Base64 encoded Customer-Supplied Encryption Key.
+        """
+        encryption_algorithm: NotRequired[pulumi.Input[str]]
+        """
+        Encryption algorithm. Default: AES256
+        """
+elif False:
+    BucketObjectCustomerEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketObjectCustomerEncryptionArgs:
     def __init__(__self__, *,
@@ -758,6 +1035,21 @@ class BucketObjectCustomerEncryptionArgs:
     def encryption_algorithm(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "encryption_algorithm", value)
 
+
+if not MYPY:
+    class BucketObjectRetentionArgsDict(TypedDict):
+        mode: pulumi.Input[str]
+        """
+        The retention policy mode. Either `Locked` or `Unlocked`.
+        """
+        retain_until_time: pulumi.Input[str]
+        """
+        The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
+
+        <a name>
+        """
+elif False:
+    BucketObjectRetentionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketObjectRetentionArgs:
@@ -800,6 +1092,19 @@ class BucketObjectRetentionArgs:
         pulumi.set(self, "retain_until_time", value)
 
 
+if not MYPY:
+    class BucketRetentionPolicyArgsDict(TypedDict):
+        retention_period: pulumi.Input[int]
+        """
+        The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
+        """
+        is_locked: NotRequired[pulumi.Input[bool]]
+        """
+        If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
+        """
+elif False:
+    BucketRetentionPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketRetentionPolicyArgs:
     def __init__(__self__, *,
@@ -837,6 +1142,19 @@ class BucketRetentionPolicyArgs:
     def is_locked(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_locked", value)
 
+
+if not MYPY:
+    class BucketSoftDeletePolicyArgsDict(TypedDict):
+        effective_time: NotRequired[pulumi.Input[str]]
+        """
+        Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+        """
+        retention_duration_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800. The value must be in between 604800(7 days) and 7776000(90 days). **Note**: To disable the soft delete policy on a bucket, This field must be set to 0.
+        """
+elif False:
+    BucketSoftDeletePolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketSoftDeletePolicyArgs:
@@ -877,6 +1195,15 @@ class BucketSoftDeletePolicyArgs:
         pulumi.set(self, "retention_duration_seconds", value)
 
 
+if not MYPY:
+    class BucketVersioningArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        While set to `true`, versioning is fully enabled for this bucket.
+        """
+elif False:
+    BucketVersioningArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketVersioningArgs:
     def __init__(__self__, *,
@@ -898,6 +1225,21 @@ class BucketVersioningArgs:
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class BucketWebsiteArgsDict(TypedDict):
+        main_page_suffix: NotRequired[pulumi.Input[str]]
+        """
+        Behaves as the bucket's directory index where
+        missing objects are treated as potential directories.
+        """
+        not_found_page: NotRequired[pulumi.Input[str]]
+        """
+        The custom object to return when a requested
+        resource is not found.
+        """
+elif False:
+    BucketWebsiteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketWebsiteArgs:
@@ -942,6 +1284,20 @@ class BucketWebsiteArgs:
         pulumi.set(self, "not_found_page", value)
 
 
+if not MYPY:
+    class DefaultObjectAccessControlProjectTeamArgsDict(TypedDict):
+        project_number: NotRequired[pulumi.Input[str]]
+        """
+        The project team associated with the entity
+        """
+        team: NotRequired[pulumi.Input[str]]
+        """
+        The team.
+        Possible values are: `editors`, `owners`, `viewers`.
+        """
+elif False:
+    DefaultObjectAccessControlProjectTeamArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DefaultObjectAccessControlProjectTeamArgs:
     def __init__(__self__, *,
@@ -982,6 +1338,25 @@ class DefaultObjectAccessControlProjectTeamArgs:
     def team(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "team", value)
 
+
+if not MYPY:
+    class InsightsReportConfigCsvOptionsArgsDict(TypedDict):
+        delimiter: NotRequired[pulumi.Input[str]]
+        """
+        The delimiter used to separate the fields in the inventory report CSV file.
+        """
+        header_required: NotRequired[pulumi.Input[bool]]
+        """
+        The boolean that indicates whether or not headers are included in the inventory report CSV file.
+
+        - - -
+        """
+        record_separator: NotRequired[pulumi.Input[str]]
+        """
+        The character used to separate the records in the inventory report CSV file.
+        """
+elif False:
+    InsightsReportConfigCsvOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InsightsReportConfigCsvOptionsArgs:
@@ -1042,6 +1417,26 @@ class InsightsReportConfigCsvOptionsArgs:
         pulumi.set(self, "record_separator", value)
 
 
+if not MYPY:
+    class InsightsReportConfigFrequencyOptionsArgsDict(TypedDict):
+        end_date: pulumi.Input['InsightsReportConfigFrequencyOptionsEndDateArgsDict']
+        """
+        The date to stop generating inventory reports. For example, {"day": 15, "month": 9, "year": 2022}.
+        Structure is documented below.
+        """
+        frequency: pulumi.Input[str]
+        """
+        The frequency in which inventory reports are generated. Values are DAILY or WEEKLY.
+        Possible values are: `DAILY`, `WEEKLY`.
+        """
+        start_date: pulumi.Input['InsightsReportConfigFrequencyOptionsStartDateArgsDict']
+        """
+        The date to start generating inventory reports. For example, {"day": 15, "month": 8, "year": 2022}.
+        Structure is documented below.
+        """
+elif False:
+    InsightsReportConfigFrequencyOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InsightsReportConfigFrequencyOptionsArgs:
     def __init__(__self__, *,
@@ -1100,6 +1495,23 @@ class InsightsReportConfigFrequencyOptionsArgs:
         pulumi.set(self, "start_date", value)
 
 
+if not MYPY:
+    class InsightsReportConfigFrequencyOptionsEndDateArgsDict(TypedDict):
+        day: pulumi.Input[int]
+        """
+        The day of the month to stop generating inventory reports.
+        """
+        month: pulumi.Input[int]
+        """
+        The month to stop generating inventory reports.
+        """
+        year: pulumi.Input[int]
+        """
+        The year to stop generating inventory reports
+        """
+elif False:
+    InsightsReportConfigFrequencyOptionsEndDateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InsightsReportConfigFrequencyOptionsEndDateArgs:
     def __init__(__self__, *,
@@ -1152,6 +1564,23 @@ class InsightsReportConfigFrequencyOptionsEndDateArgs:
         pulumi.set(self, "year", value)
 
 
+if not MYPY:
+    class InsightsReportConfigFrequencyOptionsStartDateArgsDict(TypedDict):
+        day: pulumi.Input[int]
+        """
+        The day of the month to start generating inventory reports.
+        """
+        month: pulumi.Input[int]
+        """
+        The month to start generating inventory reports.
+        """
+        year: pulumi.Input[int]
+        """
+        The year to start generating inventory reports
+        """
+elif False:
+    InsightsReportConfigFrequencyOptionsStartDateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InsightsReportConfigFrequencyOptionsStartDateArgs:
     def __init__(__self__, *,
@@ -1203,6 +1632,25 @@ class InsightsReportConfigFrequencyOptionsStartDateArgs:
     def year(self, value: pulumi.Input[int]):
         pulumi.set(self, "year", value)
 
+
+if not MYPY:
+    class InsightsReportConfigObjectMetadataReportOptionsArgsDict(TypedDict):
+        metadata_fields: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The metadata fields included in an inventory report.
+        """
+        storage_destination_options: pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgsDict']
+        """
+        Options for where the inventory reports are stored.
+        Structure is documented below.
+        """
+        storage_filters: NotRequired[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgsDict']]
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+elif False:
+    InsightsReportConfigObjectMetadataReportOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InsightsReportConfigObjectMetadataReportOptionsArgs:
@@ -1261,6 +1709,19 @@ class InsightsReportConfigObjectMetadataReportOptionsArgs:
         pulumi.set(self, "storage_filters", value)
 
 
+if not MYPY:
+    class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        The destination bucket that stores the generated inventory reports.
+        """
+        destination_path: NotRequired[pulumi.Input[str]]
+        """
+        The path within the destination bucket to store generated inventory reports.
+        """
+elif False:
+    InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs:
     def __init__(__self__, *,
@@ -1299,6 +1760,15 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsAr
         pulumi.set(self, "destination_path", value)
 
 
+if not MYPY:
+    class InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgsDict(TypedDict):
+        bucket: NotRequired[pulumi.Input[str]]
+        """
+        The filter to use when specifying which bucket to generate inventory reports for.
+        """
+elif False:
+    InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs:
     def __init__(__self__, *,
@@ -1321,6 +1791,20 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs:
     def bucket(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bucket", value)
 
+
+if not MYPY:
+    class ObjectAccessControlProjectTeamArgsDict(TypedDict):
+        project_number: NotRequired[pulumi.Input[str]]
+        """
+        The project team associated with the entity
+        """
+        team: NotRequired[pulumi.Input[str]]
+        """
+        The team.
+        Possible values are: `editors`, `owners`, `viewers`.
+        """
+elif False:
+    ObjectAccessControlProjectTeamArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ObjectAccessControlProjectTeamArgs:
@@ -1363,6 +1847,15 @@ class ObjectAccessControlProjectTeamArgs:
         pulumi.set(self, "team", value)
 
 
+if not MYPY:
+    class TransferAgentPoolBandwidthLimitArgsDict(TypedDict):
+        limit_mbps: pulumi.Input[str]
+        """
+        Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
+        """
+elif False:
+    TransferAgentPoolBandwidthLimitArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TransferAgentPoolBandwidthLimitArgs:
     def __init__(__self__, *,
@@ -1384,6 +1877,23 @@ class TransferAgentPoolBandwidthLimitArgs:
     def limit_mbps(self, value: pulumi.Input[str]):
         pulumi.set(self, "limit_mbps", value)
 
+
+if not MYPY:
+    class TransferJobEventStreamArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+        """
+        event_stream_expiration_time: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        event_stream_start_time: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+elif False:
+    TransferJobEventStreamArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TransferJobEventStreamArgs:
@@ -1439,6 +1949,23 @@ class TransferJobEventStreamArgs:
         pulumi.set(self, "event_stream_start_time", value)
 
 
+if not MYPY:
+    class TransferJobNotificationConfigArgsDict(TypedDict):
+        payload_format: pulumi.Input[str]
+        """
+        The desired format of the notification message payloads. One of "NONE" or "JSON".
+        """
+        pubsub_topic: pulumi.Input[str]
+        """
+        The Topic.name of the Pub/Sub topic to which to publish notifications. Must be of the format: projects/{project}/topics/{topic}. Not matching this format results in an INVALID_ARGUMENT error.
+        """
+        event_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Event types for which a notification is desired. If empty, send notifications for all event types. The valid types are "TRANSFER_OPERATION_SUCCESS", "TRANSFER_OPERATION_FAILED", "TRANSFER_OPERATION_ABORTED".
+        """
+elif False:
+    TransferJobNotificationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TransferJobNotificationConfigArgs:
     def __init__(__self__, *,
@@ -1491,6 +2018,27 @@ class TransferJobNotificationConfigArgs:
     def event_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "event_types", value)
 
+
+if not MYPY:
+    class TransferJobScheduleArgsDict(TypedDict):
+        schedule_start_date: pulumi.Input['TransferJobScheduleScheduleStartDateArgsDict']
+        """
+        The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
+        """
+        repeat_interval: NotRequired[pulumi.Input[str]]
+        """
+        Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        schedule_end_date: NotRequired[pulumi.Input['TransferJobScheduleScheduleEndDateArgsDict']]
+        """
+        The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
+        """
+        start_time_of_day: NotRequired[pulumi.Input['TransferJobScheduleStartTimeOfDayArgsDict']]
+        """
+        The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
+        """
+elif False:
+    TransferJobScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TransferJobScheduleArgs:
@@ -1562,6 +2110,23 @@ class TransferJobScheduleArgs:
         pulumi.set(self, "start_time_of_day", value)
 
 
+if not MYPY:
+    class TransferJobScheduleScheduleEndDateArgsDict(TypedDict):
+        day: pulumi.Input[int]
+        """
+        Day of month. Must be from 1 to 31 and valid for the year and month.
+        """
+        month: pulumi.Input[int]
+        """
+        Month of year. Must be from 1 to 12.
+        """
+        year: pulumi.Input[int]
+        """
+        Year of date. Must be from 1 to 9999.
+        """
+elif False:
+    TransferJobScheduleScheduleEndDateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TransferJobScheduleScheduleEndDateArgs:
     def __init__(__self__, *,
@@ -1614,6 +2179,23 @@ class TransferJobScheduleScheduleEndDateArgs:
         pulumi.set(self, "year", value)
 
 
+if not MYPY:
+    class TransferJobScheduleScheduleStartDateArgsDict(TypedDict):
+        day: pulumi.Input[int]
+        """
+        Day of month. Must be from 1 to 31 and valid for the year and month.
+        """
+        month: pulumi.Input[int]
+        """
+        Month of year. Must be from 1 to 12.
+        """
+        year: pulumi.Input[int]
+        """
+        Year of date. Must be from 1 to 9999.
+        """
+elif False:
+    TransferJobScheduleScheduleStartDateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TransferJobScheduleScheduleStartDateArgs:
     def __init__(__self__, *,
@@ -1665,6 +2247,27 @@ class TransferJobScheduleScheduleStartDateArgs:
     def year(self, value: pulumi.Input[int]):
         pulumi.set(self, "year", value)
 
+
+if not MYPY:
+    class TransferJobScheduleStartTimeOfDayArgsDict(TypedDict):
+        hours: pulumi.Input[int]
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        """
+        minutes: pulumi.Input[int]
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
+        nanos: pulumi.Input[int]
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
+        seconds: pulumi.Input[int]
+        """
+        Seconds of minutes of the time. Must normally be from 0 to 59.
+        """
+elif False:
+    TransferJobScheduleStartTimeOfDayArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TransferJobScheduleStartTimeOfDayArgs:
@@ -1732,6 +2335,55 @@ class TransferJobScheduleStartTimeOfDayArgs:
     def seconds(self, value: pulumi.Input[int]):
         pulumi.set(self, "seconds", value)
 
+
+if not MYPY:
+    class TransferJobTransferSpecArgsDict(TypedDict):
+        aws_s3_data_source: NotRequired[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceArgsDict']]
+        """
+        An AWS S3 data source. Structure documented below.
+        """
+        azure_blob_storage_data_source: NotRequired[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArgsDict']]
+        """
+        An Azure Blob Storage data source. Structure documented below.
+        """
+        gcs_data_sink: NotRequired[pulumi.Input['TransferJobTransferSpecGcsDataSinkArgsDict']]
+        """
+        A Google Cloud Storage data sink. Structure documented below.
+        """
+        gcs_data_source: NotRequired[pulumi.Input['TransferJobTransferSpecGcsDataSourceArgsDict']]
+        """
+        A Google Cloud Storage data source. Structure documented below.
+        """
+        http_data_source: NotRequired[pulumi.Input['TransferJobTransferSpecHttpDataSourceArgsDict']]
+        """
+        A HTTP URL data source. Structure documented below.
+        """
+        object_conditions: NotRequired[pulumi.Input['TransferJobTransferSpecObjectConditionsArgsDict']]
+        """
+        Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+        """
+        posix_data_sink: NotRequired[pulumi.Input['TransferJobTransferSpecPosixDataSinkArgsDict']]
+        """
+        A POSIX data sink. Structure documented below.
+        """
+        posix_data_source: NotRequired[pulumi.Input['TransferJobTransferSpecPosixDataSourceArgsDict']]
+        """
+        A POSIX filesystem data source. Structure documented below.
+        """
+        sink_agent_pool_name: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
+        """
+        source_agent_pool_name: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
+        """
+        transfer_options: NotRequired[pulumi.Input['TransferJobTransferSpecTransferOptionsArgsDict']]
+        """
+        Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+        """
+elif False:
+    TransferJobTransferSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TransferJobTransferSpecArgs:
@@ -1916,6 +2568,27 @@ class TransferJobTransferSpecArgs:
         pulumi.set(self, "transfer_options", value)
 
 
+if not MYPY:
+    class TransferJobTransferSpecAwsS3DataSourceArgsDict(TypedDict):
+        bucket_name: pulumi.Input[str]
+        """
+        S3 Bucket name.
+        """
+        aws_access_key: NotRequired[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgsDict']]
+        """
+        AWS credentials block.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        S3 Bucket path in bucket to transfer.
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
+        """
+elif False:
+    TransferJobTransferSpecAwsS3DataSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TransferJobTransferSpecAwsS3DataSourceArgs:
     def __init__(__self__, *,
@@ -1986,6 +2659,19 @@ class TransferJobTransferSpecAwsS3DataSourceArgs:
         pulumi.set(self, "role_arn", value)
 
 
+if not MYPY:
+    class TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgsDict(TypedDict):
+        access_key_id: pulumi.Input[str]
+        """
+        AWS Key ID.
+        """
+        secret_access_key: pulumi.Input[str]
+        """
+        AWS Secret Access Key.
+        """
+elif False:
+    TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs:
     def __init__(__self__, *,
@@ -2022,6 +2708,31 @@ class TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs:
     def secret_access_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "secret_access_key", value)
 
+
+if not MYPY:
+    class TransferJobTransferSpecAzureBlobStorageDataSourceArgsDict(TypedDict):
+        container: pulumi.Input[str]
+        """
+        The container to transfer from the Azure Storage account.`
+        """
+        storage_account: pulumi.Input[str]
+        """
+        The name of the Azure Storage account.
+        """
+        azure_credentials: NotRequired[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgsDict']]
+        """
+        Credentials used to authenticate API requests to Azure block.
+        """
+        credentials_secret: NotRequired[pulumi.Input[str]]
+        """
+        Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        """
+elif False:
+    TransferJobTransferSpecAzureBlobStorageDataSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TransferJobTransferSpecAzureBlobStorageDataSourceArgs:
@@ -2108,6 +2819,17 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceArgs:
         pulumi.set(self, "path", value)
 
 
+if not MYPY:
+    class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgsDict(TypedDict):
+        sas_token: pulumi.Input[str]
+        """
+        Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+
+        <a name="nested_schedule_start_end_date"></a>The `schedule_start_date` and `schedule_end_date` blocks support:
+        """
+elif False:
+    TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs:
     def __init__(__self__, *,
@@ -2133,6 +2855,19 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs:
     def sas_token(self, value: pulumi.Input[str]):
         pulumi.set(self, "sas_token", value)
 
+
+if not MYPY:
+    class TransferJobTransferSpecGcsDataSinkArgsDict(TypedDict):
+        bucket_name: pulumi.Input[str]
+        """
+        Google Cloud Storage bucket name.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        """
+elif False:
+    TransferJobTransferSpecGcsDataSinkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TransferJobTransferSpecGcsDataSinkArgs:
@@ -2172,6 +2907,19 @@ class TransferJobTransferSpecGcsDataSinkArgs:
         pulumi.set(self, "path", value)
 
 
+if not MYPY:
+    class TransferJobTransferSpecGcsDataSourceArgsDict(TypedDict):
+        bucket_name: pulumi.Input[str]
+        """
+        Google Cloud Storage bucket name.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        """
+elif False:
+    TransferJobTransferSpecGcsDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TransferJobTransferSpecGcsDataSourceArgs:
     def __init__(__self__, *,
@@ -2210,6 +2958,15 @@ class TransferJobTransferSpecGcsDataSourceArgs:
         pulumi.set(self, "path", value)
 
 
+if not MYPY:
+    class TransferJobTransferSpecHttpDataSourceArgsDict(TypedDict):
+        list_url: pulumi.Input[str]
+        """
+        The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
+        """
+elif False:
+    TransferJobTransferSpecHttpDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TransferJobTransferSpecHttpDataSourceArgs:
     def __init__(__self__, *,
@@ -2231,6 +2988,35 @@ class TransferJobTransferSpecHttpDataSourceArgs:
     def list_url(self, value: pulumi.Input[str]):
         pulumi.set(self, "list_url", value)
 
+
+if not MYPY:
+    class TransferJobTransferSpecObjectConditionsArgsDict(TypedDict):
+        exclude_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+        """
+        include_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        If `include_prefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+        """
+        last_modified_before: NotRequired[pulumi.Input[str]]
+        """
+        If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        last_modified_since: NotRequired[pulumi.Input[str]]
+        """
+        If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        max_time_elapsed_since_last_modification: NotRequired[pulumi.Input[str]]
+        """
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        min_time_elapsed_since_last_modification: NotRequired[pulumi.Input[str]]
+        """
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+elif False:
+    TransferJobTransferSpecObjectConditionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TransferJobTransferSpecObjectConditionsArgs:
@@ -2335,6 +3121,15 @@ class TransferJobTransferSpecObjectConditionsArgs:
         pulumi.set(self, "min_time_elapsed_since_last_modification", value)
 
 
+if not MYPY:
+    class TransferJobTransferSpecPosixDataSinkArgsDict(TypedDict):
+        root_directory: pulumi.Input[str]
+        """
+        Root directory path to the filesystem.
+        """
+elif False:
+    TransferJobTransferSpecPosixDataSinkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TransferJobTransferSpecPosixDataSinkArgs:
     def __init__(__self__, *,
@@ -2356,6 +3151,17 @@ class TransferJobTransferSpecPosixDataSinkArgs:
     def root_directory(self, value: pulumi.Input[str]):
         pulumi.set(self, "root_directory", value)
 
+
+if not MYPY:
+    class TransferJobTransferSpecPosixDataSourceArgsDict(TypedDict):
+        root_directory: pulumi.Input[str]
+        """
+        Root directory path to the filesystem.
+
+        <a name="nested_aws_s3_data_source"></a>The `aws_s3_data_source` block supports:
+        """
+elif False:
+    TransferJobTransferSpecPosixDataSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TransferJobTransferSpecPosixDataSourceArgs:
@@ -2382,6 +3188,28 @@ class TransferJobTransferSpecPosixDataSourceArgs:
     def root_directory(self, value: pulumi.Input[str]):
         pulumi.set(self, "root_directory", value)
 
+
+if not MYPY:
+    class TransferJobTransferSpecTransferOptionsArgsDict(TypedDict):
+        delete_objects_from_source_after_transfer: NotRequired[pulumi.Input[bool]]
+        """
+        Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
+        """
+        delete_objects_unique_in_sink: NotRequired[pulumi.Input[bool]]
+        """
+        Whether objects that exist only in the sink should be deleted. Note that this option and
+        `delete_objects_from_source_after_transfer` are mutually exclusive.
+        """
+        overwrite_objects_already_existing_in_sink: NotRequired[pulumi.Input[bool]]
+        """
+        Whether overwriting objects that already exist in the sink is allowed.
+        """
+        overwrite_when: NotRequired[pulumi.Input[str]]
+        """
+        When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+        """
+elif False:
+    TransferJobTransferSpecTransferOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TransferJobTransferSpecTransferOptionsArgs:

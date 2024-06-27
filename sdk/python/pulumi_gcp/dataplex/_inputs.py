@@ -4,83 +4,168 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AspectTypeIamBindingConditionArgs',
+    'AspectTypeIamBindingConditionArgsDict',
     'AspectTypeIamMemberConditionArgs',
+    'AspectTypeIamMemberConditionArgsDict',
     'AssetDiscoverySpecArgs',
+    'AssetDiscoverySpecArgsDict',
     'AssetDiscoverySpecCsvOptionsArgs',
+    'AssetDiscoverySpecCsvOptionsArgsDict',
     'AssetDiscoverySpecJsonOptionsArgs',
+    'AssetDiscoverySpecJsonOptionsArgsDict',
     'AssetDiscoveryStatusArgs',
+    'AssetDiscoveryStatusArgsDict',
     'AssetDiscoveryStatusStatArgs',
+    'AssetDiscoveryStatusStatArgsDict',
     'AssetIamBindingConditionArgs',
+    'AssetIamBindingConditionArgsDict',
     'AssetIamMemberConditionArgs',
+    'AssetIamMemberConditionArgsDict',
     'AssetResourceSpecArgs',
+    'AssetResourceSpecArgsDict',
     'AssetResourceStatusArgs',
+    'AssetResourceStatusArgsDict',
     'AssetSecurityStatusArgs',
+    'AssetSecurityStatusArgsDict',
     'DatascanDataArgs',
+    'DatascanDataArgsDict',
     'DatascanDataProfileSpecArgs',
+    'DatascanDataProfileSpecArgsDict',
     'DatascanDataProfileSpecExcludeFieldsArgs',
+    'DatascanDataProfileSpecExcludeFieldsArgsDict',
     'DatascanDataProfileSpecIncludeFieldsArgs',
+    'DatascanDataProfileSpecIncludeFieldsArgsDict',
     'DatascanDataProfileSpecPostScanActionsArgs',
+    'DatascanDataProfileSpecPostScanActionsArgsDict',
     'DatascanDataProfileSpecPostScanActionsBigqueryExportArgs',
+    'DatascanDataProfileSpecPostScanActionsBigqueryExportArgsDict',
     'DatascanDataQualitySpecArgs',
+    'DatascanDataQualitySpecArgsDict',
     'DatascanDataQualitySpecPostScanActionsArgs',
+    'DatascanDataQualitySpecPostScanActionsArgsDict',
     'DatascanDataQualitySpecPostScanActionsBigqueryExportArgs',
+    'DatascanDataQualitySpecPostScanActionsBigqueryExportArgsDict',
     'DatascanDataQualitySpecRuleArgs',
+    'DatascanDataQualitySpecRuleArgsDict',
     'DatascanDataQualitySpecRuleNonNullExpectationArgs',
+    'DatascanDataQualitySpecRuleNonNullExpectationArgsDict',
     'DatascanDataQualitySpecRuleRangeExpectationArgs',
+    'DatascanDataQualitySpecRuleRangeExpectationArgsDict',
     'DatascanDataQualitySpecRuleRegexExpectationArgs',
+    'DatascanDataQualitySpecRuleRegexExpectationArgsDict',
     'DatascanDataQualitySpecRuleRowConditionExpectationArgs',
+    'DatascanDataQualitySpecRuleRowConditionExpectationArgsDict',
     'DatascanDataQualitySpecRuleSetExpectationArgs',
+    'DatascanDataQualitySpecRuleSetExpectationArgsDict',
     'DatascanDataQualitySpecRuleStatisticRangeExpectationArgs',
+    'DatascanDataQualitySpecRuleStatisticRangeExpectationArgsDict',
     'DatascanDataQualitySpecRuleTableConditionExpectationArgs',
+    'DatascanDataQualitySpecRuleTableConditionExpectationArgsDict',
     'DatascanDataQualitySpecRuleUniquenessExpectationArgs',
+    'DatascanDataQualitySpecRuleUniquenessExpectationArgsDict',
     'DatascanExecutionSpecArgs',
+    'DatascanExecutionSpecArgsDict',
     'DatascanExecutionSpecTriggerArgs',
+    'DatascanExecutionSpecTriggerArgsDict',
     'DatascanExecutionSpecTriggerOnDemandArgs',
+    'DatascanExecutionSpecTriggerOnDemandArgsDict',
     'DatascanExecutionSpecTriggerScheduleArgs',
+    'DatascanExecutionSpecTriggerScheduleArgsDict',
     'DatascanExecutionStatusArgs',
+    'DatascanExecutionStatusArgsDict',
     'DatascanIamBindingConditionArgs',
+    'DatascanIamBindingConditionArgsDict',
     'DatascanIamMemberConditionArgs',
+    'DatascanIamMemberConditionArgsDict',
     'EntryGroupIamBindingConditionArgs',
+    'EntryGroupIamBindingConditionArgsDict',
     'EntryGroupIamMemberConditionArgs',
+    'EntryGroupIamMemberConditionArgsDict',
     'EntryTypeIamBindingConditionArgs',
+    'EntryTypeIamBindingConditionArgsDict',
     'EntryTypeIamMemberConditionArgs',
+    'EntryTypeIamMemberConditionArgsDict',
     'EntryTypeRequiredAspectArgs',
+    'EntryTypeRequiredAspectArgsDict',
     'LakeAssetStatusArgs',
+    'LakeAssetStatusArgsDict',
     'LakeIamBindingConditionArgs',
+    'LakeIamBindingConditionArgsDict',
     'LakeIamMemberConditionArgs',
+    'LakeIamMemberConditionArgsDict',
     'LakeMetastoreArgs',
+    'LakeMetastoreArgsDict',
     'LakeMetastoreStatusArgs',
+    'LakeMetastoreStatusArgsDict',
     'TaskExecutionSpecArgs',
+    'TaskExecutionSpecArgsDict',
     'TaskExecutionStatusArgs',
+    'TaskExecutionStatusArgsDict',
     'TaskExecutionStatusLatestJobArgs',
+    'TaskExecutionStatusLatestJobArgsDict',
     'TaskIamBindingConditionArgs',
+    'TaskIamBindingConditionArgsDict',
     'TaskIamMemberConditionArgs',
+    'TaskIamMemberConditionArgsDict',
     'TaskNotebookArgs',
+    'TaskNotebookArgsDict',
     'TaskNotebookInfrastructureSpecArgs',
+    'TaskNotebookInfrastructureSpecArgsDict',
     'TaskNotebookInfrastructureSpecBatchArgs',
+    'TaskNotebookInfrastructureSpecBatchArgsDict',
     'TaskNotebookInfrastructureSpecContainerImageArgs',
+    'TaskNotebookInfrastructureSpecContainerImageArgsDict',
     'TaskNotebookInfrastructureSpecVpcNetworkArgs',
+    'TaskNotebookInfrastructureSpecVpcNetworkArgsDict',
     'TaskSparkArgs',
+    'TaskSparkArgsDict',
     'TaskSparkInfrastructureSpecArgs',
+    'TaskSparkInfrastructureSpecArgsDict',
     'TaskSparkInfrastructureSpecBatchArgs',
+    'TaskSparkInfrastructureSpecBatchArgsDict',
     'TaskSparkInfrastructureSpecContainerImageArgs',
+    'TaskSparkInfrastructureSpecContainerImageArgsDict',
     'TaskSparkInfrastructureSpecVpcNetworkArgs',
+    'TaskSparkInfrastructureSpecVpcNetworkArgsDict',
     'TaskTriggerSpecArgs',
+    'TaskTriggerSpecArgsDict',
     'ZoneAssetStatusArgs',
+    'ZoneAssetStatusArgsDict',
     'ZoneDiscoverySpecArgs',
+    'ZoneDiscoverySpecArgsDict',
     'ZoneDiscoverySpecCsvOptionsArgs',
+    'ZoneDiscoverySpecCsvOptionsArgsDict',
     'ZoneDiscoverySpecJsonOptionsArgs',
+    'ZoneDiscoverySpecJsonOptionsArgsDict',
     'ZoneIamBindingConditionArgs',
+    'ZoneIamBindingConditionArgsDict',
     'ZoneIamMemberConditionArgs',
+    'ZoneIamMemberConditionArgsDict',
     'ZoneResourceSpecArgs',
+    'ZoneResourceSpecArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AspectTypeIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    AspectTypeIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AspectTypeIamBindingConditionArgs:
@@ -121,6 +206,14 @@ class AspectTypeIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class AspectTypeIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    AspectTypeIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AspectTypeIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -159,6 +252,35 @@ class AspectTypeIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class AssetDiscoverySpecArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Required. Whether discovery is enabled.
+        """
+        csv_options: NotRequired[pulumi.Input['AssetDiscoverySpecCsvOptionsArgsDict']]
+        """
+        Optional. Configuration for CSV data.
+        """
+        exclude_patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+        """
+        include_patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+        """
+        json_options: NotRequired[pulumi.Input['AssetDiscoverySpecJsonOptionsArgsDict']]
+        """
+        Optional. Configuration for Json data.
+        """
+        schedule: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        """
+elif False:
+    AssetDiscoverySpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AssetDiscoverySpecArgs:
@@ -262,6 +384,27 @@ class AssetDiscoverySpecArgs:
         pulumi.set(self, "schedule", value)
 
 
+if not MYPY:
+    class AssetDiscoverySpecCsvOptionsArgsDict(TypedDict):
+        delimiter: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The delimiter being used to separate values. This defaults to ','.
+        """
+        disable_type_inference: NotRequired[pulumi.Input[bool]]
+        """
+        Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
+        """
+        encoding: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The character encoding of the data. The default is UTF-8.
+        """
+        header_rows: NotRequired[pulumi.Input[int]]
+        """
+        Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+        """
+elif False:
+    AssetDiscoverySpecCsvOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AssetDiscoverySpecCsvOptionsArgs:
     def __init__(__self__, *,
@@ -333,6 +476,19 @@ class AssetDiscoverySpecCsvOptionsArgs:
         pulumi.set(self, "header_rows", value)
 
 
+if not MYPY:
+    class AssetDiscoverySpecJsonOptionsArgsDict(TypedDict):
+        disable_type_inference: NotRequired[pulumi.Input[bool]]
+        """
+        Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        """
+        encoding: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The character encoding of the data. The default is UTF-8.
+        """
+elif False:
+    AssetDiscoverySpecJsonOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AssetDiscoverySpecJsonOptionsArgs:
     def __init__(__self__, *,
@@ -371,6 +527,35 @@ class AssetDiscoverySpecJsonOptionsArgs:
     def encoding(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "encoding", value)
 
+
+if not MYPY:
+    class AssetDiscoveryStatusArgsDict(TypedDict):
+        last_run_duration: NotRequired[pulumi.Input[str]]
+        """
+        The duration of the last discovery run.
+        """
+        last_run_time: NotRequired[pulumi.Input[str]]
+        """
+        The start time of the last discovery run.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        Additional information about the current state.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        """
+        stats: NotRequired[pulumi.Input[Sequence[pulumi.Input['AssetDiscoveryStatusStatArgsDict']]]]
+        """
+        Data Stats of the asset reported by discovery.
+        """
+        update_time: NotRequired[pulumi.Input[str]]
+        """
+        Output only. The time when the asset was last updated.
+        """
+elif False:
+    AssetDiscoveryStatusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AssetDiscoveryStatusArgs:
@@ -475,6 +660,27 @@ class AssetDiscoveryStatusArgs:
         pulumi.set(self, "update_time", value)
 
 
+if not MYPY:
+    class AssetDiscoveryStatusStatArgsDict(TypedDict):
+        data_items: NotRequired[pulumi.Input[int]]
+        """
+        The count of data items within the referenced resource.
+        """
+        data_size: NotRequired[pulumi.Input[int]]
+        """
+        The number of stored data bytes within the referenced resource.
+        """
+        filesets: NotRequired[pulumi.Input[int]]
+        """
+        The count of fileset entities within the referenced resource.
+        """
+        tables: NotRequired[pulumi.Input[int]]
+        """
+        The count of table entities within the referenced resource.
+        """
+elif False:
+    AssetDiscoveryStatusStatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AssetDiscoveryStatusStatArgs:
     def __init__(__self__, *,
@@ -546,6 +752,14 @@ class AssetDiscoveryStatusStatArgs:
         pulumi.set(self, "tables", value)
 
 
+if not MYPY:
+    class AssetIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    AssetIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AssetIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -585,6 +799,14 @@ class AssetIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class AssetIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    AssetIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AssetIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -623,6 +845,25 @@ class AssetIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class AssetResourceSpecArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
+
+        - - -
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+        """
+        read_access_mode: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
+        """
+elif False:
+    AssetResourceSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AssetResourceSpecArgs:
@@ -682,6 +923,23 @@ class AssetResourceSpecArgs:
         pulumi.set(self, "read_access_mode", value)
 
 
+if not MYPY:
+    class AssetResourceStatusArgsDict(TypedDict):
+        message: NotRequired[pulumi.Input[str]]
+        """
+        Additional information about the current state.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        """
+        update_time: NotRequired[pulumi.Input[str]]
+        """
+        Output only. The time when the asset was last updated.
+        """
+elif False:
+    AssetResourceStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AssetResourceStatusArgs:
     def __init__(__self__, *,
@@ -736,6 +994,23 @@ class AssetResourceStatusArgs:
     def update_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_time", value)
 
+
+if not MYPY:
+    class AssetSecurityStatusArgsDict(TypedDict):
+        message: NotRequired[pulumi.Input[str]]
+        """
+        Additional information about the current state.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        """
+        update_time: NotRequired[pulumi.Input[str]]
+        """
+        Output only. The time when the asset was last updated.
+        """
+elif False:
+    AssetSecurityStatusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AssetSecurityStatusArgs:
@@ -792,6 +1067,20 @@ class AssetSecurityStatusArgs:
         pulumi.set(self, "update_time", value)
 
 
+if not MYPY:
+    class DatascanDataArgsDict(TypedDict):
+        entity: NotRequired[pulumi.Input[str]]
+        """
+        The Dataplex entity that represents the data source(e.g. BigQuery table) for Datascan.
+        """
+        resource: NotRequired[pulumi.Input[str]]
+        """
+        The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
+        (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan.
+        """
+elif False:
+    DatascanDataArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatascanDataArgs:
     def __init__(__self__, *,
@@ -832,6 +1121,38 @@ class DatascanDataArgs:
     def resource(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource", value)
 
+
+if not MYPY:
+    class DatascanDataProfileSpecArgsDict(TypedDict):
+        exclude_fields: NotRequired[pulumi.Input['DatascanDataProfileSpecExcludeFieldsArgsDict']]
+        """
+        The fields to exclude from data profile.
+        If specified, the fields will be excluded from data profile, regardless of `include_fields` value.
+        Structure is documented below.
+        """
+        include_fields: NotRequired[pulumi.Input['DatascanDataProfileSpecIncludeFieldsArgsDict']]
+        """
+        The fields to include in data profile.
+        If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `exclude_fields`.
+        Structure is documented below.
+        """
+        post_scan_actions: NotRequired[pulumi.Input['DatascanDataProfileSpecPostScanActionsArgsDict']]
+        """
+        Actions to take upon job completion.
+        Structure is documented below.
+        """
+        row_filter: NotRequired[pulumi.Input[str]]
+        """
+        A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+        """
+        sampling_percent: NotRequired[pulumi.Input[float]]
+        """
+        The percentage of the records to be selected from the dataset for DataScan.
+        Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+        Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
+        """
+elif False:
+    DatascanDataProfileSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatascanDataProfileSpecArgs:
@@ -934,6 +1255,17 @@ class DatascanDataProfileSpecArgs:
         pulumi.set(self, "sampling_percent", value)
 
 
+if not MYPY:
+    class DatascanDataProfileSpecExcludeFieldsArgsDict(TypedDict):
+        field_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Expected input is a list of fully qualified names of fields as in the schema.
+        Only top-level field names for nested fields are supported.
+        For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+        """
+elif False:
+    DatascanDataProfileSpecExcludeFieldsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatascanDataProfileSpecExcludeFieldsArgs:
     def __init__(__self__, *,
@@ -960,6 +1292,17 @@ class DatascanDataProfileSpecExcludeFieldsArgs:
     def field_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "field_names", value)
 
+
+if not MYPY:
+    class DatascanDataProfileSpecIncludeFieldsArgsDict(TypedDict):
+        field_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Expected input is a list of fully qualified names of fields as in the schema.
+        Only top-level field names for nested fields are supported.
+        For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+        """
+elif False:
+    DatascanDataProfileSpecIncludeFieldsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatascanDataProfileSpecIncludeFieldsArgs:
@@ -988,6 +1331,16 @@ class DatascanDataProfileSpecIncludeFieldsArgs:
         pulumi.set(self, "field_names", value)
 
 
+if not MYPY:
+    class DatascanDataProfileSpecPostScanActionsArgsDict(TypedDict):
+        bigquery_export: NotRequired[pulumi.Input['DatascanDataProfileSpecPostScanActionsBigqueryExportArgsDict']]
+        """
+        If set, results will be exported to the provided BigQuery table.
+        Structure is documented below.
+        """
+elif False:
+    DatascanDataProfileSpecPostScanActionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatascanDataProfileSpecPostScanActionsArgs:
     def __init__(__self__, *,
@@ -1013,6 +1366,16 @@ class DatascanDataProfileSpecPostScanActionsArgs:
         pulumi.set(self, "bigquery_export", value)
 
 
+if not MYPY:
+    class DatascanDataProfileSpecPostScanActionsBigqueryExportArgsDict(TypedDict):
+        results_table: NotRequired[pulumi.Input[str]]
+        """
+        The BigQuery table to export DataProfileScan results to.
+        Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        """
+elif False:
+    DatascanDataProfileSpecPostScanActionsBigqueryExportArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatascanDataProfileSpecPostScanActionsBigqueryExportArgs:
     def __init__(__self__, *,
@@ -1037,6 +1400,31 @@ class DatascanDataProfileSpecPostScanActionsBigqueryExportArgs:
     def results_table(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "results_table", value)
 
+
+if not MYPY:
+    class DatascanDataQualitySpecArgsDict(TypedDict):
+        post_scan_actions: NotRequired[pulumi.Input['DatascanDataQualitySpecPostScanActionsArgsDict']]
+        """
+        Actions to take upon job completion.
+        Structure is documented below.
+        """
+        row_filter: NotRequired[pulumi.Input[str]]
+        """
+        A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualitySpecRuleArgsDict']]]]
+        """
+        The list of rules to evaluate against a data source. At least one rule is required.
+        Structure is documented below.
+        """
+        sampling_percent: NotRequired[pulumi.Input[float]]
+        """
+        The percentage of the records to be selected from the dataset for DataScan.
+        Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+        Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
+        """
+elif False:
+    DatascanDataQualitySpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatascanDataQualitySpecArgs:
@@ -1117,6 +1505,16 @@ class DatascanDataQualitySpecArgs:
         pulumi.set(self, "sampling_percent", value)
 
 
+if not MYPY:
+    class DatascanDataQualitySpecPostScanActionsArgsDict(TypedDict):
+        bigquery_export: NotRequired[pulumi.Input['DatascanDataQualitySpecPostScanActionsBigqueryExportArgsDict']]
+        """
+        If set, results will be exported to the provided BigQuery table.
+        Structure is documented below.
+        """
+elif False:
+    DatascanDataQualitySpecPostScanActionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatascanDataQualitySpecPostScanActionsArgs:
     def __init__(__self__, *,
@@ -1142,6 +1540,16 @@ class DatascanDataQualitySpecPostScanActionsArgs:
         pulumi.set(self, "bigquery_export", value)
 
 
+if not MYPY:
+    class DatascanDataQualitySpecPostScanActionsBigqueryExportArgsDict(TypedDict):
+        results_table: NotRequired[pulumi.Input[str]]
+        """
+        The BigQuery table to export DataProfileScan results to.
+        Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        """
+elif False:
+    DatascanDataQualitySpecPostScanActionsBigqueryExportArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatascanDataQualitySpecPostScanActionsBigqueryExportArgs:
     def __init__(__self__, *,
@@ -1166,6 +1574,78 @@ class DatascanDataQualitySpecPostScanActionsBigqueryExportArgs:
     def results_table(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "results_table", value)
 
+
+if not MYPY:
+    class DatascanDataQualitySpecRuleArgsDict(TypedDict):
+        dimension: pulumi.Input[str]
+        """
+        The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
+        """
+        column: NotRequired[pulumi.Input[str]]
+        """
+        The unnested column which this rule is evaluated against.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the rule.
+        The maximum length is 1,024 characters.
+        """
+        ignore_null: NotRequired[pulumi.Input[bool]]
+        """
+        Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        A mutable name for the rule.
+        The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+        The maximum length is 63 characters.
+        Must start with a letter.
+        Must end with a number or a letter.
+        """
+        non_null_expectation: NotRequired[pulumi.Input['DatascanDataQualitySpecRuleNonNullExpectationArgsDict']]
+        """
+        ColumnMap rule which evaluates whether each column value is null.
+        """
+        range_expectation: NotRequired[pulumi.Input['DatascanDataQualitySpecRuleRangeExpectationArgsDict']]
+        """
+        ColumnMap rule which evaluates whether each column value lies between a specified range.
+        Structure is documented below.
+        """
+        regex_expectation: NotRequired[pulumi.Input['DatascanDataQualitySpecRuleRegexExpectationArgsDict']]
+        """
+        ColumnMap rule which evaluates whether each column value matches a specified regex.
+        Structure is documented below.
+        """
+        row_condition_expectation: NotRequired[pulumi.Input['DatascanDataQualitySpecRuleRowConditionExpectationArgsDict']]
+        """
+        Table rule which evaluates whether each row passes the specified condition.
+        Structure is documented below.
+        """
+        set_expectation: NotRequired[pulumi.Input['DatascanDataQualitySpecRuleSetExpectationArgsDict']]
+        """
+        ColumnMap rule which evaluates whether each column value is contained by a specified set.
+        Structure is documented below.
+        """
+        statistic_range_expectation: NotRequired[pulumi.Input['DatascanDataQualitySpecRuleStatisticRangeExpectationArgsDict']]
+        """
+        ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+        Structure is documented below.
+        """
+        table_condition_expectation: NotRequired[pulumi.Input['DatascanDataQualitySpecRuleTableConditionExpectationArgsDict']]
+        """
+        Table rule which evaluates whether the provided expression is true.
+        Structure is documented below.
+        """
+        threshold: NotRequired[pulumi.Input[float]]
+        """
+        The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+        """
+        uniqueness_expectation: NotRequired[pulumi.Input['DatascanDataQualitySpecRuleUniquenessExpectationArgsDict']]
+        """
+        Row-level rule which evaluates whether each column value is unique.
+        """
+elif False:
+    DatascanDataQualitySpecRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatascanDataQualitySpecRuleArgs:
@@ -1419,11 +1899,40 @@ class DatascanDataQualitySpecRuleArgs:
         pulumi.set(self, "uniqueness_expectation", value)
 
 
+if not MYPY:
+    class DatascanDataQualitySpecRuleNonNullExpectationArgsDict(TypedDict):
+        pass
+elif False:
+    DatascanDataQualitySpecRuleNonNullExpectationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatascanDataQualitySpecRuleNonNullExpectationArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class DatascanDataQualitySpecRuleRangeExpectationArgsDict(TypedDict):
+        max_value: NotRequired[pulumi.Input[str]]
+        """
+        The maximum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+        """
+        min_value: NotRequired[pulumi.Input[str]]
+        """
+        The minimum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+        """
+        strict_max_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+        Only relevant if a maxValue has been defined. Default = false.
+        """
+        strict_min_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+        Only relevant if a minValue has been defined. Default = false.
+        """
+elif False:
+    DatascanDataQualitySpecRuleRangeExpectationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatascanDataQualitySpecRuleRangeExpectationArgs:
@@ -1500,6 +2009,15 @@ class DatascanDataQualitySpecRuleRangeExpectationArgs:
         pulumi.set(self, "strict_min_enabled", value)
 
 
+if not MYPY:
+    class DatascanDataQualitySpecRuleRegexExpectationArgsDict(TypedDict):
+        regex: pulumi.Input[str]
+        """
+        A regular expression the column value is expected to match.
+        """
+elif False:
+    DatascanDataQualitySpecRuleRegexExpectationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatascanDataQualitySpecRuleRegexExpectationArgs:
     def __init__(__self__, *,
@@ -1521,6 +2039,15 @@ class DatascanDataQualitySpecRuleRegexExpectationArgs:
     def regex(self, value: pulumi.Input[str]):
         pulumi.set(self, "regex", value)
 
+
+if not MYPY:
+    class DatascanDataQualitySpecRuleRowConditionExpectationArgsDict(TypedDict):
+        sql_expression: pulumi.Input[str]
+        """
+        The SQL expression.
+        """
+elif False:
+    DatascanDataQualitySpecRuleRowConditionExpectationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatascanDataQualitySpecRuleRowConditionExpectationArgs:
@@ -1544,6 +2071,15 @@ class DatascanDataQualitySpecRuleRowConditionExpectationArgs:
         pulumi.set(self, "sql_expression", value)
 
 
+if not MYPY:
+    class DatascanDataQualitySpecRuleSetExpectationArgsDict(TypedDict):
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Expected values for the column value.
+        """
+elif False:
+    DatascanDataQualitySpecRuleSetExpectationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatascanDataQualitySpecRuleSetExpectationArgs:
     def __init__(__self__, *,
@@ -1565,6 +2101,36 @@ class DatascanDataQualitySpecRuleSetExpectationArgs:
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class DatascanDataQualitySpecRuleStatisticRangeExpectationArgsDict(TypedDict):
+        statistic: pulumi.Input[str]
+        """
+        column statistics.
+        Possible values are: `STATISTIC_UNDEFINED`, `MEAN`, `MIN`, `MAX`.
+        """
+        max_value: NotRequired[pulumi.Input[str]]
+        """
+        The maximum column statistic value allowed for a row to pass this validation.
+        At least one of minValue and maxValue need to be provided.
+        """
+        min_value: NotRequired[pulumi.Input[str]]
+        """
+        The minimum column statistic value allowed for a row to pass this validation.
+        At least one of minValue and maxValue need to be provided.
+        """
+        strict_max_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+        Only relevant if a maxValue has been defined. Default = false.
+        """
+        strict_min_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+        Only relevant if a minValue has been defined. Default = false.
+        """
+elif False:
+    DatascanDataQualitySpecRuleStatisticRangeExpectationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatascanDataQualitySpecRuleStatisticRangeExpectationArgs:
@@ -1662,6 +2228,15 @@ class DatascanDataQualitySpecRuleStatisticRangeExpectationArgs:
         pulumi.set(self, "strict_min_enabled", value)
 
 
+if not MYPY:
+    class DatascanDataQualitySpecRuleTableConditionExpectationArgsDict(TypedDict):
+        sql_expression: pulumi.Input[str]
+        """
+        The SQL expression.
+        """
+elif False:
+    DatascanDataQualitySpecRuleTableConditionExpectationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatascanDataQualitySpecRuleTableConditionExpectationArgs:
     def __init__(__self__, *,
@@ -1684,11 +2259,31 @@ class DatascanDataQualitySpecRuleTableConditionExpectationArgs:
         pulumi.set(self, "sql_expression", value)
 
 
+if not MYPY:
+    class DatascanDataQualitySpecRuleUniquenessExpectationArgsDict(TypedDict):
+        pass
+elif False:
+    DatascanDataQualitySpecRuleUniquenessExpectationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatascanDataQualitySpecRuleUniquenessExpectationArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class DatascanExecutionSpecArgsDict(TypedDict):
+        trigger: pulumi.Input['DatascanExecutionSpecTriggerArgsDict']
+        """
+        Spec related to how often and when a scan should be triggered.
+        Structure is documented below.
+        """
+        field: NotRequired[pulumi.Input[str]]
+        """
+        The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+        """
+elif False:
+    DatascanExecutionSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatascanExecutionSpecArgs:
@@ -1729,6 +2324,20 @@ class DatascanExecutionSpecArgs:
     def field(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "field", value)
 
+
+if not MYPY:
+    class DatascanExecutionSpecTriggerArgsDict(TypedDict):
+        on_demand: NotRequired[pulumi.Input['DatascanExecutionSpecTriggerOnDemandArgsDict']]
+        """
+        The scan runs once via dataScans.run API.
+        """
+        schedule: NotRequired[pulumi.Input['DatascanExecutionSpecTriggerScheduleArgsDict']]
+        """
+        The scan is scheduled to run periodically.
+        Structure is documented below.
+        """
+elif False:
+    DatascanExecutionSpecTriggerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatascanExecutionSpecTriggerArgs:
@@ -1771,11 +2380,28 @@ class DatascanExecutionSpecTriggerArgs:
         pulumi.set(self, "schedule", value)
 
 
+if not MYPY:
+    class DatascanExecutionSpecTriggerOnDemandArgsDict(TypedDict):
+        pass
+elif False:
+    DatascanExecutionSpecTriggerOnDemandArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatascanExecutionSpecTriggerOnDemandArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class DatascanExecutionSpecTriggerScheduleArgsDict(TypedDict):
+        cron: pulumi.Input[str]
+        """
+        Cron schedule for running scans periodically. This field is required for Schedule scans.
+
+        - - -
+        """
+elif False:
+    DatascanExecutionSpecTriggerScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatascanExecutionSpecTriggerScheduleArgs:
@@ -1802,6 +2428,21 @@ class DatascanExecutionSpecTriggerScheduleArgs:
     def cron(self, value: pulumi.Input[str]):
         pulumi.set(self, "cron", value)
 
+
+if not MYPY:
+    class DatascanExecutionStatusArgsDict(TypedDict):
+        latest_job_end_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The time when the latest DataScanJob started.
+        """
+        latest_job_start_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The time when the latest DataScanJob ended.
+        """
+elif False:
+    DatascanExecutionStatusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatascanExecutionStatusArgs:
@@ -1846,6 +2487,14 @@ class DatascanExecutionStatusArgs:
         pulumi.set(self, "latest_job_start_time", value)
 
 
+if not MYPY:
+    class DatascanIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    DatascanIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatascanIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -1884,6 +2533,14 @@ class DatascanIamBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class DatascanIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    DatascanIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatascanIamMemberConditionArgs:
@@ -1924,6 +2581,14 @@ class DatascanIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class EntryGroupIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    EntryGroupIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EntryGroupIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -1962,6 +2627,14 @@ class EntryGroupIamBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class EntryGroupIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    EntryGroupIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EntryGroupIamMemberConditionArgs:
@@ -2002,6 +2675,14 @@ class EntryGroupIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class EntryTypeIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    EntryTypeIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EntryTypeIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -2040,6 +2721,14 @@ class EntryTypeIamBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class EntryTypeIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    EntryTypeIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EntryTypeIamMemberConditionArgs:
@@ -2080,6 +2769,15 @@ class EntryTypeIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class EntryTypeRequiredAspectArgsDict(TypedDict):
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Required aspect type for the entry type.
+        """
+elif False:
+    EntryTypeRequiredAspectArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EntryTypeRequiredAspectArgs:
     def __init__(__self__, *,
@@ -2102,6 +2800,23 @@ class EntryTypeRequiredAspectArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class LakeAssetStatusArgsDict(TypedDict):
+        active_assets: NotRequired[pulumi.Input[int]]
+        """
+        Number of active assets.
+        """
+        security_policy_applying_assets: NotRequired[pulumi.Input[int]]
+        """
+        Number of assets that are in process of updating the security policy on attached resources.
+        """
+        update_time: NotRequired[pulumi.Input[str]]
+        """
+        Output only. The time when the lake was last updated.
+        """
+elif False:
+    LakeAssetStatusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LakeAssetStatusArgs:
@@ -2158,6 +2873,14 @@ class LakeAssetStatusArgs:
         pulumi.set(self, "update_time", value)
 
 
+if not MYPY:
+    class LakeIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    LakeIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LakeIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -2196,6 +2919,14 @@ class LakeIamBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class LakeIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    LakeIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LakeIamMemberConditionArgs:
@@ -2236,6 +2967,15 @@ class LakeIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class LakeMetastoreArgsDict(TypedDict):
+        service: NotRequired[pulumi.Input[str]]
+        """
+        Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
+        """
+elif False:
+    LakeMetastoreArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LakeMetastoreArgs:
     def __init__(__self__, *,
@@ -2258,6 +2998,27 @@ class LakeMetastoreArgs:
     def service(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service", value)
 
+
+if not MYPY:
+    class LakeMetastoreStatusArgsDict(TypedDict):
+        endpoint: NotRequired[pulumi.Input[str]]
+        """
+        The URI of the endpoint used to access the Metastore service.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        Additional information about the current status.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        """
+        update_time: NotRequired[pulumi.Input[str]]
+        """
+        Output only. The time when the lake was last updated.
+        """
+elif False:
+    LakeMetastoreStatusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LakeMetastoreStatusArgs:
@@ -2329,6 +3090,34 @@ class LakeMetastoreStatusArgs:
     def update_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_time", value)
 
+
+if not MYPY:
+    class TaskExecutionSpecArgsDict(TypedDict):
+        service_account: pulumi.Input[str]
+        """
+        Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
+        """
+        args: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
+        """
+        kms_key: NotRequired[pulumi.Input[str]]
+        """
+        The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+
+        - - -
+        """
+        max_job_execution_lifetime: NotRequired[pulumi.Input[str]]
+        """
+        The maximum duration after which the job execution is expired. A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
+        """
+        project: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+elif False:
+    TaskExecutionSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TaskExecutionSpecArgs:
@@ -2422,6 +3211,22 @@ class TaskExecutionSpecArgs:
         pulumi.set(self, "project", value)
 
 
+if not MYPY:
+    class TaskExecutionStatusArgsDict(TypedDict):
+        latest_jobs: NotRequired[pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusLatestJobArgsDict']]]]
+        """
+        (Output)
+        latest job execution.
+        Structure is documented below.
+        """
+        update_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Last update time of the status.
+        """
+elif False:
+    TaskExecutionStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TaskExecutionStatusArgs:
     def __init__(__self__, *,
@@ -2466,6 +3271,56 @@ class TaskExecutionStatusArgs:
     def update_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_time", value)
 
+
+if not MYPY:
+    class TaskExecutionStatusLatestJobArgsDict(TypedDict):
+        end_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The time when the job ended.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Additional information about the current state.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
+        """
+        retry_count: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The number of times the job has been retried (excluding the initial attempt).
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The underlying service running a job.
+        """
+        service_job: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The full resource name for the job run under a particular service.
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The time when the job was started.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Execution state for the job.
+        """
+        uid: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        System generated globally unique ID for the job.
+        """
+elif False:
+    TaskExecutionStatusLatestJobArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TaskExecutionStatusLatestJobArgs:
@@ -2636,6 +3491,14 @@ class TaskExecutionStatusLatestJobArgs:
         pulumi.set(self, "uid", value)
 
 
+if not MYPY:
+    class TaskIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    TaskIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TaskIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -2675,6 +3538,14 @@ class TaskIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class TaskIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    TaskIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TaskIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -2713,6 +3584,28 @@ class TaskIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class TaskNotebookArgsDict(TypedDict):
+        notebook: pulumi.Input[str]
+        """
+        Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+        """
+        archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        """
+        file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Cloud Storage URIs of files to be placed in the working directory of each executor.
+        """
+        infrastructure_spec: NotRequired[pulumi.Input['TaskNotebookInfrastructureSpecArgsDict']]
+        """
+        Infrastructure specification for the execution.
+        Structure is documented below.
+        """
+elif False:
+    TaskNotebookArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TaskNotebookArgs:
@@ -2786,6 +3679,26 @@ class TaskNotebookArgs:
         pulumi.set(self, "infrastructure_spec", value)
 
 
+if not MYPY:
+    class TaskNotebookInfrastructureSpecArgsDict(TypedDict):
+        batch: NotRequired[pulumi.Input['TaskNotebookInfrastructureSpecBatchArgsDict']]
+        """
+        Compute resources needed for a Task when using Dataproc Serverless.
+        Structure is documented below.
+        """
+        container_image: NotRequired[pulumi.Input['TaskNotebookInfrastructureSpecContainerImageArgsDict']]
+        """
+        Container Image Runtime Configuration.
+        Structure is documented below.
+        """
+        vpc_network: NotRequired[pulumi.Input['TaskNotebookInfrastructureSpecVpcNetworkArgsDict']]
+        """
+        Vpc network.
+        Structure is documented below.
+        """
+elif False:
+    TaskNotebookInfrastructureSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TaskNotebookInfrastructureSpecArgs:
     def __init__(__self__, *,
@@ -2847,6 +3760,19 @@ class TaskNotebookInfrastructureSpecArgs:
         pulumi.set(self, "vpc_network", value)
 
 
+if not MYPY:
+    class TaskNotebookInfrastructureSpecBatchArgsDict(TypedDict):
+        executors_count: NotRequired[pulumi.Input[int]]
+        """
+        Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
+        """
+        max_executors_count: NotRequired[pulumi.Input[int]]
+        """
+        Max configurable executors. If maxExecutorsCount > executorsCount, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. [Default=1000]
+        """
+elif False:
+    TaskNotebookInfrastructureSpecBatchArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TaskNotebookInfrastructureSpecBatchArgs:
     def __init__(__self__, *,
@@ -2885,6 +3811,27 @@ class TaskNotebookInfrastructureSpecBatchArgs:
     def max_executors_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_executors_count", value)
 
+
+if not MYPY:
+    class TaskNotebookInfrastructureSpecContainerImageArgsDict(TypedDict):
+        image: NotRequired[pulumi.Input[str]]
+        """
+        Container image to use.
+        """
+        java_jars: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
+        """
+        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties.
+        """
+        python_packages: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
+        """
+elif False:
+    TaskNotebookInfrastructureSpecContainerImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TaskNotebookInfrastructureSpecContainerImageArgs:
@@ -2957,6 +3904,23 @@ class TaskNotebookInfrastructureSpecContainerImageArgs:
         pulumi.set(self, "python_packages", value)
 
 
+if not MYPY:
+    class TaskNotebookInfrastructureSpecVpcNetworkArgsDict(TypedDict):
+        network: NotRequired[pulumi.Input[str]]
+        """
+        The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
+        """
+        network_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of network tags to apply to the job.
+        """
+        sub_network: NotRequired[pulumi.Input[str]]
+        """
+        The Cloud VPC sub-network in which the job is run.
+        """
+elif False:
+    TaskNotebookInfrastructureSpecVpcNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TaskNotebookInfrastructureSpecVpcNetworkArgs:
     def __init__(__self__, *,
@@ -3011,6 +3975,44 @@ class TaskNotebookInfrastructureSpecVpcNetworkArgs:
     def sub_network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sub_network", value)
 
+
+if not MYPY:
+    class TaskSparkArgsDict(TypedDict):
+        archive_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        """
+        file_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Cloud Storage URIs of files to be placed in the working directory of each executor.
+        """
+        infrastructure_spec: NotRequired[pulumi.Input['TaskSparkInfrastructureSpecArgsDict']]
+        """
+        Infrastructure specification for the execution.
+        Structure is documented below.
+        """
+        main_class: NotRequired[pulumi.Input[str]]
+        """
+        The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris. The execution args are passed in as a sequence of named process arguments (--key=value).
+        """
+        main_jar_file_uri: NotRequired[pulumi.Input[str]]
+        """
+        The Cloud Storage URI of the jar file that contains the main class. The execution args are passed in as a sequence of named process arguments (--key=value).
+        """
+        python_script_file: NotRequired[pulumi.Input[str]]
+        """
+        The Gcloud Storage URI of the main Python file to use as the driver. Must be a .py file. The execution args are passed in as a sequence of named process arguments (--key=value).
+        """
+        sql_script: NotRequired[pulumi.Input[str]]
+        """
+        The query text. The execution args are used to declare a set of script variables (set key='value';).
+        """
+        sql_script_file: NotRequired[pulumi.Input[str]]
+        """
+        A reference to a query file. This can be the Cloud Storage URI of the query file or it can the path to a SqlScript Content. The execution args are used to declare a set of script variables (set key='value';).
+        """
+elif False:
+    TaskSparkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TaskSparkArgs:
@@ -3149,6 +4151,26 @@ class TaskSparkArgs:
         pulumi.set(self, "sql_script_file", value)
 
 
+if not MYPY:
+    class TaskSparkInfrastructureSpecArgsDict(TypedDict):
+        batch: NotRequired[pulumi.Input['TaskSparkInfrastructureSpecBatchArgsDict']]
+        """
+        Compute resources needed for a Task when using Dataproc Serverless.
+        Structure is documented below.
+        """
+        container_image: NotRequired[pulumi.Input['TaskSparkInfrastructureSpecContainerImageArgsDict']]
+        """
+        Container Image Runtime Configuration.
+        Structure is documented below.
+        """
+        vpc_network: NotRequired[pulumi.Input['TaskSparkInfrastructureSpecVpcNetworkArgsDict']]
+        """
+        Vpc network.
+        Structure is documented below.
+        """
+elif False:
+    TaskSparkInfrastructureSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TaskSparkInfrastructureSpecArgs:
     def __init__(__self__, *,
@@ -3210,6 +4232,19 @@ class TaskSparkInfrastructureSpecArgs:
         pulumi.set(self, "vpc_network", value)
 
 
+if not MYPY:
+    class TaskSparkInfrastructureSpecBatchArgsDict(TypedDict):
+        executors_count: NotRequired[pulumi.Input[int]]
+        """
+        Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
+        """
+        max_executors_count: NotRequired[pulumi.Input[int]]
+        """
+        Max configurable executors. If maxExecutorsCount > executorsCount, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. [Default=1000]
+        """
+elif False:
+    TaskSparkInfrastructureSpecBatchArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TaskSparkInfrastructureSpecBatchArgs:
     def __init__(__self__, *,
@@ -3248,6 +4283,27 @@ class TaskSparkInfrastructureSpecBatchArgs:
     def max_executors_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_executors_count", value)
 
+
+if not MYPY:
+    class TaskSparkInfrastructureSpecContainerImageArgsDict(TypedDict):
+        image: NotRequired[pulumi.Input[str]]
+        """
+        Container image to use.
+        """
+        java_jars: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
+        """
+        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties.
+        """
+        python_packages: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
+        """
+elif False:
+    TaskSparkInfrastructureSpecContainerImageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TaskSparkInfrastructureSpecContainerImageArgs:
@@ -3320,6 +4376,23 @@ class TaskSparkInfrastructureSpecContainerImageArgs:
         pulumi.set(self, "python_packages", value)
 
 
+if not MYPY:
+    class TaskSparkInfrastructureSpecVpcNetworkArgsDict(TypedDict):
+        network: NotRequired[pulumi.Input[str]]
+        """
+        The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
+        """
+        network_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of network tags to apply to the job.
+        """
+        sub_network: NotRequired[pulumi.Input[str]]
+        """
+        The Cloud VPC sub-network in which the job is run.
+        """
+elif False:
+    TaskSparkInfrastructureSpecVpcNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TaskSparkInfrastructureSpecVpcNetworkArgs:
     def __init__(__self__, *,
@@ -3374,6 +4447,32 @@ class TaskSparkInfrastructureSpecVpcNetworkArgs:
     def sub_network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sub_network", value)
 
+
+if not MYPY:
+    class TaskTriggerSpecArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Trigger type of the user-specified Task
+        Possible values are: `ON_DEMAND`, `RECURRING`.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Prevent the task from executing. This does not cancel already running tasks. It is intended to temporarily disable RECURRING tasks.
+        """
+        max_retries: NotRequired[pulumi.Input[int]]
+        """
+        Number of retry attempts before aborting. Set to zero to never attempt to retry a failed task.
+        """
+        schedule: NotRequired[pulumi.Input[str]]
+        """
+        Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+        """
+elif False:
+    TaskTriggerSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TaskTriggerSpecArgs:
@@ -3463,6 +4562,23 @@ class TaskTriggerSpecArgs:
         pulumi.set(self, "start_time", value)
 
 
+if not MYPY:
+    class ZoneAssetStatusArgsDict(TypedDict):
+        active_assets: NotRequired[pulumi.Input[int]]
+        """
+        Number of active assets.
+        """
+        security_policy_applying_assets: NotRequired[pulumi.Input[int]]
+        """
+        Number of assets that are in process of updating the security policy on attached resources.
+        """
+        update_time: NotRequired[pulumi.Input[str]]
+        """
+        Output only. The time when the zone was last updated.
+        """
+elif False:
+    ZoneAssetStatusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZoneAssetStatusArgs:
     def __init__(__self__, *,
@@ -3517,6 +4633,35 @@ class ZoneAssetStatusArgs:
     def update_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_time", value)
 
+
+if not MYPY:
+    class ZoneDiscoverySpecArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Required. Whether discovery is enabled.
+        """
+        csv_options: NotRequired[pulumi.Input['ZoneDiscoverySpecCsvOptionsArgsDict']]
+        """
+        Optional. Configuration for CSV data.
+        """
+        exclude_patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+        """
+        include_patterns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
+        """
+        json_options: NotRequired[pulumi.Input['ZoneDiscoverySpecJsonOptionsArgsDict']]
+        """
+        Optional. Configuration for Json data.
+        """
+        schedule: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        """
+elif False:
+    ZoneDiscoverySpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZoneDiscoverySpecArgs:
@@ -3620,6 +4765,27 @@ class ZoneDiscoverySpecArgs:
         pulumi.set(self, "schedule", value)
 
 
+if not MYPY:
+    class ZoneDiscoverySpecCsvOptionsArgsDict(TypedDict):
+        delimiter: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The delimiter being used to separate values. This defaults to ','.
+        """
+        disable_type_inference: NotRequired[pulumi.Input[bool]]
+        """
+        Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
+        """
+        encoding: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The character encoding of the data. The default is UTF-8.
+        """
+        header_rows: NotRequired[pulumi.Input[int]]
+        """
+        Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
+        """
+elif False:
+    ZoneDiscoverySpecCsvOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZoneDiscoverySpecCsvOptionsArgs:
     def __init__(__self__, *,
@@ -3691,6 +4857,19 @@ class ZoneDiscoverySpecCsvOptionsArgs:
         pulumi.set(self, "header_rows", value)
 
 
+if not MYPY:
+    class ZoneDiscoverySpecJsonOptionsArgsDict(TypedDict):
+        disable_type_inference: NotRequired[pulumi.Input[bool]]
+        """
+        Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        """
+        encoding: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The character encoding of the data. The default is UTF-8.
+        """
+elif False:
+    ZoneDiscoverySpecJsonOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZoneDiscoverySpecJsonOptionsArgs:
     def __init__(__self__, *,
@@ -3729,6 +4908,14 @@ class ZoneDiscoverySpecJsonOptionsArgs:
     def encoding(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "encoding", value)
 
+
+if not MYPY:
+    class ZoneIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    ZoneIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZoneIamBindingConditionArgs:
@@ -3769,6 +4956,14 @@ class ZoneIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class ZoneIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    ZoneIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ZoneIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -3807,6 +5002,17 @@ class ZoneIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class ZoneResourceSpecArgsDict(TypedDict):
+        location_type: pulumi.Input[str]
+        """
+        Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+
+        - - -
+        """
+elif False:
+    ZoneResourceSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZoneResourceSpecArgs:

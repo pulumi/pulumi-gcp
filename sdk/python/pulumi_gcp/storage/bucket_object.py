@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -694,13 +699,13 @@ class BucketObject(pulumi.CustomResource):
                  content_encoding: Optional[pulumi.Input[str]] = None,
                  content_language: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
-                 customer_encryption: Optional[pulumi.Input[pulumi.InputType['BucketObjectCustomerEncryptionArgs']]] = None,
+                 customer_encryption: Optional[pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
                  detect_md5hash: Optional[pulumi.Input[str]] = None,
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 retention: Optional[pulumi.Input[pulumi.InputType['BucketObjectRetentionArgs']]] = None,
+                 retention: Optional[pulumi.Input[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']]] = None,
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  temporary_hold: Optional[pulumi.Input[bool]] = None,
@@ -753,7 +758,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_encoding: [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         :param pulumi.Input[str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         :param pulumi.Input[str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
-        :param pulumi.Input[pulumi.InputType['BucketObjectCustomerEncryptionArgs']] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+        :param pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
                Structure is documented below.
         :param pulumi.Input[bool] event_based_hold: Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
@@ -761,7 +766,7 @@ class BucketObject(pulumi.CustomResource):
                
                One of the following is required:
         :param pulumi.Input[str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
-        :param pulumi.Input[pulumi.InputType['BucketObjectRetentionArgs']] retention: The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+        :param pulumi.Input[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']] retention: The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
                
@@ -837,13 +842,13 @@ class BucketObject(pulumi.CustomResource):
                  content_encoding: Optional[pulumi.Input[str]] = None,
                  content_language: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
-                 customer_encryption: Optional[pulumi.Input[pulumi.InputType['BucketObjectCustomerEncryptionArgs']]] = None,
+                 customer_encryption: Optional[pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
                  detect_md5hash: Optional[pulumi.Input[str]] = None,
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 retention: Optional[pulumi.Input[pulumi.InputType['BucketObjectRetentionArgs']]] = None,
+                 retention: Optional[pulumi.Input[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']]] = None,
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  temporary_hold: Optional[pulumi.Input[bool]] = None,
@@ -900,7 +905,7 @@ class BucketObject(pulumi.CustomResource):
             content_language: Optional[pulumi.Input[str]] = None,
             content_type: Optional[pulumi.Input[str]] = None,
             crc32c: Optional[pulumi.Input[str]] = None,
-            customer_encryption: Optional[pulumi.Input[pulumi.InputType['BucketObjectCustomerEncryptionArgs']]] = None,
+            customer_encryption: Optional[pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
             detect_md5hash: Optional[pulumi.Input[str]] = None,
             event_based_hold: Optional[pulumi.Input[bool]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -909,7 +914,7 @@ class BucketObject(pulumi.CustomResource):
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             output_name: Optional[pulumi.Input[str]] = None,
-            retention: Optional[pulumi.Input[pulumi.InputType['BucketObjectRetentionArgs']]] = None,
+            retention: Optional[pulumi.Input[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
             storage_class: Optional[pulumi.Input[str]] = None,
@@ -930,7 +935,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         :param pulumi.Input[str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
         :param pulumi.Input[str] crc32c: (Computed) Base 64 CRC32 hash of the uploaded data.
-        :param pulumi.Input[pulumi.InputType['BucketObjectCustomerEncryptionArgs']] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+        :param pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
                Structure is documented below.
         :param pulumi.Input[bool] event_based_hold: Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
@@ -942,7 +947,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
         :param pulumi.Input[str] output_name: (Computed) The name of the object. Use this field in interpolations with `storage.ObjectACL` to recreate
                `storage.ObjectACL` resources when your `storage.BucketObject` is recreated.
-        :param pulumi.Input[pulumi.InputType['BucketObjectRetentionArgs']] retention: The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
+        :param pulumi.Input[Union['BucketObjectRetentionArgs', 'BucketObjectRetentionArgsDict']] retention: The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
         :param pulumi.Input[str] self_link: (Computed) A url reference to this object.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.

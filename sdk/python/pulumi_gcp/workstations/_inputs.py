@@ -4,35 +4,84 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'WorkstationClusterConditionArgs',
+    'WorkstationClusterConditionArgsDict',
     'WorkstationClusterDomainConfigArgs',
+    'WorkstationClusterDomainConfigArgsDict',
     'WorkstationClusterPrivateClusterConfigArgs',
+    'WorkstationClusterPrivateClusterConfigArgsDict',
     'WorkstationConfigConditionArgs',
+    'WorkstationConfigConditionArgsDict',
     'WorkstationConfigContainerArgs',
+    'WorkstationConfigContainerArgsDict',
     'WorkstationConfigEncryptionKeyArgs',
+    'WorkstationConfigEncryptionKeyArgsDict',
     'WorkstationConfigEphemeralDirectoryArgs',
+    'WorkstationConfigEphemeralDirectoryArgsDict',
     'WorkstationConfigEphemeralDirectoryGcePdArgs',
+    'WorkstationConfigEphemeralDirectoryGcePdArgsDict',
     'WorkstationConfigHostArgs',
+    'WorkstationConfigHostArgsDict',
     'WorkstationConfigHostGceInstanceArgs',
+    'WorkstationConfigHostGceInstanceArgsDict',
     'WorkstationConfigHostGceInstanceAcceleratorArgs',
+    'WorkstationConfigHostGceInstanceAcceleratorArgsDict',
     'WorkstationConfigHostGceInstanceBoostConfigArgs',
+    'WorkstationConfigHostGceInstanceBoostConfigArgsDict',
     'WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs',
+    'WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgsDict',
     'WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs',
+    'WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgsDict',
     'WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs',
+    'WorkstationConfigHostGceInstanceShieldedInstanceConfigArgsDict',
     'WorkstationConfigIamBindingConditionArgs',
+    'WorkstationConfigIamBindingConditionArgsDict',
     'WorkstationConfigIamMemberConditionArgs',
+    'WorkstationConfigIamMemberConditionArgsDict',
     'WorkstationConfigPersistentDirectoryArgs',
+    'WorkstationConfigPersistentDirectoryArgsDict',
     'WorkstationConfigPersistentDirectoryGcePdArgs',
+    'WorkstationConfigPersistentDirectoryGcePdArgsDict',
     'WorkstationConfigReadinessCheckArgs',
+    'WorkstationConfigReadinessCheckArgsDict',
     'WorkstationIamBindingConditionArgs',
+    'WorkstationIamBindingConditionArgsDict',
     'WorkstationIamMemberConditionArgs',
+    'WorkstationIamMemberConditionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class WorkstationClusterConditionArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]
+        """
+        (Output)
+        A list of messages that carry the error details.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human readable message indicating details about the current status.
+        """
+elif False:
+    WorkstationClusterConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkstationClusterConditionArgs:
@@ -95,6 +144,15 @@ class WorkstationClusterConditionArgs:
         pulumi.set(self, "message", value)
 
 
+if not MYPY:
+    class WorkstationClusterDomainConfigArgsDict(TypedDict):
+        domain: pulumi.Input[str]
+        """
+        Domain used by Workstations for HTTP ingress.
+        """
+elif False:
+    WorkstationClusterDomainConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkstationClusterDomainConfigArgs:
     def __init__(__self__, *,
@@ -116,6 +174,34 @@ class WorkstationClusterDomainConfigArgs:
     def domain(self, value: pulumi.Input[str]):
         pulumi.set(self, "domain", value)
 
+
+if not MYPY:
+    class WorkstationClusterPrivateClusterConfigArgsDict(TypedDict):
+        enable_private_endpoint: pulumi.Input[bool]
+        """
+        Whether Workstations endpoint is private.
+        """
+        allowed_projects: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Additional project IDs that are allowed to attach to the workstation cluster's service attachment.
+        By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+        """
+        cluster_hostname: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Hostname for the workstation cluster.
+        This field will be populated only when private endpoint is enabled.
+        To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
+        """
+        service_attachment_uri: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Service attachment URI for the workstation cluster.
+        The service attachment is created when private endpoint is enabled.
+        To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
+        """
+elif False:
+    WorkstationClusterPrivateClusterConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkstationClusterPrivateClusterConfigArgs:
@@ -201,6 +287,26 @@ class WorkstationClusterPrivateClusterConfigArgs:
         pulumi.set(self, "service_attachment_uri", value)
 
 
+if not MYPY:
+    class WorkstationConfigConditionArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]
+        """
+        (Output)
+        A list of messages that carry the error details.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human readable message indicating details about the current status.
+        """
+elif False:
+    WorkstationConfigConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkstationConfigConditionArgs:
     def __init__(__self__, *,
@@ -261,6 +367,36 @@ class WorkstationConfigConditionArgs:
     def message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "message", value)
 
+
+if not MYPY:
+    class WorkstationConfigContainerArgsDict(TypedDict):
+        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Arguments passed to the entrypoint.
+        """
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        If set, overrides the default ENTRYPOINT specified by the image.
+        """
+        env: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Environment variables passed to the container.
+        The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        Docker image defining the container. This image must be accessible by the config's service account.
+        """
+        run_as_user: NotRequired[pulumi.Input[int]]
+        """
+        If set, overrides the USER specified in the image with the given uid.
+        """
+        working_dir: NotRequired[pulumi.Input[str]]
+        """
+        If set, overrides the default DIR specified by the image.
+        """
+elif False:
+    WorkstationConfigContainerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkstationConfigContainerArgs:
@@ -367,6 +503,19 @@ class WorkstationConfigContainerArgs:
         pulumi.set(self, "working_dir", value)
 
 
+if not MYPY:
+    class WorkstationConfigEncryptionKeyArgsDict(TypedDict):
+        kms_key: pulumi.Input[str]
+        """
+        The name of the Google Cloud KMS encryption key.
+        """
+        kms_key_service_account: pulumi.Input[str]
+        """
+        The service account to use with the specified KMS key.
+        """
+elif False:
+    WorkstationConfigEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkstationConfigEncryptionKeyArgs:
     def __init__(__self__, *,
@@ -403,6 +552,20 @@ class WorkstationConfigEncryptionKeyArgs:
     def kms_key_service_account(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_service_account", value)
 
+
+if not MYPY:
+    class WorkstationConfigEphemeralDirectoryArgsDict(TypedDict):
+        gce_pd: NotRequired[pulumi.Input['WorkstationConfigEphemeralDirectoryGcePdArgsDict']]
+        """
+        An EphemeralDirectory backed by a Compute Engine persistent disk.
+        Structure is documented below.
+        """
+        mount_path: NotRequired[pulumi.Input[str]]
+        """
+        Location of this directory in the running workstation.
+        """
+elif False:
+    WorkstationConfigEphemeralDirectoryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkstationConfigEphemeralDirectoryArgs:
@@ -444,6 +607,32 @@ class WorkstationConfigEphemeralDirectoryArgs:
     def mount_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mount_path", value)
 
+
+if not MYPY:
+    class WorkstationConfigEphemeralDirectoryGcePdArgsDict(TypedDict):
+        disk_type: NotRequired[pulumi.Input[str]]
+        """
+        Type of the disk to use. Defaults to `"pd-standard"`.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the disk is read only. If true, the disk may be shared by multiple VMs and `sourceSnapshot` must be set.
+        """
+        source_image: NotRequired[pulumi.Input[str]]
+        """
+        Name of the disk image to use as the source for the disk.
+        Must be empty `sourceSnapshot` is set.
+        Updating `sourceImage` will update content in the ephemeral directory after the workstation is restarted.
+        """
+        source_snapshot: NotRequired[pulumi.Input[str]]
+        """
+        Name of the snapshot to use as the source for the disk.
+        Must be empty if `sourceImage` is set.
+        Must be empty if `read_only` is false.
+        Updating `source_snapshot` will update content in the ephemeral directory after the workstation is restarted.
+        """
+elif False:
+    WorkstationConfigEphemeralDirectoryGcePdArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkstationConfigEphemeralDirectoryGcePdArgs:
@@ -526,6 +715,16 @@ class WorkstationConfigEphemeralDirectoryGcePdArgs:
         pulumi.set(self, "source_snapshot", value)
 
 
+if not MYPY:
+    class WorkstationConfigHostArgsDict(TypedDict):
+        gce_instance: NotRequired[pulumi.Input['WorkstationConfigHostGceInstanceArgsDict']]
+        """
+        A runtime using a Compute Engine instance.
+        Structure is documented below.
+        """
+elif False:
+    WorkstationConfigHostArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkstationConfigHostArgs:
     def __init__(__self__, *,
@@ -550,6 +749,68 @@ class WorkstationConfigHostArgs:
     def gce_instance(self, value: Optional[pulumi.Input['WorkstationConfigHostGceInstanceArgs']]):
         pulumi.set(self, "gce_instance", value)
 
+
+if not MYPY:
+    class WorkstationConfigHostGceInstanceArgsDict(TypedDict):
+        accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgsDict']]]]
+        """
+        An accelerator card attached to the instance.
+        Structure is documented below.
+        """
+        boost_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigArgsDict']]]]
+        """
+        A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
+        Structure is documented below.
+        """
+        boot_disk_size_gb: NotRequired[pulumi.Input[int]]
+        """
+        Size of the boot disk in GB.
+        """
+        confidential_instance_config: NotRequired[pulumi.Input['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgsDict']]
+        """
+        A set of Compute Engine Confidential VM instance options.
+        Structure is documented below.
+        """
+        disable_public_ip_addresses: NotRequired[pulumi.Input[bool]]
+        """
+        Whether instances have no public IP address.
+        """
+        disable_ssh: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to disable SSH access to the VM.
+        """
+        enable_nested_virtualization: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
+        See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+        """
+        machine_type: NotRequired[pulumi.Input[str]]
+        """
+        The name of a Compute Engine machine type.
+        """
+        pool_size: NotRequired[pulumi.Input[int]]
+        """
+        Number of instances to pool for faster workstation startup.
+        """
+        service_account: NotRequired[pulumi.Input[str]]
+        """
+        Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
+        """
+        service_account_scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+        """
+        shielded_instance_config: NotRequired[pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgsDict']]
+        """
+        A set of Compute Engine Shielded instance options.
+        Structure is documented below.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Network tags to add to the Compute Engine machines backing the Workstations.
+        """
+elif False:
+    WorkstationConfigHostGceInstanceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkstationConfigHostGceInstanceArgs:
@@ -776,6 +1037,19 @@ class WorkstationConfigHostGceInstanceArgs:
         pulumi.set(self, "tags", value)
 
 
+if not MYPY:
+    class WorkstationConfigHostGceInstanceAcceleratorArgsDict(TypedDict):
+        count: pulumi.Input[int]
+        """
+        Number of accelerator cards exposed to the instance.
+        """
+        type: pulumi.Input[str]
+        """
+        Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+        """
+elif False:
+    WorkstationConfigHostGceInstanceAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkstationConfigHostGceInstanceAcceleratorArgs:
     def __init__(__self__, *,
@@ -812,6 +1086,37 @@ class WorkstationConfigHostGceInstanceAcceleratorArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class WorkstationConfigHostGceInstanceBoostConfigArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The id to be used for the boost config.
+        """
+        accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgsDict']]]]
+        """
+        An accelerator card attached to the boost instance.
+        Structure is documented below.
+        """
+        boot_disk_size_gb: NotRequired[pulumi.Input[int]]
+        """
+        Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
+        """
+        enable_nested_virtualization: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
+        See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+        """
+        machine_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
+        """
+        pool_size: NotRequired[pulumi.Input[int]]
+        """
+        Number of instances to pool for faster workstation boosting.
+        """
+elif False:
+    WorkstationConfigHostGceInstanceBoostConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkstationConfigHostGceInstanceBoostConfigArgs:
@@ -919,6 +1224,19 @@ class WorkstationConfigHostGceInstanceBoostConfigArgs:
         pulumi.set(self, "pool_size", value)
 
 
+if not MYPY:
+    class WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgsDict(TypedDict):
+        count: pulumi.Input[int]
+        """
+        Number of accelerator cards exposed to the instance.
+        """
+        type: pulumi.Input[str]
+        """
+        Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+        """
+elif False:
+    WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs:
     def __init__(__self__, *,
@@ -956,6 +1274,15 @@ class WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgsDict(TypedDict):
+        enable_confidential_compute: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the instance has confidential compute enabled.
+        """
+elif False:
+    WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs:
     def __init__(__self__, *,
@@ -978,6 +1305,23 @@ class WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs:
     def enable_confidential_compute(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_confidential_compute", value)
 
+
+if not MYPY:
+    class WorkstationConfigHostGceInstanceShieldedInstanceConfigArgsDict(TypedDict):
+        enable_integrity_monitoring: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the instance has integrity monitoring enabled.
+        """
+        enable_secure_boot: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the instance has Secure Boot enabled.
+        """
+        enable_vtpm: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the instance has the vTPM enabled.
+        """
+elif False:
+    WorkstationConfigHostGceInstanceShieldedInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs:
@@ -1034,6 +1378,14 @@ class WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs:
         pulumi.set(self, "enable_vtpm", value)
 
 
+if not MYPY:
+    class WorkstationConfigIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    WorkstationConfigIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkstationConfigIamBindingConditionArgs:
     def __init__(__self__, *,
@@ -1073,6 +1425,14 @@ class WorkstationConfigIamBindingConditionArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class WorkstationConfigIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    WorkstationConfigIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkstationConfigIamMemberConditionArgs:
     def __init__(__self__, *,
@@ -1111,6 +1471,20 @@ class WorkstationConfigIamMemberConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class WorkstationConfigPersistentDirectoryArgsDict(TypedDict):
+        gce_pd: NotRequired[pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArgsDict']]
+        """
+        A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
+        Structure is documented below.
+        """
+        mount_path: NotRequired[pulumi.Input[str]]
+        """
+        Location of this directory in the running workstation.
+        """
+elif False:
+    WorkstationConfigPersistentDirectoryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkstationConfigPersistentDirectoryArgs:
@@ -1152,6 +1526,36 @@ class WorkstationConfigPersistentDirectoryArgs:
     def mount_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mount_path", value)
 
+
+if not MYPY:
+    class WorkstationConfigPersistentDirectoryGcePdArgsDict(TypedDict):
+        disk_type: NotRequired[pulumi.Input[str]]
+        """
+        Type of the disk to use. Defaults to `"pd-standard"`.
+        """
+        fs_type: NotRequired[pulumi.Input[str]]
+        """
+        Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
+        """
+        reclaim_policy: NotRequired[pulumi.Input[str]]
+        """
+        Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
+        Possible values are: `DELETE`, `RETAIN`.
+        """
+        size_gb: NotRequired[pulumi.Input[int]]
+        """
+        The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if `sourceSnapshot` is set.
+        Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
+        """
+        source_snapshot: NotRequired[pulumi.Input[str]]
+        """
+        Name of the snapshot to use as the source for the disk.
+        Must be empty if `sourceImage` is set.
+        Must be empty if `read_only` is false.
+        Updating `source_snapshot` will update content in the ephemeral directory after the workstation is restarted.
+        """
+elif False:
+    WorkstationConfigPersistentDirectoryGcePdArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkstationConfigPersistentDirectoryGcePdArgs:
@@ -1250,6 +1654,19 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
         pulumi.set(self, "source_snapshot", value)
 
 
+if not MYPY:
+    class WorkstationConfigReadinessCheckArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        Path to which the request should be sent.
+        """
+        port: pulumi.Input[int]
+        """
+        Port to which the request should be sent.
+        """
+elif False:
+    WorkstationConfigReadinessCheckArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkstationConfigReadinessCheckArgs:
     def __init__(__self__, *,
@@ -1286,6 +1703,14 @@ class WorkstationConfigReadinessCheckArgs:
     def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
 
+
+if not MYPY:
+    class WorkstationIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    WorkstationIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkstationIamBindingConditionArgs:
@@ -1325,6 +1750,14 @@ class WorkstationIamBindingConditionArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class WorkstationIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    WorkstationIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkstationIamMemberConditionArgs:

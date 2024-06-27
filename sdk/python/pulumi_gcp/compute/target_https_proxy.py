@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = ['TargetHttpsProxyArgs', 'TargetHttpsProxy']
@@ -678,18 +683,18 @@ class TargetHttpsProxy(pulumi.CustomResource):
             name="url-map",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default = gcp.compute.TargetHttpsProxy("default",
             name="test-proxy",
             url_map=default_url_map.id,
@@ -722,18 +727,18 @@ class TargetHttpsProxy(pulumi.CustomResource):
             name="url-map",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default = gcp.compute.TargetHttpsProxy("default",
             name="test-http-keep-alive-timeout-proxy",
             http_keep_alive_timeout_sec=610,
@@ -752,14 +757,14 @@ class TargetHttpsProxy(pulumi.CustomResource):
             name="my-trust-config",
             description="sample description for the trust config",
             location="global",
-            trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArgs(
-                trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArgs(
-                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
-                )],
-                intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArgs(
-                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
-                )],
-            )],
+            trust_stores=[{
+                "trustAnchors": [{
+                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                }],
+                "intermediateCas": [{
+                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                }],
+            }],
             labels={
                 "foo": "bar",
             })
@@ -768,10 +773,10 @@ class TargetHttpsProxy(pulumi.CustomResource):
             description="my description",
             location="global",
             allow_open=False,
-            mtls_policy=gcp.networksecurity.ServerTlsPolicyMtlsPolicyArgs(
-                client_validation_mode="ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
-                client_validation_trust_config=default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
-            ))
+            mtls_policy={
+                "clientValidationMode": "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
+                "clientValidationTrustConfig": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
+            })
         default_ssl_certificate = gcp.compute.SSLCertificate("default",
             name="my-certificate",
             private_key=std.file(input="path/to/private.key").result,
@@ -791,18 +796,18 @@ class TargetHttpsProxy(pulumi.CustomResource):
             name="url-map",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default = gcp.compute.TargetHttpsProxy("default",
             name="test-mtls-proxy",
             url_map=default_url_map.id,
@@ -819,10 +824,10 @@ class TargetHttpsProxy(pulumi.CustomResource):
         default_certificate = gcp.certificatemanager.Certificate("default",
             name="my-certificate",
             scope="ALL_REGIONS",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=std.file(input="test-fixtures/cert.pem").result,
-                pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
-            ))
+            self_managed={
+                "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
+                "pemPrivateKey": std.file(input="test-fixtures/private-key.pem").result,
+            })
         default_backend_service = gcp.compute.BackendService("default",
             name="backend-service",
             port_name="http",
@@ -833,18 +838,18 @@ class TargetHttpsProxy(pulumi.CustomResource):
             name="url-map",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default = gcp.compute.TargetHttpsProxy("default",
             name="target-http-proxy",
             url_map=default_url_map.id,
@@ -975,18 +980,18 @@ class TargetHttpsProxy(pulumi.CustomResource):
             name="url-map",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default = gcp.compute.TargetHttpsProxy("default",
             name="test-proxy",
             url_map=default_url_map.id,
@@ -1019,18 +1024,18 @@ class TargetHttpsProxy(pulumi.CustomResource):
             name="url-map",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default = gcp.compute.TargetHttpsProxy("default",
             name="test-http-keep-alive-timeout-proxy",
             http_keep_alive_timeout_sec=610,
@@ -1049,14 +1054,14 @@ class TargetHttpsProxy(pulumi.CustomResource):
             name="my-trust-config",
             description="sample description for the trust config",
             location="global",
-            trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArgs(
-                trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArgs(
-                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
-                )],
-                intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArgs(
-                    pem_certificate=std.file(input="test-fixtures/ca_cert.pem").result,
-                )],
-            )],
+            trust_stores=[{
+                "trustAnchors": [{
+                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                }],
+                "intermediateCas": [{
+                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                }],
+            }],
             labels={
                 "foo": "bar",
             })
@@ -1065,10 +1070,10 @@ class TargetHttpsProxy(pulumi.CustomResource):
             description="my description",
             location="global",
             allow_open=False,
-            mtls_policy=gcp.networksecurity.ServerTlsPolicyMtlsPolicyArgs(
-                client_validation_mode="ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
-                client_validation_trust_config=default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
-            ))
+            mtls_policy={
+                "clientValidationMode": "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
+                "clientValidationTrustConfig": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
+            })
         default_ssl_certificate = gcp.compute.SSLCertificate("default",
             name="my-certificate",
             private_key=std.file(input="path/to/private.key").result,
@@ -1088,18 +1093,18 @@ class TargetHttpsProxy(pulumi.CustomResource):
             name="url-map",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default = gcp.compute.TargetHttpsProxy("default",
             name="test-mtls-proxy",
             url_map=default_url_map.id,
@@ -1116,10 +1121,10 @@ class TargetHttpsProxy(pulumi.CustomResource):
         default_certificate = gcp.certificatemanager.Certificate("default",
             name="my-certificate",
             scope="ALL_REGIONS",
-            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=std.file(input="test-fixtures/cert.pem").result,
-                pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
-            ))
+            self_managed={
+                "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
+                "pemPrivateKey": std.file(input="test-fixtures/private-key.pem").result,
+            })
         default_backend_service = gcp.compute.BackendService("default",
             name="backend-service",
             port_name="http",
@@ -1130,18 +1135,18 @@ class TargetHttpsProxy(pulumi.CustomResource):
             name="url-map",
             description="a description",
             default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.id,
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.id,
+                }],
+            }])
         default = gcp.compute.TargetHttpsProxy("default",
             name="target-http-proxy",
             url_map=default_url_map.id,

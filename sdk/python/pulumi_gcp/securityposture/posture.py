@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -332,7 +337,7 @@ class Posture(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 policy_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PosturePolicySetArgs']]]]] = None,
+                 policy_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PosturePolicySetArgs', 'PosturePolicySetArgsDict']]]]] = None,
                  posture_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -362,99 +367,99 @@ class Posture(pulumi.CustomResource):
             state="ACTIVE",
             description="a new posture",
             policy_sets=[
-                gcp.securityposture.PosturePolicySetArgs(
-                    policy_set_id="org_policy_set",
-                    description="set of org policies",
-                    policies=[
-                        gcp.securityposture.PosturePolicySetPolicyArgs(
-                            policy_id="canned_org_policy",
-                            constraint=gcp.securityposture.PosturePolicySetPolicyConstraintArgs(
-                                org_policy_constraint=gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs(
-                                    canned_constraint_id="storage.uniformBucketLevelAccess",
-                                    policy_rules=[gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs(
-                                        enforce=True,
-                                        condition=gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs(
-                                            description="condition description",
-                                            expression="resource.matchTag('org_id/tag_key_short_name,'tag_value_short_name')",
-                                            title="a CEL condition",
-                                        ),
-                                    )],
-                                ),
-                            ),
-                        ),
-                        gcp.securityposture.PosturePolicySetPolicyArgs(
-                            policy_id="custom_org_policy",
-                            constraint=gcp.securityposture.PosturePolicySetPolicyConstraintArgs(
-                                org_policy_constraint_custom=gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs(
-                                    custom_constraint=gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgs(
-                                        name="organizations/123456789/customConstraints/custom.disableGkeAutoUpgrade",
-                                        display_name="Disable GKE auto upgrade",
-                                        description="Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
-                                        action_type="ALLOW",
-                                        condition="resource.management.autoUpgrade == false",
-                                        method_types=[
+                {
+                    "policySetId": "org_policy_set",
+                    "description": "set of org policies",
+                    "policies": [
+                        {
+                            "policyId": "canned_org_policy",
+                            "constraint": {
+                                "orgPolicyConstraint": {
+                                    "cannedConstraintId": "storage.uniformBucketLevelAccess",
+                                    "policyRules": [{
+                                        "enforce": True,
+                                        "condition": {
+                                            "description": "condition description",
+                                            "expression": "resource.matchTag('org_id/tag_key_short_name,'tag_value_short_name')",
+                                            "title": "a CEL condition",
+                                        },
+                                    }],
+                                },
+                            },
+                        },
+                        {
+                            "policyId": "custom_org_policy",
+                            "constraint": {
+                                "orgPolicyConstraintCustom": {
+                                    "customConstraint": {
+                                        "name": "organizations/123456789/customConstraints/custom.disableGkeAutoUpgrade",
+                                        "displayName": "Disable GKE auto upgrade",
+                                        "description": "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
+                                        "actionType": "ALLOW",
+                                        "condition": "resource.management.autoUpgrade == false",
+                                        "methodTypes": [
                                             "CREATE",
                                             "UPDATE",
                                         ],
-                                        resource_types=["container.googleapis.com/NodePool"],
-                                    ),
-                                    policy_rules=[gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs(
-                                        enforce=True,
-                                        condition=gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs(
-                                            description="condition description",
-                                            expression="resource.matchTagId('tagKeys/key_id','tagValues/value_id')",
-                                            title="a CEL condition",
-                                        ),
-                                    )],
-                                ),
-                            ),
-                        ),
+                                        "resourceTypes": ["container.googleapis.com/NodePool"],
+                                    },
+                                    "policyRules": [{
+                                        "enforce": True,
+                                        "condition": {
+                                            "description": "condition description",
+                                            "expression": "resource.matchTagId('tagKeys/key_id','tagValues/value_id')",
+                                            "title": "a CEL condition",
+                                        },
+                                    }],
+                                },
+                            },
+                        },
                     ],
-                ),
-                gcp.securityposture.PosturePolicySetArgs(
-                    policy_set_id="sha_policy_set",
-                    description="set of sha policies",
-                    policies=[
-                        gcp.securityposture.PosturePolicySetPolicyArgs(
-                            policy_id="sha_builtin_module",
-                            constraint=gcp.securityposture.PosturePolicySetPolicyConstraintArgs(
-                                security_health_analytics_module=gcp.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgs(
-                                    module_name="BIGQUERY_TABLE_CMEK_DISABLED",
-                                    module_enablement_state="ENABLED",
-                                ),
-                            ),
-                            description="enable BIGQUERY_TABLE_CMEK_DISABLED",
-                        ),
-                        gcp.securityposture.PosturePolicySetPolicyArgs(
-                            policy_id="sha_custom_module",
-                            constraint=gcp.securityposture.PosturePolicySetPolicyConstraintArgs(
-                                security_health_analytics_custom_module=gcp.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs(
-                                    display_name="custom_SHA_policy",
-                                    config=gcp.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigArgs(
-                                        predicate=gcp.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicateArgs(
-                                            expression="resource.rotationPeriod > duration('2592000s')",
-                                        ),
-                                        custom_output=gcp.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgs(
-                                            properties=[gcp.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgs(
-                                                name="duration",
-                                                value_expression=gcp.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgs(
-                                                    expression="resource.rotationPeriod",
-                                                ),
-                                            )],
-                                        ),
-                                        resource_selector=gcp.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorArgs(
-                                            resource_types=["cloudkms.googleapis.com/CryptoKey"],
-                                        ),
-                                        severity="LOW",
-                                        description="Custom Module",
-                                        recommendation="Testing custom modules",
-                                    ),
-                                    module_enablement_state="ENABLED",
-                                ),
-                            ),
-                        ),
+                },
+                {
+                    "policySetId": "sha_policy_set",
+                    "description": "set of sha policies",
+                    "policies": [
+                        {
+                            "policyId": "sha_builtin_module",
+                            "constraint": {
+                                "securityHealthAnalyticsModule": {
+                                    "moduleName": "BIGQUERY_TABLE_CMEK_DISABLED",
+                                    "moduleEnablementState": "ENABLED",
+                                },
+                            },
+                            "description": "enable BIGQUERY_TABLE_CMEK_DISABLED",
+                        },
+                        {
+                            "policyId": "sha_custom_module",
+                            "constraint": {
+                                "securityHealthAnalyticsCustomModule": {
+                                    "displayName": "custom_SHA_policy",
+                                    "config": {
+                                        "predicate": {
+                                            "expression": "resource.rotationPeriod > duration('2592000s')",
+                                        },
+                                        "customOutput": {
+                                            "properties": [{
+                                                "name": "duration",
+                                                "valueExpression": {
+                                                    "expression": "resource.rotationPeriod",
+                                                },
+                                            }],
+                                        },
+                                        "resourceSelector": {
+                                            "resourceTypes": ["cloudkms.googleapis.com/CryptoKey"],
+                                        },
+                                        "severity": "LOW",
+                                        "description": "Custom Module",
+                                        "recommendation": "Testing custom modules",
+                                    },
+                                    "moduleEnablementState": "ENABLED",
+                                },
+                            },
+                        },
                     ],
-                ),
+                },
             ])
         ```
 
@@ -475,7 +480,7 @@ class Posture(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the posture.
         :param pulumi.Input[str] location: Location of the resource, eg: global.
         :param pulumi.Input[str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PosturePolicySetArgs']]]] policy_sets: List of policy sets for the posture.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PosturePolicySetArgs', 'PosturePolicySetArgsDict']]]] policy_sets: List of policy sets for the posture.
                Structure is documented below.
         :param pulumi.Input[str] posture_id: Id of the posture. It is an immutable field.
         :param pulumi.Input[str] state: State of the posture. Update to state field should not be triggered along with
@@ -514,99 +519,99 @@ class Posture(pulumi.CustomResource):
             state="ACTIVE",
             description="a new posture",
             policy_sets=[
-                gcp.securityposture.PosturePolicySetArgs(
-                    policy_set_id="org_policy_set",
-                    description="set of org policies",
-                    policies=[
-                        gcp.securityposture.PosturePolicySetPolicyArgs(
-                            policy_id="canned_org_policy",
-                            constraint=gcp.securityposture.PosturePolicySetPolicyConstraintArgs(
-                                org_policy_constraint=gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs(
-                                    canned_constraint_id="storage.uniformBucketLevelAccess",
-                                    policy_rules=[gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs(
-                                        enforce=True,
-                                        condition=gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs(
-                                            description="condition description",
-                                            expression="resource.matchTag('org_id/tag_key_short_name,'tag_value_short_name')",
-                                            title="a CEL condition",
-                                        ),
-                                    )],
-                                ),
-                            ),
-                        ),
-                        gcp.securityposture.PosturePolicySetPolicyArgs(
-                            policy_id="custom_org_policy",
-                            constraint=gcp.securityposture.PosturePolicySetPolicyConstraintArgs(
-                                org_policy_constraint_custom=gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs(
-                                    custom_constraint=gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgs(
-                                        name="organizations/123456789/customConstraints/custom.disableGkeAutoUpgrade",
-                                        display_name="Disable GKE auto upgrade",
-                                        description="Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
-                                        action_type="ALLOW",
-                                        condition="resource.management.autoUpgrade == false",
-                                        method_types=[
+                {
+                    "policySetId": "org_policy_set",
+                    "description": "set of org policies",
+                    "policies": [
+                        {
+                            "policyId": "canned_org_policy",
+                            "constraint": {
+                                "orgPolicyConstraint": {
+                                    "cannedConstraintId": "storage.uniformBucketLevelAccess",
+                                    "policyRules": [{
+                                        "enforce": True,
+                                        "condition": {
+                                            "description": "condition description",
+                                            "expression": "resource.matchTag('org_id/tag_key_short_name,'tag_value_short_name')",
+                                            "title": "a CEL condition",
+                                        },
+                                    }],
+                                },
+                            },
+                        },
+                        {
+                            "policyId": "custom_org_policy",
+                            "constraint": {
+                                "orgPolicyConstraintCustom": {
+                                    "customConstraint": {
+                                        "name": "organizations/123456789/customConstraints/custom.disableGkeAutoUpgrade",
+                                        "displayName": "Disable GKE auto upgrade",
+                                        "description": "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
+                                        "actionType": "ALLOW",
+                                        "condition": "resource.management.autoUpgrade == false",
+                                        "methodTypes": [
                                             "CREATE",
                                             "UPDATE",
                                         ],
-                                        resource_types=["container.googleapis.com/NodePool"],
-                                    ),
-                                    policy_rules=[gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs(
-                                        enforce=True,
-                                        condition=gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs(
-                                            description="condition description",
-                                            expression="resource.matchTagId('tagKeys/key_id','tagValues/value_id')",
-                                            title="a CEL condition",
-                                        ),
-                                    )],
-                                ),
-                            ),
-                        ),
+                                        "resourceTypes": ["container.googleapis.com/NodePool"],
+                                    },
+                                    "policyRules": [{
+                                        "enforce": True,
+                                        "condition": {
+                                            "description": "condition description",
+                                            "expression": "resource.matchTagId('tagKeys/key_id','tagValues/value_id')",
+                                            "title": "a CEL condition",
+                                        },
+                                    }],
+                                },
+                            },
+                        },
                     ],
-                ),
-                gcp.securityposture.PosturePolicySetArgs(
-                    policy_set_id="sha_policy_set",
-                    description="set of sha policies",
-                    policies=[
-                        gcp.securityposture.PosturePolicySetPolicyArgs(
-                            policy_id="sha_builtin_module",
-                            constraint=gcp.securityposture.PosturePolicySetPolicyConstraintArgs(
-                                security_health_analytics_module=gcp.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgs(
-                                    module_name="BIGQUERY_TABLE_CMEK_DISABLED",
-                                    module_enablement_state="ENABLED",
-                                ),
-                            ),
-                            description="enable BIGQUERY_TABLE_CMEK_DISABLED",
-                        ),
-                        gcp.securityposture.PosturePolicySetPolicyArgs(
-                            policy_id="sha_custom_module",
-                            constraint=gcp.securityposture.PosturePolicySetPolicyConstraintArgs(
-                                security_health_analytics_custom_module=gcp.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs(
-                                    display_name="custom_SHA_policy",
-                                    config=gcp.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigArgs(
-                                        predicate=gcp.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicateArgs(
-                                            expression="resource.rotationPeriod > duration('2592000s')",
-                                        ),
-                                        custom_output=gcp.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgs(
-                                            properties=[gcp.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgs(
-                                                name="duration",
-                                                value_expression=gcp.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgs(
-                                                    expression="resource.rotationPeriod",
-                                                ),
-                                            )],
-                                        ),
-                                        resource_selector=gcp.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorArgs(
-                                            resource_types=["cloudkms.googleapis.com/CryptoKey"],
-                                        ),
-                                        severity="LOW",
-                                        description="Custom Module",
-                                        recommendation="Testing custom modules",
-                                    ),
-                                    module_enablement_state="ENABLED",
-                                ),
-                            ),
-                        ),
+                },
+                {
+                    "policySetId": "sha_policy_set",
+                    "description": "set of sha policies",
+                    "policies": [
+                        {
+                            "policyId": "sha_builtin_module",
+                            "constraint": {
+                                "securityHealthAnalyticsModule": {
+                                    "moduleName": "BIGQUERY_TABLE_CMEK_DISABLED",
+                                    "moduleEnablementState": "ENABLED",
+                                },
+                            },
+                            "description": "enable BIGQUERY_TABLE_CMEK_DISABLED",
+                        },
+                        {
+                            "policyId": "sha_custom_module",
+                            "constraint": {
+                                "securityHealthAnalyticsCustomModule": {
+                                    "displayName": "custom_SHA_policy",
+                                    "config": {
+                                        "predicate": {
+                                            "expression": "resource.rotationPeriod > duration('2592000s')",
+                                        },
+                                        "customOutput": {
+                                            "properties": [{
+                                                "name": "duration",
+                                                "valueExpression": {
+                                                    "expression": "resource.rotationPeriod",
+                                                },
+                                            }],
+                                        },
+                                        "resourceSelector": {
+                                            "resourceTypes": ["cloudkms.googleapis.com/CryptoKey"],
+                                        },
+                                        "severity": "LOW",
+                                        "description": "Custom Module",
+                                        "recommendation": "Testing custom modules",
+                                    },
+                                    "moduleEnablementState": "ENABLED",
+                                },
+                            },
+                        },
                     ],
-                ),
+                },
             ])
         ```
 
@@ -640,7 +645,7 @@ class Posture(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 policy_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PosturePolicySetArgs']]]]] = None,
+                 policy_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PosturePolicySetArgs', 'PosturePolicySetArgsDict']]]]] = None,
                  posture_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -690,7 +695,7 @@ class Posture(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
-            policy_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PosturePolicySetArgs']]]]] = None,
+            policy_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PosturePolicySetArgs', 'PosturePolicySetArgsDict']]]]] = None,
             posture_id: Optional[pulumi.Input[str]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             revision_id: Optional[pulumi.Input[str]] = None,
@@ -709,7 +714,7 @@ class Posture(pulumi.CustomResource):
         :param pulumi.Input[str] location: Location of the resource, eg: global.
         :param pulumi.Input[str] name: Name of the posture.
         :param pulumi.Input[str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PosturePolicySetArgs']]]] policy_sets: List of policy sets for the posture.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PosturePolicySetArgs', 'PosturePolicySetArgsDict']]]] policy_sets: List of policy sets for the posture.
                Structure is documented below.
         :param pulumi.Input[str] posture_id: Id of the posture. It is an immutable field.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the posture.

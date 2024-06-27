@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from ._inputs import *
 
@@ -2097,7 +2102,7 @@ class Provider(pulumi.ProviderResource):
                  artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  backup_dr_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 batching: Optional[pulumi.Input[pulumi.InputType['ProviderBatchingArgs']]] = None,
+                 batching: Optional[pulumi.Input[Union['ProviderBatchingArgs', 'ProviderBatchingArgsDict']]] = None,
                  beyondcorp_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  biglake_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2305,7 +2310,7 @@ class Provider(pulumi.ProviderResource):
                  artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  backup_dr_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 batching: Optional[pulumi.Input[pulumi.InputType['ProviderBatchingArgs']]] = None,
+                 batching: Optional[pulumi.Input[Union['ProviderBatchingArgs', 'ProviderBatchingArgsDict']]] = None,
                  beyondcorp_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  biglake_custom_endpoint: Optional[pulumi.Input[str]] = None,
