@@ -1,0 +1,15 @@
+name: Upload bin assets
+description: Uploads the provider and tfgen binaries to `bin/`.
+
+runs:
+  using: "composite"
+  steps:
+    - name: Tar provider binaries
+      shell: bash
+      run: tar -zcf ${{ github.workspace }}/bin/provider.tar.gz -C ${{ github.workspace }}/bin/ pulumi-resource-gcp pulumi-tfgen-gcp
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: gcp-provider.tar.gz
+        path: ${{ github.workspace }}/bin/provider.tar.gz
+        retention-days: 30
