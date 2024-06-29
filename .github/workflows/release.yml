@@ -42,23 +42,6 @@ jobs:
     with:
       version: ${{ needs.prerequisites.outputs.version }}
 
-  create_docs_build:
-    name: create_docs_build
-    needs: publish_go_sdk
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dispatch Metadata build
-        uses: peter-evans/repository-dispatch@v3
-        with:
-          token: ${{ secrets.PULUMI_BOT_TOKEN }}
-          repository: pulumi/registry
-          event-type: resource-provider
-          client-payload: |-
-            {
-              "project": "${{ github.repository }}",
-              "project-shortname": "gcp",
-              "ref": "${{ github.ref_name }}"
-            }
   lint:
     name: lint
     uses: ./.github/workflows/lint.yml
@@ -74,105 +57,11 @@ jobs:
       - prerequisites
       - test
       - license_check
-    runs-on: ubuntu-latest
-    steps:
-    - name: Free Disk Space (Ubuntu)
-      uses: jlumbroso/free-disk-space@v1.3.1
-      with:
-        # this might remove tools that are actually needed,
-        # if set to "true" but frees about 6 GB
-        tool-cache: false
-        swap-storage: false
-    - name: Checkout Repo
-      uses: actions/checkout@v4
-    - name: Setup tools
-      uses: ./.github/actions/setup-tools
-      with:
-        tools: pulumictl, pulumicli, go
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-region: us-east-2
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        role-duration-seconds: 7200
-        role-external-id: upload-pulumi-release
-        role-session-name: gcp@githubActions
-        role-to-assume: ${{ secrets.AWS_UPLOAD_ROLE_ARN }}
-    - name: Run GoReleaser
-      uses: goreleaser/goreleaser-action@v5
-      env:
-        GORELEASER_CURRENT_TAG: v${{ needs.prerequisites.outputs.version }}
-        PROVIDER_VERSION: ${{ needs.prerequisites.outputs.version }}
-      with:
-        args: -p 2 release --rm-dist --timeout 60m0s
-        version: latest
-  publish_sdk:
-    name: publish_sdk
-    needs:
-      - prerequisites
-      - publish
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v4
-    - name: Setup tools
-      uses: ./.github/actions/setup-tools
-      with:
-        tools: pulumicli, pulumictl, go, node, dotnet, python, java
-    - name: Publish SDKs
-      uses: pulumi/pulumi-package-publisher@v0.0.19
-      with:
-        sdk: all
-        version: ${{ needs.prerequisites.outputs.version }}
-  publish_go_sdk:
-    name: publish_go_sdk
-    needs:
-      - prerequisites
-      - publish_sdk
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v4
-    - name: Download Go SDK
-      uses: actions/download-artifact@v4
-      with:
-        name: go-sdk.tar.gz
-        path: ${{ github.workspace }}/sdk/
-    - name: Uncompress Go SDK
-      run: tar -zxf ${{ github.workspace }}/sdk/go.tar.gz -C
-        ${{ github.workspace }}/sdk/go
-      shell: bash
-    - uses: pulumi/publish-go-sdk-action@v1
-      with:
-        repository: ${{ github.repository }}
-        base-ref: ${{ github.sha }}
-        source: sdk
-        path: sdk
-        version: ${{ needs.prerequisites.outputs.version }}
-        additive: false
-        # Avoid including other language SDKs & artifacts in the commit
-        files: |
-          go.*
-          go/**
-          !*.tar.gz
-
-  clean_up_release_labels:
-    name: Clean up release labels
-    needs: create_docs_build
-    
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v4
-    - name: Clean up release labels
-      uses: pulumi/action-release-by-pr-label@main
-      with:
-        command: "clean-up-release-labels"
-        repo: ${{ github.repository }}
-        commit: ${{ github.sha }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    uses: ./.github/workflows/publish.yml
+    secrets: inherit
+    with:
+      version: ${{ needs.prerequisites.outputs.version }}
+      isPrerelease: false
 
   test:
     name: test
@@ -242,18 +131,6 @@ jobs:
         - dotnet
         - go
         - java
-  verify-release:
-    name: verify-release
-    needs:
-      - prerequisites
-      - publish
-      - publish_sdk
-      - publish_go_sdk
-    uses: ./.github/workflows/verify-release.yml
-    secrets: inherit
-    with:
-      providerVersion: ${{ needs.prerequisites.outputs.version }}
-      enableMacosRunner: true
 
 name: release
 on:
