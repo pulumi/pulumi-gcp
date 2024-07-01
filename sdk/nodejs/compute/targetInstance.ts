@@ -306,7 +306,7 @@ export class TargetInstance extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TargetInstance.__pulumiType, name, resourceInputs, opts);
+        super(TargetInstance.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

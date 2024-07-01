@@ -129,7 +129,7 @@ export class AiFeatureStoreIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AiFeatureStoreIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(AiFeatureStoreIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

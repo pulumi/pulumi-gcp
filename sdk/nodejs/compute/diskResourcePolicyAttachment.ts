@@ -156,7 +156,7 @@ export class DiskResourcePolicyAttachment extends pulumi.CustomResource {
             resourceInputs["zone"] = args ? args.zone : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DiskResourcePolicyAttachment.__pulumiType, name, resourceInputs, opts);
+        super(DiskResourcePolicyAttachment.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

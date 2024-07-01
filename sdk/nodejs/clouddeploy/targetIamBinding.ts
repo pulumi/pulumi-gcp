@@ -79,7 +79,7 @@ export class TargetIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TargetIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(TargetIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -236,7 +236,7 @@ export class ApiConfigIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ApiConfigIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(ApiConfigIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

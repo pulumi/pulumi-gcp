@@ -175,7 +175,7 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
             resourceInputs["ruleName"] = args ? args.ruleName : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ResponsePolicyRule.__pulumiType, name, resourceInputs, opts);
+        super(ResponsePolicyRule.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

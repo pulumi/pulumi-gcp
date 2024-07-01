@@ -329,7 +329,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(StandardAppVersion.__pulumiType, name, resourceInputs, opts);
+        super(StandardAppVersion.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

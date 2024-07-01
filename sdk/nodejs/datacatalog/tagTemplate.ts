@@ -173,7 +173,7 @@ export class TagTemplate extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TagTemplate.__pulumiType, name, resourceInputs, opts);
+        super(TagTemplate.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

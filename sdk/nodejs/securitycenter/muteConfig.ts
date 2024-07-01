@@ -162,7 +162,7 @@ export class MuteConfig extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(MuteConfig.__pulumiType, name, resourceInputs, opts);
+        super(MuteConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -234,7 +234,7 @@ export class RepositoryWorkflowConfig extends pulumi.CustomResource {
             resourceInputs["recentScheduledExecutionRecords"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(RepositoryWorkflowConfig.__pulumiType, name, resourceInputs, opts);
+        super(RepositoryWorkflowConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

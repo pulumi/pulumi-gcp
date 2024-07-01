@@ -214,7 +214,7 @@ export class FolderFeed extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(FolderFeed.__pulumiType, name, resourceInputs, opts);
+        super(FolderFeed.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

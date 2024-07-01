@@ -145,7 +145,7 @@ export class BackendServiceIamMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(BackendServiceIamMember.__pulumiType, name, resourceInputs, opts);
+        super(BackendServiceIamMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

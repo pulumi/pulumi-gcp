@@ -252,7 +252,7 @@ export class DnsManagedZoneIamMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DnsManagedZoneIamMember.__pulumiType, name, resourceInputs, opts);
+        super(DnsManagedZoneIamMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

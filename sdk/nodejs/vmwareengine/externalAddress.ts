@@ -184,7 +184,7 @@ export class ExternalAddress extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ExternalAddress.__pulumiType, name, resourceInputs, opts);
+        super(ExternalAddress.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

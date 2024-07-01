@@ -226,7 +226,7 @@ export class TaxonomyIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TaxonomyIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(TaxonomyIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

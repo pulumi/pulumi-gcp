@@ -162,7 +162,7 @@ export class LogViewIamMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(LogViewIamMember.__pulumiType, name, resourceInputs, opts);
+        super(LogViewIamMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

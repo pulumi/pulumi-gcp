@@ -98,7 +98,7 @@ export class ProjectDefaultNetworkTier extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ProjectDefaultNetworkTier.__pulumiType, name, resourceInputs, opts);
+        super(ProjectDefaultNetworkTier.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

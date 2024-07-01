@@ -243,7 +243,7 @@ export class HostingVersion extends pulumi.CustomResource {
             resourceInputs["versionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(HostingVersion.__pulumiType, name, resourceInputs, opts);
+        super(HostingVersion.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

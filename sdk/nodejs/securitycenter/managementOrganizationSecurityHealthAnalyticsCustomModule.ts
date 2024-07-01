@@ -219,7 +219,7 @@ export class ManagementOrganizationSecurityHealthAnalyticsCustomModule extends p
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ManagementOrganizationSecurityHealthAnalyticsCustomModule.__pulumiType, name, resourceInputs, opts);
+        super(ManagementOrganizationSecurityHealthAnalyticsCustomModule.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

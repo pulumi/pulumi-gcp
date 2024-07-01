@@ -417,7 +417,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Instance.__pulumiType, name, resourceInputs, opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

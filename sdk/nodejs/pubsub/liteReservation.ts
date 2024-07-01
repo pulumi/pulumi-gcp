@@ -138,7 +138,7 @@ export class LiteReservation extends pulumi.CustomResource {
             resourceInputs["throughputCapacity"] = args ? args.throughputCapacity : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(LiteReservation.__pulumiType, name, resourceInputs, opts);
+        super(LiteReservation.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

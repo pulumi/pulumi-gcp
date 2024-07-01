@@ -151,7 +151,7 @@ export class OrganizationSettings extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(OrganizationSettings.__pulumiType, name, resourceInputs, opts);
+        super(OrganizationSettings.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

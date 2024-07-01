@@ -79,7 +79,7 @@ export class DiskAsyncReplication extends pulumi.CustomResource {
             resourceInputs["secondaryDisk"] = args ? args.secondaryDisk : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DiskAsyncReplication.__pulumiType, name, resourceInputs, opts);
+        super(DiskAsyncReplication.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

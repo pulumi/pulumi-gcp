@@ -180,7 +180,7 @@ export class Mesh extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(Mesh.__pulumiType, name, resourceInputs, opts);
+        super(Mesh.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

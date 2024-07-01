@@ -260,7 +260,7 @@ export class VMwareNodePool extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(VMwareNodePool.__pulumiType, name, resourceInputs, opts);
+        super(VMwareNodePool.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -262,7 +262,7 @@ export class TargetGrpcProxy extends pulumi.CustomResource {
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TargetGrpcProxy.__pulumiType, name, resourceInputs, opts);
+        super(TargetGrpcProxy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

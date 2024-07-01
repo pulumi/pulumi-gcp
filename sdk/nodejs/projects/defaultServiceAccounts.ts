@@ -128,7 +128,7 @@ export class DefaultServiceAccounts extends pulumi.CustomResource {
             resourceInputs["serviceAccounts"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DefaultServiceAccounts.__pulumiType, name, resourceInputs, opts);
+        super(DefaultServiceAccounts.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

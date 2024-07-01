@@ -191,7 +191,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["runAsServiceAccount"] = args ? args.runAsServiceAccount : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Client.__pulumiType, name, resourceInputs, opts);
+        super(Client.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

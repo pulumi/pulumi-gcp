@@ -107,7 +107,7 @@ export class InstanceAttachment extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(InstanceAttachment.__pulumiType, name, resourceInputs, opts);
+        super(InstanceAttachment.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

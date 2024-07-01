@@ -351,7 +351,7 @@ export class AzureCluster extends pulumi.CustomResource {
             resourceInputs["workloadIdentityConfigs"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AzureCluster.__pulumiType, name, resourceInputs, opts);
+        super(AzureCluster.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

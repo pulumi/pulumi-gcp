@@ -778,7 +778,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["tpuIpv4CidrBlock"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Cluster.__pulumiType, name, resourceInputs, opts);
+        super(Cluster.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

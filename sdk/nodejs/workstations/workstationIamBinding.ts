@@ -164,7 +164,7 @@ export class WorkstationIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(WorkstationIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(WorkstationIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

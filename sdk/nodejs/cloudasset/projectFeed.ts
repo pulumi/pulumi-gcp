@@ -196,7 +196,7 @@ export class ProjectFeed extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ProjectFeed.__pulumiType, name, resourceInputs, opts);
+        super(ProjectFeed.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

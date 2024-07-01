@@ -229,7 +229,7 @@ export class AiTensorboard extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(AiTensorboard.__pulumiType, name, resourceInputs, opts);
+        super(AiTensorboard.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

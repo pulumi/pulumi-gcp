@@ -261,7 +261,7 @@ export class ApiConfigIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ApiConfigIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(ApiConfigIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

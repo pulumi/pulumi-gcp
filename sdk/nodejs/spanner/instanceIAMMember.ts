@@ -232,7 +232,7 @@ export class InstanceIAMMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(InstanceIAMMember.__pulumiType, name, resourceInputs, opts);
+        super(InstanceIAMMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

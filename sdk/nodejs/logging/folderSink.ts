@@ -184,7 +184,7 @@ export class FolderSink extends pulumi.CustomResource {
             resourceInputs["writerIdentity"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(FolderSink.__pulumiType, name, resourceInputs, opts);
+        super(FolderSink.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

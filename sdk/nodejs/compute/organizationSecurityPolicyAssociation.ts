@@ -151,7 +151,7 @@ export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource
             resourceInputs["displayName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(OrganizationSecurityPolicyAssociation.__pulumiType, name, resourceInputs, opts);
+        super(OrganizationSecurityPolicyAssociation.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

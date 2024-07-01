@@ -282,7 +282,7 @@ export class Autoscaler extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "gcp:compute/autoscalar:Autoscalar" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
-        super(Autoscaler.__pulumiType, name, resourceInputs, opts);
+        super(Autoscaler.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

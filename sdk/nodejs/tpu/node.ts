@@ -270,7 +270,7 @@ export class Node extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(Node.__pulumiType, name, resourceInputs, opts);
+        super(Node.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

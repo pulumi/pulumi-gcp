@@ -121,7 +121,7 @@ export class ProjectExclusion extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ProjectExclusion.__pulumiType, name, resourceInputs, opts);
+        super(ProjectExclusion.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

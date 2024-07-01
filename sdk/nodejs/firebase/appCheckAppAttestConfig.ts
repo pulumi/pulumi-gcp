@@ -172,7 +172,7 @@ export class AppCheckAppAttestConfig extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AppCheckAppAttestConfig.__pulumiType, name, resourceInputs, opts);
+        super(AppCheckAppAttestConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

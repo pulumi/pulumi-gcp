@@ -209,7 +209,7 @@ export class SubscriptionIAMPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SubscriptionIAMPolicy.__pulumiType, name, resourceInputs, opts);
+        super(SubscriptionIAMPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

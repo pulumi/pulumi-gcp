@@ -230,7 +230,7 @@ export class PrivateCloud extends pulumi.CustomResource {
             resourceInputs["vcenters"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(PrivateCloud.__pulumiType, name, resourceInputs, opts);
+        super(PrivateCloud.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

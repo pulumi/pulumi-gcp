@@ -127,7 +127,7 @@ export class IAMBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(IAMBinding.__pulumiType, name, resourceInputs, opts);
+        super(IAMBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

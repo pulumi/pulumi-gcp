@@ -376,7 +376,7 @@ export class CaPoolIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(CaPoolIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(CaPoolIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

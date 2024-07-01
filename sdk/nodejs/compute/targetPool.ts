@@ -189,7 +189,7 @@ export class TargetPool extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TargetPool.__pulumiType, name, resourceInputs, opts);
+        super(TargetPool.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

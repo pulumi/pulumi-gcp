@@ -266,7 +266,7 @@ export class BackupPlanIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(BackupPlanIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(BackupPlanIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

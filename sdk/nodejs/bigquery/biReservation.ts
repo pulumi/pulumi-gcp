@@ -144,7 +144,7 @@ export class BiReservation extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(BiReservation.__pulumiType, name, resourceInputs, opts);
+        super(BiReservation.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

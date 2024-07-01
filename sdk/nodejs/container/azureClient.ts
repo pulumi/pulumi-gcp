@@ -157,7 +157,7 @@ export class AzureClient extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AzureClient.__pulumiType, name, resourceInputs, opts);
+        super(AzureClient.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

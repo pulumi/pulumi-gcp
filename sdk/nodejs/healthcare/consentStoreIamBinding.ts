@@ -254,7 +254,7 @@ export class ConsentStoreIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ConsentStoreIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(ConsentStoreIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

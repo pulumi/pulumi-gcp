@@ -296,7 +296,7 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["size"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(NodeGroup.__pulumiType, name, resourceInputs, opts);
+        super(NodeGroup.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

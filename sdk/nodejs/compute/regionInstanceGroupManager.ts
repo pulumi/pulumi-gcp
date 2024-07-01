@@ -395,7 +395,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["statuses"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(RegionInstanceGroupManager.__pulumiType, name, resourceInputs, opts);
+        super(RegionInstanceGroupManager.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

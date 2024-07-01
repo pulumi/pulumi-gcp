@@ -250,7 +250,7 @@ export class ZoneIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ZoneIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(ZoneIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -156,7 +156,7 @@ export class AutokeyConfig extends pulumi.CustomResource {
             resourceInputs["keyProject"] = args ? args.keyProject : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AutokeyConfig.__pulumiType, name, resourceInputs, opts);
+        super(AutokeyConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

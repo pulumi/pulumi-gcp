@@ -346,7 +346,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["subscriptionType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Organization.__pulumiType, name, resourceInputs, opts);
+        super(Organization.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

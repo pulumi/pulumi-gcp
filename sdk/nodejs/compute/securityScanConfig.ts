@@ -188,7 +188,7 @@ export class SecurityScanConfig extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SecurityScanConfig.__pulumiType, name, resourceInputs, opts);
+        super(SecurityScanConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

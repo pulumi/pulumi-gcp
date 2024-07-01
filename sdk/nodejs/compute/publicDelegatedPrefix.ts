@@ -178,7 +178,7 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(PublicDelegatedPrefix.__pulumiType, name, resourceInputs, opts);
+        super(PublicDelegatedPrefix.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -133,7 +133,7 @@ export class WorkstationConfigIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(WorkstationConfigIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(WorkstationConfigIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -175,7 +175,7 @@ export class PolicyTag extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(PolicyTag.__pulumiType, name, resourceInputs, opts);
+        super(PolicyTag.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

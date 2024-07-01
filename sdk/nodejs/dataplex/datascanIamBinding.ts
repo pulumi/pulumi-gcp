@@ -266,7 +266,7 @@ export class DatascanIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DatascanIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(DatascanIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

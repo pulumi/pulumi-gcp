@@ -202,7 +202,7 @@ export class RepositoryReleaseConfig extends pulumi.CustomResource {
             resourceInputs["recentScheduledReleaseRecords"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(RepositoryReleaseConfig.__pulumiType, name, resourceInputs, opts);
+        super(RepositoryReleaseConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -237,7 +237,7 @@ export class Workflow extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(Workflow.__pulumiType, name, resourceInputs, opts);
+        super(Workflow.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

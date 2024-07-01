@@ -517,7 +517,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ServiceAttachment.__pulumiType, name, resourceInputs, opts);
+        super(ServiceAttachment.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

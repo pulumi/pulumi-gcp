@@ -128,7 +128,7 @@ export class RegionBackendServiceIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(RegionBackendServiceIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(RegionBackendServiceIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

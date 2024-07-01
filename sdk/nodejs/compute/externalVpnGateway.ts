@@ -261,7 +261,7 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(ExternalVpnGateway.__pulumiType, name, resourceInputs, opts);
+        super(ExternalVpnGateway.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

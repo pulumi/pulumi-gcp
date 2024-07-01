@@ -239,7 +239,7 @@ export class JobIAMMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(JobIAMMember.__pulumiType, name, resourceInputs, opts);
+        super(JobIAMMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

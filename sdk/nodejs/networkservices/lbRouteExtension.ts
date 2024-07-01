@@ -169,7 +169,7 @@ export class LbRouteExtension extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(LbRouteExtension.__pulumiType, name, resourceInputs, opts);
+        super(LbRouteExtension.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

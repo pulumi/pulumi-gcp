@@ -218,7 +218,7 @@ export class RegionAutoscaler extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(RegionAutoscaler.__pulumiType, name, resourceInputs, opts);
+        super(RegionAutoscaler.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -152,7 +152,7 @@ export class AiDeploymentResourcePool extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AiDeploymentResourcePool.__pulumiType, name, resourceInputs, opts);
+        super(AiDeploymentResourcePool.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

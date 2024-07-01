@@ -377,7 +377,7 @@ export class MachineImageIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(MachineImageIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(MachineImageIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

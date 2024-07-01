@@ -90,7 +90,7 @@ export class EgressPolicy extends pulumi.CustomResource {
             resourceInputs["resource"] = args ? args.resource : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(EgressPolicy.__pulumiType, name, resourceInputs, opts);
+        super(EgressPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

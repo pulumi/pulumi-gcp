@@ -110,7 +110,7 @@ export class ServicePerimeterEgressPolicy extends pulumi.CustomResource {
             resourceInputs["perimeter"] = args ? args.perimeter : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ServicePerimeterEgressPolicy.__pulumiType, name, resourceInputs, opts);
+        super(ServicePerimeterEgressPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

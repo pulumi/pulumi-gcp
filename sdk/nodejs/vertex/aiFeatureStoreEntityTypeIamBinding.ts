@@ -144,7 +144,7 @@ export class AiFeatureStoreEntityTypeIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AiFeatureStoreEntityTypeIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(AiFeatureStoreEntityTypeIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

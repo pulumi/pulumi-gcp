@@ -172,7 +172,7 @@ export class AttachedDisk extends pulumi.CustomResource {
             resourceInputs["zone"] = args ? args.zone : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AttachedDisk.__pulumiType, name, resourceInputs, opts);
+        super(AttachedDisk.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

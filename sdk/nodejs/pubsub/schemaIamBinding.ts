@@ -252,7 +252,7 @@ export class SchemaIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SchemaIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(SchemaIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

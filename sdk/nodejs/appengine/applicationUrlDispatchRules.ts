@@ -132,7 +132,7 @@ export class ApplicationUrlDispatchRules extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ApplicationUrlDispatchRules.__pulumiType, name, resourceInputs, opts);
+        super(ApplicationUrlDispatchRules.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

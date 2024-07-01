@@ -312,7 +312,7 @@ export class ActiveDirectory extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "password", "pulumiLabels"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(ActiveDirectory.__pulumiType, name, resourceInputs, opts);
+        super(ActiveDirectory.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -322,7 +322,7 @@ export class IAMPolicy extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "gcp:serviceAccount/iAMPolicy:IAMPolicy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
-        super(IAMPolicy.__pulumiType, name, resourceInputs, opts);
+        super(IAMPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

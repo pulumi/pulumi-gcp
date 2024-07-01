@@ -252,7 +252,7 @@ export class SchemaIamMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SchemaIamMember.__pulumiType, name, resourceInputs, opts);
+        super(SchemaIamMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

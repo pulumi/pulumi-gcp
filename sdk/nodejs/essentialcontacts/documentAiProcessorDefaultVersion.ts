@@ -106,7 +106,7 @@ export class DocumentAiProcessorDefaultVersion extends pulumi.CustomResource {
             resourceInputs["version"] = args ? args.version : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DocumentAiProcessorDefaultVersion.__pulumiType, name, resourceInputs, opts);
+        super(DocumentAiProcessorDefaultVersion.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -451,7 +451,7 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(WorkforcePoolProvider.__pulumiType, name, resourceInputs, opts);
+        super(WorkforcePoolProvider.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -395,7 +395,7 @@ export class FeatureMembership extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(FeatureMembership.__pulumiType, name, resourceInputs, opts);
+        super(FeatureMembership.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

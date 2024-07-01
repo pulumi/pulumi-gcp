@@ -220,7 +220,7 @@ export class NetworkPeeringRoutesConfig extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(NetworkPeeringRoutesConfig.__pulumiType, name, resourceInputs, opts);
+        super(NetworkPeeringRoutesConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

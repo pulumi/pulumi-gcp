@@ -144,7 +144,7 @@ export class UserWorkloadsSecret extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["data"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(UserWorkloadsSecret.__pulumiType, name, resourceInputs, opts);
+        super(UserWorkloadsSecret.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

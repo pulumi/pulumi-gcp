@@ -209,7 +209,7 @@ export class Router extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Router.__pulumiType, name, resourceInputs, opts);
+        super(Router.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

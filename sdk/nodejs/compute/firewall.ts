@@ -335,7 +335,7 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Firewall.__pulumiType, name, resourceInputs, opts);
+        super(Firewall.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

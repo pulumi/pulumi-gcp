@@ -164,7 +164,7 @@ export class AppCheckRecaptchaV3Config extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["siteSecret"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(AppCheckRecaptchaV3Config.__pulumiType, name, resourceInputs, opts);
+        super(AppCheckRecaptchaV3Config.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

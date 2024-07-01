@@ -231,7 +231,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Network.__pulumiType, name, resourceInputs, opts);
+        super(Network.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

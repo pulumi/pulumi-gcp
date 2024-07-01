@@ -216,7 +216,7 @@ export class HostingRelease extends pulumi.CustomResource {
             resourceInputs["releaseId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(HostingRelease.__pulumiType, name, resourceInputs, opts);
+        super(HostingRelease.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -251,7 +251,7 @@ export class EntryGroupIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(EntryGroupIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(EntryGroupIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

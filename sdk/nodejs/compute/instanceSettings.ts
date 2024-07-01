@@ -136,7 +136,7 @@ export class InstanceSettings extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(InstanceSettings.__pulumiType, name, resourceInputs, opts);
+        super(InstanceSettings.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

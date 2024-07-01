@@ -167,7 +167,7 @@ export class NetworkPeering extends pulumi.CustomResource {
             resourceInputs["stateDetails"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(NetworkPeering.__pulumiType, name, resourceInputs, opts);
+        super(NetworkPeering.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

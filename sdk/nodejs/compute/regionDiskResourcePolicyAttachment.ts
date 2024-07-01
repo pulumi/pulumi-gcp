@@ -172,7 +172,7 @@ export class RegionDiskResourcePolicyAttachment extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(RegionDiskResourcePolicyAttachment.__pulumiType, name, resourceInputs, opts);
+        super(RegionDiskResourcePolicyAttachment.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

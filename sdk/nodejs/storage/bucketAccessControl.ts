@@ -159,7 +159,7 @@ export class BucketAccessControl extends pulumi.CustomResource {
             resourceInputs["email"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(BucketAccessControl.__pulumiType, name, resourceInputs, opts);
+        super(BucketAccessControl.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

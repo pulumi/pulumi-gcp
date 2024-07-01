@@ -236,7 +236,7 @@ export class BucketObject extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["content", "customerEncryption"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(BucketObject.__pulumiType, name, resourceInputs, opts);
+        super(BucketObject.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

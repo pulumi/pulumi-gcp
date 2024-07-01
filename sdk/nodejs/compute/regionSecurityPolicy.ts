@@ -223,7 +223,7 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["selfLinkWithPolicyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(RegionSecurityPolicy.__pulumiType, name, resourceInputs, opts);
+        super(RegionSecurityPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

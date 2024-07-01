@@ -237,7 +237,7 @@ export class TransferJob extends pulumi.CustomResource {
             resourceInputs["lastModificationTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TransferJob.__pulumiType, name, resourceInputs, opts);
+        super(TransferJob.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

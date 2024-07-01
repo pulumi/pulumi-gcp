@@ -377,7 +377,7 @@ export class MachineImageIamMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(MachineImageIamMember.__pulumiType, name, resourceInputs, opts);
+        super(MachineImageIamMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

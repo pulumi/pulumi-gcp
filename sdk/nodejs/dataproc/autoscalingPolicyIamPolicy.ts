@@ -248,7 +248,7 @@ export class AutoscalingPolicyIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AutoscalingPolicyIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(AutoscalingPolicyIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

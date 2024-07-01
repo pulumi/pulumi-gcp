@@ -113,7 +113,7 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
             resourceInputs["serviceProject"] = args ? args.serviceProject : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SharedVPCServiceProject.__pulumiType, name, resourceInputs, opts);
+        super(SharedVPCServiceProject.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

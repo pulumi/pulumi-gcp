@@ -184,7 +184,7 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["urlDispatchRules"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Application.__pulumiType, name, resourceInputs, opts);
+        super(Application.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

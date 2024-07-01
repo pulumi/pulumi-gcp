@@ -189,7 +189,7 @@ export class AddonsConfig extends pulumi.CustomResource {
             resourceInputs["org"] = args ? args.org : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AddonsConfig.__pulumiType, name, resourceInputs, opts);
+        super(AddonsConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

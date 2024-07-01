@@ -165,7 +165,7 @@ export class AccessLevel extends pulumi.CustomResource {
             resourceInputs["title"] = args ? args.title : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AccessLevel.__pulumiType, name, resourceInputs, opts);
+        super(AccessLevel.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

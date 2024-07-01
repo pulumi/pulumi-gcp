@@ -286,7 +286,7 @@ export class InternalRange extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(InternalRange.__pulumiType, name, resourceInputs, opts);
+        super(InternalRange.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

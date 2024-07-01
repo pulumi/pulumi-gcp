@@ -746,7 +746,7 @@ export class CxPage extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(CxPage.__pulumiType, name, resourceInputs, opts);
+        super(CxPage.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

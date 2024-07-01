@@ -307,7 +307,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ResourcePolicy.__pulumiType, name, resourceInputs, opts);
+        super(ResourcePolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

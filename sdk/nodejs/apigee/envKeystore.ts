@@ -102,7 +102,7 @@ export class EnvKeystore extends pulumi.CustomResource {
             resourceInputs["aliases"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(EnvKeystore.__pulumiType, name, resourceInputs, opts);
+        super(EnvKeystore.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

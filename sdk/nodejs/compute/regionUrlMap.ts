@@ -821,7 +821,7 @@ export class RegionUrlMap extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(RegionUrlMap.__pulumiType, name, resourceInputs, opts);
+        super(RegionUrlMap.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

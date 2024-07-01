@@ -247,7 +247,7 @@ export class DataTransferConfig extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DataTransferConfig.__pulumiType, name, resourceInputs, opts);
+        super(DataTransferConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

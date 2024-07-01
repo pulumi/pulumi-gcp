@@ -153,7 +153,7 @@ export class SslCert extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["cert", "privateKey", "serverCaCert"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(SslCert.__pulumiType, name, resourceInputs, opts);
+        super(SslCert.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

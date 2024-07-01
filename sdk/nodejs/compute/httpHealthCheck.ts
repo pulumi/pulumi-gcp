@@ -198,7 +198,7 @@ export class HttpHealthCheck extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(HttpHealthCheck.__pulumiType, name, resourceInputs, opts);
+        super(HttpHealthCheck.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

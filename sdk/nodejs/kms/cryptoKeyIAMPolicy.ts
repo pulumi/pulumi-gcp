@@ -217,7 +217,7 @@ export class CryptoKeyIAMPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(CryptoKeyIAMPolicy.__pulumiType, name, resourceInputs, opts);
+        super(CryptoKeyIAMPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

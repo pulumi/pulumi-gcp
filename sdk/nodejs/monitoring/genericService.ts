@@ -174,7 +174,7 @@ export class GenericService extends pulumi.CustomResource {
             resourceInputs["telemetries"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(GenericService.__pulumiType, name, resourceInputs, opts);
+        super(GenericService.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -274,7 +274,7 @@ export class RegionCommitment extends pulumi.CustomResource {
             resourceInputs["statusMessage"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(RegionCommitment.__pulumiType, name, resourceInputs, opts);
+        super(RegionCommitment.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

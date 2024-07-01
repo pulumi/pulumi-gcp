@@ -154,7 +154,7 @@ export class AiFeatureStoreIamMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AiFeatureStoreIamMember.__pulumiType, name, resourceInputs, opts);
+        super(AiFeatureStoreIamMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

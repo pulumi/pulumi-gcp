@@ -154,7 +154,7 @@ export class TransferAgentPool extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TransferAgentPool.__pulumiType, name, resourceInputs, opts);
+        super(TransferAgentPool.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

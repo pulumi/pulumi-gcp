@@ -125,7 +125,7 @@ export class FirewallPolicyAssociation extends pulumi.CustomResource {
             resourceInputs["shortName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(FirewallPolicyAssociation.__pulumiType, name, resourceInputs, opts);
+        super(FirewallPolicyAssociation.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

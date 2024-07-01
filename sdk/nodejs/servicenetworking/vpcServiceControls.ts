@@ -186,7 +186,7 @@ export class VpcServiceControls extends pulumi.CustomResource {
             resourceInputs["service"] = args ? args.service : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(VpcServiceControls.__pulumiType, name, resourceInputs, opts);
+        super(VpcServiceControls.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

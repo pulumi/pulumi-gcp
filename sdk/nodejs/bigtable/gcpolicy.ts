@@ -251,7 +251,7 @@ export class GCPolicy extends pulumi.CustomResource {
             resourceInputs["table"] = args ? args.table : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(GCPolicy.__pulumiType, name, resourceInputs, opts);
+        super(GCPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

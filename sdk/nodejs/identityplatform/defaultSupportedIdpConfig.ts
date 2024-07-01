@@ -156,7 +156,7 @@ export class DefaultSupportedIdpConfig extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DefaultSupportedIdpConfig.__pulumiType, name, resourceInputs, opts);
+        super(DefaultSupportedIdpConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

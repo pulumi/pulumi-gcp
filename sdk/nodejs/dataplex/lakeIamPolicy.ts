@@ -238,7 +238,7 @@ export class LakeIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(LakeIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(LakeIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

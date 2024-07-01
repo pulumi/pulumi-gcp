@@ -159,7 +159,7 @@ export class InboundSamlConfig extends pulumi.CustomResource {
             resourceInputs["spConfig"] = args ? args.spConfig : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(InboundSamlConfig.__pulumiType, name, resourceInputs, opts);
+        super(InboundSamlConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

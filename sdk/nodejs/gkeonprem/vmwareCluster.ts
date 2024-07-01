@@ -535,7 +535,7 @@ export class VMwareCluster extends pulumi.CustomResource {
             resourceInputs["validationChecks"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(VMwareCluster.__pulumiType, name, resourceInputs, opts);
+        super(VMwareCluster.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

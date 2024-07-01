@@ -235,7 +235,7 @@ export class DataStore extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DataStore.__pulumiType, name, resourceInputs, opts);
+        super(DataStore.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

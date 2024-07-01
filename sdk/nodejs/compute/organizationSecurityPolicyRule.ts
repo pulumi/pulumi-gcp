@@ -190,7 +190,7 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
             resourceInputs["targetServiceAccounts"] = args ? args.targetServiceAccounts : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(OrganizationSecurityPolicyRule.__pulumiType, name, resourceInputs, opts);
+        super(OrganizationSecurityPolicyRule.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

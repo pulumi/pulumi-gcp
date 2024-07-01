@@ -192,7 +192,7 @@ export class InsightsReportConfig extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(InsightsReportConfig.__pulumiType, name, resourceInputs, opts);
+        super(InsightsReportConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

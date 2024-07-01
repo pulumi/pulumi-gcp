@@ -190,7 +190,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["workloadReferences"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Workload.__pulumiType, name, resourceInputs, opts);
+        super(Workload.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

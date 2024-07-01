@@ -266,7 +266,7 @@ export class GatewayIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(GatewayIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(GatewayIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

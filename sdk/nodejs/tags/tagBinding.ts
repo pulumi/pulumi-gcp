@@ -133,7 +133,7 @@ export class TagBinding extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TagBinding.__pulumiType, name, resourceInputs, opts);
+        super(TagBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

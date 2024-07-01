@@ -132,7 +132,7 @@ export class NetworkFirewallPolicyAssociation extends pulumi.CustomResource {
             resourceInputs["shortName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(NetworkFirewallPolicyAssociation.__pulumiType, name, resourceInputs, opts);
+        super(NetworkFirewallPolicyAssociation.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

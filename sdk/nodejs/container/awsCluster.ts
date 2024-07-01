@@ -463,7 +463,7 @@ export class AwsCluster extends pulumi.CustomResource {
             resourceInputs["workloadIdentityConfigs"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AwsCluster.__pulumiType, name, resourceInputs, opts);
+        super(AwsCluster.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

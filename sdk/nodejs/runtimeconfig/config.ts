@@ -107,7 +107,7 @@ export class Config extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Config.__pulumiType, name, resourceInputs, opts);
+        super(Config.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -211,7 +211,7 @@ export class NamespaceIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(NamespaceIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(NamespaceIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

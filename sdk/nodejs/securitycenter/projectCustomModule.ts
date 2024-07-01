@@ -215,7 +215,7 @@ export class ProjectCustomModule extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ProjectCustomModule.__pulumiType, name, resourceInputs, opts);
+        super(ProjectCustomModule.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

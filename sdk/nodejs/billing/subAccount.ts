@@ -122,7 +122,7 @@ export class SubAccount extends pulumi.CustomResource {
             resourceInputs["open"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SubAccount.__pulumiType, name, resourceInputs, opts);
+        super(SubAccount.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

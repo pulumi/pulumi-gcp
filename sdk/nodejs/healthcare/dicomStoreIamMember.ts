@@ -225,7 +225,7 @@ export class DicomStoreIamMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DicomStoreIamMember.__pulumiType, name, resourceInputs, opts);
+        super(DicomStoreIamMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -160,7 +160,7 @@ export class DomainMapping extends pulumi.CustomResource {
             resourceInputs["statuses"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DomainMapping.__pulumiType, name, resourceInputs, opts);
+        super(DomainMapping.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

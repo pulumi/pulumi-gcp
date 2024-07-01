@@ -146,7 +146,7 @@ export class Brand extends pulumi.CustomResource {
             resourceInputs["orgInternalOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Brand.__pulumiType, name, resourceInputs, opts);
+        super(Brand.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -158,7 +158,7 @@ export class FolderBucketConfig extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(FolderBucketConfig.__pulumiType, name, resourceInputs, opts);
+        super(FolderBucketConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

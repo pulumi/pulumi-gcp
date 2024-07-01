@@ -137,7 +137,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Dataset.__pulumiType, name, resourceInputs, opts);
+        super(Dataset.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

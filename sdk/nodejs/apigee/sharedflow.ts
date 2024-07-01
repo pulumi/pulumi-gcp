@@ -133,7 +133,7 @@ export class Sharedflow extends pulumi.CustomResource {
             resourceInputs["revisions"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Sharedflow.__pulumiType, name, resourceInputs, opts);
+        super(Sharedflow.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

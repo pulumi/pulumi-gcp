@@ -240,7 +240,7 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Document.__pulumiType, name, resourceInputs, opts);
+        super(Document.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 
