@@ -267,7 +267,7 @@ export class MembershipIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(MembershipIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(MembershipIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

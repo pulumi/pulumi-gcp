@@ -636,7 +636,7 @@ export class RestorePlanIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(RestorePlanIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(RestorePlanIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

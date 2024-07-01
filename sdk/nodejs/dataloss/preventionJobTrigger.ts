@@ -671,7 +671,7 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(PreventionJobTrigger.__pulumiType, name, resourceInputs, opts);
+        super(PreventionJobTrigger.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

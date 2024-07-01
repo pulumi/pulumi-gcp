@@ -155,7 +155,7 @@ export class BillingAccountBucketConfig extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(BillingAccountBucketConfig.__pulumiType, name, resourceInputs, opts);
+        super(BillingAccountBucketConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

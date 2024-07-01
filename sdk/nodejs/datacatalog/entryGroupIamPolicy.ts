@@ -226,7 +226,7 @@ export class EntryGroupIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(EntryGroupIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(EntryGroupIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

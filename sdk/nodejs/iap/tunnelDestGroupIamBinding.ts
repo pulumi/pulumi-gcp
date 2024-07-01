@@ -400,7 +400,7 @@ export class TunnelDestGroupIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TunnelDestGroupIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(TunnelDestGroupIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -175,7 +175,7 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Topic.__pulumiType, name, resourceInputs, opts);
+        super(Topic.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

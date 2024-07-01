@@ -127,7 +127,7 @@ export class ObjectACL extends pulumi.CustomResource {
             resourceInputs["roleEntities"] = args ? args.roleEntities : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ObjectACL.__pulumiType, name, resourceInputs, opts);
+        super(ObjectACL.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -376,7 +376,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             resourceInputs["uptimeCheckId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(UptimeCheckConfig.__pulumiType, name, resourceInputs, opts);
+        super(UptimeCheckConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

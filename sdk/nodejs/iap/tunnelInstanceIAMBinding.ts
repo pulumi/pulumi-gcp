@@ -397,7 +397,7 @@ export class TunnelInstanceIAMBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TunnelInstanceIAMBinding.__pulumiType, name, resourceInputs, opts);
+        super(TunnelInstanceIAMBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

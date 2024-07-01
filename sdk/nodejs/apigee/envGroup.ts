@@ -138,7 +138,7 @@ export class EnvGroup extends pulumi.CustomResource {
             resourceInputs["orgId"] = args ? args.orgId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(EnvGroup.__pulumiType, name, resourceInputs, opts);
+        super(EnvGroup.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

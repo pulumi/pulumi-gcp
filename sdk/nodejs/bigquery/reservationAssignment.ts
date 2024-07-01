@@ -153,7 +153,7 @@ export class ReservationAssignment extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ReservationAssignment.__pulumiType, name, resourceInputs, opts);
+        super(ReservationAssignment.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -267,7 +267,7 @@ export class MetastoreServiceIamMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(MetastoreServiceIamMember.__pulumiType, name, resourceInputs, opts);
+        super(MetastoreServiceIamMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

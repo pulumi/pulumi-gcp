@@ -601,7 +601,7 @@ export class Subscription extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(Subscription.__pulumiType, name, resourceInputs, opts);
+        super(Subscription.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

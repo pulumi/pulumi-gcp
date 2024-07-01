@@ -206,7 +206,7 @@ export class Subnet extends pulumi.CustomResource {
             resourceInputs["vlanId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Subnet.__pulumiType, name, resourceInputs, opts);
+        super(Subnet.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -239,7 +239,7 @@ export class PerInstanceConfig extends pulumi.CustomResource {
             resourceInputs["zone"] = args ? args.zone : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(PerInstanceConfig.__pulumiType, name, resourceInputs, opts);
+        super(PerInstanceConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -177,7 +177,7 @@ export class Notification extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Notification.__pulumiType, name, resourceInputs, opts);
+        super(Notification.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -260,7 +260,7 @@ export class BackendBucket extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(BackendBucket.__pulumiType, name, resourceInputs, opts);
+        super(BackendBucket.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

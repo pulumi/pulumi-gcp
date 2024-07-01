@@ -236,7 +236,7 @@ export class ConsumerQuotaOverride extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ConsumerQuotaOverride.__pulumiType, name, resourceInputs, opts);
+        super(ConsumerQuotaOverride.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

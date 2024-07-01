@@ -166,7 +166,7 @@ export class EkmConnection extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(EkmConnection.__pulumiType, name, resourceInputs, opts);
+        super(EkmConnection.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

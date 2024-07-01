@@ -122,7 +122,7 @@ export class SharedflowDeployment extends pulumi.CustomResource {
             resourceInputs["sharedflowId"] = args ? args.sharedflowId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SharedflowDeployment.__pulumiType, name, resourceInputs, opts);
+        super(SharedflowDeployment.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

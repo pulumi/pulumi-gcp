@@ -328,7 +328,7 @@ export class BucketIAMPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(BucketIAMPolicy.__pulumiType, name, resourceInputs, opts);
+        super(BucketIAMPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

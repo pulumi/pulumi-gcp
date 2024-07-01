@@ -227,7 +227,7 @@ export class TopicIAMPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TopicIAMPolicy.__pulumiType, name, resourceInputs, opts);
+        super(TopicIAMPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

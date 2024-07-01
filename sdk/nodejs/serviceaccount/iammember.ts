@@ -348,7 +348,7 @@ export class IAMMember extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "gcp:serviceAccount/iAMMember:IAMMember" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
-        super(IAMMember.__pulumiType, name, resourceInputs, opts);
+        super(IAMMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

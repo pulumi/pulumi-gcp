@@ -266,7 +266,7 @@ export class EntryTypeIamMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(EntryTypeIamMember.__pulumiType, name, resourceInputs, opts);
+        super(EntryTypeIamMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

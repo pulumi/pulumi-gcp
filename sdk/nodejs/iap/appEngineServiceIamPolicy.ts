@@ -372,7 +372,7 @@ export class AppEngineServiceIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AppEngineServiceIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(AppEngineServiceIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

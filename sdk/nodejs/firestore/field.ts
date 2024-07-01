@@ -230,7 +230,7 @@ export class Field extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Field.__pulumiType, name, resourceInputs, opts);
+        super(Field.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 
