@@ -29,8 +29,27 @@ class RestorePlanIamBindingArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RestorePlanIamBinding resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
+               Each entry can have one of the following values:
+               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+               * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+               * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+               * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `gkebackup.RestorePlanIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] location: The region of the Restore Plan.
-        :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
+        :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         """
         pulumi.set(__self__, "members", members)
         pulumi.set(__self__, "role", role)
@@ -46,6 +65,19 @@ class RestorePlanIamBindingArgs:
     @property
     @pulumi.getter
     def members(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        """
         return pulumi.get(self, "members")
 
     @members.setter
@@ -55,6 +87,11 @@ class RestorePlanIamBindingArgs:
     @property
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
+        """
+        The role that should be applied. Only one
+        `gkebackup.RestorePlanIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -75,6 +112,9 @@ class RestorePlanIamBindingArgs:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The region of the Restore Plan.
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 
@@ -86,7 +126,7 @@ class RestorePlanIamBindingArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The full name of the BackupPlan Resource.
+        Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "name")
 
@@ -97,6 +137,10 @@ class RestorePlanIamBindingArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -116,8 +160,28 @@ class _RestorePlanIamBindingState:
                  role: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RestorePlanIamBinding resources.
+        :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] location: The region of the Restore Plan.
-        :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
+               Each entry can have one of the following values:
+               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+               * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+               * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+               * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `gkebackup.RestorePlanIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -146,6 +210,9 @@ class _RestorePlanIamBindingState:
     @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The etag of the IAM policy.
+        """
         return pulumi.get(self, "etag")
 
     @etag.setter
@@ -157,6 +224,9 @@ class _RestorePlanIamBindingState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The region of the Restore Plan.
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 
@@ -167,6 +237,19 @@ class _RestorePlanIamBindingState:
     @property
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        """
         return pulumi.get(self, "members")
 
     @members.setter
@@ -177,7 +260,7 @@ class _RestorePlanIamBindingState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The full name of the BackupPlan Resource.
+        Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "name")
 
@@ -188,6 +271,10 @@ class _RestorePlanIamBindingState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -197,6 +284,11 @@ class _RestorePlanIamBindingState:
     @property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role that should be applied. Only one
+        `gkebackup.RestorePlanIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -217,544 +309,171 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Represents a Restore Plan instance.
+        Three different resources help you manage your IAM policy for Backup for GKE RestorePlan. Each of these resources serves a different use case:
 
-        To get more information about RestorePlan, see:
+        * `gkebackup.RestorePlanIamPolicy`: Authoritative. Sets the IAM policy for the restoreplan and replaces any existing policy already attached.
+        * `gkebackup.RestorePlanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the restoreplan are preserved.
+        * `gkebackup.RestorePlanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the restoreplan are preserved.
 
-        * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.restorePlans)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+        A data source can be used to retrieve policy data in advent you do not need creation
 
-        ## Example Usage
+        * `gkebackup.RestorePlanIamPolicy`: Retrieves the IAM policy for the restoreplan
 
-        ### Gkebackup Restoreplan All Namespaces
+        > **Note:** `gkebackup.RestorePlanIamPolicy` **cannot** be used in conjunction with `gkebackup.RestorePlanIamBinding` and `gkebackup.RestorePlanIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `gkebackup.RestorePlanIamBinding` resources **can be** used in conjunction with `gkebackup.RestorePlanIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## gkebackup.RestorePlanIamPolicy
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="restore-all-ns-cluster",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gkeBackupAgentConfig": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection="",
-            network="default",
-            subnetwork="default")
-        basic = gcp.gkebackup.BackupPlan("basic",
-            name="restore-all-ns",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config={
-                "includeVolumeData": True,
-                "includeSecrets": True,
-                "allNamespaces": True,
-            })
-        all_ns = gcp.gkebackup.RestorePlan("all_ns",
-            name="restore-all-ns",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config={
-                "allNamespaces": True,
-                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
-                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
-                "clusterResourceRestoreScope": {
-                    "allGroupKinds": True,
-                },
-                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
-            })
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.gkebackup.RestorePlanIamPolicy("policy",
+            project=all_ns["project"],
+            location=all_ns["location"],
+            name=all_ns["name"],
+            policy_data=admin.policy_data)
         ```
-        ### Gkebackup Restoreplan Rollback Namespace
+
+        ## gkebackup.RestorePlanIamBinding
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="rollback-ns-cluster",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gkeBackupAgentConfig": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection="",
-            network="default",
-            subnetwork="default")
-        basic = gcp.gkebackup.BackupPlan("basic",
-            name="rollback-ns",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config={
-                "includeVolumeData": True,
-                "includeSecrets": True,
-                "allNamespaces": True,
-            })
-        rollback_ns = gcp.gkebackup.RestorePlan("rollback_ns",
-            name="rollback-ns-rp",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config={
-                "selectedNamespaces": {
-                    "namespaces": ["my-ns"],
-                },
-                "namespacedResourceRestoreMode": "DELETE_AND_RESTORE",
-                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
-                "clusterResourceRestoreScope": {
-                    "selectedGroupKinds": [
-                        {
-                            "resourceGroup": "apiextension.k8s.io",
-                            "resourceKind": "CustomResourceDefinition",
-                        },
-                        {
-                            "resourceGroup": "storage.k8s.io",
-                            "resourceKind": "StorageClass",
-                        },
-                    ],
-                },
-                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
-            })
+        binding = gcp.gkebackup.RestorePlanIamBinding("binding",
+            project=all_ns["project"],
+            location=all_ns["location"],
+            name=all_ns["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
         ```
-        ### Gkebackup Restoreplan Protected Application
+
+        ## gkebackup.RestorePlanIamMember
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="rollback-app-cluster",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gkeBackupAgentConfig": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection="",
-            network="default",
-            subnetwork="default")
-        basic = gcp.gkebackup.BackupPlan("basic",
-            name="rollback-app",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config={
-                "includeVolumeData": True,
-                "includeSecrets": True,
-                "allNamespaces": True,
-            })
-        rollback_app = gcp.gkebackup.RestorePlan("rollback_app",
-            name="rollback-app-rp",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config={
-                "selectedApplications": {
-                    "namespacedNames": [{
-                        "name": "my-app",
-                        "namespace": "my-ns",
-                    }],
-                },
-                "namespacedResourceRestoreMode": "DELETE_AND_RESTORE",
-                "volumeDataRestorePolicy": "REUSE_VOLUME_HANDLE_FROM_BACKUP",
-                "clusterResourceRestoreScope": {
-                    "noGroupKinds": True,
-                },
-            })
+        member = gcp.gkebackup.RestorePlanIamMember("member",
+            project=all_ns["project"],
+            location=all_ns["location"],
+            name=all_ns["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
         ```
-        ### Gkebackup Restoreplan All Cluster Resources
+
+        ## gkebackup.RestorePlanIamPolicy
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="all-groupkinds-cluster",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gkeBackupAgentConfig": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection="",
-            network="default",
-            subnetwork="default")
-        basic = gcp.gkebackup.BackupPlan("basic",
-            name="all-groupkinds",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config={
-                "includeVolumeData": True,
-                "includeSecrets": True,
-                "allNamespaces": True,
-            })
-        all_cluster_resources = gcp.gkebackup.RestorePlan("all_cluster_resources",
-            name="all-groupkinds-rp",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config={
-                "noNamespaces": True,
-                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
-                "clusterResourceRestoreScope": {
-                    "allGroupKinds": True,
-                },
-                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
-            })
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.gkebackup.RestorePlanIamPolicy("policy",
+            project=all_ns["project"],
+            location=all_ns["location"],
+            name=all_ns["name"],
+            policy_data=admin.policy_data)
         ```
-        ### Gkebackup Restoreplan Rename Namespace
+
+        ## gkebackup.RestorePlanIamBinding
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="rename-ns-cluster",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gkeBackupAgentConfig": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection="",
-            network="default",
-            subnetwork="default")
-        basic = gcp.gkebackup.BackupPlan("basic",
-            name="rename-ns",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config={
-                "includeVolumeData": True,
-                "includeSecrets": True,
-                "allNamespaces": True,
-            })
-        rename_ns = gcp.gkebackup.RestorePlan("rename_ns",
-            name="rename-ns-rp",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config={
-                "selectedNamespaces": {
-                    "namespaces": ["ns1"],
-                },
-                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
-                "volumeDataRestorePolicy": "REUSE_VOLUME_HANDLE_FROM_BACKUP",
-                "clusterResourceRestoreScope": {
-                    "noGroupKinds": True,
-                },
-                "transformationRules": [
-                    {
-                        "description": "rename namespace from ns1 to ns2",
-                        "resourceFilter": {
-                            "groupKinds": [{
-                                "resourceKind": "Namespace",
-                            }],
-                            "jsonPath": ".metadata[?(@.name == 'ns1')]",
-                        },
-                        "fieldActions": [{
-                            "op": "REPLACE",
-                            "path": "/metadata/name",
-                            "value": "ns2",
-                        }],
-                    },
-                    {
-                        "description": "move all resources from ns1 to ns2",
-                        "resourceFilter": {
-                            "namespaces": ["ns1"],
-                        },
-                        "fieldActions": [{
-                            "op": "REPLACE",
-                            "path": "/metadata/namespace",
-                            "value": "ns2",
-                        }],
-                    },
-                ],
-            })
+        binding = gcp.gkebackup.RestorePlanIamBinding("binding",
+            project=all_ns["project"],
+            location=all_ns["location"],
+            name=all_ns["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
         ```
-        ### Gkebackup Restoreplan Second Transformation
+
+        ## gkebackup.RestorePlanIamMember
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="transform-rule-cluster",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gkeBackupAgentConfig": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection="",
-            network="default",
-            subnetwork="default")
-        basic = gcp.gkebackup.BackupPlan("basic",
-            name="transform-rule",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config={
-                "includeVolumeData": True,
-                "includeSecrets": True,
-                "allNamespaces": True,
-            })
-        transform_rule = gcp.gkebackup.RestorePlan("transform_rule",
-            name="transform-rule-rp",
-            description="copy nginx env variables",
-            labels={
-                "app": "nginx",
-            },
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config={
-                "excludedNamespaces": {
-                    "namespaces": ["my-ns"],
-                },
-                "namespacedResourceRestoreMode": "DELETE_AND_RESTORE",
-                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
-                "clusterResourceRestoreScope": {
-                    "excludedGroupKinds": [{
-                        "resourceGroup": "apiextension.k8s.io",
-                        "resourceKind": "CustomResourceDefinition",
-                    }],
-                },
-                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
-                "transformationRules": [{
-                    "description": "Copy environment variables from the nginx container to the install init container.",
-                    "resourceFilter": {
-                        "groupKinds": [{
-                            "resourceKind": "Pod",
-                            "resourceGroup": "",
-                        }],
-                        "jsonPath": ".metadata[?(@.name == 'nginx')]",
-                    },
-                    "fieldActions": [{
-                        "op": "COPY",
-                        "path": "/spec/initContainers/0/env",
-                        "fromPath": "/spec/containers/0/env",
-                    }],
-                }],
-            })
-        ```
-        ### Gkebackup Restoreplan Gitops Mode
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            name="gitops-mode-cluster",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gkeBackupAgentConfig": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection="",
-            network="default",
-            subnetwork="default")
-        basic = gcp.gkebackup.BackupPlan("basic",
-            name="gitops-mode",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config={
-                "includeVolumeData": True,
-                "includeSecrets": True,
-                "allNamespaces": True,
-            })
-        gitops_mode = gcp.gkebackup.RestorePlan("gitops_mode",
-            name="gitops-mode",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config={
-                "allNamespaces": True,
-                "namespacedResourceRestoreMode": "MERGE_SKIP_ON_CONFLICT",
-                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
-                "clusterResourceRestoreScope": {
-                    "allGroupKinds": True,
-                },
-                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
-            })
-        ```
-        ### Gkebackup Restoreplan Restore Order
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            name="restore-order-cluster",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gkeBackupAgentConfig": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection="",
-            network="default",
-            subnetwork="default")
-        basic = gcp.gkebackup.BackupPlan("basic",
-            name="restore-order",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config={
-                "includeVolumeData": True,
-                "includeSecrets": True,
-                "allNamespaces": True,
-            })
-        restore_order = gcp.gkebackup.RestorePlan("restore_order",
-            name="restore-order",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config={
-                "allNamespaces": True,
-                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
-                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
-                "clusterResourceRestoreScope": {
-                    "allGroupKinds": True,
-                },
-                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
-                "restoreOrder": {
-                    "groupKindDependencies": [
-                        {
-                            "satisfying": {
-                                "resourceGroup": "stable.example.com",
-                                "resourceKind": "kindA",
-                            },
-                            "requiring": {
-                                "resourceGroup": "stable.example.com",
-                                "resourceKind": "kindB",
-                            },
-                        },
-                        {
-                            "satisfying": {
-                                "resourceGroup": "stable.example.com",
-                                "resourceKind": "kindB",
-                            },
-                            "requiring": {
-                                "resourceGroup": "stable.example.com",
-                                "resourceKind": "kindC",
-                            },
-                        },
-                    ],
-                },
-            })
-        ```
-        ### Gkebackup Restoreplan Volume Res
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            name="volume-res-cluster",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gkeBackupAgentConfig": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection="",
-            network="default",
-            subnetwork="default")
-        basic = gcp.gkebackup.BackupPlan("basic",
-            name="volume-res",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config={
-                "includeVolumeData": True,
-                "includeSecrets": True,
-                "allNamespaces": True,
-            })
-        volume_res = gcp.gkebackup.RestorePlan("volume_res",
-            name="volume-res",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config={
-                "allNamespaces": True,
-                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
-                "volumeDataRestorePolicy": "NO_VOLUME_DATA_RESTORATION",
-                "clusterResourceRestoreScope": {
-                    "allGroupKinds": True,
-                },
-                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
-                "volumeDataRestorePolicyBindings": [{
-                    "policy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
-                    "volumeType": "GCE_PERSISTENT_DISK",
-                }],
-            })
+        member = gcp.gkebackup.RestorePlanIamMember("member",
+            project=all_ns["project"],
+            location=all_ns["location"],
+            name=all_ns["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
         ```
 
         ## Import
 
-        RestorePlan can be imported using any of these accepted formats:
+        For all import syntaxes, the "resource in question" can take any of the following forms:
 
-        * `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}`
+        * projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
 
-        * `{{project}}/{{location}}/{{name}}`
+        * {{project}}/{{location}}/{{name}}
 
-        * `{{location}}/{{name}}`
+        * {{location}}/{{name}}
 
-        When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example:
+        * {{name}}
 
-        ```sh
-        $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding default projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
-        ```
+        Any variables not passed in the import command will be taken from the provider configuration.
 
-        ```sh
-        $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding default {{project}}/{{location}}/{{name}}
-        ```
+        Backup for GKE restoreplan IAM resources can be imported using the resource identifiers, role, and member.
+
+        IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 
         ```sh
-        $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding default {{location}}/{{name}}
+        $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding editor "projects/{{project}}/locations/{{location}}/restorePlans/{{restore_plan}} roles/viewer user:jane@example.com"
         ```
+
+        IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+
+        ```sh
+        $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding editor "projects/{{project}}/locations/{{location}}/restorePlans/{{restore_plan}} roles/viewer"
+        ```
+
+        IAM policy imports use the identifier of the resource in question, e.g.
+
+        ```sh
+        $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding editor projects/{{project}}/locations/{{location}}/restorePlans/{{restore_plan}}
+        ```
+
+        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The region of the Restore Plan.
-        :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
+               Each entry can have one of the following values:
+               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+               * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+               * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+               * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `gkebackup.RestorePlanIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         ...
     @overload
@@ -763,539 +482,147 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                  args: RestorePlanIamBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Represents a Restore Plan instance.
+        Three different resources help you manage your IAM policy for Backup for GKE RestorePlan. Each of these resources serves a different use case:
 
-        To get more information about RestorePlan, see:
+        * `gkebackup.RestorePlanIamPolicy`: Authoritative. Sets the IAM policy for the restoreplan and replaces any existing policy already attached.
+        * `gkebackup.RestorePlanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the restoreplan are preserved.
+        * `gkebackup.RestorePlanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the restoreplan are preserved.
 
-        * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.restorePlans)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+        A data source can be used to retrieve policy data in advent you do not need creation
 
-        ## Example Usage
+        * `gkebackup.RestorePlanIamPolicy`: Retrieves the IAM policy for the restoreplan
 
-        ### Gkebackup Restoreplan All Namespaces
+        > **Note:** `gkebackup.RestorePlanIamPolicy` **cannot** be used in conjunction with `gkebackup.RestorePlanIamBinding` and `gkebackup.RestorePlanIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `gkebackup.RestorePlanIamBinding` resources **can be** used in conjunction with `gkebackup.RestorePlanIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## gkebackup.RestorePlanIamPolicy
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="restore-all-ns-cluster",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gkeBackupAgentConfig": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection="",
-            network="default",
-            subnetwork="default")
-        basic = gcp.gkebackup.BackupPlan("basic",
-            name="restore-all-ns",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config={
-                "includeVolumeData": True,
-                "includeSecrets": True,
-                "allNamespaces": True,
-            })
-        all_ns = gcp.gkebackup.RestorePlan("all_ns",
-            name="restore-all-ns",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config={
-                "allNamespaces": True,
-                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
-                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
-                "clusterResourceRestoreScope": {
-                    "allGroupKinds": True,
-                },
-                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
-            })
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.gkebackup.RestorePlanIamPolicy("policy",
+            project=all_ns["project"],
+            location=all_ns["location"],
+            name=all_ns["name"],
+            policy_data=admin.policy_data)
         ```
-        ### Gkebackup Restoreplan Rollback Namespace
+
+        ## gkebackup.RestorePlanIamBinding
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="rollback-ns-cluster",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gkeBackupAgentConfig": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection="",
-            network="default",
-            subnetwork="default")
-        basic = gcp.gkebackup.BackupPlan("basic",
-            name="rollback-ns",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config={
-                "includeVolumeData": True,
-                "includeSecrets": True,
-                "allNamespaces": True,
-            })
-        rollback_ns = gcp.gkebackup.RestorePlan("rollback_ns",
-            name="rollback-ns-rp",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config={
-                "selectedNamespaces": {
-                    "namespaces": ["my-ns"],
-                },
-                "namespacedResourceRestoreMode": "DELETE_AND_RESTORE",
-                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
-                "clusterResourceRestoreScope": {
-                    "selectedGroupKinds": [
-                        {
-                            "resourceGroup": "apiextension.k8s.io",
-                            "resourceKind": "CustomResourceDefinition",
-                        },
-                        {
-                            "resourceGroup": "storage.k8s.io",
-                            "resourceKind": "StorageClass",
-                        },
-                    ],
-                },
-                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
-            })
+        binding = gcp.gkebackup.RestorePlanIamBinding("binding",
+            project=all_ns["project"],
+            location=all_ns["location"],
+            name=all_ns["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
         ```
-        ### Gkebackup Restoreplan Protected Application
+
+        ## gkebackup.RestorePlanIamMember
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="rollback-app-cluster",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gkeBackupAgentConfig": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection="",
-            network="default",
-            subnetwork="default")
-        basic = gcp.gkebackup.BackupPlan("basic",
-            name="rollback-app",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config={
-                "includeVolumeData": True,
-                "includeSecrets": True,
-                "allNamespaces": True,
-            })
-        rollback_app = gcp.gkebackup.RestorePlan("rollback_app",
-            name="rollback-app-rp",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config={
-                "selectedApplications": {
-                    "namespacedNames": [{
-                        "name": "my-app",
-                        "namespace": "my-ns",
-                    }],
-                },
-                "namespacedResourceRestoreMode": "DELETE_AND_RESTORE",
-                "volumeDataRestorePolicy": "REUSE_VOLUME_HANDLE_FROM_BACKUP",
-                "clusterResourceRestoreScope": {
-                    "noGroupKinds": True,
-                },
-            })
+        member = gcp.gkebackup.RestorePlanIamMember("member",
+            project=all_ns["project"],
+            location=all_ns["location"],
+            name=all_ns["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
         ```
-        ### Gkebackup Restoreplan All Cluster Resources
+
+        ## gkebackup.RestorePlanIamPolicy
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="all-groupkinds-cluster",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gkeBackupAgentConfig": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection="",
-            network="default",
-            subnetwork="default")
-        basic = gcp.gkebackup.BackupPlan("basic",
-            name="all-groupkinds",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config={
-                "includeVolumeData": True,
-                "includeSecrets": True,
-                "allNamespaces": True,
-            })
-        all_cluster_resources = gcp.gkebackup.RestorePlan("all_cluster_resources",
-            name="all-groupkinds-rp",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config={
-                "noNamespaces": True,
-                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
-                "clusterResourceRestoreScope": {
-                    "allGroupKinds": True,
-                },
-                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
-            })
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.gkebackup.RestorePlanIamPolicy("policy",
+            project=all_ns["project"],
+            location=all_ns["location"],
+            name=all_ns["name"],
+            policy_data=admin.policy_data)
         ```
-        ### Gkebackup Restoreplan Rename Namespace
+
+        ## gkebackup.RestorePlanIamBinding
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="rename-ns-cluster",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gkeBackupAgentConfig": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection="",
-            network="default",
-            subnetwork="default")
-        basic = gcp.gkebackup.BackupPlan("basic",
-            name="rename-ns",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config={
-                "includeVolumeData": True,
-                "includeSecrets": True,
-                "allNamespaces": True,
-            })
-        rename_ns = gcp.gkebackup.RestorePlan("rename_ns",
-            name="rename-ns-rp",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config={
-                "selectedNamespaces": {
-                    "namespaces": ["ns1"],
-                },
-                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
-                "volumeDataRestorePolicy": "REUSE_VOLUME_HANDLE_FROM_BACKUP",
-                "clusterResourceRestoreScope": {
-                    "noGroupKinds": True,
-                },
-                "transformationRules": [
-                    {
-                        "description": "rename namespace from ns1 to ns2",
-                        "resourceFilter": {
-                            "groupKinds": [{
-                                "resourceKind": "Namespace",
-                            }],
-                            "jsonPath": ".metadata[?(@.name == 'ns1')]",
-                        },
-                        "fieldActions": [{
-                            "op": "REPLACE",
-                            "path": "/metadata/name",
-                            "value": "ns2",
-                        }],
-                    },
-                    {
-                        "description": "move all resources from ns1 to ns2",
-                        "resourceFilter": {
-                            "namespaces": ["ns1"],
-                        },
-                        "fieldActions": [{
-                            "op": "REPLACE",
-                            "path": "/metadata/namespace",
-                            "value": "ns2",
-                        }],
-                    },
-                ],
-            })
+        binding = gcp.gkebackup.RestorePlanIamBinding("binding",
+            project=all_ns["project"],
+            location=all_ns["location"],
+            name=all_ns["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
         ```
-        ### Gkebackup Restoreplan Second Transformation
+
+        ## gkebackup.RestorePlanIamMember
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.container.Cluster("primary",
-            name="transform-rule-cluster",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gkeBackupAgentConfig": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection="",
-            network="default",
-            subnetwork="default")
-        basic = gcp.gkebackup.BackupPlan("basic",
-            name="transform-rule",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config={
-                "includeVolumeData": True,
-                "includeSecrets": True,
-                "allNamespaces": True,
-            })
-        transform_rule = gcp.gkebackup.RestorePlan("transform_rule",
-            name="transform-rule-rp",
-            description="copy nginx env variables",
-            labels={
-                "app": "nginx",
-            },
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config={
-                "excludedNamespaces": {
-                    "namespaces": ["my-ns"],
-                },
-                "namespacedResourceRestoreMode": "DELETE_AND_RESTORE",
-                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
-                "clusterResourceRestoreScope": {
-                    "excludedGroupKinds": [{
-                        "resourceGroup": "apiextension.k8s.io",
-                        "resourceKind": "CustomResourceDefinition",
-                    }],
-                },
-                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
-                "transformationRules": [{
-                    "description": "Copy environment variables from the nginx container to the install init container.",
-                    "resourceFilter": {
-                        "groupKinds": [{
-                            "resourceKind": "Pod",
-                            "resourceGroup": "",
-                        }],
-                        "jsonPath": ".metadata[?(@.name == 'nginx')]",
-                    },
-                    "fieldActions": [{
-                        "op": "COPY",
-                        "path": "/spec/initContainers/0/env",
-                        "fromPath": "/spec/containers/0/env",
-                    }],
-                }],
-            })
-        ```
-        ### Gkebackup Restoreplan Gitops Mode
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            name="gitops-mode-cluster",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gkeBackupAgentConfig": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection="",
-            network="default",
-            subnetwork="default")
-        basic = gcp.gkebackup.BackupPlan("basic",
-            name="gitops-mode",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config={
-                "includeVolumeData": True,
-                "includeSecrets": True,
-                "allNamespaces": True,
-            })
-        gitops_mode = gcp.gkebackup.RestorePlan("gitops_mode",
-            name="gitops-mode",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config={
-                "allNamespaces": True,
-                "namespacedResourceRestoreMode": "MERGE_SKIP_ON_CONFLICT",
-                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
-                "clusterResourceRestoreScope": {
-                    "allGroupKinds": True,
-                },
-                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
-            })
-        ```
-        ### Gkebackup Restoreplan Restore Order
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            name="restore-order-cluster",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gkeBackupAgentConfig": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection="",
-            network="default",
-            subnetwork="default")
-        basic = gcp.gkebackup.BackupPlan("basic",
-            name="restore-order",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config={
-                "includeVolumeData": True,
-                "includeSecrets": True,
-                "allNamespaces": True,
-            })
-        restore_order = gcp.gkebackup.RestorePlan("restore_order",
-            name="restore-order",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config={
-                "allNamespaces": True,
-                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
-                "volumeDataRestorePolicy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
-                "clusterResourceRestoreScope": {
-                    "allGroupKinds": True,
-                },
-                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
-                "restoreOrder": {
-                    "groupKindDependencies": [
-                        {
-                            "satisfying": {
-                                "resourceGroup": "stable.example.com",
-                                "resourceKind": "kindA",
-                            },
-                            "requiring": {
-                                "resourceGroup": "stable.example.com",
-                                "resourceKind": "kindB",
-                            },
-                        },
-                        {
-                            "satisfying": {
-                                "resourceGroup": "stable.example.com",
-                                "resourceKind": "kindB",
-                            },
-                            "requiring": {
-                                "resourceGroup": "stable.example.com",
-                                "resourceKind": "kindC",
-                            },
-                        },
-                    ],
-                },
-            })
-        ```
-        ### Gkebackup Restoreplan Volume Res
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            name="volume-res-cluster",
-            location="us-central1",
-            initial_node_count=1,
-            workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
-            },
-            addons_config={
-                "gkeBackupAgentConfig": {
-                    "enabled": True,
-                },
-            },
-            deletion_protection="",
-            network="default",
-            subnetwork="default")
-        basic = gcp.gkebackup.BackupPlan("basic",
-            name="volume-res",
-            cluster=primary.id,
-            location="us-central1",
-            backup_config={
-                "includeVolumeData": True,
-                "includeSecrets": True,
-                "allNamespaces": True,
-            })
-        volume_res = gcp.gkebackup.RestorePlan("volume_res",
-            name="volume-res",
-            location="us-central1",
-            backup_plan=basic.id,
-            cluster=primary.id,
-            restore_config={
-                "allNamespaces": True,
-                "namespacedResourceRestoreMode": "FAIL_ON_CONFLICT",
-                "volumeDataRestorePolicy": "NO_VOLUME_DATA_RESTORATION",
-                "clusterResourceRestoreScope": {
-                    "allGroupKinds": True,
-                },
-                "clusterResourceConflictPolicy": "USE_EXISTING_VERSION",
-                "volumeDataRestorePolicyBindings": [{
-                    "policy": "RESTORE_VOLUME_DATA_FROM_BACKUP",
-                    "volumeType": "GCE_PERSISTENT_DISK",
-                }],
-            })
+        member = gcp.gkebackup.RestorePlanIamMember("member",
+            project=all_ns["project"],
+            location=all_ns["location"],
+            name=all_ns["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
         ```
 
         ## Import
 
-        RestorePlan can be imported using any of these accepted formats:
+        For all import syntaxes, the "resource in question" can take any of the following forms:
 
-        * `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}`
+        * projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
 
-        * `{{project}}/{{location}}/{{name}}`
+        * {{project}}/{{location}}/{{name}}
 
-        * `{{location}}/{{name}}`
+        * {{location}}/{{name}}
 
-        When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example:
+        * {{name}}
 
-        ```sh
-        $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding default projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
-        ```
+        Any variables not passed in the import command will be taken from the provider configuration.
 
-        ```sh
-        $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding default {{project}}/{{location}}/{{name}}
-        ```
+        Backup for GKE restoreplan IAM resources can be imported using the resource identifiers, role, and member.
+
+        IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 
         ```sh
-        $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding default {{location}}/{{name}}
+        $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding editor "projects/{{project}}/locations/{{location}}/restorePlans/{{restore_plan}} roles/viewer user:jane@example.com"
         ```
+
+        IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+
+        ```sh
+        $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding editor "projects/{{project}}/locations/{{location}}/restorePlans/{{restore_plan}} roles/viewer"
+        ```
+
+        IAM policy imports use the identifier of the resource in question, e.g.
+
+        ```sh
+        $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding editor projects/{{project}}/locations/{{location}}/restorePlans/{{restore_plan}}
+        ```
+
+        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param RestorePlanIamBindingArgs args: The arguments to use to populate this resource's properties.
@@ -1362,8 +689,28 @@ class RestorePlanIamBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] location: The region of the Restore Plan.
-        :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
+               Used to find the parent resource to bind the IAM policy to. If not specified,
+               the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+               location is specified, it is taken from the provider configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
+               Each entry can have one of the following values:
+               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+               * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+               * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+               * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `gkebackup.RestorePlanIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1386,6 +733,9 @@ class RestorePlanIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
+        """
+        (Computed) The etag of the IAM policy.
+        """
         return pulumi.get(self, "etag")
 
     @property
@@ -1393,29 +743,54 @@ class RestorePlanIamBinding(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The region of the Restore Plan.
+        Used to find the parent resource to bind the IAM policy to. If not specified,
+        the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        location is specified, it is taken from the provider configuration.
         """
         return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
     def members(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        """
         return pulumi.get(self, "members")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The full name of the BackupPlan Resource.
+        Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
+        """
+        The role that should be applied. Only one
+        `gkebackup.RestorePlanIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
         return pulumi.get(self, "role")
 

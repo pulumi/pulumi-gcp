@@ -92,16 +92,28 @@ public final class RegionDiskIamBindingArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * A reference to the region where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return A reference to the region where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
 
     /**
      * The role that should be applied. Only one
-     * `gcp.compute.DiskIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.RegionDiskIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -110,7 +122,7 @@ public final class RegionDiskIamBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.compute.DiskIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.RegionDiskIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -261,18 +273,34 @@ public final class RegionDiskIamBindingArgs extends com.pulumi.resources.Resourc
             return project(Output.of(project));
         }
 
+        /**
+         * @param region A reference to the region where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+         * region is specified, it is taken from the provider configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region A reference to the region where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+         * region is specified, it is taken from the provider configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.compute.DiskIamBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.compute.RegionDiskIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -285,7 +313,7 @@ public final class RegionDiskIamBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.compute.DiskIamBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.compute.RegionDiskIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder

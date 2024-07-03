@@ -14,21 +14,21 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Three different resources help you manage your IAM policy for Compute Engine Disk. Each of these resources serves a different use case:
+ * Three different resources help you manage your IAM policy for Compute Engine RegionDisk. Each of these resources serves a different use case:
  * 
- * * `gcp.compute.DiskIamPolicy`: Authoritative. Sets the IAM policy for the disk and replaces any existing policy already attached.
- * * `gcp.compute.DiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the disk are preserved.
- * * `gcp.compute.DiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the disk are preserved.
+ * * `gcp.compute.RegionDiskIamPolicy`: Authoritative. Sets the IAM policy for the regiondisk and replaces any existing policy already attached.
+ * * `gcp.compute.RegionDiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regiondisk are preserved.
+ * * `gcp.compute.RegionDiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regiondisk are preserved.
  * 
  * A data source can be used to retrieve policy data in advent you do not need creation
  * 
- * * `gcp.compute.DiskIamPolicy`: Retrieves the IAM policy for the disk
+ * * `gcp.compute.RegionDiskIamPolicy`: Retrieves the IAM policy for the regiondisk
  * 
- * &gt; **Note:** `gcp.compute.DiskIamPolicy` **cannot** be used in conjunction with `gcp.compute.DiskIamBinding` and `gcp.compute.DiskIamMember` or they will fight over what your policy should be.
+ * &gt; **Note:** `gcp.compute.RegionDiskIamPolicy` **cannot** be used in conjunction with `gcp.compute.RegionDiskIamBinding` and `gcp.compute.RegionDiskIamMember` or they will fight over what your policy should be.
  * 
- * &gt; **Note:** `gcp.compute.DiskIamBinding` resources **can be** used in conjunction with `gcp.compute.DiskIamMember` resources **only if** they do not grant privilege to the same role.
+ * &gt; **Note:** `gcp.compute.RegionDiskIamBinding` resources **can be** used in conjunction with `gcp.compute.RegionDiskIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## gcp.compute.DiskIamPolicy
+ * ## gcp.compute.RegionDiskIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -40,8 +40,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.compute.DiskIamPolicy;
- * import com.pulumi.gcp.compute.DiskIamPolicyArgs;
+ * import com.pulumi.gcp.compute.RegionDiskIamPolicy;
+ * import com.pulumi.gcp.compute.RegionDiskIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,10 +62,10 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new DiskIamPolicy("policy", DiskIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *         var policy = new RegionDiskIamPolicy("policy", RegionDiskIamPolicyArgs.builder()
+ *             .project(regiondisk.project())
+ *             .region(regiondisk.region())
+ *             .name(regiondisk.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## gcp.compute.DiskIamBinding
+ * ## gcp.compute.RegionDiskIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -85,8 +85,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.DiskIamBinding;
- * import com.pulumi.gcp.compute.DiskIamBindingArgs;
+ * import com.pulumi.gcp.compute.RegionDiskIamBinding;
+ * import com.pulumi.gcp.compute.RegionDiskIamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -100,10 +100,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new DiskIamBinding("binding", DiskIamBindingArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *         var binding = new RegionDiskIamBinding("binding", RegionDiskIamBindingArgs.builder()
+ *             .project(regiondisk.project())
+ *             .region(regiondisk.region())
+ *             .name(regiondisk.name())
  *             .role("roles/viewer")
  *             .members("user:jane{@literal @}example.com")
  *             .build());
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## gcp.compute.DiskIamMember
+ * ## gcp.compute.RegionDiskIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -124,8 +124,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.DiskIamMember;
- * import com.pulumi.gcp.compute.DiskIamMemberArgs;
+ * import com.pulumi.gcp.compute.RegionDiskIamMember;
+ * import com.pulumi.gcp.compute.RegionDiskIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -139,10 +139,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new DiskIamMember("member", DiskIamMemberArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *         var member = new RegionDiskIamMember("member", RegionDiskIamMemberArgs.builder()
+ *             .project(regiondisk.project())
+ *             .region(regiondisk.region())
+ *             .name(regiondisk.name())
  *             .role("roles/viewer")
  *             .member("user:jane{@literal @}example.com")
  *             .build());
@@ -153,7 +153,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## gcp.compute.DiskIamPolicy
+ * ## gcp.compute.RegionDiskIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -165,8 +165,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.compute.DiskIamPolicy;
- * import com.pulumi.gcp.compute.DiskIamPolicyArgs;
+ * import com.pulumi.gcp.compute.RegionDiskIamPolicy;
+ * import com.pulumi.gcp.compute.RegionDiskIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -187,10 +187,10 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new DiskIamPolicy("policy", DiskIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *         var policy = new RegionDiskIamPolicy("policy", RegionDiskIamPolicyArgs.builder()
+ *             .project(regiondisk.project())
+ *             .region(regiondisk.region())
+ *             .name(regiondisk.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -200,7 +200,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## gcp.compute.DiskIamBinding
+ * ## gcp.compute.RegionDiskIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -210,8 +210,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.DiskIamBinding;
- * import com.pulumi.gcp.compute.DiskIamBindingArgs;
+ * import com.pulumi.gcp.compute.RegionDiskIamBinding;
+ * import com.pulumi.gcp.compute.RegionDiskIamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -225,10 +225,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new DiskIamBinding("binding", DiskIamBindingArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *         var binding = new RegionDiskIamBinding("binding", RegionDiskIamBindingArgs.builder()
+ *             .project(regiondisk.project())
+ *             .region(regiondisk.region())
+ *             .name(regiondisk.name())
  *             .role("roles/viewer")
  *             .members("user:jane{@literal @}example.com")
  *             .build());
@@ -239,7 +239,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## gcp.compute.DiskIamMember
+ * ## gcp.compute.RegionDiskIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -249,8 +249,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.DiskIamMember;
- * import com.pulumi.gcp.compute.DiskIamMemberArgs;
+ * import com.pulumi.gcp.compute.RegionDiskIamMember;
+ * import com.pulumi.gcp.compute.RegionDiskIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -264,10 +264,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new DiskIamMember("member", DiskIamMemberArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *         var member = new RegionDiskIamMember("member", RegionDiskIamMemberArgs.builder()
+ *             .project(regiondisk.project())
+ *             .region(regiondisk.region())
+ *             .name(regiondisk.name())
  *             .role("roles/viewer")
  *             .member("user:jane{@literal @}example.com")
  *             .build());
@@ -282,34 +282,34 @@ import javax.annotation.Nullable;
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms:
  * 
- * * projects/{{project}}/zones/{{zone}}/disks/{{name}}
+ * * projects/{{project}}/regions/{{region}}/disks/{{name}}
  * 
- * * {{project}}/{{zone}}/{{name}}
+ * * {{project}}/{{region}}/{{name}}
  * 
- * * {{zone}}/{{name}}
+ * * {{region}}/{{name}}
  * 
  * * {{name}}
  * 
  * Any variables not passed in the import command will be taken from the provider configuration.
  * 
- * Compute Engine disk IAM resources can be imported using the resource identifiers, role, and member.
+ * Compute Engine regiondisk IAM resources can be imported using the resource identifiers, role, and member.
  * 
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy editor &#34;projects/{{project}}/zones/{{zone}}/disks/{{disk}} roles/viewer user:jane{@literal @}example.com&#34;
+ * $ pulumi import gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy editor &#34;projects/{{project}}/regions/{{region}}/disks/{{region_disk}} roles/viewer user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy editor &#34;projects/{{project}}/zones/{{zone}}/disks/{{disk}} roles/viewer&#34;
+ * $ pulumi import gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy editor &#34;projects/{{project}}/regions/{{region}}/disks/{{region_disk}} roles/viewer&#34;
  * ```
  * 
  * IAM policy imports use the identifier of the resource in question, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy editor projects/{{project}}/zones/{{zone}}/disks/{{disk}}
+ * $ pulumi import gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy editor projects/{{project}}/regions/{{region}}/disks/{{region_disk}}
  * ```
  * 
  * -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
@@ -379,9 +379,21 @@ public class RegionDiskIamPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
+    /**
+     * A reference to the region where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
+     * 
+     */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
+    /**
+     * @return A reference to the region where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
+     * 
+     */
     public Output<String> region() {
         return this.region;
     }

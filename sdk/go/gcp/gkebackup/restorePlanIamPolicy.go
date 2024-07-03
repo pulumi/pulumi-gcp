@@ -12,24 +12,70 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a Restore Plan instance.
+// Three different resources help you manage your IAM policy for Backup for GKE RestorePlan. Each of these resources serves a different use case:
 //
-// To get more information about RestorePlan, see:
+// * `gkebackup.RestorePlanIamPolicy`: Authoritative. Sets the IAM policy for the restoreplan and replaces any existing policy already attached.
+// * `gkebackup.RestorePlanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the restoreplan are preserved.
+// * `gkebackup.RestorePlanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the restoreplan are preserved.
 //
-// * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.restorePlans)
-// * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+// # A data source can be used to retrieve policy data in advent you do not need creation
 //
-// ## Example Usage
+// * `gkebackup.RestorePlanIamPolicy`: Retrieves the IAM policy for the restoreplan
 //
-// ### Gkebackup Restoreplan All Namespaces
+// > **Note:** `gkebackup.RestorePlanIamPolicy` **cannot** be used in conjunction with `gkebackup.RestorePlanIamBinding` and `gkebackup.RestorePlanIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `gkebackup.RestorePlanIamBinding` resources **can be** used in conjunction with `gkebackup.RestorePlanIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## gkebackup.RestorePlanIamPolicy
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkebackup.NewRestorePlanIamPolicy(ctx, "policy", &gkebackup.RestorePlanIamPolicyArgs{
+//				Project:    pulumi.Any(allNs.Project),
+//				Location:   pulumi.Any(allNs.Location),
+//				Name:       pulumi.Any(allNs.Name),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## gkebackup.RestorePlanIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -37,51 +83,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-//				Name:             pulumi.String("restore-all-ns-cluster"),
-//				Location:         pulumi.String("us-central1"),
-//				InitialNodeCount: pulumi.Int(1),
-//				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-//					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-//				},
-//				AddonsConfig: &container.ClusterAddonsConfigArgs{
-//					GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
-//						Enabled: pulumi.Bool(true),
-//					},
-//				},
-//				DeletionProtection: pulumi.Bool(""),
-//				Network:            pulumi.String("default"),
-//				Subnetwork:         pulumi.String("default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
-//				Name:     pulumi.String("restore-all-ns"),
-//				Cluster:  primary.ID(),
-//				Location: pulumi.String("us-central1"),
-//				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
-//					IncludeVolumeData: pulumi.Bool(true),
-//					IncludeSecrets:    pulumi.Bool(true),
-//					AllNamespaces:     pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gkebackup.NewRestorePlan(ctx, "all_ns", &gkebackup.RestorePlanArgs{
-//				Name:       pulumi.String("restore-all-ns"),
-//				Location:   pulumi.String("us-central1"),
-//				BackupPlan: basic.ID(),
-//				Cluster:    primary.ID(),
-//				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
-//					AllNamespaces:                 pulumi.Bool(true),
-//					NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),
-//					VolumeDataRestorePolicy:       pulumi.String("RESTORE_VOLUME_DATA_FROM_BACKUP"),
-//					ClusterResourceRestoreScope: &gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs{
-//						AllGroupKinds: pulumi.Bool(true),
-//					},
-//					ClusterResourceConflictPolicy: pulumi.String("USE_EXISTING_VERSION"),
+//			_, err := gkebackup.NewRestorePlanIamBinding(ctx, "binding", &gkebackup.RestorePlanIamBindingArgs{
+//				Project:  pulumi.Any(allNs.Project),
+//				Location: pulumi.Any(allNs.Location),
+//				Name:     pulumi.Any(allNs.Name),
+//				Role:     pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
 //				},
 //			})
 //			if err != nil {
@@ -92,14 +100,14 @@ import (
 //	}
 //
 // ```
-// ### Gkebackup Restoreplan Rollback Namespace
+//
+// ## gkebackup.RestorePlanIamMember
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -107,64 +115,86 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-//				Name:             pulumi.String("rollback-ns-cluster"),
-//				Location:         pulumi.String("us-central1"),
-//				InitialNodeCount: pulumi.Int(1),
-//				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-//					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-//				},
-//				AddonsConfig: &container.ClusterAddonsConfigArgs{
-//					GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
-//						Enabled: pulumi.Bool(true),
-//					},
-//				},
-//				DeletionProtection: pulumi.Bool(""),
-//				Network:            pulumi.String("default"),
-//				Subnetwork:         pulumi.String("default"),
+//			_, err := gkebackup.NewRestorePlanIamMember(ctx, "member", &gkebackup.RestorePlanIamMemberArgs{
+//				Project:  pulumi.Any(allNs.Project),
+//				Location: pulumi.Any(allNs.Location),
+//				Name:     pulumi.Any(allNs.Name),
+//				Role:     pulumi.String("roles/viewer"),
+//				Member:   pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
-//				Name:     pulumi.String("rollback-ns"),
-//				Cluster:  primary.ID(),
-//				Location: pulumi.String("us-central1"),
-//				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
-//					IncludeVolumeData: pulumi.Bool(true),
-//					IncludeSecrets:    pulumi.Bool(true),
-//					AllNamespaces:     pulumi.Bool(true),
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## gkebackup.RestorePlanIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
 //				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkebackup.NewRestorePlanIamPolicy(ctx, "policy", &gkebackup.RestorePlanIamPolicyArgs{
+//				Project:    pulumi.Any(allNs.Project),
+//				Location:   pulumi.Any(allNs.Location),
+//				Name:       pulumi.Any(allNs.Name),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gkebackup.NewRestorePlan(ctx, "rollback_ns", &gkebackup.RestorePlanArgs{
-//				Name:       pulumi.String("rollback-ns-rp"),
-//				Location:   pulumi.String("us-central1"),
-//				BackupPlan: basic.ID(),
-//				Cluster:    primary.ID(),
-//				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
-//					SelectedNamespaces: &gkebackup.RestorePlanRestoreConfigSelectedNamespacesArgs{
-//						Namespaces: pulumi.StringArray{
-//							pulumi.String("my-ns"),
-//						},
-//					},
-//					NamespacedResourceRestoreMode: pulumi.String("DELETE_AND_RESTORE"),
-//					VolumeDataRestorePolicy:       pulumi.String("RESTORE_VOLUME_DATA_FROM_BACKUP"),
-//					ClusterResourceRestoreScope: &gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs{
-//						SelectedGroupKinds: gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArray{
-//							&gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs{
-//								ResourceGroup: pulumi.String("apiextension.k8s.io"),
-//								ResourceKind:  pulumi.String("CustomResourceDefinition"),
-//							},
-//							&gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs{
-//								ResourceGroup: pulumi.String("storage.k8s.io"),
-//								ResourceKind:  pulumi.String("StorageClass"),
-//							},
-//						},
-//					},
-//					ClusterResourceConflictPolicy: pulumi.String("USE_EXISTING_VERSION"),
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## gkebackup.RestorePlanIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkebackup.NewRestorePlanIamBinding(ctx, "binding", &gkebackup.RestorePlanIamBindingArgs{
+//				Project:  pulumi.Any(allNs.Project),
+//				Location: pulumi.Any(allNs.Location),
+//				Name:     pulumi.Any(allNs.Name),
+//				Role:     pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
 //				},
 //			})
 //			if err != nil {
@@ -175,14 +205,14 @@ import (
 //	}
 //
 // ```
-// ### Gkebackup Restoreplan Protected Application
+//
+// ## gkebackup.RestorePlanIamMember
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -190,579 +220,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-//				Name:             pulumi.String("rollback-app-cluster"),
-//				Location:         pulumi.String("us-central1"),
-//				InitialNodeCount: pulumi.Int(1),
-//				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-//					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-//				},
-//				AddonsConfig: &container.ClusterAddonsConfigArgs{
-//					GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
-//						Enabled: pulumi.Bool(true),
-//					},
-//				},
-//				DeletionProtection: pulumi.Bool(""),
-//				Network:            pulumi.String("default"),
-//				Subnetwork:         pulumi.String("default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
-//				Name:     pulumi.String("rollback-app"),
-//				Cluster:  primary.ID(),
-//				Location: pulumi.String("us-central1"),
-//				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
-//					IncludeVolumeData: pulumi.Bool(true),
-//					IncludeSecrets:    pulumi.Bool(true),
-//					AllNamespaces:     pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gkebackup.NewRestorePlan(ctx, "rollback_app", &gkebackup.RestorePlanArgs{
-//				Name:       pulumi.String("rollback-app-rp"),
-//				Location:   pulumi.String("us-central1"),
-//				BackupPlan: basic.ID(),
-//				Cluster:    primary.ID(),
-//				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
-//					SelectedApplications: &gkebackup.RestorePlanRestoreConfigSelectedApplicationsArgs{
-//						NamespacedNames: gkebackup.RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArray{
-//							&gkebackup.RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs{
-//								Name:      pulumi.String("my-app"),
-//								Namespace: pulumi.String("my-ns"),
-//							},
-//						},
-//					},
-//					NamespacedResourceRestoreMode: pulumi.String("DELETE_AND_RESTORE"),
-//					VolumeDataRestorePolicy:       pulumi.String("REUSE_VOLUME_HANDLE_FROM_BACKUP"),
-//					ClusterResourceRestoreScope: &gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs{
-//						NoGroupKinds: pulumi.Bool(true),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Gkebackup Restoreplan All Cluster Resources
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-//				Name:             pulumi.String("all-groupkinds-cluster"),
-//				Location:         pulumi.String("us-central1"),
-//				InitialNodeCount: pulumi.Int(1),
-//				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-//					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-//				},
-//				AddonsConfig: &container.ClusterAddonsConfigArgs{
-//					GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
-//						Enabled: pulumi.Bool(true),
-//					},
-//				},
-//				DeletionProtection: pulumi.Bool(""),
-//				Network:            pulumi.String("default"),
-//				Subnetwork:         pulumi.String("default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
-//				Name:     pulumi.String("all-groupkinds"),
-//				Cluster:  primary.ID(),
-//				Location: pulumi.String("us-central1"),
-//				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
-//					IncludeVolumeData: pulumi.Bool(true),
-//					IncludeSecrets:    pulumi.Bool(true),
-//					AllNamespaces:     pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gkebackup.NewRestorePlan(ctx, "all_cluster_resources", &gkebackup.RestorePlanArgs{
-//				Name:       pulumi.String("all-groupkinds-rp"),
-//				Location:   pulumi.String("us-central1"),
-//				BackupPlan: basic.ID(),
-//				Cluster:    primary.ID(),
-//				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
-//					NoNamespaces:                  pulumi.Bool(true),
-//					NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),
-//					ClusterResourceRestoreScope: &gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs{
-//						AllGroupKinds: pulumi.Bool(true),
-//					},
-//					ClusterResourceConflictPolicy: pulumi.String("USE_EXISTING_VERSION"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Gkebackup Restoreplan Rename Namespace
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-//				Name:             pulumi.String("rename-ns-cluster"),
-//				Location:         pulumi.String("us-central1"),
-//				InitialNodeCount: pulumi.Int(1),
-//				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-//					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-//				},
-//				AddonsConfig: &container.ClusterAddonsConfigArgs{
-//					GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
-//						Enabled: pulumi.Bool(true),
-//					},
-//				},
-//				DeletionProtection: pulumi.Bool(""),
-//				Network:            pulumi.String("default"),
-//				Subnetwork:         pulumi.String("default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
-//				Name:     pulumi.String("rename-ns"),
-//				Cluster:  primary.ID(),
-//				Location: pulumi.String("us-central1"),
-//				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
-//					IncludeVolumeData: pulumi.Bool(true),
-//					IncludeSecrets:    pulumi.Bool(true),
-//					AllNamespaces:     pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gkebackup.NewRestorePlan(ctx, "rename_ns", &gkebackup.RestorePlanArgs{
-//				Name:       pulumi.String("rename-ns-rp"),
-//				Location:   pulumi.String("us-central1"),
-//				BackupPlan: basic.ID(),
-//				Cluster:    primary.ID(),
-//				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
-//					SelectedNamespaces: &gkebackup.RestorePlanRestoreConfigSelectedNamespacesArgs{
-//						Namespaces: pulumi.StringArray{
-//							pulumi.String("ns1"),
-//						},
-//					},
-//					NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),
-//					VolumeDataRestorePolicy:       pulumi.String("REUSE_VOLUME_HANDLE_FROM_BACKUP"),
-//					ClusterResourceRestoreScope: &gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs{
-//						NoGroupKinds: pulumi.Bool(true),
-//					},
-//					TransformationRules: gkebackup.RestorePlanRestoreConfigTransformationRuleArray{
-//						&gkebackup.RestorePlanRestoreConfigTransformationRuleArgs{
-//							Description: pulumi.String("rename namespace from ns1 to ns2"),
-//							ResourceFilter: &gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs{
-//								GroupKinds: gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArray{
-//									&gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs{
-//										ResourceKind: pulumi.String("Namespace"),
-//									},
-//								},
-//								JsonPath: pulumi.String(".metadata[?(@.name == 'ns1')]"),
-//							},
-//							FieldActions: gkebackup.RestorePlanRestoreConfigTransformationRuleFieldActionArray{
-//								&gkebackup.RestorePlanRestoreConfigTransformationRuleFieldActionArgs{
-//									Op:    pulumi.String("REPLACE"),
-//									Path:  pulumi.String("/metadata/name"),
-//									Value: pulumi.String("ns2"),
-//								},
-//							},
-//						},
-//						&gkebackup.RestorePlanRestoreConfigTransformationRuleArgs{
-//							Description: pulumi.String("move all resources from ns1 to ns2"),
-//							ResourceFilter: &gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs{
-//								Namespaces: pulumi.StringArray{
-//									pulumi.String("ns1"),
-//								},
-//							},
-//							FieldActions: gkebackup.RestorePlanRestoreConfigTransformationRuleFieldActionArray{
-//								&gkebackup.RestorePlanRestoreConfigTransformationRuleFieldActionArgs{
-//									Op:    pulumi.String("REPLACE"),
-//									Path:  pulumi.String("/metadata/namespace"),
-//									Value: pulumi.String("ns2"),
-//								},
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Gkebackup Restoreplan Second Transformation
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-//				Name:             pulumi.String("transform-rule-cluster"),
-//				Location:         pulumi.String("us-central1"),
-//				InitialNodeCount: pulumi.Int(1),
-//				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-//					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-//				},
-//				AddonsConfig: &container.ClusterAddonsConfigArgs{
-//					GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
-//						Enabled: pulumi.Bool(true),
-//					},
-//				},
-//				DeletionProtection: pulumi.Bool(""),
-//				Network:            pulumi.String("default"),
-//				Subnetwork:         pulumi.String("default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
-//				Name:     pulumi.String("transform-rule"),
-//				Cluster:  primary.ID(),
-//				Location: pulumi.String("us-central1"),
-//				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
-//					IncludeVolumeData: pulumi.Bool(true),
-//					IncludeSecrets:    pulumi.Bool(true),
-//					AllNamespaces:     pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gkebackup.NewRestorePlan(ctx, "transform_rule", &gkebackup.RestorePlanArgs{
-//				Name:        pulumi.String("transform-rule-rp"),
-//				Description: pulumi.String("copy nginx env variables"),
-//				Labels: pulumi.StringMap{
-//					"app": pulumi.String("nginx"),
-//				},
-//				Location:   pulumi.String("us-central1"),
-//				BackupPlan: basic.ID(),
-//				Cluster:    primary.ID(),
-//				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
-//					ExcludedNamespaces: &gkebackup.RestorePlanRestoreConfigExcludedNamespacesArgs{
-//						Namespaces: pulumi.StringArray{
-//							pulumi.String("my-ns"),
-//						},
-//					},
-//					NamespacedResourceRestoreMode: pulumi.String("DELETE_AND_RESTORE"),
-//					VolumeDataRestorePolicy:       pulumi.String("RESTORE_VOLUME_DATA_FROM_BACKUP"),
-//					ClusterResourceRestoreScope: &gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs{
-//						ExcludedGroupKinds: gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArray{
-//							&gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs{
-//								ResourceGroup: pulumi.String("apiextension.k8s.io"),
-//								ResourceKind:  pulumi.String("CustomResourceDefinition"),
-//							},
-//						},
-//					},
-//					ClusterResourceConflictPolicy: pulumi.String("USE_EXISTING_VERSION"),
-//					TransformationRules: gkebackup.RestorePlanRestoreConfigTransformationRuleArray{
-//						&gkebackup.RestorePlanRestoreConfigTransformationRuleArgs{
-//							Description: pulumi.String("Copy environment variables from the nginx container to the install init container."),
-//							ResourceFilter: &gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs{
-//								GroupKinds: gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArray{
-//									&gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs{
-//										ResourceKind:  pulumi.String("Pod"),
-//										ResourceGroup: pulumi.String(""),
-//									},
-//								},
-//								JsonPath: pulumi.String(".metadata[?(@.name == 'nginx')]"),
-//							},
-//							FieldActions: gkebackup.RestorePlanRestoreConfigTransformationRuleFieldActionArray{
-//								&gkebackup.RestorePlanRestoreConfigTransformationRuleFieldActionArgs{
-//									Op:       pulumi.String("COPY"),
-//									Path:     pulumi.String("/spec/initContainers/0/env"),
-//									FromPath: pulumi.String("/spec/containers/0/env"),
-//								},
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Gkebackup Restoreplan Gitops Mode
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-//				Name:             pulumi.String("gitops-mode-cluster"),
-//				Location:         pulumi.String("us-central1"),
-//				InitialNodeCount: pulumi.Int(1),
-//				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-//					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-//				},
-//				AddonsConfig: &container.ClusterAddonsConfigArgs{
-//					GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
-//						Enabled: pulumi.Bool(true),
-//					},
-//				},
-//				DeletionProtection: pulumi.Bool(""),
-//				Network:            pulumi.String("default"),
-//				Subnetwork:         pulumi.String("default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
-//				Name:     pulumi.String("gitops-mode"),
-//				Cluster:  primary.ID(),
-//				Location: pulumi.String("us-central1"),
-//				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
-//					IncludeVolumeData: pulumi.Bool(true),
-//					IncludeSecrets:    pulumi.Bool(true),
-//					AllNamespaces:     pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gkebackup.NewRestorePlan(ctx, "gitops_mode", &gkebackup.RestorePlanArgs{
-//				Name:       pulumi.String("gitops-mode"),
-//				Location:   pulumi.String("us-central1"),
-//				BackupPlan: basic.ID(),
-//				Cluster:    primary.ID(),
-//				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
-//					AllNamespaces:                 pulumi.Bool(true),
-//					NamespacedResourceRestoreMode: pulumi.String("MERGE_SKIP_ON_CONFLICT"),
-//					VolumeDataRestorePolicy:       pulumi.String("RESTORE_VOLUME_DATA_FROM_BACKUP"),
-//					ClusterResourceRestoreScope: &gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs{
-//						AllGroupKinds: pulumi.Bool(true),
-//					},
-//					ClusterResourceConflictPolicy: pulumi.String("USE_EXISTING_VERSION"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Gkebackup Restoreplan Restore Order
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-//				Name:             pulumi.String("restore-order-cluster"),
-//				Location:         pulumi.String("us-central1"),
-//				InitialNodeCount: pulumi.Int(1),
-//				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-//					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-//				},
-//				AddonsConfig: &container.ClusterAddonsConfigArgs{
-//					GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
-//						Enabled: pulumi.Bool(true),
-//					},
-//				},
-//				DeletionProtection: pulumi.Bool(""),
-//				Network:            pulumi.String("default"),
-//				Subnetwork:         pulumi.String("default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
-//				Name:     pulumi.String("restore-order"),
-//				Cluster:  primary.ID(),
-//				Location: pulumi.String("us-central1"),
-//				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
-//					IncludeVolumeData: pulumi.Bool(true),
-//					IncludeSecrets:    pulumi.Bool(true),
-//					AllNamespaces:     pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gkebackup.NewRestorePlan(ctx, "restore_order", &gkebackup.RestorePlanArgs{
-//				Name:       pulumi.String("restore-order"),
-//				Location:   pulumi.String("us-central1"),
-//				BackupPlan: basic.ID(),
-//				Cluster:    primary.ID(),
-//				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
-//					AllNamespaces:                 pulumi.Bool(true),
-//					NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),
-//					VolumeDataRestorePolicy:       pulumi.String("RESTORE_VOLUME_DATA_FROM_BACKUP"),
-//					ClusterResourceRestoreScope: &gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs{
-//						AllGroupKinds: pulumi.Bool(true),
-//					},
-//					ClusterResourceConflictPolicy: pulumi.String("USE_EXISTING_VERSION"),
-//					RestoreOrder: &gkebackup.RestorePlanRestoreConfigRestoreOrderArgs{
-//						GroupKindDependencies: gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArray{
-//							&gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs{
-//								Satisfying: &gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs{
-//									ResourceGroup: pulumi.String("stable.example.com"),
-//									ResourceKind:  pulumi.String("kindA"),
-//								},
-//								Requiring: &gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs{
-//									ResourceGroup: pulumi.String("stable.example.com"),
-//									ResourceKind:  pulumi.String("kindB"),
-//								},
-//							},
-//							&gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs{
-//								Satisfying: &gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs{
-//									ResourceGroup: pulumi.String("stable.example.com"),
-//									ResourceKind:  pulumi.String("kindB"),
-//								},
-//								Requiring: &gkebackup.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs{
-//									ResourceGroup: pulumi.String("stable.example.com"),
-//									ResourceKind:  pulumi.String("kindC"),
-//								},
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Gkebackup Restoreplan Volume Res
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-//				Name:             pulumi.String("volume-res-cluster"),
-//				Location:         pulumi.String("us-central1"),
-//				InitialNodeCount: pulumi.Int(1),
-//				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
-//					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
-//				},
-//				AddonsConfig: &container.ClusterAddonsConfigArgs{
-//					GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
-//						Enabled: pulumi.Bool(true),
-//					},
-//				},
-//				DeletionProtection: pulumi.Bool(""),
-//				Network:            pulumi.String("default"),
-//				Subnetwork:         pulumi.String("default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
-//				Name:     pulumi.String("volume-res"),
-//				Cluster:  primary.ID(),
-//				Location: pulumi.String("us-central1"),
-//				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
-//					IncludeVolumeData: pulumi.Bool(true),
-//					IncludeSecrets:    pulumi.Bool(true),
-//					AllNamespaces:     pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gkebackup.NewRestorePlan(ctx, "volume_res", &gkebackup.RestorePlanArgs{
-//				Name:       pulumi.String("volume-res"),
-//				Location:   pulumi.String("us-central1"),
-//				BackupPlan: basic.ID(),
-//				Cluster:    primary.ID(),
-//				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
-//					AllNamespaces:                 pulumi.Bool(true),
-//					NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),
-//					VolumeDataRestorePolicy:       pulumi.String("NO_VOLUME_DATA_RESTORATION"),
-//					ClusterResourceRestoreScope: &gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs{
-//						AllGroupKinds: pulumi.Bool(true),
-//					},
-//					ClusterResourceConflictPolicy: pulumi.String("USE_EXISTING_VERSION"),
-//					VolumeDataRestorePolicyBindings: gkebackup.RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArray{
-//						&gkebackup.RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs{
-//							Policy:     pulumi.String("RESTORE_VOLUME_DATA_FROM_BACKUP"),
-//							VolumeType: pulumi.String("GCE_PERSISTENT_DISK"),
-//						},
-//					},
-//				},
+//			_, err := gkebackup.NewRestorePlanIamMember(ctx, "member", &gkebackup.RestorePlanIamMemberArgs{
+//				Project:  pulumi.Any(allNs.Project),
+//				Location: pulumi.Any(allNs.Location),
+//				Name:     pulumi.Any(allNs.Name),
+//				Role:     pulumi.String("roles/viewer"),
+//				Member:   pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -775,37 +238,59 @@ import (
 //
 // ## Import
 //
-// RestorePlan can be imported using any of these accepted formats:
+// For all import syntaxes, the "resource in question" can take any of the following forms:
 //
-// * `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}`
+// * projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
 //
-// * `{{project}}/{{location}}/{{name}}`
+// * {{project}}/{{location}}/{{name}}
 //
-// * `{{location}}/{{name}}`
+// * {{location}}/{{name}}
 //
-// When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example:
+// * {{name}}
 //
-// ```sh
-// $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy default projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
-// ```
+// Any variables not passed in the import command will be taken from the provider configuration.
 //
-// ```sh
-// $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy default {{project}}/{{location}}/{{name}}
-// ```
+// Backup for GKE restoreplan IAM resources can be imported using the resource identifiers, role, and member.
+//
+// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-// $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy default {{location}}/{{name}}
+// $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy editor "projects/{{project}}/locations/{{location}}/restorePlans/{{restore_plan}} roles/viewer user:jane@example.com"
 // ```
+//
+// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+//
+// ```sh
+// $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy editor "projects/{{project}}/locations/{{location}}/restorePlans/{{restore_plan}} roles/viewer"
+// ```
+//
+// IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+// $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy editor projects/{{project}}/locations/{{location}}/restorePlans/{{restore_plan}}
+// ```
+//
+// -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+//
+//	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type RestorePlanIamPolicy struct {
 	pulumi.CustomResourceState
 
+	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The region of the Restore Plan.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The full name of the BackupPlan Resource.
-	Name       pulumi.StringOutput `pulumi:"name"`
+	// Used to find the parent resource to bind the IAM policy to
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
-	Project    pulumi.StringOutput `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewRestorePlanIamPolicy registers a new resource with the given unique name, arguments, and options.
@@ -841,23 +326,39 @@ func GetRestorePlanIamPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RestorePlanIamPolicy resources.
 type restorePlanIamPolicyState struct {
+	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The region of the Restore Plan.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
-	// The full name of the BackupPlan Resource.
-	Name       *string `pulumi:"name"`
+	// Used to find the parent resource to bind the IAM policy to
+	Name *string `pulumi:"name"`
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
 	PolicyData *string `pulumi:"policyData"`
-	Project    *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 type RestorePlanIamPolicyState struct {
+	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
 	// The region of the Restore Plan.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
-	// The full name of the BackupPlan Resource.
-	Name       pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
+	Name pulumi.StringPtrInput
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
 	PolicyData pulumi.StringPtrInput
-	Project    pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (RestorePlanIamPolicyState) ElementType() reflect.Type {
@@ -866,21 +367,35 @@ func (RestorePlanIamPolicyState) ElementType() reflect.Type {
 
 type restorePlanIamPolicyArgs struct {
 	// The region of the Restore Plan.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
-	// The full name of the BackupPlan Resource.
-	Name       *string `pulumi:"name"`
-	PolicyData string  `pulumi:"policyData"`
-	Project    *string `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
+	Name *string `pulumi:"name"`
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
+	PolicyData string `pulumi:"policyData"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a RestorePlanIamPolicy resource.
 type RestorePlanIamPolicyArgs struct {
 	// The region of the Restore Plan.
+	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
-	// The full name of the BackupPlan Resource.
-	Name       pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
+	Name pulumi.StringPtrInput
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
 	PolicyData pulumi.StringInput
-	Project    pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (RestorePlanIamPolicyArgs) ElementType() reflect.Type {
@@ -970,24 +485,32 @@ func (o RestorePlanIamPolicyOutput) ToRestorePlanIamPolicyOutputWithContext(ctx 
 	return o
 }
 
+// (Computed) The etag of the IAM policy.
 func (o RestorePlanIamPolicyOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlanIamPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The region of the Restore Plan.
+// Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+// location is specified, it is taken from the provider configuration.
 func (o RestorePlanIamPolicyOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlanIamPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The full name of the BackupPlan Resource.
+// Used to find the parent resource to bind the IAM policy to
 func (o RestorePlanIamPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlanIamPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The policy data generated by
+// a `organizations.getIAMPolicy` data source.
 func (o RestorePlanIamPolicyOutput) PolicyData() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlanIamPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 func (o RestorePlanIamPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlanIamPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

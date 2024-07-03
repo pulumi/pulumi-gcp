@@ -26,6 +26,9 @@ public final class RestorePlanIamMemberArgs extends com.pulumi.resources.Resourc
 
     /**
      * The region of the Restore Plan.
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     @Import(name="location")
@@ -33,44 +36,97 @@ public final class RestorePlanIamMemberArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The region of the Restore Plan.
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
     }
 
+    /**
+     * Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
+     * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
+     * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+     * 
+     */
     @Import(name="member", required=true)
     private Output<String> member;
 
+    /**
+     * @return Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
+     * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
+     * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+     * 
+     */
     public Output<String> member() {
         return this.member;
     }
 
     /**
-     * The full name of the BackupPlan Resource.
+     * Used to find the parent resource to bind the IAM policy to
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The full name of the BackupPlan Resource.
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The role that should be applied. Only one
+     * `gcp.gkebackup.RestorePlanIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * 
+     */
     @Import(name="role", required=true)
     private Output<String> role;
 
+    /**
+     * @return The role that should be applied. Only one
+     * `gcp.gkebackup.RestorePlanIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * 
+     */
     public Output<String> role() {
         return this.role;
     }
@@ -115,6 +171,9 @@ public final class RestorePlanIamMemberArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param location The region of the Restore Plan.
+         * Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+         * location is specified, it is taken from the provider configuration.
          * 
          * @return builder
          * 
@@ -126,6 +185,9 @@ public final class RestorePlanIamMemberArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param location The region of the Restore Plan.
+         * Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+         * location is specified, it is taken from the provider configuration.
          * 
          * @return builder
          * 
@@ -134,17 +196,49 @@ public final class RestorePlanIamMemberArgs extends com.pulumi.resources.Resourc
             return location(Output.of(location));
         }
 
+        /**
+         * @param member Identities that will be granted the privilege in `role`.
+         * Each entry can have one of the following values:
+         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
+         * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
+         * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder member(Output<String> member) {
             $.member = member;
             return this;
         }
 
+        /**
+         * @param member Identities that will be granted the privilege in `role`.
+         * Each entry can have one of the following values:
+         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
+         * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
+         * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder member(String member) {
             return member(Output.of(member));
         }
 
         /**
-         * @param name The full name of the BackupPlan Resource.
+         * @param name Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -155,7 +249,7 @@ public final class RestorePlanIamMemberArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The full name of the BackupPlan Resource.
+         * @param name Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 
@@ -164,20 +258,50 @@ public final class RestorePlanIamMemberArgs extends com.pulumi.resources.Resourc
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
+        /**
+         * @param role The role that should be applied. Only one
+         * `gcp.gkebackup.RestorePlanIamBinding` can be used per role. Note that custom roles must be of the format
+         * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(Output<String> role) {
             $.role = role;
             return this;
         }
 
+        /**
+         * @param role The role that should be applied. Only one
+         * `gcp.gkebackup.RestorePlanIamBinding` can be used per role. Note that custom roles must be of the format
+         * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(String role) {
             return role(Output.of(role));
         }

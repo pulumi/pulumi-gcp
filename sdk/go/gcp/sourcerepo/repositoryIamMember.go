@@ -12,21 +12,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Three different resources help you manage your IAM policy for Cloud Pub/Sub Topic. Each of these resources serves a different use case:
+// Three different resources help you manage your IAM policy for Cloud Source Repositories Repository. Each of these resources serves a different use case:
 //
-// * `pubsub.TopicIAMPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
-// * `pubsub.TopicIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
-// * `pubsub.TopicIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
+// * `sourcerepo.RepositoryIamPolicy`: Authoritative. Sets the IAM policy for the repository and replaces any existing policy already attached.
+// * `sourcerepo.RepositoryIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repository are preserved.
+// * `sourcerepo.RepositoryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repository are preserved.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
-// * `pubsub.TopicIAMPolicy`: Retrieves the IAM policy for the topic
+// * `sourcerepo.RepositoryIamPolicy`: Retrieves the IAM policy for the repository
 //
-// > **Note:** `pubsub.TopicIAMPolicy` **cannot** be used in conjunction with `pubsub.TopicIAMBinding` and `pubsub.TopicIAMMember` or they will fight over what your policy should be.
+// > **Note:** `sourcerepo.RepositoryIamPolicy` **cannot** be used in conjunction with `sourcerepo.RepositoryIamBinding` and `sourcerepo.RepositoryIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `pubsub.TopicIAMBinding` resources **can be** used in conjunction with `pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `sourcerepo.RepositoryIamBinding` resources **can be** used in conjunction with `sourcerepo.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## pubsub.TopicIAMPolicy
+// ## sourcerepo.RepositoryIamPolicy
 //
 // ```go
 // package main
@@ -34,7 +34,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sourcerepo"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -54,9 +54,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = pubsub.NewTopicIAMPolicy(ctx, "policy", &pubsub.TopicIAMPolicyArgs{
-//				Project:    pulumi.Any(example.Project),
-//				Topic:      pulumi.Any(example.Name),
+//			_, err = sourcerepo.NewRepositoryIamPolicy(ctx, "policy", &sourcerepo.RepositoryIamPolicyArgs{
+//				Project:    pulumi.Any(my_repo.Project),
+//				Repository: pulumi.Any(my_repo.Name),
 //				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -68,24 +68,24 @@ import (
 //
 // ```
 //
-// ## pubsub.TopicIAMBinding
+// ## sourcerepo.RepositoryIamBinding
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sourcerepo"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
-//				Project: pulumi.Any(example.Project),
-//				Topic:   pulumi.Any(example.Name),
-//				Role:    pulumi.String("roles/viewer"),
+//			_, err := sourcerepo.NewRepositoryIamBinding(ctx, "binding", &sourcerepo.RepositoryIamBindingArgs{
+//				Project:    pulumi.Any(my_repo.Project),
+//				Repository: pulumi.Any(my_repo.Name),
+//				Role:       pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
@@ -99,25 +99,25 @@ import (
 //
 // ```
 //
-// ## pubsub.TopicIAMMember
+// ## sourcerepo.RepositoryIamMember
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sourcerepo"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.NewTopicIAMMember(ctx, "member", &pubsub.TopicIAMMemberArgs{
-//				Project: pulumi.Any(example.Project),
-//				Topic:   pulumi.Any(example.Name),
-//				Role:    pulumi.String("roles/viewer"),
-//				Member:  pulumi.String("user:jane@example.com"),
+//			_, err := sourcerepo.NewRepositoryIamMember(ctx, "member", &sourcerepo.RepositoryIamMemberArgs{
+//				Project:    pulumi.Any(my_repo.Project),
+//				Repository: pulumi.Any(my_repo.Name),
+//				Role:       pulumi.String("roles/viewer"),
+//				Member:     pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -128,7 +128,7 @@ import (
 //
 // ```
 //
-// ## pubsub.TopicIAMPolicy
+// ## sourcerepo.RepositoryIamPolicy
 //
 // ```go
 // package main
@@ -136,7 +136,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sourcerepo"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -156,9 +156,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = pubsub.NewTopicIAMPolicy(ctx, "policy", &pubsub.TopicIAMPolicyArgs{
-//				Project:    pulumi.Any(example.Project),
-//				Topic:      pulumi.Any(example.Name),
+//			_, err = sourcerepo.NewRepositoryIamPolicy(ctx, "policy", &sourcerepo.RepositoryIamPolicyArgs{
+//				Project:    pulumi.Any(my_repo.Project),
+//				Repository: pulumi.Any(my_repo.Name),
 //				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -170,24 +170,24 @@ import (
 //
 // ```
 //
-// ## pubsub.TopicIAMBinding
+// ## sourcerepo.RepositoryIamBinding
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sourcerepo"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
-//				Project: pulumi.Any(example.Project),
-//				Topic:   pulumi.Any(example.Name),
-//				Role:    pulumi.String("roles/viewer"),
+//			_, err := sourcerepo.NewRepositoryIamBinding(ctx, "binding", &sourcerepo.RepositoryIamBindingArgs{
+//				Project:    pulumi.Any(my_repo.Project),
+//				Repository: pulumi.Any(my_repo.Name),
+//				Role:       pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
@@ -201,25 +201,25 @@ import (
 //
 // ```
 //
-// ## pubsub.TopicIAMMember
+// ## sourcerepo.RepositoryIamMember
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sourcerepo"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.NewTopicIAMMember(ctx, "member", &pubsub.TopicIAMMemberArgs{
-//				Project: pulumi.Any(example.Project),
-//				Topic:   pulumi.Any(example.Name),
-//				Role:    pulumi.String("roles/viewer"),
-//				Member:  pulumi.String("user:jane@example.com"),
+//			_, err := sourcerepo.NewRepositoryIamMember(ctx, "member", &sourcerepo.RepositoryIamMemberArgs{
+//				Project:    pulumi.Any(my_repo.Project),
+//				Repository: pulumi.Any(my_repo.Name),
+//				Role:       pulumi.String("roles/viewer"),
+//				Member:     pulumi.String("user:jane@example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -234,32 +234,30 @@ import (
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:
 //
-// * projects/{{project}}/topics/{{name}}
-//
-// * {{project}}/{{name}}
+// * projects/{{project}}/repos/{{name}}
 //
 // * {{name}}
 //
 // Any variables not passed in the import command will be taken from the provider configuration.
 //
-// Cloud Pub/Sub topic IAM resources can be imported using the resource identifiers, role, and member.
+// Cloud Source Repositories repository IAM resources can be imported using the resource identifiers, role, and member.
 //
 // IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-// $ pulumi import gcp:sourcerepo/repositoryIamMember:RepositoryIamMember editor "projects/{{project}}/topics/{{topic}} roles/viewer user:jane@example.com"
+// $ pulumi import gcp:sourcerepo/repositoryIamMember:RepositoryIamMember editor "projects/{{project}}/repos/{{repository}} roles/viewer user:jane@example.com"
 // ```
 //
 // IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
 //
 // ```sh
-// $ pulumi import gcp:sourcerepo/repositoryIamMember:RepositoryIamMember editor "projects/{{project}}/topics/{{topic}} roles/viewer"
+// $ pulumi import gcp:sourcerepo/repositoryIamMember:RepositoryIamMember editor "projects/{{project}}/repos/{{repository}} roles/viewer"
 // ```
 //
 // IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-// $ pulumi import gcp:sourcerepo/repositoryIamMember:RepositoryIamMember editor projects/{{project}}/topics/{{topic}}
+// $ pulumi import gcp:sourcerepo/repositoryIamMember:RepositoryIamMember editor projects/{{project}}/repos/{{repository}}
 // ```
 //
 // -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
@@ -285,10 +283,11 @@ type RepositoryIamMember struct {
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project    pulumi.StringOutput `pulumi:"project"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
 	Repository pulumi.StringOutput `pulumi:"repository"`
 	// The role that should be applied. Only one
-	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `sourcerepo.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
@@ -349,10 +348,11 @@ type repositoryIamMemberState struct {
 	Member *string `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project    *string `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
 	Repository *string `pulumi:"repository"`
 	// The role that should be applied. Only one
-	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `sourcerepo.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 }
@@ -375,10 +375,11 @@ type RepositoryIamMemberState struct {
 	Member pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	Repository pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `sourcerepo.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 }
@@ -403,10 +404,11 @@ type repositoryIamMemberArgs struct {
 	Member string `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project    *string `pulumi:"project"`
-	Repository string  `pulumi:"repository"`
+	Project *string `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
+	Repository string `pulumi:"repository"`
 	// The role that should be applied. Only one
-	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `sourcerepo.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 }
@@ -428,10 +430,11 @@ type RepositoryIamMemberArgs struct {
 	Member pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	Repository pulumi.StringInput
 	// The role that should be applied. Only one
-	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `sourcerepo.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 }
@@ -553,12 +556,13 @@ func (o RepositoryIamMemberOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryIamMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o RepositoryIamMemberOutput) Repository() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryIamMember) pulumi.StringOutput { return v.Repository }).(pulumi.StringOutput)
 }
 
 // The role that should be applied. Only one
-// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+// `sourcerepo.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (o RepositoryIamMemberOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)

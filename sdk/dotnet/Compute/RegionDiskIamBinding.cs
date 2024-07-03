@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// Three different resources help you manage your IAM policy for Compute Engine Disk. Each of these resources serves a different use case:
+    /// Three different resources help you manage your IAM policy for Compute Engine RegionDisk. Each of these resources serves a different use case:
     /// 
-    /// * `gcp.compute.DiskIamPolicy`: Authoritative. Sets the IAM policy for the disk and replaces any existing policy already attached.
-    /// * `gcp.compute.DiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the disk are preserved.
-    /// * `gcp.compute.DiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the disk are preserved.
+    /// * `gcp.compute.RegionDiskIamPolicy`: Authoritative. Sets the IAM policy for the regiondisk and replaces any existing policy already attached.
+    /// * `gcp.compute.RegionDiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regiondisk are preserved.
+    /// * `gcp.compute.RegionDiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regiondisk are preserved.
     /// 
     /// A data source can be used to retrieve policy data in advent you do not need creation
     /// 
-    /// * `gcp.compute.DiskIamPolicy`: Retrieves the IAM policy for the disk
+    /// * `gcp.compute.RegionDiskIamPolicy`: Retrieves the IAM policy for the regiondisk
     /// 
-    /// &gt; **Note:** `gcp.compute.DiskIamPolicy` **cannot** be used in conjunction with `gcp.compute.DiskIamBinding` and `gcp.compute.DiskIamMember` or they will fight over what your policy should be.
+    /// &gt; **Note:** `gcp.compute.RegionDiskIamPolicy` **cannot** be used in conjunction with `gcp.compute.RegionDiskIamBinding` and `gcp.compute.RegionDiskIamMember` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.compute.DiskIamBinding` resources **can be** used in conjunction with `gcp.compute.DiskIamMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.compute.RegionDiskIamBinding` resources **can be** used in conjunction with `gcp.compute.RegionDiskIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## gcp.compute.DiskIamPolicy
+    /// ## gcp.compute.RegionDiskIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -49,18 +49,18 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var policy = new Gcp.Compute.DiskIamPolicy("policy", new()
+    ///     var policy = new Gcp.Compute.RegionDiskIamPolicy("policy", new()
     ///     {
-    ///         Project = @default.Project,
-    ///         Zone = @default.Zone,
-    ///         Name = @default.Name,
+    ///         Project = regiondisk.Project,
+    ///         Region = regiondisk.Region,
+    ///         Name = regiondisk.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
     /// ```
     /// 
-    /// ## gcp.compute.DiskIamBinding
+    /// ## gcp.compute.RegionDiskIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -70,11 +70,11 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var binding = new Gcp.Compute.DiskIamBinding("binding", new()
+    ///     var binding = new Gcp.Compute.RegionDiskIamBinding("binding", new()
     ///     {
-    ///         Project = @default.Project,
-    ///         Zone = @default.Zone,
-    ///         Name = @default.Name,
+    ///         Project = regiondisk.Project,
+    ///         Region = regiondisk.Region,
+    ///         Name = regiondisk.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ## gcp.compute.DiskIamMember
+    /// ## gcp.compute.RegionDiskIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -95,11 +95,11 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var member = new Gcp.Compute.DiskIamMember("member", new()
+    ///     var member = new Gcp.Compute.RegionDiskIamMember("member", new()
     ///     {
-    ///         Project = @default.Project,
-    ///         Zone = @default.Zone,
-    ///         Name = @default.Name,
+    ///         Project = regiondisk.Project,
+    ///         Region = regiondisk.Region,
+    ///         Name = regiondisk.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -107,7 +107,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ## gcp.compute.DiskIamPolicy
+    /// ## gcp.compute.RegionDiskIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -132,18 +132,18 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var policy = new Gcp.Compute.DiskIamPolicy("policy", new()
+    ///     var policy = new Gcp.Compute.RegionDiskIamPolicy("policy", new()
     ///     {
-    ///         Project = @default.Project,
-    ///         Zone = @default.Zone,
-    ///         Name = @default.Name,
+    ///         Project = regiondisk.Project,
+    ///         Region = regiondisk.Region,
+    ///         Name = regiondisk.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
     /// ```
     /// 
-    /// ## gcp.compute.DiskIamBinding
+    /// ## gcp.compute.RegionDiskIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -153,11 +153,11 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var binding = new Gcp.Compute.DiskIamBinding("binding", new()
+    ///     var binding = new Gcp.Compute.RegionDiskIamBinding("binding", new()
     ///     {
-    ///         Project = @default.Project,
-    ///         Zone = @default.Zone,
-    ///         Name = @default.Name,
+    ///         Project = regiondisk.Project,
+    ///         Region = regiondisk.Region,
+    ///         Name = regiondisk.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ## gcp.compute.DiskIamMember
+    /// ## gcp.compute.RegionDiskIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -178,11 +178,11 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var member = new Gcp.Compute.DiskIamMember("member", new()
+    ///     var member = new Gcp.Compute.RegionDiskIamMember("member", new()
     ///     {
-    ///         Project = @default.Project,
-    ///         Zone = @default.Zone,
-    ///         Name = @default.Name,
+    ///         Project = regiondisk.Project,
+    ///         Region = regiondisk.Region,
+    ///         Name = regiondisk.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -194,34 +194,34 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms:
     /// 
-    /// * projects/{{project}}/zones/{{zone}}/disks/{{name}}
+    /// * projects/{{project}}/regions/{{region}}/disks/{{name}}
     /// 
-    /// * {{project}}/{{zone}}/{{name}}
+    /// * {{project}}/{{region}}/{{name}}
     /// 
-    /// * {{zone}}/{{name}}
+    /// * {{region}}/{{name}}
     /// 
     /// * {{name}}
     /// 
     /// Any variables not passed in the import command will be taken from the provider configuration.
     /// 
-    /// Compute Engine disk IAM resources can be imported using the resource identifiers, role, and member.
+    /// Compute Engine regiondisk IAM resources can be imported using the resource identifiers, role, and member.
     /// 
     /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import gcp:compute/regionDiskIamBinding:RegionDiskIamBinding editor "projects/{{project}}/zones/{{zone}}/disks/{{disk}} roles/viewer user:jane@example.com"
+    /// $ pulumi import gcp:compute/regionDiskIamBinding:RegionDiskIamBinding editor "projects/{{project}}/regions/{{region}}/disks/{{region_disk}} roles/viewer user:jane@example.com"
     /// ```
     /// 
     /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import gcp:compute/regionDiskIamBinding:RegionDiskIamBinding editor "projects/{{project}}/zones/{{zone}}/disks/{{disk}} roles/viewer"
+    /// $ pulumi import gcp:compute/regionDiskIamBinding:RegionDiskIamBinding editor "projects/{{project}}/regions/{{region}}/disks/{{region_disk}} roles/viewer"
     /// ```
     /// 
     /// IAM policy imports use the identifier of the resource in question, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import gcp:compute/regionDiskIamBinding:RegionDiskIamBinding editor projects/{{project}}/zones/{{zone}}/disks/{{disk}}
+    /// $ pulumi import gcp:compute/regionDiskIamBinding:RegionDiskIamBinding editor projects/{{project}}/regions/{{region}}/disks/{{region_disk}}
     /// ```
     /// 
     /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
@@ -269,12 +269,17 @@ namespace Pulumi.Gcp.Compute
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// A reference to the region where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+        /// region is specified, it is taken from the provider configuration.
+        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.compute.DiskIamBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.compute.RegionDiskIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Output("role")]
@@ -364,12 +369,17 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// A reference to the region where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+        /// region is specified, it is taken from the provider configuration.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.compute.DiskIamBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.compute.RegionDiskIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role", required: true)]
@@ -427,12 +437,17 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// A reference to the region where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+        /// region is specified, it is taken from the provider configuration.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.compute.DiskIamBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.compute.RegionDiskIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role")]

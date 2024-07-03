@@ -16,17 +16,21 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Represents a Restore Plan instance.
+ * Three different resources help you manage your IAM policy for Backup for GKE RestorePlan. Each of these resources serves a different use case:
  * 
- * To get more information about RestorePlan, see:
+ * * `gcp.gkebackup.RestorePlanIamPolicy`: Authoritative. Sets the IAM policy for the restoreplan and replaces any existing policy already attached.
+ * * `gcp.gkebackup.RestorePlanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the restoreplan are preserved.
+ * * `gcp.gkebackup.RestorePlanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the restoreplan are preserved.
  * 
- * * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.restorePlans)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+ * A data source can be used to retrieve policy data in advent you do not need creation
  * 
- * ## Example Usage
+ * * `gcp.gkebackup.RestorePlanIamPolicy`: Retrieves the IAM policy for the restoreplan
  * 
- * ### Gkebackup Restoreplan All Namespaces
+ * &gt; **Note:** `gcp.gkebackup.RestorePlanIamPolicy` **cannot** be used in conjunction with `gcp.gkebackup.RestorePlanIamBinding` and `gcp.gkebackup.RestorePlanIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.gkebackup.RestorePlanIamBinding` resources **can be** used in conjunction with `gcp.gkebackup.RestorePlanIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * ## gcp.gkebackup.RestorePlanIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -36,18 +40,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.container.Cluster;
- * import com.pulumi.gcp.container.ClusterArgs;
- * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
- * import com.pulumi.gcp.gkebackup.BackupPlan;
- * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
- * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
- * import com.pulumi.gcp.gkebackup.RestorePlan;
- * import com.pulumi.gcp.gkebackup.RestorePlanArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.gkebackup.RestorePlanIamPolicy;
+ * import com.pulumi.gcp.gkebackup.RestorePlanIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -61,48 +57,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()
- *             .name("restore-all-ns-cluster")
- *             .location("us-central1")
- *             .initialNodeCount(1)
- *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool("my-project-name.svc.id.goog")
- *                 .build())
- *             .addonsConfig(ClusterAddonsConfigArgs.builder()
- *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
- *             .deletionProtection("")
- *             .network("default")
- *             .subnetwork("default")
- *             .build());
- * 
- *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
- *             .name("restore-all-ns")
- *             .cluster(primary.id())
- *             .location("us-central1")
- *             .backupConfig(BackupPlanBackupConfigArgs.builder()
- *                 .includeVolumeData(true)
- *                 .includeSecrets(true)
- *                 .allNamespaces(true)
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/viewer")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var allNs = new RestorePlan("allNs", RestorePlanArgs.builder()
- *             .name("restore-all-ns")
- *             .location("us-central1")
- *             .backupPlan(basic.id())
- *             .cluster(primary.id())
- *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
- *                 .allNamespaces(true)
- *                 .namespacedResourceRestoreMode("FAIL_ON_CONFLICT")
- *                 .volumeDataRestorePolicy("RESTORE_VOLUME_DATA_FROM_BACKUP")
- *                 .clusterResourceRestoreScope(RestorePlanRestoreConfigClusterResourceRestoreScopeArgs.builder()
- *                     .allGroupKinds(true)
- *                     .build())
- *                 .clusterResourceConflictPolicy("USE_EXISTING_VERSION")
- *                 .build())
+ *         var policy = new RestorePlanIamPolicy("policy", RestorePlanIamPolicyArgs.builder()
+ *             .project(allNs.project())
+ *             .location(allNs.location())
+ *             .name(allNs.name())
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -110,7 +76,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Gkebackup Restoreplan Rollback Namespace
+ * 
+ * ## gcp.gkebackup.RestorePlanIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -120,19 +87,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.container.Cluster;
- * import com.pulumi.gcp.container.ClusterArgs;
- * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
- * import com.pulumi.gcp.gkebackup.BackupPlan;
- * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
- * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
- * import com.pulumi.gcp.gkebackup.RestorePlan;
- * import com.pulumi.gcp.gkebackup.RestorePlanArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigSelectedNamespacesArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
+ * import com.pulumi.gcp.gkebackup.RestorePlanIamBinding;
+ * import com.pulumi.gcp.gkebackup.RestorePlanIamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -146,58 +102,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()
- *             .name("rollback-ns-cluster")
- *             .location("us-central1")
- *             .initialNodeCount(1)
- *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool("my-project-name.svc.id.goog")
- *                 .build())
- *             .addonsConfig(ClusterAddonsConfigArgs.builder()
- *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
- *             .deletionProtection("")
- *             .network("default")
- *             .subnetwork("default")
- *             .build());
- * 
- *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
- *             .name("rollback-ns")
- *             .cluster(primary.id())
- *             .location("us-central1")
- *             .backupConfig(BackupPlanBackupConfigArgs.builder()
- *                 .includeVolumeData(true)
- *                 .includeSecrets(true)
- *                 .allNamespaces(true)
- *                 .build())
- *             .build());
- * 
- *         var rollbackNs = new RestorePlan("rollbackNs", RestorePlanArgs.builder()
- *             .name("rollback-ns-rp")
- *             .location("us-central1")
- *             .backupPlan(basic.id())
- *             .cluster(primary.id())
- *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
- *                 .selectedNamespaces(RestorePlanRestoreConfigSelectedNamespacesArgs.builder()
- *                     .namespaces("my-ns")
- *                     .build())
- *                 .namespacedResourceRestoreMode("DELETE_AND_RESTORE")
- *                 .volumeDataRestorePolicy("RESTORE_VOLUME_DATA_FROM_BACKUP")
- *                 .clusterResourceRestoreScope(RestorePlanRestoreConfigClusterResourceRestoreScopeArgs.builder()
- *                     .selectedGroupKinds(                    
- *                         RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs.builder()
- *                             .resourceGroup("apiextension.k8s.io")
- *                             .resourceKind("CustomResourceDefinition")
- *                             .build(),
- *                         RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs.builder()
- *                             .resourceGroup("storage.k8s.io")
- *                             .resourceKind("StorageClass")
- *                             .build())
- *                     .build())
- *                 .clusterResourceConflictPolicy("USE_EXISTING_VERSION")
- *                 .build())
+ *         var binding = new RestorePlanIamBinding("binding", RestorePlanIamBindingArgs.builder()
+ *             .project(allNs.project())
+ *             .location(allNs.location())
+ *             .name(allNs.name())
+ *             .role("roles/viewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
@@ -205,7 +115,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Gkebackup Restoreplan Protected Application
+ * 
+ * ## gcp.gkebackup.RestorePlanIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -215,19 +126,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.container.Cluster;
- * import com.pulumi.gcp.container.ClusterArgs;
- * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
- * import com.pulumi.gcp.gkebackup.BackupPlan;
- * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
- * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
- * import com.pulumi.gcp.gkebackup.RestorePlan;
- * import com.pulumi.gcp.gkebackup.RestorePlanArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigSelectedApplicationsArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
+ * import com.pulumi.gcp.gkebackup.RestorePlanIamMember;
+ * import com.pulumi.gcp.gkebackup.RestorePlanIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -241,52 +141,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()
- *             .name("rollback-app-cluster")
- *             .location("us-central1")
- *             .initialNodeCount(1)
- *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool("my-project-name.svc.id.goog")
- *                 .build())
- *             .addonsConfig(ClusterAddonsConfigArgs.builder()
- *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
- *             .deletionProtection("")
- *             .network("default")
- *             .subnetwork("default")
- *             .build());
- * 
- *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
- *             .name("rollback-app")
- *             .cluster(primary.id())
- *             .location("us-central1")
- *             .backupConfig(BackupPlanBackupConfigArgs.builder()
- *                 .includeVolumeData(true)
- *                 .includeSecrets(true)
- *                 .allNamespaces(true)
- *                 .build())
- *             .build());
- * 
- *         var rollbackApp = new RestorePlan("rollbackApp", RestorePlanArgs.builder()
- *             .name("rollback-app-rp")
- *             .location("us-central1")
- *             .backupPlan(basic.id())
- *             .cluster(primary.id())
- *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
- *                 .selectedApplications(RestorePlanRestoreConfigSelectedApplicationsArgs.builder()
- *                     .namespacedNames(RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs.builder()
- *                         .name("my-app")
- *                         .namespace("my-ns")
- *                         .build())
- *                     .build())
- *                 .namespacedResourceRestoreMode("DELETE_AND_RESTORE")
- *                 .volumeDataRestorePolicy("REUSE_VOLUME_HANDLE_FROM_BACKUP")
- *                 .clusterResourceRestoreScope(RestorePlanRestoreConfigClusterResourceRestoreScopeArgs.builder()
- *                     .noGroupKinds(true)
- *                     .build())
- *                 .build())
+ *         var member = new RestorePlanIamMember("member", RestorePlanIamMemberArgs.builder()
+ *             .project(allNs.project())
+ *             .location(allNs.location())
+ *             .name(allNs.name())
+ *             .role("roles/viewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
@@ -294,7 +154,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Gkebackup Restoreplan All Cluster Resources
+ * 
+ * ## gcp.gkebackup.RestorePlanIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -304,18 +165,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.container.Cluster;
- * import com.pulumi.gcp.container.ClusterArgs;
- * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
- * import com.pulumi.gcp.gkebackup.BackupPlan;
- * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
- * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
- * import com.pulumi.gcp.gkebackup.RestorePlan;
- * import com.pulumi.gcp.gkebackup.RestorePlanArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.gkebackup.RestorePlanIamPolicy;
+ * import com.pulumi.gcp.gkebackup.RestorePlanIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -329,47 +182,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()
- *             .name("all-groupkinds-cluster")
- *             .location("us-central1")
- *             .initialNodeCount(1)
- *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool("my-project-name.svc.id.goog")
- *                 .build())
- *             .addonsConfig(ClusterAddonsConfigArgs.builder()
- *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
- *             .deletionProtection("")
- *             .network("default")
- *             .subnetwork("default")
- *             .build());
- * 
- *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
- *             .name("all-groupkinds")
- *             .cluster(primary.id())
- *             .location("us-central1")
- *             .backupConfig(BackupPlanBackupConfigArgs.builder()
- *                 .includeVolumeData(true)
- *                 .includeSecrets(true)
- *                 .allNamespaces(true)
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/viewer")
+ *                 .members("user:jane{@literal @}example.com")
  *                 .build())
  *             .build());
  * 
- *         var allClusterResources = new RestorePlan("allClusterResources", RestorePlanArgs.builder()
- *             .name("all-groupkinds-rp")
- *             .location("us-central1")
- *             .backupPlan(basic.id())
- *             .cluster(primary.id())
- *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
- *                 .noNamespaces(true)
- *                 .namespacedResourceRestoreMode("FAIL_ON_CONFLICT")
- *                 .clusterResourceRestoreScope(RestorePlanRestoreConfigClusterResourceRestoreScopeArgs.builder()
- *                     .allGroupKinds(true)
- *                     .build())
- *                 .clusterResourceConflictPolicy("USE_EXISTING_VERSION")
- *                 .build())
+ *         var policy = new RestorePlanIamPolicy("policy", RestorePlanIamPolicyArgs.builder()
+ *             .project(allNs.project())
+ *             .location(allNs.location())
+ *             .name(allNs.name())
+ *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -377,7 +201,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Gkebackup Restoreplan Rename Namespace
+ * 
+ * ## gcp.gkebackup.RestorePlanIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -387,19 +212,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.container.Cluster;
- * import com.pulumi.gcp.container.ClusterArgs;
- * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
- * import com.pulumi.gcp.gkebackup.BackupPlan;
- * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
- * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
- * import com.pulumi.gcp.gkebackup.RestorePlan;
- * import com.pulumi.gcp.gkebackup.RestorePlanArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigSelectedNamespacesArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
+ * import com.pulumi.gcp.gkebackup.RestorePlanIamBinding;
+ * import com.pulumi.gcp.gkebackup.RestorePlanIamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -413,75 +227,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()
- *             .name("rename-ns-cluster")
- *             .location("us-central1")
- *             .initialNodeCount(1)
- *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool("my-project-name.svc.id.goog")
- *                 .build())
- *             .addonsConfig(ClusterAddonsConfigArgs.builder()
- *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
- *             .deletionProtection("")
- *             .network("default")
- *             .subnetwork("default")
- *             .build());
- * 
- *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
- *             .name("rename-ns")
- *             .cluster(primary.id())
- *             .location("us-central1")
- *             .backupConfig(BackupPlanBackupConfigArgs.builder()
- *                 .includeVolumeData(true)
- *                 .includeSecrets(true)
- *                 .allNamespaces(true)
- *                 .build())
- *             .build());
- * 
- *         var renameNs = new RestorePlan("renameNs", RestorePlanArgs.builder()
- *             .name("rename-ns-rp")
- *             .location("us-central1")
- *             .backupPlan(basic.id())
- *             .cluster(primary.id())
- *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
- *                 .selectedNamespaces(RestorePlanRestoreConfigSelectedNamespacesArgs.builder()
- *                     .namespaces("ns1")
- *                     .build())
- *                 .namespacedResourceRestoreMode("FAIL_ON_CONFLICT")
- *                 .volumeDataRestorePolicy("REUSE_VOLUME_HANDLE_FROM_BACKUP")
- *                 .clusterResourceRestoreScope(RestorePlanRestoreConfigClusterResourceRestoreScopeArgs.builder()
- *                     .noGroupKinds(true)
- *                     .build())
- *                 .transformationRules(                
- *                     RestorePlanRestoreConfigTransformationRuleArgs.builder()
- *                         .description("rename namespace from ns1 to ns2")
- *                         .resourceFilter(RestorePlanRestoreConfigTransformationRuleResourceFilterArgs.builder()
- *                             .groupKinds(RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs.builder()
- *                                 .resourceKind("Namespace")
- *                                 .build())
- *                             .jsonPath(".metadata[?({@literal @}.name == 'ns1')]")
- *                             .build())
- *                         .fieldActions(RestorePlanRestoreConfigTransformationRuleFieldActionArgs.builder()
- *                             .op("REPLACE")
- *                             .path("/metadata/name")
- *                             .value("ns2")
- *                             .build())
- *                         .build(),
- *                     RestorePlanRestoreConfigTransformationRuleArgs.builder()
- *                         .description("move all resources from ns1 to ns2")
- *                         .resourceFilter(RestorePlanRestoreConfigTransformationRuleResourceFilterArgs.builder()
- *                             .namespaces("ns1")
- *                             .build())
- *                         .fieldActions(RestorePlanRestoreConfigTransformationRuleFieldActionArgs.builder()
- *                             .op("REPLACE")
- *                             .path("/metadata/namespace")
- *                             .value("ns2")
- *                             .build())
- *                         .build())
- *                 .build())
+ *         var binding = new RestorePlanIamBinding("binding", RestorePlanIamBindingArgs.builder()
+ *             .project(allNs.project())
+ *             .location(allNs.location())
+ *             .name(allNs.name())
+ *             .role("roles/viewer")
+ *             .members("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
@@ -489,7 +240,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Gkebackup Restoreplan Second Transformation
+ * 
+ * ## gcp.gkebackup.RestorePlanIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -499,19 +251,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.container.Cluster;
- * import com.pulumi.gcp.container.ClusterArgs;
- * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
- * import com.pulumi.gcp.gkebackup.BackupPlan;
- * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
- * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
- * import com.pulumi.gcp.gkebackup.RestorePlan;
- * import com.pulumi.gcp.gkebackup.RestorePlanArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigExcludedNamespacesArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
+ * import com.pulumi.gcp.gkebackup.RestorePlanIamMember;
+ * import com.pulumi.gcp.gkebackup.RestorePlanIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -525,350 +266,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()
- *             .name("transform-rule-cluster")
- *             .location("us-central1")
- *             .initialNodeCount(1)
- *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool("my-project-name.svc.id.goog")
- *                 .build())
- *             .addonsConfig(ClusterAddonsConfigArgs.builder()
- *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
- *             .deletionProtection("")
- *             .network("default")
- *             .subnetwork("default")
- *             .build());
- * 
- *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
- *             .name("transform-rule")
- *             .cluster(primary.id())
- *             .location("us-central1")
- *             .backupConfig(BackupPlanBackupConfigArgs.builder()
- *                 .includeVolumeData(true)
- *                 .includeSecrets(true)
- *                 .allNamespaces(true)
- *                 .build())
- *             .build());
- * 
- *         var transformRule = new RestorePlan("transformRule", RestorePlanArgs.builder()
- *             .name("transform-rule-rp")
- *             .description("copy nginx env variables")
- *             .labels(Map.of("app", "nginx"))
- *             .location("us-central1")
- *             .backupPlan(basic.id())
- *             .cluster(primary.id())
- *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
- *                 .excludedNamespaces(RestorePlanRestoreConfigExcludedNamespacesArgs.builder()
- *                     .namespaces("my-ns")
- *                     .build())
- *                 .namespacedResourceRestoreMode("DELETE_AND_RESTORE")
- *                 .volumeDataRestorePolicy("RESTORE_VOLUME_DATA_FROM_BACKUP")
- *                 .clusterResourceRestoreScope(RestorePlanRestoreConfigClusterResourceRestoreScopeArgs.builder()
- *                     .excludedGroupKinds(RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs.builder()
- *                         .resourceGroup("apiextension.k8s.io")
- *                         .resourceKind("CustomResourceDefinition")
- *                         .build())
- *                     .build())
- *                 .clusterResourceConflictPolicy("USE_EXISTING_VERSION")
- *                 .transformationRules(RestorePlanRestoreConfigTransformationRuleArgs.builder()
- *                     .description("Copy environment variables from the nginx container to the install init container.")
- *                     .resourceFilter(RestorePlanRestoreConfigTransformationRuleResourceFilterArgs.builder()
- *                         .groupKinds(RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs.builder()
- *                             .resourceKind("Pod")
- *                             .resourceGroup("")
- *                             .build())
- *                         .jsonPath(".metadata[?({@literal @}.name == 'nginx')]")
- *                         .build())
- *                     .fieldActions(RestorePlanRestoreConfigTransformationRuleFieldActionArgs.builder()
- *                         .op("COPY")
- *                         .path("/spec/initContainers/0/env")
- *                         .fromPath("/spec/containers/0/env")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * ### Gkebackup Restoreplan Gitops Mode
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.container.Cluster;
- * import com.pulumi.gcp.container.ClusterArgs;
- * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
- * import com.pulumi.gcp.gkebackup.BackupPlan;
- * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
- * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
- * import com.pulumi.gcp.gkebackup.RestorePlan;
- * import com.pulumi.gcp.gkebackup.RestorePlanArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()
- *             .name("gitops-mode-cluster")
- *             .location("us-central1")
- *             .initialNodeCount(1)
- *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool("my-project-name.svc.id.goog")
- *                 .build())
- *             .addonsConfig(ClusterAddonsConfigArgs.builder()
- *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
- *             .deletionProtection("")
- *             .network("default")
- *             .subnetwork("default")
- *             .build());
- * 
- *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
- *             .name("gitops-mode")
- *             .cluster(primary.id())
- *             .location("us-central1")
- *             .backupConfig(BackupPlanBackupConfigArgs.builder()
- *                 .includeVolumeData(true)
- *                 .includeSecrets(true)
- *                 .allNamespaces(true)
- *                 .build())
- *             .build());
- * 
- *         var gitopsMode = new RestorePlan("gitopsMode", RestorePlanArgs.builder()
- *             .name("gitops-mode")
- *             .location("us-central1")
- *             .backupPlan(basic.id())
- *             .cluster(primary.id())
- *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
- *                 .allNamespaces(true)
- *                 .namespacedResourceRestoreMode("MERGE_SKIP_ON_CONFLICT")
- *                 .volumeDataRestorePolicy("RESTORE_VOLUME_DATA_FROM_BACKUP")
- *                 .clusterResourceRestoreScope(RestorePlanRestoreConfigClusterResourceRestoreScopeArgs.builder()
- *                     .allGroupKinds(true)
- *                     .build())
- *                 .clusterResourceConflictPolicy("USE_EXISTING_VERSION")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * ### Gkebackup Restoreplan Restore Order
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.container.Cluster;
- * import com.pulumi.gcp.container.ClusterArgs;
- * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
- * import com.pulumi.gcp.gkebackup.BackupPlan;
- * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
- * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
- * import com.pulumi.gcp.gkebackup.RestorePlan;
- * import com.pulumi.gcp.gkebackup.RestorePlanArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigRestoreOrderArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()
- *             .name("restore-order-cluster")
- *             .location("us-central1")
- *             .initialNodeCount(1)
- *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool("my-project-name.svc.id.goog")
- *                 .build())
- *             .addonsConfig(ClusterAddonsConfigArgs.builder()
- *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
- *             .deletionProtection("")
- *             .network("default")
- *             .subnetwork("default")
- *             .build());
- * 
- *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
- *             .name("restore-order")
- *             .cluster(primary.id())
- *             .location("us-central1")
- *             .backupConfig(BackupPlanBackupConfigArgs.builder()
- *                 .includeVolumeData(true)
- *                 .includeSecrets(true)
- *                 .allNamespaces(true)
- *                 .build())
- *             .build());
- * 
- *         var restoreOrder = new RestorePlan("restoreOrder", RestorePlanArgs.builder()
- *             .name("restore-order")
- *             .location("us-central1")
- *             .backupPlan(basic.id())
- *             .cluster(primary.id())
- *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
- *                 .allNamespaces(true)
- *                 .namespacedResourceRestoreMode("FAIL_ON_CONFLICT")
- *                 .volumeDataRestorePolicy("RESTORE_VOLUME_DATA_FROM_BACKUP")
- *                 .clusterResourceRestoreScope(RestorePlanRestoreConfigClusterResourceRestoreScopeArgs.builder()
- *                     .allGroupKinds(true)
- *                     .build())
- *                 .clusterResourceConflictPolicy("USE_EXISTING_VERSION")
- *                 .restoreOrder(RestorePlanRestoreConfigRestoreOrderArgs.builder()
- *                     .groupKindDependencies(                    
- *                         RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs.builder()
- *                             .satisfying(RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs.builder()
- *                                 .resourceGroup("stable.example.com")
- *                                 .resourceKind("kindA")
- *                                 .build())
- *                             .requiring(RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs.builder()
- *                                 .resourceGroup("stable.example.com")
- *                                 .resourceKind("kindB")
- *                                 .build())
- *                             .build(),
- *                         RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs.builder()
- *                             .satisfying(RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs.builder()
- *                                 .resourceGroup("stable.example.com")
- *                                 .resourceKind("kindB")
- *                                 .build())
- *                             .requiring(RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs.builder()
- *                                 .resourceGroup("stable.example.com")
- *                                 .resourceKind("kindC")
- *                                 .build())
- *                             .build())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * ### Gkebackup Restoreplan Volume Res
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.container.Cluster;
- * import com.pulumi.gcp.container.ClusterArgs;
- * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
- * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
- * import com.pulumi.gcp.gkebackup.BackupPlan;
- * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
- * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
- * import com.pulumi.gcp.gkebackup.RestorePlan;
- * import com.pulumi.gcp.gkebackup.RestorePlanArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
- * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var primary = new Cluster("primary", ClusterArgs.builder()
- *             .name("volume-res-cluster")
- *             .location("us-central1")
- *             .initialNodeCount(1)
- *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
- *                 .workloadPool("my-project-name.svc.id.goog")
- *                 .build())
- *             .addonsConfig(ClusterAddonsConfigArgs.builder()
- *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
- *                     .enabled(true)
- *                     .build())
- *                 .build())
- *             .deletionProtection("")
- *             .network("default")
- *             .subnetwork("default")
- *             .build());
- * 
- *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
- *             .name("volume-res")
- *             .cluster(primary.id())
- *             .location("us-central1")
- *             .backupConfig(BackupPlanBackupConfigArgs.builder()
- *                 .includeVolumeData(true)
- *                 .includeSecrets(true)
- *                 .allNamespaces(true)
- *                 .build())
- *             .build());
- * 
- *         var volumeRes = new RestorePlan("volumeRes", RestorePlanArgs.builder()
- *             .name("volume-res")
- *             .location("us-central1")
- *             .backupPlan(basic.id())
- *             .cluster(primary.id())
- *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
- *                 .allNamespaces(true)
- *                 .namespacedResourceRestoreMode("FAIL_ON_CONFLICT")
- *                 .volumeDataRestorePolicy("NO_VOLUME_DATA_RESTORATION")
- *                 .clusterResourceRestoreScope(RestorePlanRestoreConfigClusterResourceRestoreScopeArgs.builder()
- *                     .allGroupKinds(true)
- *                     .build())
- *                 .clusterResourceConflictPolicy("USE_EXISTING_VERSION")
- *                 .volumeDataRestorePolicyBindings(RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs.builder()
- *                     .policy("RESTORE_VOLUME_DATA_FROM_BACKUP")
- *                     .volumeType("GCE_PERSISTENT_DISK")
- *                     .build())
- *                 .build())
+ *         var member = new RestorePlanIamMember("member", RestorePlanIamMemberArgs.builder()
+ *             .project(allNs.project())
+ *             .location(allNs.location())
+ *             .name(allNs.name())
+ *             .role("roles/viewer")
+ *             .member("user:jane{@literal @}example.com")
  *             .build());
  * 
  *     }
@@ -879,27 +282,41 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RestorePlan can be imported using any of these accepted formats:
+ * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms:
  * 
- * * `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}`
+ * * projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
  * 
- * * `{{project}}/{{location}}/{{name}}`
+ * * {{project}}/{{location}}/{{name}}
  * 
- * * `{{location}}/{{name}}`
+ * * {{location}}/{{name}}
  * 
- * When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example:
+ * * {{name}}
  * 
- * ```sh
- * $ pulumi import gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember default projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
- * ```
+ * Any variables not passed in the import command will be taken from the provider configuration.
  * 
- * ```sh
- * $ pulumi import gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember default {{project}}/{{location}}/{{name}}
- * ```
+ * Backup for GKE restoreplan IAM resources can be imported using the resource identifiers, role, and member.
+ * 
+ * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember default {{location}}/{{name}}
+ * $ pulumi import gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember editor &#34;projects/{{project}}/locations/{{location}}/restorePlans/{{restore_plan}} roles/viewer user:jane{@literal @}example.com&#34;
  * ```
+ * 
+ * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+ * 
+ * ```sh
+ * $ pulumi import gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember editor &#34;projects/{{project}}/locations/{{location}}/restorePlans/{{restore_plan}} roles/viewer&#34;
+ * ```
+ * 
+ * IAM policy imports use the identifier of the resource in question, e.g.
+ * 
+ * ```sh
+ * $ pulumi import gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember editor projects/{{project}}/locations/{{location}}/restorePlans/{{restore_plan}}
+ * ```
+ * 
+ * -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ * 
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember")
@@ -910,14 +327,25 @@ public class RestorePlanIamMember extends com.pulumi.resources.CustomResource {
     public Output<Optional<RestorePlanIamMemberCondition>> condition() {
         return Codegen.optional(this.condition);
     }
+    /**
+     * (Computed) The etag of the IAM policy.
+     * 
+     */
     @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
+    /**
+     * @return (Computed) The etag of the IAM policy.
+     * 
+     */
     public Output<String> etag() {
         return this.etag;
     }
     /**
      * The region of the Restore Plan.
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
@@ -925,40 +353,93 @@ public class RestorePlanIamMember extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The region of the Restore Plan.
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      * 
      */
     public Output<String> location() {
         return this.location;
     }
+    /**
+     * Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
+     * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
+     * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+     * 
+     */
     @Export(name="member", refs={String.class}, tree="[0]")
     private Output<String> member;
 
+    /**
+     * @return Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
+     * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
+     * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+     * 
+     */
     public Output<String> member() {
         return this.member;
     }
     /**
-     * The full name of the BackupPlan Resource.
+     * Used to find the parent resource to bind the IAM policy to
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The full name of the BackupPlan Resource.
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
+    /**
+     * The role that should be applied. Only one
+     * `gcp.gkebackup.RestorePlanIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * 
+     */
     @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
+    /**
+     * @return The role that should be applied. Only one
+     * `gcp.gkebackup.RestorePlanIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * 
+     */
     public Output<String> role() {
         return this.role;
     }

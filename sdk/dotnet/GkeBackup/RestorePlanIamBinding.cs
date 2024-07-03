@@ -10,17 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeBackup
 {
     /// <summary>
-    /// Represents a Restore Plan instance.
+    /// Three different resources help you manage your IAM policy for Backup for GKE RestorePlan. Each of these resources serves a different use case:
     /// 
-    /// To get more information about RestorePlan, see:
+    /// * `gcp.gkebackup.RestorePlanIamPolicy`: Authoritative. Sets the IAM policy for the restoreplan and replaces any existing policy already attached.
+    /// * `gcp.gkebackup.RestorePlanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the restoreplan are preserved.
+    /// * `gcp.gkebackup.RestorePlanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the restoreplan are preserved.
     /// 
-    /// * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.restorePlans)
-    /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+    /// A data source can be used to retrieve policy data in advent you do not need creation
     /// 
-    /// ## Example Usage
+    /// * `gcp.gkebackup.RestorePlanIamPolicy`: Retrieves the IAM policy for the restoreplan
     /// 
-    /// ### Gkebackup Restoreplan All Namespaces
+    /// &gt; **Note:** `gcp.gkebackup.RestorePlanIamPolicy` **cannot** be used in conjunction with `gcp.gkebackup.RestorePlanIamBinding` and `gcp.gkebackup.RestorePlanIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.gkebackup.RestorePlanIamBinding` resources **can be** used in conjunction with `gcp.gkebackup.RestorePlanIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## gcp.gkebackup.RestorePlanIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -30,62 +34,58 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         Name = "restore-all-ns-cluster",
-    ///         Location = "us-central1",
-    ///         InitialNodeCount = 1,
-    ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
+    ///         Bindings = new[]
     ///         {
-    ///             WorkloadPool = "my-project-name.svc.id.goog",
-    ///         },
-    ///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
-    ///         {
-    ///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
     ///             {
-    ///                 Enabled = true,
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
     ///             },
-    ///         },
-    ///         DeletionProtection = "",
-    ///         Network = "default",
-    ///         Subnetwork = "default",
-    ///     });
-    /// 
-    ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
-    ///     {
-    ///         Name = "restore-all-ns",
-    ///         Cluster = primary.Id,
-    ///         Location = "us-central1",
-    ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
-    ///         {
-    ///             IncludeVolumeData = true,
-    ///             IncludeSecrets = true,
-    ///             AllNamespaces = true,
     ///         },
     ///     });
     /// 
-    ///     var allNs = new Gcp.GkeBackup.RestorePlan("all_ns", new()
+    ///     var policy = new Gcp.GkeBackup.RestorePlanIamPolicy("policy", new()
     ///     {
-    ///         Name = "restore-all-ns",
-    ///         Location = "us-central1",
-    ///         BackupPlan = basic.Id,
-    ///         Cluster = primary.Id,
-    ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
+    ///         Project = allNs.Project,
+    ///         Location = allNs.Location,
+    ///         Name = allNs.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.gkebackup.RestorePlanIamBinding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.GkeBackup.RestorePlanIamBinding("binding", new()
+    ///     {
+    ///         Project = allNs.Project,
+    ///         Location = allNs.Location,
+    ///         Name = allNs.Name,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             AllNamespaces = true,
-    ///             NamespacedResourceRestoreMode = "FAIL_ON_CONFLICT",
-    ///             VolumeDataRestorePolicy = "RESTORE_VOLUME_DATA_FROM_BACKUP",
-    ///             ClusterResourceRestoreScope = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs
-    ///             {
-    ///                 AllGroupKinds = true,
-    ///             },
-    ///             ClusterResourceConflictPolicy = "USE_EXISTING_VERSION",
+    ///             "user:jane@example.com",
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// ### Gkebackup Restoreplan Rollback Namespace
+    /// 
+    /// ## gcp.gkebackup.RestorePlanIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -95,80 +95,80 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     var member = new Gcp.GkeBackup.RestorePlanIamMember("member", new()
     ///     {
-    ///         Name = "rollback-ns-cluster",
-    ///         Location = "us-central1",
-    ///         InitialNodeCount = 1,
-    ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
-    ///         {
-    ///             WorkloadPool = "my-project-name.svc.id.goog",
-    ///         },
-    ///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
-    ///         {
-    ///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
-    ///             {
-    ///                 Enabled = true,
-    ///             },
-    ///         },
-    ///         DeletionProtection = "",
-    ///         Network = "default",
-    ///         Subnetwork = "default",
+    ///         Project = allNs.Project,
+    ///         Location = allNs.Location,
+    ///         Name = allNs.Name,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
     ///     });
     /// 
-    ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.gkebackup.RestorePlanIamPolicy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
-    ///         Name = "rollback-ns",
-    ///         Cluster = primary.Id,
-    ///         Location = "us-central1",
-    ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
+    ///         Bindings = new[]
     ///         {
-    ///             IncludeVolumeData = true,
-    ///             IncludeSecrets = true,
-    ///             AllNamespaces = true,
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 
-    ///     var rollbackNs = new Gcp.GkeBackup.RestorePlan("rollback_ns", new()
+    ///     var policy = new Gcp.GkeBackup.RestorePlanIamPolicy("policy", new()
     ///     {
-    ///         Name = "rollback-ns-rp",
-    ///         Location = "us-central1",
-    ///         BackupPlan = basic.Id,
-    ///         Cluster = primary.Id,
-    ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
+    ///         Project = allNs.Project,
+    ///         Location = allNs.Location,
+    ///         Name = allNs.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.gkebackup.RestorePlanIamBinding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.GkeBackup.RestorePlanIamBinding("binding", new()
+    ///     {
+    ///         Project = allNs.Project,
+    ///         Location = allNs.Location,
+    ///         Name = allNs.Name,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
     ///         {
-    ///             SelectedNamespaces = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigSelectedNamespacesArgs
-    ///             {
-    ///                 Namespaces = new[]
-    ///                 {
-    ///                     "my-ns",
-    ///                 },
-    ///             },
-    ///             NamespacedResourceRestoreMode = "DELETE_AND_RESTORE",
-    ///             VolumeDataRestorePolicy = "RESTORE_VOLUME_DATA_FROM_BACKUP",
-    ///             ClusterResourceRestoreScope = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs
-    ///             {
-    ///                 SelectedGroupKinds = new[]
-    ///                 {
-    ///                     new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs
-    ///                     {
-    ///                         ResourceGroup = "apiextension.k8s.io",
-    ///                         ResourceKind = "CustomResourceDefinition",
-    ///                     },
-    ///                     new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs
-    ///                     {
-    ///                         ResourceGroup = "storage.k8s.io",
-    ///                         ResourceKind = "StorageClass",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             ClusterResourceConflictPolicy = "USE_EXISTING_VERSION",
+    ///             "user:jane@example.com",
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// ### Gkebackup Restoreplan Protected Application
+    /// 
+    /// ## gcp.gkebackup.RestorePlanIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -178,593 +178,13 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     var member = new Gcp.GkeBackup.RestorePlanIamMember("member", new()
     ///     {
-    ///         Name = "rollback-app-cluster",
-    ///         Location = "us-central1",
-    ///         InitialNodeCount = 1,
-    ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
-    ///         {
-    ///             WorkloadPool = "my-project-name.svc.id.goog",
-    ///         },
-    ///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
-    ///         {
-    ///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
-    ///             {
-    ///                 Enabled = true,
-    ///             },
-    ///         },
-    ///         DeletionProtection = "",
-    ///         Network = "default",
-    ///         Subnetwork = "default",
-    ///     });
-    /// 
-    ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
-    ///     {
-    ///         Name = "rollback-app",
-    ///         Cluster = primary.Id,
-    ///         Location = "us-central1",
-    ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
-    ///         {
-    ///             IncludeVolumeData = true,
-    ///             IncludeSecrets = true,
-    ///             AllNamespaces = true,
-    ///         },
-    ///     });
-    /// 
-    ///     var rollbackApp = new Gcp.GkeBackup.RestorePlan("rollback_app", new()
-    ///     {
-    ///         Name = "rollback-app-rp",
-    ///         Location = "us-central1",
-    ///         BackupPlan = basic.Id,
-    ///         Cluster = primary.Id,
-    ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
-    ///         {
-    ///             SelectedApplications = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigSelectedApplicationsArgs
-    ///             {
-    ///                 NamespacedNames = new[]
-    ///                 {
-    ///                     new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs
-    ///                     {
-    ///                         Name = "my-app",
-    ///                         Namespace = "my-ns",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             NamespacedResourceRestoreMode = "DELETE_AND_RESTORE",
-    ///             VolumeDataRestorePolicy = "REUSE_VOLUME_HANDLE_FROM_BACKUP",
-    ///             ClusterResourceRestoreScope = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs
-    ///             {
-    ///                 NoGroupKinds = true,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Gkebackup Restoreplan All Cluster Resources
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var primary = new Gcp.Container.Cluster("primary", new()
-    ///     {
-    ///         Name = "all-groupkinds-cluster",
-    ///         Location = "us-central1",
-    ///         InitialNodeCount = 1,
-    ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
-    ///         {
-    ///             WorkloadPool = "my-project-name.svc.id.goog",
-    ///         },
-    ///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
-    ///         {
-    ///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
-    ///             {
-    ///                 Enabled = true,
-    ///             },
-    ///         },
-    ///         DeletionProtection = "",
-    ///         Network = "default",
-    ///         Subnetwork = "default",
-    ///     });
-    /// 
-    ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
-    ///     {
-    ///         Name = "all-groupkinds",
-    ///         Cluster = primary.Id,
-    ///         Location = "us-central1",
-    ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
-    ///         {
-    ///             IncludeVolumeData = true,
-    ///             IncludeSecrets = true,
-    ///             AllNamespaces = true,
-    ///         },
-    ///     });
-    /// 
-    ///     var allClusterResources = new Gcp.GkeBackup.RestorePlan("all_cluster_resources", new()
-    ///     {
-    ///         Name = "all-groupkinds-rp",
-    ///         Location = "us-central1",
-    ///         BackupPlan = basic.Id,
-    ///         Cluster = primary.Id,
-    ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
-    ///         {
-    ///             NoNamespaces = true,
-    ///             NamespacedResourceRestoreMode = "FAIL_ON_CONFLICT",
-    ///             ClusterResourceRestoreScope = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs
-    ///             {
-    ///                 AllGroupKinds = true,
-    ///             },
-    ///             ClusterResourceConflictPolicy = "USE_EXISTING_VERSION",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Gkebackup Restoreplan Rename Namespace
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var primary = new Gcp.Container.Cluster("primary", new()
-    ///     {
-    ///         Name = "rename-ns-cluster",
-    ///         Location = "us-central1",
-    ///         InitialNodeCount = 1,
-    ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
-    ///         {
-    ///             WorkloadPool = "my-project-name.svc.id.goog",
-    ///         },
-    ///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
-    ///         {
-    ///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
-    ///             {
-    ///                 Enabled = true,
-    ///             },
-    ///         },
-    ///         DeletionProtection = "",
-    ///         Network = "default",
-    ///         Subnetwork = "default",
-    ///     });
-    /// 
-    ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
-    ///     {
-    ///         Name = "rename-ns",
-    ///         Cluster = primary.Id,
-    ///         Location = "us-central1",
-    ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
-    ///         {
-    ///             IncludeVolumeData = true,
-    ///             IncludeSecrets = true,
-    ///             AllNamespaces = true,
-    ///         },
-    ///     });
-    /// 
-    ///     var renameNs = new Gcp.GkeBackup.RestorePlan("rename_ns", new()
-    ///     {
-    ///         Name = "rename-ns-rp",
-    ///         Location = "us-central1",
-    ///         BackupPlan = basic.Id,
-    ///         Cluster = primary.Id,
-    ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
-    ///         {
-    ///             SelectedNamespaces = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigSelectedNamespacesArgs
-    ///             {
-    ///                 Namespaces = new[]
-    ///                 {
-    ///                     "ns1",
-    ///                 },
-    ///             },
-    ///             NamespacedResourceRestoreMode = "FAIL_ON_CONFLICT",
-    ///             VolumeDataRestorePolicy = "REUSE_VOLUME_HANDLE_FROM_BACKUP",
-    ///             ClusterResourceRestoreScope = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs
-    ///             {
-    ///                 NoGroupKinds = true,
-    ///             },
-    ///             TransformationRules = new[]
-    ///             {
-    ///                 new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigTransformationRuleArgs
-    ///                 {
-    ///                     Description = "rename namespace from ns1 to ns2",
-    ///                     ResourceFilter = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs
-    ///                     {
-    ///                         GroupKinds = new[]
-    ///                         {
-    ///                             new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs
-    ///                             {
-    ///                                 ResourceKind = "Namespace",
-    ///                             },
-    ///                         },
-    ///                         JsonPath = ".metadata[?(@.name == 'ns1')]",
-    ///                     },
-    ///                     FieldActions = new[]
-    ///                     {
-    ///                         new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigTransformationRuleFieldActionArgs
-    ///                         {
-    ///                             Op = "REPLACE",
-    ///                             Path = "/metadata/name",
-    ///                             Value = "ns2",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigTransformationRuleArgs
-    ///                 {
-    ///                     Description = "move all resources from ns1 to ns2",
-    ///                     ResourceFilter = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs
-    ///                     {
-    ///                         Namespaces = new[]
-    ///                         {
-    ///                             "ns1",
-    ///                         },
-    ///                     },
-    ///                     FieldActions = new[]
-    ///                     {
-    ///                         new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigTransformationRuleFieldActionArgs
-    ///                         {
-    ///                             Op = "REPLACE",
-    ///                             Path = "/metadata/namespace",
-    ///                             Value = "ns2",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Gkebackup Restoreplan Second Transformation
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var primary = new Gcp.Container.Cluster("primary", new()
-    ///     {
-    ///         Name = "transform-rule-cluster",
-    ///         Location = "us-central1",
-    ///         InitialNodeCount = 1,
-    ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
-    ///         {
-    ///             WorkloadPool = "my-project-name.svc.id.goog",
-    ///         },
-    ///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
-    ///         {
-    ///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
-    ///             {
-    ///                 Enabled = true,
-    ///             },
-    ///         },
-    ///         DeletionProtection = "",
-    ///         Network = "default",
-    ///         Subnetwork = "default",
-    ///     });
-    /// 
-    ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
-    ///     {
-    ///         Name = "transform-rule",
-    ///         Cluster = primary.Id,
-    ///         Location = "us-central1",
-    ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
-    ///         {
-    ///             IncludeVolumeData = true,
-    ///             IncludeSecrets = true,
-    ///             AllNamespaces = true,
-    ///         },
-    ///     });
-    /// 
-    ///     var transformRule = new Gcp.GkeBackup.RestorePlan("transform_rule", new()
-    ///     {
-    ///         Name = "transform-rule-rp",
-    ///         Description = "copy nginx env variables",
-    ///         Labels = 
-    ///         {
-    ///             { "app", "nginx" },
-    ///         },
-    ///         Location = "us-central1",
-    ///         BackupPlan = basic.Id,
-    ///         Cluster = primary.Id,
-    ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
-    ///         {
-    ///             ExcludedNamespaces = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigExcludedNamespacesArgs
-    ///             {
-    ///                 Namespaces = new[]
-    ///                 {
-    ///                     "my-ns",
-    ///                 },
-    ///             },
-    ///             NamespacedResourceRestoreMode = "DELETE_AND_RESTORE",
-    ///             VolumeDataRestorePolicy = "RESTORE_VOLUME_DATA_FROM_BACKUP",
-    ///             ClusterResourceRestoreScope = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs
-    ///             {
-    ///                 ExcludedGroupKinds = new[]
-    ///                 {
-    ///                     new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs
-    ///                     {
-    ///                         ResourceGroup = "apiextension.k8s.io",
-    ///                         ResourceKind = "CustomResourceDefinition",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             ClusterResourceConflictPolicy = "USE_EXISTING_VERSION",
-    ///             TransformationRules = new[]
-    ///             {
-    ///                 new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigTransformationRuleArgs
-    ///                 {
-    ///                     Description = "Copy environment variables from the nginx container to the install init container.",
-    ///                     ResourceFilter = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs
-    ///                     {
-    ///                         GroupKinds = new[]
-    ///                         {
-    ///                             new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs
-    ///                             {
-    ///                                 ResourceKind = "Pod",
-    ///                                 ResourceGroup = "",
-    ///                             },
-    ///                         },
-    ///                         JsonPath = ".metadata[?(@.name == 'nginx')]",
-    ///                     },
-    ///                     FieldActions = new[]
-    ///                     {
-    ///                         new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigTransformationRuleFieldActionArgs
-    ///                         {
-    ///                             Op = "COPY",
-    ///                             Path = "/spec/initContainers/0/env",
-    ///                             FromPath = "/spec/containers/0/env",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Gkebackup Restoreplan Gitops Mode
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var primary = new Gcp.Container.Cluster("primary", new()
-    ///     {
-    ///         Name = "gitops-mode-cluster",
-    ///         Location = "us-central1",
-    ///         InitialNodeCount = 1,
-    ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
-    ///         {
-    ///             WorkloadPool = "my-project-name.svc.id.goog",
-    ///         },
-    ///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
-    ///         {
-    ///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
-    ///             {
-    ///                 Enabled = true,
-    ///             },
-    ///         },
-    ///         DeletionProtection = "",
-    ///         Network = "default",
-    ///         Subnetwork = "default",
-    ///     });
-    /// 
-    ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
-    ///     {
-    ///         Name = "gitops-mode",
-    ///         Cluster = primary.Id,
-    ///         Location = "us-central1",
-    ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
-    ///         {
-    ///             IncludeVolumeData = true,
-    ///             IncludeSecrets = true,
-    ///             AllNamespaces = true,
-    ///         },
-    ///     });
-    /// 
-    ///     var gitopsMode = new Gcp.GkeBackup.RestorePlan("gitops_mode", new()
-    ///     {
-    ///         Name = "gitops-mode",
-    ///         Location = "us-central1",
-    ///         BackupPlan = basic.Id,
-    ///         Cluster = primary.Id,
-    ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
-    ///         {
-    ///             AllNamespaces = true,
-    ///             NamespacedResourceRestoreMode = "MERGE_SKIP_ON_CONFLICT",
-    ///             VolumeDataRestorePolicy = "RESTORE_VOLUME_DATA_FROM_BACKUP",
-    ///             ClusterResourceRestoreScope = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs
-    ///             {
-    ///                 AllGroupKinds = true,
-    ///             },
-    ///             ClusterResourceConflictPolicy = "USE_EXISTING_VERSION",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Gkebackup Restoreplan Restore Order
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var primary = new Gcp.Container.Cluster("primary", new()
-    ///     {
-    ///         Name = "restore-order-cluster",
-    ///         Location = "us-central1",
-    ///         InitialNodeCount = 1,
-    ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
-    ///         {
-    ///             WorkloadPool = "my-project-name.svc.id.goog",
-    ///         },
-    ///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
-    ///         {
-    ///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
-    ///             {
-    ///                 Enabled = true,
-    ///             },
-    ///         },
-    ///         DeletionProtection = "",
-    ///         Network = "default",
-    ///         Subnetwork = "default",
-    ///     });
-    /// 
-    ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
-    ///     {
-    ///         Name = "restore-order",
-    ///         Cluster = primary.Id,
-    ///         Location = "us-central1",
-    ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
-    ///         {
-    ///             IncludeVolumeData = true,
-    ///             IncludeSecrets = true,
-    ///             AllNamespaces = true,
-    ///         },
-    ///     });
-    /// 
-    ///     var restoreOrder = new Gcp.GkeBackup.RestorePlan("restore_order", new()
-    ///     {
-    ///         Name = "restore-order",
-    ///         Location = "us-central1",
-    ///         BackupPlan = basic.Id,
-    ///         Cluster = primary.Id,
-    ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
-    ///         {
-    ///             AllNamespaces = true,
-    ///             NamespacedResourceRestoreMode = "FAIL_ON_CONFLICT",
-    ///             VolumeDataRestorePolicy = "RESTORE_VOLUME_DATA_FROM_BACKUP",
-    ///             ClusterResourceRestoreScope = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs
-    ///             {
-    ///                 AllGroupKinds = true,
-    ///             },
-    ///             ClusterResourceConflictPolicy = "USE_EXISTING_VERSION",
-    ///             RestoreOrder = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigRestoreOrderArgs
-    ///             {
-    ///                 GroupKindDependencies = new[]
-    ///                 {
-    ///                     new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs
-    ///                     {
-    ///                         Satisfying = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs
-    ///                         {
-    ///                             ResourceGroup = "stable.example.com",
-    ///                             ResourceKind = "kindA",
-    ///                         },
-    ///                         Requiring = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs
-    ///                         {
-    ///                             ResourceGroup = "stable.example.com",
-    ///                             ResourceKind = "kindB",
-    ///                         },
-    ///                     },
-    ///                     new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs
-    ///                     {
-    ///                         Satisfying = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs
-    ///                         {
-    ///                             ResourceGroup = "stable.example.com",
-    ///                             ResourceKind = "kindB",
-    ///                         },
-    ///                         Requiring = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs
-    ///                         {
-    ///                             ResourceGroup = "stable.example.com",
-    ///                             ResourceKind = "kindC",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Gkebackup Restoreplan Volume Res
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var primary = new Gcp.Container.Cluster("primary", new()
-    ///     {
-    ///         Name = "volume-res-cluster",
-    ///         Location = "us-central1",
-    ///         InitialNodeCount = 1,
-    ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
-    ///         {
-    ///             WorkloadPool = "my-project-name.svc.id.goog",
-    ///         },
-    ///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
-    ///         {
-    ///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
-    ///             {
-    ///                 Enabled = true,
-    ///             },
-    ///         },
-    ///         DeletionProtection = "",
-    ///         Network = "default",
-    ///         Subnetwork = "default",
-    ///     });
-    /// 
-    ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
-    ///     {
-    ///         Name = "volume-res",
-    ///         Cluster = primary.Id,
-    ///         Location = "us-central1",
-    ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
-    ///         {
-    ///             IncludeVolumeData = true,
-    ///             IncludeSecrets = true,
-    ///             AllNamespaces = true,
-    ///         },
-    ///     });
-    /// 
-    ///     var volumeRes = new Gcp.GkeBackup.RestorePlan("volume_res", new()
-    ///     {
-    ///         Name = "volume-res",
-    ///         Location = "us-central1",
-    ///         BackupPlan = basic.Id,
-    ///         Cluster = primary.Id,
-    ///         RestoreConfig = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigArgs
-    ///         {
-    ///             AllNamespaces = true,
-    ///             NamespacedResourceRestoreMode = "FAIL_ON_CONFLICT",
-    ///             VolumeDataRestorePolicy = "NO_VOLUME_DATA_RESTORATION",
-    ///             ClusterResourceRestoreScope = new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs
-    ///             {
-    ///                 AllGroupKinds = true,
-    ///             },
-    ///             ClusterResourceConflictPolicy = "USE_EXISTING_VERSION",
-    ///             VolumeDataRestorePolicyBindings = new[]
-    ///             {
-    ///                 new Gcp.GkeBackup.Inputs.RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs
-    ///                 {
-    ///                     Policy = "RESTORE_VOLUME_DATA_FROM_BACKUP",
-    ///                     VolumeType = "GCE_PERSISTENT_DISK",
-    ///                 },
-    ///             },
-    ///         },
+    ///         Project = allNs.Project,
+    ///         Location = allNs.Location,
+    ///         Name = allNs.Name,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
     ///     });
     /// 
     /// });
@@ -772,27 +192,41 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// ## Import
     /// 
-    /// RestorePlan can be imported using any of these accepted formats:
+    /// For all import syntaxes, the "resource in question" can take any of the following forms:
     /// 
-    /// * `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}`
+    /// * projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
     /// 
-    /// * `{{project}}/{{location}}/{{name}}`
+    /// * {{project}}/{{location}}/{{name}}
     /// 
-    /// * `{{location}}/{{name}}`
+    /// * {{location}}/{{name}}
     /// 
-    /// When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example:
+    /// * {{name}}
     /// 
-    /// ```sh
-    /// $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding default projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
-    /// ```
+    /// Any variables not passed in the import command will be taken from the provider configuration.
     /// 
-    /// ```sh
-    /// $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding default {{project}}/{{location}}/{{name}}
-    /// ```
+    /// Backup for GKE restoreplan IAM resources can be imported using the resource identifiers, role, and member.
+    /// 
+    /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding default {{location}}/{{name}}
+    /// $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding editor "projects/{{project}}/locations/{{location}}/restorePlans/{{restore_plan}} roles/viewer user:jane@example.com"
     /// ```
+    /// 
+    /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding editor "projects/{{project}}/locations/{{location}}/restorePlans/{{restore_plan}} roles/viewer"
+    /// ```
+    /// 
+    /// IAM policy imports use the identifier of the resource in question, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding editor projects/{{project}}/locations/{{location}}/restorePlans/{{restore_plan}}
+    /// ```
+    /// 
+    /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+    /// 
+    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding")]
     public partial class RestorePlanIamBinding : global::Pulumi.CustomResource
@@ -800,27 +234,55 @@ namespace Pulumi.Gcp.GkeBackup
         [Output("condition")]
         public Output<Outputs.RestorePlanIamBindingCondition?> Condition { get; private set; } = null!;
 
+        /// <summary>
+        /// (Computed) The etag of the IAM policy.
+        /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
         /// The region of the Restore Plan.
+        /// Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        /// location is specified, it is taken from the provider configuration.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
 
         /// <summary>
-        /// The full name of the BackupPlan Resource.
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The role that should be applied. Only one
+        /// `gcp.gkebackup.RestorePlanIamBinding` can be used per role. Note that custom roles must be of the format
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
@@ -875,12 +337,29 @@ namespace Pulumi.Gcp.GkeBackup
 
         /// <summary>
         /// The region of the Restore Plan.
+        /// Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        /// location is specified, it is taken from the provider configuration.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         [Input("members", required: true)]
         private InputList<string>? _members;
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        /// </summary>
         public InputList<string> Members
         {
             get => _members ?? (_members = new InputList<string>());
@@ -888,14 +367,23 @@ namespace Pulumi.Gcp.GkeBackup
         }
 
         /// <summary>
-        /// The full name of the BackupPlan Resource.
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The role that should be applied. Only one
+        /// `gcp.gkebackup.RestorePlanIamBinding` can be used per role. Note that custom roles must be of the format
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
@@ -910,17 +398,37 @@ namespace Pulumi.Gcp.GkeBackup
         [Input("condition")]
         public Input<Inputs.RestorePlanIamBindingConditionGetArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// (Computed) The etag of the IAM policy.
+        /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
         /// <summary>
         /// The region of the Restore Plan.
+        /// Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+        /// location is specified, it is taken from the provider configuration.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         [Input("members")]
         private InputList<string>? _members;
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        /// </summary>
         public InputList<string> Members
         {
             get => _members ?? (_members = new InputList<string>());
@@ -928,14 +436,23 @@ namespace Pulumi.Gcp.GkeBackup
         }
 
         /// <summary>
-        /// The full name of the BackupPlan Resource.
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The role that should be applied. Only one
+        /// `gcp.gkebackup.RestorePlanIamBinding` can be used per role. Note that custom roles must be of the format
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
