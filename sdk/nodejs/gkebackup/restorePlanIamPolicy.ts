@@ -5,566 +5,157 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Represents a Restore Plan instance.
+ * Three different resources help you manage your IAM policy for Backup for GKE RestorePlan. Each of these resources serves a different use case:
  *
- * To get more information about RestorePlan, see:
+ * * `gcp.gkebackup.RestorePlanIamPolicy`: Authoritative. Sets the IAM policy for the restoreplan and replaces any existing policy already attached.
+ * * `gcp.gkebackup.RestorePlanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the restoreplan are preserved.
+ * * `gcp.gkebackup.RestorePlanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the restoreplan are preserved.
  *
- * * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.restorePlans)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+ * A data source can be used to retrieve policy data in advent you do not need creation
  *
- * ## Example Usage
+ * * `gcp.gkebackup.RestorePlanIamPolicy`: Retrieves the IAM policy for the restoreplan
  *
- * ### Gkebackup Restoreplan All Namespaces
+ * > **Note:** `gcp.gkebackup.RestorePlanIamPolicy` **cannot** be used in conjunction with `gcp.gkebackup.RestorePlanIamBinding` and `gcp.gkebackup.RestorePlanIamMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.gkebackup.RestorePlanIamBinding` resources **can be** used in conjunction with `gcp.gkebackup.RestorePlanIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## gcp.gkebackup.RestorePlanIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "restore-all-ns-cluster",
- *     location: "us-central1",
- *     initialNodeCount: 1,
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: "",
- *     network: "default",
- *     subnetwork: "default",
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
  * });
- * const basic = new gcp.gkebackup.BackupPlan("basic", {
- *     name: "restore-all-ns",
- *     cluster: primary.id,
- *     location: "us-central1",
- *     backupConfig: {
- *         includeVolumeData: true,
- *         includeSecrets: true,
- *         allNamespaces: true,
- *     },
- * });
- * const allNs = new gcp.gkebackup.RestorePlan("all_ns", {
- *     name: "restore-all-ns",
- *     location: "us-central1",
- *     backupPlan: basic.id,
- *     cluster: primary.id,
- *     restoreConfig: {
- *         allNamespaces: true,
- *         namespacedResourceRestoreMode: "FAIL_ON_CONFLICT",
- *         volumeDataRestorePolicy: "RESTORE_VOLUME_DATA_FROM_BACKUP",
- *         clusterResourceRestoreScope: {
- *             allGroupKinds: true,
- *         },
- *         clusterResourceConflictPolicy: "USE_EXISTING_VERSION",
- *     },
+ * const policy = new gcp.gkebackup.RestorePlanIamPolicy("policy", {
+ *     project: allNs.project,
+ *     location: allNs.location,
+ *     name: allNs.name,
+ *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
- * ### Gkebackup Restoreplan Rollback Namespace
+ *
+ * ## gcp.gkebackup.RestorePlanIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "rollback-ns-cluster",
- *     location: "us-central1",
- *     initialNodeCount: 1,
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: "",
- *     network: "default",
- *     subnetwork: "default",
- * });
- * const basic = new gcp.gkebackup.BackupPlan("basic", {
- *     name: "rollback-ns",
- *     cluster: primary.id,
- *     location: "us-central1",
- *     backupConfig: {
- *         includeVolumeData: true,
- *         includeSecrets: true,
- *         allNamespaces: true,
- *     },
- * });
- * const rollbackNs = new gcp.gkebackup.RestorePlan("rollback_ns", {
- *     name: "rollback-ns-rp",
- *     location: "us-central1",
- *     backupPlan: basic.id,
- *     cluster: primary.id,
- *     restoreConfig: {
- *         selectedNamespaces: {
- *             namespaces: ["my-ns"],
- *         },
- *         namespacedResourceRestoreMode: "DELETE_AND_RESTORE",
- *         volumeDataRestorePolicy: "RESTORE_VOLUME_DATA_FROM_BACKUP",
- *         clusterResourceRestoreScope: {
- *             selectedGroupKinds: [
- *                 {
- *                     resourceGroup: "apiextension.k8s.io",
- *                     resourceKind: "CustomResourceDefinition",
- *                 },
- *                 {
- *                     resourceGroup: "storage.k8s.io",
- *                     resourceKind: "StorageClass",
- *                 },
- *             ],
- *         },
- *         clusterResourceConflictPolicy: "USE_EXISTING_VERSION",
- *     },
+ * const binding = new gcp.gkebackup.RestorePlanIamBinding("binding", {
+ *     project: allNs.project,
+ *     location: allNs.location,
+ *     name: allNs.name,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
  * });
  * ```
- * ### Gkebackup Restoreplan Protected Application
+ *
+ * ## gcp.gkebackup.RestorePlanIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "rollback-app-cluster",
- *     location: "us-central1",
- *     initialNodeCount: 1,
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: "",
- *     network: "default",
- *     subnetwork: "default",
- * });
- * const basic = new gcp.gkebackup.BackupPlan("basic", {
- *     name: "rollback-app",
- *     cluster: primary.id,
- *     location: "us-central1",
- *     backupConfig: {
- *         includeVolumeData: true,
- *         includeSecrets: true,
- *         allNamespaces: true,
- *     },
- * });
- * const rollbackApp = new gcp.gkebackup.RestorePlan("rollback_app", {
- *     name: "rollback-app-rp",
- *     location: "us-central1",
- *     backupPlan: basic.id,
- *     cluster: primary.id,
- *     restoreConfig: {
- *         selectedApplications: {
- *             namespacedNames: [{
- *                 name: "my-app",
- *                 namespace: "my-ns",
- *             }],
- *         },
- *         namespacedResourceRestoreMode: "DELETE_AND_RESTORE",
- *         volumeDataRestorePolicy: "REUSE_VOLUME_HANDLE_FROM_BACKUP",
- *         clusterResourceRestoreScope: {
- *             noGroupKinds: true,
- *         },
- *     },
+ * const member = new gcp.gkebackup.RestorePlanIamMember("member", {
+ *     project: allNs.project,
+ *     location: allNs.location,
+ *     name: allNs.name,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
  * });
  * ```
- * ### Gkebackup Restoreplan All Cluster Resources
+ *
+ * ## gcp.gkebackup.RestorePlanIamPolicy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "all-groupkinds-cluster",
- *     location: "us-central1",
- *     initialNodeCount: 1,
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: "",
- *     network: "default",
- *     subnetwork: "default",
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
  * });
- * const basic = new gcp.gkebackup.BackupPlan("basic", {
- *     name: "all-groupkinds",
- *     cluster: primary.id,
- *     location: "us-central1",
- *     backupConfig: {
- *         includeVolumeData: true,
- *         includeSecrets: true,
- *         allNamespaces: true,
- *     },
- * });
- * const allClusterResources = new gcp.gkebackup.RestorePlan("all_cluster_resources", {
- *     name: "all-groupkinds-rp",
- *     location: "us-central1",
- *     backupPlan: basic.id,
- *     cluster: primary.id,
- *     restoreConfig: {
- *         noNamespaces: true,
- *         namespacedResourceRestoreMode: "FAIL_ON_CONFLICT",
- *         clusterResourceRestoreScope: {
- *             allGroupKinds: true,
- *         },
- *         clusterResourceConflictPolicy: "USE_EXISTING_VERSION",
- *     },
+ * const policy = new gcp.gkebackup.RestorePlanIamPolicy("policy", {
+ *     project: allNs.project,
+ *     location: allNs.location,
+ *     name: allNs.name,
+ *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
- * ### Gkebackup Restoreplan Rename Namespace
+ *
+ * ## gcp.gkebackup.RestorePlanIamBinding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "rename-ns-cluster",
- *     location: "us-central1",
- *     initialNodeCount: 1,
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: "",
- *     network: "default",
- *     subnetwork: "default",
- * });
- * const basic = new gcp.gkebackup.BackupPlan("basic", {
- *     name: "rename-ns",
- *     cluster: primary.id,
- *     location: "us-central1",
- *     backupConfig: {
- *         includeVolumeData: true,
- *         includeSecrets: true,
- *         allNamespaces: true,
- *     },
- * });
- * const renameNs = new gcp.gkebackup.RestorePlan("rename_ns", {
- *     name: "rename-ns-rp",
- *     location: "us-central1",
- *     backupPlan: basic.id,
- *     cluster: primary.id,
- *     restoreConfig: {
- *         selectedNamespaces: {
- *             namespaces: ["ns1"],
- *         },
- *         namespacedResourceRestoreMode: "FAIL_ON_CONFLICT",
- *         volumeDataRestorePolicy: "REUSE_VOLUME_HANDLE_FROM_BACKUP",
- *         clusterResourceRestoreScope: {
- *             noGroupKinds: true,
- *         },
- *         transformationRules: [
- *             {
- *                 description: "rename namespace from ns1 to ns2",
- *                 resourceFilter: {
- *                     groupKinds: [{
- *                         resourceKind: "Namespace",
- *                     }],
- *                     jsonPath: ".metadata[?(@.name == 'ns1')]",
- *                 },
- *                 fieldActions: [{
- *                     op: "REPLACE",
- *                     path: "/metadata/name",
- *                     value: "ns2",
- *                 }],
- *             },
- *             {
- *                 description: "move all resources from ns1 to ns2",
- *                 resourceFilter: {
- *                     namespaces: ["ns1"],
- *                 },
- *                 fieldActions: [{
- *                     op: "REPLACE",
- *                     path: "/metadata/namespace",
- *                     value: "ns2",
- *                 }],
- *             },
- *         ],
- *     },
+ * const binding = new gcp.gkebackup.RestorePlanIamBinding("binding", {
+ *     project: allNs.project,
+ *     location: allNs.location,
+ *     name: allNs.name,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
  * });
  * ```
- * ### Gkebackup Restoreplan Second Transformation
+ *
+ * ## gcp.gkebackup.RestorePlanIamMember
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "transform-rule-cluster",
- *     location: "us-central1",
- *     initialNodeCount: 1,
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: "",
- *     network: "default",
- *     subnetwork: "default",
- * });
- * const basic = new gcp.gkebackup.BackupPlan("basic", {
- *     name: "transform-rule",
- *     cluster: primary.id,
- *     location: "us-central1",
- *     backupConfig: {
- *         includeVolumeData: true,
- *         includeSecrets: true,
- *         allNamespaces: true,
- *     },
- * });
- * const transformRule = new gcp.gkebackup.RestorePlan("transform_rule", {
- *     name: "transform-rule-rp",
- *     description: "copy nginx env variables",
- *     labels: {
- *         app: "nginx",
- *     },
- *     location: "us-central1",
- *     backupPlan: basic.id,
- *     cluster: primary.id,
- *     restoreConfig: {
- *         excludedNamespaces: {
- *             namespaces: ["my-ns"],
- *         },
- *         namespacedResourceRestoreMode: "DELETE_AND_RESTORE",
- *         volumeDataRestorePolicy: "RESTORE_VOLUME_DATA_FROM_BACKUP",
- *         clusterResourceRestoreScope: {
- *             excludedGroupKinds: [{
- *                 resourceGroup: "apiextension.k8s.io",
- *                 resourceKind: "CustomResourceDefinition",
- *             }],
- *         },
- *         clusterResourceConflictPolicy: "USE_EXISTING_VERSION",
- *         transformationRules: [{
- *             description: "Copy environment variables from the nginx container to the install init container.",
- *             resourceFilter: {
- *                 groupKinds: [{
- *                     resourceKind: "Pod",
- *                     resourceGroup: "",
- *                 }],
- *                 jsonPath: ".metadata[?(@.name == 'nginx')]",
- *             },
- *             fieldActions: [{
- *                 op: "COPY",
- *                 path: "/spec/initContainers/0/env",
- *                 fromPath: "/spec/containers/0/env",
- *             }],
- *         }],
- *     },
- * });
- * ```
- * ### Gkebackup Restoreplan Gitops Mode
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "gitops-mode-cluster",
- *     location: "us-central1",
- *     initialNodeCount: 1,
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: "",
- *     network: "default",
- *     subnetwork: "default",
- * });
- * const basic = new gcp.gkebackup.BackupPlan("basic", {
- *     name: "gitops-mode",
- *     cluster: primary.id,
- *     location: "us-central1",
- *     backupConfig: {
- *         includeVolumeData: true,
- *         includeSecrets: true,
- *         allNamespaces: true,
- *     },
- * });
- * const gitopsMode = new gcp.gkebackup.RestorePlan("gitops_mode", {
- *     name: "gitops-mode",
- *     location: "us-central1",
- *     backupPlan: basic.id,
- *     cluster: primary.id,
- *     restoreConfig: {
- *         allNamespaces: true,
- *         namespacedResourceRestoreMode: "MERGE_SKIP_ON_CONFLICT",
- *         volumeDataRestorePolicy: "RESTORE_VOLUME_DATA_FROM_BACKUP",
- *         clusterResourceRestoreScope: {
- *             allGroupKinds: true,
- *         },
- *         clusterResourceConflictPolicy: "USE_EXISTING_VERSION",
- *     },
- * });
- * ```
- * ### Gkebackup Restoreplan Restore Order
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "restore-order-cluster",
- *     location: "us-central1",
- *     initialNodeCount: 1,
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: "",
- *     network: "default",
- *     subnetwork: "default",
- * });
- * const basic = new gcp.gkebackup.BackupPlan("basic", {
- *     name: "restore-order",
- *     cluster: primary.id,
- *     location: "us-central1",
- *     backupConfig: {
- *         includeVolumeData: true,
- *         includeSecrets: true,
- *         allNamespaces: true,
- *     },
- * });
- * const restoreOrder = new gcp.gkebackup.RestorePlan("restore_order", {
- *     name: "restore-order",
- *     location: "us-central1",
- *     backupPlan: basic.id,
- *     cluster: primary.id,
- *     restoreConfig: {
- *         allNamespaces: true,
- *         namespacedResourceRestoreMode: "FAIL_ON_CONFLICT",
- *         volumeDataRestorePolicy: "RESTORE_VOLUME_DATA_FROM_BACKUP",
- *         clusterResourceRestoreScope: {
- *             allGroupKinds: true,
- *         },
- *         clusterResourceConflictPolicy: "USE_EXISTING_VERSION",
- *         restoreOrder: {
- *             groupKindDependencies: [
- *                 {
- *                     satisfying: {
- *                         resourceGroup: "stable.example.com",
- *                         resourceKind: "kindA",
- *                     },
- *                     requiring: {
- *                         resourceGroup: "stable.example.com",
- *                         resourceKind: "kindB",
- *                     },
- *                 },
- *                 {
- *                     satisfying: {
- *                         resourceGroup: "stable.example.com",
- *                         resourceKind: "kindB",
- *                     },
- *                     requiring: {
- *                         resourceGroup: "stable.example.com",
- *                         resourceKind: "kindC",
- *                     },
- *                 },
- *             ],
- *         },
- *     },
- * });
- * ```
- * ### Gkebackup Restoreplan Volume Res
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const primary = new gcp.container.Cluster("primary", {
- *     name: "volume-res-cluster",
- *     location: "us-central1",
- *     initialNodeCount: 1,
- *     workloadIdentityConfig: {
- *         workloadPool: "my-project-name.svc.id.goog",
- *     },
- *     addonsConfig: {
- *         gkeBackupAgentConfig: {
- *             enabled: true,
- *         },
- *     },
- *     deletionProtection: "",
- *     network: "default",
- *     subnetwork: "default",
- * });
- * const basic = new gcp.gkebackup.BackupPlan("basic", {
- *     name: "volume-res",
- *     cluster: primary.id,
- *     location: "us-central1",
- *     backupConfig: {
- *         includeVolumeData: true,
- *         includeSecrets: true,
- *         allNamespaces: true,
- *     },
- * });
- * const volumeRes = new gcp.gkebackup.RestorePlan("volume_res", {
- *     name: "volume-res",
- *     location: "us-central1",
- *     backupPlan: basic.id,
- *     cluster: primary.id,
- *     restoreConfig: {
- *         allNamespaces: true,
- *         namespacedResourceRestoreMode: "FAIL_ON_CONFLICT",
- *         volumeDataRestorePolicy: "NO_VOLUME_DATA_RESTORATION",
- *         clusterResourceRestoreScope: {
- *             allGroupKinds: true,
- *         },
- *         clusterResourceConflictPolicy: "USE_EXISTING_VERSION",
- *         volumeDataRestorePolicyBindings: [{
- *             policy: "RESTORE_VOLUME_DATA_FROM_BACKUP",
- *             volumeType: "GCE_PERSISTENT_DISK",
- *         }],
- *     },
+ * const member = new gcp.gkebackup.RestorePlanIamMember("member", {
+ *     project: allNs.project,
+ *     location: allNs.location,
+ *     name: allNs.name,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
  * });
  * ```
  *
  * ## Import
  *
- * RestorePlan can be imported using any of these accepted formats:
+ * For all import syntaxes, the "resource in question" can take any of the following forms:
  *
- * * `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}`
+ * * projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
  *
- * * `{{project}}/{{location}}/{{name}}`
+ * * {{project}}/{{location}}/{{name}}
  *
- * * `{{location}}/{{name}}`
+ * * {{location}}/{{name}}
  *
- * When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example:
+ * * {{name}}
  *
- * ```sh
- * $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy default projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
- * ```
+ * Any variables not passed in the import command will be taken from the provider configuration.
  *
- * ```sh
- * $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy default {{project}}/{{location}}/{{name}}
- * ```
+ * Backup for GKE restoreplan IAM resources can be imported using the resource identifiers, role, and member.
+ *
+ * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  *
  * ```sh
- * $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy default {{location}}/{{name}}
+ * $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy editor "projects/{{project}}/locations/{{location}}/restorePlans/{{restore_plan}} roles/viewer user:jane@example.com"
  * ```
+ *
+ * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+ *
+ * ```sh
+ * $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy editor "projects/{{project}}/locations/{{location}}/restorePlans/{{restore_plan}} roles/viewer"
+ * ```
+ *
+ * IAM policy imports use the identifier of the resource in question, e.g.
+ *
+ * ```sh
+ * $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy editor projects/{{project}}/locations/{{location}}/restorePlans/{{restore_plan}}
+ * ```
+ *
+ * -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+ *
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class RestorePlanIamPolicy extends pulumi.CustomResource {
     /**
@@ -594,16 +185,30 @@ export class RestorePlanIamPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === RestorePlanIamPolicy.__pulumiType;
     }
 
+    /**
+     * (Computed) The etag of the IAM policy.
+     */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The region of the Restore Plan.
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The full name of the BackupPlan Resource.
+     * Used to find the parent resource to bind the IAM policy to
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The policy data generated by
+     * a `gcp.organizations.getIAMPolicy` data source.
+     */
     public readonly policyData!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
 
     /**
@@ -644,16 +249,30 @@ export class RestorePlanIamPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RestorePlanIamPolicy resources.
  */
 export interface RestorePlanIamPolicyState {
+    /**
+     * (Computed) The etag of the IAM policy.
+     */
     etag?: pulumi.Input<string>;
     /**
      * The region of the Restore Plan.
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**
-     * The full name of the BackupPlan Resource.
+     * Used to find the parent resource to bind the IAM policy to
      */
     name?: pulumi.Input<string>;
+    /**
+     * The policy data generated by
+     * a `gcp.organizations.getIAMPolicy` data source.
+     */
     policyData?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }
 
@@ -663,12 +282,23 @@ export interface RestorePlanIamPolicyState {
 export interface RestorePlanIamPolicyArgs {
     /**
      * The region of the Restore Plan.
+     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
+     * location is specified, it is taken from the provider configuration.
      */
     location?: pulumi.Input<string>;
     /**
-     * The full name of the BackupPlan Resource.
+     * Used to find the parent resource to bind the IAM policy to
      */
     name?: pulumi.Input<string>;
+    /**
+     * The policy data generated by
+     * a `gcp.organizations.getIAMPolicy` data source.
+     */
     policyData: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

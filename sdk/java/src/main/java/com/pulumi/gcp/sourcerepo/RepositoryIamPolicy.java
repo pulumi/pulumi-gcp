@@ -14,21 +14,21 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Three different resources help you manage your IAM policy for Cloud Pub/Sub Topic. Each of these resources serves a different use case:
+ * Three different resources help you manage your IAM policy for Cloud Source Repositories Repository. Each of these resources serves a different use case:
  * 
- * * `gcp.pubsub.TopicIAMPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
- * * `gcp.pubsub.TopicIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
- * * `gcp.pubsub.TopicIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
+ * * `gcp.sourcerepo.RepositoryIamPolicy`: Authoritative. Sets the IAM policy for the repository and replaces any existing policy already attached.
+ * * `gcp.sourcerepo.RepositoryIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repository are preserved.
+ * * `gcp.sourcerepo.RepositoryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repository are preserved.
  * 
  * A data source can be used to retrieve policy data in advent you do not need creation
  * 
- * * `gcp.pubsub.TopicIAMPolicy`: Retrieves the IAM policy for the topic
+ * * `gcp.sourcerepo.RepositoryIamPolicy`: Retrieves the IAM policy for the repository
  * 
- * &gt; **Note:** `gcp.pubsub.TopicIAMPolicy` **cannot** be used in conjunction with `gcp.pubsub.TopicIAMBinding` and `gcp.pubsub.TopicIAMMember` or they will fight over what your policy should be.
+ * &gt; **Note:** `gcp.sourcerepo.RepositoryIamPolicy` **cannot** be used in conjunction with `gcp.sourcerepo.RepositoryIamBinding` and `gcp.sourcerepo.RepositoryIamMember` or they will fight over what your policy should be.
  * 
- * &gt; **Note:** `gcp.pubsub.TopicIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
+ * &gt; **Note:** `gcp.sourcerepo.RepositoryIamBinding` resources **can be** used in conjunction with `gcp.sourcerepo.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## gcp.pubsub.TopicIAMPolicy
+ * ## gcp.sourcerepo.RepositoryIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -40,8 +40,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.pubsub.TopicIAMPolicy;
- * import com.pulumi.gcp.pubsub.TopicIAMPolicyArgs;
+ * import com.pulumi.gcp.sourcerepo.RepositoryIamPolicy;
+ * import com.pulumi.gcp.sourcerepo.RepositoryIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,9 +62,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TopicIAMPolicy("policy", TopicIAMPolicyArgs.builder()
- *             .project(example.project())
- *             .topic(example.name())
+ *         var policy = new RepositoryIamPolicy("policy", RepositoryIamPolicyArgs.builder()
+ *             .project(my_repo.project())
+ *             .repository(my_repo.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## gcp.pubsub.TopicIAMBinding
+ * ## gcp.sourcerepo.RepositoryIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -84,8 +84,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.pubsub.TopicIAMBinding;
- * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+ * import com.pulumi.gcp.sourcerepo.RepositoryIamBinding;
+ * import com.pulumi.gcp.sourcerepo.RepositoryIamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -99,9 +99,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
- *             .project(example.project())
- *             .topic(example.name())
+ *         var binding = new RepositoryIamBinding("binding", RepositoryIamBindingArgs.builder()
+ *             .project(my_repo.project())
+ *             .repository(my_repo.name())
  *             .role("roles/viewer")
  *             .members("user:jane{@literal @}example.com")
  *             .build());
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## gcp.pubsub.TopicIAMMember
+ * ## gcp.sourcerepo.RepositoryIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -122,8 +122,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.pubsub.TopicIAMMember;
- * import com.pulumi.gcp.pubsub.TopicIAMMemberArgs;
+ * import com.pulumi.gcp.sourcerepo.RepositoryIamMember;
+ * import com.pulumi.gcp.sourcerepo.RepositoryIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -137,9 +137,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TopicIAMMember("member", TopicIAMMemberArgs.builder()
- *             .project(example.project())
- *             .topic(example.name())
+ *         var member = new RepositoryIamMember("member", RepositoryIamMemberArgs.builder()
+ *             .project(my_repo.project())
+ *             .repository(my_repo.name())
  *             .role("roles/viewer")
  *             .member("user:jane{@literal @}example.com")
  *             .build());
@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## gcp.pubsub.TopicIAMPolicy
+ * ## gcp.sourcerepo.RepositoryIamPolicy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -162,8 +162,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.pubsub.TopicIAMPolicy;
- * import com.pulumi.gcp.pubsub.TopicIAMPolicyArgs;
+ * import com.pulumi.gcp.sourcerepo.RepositoryIamPolicy;
+ * import com.pulumi.gcp.sourcerepo.RepositoryIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -184,9 +184,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new TopicIAMPolicy("policy", TopicIAMPolicyArgs.builder()
- *             .project(example.project())
- *             .topic(example.name())
+ *         var policy = new RepositoryIamPolicy("policy", RepositoryIamPolicyArgs.builder()
+ *             .project(my_repo.project())
+ *             .repository(my_repo.name())
  *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## gcp.pubsub.TopicIAMBinding
+ * ## gcp.sourcerepo.RepositoryIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -206,8 +206,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.pubsub.TopicIAMBinding;
- * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+ * import com.pulumi.gcp.sourcerepo.RepositoryIamBinding;
+ * import com.pulumi.gcp.sourcerepo.RepositoryIamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -221,9 +221,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
- *             .project(example.project())
- *             .topic(example.name())
+ *         var binding = new RepositoryIamBinding("binding", RepositoryIamBindingArgs.builder()
+ *             .project(my_repo.project())
+ *             .repository(my_repo.name())
  *             .role("roles/viewer")
  *             .members("user:jane{@literal @}example.com")
  *             .build());
@@ -234,7 +234,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## gcp.pubsub.TopicIAMMember
+ * ## gcp.sourcerepo.RepositoryIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -244,8 +244,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.pubsub.TopicIAMMember;
- * import com.pulumi.gcp.pubsub.TopicIAMMemberArgs;
+ * import com.pulumi.gcp.sourcerepo.RepositoryIamMember;
+ * import com.pulumi.gcp.sourcerepo.RepositoryIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -259,9 +259,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TopicIAMMember("member", TopicIAMMemberArgs.builder()
- *             .project(example.project())
- *             .topic(example.name())
+ *         var member = new RepositoryIamMember("member", RepositoryIamMemberArgs.builder()
+ *             .project(my_repo.project())
+ *             .repository(my_repo.name())
  *             .role("roles/viewer")
  *             .member("user:jane{@literal @}example.com")
  *             .build());
@@ -276,32 +276,30 @@ import javax.annotation.Nullable;
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms:
  * 
- * * projects/{{project}}/topics/{{name}}
- * 
- * * {{project}}/{{name}}
+ * * projects/{{project}}/repos/{{name}}
  * 
  * * {{name}}
  * 
  * Any variables not passed in the import command will be taken from the provider configuration.
  * 
- * Cloud Pub/Sub topic IAM resources can be imported using the resource identifiers, role, and member.
+ * Cloud Source Repositories repository IAM resources can be imported using the resource identifiers, role, and member.
  * 
  * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:sourcerepo/repositoryIamPolicy:RepositoryIamPolicy editor &#34;projects/{{project}}/topics/{{topic}} roles/viewer user:jane{@literal @}example.com&#34;
+ * $ pulumi import gcp:sourcerepo/repositoryIamPolicy:RepositoryIamPolicy editor &#34;projects/{{project}}/repos/{{repository}} roles/viewer user:jane{@literal @}example.com&#34;
  * ```
  * 
  * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:sourcerepo/repositoryIamPolicy:RepositoryIamPolicy editor &#34;projects/{{project}}/topics/{{topic}} roles/viewer&#34;
+ * $ pulumi import gcp:sourcerepo/repositoryIamPolicy:RepositoryIamPolicy editor &#34;projects/{{project}}/repos/{{repository}} roles/viewer&#34;
  * ```
  * 
  * IAM policy imports use the identifier of the resource in question, e.g.
  * 
  * ```sh
- * $ pulumi import gcp:sourcerepo/repositoryIamPolicy:RepositoryIamPolicy editor projects/{{project}}/topics/{{topic}}
+ * $ pulumi import gcp:sourcerepo/repositoryIamPolicy:RepositoryIamPolicy editor projects/{{project}}/repos/{{repository}}
  * ```
  * 
  * -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
@@ -357,9 +355,17 @@ public class RepositoryIamPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="repository", refs={String.class}, tree="[0]")
     private Output<String> repository;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> repository() {
         return this.repository;
     }

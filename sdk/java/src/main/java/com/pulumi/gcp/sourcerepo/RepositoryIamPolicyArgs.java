@@ -50,9 +50,17 @@ public final class RepositoryIamPolicyArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="repository", required=true)
     private Output<String> repository;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> repository() {
         return this.repository;
     }
@@ -129,11 +137,23 @@ public final class RepositoryIamPolicyArgs extends com.pulumi.resources.Resource
             return project(Output.of(project));
         }
 
+        /**
+         * @param repository Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder repository(Output<String> repository) {
             $.repository = repository;
             return this;
         }
 
+        /**
+         * @param repository Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder repository(String repository) {
             return repository(Output.of(repository));
         }

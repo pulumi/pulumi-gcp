@@ -12,21 +12,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Three different resources help you manage your IAM policy for Compute Engine Disk. Each of these resources serves a different use case:
+// Three different resources help you manage your IAM policy for Compute Engine RegionDisk. Each of these resources serves a different use case:
 //
-// * `compute.DiskIamPolicy`: Authoritative. Sets the IAM policy for the disk and replaces any existing policy already attached.
-// * `compute.DiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the disk are preserved.
-// * `compute.DiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the disk are preserved.
+// * `compute.RegionDiskIamPolicy`: Authoritative. Sets the IAM policy for the regiondisk and replaces any existing policy already attached.
+// * `compute.RegionDiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regiondisk are preserved.
+// * `compute.RegionDiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regiondisk are preserved.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
-// * `compute.DiskIamPolicy`: Retrieves the IAM policy for the disk
+// * `compute.RegionDiskIamPolicy`: Retrieves the IAM policy for the regiondisk
 //
-// > **Note:** `compute.DiskIamPolicy` **cannot** be used in conjunction with `compute.DiskIamBinding` and `compute.DiskIamMember` or they will fight over what your policy should be.
+// > **Note:** `compute.RegionDiskIamPolicy` **cannot** be used in conjunction with `compute.RegionDiskIamBinding` and `compute.RegionDiskIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `compute.DiskIamBinding` resources **can be** used in conjunction with `compute.DiskIamMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `compute.RegionDiskIamBinding` resources **can be** used in conjunction with `compute.RegionDiskIamMember` resources **only if** they do not grant privilege to the same role.
 //
-// ## compute.DiskIamPolicy
+// ## compute.RegionDiskIamPolicy
 //
 // ```go
 // package main
@@ -54,10 +54,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewDiskIamPolicy(ctx, "policy", &compute.DiskIamPolicyArgs{
-//				Project:    pulumi.Any(_default.Project),
-//				Zone:       pulumi.Any(_default.Zone),
-//				Name:       pulumi.Any(_default.Name),
+//			_, err = compute.NewRegionDiskIamPolicy(ctx, "policy", &compute.RegionDiskIamPolicyArgs{
+//				Project:    pulumi.Any(regiondisk.Project),
+//				Region:     pulumi.Any(regiondisk.Region),
+//				Name:       pulumi.Any(regiondisk.Name),
 //				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// ## compute.DiskIamBinding
+// ## compute.RegionDiskIamBinding
 //
 // ```go
 // package main
@@ -83,10 +83,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewDiskIamBinding(ctx, "binding", &compute.DiskIamBindingArgs{
-//				Project: pulumi.Any(_default.Project),
-//				Zone:    pulumi.Any(_default.Zone),
-//				Name:    pulumi.Any(_default.Name),
+//			_, err := compute.NewRegionDiskIamBinding(ctx, "binding", &compute.RegionDiskIamBindingArgs{
+//				Project: pulumi.Any(regiondisk.Project),
+//				Region:  pulumi.Any(regiondisk.Region),
+//				Name:    pulumi.Any(regiondisk.Name),
 //				Role:    pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -101,7 +101,7 @@ import (
 //
 // ```
 //
-// ## compute.DiskIamMember
+// ## compute.RegionDiskIamMember
 //
 // ```go
 // package main
@@ -115,10 +115,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewDiskIamMember(ctx, "member", &compute.DiskIamMemberArgs{
-//				Project: pulumi.Any(_default.Project),
-//				Zone:    pulumi.Any(_default.Zone),
-//				Name:    pulumi.Any(_default.Name),
+//			_, err := compute.NewRegionDiskIamMember(ctx, "member", &compute.RegionDiskIamMemberArgs{
+//				Project: pulumi.Any(regiondisk.Project),
+//				Region:  pulumi.Any(regiondisk.Region),
+//				Name:    pulumi.Any(regiondisk.Name),
 //				Role:    pulumi.String("roles/viewer"),
 //				Member:  pulumi.String("user:jane@example.com"),
 //			})
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ## compute.DiskIamPolicy
+// ## compute.RegionDiskIamPolicy
 //
 // ```go
 // package main
@@ -159,10 +159,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewDiskIamPolicy(ctx, "policy", &compute.DiskIamPolicyArgs{
-//				Project:    pulumi.Any(_default.Project),
-//				Zone:       pulumi.Any(_default.Zone),
-//				Name:       pulumi.Any(_default.Name),
+//			_, err = compute.NewRegionDiskIamPolicy(ctx, "policy", &compute.RegionDiskIamPolicyArgs{
+//				Project:    pulumi.Any(regiondisk.Project),
+//				Region:     pulumi.Any(regiondisk.Region),
+//				Name:       pulumi.Any(regiondisk.Name),
 //				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -174,7 +174,7 @@ import (
 //
 // ```
 //
-// ## compute.DiskIamBinding
+// ## compute.RegionDiskIamBinding
 //
 // ```go
 // package main
@@ -188,10 +188,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewDiskIamBinding(ctx, "binding", &compute.DiskIamBindingArgs{
-//				Project: pulumi.Any(_default.Project),
-//				Zone:    pulumi.Any(_default.Zone),
-//				Name:    pulumi.Any(_default.Name),
+//			_, err := compute.NewRegionDiskIamBinding(ctx, "binding", &compute.RegionDiskIamBindingArgs{
+//				Project: pulumi.Any(regiondisk.Project),
+//				Region:  pulumi.Any(regiondisk.Region),
+//				Name:    pulumi.Any(regiondisk.Name),
 //				Role:    pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -206,7 +206,7 @@ import (
 //
 // ```
 //
-// ## compute.DiskIamMember
+// ## compute.RegionDiskIamMember
 //
 // ```go
 // package main
@@ -220,10 +220,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewDiskIamMember(ctx, "member", &compute.DiskIamMemberArgs{
-//				Project: pulumi.Any(_default.Project),
-//				Zone:    pulumi.Any(_default.Zone),
-//				Name:    pulumi.Any(_default.Name),
+//			_, err := compute.NewRegionDiskIamMember(ctx, "member", &compute.RegionDiskIamMemberArgs{
+//				Project: pulumi.Any(regiondisk.Project),
+//				Region:  pulumi.Any(regiondisk.Region),
+//				Name:    pulumi.Any(regiondisk.Name),
 //				Role:    pulumi.String("roles/viewer"),
 //				Member:  pulumi.String("user:jane@example.com"),
 //			})
@@ -240,34 +240,34 @@ import (
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:
 //
-// * projects/{{project}}/zones/{{zone}}/disks/{{name}}
+// * projects/{{project}}/regions/{{region}}/disks/{{name}}
 //
-// * {{project}}/{{zone}}/{{name}}
+// * {{project}}/{{region}}/{{name}}
 //
-// * {{zone}}/{{name}}
+// * {{region}}/{{name}}
 //
 // * {{name}}
 //
 // Any variables not passed in the import command will be taken from the provider configuration.
 //
-// Compute Engine disk IAM resources can be imported using the resource identifiers, role, and member.
+// Compute Engine regiondisk IAM resources can be imported using the resource identifiers, role, and member.
 //
 // IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-// $ pulumi import gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy editor "projects/{{project}}/zones/{{zone}}/disks/{{disk}} roles/viewer user:jane@example.com"
+// $ pulumi import gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy editor "projects/{{project}}/regions/{{region}}/disks/{{region_disk}} roles/viewer user:jane@example.com"
 // ```
 //
 // IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
 //
 // ```sh
-// $ pulumi import gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy editor "projects/{{project}}/zones/{{zone}}/disks/{{disk}} roles/viewer"
+// $ pulumi import gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy editor "projects/{{project}}/regions/{{region}}/disks/{{region_disk}} roles/viewer"
 // ```
 //
 // IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-// $ pulumi import gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy editor projects/{{project}}/zones/{{zone}}/disks/{{disk}}
+// $ pulumi import gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy editor projects/{{project}}/regions/{{region}}/disks/{{region_disk}}
 // ```
 //
 // -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
@@ -286,7 +286,10 @@ type RegionDiskIamPolicy struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	Region  pulumi.StringOutput `pulumi:"region"`
+	// A reference to the region where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewRegionDiskIamPolicy registers a new resource with the given unique name, arguments, and options.
@@ -332,7 +335,10 @@ type regionDiskIamPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	// A reference to the region where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region *string `pulumi:"region"`
 }
 
 type RegionDiskIamPolicyState struct {
@@ -346,7 +352,10 @@ type RegionDiskIamPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
-	Region  pulumi.StringPtrInput
+	// A reference to the region where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region pulumi.StringPtrInput
 }
 
 func (RegionDiskIamPolicyState) ElementType() reflect.Type {
@@ -362,7 +371,10 @@ type regionDiskIamPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	// A reference to the region where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a RegionDiskIamPolicy resource.
@@ -375,7 +387,10 @@ type RegionDiskIamPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
-	Region  pulumi.StringPtrInput
+	// A reference to the region where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
+	Region pulumi.StringPtrInput
 }
 
 func (RegionDiskIamPolicyArgs) ElementType() reflect.Type {
@@ -487,6 +502,9 @@ func (o RegionDiskIamPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionDiskIamPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// A reference to the region where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+// region is specified, it is taken from the provider configuration.
 func (o RegionDiskIamPolicyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionDiskIamPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

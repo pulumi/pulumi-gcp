@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.SourceRepo
 {
     /// <summary>
-    /// Three different resources help you manage your IAM policy for Cloud Pub/Sub Topic. Each of these resources serves a different use case:
+    /// Three different resources help you manage your IAM policy for Cloud Source Repositories Repository. Each of these resources serves a different use case:
     /// 
-    /// * `gcp.pubsub.TopicIAMPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
-    /// * `gcp.pubsub.TopicIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
-    /// * `gcp.pubsub.TopicIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
+    /// * `gcp.sourcerepo.RepositoryIamPolicy`: Authoritative. Sets the IAM policy for the repository and replaces any existing policy already attached.
+    /// * `gcp.sourcerepo.RepositoryIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repository are preserved.
+    /// * `gcp.sourcerepo.RepositoryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repository are preserved.
     /// 
     /// A data source can be used to retrieve policy data in advent you do not need creation
     /// 
-    /// * `gcp.pubsub.TopicIAMPolicy`: Retrieves the IAM policy for the topic
+    /// * `gcp.sourcerepo.RepositoryIamPolicy`: Retrieves the IAM policy for the repository
     /// 
-    /// &gt; **Note:** `gcp.pubsub.TopicIAMPolicy` **cannot** be used in conjunction with `gcp.pubsub.TopicIAMBinding` and `gcp.pubsub.TopicIAMMember` or they will fight over what your policy should be.
+    /// &gt; **Note:** `gcp.sourcerepo.RepositoryIamPolicy` **cannot** be used in conjunction with `gcp.sourcerepo.RepositoryIamBinding` and `gcp.sourcerepo.RepositoryIamMember` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.pubsub.TopicIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.sourcerepo.RepositoryIamBinding` resources **can be** used in conjunction with `gcp.sourcerepo.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// ## gcp.pubsub.TopicIAMPolicy
+    /// ## gcp.sourcerepo.RepositoryIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -49,17 +49,17 @@ namespace Pulumi.Gcp.SourceRepo
     ///         },
     ///     });
     /// 
-    ///     var policy = new Gcp.PubSub.TopicIAMPolicy("policy", new()
+    ///     var policy = new Gcp.SourceRepo.RepositoryIamPolicy("policy", new()
     ///     {
-    ///         Project = example.Project,
-    ///         Topic = example.Name,
+    ///         Project = my_repo.Project,
+    ///         Repository = my_repo.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
     /// ```
     /// 
-    /// ## gcp.pubsub.TopicIAMBinding
+    /// ## gcp.sourcerepo.RepositoryIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -69,10 +69,10 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var binding = new Gcp.PubSub.TopicIAMBinding("binding", new()
+    ///     var binding = new Gcp.SourceRepo.RepositoryIamBinding("binding", new()
     ///     {
-    ///         Project = example.Project,
-    ///         Topic = example.Name,
+    ///         Project = my_repo.Project,
+    ///         Repository = my_repo.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.SourceRepo
     /// });
     /// ```
     /// 
-    /// ## gcp.pubsub.TopicIAMMember
+    /// ## gcp.sourcerepo.RepositoryIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -93,10 +93,10 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var member = new Gcp.PubSub.TopicIAMMember("member", new()
+    ///     var member = new Gcp.SourceRepo.RepositoryIamMember("member", new()
     ///     {
-    ///         Project = example.Project,
-    ///         Topic = example.Name,
+    ///         Project = my_repo.Project,
+    ///         Repository = my_repo.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -104,7 +104,7 @@ namespace Pulumi.Gcp.SourceRepo
     /// });
     /// ```
     /// 
-    /// ## gcp.pubsub.TopicIAMPolicy
+    /// ## gcp.sourcerepo.RepositoryIamPolicy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -129,17 +129,17 @@ namespace Pulumi.Gcp.SourceRepo
     ///         },
     ///     });
     /// 
-    ///     var policy = new Gcp.PubSub.TopicIAMPolicy("policy", new()
+    ///     var policy = new Gcp.SourceRepo.RepositoryIamPolicy("policy", new()
     ///     {
-    ///         Project = example.Project,
-    ///         Topic = example.Name,
+    ///         Project = my_repo.Project,
+    ///         Repository = my_repo.Name,
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
     /// ```
     /// 
-    /// ## gcp.pubsub.TopicIAMBinding
+    /// ## gcp.sourcerepo.RepositoryIamBinding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -149,10 +149,10 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var binding = new Gcp.PubSub.TopicIAMBinding("binding", new()
+    ///     var binding = new Gcp.SourceRepo.RepositoryIamBinding("binding", new()
     ///     {
-    ///         Project = example.Project,
-    ///         Topic = example.Name,
+    ///         Project = my_repo.Project,
+    ///         Repository = my_repo.Name,
     ///         Role = "roles/viewer",
     ///         Members = new[]
     ///         {
@@ -163,7 +163,7 @@ namespace Pulumi.Gcp.SourceRepo
     /// });
     /// ```
     /// 
-    /// ## gcp.pubsub.TopicIAMMember
+    /// ## gcp.sourcerepo.RepositoryIamMember
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -173,10 +173,10 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var member = new Gcp.PubSub.TopicIAMMember("member", new()
+    ///     var member = new Gcp.SourceRepo.RepositoryIamMember("member", new()
     ///     {
-    ///         Project = example.Project,
-    ///         Topic = example.Name,
+    ///         Project = my_repo.Project,
+    ///         Repository = my_repo.Name,
     ///         Role = "roles/viewer",
     ///         Member = "user:jane@example.com",
     ///     });
@@ -188,32 +188,30 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms:
     /// 
-    /// * projects/{{project}}/topics/{{name}}
-    /// 
-    /// * {{project}}/{{name}}
+    /// * projects/{{project}}/repos/{{name}}
     /// 
     /// * {{name}}
     /// 
     /// Any variables not passed in the import command will be taken from the provider configuration.
     /// 
-    /// Cloud Pub/Sub topic IAM resources can be imported using the resource identifiers, role, and member.
+    /// Cloud Source Repositories repository IAM resources can be imported using the resource identifiers, role, and member.
     /// 
     /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import gcp:sourcerepo/repositoryIamMember:RepositoryIamMember editor "projects/{{project}}/topics/{{topic}} roles/viewer user:jane@example.com"
+    /// $ pulumi import gcp:sourcerepo/repositoryIamMember:RepositoryIamMember editor "projects/{{project}}/repos/{{repository}} roles/viewer user:jane@example.com"
     /// ```
     /// 
     /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import gcp:sourcerepo/repositoryIamMember:RepositoryIamMember editor "projects/{{project}}/topics/{{topic}} roles/viewer"
+    /// $ pulumi import gcp:sourcerepo/repositoryIamMember:RepositoryIamMember editor "projects/{{project}}/repos/{{repository}} roles/viewer"
     /// ```
     /// 
     /// IAM policy imports use the identifier of the resource in question, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import gcp:sourcerepo/repositoryIamMember:RepositoryIamMember editor projects/{{project}}/topics/{{topic}}
+    /// $ pulumi import gcp:sourcerepo/repositoryIamMember:RepositoryIamMember editor projects/{{project}}/repos/{{repository}}
     /// ```
     /// 
     /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
@@ -255,12 +253,15 @@ namespace Pulumi.Gcp.SourceRepo
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("repository")]
         public Output<string> Repository { get; private set; } = null!;
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.sourcerepo.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Output("role")]
@@ -338,12 +339,15 @@ namespace Pulumi.Gcp.SourceRepo
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("repository", required: true)]
         public Input<string> Repository { get; set; } = null!;
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.sourcerepo.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role", required: true)]
@@ -389,12 +393,15 @@ namespace Pulumi.Gcp.SourceRepo
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("repository")]
         public Input<string>? Repository { get; set; }
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.sourcerepo.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role")]
