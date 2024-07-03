@@ -2482,11 +2482,6 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpStorage, "getBucketObjectContent"),
 			},
 			"google_storage_bucket": {Tok: gcpDataSource(gcpStorage, "getBucket")},
-			"google_storage_managed_folder_iam_policy": {
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
-			},
 			"google_service_account": {
 				Tok: gcpDataSource(gcpServiceAccount, "getAccount"),
 				Docs: &tfbridge.DocInfo{
