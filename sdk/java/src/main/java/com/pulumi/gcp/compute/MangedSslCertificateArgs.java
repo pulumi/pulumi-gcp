@@ -74,7 +74,6 @@ public final class MangedSslCertificateArgs extends com.pulumi.resources.Resourc
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     * 
      * These are in the same namespace as the managed SSL certificates.
      * 
      */
@@ -89,7 +88,6 @@ public final class MangedSslCertificateArgs extends com.pulumi.resources.Resourc
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     * 
      * These are in the same namespace as the managed SSL certificates.
      * 
      */
@@ -239,7 +237,6 @@ public final class MangedSslCertificateArgs extends com.pulumi.resources.Resourc
          * first character must be a lowercase letter, and all following
          * characters must be a dash, lowercase letter, or digit, except the last
          * character, which cannot be a dash.
-         * 
          * These are in the same namespace as the managed SSL certificates.
          * 
          * @return builder
@@ -258,7 +255,6 @@ public final class MangedSslCertificateArgs extends com.pulumi.resources.Resourc
          * first character must be a lowercase letter, and all following
          * characters must be a dash, lowercase letter, or digit, except the last
          * character, which cannot be a dash.
-         * 
          * These are in the same namespace as the managed SSL certificates.
          * 
          * @return builder

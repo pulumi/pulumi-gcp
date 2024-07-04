@@ -3760,6 +3760,348 @@ func (o InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
+type ManagedFolderIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// ManagedFolderIamBindingConditionInput is an input type that accepts ManagedFolderIamBindingConditionArgs and ManagedFolderIamBindingConditionOutput values.
+// You can construct a concrete instance of `ManagedFolderIamBindingConditionInput` via:
+//
+//	ManagedFolderIamBindingConditionArgs{...}
+type ManagedFolderIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToManagedFolderIamBindingConditionOutput() ManagedFolderIamBindingConditionOutput
+	ToManagedFolderIamBindingConditionOutputWithContext(context.Context) ManagedFolderIamBindingConditionOutput
+}
+
+type ManagedFolderIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ManagedFolderIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedFolderIamBindingCondition)(nil)).Elem()
+}
+
+func (i ManagedFolderIamBindingConditionArgs) ToManagedFolderIamBindingConditionOutput() ManagedFolderIamBindingConditionOutput {
+	return i.ToManagedFolderIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i ManagedFolderIamBindingConditionArgs) ToManagedFolderIamBindingConditionOutputWithContext(ctx context.Context) ManagedFolderIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedFolderIamBindingConditionOutput)
+}
+
+func (i ManagedFolderIamBindingConditionArgs) ToManagedFolderIamBindingConditionPtrOutput() ManagedFolderIamBindingConditionPtrOutput {
+	return i.ToManagedFolderIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedFolderIamBindingConditionArgs) ToManagedFolderIamBindingConditionPtrOutputWithContext(ctx context.Context) ManagedFolderIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedFolderIamBindingConditionOutput).ToManagedFolderIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// ManagedFolderIamBindingConditionPtrInput is an input type that accepts ManagedFolderIamBindingConditionArgs, ManagedFolderIamBindingConditionPtr and ManagedFolderIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `ManagedFolderIamBindingConditionPtrInput` via:
+//
+//	        ManagedFolderIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedFolderIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToManagedFolderIamBindingConditionPtrOutput() ManagedFolderIamBindingConditionPtrOutput
+	ToManagedFolderIamBindingConditionPtrOutputWithContext(context.Context) ManagedFolderIamBindingConditionPtrOutput
+}
+
+type managedFolderIamBindingConditionPtrType ManagedFolderIamBindingConditionArgs
+
+func ManagedFolderIamBindingConditionPtr(v *ManagedFolderIamBindingConditionArgs) ManagedFolderIamBindingConditionPtrInput {
+	return (*managedFolderIamBindingConditionPtrType)(v)
+}
+
+func (*managedFolderIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedFolderIamBindingCondition)(nil)).Elem()
+}
+
+func (i *managedFolderIamBindingConditionPtrType) ToManagedFolderIamBindingConditionPtrOutput() ManagedFolderIamBindingConditionPtrOutput {
+	return i.ToManagedFolderIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *managedFolderIamBindingConditionPtrType) ToManagedFolderIamBindingConditionPtrOutputWithContext(ctx context.Context) ManagedFolderIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedFolderIamBindingConditionPtrOutput)
+}
+
+type ManagedFolderIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (ManagedFolderIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedFolderIamBindingCondition)(nil)).Elem()
+}
+
+func (o ManagedFolderIamBindingConditionOutput) ToManagedFolderIamBindingConditionOutput() ManagedFolderIamBindingConditionOutput {
+	return o
+}
+
+func (o ManagedFolderIamBindingConditionOutput) ToManagedFolderIamBindingConditionOutputWithContext(ctx context.Context) ManagedFolderIamBindingConditionOutput {
+	return o
+}
+
+func (o ManagedFolderIamBindingConditionOutput) ToManagedFolderIamBindingConditionPtrOutput() ManagedFolderIamBindingConditionPtrOutput {
+	return o.ToManagedFolderIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedFolderIamBindingConditionOutput) ToManagedFolderIamBindingConditionPtrOutputWithContext(ctx context.Context) ManagedFolderIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedFolderIamBindingCondition) *ManagedFolderIamBindingCondition {
+		return &v
+	}).(ManagedFolderIamBindingConditionPtrOutput)
+}
+
+func (o ManagedFolderIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedFolderIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ManagedFolderIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedFolderIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o ManagedFolderIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedFolderIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ManagedFolderIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedFolderIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedFolderIamBindingCondition)(nil)).Elem()
+}
+
+func (o ManagedFolderIamBindingConditionPtrOutput) ToManagedFolderIamBindingConditionPtrOutput() ManagedFolderIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ManagedFolderIamBindingConditionPtrOutput) ToManagedFolderIamBindingConditionPtrOutputWithContext(ctx context.Context) ManagedFolderIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ManagedFolderIamBindingConditionPtrOutput) Elem() ManagedFolderIamBindingConditionOutput {
+	return o.ApplyT(func(v *ManagedFolderIamBindingCondition) ManagedFolderIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedFolderIamBindingCondition
+		return ret
+	}).(ManagedFolderIamBindingConditionOutput)
+}
+
+func (o ManagedFolderIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedFolderIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ManagedFolderIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedFolderIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o ManagedFolderIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedFolderIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type ManagedFolderIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// ManagedFolderIamMemberConditionInput is an input type that accepts ManagedFolderIamMemberConditionArgs and ManagedFolderIamMemberConditionOutput values.
+// You can construct a concrete instance of `ManagedFolderIamMemberConditionInput` via:
+//
+//	ManagedFolderIamMemberConditionArgs{...}
+type ManagedFolderIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToManagedFolderIamMemberConditionOutput() ManagedFolderIamMemberConditionOutput
+	ToManagedFolderIamMemberConditionOutputWithContext(context.Context) ManagedFolderIamMemberConditionOutput
+}
+
+type ManagedFolderIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ManagedFolderIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedFolderIamMemberCondition)(nil)).Elem()
+}
+
+func (i ManagedFolderIamMemberConditionArgs) ToManagedFolderIamMemberConditionOutput() ManagedFolderIamMemberConditionOutput {
+	return i.ToManagedFolderIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i ManagedFolderIamMemberConditionArgs) ToManagedFolderIamMemberConditionOutputWithContext(ctx context.Context) ManagedFolderIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedFolderIamMemberConditionOutput)
+}
+
+func (i ManagedFolderIamMemberConditionArgs) ToManagedFolderIamMemberConditionPtrOutput() ManagedFolderIamMemberConditionPtrOutput {
+	return i.ToManagedFolderIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedFolderIamMemberConditionArgs) ToManagedFolderIamMemberConditionPtrOutputWithContext(ctx context.Context) ManagedFolderIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedFolderIamMemberConditionOutput).ToManagedFolderIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// ManagedFolderIamMemberConditionPtrInput is an input type that accepts ManagedFolderIamMemberConditionArgs, ManagedFolderIamMemberConditionPtr and ManagedFolderIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `ManagedFolderIamMemberConditionPtrInput` via:
+//
+//	        ManagedFolderIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedFolderIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToManagedFolderIamMemberConditionPtrOutput() ManagedFolderIamMemberConditionPtrOutput
+	ToManagedFolderIamMemberConditionPtrOutputWithContext(context.Context) ManagedFolderIamMemberConditionPtrOutput
+}
+
+type managedFolderIamMemberConditionPtrType ManagedFolderIamMemberConditionArgs
+
+func ManagedFolderIamMemberConditionPtr(v *ManagedFolderIamMemberConditionArgs) ManagedFolderIamMemberConditionPtrInput {
+	return (*managedFolderIamMemberConditionPtrType)(v)
+}
+
+func (*managedFolderIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedFolderIamMemberCondition)(nil)).Elem()
+}
+
+func (i *managedFolderIamMemberConditionPtrType) ToManagedFolderIamMemberConditionPtrOutput() ManagedFolderIamMemberConditionPtrOutput {
+	return i.ToManagedFolderIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *managedFolderIamMemberConditionPtrType) ToManagedFolderIamMemberConditionPtrOutputWithContext(ctx context.Context) ManagedFolderIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedFolderIamMemberConditionPtrOutput)
+}
+
+type ManagedFolderIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (ManagedFolderIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedFolderIamMemberCondition)(nil)).Elem()
+}
+
+func (o ManagedFolderIamMemberConditionOutput) ToManagedFolderIamMemberConditionOutput() ManagedFolderIamMemberConditionOutput {
+	return o
+}
+
+func (o ManagedFolderIamMemberConditionOutput) ToManagedFolderIamMemberConditionOutputWithContext(ctx context.Context) ManagedFolderIamMemberConditionOutput {
+	return o
+}
+
+func (o ManagedFolderIamMemberConditionOutput) ToManagedFolderIamMemberConditionPtrOutput() ManagedFolderIamMemberConditionPtrOutput {
+	return o.ToManagedFolderIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedFolderIamMemberConditionOutput) ToManagedFolderIamMemberConditionPtrOutputWithContext(ctx context.Context) ManagedFolderIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedFolderIamMemberCondition) *ManagedFolderIamMemberCondition {
+		return &v
+	}).(ManagedFolderIamMemberConditionPtrOutput)
+}
+
+func (o ManagedFolderIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedFolderIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ManagedFolderIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedFolderIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o ManagedFolderIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedFolderIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ManagedFolderIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedFolderIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedFolderIamMemberCondition)(nil)).Elem()
+}
+
+func (o ManagedFolderIamMemberConditionPtrOutput) ToManagedFolderIamMemberConditionPtrOutput() ManagedFolderIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ManagedFolderIamMemberConditionPtrOutput) ToManagedFolderIamMemberConditionPtrOutputWithContext(ctx context.Context) ManagedFolderIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ManagedFolderIamMemberConditionPtrOutput) Elem() ManagedFolderIamMemberConditionOutput {
+	return o.ApplyT(func(v *ManagedFolderIamMemberCondition) ManagedFolderIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedFolderIamMemberCondition
+		return ret
+	}).(ManagedFolderIamMemberConditionOutput)
+}
+
+func (o ManagedFolderIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedFolderIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ManagedFolderIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedFolderIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o ManagedFolderIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedFolderIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type ObjectAccessControlProjectTeam struct {
 	// The project team associated with the entity
 	ProjectNumber *string `pulumi:"projectNumber"`
@@ -9417,6 +9759,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrInput)(nil)).Elem(), InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigObjectMetadataReportOptionsStorageFiltersInput)(nil)).Elem(), InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrInput)(nil)).Elem(), InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFolderIamBindingConditionInput)(nil)).Elem(), ManagedFolderIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFolderIamBindingConditionPtrInput)(nil)).Elem(), ManagedFolderIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFolderIamMemberConditionInput)(nil)).Elem(), ManagedFolderIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedFolderIamMemberConditionPtrInput)(nil)).Elem(), ManagedFolderIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlProjectTeamInput)(nil)).Elem(), ObjectAccessControlProjectTeamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlProjectTeamArrayInput)(nil)).Elem(), ObjectAccessControlProjectTeamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferAgentPoolBandwidthLimitInput)(nil)).Elem(), TransferAgentPoolBandwidthLimitArgs{})
@@ -9539,6 +9885,10 @@ func init() {
 	pulumi.RegisterOutputType(InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput{})
 	pulumi.RegisterOutputType(InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput{})
 	pulumi.RegisterOutputType(InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput{})
+	pulumi.RegisterOutputType(ManagedFolderIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(ManagedFolderIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(ManagedFolderIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(ManagedFolderIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamArrayOutput{})
 	pulumi.RegisterOutputType(TransferAgentPoolBandwidthLimitOutput{})

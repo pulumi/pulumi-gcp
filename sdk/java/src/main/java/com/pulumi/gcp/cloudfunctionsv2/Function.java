@@ -1167,6 +1167,214 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Cloudfunctions2 Abiu
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.Function;
+ * import com.pulumi.gcp.cloudfunctionsv2.FunctionArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigAutomaticUpdatePolicyArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerArgs;
+ * import com.pulumi.asset.FileAsset;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = "my-project-name";
+ * 
+ *         var account = new Account("account", AccountArgs.builder()
+ *             .accountId("gcf-sa")
+ *             .displayName("Test Service Account")
+ *             .build());
+ * 
+ *         var topic = new Topic("topic", TopicArgs.builder()
+ *             .name("functions2-topic")
+ *             .build());
+ * 
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
+ *             .name(String.format("%s-gcf-source", project))
+ *             .location("US")
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
+ *             .name("function-source.zip")
+ *             .bucket(bucket.name())
+ *             .source(new FileAsset("function-source.zip"))
+ *             .build());
+ * 
+ *         var function = new Function("function", FunctionArgs.builder()
+ *             .name("gcf-function")
+ *             .location("europe-west6")
+ *             .description("a new function")
+ *             .buildConfig(FunctionBuildConfigArgs.builder()
+ *                 .runtime("nodejs16")
+ *                 .entryPoint("helloPubSub")
+ *                 .environmentVariables(Map.of("BUILD_CONFIG_TEST", "build_test"))
+ *                 .source(FunctionBuildConfigSourceArgs.builder()
+ *                     .storageSource(FunctionBuildConfigSourceStorageSourceArgs.builder()
+ *                         .bucket(bucket.name())
+ *                         .object(object.name())
+ *                         .build())
+ *                     .build())
+ *                 .automaticUpdatePolicy()
+ *                 .build())
+ *             .serviceConfig(FunctionServiceConfigArgs.builder()
+ *                 .maxInstanceCount(3)
+ *                 .minInstanceCount(1)
+ *                 .availableMemory("4Gi")
+ *                 .timeoutSeconds(60)
+ *                 .maxInstanceRequestConcurrency(80)
+ *                 .availableCpu("4")
+ *                 .environmentVariables(Map.of("SERVICE_CONFIG_TEST", "config_test"))
+ *                 .ingressSettings("ALLOW_INTERNAL_ONLY")
+ *                 .allTrafficOnLatestRevision(true)
+ *                 .serviceAccountEmail(account.email())
+ *                 .build())
+ *             .eventTrigger(FunctionEventTriggerArgs.builder()
+ *                 .triggerRegion("us-central1")
+ *                 .eventType("google.cloud.pubsub.topic.v1.messagePublished")
+ *                 .pubsubTopic(topic.id())
+ *                 .retryPolicy("RETRY_POLICY_RETRY")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Cloudfunctions2 Abiu On Deploy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.Function;
+ * import com.pulumi.gcp.cloudfunctionsv2.FunctionArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigOnDeployUpdatePolicyArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerArgs;
+ * import com.pulumi.asset.FileAsset;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = "my-project-name";
+ * 
+ *         var account = new Account("account", AccountArgs.builder()
+ *             .accountId("gcf-sa")
+ *             .displayName("Test Service Account")
+ *             .build());
+ * 
+ *         var topic = new Topic("topic", TopicArgs.builder()
+ *             .name("functions2-topic")
+ *             .build());
+ * 
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
+ *             .name(String.format("%s-gcf-source", project))
+ *             .location("US")
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var object = new BucketObject("object", BucketObjectArgs.builder()
+ *             .name("function-source.zip")
+ *             .bucket(bucket.name())
+ *             .source(new FileAsset("function-source.zip"))
+ *             .build());
+ * 
+ *         var function = new Function("function", FunctionArgs.builder()
+ *             .name("gcf-function")
+ *             .location("europe-west6")
+ *             .description("a new function")
+ *             .buildConfig(FunctionBuildConfigArgs.builder()
+ *                 .runtime("nodejs16")
+ *                 .entryPoint("helloPubSub")
+ *                 .environmentVariables(Map.of("BUILD_CONFIG_TEST", "build_test"))
+ *                 .source(FunctionBuildConfigSourceArgs.builder()
+ *                     .storageSource(FunctionBuildConfigSourceStorageSourceArgs.builder()
+ *                         .bucket(bucket.name())
+ *                         .object(object.name())
+ *                         .build())
+ *                     .build())
+ *                 .onDeployUpdatePolicy()
+ *                 .build())
+ *             .serviceConfig(FunctionServiceConfigArgs.builder()
+ *                 .maxInstanceCount(3)
+ *                 .minInstanceCount(1)
+ *                 .availableMemory("4Gi")
+ *                 .timeoutSeconds(60)
+ *                 .maxInstanceRequestConcurrency(80)
+ *                 .availableCpu("4")
+ *                 .environmentVariables(Map.of("SERVICE_CONFIG_TEST", "config_test"))
+ *                 .ingressSettings("ALLOW_INTERNAL_ONLY")
+ *                 .allTrafficOnLatestRevision(true)
+ *                 .serviceAccountEmail(account.email())
+ *                 .build())
+ *             .eventTrigger(FunctionEventTriggerArgs.builder()
+ *                 .triggerRegion("us-central1")
+ *                 .eventType("google.cloud.pubsub.topic.v1.messagePublished")
+ *                 .pubsubTopic(topic.id())
+ *                 .retryPolicy("RETRY_POLICY_RETRY")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

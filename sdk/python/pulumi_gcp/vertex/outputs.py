@@ -987,7 +987,7 @@ class AiFeatureGroupBigQuery(dict):
         """
         :param 'AiFeatureGroupBigQueryBigQuerySourceArgs' big_query_source: The BigQuery source URI that points to either a BigQuery Table or View.
                Structure is documented below.
-        :param Sequence[str] entity_id_columns: Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+        :param Sequence[str] entity_id_columns: Columns to construct entityId / row keys. If not provided defaults to entityId.
         """
         pulumi.set(__self__, "big_query_source", big_query_source)
         if entity_id_columns is not None:
@@ -1006,7 +1006,7 @@ class AiFeatureGroupBigQuery(dict):
     @pulumi.getter(name="entityIdColumns")
     def entity_id_columns(self) -> Optional[Sequence[str]]:
         """
-        Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+        Columns to construct entityId / row keys. If not provided defaults to entityId.
         """
         return pulumi.get(self, "entity_id_columns")
 

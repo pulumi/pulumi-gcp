@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.URLMapPathMatcherPathRuleCustomErrorResponsePolicy;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherPathRuleRouteAction;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherPathRuleUrlRedirect;
 import java.lang.String;
@@ -15,6 +16,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class URLMapPathMatcherPathRule {
+    /**
+     * @return customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+     * If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+     * For example, consider a UrlMap with the following configuration:
+     * UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
+     * A PathRule for /coming_soon/ is configured for the error code 404.
+     * If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher&#39;s policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+     * customErrorResponsePolicy is supported only for global external Application Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable URLMapPathMatcherPathRuleCustomErrorResponsePolicy customErrorResponsePolicy;
     /**
      * @return The list of path patterns to match. Each must start with / and the only place a
      * \* is allowed is at the end following a /. The string fed to the path matcher
@@ -49,6 +62,20 @@ public final class URLMapPathMatcherPathRule {
     private @Nullable URLMapPathMatcherPathRuleUrlRedirect urlRedirect;
 
     private URLMapPathMatcherPathRule() {}
+    /**
+     * @return customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+     * If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+     * For example, consider a UrlMap with the following configuration:
+     * UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
+     * A PathRule for /coming_soon/ is configured for the error code 404.
+     * If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher&#39;s policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+     * customErrorResponsePolicy is supported only for global external Application Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<URLMapPathMatcherPathRuleCustomErrorResponsePolicy> customErrorResponsePolicy() {
+        return Optional.ofNullable(this.customErrorResponsePolicy);
+    }
     /**
      * @return The list of path patterns to match. Each must start with / and the only place a
      * \* is allowed is at the end following a /. The string fed to the path matcher
@@ -99,6 +126,7 @@ public final class URLMapPathMatcherPathRule {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable URLMapPathMatcherPathRuleCustomErrorResponsePolicy customErrorResponsePolicy;
         private List<String> paths;
         private @Nullable URLMapPathMatcherPathRuleRouteAction routeAction;
         private @Nullable String service;
@@ -106,12 +134,19 @@ public final class URLMapPathMatcherPathRule {
         public Builder() {}
         public Builder(URLMapPathMatcherPathRule defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.customErrorResponsePolicy = defaults.customErrorResponsePolicy;
     	      this.paths = defaults.paths;
     	      this.routeAction = defaults.routeAction;
     	      this.service = defaults.service;
     	      this.urlRedirect = defaults.urlRedirect;
         }
 
+        @CustomType.Setter
+        public Builder customErrorResponsePolicy(@Nullable URLMapPathMatcherPathRuleCustomErrorResponsePolicy customErrorResponsePolicy) {
+
+            this.customErrorResponsePolicy = customErrorResponsePolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder paths(List<String> paths) {
             if (paths == null) {
@@ -143,6 +178,7 @@ public final class URLMapPathMatcherPathRule {
         }
         public URLMapPathMatcherPathRule build() {
             final var _resultValue = new URLMapPathMatcherPathRule();
+            _resultValue.customErrorResponsePolicy = customErrorResponsePolicy;
             _resultValue.paths = paths;
             _resultValue.routeAction = routeAction;
             _resultValue.service = service;

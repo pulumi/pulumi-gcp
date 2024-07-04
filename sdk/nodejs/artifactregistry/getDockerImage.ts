@@ -38,7 +38,7 @@ export interface GetDockerImageArgs {
      */
     project?: string;
     /**
-     * The last part of the repository name. to fetch from.
+     * The last part of the repository name to fetch from.
      */
     repositoryId: string;
 }
@@ -121,7 +121,7 @@ export interface GetDockerImageOutputArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * The last part of the repository name. to fetch from.
+     * The last part of the repository name to fetch from.
      */
     repositoryId: pulumi.Input<string>;
 }

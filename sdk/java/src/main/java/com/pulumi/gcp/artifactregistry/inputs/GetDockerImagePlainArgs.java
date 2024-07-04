@@ -61,14 +61,14 @@ public final class GetDockerImagePlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The last part of the repository name. to fetch from.
+     * The last part of the repository name to fetch from.
      * 
      */
     @Import(name="repositoryId", required=true)
     private String repositoryId;
 
     /**
-     * @return The last part of the repository name. to fetch from.
+     * @return The last part of the repository name to fetch from.
      * 
      */
     public String repositoryId() {
@@ -136,7 +136,7 @@ public final class GetDockerImagePlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param repositoryId The last part of the repository name. to fetch from.
+         * @param repositoryId The last part of the repository name to fetch from.
          * 
          * @return builder
          * 

@@ -324,8 +324,7 @@ type Address struct {
 	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
 	//   configure Private Service Connect. Only global internal addresses can use
 	//   this purpose.
-	//
-	// This should only be set when using an Internal address.
+	//   This should only be set when using an Internal address.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -445,8 +444,7 @@ type addressState struct {
 	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
 	//   configure Private Service Connect. Only global internal addresses can use
 	//   this purpose.
-	//
-	// This should only be set when using an Internal address.
+	//   This should only be set when using an Internal address.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -532,8 +530,7 @@ type AddressState struct {
 	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
 	//   configure Private Service Connect. Only global internal addresses can use
 	//   this purpose.
-	//
-	// This should only be set when using an Internal address.
+	//   This should only be set when using an Internal address.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -613,8 +610,7 @@ type addressArgs struct {
 	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
 	//   configure Private Service Connect. Only global internal addresses can use
 	//   this purpose.
-	//
-	// This should only be set when using an Internal address.
+	//   This should only be set when using an Internal address.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -687,8 +683,7 @@ type AddressArgs struct {
 	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
 	//   configure Private Service Connect. Only global internal addresses can use
 	//   this purpose.
-	//
-	// This should only be set when using an Internal address.
+	//   This should only be set when using an Internal address.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -901,8 +896,7 @@ func (o AddressOutput) PulumiLabels() pulumi.StringMapOutput {
 //   - PRIVATE_SERVICE_CONNECT for a private network address that is used to
 //     configure Private Service Connect. Only global internal addresses can use
 //     this purpose.
-//
-// This should only be set when using an Internal address.
+//     This should only be set when using an Internal address.
 func (o AddressOutput) Purpose() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Purpose }).(pulumi.StringOutput)
 }

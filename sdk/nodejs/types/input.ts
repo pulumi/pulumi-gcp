@@ -11535,6 +11535,11 @@ export namespace cloudfunctions {
 export namespace cloudfunctionsv2 {
     export interface FunctionBuildConfig {
         /**
+         * Security patches are applied automatically to the runtime without requiring
+         * the function to be redeployed.
+         */
+        automaticUpdatePolicy?: pulumi.Input<inputs.cloudfunctionsv2.FunctionBuildConfigAutomaticUpdatePolicy>;
+        /**
          * (Output)
          * The Cloud Build name of the latest successful
          * deployment of the function.
@@ -11557,6 +11562,11 @@ export namespace cloudfunctionsv2 {
          */
         environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * Security patches are only applied when a function is redeployed.
+         * Structure is documented below.
+         */
+        onDeployUpdatePolicy?: pulumi.Input<inputs.cloudfunctionsv2.FunctionBuildConfigOnDeployUpdatePolicy>;
+        /**
          * The runtime in which to run the function. Required when deploying a new
          * function, optional when updating an existing function.
          */
@@ -11574,6 +11584,17 @@ export namespace cloudfunctionsv2 {
          * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
          */
         workerPool?: pulumi.Input<string>;
+    }
+
+    export interface FunctionBuildConfigAutomaticUpdatePolicy {
+    }
+
+    export interface FunctionBuildConfigOnDeployUpdatePolicy {
+        /**
+         * (Output)
+         * The runtime version which was used during latest function deployment.
+         */
+        runtimeVersion?: pulumi.Input<string>;
     }
 
     export interface FunctionBuildConfigSource {
@@ -24741,6 +24762,49 @@ export namespace compute {
         rangeName: pulumi.Input<string>;
     }
 
+    export interface URLMapDefaultCustomErrorResponsePolicy {
+        /**
+         * Specifies rules for returning error responses.
+         * In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+         * For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+         * If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+         * Structure is documented below.
+         */
+        errorResponseRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapDefaultCustomErrorResponsePolicyErrorResponseRule>[]>;
+        /**
+         * The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+         * https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+         * compute/v1/projects/project/global/backendBuckets/myBackendBucket
+         * global/backendBuckets/myBackendBucket
+         * If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+         * If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+         */
+        errorService?: pulumi.Input<string>;
+    }
+
+    export interface URLMapDefaultCustomErrorResponsePolicyErrorResponseRule {
+        /**
+         * Valid values include:
+         * - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+         * - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+         * - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+         * Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+         */
+        matchResponseCodes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The HTTP status code returned with the response containing the custom error content.
+         * If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+         */
+        overrideResponseCode?: pulumi.Input<number>;
+        /**
+         * The full path to a file within backendBucket. For example: /errors/defaultError.html
+         * path must start with a leading slash. path cannot have trailing slashes.
+         * If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+         * The value must be from 1 to 1024 characters.
+         */
+        path?: pulumi.Input<string>;
+    }
+
     export interface URLMapDefaultRouteAction {
         /**
          * The specification for allowing client side cross-origin requests. Please see
@@ -25172,6 +25236,18 @@ export namespace compute {
 
     export interface URLMapPathMatcher {
         /**
+         * defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+         * This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+         * For example, consider a UrlMap with the following configuration:
+         * UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
+         * A RouteRule for /coming_soon/ is configured for the error code 404.
+         * If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+         * When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
+         * defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
+         * Structure is documented below.
+         */
+        defaultCustomErrorResponsePolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherDefaultCustomErrorResponsePolicy>;
+        /**
          * defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
          * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
          * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
@@ -25227,6 +25303,49 @@ export namespace compute {
          * Structure is documented below.
          */
         routeRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRule>[]>;
+    }
+
+    export interface URLMapPathMatcherDefaultCustomErrorResponsePolicy {
+        /**
+         * Specifies rules for returning error responses.
+         * In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+         * For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+         * If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+         * Structure is documented below.
+         */
+        errorResponseRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRule>[]>;
+        /**
+         * The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+         * https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+         * compute/v1/projects/project/global/backendBuckets/myBackendBucket
+         * global/backendBuckets/myBackendBucket
+         * If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+         * If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+         */
+        errorService?: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRule {
+        /**
+         * Valid values include:
+         * - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+         * - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+         * - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+         * Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+         */
+        matchResponseCodes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The HTTP status code returned with the response containing the custom error content.
+         * If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+         */
+        overrideResponseCode?: pulumi.Input<number>;
+        /**
+         * The full path to a file within backendBucket. For example: /errors/defaultError.html
+         * path must start with a leading slash. path cannot have trailing slashes.
+         * If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+         * The value must be from 1 to 1024 characters.
+         */
+        path?: pulumi.Input<string>;
     }
 
     export interface URLMapPathMatcherDefaultRouteAction {
@@ -25641,6 +25760,17 @@ export namespace compute {
 
     export interface URLMapPathMatcherPathRule {
         /**
+         * customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+         * If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+         * For example, consider a UrlMap with the following configuration:
+         * UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
+         * A PathRule for /coming_soon/ is configured for the error code 404.
+         * If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+         * customErrorResponsePolicy is supported only for global external Application Load Balancers.
+         * Structure is documented below.
+         */
+        customErrorResponsePolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleCustomErrorResponsePolicy>;
+        /**
          * The list of path patterns to match. Each must start with / and the only place a
          * \* is allowed is at the end following a /. The string fed to the path matcher
          * does not include any text after the first ? or #, and those chars are not
@@ -25668,6 +25798,49 @@ export namespace compute {
          * Structure is documented below.
          */
         urlRedirect?: pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleUrlRedirect>;
+    }
+
+    export interface URLMapPathMatcherPathRuleCustomErrorResponsePolicy {
+        /**
+         * Specifies rules for returning error responses.
+         * In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+         * For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+         * If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+         * Structure is documented below.
+         */
+        errorResponseRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule>[]>;
+        /**
+         * The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+         * https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+         * compute/v1/projects/project/global/backendBuckets/myBackendBucket
+         * global/backendBuckets/myBackendBucket
+         * If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+         * If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+         */
+        errorService?: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule {
+        /**
+         * Valid values include:
+         * - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+         * - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+         * - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+         * Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+         */
+        matchResponseCodes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The HTTP status code returned with the response containing the custom error content.
+         * If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+         */
+        overrideResponseCode?: pulumi.Input<number>;
+        /**
+         * The full path to a file within backendBucket. For example: /errors/defaultError.html
+         * path must start with a leading slash. path cannot have trailing slashes.
+         * If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+         * The value must be from 1 to 1024 characters.
+         */
+        path?: pulumi.Input<string>;
     }
 
     export interface URLMapPathMatcherPathRuleRouteAction {
@@ -32026,16 +32199,51 @@ export namespace datafusion {
 
     export interface InstanceNetworkConfig {
         /**
+         * Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and
+         * the corresponding tenant project from a predefined list of available connection modes.
+         * If this field is unspecified for a private instance, VPC peering is used.
+         * Possible values are: `VPC_PEERING`, `PRIVATE_SERVICE_CONNECT_INTERFACES`.
+         */
+        connectionType?: pulumi.Input<string>;
+        /**
          * The IP range in CIDR notation to use for the managed Data Fusion instance
          * nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
          */
-        ipAllocation: pulumi.Input<string>;
+        ipAllocation?: pulumi.Input<string>;
         /**
          * Name of the network in the project with which the tenant project
          * will be peered for executing pipelines. In case of shared VPC where the network resides in another host
          * project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
          */
-        network: pulumi.Input<string>;
+        network?: pulumi.Input<string>;
+        /**
+         * Optional. Configuration for Private Service Connect.
+         * This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+         * Structure is documented below.
+         */
+        privateServiceConnectConfig?: pulumi.Input<inputs.datafusion.InstanceNetworkConfigPrivateServiceConnectConfig>;
+    }
+
+    export interface InstanceNetworkConfigPrivateServiceConnectConfig {
+        /**
+         * (Output)
+         * Output only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
+         * The size of this block is /25. The format of this field is governed by RFC 4632.
+         */
+        effectiveUnreachableCidrBlock?: pulumi.Input<string>;
+        /**
+         * Optional. The reference to the network attachment used to establish private connectivity.
+         * It will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
+         * This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+         */
+        networkAttachment?: pulumi.Input<string>;
+        /**
+         * Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
+         * The size of this block should be at least /25. This range should not overlap with the primary address range of any subnetwork used by the network attachment.
+         * This range can be used for other purposes in the consumer VPC as long as there is no requirement for CDF to reach destinations using these addresses.
+         * If this value is not provided, the server chooses a non RFC 1918 address range. The format of this field is governed by RFC 4632.
+         */
+        unreachableCidrBlock?: pulumi.Input<string>;
     }
 }
 
@@ -50465,6 +50673,16 @@ export namespace healthcare {
         title: pulumi.Input<string>;
     }
 
+    export interface DatasetEncryptionSpec {
+        /**
+         * KMS encryption key that is used to secure this dataset and its sub-resources. The key used for
+         * encryption and the dataset must be in the same location. If empty, the default Google encryption
+         * key will be used to secure this dataset. The format is
+         * projects/{projectId}/locations/{locationId}/keyRings/{keyRingId}/cryptoKeys/{keyId}.
+         */
+        kmsKeyName?: pulumi.Input<string>;
+    }
+
     export interface DatasetIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
@@ -54589,6 +54807,11 @@ export namespace monitoring {
          */
         content?: pulumi.Input<string>;
         /**
+         * Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+         * Structure is documented below.
+         */
+        links?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyDocumentationLink>[]>;
+        /**
          * The format of the content field. Presently, only the value
          * "text/markdown" is supported.
          */
@@ -54600,6 +54823,17 @@ export namespace monitoring {
          * or shorter at the latest UTF-8 character boundary.
          */
         subject?: pulumi.Input<string>;
+    }
+
+    export interface AlertPolicyDocumentationLink {
+        /**
+         * A short display name for the link. The display name must not be empty or exceed 63 characters. Example: "playbook".
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * The url of a webpage. A url can be templatized by using variables in the path or the query parameters. The total length of a URL should not exceed 2083 characters before and after variable expansion. Example: "https://my_domain.com/playbook?name=${resource.name}".
+         */
+        url?: pulumi.Input<string>;
     }
 
     export interface CustomServiceTelemetry {
@@ -63933,6 +64167,30 @@ export namespace storage {
         bucket?: pulumi.Input<string>;
     }
 
+    export interface ManagedFolderIamBindingCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface ManagedFolderIamMemberCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
     export interface ObjectAccessControlProjectTeam {
         /**
          * The project team associated with the entity
@@ -64673,7 +64931,7 @@ export namespace vertex {
          */
         bigQuerySource: pulumi.Input<inputs.vertex.AiFeatureGroupBigQueryBigQuerySource>;
         /**
-         * Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+         * Columns to construct entityId / row keys. If not provided defaults to entityId.
          */
         entityIdColumns?: pulumi.Input<pulumi.Input<string>[]>;
     }

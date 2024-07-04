@@ -925,6 +925,10 @@ __all__ = [
     'SubnetworkLogConfigArgsDict',
     'SubnetworkSecondaryIpRangeArgs',
     'SubnetworkSecondaryIpRangeArgsDict',
+    'URLMapDefaultCustomErrorResponsePolicyArgs',
+    'URLMapDefaultCustomErrorResponsePolicyArgsDict',
+    'URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgs',
+    'URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgsDict',
     'URLMapDefaultRouteActionArgs',
     'URLMapDefaultRouteActionArgsDict',
     'URLMapDefaultRouteActionCorsPolicyArgs',
@@ -967,6 +971,10 @@ __all__ = [
     'URLMapHostRuleArgsDict',
     'URLMapPathMatcherArgs',
     'URLMapPathMatcherArgsDict',
+    'URLMapPathMatcherDefaultCustomErrorResponsePolicyArgs',
+    'URLMapPathMatcherDefaultCustomErrorResponsePolicyArgsDict',
+    'URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRuleArgs',
+    'URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRuleArgsDict',
     'URLMapPathMatcherDefaultRouteActionArgs',
     'URLMapPathMatcherDefaultRouteActionArgsDict',
     'URLMapPathMatcherDefaultRouteActionCorsPolicyArgs',
@@ -1007,6 +1015,10 @@ __all__ = [
     'URLMapPathMatcherHeaderActionResponseHeadersToAddArgsDict',
     'URLMapPathMatcherPathRuleArgs',
     'URLMapPathMatcherPathRuleArgsDict',
+    'URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs',
+    'URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgsDict',
+    'URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgs',
+    'URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgsDict',
     'URLMapPathMatcherPathRuleRouteActionArgs',
     'URLMapPathMatcherPathRuleRouteActionArgsDict',
     'URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs',
@@ -43790,6 +43802,181 @@ class SubnetworkSecondaryIpRangeArgs:
 
 
 if not MYPY:
+    class URLMapDefaultCustomErrorResponsePolicyArgsDict(TypedDict):
+        error_response_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgsDict']]]]
+        """
+        Specifies rules for returning error responses.
+        In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+        For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+        If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+        Structure is documented below.
+        """
+        error_service: NotRequired[pulumi.Input[str]]
+        """
+        The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+        https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        global/backendBuckets/myBackendBucket
+        If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+        If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+        """
+elif False:
+    URLMapDefaultCustomErrorResponsePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class URLMapDefaultCustomErrorResponsePolicyArgs:
+    def __init__(__self__, *,
+                 error_response_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgs']]]] = None,
+                 error_service: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgs']]] error_response_rules: Specifies rules for returning error responses.
+               In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+               For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+               If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+               Structure is documented below.
+        :param pulumi.Input[str] error_service: The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+               https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+               compute/v1/projects/project/global/backendBuckets/myBackendBucket
+               global/backendBuckets/myBackendBucket
+               If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+               If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+        """
+        if error_response_rules is not None:
+            pulumi.set(__self__, "error_response_rules", error_response_rules)
+        if error_service is not None:
+            pulumi.set(__self__, "error_service", error_service)
+
+    @property
+    @pulumi.getter(name="errorResponseRules")
+    def error_response_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgs']]]]:
+        """
+        Specifies rules for returning error responses.
+        In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+        For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+        If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_response_rules")
+
+    @error_response_rules.setter
+    def error_response_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgs']]]]):
+        pulumi.set(self, "error_response_rules", value)
+
+    @property
+    @pulumi.getter(name="errorService")
+    def error_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+        https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        global/backendBuckets/myBackendBucket
+        If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+        If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+        """
+        return pulumi.get(self, "error_service")
+
+    @error_service.setter
+    def error_service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "error_service", value)
+
+
+if not MYPY:
+    class URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgsDict(TypedDict):
+        match_response_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Valid values include:
+        - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+        - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+        - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+        Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+        """
+        override_response_code: NotRequired[pulumi.Input[int]]
+        """
+        The HTTP status code returned with the response containing the custom error content.
+        If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        The full path to a file within backendBucket. For example: /errors/defaultError.html
+        path must start with a leading slash. path cannot have trailing slashes.
+        If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+        The value must be from 1 to 1024 characters.
+        """
+elif False:
+    URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgs:
+    def __init__(__self__, *,
+                 match_response_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 override_response_code: Optional[pulumi.Input[int]] = None,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] match_response_codes: Valid values include:
+               - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+               - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+               - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+               Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+        :param pulumi.Input[int] override_response_code: The HTTP status code returned with the response containing the custom error content.
+               If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+        :param pulumi.Input[str] path: The full path to a file within backendBucket. For example: /errors/defaultError.html
+               path must start with a leading slash. path cannot have trailing slashes.
+               If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+               The value must be from 1 to 1024 characters.
+        """
+        if match_response_codes is not None:
+            pulumi.set(__self__, "match_response_codes", match_response_codes)
+        if override_response_code is not None:
+            pulumi.set(__self__, "override_response_code", override_response_code)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="matchResponseCodes")
+    def match_response_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Valid values include:
+        - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+        - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+        - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+        Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+        """
+        return pulumi.get(self, "match_response_codes")
+
+    @match_response_codes.setter
+    def match_response_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "match_response_codes", value)
+
+    @property
+    @pulumi.getter(name="overrideResponseCode")
+    def override_response_code(self) -> Optional[pulumi.Input[int]]:
+        """
+        The HTTP status code returned with the response containing the custom error content.
+        If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+        """
+        return pulumi.get(self, "override_response_code")
+
+    @override_response_code.setter
+    def override_response_code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "override_response_code", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full path to a file within backendBucket. For example: /errors/defaultError.html
+        path must start with a leading slash. path cannot have trailing slashes.
+        If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+        The value must be from 1 to 1024 characters.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+if not MYPY:
     class URLMapDefaultRouteActionArgsDict(TypedDict):
         cors_policy: NotRequired[pulumi.Input['URLMapDefaultRouteActionCorsPolicyArgsDict']]
         """
@@ -45652,6 +45839,18 @@ if not MYPY:
         """
         The name to which this PathMatcher is referred by the HostRule.
         """
+        default_custom_error_response_policy: NotRequired[pulumi.Input['URLMapPathMatcherDefaultCustomErrorResponsePolicyArgsDict']]
+        """
+        defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+        This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        For example, consider a UrlMap with the following configuration:
+        UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
+        A RouteRule for /coming_soon/ is configured for the error code 404.
+        If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
+        defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
+        Structure is documented below.
+        """
         default_route_action: NotRequired[pulumi.Input['URLMapPathMatcherDefaultRouteActionArgsDict']]
         """
         defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
@@ -45711,6 +45910,7 @@ elif False:
 class URLMapPathMatcherArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
+                 default_custom_error_response_policy: Optional[pulumi.Input['URLMapPathMatcherDefaultCustomErrorResponsePolicyArgs']] = None,
                  default_route_action: Optional[pulumi.Input['URLMapPathMatcherDefaultRouteActionArgs']] = None,
                  default_service: Optional[pulumi.Input[str]] = None,
                  default_url_redirect: Optional[pulumi.Input['URLMapPathMatcherDefaultUrlRedirectArgs']] = None,
@@ -45720,6 +45920,15 @@ class URLMapPathMatcherArgs:
                  route_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleArgs']]]] = None):
         """
         :param pulumi.Input[str] name: The name to which this PathMatcher is referred by the HostRule.
+        :param pulumi.Input['URLMapPathMatcherDefaultCustomErrorResponsePolicyArgs'] default_custom_error_response_policy: defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+               This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+               For example, consider a UrlMap with the following configuration:
+               UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
+               A RouteRule for /coming_soon/ is configured for the error code 404.
+               If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+               When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
+               defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
+               Structure is documented below.
         :param pulumi.Input['URLMapPathMatcherDefaultRouteActionArgs'] default_route_action: defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
                advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
                to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
@@ -45753,6 +45962,8 @@ class URLMapPathMatcherArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "name", name)
+        if default_custom_error_response_policy is not None:
+            pulumi.set(__self__, "default_custom_error_response_policy", default_custom_error_response_policy)
         if default_route_action is not None:
             pulumi.set(__self__, "default_route_action", default_route_action)
         if default_service is not None:
@@ -45779,6 +45990,26 @@ class URLMapPathMatcherArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="defaultCustomErrorResponsePolicy")
+    def default_custom_error_response_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultCustomErrorResponsePolicyArgs']]:
+        """
+        defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+        This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        For example, consider a UrlMap with the following configuration:
+        UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
+        A RouteRule for /coming_soon/ is configured for the error code 404.
+        If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
+        defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_custom_error_response_policy")
+
+    @default_custom_error_response_policy.setter
+    def default_custom_error_response_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherDefaultCustomErrorResponsePolicyArgs']]):
+        pulumi.set(self, "default_custom_error_response_policy", value)
 
     @property
     @pulumi.getter(name="defaultRouteAction")
@@ -45887,6 +46118,181 @@ class URLMapPathMatcherArgs:
     @route_rules.setter
     def route_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleArgs']]]]):
         pulumi.set(self, "route_rules", value)
+
+
+if not MYPY:
+    class URLMapPathMatcherDefaultCustomErrorResponsePolicyArgsDict(TypedDict):
+        error_response_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRuleArgsDict']]]]
+        """
+        Specifies rules for returning error responses.
+        In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+        For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+        If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+        Structure is documented below.
+        """
+        error_service: NotRequired[pulumi.Input[str]]
+        """
+        The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+        https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        global/backendBuckets/myBackendBucket
+        If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+        If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+        """
+elif False:
+    URLMapPathMatcherDefaultCustomErrorResponsePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class URLMapPathMatcherDefaultCustomErrorResponsePolicyArgs:
+    def __init__(__self__, *,
+                 error_response_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRuleArgs']]]] = None,
+                 error_service: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRuleArgs']]] error_response_rules: Specifies rules for returning error responses.
+               In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+               For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+               If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+               Structure is documented below.
+        :param pulumi.Input[str] error_service: The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+               https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+               compute/v1/projects/project/global/backendBuckets/myBackendBucket
+               global/backendBuckets/myBackendBucket
+               If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+               If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+        """
+        if error_response_rules is not None:
+            pulumi.set(__self__, "error_response_rules", error_response_rules)
+        if error_service is not None:
+            pulumi.set(__self__, "error_service", error_service)
+
+    @property
+    @pulumi.getter(name="errorResponseRules")
+    def error_response_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRuleArgs']]]]:
+        """
+        Specifies rules for returning error responses.
+        In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+        For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+        If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_response_rules")
+
+    @error_response_rules.setter
+    def error_response_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRuleArgs']]]]):
+        pulumi.set(self, "error_response_rules", value)
+
+    @property
+    @pulumi.getter(name="errorService")
+    def error_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+        https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        global/backendBuckets/myBackendBucket
+        If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+        If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+        """
+        return pulumi.get(self, "error_service")
+
+    @error_service.setter
+    def error_service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "error_service", value)
+
+
+if not MYPY:
+    class URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRuleArgsDict(TypedDict):
+        match_response_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Valid values include:
+        - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+        - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+        - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+        Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+        """
+        override_response_code: NotRequired[pulumi.Input[int]]
+        """
+        The HTTP status code returned with the response containing the custom error content.
+        If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        The full path to a file within backendBucket. For example: /errors/defaultError.html
+        path must start with a leading slash. path cannot have trailing slashes.
+        If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+        The value must be from 1 to 1024 characters.
+        """
+elif False:
+    URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRuleArgs:
+    def __init__(__self__, *,
+                 match_response_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 override_response_code: Optional[pulumi.Input[int]] = None,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] match_response_codes: Valid values include:
+               - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+               - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+               - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+               Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+        :param pulumi.Input[int] override_response_code: The HTTP status code returned with the response containing the custom error content.
+               If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+        :param pulumi.Input[str] path: The full path to a file within backendBucket. For example: /errors/defaultError.html
+               path must start with a leading slash. path cannot have trailing slashes.
+               If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+               The value must be from 1 to 1024 characters.
+        """
+        if match_response_codes is not None:
+            pulumi.set(__self__, "match_response_codes", match_response_codes)
+        if override_response_code is not None:
+            pulumi.set(__self__, "override_response_code", override_response_code)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="matchResponseCodes")
+    def match_response_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Valid values include:
+        - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+        - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+        - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+        Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+        """
+        return pulumi.get(self, "match_response_codes")
+
+    @match_response_codes.setter
+    def match_response_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "match_response_codes", value)
+
+    @property
+    @pulumi.getter(name="overrideResponseCode")
+    def override_response_code(self) -> Optional[pulumi.Input[int]]:
+        """
+        The HTTP status code returned with the response containing the custom error content.
+        If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+        """
+        return pulumi.get(self, "override_response_code")
+
+    @override_response_code.setter
+    def override_response_code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "override_response_code", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full path to a file within backendBucket. For example: /errors/defaultError.html
+        path must start with a leading slash. path cannot have trailing slashes.
+        If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+        The value must be from 1 to 1024 characters.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
 
 
 if not MYPY:
@@ -47673,6 +48079,17 @@ if not MYPY:
         does not include any text after the first ? or #, and those chars are not
         allowed here.
         """
+        custom_error_response_policy: NotRequired[pulumi.Input['URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgsDict']]
+        """
+        customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+        If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        For example, consider a UrlMap with the following configuration:
+        UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
+        A PathRule for /coming_soon/ is configured for the error code 404.
+        If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        customErrorResponsePolicy is supported only for global external Application Load Balancers.
+        Structure is documented below.
+        """
         route_action: NotRequired[pulumi.Input['URLMapPathMatcherPathRuleRouteActionArgsDict']]
         """
         In response to a matching path, the load balancer performs advanced routing
@@ -47701,6 +48118,7 @@ elif False:
 class URLMapPathMatcherPathRuleArgs:
     def __init__(__self__, *,
                  paths: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 custom_error_response_policy: Optional[pulumi.Input['URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs']] = None,
                  route_action: Optional[pulumi.Input['URLMapPathMatcherPathRuleRouteActionArgs']] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  url_redirect: Optional[pulumi.Input['URLMapPathMatcherPathRuleUrlRedirectArgs']] = None):
@@ -47709,6 +48127,14 @@ class URLMapPathMatcherPathRuleArgs:
                \\* is allowed is at the end following a /. The string fed to the path matcher
                does not include any text after the first ? or #, and those chars are not
                allowed here.
+        :param pulumi.Input['URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs'] custom_error_response_policy: customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+               If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+               For example, consider a UrlMap with the following configuration:
+               UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
+               A PathRule for /coming_soon/ is configured for the error code 404.
+               If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+               customErrorResponsePolicy is supported only for global external Application Load Balancers.
+               Structure is documented below.
         :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionArgs'] route_action: In response to a matching path, the load balancer performs advanced routing
                actions like URL rewrites, header transformations, etc. prior to forwarding the
                request to the selected backend. If routeAction specifies any
@@ -47723,6 +48149,8 @@ class URLMapPathMatcherPathRuleArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "paths", paths)
+        if custom_error_response_policy is not None:
+            pulumi.set(__self__, "custom_error_response_policy", custom_error_response_policy)
         if route_action is not None:
             pulumi.set(__self__, "route_action", route_action)
         if service is not None:
@@ -47744,6 +48172,25 @@ class URLMapPathMatcherPathRuleArgs:
     @paths.setter
     def paths(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "paths", value)
+
+    @property
+    @pulumi.getter(name="customErrorResponsePolicy")
+    def custom_error_response_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs']]:
+        """
+        customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+        If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        For example, consider a UrlMap with the following configuration:
+        UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
+        A PathRule for /coming_soon/ is configured for the error code 404.
+        If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        customErrorResponsePolicy is supported only for global external Application Load Balancers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_error_response_policy")
+
+    @custom_error_response_policy.setter
+    def custom_error_response_policy(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs']]):
+        pulumi.set(self, "custom_error_response_policy", value)
 
     @property
     @pulumi.getter(name="routeAction")
@@ -47789,6 +48236,181 @@ class URLMapPathMatcherPathRuleArgs:
     @url_redirect.setter
     def url_redirect(self, value: Optional[pulumi.Input['URLMapPathMatcherPathRuleUrlRedirectArgs']]):
         pulumi.set(self, "url_redirect", value)
+
+
+if not MYPY:
+    class URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgsDict(TypedDict):
+        error_response_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgsDict']]]]
+        """
+        Specifies rules for returning error responses.
+        In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+        For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+        If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+        Structure is documented below.
+        """
+        error_service: NotRequired[pulumi.Input[str]]
+        """
+        The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+        https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        global/backendBuckets/myBackendBucket
+        If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+        If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+        """
+elif False:
+    URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs:
+    def __init__(__self__, *,
+                 error_response_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgs']]]] = None,
+                 error_service: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgs']]] error_response_rules: Specifies rules for returning error responses.
+               In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+               For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+               If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+               Structure is documented below.
+        :param pulumi.Input[str] error_service: The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+               https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+               compute/v1/projects/project/global/backendBuckets/myBackendBucket
+               global/backendBuckets/myBackendBucket
+               If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+               If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+        """
+        if error_response_rules is not None:
+            pulumi.set(__self__, "error_response_rules", error_response_rules)
+        if error_service is not None:
+            pulumi.set(__self__, "error_service", error_service)
+
+    @property
+    @pulumi.getter(name="errorResponseRules")
+    def error_response_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgs']]]]:
+        """
+        Specifies rules for returning error responses.
+        In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+        For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+        If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_response_rules")
+
+    @error_response_rules.setter
+    def error_response_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgs']]]]):
+        pulumi.set(self, "error_response_rules", value)
+
+    @property
+    @pulumi.getter(name="errorService")
+    def error_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+        https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        global/backendBuckets/myBackendBucket
+        If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+        If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+        """
+        return pulumi.get(self, "error_service")
+
+    @error_service.setter
+    def error_service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "error_service", value)
+
+
+if not MYPY:
+    class URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgsDict(TypedDict):
+        match_response_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Valid values include:
+        - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+        - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+        - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+        Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+        """
+        override_response_code: NotRequired[pulumi.Input[int]]
+        """
+        The HTTP status code returned with the response containing the custom error content.
+        If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        The full path to a file within backendBucket. For example: /errors/defaultError.html
+        path must start with a leading slash. path cannot have trailing slashes.
+        If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+        The value must be from 1 to 1024 characters.
+        """
+elif False:
+    URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgs:
+    def __init__(__self__, *,
+                 match_response_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 override_response_code: Optional[pulumi.Input[int]] = None,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] match_response_codes: Valid values include:
+               - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+               - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+               - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+               Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+        :param pulumi.Input[int] override_response_code: The HTTP status code returned with the response containing the custom error content.
+               If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+        :param pulumi.Input[str] path: The full path to a file within backendBucket. For example: /errors/defaultError.html
+               path must start with a leading slash. path cannot have trailing slashes.
+               If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+               The value must be from 1 to 1024 characters.
+        """
+        if match_response_codes is not None:
+            pulumi.set(__self__, "match_response_codes", match_response_codes)
+        if override_response_code is not None:
+            pulumi.set(__self__, "override_response_code", override_response_code)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="matchResponseCodes")
+    def match_response_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Valid values include:
+        - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+        - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+        - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+        Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+        """
+        return pulumi.get(self, "match_response_codes")
+
+    @match_response_codes.setter
+    def match_response_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "match_response_codes", value)
+
+    @property
+    @pulumi.getter(name="overrideResponseCode")
+    def override_response_code(self) -> Optional[pulumi.Input[int]]:
+        """
+        The HTTP status code returned with the response containing the custom error content.
+        If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+        """
+        return pulumi.get(self, "override_response_code")
+
+    @override_response_code.setter
+    def override_response_code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "override_response_code", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full path to a file within backendBucket. For example: /errors/defaultError.html
+        path must start with a leading slash. path cannot have trailing slashes.
+        If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+        The value must be from 1 to 1024 characters.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
 
 
 if not MYPY:

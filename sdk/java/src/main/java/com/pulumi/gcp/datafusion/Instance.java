@@ -145,6 +145,77 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Data Fusion Instance Psc
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.NetworkAttachment;
+ * import com.pulumi.gcp.compute.NetworkAttachmentArgs;
+ * import com.pulumi.gcp.datafusion.Instance;
+ * import com.pulumi.gcp.datafusion.InstanceArgs;
+ * import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigArgs;
+ * import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigPrivateServiceConnectConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var psc = new Network("psc", NetworkArgs.builder()
+ *             .name("datafusion-psc-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var pscSubnetwork = new Subnetwork("pscSubnetwork", SubnetworkArgs.builder()
+ *             .name("datafusion-psc-subnet")
+ *             .region("us-central1")
+ *             .network(psc.id())
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .build());
+ * 
+ *         var pscNetworkAttachment = new NetworkAttachment("pscNetworkAttachment", NetworkAttachmentArgs.builder()
+ *             .name("datafusion-psc-attachment")
+ *             .region("us-central1")
+ *             .connectionPreference("ACCEPT_AUTOMATIC")
+ *             .subnetworks(pscSubnetwork.selfLink())
+ *             .build());
+ * 
+ *         var pscInstance = new Instance("pscInstance", InstanceArgs.builder()
+ *             .name("psc-instance")
+ *             .region("us-central1")
+ *             .type("BASIC")
+ *             .privateInstance(true)
+ *             .networkConfig(InstanceNetworkConfigArgs.builder()
+ *                 .connectionType("PRIVATE_SERVICE_CONNECT_INTERFACES")
+ *                 .privateServiceConnectConfig(InstanceNetworkConfigPrivateServiceConnectConfigArgs.builder()
+ *                     .networkAttachment(pscNetworkAttachment.id())
+ *                     .unreachableCidrBlock("192.168.0.0/25")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Data Fusion Instance Cmek
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

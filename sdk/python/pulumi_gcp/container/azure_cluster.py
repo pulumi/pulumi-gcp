@@ -671,7 +671,7 @@ class AzureCluster(pulumi.CustomResource):
         An Anthos cluster running on Azure.
 
         For more information, see:
-        * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
+        * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
         ## Example Usage
 
         ### Basic_azure_cluster
@@ -829,7 +829,7 @@ class AzureCluster(pulumi.CustomResource):
         An Anthos cluster running on Azure.
 
         For more information, see:
-        * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
+        * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
         ## Example Usage
 
         ### Basic_azure_cluster

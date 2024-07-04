@@ -21,6 +21,19 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         [Input("content")]
         public Input<string>? Content { get; set; }
 
+        [Input("links")]
+        private InputList<Inputs.AlertPolicyDocumentationLinkGetArgs>? _links;
+
+        /// <summary>
+        /// Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AlertPolicyDocumentationLinkGetArgs> Links
+        {
+            get => _links ?? (_links = new InputList<Inputs.AlertPolicyDocumentationLinkGetArgs>());
+            set => _links = value;
+        }
+
         /// <summary>
         /// The format of the content field. Presently, only the value
         /// "text/markdown" is supported.

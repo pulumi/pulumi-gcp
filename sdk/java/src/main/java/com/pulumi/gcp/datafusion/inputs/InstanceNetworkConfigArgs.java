@@ -5,9 +5,11 @@ package com.pulumi.gcp.datafusion.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigPrivateServiceConnectConfigArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class InstanceNetworkConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,20 +17,41 @@ public final class InstanceNetworkConfigArgs extends com.pulumi.resources.Resour
     public static final InstanceNetworkConfigArgs Empty = new InstanceNetworkConfigArgs();
 
     /**
+     * Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and
+     * the corresponding tenant project from a predefined list of available connection modes.
+     * If this field is unspecified for a private instance, VPC peering is used.
+     * Possible values are: `VPC_PEERING`, `PRIVATE_SERVICE_CONNECT_INTERFACES`.
+     * 
+     */
+    @Import(name="connectionType")
+    private @Nullable Output<String> connectionType;
+
+    /**
+     * @return Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and
+     * the corresponding tenant project from a predefined list of available connection modes.
+     * If this field is unspecified for a private instance, VPC peering is used.
+     * Possible values are: `VPC_PEERING`, `PRIVATE_SERVICE_CONNECT_INTERFACES`.
+     * 
+     */
+    public Optional<Output<String>> connectionType() {
+        return Optional.ofNullable(this.connectionType);
+    }
+
+    /**
      * The IP range in CIDR notation to use for the managed Data Fusion instance
      * nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
      * 
      */
-    @Import(name="ipAllocation", required=true)
-    private Output<String> ipAllocation;
+    @Import(name="ipAllocation")
+    private @Nullable Output<String> ipAllocation;
 
     /**
      * @return The IP range in CIDR notation to use for the managed Data Fusion instance
      * nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
      * 
      */
-    public Output<String> ipAllocation() {
-        return this.ipAllocation;
+    public Optional<Output<String>> ipAllocation() {
+        return Optional.ofNullable(this.ipAllocation);
     }
 
     /**
@@ -37,8 +60,8 @@ public final class InstanceNetworkConfigArgs extends com.pulumi.resources.Resour
      * project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
      * 
      */
-    @Import(name="network", required=true)
-    private Output<String> network;
+    @Import(name="network")
+    private @Nullable Output<String> network;
 
     /**
      * @return Name of the network in the project with which the tenant project
@@ -46,15 +69,36 @@ public final class InstanceNetworkConfigArgs extends com.pulumi.resources.Resour
      * project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
      * 
      */
-    public Output<String> network() {
-        return this.network;
+    public Optional<Output<String>> network() {
+        return Optional.ofNullable(this.network);
+    }
+
+    /**
+     * Optional. Configuration for Private Service Connect.
+     * This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="privateServiceConnectConfig")
+    private @Nullable Output<InstanceNetworkConfigPrivateServiceConnectConfigArgs> privateServiceConnectConfig;
+
+    /**
+     * @return Optional. Configuration for Private Service Connect.
+     * This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceNetworkConfigPrivateServiceConnectConfigArgs>> privateServiceConnectConfig() {
+        return Optional.ofNullable(this.privateServiceConnectConfig);
     }
 
     private InstanceNetworkConfigArgs() {}
 
     private InstanceNetworkConfigArgs(InstanceNetworkConfigArgs $) {
+        this.connectionType = $.connectionType;
         this.ipAllocation = $.ipAllocation;
         this.network = $.network;
+        this.privateServiceConnectConfig = $.privateServiceConnectConfig;
     }
 
     public static Builder builder() {
@@ -76,13 +120,40 @@ public final class InstanceNetworkConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param connectionType Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and
+         * the corresponding tenant project from a predefined list of available connection modes.
+         * If this field is unspecified for a private instance, VPC peering is used.
+         * Possible values are: `VPC_PEERING`, `PRIVATE_SERVICE_CONNECT_INTERFACES`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionType(@Nullable Output<String> connectionType) {
+            $.connectionType = connectionType;
+            return this;
+        }
+
+        /**
+         * @param connectionType Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and
+         * the corresponding tenant project from a predefined list of available connection modes.
+         * If this field is unspecified for a private instance, VPC peering is used.
+         * Possible values are: `VPC_PEERING`, `PRIVATE_SERVICE_CONNECT_INTERFACES`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionType(String connectionType) {
+            return connectionType(Output.of(connectionType));
+        }
+
+        /**
          * @param ipAllocation The IP range in CIDR notation to use for the managed Data Fusion instance
          * nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
          * 
          * @return builder
          * 
          */
-        public Builder ipAllocation(Output<String> ipAllocation) {
+        public Builder ipAllocation(@Nullable Output<String> ipAllocation) {
             $.ipAllocation = ipAllocation;
             return this;
         }
@@ -106,7 +177,7 @@ public final class InstanceNetworkConfigArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder network(Output<String> network) {
+        public Builder network(@Nullable Output<String> network) {
             $.network = network;
             return this;
         }
@@ -123,13 +194,32 @@ public final class InstanceNetworkConfigArgs extends com.pulumi.resources.Resour
             return network(Output.of(network));
         }
 
+        /**
+         * @param privateServiceConnectConfig Optional. Configuration for Private Service Connect.
+         * This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateServiceConnectConfig(@Nullable Output<InstanceNetworkConfigPrivateServiceConnectConfigArgs> privateServiceConnectConfig) {
+            $.privateServiceConnectConfig = privateServiceConnectConfig;
+            return this;
+        }
+
+        /**
+         * @param privateServiceConnectConfig Optional. Configuration for Private Service Connect.
+         * This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateServiceConnectConfig(InstanceNetworkConfigPrivateServiceConnectConfigArgs privateServiceConnectConfig) {
+            return privateServiceConnectConfig(Output.of(privateServiceConnectConfig));
+        }
+
         public InstanceNetworkConfigArgs build() {
-            if ($.ipAllocation == null) {
-                throw new MissingRequiredPropertyException("InstanceNetworkConfigArgs", "ipAllocation");
-            }
-            if ($.network == null) {
-                throw new MissingRequiredPropertyException("InstanceNetworkConfigArgs", "network");
-            }
             return $;
         }
     }

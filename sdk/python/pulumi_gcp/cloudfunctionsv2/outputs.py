@@ -17,6 +17,8 @@ from . import outputs
 
 __all__ = [
     'FunctionBuildConfig',
+    'FunctionBuildConfigAutomaticUpdatePolicy',
+    'FunctionBuildConfigOnDeployUpdatePolicy',
     'FunctionBuildConfigSource',
     'FunctionBuildConfigSourceRepoSource',
     'FunctionBuildConfigSourceStorageSource',
@@ -29,6 +31,8 @@ __all__ = [
     'FunctionServiceConfigSecretVolume',
     'FunctionServiceConfigSecretVolumeVersion',
     'GetFunctionBuildConfigResult',
+    'GetFunctionBuildConfigAutomaticUpdatePolicyResult',
+    'GetFunctionBuildConfigOnDeployUpdatePolicyResult',
     'GetFunctionBuildConfigSourceResult',
     'GetFunctionBuildConfigSourceRepoSourceResult',
     'GetFunctionBuildConfigSourceStorageSourceResult',
@@ -45,12 +49,16 @@ class FunctionBuildConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "dockerRepository":
+        if key == "automaticUpdatePolicy":
+            suggest = "automatic_update_policy"
+        elif key == "dockerRepository":
             suggest = "docker_repository"
         elif key == "entryPoint":
             suggest = "entry_point"
         elif key == "environmentVariables":
             suggest = "environment_variables"
+        elif key == "onDeployUpdatePolicy":
+            suggest = "on_deploy_update_policy"
         elif key == "serviceAccount":
             suggest = "service_account"
         elif key == "workerPool":
@@ -68,15 +76,19 @@ class FunctionBuildConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 automatic_update_policy: Optional['outputs.FunctionBuildConfigAutomaticUpdatePolicy'] = None,
                  build: Optional[str] = None,
                  docker_repository: Optional[str] = None,
                  entry_point: Optional[str] = None,
                  environment_variables: Optional[Mapping[str, str]] = None,
+                 on_deploy_update_policy: Optional['outputs.FunctionBuildConfigOnDeployUpdatePolicy'] = None,
                  runtime: Optional[str] = None,
                  service_account: Optional[str] = None,
                  source: Optional['outputs.FunctionBuildConfigSource'] = None,
                  worker_pool: Optional[str] = None):
         """
+        :param 'FunctionBuildConfigAutomaticUpdatePolicyArgs' automatic_update_policy: Security patches are applied automatically to the runtime without requiring
+               the function to be redeployed.
         :param str build: (Output)
                The Cloud Build name of the latest successful
                deployment of the function.
@@ -87,6 +99,8 @@ class FunctionBuildConfig(dict):
                will try to use function named "function". For Node.js this is name of a
                function exported by the module specified in source_location.
         :param Mapping[str, str] environment_variables: User-provided build-time environment variables for the function.
+        :param 'FunctionBuildConfigOnDeployUpdatePolicyArgs' on_deploy_update_policy: Security patches are only applied when a function is redeployed.
+               Structure is documented below.
         :param str runtime: The runtime in which to run the function. Required when deploying a new
                function, optional when updating an existing function.
         :param str service_account: The fully-qualified name of the service account to be used for building the container.
@@ -94,6 +108,8 @@ class FunctionBuildConfig(dict):
                Structure is documented below.
         :param str worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         """
+        if automatic_update_policy is not None:
+            pulumi.set(__self__, "automatic_update_policy", automatic_update_policy)
         if build is not None:
             pulumi.set(__self__, "build", build)
         if docker_repository is not None:
@@ -102,6 +118,8 @@ class FunctionBuildConfig(dict):
             pulumi.set(__self__, "entry_point", entry_point)
         if environment_variables is not None:
             pulumi.set(__self__, "environment_variables", environment_variables)
+        if on_deploy_update_policy is not None:
+            pulumi.set(__self__, "on_deploy_update_policy", on_deploy_update_policy)
         if runtime is not None:
             pulumi.set(__self__, "runtime", runtime)
         if service_account is not None:
@@ -110,6 +128,15 @@ class FunctionBuildConfig(dict):
             pulumi.set(__self__, "source", source)
         if worker_pool is not None:
             pulumi.set(__self__, "worker_pool", worker_pool)
+
+    @property
+    @pulumi.getter(name="automaticUpdatePolicy")
+    def automatic_update_policy(self) -> Optional['outputs.FunctionBuildConfigAutomaticUpdatePolicy']:
+        """
+        Security patches are applied automatically to the runtime without requiring
+        the function to be redeployed.
+        """
+        return pulumi.get(self, "automatic_update_policy")
 
     @property
     @pulumi.getter
@@ -150,6 +177,15 @@ class FunctionBuildConfig(dict):
         return pulumi.get(self, "environment_variables")
 
     @property
+    @pulumi.getter(name="onDeployUpdatePolicy")
+    def on_deploy_update_policy(self) -> Optional['outputs.FunctionBuildConfigOnDeployUpdatePolicy']:
+        """
+        Security patches are only applied when a function is redeployed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "on_deploy_update_policy")
+
+    @property
     @pulumi.getter
     def runtime(self) -> Optional[str]:
         """
@@ -182,6 +218,50 @@ class FunctionBuildConfig(dict):
         Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         """
         return pulumi.get(self, "worker_pool")
+
+
+@pulumi.output_type
+class FunctionBuildConfigAutomaticUpdatePolicy(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class FunctionBuildConfigOnDeployUpdatePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "runtimeVersion":
+            suggest = "runtime_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionBuildConfigOnDeployUpdatePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionBuildConfigOnDeployUpdatePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionBuildConfigOnDeployUpdatePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 runtime_version: Optional[str] = None):
+        """
+        :param str runtime_version: (Output)
+               The runtime version which was used during latest function deployment.
+        """
+        if runtime_version is not None:
+            pulumi.set(__self__, "runtime_version", runtime_version)
+
+    @property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> Optional[str]:
+        """
+        (Output)
+        The runtime version which was used during latest function deployment.
+        """
+        return pulumi.get(self, "runtime_version")
 
 
 @pulumi.output_type
@@ -1107,15 +1187,19 @@ class FunctionServiceConfigSecretVolumeVersion(dict):
 @pulumi.output_type
 class GetFunctionBuildConfigResult(dict):
     def __init__(__self__, *,
+                 automatic_update_policies: Sequence['outputs.GetFunctionBuildConfigAutomaticUpdatePolicyResult'],
                  build: str,
                  docker_repository: str,
                  entry_point: str,
                  environment_variables: Mapping[str, str],
+                 on_deploy_update_policies: Sequence['outputs.GetFunctionBuildConfigOnDeployUpdatePolicyResult'],
                  runtime: str,
                  service_account: str,
                  sources: Sequence['outputs.GetFunctionBuildConfigSourceResult'],
                  worker_pool: str):
         """
+        :param Sequence['GetFunctionBuildConfigAutomaticUpdatePolicyArgs'] automatic_update_policies: Security patches are applied automatically to the runtime without requiring
+               the function to be redeployed.
         :param str build: The Cloud Build name of the latest successful
                deployment of the function.
         :param str docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key.
@@ -1125,20 +1209,32 @@ class GetFunctionBuildConfigResult(dict):
                will try to use function named "function". For Node.js this is name of a
                function exported by the module specified in source_location.
         :param Mapping[str, str] environment_variables: User-provided build-time environment variables for the function.
+        :param Sequence['GetFunctionBuildConfigOnDeployUpdatePolicyArgs'] on_deploy_update_policies: Security patches are only applied when a function is redeployed.
         :param str runtime: The runtime in which to run the function. Required when deploying a new
                function, optional when updating an existing function.
         :param str service_account: The fully-qualified name of the service account to be used for building the container.
         :param Sequence['GetFunctionBuildConfigSourceArgs'] sources: The location of the function source code.
         :param str worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         """
+        pulumi.set(__self__, "automatic_update_policies", automatic_update_policies)
         pulumi.set(__self__, "build", build)
         pulumi.set(__self__, "docker_repository", docker_repository)
         pulumi.set(__self__, "entry_point", entry_point)
         pulumi.set(__self__, "environment_variables", environment_variables)
+        pulumi.set(__self__, "on_deploy_update_policies", on_deploy_update_policies)
         pulumi.set(__self__, "runtime", runtime)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "sources", sources)
         pulumi.set(__self__, "worker_pool", worker_pool)
+
+    @property
+    @pulumi.getter(name="automaticUpdatePolicies")
+    def automatic_update_policies(self) -> Sequence['outputs.GetFunctionBuildConfigAutomaticUpdatePolicyResult']:
+        """
+        Security patches are applied automatically to the runtime without requiring
+        the function to be redeployed.
+        """
+        return pulumi.get(self, "automatic_update_policies")
 
     @property
     @pulumi.getter
@@ -1178,6 +1274,14 @@ class GetFunctionBuildConfigResult(dict):
         return pulumi.get(self, "environment_variables")
 
     @property
+    @pulumi.getter(name="onDeployUpdatePolicies")
+    def on_deploy_update_policies(self) -> Sequence['outputs.GetFunctionBuildConfigOnDeployUpdatePolicyResult']:
+        """
+        Security patches are only applied when a function is redeployed.
+        """
+        return pulumi.get(self, "on_deploy_update_policies")
+
+    @property
     @pulumi.getter
     def runtime(self) -> str:
         """
@@ -1209,6 +1313,30 @@ class GetFunctionBuildConfigResult(dict):
         Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         """
         return pulumi.get(self, "worker_pool")
+
+
+@pulumi.output_type
+class GetFunctionBuildConfigAutomaticUpdatePolicyResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetFunctionBuildConfigOnDeployUpdatePolicyResult(dict):
+    def __init__(__self__, *,
+                 runtime_version: str):
+        """
+        :param str runtime_version: The runtime version which was used during latest function deployment.
+        """
+        pulumi.set(__self__, "runtime_version", runtime_version)
+
+    @property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> str:
+        """
+        The runtime version which was used during latest function deployment.
+        """
+        return pulumi.get(self, "runtime_version")
 
 
 @pulumi.output_type

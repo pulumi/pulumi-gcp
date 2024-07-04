@@ -233,7 +233,7 @@ namespace Pulumi.Gcp.IdentityPlatform
         /// Structure is documented below.
         /// </summary>
         [Output("smsRegionConfig")]
-        public Output<Outputs.ConfigSmsRegionConfig?> SmsRegionConfig { get; private set; } = null!;
+        public Output<Outputs.ConfigSmsRegionConfig> SmsRegionConfig { get; private set; } = null!;
 
 
         /// <summary>

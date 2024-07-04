@@ -202,7 +202,7 @@ def get_docker_image(image_name: Optional[str] = None,
     :param str image_name: The image name to fetch. If no digest or tag is provided, then the latest modified image will be used.
     :param str location: The location of the artifact registry.
     :param str project: The project ID in which the resource belongs. If it is not provided, the provider project is used.
-    :param str repository_id: The last part of the repository name. to fetch from.
+    :param str repository_id: The last part of the repository name to fetch from.
     """
     __args__ = dict()
     __args__['imageName'] = image_name
@@ -244,6 +244,6 @@ def get_docker_image_output(image_name: Optional[pulumi.Input[str]] = None,
     :param str image_name: The image name to fetch. If no digest or tag is provided, then the latest modified image will be used.
     :param str location: The location of the artifact registry.
     :param str project: The project ID in which the resource belongs. If it is not provided, the provider project is used.
-    :param str repository_id: The last part of the repository name. to fetch from.
+    :param str repository_id: The last part of the repository name to fetch from.
     """
     ...

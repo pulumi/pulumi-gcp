@@ -140,7 +140,6 @@ public class SSLCertificate extends com.pulumi.resources.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     * 
      * These are in the same namespace as the managed SSL certificates.
      * 
      */
@@ -155,7 +154,6 @@ public class SSLCertificate extends com.pulumi.resources.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     * 
      * These are in the same namespace as the managed SSL certificates.
      * 
      */

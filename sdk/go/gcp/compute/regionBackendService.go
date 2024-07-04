@@ -601,21 +601,19 @@ type RegionBackendService struct {
 	//   instance either reported a valid weight or had
 	//   UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
 	//   equal-weight.
-	//
-	// This field is applicable to either:
+	//   This field is applicable to either:
 	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
 	//   and loadBalancingScheme set to INTERNAL_MANAGED.
 	// * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
 	//   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
 	//   Network Load Balancing. The default is MAGLEV.
-	//
-	// If sessionAffinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
-	// or RING_HASH, session affinity settings will not take effect.
-	// Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
-	// by a URL map that is bound to target gRPC proxy that has validateForProxyless
-	// field set to true.
-	// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
+	//   If sessionAffinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
+	//   or RING_HASH, session affinity settings will not take effect.
+	//   Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
+	//   by a URL map that is bound to target gRPC proxy that has validateForProxyless
+	//   field set to true.
+	//   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
 	LocalityLbPolicy pulumi.StringPtrOutput `pulumi:"localityLbPolicy"`
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
 	// If logging is enabled, logs will be exported to Stackdriver.
@@ -798,21 +796,19 @@ type regionBackendServiceState struct {
 	//   instance either reported a valid weight or had
 	//   UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
 	//   equal-weight.
-	//
-	// This field is applicable to either:
+	//   This field is applicable to either:
 	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
 	//   and loadBalancingScheme set to INTERNAL_MANAGED.
 	// * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
 	//   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
 	//   Network Load Balancing. The default is MAGLEV.
-	//
-	// If sessionAffinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
-	// or RING_HASH, session affinity settings will not take effect.
-	// Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
-	// by a URL map that is bound to target gRPC proxy that has validateForProxyless
-	// field set to true.
-	// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
+	//   If sessionAffinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
+	//   or RING_HASH, session affinity settings will not take effect.
+	//   Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
+	//   by a URL map that is bound to target gRPC proxy that has validateForProxyless
+	//   field set to true.
+	//   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
 	LocalityLbPolicy *string `pulumi:"localityLbPolicy"`
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
 	// If logging is enabled, logs will be exported to Stackdriver.
@@ -966,21 +962,19 @@ type RegionBackendServiceState struct {
 	//   instance either reported a valid weight or had
 	//   UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
 	//   equal-weight.
-	//
-	// This field is applicable to either:
+	//   This field is applicable to either:
 	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
 	//   and loadBalancingScheme set to INTERNAL_MANAGED.
 	// * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
 	//   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
 	//   Network Load Balancing. The default is MAGLEV.
-	//
-	// If sessionAffinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
-	// or RING_HASH, session affinity settings will not take effect.
-	// Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
-	// by a URL map that is bound to target gRPC proxy that has validateForProxyless
-	// field set to true.
-	// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
+	//   If sessionAffinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
+	//   or RING_HASH, session affinity settings will not take effect.
+	//   Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
+	//   by a URL map that is bound to target gRPC proxy that has validateForProxyless
+	//   field set to true.
+	//   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
 	LocalityLbPolicy pulumi.StringPtrInput
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
 	// If logging is enabled, logs will be exported to Stackdriver.
@@ -1131,21 +1125,19 @@ type regionBackendServiceArgs struct {
 	//   instance either reported a valid weight or had
 	//   UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
 	//   equal-weight.
-	//
-	// This field is applicable to either:
+	//   This field is applicable to either:
 	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
 	//   and loadBalancingScheme set to INTERNAL_MANAGED.
 	// * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
 	//   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
 	//   Network Load Balancing. The default is MAGLEV.
-	//
-	// If sessionAffinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
-	// or RING_HASH, session affinity settings will not take effect.
-	// Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
-	// by a URL map that is bound to target gRPC proxy that has validateForProxyless
-	// field set to true.
-	// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
+	//   If sessionAffinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
+	//   or RING_HASH, session affinity settings will not take effect.
+	//   Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
+	//   by a URL map that is bound to target gRPC proxy that has validateForProxyless
+	//   field set to true.
+	//   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
 	LocalityLbPolicy *string `pulumi:"localityLbPolicy"`
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
 	// If logging is enabled, logs will be exported to Stackdriver.
@@ -1291,21 +1283,19 @@ type RegionBackendServiceArgs struct {
 	//   instance either reported a valid weight or had
 	//   UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
 	//   equal-weight.
-	//
-	// This field is applicable to either:
+	//   This field is applicable to either:
 	// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
 	//   and loadBalancingScheme set to INTERNAL_MANAGED.
 	// * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
 	//   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
 	//   Network Load Balancing. The default is MAGLEV.
-	//
-	// If sessionAffinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
-	// or RING_HASH, session affinity settings will not take effect.
-	// Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
-	// by a URL map that is bound to target gRPC proxy that has validateForProxyless
-	// field set to true.
-	// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
+	//   If sessionAffinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
+	//   or RING_HASH, session affinity settings will not take effect.
+	//   Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
+	//   by a URL map that is bound to target gRPC proxy that has validateForProxyless
+	//   field set to true.
+	//   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
 	LocalityLbPolicy pulumi.StringPtrInput
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
 	// If logging is enabled, logs will be exported to Stackdriver.
@@ -1593,21 +1583,19 @@ func (o RegionBackendServiceOutput) LoadBalancingScheme() pulumi.StringPtrOutput
 //     instance either reported a valid weight or had
 //     UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
 //     equal-weight.
-//
-// This field is applicable to either:
+//     This field is applicable to either:
 //   - A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2,
 //     and loadBalancingScheme set to INTERNAL_MANAGED.
 //   - A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 //   - A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
 //     Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
 //     Network Load Balancing. The default is MAGLEV.
-//
-// If sessionAffinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
-// or RING_HASH, session affinity settings will not take effect.
-// Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
-// by a URL map that is bound to target gRPC proxy that has validateForProxyless
-// field set to true.
-// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
+//     If sessionAffinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
+//     or RING_HASH, session affinity settings will not take effect.
+//     Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
+//     by a URL map that is bound to target gRPC proxy that has validateForProxyless
+//     field set to true.
+//     Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`.
 func (o RegionBackendServiceOutput) LocalityLbPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringPtrOutput { return v.LocalityLbPolicy }).(pulumi.StringPtrOutput)
 }

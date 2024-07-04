@@ -20,12 +20,17 @@ from .get_bucket_object import *
 from .get_bucket_object_content import *
 from .get_bucket_objects import *
 from .get_buckets import *
+from .get_managed_folder_iam_policy import *
 from .get_object_signed_url import *
 from .get_project_service_account import *
 from .get_transfer_project_service_account import *
 from .get_transfer_project_servie_account import *
 from .hmac_key import *
 from .insights_report_config import *
+from .managed_folder import *
+from .managed_folder_iam_binding import *
+from .managed_folder_iam_member import *
+from .managed_folder_iam_policy import *
 from .notification import *
 from .object_access_control import *
 from .object_acl import *

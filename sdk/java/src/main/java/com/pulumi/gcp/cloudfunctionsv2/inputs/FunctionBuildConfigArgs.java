@@ -5,6 +5,8 @@ package com.pulumi.gcp.cloudfunctionsv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigAutomaticUpdatePolicyArgs;
+import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigOnDeployUpdatePolicyArgs;
 import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
 import java.lang.String;
 import java.util.Map;
@@ -16,6 +18,23 @@ import javax.annotation.Nullable;
 public final class FunctionBuildConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FunctionBuildConfigArgs Empty = new FunctionBuildConfigArgs();
+
+    /**
+     * Security patches are applied automatically to the runtime without requiring
+     * the function to be redeployed.
+     * 
+     */
+    @Import(name="automaticUpdatePolicy")
+    private @Nullable Output<FunctionBuildConfigAutomaticUpdatePolicyArgs> automaticUpdatePolicy;
+
+    /**
+     * @return Security patches are applied automatically to the runtime without requiring
+     * the function to be redeployed.
+     * 
+     */
+    public Optional<Output<FunctionBuildConfigAutomaticUpdatePolicyArgs>> automaticUpdatePolicy() {
+        return Optional.ofNullable(this.automaticUpdatePolicy);
+    }
 
     /**
      * (Output)
@@ -90,6 +109,23 @@ public final class FunctionBuildConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Security patches are only applied when a function is redeployed.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="onDeployUpdatePolicy")
+    private @Nullable Output<FunctionBuildConfigOnDeployUpdatePolicyArgs> onDeployUpdatePolicy;
+
+    /**
+     * @return Security patches are only applied when a function is redeployed.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FunctionBuildConfigOnDeployUpdatePolicyArgs>> onDeployUpdatePolicy() {
+        return Optional.ofNullable(this.onDeployUpdatePolicy);
+    }
+
+    /**
      * The runtime in which to run the function. Required when deploying a new
      * function, optional when updating an existing function.
      * 
@@ -156,10 +192,12 @@ public final class FunctionBuildConfigArgs extends com.pulumi.resources.Resource
     private FunctionBuildConfigArgs() {}
 
     private FunctionBuildConfigArgs(FunctionBuildConfigArgs $) {
+        this.automaticUpdatePolicy = $.automaticUpdatePolicy;
         this.build = $.build;
         this.dockerRepository = $.dockerRepository;
         this.entryPoint = $.entryPoint;
         this.environmentVariables = $.environmentVariables;
+        this.onDeployUpdatePolicy = $.onDeployUpdatePolicy;
         this.runtime = $.runtime;
         this.serviceAccount = $.serviceAccount;
         this.source = $.source;
@@ -182,6 +220,29 @@ public final class FunctionBuildConfigArgs extends com.pulumi.resources.Resource
 
         public Builder(FunctionBuildConfigArgs defaults) {
             $ = new FunctionBuildConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param automaticUpdatePolicy Security patches are applied automatically to the runtime without requiring
+         * the function to be redeployed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automaticUpdatePolicy(@Nullable Output<FunctionBuildConfigAutomaticUpdatePolicyArgs> automaticUpdatePolicy) {
+            $.automaticUpdatePolicy = automaticUpdatePolicy;
+            return this;
+        }
+
+        /**
+         * @param automaticUpdatePolicy Security patches are applied automatically to the runtime without requiring
+         * the function to be redeployed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automaticUpdatePolicy(FunctionBuildConfigAutomaticUpdatePolicyArgs automaticUpdatePolicy) {
+            return automaticUpdatePolicy(Output.of(automaticUpdatePolicy));
         }
 
         /**
@@ -278,6 +339,29 @@ public final class FunctionBuildConfigArgs extends com.pulumi.resources.Resource
          */
         public Builder environmentVariables(Map<String,String> environmentVariables) {
             return environmentVariables(Output.of(environmentVariables));
+        }
+
+        /**
+         * @param onDeployUpdatePolicy Security patches are only applied when a function is redeployed.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDeployUpdatePolicy(@Nullable Output<FunctionBuildConfigOnDeployUpdatePolicyArgs> onDeployUpdatePolicy) {
+            $.onDeployUpdatePolicy = onDeployUpdatePolicy;
+            return this;
+        }
+
+        /**
+         * @param onDeployUpdatePolicy Security patches are only applied when a function is redeployed.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDeployUpdatePolicy(FunctionBuildConfigOnDeployUpdatePolicyArgs onDeployUpdatePolicy) {
+            return onDeployUpdatePolicy(Output.of(onDeployUpdatePolicy));
         }
 
         /**

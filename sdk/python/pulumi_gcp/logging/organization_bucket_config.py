@@ -527,7 +527,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="indexConfigs")
-    def index_configs(self) -> pulumi.Output[Optional[Sequence['outputs.OrganizationBucketConfigIndexConfig']]]:
+    def index_configs(self) -> pulumi.Output[Sequence['outputs.OrganizationBucketConfigIndexConfig']]:
         """
         A list of indexed fields and related configuration data. Structure is documented below.
         """

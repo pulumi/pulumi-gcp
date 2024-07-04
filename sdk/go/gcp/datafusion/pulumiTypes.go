@@ -419,13 +419,22 @@ func (o InstanceEventPublishConfigPtrOutput) Topic() pulumi.StringPtrOutput {
 }
 
 type InstanceNetworkConfig struct {
+	// Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and
+	// the corresponding tenant project from a predefined list of available connection modes.
+	// If this field is unspecified for a private instance, VPC peering is used.
+	// Possible values are: `VPC_PEERING`, `PRIVATE_SERVICE_CONNECT_INTERFACES`.
+	ConnectionType *string `pulumi:"connectionType"`
 	// The IP range in CIDR notation to use for the managed Data Fusion instance
 	// nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
-	IpAllocation string `pulumi:"ipAllocation"`
+	IpAllocation *string `pulumi:"ipAllocation"`
 	// Name of the network in the project with which the tenant project
 	// will be peered for executing pipelines. In case of shared VPC where the network resides in another host
 	// project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
-	Network string `pulumi:"network"`
+	Network *string `pulumi:"network"`
+	// Optional. Configuration for Private Service Connect.
+	// This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+	// Structure is documented below.
+	PrivateServiceConnectConfig *InstanceNetworkConfigPrivateServiceConnectConfig `pulumi:"privateServiceConnectConfig"`
 }
 
 // InstanceNetworkConfigInput is an input type that accepts InstanceNetworkConfigArgs and InstanceNetworkConfigOutput values.
@@ -440,13 +449,22 @@ type InstanceNetworkConfigInput interface {
 }
 
 type InstanceNetworkConfigArgs struct {
+	// Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and
+	// the corresponding tenant project from a predefined list of available connection modes.
+	// If this field is unspecified for a private instance, VPC peering is used.
+	// Possible values are: `VPC_PEERING`, `PRIVATE_SERVICE_CONNECT_INTERFACES`.
+	ConnectionType pulumi.StringPtrInput `pulumi:"connectionType"`
 	// The IP range in CIDR notation to use for the managed Data Fusion instance
 	// nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
-	IpAllocation pulumi.StringInput `pulumi:"ipAllocation"`
+	IpAllocation pulumi.StringPtrInput `pulumi:"ipAllocation"`
 	// Name of the network in the project with which the tenant project
 	// will be peered for executing pipelines. In case of shared VPC where the network resides in another host
 	// project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
-	Network pulumi.StringInput `pulumi:"network"`
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Optional. Configuration for Private Service Connect.
+	// This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+	// Structure is documented below.
+	PrivateServiceConnectConfig InstanceNetworkConfigPrivateServiceConnectConfigPtrInput `pulumi:"privateServiceConnectConfig"`
 }
 
 func (InstanceNetworkConfigArgs) ElementType() reflect.Type {
@@ -526,17 +544,34 @@ func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigPtrOutputWithContext
 	}).(InstanceNetworkConfigPtrOutput)
 }
 
+// Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and
+// the corresponding tenant project from a predefined list of available connection modes.
+// If this field is unspecified for a private instance, VPC peering is used.
+// Possible values are: `VPC_PEERING`, `PRIVATE_SERVICE_CONNECT_INTERFACES`.
+func (o InstanceNetworkConfigOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkConfig) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
+}
+
 // The IP range in CIDR notation to use for the managed Data Fusion instance
 // nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
-func (o InstanceNetworkConfigOutput) IpAllocation() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceNetworkConfig) string { return v.IpAllocation }).(pulumi.StringOutput)
+func (o InstanceNetworkConfigOutput) IpAllocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkConfig) *string { return v.IpAllocation }).(pulumi.StringPtrOutput)
 }
 
 // Name of the network in the project with which the tenant project
 // will be peered for executing pipelines. In case of shared VPC where the network resides in another host
 // project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
-func (o InstanceNetworkConfigOutput) Network() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceNetworkConfig) string { return v.Network }).(pulumi.StringOutput)
+func (o InstanceNetworkConfigOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Configuration for Private Service Connect.
+// This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+// Structure is documented below.
+func (o InstanceNetworkConfigOutput) PrivateServiceConnectConfig() InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkConfig) *InstanceNetworkConfigPrivateServiceConnectConfig {
+		return v.PrivateServiceConnectConfig
+	}).(InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput)
 }
 
 type InstanceNetworkConfigPtrOutput struct{ *pulumi.OutputState }
@@ -563,6 +598,19 @@ func (o InstanceNetworkConfigPtrOutput) Elem() InstanceNetworkConfigOutput {
 	}).(InstanceNetworkConfigOutput)
 }
 
+// Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and
+// the corresponding tenant project from a predefined list of available connection modes.
+// If this field is unspecified for a private instance, VPC peering is used.
+// Possible values are: `VPC_PEERING`, `PRIVATE_SERVICE_CONNECT_INTERFACES`.
+func (o InstanceNetworkConfigPtrOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionType
+	}).(pulumi.StringPtrOutput)
+}
+
 // The IP range in CIDR notation to use for the managed Data Fusion instance
 // nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
 func (o InstanceNetworkConfigPtrOutput) IpAllocation() pulumi.StringPtrOutput {
@@ -570,7 +618,7 @@ func (o InstanceNetworkConfigPtrOutput) IpAllocation() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.IpAllocation
+		return v.IpAllocation
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -582,7 +630,224 @@ func (o InstanceNetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Network
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Configuration for Private Service Connect.
+// This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+// Structure is documented below.
+func (o InstanceNetworkConfigPtrOutput) PrivateServiceConnectConfig() InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfig) *InstanceNetworkConfigPrivateServiceConnectConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateServiceConnectConfig
+	}).(InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput)
+}
+
+type InstanceNetworkConfigPrivateServiceConnectConfig struct {
+	// (Output)
+	// Output only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
+	// The size of this block is /25. The format of this field is governed by RFC 4632.
+	EffectiveUnreachableCidrBlock *string `pulumi:"effectiveUnreachableCidrBlock"`
+	// Optional. The reference to the network attachment used to establish private connectivity.
+	// It will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
+	// This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+	NetworkAttachment *string `pulumi:"networkAttachment"`
+	// Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
+	// The size of this block should be at least /25. This range should not overlap with the primary address range of any subnetwork used by the network attachment.
+	// This range can be used for other purposes in the consumer VPC as long as there is no requirement for CDF to reach destinations using these addresses.
+	// If this value is not provided, the server chooses a non RFC 1918 address range. The format of this field is governed by RFC 4632.
+	UnreachableCidrBlock *string `pulumi:"unreachableCidrBlock"`
+}
+
+// InstanceNetworkConfigPrivateServiceConnectConfigInput is an input type that accepts InstanceNetworkConfigPrivateServiceConnectConfigArgs and InstanceNetworkConfigPrivateServiceConnectConfigOutput values.
+// You can construct a concrete instance of `InstanceNetworkConfigPrivateServiceConnectConfigInput` via:
+//
+//	InstanceNetworkConfigPrivateServiceConnectConfigArgs{...}
+type InstanceNetworkConfigPrivateServiceConnectConfigInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkConfigPrivateServiceConnectConfigOutput() InstanceNetworkConfigPrivateServiceConnectConfigOutput
+	ToInstanceNetworkConfigPrivateServiceConnectConfigOutputWithContext(context.Context) InstanceNetworkConfigPrivateServiceConnectConfigOutput
+}
+
+type InstanceNetworkConfigPrivateServiceConnectConfigArgs struct {
+	// (Output)
+	// Output only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
+	// The size of this block is /25. The format of this field is governed by RFC 4632.
+	EffectiveUnreachableCidrBlock pulumi.StringPtrInput `pulumi:"effectiveUnreachableCidrBlock"`
+	// Optional. The reference to the network attachment used to establish private connectivity.
+	// It will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
+	// This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+	NetworkAttachment pulumi.StringPtrInput `pulumi:"networkAttachment"`
+	// Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
+	// The size of this block should be at least /25. This range should not overlap with the primary address range of any subnetwork used by the network attachment.
+	// This range can be used for other purposes in the consumer VPC as long as there is no requirement for CDF to reach destinations using these addresses.
+	// If this value is not provided, the server chooses a non RFC 1918 address range. The format of this field is governed by RFC 4632.
+	UnreachableCidrBlock pulumi.StringPtrInput `pulumi:"unreachableCidrBlock"`
+}
+
+func (InstanceNetworkConfigPrivateServiceConnectConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkConfigPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (i InstanceNetworkConfigPrivateServiceConnectConfigArgs) ToInstanceNetworkConfigPrivateServiceConnectConfigOutput() InstanceNetworkConfigPrivateServiceConnectConfigOutput {
+	return i.ToInstanceNetworkConfigPrivateServiceConnectConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkConfigPrivateServiceConnectConfigArgs) ToInstanceNetworkConfigPrivateServiceConnectConfigOutputWithContext(ctx context.Context) InstanceNetworkConfigPrivateServiceConnectConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkConfigPrivateServiceConnectConfigOutput)
+}
+
+func (i InstanceNetworkConfigPrivateServiceConnectConfigArgs) ToInstanceNetworkConfigPrivateServiceConnectConfigPtrOutput() InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput {
+	return i.ToInstanceNetworkConfigPrivateServiceConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkConfigPrivateServiceConnectConfigArgs) ToInstanceNetworkConfigPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkConfigPrivateServiceConnectConfigOutput).ToInstanceNetworkConfigPrivateServiceConnectConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceNetworkConfigPrivateServiceConnectConfigPtrInput is an input type that accepts InstanceNetworkConfigPrivateServiceConnectConfigArgs, InstanceNetworkConfigPrivateServiceConnectConfigPtr and InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceNetworkConfigPrivateServiceConnectConfigPtrInput` via:
+//
+//	        InstanceNetworkConfigPrivateServiceConnectConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceNetworkConfigPrivateServiceConnectConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkConfigPrivateServiceConnectConfigPtrOutput() InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput
+	ToInstanceNetworkConfigPrivateServiceConnectConfigPtrOutputWithContext(context.Context) InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput
+}
+
+type instanceNetworkConfigPrivateServiceConnectConfigPtrType InstanceNetworkConfigPrivateServiceConnectConfigArgs
+
+func InstanceNetworkConfigPrivateServiceConnectConfigPtr(v *InstanceNetworkConfigPrivateServiceConnectConfigArgs) InstanceNetworkConfigPrivateServiceConnectConfigPtrInput {
+	return (*instanceNetworkConfigPrivateServiceConnectConfigPtrType)(v)
+}
+
+func (*instanceNetworkConfigPrivateServiceConnectConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkConfigPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (i *instanceNetworkConfigPrivateServiceConnectConfigPtrType) ToInstanceNetworkConfigPrivateServiceConnectConfigPtrOutput() InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput {
+	return i.ToInstanceNetworkConfigPrivateServiceConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceNetworkConfigPrivateServiceConnectConfigPtrType) ToInstanceNetworkConfigPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput)
+}
+
+type InstanceNetworkConfigPrivateServiceConnectConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkConfigPrivateServiceConnectConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkConfigPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (o InstanceNetworkConfigPrivateServiceConnectConfigOutput) ToInstanceNetworkConfigPrivateServiceConnectConfigOutput() InstanceNetworkConfigPrivateServiceConnectConfigOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigPrivateServiceConnectConfigOutput) ToInstanceNetworkConfigPrivateServiceConnectConfigOutputWithContext(ctx context.Context) InstanceNetworkConfigPrivateServiceConnectConfigOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigPrivateServiceConnectConfigOutput) ToInstanceNetworkConfigPrivateServiceConnectConfigPtrOutput() InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput {
+	return o.ToInstanceNetworkConfigPrivateServiceConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceNetworkConfigPrivateServiceConnectConfigOutput) ToInstanceNetworkConfigPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNetworkConfigPrivateServiceConnectConfig) *InstanceNetworkConfigPrivateServiceConnectConfig {
+		return &v
+	}).(InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput)
+}
+
+// (Output)
+// Output only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
+// The size of this block is /25. The format of this field is governed by RFC 4632.
+func (o InstanceNetworkConfigPrivateServiceConnectConfigOutput) EffectiveUnreachableCidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkConfigPrivateServiceConnectConfig) *string {
+		return v.EffectiveUnreachableCidrBlock
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The reference to the network attachment used to establish private connectivity.
+// It will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
+// This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+func (o InstanceNetworkConfigPrivateServiceConnectConfigOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkConfigPrivateServiceConnectConfig) *string { return v.NetworkAttachment }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
+// The size of this block should be at least /25. This range should not overlap with the primary address range of any subnetwork used by the network attachment.
+// This range can be used for other purposes in the consumer VPC as long as there is no requirement for CDF to reach destinations using these addresses.
+// If this value is not provided, the server chooses a non RFC 1918 address range. The format of this field is governed by RFC 4632.
+func (o InstanceNetworkConfigPrivateServiceConnectConfigOutput) UnreachableCidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkConfigPrivateServiceConnectConfig) *string { return v.UnreachableCidrBlock }).(pulumi.StringPtrOutput)
+}
+
+type InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkConfigPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (o InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput) ToInstanceNetworkConfigPrivateServiceConnectConfigPtrOutput() InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput) ToInstanceNetworkConfigPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput) Elem() InstanceNetworkConfigPrivateServiceConnectConfigOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfigPrivateServiceConnectConfig) InstanceNetworkConfigPrivateServiceConnectConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceNetworkConfigPrivateServiceConnectConfig
+		return ret
+	}).(InstanceNetworkConfigPrivateServiceConnectConfigOutput)
+}
+
+// (Output)
+// Output only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
+// The size of this block is /25. The format of this field is governed by RFC 4632.
+func (o InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput) EffectiveUnreachableCidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfigPrivateServiceConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EffectiveUnreachableCidrBlock
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The reference to the network attachment used to establish private connectivity.
+// It will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
+// This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+func (o InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfigPrivateServiceConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
+// The size of this block should be at least /25. This range should not overlap with the primary address range of any subnetwork used by the network attachment.
+// This range can be used for other purposes in the consumer VPC as long as there is no requirement for CDF to reach destinations using these addresses.
+// If this value is not provided, the server chooses a non RFC 1918 address range. The format of this field is governed by RFC 4632.
+func (o InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput) UnreachableCidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfigPrivateServiceConnectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UnreachableCidrBlock
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -595,6 +860,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEventPublishConfigPtrInput)(nil)).Elem(), InstanceEventPublishConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigPtrInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigPrivateServiceConnectConfigInput)(nil)).Elem(), InstanceNetworkConfigPrivateServiceConnectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigPrivateServiceConnectConfigPtrInput)(nil)).Elem(), InstanceNetworkConfigPrivateServiceConnectConfigArgs{})
 	pulumi.RegisterOutputType(InstanceAcceleratorOutput{})
 	pulumi.RegisterOutputType(InstanceAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(InstanceCryptoKeyConfigOutput{})
@@ -603,4 +870,6 @@ func init() {
 	pulumi.RegisterOutputType(InstanceEventPublishConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkConfigOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkConfigPrivateServiceConnectConfigOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkConfigPrivateServiceConnectConfigPtrOutput{})
 }

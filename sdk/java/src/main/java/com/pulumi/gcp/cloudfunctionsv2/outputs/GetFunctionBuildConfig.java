@@ -5,6 +5,8 @@ package com.pulumi.gcp.cloudfunctionsv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.cloudfunctionsv2.outputs.GetFunctionBuildConfigAutomaticUpdatePolicy;
+import com.pulumi.gcp.cloudfunctionsv2.outputs.GetFunctionBuildConfigOnDeployUpdatePolicy;
 import com.pulumi.gcp.cloudfunctionsv2.outputs.GetFunctionBuildConfigSource;
 import java.lang.String;
 import java.util.List;
@@ -13,6 +15,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionBuildConfig {
+    /**
+     * @return Security patches are applied automatically to the runtime without requiring
+     * the function to be redeployed.
+     * 
+     */
+    private List<GetFunctionBuildConfigAutomaticUpdatePolicy> automaticUpdatePolicies;
     /**
      * @return The Cloud Build name of the latest successful
      * deployment of the function.
@@ -39,6 +47,11 @@ public final class GetFunctionBuildConfig {
      */
     private Map<String,String> environmentVariables;
     /**
+     * @return Security patches are only applied when a function is redeployed.
+     * 
+     */
+    private List<GetFunctionBuildConfigOnDeployUpdatePolicy> onDeployUpdatePolicies;
+    /**
      * @return The runtime in which to run the function. Required when deploying a new
      * function, optional when updating an existing function.
      * 
@@ -61,6 +74,14 @@ public final class GetFunctionBuildConfig {
     private String workerPool;
 
     private GetFunctionBuildConfig() {}
+    /**
+     * @return Security patches are applied automatically to the runtime without requiring
+     * the function to be redeployed.
+     * 
+     */
+    public List<GetFunctionBuildConfigAutomaticUpdatePolicy> automaticUpdatePolicies() {
+        return this.automaticUpdatePolicies;
+    }
     /**
      * @return The Cloud Build name of the latest successful
      * deployment of the function.
@@ -93,6 +114,13 @@ public final class GetFunctionBuildConfig {
      */
     public Map<String,String> environmentVariables() {
         return this.environmentVariables;
+    }
+    /**
+     * @return Security patches are only applied when a function is redeployed.
+     * 
+     */
+    public List<GetFunctionBuildConfigOnDeployUpdatePolicy> onDeployUpdatePolicies() {
+        return this.onDeployUpdatePolicies;
     }
     /**
      * @return The runtime in which to run the function. Required when deploying a new
@@ -133,10 +161,12 @@ public final class GetFunctionBuildConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetFunctionBuildConfigAutomaticUpdatePolicy> automaticUpdatePolicies;
         private String build;
         private String dockerRepository;
         private String entryPoint;
         private Map<String,String> environmentVariables;
+        private List<GetFunctionBuildConfigOnDeployUpdatePolicy> onDeployUpdatePolicies;
         private String runtime;
         private String serviceAccount;
         private List<GetFunctionBuildConfigSource> sources;
@@ -144,16 +174,29 @@ public final class GetFunctionBuildConfig {
         public Builder() {}
         public Builder(GetFunctionBuildConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.automaticUpdatePolicies = defaults.automaticUpdatePolicies;
     	      this.build = defaults.build;
     	      this.dockerRepository = defaults.dockerRepository;
     	      this.entryPoint = defaults.entryPoint;
     	      this.environmentVariables = defaults.environmentVariables;
+    	      this.onDeployUpdatePolicies = defaults.onDeployUpdatePolicies;
     	      this.runtime = defaults.runtime;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.sources = defaults.sources;
     	      this.workerPool = defaults.workerPool;
         }
 
+        @CustomType.Setter
+        public Builder automaticUpdatePolicies(List<GetFunctionBuildConfigAutomaticUpdatePolicy> automaticUpdatePolicies) {
+            if (automaticUpdatePolicies == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfig", "automaticUpdatePolicies");
+            }
+            this.automaticUpdatePolicies = automaticUpdatePolicies;
+            return this;
+        }
+        public Builder automaticUpdatePolicies(GetFunctionBuildConfigAutomaticUpdatePolicy... automaticUpdatePolicies) {
+            return automaticUpdatePolicies(List.of(automaticUpdatePolicies));
+        }
         @CustomType.Setter
         public Builder build(String build) {
             if (build == null) {
@@ -185,6 +228,17 @@ public final class GetFunctionBuildConfig {
             }
             this.environmentVariables = environmentVariables;
             return this;
+        }
+        @CustomType.Setter
+        public Builder onDeployUpdatePolicies(List<GetFunctionBuildConfigOnDeployUpdatePolicy> onDeployUpdatePolicies) {
+            if (onDeployUpdatePolicies == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfig", "onDeployUpdatePolicies");
+            }
+            this.onDeployUpdatePolicies = onDeployUpdatePolicies;
+            return this;
+        }
+        public Builder onDeployUpdatePolicies(GetFunctionBuildConfigOnDeployUpdatePolicy... onDeployUpdatePolicies) {
+            return onDeployUpdatePolicies(List.of(onDeployUpdatePolicies));
         }
         @CustomType.Setter
         public Builder runtime(String runtime) {
@@ -223,10 +277,12 @@ public final class GetFunctionBuildConfig {
         }
         public GetFunctionBuildConfig build() {
             final var _resultValue = new GetFunctionBuildConfig();
+            _resultValue.automaticUpdatePolicies = automaticUpdatePolicies;
             _resultValue.build = build;
             _resultValue.dockerRepository = dockerRepository;
             _resultValue.entryPoint = entryPoint;
             _resultValue.environmentVariables = environmentVariables;
+            _resultValue.onDeployUpdatePolicies = onDeployUpdatePolicies;
             _resultValue.runtime = runtime;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.sources = sources;
