@@ -464,7 +464,8 @@ func Provider() tfbridge.ProviderInfo {
 				switch s {
 				case "google_datastream_connection_profile",
 					"google_firestore_backup_schedule",
-					"google_cloud_run_service":
+					"google_cloud_run_service",
+					"google_cloud_run_domain_mapping":
 					return true
 				default:
 					return false
