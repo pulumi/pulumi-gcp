@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Vertex.Inputs
         private InputList<string>? _entityIdColumns;
 
         /// <summary>
-        /// Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+        /// Columns to construct entityId / row keys. If not provided defaults to entityId.
         /// </summary>
         public InputList<string> EntityIdColumns
         {

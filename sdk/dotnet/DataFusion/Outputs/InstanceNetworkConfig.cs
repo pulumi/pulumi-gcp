@@ -14,25 +14,44 @@ namespace Pulumi.Gcp.DataFusion.Outputs
     public sealed class InstanceNetworkConfig
     {
         /// <summary>
+        /// Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and
+        /// the corresponding tenant project from a predefined list of available connection modes.
+        /// If this field is unspecified for a private instance, VPC peering is used.
+        /// Possible values are: `VPC_PEERING`, `PRIVATE_SERVICE_CONNECT_INTERFACES`.
+        /// </summary>
+        public readonly string? ConnectionType;
+        /// <summary>
         /// The IP range in CIDR notation to use for the managed Data Fusion instance
         /// nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
         /// </summary>
-        public readonly string IpAllocation;
+        public readonly string? IpAllocation;
         /// <summary>
         /// Name of the network in the project with which the tenant project
         /// will be peered for executing pipelines. In case of shared VPC where the network resides in another host
         /// project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
         /// </summary>
-        public readonly string Network;
+        public readonly string? Network;
+        /// <summary>
+        /// Optional. Configuration for Private Service Connect.
+        /// This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.InstanceNetworkConfigPrivateServiceConnectConfig? PrivateServiceConnectConfig;
 
         [OutputConstructor]
         private InstanceNetworkConfig(
-            string ipAllocation,
+            string? connectionType,
 
-            string network)
+            string? ipAllocation,
+
+            string? network,
+
+            Outputs.InstanceNetworkConfigPrivateServiceConnectConfig? privateServiceConnectConfig)
         {
+            ConnectionType = connectionType;
             IpAllocation = ipAllocation;
             Network = network;
+            PrivateServiceConnectConfig = privateServiceConnectConfig;
         }
     }
 }

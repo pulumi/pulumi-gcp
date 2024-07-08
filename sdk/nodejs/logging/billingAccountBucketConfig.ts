@@ -93,7 +93,7 @@ export class BillingAccountBucketConfig extends pulumi.CustomResource {
     /**
      * A list of indexed fields and related configuration data. Structure is documented below.
      */
-    public readonly indexConfigs!: pulumi.Output<outputs.logging.BillingAccountBucketConfigIndexConfig[] | undefined>;
+    public readonly indexConfigs!: pulumi.Output<outputs.logging.BillingAccountBucketConfigIndexConfig[]>;
     /**
      * The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
      */

@@ -4328,6 +4328,9 @@ type AlertPolicyDocumentation struct {
 	// exceed more than 10,240 bytes when encoded in UTF-8 format,
 	// whichever is smaller.
 	Content *string `pulumi:"content"`
+	// Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+	// Structure is documented below.
+	Links []AlertPolicyDocumentationLink `pulumi:"links"`
 	// The format of the content field. Presently, only the value
 	// "text/markdown" is supported.
 	MimeType *string `pulumi:"mimeType"`
@@ -4355,6 +4358,9 @@ type AlertPolicyDocumentationArgs struct {
 	// exceed more than 10,240 bytes when encoded in UTF-8 format,
 	// whichever is smaller.
 	Content pulumi.StringPtrInput `pulumi:"content"`
+	// Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+	// Structure is documented below.
+	Links AlertPolicyDocumentationLinkArrayInput `pulumi:"links"`
 	// The format of the content field. Presently, only the value
 	// "text/markdown" is supported.
 	MimeType pulumi.StringPtrInput `pulumi:"mimeType"`
@@ -4450,6 +4456,12 @@ func (o AlertPolicyDocumentationOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyDocumentation) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
+// Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+// Structure is documented below.
+func (o AlertPolicyDocumentationOutput) Links() AlertPolicyDocumentationLinkArrayOutput {
+	return o.ApplyT(func(v AlertPolicyDocumentation) []AlertPolicyDocumentationLink { return v.Links }).(AlertPolicyDocumentationLinkArrayOutput)
+}
+
 // The format of the content field. Presently, only the value
 // "text/markdown" is supported.
 func (o AlertPolicyDocumentationOutput) MimeType() pulumi.StringPtrOutput {
@@ -4501,6 +4513,17 @@ func (o AlertPolicyDocumentationPtrOutput) Content() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+// Structure is documented below.
+func (o AlertPolicyDocumentationPtrOutput) Links() AlertPolicyDocumentationLinkArrayOutput {
+	return o.ApplyT(func(v *AlertPolicyDocumentation) []AlertPolicyDocumentationLink {
+		if v == nil {
+			return nil
+		}
+		return v.Links
+	}).(AlertPolicyDocumentationLinkArrayOutput)
+}
+
 // The format of the content field. Presently, only the value
 // "text/markdown" is supported.
 func (o AlertPolicyDocumentationPtrOutput) MimeType() pulumi.StringPtrOutput {
@@ -4523,6 +4546,112 @@ func (o AlertPolicyDocumentationPtrOutput) Subject() pulumi.StringPtrOutput {
 		}
 		return v.Subject
 	}).(pulumi.StringPtrOutput)
+}
+
+type AlertPolicyDocumentationLink struct {
+	// A short display name for the link. The display name must not be empty or exceed 63 characters. Example: "playbook".
+	DisplayName *string `pulumi:"displayName"`
+	// The url of a webpage. A url can be templatized by using variables in the path or the query parameters. The total length of a URL should not exceed 2083 characters before and after variable expansion. Example: "https://my_domain.com/playbook?name=${resource.name}".
+	Url *string `pulumi:"url"`
+}
+
+// AlertPolicyDocumentationLinkInput is an input type that accepts AlertPolicyDocumentationLinkArgs and AlertPolicyDocumentationLinkOutput values.
+// You can construct a concrete instance of `AlertPolicyDocumentationLinkInput` via:
+//
+//	AlertPolicyDocumentationLinkArgs{...}
+type AlertPolicyDocumentationLinkInput interface {
+	pulumi.Input
+
+	ToAlertPolicyDocumentationLinkOutput() AlertPolicyDocumentationLinkOutput
+	ToAlertPolicyDocumentationLinkOutputWithContext(context.Context) AlertPolicyDocumentationLinkOutput
+}
+
+type AlertPolicyDocumentationLinkArgs struct {
+	// A short display name for the link. The display name must not be empty or exceed 63 characters. Example: "playbook".
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The url of a webpage. A url can be templatized by using variables in the path or the query parameters. The total length of a URL should not exceed 2083 characters before and after variable expansion. Example: "https://my_domain.com/playbook?name=${resource.name}".
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (AlertPolicyDocumentationLinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyDocumentationLink)(nil)).Elem()
+}
+
+func (i AlertPolicyDocumentationLinkArgs) ToAlertPolicyDocumentationLinkOutput() AlertPolicyDocumentationLinkOutput {
+	return i.ToAlertPolicyDocumentationLinkOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyDocumentationLinkArgs) ToAlertPolicyDocumentationLinkOutputWithContext(ctx context.Context) AlertPolicyDocumentationLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyDocumentationLinkOutput)
+}
+
+// AlertPolicyDocumentationLinkArrayInput is an input type that accepts AlertPolicyDocumentationLinkArray and AlertPolicyDocumentationLinkArrayOutput values.
+// You can construct a concrete instance of `AlertPolicyDocumentationLinkArrayInput` via:
+//
+//	AlertPolicyDocumentationLinkArray{ AlertPolicyDocumentationLinkArgs{...} }
+type AlertPolicyDocumentationLinkArrayInput interface {
+	pulumi.Input
+
+	ToAlertPolicyDocumentationLinkArrayOutput() AlertPolicyDocumentationLinkArrayOutput
+	ToAlertPolicyDocumentationLinkArrayOutputWithContext(context.Context) AlertPolicyDocumentationLinkArrayOutput
+}
+
+type AlertPolicyDocumentationLinkArray []AlertPolicyDocumentationLinkInput
+
+func (AlertPolicyDocumentationLinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertPolicyDocumentationLink)(nil)).Elem()
+}
+
+func (i AlertPolicyDocumentationLinkArray) ToAlertPolicyDocumentationLinkArrayOutput() AlertPolicyDocumentationLinkArrayOutput {
+	return i.ToAlertPolicyDocumentationLinkArrayOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyDocumentationLinkArray) ToAlertPolicyDocumentationLinkArrayOutputWithContext(ctx context.Context) AlertPolicyDocumentationLinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyDocumentationLinkArrayOutput)
+}
+
+type AlertPolicyDocumentationLinkOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyDocumentationLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyDocumentationLink)(nil)).Elem()
+}
+
+func (o AlertPolicyDocumentationLinkOutput) ToAlertPolicyDocumentationLinkOutput() AlertPolicyDocumentationLinkOutput {
+	return o
+}
+
+func (o AlertPolicyDocumentationLinkOutput) ToAlertPolicyDocumentationLinkOutputWithContext(ctx context.Context) AlertPolicyDocumentationLinkOutput {
+	return o
+}
+
+// A short display name for the link. The display name must not be empty or exceed 63 characters. Example: "playbook".
+func (o AlertPolicyDocumentationLinkOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertPolicyDocumentationLink) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The url of a webpage. A url can be templatized by using variables in the path or the query parameters. The total length of a URL should not exceed 2083 characters before and after variable expansion. Example: "https://my_domain.com/playbook?name=${resource.name}".
+func (o AlertPolicyDocumentationLinkOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertPolicyDocumentationLink) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type AlertPolicyDocumentationLinkArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyDocumentationLinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertPolicyDocumentationLink)(nil)).Elem()
+}
+
+func (o AlertPolicyDocumentationLinkArrayOutput) ToAlertPolicyDocumentationLinkArrayOutput() AlertPolicyDocumentationLinkArrayOutput {
+	return o
+}
+
+func (o AlertPolicyDocumentationLinkArrayOutput) ToAlertPolicyDocumentationLinkArrayOutputWithContext(ctx context.Context) AlertPolicyDocumentationLinkArrayOutput {
+	return o
+}
+
+func (o AlertPolicyDocumentationLinkArrayOutput) Index(i pulumi.IntInput) AlertPolicyDocumentationLinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertPolicyDocumentationLink {
+		return vs[0].([]AlertPolicyDocumentationLink)[vs[1].(int)]
+	}).(AlertPolicyDocumentationLinkOutput)
 }
 
 type CustomServiceTelemetry struct {
@@ -12256,6 +12385,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyCreationRecordArrayInput)(nil)).Elem(), AlertPolicyCreationRecordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyDocumentationInput)(nil)).Elem(), AlertPolicyDocumentationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyDocumentationPtrInput)(nil)).Elem(), AlertPolicyDocumentationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyDocumentationLinkInput)(nil)).Elem(), AlertPolicyDocumentationLinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyDocumentationLinkArrayInput)(nil)).Elem(), AlertPolicyDocumentationLinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomServiceTelemetryInput)(nil)).Elem(), CustomServiceTelemetryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomServiceTelemetryPtrInput)(nil)).Elem(), CustomServiceTelemetryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GenericServiceBasicServiceInput)(nil)).Elem(), GenericServiceBasicServiceArgs{})
@@ -12382,6 +12513,8 @@ func init() {
 	pulumi.RegisterOutputType(AlertPolicyCreationRecordArrayOutput{})
 	pulumi.RegisterOutputType(AlertPolicyDocumentationOutput{})
 	pulumi.RegisterOutputType(AlertPolicyDocumentationPtrOutput{})
+	pulumi.RegisterOutputType(AlertPolicyDocumentationLinkOutput{})
+	pulumi.RegisterOutputType(AlertPolicyDocumentationLinkArrayOutput{})
 	pulumi.RegisterOutputType(CustomServiceTelemetryOutput{})
 	pulumi.RegisterOutputType(CustomServiceTelemetryPtrOutput{})
 	pulumi.RegisterOutputType(GenericServiceBasicServiceOutput{})

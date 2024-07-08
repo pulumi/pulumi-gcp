@@ -30,7 +30,8 @@ class TargetHttpsProxyArgs:
                  quic_override: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 ssl_policy: Optional[pulumi.Input[str]] = None):
+                 ssl_policy: Optional[pulumi.Input[str]] = None,
+                 tls_early_data: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TargetHttpsProxy resource.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
@@ -86,6 +87,11 @@ class TargetHttpsProxyArgs:
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
                the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
                resource will not have any SSL policy configured.
+        :param pulumi.Input[str] tls_early_data: Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+               Early Data allows a TLS resumption handshake to include the initial application payload
+               (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+               This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+               Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
         """
         pulumi.set(__self__, "url_map", url_map)
         if certificate_manager_certificates is not None:
@@ -110,6 +116,8 @@ class TargetHttpsProxyArgs:
             pulumi.set(__self__, "ssl_certificates", ssl_certificates)
         if ssl_policy is not None:
             pulumi.set(__self__, "ssl_policy", ssl_policy)
+        if tls_early_data is not None:
+            pulumi.set(__self__, "tls_early_data", tls_early_data)
 
     @property
     @pulumi.getter(name="urlMap")
@@ -296,6 +304,22 @@ class TargetHttpsProxyArgs:
     def ssl_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ssl_policy", value)
 
+    @property
+    @pulumi.getter(name="tlsEarlyData")
+    def tls_early_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+        Early Data allows a TLS resumption handshake to include the initial application payload
+        (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+        This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+        Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+        """
+        return pulumi.get(self, "tls_early_data")
+
+    @tls_early_data.setter
+    def tls_early_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tls_early_data", value)
+
 
 @pulumi.input_type
 class _TargetHttpsProxyState:
@@ -314,6 +338,7 @@ class _TargetHttpsProxyState:
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
+                 tls_early_data: Optional[pulumi.Input[str]] = None,
                  url_map: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TargetHttpsProxy resources.
@@ -368,6 +393,11 @@ class _TargetHttpsProxyState:
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
                the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
                resource will not have any SSL policy configured.
+        :param pulumi.Input[str] tls_early_data: Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+               Early Data allows a TLS resumption handshake to include the initial application payload
+               (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+               This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+               Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
                
@@ -402,6 +432,8 @@ class _TargetHttpsProxyState:
             pulumi.set(__self__, "ssl_certificates", ssl_certificates)
         if ssl_policy is not None:
             pulumi.set(__self__, "ssl_policy", ssl_policy)
+        if tls_early_data is not None:
+            pulumi.set(__self__, "tls_early_data", tls_early_data)
         if url_map is not None:
             pulumi.set(__self__, "url_map", url_map)
 
@@ -611,6 +643,22 @@ class _TargetHttpsProxyState:
         pulumi.set(self, "ssl_policy", value)
 
     @property
+    @pulumi.getter(name="tlsEarlyData")
+    def tls_early_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+        Early Data allows a TLS resumption handshake to include the initial application payload
+        (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+        This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+        Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+        """
+        return pulumi.get(self, "tls_early_data")
+
+    @tls_early_data.setter
+    def tls_early_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tls_early_data", value)
+
+    @property
     @pulumi.getter(name="urlMap")
     def url_map(self) -> Optional[pulumi.Input[str]]:
         """
@@ -643,6 +691,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
+                 tls_early_data: Optional[pulumi.Input[str]] = None,
                  url_map: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -930,6 +979,11 @@ class TargetHttpsProxy(pulumi.CustomResource):
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
                the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
                resource will not have any SSL policy configured.
+        :param pulumi.Input[str] tls_early_data: Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+               Early Data allows a TLS resumption handshake to include the initial application payload
+               (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+               This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+               Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
                
@@ -1203,6 +1257,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
+                 tls_early_data: Optional[pulumi.Input[str]] = None,
                  url_map: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1224,6 +1279,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             __props__.__dict__["server_tls_policy"] = server_tls_policy
             __props__.__dict__["ssl_certificates"] = ssl_certificates
             __props__.__dict__["ssl_policy"] = ssl_policy
+            __props__.__dict__["tls_early_data"] = tls_early_data
             if url_map is None and not opts.urn:
                 raise TypeError("Missing required property 'url_map'")
             __props__.__dict__["url_map"] = url_map
@@ -1254,6 +1310,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             server_tls_policy: Optional[pulumi.Input[str]] = None,
             ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ssl_policy: Optional[pulumi.Input[str]] = None,
+            tls_early_data: Optional[pulumi.Input[str]] = None,
             url_map: Optional[pulumi.Input[str]] = None) -> 'TargetHttpsProxy':
         """
         Get an existing TargetHttpsProxy resource's state with the given name, id, and optional extra
@@ -1313,6 +1370,11 @@ class TargetHttpsProxy(pulumi.CustomResource):
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
                the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
                resource will not have any SSL policy configured.
+        :param pulumi.Input[str] tls_early_data: Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+               Early Data allows a TLS resumption handshake to include the initial application payload
+               (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+               This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+               Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
                
@@ -1337,6 +1399,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
         __props__.__dict__["server_tls_policy"] = server_tls_policy
         __props__.__dict__["ssl_certificates"] = ssl_certificates
         __props__.__dict__["ssl_policy"] = ssl_policy
+        __props__.__dict__["tls_early_data"] = tls_early_data
         __props__.__dict__["url_map"] = url_map
         return TargetHttpsProxy(resource_name, opts=opts, __props__=__props__)
 
@@ -1488,6 +1551,18 @@ class TargetHttpsProxy(pulumi.CustomResource):
         resource will not have any SSL policy configured.
         """
         return pulumi.get(self, "ssl_policy")
+
+    @property
+    @pulumi.getter(name="tlsEarlyData")
+    def tls_early_data(self) -> pulumi.Output[str]:
+        """
+        Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+        Early Data allows a TLS resumption handshake to include the initial application payload
+        (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+        This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+        Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+        """
+        return pulumi.get(self, "tls_early_data")
 
     @property
     @pulumi.getter(name="urlMap")

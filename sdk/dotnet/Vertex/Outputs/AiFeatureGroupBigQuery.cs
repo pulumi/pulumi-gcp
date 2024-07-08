@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly Outputs.AiFeatureGroupBigQueryBigQuerySource BigQuerySource;
         /// <summary>
-        /// Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+        /// Columns to construct entityId / row keys. If not provided defaults to entityId.
         /// </summary>
         public readonly ImmutableArray<string> EntityIdColumns;
 

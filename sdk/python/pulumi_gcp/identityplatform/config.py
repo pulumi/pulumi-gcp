@@ -918,7 +918,7 @@ class Config(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="smsRegionConfig")
-    def sms_region_config(self) -> pulumi.Output[Optional['outputs.ConfigSmsRegionConfig']]:
+    def sms_region_config(self) -> pulumi.Output['outputs.ConfigSmsRegionConfig']:
         """
         Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
         Structure is documented below.

@@ -34,7 +34,7 @@ class AiFeatureOnlineStoreArgs:
         The set of arguments for constructing a AiFeatureOnlineStore resource.
         :param pulumi.Input['AiFeatureOnlineStoreBigtableArgs'] bigtable: Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
                Structure is documented below.
-        :param pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs'] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+        :param pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs'] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
                Structure is documented below.
         :param pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs'] embedding_management: The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
                Structure is documented below.
@@ -92,7 +92,7 @@ class AiFeatureOnlineStoreArgs:
     @pulumi.getter(name="dedicatedServingEndpoint")
     def dedicated_serving_endpoint(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs']]:
         """
-        The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+        The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
         Structure is documented below.
         """
         return pulumi.get(self, "dedicated_serving_endpoint")
@@ -219,7 +219,7 @@ class _AiFeatureOnlineStoreState:
         :param pulumi.Input['AiFeatureOnlineStoreBigtableArgs'] bigtable: Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The timestamp of when the feature online store was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs'] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+        :param pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs'] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs'] embedding_management: The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
@@ -307,7 +307,7 @@ class _AiFeatureOnlineStoreState:
     @pulumi.getter(name="dedicatedServingEndpoint")
     def dedicated_serving_endpoint(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs']]:
         """
-        The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+        The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
         Structure is documented below.
         """
         return pulumi.get(self, "dedicated_serving_endpoint")
@@ -518,7 +518,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 },
             })
         ```
-        ### Vertex Ai Featureonlinestore With Beta Fields Optimized
+        ### Vertex Ai Featureonlinestore With Optimized
 
         ```python
         import pulumi
@@ -599,7 +599,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']] bigtable: Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
                Structure is documented below.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
                Structure is documented below.
         :param pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']] embedding_management: The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
                Structure is documented below.
@@ -655,7 +655,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 },
             })
         ```
-        ### Vertex Ai Featureonlinestore With Beta Fields Optimized
+        ### Vertex Ai Featureonlinestore With Optimized
 
         ```python
         import pulumi
@@ -817,7 +817,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
         :param pulumi.Input[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']] bigtable: Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The timestamp of when the feature online store was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']] dedicated_serving_endpoint: The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']] embedding_management: The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
@@ -884,7 +884,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
     @pulumi.getter(name="dedicatedServingEndpoint")
     def dedicated_serving_endpoint(self) -> pulumi.Output['outputs.AiFeatureOnlineStoreDedicatedServingEndpoint']:
         """
-        The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+        The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
         Structure is documented below.
         """
         return pulumi.get(self, "dedicated_serving_endpoint")

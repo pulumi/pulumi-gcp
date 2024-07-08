@@ -6,6 +6,7 @@ package com.pulumi.gcp.healthcare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.healthcare.inputs.DatasetEncryptionSpecArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +16,23 @@ import javax.annotation.Nullable;
 public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DatasetArgs Empty = new DatasetArgs();
+
+    /**
+     * A nested object resource
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionSpec")
+    private @Nullable Output<DatasetEncryptionSpecArgs> encryptionSpec;
+
+    /**
+     * @return A nested object resource
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DatasetEncryptionSpecArgs>> encryptionSpec() {
+        return Optional.ofNullable(this.encryptionSpec);
+    }
 
     /**
      * The location for the Dataset.
@@ -89,6 +107,7 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
     private DatasetArgs() {}
 
     private DatasetArgs(DatasetArgs $) {
+        this.encryptionSpec = $.encryptionSpec;
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
@@ -111,6 +130,29 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DatasetArgs defaults) {
             $ = new DatasetArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param encryptionSpec A nested object resource
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(@Nullable Output<DatasetEncryptionSpecArgs> encryptionSpec) {
+            $.encryptionSpec = encryptionSpec;
+            return this;
+        }
+
+        /**
+         * @param encryptionSpec A nested object resource
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(DatasetEncryptionSpecArgs encryptionSpec) {
+            return encryptionSpec(Output.of(encryptionSpec));
         }
 
         /**

@@ -539,7 +539,7 @@ class FolderBucketConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="indexConfigs")
-    def index_configs(self) -> pulumi.Output[Optional[Sequence['outputs.FolderBucketConfigIndexConfig']]]:
+    def index_configs(self) -> pulumi.Output[Sequence['outputs.FolderBucketConfigIndexConfig']]:
         """
         A list of indexed fields and related configuration data. Structure is documented below.
         """

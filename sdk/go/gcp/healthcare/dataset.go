@@ -49,6 +49,71 @@ import (
 //	}
 //
 // ```
+// ### Healthcare Dataset Cmek
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("example-keyring"),
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("example-key"),
+//				KeyRing: keyRing.ID(),
+//				Purpose: pulumi.String("ENCRYPT_DECRYPT"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			healthcareCmekKeyuser, err := kms.NewCryptoKeyIAMBinding(ctx, "healthcare_cmek_keyuser", &kms.CryptoKeyIAMBindingArgs{
+//				CryptoKeyId: cryptoKey.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Members: pulumi.StringArray{
+//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-healthcare.iam.gserviceaccount.com", project.Number)),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = healthcare.NewDataset(ctx, "default", &healthcare.DatasetArgs{
+//				Name:     pulumi.String("example-dataset"),
+//				Location: pulumi.String("us-central1"),
+//				TimeZone: pulumi.String("UTC"),
+//				EncryptionSpec: &healthcare.DatasetEncryptionSpecArgs{
+//					KmsKeyName: cryptoKey.ID(),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				healthcareCmekKeyuser,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -76,6 +141,9 @@ import (
 type Dataset struct {
 	pulumi.CustomResourceState
 
+	// A nested object resource
+	// Structure is documented below.
+	EncryptionSpec DatasetEncryptionSpecOutput `pulumi:"encryptionSpec"`
 	// The location for the Dataset.
 	//
 	// ***
@@ -126,6 +194,9 @@ func GetDataset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Dataset resources.
 type datasetState struct {
+	// A nested object resource
+	// Structure is documented below.
+	EncryptionSpec *DatasetEncryptionSpec `pulumi:"encryptionSpec"`
 	// The location for the Dataset.
 	//
 	// ***
@@ -144,6 +215,9 @@ type datasetState struct {
 }
 
 type DatasetState struct {
+	// A nested object resource
+	// Structure is documented below.
+	EncryptionSpec DatasetEncryptionSpecPtrInput
 	// The location for the Dataset.
 	//
 	// ***
@@ -166,6 +240,9 @@ func (DatasetState) ElementType() reflect.Type {
 }
 
 type datasetArgs struct {
+	// A nested object resource
+	// Structure is documented below.
+	EncryptionSpec *DatasetEncryptionSpec `pulumi:"encryptionSpec"`
 	// The location for the Dataset.
 	//
 	// ***
@@ -183,6 +260,9 @@ type datasetArgs struct {
 
 // The set of arguments for constructing a Dataset resource.
 type DatasetArgs struct {
+	// A nested object resource
+	// Structure is documented below.
+	EncryptionSpec DatasetEncryptionSpecPtrInput
 	// The location for the Dataset.
 	//
 	// ***
@@ -283,6 +363,12 @@ func (o DatasetOutput) ToDatasetOutput() DatasetOutput {
 
 func (o DatasetOutput) ToDatasetOutputWithContext(ctx context.Context) DatasetOutput {
 	return o
+}
+
+// A nested object resource
+// Structure is documented below.
+func (o DatasetOutput) EncryptionSpec() DatasetEncryptionSpecOutput {
+	return o.ApplyT(func(v *Dataset) DatasetEncryptionSpecOutput { return v.EncryptionSpec }).(DatasetEncryptionSpecOutput)
 }
 
 // The location for the Dataset.

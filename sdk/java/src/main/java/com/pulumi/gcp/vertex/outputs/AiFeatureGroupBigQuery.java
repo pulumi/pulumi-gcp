@@ -20,7 +20,7 @@ public final class AiFeatureGroupBigQuery {
      */
     private AiFeatureGroupBigQueryBigQuerySource bigQuerySource;
     /**
-     * @return Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+     * @return Columns to construct entityId / row keys. If not provided defaults to entityId.
      * 
      */
     private @Nullable List<String> entityIdColumns;
@@ -35,7 +35,7 @@ public final class AiFeatureGroupBigQuery {
         return this.bigQuerySource;
     }
     /**
-     * @return Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+     * @return Columns to construct entityId / row keys. If not provided defaults to entityId.
      * 
      */
     public List<String> entityIdColumns() {

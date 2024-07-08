@@ -12,6 +12,7 @@ import com.pulumi.gcp.bigtable.GCPolicyArgs;
 import com.pulumi.gcp.bigtable.inputs.GCPolicyState;
 import com.pulumi.gcp.bigtable.outputs.GCPolicyMaxAge;
 import com.pulumi.gcp.bigtable.outputs.GCPolicyMaxVersion;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -262,8 +263,6 @@ public class GCPolicy extends com.pulumi.resources.CustomResource {
      * 
      * Possible values are: `ABANDON`.
      * 
-     * ***
-     * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionPolicy;
@@ -273,8 +272,6 @@ public class GCPolicy extends com.pulumi.resources.CustomResource {
      * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
      * 
      * Possible values are: `ABANDON`.
-     * 
-     * ***
      * 
      */
     public Output<Optional<String>> deletionPolicy() {
@@ -293,6 +290,26 @@ public class GCPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> gcRules() {
         return Codegen.optional(this.gcRules);
+    }
+    /**
+     * Boolean for whether to allow ignoring warnings when updating the gc policy.
+     * Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
+     * you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
+     * ---
+     * 
+     */
+    @Export(name="ignoreWarnings", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> ignoreWarnings;
+
+    /**
+     * @return Boolean for whether to allow ignoring warnings when updating the gc policy.
+     * Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
+     * you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
+     * ---
+     * 
+     */
+    public Output<Optional<Boolean>> ignoreWarnings() {
+        return Codegen.optional(this.ignoreWarnings);
     }
     /**
      * The name of the Bigtable instance.

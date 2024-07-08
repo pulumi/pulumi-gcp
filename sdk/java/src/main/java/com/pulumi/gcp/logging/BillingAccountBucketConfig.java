@@ -154,14 +154,14 @@ public class BillingAccountBucketConfig extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="indexConfigs", refs={List.class,BillingAccountBucketConfigIndexConfig.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<BillingAccountBucketConfigIndexConfig>> indexConfigs;
+    private Output<List<BillingAccountBucketConfigIndexConfig>> indexConfigs;
 
     /**
      * @return A list of indexed fields and related configuration data. Structure is documented below.
      * 
      */
-    public Output<Optional<List<BillingAccountBucketConfigIndexConfig>>> indexConfigs() {
-        return Codegen.optional(this.indexConfigs);
+    public Output<List<BillingAccountBucketConfigIndexConfig>> indexConfigs() {
+        return this.indexConfigs;
     }
     /**
      * The bucket&#39;s lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).

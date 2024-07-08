@@ -1117,6 +1117,198 @@ import (
 //	}
 //
 // ```
+// ### Cloudfunctions2 Abiu
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudfunctionsv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project := "my-project-name"
+//			account, err := serviceaccount.NewAccount(ctx, "account", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("gcf-sa"),
+//				DisplayName: pulumi.String("Test Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			topic, err := pubsub.NewTopic(ctx, "topic", &pubsub.TopicArgs{
+//				Name: pulumi.String("functions2-topic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String(fmt.Sprintf("%v-gcf-source", project)),
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("function-source.zip"),
+//				Bucket: bucket.Name,
+//				Source: pulumi.NewFileAsset("function-source.zip"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudfunctionsv2.NewFunction(ctx, "function", &cloudfunctionsv2.FunctionArgs{
+//				Name:        pulumi.String("gcf-function"),
+//				Location:    pulumi.String("europe-west6"),
+//				Description: pulumi.String("a new function"),
+//				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
+//					Runtime:    pulumi.String("nodejs16"),
+//					EntryPoint: pulumi.String("helloPubSub"),
+//					EnvironmentVariables: pulumi.StringMap{
+//						"BUILD_CONFIG_TEST": pulumi.String("build_test"),
+//					},
+//					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
+//						StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
+//							Bucket: bucket.Name,
+//							Object: object.Name,
+//						},
+//					},
+//					AutomaticUpdatePolicy: nil,
+//				},
+//				ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
+//					MaxInstanceCount:              pulumi.Int(3),
+//					MinInstanceCount:              pulumi.Int(1),
+//					AvailableMemory:               pulumi.String("4Gi"),
+//					TimeoutSeconds:                pulumi.Int(60),
+//					MaxInstanceRequestConcurrency: pulumi.Int(80),
+//					AvailableCpu:                  pulumi.String("4"),
+//					EnvironmentVariables: pulumi.StringMap{
+//						"SERVICE_CONFIG_TEST": pulumi.String("config_test"),
+//					},
+//					IngressSettings:            pulumi.String("ALLOW_INTERNAL_ONLY"),
+//					AllTrafficOnLatestRevision: pulumi.Bool(true),
+//					ServiceAccountEmail:        account.Email,
+//				},
+//				EventTrigger: &cloudfunctionsv2.FunctionEventTriggerArgs{
+//					TriggerRegion: pulumi.String("us-central1"),
+//					EventType:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
+//					PubsubTopic:   topic.ID(),
+//					RetryPolicy:   pulumi.String("RETRY_POLICY_RETRY"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudfunctions2 Abiu On Deploy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudfunctionsv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project := "my-project-name"
+//			account, err := serviceaccount.NewAccount(ctx, "account", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("gcf-sa"),
+//				DisplayName: pulumi.String("Test Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			topic, err := pubsub.NewTopic(ctx, "topic", &pubsub.TopicArgs{
+//				Name: pulumi.String("functions2-topic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String(fmt.Sprintf("%v-gcf-source", project)),
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("function-source.zip"),
+//				Bucket: bucket.Name,
+//				Source: pulumi.NewFileAsset("function-source.zip"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudfunctionsv2.NewFunction(ctx, "function", &cloudfunctionsv2.FunctionArgs{
+//				Name:        pulumi.String("gcf-function"),
+//				Location:    pulumi.String("europe-west6"),
+//				Description: pulumi.String("a new function"),
+//				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
+//					Runtime:    pulumi.String("nodejs16"),
+//					EntryPoint: pulumi.String("helloPubSub"),
+//					EnvironmentVariables: pulumi.StringMap{
+//						"BUILD_CONFIG_TEST": pulumi.String("build_test"),
+//					},
+//					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
+//						StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
+//							Bucket: bucket.Name,
+//							Object: object.Name,
+//						},
+//					},
+//					OnDeployUpdatePolicy: nil,
+//				},
+//				ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
+//					MaxInstanceCount:              pulumi.Int(3),
+//					MinInstanceCount:              pulumi.Int(1),
+//					AvailableMemory:               pulumi.String("4Gi"),
+//					TimeoutSeconds:                pulumi.Int(60),
+//					MaxInstanceRequestConcurrency: pulumi.Int(80),
+//					AvailableCpu:                  pulumi.String("4"),
+//					EnvironmentVariables: pulumi.StringMap{
+//						"SERVICE_CONFIG_TEST": pulumi.String("config_test"),
+//					},
+//					IngressSettings:            pulumi.String("ALLOW_INTERNAL_ONLY"),
+//					AllTrafficOnLatestRevision: pulumi.Bool(true),
+//					ServiceAccountEmail:        account.Email,
+//				},
+//				EventTrigger: &cloudfunctionsv2.FunctionEventTriggerArgs{
+//					TriggerRegion: pulumi.String("us-central1"),
+//					EventType:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
+//					PubsubTopic:   topic.ID(),
+//					RetryPolicy:   pulumi.String("RETRY_POLICY_RETRY"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

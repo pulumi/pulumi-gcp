@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.bigtable.inputs.GCPolicyMaxAgeArgs;
 import com.pulumi.gcp.bigtable.inputs.GCPolicyMaxVersionArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -39,8 +40,6 @@ public final class GCPolicyState extends com.pulumi.resources.ResourceArgs {
      * 
      * Possible values are: `ABANDON`.
      * 
-     * ***
-     * 
      */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
@@ -50,8 +49,6 @@ public final class GCPolicyState extends com.pulumi.resources.ResourceArgs {
      * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
      * 
      * Possible values are: `ABANDON`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -71,6 +68,27 @@ public final class GCPolicyState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> gcRules() {
         return Optional.ofNullable(this.gcRules);
+    }
+
+    /**
+     * Boolean for whether to allow ignoring warnings when updating the gc policy.
+     * Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
+     * you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
+     * ---
+     * 
+     */
+    @Import(name="ignoreWarnings")
+    private @Nullable Output<Boolean> ignoreWarnings;
+
+    /**
+     * @return Boolean for whether to allow ignoring warnings when updating the gc policy.
+     * Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
+     * you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
+     * ---
+     * 
+     */
+    public Optional<Output<Boolean>> ignoreWarnings() {
+        return Optional.ofNullable(this.ignoreWarnings);
     }
 
     /**
@@ -169,6 +187,7 @@ public final class GCPolicyState extends com.pulumi.resources.ResourceArgs {
         this.columnFamily = $.columnFamily;
         this.deletionPolicy = $.deletionPolicy;
         this.gcRules = $.gcRules;
+        this.ignoreWarnings = $.ignoreWarnings;
         this.instanceName = $.instanceName;
         this.maxAge = $.maxAge;
         this.maxVersions = $.maxVersions;
@@ -222,8 +241,6 @@ public final class GCPolicyState extends com.pulumi.resources.ResourceArgs {
          * 
          * Possible values are: `ABANDON`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -237,8 +254,6 @@ public final class GCPolicyState extends com.pulumi.resources.ResourceArgs {
          * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
          * 
          * Possible values are: `ABANDON`.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -266,6 +281,33 @@ public final class GCPolicyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder gcRules(String gcRules) {
             return gcRules(Output.of(gcRules));
+        }
+
+        /**
+         * @param ignoreWarnings Boolean for whether to allow ignoring warnings when updating the gc policy.
+         * Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
+         * you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
+         * ---
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreWarnings(@Nullable Output<Boolean> ignoreWarnings) {
+            $.ignoreWarnings = ignoreWarnings;
+            return this;
+        }
+
+        /**
+         * @param ignoreWarnings Boolean for whether to allow ignoring warnings when updating the gc policy.
+         * Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
+         * you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
+         * ---
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreWarnings(Boolean ignoreWarnings) {
+            return ignoreWarnings(Output.of(ignoreWarnings));
         }
 
         /**

@@ -1057,6 +1057,144 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Url Map Custom Error Response Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         RequestPath = "/",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///     });
+    /// 
+    ///     var example = new Gcp.Compute.BackendService("example", new()
+    ///     {
+    ///         Name = "login",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         HealthChecks = @default.Id,
+    ///     });
+    /// 
+    ///     var errorBucket = new Gcp.Storage.Bucket("error", new()
+    ///     {
+    ///         Name = "static-asset-bucket",
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var error = new Gcp.Compute.BackendBucket("error", new()
+    ///     {
+    ///         Name = "error-backend-bucket",
+    ///         BucketName = errorBucket.Name,
+    ///         EnableCdn = true,
+    ///     });
+    /// 
+    ///     var urlmap = new Gcp.Compute.URLMap("urlmap", new()
+    ///     {
+    ///         Name = "urlmap",
+    ///         Description = "a description",
+    ///         DefaultService = example.Id,
+    ///         DefaultCustomErrorResponsePolicy = new Gcp.Compute.Inputs.URLMapDefaultCustomErrorResponsePolicyArgs
+    ///         {
+    ///             ErrorResponseRules = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgs
+    ///                 {
+    ///                     MatchResponseCodes = new[]
+    ///                     {
+    ///                         "5xx",
+    ///                     },
+    ///                     Path = "/*",
+    ///                     OverrideResponseCode = 502,
+    ///                 },
+    ///             },
+    ///             ErrorService = error.Id,
+    ///         },
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "mysite",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///             {
+    ///                 Name = "mysite",
+    ///                 DefaultService = example.Id,
+    ///                 DefaultCustomErrorResponsePolicy = new Gcp.Compute.Inputs.URLMapPathMatcherDefaultCustomErrorResponsePolicyArgs
+    ///                 {
+    ///                     ErrorResponseRules = new[]
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRuleArgs
+    ///                         {
+    ///                             MatchResponseCodes = new[]
+    ///                             {
+    ///                                 "4xx",
+    ///                                 "5xx",
+    ///                             },
+    ///                             Path = "/login",
+    ///                             OverrideResponseCode = 404,
+    ///                         },
+    ///                         new Gcp.Compute.Inputs.URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRuleArgs
+    ///                         {
+    ///                             MatchResponseCodes = new[]
+    ///                             {
+    ///                                 "503",
+    ///                             },
+    ///                             Path = "/example",
+    ///                             OverrideResponseCode = 502,
+    ///                         },
+    ///                     },
+    ///                     ErrorService = error.Id,
+    ///                 },
+    ///                 PathRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
+    ///                     {
+    ///                         Paths = new[]
+    ///                         {
+    ///                             "/*",
+    ///                         },
+    ///                         Service = example.Id,
+    ///                         CustomErrorResponsePolicy = new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs
+    ///                         {
+    ///                             ErrorResponseRules = new[]
+    ///                             {
+    ///                                 new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgs
+    ///                                 {
+    ///                                     MatchResponseCodes = new[]
+    ///                                     {
+    ///                                         "4xx",
+    ///                                     },
+    ///                                     Path = "/register",
+    ///                                     OverrideResponseCode = 401,
+    ///                                 },
+    ///                             },
+    ///                             ErrorService = error.Id,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -1090,6 +1228,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
+        /// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+        /// This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        /// For example, consider a UrlMap with the following configuration:
+        /// UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
+        /// A RouteRule for /coming_soon/ is configured for the error code 404.
+        /// If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        /// When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
+        /// defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("defaultCustomErrorResponsePolicy")]
+        public Output<Outputs.URLMapDefaultCustomErrorResponsePolicy?> DefaultCustomErrorResponsePolicy { get; private set; } = null!;
 
         /// <summary>
         /// defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
@@ -1243,6 +1395,20 @@ namespace Pulumi.Gcp.Compute
     public sealed class URLMapArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+        /// This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        /// For example, consider a UrlMap with the following configuration:
+        /// UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
+        /// A RouteRule for /coming_soon/ is configured for the error code 404.
+        /// If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        /// When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
+        /// defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("defaultCustomErrorResponsePolicy")]
+        public Input<Inputs.URLMapDefaultCustomErrorResponsePolicyArgs>? DefaultCustomErrorResponsePolicy { get; set; }
+
+        /// <summary>
         /// defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
         /// like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
         /// If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
@@ -1359,6 +1525,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("creationTimestamp")]
         public Input<string>? CreationTimestamp { get; set; }
+
+        /// <summary>
+        /// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+        /// This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        /// For example, consider a UrlMap with the following configuration:
+        /// UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
+        /// A RouteRule for /coming_soon/ is configured for the error code 404.
+        /// If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        /// When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
+        /// defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("defaultCustomErrorResponsePolicy")]
+        public Input<Inputs.URLMapDefaultCustomErrorResponsePolicyGetArgs>? DefaultCustomErrorResponsePolicy { get; set; }
 
         /// <summary>
         /// defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions

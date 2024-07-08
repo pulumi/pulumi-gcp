@@ -1980,7 +1980,7 @@ type AiFeatureGroupBigQuery struct {
 	// The BigQuery source URI that points to either a BigQuery Table or View.
 	// Structure is documented below.
 	BigQuerySource AiFeatureGroupBigQueryBigQuerySource `pulumi:"bigQuerySource"`
-	// Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+	// Columns to construct entityId / row keys. If not provided defaults to entityId.
 	EntityIdColumns []string `pulumi:"entityIdColumns"`
 }
 
@@ -1999,7 +1999,7 @@ type AiFeatureGroupBigQueryArgs struct {
 	// The BigQuery source URI that points to either a BigQuery Table or View.
 	// Structure is documented below.
 	BigQuerySource AiFeatureGroupBigQueryBigQuerySourceInput `pulumi:"bigQuerySource"`
-	// Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+	// Columns to construct entityId / row keys. If not provided defaults to entityId.
 	EntityIdColumns pulumi.StringArrayInput `pulumi:"entityIdColumns"`
 }
 
@@ -2086,7 +2086,7 @@ func (o AiFeatureGroupBigQueryOutput) BigQuerySource() AiFeatureGroupBigQueryBig
 	return o.ApplyT(func(v AiFeatureGroupBigQuery) AiFeatureGroupBigQueryBigQuerySource { return v.BigQuerySource }).(AiFeatureGroupBigQueryBigQuerySourceOutput)
 }
 
-// Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+// Columns to construct entityId / row keys. If not provided defaults to entityId.
 func (o AiFeatureGroupBigQueryOutput) EntityIdColumns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AiFeatureGroupBigQuery) []string { return v.EntityIdColumns }).(pulumi.StringArrayOutput)
 }
@@ -2126,7 +2126,7 @@ func (o AiFeatureGroupBigQueryPtrOutput) BigQuerySource() AiFeatureGroupBigQuery
 	}).(AiFeatureGroupBigQueryBigQuerySourcePtrOutput)
 }
 
-// Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+// Columns to construct entityId / row keys. If not provided defaults to entityId.
 func (o AiFeatureGroupBigQueryPtrOutput) EntityIdColumns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AiFeatureGroupBigQuery) []string {
 		if v == nil {

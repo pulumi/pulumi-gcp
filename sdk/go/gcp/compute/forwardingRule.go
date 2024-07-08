@@ -1288,12 +1288,11 @@ type ForwardingRule struct {
 	//   `IPAddress` should be set to `0.0.0.0`.
 	// * When the `target` is a Private Service Connect Google APIs
 	//   bundle, you must specify an `IPAddress`.
-	//
-	// Otherwise, you can optionally specify an IP address that references an
-	// existing static (reserved) IP address resource. When omitted, Google Cloud
-	// assigns an ephemeral IP address.
-	// Use one of the following formats to specify an IP address while creating a
-	// forwarding rule:
+	//   Otherwise, you can optionally specify an IP address that references an
+	//   existing static (reserved) IP address resource. When omitted, Google Cloud
+	//   assigns an ephemeral IP address.
+	//   Use one of the following formats to specify an IP address while creating a
+	//   forwarding rule:
 	// * IP address number, as in `100.1.2.3`
 	// * IPv6 address range, as in `2600:1234::/96`
 	// * Full resource URL, as in
@@ -1303,14 +1302,13 @@ type ForwardingRule struct {
 	// * `regions/region/addresses/address-name`
 	// * `global/addresses/address-name`
 	// * `address-name`
-	//
-	// The forwarding rule's `target` or `backendService`,
-	// and in most cases, also the `loadBalancingScheme`, determine the
-	// type of IP address that you can use. For detailed information, see
-	// [IP address
-	// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-	// When reading an `IPAddress`, the API always returns the IP
-	// address number.
+	//   The forwarding rule's `target` or `backendService`,
+	//   and in most cases, also the `loadBalancingScheme`, determine the
+	//   type of IP address that you can use. For detailed information, see
+	//   [IP address
+	//   specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	//   When reading an `IPAddress`, the API always returns the IP
+	//   address number.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// The IP protocol to which this rule applies.
 	// For protocol forwarding, valid
@@ -1477,8 +1475,7 @@ type ForwardingRule struct {
 	// *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
 	// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
 	// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-	//
-	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+	//    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 	Target pulumi.StringPtrOutput `pulumi:"target"`
 }
 
@@ -1565,12 +1562,11 @@ type forwardingRuleState struct {
 	//   `IPAddress` should be set to `0.0.0.0`.
 	// * When the `target` is a Private Service Connect Google APIs
 	//   bundle, you must specify an `IPAddress`.
-	//
-	// Otherwise, you can optionally specify an IP address that references an
-	// existing static (reserved) IP address resource. When omitted, Google Cloud
-	// assigns an ephemeral IP address.
-	// Use one of the following formats to specify an IP address while creating a
-	// forwarding rule:
+	//   Otherwise, you can optionally specify an IP address that references an
+	//   existing static (reserved) IP address resource. When omitted, Google Cloud
+	//   assigns an ephemeral IP address.
+	//   Use one of the following formats to specify an IP address while creating a
+	//   forwarding rule:
 	// * IP address number, as in `100.1.2.3`
 	// * IPv6 address range, as in `2600:1234::/96`
 	// * Full resource URL, as in
@@ -1580,14 +1576,13 @@ type forwardingRuleState struct {
 	// * `regions/region/addresses/address-name`
 	// * `global/addresses/address-name`
 	// * `address-name`
-	//
-	// The forwarding rule's `target` or `backendService`,
-	// and in most cases, also the `loadBalancingScheme`, determine the
-	// type of IP address that you can use. For detailed information, see
-	// [IP address
-	// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-	// When reading an `IPAddress`, the API always returns the IP
-	// address number.
+	//   The forwarding rule's `target` or `backendService`,
+	//   and in most cases, also the `loadBalancingScheme`, determine the
+	//   type of IP address that you can use. For detailed information, see
+	//   [IP address
+	//   specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	//   When reading an `IPAddress`, the API always returns the IP
+	//   address number.
 	IpAddress *string `pulumi:"ipAddress"`
 	// The IP protocol to which this rule applies.
 	// For protocol forwarding, valid
@@ -1754,8 +1749,7 @@ type forwardingRuleState struct {
 	// *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
 	// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
 	// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-	//
-	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+	//    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 	Target *string `pulumi:"target"`
 }
 
@@ -1808,12 +1802,11 @@ type ForwardingRuleState struct {
 	//   `IPAddress` should be set to `0.0.0.0`.
 	// * When the `target` is a Private Service Connect Google APIs
 	//   bundle, you must specify an `IPAddress`.
-	//
-	// Otherwise, you can optionally specify an IP address that references an
-	// existing static (reserved) IP address resource. When omitted, Google Cloud
-	// assigns an ephemeral IP address.
-	// Use one of the following formats to specify an IP address while creating a
-	// forwarding rule:
+	//   Otherwise, you can optionally specify an IP address that references an
+	//   existing static (reserved) IP address resource. When omitted, Google Cloud
+	//   assigns an ephemeral IP address.
+	//   Use one of the following formats to specify an IP address while creating a
+	//   forwarding rule:
 	// * IP address number, as in `100.1.2.3`
 	// * IPv6 address range, as in `2600:1234::/96`
 	// * Full resource URL, as in
@@ -1823,14 +1816,13 @@ type ForwardingRuleState struct {
 	// * `regions/region/addresses/address-name`
 	// * `global/addresses/address-name`
 	// * `address-name`
-	//
-	// The forwarding rule's `target` or `backendService`,
-	// and in most cases, also the `loadBalancingScheme`, determine the
-	// type of IP address that you can use. For detailed information, see
-	// [IP address
-	// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-	// When reading an `IPAddress`, the API always returns the IP
-	// address number.
+	//   The forwarding rule's `target` or `backendService`,
+	//   and in most cases, also the `loadBalancingScheme`, determine the
+	//   type of IP address that you can use. For detailed information, see
+	//   [IP address
+	//   specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	//   When reading an `IPAddress`, the API always returns the IP
+	//   address number.
 	IpAddress pulumi.StringPtrInput
 	// The IP protocol to which this rule applies.
 	// For protocol forwarding, valid
@@ -1997,8 +1989,7 @@ type ForwardingRuleState struct {
 	// *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
 	// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
 	// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-	//
-	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+	//    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 	Target pulumi.StringPtrInput
 }
 
@@ -2049,12 +2040,11 @@ type forwardingRuleArgs struct {
 	//   `IPAddress` should be set to `0.0.0.0`.
 	// * When the `target` is a Private Service Connect Google APIs
 	//   bundle, you must specify an `IPAddress`.
-	//
-	// Otherwise, you can optionally specify an IP address that references an
-	// existing static (reserved) IP address resource. When omitted, Google Cloud
-	// assigns an ephemeral IP address.
-	// Use one of the following formats to specify an IP address while creating a
-	// forwarding rule:
+	//   Otherwise, you can optionally specify an IP address that references an
+	//   existing static (reserved) IP address resource. When omitted, Google Cloud
+	//   assigns an ephemeral IP address.
+	//   Use one of the following formats to specify an IP address while creating a
+	//   forwarding rule:
 	// * IP address number, as in `100.1.2.3`
 	// * IPv6 address range, as in `2600:1234::/96`
 	// * Full resource URL, as in
@@ -2064,14 +2054,13 @@ type forwardingRuleArgs struct {
 	// * `regions/region/addresses/address-name`
 	// * `global/addresses/address-name`
 	// * `address-name`
-	//
-	// The forwarding rule's `target` or `backendService`,
-	// and in most cases, also the `loadBalancingScheme`, determine the
-	// type of IP address that you can use. For detailed information, see
-	// [IP address
-	// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-	// When reading an `IPAddress`, the API always returns the IP
-	// address number.
+	//   The forwarding rule's `target` or `backendService`,
+	//   and in most cases, also the `loadBalancingScheme`, determine the
+	//   type of IP address that you can use. For detailed information, see
+	//   [IP address
+	//   specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	//   When reading an `IPAddress`, the API always returns the IP
+	//   address number.
 	IpAddress *string `pulumi:"ipAddress"`
 	// The IP protocol to which this rule applies.
 	// For protocol forwarding, valid
@@ -2223,8 +2212,7 @@ type forwardingRuleArgs struct {
 	// *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
 	// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
 	// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-	//
-	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+	//    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 	Target *string `pulumi:"target"`
 }
 
@@ -2272,12 +2260,11 @@ type ForwardingRuleArgs struct {
 	//   `IPAddress` should be set to `0.0.0.0`.
 	// * When the `target` is a Private Service Connect Google APIs
 	//   bundle, you must specify an `IPAddress`.
-	//
-	// Otherwise, you can optionally specify an IP address that references an
-	// existing static (reserved) IP address resource. When omitted, Google Cloud
-	// assigns an ephemeral IP address.
-	// Use one of the following formats to specify an IP address while creating a
-	// forwarding rule:
+	//   Otherwise, you can optionally specify an IP address that references an
+	//   existing static (reserved) IP address resource. When omitted, Google Cloud
+	//   assigns an ephemeral IP address.
+	//   Use one of the following formats to specify an IP address while creating a
+	//   forwarding rule:
 	// * IP address number, as in `100.1.2.3`
 	// * IPv6 address range, as in `2600:1234::/96`
 	// * Full resource URL, as in
@@ -2287,14 +2274,13 @@ type ForwardingRuleArgs struct {
 	// * `regions/region/addresses/address-name`
 	// * `global/addresses/address-name`
 	// * `address-name`
-	//
-	// The forwarding rule's `target` or `backendService`,
-	// and in most cases, also the `loadBalancingScheme`, determine the
-	// type of IP address that you can use. For detailed information, see
-	// [IP address
-	// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-	// When reading an `IPAddress`, the API always returns the IP
-	// address number.
+	//   The forwarding rule's `target` or `backendService`,
+	//   and in most cases, also the `loadBalancingScheme`, determine the
+	//   type of IP address that you can use. For detailed information, see
+	//   [IP address
+	//   specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	//   When reading an `IPAddress`, the API always returns the IP
+	//   address number.
 	IpAddress pulumi.StringPtrInput
 	// The IP protocol to which this rule applies.
 	// For protocol forwarding, valid
@@ -2446,8 +2432,7 @@ type ForwardingRuleArgs struct {
 	// *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
 	// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
 	// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-	//
-	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+	//    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 	Target pulumi.StringPtrInput
 }
 
@@ -2610,12 +2595,11 @@ func (o ForwardingRuleOutput) EffectiveLabels() pulumi.StringMapOutput {
 //     `IPAddress` should be set to `0.0.0.0`.
 //   - When the `target` is a Private Service Connect Google APIs
 //     bundle, you must specify an `IPAddress`.
-//
-// Otherwise, you can optionally specify an IP address that references an
-// existing static (reserved) IP address resource. When omitted, Google Cloud
-// assigns an ephemeral IP address.
-// Use one of the following formats to specify an IP address while creating a
-// forwarding rule:
+//     Otherwise, you can optionally specify an IP address that references an
+//     existing static (reserved) IP address resource. When omitted, Google Cloud
+//     assigns an ephemeral IP address.
+//     Use one of the following formats to specify an IP address while creating a
+//     forwarding rule:
 //   - IP address number, as in `100.1.2.3`
 //   - IPv6 address range, as in `2600:1234::/96`
 //   - Full resource URL, as in
@@ -2625,14 +2609,13 @@ func (o ForwardingRuleOutput) EffectiveLabels() pulumi.StringMapOutput {
 //   - `regions/region/addresses/address-name`
 //   - `global/addresses/address-name`
 //   - `address-name`
-//
-// The forwarding rule's `target` or `backendService`,
-// and in most cases, also the `loadBalancingScheme`, determine the
-// type of IP address that you can use. For detailed information, see
-// [IP address
-// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-// When reading an `IPAddress`, the API always returns the IP
-// address number.
+//     The forwarding rule's `target` or `backendService`,
+//     and in most cases, also the `loadBalancingScheme`, determine the
+//     type of IP address that you can use. For detailed information, see
+//     [IP address
+//     specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+//     When reading an `IPAddress`, the API always returns the IP
+//     address number.
 func (o ForwardingRuleOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
 }
@@ -2872,12 +2855,11 @@ func (o ForwardingRuleOutput) Subnetwork() pulumi.StringOutput {
 // forwarding rule. For global forwarding rules, this target must be a global
 // load balancing resource.
 // The forwarded traffic must be of a type appropriate to the target object.
-// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-// *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
-// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
-// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-//
-// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+//   - For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+//   - For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+//   - `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+//   - `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+//     For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 func (o ForwardingRuleOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringPtrOutput { return v.Target }).(pulumi.StringPtrOutput)
 }

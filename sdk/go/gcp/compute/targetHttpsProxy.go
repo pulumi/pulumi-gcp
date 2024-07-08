@@ -574,6 +574,12 @@ type TargetHttpsProxy struct {
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
 	// resource will not have any SSL policy configured.
 	SslPolicy pulumi.StringPtrOutput `pulumi:"sslPolicy"`
+	// Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+	// Early Data allows a TLS resumption handshake to include the initial application payload
+	// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+	// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+	// Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+	TlsEarlyData pulumi.StringOutput `pulumi:"tlsEarlyData"`
 	// A reference to the UrlMap resource that defines the mapping from URL
 	// to the BackendService.
 	//
@@ -679,6 +685,12 @@ type targetHttpsProxyState struct {
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
 	// resource will not have any SSL policy configured.
 	SslPolicy *string `pulumi:"sslPolicy"`
+	// Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+	// Early Data allows a TLS resumption handshake to include the initial application payload
+	// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+	// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+	// Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+	TlsEarlyData *string `pulumi:"tlsEarlyData"`
 	// A reference to the UrlMap resource that defines the mapping from URL
 	// to the BackendService.
 	//
@@ -752,6 +764,12 @@ type TargetHttpsProxyState struct {
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
 	// resource will not have any SSL policy configured.
 	SslPolicy pulumi.StringPtrInput
+	// Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+	// Early Data allows a TLS resumption handshake to include the initial application payload
+	// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+	// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+	// Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+	TlsEarlyData pulumi.StringPtrInput
 	// A reference to the UrlMap resource that defines the mapping from URL
 	// to the BackendService.
 	//
@@ -823,6 +841,12 @@ type targetHttpsProxyArgs struct {
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
 	// resource will not have any SSL policy configured.
 	SslPolicy *string `pulumi:"sslPolicy"`
+	// Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+	// Early Data allows a TLS resumption handshake to include the initial application payload
+	// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+	// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+	// Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+	TlsEarlyData *string `pulumi:"tlsEarlyData"`
 	// A reference to the UrlMap resource that defines the mapping from URL
 	// to the BackendService.
 	//
@@ -891,6 +915,12 @@ type TargetHttpsProxyArgs struct {
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
 	// resource will not have any SSL policy configured.
 	SslPolicy pulumi.StringPtrInput
+	// Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+	// Early Data allows a TLS resumption handshake to include the initial application payload
+	// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+	// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+	// Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+	TlsEarlyData pulumi.StringPtrInput
 	// A reference to the UrlMap resource that defines the mapping from URL
 	// to the BackendService.
 	//
@@ -1090,6 +1120,15 @@ func (o TargetHttpsProxyOutput) SslCertificates() pulumi.StringArrayOutput {
 // resource will not have any SSL policy configured.
 func (o TargetHttpsProxyOutput) SslPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetHttpsProxy) pulumi.StringPtrOutput { return v.SslPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+// Early Data allows a TLS resumption handshake to include the initial application payload
+// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+// Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+func (o TargetHttpsProxyOutput) TlsEarlyData() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetHttpsProxy) pulumi.StringOutput { return v.TlsEarlyData }).(pulumi.StringOutput)
 }
 
 // A reference to the UrlMap resource that defines the mapping from URL

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container
     /// An Anthos node pool running on Azure.
     /// 
     /// For more information, see:
-    /// * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
+    /// * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
     /// ## Example Usage
     /// 
     /// ### Basic_azure_node_pool

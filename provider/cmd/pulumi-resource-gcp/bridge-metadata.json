@@ -4734,6 +4734,12 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "automatic_update_policy": {
+                                    "maxItemsOne": true
+                                },
+                                "on_deploy_update_policy": {
+                                    "maxItemsOne": true
+                                },
                                 "source": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -8386,6 +8392,23 @@
                 "current": "gcp:compute/uRLMap:URLMap",
                 "majorVersion": 7,
                 "fields": {
+                    "default_custom_error_response_policy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "error_response_rule": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "match_response_codes": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "default_route_action": {
                         "maxItemsOne": true,
                         "elem": {
@@ -8519,6 +8542,23 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "default_custom_error_response_policy": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "error_response_rule": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "match_response_codes": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "default_route_action": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -8642,6 +8682,23 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "custom_error_response_policy": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "error_response_rule": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "match_response_codes": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "paths": {
                                                 "maxItemsOne": false
                                             },
@@ -10467,7 +10524,14 @@
                         "maxItemsOne": true
                     },
                     "network_config": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "private_service_connect_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -18107,7 +18171,12 @@
             },
             "google_healthcare_dataset": {
                 "current": "gcp:healthcare/dataset:Dataset",
-                "majorVersion": 7
+                "majorVersion": 7,
+                "fields": {
+                    "encryption_spec": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "google_healthcare_dataset_iam_binding": {
                 "current": "gcp:healthcare/datasetIamBinding:DatasetIamBinding",
@@ -19895,7 +19964,14 @@
                         "maxItemsOne": false
                     },
                     "documentation": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "links": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "notification_channels": {
                         "maxItemsOne": false
@@ -24790,6 +24866,35 @@
                     }
                 }
             },
+            "google_storage_managed_folder": {
+                "current": "gcp:storage/managedFolder:ManagedFolder",
+                "majorVersion": 7
+            },
+            "google_storage_managed_folder_iam_binding": {
+                "current": "gcp:storage/managedFolderIamBinding:ManagedFolderIamBinding",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_storage_managed_folder_iam_member": {
+                "current": "gcp:storage/managedFolderIamMember:ManagedFolderIamMember",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_storage_managed_folder_iam_policy": {
+                "current": "gcp:storage/managedFolderIamPolicy:ManagedFolderIamPolicy",
+                "majorVersion": 7
+            },
             "google_storage_notification": {
                 "current": "gcp:storage/notification:Notification",
                 "majorVersion": 7,
@@ -27130,6 +27235,12 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "automatic_update_policy": {
+                                    "maxItemsOne": false
+                                },
+                                "on_deploy_update_policy": {
+                                    "maxItemsOne": false
+                                },
                                 "source": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -31159,6 +31270,10 @@
                     }
                 }
             },
+            "google_storage_managed_folder_iam_policy": {
+                "current": "gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy",
+                "majorVersion": 7
+            },
             "google_storage_object_signed_url": {
                 "current": "gcp:storage/getObjectSignedUrl:getObjectSignedUrl",
                 "majorVersion": 7
@@ -33227,6 +33342,10 @@
             "gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl": 0,
             "gcp:storage/hmacKey:HmacKey": 0,
             "gcp:storage/insightsReportConfig:InsightsReportConfig": 0,
+            "gcp:storage/managedFolder:ManagedFolder": 0,
+            "gcp:storage/managedFolderIamBinding:ManagedFolderIamBinding": 0,
+            "gcp:storage/managedFolderIamMember:ManagedFolderIamMember": 0,
+            "gcp:storage/managedFolderIamPolicy:ManagedFolderIamPolicy": 0,
             "gcp:storage/notification:Notification": 0,
             "gcp:storage/objectACL:ObjectACL": 0,
             "gcp:storage/objectAccessControl:ObjectAccessControl": 0,
@@ -33566,6 +33685,7 @@
             "gcp:storage/getBucketObjectContent:getBucketObjectContent": 0,
             "gcp:storage/getBucketObjects:getBucketObjects": 0,
             "gcp:storage/getBuckets:getBuckets": 0,
+            "gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy": 0,
             "gcp:storage/getObjectSignedUrl:getObjectSignedUrl": 0,
             "gcp:storage/getProjectServiceAccount:getProjectServiceAccount": 0,
             "gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount": 0,

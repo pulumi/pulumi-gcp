@@ -54,7 +54,7 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+     * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
      * Structure is documented below.
      * 
      */
@@ -62,7 +62,7 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
     private @Nullable Output<AiFeatureOnlineStoreDedicatedServingEndpointArgs> dedicatedServingEndpoint;
 
     /**
-     * @return The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+     * @return The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
      * Structure is documented below.
      * 
      */
@@ -359,7 +359,7 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dedicatedServingEndpoint The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+         * @param dedicatedServingEndpoint The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
          * Structure is documented below.
          * 
          * @return builder
@@ -371,7 +371,7 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dedicatedServingEndpoint The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+         * @param dedicatedServingEndpoint The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
          * Structure is documented below.
          * 
          * @return builder
