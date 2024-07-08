@@ -587,6 +587,16 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> SslPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+        /// Early Data allows a TLS resumption handshake to include the initial application payload
+        /// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+        /// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+        /// Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+        /// </summary>
+        [Output("tlsEarlyData")]
+        public Output<string> TlsEarlyData { get; private set; } = null!;
+
+        /// <summary>
         /// A reference to the UrlMap resource that defines the mapping from URL
         /// to the BackendService.
         /// 
@@ -758,6 +768,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SslPolicy { get; set; }
 
         /// <summary>
+        /// Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+        /// Early Data allows a TLS resumption handshake to include the initial application payload
+        /// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+        /// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+        /// Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+        /// </summary>
+        [Input("tlsEarlyData")]
+        public Input<string>? TlsEarlyData { get; set; }
+
+        /// <summary>
         /// A reference to the UrlMap resource that defines the mapping from URL
         /// to the BackendService.
         /// 
@@ -907,6 +927,16 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sslPolicy")]
         public Input<string>? SslPolicy { get; set; }
+
+        /// <summary>
+        /// Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+        /// Early Data allows a TLS resumption handshake to include the initial application payload
+        /// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+        /// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+        /// Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+        /// </summary>
+        [Input("tlsEarlyData")]
+        public Input<string>? TlsEarlyData { get; set; }
 
         /// <summary>
         /// A reference to the UrlMap resource that defines the mapping from URL

@@ -4,6 +4,8 @@
 package com.pulumi.gcp.cloudfunctionsv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.cloudfunctionsv2.outputs.FunctionBuildConfigAutomaticUpdatePolicy;
+import com.pulumi.gcp.cloudfunctionsv2.outputs.FunctionBuildConfigOnDeployUpdatePolicy;
 import com.pulumi.gcp.cloudfunctionsv2.outputs.FunctionBuildConfigSource;
 import java.lang.String;
 import java.util.Map;
@@ -13,6 +15,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FunctionBuildConfig {
+    /**
+     * @return Security patches are applied automatically to the runtime without requiring
+     * the function to be redeployed.
+     * 
+     */
+    private @Nullable FunctionBuildConfigAutomaticUpdatePolicy automaticUpdatePolicy;
     /**
      * @return (Output)
      * The Cloud Build name of the latest successful
@@ -40,6 +48,12 @@ public final class FunctionBuildConfig {
      */
     private @Nullable Map<String,String> environmentVariables;
     /**
+     * @return Security patches are only applied when a function is redeployed.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable FunctionBuildConfigOnDeployUpdatePolicy onDeployUpdatePolicy;
+    /**
      * @return The runtime in which to run the function. Required when deploying a new
      * function, optional when updating an existing function.
      * 
@@ -63,6 +77,14 @@ public final class FunctionBuildConfig {
     private @Nullable String workerPool;
 
     private FunctionBuildConfig() {}
+    /**
+     * @return Security patches are applied automatically to the runtime without requiring
+     * the function to be redeployed.
+     * 
+     */
+    public Optional<FunctionBuildConfigAutomaticUpdatePolicy> automaticUpdatePolicy() {
+        return Optional.ofNullable(this.automaticUpdatePolicy);
+    }
     /**
      * @return (Output)
      * The Cloud Build name of the latest successful
@@ -96,6 +118,14 @@ public final class FunctionBuildConfig {
      */
     public Map<String,String> environmentVariables() {
         return this.environmentVariables == null ? Map.of() : this.environmentVariables;
+    }
+    /**
+     * @return Security patches are only applied when a function is redeployed.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<FunctionBuildConfigOnDeployUpdatePolicy> onDeployUpdatePolicy() {
+        return Optional.ofNullable(this.onDeployUpdatePolicy);
     }
     /**
      * @return The runtime in which to run the function. Required when deploying a new
@@ -137,10 +167,12 @@ public final class FunctionBuildConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable FunctionBuildConfigAutomaticUpdatePolicy automaticUpdatePolicy;
         private @Nullable String build;
         private @Nullable String dockerRepository;
         private @Nullable String entryPoint;
         private @Nullable Map<String,String> environmentVariables;
+        private @Nullable FunctionBuildConfigOnDeployUpdatePolicy onDeployUpdatePolicy;
         private @Nullable String runtime;
         private @Nullable String serviceAccount;
         private @Nullable FunctionBuildConfigSource source;
@@ -148,16 +180,24 @@ public final class FunctionBuildConfig {
         public Builder() {}
         public Builder(FunctionBuildConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.automaticUpdatePolicy = defaults.automaticUpdatePolicy;
     	      this.build = defaults.build;
     	      this.dockerRepository = defaults.dockerRepository;
     	      this.entryPoint = defaults.entryPoint;
     	      this.environmentVariables = defaults.environmentVariables;
+    	      this.onDeployUpdatePolicy = defaults.onDeployUpdatePolicy;
     	      this.runtime = defaults.runtime;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.source = defaults.source;
     	      this.workerPool = defaults.workerPool;
         }
 
+        @CustomType.Setter
+        public Builder automaticUpdatePolicy(@Nullable FunctionBuildConfigAutomaticUpdatePolicy automaticUpdatePolicy) {
+
+            this.automaticUpdatePolicy = automaticUpdatePolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder build(@Nullable String build) {
 
@@ -180,6 +220,12 @@ public final class FunctionBuildConfig {
         public Builder environmentVariables(@Nullable Map<String,String> environmentVariables) {
 
             this.environmentVariables = environmentVariables;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder onDeployUpdatePolicy(@Nullable FunctionBuildConfigOnDeployUpdatePolicy onDeployUpdatePolicy) {
+
+            this.onDeployUpdatePolicy = onDeployUpdatePolicy;
             return this;
         }
         @CustomType.Setter
@@ -208,10 +254,12 @@ public final class FunctionBuildConfig {
         }
         public FunctionBuildConfig build() {
             final var _resultValue = new FunctionBuildConfig();
+            _resultValue.automaticUpdatePolicy = automaticUpdatePolicy;
             _resultValue.build = build;
             _resultValue.dockerRepository = dockerRepository;
             _resultValue.entryPoint = entryPoint;
             _resultValue.environmentVariables = environmentVariables;
+            _resultValue.onDeployUpdatePolicy = onDeployUpdatePolicy;
             _resultValue.runtime = runtime;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.source = source;

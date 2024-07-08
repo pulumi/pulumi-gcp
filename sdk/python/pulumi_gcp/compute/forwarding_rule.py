@@ -85,7 +85,6 @@ class ForwardingRuleArgs:
                `IPAddress` should be set to `0.0.0.0`.
                * When the `target` is a Private Service Connect Google APIs
                bundle, you must specify an `IPAddress`.
-               
                Otherwise, you can optionally specify an IP address that references an
                existing static (reserved) IP address resource. When omitted, Google Cloud
                assigns an ephemeral IP address.
@@ -100,7 +99,6 @@ class ForwardingRuleArgs:
                * `regions/region/addresses/address-name`
                * `global/addresses/address-name`
                * `address-name`
-               
                The forwarding rule's `target` or `backendService`,
                and in most cases, also the `loadBalancingScheme`, determine the
                type of IP address that you can use. For detailed information, see
@@ -241,7 +239,6 @@ class ForwardingRuleArgs:
                *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
                *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
                *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-               
                For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
         if all_ports is not None:
@@ -391,7 +388,6 @@ class ForwardingRuleArgs:
         `IPAddress` should be set to `0.0.0.0`.
         * When the `target` is a Private Service Connect Google APIs
         bundle, you must specify an `IPAddress`.
-
         Otherwise, you can optionally specify an IP address that references an
         existing static (reserved) IP address resource. When omitted, Google Cloud
         assigns an ephemeral IP address.
@@ -406,7 +402,6 @@ class ForwardingRuleArgs:
         * `regions/region/addresses/address-name`
         * `global/addresses/address-name`
         * `address-name`
-
         The forwarding rule's `target` or `backendService`,
         and in most cases, also the `loadBalancingScheme`, determine the
         type of IP address that you can use. For detailed information, see
@@ -754,7 +749,6 @@ class ForwardingRuleArgs:
         *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
         *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
         *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-
         For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
         return pulumi.get(self, "target")
@@ -843,7 +837,6 @@ class _ForwardingRuleState:
                `IPAddress` should be set to `0.0.0.0`.
                * When the `target` is a Private Service Connect Google APIs
                bundle, you must specify an `IPAddress`.
-               
                Otherwise, you can optionally specify an IP address that references an
                existing static (reserved) IP address resource. When omitted, Google Cloud
                assigns an ephemeral IP address.
@@ -858,7 +851,6 @@ class _ForwardingRuleState:
                * `regions/region/addresses/address-name`
                * `global/addresses/address-name`
                * `address-name`
-               
                The forwarding rule's `target` or `backendService`,
                and in most cases, also the `loadBalancingScheme`, determine the
                type of IP address that you can use. For detailed information, see
@@ -1008,7 +1000,6 @@ class _ForwardingRuleState:
                *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
                *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
                *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-               
                For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
         if all_ports is not None:
@@ -1212,7 +1203,6 @@ class _ForwardingRuleState:
         `IPAddress` should be set to `0.0.0.0`.
         * When the `target` is a Private Service Connect Google APIs
         bundle, you must specify an `IPAddress`.
-
         Otherwise, you can optionally specify an IP address that references an
         existing static (reserved) IP address resource. When omitted, Google Cloud
         assigns an ephemeral IP address.
@@ -1227,7 +1217,6 @@ class _ForwardingRuleState:
         * `regions/region/addresses/address-name`
         * `global/addresses/address-name`
         * `address-name`
-
         The forwarding rule's `target` or `backendService`,
         and in most cases, also the `loadBalancingScheme`, determine the
         type of IP address that you can use. For detailed information, see
@@ -1650,7 +1639,6 @@ class _ForwardingRuleState:
         *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
         *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
         *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-
         For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
         return pulumi.get(self, "target")
@@ -2424,7 +2412,6 @@ class ForwardingRule(pulumi.CustomResource):
                `IPAddress` should be set to `0.0.0.0`.
                * When the `target` is a Private Service Connect Google APIs
                bundle, you must specify an `IPAddress`.
-               
                Otherwise, you can optionally specify an IP address that references an
                existing static (reserved) IP address resource. When omitted, Google Cloud
                assigns an ephemeral IP address.
@@ -2439,7 +2426,6 @@ class ForwardingRule(pulumi.CustomResource):
                * `regions/region/addresses/address-name`
                * `global/addresses/address-name`
                * `address-name`
-               
                The forwarding rule's `target` or `backendService`,
                and in most cases, also the `loadBalancingScheme`, determine the
                type of IP address that you can use. For detailed information, see
@@ -2580,7 +2566,6 @@ class ForwardingRule(pulumi.CustomResource):
                *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
                *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
                *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-               
                For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
         ...
@@ -3459,7 +3444,6 @@ class ForwardingRule(pulumi.CustomResource):
                `IPAddress` should be set to `0.0.0.0`.
                * When the `target` is a Private Service Connect Google APIs
                bundle, you must specify an `IPAddress`.
-               
                Otherwise, you can optionally specify an IP address that references an
                existing static (reserved) IP address resource. When omitted, Google Cloud
                assigns an ephemeral IP address.
@@ -3474,7 +3458,6 @@ class ForwardingRule(pulumi.CustomResource):
                * `regions/region/addresses/address-name`
                * `global/addresses/address-name`
                * `address-name`
-               
                The forwarding rule's `target` or `backendService`,
                and in most cases, also the `loadBalancingScheme`, determine the
                type of IP address that you can use. For detailed information, see
@@ -3624,7 +3607,6 @@ class ForwardingRule(pulumi.CustomResource):
                *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
                *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
                *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-               
                For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -3767,7 +3749,6 @@ class ForwardingRule(pulumi.CustomResource):
         `IPAddress` should be set to `0.0.0.0`.
         * When the `target` is a Private Service Connect Google APIs
         bundle, you must specify an `IPAddress`.
-
         Otherwise, you can optionally specify an IP address that references an
         existing static (reserved) IP address resource. When omitted, Google Cloud
         assigns an ephemeral IP address.
@@ -3782,7 +3763,6 @@ class ForwardingRule(pulumi.CustomResource):
         * `regions/region/addresses/address-name`
         * `global/addresses/address-name`
         * `address-name`
-
         The forwarding rule's `target` or `backendService`,
         and in most cases, also the `loadBalancingScheme`, determine the
         type of IP address that you can use. For detailed information, see
@@ -4105,7 +4085,6 @@ class ForwardingRule(pulumi.CustomResource):
         *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
         *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
         *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-
         For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
         return pulumi.get(self, "target")

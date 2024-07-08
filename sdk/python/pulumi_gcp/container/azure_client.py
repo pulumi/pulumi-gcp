@@ -268,7 +268,7 @@ class AzureClient(pulumi.CustomResource):
         AzureClient resources hold client authentication information needed by the Anthos Multi-Cloud API to manage Azure resources on your Azure subscription.When an AzureCluster is created, an AzureClient resource needs to be provided and all operations on Azure resources associated to that cluster will authenticate to Azure services using the given client.AzureClient resources are immutable and cannot be modified upon creation.Each AzureClient resource is bound to a single Azure Active Directory Application and tenant.
 
         For more information, see:
-        * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
+        * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
         ## Example Usage
 
         ### Basic_azure_client
@@ -331,7 +331,7 @@ class AzureClient(pulumi.CustomResource):
         AzureClient resources hold client authentication information needed by the Anthos Multi-Cloud API to manage Azure resources on your Azure subscription.When an AzureCluster is created, an AzureClient resource needs to be provided and all operations on Azure resources associated to that cluster will authenticate to Azure services using the given client.AzureClient resources are immutable and cannot be modified upon creation.Each AzureClient resource is bound to a single Azure Active Directory Application and tenant.
 
         For more information, see:
-        * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
+        * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
         ## Example Usage
 
         ### Basic_azure_client

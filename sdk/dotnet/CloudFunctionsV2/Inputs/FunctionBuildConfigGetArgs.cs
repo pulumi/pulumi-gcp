@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
     public sealed class FunctionBuildConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Security patches are applied automatically to the runtime without requiring
+        /// the function to be redeployed.
+        /// </summary>
+        [Input("automaticUpdatePolicy")]
+        public Input<Inputs.FunctionBuildConfigAutomaticUpdatePolicyGetArgs>? AutomaticUpdatePolicy { get; set; }
+
+        /// <summary>
         /// (Output)
         /// The Cloud Build name of the latest successful
         /// deployment of the function.
@@ -47,6 +54,13 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
             get => _environmentVariables ?? (_environmentVariables = new InputMap<string>());
             set => _environmentVariables = value;
         }
+
+        /// <summary>
+        /// Security patches are only applied when a function is redeployed.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("onDeployUpdatePolicy")]
+        public Input<Inputs.FunctionBuildConfigOnDeployUpdatePolicyGetArgs>? OnDeployUpdatePolicy { get; set; }
 
         /// <summary>
         /// The runtime in which to run the function. Required when deploying a new

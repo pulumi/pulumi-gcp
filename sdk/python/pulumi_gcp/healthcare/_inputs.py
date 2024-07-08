@@ -19,6 +19,8 @@ __all__ = [
     'ConsentStoreIamBindingConditionArgsDict',
     'ConsentStoreIamMemberConditionArgs',
     'ConsentStoreIamMemberConditionArgsDict',
+    'DatasetEncryptionSpecArgs',
+    'DatasetEncryptionSpecArgsDict',
     'DatasetIamBindingConditionArgs',
     'DatasetIamBindingConditionArgsDict',
     'DatasetIamMemberConditionArgs',
@@ -153,6 +155,47 @@ class ConsentStoreIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class DatasetEncryptionSpecArgsDict(TypedDict):
+        kms_key_name: NotRequired[pulumi.Input[str]]
+        """
+        KMS encryption key that is used to secure this dataset and its sub-resources. The key used for
+        encryption and the dataset must be in the same location. If empty, the default Google encryption
+        key will be used to secure this dataset. The format is
+        projects/{projectId}/locations/{locationId}/keyRings/{keyRingId}/cryptoKeys/{keyId}.
+        """
+elif False:
+    DatasetEncryptionSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatasetEncryptionSpecArgs:
+    def __init__(__self__, *,
+                 kms_key_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] kms_key_name: KMS encryption key that is used to secure this dataset and its sub-resources. The key used for
+               encryption and the dataset must be in the same location. If empty, the default Google encryption
+               key will be used to secure this dataset. The format is
+               projects/{projectId}/locations/{locationId}/keyRings/{keyRingId}/cryptoKeys/{keyId}.
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        KMS encryption key that is used to secure this dataset and its sub-resources. The key used for
+        encryption and the dataset must be in the same location. If empty, the default Google encryption
+        key will be used to secure this dataset. The format is
+        projects/{projectId}/locations/{locationId}/keyRings/{keyRingId}/cryptoKeys/{keyId}.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
 
 
 if not MYPY:

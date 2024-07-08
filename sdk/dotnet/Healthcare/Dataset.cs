@@ -39,6 +39,60 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// ### Healthcare Dataset Cmek
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
+    ///     {
+    ///         Name = "example-keyring",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
+    ///     {
+    ///         Name = "example-key",
+    ///         KeyRing = keyRing.Id,
+    ///         Purpose = "ENCRYPT_DECRYPT",
+    ///     });
+    /// 
+    ///     var healthcareCmekKeyuser = new Gcp.Kms.CryptoKeyIAMBinding("healthcare_cmek_keyuser", new()
+    ///     {
+    ///         CryptoKeyId = cryptoKey.Id,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Members = new[]
+    ///         {
+    ///             $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-healthcare.iam.gserviceaccount.com",
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Healthcare.Dataset("default", new()
+    ///     {
+    ///         Name = "example-dataset",
+    ///         Location = "us-central1",
+    ///         TimeZone = "UTC",
+    ///         EncryptionSpec = new Gcp.Healthcare.Inputs.DatasetEncryptionSpecArgs
+    ///         {
+    ///             KmsKeyName = cryptoKey.Id,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             healthcareCmekKeyuser,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -67,6 +121,13 @@ namespace Pulumi.Gcp.Healthcare
     [GcpResourceType("gcp:healthcare/dataset:Dataset")]
     public partial class Dataset : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// A nested object resource
+        /// Structure is documented below.
+        /// </summary>
+        [Output("encryptionSpec")]
+        public Output<Outputs.DatasetEncryptionSpec> EncryptionSpec { get; private set; } = null!;
+
         /// <summary>
         /// The location for the Dataset.
         /// 
@@ -150,6 +211,13 @@ namespace Pulumi.Gcp.Healthcare
     public sealed class DatasetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A nested object resource
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionSpec")]
+        public Input<Inputs.DatasetEncryptionSpecArgs>? EncryptionSpec { get; set; }
+
+        /// <summary>
         /// The location for the Dataset.
         /// 
         /// 
@@ -187,6 +255,13 @@ namespace Pulumi.Gcp.Healthcare
 
     public sealed class DatasetState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A nested object resource
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionSpec")]
+        public Input<Inputs.DatasetEncryptionSpecGetArgs>? EncryptionSpec { get; set; }
+
         /// <summary>
         /// The location for the Dataset.
         /// 

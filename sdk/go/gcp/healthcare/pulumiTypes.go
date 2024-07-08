@@ -339,6 +339,155 @@ func (o ConsentStoreIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type DatasetEncryptionSpec struct {
+	// KMS encryption key that is used to secure this dataset and its sub-resources. The key used for
+	// encryption and the dataset must be in the same location. If empty, the default Google encryption
+	// key will be used to secure this dataset. The format is
+	// projects/{projectId}/locations/{locationId}/keyRings/{keyRingId}/cryptoKeys/{keyId}.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+}
+
+// DatasetEncryptionSpecInput is an input type that accepts DatasetEncryptionSpecArgs and DatasetEncryptionSpecOutput values.
+// You can construct a concrete instance of `DatasetEncryptionSpecInput` via:
+//
+//	DatasetEncryptionSpecArgs{...}
+type DatasetEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToDatasetEncryptionSpecOutput() DatasetEncryptionSpecOutput
+	ToDatasetEncryptionSpecOutputWithContext(context.Context) DatasetEncryptionSpecOutput
+}
+
+type DatasetEncryptionSpecArgs struct {
+	// KMS encryption key that is used to secure this dataset and its sub-resources. The key used for
+	// encryption and the dataset must be in the same location. If empty, the default Google encryption
+	// key will be used to secure this dataset. The format is
+	// projects/{projectId}/locations/{locationId}/keyRings/{keyRingId}/cryptoKeys/{keyId}.
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+}
+
+func (DatasetEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetEncryptionSpec)(nil)).Elem()
+}
+
+func (i DatasetEncryptionSpecArgs) ToDatasetEncryptionSpecOutput() DatasetEncryptionSpecOutput {
+	return i.ToDatasetEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i DatasetEncryptionSpecArgs) ToDatasetEncryptionSpecOutputWithContext(ctx context.Context) DatasetEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetEncryptionSpecOutput)
+}
+
+func (i DatasetEncryptionSpecArgs) ToDatasetEncryptionSpecPtrOutput() DatasetEncryptionSpecPtrOutput {
+	return i.ToDatasetEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i DatasetEncryptionSpecArgs) ToDatasetEncryptionSpecPtrOutputWithContext(ctx context.Context) DatasetEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetEncryptionSpecOutput).ToDatasetEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// DatasetEncryptionSpecPtrInput is an input type that accepts DatasetEncryptionSpecArgs, DatasetEncryptionSpecPtr and DatasetEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `DatasetEncryptionSpecPtrInput` via:
+//
+//	        DatasetEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatasetEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToDatasetEncryptionSpecPtrOutput() DatasetEncryptionSpecPtrOutput
+	ToDatasetEncryptionSpecPtrOutputWithContext(context.Context) DatasetEncryptionSpecPtrOutput
+}
+
+type datasetEncryptionSpecPtrType DatasetEncryptionSpecArgs
+
+func DatasetEncryptionSpecPtr(v *DatasetEncryptionSpecArgs) DatasetEncryptionSpecPtrInput {
+	return (*datasetEncryptionSpecPtrType)(v)
+}
+
+func (*datasetEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetEncryptionSpec)(nil)).Elem()
+}
+
+func (i *datasetEncryptionSpecPtrType) ToDatasetEncryptionSpecPtrOutput() DatasetEncryptionSpecPtrOutput {
+	return i.ToDatasetEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *datasetEncryptionSpecPtrType) ToDatasetEncryptionSpecPtrOutputWithContext(ctx context.Context) DatasetEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetEncryptionSpecPtrOutput)
+}
+
+type DatasetEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (DatasetEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetEncryptionSpec)(nil)).Elem()
+}
+
+func (o DatasetEncryptionSpecOutput) ToDatasetEncryptionSpecOutput() DatasetEncryptionSpecOutput {
+	return o
+}
+
+func (o DatasetEncryptionSpecOutput) ToDatasetEncryptionSpecOutputWithContext(ctx context.Context) DatasetEncryptionSpecOutput {
+	return o
+}
+
+func (o DatasetEncryptionSpecOutput) ToDatasetEncryptionSpecPtrOutput() DatasetEncryptionSpecPtrOutput {
+	return o.ToDatasetEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetEncryptionSpecOutput) ToDatasetEncryptionSpecPtrOutputWithContext(ctx context.Context) DatasetEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetEncryptionSpec) *DatasetEncryptionSpec {
+		return &v
+	}).(DatasetEncryptionSpecPtrOutput)
+}
+
+// KMS encryption key that is used to secure this dataset and its sub-resources. The key used for
+// encryption and the dataset must be in the same location. If empty, the default Google encryption
+// key will be used to secure this dataset. The format is
+// projects/{projectId}/locations/{locationId}/keyRings/{keyRingId}/cryptoKeys/{keyId}.
+func (o DatasetEncryptionSpecOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetEncryptionSpec) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+type DatasetEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (DatasetEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetEncryptionSpec)(nil)).Elem()
+}
+
+func (o DatasetEncryptionSpecPtrOutput) ToDatasetEncryptionSpecPtrOutput() DatasetEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o DatasetEncryptionSpecPtrOutput) ToDatasetEncryptionSpecPtrOutputWithContext(ctx context.Context) DatasetEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o DatasetEncryptionSpecPtrOutput) Elem() DatasetEncryptionSpecOutput {
+	return o.ApplyT(func(v *DatasetEncryptionSpec) DatasetEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetEncryptionSpec
+		return ret
+	}).(DatasetEncryptionSpecOutput)
+}
+
+// KMS encryption key that is used to secure this dataset and its sub-resources. The key used for
+// encryption and the dataset must be in the same location. If empty, the default Google encryption
+// key will be used to secure this dataset. The format is
+// projects/{projectId}/locations/{locationId}/keyRings/{keyRingId}/cryptoKeys/{keyId}.
+func (o DatasetEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 type DatasetIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -3222,6 +3371,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStoreIamBindingConditionPtrInput)(nil)).Elem(), ConsentStoreIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStoreIamMemberConditionInput)(nil)).Elem(), ConsentStoreIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStoreIamMemberConditionPtrInput)(nil)).Elem(), ConsentStoreIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetEncryptionSpecInput)(nil)).Elem(), DatasetEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetEncryptionSpecPtrInput)(nil)).Elem(), DatasetEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamBindingConditionInput)(nil)).Elem(), DatasetIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamBindingConditionPtrInput)(nil)).Elem(), DatasetIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamMemberConditionInput)(nil)).Elem(), DatasetIamMemberConditionArgs{})
@@ -3262,6 +3413,8 @@ func init() {
 	pulumi.RegisterOutputType(ConsentStoreIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(ConsentStoreIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(ConsentStoreIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(DatasetEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(DatasetEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(DatasetIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(DatasetIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(DatasetIamMemberConditionOutput{})

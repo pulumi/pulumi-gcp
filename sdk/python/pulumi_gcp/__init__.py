@@ -7425,6 +7425,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "storage/managedFolder",
+  "fqn": "pulumi_gcp.storage",
+  "classes": {
+   "gcp:storage/managedFolder:ManagedFolder": "ManagedFolder"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "storage/managedFolderIamBinding",
+  "fqn": "pulumi_gcp.storage",
+  "classes": {
+   "gcp:storage/managedFolderIamBinding:ManagedFolderIamBinding": "ManagedFolderIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "storage/managedFolderIamMember",
+  "fqn": "pulumi_gcp.storage",
+  "classes": {
+   "gcp:storage/managedFolderIamMember:ManagedFolderIamMember": "ManagedFolderIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "storage/managedFolderIamPolicy",
+  "fqn": "pulumi_gcp.storage",
+  "classes": {
+   "gcp:storage/managedFolderIamPolicy:ManagedFolderIamPolicy": "ManagedFolderIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "storage/notification",
   "fqn": "pulumi_gcp.storage",
   "classes": {

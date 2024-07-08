@@ -13,6 +13,1320 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type URLMapPathMatcherHeaderActionResponseHeadersToAdd struct {
+	// The name of the header to add.
+	HeaderName string `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue string `pulumi:"headerValue"`
+	// If false, headerValue is appended to any values that already exist for the header.
+	// If true, headerValue is set for the header, discarding any values that were set for that header.
+	Replace bool `pulumi:"replace"`
+}
+
+// URLMapPathMatcherHeaderActionResponseHeadersToAddInput is an input type that accepts URLMapPathMatcherHeaderActionResponseHeadersToAddArgs and URLMapPathMatcherHeaderActionResponseHeadersToAddOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherHeaderActionResponseHeadersToAddInput` via:
+//
+//	URLMapPathMatcherHeaderActionResponseHeadersToAddArgs{...}
+type URLMapPathMatcherHeaderActionResponseHeadersToAddInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherHeaderActionResponseHeadersToAddOutput() URLMapPathMatcherHeaderActionResponseHeadersToAddOutput
+	ToURLMapPathMatcherHeaderActionResponseHeadersToAddOutputWithContext(context.Context) URLMapPathMatcherHeaderActionResponseHeadersToAddOutput
+}
+
+type URLMapPathMatcherHeaderActionResponseHeadersToAddArgs struct {
+	// The name of the header to add.
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue pulumi.StringInput `pulumi:"headerValue"`
+	// If false, headerValue is appended to any values that already exist for the header.
+	// If true, headerValue is set for the header, discarding any values that were set for that header.
+	Replace pulumi.BoolInput `pulumi:"replace"`
+}
+
+func (URLMapPathMatcherHeaderActionResponseHeadersToAddArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherHeaderActionResponseHeadersToAddArgs) ToURLMapPathMatcherHeaderActionResponseHeadersToAddOutput() URLMapPathMatcherHeaderActionResponseHeadersToAddOutput {
+	return i.ToURLMapPathMatcherHeaderActionResponseHeadersToAddOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherHeaderActionResponseHeadersToAddArgs) ToURLMapPathMatcherHeaderActionResponseHeadersToAddOutputWithContext(ctx context.Context) URLMapPathMatcherHeaderActionResponseHeadersToAddOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherHeaderActionResponseHeadersToAddOutput)
+}
+
+// URLMapPathMatcherHeaderActionResponseHeadersToAddArrayInput is an input type that accepts URLMapPathMatcherHeaderActionResponseHeadersToAddArray and URLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherHeaderActionResponseHeadersToAddArrayInput` via:
+//
+//	URLMapPathMatcherHeaderActionResponseHeadersToAddArray{ URLMapPathMatcherHeaderActionResponseHeadersToAddArgs{...} }
+type URLMapPathMatcherHeaderActionResponseHeadersToAddArrayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput() URLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput
+	ToURLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutputWithContext(context.Context) URLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput
+}
+
+type URLMapPathMatcherHeaderActionResponseHeadersToAddArray []URLMapPathMatcherHeaderActionResponseHeadersToAddInput
+
+func (URLMapPathMatcherHeaderActionResponseHeadersToAddArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherHeaderActionResponseHeadersToAddArray) ToURLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput() URLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput {
+	return i.ToURLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherHeaderActionResponseHeadersToAddArray) ToURLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutputWithContext(ctx context.Context) URLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput)
+}
+
+type URLMapPathMatcherHeaderActionResponseHeadersToAddOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherHeaderActionResponseHeadersToAddOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherHeaderActionResponseHeadersToAddOutput) ToURLMapPathMatcherHeaderActionResponseHeadersToAddOutput() URLMapPathMatcherHeaderActionResponseHeadersToAddOutput {
+	return o
+}
+
+func (o URLMapPathMatcherHeaderActionResponseHeadersToAddOutput) ToURLMapPathMatcherHeaderActionResponseHeadersToAddOutputWithContext(ctx context.Context) URLMapPathMatcherHeaderActionResponseHeadersToAddOutput {
+	return o
+}
+
+// The name of the header to add.
+func (o URLMapPathMatcherHeaderActionResponseHeadersToAddOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherHeaderActionResponseHeadersToAdd) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+// The value of the header to add.
+func (o URLMapPathMatcherHeaderActionResponseHeadersToAddOutput) HeaderValue() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherHeaderActionResponseHeadersToAdd) string { return v.HeaderValue }).(pulumi.StringOutput)
+}
+
+// If false, headerValue is appended to any values that already exist for the header.
+// If true, headerValue is set for the header, discarding any values that were set for that header.
+func (o URLMapPathMatcherHeaderActionResponseHeadersToAddOutput) Replace() pulumi.BoolOutput {
+	return o.ApplyT(func(v URLMapPathMatcherHeaderActionResponseHeadersToAdd) bool { return v.Replace }).(pulumi.BoolOutput)
+}
+
+type URLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput) ToURLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput() URLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput) ToURLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutputWithContext(ctx context.Context) URLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcherHeaderActionResponseHeadersToAddOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapPathMatcherHeaderActionResponseHeadersToAdd {
+		return vs[0].([]URLMapPathMatcherHeaderActionResponseHeadersToAdd)[vs[1].(int)]
+	}).(URLMapPathMatcherHeaderActionResponseHeadersToAddOutput)
+}
+
+type URLMapPathMatcherPathRule struct {
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+	// If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+	// For example, consider a UrlMap with the following configuration:
+	// UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
+	// A PathRule for /coming_soon/ is configured for the error code 404.
+	// If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+	// customErrorResponsePolicy is supported only for global external Application Load Balancers.
+	// Structure is documented below.
+	CustomErrorResponsePolicy *URLMapPathMatcherPathRuleCustomErrorResponsePolicy `pulumi:"customErrorResponsePolicy"`
+	// The list of path patterns to match. Each must start with / and the only place a
+	// \* is allowed is at the end following a /. The string fed to the path matcher
+	// does not include any text after the first ? or #, and those chars are not
+	// allowed here.
+	Paths []string `pulumi:"paths"`
+	// In response to a matching path, the load balancer performs advanced routing
+	// actions like URL rewrites, header transformations, etc. prior to forwarding the
+	// request to the selected backend. If routeAction specifies any
+	// weightedBackendServices, service must not be set. Conversely if service is set,
+	// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+	// or urlRedirect must be set.
+	// Structure is documented below.
+	RouteAction *URLMapPathMatcherPathRuleRouteAction `pulumi:"routeAction"`
+	// The backend service or backend bucket to use if any of the given paths match.
+	Service *string `pulumi:"service"`
+	// When a path pattern is matched, the request is redirected to a URL specified
+	// by urlRedirect. If urlRedirect is specified, service or routeAction must not
+	// be set.
+	// Structure is documented below.
+	UrlRedirect *URLMapPathMatcherPathRuleUrlRedirect `pulumi:"urlRedirect"`
+}
+
+// URLMapPathMatcherPathRuleInput is an input type that accepts URLMapPathMatcherPathRuleArgs and URLMapPathMatcherPathRuleOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleInput` via:
+//
+//	URLMapPathMatcherPathRuleArgs{...}
+type URLMapPathMatcherPathRuleInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleOutput() URLMapPathMatcherPathRuleOutput
+	ToURLMapPathMatcherPathRuleOutputWithContext(context.Context) URLMapPathMatcherPathRuleOutput
+}
+
+type URLMapPathMatcherPathRuleArgs struct {
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+	// If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+	// For example, consider a UrlMap with the following configuration:
+	// UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
+	// A PathRule for /coming_soon/ is configured for the error code 404.
+	// If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+	// customErrorResponsePolicy is supported only for global external Application Load Balancers.
+	// Structure is documented below.
+	CustomErrorResponsePolicy URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrInput `pulumi:"customErrorResponsePolicy"`
+	// The list of path patterns to match. Each must start with / and the only place a
+	// \* is allowed is at the end following a /. The string fed to the path matcher
+	// does not include any text after the first ? or #, and those chars are not
+	// allowed here.
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+	// In response to a matching path, the load balancer performs advanced routing
+	// actions like URL rewrites, header transformations, etc. prior to forwarding the
+	// request to the selected backend. If routeAction specifies any
+	// weightedBackendServices, service must not be set. Conversely if service is set,
+	// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+	// or urlRedirect must be set.
+	// Structure is documented below.
+	RouteAction URLMapPathMatcherPathRuleRouteActionPtrInput `pulumi:"routeAction"`
+	// The backend service or backend bucket to use if any of the given paths match.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+	// When a path pattern is matched, the request is redirected to a URL specified
+	// by urlRedirect. If urlRedirect is specified, service or routeAction must not
+	// be set.
+	// Structure is documented below.
+	UrlRedirect URLMapPathMatcherPathRuleUrlRedirectPtrInput `pulumi:"urlRedirect"`
+}
+
+func (URLMapPathMatcherPathRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRule)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleArgs) ToURLMapPathMatcherPathRuleOutput() URLMapPathMatcherPathRuleOutput {
+	return i.ToURLMapPathMatcherPathRuleOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleArgs) ToURLMapPathMatcherPathRuleOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleOutput)
+}
+
+// URLMapPathMatcherPathRuleArrayInput is an input type that accepts URLMapPathMatcherPathRuleArray and URLMapPathMatcherPathRuleArrayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleArrayInput` via:
+//
+//	URLMapPathMatcherPathRuleArray{ URLMapPathMatcherPathRuleArgs{...} }
+type URLMapPathMatcherPathRuleArrayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleArrayOutput() URLMapPathMatcherPathRuleArrayOutput
+	ToURLMapPathMatcherPathRuleArrayOutputWithContext(context.Context) URLMapPathMatcherPathRuleArrayOutput
+}
+
+type URLMapPathMatcherPathRuleArray []URLMapPathMatcherPathRuleInput
+
+func (URLMapPathMatcherPathRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherPathRule)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleArray) ToURLMapPathMatcherPathRuleArrayOutput() URLMapPathMatcherPathRuleArrayOutput {
+	return i.ToURLMapPathMatcherPathRuleArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleArray) ToURLMapPathMatcherPathRuleArrayOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleArrayOutput)
+}
+
+type URLMapPathMatcherPathRuleOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRule)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleOutput) ToURLMapPathMatcherPathRuleOutput() URLMapPathMatcherPathRuleOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleOutput) ToURLMapPathMatcherPathRuleOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleOutput {
+	return o
+}
+
+// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+// If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+// For example, consider a UrlMap with the following configuration:
+// UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
+// A PathRule for /coming_soon/ is configured for the error code 404.
+// If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+// customErrorResponsePolicy is supported only for global external Application Load Balancers.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleOutput) CustomErrorResponsePolicy() URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRule) *URLMapPathMatcherPathRuleCustomErrorResponsePolicy {
+		return v.CustomErrorResponsePolicy
+	}).(URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput)
+}
+
+// The list of path patterns to match. Each must start with / and the only place a
+// \* is allowed is at the end following a /. The string fed to the path matcher
+// does not include any text after the first ? or #, and those chars are not
+// allowed here.
+func (o URLMapPathMatcherPathRuleOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRule) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// In response to a matching path, the load balancer performs advanced routing
+// actions like URL rewrites, header transformations, etc. prior to forwarding the
+// request to the selected backend. If routeAction specifies any
+// weightedBackendServices, service must not be set. Conversely if service is set,
+// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+// or urlRedirect must be set.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleOutput) RouteAction() URLMapPathMatcherPathRuleRouteActionPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRule) *URLMapPathMatcherPathRuleRouteAction { return v.RouteAction }).(URLMapPathMatcherPathRuleRouteActionPtrOutput)
+}
+
+// The backend service or backend bucket to use if any of the given paths match.
+func (o URLMapPathMatcherPathRuleOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRule) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+// When a path pattern is matched, the request is redirected to a URL specified
+// by urlRedirect. If urlRedirect is specified, service or routeAction must not
+// be set.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleOutput) UrlRedirect() URLMapPathMatcherPathRuleUrlRedirectPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRule) *URLMapPathMatcherPathRuleUrlRedirect { return v.UrlRedirect }).(URLMapPathMatcherPathRuleUrlRedirectPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherPathRule)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleArrayOutput) ToURLMapPathMatcherPathRuleArrayOutput() URLMapPathMatcherPathRuleArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleArrayOutput) ToURLMapPathMatcherPathRuleArrayOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcherPathRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapPathMatcherPathRule {
+		return vs[0].([]URLMapPathMatcherPathRule)[vs[1].(int)]
+	}).(URLMapPathMatcherPathRuleOutput)
+}
+
+type URLMapPathMatcherPathRuleCustomErrorResponsePolicy struct {
+	// Specifies rules for returning error responses.
+	// In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+	// For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+	// If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+	// Structure is documented below.
+	ErrorResponseRules []URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule `pulumi:"errorResponseRules"`
+	// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+	// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+	// compute/v1/projects/project/global/backendBuckets/myBackendBucket
+	// global/backendBuckets/myBackendBucket
+	// If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+	// If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+	ErrorService *string `pulumi:"errorService"`
+}
+
+// URLMapPathMatcherPathRuleCustomErrorResponsePolicyInput is an input type that accepts URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs and URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleCustomErrorResponsePolicyInput` via:
+//
+//	URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs{...}
+type URLMapPathMatcherPathRuleCustomErrorResponsePolicyInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput() URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput
+	ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyOutputWithContext(context.Context) URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput
+}
+
+type URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs struct {
+	// Specifies rules for returning error responses.
+	// In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+	// For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+	// If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+	// Structure is documented below.
+	ErrorResponseRules URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayInput `pulumi:"errorResponseRules"`
+	// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+	// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+	// compute/v1/projects/project/global/backendBuckets/myBackendBucket
+	// global/backendBuckets/myBackendBucket
+	// If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+	// If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+	ErrorService pulumi.StringPtrInput `pulumi:"errorService"`
+}
+
+func (URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleCustomErrorResponsePolicy)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput() URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput {
+	return i.ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput)
+}
+
+func (i URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput() URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput).ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrInput is an input type that accepts URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs, URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtr and URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrInput` via:
+//
+//	        URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput() URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput
+	ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutputWithContext(context.Context) URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput
+}
+
+type urlmapPathMatcherPathRuleCustomErrorResponsePolicyPtrType URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs
+
+func URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtr(v *URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs) URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrInput {
+	return (*urlmapPathMatcherPathRuleCustomErrorResponsePolicyPtrType)(v)
+}
+
+func (*urlmapPathMatcherPathRuleCustomErrorResponsePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleCustomErrorResponsePolicy)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherPathRuleCustomErrorResponsePolicyPtrType) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput() URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherPathRuleCustomErrorResponsePolicyPtrType) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleCustomErrorResponsePolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput() URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput() URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput {
+	return o.ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherPathRuleCustomErrorResponsePolicy) *URLMapPathMatcherPathRuleCustomErrorResponsePolicy {
+		return &v
+	}).(URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput)
+}
+
+// Specifies rules for returning error responses.
+// In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+// For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+// If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput) ErrorResponseRules() URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleCustomErrorResponsePolicy) []URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule {
+		return v.ErrorResponseRules
+	}).(URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput)
+}
+
+// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+// compute/v1/projects/project/global/backendBuckets/myBackendBucket
+// global/backendBuckets/myBackendBucket
+// If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+// If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput) ErrorService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleCustomErrorResponsePolicy) *string { return v.ErrorService }).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleCustomErrorResponsePolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput() URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput) Elem() URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleCustomErrorResponsePolicy) URLMapPathMatcherPathRuleCustomErrorResponsePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherPathRuleCustomErrorResponsePolicy
+		return ret
+	}).(URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput)
+}
+
+// Specifies rules for returning error responses.
+// In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+// For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+// If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput) ErrorResponseRules() URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleCustomErrorResponsePolicy) []URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule {
+		if v == nil {
+			return nil
+		}
+		return v.ErrorResponseRules
+	}).(URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput)
+}
+
+// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+// compute/v1/projects/project/global/backendBuckets/myBackendBucket
+// global/backendBuckets/myBackendBucket
+// If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+// If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput) ErrorService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleCustomErrorResponsePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ErrorService
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule struct {
+	// Valid values include:
+	// - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+	// - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+	// - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+	//   Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+	MatchResponseCodes []string `pulumi:"matchResponseCodes"`
+	// The HTTP status code returned with the response containing the custom error content.
+	// If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+	OverrideResponseCode *int `pulumi:"overrideResponseCode"`
+	// The full path to a file within backendBucket. For example: /errors/defaultError.html
+	// path must start with a leading slash. path cannot have trailing slashes.
+	// If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+	// The value must be from 1 to 1024 characters.
+	Path *string `pulumi:"path"`
+}
+
+// URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleInput is an input type that accepts URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgs and URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleInput` via:
+//
+//	URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgs{...}
+type URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput() URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput
+	ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutputWithContext(context.Context) URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput
+}
+
+type URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgs struct {
+	// Valid values include:
+	// - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+	// - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+	// - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+	//   Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+	MatchResponseCodes pulumi.StringArrayInput `pulumi:"matchResponseCodes"`
+	// The HTTP status code returned with the response containing the custom error content.
+	// If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+	OverrideResponseCode pulumi.IntPtrInput `pulumi:"overrideResponseCode"`
+	// The full path to a file within backendBucket. For example: /errors/defaultError.html
+	// path must start with a leading slash. path cannot have trailing slashes.
+	// If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+	// The value must be from 1 to 1024 characters.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgs) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput() URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput {
+	return i.ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgs) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput)
+}
+
+// URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayInput is an input type that accepts URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArray and URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayInput` via:
+//
+//	URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArray{ URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgs{...} }
+type URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput() URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput
+	ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutputWithContext(context.Context) URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput
+}
+
+type URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArray []URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleInput
+
+func (URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArray) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput() URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput {
+	return i.ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArray) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput)
+}
+
+type URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput() URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput {
+	return o
+}
+
+// Valid values include:
+//   - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+//   - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+//   - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+//     Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput) MatchResponseCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule) []string {
+		return v.MatchResponseCodes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The HTTP status code returned with the response containing the custom error content.
+// If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput) OverrideResponseCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule) *int {
+		return v.OverrideResponseCode
+	}).(pulumi.IntPtrOutput)
+}
+
+// The full path to a file within backendBucket. For example: /errors/defaultError.html
+// path must start with a leading slash. path cannot have trailing slashes.
+// If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+// The value must be from 1 to 1024 characters.
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput() URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput) ToURLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule {
+		return vs[0].([]URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule)[vs[1].(int)]
+	}).(URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteAction struct {
+	// The specification for allowing client side cross-origin requests. Please see W3C
+	// Recommendation for Cross Origin Resource Sharing
+	// Structure is documented below.
+	CorsPolicy *URLMapPathMatcherPathRuleRouteActionCorsPolicy `pulumi:"corsPolicy"`
+	// The specification for fault injection introduced into traffic to test the
+	// resiliency of clients to backend service failure. As part of fault injection,
+	// when clients send requests to a backend service, delays can be introduced by
+	// Loadbalancer on a percentage of requests before sending those request to the
+	// backend service. Similarly requests from clients can be aborted by the
+	// Loadbalancer for a percentage of requests. timeout and retryPolicy will be
+	// ignored by clients that are configured with a fault_injection_policy.
+	// Structure is documented below.
+	FaultInjectionPolicy *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
+	// Specifies the policy on how requests intended for the route's backends are
+	// shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+	// responses from the shadow service. Prior to sending traffic to the shadow
+	// service, the host / authority header is suffixed with -shadow.
+	// Structure is documented below.
+	RequestMirrorPolicy *URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy `pulumi:"requestMirrorPolicy"`
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
+	RetryPolicy *URLMapPathMatcherPathRuleRouteActionRetryPolicy `pulumi:"retryPolicy"`
+	// Specifies the timeout for the selected route. Timeout is computed from the time
+	// the request is has been fully processed (i.e. end-of-stream) up until the
+	// response has been completely processed. Timeout includes all retries. If not
+	// specified, the default value is 15 seconds.
+	// Structure is documented below.
+	Timeout *URLMapPathMatcherPathRuleRouteActionTimeout `pulumi:"timeout"`
+	// The spec to modify the URL of the request, prior to forwarding the request to
+	// the matched service
+	// Structure is documented below.
+	UrlRewrite *URLMapPathMatcherPathRuleRouteActionUrlRewrite `pulumi:"urlRewrite"`
+	// A list of weighted backend services to send traffic to when a route match
+	// occurs. The weights determine the fraction of traffic that flows to their
+	// corresponding backend service. If all traffic needs to go to a single backend
+	// service, there must be one  weightedBackendService with weight set to a non 0
+	// number. Once a backendService is identified and before forwarding the request to
+	// the backend service, advanced routing actions like Url rewrites and header
+	// transformations are applied depending on additional settings specified in this
+	// HttpRouteAction.
+	// Structure is documented below.
+	WeightedBackendServices []URLMapPathMatcherPathRuleRouteActionWeightedBackendService `pulumi:"weightedBackendServices"`
+}
+
+// URLMapPathMatcherPathRuleRouteActionInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionArgs and URLMapPathMatcherPathRuleRouteActionOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionArgs{...}
+type URLMapPathMatcherPathRuleRouteActionInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionOutput() URLMapPathMatcherPathRuleRouteActionOutput
+	ToURLMapPathMatcherPathRuleRouteActionOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionArgs struct {
+	// The specification for allowing client side cross-origin requests. Please see W3C
+	// Recommendation for Cross Origin Resource Sharing
+	// Structure is documented below.
+	CorsPolicy URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrInput `pulumi:"corsPolicy"`
+	// The specification for fault injection introduced into traffic to test the
+	// resiliency of clients to backend service failure. As part of fault injection,
+	// when clients send requests to a backend service, delays can be introduced by
+	// Loadbalancer on a percentage of requests before sending those request to the
+	// backend service. Similarly requests from clients can be aborted by the
+	// Loadbalancer for a percentage of requests. timeout and retryPolicy will be
+	// ignored by clients that are configured with a fault_injection_policy.
+	// Structure is documented below.
+	FaultInjectionPolicy URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
+	// Specifies the policy on how requests intended for the route's backends are
+	// shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+	// responses from the shadow service. Prior to sending traffic to the shadow
+	// service, the host / authority header is suffixed with -shadow.
+	// Structure is documented below.
+	RequestMirrorPolicy URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrInput `pulumi:"requestMirrorPolicy"`
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
+	RetryPolicy URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrInput `pulumi:"retryPolicy"`
+	// Specifies the timeout for the selected route. Timeout is computed from the time
+	// the request is has been fully processed (i.e. end-of-stream) up until the
+	// response has been completely processed. Timeout includes all retries. If not
+	// specified, the default value is 15 seconds.
+	// Structure is documented below.
+	Timeout URLMapPathMatcherPathRuleRouteActionTimeoutPtrInput `pulumi:"timeout"`
+	// The spec to modify the URL of the request, prior to forwarding the request to
+	// the matched service
+	// Structure is documented below.
+	UrlRewrite URLMapPathMatcherPathRuleRouteActionUrlRewritePtrInput `pulumi:"urlRewrite"`
+	// A list of weighted backend services to send traffic to when a route match
+	// occurs. The weights determine the fraction of traffic that flows to their
+	// corresponding backend service. If all traffic needs to go to a single backend
+	// service, there must be one  weightedBackendService with weight set to a non 0
+	// number. Once a backendService is identified and before forwarding the request to
+	// the backend service, advanced routing actions like Url rewrites and header
+	// transformations are applied depending on additional settings specified in this
+	// HttpRouteAction.
+	// Structure is documented below.
+	WeightedBackendServices URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayInput `pulumi:"weightedBackendServices"`
+}
+
+func (URLMapPathMatcherPathRuleRouteActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteAction)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionArgs) ToURLMapPathMatcherPathRuleRouteActionOutput() URLMapPathMatcherPathRuleRouteActionOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionArgs) ToURLMapPathMatcherPathRuleRouteActionOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionOutput)
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionArgs) ToURLMapPathMatcherPathRuleRouteActionPtrOutput() URLMapPathMatcherPathRuleRouteActionPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionArgs) ToURLMapPathMatcherPathRuleRouteActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionOutput).ToURLMapPathMatcherPathRuleRouteActionPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherPathRuleRouteActionPtrInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionArgs, URLMapPathMatcherPathRuleRouteActionPtr and URLMapPathMatcherPathRuleRouteActionPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionPtrInput` via:
+//
+//	        URLMapPathMatcherPathRuleRouteActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherPathRuleRouteActionPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionPtrOutput() URLMapPathMatcherPathRuleRouteActionPtrOutput
+	ToURLMapPathMatcherPathRuleRouteActionPtrOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionPtrOutput
+}
+
+type urlmapPathMatcherPathRuleRouteActionPtrType URLMapPathMatcherPathRuleRouteActionArgs
+
+func URLMapPathMatcherPathRuleRouteActionPtr(v *URLMapPathMatcherPathRuleRouteActionArgs) URLMapPathMatcherPathRuleRouteActionPtrInput {
+	return (*urlmapPathMatcherPathRuleRouteActionPtrType)(v)
+}
+
+func (*urlmapPathMatcherPathRuleRouteActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteAction)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionPtrType) ToURLMapPathMatcherPathRuleRouteActionPtrOutput() URLMapPathMatcherPathRuleRouteActionPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionPtrType) ToURLMapPathMatcherPathRuleRouteActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteAction)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionOutput) ToURLMapPathMatcherPathRuleRouteActionOutput() URLMapPathMatcherPathRuleRouteActionOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionOutput) ToURLMapPathMatcherPathRuleRouteActionOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionOutput) ToURLMapPathMatcherPathRuleRouteActionPtrOutput() URLMapPathMatcherPathRuleRouteActionPtrOutput {
+	return o.ToURLMapPathMatcherPathRuleRouteActionPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionOutput) ToURLMapPathMatcherPathRuleRouteActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteAction {
+		return &v
+	}).(URLMapPathMatcherPathRuleRouteActionPtrOutput)
+}
+
+// The specification for allowing client side cross-origin requests. Please see W3C
+// Recommendation for Cross Origin Resource Sharing
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionOutput) CorsPolicy() URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionCorsPolicy {
+		return v.CorsPolicy
+	}).(URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput)
+}
+
+// The specification for fault injection introduced into traffic to test the
+// resiliency of clients to backend service failure. As part of fault injection,
+// when clients send requests to a backend service, delays can be introduced by
+// Loadbalancer on a percentage of requests before sending those request to the
+// backend service. Similarly requests from clients can be aborted by the
+// Loadbalancer for a percentage of requests. timeout and retryPolicy will be
+// ignored by clients that are configured with a fault_injection_policy.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionOutput) FaultInjectionPolicy() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
+		return v.FaultInjectionPolicy
+	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// Specifies the policy on how requests intended for the route's backends are
+// shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+// responses from the shadow service. Prior to sending traffic to the shadow
+// service, the host / authority header is suffixed with -shadow.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionOutput) RequestMirrorPolicy() URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy {
+		return v.RequestMirrorPolicy
+	}).(URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput)
+}
+
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionOutput) RetryPolicy() URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionRetryPolicy {
+		return v.RetryPolicy
+	}).(URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput)
+}
+
+// Specifies the timeout for the selected route. Timeout is computed from the time
+// the request is has been fully processed (i.e. end-of-stream) up until the
+// response has been completely processed. Timeout includes all retries. If not
+// specified, the default value is 15 seconds.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionOutput) Timeout() URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionTimeout {
+		return v.Timeout
+	}).(URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput)
+}
+
+// The spec to modify the URL of the request, prior to forwarding the request to
+// the matched service
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionOutput) UrlRewrite() URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionUrlRewrite {
+		return v.UrlRewrite
+	}).(URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput)
+}
+
+// A list of weighted backend services to send traffic to when a route match
+// occurs. The weights determine the fraction of traffic that flows to their
+// corresponding backend service. If all traffic needs to go to a single backend
+// service, there must be one  weightedBackendService with weight set to a non 0
+// number. Once a backendService is identified and before forwarding the request to
+// the backend service, advanced routing actions like Url rewrites and header
+// transformations are applied depending on additional settings specified in this
+// HttpRouteAction.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionOutput) WeightedBackendServices() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteAction) []URLMapPathMatcherPathRuleRouteActionWeightedBackendService {
+		return v.WeightedBackendServices
+	}).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteAction)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) ToURLMapPathMatcherPathRuleRouteActionPtrOutput() URLMapPathMatcherPathRuleRouteActionPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) ToURLMapPathMatcherPathRuleRouteActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) Elem() URLMapPathMatcherPathRuleRouteActionOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteAction) URLMapPathMatcherPathRuleRouteAction {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherPathRuleRouteAction
+		return ret
+	}).(URLMapPathMatcherPathRuleRouteActionOutput)
+}
+
+// The specification for allowing client side cross-origin requests. Please see W3C
+// Recommendation for Cross Origin Resource Sharing
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) CorsPolicy() URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionCorsPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.CorsPolicy
+	}).(URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput)
+}
+
+// The specification for fault injection introduced into traffic to test the
+// resiliency of clients to backend service failure. As part of fault injection,
+// when clients send requests to a backend service, delays can be introduced by
+// Loadbalancer on a percentage of requests before sending those request to the
+// backend service. Similarly requests from clients can be aborted by the
+// Loadbalancer for a percentage of requests. timeout and retryPolicy will be
+// ignored by clients that are configured with a fault_injection_policy.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) FaultInjectionPolicy() URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.FaultInjectionPolicy
+	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// Specifies the policy on how requests intended for the route's backends are
+// shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+// responses from the shadow service. Prior to sending traffic to the shadow
+// service, the host / authority header is suffixed with -shadow.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) RequestMirrorPolicy() URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.RequestMirrorPolicy
+	}).(URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyPtrOutput)
+}
+
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) RetryPolicy() URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionRetryPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.RetryPolicy
+	}).(URLMapPathMatcherPathRuleRouteActionRetryPolicyPtrOutput)
+}
+
+// Specifies the timeout for the selected route. Timeout is computed from the time
+// the request is has been fully processed (i.e. end-of-stream) up until the
+// response has been completely processed. Timeout includes all retries. If not
+// specified, the default value is 15 seconds.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) Timeout() URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionTimeout {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(URLMapPathMatcherPathRuleRouteActionTimeoutPtrOutput)
+}
+
+// The spec to modify the URL of the request, prior to forwarding the request to
+// the matched service
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) UrlRewrite() URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionUrlRewrite {
+		if v == nil {
+			return nil
+		}
+		return v.UrlRewrite
+	}).(URLMapPathMatcherPathRuleRouteActionUrlRewritePtrOutput)
+}
+
+// A list of weighted backend services to send traffic to when a route match
+// occurs. The weights determine the fraction of traffic that flows to their
+// corresponding backend service. If all traffic needs to go to a single backend
+// service, there must be one  weightedBackendService with weight set to a non 0
+// number. Once a backendService is identified and before forwarding the request to
+// the backend service, advanced routing actions like Url rewrites and header
+// transformations are applied depending on additional settings specified in this
+// HttpRouteAction.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) WeightedBackendServices() URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteAction) []URLMapPathMatcherPathRuleRouteActionWeightedBackendService {
+		if v == nil {
+			return nil
+		}
+		return v.WeightedBackendServices
+	}).(URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArrayOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionCorsPolicy struct {
+	// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+	// This translates to the Access-Control-Allow-Credentials header.
+	AllowCredentials *bool `pulumi:"allowCredentials"`
+	// Specifies the content for the Access-Control-Allow-Headers header.
+	AllowHeaders []string `pulumi:"allowHeaders"`
+	// Specifies the content for the Access-Control-Allow-Methods header.
+	AllowMethods []string `pulumi:"allowMethods"`
+	// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
+	// please see en.cppreference.com/w/cpp/regex/ecmascript
+	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	AllowOriginRegexes []string `pulumi:"allowOriginRegexes"`
+	// Specifies the list of origins that will be allowed to do CORS requests.
+	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	AllowOrigins []string `pulumi:"allowOrigins"`
+	// If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+	Disabled bool `pulumi:"disabled"`
+	// Specifies the content for the Access-Control-Expose-Headers header.
+	ExposeHeaders []string `pulumi:"exposeHeaders"`
+	// Specifies how long results of a preflight request can be cached in seconds.
+	// This translates to the Access-Control-Max-Age header.
+	MaxAge *int `pulumi:"maxAge"`
+}
+
+// URLMapPathMatcherPathRuleRouteActionCorsPolicyInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs and URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionCorsPolicyInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs{...}
+type URLMapPathMatcherPathRuleRouteActionCorsPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionCorsPolicyOutput() URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput
+	ToURLMapPathMatcherPathRuleRouteActionCorsPolicyOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs struct {
+	// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+	// This translates to the Access-Control-Allow-Credentials header.
+	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
+	// Specifies the content for the Access-Control-Allow-Headers header.
+	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
+	// Specifies the content for the Access-Control-Allow-Methods header.
+	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
+	// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
+	// please see en.cppreference.com/w/cpp/regex/ecmascript
+	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	AllowOriginRegexes pulumi.StringArrayInput `pulumi:"allowOriginRegexes"`
+	// Specifies the list of origins that will be allowed to do CORS requests.
+	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	AllowOrigins pulumi.StringArrayInput `pulumi:"allowOrigins"`
+	// If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+	// Specifies the content for the Access-Control-Expose-Headers header.
+	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	// Specifies how long results of a preflight request can be cached in seconds.
+	// This translates to the Access-Control-Max-Age header.
+	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
+}
+
+func (URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionCorsPolicy)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionCorsPolicyOutput() URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionCorsPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionCorsPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput)
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput).ToURLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs, URLMapPathMatcherPathRuleRouteActionCorsPolicyPtr and URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrInput` via:
+//
+//	        URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput
+	ToURLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput
+}
+
+type urlmapPathMatcherPathRuleRouteActionCorsPolicyPtrType URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs
+
+func URLMapPathMatcherPathRuleRouteActionCorsPolicyPtr(v *URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs) URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrInput {
+	return (*urlmapPathMatcherPathRuleRouteActionCorsPolicyPtrType)(v)
+}
+
+func (*urlmapPathMatcherPathRuleRouteActionCorsPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionCorsPolicy)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionCorsPolicyPtrType) ToURLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionCorsPolicyPtrType) ToURLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionCorsPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionCorsPolicyOutput() URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionCorsPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput {
+	return o.ToURLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherPathRuleRouteActionCorsPolicy) *URLMapPathMatcherPathRuleRouteActionCorsPolicy {
+		return &v
+	}).(URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput)
+}
+
+// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+// This translates to the Access-Control-Allow-Credentials header.
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionCorsPolicy) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the content for the Access-Control-Allow-Headers header.
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionCorsPolicy) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the content for the Access-Control-Allow-Methods header.
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionCorsPolicy) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
+// please see en.cppreference.com/w/cpp/regex/ecmascript
+// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionCorsPolicy) []string { return v.AllowOriginRegexes }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the list of origins that will be allowed to do CORS requests.
+// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput) AllowOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionCorsPolicy) []string { return v.AllowOrigins }).(pulumi.StringArrayOutput)
+}
+
+// If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionCorsPolicy) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// Specifies the content for the Access-Control-Expose-Headers header.
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionCorsPolicy) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+}
+
+// Specifies how long results of a preflight request can be cached in seconds.
+// This translates to the Access-Control-Max-Age header.
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionCorsPolicy) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionCorsPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) ToURLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) ToURLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) Elem() URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionCorsPolicy) URLMapPathMatcherPathRuleRouteActionCorsPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherPathRuleRouteActionCorsPolicy
+		return ret
+	}).(URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput)
+}
+
+// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+// This translates to the Access-Control-Allow-Credentials header.
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionCorsPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the content for the Access-Control-Allow-Headers header.
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the content for the Access-Control-Allow-Methods header.
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
+// please see en.cppreference.com/w/cpp/regex/ecmascript
+// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOriginRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the list of origins that will be allowed to do CORS requests.
+// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) AllowOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOrigins
+	}).(pulumi.StringArrayOutput)
+}
+
+// If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionCorsPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the content for the Access-Control-Expose-Headers header.
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExposeHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies how long results of a preflight request can be cached in seconds.
+// This translates to the Access-Control-Max-Age header.
+func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionCorsPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.IntPtrOutput)
+}
+
 type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy struct {
 	// The specification for how client requests are aborted as part of fault injection.
 	// Structure is documented below.
@@ -34236,6 +35550,18 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherHeaderActionResponseHeadersToAddInput)(nil)).Elem(), URLMapPathMatcherHeaderActionResponseHeadersToAddArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherHeaderActionResponseHeadersToAddArrayInput)(nil)).Elem(), URLMapPathMatcherHeaderActionResponseHeadersToAddArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleInput)(nil)).Elem(), URLMapPathMatcherPathRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleArrayInput)(nil)).Elem(), URLMapPathMatcherPathRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleCustomErrorResponsePolicyInput)(nil)).Elem(), URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleInput)(nil)).Elem(), URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayInput)(nil)).Elem(), URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionCorsPolicyInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs{})
@@ -34710,6 +36036,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(URLMapPathMatcherHeaderActionResponseHeadersToAddOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleArrayOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput{})

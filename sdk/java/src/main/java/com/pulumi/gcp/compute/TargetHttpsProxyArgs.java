@@ -259,6 +259,29 @@ public final class TargetHttpsProxyArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+     * Early Data allows a TLS resumption handshake to include the initial application payload
+     * (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+     * This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+     * Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+     * 
+     */
+    @Import(name="tlsEarlyData")
+    private @Nullable Output<String> tlsEarlyData;
+
+    /**
+     * @return Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+     * Early Data allows a TLS resumption handshake to include the initial application payload
+     * (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+     * This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+     * Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+     * 
+     */
+    public Optional<Output<String>> tlsEarlyData() {
+        return Optional.ofNullable(this.tlsEarlyData);
+    }
+
+    /**
      * A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.
      * 
@@ -293,6 +316,7 @@ public final class TargetHttpsProxyArgs extends com.pulumi.resources.ResourceArg
         this.serverTlsPolicy = $.serverTlsPolicy;
         this.sslCertificates = $.sslCertificates;
         this.sslPolicy = $.sslPolicy;
+        this.tlsEarlyData = $.tlsEarlyData;
         this.urlMap = $.urlMap;
     }
 
@@ -643,6 +667,35 @@ public final class TargetHttpsProxyArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder sslPolicy(String sslPolicy) {
             return sslPolicy(Output.of(sslPolicy));
+        }
+
+        /**
+         * @param tlsEarlyData Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+         * Early Data allows a TLS resumption handshake to include the initial application payload
+         * (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+         * This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+         * Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsEarlyData(@Nullable Output<String> tlsEarlyData) {
+            $.tlsEarlyData = tlsEarlyData;
+            return this;
+        }
+
+        /**
+         * @param tlsEarlyData Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
+         * Early Data allows a TLS resumption handshake to include the initial application payload
+         * (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
+         * This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
+         * Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsEarlyData(String tlsEarlyData) {
+            return tlsEarlyData(Output.of(tlsEarlyData));
         }
 
         /**

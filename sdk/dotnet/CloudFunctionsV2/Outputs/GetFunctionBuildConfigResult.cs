@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
     public sealed class GetFunctionBuildConfigResult
     {
         /// <summary>
+        /// Security patches are applied automatically to the runtime without requiring
+        /// the function to be redeployed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetFunctionBuildConfigAutomaticUpdatePolicyResult> AutomaticUpdatePolicies;
+        /// <summary>
         /// The Cloud Build name of the latest successful
         /// deployment of the function.
         /// </summary>
@@ -35,6 +40,10 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> EnvironmentVariables;
         /// <summary>
+        /// Security patches are only applied when a function is redeployed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetFunctionBuildConfigOnDeployUpdatePolicyResult> OnDeployUpdatePolicies;
+        /// <summary>
         /// The runtime in which to run the function. Required when deploying a new
         /// function, optional when updating an existing function.
         /// </summary>
@@ -54,6 +63,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
 
         [OutputConstructor]
         private GetFunctionBuildConfigResult(
+            ImmutableArray<Outputs.GetFunctionBuildConfigAutomaticUpdatePolicyResult> automaticUpdatePolicies,
+
             string build,
 
             string dockerRepository,
@@ -61,6 +72,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
             string entryPoint,
 
             ImmutableDictionary<string, string> environmentVariables,
+
+            ImmutableArray<Outputs.GetFunctionBuildConfigOnDeployUpdatePolicyResult> onDeployUpdatePolicies,
 
             string runtime,
 
@@ -70,10 +83,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
 
             string workerPool)
         {
+            AutomaticUpdatePolicies = automaticUpdatePolicies;
             Build = build;
             DockerRepository = dockerRepository;
             EntryPoint = entryPoint;
             EnvironmentVariables = environmentVariables;
+            OnDeployUpdatePolicies = onDeployUpdatePolicies;
             Runtime = runtime;
             ServiceAccount = serviceAccount;
             Sources = sources;

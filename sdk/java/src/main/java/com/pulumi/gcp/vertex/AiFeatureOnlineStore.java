@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Vertex Ai Featureonlinestore With Beta Fields Optimized
+ * ### Vertex Ai Featureonlinestore With Optimized
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -246,7 +246,7 @@ public class AiFeatureOnlineStore extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+     * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
      * Structure is documented below.
      * 
      */
@@ -254,7 +254,7 @@ public class AiFeatureOnlineStore extends com.pulumi.resources.CustomResource {
     private Output<AiFeatureOnlineStoreDedicatedServingEndpoint> dedicatedServingEndpoint;
 
     /**
-     * @return The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+     * @return The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
      * Structure is documented below.
      * 
      */

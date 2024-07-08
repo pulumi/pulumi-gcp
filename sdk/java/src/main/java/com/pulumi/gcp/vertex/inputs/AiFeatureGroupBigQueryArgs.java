@@ -36,14 +36,14 @@ public final class AiFeatureGroupBigQueryArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+     * Columns to construct entityId / row keys. If not provided defaults to entityId.
      * 
      */
     @Import(name="entityIdColumns")
     private @Nullable Output<List<String>> entityIdColumns;
 
     /**
-     * @return Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+     * @return Columns to construct entityId / row keys. If not provided defaults to entityId.
      * 
      */
     public Optional<Output<List<String>>> entityIdColumns() {
@@ -99,7 +99,7 @@ public final class AiFeatureGroupBigQueryArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param entityIdColumns Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+         * @param entityIdColumns Columns to construct entityId / row keys. If not provided defaults to entityId.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class AiFeatureGroupBigQueryArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param entityIdColumns Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+         * @param entityIdColumns Columns to construct entityId / row keys. If not provided defaults to entityId.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class AiFeatureGroupBigQueryArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param entityIdColumns Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+         * @param entityIdColumns Columns to construct entityId / row keys. If not provided defaults to entityId.
          * 
          * @return builder
          * 

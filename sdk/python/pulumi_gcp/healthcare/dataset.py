@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DatasetArgs', 'Dataset']
 
@@ -20,6 +22,7 @@ __all__ = ['DatasetArgs', 'Dataset']
 class DatasetArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
+                 encryption_spec: Optional[pulumi.Input['DatasetEncryptionSpecArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None):
@@ -29,6 +32,8 @@ class DatasetArgs:
                
                
                - - -
+        :param pulumi.Input['DatasetEncryptionSpecArgs'] encryption_spec: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[str] name: The resource name for the Dataset.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -37,6 +42,8 @@ class DatasetArgs:
                (e.g., HL7 messages) where no explicit timezone is specified.
         """
         pulumi.set(__self__, "location", location)
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -58,6 +65,19 @@ class DatasetArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> Optional[pulumi.Input['DatasetEncryptionSpecArgs']]:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @encryption_spec.setter
+    def encryption_spec(self, value: Optional[pulumi.Input['DatasetEncryptionSpecArgs']]):
+        pulumi.set(self, "encryption_spec", value)
 
     @property
     @pulumi.getter
@@ -102,6 +122,7 @@ class DatasetArgs:
 @pulumi.input_type
 class _DatasetState:
     def __init__(__self__, *,
+                 encryption_spec: Optional[pulumi.Input['DatasetEncryptionSpecArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -109,6 +130,8 @@ class _DatasetState:
                  time_zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Dataset resources.
+        :param pulumi.Input['DatasetEncryptionSpecArgs'] encryption_spec: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[str] location: The location for the Dataset.
                
                
@@ -121,6 +144,8 @@ class _DatasetState:
                "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources
                (e.g., HL7 messages) where no explicit timezone is specified.
         """
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -131,6 +156,19 @@ class _DatasetState:
             pulumi.set(__self__, "self_link", self_link)
         if time_zone is not None:
             pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> Optional[pulumi.Input['DatasetEncryptionSpecArgs']]:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @encryption_spec.setter
+    def encryption_spec(self, value: Optional[pulumi.Input['DatasetEncryptionSpecArgs']]):
+        pulumi.set(self, "encryption_spec", value)
 
     @property
     @pulumi.getter
@@ -204,6 +242,7 @@ class Dataset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -230,6 +269,33 @@ class Dataset(pulumi.CustomResource):
             name="example-dataset",
             location="us-central1",
             time_zone="UTC")
+        ```
+        ### Healthcare Dataset Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="example-keyring",
+            location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="example-key",
+            key_ring=key_ring.id,
+            purpose="ENCRYPT_DECRYPT")
+        healthcare_cmek_keyuser = gcp.kms.CryptoKeyIAMBinding("healthcare_cmek_keyuser",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-healthcare.iam.gserviceaccount.com"])
+        default = gcp.healthcare.Dataset("default",
+            name="example-dataset",
+            location="us-central1",
+            time_zone="UTC",
+            encryption_spec={
+                "kmsKeyName": crypto_key.id,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[healthcare_cmek_keyuser]))
         ```
 
         ## Import
@@ -258,6 +324,8 @@ class Dataset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict']] encryption_spec: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[str] location: The location for the Dataset.
                
                
@@ -296,6 +364,33 @@ class Dataset(pulumi.CustomResource):
             name="example-dataset",
             location="us-central1",
             time_zone="UTC")
+        ```
+        ### Healthcare Dataset Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="example-keyring",
+            location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="example-key",
+            key_ring=key_ring.id,
+            purpose="ENCRYPT_DECRYPT")
+        healthcare_cmek_keyuser = gcp.kms.CryptoKeyIAMBinding("healthcare_cmek_keyuser",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-healthcare.iam.gserviceaccount.com"])
+        default = gcp.healthcare.Dataset("default",
+            name="example-dataset",
+            location="us-central1",
+            time_zone="UTC",
+            encryption_spec={
+                "kmsKeyName": crypto_key.id,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[healthcare_cmek_keyuser]))
         ```
 
         ## Import
@@ -337,6 +432,7 @@ class Dataset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -350,6 +446,7 @@ class Dataset(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatasetArgs.__new__(DatasetArgs)
 
+            __props__.__dict__["encryption_spec"] = encryption_spec
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -367,6 +464,7 @@ class Dataset(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            encryption_spec: Optional[pulumi.Input[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict']]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -379,6 +477,8 @@ class Dataset(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict']] encryption_spec: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[str] location: The location for the Dataset.
                
                
@@ -395,12 +495,22 @@ class Dataset(pulumi.CustomResource):
 
         __props__ = _DatasetState.__new__(_DatasetState)
 
+        __props__.__dict__["encryption_spec"] = encryption_spec
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["time_zone"] = time_zone
         return Dataset(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> pulumi.Output['outputs.DatasetEncryptionSpec']:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
 
     @property
     @pulumi.getter

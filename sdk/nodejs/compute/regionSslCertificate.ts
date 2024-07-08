@@ -106,7 +106,6 @@ export class RegionSslCertificate extends pulumi.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
      * These are in the same namespace as the managed SSL certificates.
      */
     public readonly name!: pulumi.Output<string>;
@@ -224,7 +223,6 @@ export interface RegionSslCertificateState {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
      * These are in the same namespace as the managed SSL certificates.
      */
     name?: pulumi.Input<string>;
@@ -280,7 +278,6 @@ export interface RegionSslCertificateArgs {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
      * These are in the same namespace as the managed SSL certificates.
      */
     name?: pulumi.Input<string>;

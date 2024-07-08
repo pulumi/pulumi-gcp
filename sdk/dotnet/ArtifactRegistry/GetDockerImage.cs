@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public string? Project { get; set; }
 
         /// <summary>
-        /// The last part of the repository name. to fetch from.
+        /// The last part of the repository name to fetch from.
         /// </summary>
         [Input("repositoryId", required: true)]
         public string RepositoryId { get; set; } = null!;
@@ -84,7 +84,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The last part of the repository name. to fetch from.
+        /// The last part of the repository name to fetch from.
         /// </summary>
         [Input("repositoryId", required: true)]
         public Input<string> RepositoryId { get; set; } = null!;

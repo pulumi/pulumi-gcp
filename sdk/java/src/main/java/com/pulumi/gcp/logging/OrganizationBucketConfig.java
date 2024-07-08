@@ -139,14 +139,14 @@ public class OrganizationBucketConfig extends com.pulumi.resources.CustomResourc
      * 
      */
     @Export(name="indexConfigs", refs={List.class,OrganizationBucketConfigIndexConfig.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<OrganizationBucketConfigIndexConfig>> indexConfigs;
+    private Output<List<OrganizationBucketConfigIndexConfig>> indexConfigs;
 
     /**
      * @return A list of indexed fields and related configuration data. Structure is documented below.
      * 
      */
-    public Output<Optional<List<OrganizationBucketConfigIndexConfig>>> indexConfigs() {
-        return Codegen.optional(this.indexConfigs);
+    public Output<List<OrganizationBucketConfigIndexConfig>> indexConfigs() {
+        return this.indexConfigs;
     }
     /**
      * The bucket&#39;s lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).

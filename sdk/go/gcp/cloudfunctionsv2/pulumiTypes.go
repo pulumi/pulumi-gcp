@@ -14,6 +14,9 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type FunctionBuildConfig struct {
+	// Security patches are applied automatically to the runtime without requiring
+	// the function to be redeployed.
+	AutomaticUpdatePolicy *FunctionBuildConfigAutomaticUpdatePolicy `pulumi:"automaticUpdatePolicy"`
 	// (Output)
 	// The Cloud Build name of the latest successful
 	// deployment of the function.
@@ -28,6 +31,9 @@ type FunctionBuildConfig struct {
 	EntryPoint *string `pulumi:"entryPoint"`
 	// User-provided build-time environment variables for the function.
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
+	// Security patches are only applied when a function is redeployed.
+	// Structure is documented below.
+	OnDeployUpdatePolicy *FunctionBuildConfigOnDeployUpdatePolicy `pulumi:"onDeployUpdatePolicy"`
 	// The runtime in which to run the function. Required when deploying a new
 	// function, optional when updating an existing function.
 	Runtime *string `pulumi:"runtime"`
@@ -52,6 +58,9 @@ type FunctionBuildConfigInput interface {
 }
 
 type FunctionBuildConfigArgs struct {
+	// Security patches are applied automatically to the runtime without requiring
+	// the function to be redeployed.
+	AutomaticUpdatePolicy FunctionBuildConfigAutomaticUpdatePolicyPtrInput `pulumi:"automaticUpdatePolicy"`
 	// (Output)
 	// The Cloud Build name of the latest successful
 	// deployment of the function.
@@ -66,6 +75,9 @@ type FunctionBuildConfigArgs struct {
 	EntryPoint pulumi.StringPtrInput `pulumi:"entryPoint"`
 	// User-provided build-time environment variables for the function.
 	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
+	// Security patches are only applied when a function is redeployed.
+	// Structure is documented below.
+	OnDeployUpdatePolicy FunctionBuildConfigOnDeployUpdatePolicyPtrInput `pulumi:"onDeployUpdatePolicy"`
 	// The runtime in which to run the function. Required when deploying a new
 	// function, optional when updating an existing function.
 	Runtime pulumi.StringPtrInput `pulumi:"runtime"`
@@ -155,6 +167,12 @@ func (o FunctionBuildConfigOutput) ToFunctionBuildConfigPtrOutputWithContext(ctx
 	}).(FunctionBuildConfigPtrOutput)
 }
 
+// Security patches are applied automatically to the runtime without requiring
+// the function to be redeployed.
+func (o FunctionBuildConfigOutput) AutomaticUpdatePolicy() FunctionBuildConfigAutomaticUpdatePolicyPtrOutput {
+	return o.ApplyT(func(v FunctionBuildConfig) *FunctionBuildConfigAutomaticUpdatePolicy { return v.AutomaticUpdatePolicy }).(FunctionBuildConfigAutomaticUpdatePolicyPtrOutput)
+}
+
 // (Output)
 // The Cloud Build name of the latest successful
 // deployment of the function.
@@ -179,6 +197,12 @@ func (o FunctionBuildConfigOutput) EntryPoint() pulumi.StringPtrOutput {
 // User-provided build-time environment variables for the function.
 func (o FunctionBuildConfigOutput) EnvironmentVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v FunctionBuildConfig) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
+// Security patches are only applied when a function is redeployed.
+// Structure is documented below.
+func (o FunctionBuildConfigOutput) OnDeployUpdatePolicy() FunctionBuildConfigOnDeployUpdatePolicyPtrOutput {
+	return o.ApplyT(func(v FunctionBuildConfig) *FunctionBuildConfigOnDeployUpdatePolicy { return v.OnDeployUpdatePolicy }).(FunctionBuildConfigOnDeployUpdatePolicyPtrOutput)
 }
 
 // The runtime in which to run the function. Required when deploying a new
@@ -227,6 +251,17 @@ func (o FunctionBuildConfigPtrOutput) Elem() FunctionBuildConfigOutput {
 	}).(FunctionBuildConfigOutput)
 }
 
+// Security patches are applied automatically to the runtime without requiring
+// the function to be redeployed.
+func (o FunctionBuildConfigPtrOutput) AutomaticUpdatePolicy() FunctionBuildConfigAutomaticUpdatePolicyPtrOutput {
+	return o.ApplyT(func(v *FunctionBuildConfig) *FunctionBuildConfigAutomaticUpdatePolicy {
+		if v == nil {
+			return nil
+		}
+		return v.AutomaticUpdatePolicy
+	}).(FunctionBuildConfigAutomaticUpdatePolicyPtrOutput)
+}
+
 // (Output)
 // The Cloud Build name of the latest successful
 // deployment of the function.
@@ -273,6 +308,17 @@ func (o FunctionBuildConfigPtrOutput) EnvironmentVariables() pulumi.StringMapOut
 	}).(pulumi.StringMapOutput)
 }
 
+// Security patches are only applied when a function is redeployed.
+// Structure is documented below.
+func (o FunctionBuildConfigPtrOutput) OnDeployUpdatePolicy() FunctionBuildConfigOnDeployUpdatePolicyPtrOutput {
+	return o.ApplyT(func(v *FunctionBuildConfig) *FunctionBuildConfigOnDeployUpdatePolicy {
+		if v == nil {
+			return nil
+		}
+		return v.OnDeployUpdatePolicy
+	}).(FunctionBuildConfigOnDeployUpdatePolicyPtrOutput)
+}
+
 // The runtime in which to run the function. Required when deploying a new
 // function, optional when updating an existing function.
 func (o FunctionBuildConfigPtrOutput) Runtime() pulumi.StringPtrOutput {
@@ -312,6 +358,265 @@ func (o FunctionBuildConfigPtrOutput) WorkerPool() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.WorkerPool
+	}).(pulumi.StringPtrOutput)
+}
+
+type FunctionBuildConfigAutomaticUpdatePolicy struct {
+}
+
+// FunctionBuildConfigAutomaticUpdatePolicyInput is an input type that accepts FunctionBuildConfigAutomaticUpdatePolicyArgs and FunctionBuildConfigAutomaticUpdatePolicyOutput values.
+// You can construct a concrete instance of `FunctionBuildConfigAutomaticUpdatePolicyInput` via:
+//
+//	FunctionBuildConfigAutomaticUpdatePolicyArgs{...}
+type FunctionBuildConfigAutomaticUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToFunctionBuildConfigAutomaticUpdatePolicyOutput() FunctionBuildConfigAutomaticUpdatePolicyOutput
+	ToFunctionBuildConfigAutomaticUpdatePolicyOutputWithContext(context.Context) FunctionBuildConfigAutomaticUpdatePolicyOutput
+}
+
+type FunctionBuildConfigAutomaticUpdatePolicyArgs struct {
+}
+
+func (FunctionBuildConfigAutomaticUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionBuildConfigAutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (i FunctionBuildConfigAutomaticUpdatePolicyArgs) ToFunctionBuildConfigAutomaticUpdatePolicyOutput() FunctionBuildConfigAutomaticUpdatePolicyOutput {
+	return i.ToFunctionBuildConfigAutomaticUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i FunctionBuildConfigAutomaticUpdatePolicyArgs) ToFunctionBuildConfigAutomaticUpdatePolicyOutputWithContext(ctx context.Context) FunctionBuildConfigAutomaticUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionBuildConfigAutomaticUpdatePolicyOutput)
+}
+
+func (i FunctionBuildConfigAutomaticUpdatePolicyArgs) ToFunctionBuildConfigAutomaticUpdatePolicyPtrOutput() FunctionBuildConfigAutomaticUpdatePolicyPtrOutput {
+	return i.ToFunctionBuildConfigAutomaticUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i FunctionBuildConfigAutomaticUpdatePolicyArgs) ToFunctionBuildConfigAutomaticUpdatePolicyPtrOutputWithContext(ctx context.Context) FunctionBuildConfigAutomaticUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionBuildConfigAutomaticUpdatePolicyOutput).ToFunctionBuildConfigAutomaticUpdatePolicyPtrOutputWithContext(ctx)
+}
+
+// FunctionBuildConfigAutomaticUpdatePolicyPtrInput is an input type that accepts FunctionBuildConfigAutomaticUpdatePolicyArgs, FunctionBuildConfigAutomaticUpdatePolicyPtr and FunctionBuildConfigAutomaticUpdatePolicyPtrOutput values.
+// You can construct a concrete instance of `FunctionBuildConfigAutomaticUpdatePolicyPtrInput` via:
+//
+//	        FunctionBuildConfigAutomaticUpdatePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type FunctionBuildConfigAutomaticUpdatePolicyPtrInput interface {
+	pulumi.Input
+
+	ToFunctionBuildConfigAutomaticUpdatePolicyPtrOutput() FunctionBuildConfigAutomaticUpdatePolicyPtrOutput
+	ToFunctionBuildConfigAutomaticUpdatePolicyPtrOutputWithContext(context.Context) FunctionBuildConfigAutomaticUpdatePolicyPtrOutput
+}
+
+type functionBuildConfigAutomaticUpdatePolicyPtrType FunctionBuildConfigAutomaticUpdatePolicyArgs
+
+func FunctionBuildConfigAutomaticUpdatePolicyPtr(v *FunctionBuildConfigAutomaticUpdatePolicyArgs) FunctionBuildConfigAutomaticUpdatePolicyPtrInput {
+	return (*functionBuildConfigAutomaticUpdatePolicyPtrType)(v)
+}
+
+func (*functionBuildConfigAutomaticUpdatePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionBuildConfigAutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (i *functionBuildConfigAutomaticUpdatePolicyPtrType) ToFunctionBuildConfigAutomaticUpdatePolicyPtrOutput() FunctionBuildConfigAutomaticUpdatePolicyPtrOutput {
+	return i.ToFunctionBuildConfigAutomaticUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *functionBuildConfigAutomaticUpdatePolicyPtrType) ToFunctionBuildConfigAutomaticUpdatePolicyPtrOutputWithContext(ctx context.Context) FunctionBuildConfigAutomaticUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionBuildConfigAutomaticUpdatePolicyPtrOutput)
+}
+
+type FunctionBuildConfigAutomaticUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (FunctionBuildConfigAutomaticUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionBuildConfigAutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (o FunctionBuildConfigAutomaticUpdatePolicyOutput) ToFunctionBuildConfigAutomaticUpdatePolicyOutput() FunctionBuildConfigAutomaticUpdatePolicyOutput {
+	return o
+}
+
+func (o FunctionBuildConfigAutomaticUpdatePolicyOutput) ToFunctionBuildConfigAutomaticUpdatePolicyOutputWithContext(ctx context.Context) FunctionBuildConfigAutomaticUpdatePolicyOutput {
+	return o
+}
+
+func (o FunctionBuildConfigAutomaticUpdatePolicyOutput) ToFunctionBuildConfigAutomaticUpdatePolicyPtrOutput() FunctionBuildConfigAutomaticUpdatePolicyPtrOutput {
+	return o.ToFunctionBuildConfigAutomaticUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionBuildConfigAutomaticUpdatePolicyOutput) ToFunctionBuildConfigAutomaticUpdatePolicyPtrOutputWithContext(ctx context.Context) FunctionBuildConfigAutomaticUpdatePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionBuildConfigAutomaticUpdatePolicy) *FunctionBuildConfigAutomaticUpdatePolicy {
+		return &v
+	}).(FunctionBuildConfigAutomaticUpdatePolicyPtrOutput)
+}
+
+type FunctionBuildConfigAutomaticUpdatePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionBuildConfigAutomaticUpdatePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionBuildConfigAutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (o FunctionBuildConfigAutomaticUpdatePolicyPtrOutput) ToFunctionBuildConfigAutomaticUpdatePolicyPtrOutput() FunctionBuildConfigAutomaticUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o FunctionBuildConfigAutomaticUpdatePolicyPtrOutput) ToFunctionBuildConfigAutomaticUpdatePolicyPtrOutputWithContext(ctx context.Context) FunctionBuildConfigAutomaticUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o FunctionBuildConfigAutomaticUpdatePolicyPtrOutput) Elem() FunctionBuildConfigAutomaticUpdatePolicyOutput {
+	return o.ApplyT(func(v *FunctionBuildConfigAutomaticUpdatePolicy) FunctionBuildConfigAutomaticUpdatePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionBuildConfigAutomaticUpdatePolicy
+		return ret
+	}).(FunctionBuildConfigAutomaticUpdatePolicyOutput)
+}
+
+type FunctionBuildConfigOnDeployUpdatePolicy struct {
+	// (Output)
+	// The runtime version which was used during latest function deployment.
+	RuntimeVersion *string `pulumi:"runtimeVersion"`
+}
+
+// FunctionBuildConfigOnDeployUpdatePolicyInput is an input type that accepts FunctionBuildConfigOnDeployUpdatePolicyArgs and FunctionBuildConfigOnDeployUpdatePolicyOutput values.
+// You can construct a concrete instance of `FunctionBuildConfigOnDeployUpdatePolicyInput` via:
+//
+//	FunctionBuildConfigOnDeployUpdatePolicyArgs{...}
+type FunctionBuildConfigOnDeployUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToFunctionBuildConfigOnDeployUpdatePolicyOutput() FunctionBuildConfigOnDeployUpdatePolicyOutput
+	ToFunctionBuildConfigOnDeployUpdatePolicyOutputWithContext(context.Context) FunctionBuildConfigOnDeployUpdatePolicyOutput
+}
+
+type FunctionBuildConfigOnDeployUpdatePolicyArgs struct {
+	// (Output)
+	// The runtime version which was used during latest function deployment.
+	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
+}
+
+func (FunctionBuildConfigOnDeployUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionBuildConfigOnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (i FunctionBuildConfigOnDeployUpdatePolicyArgs) ToFunctionBuildConfigOnDeployUpdatePolicyOutput() FunctionBuildConfigOnDeployUpdatePolicyOutput {
+	return i.ToFunctionBuildConfigOnDeployUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i FunctionBuildConfigOnDeployUpdatePolicyArgs) ToFunctionBuildConfigOnDeployUpdatePolicyOutputWithContext(ctx context.Context) FunctionBuildConfigOnDeployUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionBuildConfigOnDeployUpdatePolicyOutput)
+}
+
+func (i FunctionBuildConfigOnDeployUpdatePolicyArgs) ToFunctionBuildConfigOnDeployUpdatePolicyPtrOutput() FunctionBuildConfigOnDeployUpdatePolicyPtrOutput {
+	return i.ToFunctionBuildConfigOnDeployUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i FunctionBuildConfigOnDeployUpdatePolicyArgs) ToFunctionBuildConfigOnDeployUpdatePolicyPtrOutputWithContext(ctx context.Context) FunctionBuildConfigOnDeployUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionBuildConfigOnDeployUpdatePolicyOutput).ToFunctionBuildConfigOnDeployUpdatePolicyPtrOutputWithContext(ctx)
+}
+
+// FunctionBuildConfigOnDeployUpdatePolicyPtrInput is an input type that accepts FunctionBuildConfigOnDeployUpdatePolicyArgs, FunctionBuildConfigOnDeployUpdatePolicyPtr and FunctionBuildConfigOnDeployUpdatePolicyPtrOutput values.
+// You can construct a concrete instance of `FunctionBuildConfigOnDeployUpdatePolicyPtrInput` via:
+//
+//	        FunctionBuildConfigOnDeployUpdatePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type FunctionBuildConfigOnDeployUpdatePolicyPtrInput interface {
+	pulumi.Input
+
+	ToFunctionBuildConfigOnDeployUpdatePolicyPtrOutput() FunctionBuildConfigOnDeployUpdatePolicyPtrOutput
+	ToFunctionBuildConfigOnDeployUpdatePolicyPtrOutputWithContext(context.Context) FunctionBuildConfigOnDeployUpdatePolicyPtrOutput
+}
+
+type functionBuildConfigOnDeployUpdatePolicyPtrType FunctionBuildConfigOnDeployUpdatePolicyArgs
+
+func FunctionBuildConfigOnDeployUpdatePolicyPtr(v *FunctionBuildConfigOnDeployUpdatePolicyArgs) FunctionBuildConfigOnDeployUpdatePolicyPtrInput {
+	return (*functionBuildConfigOnDeployUpdatePolicyPtrType)(v)
+}
+
+func (*functionBuildConfigOnDeployUpdatePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionBuildConfigOnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (i *functionBuildConfigOnDeployUpdatePolicyPtrType) ToFunctionBuildConfigOnDeployUpdatePolicyPtrOutput() FunctionBuildConfigOnDeployUpdatePolicyPtrOutput {
+	return i.ToFunctionBuildConfigOnDeployUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *functionBuildConfigOnDeployUpdatePolicyPtrType) ToFunctionBuildConfigOnDeployUpdatePolicyPtrOutputWithContext(ctx context.Context) FunctionBuildConfigOnDeployUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionBuildConfigOnDeployUpdatePolicyPtrOutput)
+}
+
+type FunctionBuildConfigOnDeployUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (FunctionBuildConfigOnDeployUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionBuildConfigOnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (o FunctionBuildConfigOnDeployUpdatePolicyOutput) ToFunctionBuildConfigOnDeployUpdatePolicyOutput() FunctionBuildConfigOnDeployUpdatePolicyOutput {
+	return o
+}
+
+func (o FunctionBuildConfigOnDeployUpdatePolicyOutput) ToFunctionBuildConfigOnDeployUpdatePolicyOutputWithContext(ctx context.Context) FunctionBuildConfigOnDeployUpdatePolicyOutput {
+	return o
+}
+
+func (o FunctionBuildConfigOnDeployUpdatePolicyOutput) ToFunctionBuildConfigOnDeployUpdatePolicyPtrOutput() FunctionBuildConfigOnDeployUpdatePolicyPtrOutput {
+	return o.ToFunctionBuildConfigOnDeployUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionBuildConfigOnDeployUpdatePolicyOutput) ToFunctionBuildConfigOnDeployUpdatePolicyPtrOutputWithContext(ctx context.Context) FunctionBuildConfigOnDeployUpdatePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionBuildConfigOnDeployUpdatePolicy) *FunctionBuildConfigOnDeployUpdatePolicy {
+		return &v
+	}).(FunctionBuildConfigOnDeployUpdatePolicyPtrOutput)
+}
+
+// (Output)
+// The runtime version which was used during latest function deployment.
+func (o FunctionBuildConfigOnDeployUpdatePolicyOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionBuildConfigOnDeployUpdatePolicy) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
+}
+
+type FunctionBuildConfigOnDeployUpdatePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionBuildConfigOnDeployUpdatePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionBuildConfigOnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (o FunctionBuildConfigOnDeployUpdatePolicyPtrOutput) ToFunctionBuildConfigOnDeployUpdatePolicyPtrOutput() FunctionBuildConfigOnDeployUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o FunctionBuildConfigOnDeployUpdatePolicyPtrOutput) ToFunctionBuildConfigOnDeployUpdatePolicyPtrOutputWithContext(ctx context.Context) FunctionBuildConfigOnDeployUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o FunctionBuildConfigOnDeployUpdatePolicyPtrOutput) Elem() FunctionBuildConfigOnDeployUpdatePolicyOutput {
+	return o.ApplyT(func(v *FunctionBuildConfigOnDeployUpdatePolicy) FunctionBuildConfigOnDeployUpdatePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionBuildConfigOnDeployUpdatePolicy
+		return ret
+	}).(FunctionBuildConfigOnDeployUpdatePolicyOutput)
+}
+
+// (Output)
+// The runtime version which was used during latest function deployment.
+func (o FunctionBuildConfigOnDeployUpdatePolicyPtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionBuildConfigOnDeployUpdatePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2525,6 +2830,9 @@ func (o FunctionServiceConfigSecretVolumeVersionArrayOutput) Index(i pulumi.IntI
 }
 
 type GetFunctionBuildConfig struct {
+	// Security patches are applied automatically to the runtime without requiring
+	// the function to be redeployed.
+	AutomaticUpdatePolicies []GetFunctionBuildConfigAutomaticUpdatePolicy `pulumi:"automaticUpdatePolicies"`
 	// The Cloud Build name of the latest successful
 	// deployment of the function.
 	Build string `pulumi:"build"`
@@ -2538,6 +2846,8 @@ type GetFunctionBuildConfig struct {
 	EntryPoint string `pulumi:"entryPoint"`
 	// User-provided build-time environment variables for the function.
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
+	// Security patches are only applied when a function is redeployed.
+	OnDeployUpdatePolicies []GetFunctionBuildConfigOnDeployUpdatePolicy `pulumi:"onDeployUpdatePolicies"`
 	// The runtime in which to run the function. Required when deploying a new
 	// function, optional when updating an existing function.
 	Runtime string `pulumi:"runtime"`
@@ -2561,6 +2871,9 @@ type GetFunctionBuildConfigInput interface {
 }
 
 type GetFunctionBuildConfigArgs struct {
+	// Security patches are applied automatically to the runtime without requiring
+	// the function to be redeployed.
+	AutomaticUpdatePolicies GetFunctionBuildConfigAutomaticUpdatePolicyArrayInput `pulumi:"automaticUpdatePolicies"`
 	// The Cloud Build name of the latest successful
 	// deployment of the function.
 	Build pulumi.StringInput `pulumi:"build"`
@@ -2574,6 +2887,8 @@ type GetFunctionBuildConfigArgs struct {
 	EntryPoint pulumi.StringInput `pulumi:"entryPoint"`
 	// User-provided build-time environment variables for the function.
 	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
+	// Security patches are only applied when a function is redeployed.
+	OnDeployUpdatePolicies GetFunctionBuildConfigOnDeployUpdatePolicyArrayInput `pulumi:"onDeployUpdatePolicies"`
 	// The runtime in which to run the function. Required when deploying a new
 	// function, optional when updating an existing function.
 	Runtime pulumi.StringInput `pulumi:"runtime"`
@@ -2636,6 +2951,14 @@ func (o GetFunctionBuildConfigOutput) ToGetFunctionBuildConfigOutputWithContext(
 	return o
 }
 
+// Security patches are applied automatically to the runtime without requiring
+// the function to be redeployed.
+func (o GetFunctionBuildConfigOutput) AutomaticUpdatePolicies() GetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfig) []GetFunctionBuildConfigAutomaticUpdatePolicy {
+		return v.AutomaticUpdatePolicies
+	}).(GetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput)
+}
+
 // The Cloud Build name of the latest successful
 // deployment of the function.
 func (o GetFunctionBuildConfigOutput) Build() pulumi.StringOutput {
@@ -2659,6 +2982,13 @@ func (o GetFunctionBuildConfigOutput) EntryPoint() pulumi.StringOutput {
 // User-provided build-time environment variables for the function.
 func (o GetFunctionBuildConfigOutput) EnvironmentVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetFunctionBuildConfig) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
+// Security patches are only applied when a function is redeployed.
+func (o GetFunctionBuildConfigOutput) OnDeployUpdatePolicies() GetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfig) []GetFunctionBuildConfigOnDeployUpdatePolicy {
+		return v.OnDeployUpdatePolicies
+	}).(GetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput)
 }
 
 // The runtime in which to run the function. Required when deploying a new
@@ -2700,6 +3030,191 @@ func (o GetFunctionBuildConfigArrayOutput) Index(i pulumi.IntInput) GetFunctionB
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionBuildConfig {
 		return vs[0].([]GetFunctionBuildConfig)[vs[1].(int)]
 	}).(GetFunctionBuildConfigOutput)
+}
+
+type GetFunctionBuildConfigAutomaticUpdatePolicy struct {
+}
+
+// GetFunctionBuildConfigAutomaticUpdatePolicyInput is an input type that accepts GetFunctionBuildConfigAutomaticUpdatePolicyArgs and GetFunctionBuildConfigAutomaticUpdatePolicyOutput values.
+// You can construct a concrete instance of `GetFunctionBuildConfigAutomaticUpdatePolicyInput` via:
+//
+//	GetFunctionBuildConfigAutomaticUpdatePolicyArgs{...}
+type GetFunctionBuildConfigAutomaticUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToGetFunctionBuildConfigAutomaticUpdatePolicyOutput() GetFunctionBuildConfigAutomaticUpdatePolicyOutput
+	ToGetFunctionBuildConfigAutomaticUpdatePolicyOutputWithContext(context.Context) GetFunctionBuildConfigAutomaticUpdatePolicyOutput
+}
+
+type GetFunctionBuildConfigAutomaticUpdatePolicyArgs struct {
+}
+
+func (GetFunctionBuildConfigAutomaticUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionBuildConfigAutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (i GetFunctionBuildConfigAutomaticUpdatePolicyArgs) ToGetFunctionBuildConfigAutomaticUpdatePolicyOutput() GetFunctionBuildConfigAutomaticUpdatePolicyOutput {
+	return i.ToGetFunctionBuildConfigAutomaticUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i GetFunctionBuildConfigAutomaticUpdatePolicyArgs) ToGetFunctionBuildConfigAutomaticUpdatePolicyOutputWithContext(ctx context.Context) GetFunctionBuildConfigAutomaticUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionBuildConfigAutomaticUpdatePolicyOutput)
+}
+
+// GetFunctionBuildConfigAutomaticUpdatePolicyArrayInput is an input type that accepts GetFunctionBuildConfigAutomaticUpdatePolicyArray and GetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput values.
+// You can construct a concrete instance of `GetFunctionBuildConfigAutomaticUpdatePolicyArrayInput` via:
+//
+//	GetFunctionBuildConfigAutomaticUpdatePolicyArray{ GetFunctionBuildConfigAutomaticUpdatePolicyArgs{...} }
+type GetFunctionBuildConfigAutomaticUpdatePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput() GetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput
+	ToGetFunctionBuildConfigAutomaticUpdatePolicyArrayOutputWithContext(context.Context) GetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput
+}
+
+type GetFunctionBuildConfigAutomaticUpdatePolicyArray []GetFunctionBuildConfigAutomaticUpdatePolicyInput
+
+func (GetFunctionBuildConfigAutomaticUpdatePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionBuildConfigAutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (i GetFunctionBuildConfigAutomaticUpdatePolicyArray) ToGetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput() GetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput {
+	return i.ToGetFunctionBuildConfigAutomaticUpdatePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionBuildConfigAutomaticUpdatePolicyArray) ToGetFunctionBuildConfigAutomaticUpdatePolicyArrayOutputWithContext(ctx context.Context) GetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput)
+}
+
+type GetFunctionBuildConfigAutomaticUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionBuildConfigAutomaticUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionBuildConfigAutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (o GetFunctionBuildConfigAutomaticUpdatePolicyOutput) ToGetFunctionBuildConfigAutomaticUpdatePolicyOutput() GetFunctionBuildConfigAutomaticUpdatePolicyOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigAutomaticUpdatePolicyOutput) ToGetFunctionBuildConfigAutomaticUpdatePolicyOutputWithContext(ctx context.Context) GetFunctionBuildConfigAutomaticUpdatePolicyOutput {
+	return o
+}
+
+type GetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionBuildConfigAutomaticUpdatePolicy)(nil)).Elem()
+}
+
+func (o GetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput) ToGetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput() GetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput) ToGetFunctionBuildConfigAutomaticUpdatePolicyArrayOutputWithContext(ctx context.Context) GetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput) Index(i pulumi.IntInput) GetFunctionBuildConfigAutomaticUpdatePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionBuildConfigAutomaticUpdatePolicy {
+		return vs[0].([]GetFunctionBuildConfigAutomaticUpdatePolicy)[vs[1].(int)]
+	}).(GetFunctionBuildConfigAutomaticUpdatePolicyOutput)
+}
+
+type GetFunctionBuildConfigOnDeployUpdatePolicy struct {
+	// The runtime version which was used during latest function deployment.
+	RuntimeVersion string `pulumi:"runtimeVersion"`
+}
+
+// GetFunctionBuildConfigOnDeployUpdatePolicyInput is an input type that accepts GetFunctionBuildConfigOnDeployUpdatePolicyArgs and GetFunctionBuildConfigOnDeployUpdatePolicyOutput values.
+// You can construct a concrete instance of `GetFunctionBuildConfigOnDeployUpdatePolicyInput` via:
+//
+//	GetFunctionBuildConfigOnDeployUpdatePolicyArgs{...}
+type GetFunctionBuildConfigOnDeployUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToGetFunctionBuildConfigOnDeployUpdatePolicyOutput() GetFunctionBuildConfigOnDeployUpdatePolicyOutput
+	ToGetFunctionBuildConfigOnDeployUpdatePolicyOutputWithContext(context.Context) GetFunctionBuildConfigOnDeployUpdatePolicyOutput
+}
+
+type GetFunctionBuildConfigOnDeployUpdatePolicyArgs struct {
+	// The runtime version which was used during latest function deployment.
+	RuntimeVersion pulumi.StringInput `pulumi:"runtimeVersion"`
+}
+
+func (GetFunctionBuildConfigOnDeployUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionBuildConfigOnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (i GetFunctionBuildConfigOnDeployUpdatePolicyArgs) ToGetFunctionBuildConfigOnDeployUpdatePolicyOutput() GetFunctionBuildConfigOnDeployUpdatePolicyOutput {
+	return i.ToGetFunctionBuildConfigOnDeployUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i GetFunctionBuildConfigOnDeployUpdatePolicyArgs) ToGetFunctionBuildConfigOnDeployUpdatePolicyOutputWithContext(ctx context.Context) GetFunctionBuildConfigOnDeployUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionBuildConfigOnDeployUpdatePolicyOutput)
+}
+
+// GetFunctionBuildConfigOnDeployUpdatePolicyArrayInput is an input type that accepts GetFunctionBuildConfigOnDeployUpdatePolicyArray and GetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput values.
+// You can construct a concrete instance of `GetFunctionBuildConfigOnDeployUpdatePolicyArrayInput` via:
+//
+//	GetFunctionBuildConfigOnDeployUpdatePolicyArray{ GetFunctionBuildConfigOnDeployUpdatePolicyArgs{...} }
+type GetFunctionBuildConfigOnDeployUpdatePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput() GetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput
+	ToGetFunctionBuildConfigOnDeployUpdatePolicyArrayOutputWithContext(context.Context) GetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput
+}
+
+type GetFunctionBuildConfigOnDeployUpdatePolicyArray []GetFunctionBuildConfigOnDeployUpdatePolicyInput
+
+func (GetFunctionBuildConfigOnDeployUpdatePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionBuildConfigOnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (i GetFunctionBuildConfigOnDeployUpdatePolicyArray) ToGetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput() GetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput {
+	return i.ToGetFunctionBuildConfigOnDeployUpdatePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionBuildConfigOnDeployUpdatePolicyArray) ToGetFunctionBuildConfigOnDeployUpdatePolicyArrayOutputWithContext(ctx context.Context) GetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput)
+}
+
+type GetFunctionBuildConfigOnDeployUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionBuildConfigOnDeployUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionBuildConfigOnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (o GetFunctionBuildConfigOnDeployUpdatePolicyOutput) ToGetFunctionBuildConfigOnDeployUpdatePolicyOutput() GetFunctionBuildConfigOnDeployUpdatePolicyOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigOnDeployUpdatePolicyOutput) ToGetFunctionBuildConfigOnDeployUpdatePolicyOutputWithContext(ctx context.Context) GetFunctionBuildConfigOnDeployUpdatePolicyOutput {
+	return o
+}
+
+// The runtime version which was used during latest function deployment.
+func (o GetFunctionBuildConfigOnDeployUpdatePolicyOutput) RuntimeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfigOnDeployUpdatePolicy) string { return v.RuntimeVersion }).(pulumi.StringOutput)
+}
+
+type GetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionBuildConfigOnDeployUpdatePolicy)(nil)).Elem()
+}
+
+func (o GetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput) ToGetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput() GetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput) ToGetFunctionBuildConfigOnDeployUpdatePolicyArrayOutputWithContext(ctx context.Context) GetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput) Index(i pulumi.IntInput) GetFunctionBuildConfigOnDeployUpdatePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionBuildConfigOnDeployUpdatePolicy {
+		return vs[0].([]GetFunctionBuildConfigOnDeployUpdatePolicy)[vs[1].(int)]
+	}).(GetFunctionBuildConfigOnDeployUpdatePolicyOutput)
 }
 
 type GetFunctionBuildConfigSource struct {
@@ -4013,6 +4528,10 @@ func (o GetFunctionServiceConfigSecretVolumeVersionArrayOutput) Index(i pulumi.I
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionBuildConfigInput)(nil)).Elem(), FunctionBuildConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionBuildConfigPtrInput)(nil)).Elem(), FunctionBuildConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionBuildConfigAutomaticUpdatePolicyInput)(nil)).Elem(), FunctionBuildConfigAutomaticUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionBuildConfigAutomaticUpdatePolicyPtrInput)(nil)).Elem(), FunctionBuildConfigAutomaticUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionBuildConfigOnDeployUpdatePolicyInput)(nil)).Elem(), FunctionBuildConfigOnDeployUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionBuildConfigOnDeployUpdatePolicyPtrInput)(nil)).Elem(), FunctionBuildConfigOnDeployUpdatePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionBuildConfigSourceInput)(nil)).Elem(), FunctionBuildConfigSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionBuildConfigSourcePtrInput)(nil)).Elem(), FunctionBuildConfigSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionBuildConfigSourceRepoSourceInput)(nil)).Elem(), FunctionBuildConfigSourceRepoSourceArgs{})
@@ -4037,6 +4556,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigSecretVolumeVersionArrayInput)(nil)).Elem(), FunctionServiceConfigSecretVolumeVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionBuildConfigInput)(nil)).Elem(), GetFunctionBuildConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionBuildConfigArrayInput)(nil)).Elem(), GetFunctionBuildConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionBuildConfigAutomaticUpdatePolicyInput)(nil)).Elem(), GetFunctionBuildConfigAutomaticUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionBuildConfigAutomaticUpdatePolicyArrayInput)(nil)).Elem(), GetFunctionBuildConfigAutomaticUpdatePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionBuildConfigOnDeployUpdatePolicyInput)(nil)).Elem(), GetFunctionBuildConfigOnDeployUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionBuildConfigOnDeployUpdatePolicyArrayInput)(nil)).Elem(), GetFunctionBuildConfigOnDeployUpdatePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionBuildConfigSourceInput)(nil)).Elem(), GetFunctionBuildConfigSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionBuildConfigSourceArrayInput)(nil)).Elem(), GetFunctionBuildConfigSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionBuildConfigSourceRepoSourceInput)(nil)).Elem(), GetFunctionBuildConfigSourceRepoSourceArgs{})
@@ -4057,6 +4580,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionServiceConfigSecretVolumeVersionArrayInput)(nil)).Elem(), GetFunctionServiceConfigSecretVolumeVersionArray{})
 	pulumi.RegisterOutputType(FunctionBuildConfigOutput{})
 	pulumi.RegisterOutputType(FunctionBuildConfigPtrOutput{})
+	pulumi.RegisterOutputType(FunctionBuildConfigAutomaticUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(FunctionBuildConfigAutomaticUpdatePolicyPtrOutput{})
+	pulumi.RegisterOutputType(FunctionBuildConfigOnDeployUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(FunctionBuildConfigOnDeployUpdatePolicyPtrOutput{})
 	pulumi.RegisterOutputType(FunctionBuildConfigSourceOutput{})
 	pulumi.RegisterOutputType(FunctionBuildConfigSourcePtrOutput{})
 	pulumi.RegisterOutputType(FunctionBuildConfigSourceRepoSourceOutput{})
@@ -4081,6 +4608,10 @@ func init() {
 	pulumi.RegisterOutputType(FunctionServiceConfigSecretVolumeVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetFunctionBuildConfigOutput{})
 	pulumi.RegisterOutputType(GetFunctionBuildConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionBuildConfigAutomaticUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(GetFunctionBuildConfigAutomaticUpdatePolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionBuildConfigOnDeployUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(GetFunctionBuildConfigOnDeployUpdatePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetFunctionBuildConfigSourceOutput{})
 	pulumi.RegisterOutputType(GetFunctionBuildConfigSourceArrayOutput{})
 	pulumi.RegisterOutputType(GetFunctionBuildConfigSourceRepoSourceOutput{})

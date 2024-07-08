@@ -154,14 +154,14 @@ public class FolderBucketConfig extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="indexConfigs", refs={List.class,FolderBucketConfigIndexConfig.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<FolderBucketConfigIndexConfig>> indexConfigs;
+    private Output<List<FolderBucketConfigIndexConfig>> indexConfigs;
 
     /**
      * @return A list of indexed fields and related configuration data. Structure is documented below.
      * 
      */
-    public Output<Optional<List<FolderBucketConfigIndexConfig>>> indexConfigs() {
-        return Codegen.optional(this.indexConfigs);
+    public Output<List<FolderBucketConfigIndexConfig>> indexConfigs() {
+        return this.indexConfigs;
     }
     /**
      * The bucket&#39;s lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).

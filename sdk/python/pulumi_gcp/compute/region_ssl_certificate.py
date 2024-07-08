@@ -45,7 +45,6 @@ class RegionSslCertificateArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
                These are in the same namespace as the managed SSL certificates.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the
                specified prefix. Conflicts with `name`.
@@ -121,7 +120,6 @@ class RegionSslCertificateArgs:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
         These are in the same namespace as the managed SSL certificates.
         """
         return pulumi.get(self, "name")
@@ -201,7 +199,6 @@ class _RegionSslCertificateState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
                These are in the same namespace as the managed SSL certificates.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the
                specified prefix. Conflicts with `name`.
@@ -313,7 +310,6 @@ class _RegionSslCertificateState:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
         These are in the same namespace as the managed SSL certificates.
         """
         return pulumi.get(self, "name")
@@ -460,7 +456,6 @@ class RegionSslCertificate(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
                These are in the same namespace as the managed SSL certificates.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the
                specified prefix. Conflicts with `name`.
@@ -614,7 +609,6 @@ class RegionSslCertificate(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
                These are in the same namespace as the managed SSL certificates.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the
                specified prefix. Conflicts with `name`.
@@ -700,7 +694,6 @@ class RegionSslCertificate(pulumi.CustomResource):
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
         These are in the same namespace as the managed SSL certificates.
         """
         return pulumi.get(self, "name")

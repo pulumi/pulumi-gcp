@@ -441,6 +441,14 @@ class NetworkAttachment(pulumi.CustomResource):
                  subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
+        A network attachment is a resource that lets a producer Virtual Private Cloud (VPC) network initiate connections to a consumer VPC network through a Private Service Connect interface.
+
+        To get more information about NetworkAttachment, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkAttachments)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vpc/docs/about-network-attachments)
+
         ## Example Usage
 
         ### Network Attachment Basic
@@ -568,6 +576,14 @@ class NetworkAttachment(pulumi.CustomResource):
                  args: NetworkAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A network attachment is a resource that lets a producer Virtual Private Cloud (VPC) network initiate connections to a consumer VPC network through a Private Service Connect interface.
+
+        To get more information about NetworkAttachment, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkAttachments)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vpc/docs/about-network-attachments)
+
         ## Example Usage
 
         ### Network Attachment Basic

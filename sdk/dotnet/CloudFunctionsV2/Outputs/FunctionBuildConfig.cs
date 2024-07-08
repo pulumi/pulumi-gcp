@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
     public sealed class FunctionBuildConfig
     {
         /// <summary>
+        /// Security patches are applied automatically to the runtime without requiring
+        /// the function to be redeployed.
+        /// </summary>
+        public readonly Outputs.FunctionBuildConfigAutomaticUpdatePolicy? AutomaticUpdatePolicy;
+        /// <summary>
         /// (Output)
         /// The Cloud Build name of the latest successful
         /// deployment of the function.
@@ -36,6 +41,11 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? EnvironmentVariables;
         /// <summary>
+        /// Security patches are only applied when a function is redeployed.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.FunctionBuildConfigOnDeployUpdatePolicy? OnDeployUpdatePolicy;
+        /// <summary>
         /// The runtime in which to run the function. Required when deploying a new
         /// function, optional when updating an existing function.
         /// </summary>
@@ -56,6 +66,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
 
         [OutputConstructor]
         private FunctionBuildConfig(
+            Outputs.FunctionBuildConfigAutomaticUpdatePolicy? automaticUpdatePolicy,
+
             string? build,
 
             string? dockerRepository,
@@ -63,6 +75,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
             string? entryPoint,
 
             ImmutableDictionary<string, string>? environmentVariables,
+
+            Outputs.FunctionBuildConfigOnDeployUpdatePolicy? onDeployUpdatePolicy,
 
             string? runtime,
 
@@ -72,10 +86,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
 
             string? workerPool)
         {
+            AutomaticUpdatePolicy = automaticUpdatePolicy;
             Build = build;
             DockerRepository = dockerRepository;
             EntryPoint = entryPoint;
             EnvironmentVariables = environmentVariables;
+            OnDeployUpdatePolicy = onDeployUpdatePolicy;
             Runtime = runtime;
             ServiceAccount = serviceAccount;
             Source = source;

@@ -276,7 +276,6 @@ export class Address extends pulumi.CustomResource {
      * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
      * configure Private Service Connect. Only global internal addresses can use
      * this purpose.
-     *
      * This should only be set when using an Internal address.
      */
     public readonly purpose!: pulumi.Output<string>;
@@ -469,7 +468,6 @@ export interface AddressState {
      * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
      * configure Private Service Connect. Only global internal addresses can use
      * this purpose.
-     *
      * This should only be set when using an Internal address.
      */
     purpose?: pulumi.Input<string>;
@@ -582,7 +580,6 @@ export interface AddressArgs {
      * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
      * configure Private Service Connect. Only global internal addresses can use
      * this purpose.
-     *
      * This should only be set when using an Internal address.
      */
     purpose?: pulumi.Input<string>;

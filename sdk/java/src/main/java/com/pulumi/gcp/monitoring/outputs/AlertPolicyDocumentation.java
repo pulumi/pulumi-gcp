@@ -4,7 +4,9 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.monitoring.outputs.AlertPolicyDocumentationLink;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,6 +21,12 @@ public final class AlertPolicyDocumentation {
      * 
      */
     private @Nullable String content;
+    /**
+     * @return Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AlertPolicyDocumentationLink> links;
     /**
      * @return The format of the content field. Presently, only the value
      * &#34;text/markdown&#34; is supported.
@@ -44,6 +52,14 @@ public final class AlertPolicyDocumentation {
      */
     public Optional<String> content() {
         return Optional.ofNullable(this.content);
+    }
+    /**
+     * @return Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+     * Structure is documented below.
+     * 
+     */
+    public List<AlertPolicyDocumentationLink> links() {
+        return this.links == null ? List.of() : this.links;
     }
     /**
      * @return The format of the content field. Presently, only the value
@@ -74,12 +90,14 @@ public final class AlertPolicyDocumentation {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String content;
+        private @Nullable List<AlertPolicyDocumentationLink> links;
         private @Nullable String mimeType;
         private @Nullable String subject;
         public Builder() {}
         public Builder(AlertPolicyDocumentation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
+    	      this.links = defaults.links;
     	      this.mimeType = defaults.mimeType;
     	      this.subject = defaults.subject;
         }
@@ -89,6 +107,15 @@ public final class AlertPolicyDocumentation {
 
             this.content = content;
             return this;
+        }
+        @CustomType.Setter
+        public Builder links(@Nullable List<AlertPolicyDocumentationLink> links) {
+
+            this.links = links;
+            return this;
+        }
+        public Builder links(AlertPolicyDocumentationLink... links) {
+            return links(List.of(links));
         }
         @CustomType.Setter
         public Builder mimeType(@Nullable String mimeType) {
@@ -105,6 +132,7 @@ public final class AlertPolicyDocumentation {
         public AlertPolicyDocumentation build() {
             final var _resultValue = new AlertPolicyDocumentation();
             _resultValue.content = content;
+            _resultValue.links = links;
             _resultValue.mimeType = mimeType;
             _resultValue.subject = subject;
             return _resultValue;

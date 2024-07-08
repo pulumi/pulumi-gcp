@@ -123,6 +123,69 @@ import (
 //	}
 //
 // ```
+// ### Data Fusion Instance Psc
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datafusion"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			psc, err := compute.NewNetwork(ctx, "psc", &compute.NetworkArgs{
+//				Name:                  pulumi.String("datafusion-psc-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscSubnetwork, err := compute.NewSubnetwork(ctx, "psc", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("datafusion-psc-subnet"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     psc.ID(),
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscNetworkAttachment, err := compute.NewNetworkAttachment(ctx, "psc", &compute.NetworkAttachmentArgs{
+//				Name:                 pulumi.String("datafusion-psc-attachment"),
+//				Region:               pulumi.String("us-central1"),
+//				ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
+//				Subnetworks: pulumi.StringArray{
+//					pscSubnetwork.SelfLink,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datafusion.NewInstance(ctx, "psc_instance", &datafusion.InstanceArgs{
+//				Name:            pulumi.String("psc-instance"),
+//				Region:          pulumi.String("us-central1"),
+//				Type:            pulumi.String("BASIC"),
+//				PrivateInstance: pulumi.Bool(true),
+//				NetworkConfig: &datafusion.InstanceNetworkConfigArgs{
+//					ConnectionType: pulumi.String("PRIVATE_SERVICE_CONNECT_INTERFACES"),
+//					PrivateServiceConnectConfig: &datafusion.InstanceNetworkConfigPrivateServiceConnectConfigArgs{
+//						NetworkAttachment:    pscNetworkAttachment.ID(),
+//						UnreachableCidrBlock: pulumi.String("192.168.0.0/25"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Data Fusion Instance Cmek
 //
 // ```go

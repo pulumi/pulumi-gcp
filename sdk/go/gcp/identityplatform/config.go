@@ -182,7 +182,7 @@ type Config struct {
 	SignIn ConfigSignInOutput `pulumi:"signIn"`
 	// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
 	// Structure is documented below.
-	SmsRegionConfig ConfigSmsRegionConfigPtrOutput `pulumi:"smsRegionConfig"`
+	SmsRegionConfig ConfigSmsRegionConfigOutput `pulumi:"smsRegionConfig"`
 }
 
 // NewConfig registers a new resource with the given unique name, arguments, and options.
@@ -511,8 +511,8 @@ func (o ConfigOutput) SignIn() ConfigSignInOutput {
 
 // Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
 // Structure is documented below.
-func (o ConfigOutput) SmsRegionConfig() ConfigSmsRegionConfigPtrOutput {
-	return o.ApplyT(func(v *Config) ConfigSmsRegionConfigPtrOutput { return v.SmsRegionConfig }).(ConfigSmsRegionConfigPtrOutput)
+func (o ConfigOutput) SmsRegionConfig() ConfigSmsRegionConfigOutput {
+	return o.ApplyT(func(v *Config) ConfigSmsRegionConfigOutput { return v.SmsRegionConfig }).(ConfigSmsRegionConfigOutput)
 }
 
 type ConfigArrayOutput struct{ *pulumi.OutputState }
