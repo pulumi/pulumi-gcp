@@ -51,6 +51,8 @@ __all__ = [
     'AlertPolicyCreationRecordArgsDict',
     'AlertPolicyDocumentationArgs',
     'AlertPolicyDocumentationArgsDict',
+    'AlertPolicyDocumentationLinkArgs',
+    'AlertPolicyDocumentationLinkArgsDict',
     'CustomServiceTelemetryArgs',
     'CustomServiceTelemetryArgsDict',
     'GenericServiceBasicServiceArgs',
@@ -2875,6 +2877,11 @@ if not MYPY:
         exceed more than 10,240 bytes when encoded in UTF-8 format,
         whichever is smaller.
         """
+        links: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertPolicyDocumentationLinkArgsDict']]]]
+        """
+        Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+        Structure is documented below.
+        """
         mime_type: NotRequired[pulumi.Input[str]]
         """
         The format of the content field. Presently, only the value
@@ -2894,6 +2901,7 @@ elif False:
 class AlertPolicyDocumentationArgs:
     def __init__(__self__, *,
                  content: Optional[pulumi.Input[str]] = None,
+                 links: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyDocumentationLinkArgs']]]] = None,
                  mime_type: Optional[pulumi.Input[str]] = None,
                  subject: Optional[pulumi.Input[str]] = None):
         """
@@ -2901,6 +2909,8 @@ class AlertPolicyDocumentationArgs:
                The content may not exceed 8,192 Unicode characters and may not
                exceed more than 10,240 bytes when encoded in UTF-8 format,
                whichever is smaller.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertPolicyDocumentationLinkArgs']]] links: Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+               Structure is documented below.
         :param pulumi.Input[str] mime_type: The format of the content field. Presently, only the value
                "text/markdown" is supported.
         :param pulumi.Input[str] subject: The subject line of the notification. The subject line may not
@@ -2910,6 +2920,8 @@ class AlertPolicyDocumentationArgs:
         """
         if content is not None:
             pulumi.set(__self__, "content", content)
+        if links is not None:
+            pulumi.set(__self__, "links", links)
         if mime_type is not None:
             pulumi.set(__self__, "mime_type", mime_type)
         if subject is not None:
@@ -2929,6 +2941,19 @@ class AlertPolicyDocumentationArgs:
     @content.setter
     def content(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter
+    def links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyDocumentationLinkArgs']]]]:
+        """
+        Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "links")
+
+    @links.setter
+    def links(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyDocumentationLinkArgs']]]]):
+        pulumi.set(self, "links", value)
 
     @property
     @pulumi.getter(name="mimeType")
@@ -2957,6 +2982,58 @@ class AlertPolicyDocumentationArgs:
     @subject.setter
     def subject(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subject", value)
+
+
+if not MYPY:
+    class AlertPolicyDocumentationLinkArgsDict(TypedDict):
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        A short display name for the link. The display name must not be empty or exceed 63 characters. Example: "playbook".
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        The url of a webpage. A url can be templatized by using variables in the path or the query parameters. The total length of a URL should not exceed 2083 characters before and after variable expansion. Example: "https://my_domain.com/playbook?name=${resource.name}".
+        """
+elif False:
+    AlertPolicyDocumentationLinkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertPolicyDocumentationLinkArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] display_name: A short display name for the link. The display name must not be empty or exceed 63 characters. Example: "playbook".
+        :param pulumi.Input[str] url: The url of a webpage. A url can be templatized by using variables in the path or the query parameters. The total length of a URL should not exceed 2083 characters before and after variable expansion. Example: "https://my_domain.com/playbook?name=${resource.name}".
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A short display name for the link. The display name must not be empty or exceed 63 characters. Example: "playbook".
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The url of a webpage. A url can be templatized by using variables in the path or the query parameters. The total length of a URL should not exceed 2083 characters before and after variable expansion. Example: "https://my_domain.com/playbook?name=${resource.name}".
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
 
 
 if not MYPY:

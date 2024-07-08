@@ -221,11 +221,14 @@ type GCPolicy struct {
 	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
 	//
 	// Possible values are: `ABANDON`.
-	//
-	// ***
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules pulumi.StringPtrOutput `pulumi:"gcRules"`
+	// Boolean for whether to allow ignoring warnings when updating the gc policy.
+	// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
+	// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
+	// ---
+	IgnoreWarnings pulumi.BoolPtrOutput `pulumi:"ignoreWarnings"`
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// GC policy that applies to all cells older than the given age.
@@ -285,11 +288,14 @@ type gcpolicyState struct {
 	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
 	//
 	// Possible values are: `ABANDON`.
-	//
-	// ***
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules *string `pulumi:"gcRules"`
+	// Boolean for whether to allow ignoring warnings when updating the gc policy.
+	// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
+	// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
+	// ---
+	IgnoreWarnings *bool `pulumi:"ignoreWarnings"`
 	// The name of the Bigtable instance.
 	InstanceName *string `pulumi:"instanceName"`
 	// GC policy that applies to all cells older than the given age.
@@ -311,11 +317,14 @@ type GCPolicyState struct {
 	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
 	//
 	// Possible values are: `ABANDON`.
-	//
-	// ***
 	DeletionPolicy pulumi.StringPtrInput
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules pulumi.StringPtrInput
+	// Boolean for whether to allow ignoring warnings when updating the gc policy.
+	// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
+	// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
+	// ---
+	IgnoreWarnings pulumi.BoolPtrInput
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringPtrInput
 	// GC policy that applies to all cells older than the given age.
@@ -341,11 +350,14 @@ type gcpolicyArgs struct {
 	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
 	//
 	// Possible values are: `ABANDON`.
-	//
-	// ***
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules *string `pulumi:"gcRules"`
+	// Boolean for whether to allow ignoring warnings when updating the gc policy.
+	// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
+	// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
+	// ---
+	IgnoreWarnings *bool `pulumi:"ignoreWarnings"`
 	// The name of the Bigtable instance.
 	InstanceName string `pulumi:"instanceName"`
 	// GC policy that applies to all cells older than the given age.
@@ -368,11 +380,14 @@ type GCPolicyArgs struct {
 	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
 	//
 	// Possible values are: `ABANDON`.
-	//
-	// ***
 	DeletionPolicy pulumi.StringPtrInput
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules pulumi.StringPtrInput
+	// Boolean for whether to allow ignoring warnings when updating the gc policy.
+	// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
+	// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
+	// ---
+	IgnoreWarnings pulumi.BoolPtrInput
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringInput
 	// GC policy that applies to all cells older than the given age.
@@ -483,8 +498,6 @@ func (o GCPolicyOutput) ColumnFamily() pulumi.StringOutput {
 // Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
 //
 // Possible values are: `ABANDON`.
-//
-// ***
 func (o GCPolicyOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GCPolicy) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
@@ -492,6 +505,14 @@ func (o GCPolicyOutput) DeletionPolicy() pulumi.StringPtrOutput {
 // Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 func (o GCPolicyOutput) GcRules() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GCPolicy) pulumi.StringPtrOutput { return v.GcRules }).(pulumi.StringPtrOutput)
+}
+
+// Boolean for whether to allow ignoring warnings when updating the gc policy.
+// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
+// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
+// ---
+func (o GCPolicyOutput) IgnoreWarnings() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GCPolicy) pulumi.BoolPtrOutput { return v.IgnoreWarnings }).(pulumi.BoolPtrOutput)
 }
 
 // The name of the Bigtable instance.

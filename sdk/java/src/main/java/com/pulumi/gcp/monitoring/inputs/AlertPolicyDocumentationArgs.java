@@ -5,7 +5,9 @@ package com.pulumi.gcp.monitoring.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.monitoring.inputs.AlertPolicyDocumentationLinkArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -34,6 +36,23 @@ public final class AlertPolicyDocumentationArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<String>> content() {
         return Optional.ofNullable(this.content);
+    }
+
+    /**
+     * Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="links")
+    private @Nullable Output<List<AlertPolicyDocumentationLinkArgs>> links;
+
+    /**
+     * @return Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AlertPolicyDocumentationLinkArgs>>> links() {
+        return Optional.ofNullable(this.links);
     }
 
     /**
@@ -78,6 +97,7 @@ public final class AlertPolicyDocumentationArgs extends com.pulumi.resources.Res
 
     private AlertPolicyDocumentationArgs(AlertPolicyDocumentationArgs $) {
         this.content = $.content;
+        this.links = $.links;
         this.mimeType = $.mimeType;
         this.subject = $.subject;
     }
@@ -125,6 +145,40 @@ public final class AlertPolicyDocumentationArgs extends com.pulumi.resources.Res
          */
         public Builder content(String content) {
             return content(Output.of(content));
+        }
+
+        /**
+         * @param links Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder links(@Nullable Output<List<AlertPolicyDocumentationLinkArgs>> links) {
+            $.links = links;
+            return this;
+        }
+
+        /**
+         * @param links Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder links(List<AlertPolicyDocumentationLinkArgs> links) {
+            return links(Output.of(links));
+        }
+
+        /**
+         * @param links Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder links(AlertPolicyDocumentationLinkArgs... links) {
+            return links(List.of(links));
         }
 
         /**

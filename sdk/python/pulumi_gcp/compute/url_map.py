@@ -21,6 +21,7 @@ __all__ = ['URLMapArgs', 'URLMap']
 @pulumi.input_type
 class URLMapArgs:
     def __init__(__self__, *,
+                 default_custom_error_response_policy: Optional[pulumi.Input['URLMapDefaultCustomErrorResponsePolicyArgs']] = None,
                  default_route_action: Optional[pulumi.Input['URLMapDefaultRouteActionArgs']] = None,
                  default_service: Optional[pulumi.Input[str]] = None,
                  default_url_redirect: Optional[pulumi.Input['URLMapDefaultUrlRedirectArgs']] = None,
@@ -33,6 +34,15 @@ class URLMapArgs:
                  tests: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]] = None):
         """
         The set of arguments for constructing a URLMap resource.
+        :param pulumi.Input['URLMapDefaultCustomErrorResponsePolicyArgs'] default_custom_error_response_policy: defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+               This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+               For example, consider a UrlMap with the following configuration:
+               UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
+               A RouteRule for /coming_soon/ is configured for the error code 404.
+               If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+               When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
+               defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
+               Structure is documented below.
         :param pulumi.Input['URLMapDefaultRouteActionArgs'] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
                like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
                If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
@@ -70,6 +80,8 @@ class URLMapArgs:
                tests per UrlMap.
                Structure is documented below.
         """
+        if default_custom_error_response_policy is not None:
+            pulumi.set(__self__, "default_custom_error_response_policy", default_custom_error_response_policy)
         if default_route_action is not None:
             pulumi.set(__self__, "default_route_action", default_route_action)
         if default_service is not None:
@@ -90,6 +102,26 @@ class URLMapArgs:
             pulumi.set(__self__, "project", project)
         if tests is not None:
             pulumi.set(__self__, "tests", tests)
+
+    @property
+    @pulumi.getter(name="defaultCustomErrorResponsePolicy")
+    def default_custom_error_response_policy(self) -> Optional[pulumi.Input['URLMapDefaultCustomErrorResponsePolicyArgs']]:
+        """
+        defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+        This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        For example, consider a UrlMap with the following configuration:
+        UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
+        A RouteRule for /coming_soon/ is configured for the error code 404.
+        If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
+        defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_custom_error_response_policy")
+
+    @default_custom_error_response_policy.setter
+    def default_custom_error_response_policy(self, value: Optional[pulumi.Input['URLMapDefaultCustomErrorResponsePolicyArgs']]):
+        pulumi.set(self, "default_custom_error_response_policy", value)
 
     @property
     @pulumi.getter(name="defaultRouteAction")
@@ -242,6 +274,7 @@ class URLMapArgs:
 class _URLMapState:
     def __init__(__self__, *,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 default_custom_error_response_policy: Optional[pulumi.Input['URLMapDefaultCustomErrorResponsePolicyArgs']] = None,
                  default_route_action: Optional[pulumi.Input['URLMapDefaultRouteActionArgs']] = None,
                  default_service: Optional[pulumi.Input[str]] = None,
                  default_url_redirect: Optional[pulumi.Input['URLMapDefaultUrlRedirectArgs']] = None,
@@ -258,6 +291,15 @@ class _URLMapState:
         """
         Input properties used for looking up and filtering URLMap resources.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input['URLMapDefaultCustomErrorResponsePolicyArgs'] default_custom_error_response_policy: defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+               This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+               For example, consider a UrlMap with the following configuration:
+               UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
+               A RouteRule for /coming_soon/ is configured for the error code 404.
+               If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+               When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
+               defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
+               Structure is documented below.
         :param pulumi.Input['URLMapDefaultRouteActionArgs'] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
                like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
                If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
@@ -301,6 +343,8 @@ class _URLMapState:
         """
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if default_custom_error_response_policy is not None:
+            pulumi.set(__self__, "default_custom_error_response_policy", default_custom_error_response_policy)
         if default_route_action is not None:
             pulumi.set(__self__, "default_route_action", default_route_action)
         if default_service is not None:
@@ -339,6 +383,26 @@ class _URLMapState:
     @creation_timestamp.setter
     def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "creation_timestamp", value)
+
+    @property
+    @pulumi.getter(name="defaultCustomErrorResponsePolicy")
+    def default_custom_error_response_policy(self) -> Optional[pulumi.Input['URLMapDefaultCustomErrorResponsePolicyArgs']]:
+        """
+        defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+        This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        For example, consider a UrlMap with the following configuration:
+        UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
+        A RouteRule for /coming_soon/ is configured for the error code 404.
+        If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
+        defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_custom_error_response_policy")
+
+    @default_custom_error_response_policy.setter
+    def default_custom_error_response_policy(self, value: Optional[pulumi.Input['URLMapDefaultCustomErrorResponsePolicyArgs']]):
+        pulumi.set(self, "default_custom_error_response_policy", value)
 
     @property
     @pulumi.getter(name="defaultRouteAction")
@@ -529,6 +593,7 @@ class URLMap(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 default_custom_error_response_policy: Optional[pulumi.Input[Union['URLMapDefaultCustomErrorResponsePolicyArgs', 'URLMapDefaultCustomErrorResponsePolicyArgsDict']]] = None,
                  default_route_action: Optional[pulumi.Input[Union['URLMapDefaultRouteActionArgs', 'URLMapDefaultRouteActionArgsDict']]] = None,
                  default_service: Optional[pulumi.Input[str]] = None,
                  default_url_redirect: Optional[pulumi.Input[Union['URLMapDefaultUrlRedirectArgs', 'URLMapDefaultUrlRedirectArgsDict']]] = None,
@@ -1123,6 +1188,82 @@ class URLMap(pulumi.CustomResource):
                 ],
             }])
         ```
+        ### Url Map Custom Error Response Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.HttpHealthCheck("default",
+            name="health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        example = gcp.compute.BackendService("example",
+            name="login",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        error_bucket = gcp.storage.Bucket("error",
+            name="static-asset-bucket",
+            location="US")
+        error = gcp.compute.BackendBucket("error",
+            name="error-backend-bucket",
+            bucket_name=error_bucket.name,
+            enable_cdn=True)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="a description",
+            default_service=example.id,
+            default_custom_error_response_policy={
+                "errorResponseRules": [{
+                    "matchResponseCodes": ["5xx"],
+                    "path": "/*",
+                    "overrideResponseCode": 502,
+                }],
+                "errorService": error.id,
+            },
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "mysite",
+            }],
+            path_matchers=[{
+                "name": "mysite",
+                "defaultService": example.id,
+                "defaultCustomErrorResponsePolicy": {
+                    "errorResponseRules": [
+                        {
+                            "matchResponseCodes": [
+                                "4xx",
+                                "5xx",
+                            ],
+                            "path": "/login",
+                            "overrideResponseCode": 404,
+                        },
+                        {
+                            "matchResponseCodes": ["503"],
+                            "path": "/example",
+                            "overrideResponseCode": 502,
+                        },
+                    ],
+                    "errorService": error.id,
+                },
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": example.id,
+                    "customErrorResponsePolicy": {
+                        "errorResponseRules": [{
+                            "matchResponseCodes": ["4xx"],
+                            "path": "/register",
+                            "overrideResponseCode": 401,
+                        }],
+                        "errorService": error.id,
+                    },
+                }],
+            }])
+        ```
 
         ## Import
 
@@ -1150,6 +1291,15 @@ class URLMap(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['URLMapDefaultCustomErrorResponsePolicyArgs', 'URLMapDefaultCustomErrorResponsePolicyArgsDict']] default_custom_error_response_policy: defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+               This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+               For example, consider a UrlMap with the following configuration:
+               UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
+               A RouteRule for /coming_soon/ is configured for the error code 404.
+               If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+               When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
+               defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
+               Structure is documented below.
         :param pulumi.Input[Union['URLMapDefaultRouteActionArgs', 'URLMapDefaultRouteActionArgsDict']] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
                like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
                If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
@@ -1776,6 +1926,82 @@ class URLMap(pulumi.CustomResource):
                 ],
             }])
         ```
+        ### Url Map Custom Error Response Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.HttpHealthCheck("default",
+            name="health-check",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        example = gcp.compute.BackendService("example",
+            name="login",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        error_bucket = gcp.storage.Bucket("error",
+            name="static-asset-bucket",
+            location="US")
+        error = gcp.compute.BackendBucket("error",
+            name="error-backend-bucket",
+            bucket_name=error_bucket.name,
+            enable_cdn=True)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="a description",
+            default_service=example.id,
+            default_custom_error_response_policy={
+                "errorResponseRules": [{
+                    "matchResponseCodes": ["5xx"],
+                    "path": "/*",
+                    "overrideResponseCode": 502,
+                }],
+                "errorService": error.id,
+            },
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "mysite",
+            }],
+            path_matchers=[{
+                "name": "mysite",
+                "defaultService": example.id,
+                "defaultCustomErrorResponsePolicy": {
+                    "errorResponseRules": [
+                        {
+                            "matchResponseCodes": [
+                                "4xx",
+                                "5xx",
+                            ],
+                            "path": "/login",
+                            "overrideResponseCode": 404,
+                        },
+                        {
+                            "matchResponseCodes": ["503"],
+                            "path": "/example",
+                            "overrideResponseCode": 502,
+                        },
+                    ],
+                    "errorService": error.id,
+                },
+                "pathRules": [{
+                    "paths": ["/*"],
+                    "service": example.id,
+                    "customErrorResponsePolicy": {
+                        "errorResponseRules": [{
+                            "matchResponseCodes": ["4xx"],
+                            "path": "/register",
+                            "overrideResponseCode": 401,
+                        }],
+                        "errorService": error.id,
+                    },
+                }],
+            }])
+        ```
 
         ## Import
 
@@ -1816,6 +2042,7 @@ class URLMap(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 default_custom_error_response_policy: Optional[pulumi.Input[Union['URLMapDefaultCustomErrorResponsePolicyArgs', 'URLMapDefaultCustomErrorResponsePolicyArgsDict']]] = None,
                  default_route_action: Optional[pulumi.Input[Union['URLMapDefaultRouteActionArgs', 'URLMapDefaultRouteActionArgsDict']]] = None,
                  default_service: Optional[pulumi.Input[str]] = None,
                  default_url_redirect: Optional[pulumi.Input[Union['URLMapDefaultUrlRedirectArgs', 'URLMapDefaultUrlRedirectArgsDict']]] = None,
@@ -1835,6 +2062,7 @@ class URLMap(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = URLMapArgs.__new__(URLMapArgs)
 
+            __props__.__dict__["default_custom_error_response_policy"] = default_custom_error_response_policy
             __props__.__dict__["default_route_action"] = default_route_action
             __props__.__dict__["default_service"] = default_service
             __props__.__dict__["default_url_redirect"] = default_url_redirect
@@ -1860,6 +2088,7 @@ class URLMap(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
+            default_custom_error_response_policy: Optional[pulumi.Input[Union['URLMapDefaultCustomErrorResponsePolicyArgs', 'URLMapDefaultCustomErrorResponsePolicyArgsDict']]] = None,
             default_route_action: Optional[pulumi.Input[Union['URLMapDefaultRouteActionArgs', 'URLMapDefaultRouteActionArgsDict']]] = None,
             default_service: Optional[pulumi.Input[str]] = None,
             default_url_redirect: Optional[pulumi.Input[Union['URLMapDefaultUrlRedirectArgs', 'URLMapDefaultUrlRedirectArgsDict']]] = None,
@@ -1881,6 +2110,15 @@ class URLMap(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[Union['URLMapDefaultCustomErrorResponsePolicyArgs', 'URLMapDefaultCustomErrorResponsePolicyArgsDict']] default_custom_error_response_policy: defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+               This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+               For example, consider a UrlMap with the following configuration:
+               UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
+               A RouteRule for /coming_soon/ is configured for the error code 404.
+               If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+               When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
+               defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
+               Structure is documented below.
         :param pulumi.Input[Union['URLMapDefaultRouteActionArgs', 'URLMapDefaultRouteActionArgsDict']] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
                like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
                If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
@@ -1927,6 +2165,7 @@ class URLMap(pulumi.CustomResource):
         __props__ = _URLMapState.__new__(_URLMapState)
 
         __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["default_custom_error_response_policy"] = default_custom_error_response_policy
         __props__.__dict__["default_route_action"] = default_route_action
         __props__.__dict__["default_service"] = default_service
         __props__.__dict__["default_url_redirect"] = default_url_redirect
@@ -1949,6 +2188,22 @@ class URLMap(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="defaultCustomErrorResponsePolicy")
+    def default_custom_error_response_policy(self) -> pulumi.Output[Optional['outputs.URLMapDefaultCustomErrorResponsePolicy']]:
+        """
+        defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+        This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        For example, consider a UrlMap with the following configuration:
+        UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
+        A RouteRule for /coming_soon/ is configured for the error code 404.
+        If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
+        defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_custom_error_response_policy")
 
     @property
     @pulumi.getter(name="defaultRouteAction")

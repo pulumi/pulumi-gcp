@@ -84,7 +84,6 @@ class AddressArgs:
                * PRIVATE_SERVICE_CONNECT for a private network address that is used to
                configure Private Service Connect. Only global internal addresses can use
                this purpose.
-               
                This should only be set when using an Internal address.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
@@ -296,7 +295,6 @@ class AddressArgs:
         * PRIVATE_SERVICE_CONNECT for a private network address that is used to
         configure Private Service Connect. Only global internal addresses can use
         this purpose.
-
         This should only be set when using an Internal address.
         """
         return pulumi.get(self, "purpose")
@@ -414,7 +412,6 @@ class _AddressState:
                * PRIVATE_SERVICE_CONNECT for a private network address that is used to
                configure Private Service Connect. Only global internal addresses can use
                this purpose.
-               
                This should only be set when using an Internal address.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
@@ -690,7 +687,6 @@ class _AddressState:
         * PRIVATE_SERVICE_CONNECT for a private network address that is used to
         configure Private Service Connect. Only global internal addresses can use
         this purpose.
-
         This should only be set when using an Internal address.
         """
         return pulumi.get(self, "purpose")
@@ -958,7 +954,6 @@ class Address(pulumi.CustomResource):
                * PRIVATE_SERVICE_CONNECT for a private network address that is used to
                configure Private Service Connect. Only global internal addresses can use
                this purpose.
-               
                This should only be set when using an Internal address.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
@@ -1260,7 +1255,6 @@ class Address(pulumi.CustomResource):
                * PRIVATE_SERVICE_CONNECT for a private network address that is used to
                configure Private Service Connect. Only global internal addresses can use
                this purpose.
-               
                This should only be set when using an Internal address.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
@@ -1461,7 +1455,6 @@ class Address(pulumi.CustomResource):
         * PRIVATE_SERVICE_CONNECT for a private network address that is used to
         configure Private Service Connect. Only global internal addresses can use
         this purpose.
-
         This should only be set when using an Internal address.
         """
         return pulumi.get(self, "purpose")

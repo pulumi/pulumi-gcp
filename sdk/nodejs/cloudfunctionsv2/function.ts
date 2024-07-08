@@ -712,6 +712,130 @@ import * as utilities from "../utilities";
  *     dependsOn: [gcfCmekKeyuser],
  * });
  * ```
+ * ### Cloudfunctions2 Abiu
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = "my-project-name";
+ * const account = new gcp.serviceaccount.Account("account", {
+ *     accountId: "gcf-sa",
+ *     displayName: "Test Service Account",
+ * });
+ * const topic = new gcp.pubsub.Topic("topic", {name: "functions2-topic"});
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: `${project}-gcf-source`,
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const object = new gcp.storage.BucketObject("object", {
+ *     name: "function-source.zip",
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("function-source.zip"),
+ * });
+ * const _function = new gcp.cloudfunctionsv2.Function("function", {
+ *     name: "gcf-function",
+ *     location: "europe-west6",
+ *     description: "a new function",
+ *     buildConfig: {
+ *         runtime: "nodejs16",
+ *         entryPoint: "helloPubSub",
+ *         environmentVariables: {
+ *             BUILD_CONFIG_TEST: "build_test",
+ *         },
+ *         source: {
+ *             storageSource: {
+ *                 bucket: bucket.name,
+ *                 object: object.name,
+ *             },
+ *         },
+ *         automaticUpdatePolicy: {},
+ *     },
+ *     serviceConfig: {
+ *         maxInstanceCount: 3,
+ *         minInstanceCount: 1,
+ *         availableMemory: "4Gi",
+ *         timeoutSeconds: 60,
+ *         maxInstanceRequestConcurrency: 80,
+ *         availableCpu: "4",
+ *         environmentVariables: {
+ *             SERVICE_CONFIG_TEST: "config_test",
+ *         },
+ *         ingressSettings: "ALLOW_INTERNAL_ONLY",
+ *         allTrafficOnLatestRevision: true,
+ *         serviceAccountEmail: account.email,
+ *     },
+ *     eventTrigger: {
+ *         triggerRegion: "us-central1",
+ *         eventType: "google.cloud.pubsub.topic.v1.messagePublished",
+ *         pubsubTopic: topic.id,
+ *         retryPolicy: "RETRY_POLICY_RETRY",
+ *     },
+ * });
+ * ```
+ * ### Cloudfunctions2 Abiu On Deploy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = "my-project-name";
+ * const account = new gcp.serviceaccount.Account("account", {
+ *     accountId: "gcf-sa",
+ *     displayName: "Test Service Account",
+ * });
+ * const topic = new gcp.pubsub.Topic("topic", {name: "functions2-topic"});
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: `${project}-gcf-source`,
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const object = new gcp.storage.BucketObject("object", {
+ *     name: "function-source.zip",
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("function-source.zip"),
+ * });
+ * const _function = new gcp.cloudfunctionsv2.Function("function", {
+ *     name: "gcf-function",
+ *     location: "europe-west6",
+ *     description: "a new function",
+ *     buildConfig: {
+ *         runtime: "nodejs16",
+ *         entryPoint: "helloPubSub",
+ *         environmentVariables: {
+ *             BUILD_CONFIG_TEST: "build_test",
+ *         },
+ *         source: {
+ *             storageSource: {
+ *                 bucket: bucket.name,
+ *                 object: object.name,
+ *             },
+ *         },
+ *         onDeployUpdatePolicy: {},
+ *     },
+ *     serviceConfig: {
+ *         maxInstanceCount: 3,
+ *         minInstanceCount: 1,
+ *         availableMemory: "4Gi",
+ *         timeoutSeconds: 60,
+ *         maxInstanceRequestConcurrency: 80,
+ *         availableCpu: "4",
+ *         environmentVariables: {
+ *             SERVICE_CONFIG_TEST: "config_test",
+ *         },
+ *         ingressSettings: "ALLOW_INTERNAL_ONLY",
+ *         allTrafficOnLatestRevision: true,
+ *         serviceAccountEmail: account.email,
+ *     },
+ *     eventTrigger: {
+ *         triggerRegion: "us-central1",
+ *         eventType: "google.cloud.pubsub.topic.v1.messagePublished",
+ *         pubsubTopic: topic.id,
+ *         retryPolicy: "RETRY_POLICY_RETRY",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

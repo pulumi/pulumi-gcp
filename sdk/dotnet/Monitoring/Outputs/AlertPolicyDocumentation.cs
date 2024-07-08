@@ -21,6 +21,11 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly string? Content;
         /// <summary>
+        /// Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AlertPolicyDocumentationLink> Links;
+        /// <summary>
         /// The format of the content field. Presently, only the value
         /// "text/markdown" is supported.
         /// </summary>
@@ -37,11 +42,14 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         private AlertPolicyDocumentation(
             string? content,
 
+            ImmutableArray<Outputs.AlertPolicyDocumentationLink> links,
+
             string? mimeType,
 
             string? subject)
         {
             Content = content;
+            Links = links;
             MimeType = mimeType;
             Subject = subject;
         }

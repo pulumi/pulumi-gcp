@@ -1122,6 +1122,122 @@ class Function(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[gcf_cmek_keyuser]))
         ```
+        ### Cloudfunctions2 Abiu
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        account = gcp.serviceaccount.Account("account",
+            account_id="gcf-sa",
+            display_name="Test Service Account")
+        topic = gcp.pubsub.Topic("topic", name="functions2-topic")
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="gcf-function",
+            location="europe-west6",
+            description="a new function",
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloPubSub",
+                "environmentVariables": {
+                    "BUILD_CONFIG_TEST": "build_test",
+                },
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+                "automaticUpdatePolicy": {},
+            },
+            service_config={
+                "maxInstanceCount": 3,
+                "minInstanceCount": 1,
+                "availableMemory": "4Gi",
+                "timeoutSeconds": 60,
+                "maxInstanceRequestConcurrency": 80,
+                "availableCpu": "4",
+                "environmentVariables": {
+                    "SERVICE_CONFIG_TEST": "config_test",
+                },
+                "ingressSettings": "ALLOW_INTERNAL_ONLY",
+                "allTrafficOnLatestRevision": True,
+                "serviceAccountEmail": account.email,
+            },
+            event_trigger={
+                "triggerRegion": "us-central1",
+                "eventType": "google.cloud.pubsub.topic.v1.messagePublished",
+                "pubsubTopic": topic.id,
+                "retryPolicy": "RETRY_POLICY_RETRY",
+            })
+        ```
+        ### Cloudfunctions2 Abiu On Deploy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        account = gcp.serviceaccount.Account("account",
+            account_id="gcf-sa",
+            display_name="Test Service Account")
+        topic = gcp.pubsub.Topic("topic", name="functions2-topic")
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="gcf-function",
+            location="europe-west6",
+            description="a new function",
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloPubSub",
+                "environmentVariables": {
+                    "BUILD_CONFIG_TEST": "build_test",
+                },
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+                "onDeployUpdatePolicy": {},
+            },
+            service_config={
+                "maxInstanceCount": 3,
+                "minInstanceCount": 1,
+                "availableMemory": "4Gi",
+                "timeoutSeconds": 60,
+                "maxInstanceRequestConcurrency": 80,
+                "availableCpu": "4",
+                "environmentVariables": {
+                    "SERVICE_CONFIG_TEST": "config_test",
+                },
+                "ingressSettings": "ALLOW_INTERNAL_ONLY",
+                "allTrafficOnLatestRevision": True,
+                "serviceAccountEmail": account.email,
+            },
+            event_trigger={
+                "triggerRegion": "us-central1",
+                "eventType": "google.cloud.pubsub.topic.v1.messagePublished",
+                "pubsubTopic": topic.id,
+                "retryPolicy": "RETRY_POLICY_RETRY",
+            })
+        ```
 
         ## Import
 
@@ -1810,6 +1926,122 @@ class Function(pulumi.CustomResource):
                 "timeoutSeconds": 60,
             },
             opts = pulumi.ResourceOptions(depends_on=[gcf_cmek_keyuser]))
+        ```
+        ### Cloudfunctions2 Abiu
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        account = gcp.serviceaccount.Account("account",
+            account_id="gcf-sa",
+            display_name="Test Service Account")
+        topic = gcp.pubsub.Topic("topic", name="functions2-topic")
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="gcf-function",
+            location="europe-west6",
+            description="a new function",
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloPubSub",
+                "environmentVariables": {
+                    "BUILD_CONFIG_TEST": "build_test",
+                },
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+                "automaticUpdatePolicy": {},
+            },
+            service_config={
+                "maxInstanceCount": 3,
+                "minInstanceCount": 1,
+                "availableMemory": "4Gi",
+                "timeoutSeconds": 60,
+                "maxInstanceRequestConcurrency": 80,
+                "availableCpu": "4",
+                "environmentVariables": {
+                    "SERVICE_CONFIG_TEST": "config_test",
+                },
+                "ingressSettings": "ALLOW_INTERNAL_ONLY",
+                "allTrafficOnLatestRevision": True,
+                "serviceAccountEmail": account.email,
+            },
+            event_trigger={
+                "triggerRegion": "us-central1",
+                "eventType": "google.cloud.pubsub.topic.v1.messagePublished",
+                "pubsubTopic": topic.id,
+                "retryPolicy": "RETRY_POLICY_RETRY",
+            })
+        ```
+        ### Cloudfunctions2 Abiu On Deploy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = "my-project-name"
+        account = gcp.serviceaccount.Account("account",
+            account_id="gcf-sa",
+            display_name="Test Service Account")
+        topic = gcp.pubsub.Topic("topic", name="functions2-topic")
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function-source.zip"))
+        function = gcp.cloudfunctionsv2.Function("function",
+            name="gcf-function",
+            location="europe-west6",
+            description="a new function",
+            build_config={
+                "runtime": "nodejs16",
+                "entryPoint": "helloPubSub",
+                "environmentVariables": {
+                    "BUILD_CONFIG_TEST": "build_test",
+                },
+                "source": {
+                    "storageSource": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+                "onDeployUpdatePolicy": {},
+            },
+            service_config={
+                "maxInstanceCount": 3,
+                "minInstanceCount": 1,
+                "availableMemory": "4Gi",
+                "timeoutSeconds": 60,
+                "maxInstanceRequestConcurrency": 80,
+                "availableCpu": "4",
+                "environmentVariables": {
+                    "SERVICE_CONFIG_TEST": "config_test",
+                },
+                "ingressSettings": "ALLOW_INTERNAL_ONLY",
+                "allTrafficOnLatestRevision": True,
+                "serviceAccountEmail": account.email,
+            },
+            event_trigger={
+                "triggerRegion": "us-central1",
+                "eventType": "google.cloud.pubsub.topic.v1.messagePublished",
+                "pubsubTopic": topic.id,
+                "retryPolicy": "RETRY_POLICY_RETRY",
+            })
         ```
 
         ## Import

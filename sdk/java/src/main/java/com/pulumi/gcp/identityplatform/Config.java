@@ -350,15 +350,15 @@ public class Config extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="smsRegionConfig", refs={ConfigSmsRegionConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ConfigSmsRegionConfig> smsRegionConfig;
+    private Output<ConfigSmsRegionConfig> smsRegionConfig;
 
     /**
      * @return Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<ConfigSmsRegionConfig>> smsRegionConfig() {
-        return Codegen.optional(this.smsRegionConfig);
+    public Output<ConfigSmsRegionConfig> smsRegionConfig() {
+        return this.smsRegionConfig;
     }
 
     /**

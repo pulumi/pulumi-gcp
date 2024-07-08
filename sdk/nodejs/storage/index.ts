@@ -80,6 +80,11 @@ export const getBuckets: typeof import("./getBuckets").getBuckets = null as any;
 export const getBucketsOutput: typeof import("./getBuckets").getBucketsOutput = null as any;
 utilities.lazyLoad(exports, ["getBuckets","getBucketsOutput"], () => require("./getBuckets"));
 
+export { GetManagedFolderIamPolicyArgs, GetManagedFolderIamPolicyResult, GetManagedFolderIamPolicyOutputArgs } from "./getManagedFolderIamPolicy";
+export const getManagedFolderIamPolicy: typeof import("./getManagedFolderIamPolicy").getManagedFolderIamPolicy = null as any;
+export const getManagedFolderIamPolicyOutput: typeof import("./getManagedFolderIamPolicy").getManagedFolderIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getManagedFolderIamPolicy","getManagedFolderIamPolicyOutput"], () => require("./getManagedFolderIamPolicy"));
+
 export { GetObjectSignedUrlArgs, GetObjectSignedUrlResult, GetObjectSignedUrlOutputArgs } from "./getObjectSignedUrl";
 export const getObjectSignedUrl: typeof import("./getObjectSignedUrl").getObjectSignedUrl = null as any;
 export const getObjectSignedUrlOutput: typeof import("./getObjectSignedUrl").getObjectSignedUrlOutput = null as any;
@@ -109,6 +114,26 @@ export { InsightsReportConfigArgs, InsightsReportConfigState } from "./insightsR
 export type InsightsReportConfig = import("./insightsReportConfig").InsightsReportConfig;
 export const InsightsReportConfig: typeof import("./insightsReportConfig").InsightsReportConfig = null as any;
 utilities.lazyLoad(exports, ["InsightsReportConfig"], () => require("./insightsReportConfig"));
+
+export { ManagedFolderArgs, ManagedFolderState } from "./managedFolder";
+export type ManagedFolder = import("./managedFolder").ManagedFolder;
+export const ManagedFolder: typeof import("./managedFolder").ManagedFolder = null as any;
+utilities.lazyLoad(exports, ["ManagedFolder"], () => require("./managedFolder"));
+
+export { ManagedFolderIamBindingArgs, ManagedFolderIamBindingState } from "./managedFolderIamBinding";
+export type ManagedFolderIamBinding = import("./managedFolderIamBinding").ManagedFolderIamBinding;
+export const ManagedFolderIamBinding: typeof import("./managedFolderIamBinding").ManagedFolderIamBinding = null as any;
+utilities.lazyLoad(exports, ["ManagedFolderIamBinding"], () => require("./managedFolderIamBinding"));
+
+export { ManagedFolderIamMemberArgs, ManagedFolderIamMemberState } from "./managedFolderIamMember";
+export type ManagedFolderIamMember = import("./managedFolderIamMember").ManagedFolderIamMember;
+export const ManagedFolderIamMember: typeof import("./managedFolderIamMember").ManagedFolderIamMember = null as any;
+utilities.lazyLoad(exports, ["ManagedFolderIamMember"], () => require("./managedFolderIamMember"));
+
+export { ManagedFolderIamPolicyArgs, ManagedFolderIamPolicyState } from "./managedFolderIamPolicy";
+export type ManagedFolderIamPolicy = import("./managedFolderIamPolicy").ManagedFolderIamPolicy;
+export const ManagedFolderIamPolicy: typeof import("./managedFolderIamPolicy").ManagedFolderIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ManagedFolderIamPolicy"], () => require("./managedFolderIamPolicy"));
 
 export { NotificationArgs, NotificationState } from "./notification";
 export type Notification = import("./notification").Notification;
@@ -163,6 +188,14 @@ const _module = {
                 return new HmacKey(name, <any>undefined, { urn })
             case "gcp:storage/insightsReportConfig:InsightsReportConfig":
                 return new InsightsReportConfig(name, <any>undefined, { urn })
+            case "gcp:storage/managedFolder:ManagedFolder":
+                return new ManagedFolder(name, <any>undefined, { urn })
+            case "gcp:storage/managedFolderIamBinding:ManagedFolderIamBinding":
+                return new ManagedFolderIamBinding(name, <any>undefined, { urn })
+            case "gcp:storage/managedFolderIamMember:ManagedFolderIamMember":
+                return new ManagedFolderIamMember(name, <any>undefined, { urn })
+            case "gcp:storage/managedFolderIamPolicy:ManagedFolderIamPolicy":
+                return new ManagedFolderIamPolicy(name, <any>undefined, { urn })
             case "gcp:storage/notification:Notification":
                 return new Notification(name, <any>undefined, { urn })
             case "gcp:storage/objectACL:ObjectACL":
@@ -189,6 +222,10 @@ pulumi.runtime.registerResourceModule("gcp", "storage/defaultObjectACL", _module
 pulumi.runtime.registerResourceModule("gcp", "storage/defaultObjectAccessControl", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/hmacKey", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/insightsReportConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "storage/managedFolder", _module)
+pulumi.runtime.registerResourceModule("gcp", "storage/managedFolderIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "storage/managedFolderIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "storage/managedFolderIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/notification", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/objectACL", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/objectAccessControl", _module)

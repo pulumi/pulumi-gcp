@@ -70,7 +70,6 @@ type SSLCertificate struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
 	// These are in the same namespace as the managed SSL certificates.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Creates a unique name beginning with the
@@ -155,7 +154,6 @@ type sslcertificateState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
 	// These are in the same namespace as the managed SSL certificates.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the
@@ -194,7 +192,6 @@ type SSLCertificateState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
 	// These are in the same namespace as the managed SSL certificates.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the
@@ -231,7 +228,6 @@ type sslcertificateArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
 	// These are in the same namespace as the managed SSL certificates.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the
@@ -263,7 +259,6 @@ type SSLCertificateArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
 	// These are in the same namespace as the managed SSL certificates.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the
@@ -401,7 +396,6 @@ func (o SSLCertificateOutput) ExpireTime() pulumi.StringOutput {
 // first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
-//
 // These are in the same namespace as the managed SSL certificates.
 func (o SSLCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SSLCertificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)

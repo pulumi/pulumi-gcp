@@ -33,7 +33,7 @@ type GetDockerImageArgs struct {
 	Location string `pulumi:"location"`
 	// The project ID in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The last part of the repository name. to fetch from.
+	// The last part of the repository name to fetch from.
 	RepositoryId string `pulumi:"repositoryId"`
 }
 
@@ -84,7 +84,7 @@ type GetDockerImageOutputArgs struct {
 	Location pulumi.StringInput `pulumi:"location"`
 	// The project ID in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	// The last part of the repository name. to fetch from.
+	// The last part of the repository name to fetch from.
 	RepositoryId pulumi.StringInput `pulumi:"repositoryId"`
 }
 

@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Vertex Ai Featureonlinestore With Beta Fields Optimized
+ * ### Vertex Ai Featureonlinestore With Optimized
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -155,7 +155,7 @@ export class AiFeatureOnlineStore extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+     * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
      * Structure is documented below.
      */
     public readonly dedicatedServingEndpoint!: pulumi.Output<outputs.vertex.AiFeatureOnlineStoreDedicatedServingEndpoint>;
@@ -287,7 +287,7 @@ export interface AiFeatureOnlineStoreState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+     * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
      * Structure is documented below.
      */
     dedicatedServingEndpoint?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreDedicatedServingEndpoint>;
@@ -363,7 +363,7 @@ export interface AiFeatureOnlineStoreArgs {
      */
     bigtable?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreBigtable>;
     /**
-     * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+     * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
      * Structure is documented below.
      */
     dedicatedServingEndpoint?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreDedicatedServingEndpoint>;

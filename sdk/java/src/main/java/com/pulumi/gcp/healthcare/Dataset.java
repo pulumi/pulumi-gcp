@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.healthcare.DatasetArgs;
 import com.pulumi.gcp.healthcare.inputs.DatasetState;
+import com.pulumi.gcp.healthcare.outputs.DatasetEncryptionSpec;
 import java.lang.String;
 import javax.annotation.Nullable;
 
@@ -60,6 +61,76 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Healthcare Dataset Cmek
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.kms.KeyRing;
+ * import com.pulumi.gcp.kms.KeyRingArgs;
+ * import com.pulumi.gcp.kms.CryptoKey;
+ * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+ * import com.pulumi.gcp.healthcare.Dataset;
+ * import com.pulumi.gcp.healthcare.DatasetArgs;
+ * import com.pulumi.gcp.healthcare.inputs.DatasetEncryptionSpecArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
+ *             .name("example-keyring")
+ *             .location("us-central1")
+ *             .build());
+ * 
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
+ *             .name("example-key")
+ *             .keyRing(keyRing.id())
+ *             .purpose("ENCRYPT_DECRYPT")
+ *             .build());
+ * 
+ *         var healthcareCmekKeyuser = new CryptoKeyIAMBinding("healthcareCmekKeyuser", CryptoKeyIAMBindingArgs.builder()
+ *             .cryptoKeyId(cryptoKey.id())
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .members(String.format("serviceAccount:service-%s{@literal @}gcp-sa-healthcare.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .build());
+ * 
+ *         var default_ = new Dataset("default", DatasetArgs.builder()
+ *             .name("example-dataset")
+ *             .location("us-central1")
+ *             .timeZone("UTC")
+ *             .encryptionSpec(DatasetEncryptionSpecArgs.builder()
+ *                 .kmsKeyName(cryptoKey.id())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(healthcareCmekKeyuser)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -88,6 +159,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:healthcare/dataset:Dataset")
 public class Dataset extends com.pulumi.resources.CustomResource {
+    /**
+     * A nested object resource
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="encryptionSpec", refs={DatasetEncryptionSpec.class}, tree="[0]")
+    private Output<DatasetEncryptionSpec> encryptionSpec;
+
+    /**
+     * @return A nested object resource
+     * Structure is documented below.
+     * 
+     */
+    public Output<DatasetEncryptionSpec> encryptionSpec() {
+        return this.encryptionSpec;
+    }
     /**
      * The location for the Dataset.
      * 

@@ -18,6 +18,7 @@ from . import outputs
 __all__ = [
     'ConsentStoreIamBindingCondition',
     'ConsentStoreIamMemberCondition',
+    'DatasetEncryptionSpec',
     'DatasetIamBindingCondition',
     'DatasetIamMemberCondition',
     'DicomStoreIamBindingCondition',
@@ -91,6 +92,48 @@ class ConsentStoreIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class DatasetEncryptionSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatasetEncryptionSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatasetEncryptionSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatasetEncryptionSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: Optional[str] = None):
+        """
+        :param str kms_key_name: KMS encryption key that is used to secure this dataset and its sub-resources. The key used for
+               encryption and the dataset must be in the same location. If empty, the default Google encryption
+               key will be used to secure this dataset. The format is
+               projects/{projectId}/locations/{locationId}/keyRings/{keyRingId}/cryptoKeys/{keyId}.
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[str]:
+        """
+        KMS encryption key that is used to secure this dataset and its sub-resources. The key used for
+        encryption and the dataset must be in the same location. If empty, the default Google encryption
+        key will be used to secure this dataset. The format is
+        projects/{projectId}/locations/{locationId}/keyRings/{keyRingId}/cryptoKeys/{keyId}.
+        """
+        return pulumi.get(self, "kms_key_name")
 
 
 @pulumi.output_type

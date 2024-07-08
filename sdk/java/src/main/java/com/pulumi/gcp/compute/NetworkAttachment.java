@@ -17,6 +17,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A network attachment is a resource that lets a producer Virtual Private Cloud (VPC) network initiate connections to a consumer VPC network through a Private Service Connect interface.
+ * 
+ * To get more information about NetworkAttachment, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkAttachments)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/vpc/docs/about-network-attachments)
+ * 
  * ## Example Usage
  * 
  * ### Network Attachment Basic

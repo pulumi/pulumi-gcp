@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,6 +27,38 @@ import * as utilities from "../utilities";
  *     name: "example-dataset",
  *     location: "us-central1",
  *     timeZone: "UTC",
+ * });
+ * ```
+ * ### Healthcare Dataset Cmek
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const keyRing = new gcp.kms.KeyRing("key_ring", {
+ *     name: "example-keyring",
+ *     location: "us-central1",
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
+ *     name: "example-key",
+ *     keyRing: keyRing.id,
+ *     purpose: "ENCRYPT_DECRYPT",
+ * });
+ * const healthcareCmekKeyuser = new gcp.kms.CryptoKeyIAMBinding("healthcare_cmek_keyuser", {
+ *     cryptoKeyId: cryptoKey.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-healthcare.iam.gserviceaccount.com`)],
+ * });
+ * const _default = new gcp.healthcare.Dataset("default", {
+ *     name: "example-dataset",
+ *     location: "us-central1",
+ *     timeZone: "UTC",
+ *     encryptionSpec: {
+ *         kmsKeyName: cryptoKey.id,
+ *     },
+ * }, {
+ *     dependsOn: [healthcareCmekKeyuser],
  * });
  * ```
  *
@@ -81,6 +115,11 @@ export class Dataset extends pulumi.CustomResource {
     }
 
     /**
+     * A nested object resource
+     * Structure is documented below.
+     */
+    public readonly encryptionSpec!: pulumi.Output<outputs.healthcare.DatasetEncryptionSpec>;
+    /**
      * The location for the Dataset.
      *
      *
@@ -120,6 +159,7 @@ export class Dataset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatasetState | undefined;
+            resourceInputs["encryptionSpec"] = state ? state.encryptionSpec : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -130,6 +170,7 @@ export class Dataset extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["encryptionSpec"] = args ? args.encryptionSpec : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -145,6 +186,11 @@ export class Dataset extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Dataset resources.
  */
 export interface DatasetState {
+    /**
+     * A nested object resource
+     * Structure is documented below.
+     */
+    encryptionSpec?: pulumi.Input<inputs.healthcare.DatasetEncryptionSpec>;
     /**
      * The location for the Dataset.
      *
@@ -177,6 +223,11 @@ export interface DatasetState {
  * The set of arguments for constructing a Dataset resource.
  */
 export interface DatasetArgs {
+    /**
+     * A nested object resource
+     * Structure is documented below.
+     */
+    encryptionSpec?: pulumi.Input<inputs.healthcare.DatasetEncryptionSpec>;
     /**
      * The location for the Dataset.
      *

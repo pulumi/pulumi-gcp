@@ -531,7 +531,7 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="indexConfigs")
-    def index_configs(self) -> pulumi.Output[Optional[Sequence['outputs.BillingAccountBucketConfigIndexConfig']]]:
+    def index_configs(self) -> pulumi.Output[Sequence['outputs.BillingAccountBucketConfigIndexConfig']]:
         """
         A list of indexed fields and related configuration data. Structure is documented below.
         """

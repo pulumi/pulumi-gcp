@@ -4,34 +4,61 @@
 package com.pulumi.gcp.datafusion.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.datafusion.outputs.InstanceNetworkConfigPrivateServiceConnectConfig;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceNetworkConfig {
+    /**
+     * @return Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and
+     * the corresponding tenant project from a predefined list of available connection modes.
+     * If this field is unspecified for a private instance, VPC peering is used.
+     * Possible values are: `VPC_PEERING`, `PRIVATE_SERVICE_CONNECT_INTERFACES`.
+     * 
+     */
+    private @Nullable String connectionType;
     /**
      * @return The IP range in CIDR notation to use for the managed Data Fusion instance
      * nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
      * 
      */
-    private String ipAllocation;
+    private @Nullable String ipAllocation;
     /**
      * @return Name of the network in the project with which the tenant project
      * will be peered for executing pipelines. In case of shared VPC where the network resides in another host
      * project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
      * 
      */
-    private String network;
+    private @Nullable String network;
+    /**
+     * @return Optional. Configuration for Private Service Connect.
+     * This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable InstanceNetworkConfigPrivateServiceConnectConfig privateServiceConnectConfig;
 
     private InstanceNetworkConfig() {}
+    /**
+     * @return Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and
+     * the corresponding tenant project from a predefined list of available connection modes.
+     * If this field is unspecified for a private instance, VPC peering is used.
+     * Possible values are: `VPC_PEERING`, `PRIVATE_SERVICE_CONNECT_INTERFACES`.
+     * 
+     */
+    public Optional<String> connectionType() {
+        return Optional.ofNullable(this.connectionType);
+    }
     /**
      * @return The IP range in CIDR notation to use for the managed Data Fusion instance
      * nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
      * 
      */
-    public String ipAllocation() {
-        return this.ipAllocation;
+    public Optional<String> ipAllocation() {
+        return Optional.ofNullable(this.ipAllocation);
     }
     /**
      * @return Name of the network in the project with which the tenant project
@@ -39,8 +66,17 @@ public final class InstanceNetworkConfig {
      * project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
      * 
      */
-    public String network() {
-        return this.network;
+    public Optional<String> network() {
+        return Optional.ofNullable(this.network);
+    }
+    /**
+     * @return Optional. Configuration for Private Service Connect.
+     * This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<InstanceNetworkConfigPrivateServiceConnectConfig> privateServiceConnectConfig() {
+        return Optional.ofNullable(this.privateServiceConnectConfig);
     }
 
     public static Builder builder() {
@@ -52,35 +88,49 @@ public final class InstanceNetworkConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String ipAllocation;
-        private String network;
+        private @Nullable String connectionType;
+        private @Nullable String ipAllocation;
+        private @Nullable String network;
+        private @Nullable InstanceNetworkConfigPrivateServiceConnectConfig privateServiceConnectConfig;
         public Builder() {}
         public Builder(InstanceNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.connectionType = defaults.connectionType;
     	      this.ipAllocation = defaults.ipAllocation;
     	      this.network = defaults.network;
+    	      this.privateServiceConnectConfig = defaults.privateServiceConnectConfig;
         }
 
         @CustomType.Setter
-        public Builder ipAllocation(String ipAllocation) {
-            if (ipAllocation == null) {
-              throw new MissingRequiredPropertyException("InstanceNetworkConfig", "ipAllocation");
-            }
+        public Builder connectionType(@Nullable String connectionType) {
+
+            this.connectionType = connectionType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipAllocation(@Nullable String ipAllocation) {
+
             this.ipAllocation = ipAllocation;
             return this;
         }
         @CustomType.Setter
-        public Builder network(String network) {
-            if (network == null) {
-              throw new MissingRequiredPropertyException("InstanceNetworkConfig", "network");
-            }
+        public Builder network(@Nullable String network) {
+
             this.network = network;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder privateServiceConnectConfig(@Nullable InstanceNetworkConfigPrivateServiceConnectConfig privateServiceConnectConfig) {
+
+            this.privateServiceConnectConfig = privateServiceConnectConfig;
             return this;
         }
         public InstanceNetworkConfig build() {
             final var _resultValue = new InstanceNetworkConfig();
+            _resultValue.connectionType = connectionType;
             _resultValue.ipAllocation = ipAllocation;
             _resultValue.network = network;
+            _resultValue.privateServiceConnectConfig = privateServiceConnectConfig;
             return _resultValue;
         }
     }

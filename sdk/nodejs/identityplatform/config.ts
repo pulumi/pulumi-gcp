@@ -203,7 +203,7 @@ export class Config extends pulumi.CustomResource {
      * Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
      * Structure is documented below.
      */
-    public readonly smsRegionConfig!: pulumi.Output<outputs.identityplatform.ConfigSmsRegionConfig | undefined>;
+    public readonly smsRegionConfig!: pulumi.Output<outputs.identityplatform.ConfigSmsRegionConfig>;
 
     /**
      * Create a Config resource with the given unique name, arguments, and options.

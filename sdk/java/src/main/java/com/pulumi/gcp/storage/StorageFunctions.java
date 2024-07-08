@@ -20,6 +20,8 @@ import com.pulumi.gcp.storage.inputs.GetBucketObjectsPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketsArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketsPlainArgs;
+import com.pulumi.gcp.storage.inputs.GetManagedFolderIamPolicyArgs;
+import com.pulumi.gcp.storage.inputs.GetManagedFolderIamPolicyPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
 import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
@@ -34,6 +36,7 @@ import com.pulumi.gcp.storage.outputs.GetBucketObjectResult;
 import com.pulumi.gcp.storage.outputs.GetBucketObjectsResult;
 import com.pulumi.gcp.storage.outputs.GetBucketResult;
 import com.pulumi.gcp.storage.outputs.GetBucketsResult;
+import com.pulumi.gcp.storage.outputs.GetManagedFolderIamPolicyResult;
 import com.pulumi.gcp.storage.outputs.GetObjectSignedUrlResult;
 import com.pulumi.gcp.storage.outputs.GetProjectServiceAccountResult;
 import com.pulumi.gcp.storage.outputs.GetTransferProjectServiceAccountResult;
@@ -1340,6 +1343,18 @@ public final class StorageFunctions {
      */
     public static CompletableFuture<GetBucketsResult> getBucketsPlain(GetBucketsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getBuckets:getBuckets", TypeShape.of(GetBucketsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicy(GetManagedFolderIamPolicyArgs args) {
+        return getManagedFolderIamPolicy(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicyPlain(GetManagedFolderIamPolicyPlainArgs args) {
+        return getManagedFolderIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicy(GetManagedFolderIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy", TypeShape.of(GetManagedFolderIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicyPlain(GetManagedFolderIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy", TypeShape.of(GetManagedFolderIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The Google Cloud storage signed URL data source generates a signed URL for a given storage object. Signed URLs provide a way to give time-limited read or write access to anyone in possession of the URL, regardless of whether they have a Google account.

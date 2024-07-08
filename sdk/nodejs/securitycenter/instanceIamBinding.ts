@@ -67,6 +67,42 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Data Fusion Instance Psc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const psc = new gcp.compute.Network("psc", {
+ *     name: "datafusion-psc-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const pscSubnetwork = new gcp.compute.Subnetwork("psc", {
+ *     name: "datafusion-psc-subnet",
+ *     region: "us-central1",
+ *     network: psc.id,
+ *     ipCidrRange: "10.0.0.0/16",
+ * });
+ * const pscNetworkAttachment = new gcp.compute.NetworkAttachment("psc", {
+ *     name: "datafusion-psc-attachment",
+ *     region: "us-central1",
+ *     connectionPreference: "ACCEPT_AUTOMATIC",
+ *     subnetworks: [pscSubnetwork.selfLink],
+ * });
+ * const pscInstance = new gcp.datafusion.Instance("psc_instance", {
+ *     name: "psc-instance",
+ *     region: "us-central1",
+ *     type: "BASIC",
+ *     privateInstance: true,
+ *     networkConfig: {
+ *         connectionType: "PRIVATE_SERVICE_CONNECT_INTERFACES",
+ *         privateServiceConnectConfig: {
+ *             networkAttachment: pscNetworkAttachment.id,
+ *             unreachableCidrBlock: "192.168.0.0/25",
+ *         },
+ *     },
+ * });
+ * ```
  * ### Data Fusion Instance Cmek
  *
  * ```typescript

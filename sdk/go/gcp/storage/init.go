@@ -43,6 +43,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HmacKey{}
 	case "gcp:storage/insightsReportConfig:InsightsReportConfig":
 		r = &InsightsReportConfig{}
+	case "gcp:storage/managedFolder:ManagedFolder":
+		r = &ManagedFolder{}
+	case "gcp:storage/managedFolderIamBinding:ManagedFolderIamBinding":
+		r = &ManagedFolderIamBinding{}
+	case "gcp:storage/managedFolderIamMember:ManagedFolderIamMember":
+		r = &ManagedFolderIamMember{}
+	case "gcp:storage/managedFolderIamPolicy:ManagedFolderIamPolicy":
+		r = &ManagedFolderIamPolicy{}
 	case "gcp:storage/notification:Notification":
 		r = &Notification{}
 	case "gcp:storage/objectACL:ObjectACL":
@@ -119,6 +127,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"storage/insightsReportConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"storage/managedFolder",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"storage/managedFolderIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"storage/managedFolderIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"storage/managedFolderIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

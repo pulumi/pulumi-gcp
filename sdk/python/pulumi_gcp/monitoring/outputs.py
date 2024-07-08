@@ -34,6 +34,7 @@ __all__ = [
     'AlertPolicyConditionConditionThresholdTrigger',
     'AlertPolicyCreationRecord',
     'AlertPolicyDocumentation',
+    'AlertPolicyDocumentationLink',
     'CustomServiceTelemetry',
     'GenericServiceBasicService',
     'GenericServiceTelemetry',
@@ -2076,6 +2077,7 @@ class AlertPolicyDocumentation(dict):
 
     def __init__(__self__, *,
                  content: Optional[str] = None,
+                 links: Optional[Sequence['outputs.AlertPolicyDocumentationLink']] = None,
                  mime_type: Optional[str] = None,
                  subject: Optional[str] = None):
         """
@@ -2083,6 +2085,8 @@ class AlertPolicyDocumentation(dict):
                The content may not exceed 8,192 Unicode characters and may not
                exceed more than 10,240 bytes when encoded in UTF-8 format,
                whichever is smaller.
+        :param Sequence['AlertPolicyDocumentationLinkArgs'] links: Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+               Structure is documented below.
         :param str mime_type: The format of the content field. Presently, only the value
                "text/markdown" is supported.
         :param str subject: The subject line of the notification. The subject line may not
@@ -2092,6 +2096,8 @@ class AlertPolicyDocumentation(dict):
         """
         if content is not None:
             pulumi.set(__self__, "content", content)
+        if links is not None:
+            pulumi.set(__self__, "links", links)
         if mime_type is not None:
             pulumi.set(__self__, "mime_type", mime_type)
         if subject is not None:
@@ -2107,6 +2113,15 @@ class AlertPolicyDocumentation(dict):
         whichever is smaller.
         """
         return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter
+    def links(self) -> Optional[Sequence['outputs.AlertPolicyDocumentationLink']]:
+        """
+        Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "links")
 
     @property
     @pulumi.getter(name="mimeType")
@@ -2127,6 +2142,54 @@ class AlertPolicyDocumentation(dict):
         or shorter at the latest UTF-8 character boundary.
         """
         return pulumi.get(self, "subject")
+
+
+@pulumi.output_type
+class AlertPolicyDocumentationLink(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertPolicyDocumentationLink. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertPolicyDocumentationLink.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertPolicyDocumentationLink.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[str] = None,
+                 url: Optional[str] = None):
+        """
+        :param str display_name: A short display name for the link. The display name must not be empty or exceed 63 characters. Example: "playbook".
+        :param str url: The url of a webpage. A url can be templatized by using variables in the path or the query parameters. The total length of a URL should not exceed 2083 characters before and after variable expansion. Example: "https://my_domain.com/playbook?name=${resource.name}".
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        A short display name for the link. The display name must not be empty or exceed 63 characters. Example: "playbook".
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        The url of a webpage. A url can be templatized by using variables in the path or the query parameters. The total length of a URL should not exceed 2083 characters before and after variable expansion. Example: "https://my_domain.com/playbook?name=${resource.name}".
+        """
+        return pulumi.get(self, "url")
 
 
 @pulumi.output_type

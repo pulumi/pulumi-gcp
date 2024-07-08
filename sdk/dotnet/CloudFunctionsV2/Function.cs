@@ -1037,6 +1037,180 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     /// });
     /// ```
+    /// ### Cloudfunctions2 Abiu
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = "my-project-name";
+    /// 
+    ///     var account = new Gcp.ServiceAccount.Account("account", new()
+    ///     {
+    ///         AccountId = "gcf-sa",
+    ///         DisplayName = "Test Service Account",
+    ///     });
+    /// 
+    ///     var topic = new Gcp.PubSub.Topic("topic", new()
+    ///     {
+    ///         Name = "functions2-topic",
+    ///     });
+    /// 
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Name = $"{project}-gcf-source",
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var @object = new Gcp.Storage.BucketObject("object", new()
+    ///     {
+    ///         Name = "function-source.zip",
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("function-source.zip"),
+    ///     });
+    /// 
+    ///     var function = new Gcp.CloudFunctionsV2.Function("function", new()
+    ///     {
+    ///         Name = "gcf-function",
+    ///         Location = "europe-west6",
+    ///         Description = "a new function",
+    ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
+    ///         {
+    ///             Runtime = "nodejs16",
+    ///             EntryPoint = "helloPubSub",
+    ///             EnvironmentVariables = 
+    ///             {
+    ///                 { "BUILD_CONFIG_TEST", "build_test" },
+    ///             },
+    ///             Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
+    ///             {
+    ///                 StorageSource = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceStorageSourceArgs
+    ///                 {
+    ///                     Bucket = bucket.Name,
+    ///                     Object = @object.Name,
+    ///                 },
+    ///             },
+    ///             AutomaticUpdatePolicy = null,
+    ///         },
+    ///         ServiceConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionServiceConfigArgs
+    ///         {
+    ///             MaxInstanceCount = 3,
+    ///             MinInstanceCount = 1,
+    ///             AvailableMemory = "4Gi",
+    ///             TimeoutSeconds = 60,
+    ///             MaxInstanceRequestConcurrency = 80,
+    ///             AvailableCpu = "4",
+    ///             EnvironmentVariables = 
+    ///             {
+    ///                 { "SERVICE_CONFIG_TEST", "config_test" },
+    ///             },
+    ///             IngressSettings = "ALLOW_INTERNAL_ONLY",
+    ///             AllTrafficOnLatestRevision = true,
+    ///             ServiceAccountEmail = account.Email,
+    ///         },
+    ///         EventTrigger = new Gcp.CloudFunctionsV2.Inputs.FunctionEventTriggerArgs
+    ///         {
+    ///             TriggerRegion = "us-central1",
+    ///             EventType = "google.cloud.pubsub.topic.v1.messagePublished",
+    ///             PubsubTopic = topic.Id,
+    ///             RetryPolicy = "RETRY_POLICY_RETRY",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudfunctions2 Abiu On Deploy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = "my-project-name";
+    /// 
+    ///     var account = new Gcp.ServiceAccount.Account("account", new()
+    ///     {
+    ///         AccountId = "gcf-sa",
+    ///         DisplayName = "Test Service Account",
+    ///     });
+    /// 
+    ///     var topic = new Gcp.PubSub.Topic("topic", new()
+    ///     {
+    ///         Name = "functions2-topic",
+    ///     });
+    /// 
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Name = $"{project}-gcf-source",
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var @object = new Gcp.Storage.BucketObject("object", new()
+    ///     {
+    ///         Name = "function-source.zip",
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("function-source.zip"),
+    ///     });
+    /// 
+    ///     var function = new Gcp.CloudFunctionsV2.Function("function", new()
+    ///     {
+    ///         Name = "gcf-function",
+    ///         Location = "europe-west6",
+    ///         Description = "a new function",
+    ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
+    ///         {
+    ///             Runtime = "nodejs16",
+    ///             EntryPoint = "helloPubSub",
+    ///             EnvironmentVariables = 
+    ///             {
+    ///                 { "BUILD_CONFIG_TEST", "build_test" },
+    ///             },
+    ///             Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
+    ///             {
+    ///                 StorageSource = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceStorageSourceArgs
+    ///                 {
+    ///                     Bucket = bucket.Name,
+    ///                     Object = @object.Name,
+    ///                 },
+    ///             },
+    ///             OnDeployUpdatePolicy = null,
+    ///         },
+    ///         ServiceConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionServiceConfigArgs
+    ///         {
+    ///             MaxInstanceCount = 3,
+    ///             MinInstanceCount = 1,
+    ///             AvailableMemory = "4Gi",
+    ///             TimeoutSeconds = 60,
+    ///             MaxInstanceRequestConcurrency = 80,
+    ///             AvailableCpu = "4",
+    ///             EnvironmentVariables = 
+    ///             {
+    ///                 { "SERVICE_CONFIG_TEST", "config_test" },
+    ///             },
+    ///             IngressSettings = "ALLOW_INTERNAL_ONLY",
+    ///             AllTrafficOnLatestRevision = true,
+    ///             ServiceAccountEmail = account.Email,
+    ///         },
+    ///         EventTrigger = new Gcp.CloudFunctionsV2.Inputs.FunctionEventTriggerArgs
+    ///         {
+    ///             TriggerRegion = "us-central1",
+    ///             EventType = "google.cloud.pubsub.topic.v1.messagePublished",
+    ///             PubsubTopic = topic.Id,
+    ///             RetryPolicy = "RETRY_POLICY_RETRY",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

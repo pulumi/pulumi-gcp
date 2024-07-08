@@ -63,9 +63,9 @@ public final class ArtifactregistryFunctions {
      *             .build());
      * 
      *         final var myImage = ArtifactregistryFunctions.getDockerImage(GetDockerImageArgs.builder()
-     *             .repository(myRepo.id())
-     *             .image("my-image")
-     *             .tag("my-tag")
+     *             .location(myRepo.location())
+     *             .repositoryId(myRepo.repositoryId())
+     *             .image("my-image:my-tag")
      *             .build());
      * 
      *         var default_ = new Service("default", ServiceArgs.builder()
@@ -129,9 +129,9 @@ public final class ArtifactregistryFunctions {
      *             .build());
      * 
      *         final var myImage = ArtifactregistryFunctions.getDockerImage(GetDockerImageArgs.builder()
-     *             .repository(myRepo.id())
-     *             .image("my-image")
-     *             .tag("my-tag")
+     *             .location(myRepo.location())
+     *             .repositoryId(myRepo.repositoryId())
+     *             .image("my-image:my-tag")
      *             .build());
      * 
      *         var default_ = new Service("default", ServiceArgs.builder()
@@ -195,9 +195,9 @@ public final class ArtifactregistryFunctions {
      *             .build());
      * 
      *         final var myImage = ArtifactregistryFunctions.getDockerImage(GetDockerImageArgs.builder()
-     *             .repository(myRepo.id())
-     *             .image("my-image")
-     *             .tag("my-tag")
+     *             .location(myRepo.location())
+     *             .repositoryId(myRepo.repositoryId())
+     *             .image("my-image:my-tag")
      *             .build());
      * 
      *         var default_ = new Service("default", ServiceArgs.builder()
@@ -261,9 +261,9 @@ public final class ArtifactregistryFunctions {
      *             .build());
      * 
      *         final var myImage = ArtifactregistryFunctions.getDockerImage(GetDockerImageArgs.builder()
-     *             .repository(myRepo.id())
-     *             .image("my-image")
-     *             .tag("my-tag")
+     *             .location(myRepo.location())
+     *             .repositoryId(myRepo.repositoryId())
+     *             .image("my-image:my-tag")
      *             .build());
      * 
      *         var default_ = new Service("default", ServiceArgs.builder()

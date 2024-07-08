@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.URLMapArgs;
 import com.pulumi.gcp.compute.inputs.URLMapState;
+import com.pulumi.gcp.compute.outputs.URLMapDefaultCustomErrorResponsePolicy;
 import com.pulumi.gcp.compute.outputs.URLMapDefaultRouteAction;
 import com.pulumi.gcp.compute.outputs.URLMapDefaultUrlRedirect;
 import com.pulumi.gcp.compute.outputs.URLMapHeaderAction;
@@ -913,6 +914,125 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Url Map Custom Error Response Policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HttpHealthCheck;
+ * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.compute.BackendBucket;
+ * import com.pulumi.gcp.compute.BackendBucketArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultCustomErrorResponsePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultCustomErrorResponsePolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new HttpHealthCheck("default", HttpHealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .requestPath("/")
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .build());
+ * 
+ *         var example = new BackendService("example", BackendServiceArgs.builder()
+ *             .name("login")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var errorBucket = new Bucket("errorBucket", BucketArgs.builder()
+ *             .name("static-asset-bucket")
+ *             .location("US")
+ *             .build());
+ * 
+ *         var error = new BackendBucket("error", BackendBucketArgs.builder()
+ *             .name("error-backend-bucket")
+ *             .bucketName(errorBucket.name())
+ *             .enableCdn(true)
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .description("a description")
+ *             .defaultService(example.id())
+ *             .defaultCustomErrorResponsePolicy(URLMapDefaultCustomErrorResponsePolicyArgs.builder()
+ *                 .errorResponseRules(URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgs.builder()
+ *                     .matchResponseCodes("5xx")
+ *                     .path("/*")
+ *                     .overrideResponseCode(502)
+ *                     .build())
+ *                 .errorService(error.id())
+ *                 .build())
+ *             .hostRules(URLMapHostRuleArgs.builder()
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("mysite")
+ *                 .build())
+ *             .pathMatchers(URLMapPathMatcherArgs.builder()
+ *                 .name("mysite")
+ *                 .defaultService(example.id())
+ *                 .defaultCustomErrorResponsePolicy(URLMapPathMatcherDefaultCustomErrorResponsePolicyArgs.builder()
+ *                     .errorResponseRules(                    
+ *                         URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRuleArgs.builder()
+ *                             .matchResponseCodes(                            
+ *                                 "4xx",
+ *                                 "5xx")
+ *                             .path("/login")
+ *                             .overrideResponseCode(404)
+ *                             .build(),
+ *                         URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRuleArgs.builder()
+ *                             .matchResponseCodes("503")
+ *                             .path("/example")
+ *                             .overrideResponseCode(502)
+ *                             .build())
+ *                     .errorService(error.id())
+ *                     .build())
+ *                 .pathRules(URLMapPathMatcherPathRuleArgs.builder()
+ *                     .paths("/*")
+ *                     .service(example.id())
+ *                     .customErrorResponsePolicy(URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs.builder()
+ *                         .errorResponseRules(URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArgs.builder()
+ *                             .matchResponseCodes("4xx")
+ *                             .path("/register")
+ *                             .overrideResponseCode(401)
+ *                             .build())
+ *                         .errorService(error.id())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -954,6 +1074,36 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      */
     public Output<String> creationTimestamp() {
         return this.creationTimestamp;
+    }
+    /**
+     * defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+     * This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+     * For example, consider a UrlMap with the following configuration:
+     * UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
+     * A RouteRule for /coming_soon/ is configured for the error code 404.
+     * If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher&#39;s policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+     * When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
+     * defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="defaultCustomErrorResponsePolicy", refs={URLMapDefaultCustomErrorResponsePolicy.class}, tree="[0]")
+    private Output</* @Nullable */ URLMapDefaultCustomErrorResponsePolicy> defaultCustomErrorResponsePolicy;
+
+    /**
+     * @return defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+     * This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+     * For example, consider a UrlMap with the following configuration:
+     * UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
+     * A RouteRule for /coming_soon/ is configured for the error code 404.
+     * If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher&#39;s policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+     * When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
+     * defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<URLMapDefaultCustomErrorResponsePolicy>> defaultCustomErrorResponsePolicy() {
+        return Codegen.optional(this.defaultCustomErrorResponsePolicy);
     }
     /**
      * defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions

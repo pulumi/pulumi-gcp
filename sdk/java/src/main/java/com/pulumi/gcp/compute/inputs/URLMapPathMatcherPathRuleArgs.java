@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleRouteActionArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleUrlRedirectArgs;
 import java.lang.String;
@@ -18,6 +19,35 @@ import javax.annotation.Nullable;
 public final class URLMapPathMatcherPathRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final URLMapPathMatcherPathRuleArgs Empty = new URLMapPathMatcherPathRuleArgs();
+
+    /**
+     * customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+     * If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+     * For example, consider a UrlMap with the following configuration:
+     * UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
+     * A PathRule for /coming_soon/ is configured for the error code 404.
+     * If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher&#39;s policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+     * customErrorResponsePolicy is supported only for global external Application Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customErrorResponsePolicy")
+    private @Nullable Output<URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs> customErrorResponsePolicy;
+
+    /**
+     * @return customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+     * If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+     * For example, consider a UrlMap with the following configuration:
+     * UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
+     * A PathRule for /coming_soon/ is configured for the error code 404.
+     * If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher&#39;s policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+     * customErrorResponsePolicy is supported only for global external Application Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs>> customErrorResponsePolicy() {
+        return Optional.ofNullable(this.customErrorResponsePolicy);
+    }
 
     /**
      * The list of path patterns to match. Each must start with / and the only place a
@@ -106,6 +136,7 @@ public final class URLMapPathMatcherPathRuleArgs extends com.pulumi.resources.Re
     private URLMapPathMatcherPathRuleArgs() {}
 
     private URLMapPathMatcherPathRuleArgs(URLMapPathMatcherPathRuleArgs $) {
+        this.customErrorResponsePolicy = $.customErrorResponsePolicy;
         this.paths = $.paths;
         this.routeAction = $.routeAction;
         this.service = $.service;
@@ -128,6 +159,41 @@ public final class URLMapPathMatcherPathRuleArgs extends com.pulumi.resources.Re
 
         public Builder(URLMapPathMatcherPathRuleArgs defaults) {
             $ = new URLMapPathMatcherPathRuleArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param customErrorResponsePolicy customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+         * If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+         * For example, consider a UrlMap with the following configuration:
+         * UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
+         * A PathRule for /coming_soon/ is configured for the error code 404.
+         * If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher&#39;s policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+         * customErrorResponsePolicy is supported only for global external Application Load Balancers.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customErrorResponsePolicy(@Nullable Output<URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs> customErrorResponsePolicy) {
+            $.customErrorResponsePolicy = customErrorResponsePolicy;
+            return this;
+        }
+
+        /**
+         * @param customErrorResponsePolicy customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+         * If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
+         * For example, consider a UrlMap with the following configuration:
+         * UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
+         * A PathRule for /coming_soon/ is configured for the error code 404.
+         * If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher&#39;s policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+         * customErrorResponsePolicy is supported only for global external Application Load Balancers.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customErrorResponsePolicy(URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs customErrorResponsePolicy) {
+            return customErrorResponsePolicy(Output.of(customErrorResponsePolicy));
         }
 
         /**

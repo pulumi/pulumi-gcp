@@ -286,6 +286,38 @@ class InstanceIamMember(pulumi.CustomResource):
                 "state": "ENABLED",
             }])
         ```
+        ### Data Fusion Instance Psc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        psc = gcp.compute.Network("psc",
+            name="datafusion-psc-network",
+            auto_create_subnetworks=False)
+        psc_subnetwork = gcp.compute.Subnetwork("psc",
+            name="datafusion-psc-subnet",
+            region="us-central1",
+            network=psc.id,
+            ip_cidr_range="10.0.0.0/16")
+        psc_network_attachment = gcp.compute.NetworkAttachment("psc",
+            name="datafusion-psc-attachment",
+            region="us-central1",
+            connection_preference="ACCEPT_AUTOMATIC",
+            subnetworks=[psc_subnetwork.self_link])
+        psc_instance = gcp.datafusion.Instance("psc_instance",
+            name="psc-instance",
+            region="us-central1",
+            type="BASIC",
+            private_instance=True,
+            network_config={
+                "connectionType": "PRIVATE_SERVICE_CONNECT_INTERFACES",
+                "privateServiceConnectConfig": {
+                    "networkAttachment": psc_network_attachment.id,
+                    "unreachableCidrBlock": "192.168.0.0/25",
+                },
+            })
+        ```
         ### Data Fusion Instance Cmek
 
         ```python
@@ -453,6 +485,38 @@ class InstanceIamMember(pulumi.CustomResource):
                 "acceleratorType": "CDC",
                 "state": "ENABLED",
             }])
+        ```
+        ### Data Fusion Instance Psc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        psc = gcp.compute.Network("psc",
+            name="datafusion-psc-network",
+            auto_create_subnetworks=False)
+        psc_subnetwork = gcp.compute.Subnetwork("psc",
+            name="datafusion-psc-subnet",
+            region="us-central1",
+            network=psc.id,
+            ip_cidr_range="10.0.0.0/16")
+        psc_network_attachment = gcp.compute.NetworkAttachment("psc",
+            name="datafusion-psc-attachment",
+            region="us-central1",
+            connection_preference="ACCEPT_AUTOMATIC",
+            subnetworks=[psc_subnetwork.self_link])
+        psc_instance = gcp.datafusion.Instance("psc_instance",
+            name="psc-instance",
+            region="us-central1",
+            type="BASIC",
+            private_instance=True,
+            network_config={
+                "connectionType": "PRIVATE_SERVICE_CONNECT_INTERFACES",
+                "privateServiceConnectConfig": {
+                    "networkAttachment": psc_network_attachment.id,
+                    "unreachableCidrBlock": "192.168.0.0/25",
+                },
+            })
         ```
         ### Data Fusion Instance Cmek
 

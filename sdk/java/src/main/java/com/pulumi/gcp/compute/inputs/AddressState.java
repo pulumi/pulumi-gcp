@@ -310,8 +310,7 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
      * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
      *   configure Private Service Connect. Only global internal addresses can use
      *   this purpose.
-     * 
-     * This should only be set when using an Internal address.
+     *   This should only be set when using an Internal address.
      * 
      */
     @Import(name="purpose")
@@ -330,8 +329,7 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
      * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
      *   configure Private Service Connect. Only global internal addresses can use
      *   this purpose.
-     * 
-     * This should only be set when using an Internal address.
+     *   This should only be set when using an Internal address.
      * 
      */
     public Optional<Output<String>> purpose() {
@@ -831,8 +829,7 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
          * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
          *   configure Private Service Connect. Only global internal addresses can use
          *   this purpose.
-         * 
-         * This should only be set when using an Internal address.
+         *   This should only be set when using an Internal address.
          * 
          * @return builder
          * 
@@ -855,8 +852,7 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
          * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
          *   configure Private Service Connect. Only global internal addresses can use
          *   this purpose.
-         * 
-         * This should only be set when using an Internal address.
+         *   This should only be set when using an Internal address.
          * 
          * @return builder
          * 

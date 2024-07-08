@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
-    /// ### Vertex Ai Featureonlinestore With Beta Fields Optimized
+    /// ### Vertex Ai Featureonlinestore With Optimized
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -173,7 +173,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+        /// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
         /// Structure is documented below.
         /// </summary>
         [Output("dedicatedServingEndpoint")]
@@ -320,7 +320,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<Inputs.AiFeatureOnlineStoreBigtableArgs>? Bigtable { get; set; }
 
         /// <summary>
-        /// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+        /// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
         /// Structure is documented below.
         /// </summary>
         [Input("dedicatedServingEndpoint")]
@@ -405,7 +405,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+        /// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
         /// Structure is documented below.
         /// </summary>
         [Input("dedicatedServingEndpoint")]

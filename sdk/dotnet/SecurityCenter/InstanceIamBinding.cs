@@ -102,6 +102,60 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// });
     /// ```
+    /// ### Data Fusion Instance Psc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var psc = new Gcp.Compute.Network("psc", new()
+    ///     {
+    ///         Name = "datafusion-psc-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var pscSubnetwork = new Gcp.Compute.Subnetwork("psc", new()
+    ///     {
+    ///         Name = "datafusion-psc-subnet",
+    ///         Region = "us-central1",
+    ///         Network = psc.Id,
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///     });
+    /// 
+    ///     var pscNetworkAttachment = new Gcp.Compute.NetworkAttachment("psc", new()
+    ///     {
+    ///         Name = "datafusion-psc-attachment",
+    ///         Region = "us-central1",
+    ///         ConnectionPreference = "ACCEPT_AUTOMATIC",
+    ///         Subnetworks = new[]
+    ///         {
+    ///             pscSubnetwork.SelfLink,
+    ///         },
+    ///     });
+    /// 
+    ///     var pscInstance = new Gcp.DataFusion.Instance("psc_instance", new()
+    ///     {
+    ///         Name = "psc-instance",
+    ///         Region = "us-central1",
+    ///         Type = "BASIC",
+    ///         PrivateInstance = true,
+    ///         NetworkConfig = new Gcp.DataFusion.Inputs.InstanceNetworkConfigArgs
+    ///         {
+    ///             ConnectionType = "PRIVATE_SERVICE_CONNECT_INTERFACES",
+    ///             PrivateServiceConnectConfig = new Gcp.DataFusion.Inputs.InstanceNetworkConfigPrivateServiceConnectConfigArgs
+    ///             {
+    ///                 NetworkAttachment = pscNetworkAttachment.Id,
+    ///                 UnreachableCidrBlock = "192.168.0.0/25",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Data Fusion Instance Cmek
     /// 
     /// ```csharp
