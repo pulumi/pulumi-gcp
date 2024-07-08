@@ -463,7 +463,8 @@ func Provider() tfbridge.ProviderInfo {
 			shimv2.WithPlanResourceChange(func(s string) bool {
 				switch s {
 				case "google_datastream_connection_profile",
-					"google_firestore_backup_schedule":
+					"google_firestore_backup_schedule",
+					"google_cloud_run_service":
 					return true
 				default:
 					return false

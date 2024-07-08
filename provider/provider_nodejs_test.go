@@ -30,3 +30,18 @@ func TestExplicitProviderTokenNotPlainText(t *testing.T) {
 	tokenExport := res.Outputs["token"]
 	require.True(t, tokenExport.Secret, "token should be marked as secret")
 }
+
+func TestCloudrunServicePanicRegress2155(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
+
+	cwd, err := os.Getwd()
+	require.NoError(t, err)
+	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "cloudrun-service"),
+		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+	)
+
+	test.Up()
+	test.Up()
+}
