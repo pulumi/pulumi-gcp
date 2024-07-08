@@ -1743,7 +1743,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// CloudRun Resources
 			"google_cloud_run_domain_mapping": {Tok: gcpResource(gcpCloudRun, "DomainMapping")},
-			"google_cloud_run_service":        {Tok: gcpResource(gcpCloudRun, "Service")},
+			"google_cloud_run_service":        {Tok: gcpResource(gcpCloudRun, "Service"), Fields: nameField(lowercaseAutoName())},
 			"google_cloud_run_service_iam_binding": {
 				Tok:  gcpResource(gcpCloudRun, "IamBinding"),
 				Docs: &tfbridge.DocInfo{Source: "cloud_run_service_iam.html.markdown"},
