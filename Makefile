@@ -217,7 +217,7 @@ bin/linux-arm64/$(PROVIDER): TARGET := linux-arm64
 bin/darwin-amd64/$(PROVIDER): TARGET := darwin-amd64
 bin/darwin-arm64/$(PROVIDER): TARGET := darwin-arm64
 bin/windows-amd64/$(PROVIDER).exe: TARGET := windows-amd64
-bin/%/$(PROVIDER) bin/%/$(PROVIDER).exe: provider/cmd/$(PROVIDER)/schema-embed.json
+bin/%/$(PROVIDER) bin/%/$(PROVIDER).exe:
 	@# check the TARGET is set
 	test $(TARGET)
 	cd provider && \

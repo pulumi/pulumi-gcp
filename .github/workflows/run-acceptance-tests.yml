@@ -86,6 +86,7 @@ jobs:
       github.event.pull_request.head.repo.full_name == github.repository
     needs:
     - test
+    - build_provider
     - license_check
     - lint
     runs-on: ubuntu-latest
