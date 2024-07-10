@@ -957,3 +957,12 @@ func TestFirestoreBackupScheduleNoPermadiff(t *testing.T) {
 	pt.Up()
 	pt.Preview(optpreview.ExpectNoChanges())
 }
+
+func TestPAMEntitlementPermadiffRegress2167(t *testing.T) {
+	pt := pulumiTest(t, "test-programs/pam-entitlement", opttest.DownloadProviderVersion("random", "4.16.3"))
+
+	proj := getProject()
+	pt.SetConfig("gcpProj", proj)
+	pt.Up()
+	pt.Preview(optpreview.ExpectNoChanges())
+}
