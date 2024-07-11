@@ -256,7 +256,7 @@ export class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(KeystoresAliasesSelfSignedCert.__pulumiType, name, resourceInputs, opts);
+        super(KeystoresAliasesSelfSignedCert.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

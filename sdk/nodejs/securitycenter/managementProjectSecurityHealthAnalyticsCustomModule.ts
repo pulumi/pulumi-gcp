@@ -218,7 +218,7 @@ export class ManagementProjectSecurityHealthAnalyticsCustomModule extends pulumi
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ManagementProjectSecurityHealthAnalyticsCustomModule.__pulumiType, name, resourceInputs, opts);
+        super(ManagementProjectSecurityHealthAnalyticsCustomModule.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

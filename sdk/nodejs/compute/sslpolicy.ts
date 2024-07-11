@@ -202,7 +202,7 @@ export class SSLPolicy extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SSLPolicy.__pulumiType, name, resourceInputs, opts);
+        super(SSLPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

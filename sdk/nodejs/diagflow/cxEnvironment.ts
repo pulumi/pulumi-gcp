@@ -166,7 +166,7 @@ export class CxEnvironment extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(CxEnvironment.__pulumiType, name, resourceInputs, opts);
+        super(CxEnvironment.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

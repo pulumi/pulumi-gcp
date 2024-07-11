@@ -120,7 +120,7 @@ export class MonitoredProject extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(MonitoredProject.__pulumiType, name, resourceInputs, opts);
+        super(MonitoredProject.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

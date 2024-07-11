@@ -242,7 +242,7 @@ export class CryptoKeyIAMMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(CryptoKeyIAMMember.__pulumiType, name, resourceInputs, opts);
+        super(CryptoKeyIAMMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

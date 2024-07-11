@@ -251,7 +251,7 @@ export class TagTemplateIamMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TagTemplateIamMember.__pulumiType, name, resourceInputs, opts);
+        super(TagTemplateIamMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

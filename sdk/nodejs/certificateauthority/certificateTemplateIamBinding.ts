@@ -374,7 +374,7 @@ export class CertificateTemplateIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(CertificateTemplateIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(CertificateTemplateIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

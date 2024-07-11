@@ -241,7 +241,7 @@ export class GatewayIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(GatewayIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(GatewayIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

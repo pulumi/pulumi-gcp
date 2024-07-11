@@ -156,7 +156,7 @@ export class Catalog extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Catalog.__pulumiType, name, resourceInputs, opts);
+        super(Catalog.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

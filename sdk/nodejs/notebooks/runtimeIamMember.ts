@@ -268,7 +268,7 @@ export class RuntimeIamMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(RuntimeIamMember.__pulumiType, name, resourceInputs, opts);
+        super(RuntimeIamMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

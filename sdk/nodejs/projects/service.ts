@@ -114,7 +114,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["service"] = args ? args.service : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Service.__pulumiType, name, resourceInputs, opts);
+        super(Service.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

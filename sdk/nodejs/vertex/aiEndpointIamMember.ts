@@ -82,7 +82,7 @@ export class AiEndpointIamMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AiEndpointIamMember.__pulumiType, name, resourceInputs, opts);
+        super(AiEndpointIamMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -154,7 +154,7 @@ export class ServicePerimeters extends pulumi.CustomResource {
             resourceInputs["servicePerimeters"] = args ? args.servicePerimeters : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ServicePerimeters.__pulumiType, name, resourceInputs, opts);
+        super(ServicePerimeters.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

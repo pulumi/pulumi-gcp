@@ -241,7 +241,7 @@ export class DataPolicyIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DataPolicyIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(DataPolicyIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

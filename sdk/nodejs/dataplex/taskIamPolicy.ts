@@ -257,7 +257,7 @@ export class TaskIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TaskIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(TaskIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

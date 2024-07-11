@@ -229,7 +229,7 @@ export class Entitlement extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Entitlement.__pulumiType, name, resourceInputs, opts);
+        super(Entitlement.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

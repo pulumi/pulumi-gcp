@@ -154,7 +154,7 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(GcpUserAccessBinding.__pulumiType, name, resourceInputs, opts);
+        super(GcpUserAccessBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

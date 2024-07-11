@@ -175,7 +175,7 @@ export class EngineSplitTraffic extends pulumi.CustomResource {
             resourceInputs["split"] = args ? args.split : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(EngineSplitTraffic.__pulumiType, name, resourceInputs, opts);
+        super(EngineSplitTraffic.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

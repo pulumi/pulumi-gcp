@@ -168,7 +168,7 @@ export class AppCheckDebugToken extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["token"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(AppCheckDebugToken.__pulumiType, name, resourceInputs, opts);
+        super(AppCheckDebugToken.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

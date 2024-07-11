@@ -149,7 +149,7 @@ export class ManagedFolder extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ManagedFolder.__pulumiType, name, resourceInputs, opts);
+        super(ManagedFolder.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

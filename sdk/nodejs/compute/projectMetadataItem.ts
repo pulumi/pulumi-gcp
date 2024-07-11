@@ -107,7 +107,7 @@ export class ProjectMetadataItem extends pulumi.CustomResource {
             resourceInputs["value"] = args ? args.value : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ProjectMetadataItem.__pulumiType, name, resourceInputs, opts);
+        super(ProjectMetadataItem.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

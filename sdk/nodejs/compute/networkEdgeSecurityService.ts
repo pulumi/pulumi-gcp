@@ -161,7 +161,7 @@ export class NetworkEdgeSecurityService extends pulumi.CustomResource {
             resourceInputs["serviceId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(NetworkEdgeSecurityService.__pulumiType, name, resourceInputs, opts);
+        super(NetworkEdgeSecurityService.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -291,7 +291,7 @@ export class AppProfile extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AppProfile.__pulumiType, name, resourceInputs, opts);
+        super(AppProfile.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

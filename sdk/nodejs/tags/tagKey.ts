@@ -161,7 +161,7 @@ export class TagKey extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TagKey.__pulumiType, name, resourceInputs, opts);
+        super(TagKey.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

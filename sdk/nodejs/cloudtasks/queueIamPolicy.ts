@@ -240,7 +240,7 @@ export class QueueIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(QueueIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(QueueIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -283,7 +283,7 @@ export class ExternalAccessRule extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ExternalAccessRule.__pulumiType, name, resourceInputs, opts);
+        super(ExternalAccessRule.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

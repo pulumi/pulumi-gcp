@@ -233,7 +233,7 @@ export class ManagedSslCertificate extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "gcp:compute/mangedSslCertificate:MangedSslCertificate" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
-        super(ManagedSslCertificate.__pulumiType, name, resourceInputs, opts);
+        super(ManagedSslCertificate.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

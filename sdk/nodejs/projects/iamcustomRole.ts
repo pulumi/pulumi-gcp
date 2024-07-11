@@ -167,7 +167,7 @@ export class IAMCustomRole extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(IAMCustomRole.__pulumiType, name, resourceInputs, opts);
+        super(IAMCustomRole.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

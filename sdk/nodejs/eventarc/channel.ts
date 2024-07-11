@@ -184,7 +184,7 @@ export class Channel extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Channel.__pulumiType, name, resourceInputs, opts);
+        super(Channel.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -131,7 +131,7 @@ export class ProjectCloudArmorTier extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ProjectCloudArmorTier.__pulumiType, name, resourceInputs, opts);
+        super(ProjectCloudArmorTier.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

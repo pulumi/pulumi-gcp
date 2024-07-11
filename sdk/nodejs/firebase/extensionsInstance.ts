@@ -210,7 +210,7 @@ export class ExtensionsInstance extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ExtensionsInstance.__pulumiType, name, resourceInputs, opts);
+        super(ExtensionsInstance.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

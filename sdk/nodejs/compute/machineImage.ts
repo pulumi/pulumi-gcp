@@ -207,7 +207,7 @@ export class MachineImage extends pulumi.CustomResource {
             resourceInputs["storageLocations"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(MachineImage.__pulumiType, name, resourceInputs, opts);
+        super(MachineImage.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -240,7 +240,7 @@ export class BlockchainNodes extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(BlockchainNodes.__pulumiType, name, resourceInputs, opts);
+        super(BlockchainNodes.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

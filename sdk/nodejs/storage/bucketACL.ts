@@ -116,7 +116,7 @@ export class BucketACL extends pulumi.CustomResource {
             resourceInputs["roleEntities"] = args ? args.roleEntities : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(BucketACL.__pulumiType, name, resourceInputs, opts);
+        super(BucketACL.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

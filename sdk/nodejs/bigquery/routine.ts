@@ -450,7 +450,7 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Routine.__pulumiType, name, resourceInputs, opts);
+        super(Routine.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -144,7 +144,7 @@ export class CustomService extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(CustomService.__pulumiType, name, resourceInputs, opts);
+        super(CustomService.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

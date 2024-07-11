@@ -219,7 +219,7 @@ export class TargetServer extends pulumi.CustomResource {
             resourceInputs["sSlInfo"] = args ? args.sSlInfo : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TargetServer.__pulumiType, name, resourceInputs, opts);
+        super(TargetServer.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 
