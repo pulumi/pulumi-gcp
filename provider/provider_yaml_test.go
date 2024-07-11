@@ -966,3 +966,12 @@ func TestPAMEntitlementPermadiffRegress2167(t *testing.T) {
 	pt.Up()
 	pt.Preview(optpreview.ExpectNoChanges())
 }
+
+func TestFirestoreFieldPermadiffRegress2166(t *testing.T) {
+	pt := pulumiTest(t, "test-programs/firestore-field")
+
+	proj := getProject()
+	pt.SetConfig("gcpProj", proj)
+	pt.Up()
+	pt.Preview(optpreview.ExpectNoChanges())
+}

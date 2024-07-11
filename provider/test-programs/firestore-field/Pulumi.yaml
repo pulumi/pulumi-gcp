@@ -1,0 +1,13 @@
+name: firestore-field
+runtime: yaml
+config:
+  gcpProj: string
+resources:
+  noidx:
+    type: gcp:firestore:Field
+    properties:
+      project: ${gcpProj}
+      collection: my-collection
+      database: (default)
+      field: field
+      indexConfig: {}
