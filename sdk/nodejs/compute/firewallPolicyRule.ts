@@ -234,7 +234,7 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
             resourceInputs["ruleTupleCount"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(FirewallPolicyRule.__pulumiType, name, resourceInputs, opts);
+        super(FirewallPolicyRule.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

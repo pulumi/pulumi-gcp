@@ -614,7 +614,7 @@ export class BareMetalCluster extends pulumi.CustomResource {
             resourceInputs["validationChecks"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(BareMetalCluster.__pulumiType, name, resourceInputs, opts);
+        super(BareMetalCluster.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -285,7 +285,7 @@ export class BitbucketServerConfig extends pulumi.CustomResource {
             resourceInputs["webhookKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(BitbucketServerConfig.__pulumiType, name, resourceInputs, opts);
+        super(BitbucketServerConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

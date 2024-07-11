@@ -162,7 +162,7 @@ export class LogViewIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(LogViewIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(LogViewIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

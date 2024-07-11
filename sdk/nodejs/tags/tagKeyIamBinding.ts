@@ -237,7 +237,7 @@ export class TagKeyIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TagKeyIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(TagKeyIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

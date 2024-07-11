@@ -278,7 +278,7 @@ export class Registration extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(Registration.__pulumiType, name, resourceInputs, opts);
+        super(Registration.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -303,7 +303,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["operation"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(NodePool.__pulumiType, name, resourceInputs, opts);
+        super(NodePool.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

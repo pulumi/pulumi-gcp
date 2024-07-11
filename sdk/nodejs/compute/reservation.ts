@@ -197,7 +197,7 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Reservation.__pulumiType, name, resourceInputs, opts);
+        super(Reservation.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -284,7 +284,7 @@ export class ListingIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ListingIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(ListingIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

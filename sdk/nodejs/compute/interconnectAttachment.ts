@@ -401,7 +401,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(InterconnectAttachment.__pulumiType, name, resourceInputs, opts);
+        super(InterconnectAttachment.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

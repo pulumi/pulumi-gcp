@@ -279,7 +279,7 @@ export class CxAgent extends pulumi.CustomResource {
             resourceInputs["startFlow"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(CxAgent.__pulumiType, name, resourceInputs, opts);
+        super(CxAgent.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

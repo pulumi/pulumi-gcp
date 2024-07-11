@@ -148,7 +148,7 @@ export class Fulfillment extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Fulfillment.__pulumiType, name, resourceInputs, opts);
+        super(Fulfillment.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -132,7 +132,7 @@ export class PeeredDnsDomain extends pulumi.CustomResource {
             resourceInputs["parent"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(PeeredDnsDomain.__pulumiType, name, resourceInputs, opts);
+        super(PeeredDnsDomain.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

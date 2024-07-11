@@ -215,7 +215,7 @@ export class PreferenceSet extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(PreferenceSet.__pulumiType, name, resourceInputs, opts);
+        super(PreferenceSet.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

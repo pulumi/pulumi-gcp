@@ -120,7 +120,7 @@ export class EnvReferences extends pulumi.CustomResource {
             resourceInputs["resourceType"] = args ? args.resourceType : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(EnvReferences.__pulumiType, name, resourceInputs, opts);
+        super(EnvReferences.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

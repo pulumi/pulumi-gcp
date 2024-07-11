@@ -242,7 +242,7 @@ export class CryptoKeyIAMBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(CryptoKeyIAMBinding.__pulumiType, name, resourceInputs, opts);
+        super(CryptoKeyIAMBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

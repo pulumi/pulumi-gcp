@@ -163,7 +163,7 @@ export class LocationTagBinding extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(LocationTagBinding.__pulumiType, name, resourceInputs, opts);
+        super(LocationTagBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

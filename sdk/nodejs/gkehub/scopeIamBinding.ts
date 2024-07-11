@@ -249,7 +249,7 @@ export class ScopeIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ScopeIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(ScopeIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

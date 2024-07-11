@@ -266,7 +266,7 @@ export class MetastoreFederationIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(MetastoreFederationIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(MetastoreFederationIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

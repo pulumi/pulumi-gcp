@@ -211,7 +211,7 @@ export class TargetSSLProxy extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TargetSSLProxy.__pulumiType, name, resourceInputs, opts);
+        super(TargetSSLProxy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

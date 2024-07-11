@@ -317,7 +317,7 @@ export class Automation extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(Automation.__pulumiType, name, resourceInputs, opts);
+        super(Automation.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

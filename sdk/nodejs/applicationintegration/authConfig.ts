@@ -238,7 +238,7 @@ export class AuthConfig extends pulumi.CustomResource {
             resourceInputs["validTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AuthConfig.__pulumiType, name, resourceInputs, opts);
+        super(AuthConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

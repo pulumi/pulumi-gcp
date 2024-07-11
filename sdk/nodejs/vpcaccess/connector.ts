@@ -222,7 +222,7 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Connector.__pulumiType, name, resourceInputs, opts);
+        super(Connector.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

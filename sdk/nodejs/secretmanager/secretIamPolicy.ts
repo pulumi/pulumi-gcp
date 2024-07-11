@@ -346,7 +346,7 @@ export class SecretIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SecretIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(SecretIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

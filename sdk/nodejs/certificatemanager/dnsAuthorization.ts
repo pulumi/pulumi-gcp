@@ -197,7 +197,7 @@ export class DnsAuthorization extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(DnsAuthorization.__pulumiType, name, resourceInputs, opts);
+        super(DnsAuthorization.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -285,7 +285,7 @@ export class Metric extends pulumi.CustomResource {
             resourceInputs["valueExtractor"] = args ? args.valueExtractor : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Metric.__pulumiType, name, resourceInputs, opts);
+        super(Metric.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

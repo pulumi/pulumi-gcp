@@ -158,7 +158,7 @@ export class ManagementServer extends pulumi.CustomResource {
             resourceInputs["oauth2ClientId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ManagementServer.__pulumiType, name, resourceInputs, opts);
+        super(ManagementServer.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

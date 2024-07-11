@@ -266,7 +266,7 @@ export class AspectTypeIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AspectTypeIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(AspectTypeIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 
