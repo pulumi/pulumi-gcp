@@ -10,7 +10,7 @@ resources:
       length: 10
       special: false
       upper: false
-      number: true
+      number: false
 
   entitlement:
     type: gcp:privilegedaccessmanager:entitlement
