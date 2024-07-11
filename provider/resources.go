@@ -466,7 +466,8 @@ func Provider() tfbridge.ProviderInfo {
 					"google_firestore_backup_schedule",
 					"google_cloud_run_service",
 					"google_cloud_run_domain_mapping",
-					"google_privileged_access_manager_entitlement":
+					"google_privileged_access_manager_entitlement",
+					"google_firestore_field":
 					return true
 				default:
 					return false
