@@ -2640,6 +2640,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "data_source_sourcerepo_repository.html.markdown",
 				},
 			},
+			"google_kms_key_rings": {
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
