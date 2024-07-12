@@ -5,10 +5,10 @@ Subject: [PATCH] Remove pattern string from compute forwarding rules
 
 
 diff --git a/website/docs/r/compute_forwarding_rule.html.markdown b/website/docs/r/compute_forwarding_rule.html.markdown
-index 46bae687b..6819520f4 100644
+index 8cdff312e..3d38c6dcb 100644
 --- a/website/docs/r/compute_forwarding_rule.html.markdown
 +++ b/website/docs/r/compute_forwarding_rule.html.markdown
-@@ -1437,7 +1437,7 @@ The following arguments are supported:
+@@ -1435,7 +1435,7 @@ The following arguments are supported:
    For internal forwarding rules within the same VPC network, two or more
    forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
    cannot have overlapping `portRange`s.
@@ -17,7 +17,7 @@ index 46bae687b..6819520f4 100644
  
  * `ports` -
    (Optional)
-@@ -1458,7 +1458,7 @@ The following arguments are supported:
+@@ -1456,7 +1456,7 @@ The following arguments are supported:
    For internal forwarding rules within the same VPC network, two or more
    forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
    they share at least one port number.
@@ -27,10 +27,10 @@ index 46bae687b..6819520f4 100644
  * `subnetwork` -
    (Optional)
 diff --git a/website/docs/r/compute_global_forwarding_rule.html.markdown b/website/docs/r/compute_global_forwarding_rule.html.markdown
-index cdafca007..646d28791 100644
+index 29bc8c00c..0925757a5 100644
 --- a/website/docs/r/compute_global_forwarding_rule.html.markdown
 +++ b/website/docs/r/compute_global_forwarding_rule.html.markdown
-@@ -1341,7 +1341,7 @@ The following arguments are supported:
+@@ -1337,7 +1337,7 @@ The following arguments are supported:
    For internal forwarding rules within the same VPC network, two or more
    forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
    cannot have overlapping `portRange`s.
