@@ -70,6 +70,14 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// Network tags to add to the Compute Engine machines backing the Workstations.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// Resource manager tags to be bound to the VM instances backing the Workstations.
+        /// Tag keys and values have the same definition as
+        /// https://cloud.google.com/resource-manager/docs/tags/tags-overview
+        /// Keys must be in the format `tagKeys/{tag_key_id}`, and
+        /// values are in the format `tagValues/456`.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? VmTags;
 
         [OutputConstructor]
         private WorkstationConfigHostGceInstance(
@@ -97,7 +105,9 @@ namespace Pulumi.Gcp.Workstations.Outputs
 
             Outputs.WorkstationConfigHostGceInstanceShieldedInstanceConfig? shieldedInstanceConfig,
 
-            ImmutableArray<string> tags)
+            ImmutableArray<string> tags,
+
+            ImmutableDictionary<string, string>? vmTags)
         {
             Accelerators = accelerators;
             BoostConfigs = boostConfigs;
@@ -112,6 +122,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
             ServiceAccountScopes = serviceAccountScopes;
             ShieldedInstanceConfig = shieldedInstanceConfig;
             Tags = tags;
+            VmTags = vmTags;
         }
     }
 }

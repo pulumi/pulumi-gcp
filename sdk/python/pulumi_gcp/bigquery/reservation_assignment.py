@@ -31,10 +31,10 @@ class ReservationAssignmentArgs:
         :param pulumi.Input[str] reservation: The reservation for the resource
                
                
-               
                - - -
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "assignee", assignee)
         pulumi.set(__self__, "job_type", job_type)
@@ -75,7 +75,6 @@ class ReservationAssignmentArgs:
         The reservation for the resource
 
 
-
         - - -
         """
         return pulumi.get(self, "reservation")
@@ -100,7 +99,8 @@ class ReservationAssignmentArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -125,13 +125,14 @@ class _ReservationAssignmentState:
         :param pulumi.Input[str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Output only. The resource name of the assignment.
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] reservation: The reservation for the resource
                
                
-               
                - - -
-        :param pulumi.Input[str] state: Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+        :param pulumi.Input[str] state: Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
+               Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         """
         if assignee is not None:
             pulumi.set(__self__, "assignee", assignee)
@@ -200,7 +201,8 @@ class _ReservationAssignmentState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -215,7 +217,6 @@ class _ReservationAssignmentState:
         The reservation for the resource
 
 
-
         - - -
         """
         return pulumi.get(self, "reservation")
@@ -228,7 +229,8 @@ class _ReservationAssignmentState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+        Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
+        Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         """
         return pulumi.get(self, "state")
 
@@ -249,22 +251,29 @@ class ReservationAssignment(pulumi.CustomResource):
                  reservation: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The BigqueryReservation Assignment resource
+        The BigqueryReservation Assignment resource.
+
+        To get more information about ReservationAssignment, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations.assignments)
+        * How-to Guides
+            * [Work with reservation assignments](https://cloud.google.com/bigquery/docs/reservations-assignments)
 
         ## Example Usage
 
-        ### Basic
+        ### Bigquery Reservation Assignment Basic
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         basic = gcp.bigquery.Reservation("basic",
-            name="tf-test-my-reservation",
+            name="example-reservation",
             project="my-project-name",
             location="us-central1",
             slot_capacity=0,
             ignore_idle_slots=False)
-        primary = gcp.bigquery.ReservationAssignment("primary",
+        assignment = gcp.bigquery.ReservationAssignment("assignment",
             assignee="projects/my-project-name",
             job_type="PIPELINE",
             reservation=basic.id)
@@ -272,7 +281,7 @@ class ReservationAssignment(pulumi.CustomResource):
 
         ## Import
 
-        Assignment can be imported using any of these accepted formats:
+        ReservationAssignment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}`
 
@@ -280,7 +289,7 @@ class ReservationAssignment(pulumi.CustomResource):
 
         * `{{location}}/{{reservation}}/{{name}}`
 
-        When using the `pulumi import` command, Assignment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ReservationAssignment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}
@@ -299,9 +308,9 @@ class ReservationAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] assignee: The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
         :param pulumi.Input[str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] reservation: The reservation for the resource
-               
                
                
                - - -
@@ -313,22 +322,29 @@ class ReservationAssignment(pulumi.CustomResource):
                  args: ReservationAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The BigqueryReservation Assignment resource
+        The BigqueryReservation Assignment resource.
+
+        To get more information about ReservationAssignment, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations.assignments)
+        * How-to Guides
+            * [Work with reservation assignments](https://cloud.google.com/bigquery/docs/reservations-assignments)
 
         ## Example Usage
 
-        ### Basic
+        ### Bigquery Reservation Assignment Basic
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         basic = gcp.bigquery.Reservation("basic",
-            name="tf-test-my-reservation",
+            name="example-reservation",
             project="my-project-name",
             location="us-central1",
             slot_capacity=0,
             ignore_idle_slots=False)
-        primary = gcp.bigquery.ReservationAssignment("primary",
+        assignment = gcp.bigquery.ReservationAssignment("assignment",
             assignee="projects/my-project-name",
             job_type="PIPELINE",
             reservation=basic.id)
@@ -336,7 +352,7 @@ class ReservationAssignment(pulumi.CustomResource):
 
         ## Import
 
-        Assignment can be imported using any of these accepted formats:
+        ReservationAssignment can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}`
 
@@ -344,7 +360,7 @@ class ReservationAssignment(pulumi.CustomResource):
 
         * `{{location}}/{{reservation}}/{{name}}`
 
-        When using the `pulumi import` command, Assignment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ReservationAssignment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}
@@ -428,13 +444,14 @@ class ReservationAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Output only. The resource name of the assignment.
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] reservation: The reservation for the resource
                
                
-               
                - - -
-        :param pulumi.Input[str] state: Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+        :param pulumi.Input[str] state: Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
+               Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -485,7 +502,8 @@ class ReservationAssignment(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -496,7 +514,6 @@ class ReservationAssignment(pulumi.CustomResource):
         The reservation for the resource
 
 
-
         - - -
         """
         return pulumi.get(self, "reservation")
@@ -505,7 +522,8 @@ class ReservationAssignment(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+        Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
+        Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         """
         return pulumi.get(self, "state")
 

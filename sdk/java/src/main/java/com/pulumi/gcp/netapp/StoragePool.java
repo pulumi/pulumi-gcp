@@ -19,24 +19,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Storage pools act as containers for volumes. All volumes in a storage pool share the following information:
- * * Location
- * * Service level
- * * Virtual Private Cloud (VPC) network
- * * Active Directory policy
- * * LDAP use for NFS volumes, if applicable
- * * Customer-managed encryption key (CMEK) policy
- * 
- * The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable
- * component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool
- * independent of consumption at the volume level.
- * 
- * To get more information about storagePool, see:
- * 
- * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.storagePools)
- * * How-to Guides
- *     * [Quickstart documentation](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
- * 
  * ## Example Usage
  * 
  * ### Storage Pool Create
@@ -272,21 +254,21 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ldapEnabled);
     }
     /**
-     * Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+     * Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
-     * @return Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+     * @return Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
      * 
      */
     public Output<String> location() {
         return this.location;
     }
     /**
-     * The resource name of the storage pool. Needs to be unique per location.
+     * The resource name of the storage pool. Needs to be unique per location/region.
      * 
      * ***
      * 
@@ -295,7 +277,7 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return The resource name of the storage pool. Needs to be unique per location.
+     * @return The resource name of the storage pool. Needs to be unique per location/region.
      * 
      * ***
      * 
@@ -350,6 +332,22 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
+     * Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+     * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+     * 
+     */
+    @Export(name="replicaZone", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> replicaZone;
+
+    /**
+     * @return Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+     * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+     * 
+     */
+    public Output<Optional<String>> replicaZone() {
+        return Codegen.optional(this.replicaZone);
+    }
+    /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      * 
@@ -392,6 +390,24 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> volumeCount() {
         return this.volumeCount;
+    }
+    /**
+     * Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+     * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+     * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+     * 
+     */
+    @Export(name="zone", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> zone;
+
+    /**
+     * @return Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+     * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+     * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+     * 
+     */
+    public Output<Optional<String>> zone() {
+        return Codegen.optional(this.zone);
     }
 
     /**

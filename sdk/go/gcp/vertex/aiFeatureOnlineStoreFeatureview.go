@@ -261,6 +261,202 @@ import (
 //	}
 //
 // ```
+// ### Vertex Ai Featureonlinestore Featureview Cross Project
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testProject, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("tf-test_55138"),
+//				Name:           pulumi.String("tf-test_37559"),
+//				OrgId:          pulumi.String("123456789"),
+//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
+//				CreateDuration: "60s",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			vertexai, err := projects.NewService(ctx, "vertexai", &projects.ServiceArgs{
+//				Service:          pulumi.String("aiplatform.googleapis.com"),
+//				Project:          project.ProjectId,
+//				DisableOnDestroy: pulumi.Bool(false),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait60Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			featureonlinestore, err := vertex.NewAiFeatureOnlineStore(ctx, "featureonlinestore", &vertex.AiFeatureOnlineStoreArgs{
+//				Name:    pulumi.String("example_cross_project_featureview"),
+//				Project: project.ProjectId,
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Region: pulumi.String("us-central1"),
+//				Bigtable: &vertex.AiFeatureOnlineStoreBigtableArgs{
+//					AutoScaling: &vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs{
+//						MinNodeCount:         pulumi.Int(1),
+//						MaxNodeCount:         pulumi.Int(2),
+//						CpuUtilizationTarget: pulumi.Int(80),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				vertexai,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			sampleDataset, err := bigquery.NewDataset(ctx, "sample_dataset", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("example_cross_project_featureview"),
+//				FriendlyName: pulumi.String("test"),
+//				Description:  pulumi.String("This is a test description"),
+//				Location:     pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			viewer, err := bigquery.NewDatasetIamMember(ctx, "viewer", &bigquery.DatasetIamMemberArgs{
+//				Project:   pulumi.String(testProject.ProjectId),
+//				DatasetId: sampleDataset.DatasetId,
+//				Role:      pulumi.String("roles/bigquery.dataViewer"),
+//				Member: project.Number.ApplyT(func(number string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:service-%v@gcp-sa-aiplatform.iam.gserviceaccount.com", number), nil
+//				}).(pulumi.StringOutput),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				featureonlinestore,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			wait30Seconds, err := time.NewSleep(ctx, "wait_30_seconds", &time.SleepArgs{
+//				CreateDuration: "30s",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				viewer,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			sampleTable, err := bigquery.NewTable(ctx, "sample_table", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				DatasetId:          sampleDataset.DatasetId,
+//				TableId:            pulumi.String("example_cross_project_featureview"),
+//				Schema: pulumi.String(`[
+//	    {
+//	        "name": "feature_id",
+//	        "type": "STRING",
+//	        "mode": "NULLABLE"
+//	    },
+//	    {
+//	        "name": "example_cross_project_featureview",
+//	        "type": "STRING",
+//	        "mode": "NULLABLE"
+//	    },
+//	    {
+//	        "name": "feature_timestamp",
+//	        "type": "TIMESTAMP",
+//	        "mode": "NULLABLE"
+//	    }
+//
+// ]
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sampleFeatureGroup, err := vertex.NewAiFeatureGroup(ctx, "sample_feature_group", &vertex.AiFeatureGroupArgs{
+//				Name:        pulumi.String("example_cross_project_featureview"),
+//				Description: pulumi.String("A sample feature group"),
+//				Region:      pulumi.String("us-central1"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				BigQuery: &vertex.AiFeatureGroupBigQueryArgs{
+//					BigQuerySource: &vertex.AiFeatureGroupBigQueryBigQuerySourceArgs{
+//						InputUri: pulumi.All(sampleTable.Project, sampleTable.DatasetId, sampleTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//							project := _args[0].(string)
+//							datasetId := _args[1].(string)
+//							tableId := _args[2].(string)
+//							return fmt.Sprintf("bq://%v.%v.%v", project, datasetId, tableId), nil
+//						}).(pulumi.StringOutput),
+//					},
+//					EntityIdColumns: pulumi.StringArray{
+//						pulumi.String("feature_id"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sampleFeature, err := vertex.NewAiFeatureGroupFeature(ctx, "sample_feature", &vertex.AiFeatureGroupFeatureArgs{
+//				Name:         pulumi.String("example_cross_project_featureview"),
+//				Region:       pulumi.String("us-central1"),
+//				FeatureGroup: sampleFeatureGroup.Name,
+//				Description:  pulumi.String("A sample feature"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiFeatureOnlineStoreFeatureview(ctx, "cross_project_featureview", &vertex.AiFeatureOnlineStoreFeatureviewArgs{
+//				Name:               pulumi.String("example_cross_project_featureview"),
+//				Project:            project.ProjectId,
+//				Region:             pulumi.String("us-central1"),
+//				FeatureOnlineStore: featureonlinestore.Name,
+//				SyncConfig: &vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs{
+//					Cron: pulumi.String("0 0 * * *"),
+//				},
+//				FeatureRegistrySource: &vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs{
+//					FeatureGroups: vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArray{
+//						&vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs{
+//							FeatureGroupId: sampleFeatureGroup.Name,
+//							FeatureIds: pulumi.StringArray{
+//								sampleFeature.Name,
+//							},
+//						},
+//					},
+//					ProjectNumber: pulumi.String(testProject.Number),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				vertexai,
+//				wait30Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Vertex Ai Featureonlinestore Featureview With Vector Search
 //
 // ```go

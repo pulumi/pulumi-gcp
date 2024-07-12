@@ -70,6 +70,47 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
+    /// ### Certificate Manager Trust Config Allowlisted Certificates
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CertificateManager.TrustConfig("default", new()
+    ///     {
+    ///         Name = "trust-config",
+    ///         Description = "A sample trust config resource with allowlisted certificates",
+    ///         Location = "global",
+    ///         AllowlistedCertificates = new[]
+    ///         {
+    ///             new Gcp.CertificateManager.Inputs.TrustConfigAllowlistedCertificateArgs
+    ///             {
+    ///                 PemCertificate = Std.File.Invoke(new()
+    ///                 {
+    ///                     Input = "test-fixtures/cert.pem",
+    ///                 }).Apply(invoke =&gt; invoke.Result),
+    ///             },
+    ///             new Gcp.CertificateManager.Inputs.TrustConfigAllowlistedCertificateArgs
+    ///             {
+    ///                 PemCertificate = Std.File.Invoke(new()
+    ///                 {
+    ///                     Input = "test-fixtures/cert2.pem",
+    ///                 }).Apply(invoke =&gt; invoke.Result),
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -98,6 +139,14 @@ namespace Pulumi.Gcp.CertificateManager
     [GcpResourceType("gcp:certificatemanager/trustConfig:TrustConfig")]
     public partial class TrustConfig : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+        /// the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("allowlistedCertificates")]
+        public Output<ImmutableArray<Outputs.TrustConfigAllowlistedCertificate>> AllowlistedCertificates { get; private set; } = null!;
+
         /// <summary>
         /// The creation timestamp of a TrustConfig.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -222,6 +271,20 @@ namespace Pulumi.Gcp.CertificateManager
 
     public sealed class TrustConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allowlistedCertificates")]
+        private InputList<Inputs.TrustConfigAllowlistedCertificateArgs>? _allowlistedCertificates;
+
+        /// <summary>
+        /// Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+        /// the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.TrustConfigAllowlistedCertificateArgs> AllowlistedCertificates
+        {
+            get => _allowlistedCertificates ?? (_allowlistedCertificates = new InputList<Inputs.TrustConfigAllowlistedCertificateArgs>());
+            set => _allowlistedCertificates = value;
+        }
+
         /// <summary>
         /// One or more paragraphs of text description of a trust config.
         /// </summary>
@@ -286,6 +349,20 @@ namespace Pulumi.Gcp.CertificateManager
 
     public sealed class TrustConfigState : global::Pulumi.ResourceArgs
     {
+        [Input("allowlistedCertificates")]
+        private InputList<Inputs.TrustConfigAllowlistedCertificateGetArgs>? _allowlistedCertificates;
+
+        /// <summary>
+        /// Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+        /// the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.TrustConfigAllowlistedCertificateGetArgs> AllowlistedCertificates
+        {
+            get => _allowlistedCertificates ?? (_allowlistedCertificates = new InputList<Inputs.TrustConfigAllowlistedCertificateGetArgs>());
+            set => _allowlistedCertificates = value;
+        }
+
         /// <summary>
         /// The creation timestamp of a TrustConfig.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.

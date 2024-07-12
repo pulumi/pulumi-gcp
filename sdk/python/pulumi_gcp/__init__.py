@@ -6897,6 +6897,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "securesourcemanager/repository",
+  "fqn": "pulumi_gcp.securesourcemanager",
+  "classes": {
+   "gcp:securesourcemanager/repository:Repository": "Repository"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securesourcemanager/repositoryIamBinding",
+  "fqn": "pulumi_gcp.securesourcemanager",
+  "classes": {
+   "gcp:securesourcemanager/repositoryIamBinding:RepositoryIamBinding": "RepositoryIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securesourcemanager/repositoryIamMember",
+  "fqn": "pulumi_gcp.securesourcemanager",
+  "classes": {
+   "gcp:securesourcemanager/repositoryIamMember:RepositoryIamMember": "RepositoryIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securesourcemanager/repositoryIamPolicy",
+  "fqn": "pulumi_gcp.securesourcemanager",
+  "classes": {
+   "gcp:securesourcemanager/repositoryIamPolicy:RepositoryIamPolicy": "RepositoryIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "securitycenter/eventThreatDetectionCustomModule",
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
@@ -7029,6 +7061,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
    "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": "SourceIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2OrganizationNotificationConfig",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig": "V2OrganizationNotificationConfig"
   }
  },
  {

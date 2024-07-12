@@ -38,6 +38,7 @@ public final class GetHealthCheckResult {
     private String name;
     private @Nullable String project;
     private String selfLink;
+    private List<String> sourceRegions;
     private List<GetHealthCheckSslHealthCheck> sslHealthChecks;
     private List<GetHealthCheckTcpHealthCheck> tcpHealthChecks;
     private Integer timeoutSec;
@@ -88,6 +89,9 @@ public final class GetHealthCheckResult {
     public String selfLink() {
         return this.selfLink;
     }
+    public List<String> sourceRegions() {
+        return this.sourceRegions;
+    }
     public List<GetHealthCheckSslHealthCheck> sslHealthChecks() {
         return this.sslHealthChecks;
     }
@@ -126,6 +130,7 @@ public final class GetHealthCheckResult {
         private String name;
         private @Nullable String project;
         private String selfLink;
+        private List<String> sourceRegions;
         private List<GetHealthCheckSslHealthCheck> sslHealthChecks;
         private List<GetHealthCheckTcpHealthCheck> tcpHealthChecks;
         private Integer timeoutSec;
@@ -147,6 +152,7 @@ public final class GetHealthCheckResult {
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.selfLink = defaults.selfLink;
+    	      this.sourceRegions = defaults.sourceRegions;
     	      this.sslHealthChecks = defaults.sslHealthChecks;
     	      this.tcpHealthChecks = defaults.tcpHealthChecks;
     	      this.timeoutSec = defaults.timeoutSec;
@@ -272,6 +278,17 @@ public final class GetHealthCheckResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sourceRegions(List<String> sourceRegions) {
+            if (sourceRegions == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "sourceRegions");
+            }
+            this.sourceRegions = sourceRegions;
+            return this;
+        }
+        public Builder sourceRegions(String... sourceRegions) {
+            return sourceRegions(List.of(sourceRegions));
+        }
+        @CustomType.Setter
         public Builder sslHealthChecks(List<GetHealthCheckSslHealthCheck> sslHealthChecks) {
             if (sslHealthChecks == null) {
               throw new MissingRequiredPropertyException("GetHealthCheckResult", "sslHealthChecks");
@@ -332,6 +349,7 @@ public final class GetHealthCheckResult {
             _resultValue.name = name;
             _resultValue.project = project;
             _resultValue.selfLink = selfLink;
+            _resultValue.sourceRegions = sourceRegions;
             _resultValue.sslHealthChecks = sslHealthChecks;
             _resultValue.tcpHealthChecks = tcpHealthChecks;
             _resultValue.timeoutSec = timeoutSec;

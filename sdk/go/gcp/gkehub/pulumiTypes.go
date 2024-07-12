@@ -367,6 +367,8 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput) Version() pulu
 }
 
 type FeatureFleetDefaultMemberConfigConfigmanagementConfigSync struct {
+	// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+	Enabled *bool `pulumi:"enabled"`
 	// Git repo configuration for the cluster
 	// Structure is documented below.
 	Git *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit `pulumi:"git"`
@@ -391,6 +393,8 @@ type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncInput interface {
 }
 
 type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs struct {
+	// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Git repo configuration for the cluster
 	// Structure is documented below.
 	Git FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
@@ -480,6 +484,11 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) ToFeatu
 	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput)
 }
 
+// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSync) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
 // Git repo configuration for the cluster
 // Structure is documented below.
 func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) Git() FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitPtrOutput {
@@ -528,6 +537,16 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput) Elem
 		var ret FeatureFleetDefaultMemberConfigConfigmanagementConfigSync
 		return ret
 	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput)
+}
+
+// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSync) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Git repo configuration for the cluster

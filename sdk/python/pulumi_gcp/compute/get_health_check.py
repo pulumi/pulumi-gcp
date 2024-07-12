@@ -27,7 +27,7 @@ class GetHealthCheckResult:
     """
     A collection of values returned by getHealthCheck.
     """
-    def __init__(__self__, check_interval_sec=None, creation_timestamp=None, description=None, grpc_health_checks=None, healthy_threshold=None, http2_health_checks=None, http_health_checks=None, https_health_checks=None, id=None, log_configs=None, name=None, project=None, self_link=None, ssl_health_checks=None, tcp_health_checks=None, timeout_sec=None, type=None, unhealthy_threshold=None):
+    def __init__(__self__, check_interval_sec=None, creation_timestamp=None, description=None, grpc_health_checks=None, healthy_threshold=None, http2_health_checks=None, http_health_checks=None, https_health_checks=None, id=None, log_configs=None, name=None, project=None, self_link=None, source_regions=None, ssl_health_checks=None, tcp_health_checks=None, timeout_sec=None, type=None, unhealthy_threshold=None):
         if check_interval_sec and not isinstance(check_interval_sec, int):
             raise TypeError("Expected argument 'check_interval_sec' to be a int")
         pulumi.set(__self__, "check_interval_sec", check_interval_sec)
@@ -67,6 +67,9 @@ class GetHealthCheckResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if source_regions and not isinstance(source_regions, list):
+            raise TypeError("Expected argument 'source_regions' to be a list")
+        pulumi.set(__self__, "source_regions", source_regions)
         if ssl_health_checks and not isinstance(ssl_health_checks, list):
             raise TypeError("Expected argument 'ssl_health_checks' to be a list")
         pulumi.set(__self__, "ssl_health_checks", ssl_health_checks)
@@ -152,6 +155,11 @@ class GetHealthCheckResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="sourceRegions")
+    def source_regions(self) -> Sequence[str]:
+        return pulumi.get(self, "source_regions")
+
+    @property
     @pulumi.getter(name="sslHealthChecks")
     def ssl_health_checks(self) -> Sequence['outputs.GetHealthCheckSslHealthCheckResult']:
         return pulumi.get(self, "ssl_health_checks")
@@ -196,6 +204,7 @@ class AwaitableGetHealthCheckResult(GetHealthCheckResult):
             name=self.name,
             project=self.project,
             self_link=self.self_link,
+            source_regions=self.source_regions,
             ssl_health_checks=self.ssl_health_checks,
             tcp_health_checks=self.tcp_health_checks,
             timeout_sec=self.timeout_sec,
@@ -238,6 +247,7 @@ def get_health_check(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'),
+        source_regions=pulumi.get(__ret__, 'source_regions'),
         ssl_health_checks=pulumi.get(__ret__, 'ssl_health_checks'),
         tcp_health_checks=pulumi.get(__ret__, 'tcp_health_checks'),
         timeout_sec=pulumi.get(__ret__, 'timeout_sec'),

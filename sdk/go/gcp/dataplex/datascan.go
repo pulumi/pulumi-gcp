@@ -282,6 +282,12 @@ import (
 //								SqlExpression: pulumi.String("COUNT(*) > 0"),
 //							},
 //						},
+//						&dataplex.DatascanDataQualitySpecRuleArgs{
+//							Dimension: pulumi.String("VALIDITY"),
+//							SqlAssertion: &dataplex.DatascanDataQualitySpecRuleSqlAssertionArgs{
+//								SqlStatement: pulumi.String("select * from bigquery-public-data.austin_bikeshare.bikeshare_stations where station_id is null"),
+//							},
+//						},
 //					},
 //				},
 //				Project: pulumi.String("my-project-name"),

@@ -121,14 +121,14 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+     * Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
      * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
-     * @return Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+     * @return Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
      * 
      */
     public Output<String> location() {
@@ -136,7 +136,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource name of the storage pool. Needs to be unique per location.
+     * The resource name of the storage pool. Needs to be unique per location/region.
      * 
      * ***
      * 
@@ -145,7 +145,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name of the storage pool. Needs to be unique per location.
+     * @return The resource name of the storage pool. Needs to be unique per location/region.
      * 
      * ***
      * 
@@ -187,6 +187,23 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+     * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+     * 
+     */
+    @Import(name="replicaZone")
+    private @Nullable Output<String> replicaZone;
+
+    /**
+     * @return Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+     * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+     * 
+     */
+    public Optional<Output<String>> replicaZone() {
+        return Optional.ofNullable(this.replicaZone);
+    }
+
+    /**
      * Service level of the storage pool.
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      * 
@@ -203,6 +220,25 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
         return this.serviceLevel;
     }
 
+    /**
+     * Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+     * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+     * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+     * 
+     */
+    @Import(name="zone")
+    private @Nullable Output<String> zone;
+
+    /**
+     * @return Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+     * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+     * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+     * 
+     */
+    public Optional<Output<String>> zone() {
+        return Optional.ofNullable(this.zone);
+    }
+
     private StoragePoolArgs() {}
 
     private StoragePoolArgs(StoragePoolArgs $) {
@@ -216,7 +252,9 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.network = $.network;
         this.project = $.project;
+        this.replicaZone = $.replicaZone;
         this.serviceLevel = $.serviceLevel;
+        this.zone = $.zone;
     }
 
     public static Builder builder() {
@@ -376,7 +414,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+         * @param location Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
          * 
          * @return builder
          * 
@@ -387,7 +425,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+         * @param location Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
          * 
          * @return builder
          * 
@@ -397,7 +435,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the storage pool. Needs to be unique per location.
+         * @param name The resource name of the storage pool. Needs to be unique per location/region.
          * 
          * ***
          * 
@@ -410,7 +448,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the storage pool. Needs to be unique per location.
+         * @param name The resource name of the storage pool. Needs to be unique per location/region.
          * 
          * ***
          * 
@@ -466,6 +504,29 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param replicaZone Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+         * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaZone(@Nullable Output<String> replicaZone) {
+            $.replicaZone = replicaZone;
+            return this;
+        }
+
+        /**
+         * @param replicaZone Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+         * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaZone(String replicaZone) {
+            return replicaZone(Output.of(replicaZone));
+        }
+
+        /**
          * @param serviceLevel Service level of the storage pool.
          * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
          * 
@@ -486,6 +547,31 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder serviceLevel(String serviceLevel) {
             return serviceLevel(Output.of(serviceLevel));
+        }
+
+        /**
+         * @param zone Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+         * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+         * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zone(@Nullable Output<String> zone) {
+            $.zone = zone;
+            return this;
+        }
+
+        /**
+         * @param zone Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+         * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+         * If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zone(String zone) {
+            return zone(Output.of(zone));
         }
 
         public StoragePoolArgs build() {

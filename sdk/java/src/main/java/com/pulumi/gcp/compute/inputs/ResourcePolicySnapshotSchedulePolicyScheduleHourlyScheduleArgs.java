@@ -33,8 +33,7 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArg
     /**
      * Time within the window to start the operations.
      * It must be in an hourly format &#34;HH:MM&#34;,
-     * where HH : [00-23] and MM : [00] GMT.
-     * eg: 21:00
+     * where HH : [00-23] and MM : [00] GMT. eg: 21:00
      * 
      */
     @Import(name="startTime", required=true)
@@ -43,8 +42,7 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArg
     /**
      * @return Time within the window to start the operations.
      * It must be in an hourly format &#34;HH:MM&#34;,
-     * where HH : [00-23] and MM : [00] GMT.
-     * eg: 21:00
+     * where HH : [00-23] and MM : [00] GMT. eg: 21:00
      * 
      */
     public Output<String> startTime() {
@@ -100,8 +98,7 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArg
         /**
          * @param startTime Time within the window to start the operations.
          * It must be in an hourly format &#34;HH:MM&#34;,
-         * where HH : [00-23] and MM : [00] GMT.
-         * eg: 21:00
+         * where HH : [00-23] and MM : [00] GMT. eg: 21:00
          * 
          * @return builder
          * 
@@ -114,8 +111,7 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArg
         /**
          * @param startTime Time within the window to start the operations.
          * It must be in an hourly format &#34;HH:MM&#34;,
-         * where HH : [00-23] and MM : [00] GMT.
-         * eg: 21:00
+         * where HH : [00-23] and MM : [00] GMT. eg: 21:00
          * 
          * @return builder
          * 

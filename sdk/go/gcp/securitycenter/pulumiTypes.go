@@ -7504,6 +7504,223 @@ func (o SourceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type V2OrganizationNotificationConfigStreamingConfig struct {
+	// Expression that defines the filter to apply across create/update
+	// events of assets or findings as specified by the event type. The
+	// expression is a list of zero or more restrictions combined via
+	// logical operators AND and OR. Parentheses are supported, and OR
+	// has higher precedence than AND.
+	// Restrictions have the form <field> <operator> <value> and may have
+	// a - character in front of them to indicate negation. The fields
+	// map to those defined in the corresponding resource.
+	// The supported operators are:
+	// * = for all value types.
+	// * > , <, >=, <= for integer values.
+	// * :, meaning substring matching, for strings.
+	//   The supported value types are:
+	// * string literals in quotes.
+	// * integer literals without quotes.
+	// * boolean literals true and false without quotes.
+	//   See
+	//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+	//   for information on how to write a filter.
+	//
+	// ***
+	Filter string `pulumi:"filter"`
+}
+
+// V2OrganizationNotificationConfigStreamingConfigInput is an input type that accepts V2OrganizationNotificationConfigStreamingConfigArgs and V2OrganizationNotificationConfigStreamingConfigOutput values.
+// You can construct a concrete instance of `V2OrganizationNotificationConfigStreamingConfigInput` via:
+//
+//	V2OrganizationNotificationConfigStreamingConfigArgs{...}
+type V2OrganizationNotificationConfigStreamingConfigInput interface {
+	pulumi.Input
+
+	ToV2OrganizationNotificationConfigStreamingConfigOutput() V2OrganizationNotificationConfigStreamingConfigOutput
+	ToV2OrganizationNotificationConfigStreamingConfigOutputWithContext(context.Context) V2OrganizationNotificationConfigStreamingConfigOutput
+}
+
+type V2OrganizationNotificationConfigStreamingConfigArgs struct {
+	// Expression that defines the filter to apply across create/update
+	// events of assets or findings as specified by the event type. The
+	// expression is a list of zero or more restrictions combined via
+	// logical operators AND and OR. Parentheses are supported, and OR
+	// has higher precedence than AND.
+	// Restrictions have the form <field> <operator> <value> and may have
+	// a - character in front of them to indicate negation. The fields
+	// map to those defined in the corresponding resource.
+	// The supported operators are:
+	// * = for all value types.
+	// * > , <, >=, <= for integer values.
+	// * :, meaning substring matching, for strings.
+	//   The supported value types are:
+	// * string literals in quotes.
+	// * integer literals without quotes.
+	// * boolean literals true and false without quotes.
+	//   See
+	//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+	//   for information on how to write a filter.
+	//
+	// ***
+	Filter pulumi.StringInput `pulumi:"filter"`
+}
+
+func (V2OrganizationNotificationConfigStreamingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2OrganizationNotificationConfigStreamingConfig)(nil)).Elem()
+}
+
+func (i V2OrganizationNotificationConfigStreamingConfigArgs) ToV2OrganizationNotificationConfigStreamingConfigOutput() V2OrganizationNotificationConfigStreamingConfigOutput {
+	return i.ToV2OrganizationNotificationConfigStreamingConfigOutputWithContext(context.Background())
+}
+
+func (i V2OrganizationNotificationConfigStreamingConfigArgs) ToV2OrganizationNotificationConfigStreamingConfigOutputWithContext(ctx context.Context) V2OrganizationNotificationConfigStreamingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2OrganizationNotificationConfigStreamingConfigOutput)
+}
+
+func (i V2OrganizationNotificationConfigStreamingConfigArgs) ToV2OrganizationNotificationConfigStreamingConfigPtrOutput() V2OrganizationNotificationConfigStreamingConfigPtrOutput {
+	return i.ToV2OrganizationNotificationConfigStreamingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V2OrganizationNotificationConfigStreamingConfigArgs) ToV2OrganizationNotificationConfigStreamingConfigPtrOutputWithContext(ctx context.Context) V2OrganizationNotificationConfigStreamingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2OrganizationNotificationConfigStreamingConfigOutput).ToV2OrganizationNotificationConfigStreamingConfigPtrOutputWithContext(ctx)
+}
+
+// V2OrganizationNotificationConfigStreamingConfigPtrInput is an input type that accepts V2OrganizationNotificationConfigStreamingConfigArgs, V2OrganizationNotificationConfigStreamingConfigPtr and V2OrganizationNotificationConfigStreamingConfigPtrOutput values.
+// You can construct a concrete instance of `V2OrganizationNotificationConfigStreamingConfigPtrInput` via:
+//
+//	        V2OrganizationNotificationConfigStreamingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2OrganizationNotificationConfigStreamingConfigPtrInput interface {
+	pulumi.Input
+
+	ToV2OrganizationNotificationConfigStreamingConfigPtrOutput() V2OrganizationNotificationConfigStreamingConfigPtrOutput
+	ToV2OrganizationNotificationConfigStreamingConfigPtrOutputWithContext(context.Context) V2OrganizationNotificationConfigStreamingConfigPtrOutput
+}
+
+type v2organizationNotificationConfigStreamingConfigPtrType V2OrganizationNotificationConfigStreamingConfigArgs
+
+func V2OrganizationNotificationConfigStreamingConfigPtr(v *V2OrganizationNotificationConfigStreamingConfigArgs) V2OrganizationNotificationConfigStreamingConfigPtrInput {
+	return (*v2organizationNotificationConfigStreamingConfigPtrType)(v)
+}
+
+func (*v2organizationNotificationConfigStreamingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2OrganizationNotificationConfigStreamingConfig)(nil)).Elem()
+}
+
+func (i *v2organizationNotificationConfigStreamingConfigPtrType) ToV2OrganizationNotificationConfigStreamingConfigPtrOutput() V2OrganizationNotificationConfigStreamingConfigPtrOutput {
+	return i.ToV2OrganizationNotificationConfigStreamingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v2organizationNotificationConfigStreamingConfigPtrType) ToV2OrganizationNotificationConfigStreamingConfigPtrOutputWithContext(ctx context.Context) V2OrganizationNotificationConfigStreamingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2OrganizationNotificationConfigStreamingConfigPtrOutput)
+}
+
+type V2OrganizationNotificationConfigStreamingConfigOutput struct{ *pulumi.OutputState }
+
+func (V2OrganizationNotificationConfigStreamingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2OrganizationNotificationConfigStreamingConfig)(nil)).Elem()
+}
+
+func (o V2OrganizationNotificationConfigStreamingConfigOutput) ToV2OrganizationNotificationConfigStreamingConfigOutput() V2OrganizationNotificationConfigStreamingConfigOutput {
+	return o
+}
+
+func (o V2OrganizationNotificationConfigStreamingConfigOutput) ToV2OrganizationNotificationConfigStreamingConfigOutputWithContext(ctx context.Context) V2OrganizationNotificationConfigStreamingConfigOutput {
+	return o
+}
+
+func (o V2OrganizationNotificationConfigStreamingConfigOutput) ToV2OrganizationNotificationConfigStreamingConfigPtrOutput() V2OrganizationNotificationConfigStreamingConfigPtrOutput {
+	return o.ToV2OrganizationNotificationConfigStreamingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V2OrganizationNotificationConfigStreamingConfigOutput) ToV2OrganizationNotificationConfigStreamingConfigPtrOutputWithContext(ctx context.Context) V2OrganizationNotificationConfigStreamingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2OrganizationNotificationConfigStreamingConfig) *V2OrganizationNotificationConfigStreamingConfig {
+		return &v
+	}).(V2OrganizationNotificationConfigStreamingConfigPtrOutput)
+}
+
+// Expression that defines the filter to apply across create/update
+// events of assets or findings as specified by the event type. The
+// expression is a list of zero or more restrictions combined via
+// logical operators AND and OR. Parentheses are supported, and OR
+// has higher precedence than AND.
+// Restrictions have the form <field> <operator> <value> and may have
+// a - character in front of them to indicate negation. The fields
+// map to those defined in the corresponding resource.
+// The supported operators are:
+//   - = for all value types.
+//   - > , <, >=, <= for integer values.
+//   - :, meaning substring matching, for strings.
+//     The supported value types are:
+//   - string literals in quotes.
+//   - integer literals without quotes.
+//   - boolean literals true and false without quotes.
+//     See
+//     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+//     for information on how to write a filter.
+//
+// ***
+func (o V2OrganizationNotificationConfigStreamingConfigOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v V2OrganizationNotificationConfigStreamingConfig) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+type V2OrganizationNotificationConfigStreamingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V2OrganizationNotificationConfigStreamingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2OrganizationNotificationConfigStreamingConfig)(nil)).Elem()
+}
+
+func (o V2OrganizationNotificationConfigStreamingConfigPtrOutput) ToV2OrganizationNotificationConfigStreamingConfigPtrOutput() V2OrganizationNotificationConfigStreamingConfigPtrOutput {
+	return o
+}
+
+func (o V2OrganizationNotificationConfigStreamingConfigPtrOutput) ToV2OrganizationNotificationConfigStreamingConfigPtrOutputWithContext(ctx context.Context) V2OrganizationNotificationConfigStreamingConfigPtrOutput {
+	return o
+}
+
+func (o V2OrganizationNotificationConfigStreamingConfigPtrOutput) Elem() V2OrganizationNotificationConfigStreamingConfigOutput {
+	return o.ApplyT(func(v *V2OrganizationNotificationConfigStreamingConfig) V2OrganizationNotificationConfigStreamingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V2OrganizationNotificationConfigStreamingConfig
+		return ret
+	}).(V2OrganizationNotificationConfigStreamingConfigOutput)
+}
+
+// Expression that defines the filter to apply across create/update
+// events of assets or findings as specified by the event type. The
+// expression is a list of zero or more restrictions combined via
+// logical operators AND and OR. Parentheses are supported, and OR
+// has higher precedence than AND.
+// Restrictions have the form <field> <operator> <value> and may have
+// a - character in front of them to indicate negation. The fields
+// map to those defined in the corresponding resource.
+// The supported operators are:
+//   - = for all value types.
+//   - > , <, >=, <= for integer values.
+//   - :, meaning substring matching, for strings.
+//     The supported value types are:
+//   - string literals in quotes.
+//   - integer literals without quotes.
+//   - boolean literals true and false without quotes.
+//     See
+//     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+//     for information on how to write a filter.
+//
+// ***
+func (o V2OrganizationNotificationConfigStreamingConfigPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2OrganizationNotificationConfigStreamingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderCustomModuleCustomConfigInput)(nil)).Elem(), FolderCustomModuleCustomConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderCustomModuleCustomConfigPtrInput)(nil)).Elem(), FolderCustomModuleCustomConfigArgs{})
@@ -7587,6 +7804,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceIamBindingConditionPtrInput)(nil)).Elem(), SourceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceIamMemberConditionInput)(nil)).Elem(), SourceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceIamMemberConditionPtrInput)(nil)).Elem(), SourceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2OrganizationNotificationConfigStreamingConfigInput)(nil)).Elem(), V2OrganizationNotificationConfigStreamingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2OrganizationNotificationConfigStreamingConfigPtrInput)(nil)).Elem(), V2OrganizationNotificationConfigStreamingConfigArgs{})
 	pulumi.RegisterOutputType(FolderCustomModuleCustomConfigOutput{})
 	pulumi.RegisterOutputType(FolderCustomModuleCustomConfigPtrOutput{})
 	pulumi.RegisterOutputType(FolderCustomModuleCustomConfigCustomOutputOutput{})
@@ -7669,4 +7888,6 @@ func init() {
 	pulumi.RegisterOutputType(SourceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(SourceIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(SourceIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(V2OrganizationNotificationConfigStreamingConfigOutput{})
+	pulumi.RegisterOutputType(V2OrganizationNotificationConfigStreamingConfigPtrOutput{})
 }

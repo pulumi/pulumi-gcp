@@ -39,7 +39,7 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-     * If not specified at creation time, the default duration is 24 hours.
+     * If not specified at creation time, the default duration is 30 days.
      * 
      */
     @Import(name="destroyScheduledDuration")
@@ -47,7 +47,7 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-     * If not specified at creation time, the default duration is 24 hours.
+     * If not specified at creation time, the default duration is 30 days.
      * 
      */
     public Optional<Output<String>> destroyScheduledDuration() {
@@ -316,7 +316,7 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param destroyScheduledDuration The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-         * If not specified at creation time, the default duration is 24 hours.
+         * If not specified at creation time, the default duration is 30 days.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param destroyScheduledDuration The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-         * If not specified at creation time, the default duration is 24 hours.
+         * If not specified at creation time, the default duration is 30 days.
          * 
          * @return builder
          * 

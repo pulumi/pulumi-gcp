@@ -12,16 +12,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An organization policy gives you programmatic control over your organization's cloud resources.  Using Organization Policies, you will be able to configure constraints across your entire resource hierarchy.
+// Defines an organization policy which is used to specify constraints for configurations of Google Cloud resources.
 //
-// For more information, see:
-// * [Understanding Org Policy concepts](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
-// * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
-// * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
+// To get more information about Policy, see:
+//
+// * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.policies)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+//   - [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+//
 // ## Example Usage
 //
-// ### Enforce_policy
-// A test of an enforce orgpolicy policy for a project
+// ### Org Policy Policy Enforce
+//
 // ```go
 // package main
 //
@@ -68,8 +71,8 @@ import (
 //	}
 //
 // ```
-// ### Folder_policy
-// A test of an orgpolicy policy for a folder
+// ### Org Policy Policy Folder
+//
 // ```go
 // package main
 //
@@ -114,8 +117,8 @@ import (
 //	}
 //
 // ```
-// ### Organization_policy
-// A test of an orgpolicy policy for an organization
+// ### Org Policy Policy Organization
+//
 // ```go
 // package main
 //
@@ -143,8 +146,8 @@ import (
 //	}
 //
 // ```
-// ### Project_policy
-// A test of an orgpolicy policy for a project
+// ### Org Policy Policy Project
+//
 // ```go
 // package main
 //
@@ -207,7 +210,8 @@ import (
 //	}
 //
 // ```
-// ### Dry_run_spec
+// ### Org Policy Policy Dry Run Spec
+//
 // ```go
 // package main
 //
@@ -273,6 +277,7 @@ import (
 // ## Import
 //
 // Policy can be imported using any of these accepted formats:
+//
 // * `{{parent}}/policies/{{name}}`
 //
 // When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
@@ -284,6 +289,7 @@ type Policy struct {
 	pulumi.CustomResourceState
 
 	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+	// Structure is documented below.
 	DryRunSpec PolicyDryRunSpecPtrOutput `pulumi:"dryRunSpec"`
 	// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -294,6 +300,7 @@ type Policy struct {
 	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Basic information about the Organization Policy.
+	// Structure is documented below.
 	Spec PolicySpecPtrOutput `pulumi:"spec"`
 }
 
@@ -331,6 +338,7 @@ func GetPolicy(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Policy resources.
 type policyState struct {
 	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+	// Structure is documented below.
 	DryRunSpec *PolicyDryRunSpec `pulumi:"dryRunSpec"`
 	// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
@@ -341,11 +349,13 @@ type policyState struct {
 	// ***
 	Parent *string `pulumi:"parent"`
 	// Basic information about the Organization Policy.
+	// Structure is documented below.
 	Spec *PolicySpec `pulumi:"spec"`
 }
 
 type PolicyState struct {
 	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+	// Structure is documented below.
 	DryRunSpec PolicyDryRunSpecPtrInput
 	// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
@@ -356,6 +366,7 @@ type PolicyState struct {
 	// ***
 	Parent pulumi.StringPtrInput
 	// Basic information about the Organization Policy.
+	// Structure is documented below.
 	Spec PolicySpecPtrInput
 }
 
@@ -365,6 +376,7 @@ func (PolicyState) ElementType() reflect.Type {
 
 type policyArgs struct {
 	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+	// Structure is documented below.
 	DryRunSpec *PolicyDryRunSpec `pulumi:"dryRunSpec"`
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name *string `pulumi:"name"`
@@ -373,12 +385,14 @@ type policyArgs struct {
 	// ***
 	Parent string `pulumi:"parent"`
 	// Basic information about the Organization Policy.
+	// Structure is documented below.
 	Spec *PolicySpec `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a Policy resource.
 type PolicyArgs struct {
 	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+	// Structure is documented below.
 	DryRunSpec PolicyDryRunSpecPtrInput
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name pulumi.StringPtrInput
@@ -387,6 +401,7 @@ type PolicyArgs struct {
 	// ***
 	Parent pulumi.StringInput
 	// Basic information about the Organization Policy.
+	// Structure is documented below.
 	Spec PolicySpecPtrInput
 }
 
@@ -478,6 +493,7 @@ func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutpu
 }
 
 // Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+// Structure is documented below.
 func (o PolicyOutput) DryRunSpec() PolicyDryRunSpecPtrOutput {
 	return o.ApplyT(func(v *Policy) PolicyDryRunSpecPtrOutput { return v.DryRunSpec }).(PolicyDryRunSpecPtrOutput)
 }
@@ -500,6 +516,7 @@ func (o PolicyOutput) Parent() pulumi.StringOutput {
 }
 
 // Basic information about the Organization Policy.
+// Structure is documented below.
 func (o PolicyOutput) Spec() PolicySpecPtrOutput {
 	return o.ApplyT(func(v *Policy) PolicySpecPtrOutput { return v.Spec }).(PolicySpecPtrOutput)
 }

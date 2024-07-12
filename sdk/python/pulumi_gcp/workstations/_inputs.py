@@ -809,6 +809,14 @@ if not MYPY:
         """
         Network tags to add to the Compute Engine machines backing the Workstations.
         """
+        vm_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Resource manager tags to be bound to the VM instances backing the Workstations.
+        Tag keys and values have the same definition as
+        https://cloud.google.com/resource-manager/docs/tags/tags-overview
+        Keys must be in the format `tagKeys/{tag_key_id}`, and
+        values are in the format `tagValues/456`.
+        """
 elif False:
     WorkstationConfigHostGceInstanceArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -827,7 +835,8 @@ class WorkstationConfigHostGceInstanceArgs:
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vm_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]] accelerators: An accelerator card attached to the instance.
                Structure is documented below.
@@ -847,6 +856,11 @@ class WorkstationConfigHostGceInstanceArgs:
         :param pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs'] shielded_instance_config: A set of Compute Engine Shielded instance options.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Network tags to add to the Compute Engine machines backing the Workstations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vm_tags: Resource manager tags to be bound to the VM instances backing the Workstations.
+               Tag keys and values have the same definition as
+               https://cloud.google.com/resource-manager/docs/tags/tags-overview
+               Keys must be in the format `tagKeys/{tag_key_id}`, and
+               values are in the format `tagValues/456`.
         """
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
@@ -874,6 +888,8 @@ class WorkstationConfigHostGceInstanceArgs:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if vm_tags is not None:
+            pulumi.set(__self__, "vm_tags", vm_tags)
 
     @property
     @pulumi.getter
@@ -1035,6 +1051,22 @@ class WorkstationConfigHostGceInstanceArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="vmTags")
+    def vm_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource manager tags to be bound to the VM instances backing the Workstations.
+        Tag keys and values have the same definition as
+        https://cloud.google.com/resource-manager/docs/tags/tags-overview
+        Keys must be in the format `tagKeys/{tag_key_id}`, and
+        values are in the format `tagValues/456`.
+        """
+        return pulumi.get(self, "vm_tags")
+
+    @vm_tags.setter
+    def vm_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "vm_tags", value)
 
 
 if not MYPY:

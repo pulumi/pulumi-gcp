@@ -2231,6 +2231,475 @@ func (o KeyRingImportJobPublicKeyArrayOutput) Index(i pulumi.IntInput) KeyRingIm
 	}).(KeyRingImportJobPublicKeyOutput)
 }
 
+type GetCryptoKeysKey struct {
+	// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+	CryptoKeyBackend string `pulumi:"cryptoKeyBackend"`
+	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+	// If not specified at creation time, the default duration is 30 days.
+	DestroyScheduledDuration string            `pulumi:"destroyScheduledDuration"`
+	EffectiveLabels          map[string]string `pulumi:"effectiveLabels"`
+	Id                       string            `pulumi:"id"`
+	// Whether this key may contain imported versions only.
+	ImportOnly bool `pulumi:"importOnly"`
+	// The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
+	KeyRing *string `pulumi:"keyRing"`
+	// Labels with user-defined metadata to apply to this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
+	// The resource name for the CryptoKey.
+	Name *string `pulumi:"name"`
+	// A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+	// Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+	Primaries []GetCryptoKeysKeyPrimary `pulumi:"primaries"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The immutable purpose of this CryptoKey. See the
+	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
+	// for possible inputs.
+	// Default value is "ENCRYPT_DECRYPT".
+	Purpose string `pulumi:"purpose"`
+	// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
+	// The first rotation will take place after the specified period. The rotation period has
+	// the format of a decimal number with up to 9 fractional digits, followed by the
+	// letter 's' (seconds). It must be greater than a day (ie, 86400).
+	RotationPeriod string `pulumi:"rotationPeriod"`
+	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+	// You must use the 'google_kms_crypto_key_version' resource to create a new CryptoKeyVersion
+	// or 'google_kms_key_ring_import_job' resource to import the CryptoKeyVersion.
+	SkipInitialVersionCreation bool `pulumi:"skipInitialVersionCreation"`
+	// A template describing settings for new crypto key versions.
+	VersionTemplates []GetCryptoKeysKeyVersionTemplate `pulumi:"versionTemplates"`
+}
+
+// GetCryptoKeysKeyInput is an input type that accepts GetCryptoKeysKeyArgs and GetCryptoKeysKeyOutput values.
+// You can construct a concrete instance of `GetCryptoKeysKeyInput` via:
+//
+//	GetCryptoKeysKeyArgs{...}
+type GetCryptoKeysKeyInput interface {
+	pulumi.Input
+
+	ToGetCryptoKeysKeyOutput() GetCryptoKeysKeyOutput
+	ToGetCryptoKeysKeyOutputWithContext(context.Context) GetCryptoKeysKeyOutput
+}
+
+type GetCryptoKeysKeyArgs struct {
+	// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+	CryptoKeyBackend pulumi.StringInput `pulumi:"cryptoKeyBackend"`
+	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+	// If not specified at creation time, the default duration is 30 days.
+	DestroyScheduledDuration pulumi.StringInput    `pulumi:"destroyScheduledDuration"`
+	EffectiveLabels          pulumi.StringMapInput `pulumi:"effectiveLabels"`
+	Id                       pulumi.StringInput    `pulumi:"id"`
+	// Whether this key may contain imported versions only.
+	ImportOnly pulumi.BoolInput `pulumi:"importOnly"`
+	// The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
+	KeyRing pulumi.StringPtrInput `pulumi:"keyRing"`
+	// Labels with user-defined metadata to apply to this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The resource name for the CryptoKey.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+	// Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+	Primaries GetCryptoKeysKeyPrimaryArrayInput `pulumi:"primaries"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput `pulumi:"pulumiLabels"`
+	// The immutable purpose of this CryptoKey. See the
+	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
+	// for possible inputs.
+	// Default value is "ENCRYPT_DECRYPT".
+	Purpose pulumi.StringInput `pulumi:"purpose"`
+	// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
+	// The first rotation will take place after the specified period. The rotation period has
+	// the format of a decimal number with up to 9 fractional digits, followed by the
+	// letter 's' (seconds). It must be greater than a day (ie, 86400).
+	RotationPeriod pulumi.StringInput `pulumi:"rotationPeriod"`
+	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+	// You must use the 'google_kms_crypto_key_version' resource to create a new CryptoKeyVersion
+	// or 'google_kms_key_ring_import_job' resource to import the CryptoKeyVersion.
+	SkipInitialVersionCreation pulumi.BoolInput `pulumi:"skipInitialVersionCreation"`
+	// A template describing settings for new crypto key versions.
+	VersionTemplates GetCryptoKeysKeyVersionTemplateArrayInput `pulumi:"versionTemplates"`
+}
+
+func (GetCryptoKeysKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCryptoKeysKey)(nil)).Elem()
+}
+
+func (i GetCryptoKeysKeyArgs) ToGetCryptoKeysKeyOutput() GetCryptoKeysKeyOutput {
+	return i.ToGetCryptoKeysKeyOutputWithContext(context.Background())
+}
+
+func (i GetCryptoKeysKeyArgs) ToGetCryptoKeysKeyOutputWithContext(ctx context.Context) GetCryptoKeysKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCryptoKeysKeyOutput)
+}
+
+// GetCryptoKeysKeyArrayInput is an input type that accepts GetCryptoKeysKeyArray and GetCryptoKeysKeyArrayOutput values.
+// You can construct a concrete instance of `GetCryptoKeysKeyArrayInput` via:
+//
+//	GetCryptoKeysKeyArray{ GetCryptoKeysKeyArgs{...} }
+type GetCryptoKeysKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetCryptoKeysKeyArrayOutput() GetCryptoKeysKeyArrayOutput
+	ToGetCryptoKeysKeyArrayOutputWithContext(context.Context) GetCryptoKeysKeyArrayOutput
+}
+
+type GetCryptoKeysKeyArray []GetCryptoKeysKeyInput
+
+func (GetCryptoKeysKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCryptoKeysKey)(nil)).Elem()
+}
+
+func (i GetCryptoKeysKeyArray) ToGetCryptoKeysKeyArrayOutput() GetCryptoKeysKeyArrayOutput {
+	return i.ToGetCryptoKeysKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetCryptoKeysKeyArray) ToGetCryptoKeysKeyArrayOutputWithContext(ctx context.Context) GetCryptoKeysKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCryptoKeysKeyArrayOutput)
+}
+
+type GetCryptoKeysKeyOutput struct{ *pulumi.OutputState }
+
+func (GetCryptoKeysKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCryptoKeysKey)(nil)).Elem()
+}
+
+func (o GetCryptoKeysKeyOutput) ToGetCryptoKeysKeyOutput() GetCryptoKeysKeyOutput {
+	return o
+}
+
+func (o GetCryptoKeysKeyOutput) ToGetCryptoKeysKeyOutputWithContext(ctx context.Context) GetCryptoKeysKeyOutput {
+	return o
+}
+
+// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+func (o GetCryptoKeysKeyOutput) CryptoKeyBackend() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeysKey) string { return v.CryptoKeyBackend }).(pulumi.StringOutput)
+}
+
+// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+// If not specified at creation time, the default duration is 30 days.
+func (o GetCryptoKeysKeyOutput) DestroyScheduledDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeysKey) string { return v.DestroyScheduledDuration }).(pulumi.StringOutput)
+}
+
+func (o GetCryptoKeysKeyOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCryptoKeysKey) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+func (o GetCryptoKeysKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeysKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether this key may contain imported versions only.
+func (o GetCryptoKeysKeyOutput) ImportOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCryptoKeysKey) bool { return v.ImportOnly }).(pulumi.BoolOutput)
+}
+
+// The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
+func (o GetCryptoKeysKeyOutput) KeyRing() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCryptoKeysKey) *string { return v.KeyRing }).(pulumi.StringPtrOutput)
+}
+
+// Labels with user-defined metadata to apply to this resource.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+func (o GetCryptoKeysKeyOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCryptoKeysKey) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name for the CryptoKey.
+func (o GetCryptoKeysKeyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCryptoKeysKey) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+// Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+func (o GetCryptoKeysKeyOutput) Primaries() GetCryptoKeysKeyPrimaryArrayOutput {
+	return o.ApplyT(func(v GetCryptoKeysKey) []GetCryptoKeysKeyPrimary { return v.Primaries }).(GetCryptoKeysKeyPrimaryArrayOutput)
+}
+
+// The combination of labels configured directly on the resource
+//
+//	and default labels configured on the provider.
+func (o GetCryptoKeysKeyOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCryptoKeysKey) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// The immutable purpose of this CryptoKey. See the
+// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
+// for possible inputs.
+// Default value is "ENCRYPT_DECRYPT".
+func (o GetCryptoKeysKeyOutput) Purpose() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeysKey) string { return v.Purpose }).(pulumi.StringOutput)
+}
+
+// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
+// The first rotation will take place after the specified period. The rotation period has
+// the format of a decimal number with up to 9 fractional digits, followed by the
+// letter 's' (seconds). It must be greater than a day (ie, 86400).
+func (o GetCryptoKeysKeyOutput) RotationPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeysKey) string { return v.RotationPeriod }).(pulumi.StringOutput)
+}
+
+// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+// You must use the 'google_kms_crypto_key_version' resource to create a new CryptoKeyVersion
+// or 'google_kms_key_ring_import_job' resource to import the CryptoKeyVersion.
+func (o GetCryptoKeysKeyOutput) SkipInitialVersionCreation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCryptoKeysKey) bool { return v.SkipInitialVersionCreation }).(pulumi.BoolOutput)
+}
+
+// A template describing settings for new crypto key versions.
+func (o GetCryptoKeysKeyOutput) VersionTemplates() GetCryptoKeysKeyVersionTemplateArrayOutput {
+	return o.ApplyT(func(v GetCryptoKeysKey) []GetCryptoKeysKeyVersionTemplate { return v.VersionTemplates }).(GetCryptoKeysKeyVersionTemplateArrayOutput)
+}
+
+type GetCryptoKeysKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCryptoKeysKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCryptoKeysKey)(nil)).Elem()
+}
+
+func (o GetCryptoKeysKeyArrayOutput) ToGetCryptoKeysKeyArrayOutput() GetCryptoKeysKeyArrayOutput {
+	return o
+}
+
+func (o GetCryptoKeysKeyArrayOutput) ToGetCryptoKeysKeyArrayOutputWithContext(ctx context.Context) GetCryptoKeysKeyArrayOutput {
+	return o
+}
+
+func (o GetCryptoKeysKeyArrayOutput) Index(i pulumi.IntInput) GetCryptoKeysKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCryptoKeysKey {
+		return vs[0].([]GetCryptoKeysKey)[vs[1].(int)]
+	}).(GetCryptoKeysKeyOutput)
+}
+
+type GetCryptoKeysKeyPrimary struct {
+	// The resource name for this CryptoKeyVersion.
+	Name string `pulumi:"name"`
+	// The current state of the CryptoKeyVersion.
+	State string `pulumi:"state"`
+}
+
+// GetCryptoKeysKeyPrimaryInput is an input type that accepts GetCryptoKeysKeyPrimaryArgs and GetCryptoKeysKeyPrimaryOutput values.
+// You can construct a concrete instance of `GetCryptoKeysKeyPrimaryInput` via:
+//
+//	GetCryptoKeysKeyPrimaryArgs{...}
+type GetCryptoKeysKeyPrimaryInput interface {
+	pulumi.Input
+
+	ToGetCryptoKeysKeyPrimaryOutput() GetCryptoKeysKeyPrimaryOutput
+	ToGetCryptoKeysKeyPrimaryOutputWithContext(context.Context) GetCryptoKeysKeyPrimaryOutput
+}
+
+type GetCryptoKeysKeyPrimaryArgs struct {
+	// The resource name for this CryptoKeyVersion.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The current state of the CryptoKeyVersion.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (GetCryptoKeysKeyPrimaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCryptoKeysKeyPrimary)(nil)).Elem()
+}
+
+func (i GetCryptoKeysKeyPrimaryArgs) ToGetCryptoKeysKeyPrimaryOutput() GetCryptoKeysKeyPrimaryOutput {
+	return i.ToGetCryptoKeysKeyPrimaryOutputWithContext(context.Background())
+}
+
+func (i GetCryptoKeysKeyPrimaryArgs) ToGetCryptoKeysKeyPrimaryOutputWithContext(ctx context.Context) GetCryptoKeysKeyPrimaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCryptoKeysKeyPrimaryOutput)
+}
+
+// GetCryptoKeysKeyPrimaryArrayInput is an input type that accepts GetCryptoKeysKeyPrimaryArray and GetCryptoKeysKeyPrimaryArrayOutput values.
+// You can construct a concrete instance of `GetCryptoKeysKeyPrimaryArrayInput` via:
+//
+//	GetCryptoKeysKeyPrimaryArray{ GetCryptoKeysKeyPrimaryArgs{...} }
+type GetCryptoKeysKeyPrimaryArrayInput interface {
+	pulumi.Input
+
+	ToGetCryptoKeysKeyPrimaryArrayOutput() GetCryptoKeysKeyPrimaryArrayOutput
+	ToGetCryptoKeysKeyPrimaryArrayOutputWithContext(context.Context) GetCryptoKeysKeyPrimaryArrayOutput
+}
+
+type GetCryptoKeysKeyPrimaryArray []GetCryptoKeysKeyPrimaryInput
+
+func (GetCryptoKeysKeyPrimaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCryptoKeysKeyPrimary)(nil)).Elem()
+}
+
+func (i GetCryptoKeysKeyPrimaryArray) ToGetCryptoKeysKeyPrimaryArrayOutput() GetCryptoKeysKeyPrimaryArrayOutput {
+	return i.ToGetCryptoKeysKeyPrimaryArrayOutputWithContext(context.Background())
+}
+
+func (i GetCryptoKeysKeyPrimaryArray) ToGetCryptoKeysKeyPrimaryArrayOutputWithContext(ctx context.Context) GetCryptoKeysKeyPrimaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCryptoKeysKeyPrimaryArrayOutput)
+}
+
+type GetCryptoKeysKeyPrimaryOutput struct{ *pulumi.OutputState }
+
+func (GetCryptoKeysKeyPrimaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCryptoKeysKeyPrimary)(nil)).Elem()
+}
+
+func (o GetCryptoKeysKeyPrimaryOutput) ToGetCryptoKeysKeyPrimaryOutput() GetCryptoKeysKeyPrimaryOutput {
+	return o
+}
+
+func (o GetCryptoKeysKeyPrimaryOutput) ToGetCryptoKeysKeyPrimaryOutputWithContext(ctx context.Context) GetCryptoKeysKeyPrimaryOutput {
+	return o
+}
+
+// The resource name for this CryptoKeyVersion.
+func (o GetCryptoKeysKeyPrimaryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeysKeyPrimary) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current state of the CryptoKeyVersion.
+func (o GetCryptoKeysKeyPrimaryOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeysKeyPrimary) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetCryptoKeysKeyPrimaryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCryptoKeysKeyPrimaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCryptoKeysKeyPrimary)(nil)).Elem()
+}
+
+func (o GetCryptoKeysKeyPrimaryArrayOutput) ToGetCryptoKeysKeyPrimaryArrayOutput() GetCryptoKeysKeyPrimaryArrayOutput {
+	return o
+}
+
+func (o GetCryptoKeysKeyPrimaryArrayOutput) ToGetCryptoKeysKeyPrimaryArrayOutputWithContext(ctx context.Context) GetCryptoKeysKeyPrimaryArrayOutput {
+	return o
+}
+
+func (o GetCryptoKeysKeyPrimaryArrayOutput) Index(i pulumi.IntInput) GetCryptoKeysKeyPrimaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCryptoKeysKeyPrimary {
+		return vs[0].([]GetCryptoKeysKeyPrimary)[vs[1].(int)]
+	}).(GetCryptoKeysKeyPrimaryOutput)
+}
+
+type GetCryptoKeysKeyVersionTemplate struct {
+	// The algorithm to use when creating a version based on this template.
+	// See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+	Algorithm string `pulumi:"algorithm"`
+	// The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
+	ProtectionLevel string `pulumi:"protectionLevel"`
+}
+
+// GetCryptoKeysKeyVersionTemplateInput is an input type that accepts GetCryptoKeysKeyVersionTemplateArgs and GetCryptoKeysKeyVersionTemplateOutput values.
+// You can construct a concrete instance of `GetCryptoKeysKeyVersionTemplateInput` via:
+//
+//	GetCryptoKeysKeyVersionTemplateArgs{...}
+type GetCryptoKeysKeyVersionTemplateInput interface {
+	pulumi.Input
+
+	ToGetCryptoKeysKeyVersionTemplateOutput() GetCryptoKeysKeyVersionTemplateOutput
+	ToGetCryptoKeysKeyVersionTemplateOutputWithContext(context.Context) GetCryptoKeysKeyVersionTemplateOutput
+}
+
+type GetCryptoKeysKeyVersionTemplateArgs struct {
+	// The algorithm to use when creating a version based on this template.
+	// See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
+	ProtectionLevel pulumi.StringInput `pulumi:"protectionLevel"`
+}
+
+func (GetCryptoKeysKeyVersionTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCryptoKeysKeyVersionTemplate)(nil)).Elem()
+}
+
+func (i GetCryptoKeysKeyVersionTemplateArgs) ToGetCryptoKeysKeyVersionTemplateOutput() GetCryptoKeysKeyVersionTemplateOutput {
+	return i.ToGetCryptoKeysKeyVersionTemplateOutputWithContext(context.Background())
+}
+
+func (i GetCryptoKeysKeyVersionTemplateArgs) ToGetCryptoKeysKeyVersionTemplateOutputWithContext(ctx context.Context) GetCryptoKeysKeyVersionTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCryptoKeysKeyVersionTemplateOutput)
+}
+
+// GetCryptoKeysKeyVersionTemplateArrayInput is an input type that accepts GetCryptoKeysKeyVersionTemplateArray and GetCryptoKeysKeyVersionTemplateArrayOutput values.
+// You can construct a concrete instance of `GetCryptoKeysKeyVersionTemplateArrayInput` via:
+//
+//	GetCryptoKeysKeyVersionTemplateArray{ GetCryptoKeysKeyVersionTemplateArgs{...} }
+type GetCryptoKeysKeyVersionTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetCryptoKeysKeyVersionTemplateArrayOutput() GetCryptoKeysKeyVersionTemplateArrayOutput
+	ToGetCryptoKeysKeyVersionTemplateArrayOutputWithContext(context.Context) GetCryptoKeysKeyVersionTemplateArrayOutput
+}
+
+type GetCryptoKeysKeyVersionTemplateArray []GetCryptoKeysKeyVersionTemplateInput
+
+func (GetCryptoKeysKeyVersionTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCryptoKeysKeyVersionTemplate)(nil)).Elem()
+}
+
+func (i GetCryptoKeysKeyVersionTemplateArray) ToGetCryptoKeysKeyVersionTemplateArrayOutput() GetCryptoKeysKeyVersionTemplateArrayOutput {
+	return i.ToGetCryptoKeysKeyVersionTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetCryptoKeysKeyVersionTemplateArray) ToGetCryptoKeysKeyVersionTemplateArrayOutputWithContext(ctx context.Context) GetCryptoKeysKeyVersionTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCryptoKeysKeyVersionTemplateArrayOutput)
+}
+
+type GetCryptoKeysKeyVersionTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetCryptoKeysKeyVersionTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCryptoKeysKeyVersionTemplate)(nil)).Elem()
+}
+
+func (o GetCryptoKeysKeyVersionTemplateOutput) ToGetCryptoKeysKeyVersionTemplateOutput() GetCryptoKeysKeyVersionTemplateOutput {
+	return o
+}
+
+func (o GetCryptoKeysKeyVersionTemplateOutput) ToGetCryptoKeysKeyVersionTemplateOutputWithContext(ctx context.Context) GetCryptoKeysKeyVersionTemplateOutput {
+	return o
+}
+
+// The algorithm to use when creating a version based on this template.
+// See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+func (o GetCryptoKeysKeyVersionTemplateOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeysKeyVersionTemplate) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
+func (o GetCryptoKeysKeyVersionTemplateOutput) ProtectionLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeysKeyVersionTemplate) string { return v.ProtectionLevel }).(pulumi.StringOutput)
+}
+
+type GetCryptoKeysKeyVersionTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCryptoKeysKeyVersionTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCryptoKeysKeyVersionTemplate)(nil)).Elem()
+}
+
+func (o GetCryptoKeysKeyVersionTemplateArrayOutput) ToGetCryptoKeysKeyVersionTemplateArrayOutput() GetCryptoKeysKeyVersionTemplateArrayOutput {
+	return o
+}
+
+func (o GetCryptoKeysKeyVersionTemplateArrayOutput) ToGetCryptoKeysKeyVersionTemplateArrayOutputWithContext(ctx context.Context) GetCryptoKeysKeyVersionTemplateArrayOutput {
+	return o
+}
+
+func (o GetCryptoKeysKeyVersionTemplateArrayOutput) Index(i pulumi.IntInput) GetCryptoKeysKeyVersionTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCryptoKeysKeyVersionTemplate {
+		return vs[0].([]GetCryptoKeysKeyVersionTemplate)[vs[1].(int)]
+	}).(GetCryptoKeysKeyVersionTemplateOutput)
+}
+
 type GetKMSCryptoKeyPrimary struct {
 	// The CryptoKey's name.
 	// A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
@@ -2555,6 +3024,106 @@ func (o GetKMSCryptoKeyVersionTemplateArrayOutput) Index(i pulumi.IntInput) GetK
 	}).(GetKMSCryptoKeyVersionTemplateOutput)
 }
 
+type GetKeyRingsKeyRing struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// GetKeyRingsKeyRingInput is an input type that accepts GetKeyRingsKeyRingArgs and GetKeyRingsKeyRingOutput values.
+// You can construct a concrete instance of `GetKeyRingsKeyRingInput` via:
+//
+//	GetKeyRingsKeyRingArgs{...}
+type GetKeyRingsKeyRingInput interface {
+	pulumi.Input
+
+	ToGetKeyRingsKeyRingOutput() GetKeyRingsKeyRingOutput
+	ToGetKeyRingsKeyRingOutputWithContext(context.Context) GetKeyRingsKeyRingOutput
+}
+
+type GetKeyRingsKeyRingArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetKeyRingsKeyRingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyRingsKeyRing)(nil)).Elem()
+}
+
+func (i GetKeyRingsKeyRingArgs) ToGetKeyRingsKeyRingOutput() GetKeyRingsKeyRingOutput {
+	return i.ToGetKeyRingsKeyRingOutputWithContext(context.Background())
+}
+
+func (i GetKeyRingsKeyRingArgs) ToGetKeyRingsKeyRingOutputWithContext(ctx context.Context) GetKeyRingsKeyRingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeyRingsKeyRingOutput)
+}
+
+// GetKeyRingsKeyRingArrayInput is an input type that accepts GetKeyRingsKeyRingArray and GetKeyRingsKeyRingArrayOutput values.
+// You can construct a concrete instance of `GetKeyRingsKeyRingArrayInput` via:
+//
+//	GetKeyRingsKeyRingArray{ GetKeyRingsKeyRingArgs{...} }
+type GetKeyRingsKeyRingArrayInput interface {
+	pulumi.Input
+
+	ToGetKeyRingsKeyRingArrayOutput() GetKeyRingsKeyRingArrayOutput
+	ToGetKeyRingsKeyRingArrayOutputWithContext(context.Context) GetKeyRingsKeyRingArrayOutput
+}
+
+type GetKeyRingsKeyRingArray []GetKeyRingsKeyRingInput
+
+func (GetKeyRingsKeyRingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeyRingsKeyRing)(nil)).Elem()
+}
+
+func (i GetKeyRingsKeyRingArray) ToGetKeyRingsKeyRingArrayOutput() GetKeyRingsKeyRingArrayOutput {
+	return i.ToGetKeyRingsKeyRingArrayOutputWithContext(context.Background())
+}
+
+func (i GetKeyRingsKeyRingArray) ToGetKeyRingsKeyRingArrayOutputWithContext(ctx context.Context) GetKeyRingsKeyRingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeyRingsKeyRingArrayOutput)
+}
+
+type GetKeyRingsKeyRingOutput struct{ *pulumi.OutputState }
+
+func (GetKeyRingsKeyRingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyRingsKeyRing)(nil)).Elem()
+}
+
+func (o GetKeyRingsKeyRingOutput) ToGetKeyRingsKeyRingOutput() GetKeyRingsKeyRingOutput {
+	return o
+}
+
+func (o GetKeyRingsKeyRingOutput) ToGetKeyRingsKeyRingOutputWithContext(ctx context.Context) GetKeyRingsKeyRingOutput {
+	return o
+}
+
+func (o GetKeyRingsKeyRingOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyRingsKeyRing) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetKeyRingsKeyRingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyRingsKeyRing) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetKeyRingsKeyRingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKeyRingsKeyRingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeyRingsKeyRing)(nil)).Elem()
+}
+
+func (o GetKeyRingsKeyRingArrayOutput) ToGetKeyRingsKeyRingArrayOutput() GetKeyRingsKeyRingArrayOutput {
+	return o
+}
+
+func (o GetKeyRingsKeyRingArrayOutput) ToGetKeyRingsKeyRingArrayOutputWithContext(ctx context.Context) GetKeyRingsKeyRingArrayOutput {
+	return o
+}
+
+func (o GetKeyRingsKeyRingArrayOutput) Index(i pulumi.IntInput) GetKeyRingsKeyRingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeyRingsKeyRing {
+		return vs[0].([]GetKeyRingsKeyRing)[vs[1].(int)]
+	}).(GetKeyRingsKeyRingOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMBindingConditionInput)(nil)).Elem(), CryptoKeyIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMBindingConditionPtrInput)(nil)).Elem(), CryptoKeyIAMBindingConditionArgs{})
@@ -2584,12 +3153,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobAttestationArrayInput)(nil)).Elem(), KeyRingImportJobAttestationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobPublicKeyInput)(nil)).Elem(), KeyRingImportJobPublicKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobPublicKeyArrayInput)(nil)).Elem(), KeyRingImportJobPublicKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeysKeyInput)(nil)).Elem(), GetCryptoKeysKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeysKeyArrayInput)(nil)).Elem(), GetCryptoKeysKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeysKeyPrimaryInput)(nil)).Elem(), GetCryptoKeysKeyPrimaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeysKeyPrimaryArrayInput)(nil)).Elem(), GetCryptoKeysKeyPrimaryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeysKeyVersionTemplateInput)(nil)).Elem(), GetCryptoKeysKeyVersionTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeysKeyVersionTemplateArrayInput)(nil)).Elem(), GetCryptoKeysKeyVersionTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyPrimaryInput)(nil)).Elem(), GetKMSCryptoKeyPrimaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyPrimaryArrayInput)(nil)).Elem(), GetKMSCryptoKeyPrimaryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyVersionPublicKeyInput)(nil)).Elem(), GetKMSCryptoKeyVersionPublicKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyVersionPublicKeyArrayInput)(nil)).Elem(), GetKMSCryptoKeyVersionPublicKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyVersionTemplateInput)(nil)).Elem(), GetKMSCryptoKeyVersionTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyVersionTemplateArrayInput)(nil)).Elem(), GetKMSCryptoKeyVersionTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyRingsKeyRingInput)(nil)).Elem(), GetKeyRingsKeyRingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyRingsKeyRingArrayInput)(nil)).Elem(), GetKeyRingsKeyRingArray{})
 	pulumi.RegisterOutputType(CryptoKeyIAMBindingConditionOutput{})
 	pulumi.RegisterOutputType(CryptoKeyIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyIAMMemberConditionOutput{})
@@ -2618,10 +3195,18 @@ func init() {
 	pulumi.RegisterOutputType(KeyRingImportJobAttestationArrayOutput{})
 	pulumi.RegisterOutputType(KeyRingImportJobPublicKeyOutput{})
 	pulumi.RegisterOutputType(KeyRingImportJobPublicKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetCryptoKeysKeyOutput{})
+	pulumi.RegisterOutputType(GetCryptoKeysKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetCryptoKeysKeyPrimaryOutput{})
+	pulumi.RegisterOutputType(GetCryptoKeysKeyPrimaryArrayOutput{})
+	pulumi.RegisterOutputType(GetCryptoKeysKeyVersionTemplateOutput{})
+	pulumi.RegisterOutputType(GetCryptoKeysKeyVersionTemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetKMSCryptoKeyPrimaryOutput{})
 	pulumi.RegisterOutputType(GetKMSCryptoKeyPrimaryArrayOutput{})
 	pulumi.RegisterOutputType(GetKMSCryptoKeyVersionPublicKeyOutput{})
 	pulumi.RegisterOutputType(GetKMSCryptoKeyVersionPublicKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetKMSCryptoKeyVersionTemplateOutput{})
 	pulumi.RegisterOutputType(GetKMSCryptoKeyVersionTemplateArrayOutput{})
+	pulumi.RegisterOutputType(GetKeyRingsKeyRingOutput{})
+	pulumi.RegisterOutputType(GetKeyRingsKeyRingArrayOutput{})
 }

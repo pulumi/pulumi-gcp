@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// </summary>
         public readonly string ServiceAccountEmail;
         /// <summary>
-        /// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+        /// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
         /// </summary>
         public readonly string Table;
         /// <summary>

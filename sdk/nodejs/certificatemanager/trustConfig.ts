@@ -45,6 +45,34 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Certificate Manager Trust Config Allowlisted Certificates
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const _default = new gcp.certificatemanager.TrustConfig("default", {
+ *     name: "trust-config",
+ *     description: "A sample trust config resource with allowlisted certificates",
+ *     location: "global",
+ *     allowlistedCertificates: [
+ *         {
+ *             pemCertificate: std.file({
+ *                 input: "test-fixtures/cert.pem",
+ *             }).then(invoke => invoke.result),
+ *         },
+ *         {
+ *             pemCertificate: std.file({
+ *                 input: "test-fixtures/cert2.pem",
+ *             }).then(invoke => invoke.result),
+ *         },
+ *     ],
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -98,6 +126,12 @@ export class TrustConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === TrustConfig.__pulumiType;
     }
 
+    /**
+     * Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+     * the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+     * Structure is documented below.
+     */
+    public readonly allowlistedCertificates!: pulumi.Output<outputs.certificatemanager.TrustConfigAllowlistedCertificate[] | undefined>;
     /**
      * The creation timestamp of a TrustConfig.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -165,6 +199,7 @@ export class TrustConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TrustConfigState | undefined;
+            resourceInputs["allowlistedCertificates"] = state ? state.allowlistedCertificates : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
@@ -180,6 +215,7 @@ export class TrustConfig extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["allowlistedCertificates"] = args ? args.allowlistedCertificates : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -202,6 +238,12 @@ export class TrustConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TrustConfig resources.
  */
 export interface TrustConfigState {
+    /**
+     * Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+     * the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+     * Structure is documented below.
+     */
+    allowlistedCertificates?: pulumi.Input<pulumi.Input<inputs.certificatemanager.TrustConfigAllowlistedCertificate>[]>;
     /**
      * The creation timestamp of a TrustConfig.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -261,6 +303,12 @@ export interface TrustConfigState {
  * The set of arguments for constructing a TrustConfig resource.
  */
 export interface TrustConfigArgs {
+    /**
+     * Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+     * the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+     * Structure is documented below.
+     */
+    allowlistedCertificates?: pulumi.Input<pulumi.Input<inputs.certificatemanager.TrustConfigAllowlistedCertificate>[]>;
     /**
      * One or more paragraphs of text description of a trust config.
      */

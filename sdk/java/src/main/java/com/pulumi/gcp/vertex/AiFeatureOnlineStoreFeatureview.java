@@ -273,6 +273,196 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Vertex Ai Featureonlinestore Featureview Cross Project
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.vertex.AiFeatureOnlineStore;
+ * import com.pulumi.gcp.vertex.AiFeatureOnlineStoreArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreBigtableArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreBigtableAutoScalingArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.DatasetIamMember;
+ * import com.pulumi.gcp.bigquery.DatasetIamMemberArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.vertex.AiFeatureGroup;
+ * import com.pulumi.gcp.vertex.AiFeatureGroupArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureGroupBigQueryArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureGroupBigQueryBigQuerySourceArgs;
+ * import com.pulumi.gcp.vertex.AiFeatureGroupFeature;
+ * import com.pulumi.gcp.vertex.AiFeatureGroupFeatureArgs;
+ * import com.pulumi.gcp.vertex.AiFeatureOnlineStoreFeatureview;
+ * import com.pulumi.gcp.vertex.AiFeatureOnlineStoreFeatureviewArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewSyncConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var testProject = OrganizationsFunctions.getProject();
+ * 
+ *         var project = new Project("project", ProjectArgs.builder()
+ *             .projectId("tf-test_55138")
+ *             .name("tf-test_37559")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
+ *             .build());
+ * 
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
+ *             .createDuration("60s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var vertexai = new Service("vertexai", ServiceArgs.builder()
+ *             .service("aiplatform.googleapis.com")
+ *             .project(project.projectId())
+ *             .disableOnDestroy(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait60Seconds)
+ *                 .build());
+ * 
+ *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()
+ *             .name("example_cross_project_featureview")
+ *             .project(project.projectId())
+ *             .labels(Map.of("foo", "bar"))
+ *             .region("us-central1")
+ *             .bigtable(AiFeatureOnlineStoreBigtableArgs.builder()
+ *                 .autoScaling(AiFeatureOnlineStoreBigtableAutoScalingArgs.builder()
+ *                     .minNodeCount(1)
+ *                     .maxNodeCount(2)
+ *                     .cpuUtilizationTarget(80)
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vertexai)
+ *                 .build());
+ * 
+ *         var sampleDataset = new Dataset("sampleDataset", DatasetArgs.builder()
+ *             .datasetId("example_cross_project_featureview")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
+ *             .build());
+ * 
+ *         var viewer = new DatasetIamMember("viewer", DatasetIamMemberArgs.builder()
+ *             .project(testProject.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .datasetId(sampleDataset.datasetId())
+ *             .role("roles/bigquery.dataViewer")
+ *             .member(project.number().applyValue(number -> String.format("serviceAccount:service-%s{@literal @}gcp-sa-aiplatform.iam.gserviceaccount.com", number)))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(featureonlinestore)
+ *                 .build());
+ * 
+ *         var wait30Seconds = new Sleep("wait30Seconds", SleepArgs.builder()
+ *             .createDuration("30s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(viewer)
+ *                 .build());
+ * 
+ *         var sampleTable = new Table("sampleTable", TableArgs.builder()
+ *             .deletionProtection(false)
+ *             .datasetId(sampleDataset.datasetId())
+ *             .tableId("example_cross_project_featureview")
+ *             .schema("""
+ * [
+ *     {
+ *         "name": "feature_id",
+ *         "type": "STRING",
+ *         "mode": "NULLABLE"
+ *     },
+ *     {
+ *         "name": "example_cross_project_featureview",
+ *         "type": "STRING",
+ *         "mode": "NULLABLE"
+ *     },
+ *     {
+ *         "name": "feature_timestamp",
+ *         "type": "TIMESTAMP",
+ *         "mode": "NULLABLE"
+ *     }
+ * ]
+ *             """)
+ *             .build());
+ * 
+ *         var sampleFeatureGroup = new AiFeatureGroup("sampleFeatureGroup", AiFeatureGroupArgs.builder()
+ *             .name("example_cross_project_featureview")
+ *             .description("A sample feature group")
+ *             .region("us-central1")
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .bigQuery(AiFeatureGroupBigQueryArgs.builder()
+ *                 .bigQuerySource(AiFeatureGroupBigQueryBigQuerySourceArgs.builder()
+ *                     .inputUri(Output.tuple(sampleTable.project(), sampleTable.datasetId(), sampleTable.tableId()).applyValue(values -> {
+ *                         var project = values.t1;
+ *                         var datasetId = values.t2;
+ *                         var tableId = values.t3;
+ *                         return String.format("bq://%s.%s.%s", project,datasetId,tableId);
+ *                     }))
+ *                     .build())
+ *                 .entityIdColumns("feature_id")
+ *                 .build())
+ *             .build());
+ * 
+ *         var sampleFeature = new AiFeatureGroupFeature("sampleFeature", AiFeatureGroupFeatureArgs.builder()
+ *             .name("example_cross_project_featureview")
+ *             .region("us-central1")
+ *             .featureGroup(sampleFeatureGroup.name())
+ *             .description("A sample feature")
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .build());
+ * 
+ *         var crossProjectFeatureview = new AiFeatureOnlineStoreFeatureview("crossProjectFeatureview", AiFeatureOnlineStoreFeatureviewArgs.builder()
+ *             .name("example_cross_project_featureview")
+ *             .project(project.projectId())
+ *             .region("us-central1")
+ *             .featureOnlineStore(featureonlinestore.name())
+ *             .syncConfig(AiFeatureOnlineStoreFeatureviewSyncConfigArgs.builder()
+ *                 .cron("0 0 * * *")
+ *                 .build())
+ *             .featureRegistrySource(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs.builder()
+ *                 .featureGroups(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs.builder()
+ *                     .featureGroupId(sampleFeatureGroup.name())
+ *                     .featureIds(sampleFeature.name())
+ *                     .build())
+ *                 .projectNumber(testProject.applyValue(getProjectResult -> getProjectResult.number()))
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     vertexai,
+ *                     wait30Seconds)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vertex Ai Featureonlinestore Featureview With Vector Search
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

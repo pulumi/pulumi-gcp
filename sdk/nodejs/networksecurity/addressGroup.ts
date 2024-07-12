@@ -61,6 +61,22 @@ import * as utilities from "../utilities";
  *     items: ["208.80.154.224/32"],
  * });
  * ```
+ * ### Network Security Address Groups Cloud Armor
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networksecurity.AddressGroup("default", {
+ *     name: "my-address-groups",
+ *     parent: "projects/my-project-name",
+ *     location: "global",
+ *     type: "IPV4",
+ *     capacity: 100,
+ *     purposes: ["CLOUD_ARMOR"],
+ *     items: ["208.80.154.224/32"],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -154,6 +170,11 @@ export class AddressGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * List of supported purposes of the Address Group.
+     * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+     */
+    public readonly purposes!: pulumi.Output<string[] | undefined>;
+    /**
      * The type of the Address Group. Possible values are "IPV4" or "IPV6".
      * Possible values are: `IPV4`, `IPV6`.
      */
@@ -188,6 +209,7 @@ export class AddressGroup extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["purposes"] = state ? state.purposes : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -208,6 +230,7 @@ export class AddressGroup extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["purposes"] = args ? args.purposes : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -277,6 +300,11 @@ export interface AddressGroupState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * List of supported purposes of the Address Group.
+     * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+     */
+    purposes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The type of the Address Group. Possible values are "IPV4" or "IPV6".
      * Possible values are: `IPV4`, `IPV6`.
      */
@@ -329,6 +357,11 @@ export interface AddressGroupArgs {
      * The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
      */
     parent?: pulumi.Input<string>;
+    /**
+     * List of supported purposes of the Address Group.
+     * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+     */
+    purposes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The type of the Address Group. Possible values are "IPV4" or "IPV6".
      * Possible values are: `IPV4`, `IPV6`.

@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificatemanager.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.certificatemanager.inputs.TrustConfigAllowlistedCertificateArgs;
 import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +18,25 @@ import javax.annotation.Nullable;
 public final class TrustConfigState extends com.pulumi.resources.ResourceArgs {
 
     public static final TrustConfigState Empty = new TrustConfigState();
+
+    /**
+     * Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+     * the certificate is parseable, proof of private key possession is established, and constraints on the certificate&#39;s SAN field are met.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="allowlistedCertificates")
+    private @Nullable Output<List<TrustConfigAllowlistedCertificateArgs>> allowlistedCertificates;
+
+    /**
+     * @return Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+     * the certificate is parseable, proof of private key possession is established, and constraints on the certificate&#39;s SAN field are met.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<TrustConfigAllowlistedCertificateArgs>>> allowlistedCertificates() {
+        return Optional.ofNullable(this.allowlistedCertificates);
+    }
 
     /**
      * The creation timestamp of a TrustConfig.
@@ -195,6 +215,7 @@ public final class TrustConfigState extends com.pulumi.resources.ResourceArgs {
     private TrustConfigState() {}
 
     private TrustConfigState(TrustConfigState $) {
+        this.allowlistedCertificates = $.allowlistedCertificates;
         this.createTime = $.createTime;
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
@@ -223,6 +244,43 @@ public final class TrustConfigState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(TrustConfigState defaults) {
             $ = new TrustConfigState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowlistedCertificates Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+         * the certificate is parseable, proof of private key possession is established, and constraints on the certificate&#39;s SAN field are met.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowlistedCertificates(@Nullable Output<List<TrustConfigAllowlistedCertificateArgs>> allowlistedCertificates) {
+            $.allowlistedCertificates = allowlistedCertificates;
+            return this;
+        }
+
+        /**
+         * @param allowlistedCertificates Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+         * the certificate is parseable, proof of private key possession is established, and constraints on the certificate&#39;s SAN field are met.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowlistedCertificates(List<TrustConfigAllowlistedCertificateArgs> allowlistedCertificates) {
+            return allowlistedCertificates(Output.of(allowlistedCertificates));
+        }
+
+        /**
+         * @param allowlistedCertificates Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+         * the certificate is parseable, proof of private key possession is established, and constraints on the certificate&#39;s SAN field are met.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowlistedCertificates(TrustConfigAllowlistedCertificateArgs... allowlistedCertificates) {
+            return allowlistedCertificates(List.of(allowlistedCertificates));
         }
 
         /**

@@ -10,24 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Netapp
 {
     /// <summary>
-    /// Storage pools act as containers for volumes. All volumes in a storage pool share the following information:
-    /// * Location
-    /// * Service level
-    /// * Virtual Private Cloud (VPC) network
-    /// * Active Directory policy
-    /// * LDAP use for NFS volumes, if applicable
-    /// * Customer-managed encryption key (CMEK) policy
-    /// 
-    /// The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable
-    /// component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool
-    /// independent of consumption at the volume level.
-    /// 
-    /// To get more information about storagePool, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.storagePools)
-    /// * How-to Guides
-    ///     * [Quickstart documentation](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
-    /// 
     /// ## Example Usage
     /// 
     /// ### Storage Pool Create
@@ -175,13 +157,13 @@ namespace Pulumi.Gcp.Netapp
         public Output<bool?> LdapEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+        /// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the storage pool. Needs to be unique per location.
+        /// The resource name of the storage pool. Needs to be unique per location/region.
         /// 
         /// 
         /// - - -
@@ -210,6 +192,13 @@ namespace Pulumi.Gcp.Netapp
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+        /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        /// </summary>
+        [Output("replicaZone")]
+        public Output<string?> ReplicaZone { get; private set; } = null!;
+
+        /// <summary>
         /// Service level of the storage pool.
         /// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         /// </summary>
@@ -227,6 +216,14 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Output("volumeCount")]
         public Output<int> VolumeCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+        /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        /// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+        /// </summary>
+        [Output("zone")]
+        public Output<string?> Zone { get; private set; } = null!;
 
 
         /// <summary>
@@ -328,13 +325,13 @@ namespace Pulumi.Gcp.Netapp
         public Input<bool>? LdapEnabled { get; set; }
 
         /// <summary>
-        /// Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+        /// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// The resource name of the storage pool. Needs to be unique per location.
+        /// The resource name of the storage pool. Needs to be unique per location/region.
         /// 
         /// 
         /// - - -
@@ -356,11 +353,26 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+        /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        /// </summary>
+        [Input("replicaZone")]
+        public Input<string>? ReplicaZone { get; set; }
+
+        /// <summary>
         /// Service level of the storage pool.
         /// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         /// </summary>
         [Input("serviceLevel", required: true)]
         public Input<string> ServiceLevel { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+        /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        /// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+        /// </summary>
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public StoragePoolArgs()
         {
@@ -441,13 +453,13 @@ namespace Pulumi.Gcp.Netapp
         public Input<bool>? LdapEnabled { get; set; }
 
         /// <summary>
-        /// Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+        /// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource name of the storage pool. Needs to be unique per location.
+        /// The resource name of the storage pool. Needs to be unique per location/region.
         /// 
         /// 
         /// - - -
@@ -486,6 +498,13 @@ namespace Pulumi.Gcp.Netapp
         }
 
         /// <summary>
+        /// Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+        /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        /// </summary>
+        [Input("replicaZone")]
+        public Input<string>? ReplicaZone { get; set; }
+
+        /// <summary>
         /// Service level of the storage pool.
         /// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         /// </summary>
@@ -503,6 +522,14 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("volumeCount")]
         public Input<int>? VolumeCount { get; set; }
+
+        /// <summary>
+        /// Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+        /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        /// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+        /// </summary>
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public StoragePoolState()
         {

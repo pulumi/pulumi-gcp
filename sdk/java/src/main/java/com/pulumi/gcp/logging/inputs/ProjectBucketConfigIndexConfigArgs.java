@@ -16,7 +16,7 @@ public final class ProjectBucketConfigIndexConfigArgs extends com.pulumi.resourc
 
     /**
      * The LogEntry field path to index.
-     * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+     * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
      * 
      */
     @Import(name="fieldPath", required=true)
@@ -24,7 +24,7 @@ public final class ProjectBucketConfigIndexConfigArgs extends com.pulumi.resourc
 
     /**
      * @return The LogEntry field path to index.
-     * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+     * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
      * 
      */
     public Output<String> fieldPath() {
@@ -73,7 +73,7 @@ public final class ProjectBucketConfigIndexConfigArgs extends com.pulumi.resourc
 
         /**
          * @param fieldPath The LogEntry field path to index.
-         * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+         * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class ProjectBucketConfigIndexConfigArgs extends com.pulumi.resourc
 
         /**
          * @param fieldPath The LogEntry field path to index.
-         * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+         * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
          * 
          * @return builder
          * 

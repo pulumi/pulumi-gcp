@@ -18,11 +18,19 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup> FeatureGroups;
+        /// <summary>
+        /// The project number of the parent project of the feature Groups.
+        /// </summary>
+        public readonly string? ProjectNumber;
 
         [OutputConstructor]
-        private AiFeatureOnlineStoreFeatureviewFeatureRegistrySource(ImmutableArray<Outputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup> featureGroups)
+        private AiFeatureOnlineStoreFeatureviewFeatureRegistrySource(
+            ImmutableArray<Outputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup> featureGroups,
+
+            string? projectNumber)
         {
             FeatureGroups = featureGroups;
+            ProjectNumber = projectNumber;
         }
     }
 }

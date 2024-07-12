@@ -10,16 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.OrgPolicy
 {
     /// <summary>
-    /// An organization policy gives you programmatic control over your organization's cloud resources.  Using Organization Policies, you will be able to configure constraints across your entire resource hierarchy.
+    /// Defines an organization policy which is used to specify constraints for configurations of Google Cloud resources.
     /// 
-    /// For more information, see:
-    /// * [Understanding Org Policy concepts](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
-    /// * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
-    /// * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
+    /// To get more information about Policy, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.policies)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+    ///     * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+    /// 
     /// ## Example Usage
     /// 
-    /// ### Enforce_policy
-    /// A test of an enforce orgpolicy policy for a project
+    /// ### Org Policy Policy Enforce
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -53,8 +56,8 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     /// });
     /// ```
-    /// ### Folder_policy
-    /// A test of an orgpolicy policy for a folder
+    /// ### Org Policy Policy Folder
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -88,8 +91,8 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     /// });
     /// ```
-    /// ### Organization_policy
-    /// A test of an orgpolicy policy for an organization
+    /// ### Org Policy Policy Organization
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -110,8 +113,8 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     /// });
     /// ```
-    /// ### Project_policy
-    /// A test of an orgpolicy policy for a project
+    /// ### Org Policy Policy Project
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -166,7 +169,8 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     /// });
     /// ```
-    /// ### Dry_run_spec
+    /// ### Org Policy Policy Dry Run Spec
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -227,6 +231,7 @@ namespace Pulumi.Gcp.OrgPolicy
     /// ## Import
     /// 
     /// Policy can be imported using any of these accepted formats:
+    /// 
     /// * `{{parent}}/policies/{{name}}`
     /// 
     /// When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
@@ -240,6 +245,7 @@ namespace Pulumi.Gcp.OrgPolicy
     {
         /// <summary>
         /// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        /// Structure is documented below.
         /// </summary>
         [Output("dryRunSpec")]
         public Output<Outputs.PolicyDryRunSpec?> DryRunSpec { get; private set; } = null!;
@@ -260,7 +266,6 @@ namespace Pulumi.Gcp.OrgPolicy
         /// The parent of the resource.
         /// 
         /// 
-        /// 
         /// - - -
         /// </summary>
         [Output("parent")]
@@ -268,6 +273,7 @@ namespace Pulumi.Gcp.OrgPolicy
 
         /// <summary>
         /// Basic information about the Organization Policy.
+        /// Structure is documented below.
         /// </summary>
         [Output("spec")]
         public Output<Outputs.PolicySpec?> Spec { get; private set; } = null!;
@@ -320,6 +326,7 @@ namespace Pulumi.Gcp.OrgPolicy
     {
         /// <summary>
         /// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        /// Structure is documented below.
         /// </summary>
         [Input("dryRunSpec")]
         public Input<Inputs.PolicyDryRunSpecArgs>? DryRunSpec { get; set; }
@@ -334,7 +341,6 @@ namespace Pulumi.Gcp.OrgPolicy
         /// The parent of the resource.
         /// 
         /// 
-        /// 
         /// - - -
         /// </summary>
         [Input("parent", required: true)]
@@ -342,6 +348,7 @@ namespace Pulumi.Gcp.OrgPolicy
 
         /// <summary>
         /// Basic information about the Organization Policy.
+        /// Structure is documented below.
         /// </summary>
         [Input("spec")]
         public Input<Inputs.PolicySpecArgs>? Spec { get; set; }
@@ -356,6 +363,7 @@ namespace Pulumi.Gcp.OrgPolicy
     {
         /// <summary>
         /// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        /// Structure is documented below.
         /// </summary>
         [Input("dryRunSpec")]
         public Input<Inputs.PolicyDryRunSpecGetArgs>? DryRunSpec { get; set; }
@@ -376,7 +384,6 @@ namespace Pulumi.Gcp.OrgPolicy
         /// The parent of the resource.
         /// 
         /// 
-        /// 
         /// - - -
         /// </summary>
         [Input("parent")]
@@ -384,6 +391,7 @@ namespace Pulumi.Gcp.OrgPolicy
 
         /// <summary>
         /// Basic information about the Organization Policy.
+        /// Structure is documented below.
         /// </summary>
         [Input("spec")]
         public Input<Inputs.PolicySpecGetArgs>? Spec { get; set; }

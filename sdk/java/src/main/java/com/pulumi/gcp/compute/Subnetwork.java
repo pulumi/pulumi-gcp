@@ -46,8 +46,8 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks)
  * * How-to Guides
- *     * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
  *     * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
+ *     * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
  * 
  * ## Example Usage
  * 

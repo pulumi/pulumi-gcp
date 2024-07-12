@@ -857,6 +857,51 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+        ### Dlp Job Trigger Timespan Config Big Query
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        timespan_config_big_query = gcp.dataloss.PreventionJobTrigger("timespan_config_big_query",
+            parent="projects/my-project-name",
+            description="BigQuery DLP Job Trigger with timespan config and row limit",
+            display_name="bigquery-dlp-job-trigger-limit-timespan",
+            triggers=[{
+                "schedule": {
+                    "recurrencePeriodDuration": "86400s",
+                },
+            }],
+            inspect_job={
+                "inspectTemplateName": "projects/test/locations/global/inspectTemplates/6425492983381733900",
+                "storageConfig": {
+                    "bigQueryOptions": {
+                        "tableReference": {
+                            "projectId": "project",
+                            "datasetId": "dataset",
+                            "tableId": "table",
+                        },
+                        "sampleMethod": "",
+                    },
+                    "timespanConfig": {
+                        "startTime": "2023-01-01T00:00:23Z",
+                        "timestampField": {
+                            "name": "timestamp",
+                        },
+                    },
+                },
+                "actions": [{
+                    "saveFindings": {
+                        "outputConfig": {
+                            "table": {
+                                "projectId": "project",
+                                "datasetId": "output",
+                            },
+                        },
+                    },
+                }],
+            })
+        ```
 
         ## Import
 
@@ -1405,6 +1450,51 @@ class PreventionJobTrigger(pulumi.CustomResource):
                         },
                     },
                 },
+            })
+        ```
+        ### Dlp Job Trigger Timespan Config Big Query
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        timespan_config_big_query = gcp.dataloss.PreventionJobTrigger("timespan_config_big_query",
+            parent="projects/my-project-name",
+            description="BigQuery DLP Job Trigger with timespan config and row limit",
+            display_name="bigquery-dlp-job-trigger-limit-timespan",
+            triggers=[{
+                "schedule": {
+                    "recurrencePeriodDuration": "86400s",
+                },
+            }],
+            inspect_job={
+                "inspectTemplateName": "projects/test/locations/global/inspectTemplates/6425492983381733900",
+                "storageConfig": {
+                    "bigQueryOptions": {
+                        "tableReference": {
+                            "projectId": "project",
+                            "datasetId": "dataset",
+                            "tableId": "table",
+                        },
+                        "sampleMethod": "",
+                    },
+                    "timespanConfig": {
+                        "startTime": "2023-01-01T00:00:23Z",
+                        "timestampField": {
+                            "name": "timestamp",
+                        },
+                    },
+                },
+                "actions": [{
+                    "saveFindings": {
+                        "outputConfig": {
+                            "table": {
+                                "projectId": "project",
+                                "datasetId": "output",
+                            },
+                        },
+                    },
+                }],
             })
         ```
 

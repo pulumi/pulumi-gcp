@@ -29,6 +29,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceIamMember{}
 	case "gcp:securesourcemanager/instanceIamPolicy:InstanceIamPolicy":
 		r = &InstanceIamPolicy{}
+	case "gcp:securesourcemanager/repository:Repository":
+		r = &Repository{}
+	case "gcp:securesourcemanager/repositoryIamBinding:RepositoryIamBinding":
+		r = &RepositoryIamBinding{}
+	case "gcp:securesourcemanager/repositoryIamMember:RepositoryIamMember":
+		r = &RepositoryIamMember{}
+	case "gcp:securesourcemanager/repositoryIamPolicy:RepositoryIamPolicy":
+		r = &RepositoryIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -60,6 +68,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"securesourcemanager/instanceIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securesourcemanager/repository",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securesourcemanager/repositoryIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securesourcemanager/repositoryIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securesourcemanager/repositoryIamPolicy",
 		&module{version},
 	)
 }

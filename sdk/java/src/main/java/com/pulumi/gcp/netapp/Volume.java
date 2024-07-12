@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes)
  * * How-to Guides
- *     * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
  *     * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
+ *     * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
  * 
  * ## Example Usage
  * 
@@ -457,6 +457,20 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
+     * Specifies the replica zone for regional volume.
+     * 
+     */
+    @Export(name="replicaZone", refs={String.class}, tree="[0]")
+    private Output<String> replicaZone;
+
+    /**
+     * @return Specifies the replica zone for regional volume.
+     * 
+     */
+    public Output<String> replicaZone() {
+        return this.replicaZone;
+    }
+    /**
      * Used to create this volume from a snapshot (= cloning) or an backup.
      * Structure is documented below.
      * 
@@ -651,6 +665,20 @@ public class Volume extends com.pulumi.resources.CustomResource {
      */
     public Output<String> usedGib() {
         return this.usedGib;
+    }
+    /**
+     * Specifies the active zone for regional volume.
+     * 
+     */
+    @Export(name="zone", refs={String.class}, tree="[0]")
+    private Output<String> zone;
+
+    /**
+     * @return Specifies the active zone for regional volume.
+     * 
+     */
+    public Output<String> zone() {
+        return this.zone;
     }
 
     /**

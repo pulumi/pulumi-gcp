@@ -16,47 +16,6 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
  *
- * ## Example Usage
- *
- * ### Securityposture Posture Deployment Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const posture1 = new gcp.securityposture.Posture("posture_1", {
- *     postureId: "posture_1",
- *     parent: "organizations/123456789",
- *     location: "global",
- *     state: "ACTIVE",
- *     description: "a new posture",
- *     policySets: [{
- *         policySetId: "org_policy_set",
- *         description: "set of org policies",
- *         policies: [{
- *             policyId: "policy_1",
- *             constraint: {
- *                 orgPolicyConstraint: {
- *                     cannedConstraintId: "storage.uniformBucketLevelAccess",
- *                     policyRules: [{
- *                         enforce: true,
- *                     }],
- *                 },
- *             },
- *         }],
- *     }],
- * });
- * const postureDeployment = new gcp.securityposture.PostureDeployment("postureDeployment", {
- *     postureDeploymentId: "posture_deployment_1",
- *     parent: "organizations/123456789",
- *     location: "global",
- *     description: "a new posture deployment",
- *     targetResource: "projects/1111111111111",
- *     postureId: posture1.name,
- *     postureRevisionId: posture1.revisionId,
- * });
- * ```
- *
  * ## Import
  *
  * PostureDeployment can be imported using any of these accepted formats:

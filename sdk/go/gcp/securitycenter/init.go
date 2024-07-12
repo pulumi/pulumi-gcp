@@ -55,6 +55,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SourceIamMember{}
 	case "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy":
 		r = &SourceIamPolicy{}
+	case "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig":
+		r = &V2OrganizationNotificationConfig{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -151,6 +153,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"securitycenter/sourceIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/v2OrganizationNotificationConfig",
 		&module{version},
 	)
 }

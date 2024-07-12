@@ -15,6 +15,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
     /**
+     * @return Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+     * 
+     */
+    private @Nullable Boolean enabled;
+    /**
      * @return Git repo configuration for the cluster
      * Structure is documented below.
      * 
@@ -38,6 +43,13 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
     private @Nullable String sourceFormat;
 
     private FeatureFleetDefaultMemberConfigConfigmanagementConfigSync() {}
+    /**
+     * @return Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+     * 
+     */
+    public Optional<Boolean> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
     /**
      * @return Git repo configuration for the cluster
      * Structure is documented below.
@@ -78,6 +90,7 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean enabled;
         private @Nullable FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit git;
         private @Nullable FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci oci;
         private @Nullable Boolean preventDrift;
@@ -85,12 +98,19 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
         public Builder() {}
         public Builder(FeatureFleetDefaultMemberConfigConfigmanagementConfigSync defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enabled = defaults.enabled;
     	      this.git = defaults.git;
     	      this.oci = defaults.oci;
     	      this.preventDrift = defaults.preventDrift;
     	      this.sourceFormat = defaults.sourceFormat;
         }
 
+        @CustomType.Setter
+        public Builder enabled(@Nullable Boolean enabled) {
+
+            this.enabled = enabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder git(@Nullable FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit git) {
 
@@ -117,6 +137,7 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
         }
         public FeatureFleetDefaultMemberConfigConfigmanagementConfigSync build() {
             final var _resultValue = new FeatureFleetDefaultMemberConfigConfigmanagementConfigSync();
+            _resultValue.enabled = enabled;
             _resultValue.git = git;
             _resultValue.oci = oci;
             _resultValue.preventDrift = preventDrift;

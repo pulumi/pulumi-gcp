@@ -79,6 +79,57 @@ import (
 //	}
 //
 // ```
+// ### Certificate Manager Trust Config Allowlisted Certificates
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/cert.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/cert2.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificatemanager.NewTrustConfig(ctx, "default", &certificatemanager.TrustConfigArgs{
+//				Name:        pulumi.String("trust-config"),
+//				Description: pulumi.String("A sample trust config resource with allowlisted certificates"),
+//				Location:    pulumi.String("global"),
+//				AllowlistedCertificates: certificatemanager.TrustConfigAllowlistedCertificateArray{
+//					&certificatemanager.TrustConfigAllowlistedCertificateArgs{
+//						PemCertificate: invokeFile.Result,
+//					},
+//					&certificatemanager.TrustConfigAllowlistedCertificateArgs{
+//						PemCertificate: invokeFile1.Result,
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -106,6 +157,10 @@ import (
 type TrustConfig struct {
 	pulumi.CustomResourceState
 
+	// Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+	// the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+	// Structure is documented below.
+	AllowlistedCertificates TrustConfigAllowlistedCertificateArrayOutput `pulumi:"allowlistedCertificates"`
 	// The creation timestamp of a TrustConfig.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -178,6 +233,10 @@ func GetTrustConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TrustConfig resources.
 type trustConfigState struct {
+	// Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+	// the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+	// Structure is documented below.
+	AllowlistedCertificates []TrustConfigAllowlistedCertificate `pulumi:"allowlistedCertificates"`
 	// The creation timestamp of a TrustConfig.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -213,6 +272,10 @@ type trustConfigState struct {
 }
 
 type TrustConfigState struct {
+	// Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+	// the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+	// Structure is documented below.
+	AllowlistedCertificates TrustConfigAllowlistedCertificateArrayInput
 	// The creation timestamp of a TrustConfig.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -252,6 +315,10 @@ func (TrustConfigState) ElementType() reflect.Type {
 }
 
 type trustConfigArgs struct {
+	// Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+	// the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+	// Structure is documented below.
+	AllowlistedCertificates []TrustConfigAllowlistedCertificate `pulumi:"allowlistedCertificates"`
 	// One or more paragraphs of text description of a trust config.
 	Description *string `pulumi:"description"`
 	// Set of label tags associated with the trust config.
@@ -275,6 +342,10 @@ type trustConfigArgs struct {
 
 // The set of arguments for constructing a TrustConfig resource.
 type TrustConfigArgs struct {
+	// Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+	// the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+	// Structure is documented below.
+	AllowlistedCertificates TrustConfigAllowlistedCertificateArrayInput
 	// One or more paragraphs of text description of a trust config.
 	Description pulumi.StringPtrInput
 	// Set of label tags associated with the trust config.
@@ -381,6 +452,13 @@ func (o TrustConfigOutput) ToTrustConfigOutput() TrustConfigOutput {
 
 func (o TrustConfigOutput) ToTrustConfigOutputWithContext(ctx context.Context) TrustConfigOutput {
 	return o
+}
+
+// Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+// the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+// Structure is documented below.
+func (o TrustConfigOutput) AllowlistedCertificates() TrustConfigAllowlistedCertificateArrayOutput {
+	return o.ApplyT(func(v *TrustConfig) TrustConfigAllowlistedCertificateArrayOutput { return v.AllowlistedCertificates }).(TrustConfigAllowlistedCertificateArrayOutput)
 }
 
 // The creation timestamp of a TrustConfig.

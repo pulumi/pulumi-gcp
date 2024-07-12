@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/container-analysis/)
  *     * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
+ *     * [Official Documentation](https://cloud.google.com/container-analysis/)
  *
  * ## Example Usage
  *

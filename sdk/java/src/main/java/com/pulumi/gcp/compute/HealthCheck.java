@@ -19,6 +19,7 @@ import com.pulumi.gcp.compute.outputs.HealthCheckSslHealthCheck;
 import com.pulumi.gcp.compute.outputs.HealthCheckTcpHealthCheck;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -840,6 +841,42 @@ public class HealthCheck extends com.pulumi.resources.CustomResource {
      */
     public Output<String> selfLink() {
         return this.selfLink;
+    }
+    /**
+     * The list of cloud regions from which health checks are performed. If
+     * any regions are specified, then exactly 3 regions should be specified.
+     * The region names must be valid names of Google Cloud regions. This can
+     * only be set for global health check. If this list is non-empty, then
+     * there are restrictions on what other health check fields are supported
+     * and what other resources can use this health check:
+     * * SSL, HTTP2, and GRPC protocols are not supported.
+     * * The TCP request field is not supported.
+     * * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+     * * The checkIntervalSec field must be at least 30.
+     * * The health check cannot be used with BackendService nor with managed
+     *   instance group auto-healing.
+     * 
+     */
+    @Export(name="sourceRegions", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> sourceRegions;
+
+    /**
+     * @return The list of cloud regions from which health checks are performed. If
+     * any regions are specified, then exactly 3 regions should be specified.
+     * The region names must be valid names of Google Cloud regions. This can
+     * only be set for global health check. If this list is non-empty, then
+     * there are restrictions on what other health check fields are supported
+     * and what other resources can use this health check:
+     * * SSL, HTTP2, and GRPC protocols are not supported.
+     * * The TCP request field is not supported.
+     * * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+     * * The checkIntervalSec field must be at least 30.
+     * * The health check cannot be used with BackendService nor with managed
+     *   instance group auto-healing.
+     * 
+     */
+    public Output<Optional<List<String>>> sourceRegions() {
+        return Codegen.optional(this.sourceRegions);
     }
     /**
      * A nested object resource

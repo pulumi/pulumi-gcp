@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
 import com.pulumi.gcp.certificatemanager.inputs.TrustConfigState;
+import com.pulumi.gcp.certificatemanager.outputs.TrustConfigAllowlistedCertificate;
 import com.pulumi.gcp.certificatemanager.outputs.TrustConfigTrustStore;
 import java.lang.String;
 import java.util.List;
@@ -78,6 +79,55 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Certificate Manager Trust Config Allowlisted Certificates
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificatemanager.TrustConfig;
+ * import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.TrustConfigAllowlistedCertificateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new TrustConfig("default", TrustConfigArgs.builder()
+ *             .name("trust-config")
+ *             .description("A sample trust config resource with allowlisted certificates")
+ *             .location("global")
+ *             .allowlistedCertificates(            
+ *                 TrustConfigAllowlistedCertificateArgs.builder()
+ *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                         .input("test-fixtures/cert.pem")
+ *                         .build()).result())
+ *                     .build(),
+ *                 TrustConfigAllowlistedCertificateArgs.builder()
+ *                     .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                         .input("test-fixtures/cert2.pem")
+ *                         .build()).result())
+ *                     .build())
+ *             .labels(Map.of("foo", "bar"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -106,6 +156,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:certificatemanager/trustConfig:TrustConfig")
 public class TrustConfig extends com.pulumi.resources.CustomResource {
+    /**
+     * Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+     * the certificate is parseable, proof of private key possession is established, and constraints on the certificate&#39;s SAN field are met.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="allowlistedCertificates", refs={List.class,TrustConfigAllowlistedCertificate.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<TrustConfigAllowlistedCertificate>> allowlistedCertificates;
+
+    /**
+     * @return Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+     * the certificate is parseable, proof of private key possession is established, and constraints on the certificate&#39;s SAN field are met.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<TrustConfigAllowlistedCertificate>>> allowlistedCertificates() {
+        return Codegen.optional(this.allowlistedCertificates);
+    }
     /**
      * The creation timestamp of a TrustConfig.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.

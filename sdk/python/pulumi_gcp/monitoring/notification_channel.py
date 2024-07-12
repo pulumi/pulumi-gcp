@@ -470,8 +470,8 @@ class NotificationChannel(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
         * How-to Guides
-            * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+            * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
 
         ## Example Usage
 
@@ -577,8 +577,8 @@ class NotificationChannel(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
         * How-to Guides
-            * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+            * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
 
         ## Example Usage
 

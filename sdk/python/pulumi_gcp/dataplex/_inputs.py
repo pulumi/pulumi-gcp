@@ -69,6 +69,8 @@ __all__ = [
     'DatascanDataQualitySpecRuleRowConditionExpectationArgsDict',
     'DatascanDataQualitySpecRuleSetExpectationArgs',
     'DatascanDataQualitySpecRuleSetExpectationArgsDict',
+    'DatascanDataQualitySpecRuleSqlAssertionArgs',
+    'DatascanDataQualitySpecRuleSqlAssertionArgsDict',
     'DatascanDataQualitySpecRuleStatisticRangeExpectationArgs',
     'DatascanDataQualitySpecRuleStatisticRangeExpectationArgsDict',
     'DatascanDataQualitySpecRuleTableConditionExpectationArgs',
@@ -1626,6 +1628,11 @@ if not MYPY:
         ColumnMap rule which evaluates whether each column value is contained by a specified set.
         Structure is documented below.
         """
+        sql_assertion: NotRequired[pulumi.Input['DatascanDataQualitySpecRuleSqlAssertionArgsDict']]
+        """
+        Table rule which evaluates whether any row matches invalid state.
+        Structure is documented below.
+        """
         statistic_range_expectation: NotRequired[pulumi.Input['DatascanDataQualitySpecRuleStatisticRangeExpectationArgsDict']]
         """
         ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
@@ -1660,6 +1667,7 @@ class DatascanDataQualitySpecRuleArgs:
                  regex_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleRegexExpectationArgs']] = None,
                  row_condition_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleRowConditionExpectationArgs']] = None,
                  set_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleSetExpectationArgs']] = None,
+                 sql_assertion: Optional[pulumi.Input['DatascanDataQualitySpecRuleSqlAssertionArgs']] = None,
                  statistic_range_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleStatisticRangeExpectationArgs']] = None,
                  table_condition_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleTableConditionExpectationArgs']] = None,
                  threshold: Optional[pulumi.Input[float]] = None,
@@ -1683,6 +1691,8 @@ class DatascanDataQualitySpecRuleArgs:
         :param pulumi.Input['DatascanDataQualitySpecRuleRowConditionExpectationArgs'] row_condition_expectation: Table rule which evaluates whether each row passes the specified condition.
                Structure is documented below.
         :param pulumi.Input['DatascanDataQualitySpecRuleSetExpectationArgs'] set_expectation: ColumnMap rule which evaluates whether each column value is contained by a specified set.
+               Structure is documented below.
+        :param pulumi.Input['DatascanDataQualitySpecRuleSqlAssertionArgs'] sql_assertion: Table rule which evaluates whether any row matches invalid state.
                Structure is documented below.
         :param pulumi.Input['DatascanDataQualitySpecRuleStatisticRangeExpectationArgs'] statistic_range_expectation: ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
                Structure is documented below.
@@ -1710,6 +1720,8 @@ class DatascanDataQualitySpecRuleArgs:
             pulumi.set(__self__, "row_condition_expectation", row_condition_expectation)
         if set_expectation is not None:
             pulumi.set(__self__, "set_expectation", set_expectation)
+        if sql_assertion is not None:
+            pulumi.set(__self__, "sql_assertion", sql_assertion)
         if statistic_range_expectation is not None:
             pulumi.set(__self__, "statistic_range_expectation", statistic_range_expectation)
         if table_condition_expectation is not None:
@@ -1847,6 +1859,19 @@ class DatascanDataQualitySpecRuleArgs:
     @set_expectation.setter
     def set_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleSetExpectationArgs']]):
         pulumi.set(self, "set_expectation", value)
+
+    @property
+    @pulumi.getter(name="sqlAssertion")
+    def sql_assertion(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleSqlAssertionArgs']]:
+        """
+        Table rule which evaluates whether any row matches invalid state.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sql_assertion")
+
+    @sql_assertion.setter
+    def sql_assertion(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleSqlAssertionArgs']]):
+        pulumi.set(self, "sql_assertion", value)
 
     @property
     @pulumi.getter(name="statisticRangeExpectation")
@@ -2100,6 +2125,37 @@ class DatascanDataQualitySpecRuleSetExpectationArgs:
     @values.setter
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
+
+
+if not MYPY:
+    class DatascanDataQualitySpecRuleSqlAssertionArgsDict(TypedDict):
+        sql_statement: pulumi.Input[str]
+        """
+        The SQL statement.
+        """
+elif False:
+    DatascanDataQualitySpecRuleSqlAssertionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatascanDataQualitySpecRuleSqlAssertionArgs:
+    def __init__(__self__, *,
+                 sql_statement: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] sql_statement: The SQL statement.
+        """
+        pulumi.set(__self__, "sql_statement", sql_statement)
+
+    @property
+    @pulumi.getter(name="sqlStatement")
+    def sql_statement(self) -> pulumi.Input[str]:
+        """
+        The SQL statement.
+        """
+        return pulumi.get(self, "sql_statement")
+
+    @sql_statement.setter
+    def sql_statement(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sql_statement", value)
 
 
 if not MYPY:

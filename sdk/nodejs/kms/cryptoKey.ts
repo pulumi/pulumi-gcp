@@ -113,7 +113,7 @@ export class CryptoKey extends pulumi.CustomResource {
     public readonly cryptoKeyBackend!: pulumi.Output<string>;
     /**
      * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-     * If not specified at creation time, the default duration is 24 hours.
+     * If not specified at creation time, the default duration is 30 days.
      */
     public readonly destroyScheduledDuration!: pulumi.Output<string>;
     /**
@@ -243,7 +243,7 @@ export interface CryptoKeyState {
     cryptoKeyBackend?: pulumi.Input<string>;
     /**
      * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-     * If not specified at creation time, the default duration is 24 hours.
+     * If not specified at creation time, the default duration is 30 days.
      */
     destroyScheduledDuration?: pulumi.Input<string>;
     /**
@@ -322,7 +322,7 @@ export interface CryptoKeyArgs {
     cryptoKeyBackend?: pulumi.Input<string>;
     /**
      * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-     * If not specified at creation time, the default duration is 24 hours.
+     * If not specified at creation time, the default duration is 30 days.
      */
     destroyScheduledDuration?: pulumi.Input<string>;
     /**

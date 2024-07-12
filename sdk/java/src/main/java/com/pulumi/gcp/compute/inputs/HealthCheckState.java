@@ -14,6 +14,7 @@ import com.pulumi.gcp.compute.inputs.HealthCheckSslHealthCheckArgs;
 import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -238,6 +239,43 @@ public final class HealthCheckState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The list of cloud regions from which health checks are performed. If
+     * any regions are specified, then exactly 3 regions should be specified.
+     * The region names must be valid names of Google Cloud regions. This can
+     * only be set for global health check. If this list is non-empty, then
+     * there are restrictions on what other health check fields are supported
+     * and what other resources can use this health check:
+     * * SSL, HTTP2, and GRPC protocols are not supported.
+     * * The TCP request field is not supported.
+     * * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+     * * The checkIntervalSec field must be at least 30.
+     * * The health check cannot be used with BackendService nor with managed
+     *   instance group auto-healing.
+     * 
+     */
+    @Import(name="sourceRegions")
+    private @Nullable Output<List<String>> sourceRegions;
+
+    /**
+     * @return The list of cloud regions from which health checks are performed. If
+     * any regions are specified, then exactly 3 regions should be specified.
+     * The region names must be valid names of Google Cloud regions. This can
+     * only be set for global health check. If this list is non-empty, then
+     * there are restrictions on what other health check fields are supported
+     * and what other resources can use this health check:
+     * * SSL, HTTP2, and GRPC protocols are not supported.
+     * * The TCP request field is not supported.
+     * * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+     * * The checkIntervalSec field must be at least 30.
+     * * The health check cannot be used with BackendService nor with managed
+     *   instance group auto-healing.
+     * 
+     */
+    public Optional<Output<List<String>>> sourceRegions() {
+        return Optional.ofNullable(this.sourceRegions);
+    }
+
+    /**
      * A nested object resource
      * Structure is documented below.
      * 
@@ -337,6 +375,7 @@ public final class HealthCheckState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.selfLink = $.selfLink;
+        this.sourceRegions = $.sourceRegions;
         this.sslHealthCheck = $.sslHealthCheck;
         this.tcpHealthCheck = $.tcpHealthCheck;
         this.timeoutSec = $.timeoutSec;
@@ -646,6 +685,70 @@ public final class HealthCheckState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder selfLink(String selfLink) {
             return selfLink(Output.of(selfLink));
+        }
+
+        /**
+         * @param sourceRegions The list of cloud regions from which health checks are performed. If
+         * any regions are specified, then exactly 3 regions should be specified.
+         * The region names must be valid names of Google Cloud regions. This can
+         * only be set for global health check. If this list is non-empty, then
+         * there are restrictions on what other health check fields are supported
+         * and what other resources can use this health check:
+         * * SSL, HTTP2, and GRPC protocols are not supported.
+         * * The TCP request field is not supported.
+         * * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+         * * The checkIntervalSec field must be at least 30.
+         * * The health check cannot be used with BackendService nor with managed
+         *   instance group auto-healing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceRegions(@Nullable Output<List<String>> sourceRegions) {
+            $.sourceRegions = sourceRegions;
+            return this;
+        }
+
+        /**
+         * @param sourceRegions The list of cloud regions from which health checks are performed. If
+         * any regions are specified, then exactly 3 regions should be specified.
+         * The region names must be valid names of Google Cloud regions. This can
+         * only be set for global health check. If this list is non-empty, then
+         * there are restrictions on what other health check fields are supported
+         * and what other resources can use this health check:
+         * * SSL, HTTP2, and GRPC protocols are not supported.
+         * * The TCP request field is not supported.
+         * * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+         * * The checkIntervalSec field must be at least 30.
+         * * The health check cannot be used with BackendService nor with managed
+         *   instance group auto-healing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceRegions(List<String> sourceRegions) {
+            return sourceRegions(Output.of(sourceRegions));
+        }
+
+        /**
+         * @param sourceRegions The list of cloud regions from which health checks are performed. If
+         * any regions are specified, then exactly 3 regions should be specified.
+         * The region names must be valid names of Google Cloud regions. This can
+         * only be set for global health check. If this list is non-empty, then
+         * there are restrictions on what other health check fields are supported
+         * and what other resources can use this health check:
+         * * SSL, HTTP2, and GRPC protocols are not supported.
+         * * The TCP request field is not supported.
+         * * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+         * * The checkIntervalSec field must be at least 30.
+         * * The health check cannot be used with BackendService nor with managed
+         *   instance group auto-healing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceRegions(String... sourceRegions) {
+            return sourceRegions(List.of(sourceRegions));
         }
 
         /**

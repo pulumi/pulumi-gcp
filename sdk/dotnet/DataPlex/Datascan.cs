@@ -299,6 +299,14 @@ namespace Pulumi.Gcp.DataPlex
     ///                         SqlExpression = "COUNT(*) &gt; 0",
     ///                     },
     ///                 },
+    ///                 new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleArgs
+    ///                 {
+    ///                     Dimension = "VALIDITY",
+    ///                     SqlAssertion = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleSqlAssertionArgs
+    ///                     {
+    ///                         SqlStatement = "select * from bigquery-public-data.austin_bikeshare.bikeshare_stations where station_id is null",
+    ///                     },
+    ///                 },
     ///             },
     ///         },
     ///         Project = "my-project-name",

@@ -57,6 +57,7 @@ export interface GetHealthCheckResult {
     readonly name: string;
     readonly project?: string;
     readonly selfLink: string;
+    readonly sourceRegions: string[];
     readonly sslHealthChecks: outputs.compute.GetHealthCheckSslHealthCheck[];
     readonly tcpHealthChecks: outputs.compute.GetHealthCheckTcpHealthCheck[];
     readonly timeoutSec: number;

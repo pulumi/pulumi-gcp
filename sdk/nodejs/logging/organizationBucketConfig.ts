@@ -27,10 +27,10 @@ import * as utilities from "../utilities";
  *     location: "global",
  *     retentionDays: 30,
  *     bucketId: "_Default",
- *     indexConfigs: {
- *         filePath: "jsonPayload.request.status",
+ *     indexConfigs: [{
+ *         fieldPath: "jsonPayload.request.status",
  *         type: "INDEX_TYPE_STRING",
- *     },
+ *     }],
  * });
  * ```
  *

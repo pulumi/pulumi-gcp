@@ -1035,6 +1035,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.securityCenterManagementCustomEndpoint);
     }
 
+    @Import(name="securityCenterV2CustomEndpoint")
+    private @Nullable Output<String> securityCenterV2CustomEndpoint;
+
+    public Optional<Output<String>> securityCenterV2CustomEndpoint() {
+        return Optional.ofNullable(this.securityCenterV2CustomEndpoint);
+    }
+
     @Import(name="securityScannerCustomEndpoint")
     private @Nullable Output<String> securityScannerCustomEndpoint;
 
@@ -1365,6 +1372,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.secureSourceManagerCustomEndpoint = $.secureSourceManagerCustomEndpoint;
         this.securityCenterCustomEndpoint = $.securityCenterCustomEndpoint;
         this.securityCenterManagementCustomEndpoint = $.securityCenterManagementCustomEndpoint;
+        this.securityCenterV2CustomEndpoint = $.securityCenterV2CustomEndpoint;
         this.securityScannerCustomEndpoint = $.securityScannerCustomEndpoint;
         this.securitypostureCustomEndpoint = $.securitypostureCustomEndpoint;
         this.serviceDirectoryCustomEndpoint = $.serviceDirectoryCustomEndpoint;
@@ -2722,6 +2730,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder securityCenterManagementCustomEndpoint(String securityCenterManagementCustomEndpoint) {
             return securityCenterManagementCustomEndpoint(Output.of(securityCenterManagementCustomEndpoint));
+        }
+
+        public Builder securityCenterV2CustomEndpoint(@Nullable Output<String> securityCenterV2CustomEndpoint) {
+            $.securityCenterV2CustomEndpoint = securityCenterV2CustomEndpoint;
+            return this;
+        }
+
+        public Builder securityCenterV2CustomEndpoint(String securityCenterV2CustomEndpoint) {
+            return securityCenterV2CustomEndpoint(Output.of(securityCenterV2CustomEndpoint));
         }
 
         public Builder securityScannerCustomEndpoint(@Nullable Output<String> securityScannerCustomEndpoint) {

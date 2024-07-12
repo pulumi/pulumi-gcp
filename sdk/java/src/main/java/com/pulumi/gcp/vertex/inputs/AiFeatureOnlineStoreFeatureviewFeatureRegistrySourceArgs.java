@@ -7,8 +7,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs extends com.pulumi.resources.ResourceArgs {
@@ -32,10 +35,26 @@ public final class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs exte
         return this.featureGroups;
     }
 
+    /**
+     * The project number of the parent project of the feature Groups.
+     * 
+     */
+    @Import(name="projectNumber")
+    private @Nullable Output<String> projectNumber;
+
+    /**
+     * @return The project number of the parent project of the feature Groups.
+     * 
+     */
+    public Optional<Output<String>> projectNumber() {
+        return Optional.ofNullable(this.projectNumber);
+    }
+
     private AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs() {}
 
     private AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs $) {
         this.featureGroups = $.featureGroups;
+        this.projectNumber = $.projectNumber;
     }
 
     public static Builder builder() {
@@ -88,6 +107,27 @@ public final class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs exte
          */
         public Builder featureGroups(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs... featureGroups) {
             return featureGroups(List.of(featureGroups));
+        }
+
+        /**
+         * @param projectNumber The project number of the parent project of the feature Groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectNumber(@Nullable Output<String> projectNumber) {
+            $.projectNumber = projectNumber;
+            return this;
+        }
+
+        /**
+         * @param projectNumber The project number of the parent project of the feature Groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectNumber(String projectNumber) {
+            return projectNumber(Output.of(projectNumber));
         }
 
         public AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs build() {

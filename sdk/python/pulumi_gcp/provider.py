@@ -165,6 +165,7 @@ class ProviderArgs:
                  secure_source_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_center_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 security_center_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_scanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  securityposture_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -488,6 +489,8 @@ class ProviderArgs:
             pulumi.set(__self__, "security_center_custom_endpoint", security_center_custom_endpoint)
         if security_center_management_custom_endpoint is not None:
             pulumi.set(__self__, "security_center_management_custom_endpoint", security_center_management_custom_endpoint)
+        if security_center_v2_custom_endpoint is not None:
+            pulumi.set(__self__, "security_center_v2_custom_endpoint", security_center_v2_custom_endpoint)
         if security_scanner_custom_endpoint is not None:
             pulumi.set(__self__, "security_scanner_custom_endpoint", security_scanner_custom_endpoint)
         if securityposture_custom_endpoint is not None:
@@ -1849,6 +1852,15 @@ class ProviderArgs:
         pulumi.set(self, "security_center_management_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="securityCenterV2CustomEndpoint")
+    def security_center_v2_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "security_center_v2_custom_endpoint")
+
+    @security_center_v2_custom_endpoint.setter
+    def security_center_v2_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_center_v2_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="securityScannerCustomEndpoint")
     def security_scanner_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "security_scanner_custom_endpoint")
@@ -2233,6 +2245,7 @@ class Provider(pulumi.ProviderResource):
                  secure_source_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_center_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 security_center_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_scanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  securityposture_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2441,6 +2454,7 @@ class Provider(pulumi.ProviderResource):
                  secure_source_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_center_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 security_center_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_scanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  securityposture_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2625,6 +2639,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["secure_source_manager_custom_endpoint"] = secure_source_manager_custom_endpoint
             __props__.__dict__["security_center_custom_endpoint"] = security_center_custom_endpoint
             __props__.__dict__["security_center_management_custom_endpoint"] = security_center_management_custom_endpoint
+            __props__.__dict__["security_center_v2_custom_endpoint"] = security_center_v2_custom_endpoint
             __props__.__dict__["security_scanner_custom_endpoint"] = security_scanner_custom_endpoint
             __props__.__dict__["securityposture_custom_endpoint"] = securityposture_custom_endpoint
             __props__.__dict__["service_directory_custom_endpoint"] = service_directory_custom_endpoint
@@ -3355,6 +3370,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="securityCenterManagementCustomEndpoint")
     def security_center_management_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "security_center_management_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="securityCenterV2CustomEndpoint")
+    def security_center_v2_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "security_center_v2_custom_endpoint")
 
     @property
     @pulumi.getter(name="securityScannerCustomEndpoint")

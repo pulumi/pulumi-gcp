@@ -26,7 +26,8 @@ class AddressGroupArgs:
                  items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None):
+                 parent: Optional[pulumi.Input[str]] = None,
+                 purposes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a AddressGroup resource.
         :param pulumi.Input[int] capacity: Capacity of the Address Group.
@@ -46,6 +47,8 @@ class AddressGroupArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the AddressGroup resource.
         :param pulumi.Input[str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] purposes: List of supported purposes of the Address Group.
+               Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
         """
         pulumi.set(__self__, "capacity", capacity)
         pulumi.set(__self__, "location", location)
@@ -60,6 +63,8 @@ class AddressGroupArgs:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if purposes is not None:
+            pulumi.set(__self__, "purposes", purposes)
 
     @property
     @pulumi.getter
@@ -166,6 +171,19 @@ class AddressGroupArgs:
     def parent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent", value)
 
+    @property
+    @pulumi.getter
+    def purposes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of supported purposes of the Address Group.
+        Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+        """
+        return pulumi.get(self, "purposes")
+
+    @purposes.setter
+    def purposes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "purposes", value)
+
 
 @pulumi.input_type
 class _AddressGroupState:
@@ -180,6 +198,7 @@ class _AddressGroupState:
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 purposes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -205,6 +224,8 @@ class _AddressGroupState:
         :param pulumi.Input[str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] purposes: List of supported purposes of the Address Group.
+               Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
         :param pulumi.Input[str] type: The type of the Address Group. Possible values are "IPV4" or "IPV6".
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
@@ -231,6 +252,8 @@ class _AddressGroupState:
             pulumi.set(__self__, "parent", parent)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if purposes is not None:
+            pulumi.set(__self__, "purposes", purposes)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if update_time is not None:
@@ -369,6 +392,19 @@ class _AddressGroupState:
 
     @property
     @pulumi.getter
+    def purposes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of supported purposes of the Address Group.
+        Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+        """
+        return pulumi.get(self, "purposes")
+
+    @purposes.setter
+    def purposes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "purposes", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the Address Group. Possible values are "IPV4" or "IPV6".
@@ -407,6 +443,7 @@ class AddressGroup(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 purposes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -463,6 +500,21 @@ class AddressGroup(pulumi.CustomResource):
             capacity=100,
             items=["208.80.154.224/32"])
         ```
+        ### Network Security Address Groups Cloud Armor
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.AddressGroup("default",
+            name="my-address-groups",
+            parent="projects/my-project-name",
+            location="global",
+            type="IPV4",
+            capacity=100,
+            purposes=["CLOUD_ARMOR"],
+            items=["208.80.154.224/32"])
+        ```
 
         ## Import
 
@@ -493,6 +545,8 @@ class AddressGroup(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] name: Name of the AddressGroup resource.
         :param pulumi.Input[str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] purposes: List of supported purposes of the Address Group.
+               Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
         :param pulumi.Input[str] type: The type of the Address Group. Possible values are "IPV4" or "IPV6".
                Possible values are: `IPV4`, `IPV6`.
         """
@@ -556,6 +610,21 @@ class AddressGroup(pulumi.CustomResource):
             capacity=100,
             items=["208.80.154.224/32"])
         ```
+        ### Network Security Address Groups Cloud Armor
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.AddressGroup("default",
+            name="my-address-groups",
+            parent="projects/my-project-name",
+            location="global",
+            type="IPV4",
+            capacity=100,
+            purposes=["CLOUD_ARMOR"],
+            items=["208.80.154.224/32"])
+        ```
 
         ## Import
 
@@ -591,6 +660,7 @@ class AddressGroup(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 purposes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -612,6 +682,7 @@ class AddressGroup(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["purposes"] = purposes
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
@@ -641,6 +712,7 @@ class AddressGroup(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            purposes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AddressGroup':
         """
@@ -671,6 +743,8 @@ class AddressGroup(pulumi.CustomResource):
         :param pulumi.Input[str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] purposes: List of supported purposes of the Address Group.
+               Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
         :param pulumi.Input[str] type: The type of the Address Group. Possible values are "IPV4" or "IPV6".
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
@@ -691,6 +765,7 @@ class AddressGroup(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["purposes"] = purposes
         __props__.__dict__["type"] = type
         __props__.__dict__["update_time"] = update_time
         return AddressGroup(resource_name, opts=opts, __props__=__props__)
@@ -785,6 +860,15 @@ class AddressGroup(pulumi.CustomResource):
         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @property
+    @pulumi.getter
+    def purposes(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of supported purposes of the Address Group.
+        Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+        """
+        return pulumi.get(self, "purposes")
 
     @property
     @pulumi.getter

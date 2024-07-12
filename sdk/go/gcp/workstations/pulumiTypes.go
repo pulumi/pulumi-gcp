@@ -1508,6 +1508,12 @@ type WorkstationConfigHostGceInstance struct {
 	ShieldedInstanceConfig *WorkstationConfigHostGceInstanceShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Network tags to add to the Compute Engine machines backing the Workstations.
 	Tags []string `pulumi:"tags"`
+	// Resource manager tags to be bound to the VM instances backing the Workstations.
+	// Tag keys and values have the same definition as
+	// https://cloud.google.com/resource-manager/docs/tags/tags-overview
+	// Keys must be in the format `tagKeys/{tag_key_id}`, and
+	// values are in the format `tagValues/456`.
+	VmTags map[string]string `pulumi:"vmTags"`
 }
 
 // WorkstationConfigHostGceInstanceInput is an input type that accepts WorkstationConfigHostGceInstanceArgs and WorkstationConfigHostGceInstanceOutput values.
@@ -1553,6 +1559,12 @@ type WorkstationConfigHostGceInstanceArgs struct {
 	ShieldedInstanceConfig WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 	// Network tags to add to the Compute Engine machines backing the Workstations.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Resource manager tags to be bound to the VM instances backing the Workstations.
+	// Tag keys and values have the same definition as
+	// https://cloud.google.com/resource-manager/docs/tags/tags-overview
+	// Keys must be in the format `tagKeys/{tag_key_id}`, and
+	// values are in the format `tagValues/456`.
+	VmTags pulumi.StringMapInput `pulumi:"vmTags"`
 }
 
 func (WorkstationConfigHostGceInstanceArgs) ElementType() reflect.Type {
@@ -1708,6 +1720,15 @@ func (o WorkstationConfigHostGceInstanceOutput) ShieldedInstanceConfig() Worksta
 // Network tags to add to the Compute Engine machines backing the Workstations.
 func (o WorkstationConfigHostGceInstanceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkstationConfigHostGceInstance) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Resource manager tags to be bound to the VM instances backing the Workstations.
+// Tag keys and values have the same definition as
+// https://cloud.google.com/resource-manager/docs/tags/tags-overview
+// Keys must be in the format `tagKeys/{tag_key_id}`, and
+// values are in the format `tagValues/456`.
+func (o WorkstationConfigHostGceInstanceOutput) VmTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstance) map[string]string { return v.VmTags }).(pulumi.StringMapOutput)
 }
 
 type WorkstationConfigHostGceInstancePtrOutput struct{ *pulumi.OutputState }
@@ -1867,6 +1888,20 @@ func (o WorkstationConfigHostGceInstancePtrOutput) Tags() pulumi.StringArrayOutp
 		}
 		return v.Tags
 	}).(pulumi.StringArrayOutput)
+}
+
+// Resource manager tags to be bound to the VM instances backing the Workstations.
+// Tag keys and values have the same definition as
+// https://cloud.google.com/resource-manager/docs/tags/tags-overview
+// Keys must be in the format `tagKeys/{tag_key_id}`, and
+// values are in the format `tagValues/456`.
+func (o WorkstationConfigHostGceInstancePtrOutput) VmTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstance) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.VmTags
+	}).(pulumi.StringMapOutput)
 }
 
 type WorkstationConfigHostGceInstanceAccelerator struct {

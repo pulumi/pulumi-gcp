@@ -34,6 +34,7 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr&#39; must include from 1 to 10 subexpressions, joined by the &#34;||&#34; or &#34;&amp;&amp;&#34; operators. Each subexpression must be of the form &#34;resource.matchTag(&#39;/tag_key_short_name, &#39;tag_value_short_name&#39;)&#34;. or &#34;resource.matchTagId(&#39;tagKeys/key_id&#39;, &#39;tagValues/value_id&#39;)&#34;. where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: &#34;resource.matchTag(&#39;123456789/environment, &#39;prod&#39;)&#34;. or &#34;resource.matchTagId(&#39;tagKeys/123&#39;, &#39;tagValues/456&#39;)&#34;.
+     * Structure is documented below.
      * 
      */
     @Import(name="condition")
@@ -41,6 +42,7 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr&#39; must include from 1 to 10 subexpressions, joined by the &#34;||&#34; or &#34;&amp;&amp;&#34; operators. Each subexpression must be of the form &#34;resource.matchTag(&#39;/tag_key_short_name, &#39;tag_value_short_name&#39;)&#34;. or &#34;resource.matchTagId(&#39;tagKeys/key_id&#39;, &#39;tagValues/value_id&#39;)&#34;. where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: &#34;resource.matchTag(&#39;123456789/environment, &#39;prod&#39;)&#34;. or &#34;resource.matchTagId(&#39;tagKeys/123&#39;, &#39;tagValues/456&#39;)&#34;.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<PolicySpecRuleConditionArgs>> condition() {
@@ -78,14 +80,16 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+     * List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+     * Structure is documented below.
      * 
      */
     @Import(name="values")
     private @Nullable Output<PolicySpecRuleValuesArgs> values;
 
     /**
-     * @return List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+     * @return List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<PolicySpecRuleValuesArgs>> values() {
@@ -143,6 +147,7 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param condition A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr&#39; must include from 1 to 10 subexpressions, joined by the &#34;||&#34; or &#34;&amp;&amp;&#34; operators. Each subexpression must be of the form &#34;resource.matchTag(&#39;/tag_key_short_name, &#39;tag_value_short_name&#39;)&#34;. or &#34;resource.matchTagId(&#39;tagKeys/key_id&#39;, &#39;tagValues/value_id&#39;)&#34;. where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: &#34;resource.matchTag(&#39;123456789/environment, &#39;prod&#39;)&#34;. or &#34;resource.matchTagId(&#39;tagKeys/123&#39;, &#39;tagValues/456&#39;)&#34;.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -154,6 +159,7 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param condition A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr&#39; must include from 1 to 10 subexpressions, joined by the &#34;||&#34; or &#34;&amp;&amp;&#34; operators. Each subexpression must be of the form &#34;resource.matchTag(&#39;/tag_key_short_name, &#39;tag_value_short_name&#39;)&#34;. or &#34;resource.matchTagId(&#39;tagKeys/key_id&#39;, &#39;tagValues/value_id&#39;)&#34;. where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: &#34;resource.matchTag(&#39;123456789/environment, &#39;prod&#39;)&#34;. or &#34;resource.matchTagId(&#39;tagKeys/123&#39;, &#39;tagValues/456&#39;)&#34;.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -205,7 +211,8 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param values List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+         * @param values List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -216,7 +223,8 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param values List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+         * @param values List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+         * Structure is documented below.
          * 
          * @return builder
          * 

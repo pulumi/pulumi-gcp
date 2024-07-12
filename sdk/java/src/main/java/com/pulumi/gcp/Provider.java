@@ -857,6 +857,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> securityCenterManagementCustomEndpoint() {
         return Codegen.optional(this.securityCenterManagementCustomEndpoint);
     }
+    @Export(name="securityCenterV2CustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> securityCenterV2CustomEndpoint;
+
+    public Output<Optional<String>> securityCenterV2CustomEndpoint() {
+        return Codegen.optional(this.securityCenterV2CustomEndpoint);
+    }
     @Export(name="securityScannerCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityScannerCustomEndpoint;
 

@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.OrgPolicy.Inputs
 
         /// <summary>
         /// A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&amp;&amp;" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+        /// Structure is documented below.
         /// </summary>
         [Input("condition")]
         public Input<Inputs.PolicySpecRuleConditionGetArgs>? Condition { get; set; }
@@ -37,7 +38,8 @@ namespace Pulumi.Gcp.OrgPolicy.Inputs
         public Input<string>? Enforce { get; set; }
 
         /// <summary>
-        /// List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+        /// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+        /// Structure is documented below.
         /// </summary>
         [Input("values")]
         public Input<Inputs.PolicySpecRuleValuesGetArgs>? Values { get; set; }

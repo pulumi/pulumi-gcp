@@ -18,9 +18,9 @@ import (
 //
 // * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
 // * How-to Guides
+//   - [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
 //   - [Official Documentation](https://cloud.google.com/certificate-authority-service)
 //   - [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
-//   - [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
 //
 // ## Example Usage
 //

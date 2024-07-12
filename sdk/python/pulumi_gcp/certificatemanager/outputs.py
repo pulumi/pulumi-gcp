@@ -25,6 +25,7 @@ __all__ = [
     'CertificateMapGclbTargetIpConfig',
     'CertificateSelfManaged',
     'DnsAuthorizationDnsResourceRecord',
+    'TrustConfigAllowlistedCertificate',
     'TrustConfigTrustStore',
     'TrustConfigTrustStoreIntermediateCa',
     'TrustConfigTrustStoreTrustAnchor',
@@ -641,6 +642,41 @@ class DnsAuthorizationDnsResourceRecord(dict):
         Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class TrustConfigAllowlistedCertificate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pemCertificate":
+            suggest = "pem_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TrustConfigAllowlistedCertificate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TrustConfigAllowlistedCertificate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TrustConfigAllowlistedCertificate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pem_certificate: str):
+        """
+        :param str pem_certificate: PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.
+        """
+        pulumi.set(__self__, "pem_certificate", pem_certificate)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> str:
+        """
+        PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.
+        """
+        return pulumi.get(self, "pem_certificate")
 
 
 @pulumi.output_type

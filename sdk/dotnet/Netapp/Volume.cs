@@ -20,8 +20,8 @@ namespace Pulumi.Gcp.Netapp
     /// 
     /// * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes)
     /// * How-to Guides
-    ///     * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
     ///     * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
+    ///     * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
     /// 
     /// ## Example Usage
     /// 
@@ -240,6 +240,12 @@ namespace Pulumi.Gcp.Netapp
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the replica zone for regional volume.
+        /// </summary>
+        [Output("replicaZone")]
+        public Output<string> ReplicaZone { get; private set; } = null!;
+
+        /// <summary>
         /// Used to create this volume from a snapshot (= cloning) or an backup.
         /// Structure is documented below.
         /// </summary>
@@ -323,6 +329,12 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Output("usedGib")]
         public Output<string> UsedGib { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the active zone for regional volume.
+        /// </summary>
+        [Output("zone")]
+        public Output<string> Zone { get; private set; } = null!;
 
 
         /// <summary>
@@ -731,6 +743,12 @@ namespace Pulumi.Gcp.Netapp
         }
 
         /// <summary>
+        /// Specifies the replica zone for regional volume.
+        /// </summary>
+        [Input("replicaZone")]
+        public Input<string>? ReplicaZone { get; set; }
+
+        /// <summary>
         /// Used to create this volume from a snapshot (= cloning) or an backup.
         /// Structure is documented below.
         /// </summary>
@@ -826,6 +844,12 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("usedGib")]
         public Input<string>? UsedGib { get; set; }
+
+        /// <summary>
+        /// Specifies the active zone for regional volume.
+        /// </summary>
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public VolumeState()
         {

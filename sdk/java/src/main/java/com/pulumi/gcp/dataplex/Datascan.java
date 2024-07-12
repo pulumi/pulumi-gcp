@@ -342,6 +342,12 @@ import javax.annotation.Nullable;
  *                         .tableConditionExpectation(DatascanDataQualitySpecRuleTableConditionExpectationArgs.builder()
  *                             .sqlExpression("COUNT(*) > 0")
  *                             .build())
+ *                         .build(),
+ *                     DatascanDataQualitySpecRuleArgs.builder()
+ *                         .dimension("VALIDITY")
+ *                         .sqlAssertion(DatascanDataQualitySpecRuleSqlAssertionArgs.builder()
+ *                             .sqlStatement("select * from bigquery-public-data.austin_bikeshare.bikeshare_stations where station_id is null")
+ *                             .build())
  *                         .build())
  *                 .build())
  *             .project("my-project-name")

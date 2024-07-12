@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     public sealed class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync
     {
         /// <summary>
+        /// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        /// </summary>
+        public readonly bool? Enabled;
+        /// <summary>
         /// Git repo configuration for the cluster
         /// Structure is documented below.
         /// </summary>
@@ -34,6 +38,8 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
         [OutputConstructor]
         private FeatureFleetDefaultMemberConfigConfigmanagementConfigSync(
+            bool? enabled,
+
             Outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit? git,
 
             Outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci? oci,
@@ -42,6 +48,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
             string? sourceFormat)
         {
+            Enabled = enabled;
             Git = git;
             Oci = oci;
             PreventDrift = preventDrift;

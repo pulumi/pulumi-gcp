@@ -677,6 +677,662 @@ func (o InstancePrivateConfigPtrOutput) SshServiceAttachment() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type RepositoryIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// RepositoryIamBindingConditionInput is an input type that accepts RepositoryIamBindingConditionArgs and RepositoryIamBindingConditionOutput values.
+// You can construct a concrete instance of `RepositoryIamBindingConditionInput` via:
+//
+//	RepositoryIamBindingConditionArgs{...}
+type RepositoryIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToRepositoryIamBindingConditionOutput() RepositoryIamBindingConditionOutput
+	ToRepositoryIamBindingConditionOutputWithContext(context.Context) RepositoryIamBindingConditionOutput
+}
+
+type RepositoryIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (RepositoryIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryIamBindingCondition)(nil)).Elem()
+}
+
+func (i RepositoryIamBindingConditionArgs) ToRepositoryIamBindingConditionOutput() RepositoryIamBindingConditionOutput {
+	return i.ToRepositoryIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i RepositoryIamBindingConditionArgs) ToRepositoryIamBindingConditionOutputWithContext(ctx context.Context) RepositoryIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamBindingConditionOutput)
+}
+
+func (i RepositoryIamBindingConditionArgs) ToRepositoryIamBindingConditionPtrOutput() RepositoryIamBindingConditionPtrOutput {
+	return i.ToRepositoryIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryIamBindingConditionArgs) ToRepositoryIamBindingConditionPtrOutputWithContext(ctx context.Context) RepositoryIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamBindingConditionOutput).ToRepositoryIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// RepositoryIamBindingConditionPtrInput is an input type that accepts RepositoryIamBindingConditionArgs, RepositoryIamBindingConditionPtr and RepositoryIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `RepositoryIamBindingConditionPtrInput` via:
+//
+//	        RepositoryIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryIamBindingConditionPtrOutput() RepositoryIamBindingConditionPtrOutput
+	ToRepositoryIamBindingConditionPtrOutputWithContext(context.Context) RepositoryIamBindingConditionPtrOutput
+}
+
+type repositoryIamBindingConditionPtrType RepositoryIamBindingConditionArgs
+
+func RepositoryIamBindingConditionPtr(v *RepositoryIamBindingConditionArgs) RepositoryIamBindingConditionPtrInput {
+	return (*repositoryIamBindingConditionPtrType)(v)
+}
+
+func (*repositoryIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryIamBindingCondition)(nil)).Elem()
+}
+
+func (i *repositoryIamBindingConditionPtrType) ToRepositoryIamBindingConditionPtrOutput() RepositoryIamBindingConditionPtrOutput {
+	return i.ToRepositoryIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryIamBindingConditionPtrType) ToRepositoryIamBindingConditionPtrOutputWithContext(ctx context.Context) RepositoryIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamBindingConditionPtrOutput)
+}
+
+type RepositoryIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (RepositoryIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryIamBindingCondition)(nil)).Elem()
+}
+
+func (o RepositoryIamBindingConditionOutput) ToRepositoryIamBindingConditionOutput() RepositoryIamBindingConditionOutput {
+	return o
+}
+
+func (o RepositoryIamBindingConditionOutput) ToRepositoryIamBindingConditionOutputWithContext(ctx context.Context) RepositoryIamBindingConditionOutput {
+	return o
+}
+
+func (o RepositoryIamBindingConditionOutput) ToRepositoryIamBindingConditionPtrOutput() RepositoryIamBindingConditionPtrOutput {
+	return o.ToRepositoryIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryIamBindingConditionOutput) ToRepositoryIamBindingConditionPtrOutputWithContext(ctx context.Context) RepositoryIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryIamBindingCondition) *RepositoryIamBindingCondition {
+		return &v
+	}).(RepositoryIamBindingConditionPtrOutput)
+}
+
+func (o RepositoryIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o RepositoryIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RepositoryIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o RepositoryIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v RepositoryIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type RepositoryIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryIamBindingCondition)(nil)).Elem()
+}
+
+func (o RepositoryIamBindingConditionPtrOutput) ToRepositoryIamBindingConditionPtrOutput() RepositoryIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o RepositoryIamBindingConditionPtrOutput) ToRepositoryIamBindingConditionPtrOutputWithContext(ctx context.Context) RepositoryIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o RepositoryIamBindingConditionPtrOutput) Elem() RepositoryIamBindingConditionOutput {
+	return o.ApplyT(func(v *RepositoryIamBindingCondition) RepositoryIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryIamBindingCondition
+		return ret
+	}).(RepositoryIamBindingConditionOutput)
+}
+
+func (o RepositoryIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RepositoryIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RepositoryIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type RepositoryIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// RepositoryIamMemberConditionInput is an input type that accepts RepositoryIamMemberConditionArgs and RepositoryIamMemberConditionOutput values.
+// You can construct a concrete instance of `RepositoryIamMemberConditionInput` via:
+//
+//	RepositoryIamMemberConditionArgs{...}
+type RepositoryIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToRepositoryIamMemberConditionOutput() RepositoryIamMemberConditionOutput
+	ToRepositoryIamMemberConditionOutputWithContext(context.Context) RepositoryIamMemberConditionOutput
+}
+
+type RepositoryIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (RepositoryIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryIamMemberCondition)(nil)).Elem()
+}
+
+func (i RepositoryIamMemberConditionArgs) ToRepositoryIamMemberConditionOutput() RepositoryIamMemberConditionOutput {
+	return i.ToRepositoryIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i RepositoryIamMemberConditionArgs) ToRepositoryIamMemberConditionOutputWithContext(ctx context.Context) RepositoryIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberConditionOutput)
+}
+
+func (i RepositoryIamMemberConditionArgs) ToRepositoryIamMemberConditionPtrOutput() RepositoryIamMemberConditionPtrOutput {
+	return i.ToRepositoryIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryIamMemberConditionArgs) ToRepositoryIamMemberConditionPtrOutputWithContext(ctx context.Context) RepositoryIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberConditionOutput).ToRepositoryIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// RepositoryIamMemberConditionPtrInput is an input type that accepts RepositoryIamMemberConditionArgs, RepositoryIamMemberConditionPtr and RepositoryIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `RepositoryIamMemberConditionPtrInput` via:
+//
+//	        RepositoryIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryIamMemberConditionPtrOutput() RepositoryIamMemberConditionPtrOutput
+	ToRepositoryIamMemberConditionPtrOutputWithContext(context.Context) RepositoryIamMemberConditionPtrOutput
+}
+
+type repositoryIamMemberConditionPtrType RepositoryIamMemberConditionArgs
+
+func RepositoryIamMemberConditionPtr(v *RepositoryIamMemberConditionArgs) RepositoryIamMemberConditionPtrInput {
+	return (*repositoryIamMemberConditionPtrType)(v)
+}
+
+func (*repositoryIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryIamMemberCondition)(nil)).Elem()
+}
+
+func (i *repositoryIamMemberConditionPtrType) ToRepositoryIamMemberConditionPtrOutput() RepositoryIamMemberConditionPtrOutput {
+	return i.ToRepositoryIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryIamMemberConditionPtrType) ToRepositoryIamMemberConditionPtrOutputWithContext(ctx context.Context) RepositoryIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberConditionPtrOutput)
+}
+
+type RepositoryIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (RepositoryIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryIamMemberCondition)(nil)).Elem()
+}
+
+func (o RepositoryIamMemberConditionOutput) ToRepositoryIamMemberConditionOutput() RepositoryIamMemberConditionOutput {
+	return o
+}
+
+func (o RepositoryIamMemberConditionOutput) ToRepositoryIamMemberConditionOutputWithContext(ctx context.Context) RepositoryIamMemberConditionOutput {
+	return o
+}
+
+func (o RepositoryIamMemberConditionOutput) ToRepositoryIamMemberConditionPtrOutput() RepositoryIamMemberConditionPtrOutput {
+	return o.ToRepositoryIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryIamMemberConditionOutput) ToRepositoryIamMemberConditionPtrOutputWithContext(ctx context.Context) RepositoryIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryIamMemberCondition) *RepositoryIamMemberCondition {
+		return &v
+	}).(RepositoryIamMemberConditionPtrOutput)
+}
+
+func (o RepositoryIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o RepositoryIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RepositoryIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o RepositoryIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v RepositoryIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type RepositoryIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryIamMemberCondition)(nil)).Elem()
+}
+
+func (o RepositoryIamMemberConditionPtrOutput) ToRepositoryIamMemberConditionPtrOutput() RepositoryIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o RepositoryIamMemberConditionPtrOutput) ToRepositoryIamMemberConditionPtrOutputWithContext(ctx context.Context) RepositoryIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o RepositoryIamMemberConditionPtrOutput) Elem() RepositoryIamMemberConditionOutput {
+	return o.ApplyT(func(v *RepositoryIamMemberCondition) RepositoryIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryIamMemberCondition
+		return ret
+	}).(RepositoryIamMemberConditionOutput)
+}
+
+func (o RepositoryIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RepositoryIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RepositoryIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type RepositoryInitialConfig struct {
+	// Default branch name of the repository.
+	DefaultBranch *string `pulumi:"defaultBranch"`
+	// List of gitignore template names user can choose from.
+	// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+	Gitignores []string `pulumi:"gitignores"`
+	// License template name user can choose from.
+	// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+	License *string `pulumi:"license"`
+	// README template name.
+	// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+	Readme *string `pulumi:"readme"`
+}
+
+// RepositoryInitialConfigInput is an input type that accepts RepositoryInitialConfigArgs and RepositoryInitialConfigOutput values.
+// You can construct a concrete instance of `RepositoryInitialConfigInput` via:
+//
+//	RepositoryInitialConfigArgs{...}
+type RepositoryInitialConfigInput interface {
+	pulumi.Input
+
+	ToRepositoryInitialConfigOutput() RepositoryInitialConfigOutput
+	ToRepositoryInitialConfigOutputWithContext(context.Context) RepositoryInitialConfigOutput
+}
+
+type RepositoryInitialConfigArgs struct {
+	// Default branch name of the repository.
+	DefaultBranch pulumi.StringPtrInput `pulumi:"defaultBranch"`
+	// List of gitignore template names user can choose from.
+	// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+	Gitignores pulumi.StringArrayInput `pulumi:"gitignores"`
+	// License template name user can choose from.
+	// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+	License pulumi.StringPtrInput `pulumi:"license"`
+	// README template name.
+	// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+	Readme pulumi.StringPtrInput `pulumi:"readme"`
+}
+
+func (RepositoryInitialConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryInitialConfig)(nil)).Elem()
+}
+
+func (i RepositoryInitialConfigArgs) ToRepositoryInitialConfigOutput() RepositoryInitialConfigOutput {
+	return i.ToRepositoryInitialConfigOutputWithContext(context.Background())
+}
+
+func (i RepositoryInitialConfigArgs) ToRepositoryInitialConfigOutputWithContext(ctx context.Context) RepositoryInitialConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryInitialConfigOutput)
+}
+
+func (i RepositoryInitialConfigArgs) ToRepositoryInitialConfigPtrOutput() RepositoryInitialConfigPtrOutput {
+	return i.ToRepositoryInitialConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryInitialConfigArgs) ToRepositoryInitialConfigPtrOutputWithContext(ctx context.Context) RepositoryInitialConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryInitialConfigOutput).ToRepositoryInitialConfigPtrOutputWithContext(ctx)
+}
+
+// RepositoryInitialConfigPtrInput is an input type that accepts RepositoryInitialConfigArgs, RepositoryInitialConfigPtr and RepositoryInitialConfigPtrOutput values.
+// You can construct a concrete instance of `RepositoryInitialConfigPtrInput` via:
+//
+//	        RepositoryInitialConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryInitialConfigPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryInitialConfigPtrOutput() RepositoryInitialConfigPtrOutput
+	ToRepositoryInitialConfigPtrOutputWithContext(context.Context) RepositoryInitialConfigPtrOutput
+}
+
+type repositoryInitialConfigPtrType RepositoryInitialConfigArgs
+
+func RepositoryInitialConfigPtr(v *RepositoryInitialConfigArgs) RepositoryInitialConfigPtrInput {
+	return (*repositoryInitialConfigPtrType)(v)
+}
+
+func (*repositoryInitialConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryInitialConfig)(nil)).Elem()
+}
+
+func (i *repositoryInitialConfigPtrType) ToRepositoryInitialConfigPtrOutput() RepositoryInitialConfigPtrOutput {
+	return i.ToRepositoryInitialConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryInitialConfigPtrType) ToRepositoryInitialConfigPtrOutputWithContext(ctx context.Context) RepositoryInitialConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryInitialConfigPtrOutput)
+}
+
+type RepositoryInitialConfigOutput struct{ *pulumi.OutputState }
+
+func (RepositoryInitialConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryInitialConfig)(nil)).Elem()
+}
+
+func (o RepositoryInitialConfigOutput) ToRepositoryInitialConfigOutput() RepositoryInitialConfigOutput {
+	return o
+}
+
+func (o RepositoryInitialConfigOutput) ToRepositoryInitialConfigOutputWithContext(ctx context.Context) RepositoryInitialConfigOutput {
+	return o
+}
+
+func (o RepositoryInitialConfigOutput) ToRepositoryInitialConfigPtrOutput() RepositoryInitialConfigPtrOutput {
+	return o.ToRepositoryInitialConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryInitialConfigOutput) ToRepositoryInitialConfigPtrOutputWithContext(ctx context.Context) RepositoryInitialConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryInitialConfig) *RepositoryInitialConfig {
+		return &v
+	}).(RepositoryInitialConfigPtrOutput)
+}
+
+// Default branch name of the repository.
+func (o RepositoryInitialConfigOutput) DefaultBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryInitialConfig) *string { return v.DefaultBranch }).(pulumi.StringPtrOutput)
+}
+
+// List of gitignore template names user can choose from.
+// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+func (o RepositoryInitialConfigOutput) Gitignores() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RepositoryInitialConfig) []string { return v.Gitignores }).(pulumi.StringArrayOutput)
+}
+
+// License template name user can choose from.
+// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+func (o RepositoryInitialConfigOutput) License() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryInitialConfig) *string { return v.License }).(pulumi.StringPtrOutput)
+}
+
+// README template name.
+// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+func (o RepositoryInitialConfigOutput) Readme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryInitialConfig) *string { return v.Readme }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryInitialConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryInitialConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryInitialConfig)(nil)).Elem()
+}
+
+func (o RepositoryInitialConfigPtrOutput) ToRepositoryInitialConfigPtrOutput() RepositoryInitialConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryInitialConfigPtrOutput) ToRepositoryInitialConfigPtrOutputWithContext(ctx context.Context) RepositoryInitialConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryInitialConfigPtrOutput) Elem() RepositoryInitialConfigOutput {
+	return o.ApplyT(func(v *RepositoryInitialConfig) RepositoryInitialConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryInitialConfig
+		return ret
+	}).(RepositoryInitialConfigOutput)
+}
+
+// Default branch name of the repository.
+func (o RepositoryInitialConfigPtrOutput) DefaultBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryInitialConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultBranch
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of gitignore template names user can choose from.
+// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+func (o RepositoryInitialConfigPtrOutput) Gitignores() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RepositoryInitialConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Gitignores
+	}).(pulumi.StringArrayOutput)
+}
+
+// License template name user can choose from.
+// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+func (o RepositoryInitialConfigPtrOutput) License() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryInitialConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.License
+	}).(pulumi.StringPtrOutput)
+}
+
+// README template name.
+// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+func (o RepositoryInitialConfigPtrOutput) Readme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryInitialConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Readme
+	}).(pulumi.StringPtrOutput)
+}
+
+type RepositoryUri struct {
+	// (Output)
+	// API is the URI for API access.
+	Api *string `pulumi:"api"`
+	// (Output)
+	// gitHttps is the git HTTPS URI for git operations.
+	GitHttps *string `pulumi:"gitHttps"`
+	// (Output)
+	// HTML is the URI for the user to view the repository in a browser.
+	Html *string `pulumi:"html"`
+}
+
+// RepositoryUriInput is an input type that accepts RepositoryUriArgs and RepositoryUriOutput values.
+// You can construct a concrete instance of `RepositoryUriInput` via:
+//
+//	RepositoryUriArgs{...}
+type RepositoryUriInput interface {
+	pulumi.Input
+
+	ToRepositoryUriOutput() RepositoryUriOutput
+	ToRepositoryUriOutputWithContext(context.Context) RepositoryUriOutput
+}
+
+type RepositoryUriArgs struct {
+	// (Output)
+	// API is the URI for API access.
+	Api pulumi.StringPtrInput `pulumi:"api"`
+	// (Output)
+	// gitHttps is the git HTTPS URI for git operations.
+	GitHttps pulumi.StringPtrInput `pulumi:"gitHttps"`
+	// (Output)
+	// HTML is the URI for the user to view the repository in a browser.
+	Html pulumi.StringPtrInput `pulumi:"html"`
+}
+
+func (RepositoryUriArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryUri)(nil)).Elem()
+}
+
+func (i RepositoryUriArgs) ToRepositoryUriOutput() RepositoryUriOutput {
+	return i.ToRepositoryUriOutputWithContext(context.Background())
+}
+
+func (i RepositoryUriArgs) ToRepositoryUriOutputWithContext(ctx context.Context) RepositoryUriOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryUriOutput)
+}
+
+// RepositoryUriArrayInput is an input type that accepts RepositoryUriArray and RepositoryUriArrayOutput values.
+// You can construct a concrete instance of `RepositoryUriArrayInput` via:
+//
+//	RepositoryUriArray{ RepositoryUriArgs{...} }
+type RepositoryUriArrayInput interface {
+	pulumi.Input
+
+	ToRepositoryUriArrayOutput() RepositoryUriArrayOutput
+	ToRepositoryUriArrayOutputWithContext(context.Context) RepositoryUriArrayOutput
+}
+
+type RepositoryUriArray []RepositoryUriInput
+
+func (RepositoryUriArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryUri)(nil)).Elem()
+}
+
+func (i RepositoryUriArray) ToRepositoryUriArrayOutput() RepositoryUriArrayOutput {
+	return i.ToRepositoryUriArrayOutputWithContext(context.Background())
+}
+
+func (i RepositoryUriArray) ToRepositoryUriArrayOutputWithContext(ctx context.Context) RepositoryUriArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryUriArrayOutput)
+}
+
+type RepositoryUriOutput struct{ *pulumi.OutputState }
+
+func (RepositoryUriOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryUri)(nil)).Elem()
+}
+
+func (o RepositoryUriOutput) ToRepositoryUriOutput() RepositoryUriOutput {
+	return o
+}
+
+func (o RepositoryUriOutput) ToRepositoryUriOutputWithContext(ctx context.Context) RepositoryUriOutput {
+	return o
+}
+
+// (Output)
+// API is the URI for API access.
+func (o RepositoryUriOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryUri) *string { return v.Api }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// gitHttps is the git HTTPS URI for git operations.
+func (o RepositoryUriOutput) GitHttps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryUri) *string { return v.GitHttps }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// HTML is the URI for the user to view the repository in a browser.
+func (o RepositoryUriOutput) Html() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryUri) *string { return v.Html }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryUriArrayOutput struct{ *pulumi.OutputState }
+
+func (RepositoryUriArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryUri)(nil)).Elem()
+}
+
+func (o RepositoryUriArrayOutput) ToRepositoryUriArrayOutput() RepositoryUriArrayOutput {
+	return o
+}
+
+func (o RepositoryUriArrayOutput) ToRepositoryUriArrayOutputWithContext(ctx context.Context) RepositoryUriArrayOutput {
+	return o
+}
+
+func (o RepositoryUriArrayOutput) Index(i pulumi.IntInput) RepositoryUriOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepositoryUri {
+		return vs[0].([]RepositoryUri)[vs[1].(int)]
+	}).(RepositoryUriOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceHostConfigInput)(nil)).Elem(), InstanceHostConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceHostConfigArrayInput)(nil)).Elem(), InstanceHostConfigArray{})
@@ -686,6 +1342,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberConditionPtrInput)(nil)).Elem(), InstanceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePrivateConfigInput)(nil)).Elem(), InstancePrivateConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePrivateConfigPtrInput)(nil)).Elem(), InstancePrivateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamBindingConditionInput)(nil)).Elem(), RepositoryIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamBindingConditionPtrInput)(nil)).Elem(), RepositoryIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamMemberConditionInput)(nil)).Elem(), RepositoryIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamMemberConditionPtrInput)(nil)).Elem(), RepositoryIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryInitialConfigInput)(nil)).Elem(), RepositoryInitialConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryInitialConfigPtrInput)(nil)).Elem(), RepositoryInitialConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryUriInput)(nil)).Elem(), RepositoryUriArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryUriArrayInput)(nil)).Elem(), RepositoryUriArray{})
 	pulumi.RegisterOutputType(InstanceHostConfigOutput{})
 	pulumi.RegisterOutputType(InstanceHostConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceIamBindingConditionOutput{})
@@ -694,4 +1358,12 @@ func init() {
 	pulumi.RegisterOutputType(InstanceIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(InstancePrivateConfigOutput{})
 	pulumi.RegisterOutputType(InstancePrivateConfigPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(RepositoryIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(RepositoryIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryInitialConfigOutput{})
+	pulumi.RegisterOutputType(RepositoryInitialConfigPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryUriOutput{})
+	pulumi.RegisterOutputType(RepositoryUriArrayOutput{})
 }

@@ -435,6 +435,9 @@ namespace Pulumi.Gcp
         [Output("securityCenterManagementCustomEndpoint")]
         public Output<string?> SecurityCenterManagementCustomEndpoint { get; private set; } = null!;
 
+        [Output("securityCenterV2CustomEndpoint")]
+        public Output<string?> SecurityCenterV2CustomEndpoint { get; private set; } = null!;
+
         [Output("securityScannerCustomEndpoint")]
         public Output<string?> SecurityScannerCustomEndpoint { get; private set; } = null!;
 
@@ -1000,6 +1003,9 @@ namespace Pulumi.Gcp
 
         [Input("securityCenterManagementCustomEndpoint")]
         public Input<string>? SecurityCenterManagementCustomEndpoint { get; set; }
+
+        [Input("securityCenterV2CustomEndpoint")]
+        public Input<string>? SecurityCenterV2CustomEndpoint { get; set; }
 
         [Input("securityScannerCustomEndpoint")]
         public Input<string>? SecurityScannerCustomEndpoint { get; set; }

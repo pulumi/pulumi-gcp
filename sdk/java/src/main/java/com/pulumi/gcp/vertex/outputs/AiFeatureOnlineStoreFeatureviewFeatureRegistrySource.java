@@ -6,8 +6,11 @@ package com.pulumi.gcp.vertex.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.outputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AiFeatureOnlineStoreFeatureviewFeatureRegistrySource {
@@ -17,6 +20,11 @@ public final class AiFeatureOnlineStoreFeatureviewFeatureRegistrySource {
      * 
      */
     private List<AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup> featureGroups;
+    /**
+     * @return The project number of the parent project of the feature Groups.
+     * 
+     */
+    private @Nullable String projectNumber;
 
     private AiFeatureOnlineStoreFeatureviewFeatureRegistrySource() {}
     /**
@@ -26,6 +34,13 @@ public final class AiFeatureOnlineStoreFeatureviewFeatureRegistrySource {
      */
     public List<AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup> featureGroups() {
         return this.featureGroups;
+    }
+    /**
+     * @return The project number of the parent project of the feature Groups.
+     * 
+     */
+    public Optional<String> projectNumber() {
+        return Optional.ofNullable(this.projectNumber);
     }
 
     public static Builder builder() {
@@ -38,10 +53,12 @@ public final class AiFeatureOnlineStoreFeatureviewFeatureRegistrySource {
     @CustomType.Builder
     public static final class Builder {
         private List<AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup> featureGroups;
+        private @Nullable String projectNumber;
         public Builder() {}
         public Builder(AiFeatureOnlineStoreFeatureviewFeatureRegistrySource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.featureGroups = defaults.featureGroups;
+    	      this.projectNumber = defaults.projectNumber;
         }
 
         @CustomType.Setter
@@ -55,9 +72,16 @@ public final class AiFeatureOnlineStoreFeatureviewFeatureRegistrySource {
         public Builder featureGroups(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup... featureGroups) {
             return featureGroups(List.of(featureGroups));
         }
+        @CustomType.Setter
+        public Builder projectNumber(@Nullable String projectNumber) {
+
+            this.projectNumber = projectNumber;
+            return this;
+        }
         public AiFeatureOnlineStoreFeatureviewFeatureRegistrySource build() {
             final var _resultValue = new AiFeatureOnlineStoreFeatureviewFeatureRegistrySource();
             _resultValue.featureGroups = featureGroups;
+            _resultValue.projectNumber = projectNumber;
             return _resultValue;
         }
     }

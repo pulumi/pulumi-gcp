@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class ProjectBucketConfigIndexConfig {
     /**
      * @return The LogEntry field path to index.
-     * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+     * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
      * 
      */
     private String fieldPath;
@@ -25,7 +25,7 @@ public final class ProjectBucketConfigIndexConfig {
     private ProjectBucketConfigIndexConfig() {}
     /**
      * @return The LogEntry field path to index.
-     * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+     * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
      * 
      */
     public String fieldPath() {

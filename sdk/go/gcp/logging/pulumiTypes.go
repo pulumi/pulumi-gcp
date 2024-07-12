@@ -257,7 +257,7 @@ func (o BillingAccountBucketConfigCmekSettingsPtrOutput) ServiceAccountId() pulu
 
 type BillingAccountBucketConfigIndexConfig struct {
 	// The LogEntry field path to index.
-	// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+	// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
 	FieldPath string `pulumi:"fieldPath"`
 	// The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
 	Type string `pulumi:"type"`
@@ -276,7 +276,7 @@ type BillingAccountBucketConfigIndexConfigInput interface {
 
 type BillingAccountBucketConfigIndexConfigArgs struct {
 	// The LogEntry field path to index.
-	// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+	// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
 	FieldPath pulumi.StringInput `pulumi:"fieldPath"`
 	// The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -334,7 +334,7 @@ func (o BillingAccountBucketConfigIndexConfigOutput) ToBillingAccountBucketConfi
 }
 
 // The LogEntry field path to index.
-// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
 func (o BillingAccountBucketConfigIndexConfigOutput) FieldPath() pulumi.StringOutput {
 	return o.ApplyT(func(v BillingAccountBucketConfigIndexConfig) string { return v.FieldPath }).(pulumi.StringOutput)
 }
@@ -884,7 +884,7 @@ func (o FolderBucketConfigCmekSettingsPtrOutput) ServiceAccountId() pulumi.Strin
 
 type FolderBucketConfigIndexConfig struct {
 	// The LogEntry field path to index.
-	// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+	// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
 	FieldPath string `pulumi:"fieldPath"`
 	// The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
 	Type string `pulumi:"type"`
@@ -903,7 +903,7 @@ type FolderBucketConfigIndexConfigInput interface {
 
 type FolderBucketConfigIndexConfigArgs struct {
 	// The LogEntry field path to index.
-	// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+	// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
 	FieldPath pulumi.StringInput `pulumi:"fieldPath"`
 	// The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -961,7 +961,7 @@ func (o FolderBucketConfigIndexConfigOutput) ToFolderBucketConfigIndexConfigOutp
 }
 
 // The LogEntry field path to index.
-// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
 func (o FolderBucketConfigIndexConfigOutput) FieldPath() pulumi.StringOutput {
 	return o.ApplyT(func(v FolderBucketConfigIndexConfig) string { return v.FieldPath }).(pulumi.StringOutput)
 }
@@ -3034,7 +3034,7 @@ func (o OrganizationBucketConfigCmekSettingsPtrOutput) ServiceAccountId() pulumi
 
 type OrganizationBucketConfigIndexConfig struct {
 	// The LogEntry field path to index.
-	// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+	// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
 	FieldPath string `pulumi:"fieldPath"`
 	// The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
 	Type string `pulumi:"type"`
@@ -3053,7 +3053,7 @@ type OrganizationBucketConfigIndexConfigInput interface {
 
 type OrganizationBucketConfigIndexConfigArgs struct {
 	// The LogEntry field path to index.
-	// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+	// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
 	FieldPath pulumi.StringInput `pulumi:"fieldPath"`
 	// The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -3111,7 +3111,7 @@ func (o OrganizationBucketConfigIndexConfigOutput) ToOrganizationBucketConfigInd
 }
 
 // The LogEntry field path to index.
-// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
 func (o OrganizationBucketConfigIndexConfigOutput) FieldPath() pulumi.StringOutput {
 	return o.ApplyT(func(v OrganizationBucketConfigIndexConfig) string { return v.FieldPath }).(pulumi.StringOutput)
 }
@@ -3661,7 +3661,7 @@ func (o ProjectBucketConfigCmekSettingsPtrOutput) ServiceAccountId() pulumi.Stri
 
 type ProjectBucketConfigIndexConfig struct {
 	// The LogEntry field path to index.
-	// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+	// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
 	FieldPath string `pulumi:"fieldPath"`
 	// The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
 	Type string `pulumi:"type"`
@@ -3680,7 +3680,7 @@ type ProjectBucketConfigIndexConfigInput interface {
 
 type ProjectBucketConfigIndexConfigArgs struct {
 	// The LogEntry field path to index.
-	// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+	// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
 	FieldPath pulumi.StringInput `pulumi:"fieldPath"`
 	// The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -3738,7 +3738,7 @@ func (o ProjectBucketConfigIndexConfigOutput) ToProjectBucketConfigIndexConfigOu
 }
 
 // The LogEntry field path to index.
-// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+// Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
 func (o ProjectBucketConfigIndexConfigOutput) FieldPath() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectBucketConfigIndexConfig) string { return v.FieldPath }).(pulumi.StringOutput)
 }

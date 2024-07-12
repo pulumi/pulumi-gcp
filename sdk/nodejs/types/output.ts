@@ -10323,6 +10323,13 @@ export namespace certificatemanager {
         ports: number[];
     }
 
+    export interface TrustConfigAllowlistedCertificate {
+        /**
+         * PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.
+         */
+        pemCertificate: string;
+    }
+
     export interface TrustConfigTrustStore {
         /**
          * Set of intermediate CA certificates used for the path building phase of chain validation.
@@ -24766,8 +24773,7 @@ export namespace compute {
         /**
          * Time within the window to start the operations.
          * It must be in an hourly format "HH:MM",
-         * where HH : [00-23] and MM : [00] GMT.
-         * eg: 21:00
+         * where HH : [00-23] and MM : [00] GMT. eg: 21:00
          */
         startTime: string;
     }
@@ -33213,8 +33219,7 @@ export namespace compute {
         /**
          * Time within the window to start the operations.
          * It must be in an hourly format "HH:MM",
-         * where HH : [00-23] and MM : [00] GMT.
-         * eg: 21:00
+         * where HH : [00-23] and MM : [00] GMT. eg: 21:00
          */
         startTime: string;
     }
@@ -38061,7 +38066,7 @@ export namespace container {
          */
         advancedDatapathObservabilityConfigs: outputs.container.ClusterMonitoringConfigAdvancedDatapathObservabilityConfig[];
         /**
-         * The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET` and `CADVISOR`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
+         * The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
          */
         enableComponents: string[];
         /**
@@ -40316,7 +40321,7 @@ export namespace container {
          */
         advancedDatapathObservabilityConfigs: outputs.container.GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig[];
         /**
-         * GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET and CADVISOR.
+         * GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET, CADVISOR and DCGM.
          */
         enableComponents: string[];
         /**
@@ -48842,6 +48847,7 @@ export namespace dataloss {
         /**
          * How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
          * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+         * If TimespanConfig is set, set this to an empty string to avoid using the default value.
          * Default value is `TOP`.
          * Possible values are: `TOP`, `RANDOM_START`.
          */
@@ -49551,6 +49557,11 @@ export namespace dataplex {
          */
         setExpectation?: outputs.dataplex.DatascanDataQualitySpecRuleSetExpectation;
         /**
+         * Table rule which evaluates whether any row matches invalid state.
+         * Structure is documented below.
+         */
+        sqlAssertion?: outputs.dataplex.DatascanDataQualitySpecRuleSqlAssertion;
+        /**
          * ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
          * Structure is documented below.
          */
@@ -49613,6 +49624,13 @@ export namespace dataplex {
          * Expected values for the column value.
          */
         values: string[];
+    }
+
+    export interface DatascanDataQualitySpecRuleSqlAssertion {
+        /**
+         * The SQL statement.
+         */
+        sqlStatement: string;
     }
 
     export interface DatascanDataQualitySpecRuleStatisticRangeExpectation {
@@ -59836,6 +59854,10 @@ export namespace gkehub {
 
     export interface FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
         /**
+         * Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+         */
+        enabled?: boolean;
+        /**
          * Git repo configuration for the cluster
          * Structure is documented below.
          */
@@ -65158,6 +65180,98 @@ export namespace kms {
         subjectAlternativeDnsNames: string[];
     }
 
+    export interface GetCryptoKeysKey {
+        /**
+         * The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+         * The resource name is in the format "projects/*&#47;locations/*&#47;ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+         */
+        cryptoKeyBackend: string;
+        /**
+         * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+         * If not specified at creation time, the default duration is 30 days.
+         */
+        destroyScheduledDuration: string;
+        effectiveLabels: {[key: string]: string};
+        id: string;
+        /**
+         * Whether this key may contain imported versions only.
+         */
+        importOnly: boolean;
+        /**
+         * The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
+         */
+        keyRing?: string;
+        /**
+         * Labels with user-defined metadata to apply to this resource.
+         *
+         *
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field 'effective_labels' for all of the labels present on the resource.
+         */
+        labels: {[key: string]: string};
+        /**
+         * The resource name for the CryptoKey.
+         */
+        name?: string;
+        /**
+         * A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+         * Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+         */
+        primaries: outputs.kms.GetCryptoKeysKeyPrimary[];
+        /**
+         * The combination of labels configured directly on the resource
+         *  and default labels configured on the provider.
+         */
+        pulumiLabels: {[key: string]: string};
+        /**
+         * The immutable purpose of this CryptoKey. See the
+         * [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
+         * for possible inputs.
+         * Default value is "ENCRYPT_DECRYPT".
+         */
+        purpose: string;
+        /**
+         * Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
+         * The first rotation will take place after the specified period. The rotation period has
+         * the format of a decimal number with up to 9 fractional digits, followed by the
+         * letter 's' (seconds). It must be greater than a day (ie, 86400).
+         */
+        rotationPeriod: string;
+        /**
+         * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+         * You must use the 'google_kms_crypto_key_version' resource to create a new CryptoKeyVersion
+         * or 'google_kms_key_ring_import_job' resource to import the CryptoKeyVersion.
+         */
+        skipInitialVersionCreation: boolean;
+        /**
+         * A template describing settings for new crypto key versions.
+         */
+        versionTemplates: outputs.kms.GetCryptoKeysKeyVersionTemplate[];
+    }
+
+    export interface GetCryptoKeysKeyPrimary {
+        /**
+         * The resource name for this CryptoKeyVersion.
+         */
+        name: string;
+        /**
+         * The current state of the CryptoKeyVersion.
+         */
+        state: string;
+    }
+
+    export interface GetCryptoKeysKeyVersionTemplate {
+        /**
+         * The algorithm to use when creating a version based on this template.
+         * See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+         */
+        algorithm: string;
+        /**
+         * The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
+         */
+        protectionLevel: string;
+    }
+
     export interface GetKMSCryptoKeyPrimary {
         /**
          * The CryptoKey's name.
@@ -65191,6 +65305,11 @@ export namespace kms {
          * The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
          */
         protectionLevel: string;
+    }
+
+    export interface GetKeyRingsKeyRing {
+        id: string;
+        name: string;
     }
 
     export interface KeyRingIAMBindingCondition {
@@ -65291,7 +65410,7 @@ export namespace logging {
     export interface BillingAccountBucketConfigIndexConfig {
         /**
          * The LogEntry field path to index.
-         * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+         * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
          */
         fieldPath: string;
         /**
@@ -65364,7 +65483,7 @@ export namespace logging {
     export interface FolderBucketConfigIndexConfig {
         /**
          * The LogEntry field path to index.
-         * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+         * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
          */
         fieldPath: string;
         /**
@@ -65609,7 +65728,7 @@ export namespace logging {
     export interface OrganizationBucketConfigIndexConfig {
         /**
          * The LogEntry field path to index.
-         * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+         * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
          */
         fieldPath: string;
         /**
@@ -65682,7 +65801,7 @@ export namespace logging {
     export interface ProjectBucketConfigIndexConfig {
         /**
          * The LogEntry field path to index.
-         * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+         * Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
          */
         fieldPath: string;
         /**
@@ -70908,6 +71027,7 @@ export namespace organizations {
 export namespace orgpolicy {
     export interface PolicyDryRunSpec {
         /**
+         * (Output)
          * An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
          */
         etag: string;
@@ -70921,9 +71041,11 @@ export namespace orgpolicy {
         reset?: boolean;
         /**
          * In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+         * Structure is documented below.
          */
         rules?: outputs.orgpolicy.PolicyDryRunSpecRule[];
         /**
+         * (Output)
          * Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
          */
         updateTime: string;
@@ -70936,6 +71058,7 @@ export namespace orgpolicy {
         allowAll?: string;
         /**
          * A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where keyName and valueName are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+         * Structure is documented below.
          */
         condition?: outputs.orgpolicy.PolicyDryRunSpecRuleCondition;
         /**
@@ -70947,7 +71070,8 @@ export namespace orgpolicy {
          */
         enforce?: string;
         /**
-         * List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+         * List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+         * Structure is documented below.
          */
         values?: outputs.orgpolicy.PolicyDryRunSpecRuleValues;
     }
@@ -70984,6 +71108,7 @@ export namespace orgpolicy {
 
     export interface PolicySpec {
         /**
+         * (Output)
          * An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
          */
         etag: string;
@@ -70997,9 +71122,11 @@ export namespace orgpolicy {
         reset?: boolean;
         /**
          * Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
+         * Structure is documented below.
          */
         rules?: outputs.orgpolicy.PolicySpecRule[];
         /**
+         * (Output)
          * Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
          */
         updateTime: string;
@@ -71012,6 +71139,7 @@ export namespace orgpolicy {
         allowAll?: string;
         /**
          * A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where keyName and valueName are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+         * Structure is documented below.
          */
         condition?: outputs.orgpolicy.PolicySpecRuleCondition;
         /**
@@ -71023,7 +71151,8 @@ export namespace orgpolicy {
          */
         enforce?: string;
         /**
-         * List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+         * List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+         * Structure is documented below.
          */
         values?: outputs.orgpolicy.PolicySpecRuleValues;
     }
@@ -73397,7 +73526,7 @@ export namespace pubsub {
          */
         serviceAccountEmail: string;
         /**
-         * The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+         * The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
          */
         table: string;
         /**
@@ -73736,7 +73865,7 @@ export namespace pubsub {
          */
         serviceAccountEmail?: string;
         /**
-         * The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+         * The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
          */
         table: string;
         /**
@@ -74926,6 +75055,58 @@ export namespace securesourcemanager {
         sshServiceAttachment: string;
     }
 
+    export interface RepositoryIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface RepositoryIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface RepositoryInitialConfig {
+        /**
+         * Default branch name of the repository.
+         */
+        defaultBranch?: string;
+        /**
+         * List of gitignore template names user can choose from.
+         * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+         */
+        gitignores?: string[];
+        /**
+         * License template name user can choose from.
+         * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+         */
+        license?: string;
+        /**
+         * README template name.
+         * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+         */
+        readme?: string;
+    }
+
+    export interface RepositoryUri {
+        /**
+         * (Output)
+         * API is the URI for API access.
+         */
+        api: string;
+        /**
+         * (Output)
+         * gitHttps is the git HTTPS URI for git operations.
+         */
+        gitHttps: string;
+        /**
+         * (Output)
+         * HTML is the URI for the user to view the repository in a browser.
+         */
+        html: string;
+    }
+
 }
 
 export namespace securitycenter {
@@ -75650,6 +75831,33 @@ export namespace securitycenter {
         description?: string;
         expression: string;
         title: string;
+    }
+
+    export interface V2OrganizationNotificationConfigStreamingConfig {
+        /**
+         * Expression that defines the filter to apply across create/update
+         * events of assets or findings as specified by the event type. The
+         * expression is a list of zero or more restrictions combined via
+         * logical operators AND and OR. Parentheses are supported, and OR
+         * has higher precedence than AND.
+         * Restrictions have the form <field> <operator> <value> and may have
+         * a - character in front of them to indicate negation. The fields
+         * map to those defined in the corresponding resource.
+         * The supported operators are:
+         * * = for all value types.
+         * * >, <, >=, <= for integer values.
+         * * :, meaning substring matching, for strings.
+         * The supported value types are:
+         * * string literals in quotes.
+         * * integer literals without quotes.
+         * * boolean literals true and false without quotes.
+         * See
+         * [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+         * for information on how to write a filter.
+         *
+         * - - -
+         */
+        filter: string;
     }
 
 }
@@ -79498,6 +79706,10 @@ export namespace vertex {
          * Structure is documented below.
          */
         featureGroups: outputs.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup[];
+        /**
+         * The project number of the parent project of the feature Groups.
+         */
+        projectNumber?: string;
     }
 
     export interface AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup {
@@ -80940,6 +81152,14 @@ export namespace workstations {
          * Network tags to add to the Compute Engine machines backing the Workstations.
          */
         tags?: string[];
+        /**
+         * Resource manager tags to be bound to the VM instances backing the Workstations.
+         * Tag keys and values have the same definition as
+         * https://cloud.google.com/resource-manager/docs/tags/tags-overview
+         * Keys must be in the format `tagKeys/{tag_key_id}`, and
+         * values are in the format `tagValues/456`.
+         */
+        vmTags?: {[key: string]: string};
     }
 
     export interface WorkstationConfigHostGceInstanceAccelerator {

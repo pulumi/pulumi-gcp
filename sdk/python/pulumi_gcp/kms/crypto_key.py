@@ -41,7 +41,7 @@ class CryptoKeyArgs:
         :param pulumi.Input[str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
                The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
         :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-               If not specified at creation time, the default duration is 24 hours.
+               If not specified at creation time, the default duration is 30 days.
         :param pulumi.Input[bool] import_only: Whether this key may contain imported versions only.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
                
@@ -116,7 +116,7 @@ class CryptoKeyArgs:
     def destroy_scheduled_duration(self) -> Optional[pulumi.Input[str]]:
         """
         The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-        If not specified at creation time, the default duration is 24 hours.
+        If not specified at creation time, the default duration is 30 days.
         """
         return pulumi.get(self, "destroy_scheduled_duration")
 
@@ -242,7 +242,7 @@ class _CryptoKeyState:
         :param pulumi.Input[str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
                The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
         :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-               If not specified at creation time, the default duration is 24 hours.
+               If not specified at creation time, the default duration is 30 days.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] import_only: Whether this key may contain imported versions only.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
@@ -319,7 +319,7 @@ class _CryptoKeyState:
     def destroy_scheduled_duration(self) -> Optional[pulumi.Input[str]]:
         """
         The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-        If not specified at creation time, the default duration is 24 hours.
+        If not specified at creation time, the default duration is 30 days.
         """
         return pulumi.get(self, "destroy_scheduled_duration")
 
@@ -568,7 +568,7 @@ class CryptoKey(pulumi.CustomResource):
         :param pulumi.Input[str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
                The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
         :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-               If not specified at creation time, the default duration is 24 hours.
+               If not specified at creation time, the default duration is 30 days.
         :param pulumi.Input[bool] import_only: Whether this key may contain imported versions only.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
@@ -752,7 +752,7 @@ class CryptoKey(pulumi.CustomResource):
         :param pulumi.Input[str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
                The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
         :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-               If not specified at creation time, the default duration is 24 hours.
+               If not specified at creation time, the default duration is 30 days.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] import_only: Whether this key may contain imported versions only.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
@@ -817,7 +817,7 @@ class CryptoKey(pulumi.CustomResource):
     def destroy_scheduled_duration(self) -> pulumi.Output[str]:
         """
         The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-        If not specified at creation time, the default duration is 24 hours.
+        If not specified at creation time, the default duration is 30 days.
         """
         return pulumi.get(self, "destroy_scheduled_duration")
 
