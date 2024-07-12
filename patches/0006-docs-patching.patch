@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Venelin <venelin@pulumi.com>
-Date: Fri, 1 Mar 2024 17:59:26 +0000
+Date: Fri, 12 Jul 2024 15:35:01 +0100
 Subject: [PATCH] docs patching
 
 
@@ -174,19 +174,6 @@ index e3f4654b4..5ebc3ee84 100644
    empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
    an empty value.
  
-diff --git a/website/docs/r/bigquery_reservation_assignment.html.markdown b/website/docs/r/bigquery_reservation_assignment.html.markdown
-index ff370dce5..423d163bb 100644
---- a/website/docs/r/bigquery_reservation_assignment.html.markdown
-+++ b/website/docs/r/bigquery_reservation_assignment.html.markdown
-@@ -25,7 +25,7 @@ The BigqueryReservation Assignment resource
- ## Example Usage - basic
- ```hcl
- resource "google_bigquery_reservation" "basic" {
--  name  = "tf-test-my-reservation%{random_suffix}"
-+  name  = "tf-test-my-reservation"
-   project = "my-project-name"
-   location = "us-central1"
-   slot_capacity = 0
 diff --git a/website/docs/r/bigquery_table.html.markdown b/website/docs/r/bigquery_table.html.markdown
 index 48109ed6a..e3bd7d19c 100644
 --- a/website/docs/r/bigquery_table.html.markdown
@@ -535,7 +522,7 @@ index c3e738686..4ab0fb25d 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/composer_environment.html.markdown b/website/docs/r/composer_environment.html.markdown
-index 330f9e76b..031459626 100644
+index 31735da2c..0eb77e1d3 100644
 --- a/website/docs/r/composer_environment.html.markdown
 +++ b/website/docs/r/composer_environment.html.markdown
 @@ -27,18 +27,18 @@ To get more information about Environments, see:
@@ -600,7 +587,7 @@ index 0a305240d..845f44993 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index d0c3e1249..30b3f0c3c 100644
+index 028c836d2..e13bb784d 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
 @@ -34,9 +34,8 @@ To get more information about BackendService, see:
@@ -696,7 +683,7 @@ index f9cad9040..243ba6fd0 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index 9f7553b52..b3ae4ddc6 100644
+index 311501bfe..331d0e855 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -87,7 +87,7 @@ The following arguments are supported:
@@ -853,7 +840,7 @@ index fe6888f17..64fce6636 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index e1030a25b..807ac4bb7 100644
+index 3a04965be..31dab61ff 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -183,12 +183,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -1171,7 +1158,7 @@ index 4a4e7be0e..3891cdef3 100644
  
  * `wait_for_instances_status` - (Optional) When used with `wait_for_instances` it specifies the status to wait for.
 diff --git a/website/docs/r/compute_region_network_endpoint_group.html.markdown b/website/docs/r/compute_region_network_endpoint_group.html.markdown
-index 6e1b39348..56623b409 100644
+index c5a5ddd00..57b634921 100644
 --- a/website/docs/r/compute_region_network_endpoint_group.html.markdown
 +++ b/website/docs/r/compute_region_network_endpoint_group.html.markdown
 @@ -23,11 +23,6 @@ description: |-
@@ -1200,7 +1187,7 @@ index 5f6a81f91..712ade9ee 100644
  
    version {
 diff --git a/website/docs/r/compute_region_ssl_certificate.html.markdown b/website/docs/r/compute_region_ssl_certificate.html.markdown
-index 544d9eb18..b94301b67 100644
+index 652105688..f27e211f1 100644
 --- a/website/docs/r/compute_region_ssl_certificate.html.markdown
 +++ b/website/docs/r/compute_region_ssl_certificate.html.markdown
 @@ -30,9 +30,8 @@ To get more information about RegionSslCertificate, see:
@@ -1490,7 +1477,7 @@ index 000000000..62d6db522
 +
 +This resource supports [User Project Overrides](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference#user_project_override).
 diff --git a/website/docs/r/compute_security_policy.html.markdown b/website/docs/r/compute_security_policy.html.markdown
-index 76bb154d9..f605d8c1b 100644
+index 194dcc798..199221c16 100644
 --- a/website/docs/r/compute_security_policy.html.markdown
 +++ b/website/docs/r/compute_security_policy.html.markdown
 @@ -10,7 +10,7 @@ A Security Policy defines an IP blacklist or whitelist that protects load balanc
@@ -1519,7 +1506,7 @@ index d93e83d18..579bc9575 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=snapshot_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/compute_ssl_certificate.html.markdown b/website/docs/r/compute_ssl_certificate.html.markdown
-index fd6a946cb..6db265743 100644
+index db3205a65..88f367aec 100644
 --- a/website/docs/r/compute_ssl_certificate.html.markdown
 +++ b/website/docs/r/compute_ssl_certificate.html.markdown
 @@ -30,9 +30,8 @@ To get more information about SslCertificate, see:
@@ -1550,7 +1537,7 @@ index fd6a946cb..6db265743 100644
  resource "google_compute_ssl_certificate" "default" {
    name_prefix = "my-certificate-"
 diff --git a/website/docs/r/compute_subnetwork.html.markdown b/website/docs/r/compute_subnetwork.html.markdown
-index 3bf487bd0..42a547efd 100644
+index a45ba97b9..86dc8cfcd 100644
 --- a/website/docs/r/compute_subnetwork.html.markdown
 +++ b/website/docs/r/compute_subnetwork.html.markdown
 @@ -298,11 +298,6 @@ The following arguments are supported:
@@ -1610,7 +1597,7 @@ index f18c91533..924ad4cc0 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 70dfa529b..384824f8d 100644
+index 048ea25a4..671978f30 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:
@@ -3081,7 +3068,7 @@ index 3eff57c07..662d642d1 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/kms_crypto_key.html.markdown b/website/docs/r/kms_crypto_key.html.markdown
-index a1ee8d077..a3d2e5e41 100644
+index a32153109..1c6bd556e 100644
 --- a/website/docs/r/kms_crypto_key.html.markdown
 +++ b/website/docs/r/kms_crypto_key.html.markdown
 @@ -23,9 +23,9 @@ A `CryptoKey` represents a logical key that can be used for cryptographic operat
@@ -3138,7 +3125,7 @@ index 66490e21d..e4c2f7b24 100644
  ## Example Usage - Kms Secret Ciphertext Basic
  
 diff --git a/website/docs/r/logging_billing_account_bucket_config.html.markdown b/website/docs/r/logging_billing_account_bucket_config.html.markdown
-index 7f3e127e6..2ed426047 100644
+index 2f481874d..106aa2e36 100644
 --- a/website/docs/r/logging_billing_account_bucket_config.html.markdown
 +++ b/website/docs/r/logging_billing_account_bucket_config.html.markdown
 @@ -10,7 +10,7 @@ Manages a billing account level logging bucket config. For more information see
@@ -3164,7 +3151,7 @@ index 97f1b3717..0cad9a7a7 100644
  
  ## Example Usage
 diff --git a/website/docs/r/logging_folder_bucket_config.html.markdown b/website/docs/r/logging_folder_bucket_config.html.markdown
-index e6dd1094a..313ca2cac 100644
+index e73a8ebd9..666d3000e 100644
 --- a/website/docs/r/logging_folder_bucket_config.html.markdown
 +++ b/website/docs/r/logging_folder_bucket_config.html.markdown
 @@ -10,7 +10,7 @@ Manages a folder-level logging bucket config. For more information see
@@ -3190,7 +3177,7 @@ index 7a7f6411e..c8f1c7331 100644
  ## Example Usage
  
 diff --git a/website/docs/r/logging_organization_bucket_config.html.markdown b/website/docs/r/logging_organization_bucket_config.html.markdown
-index 6dcefaa42..d048a0186 100644
+index 9255da93e..fd98ec7ee 100644
 --- a/website/docs/r/logging_organization_bucket_config.html.markdown
 +++ b/website/docs/r/logging_organization_bucket_config.html.markdown
 @@ -10,7 +10,7 @@ Manages a organization-level logging bucket config. For more information see
@@ -3216,7 +3203,7 @@ index 5e2936468..4ba77d567 100644
  ## Example Usage
  
 diff --git a/website/docs/r/logging_project_bucket_config.html.markdown b/website/docs/r/logging_project_bucket_config.html.markdown
-index a829b5c06..a3797de9d 100644
+index 2e57e1993..b4ee7bfaa 100644
 --- a/website/docs/r/logging_project_bucket_config.html.markdown
 +++ b/website/docs/r/logging_project_bucket_config.html.markdown
 @@ -10,7 +10,7 @@ Manages a project-level logging bucket config. For more information see
@@ -3255,7 +3242,7 @@ index a883fa8c6..adadb44c6 100644
  ~> **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
  
 diff --git a/website/docs/r/monitoring_notification_channel.html.markdown b/website/docs/r/monitoring_notification_channel.html.markdown
-index 1c81b91c9..46dc23462 100644
+index 9a3a1f78f..6f8ccd37e 100644
 --- a/website/docs/r/monitoring_notification_channel.html.markdown
 +++ b/website/docs/r/monitoring_notification_channel.html.markdown
 @@ -30,7 +30,7 @@ and labels to configure that channel. Each `type` has specific labels that need
@@ -3268,8 +3255,8 @@ index 1c81b91c9..46dc23462 100644
  
  A list of supported channels per project the `list` endpoint can be
 @@ -45,9 +45,8 @@ To get more information about NotificationChannel, see:
-     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
      * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
  
 -~> **Warning:** All arguments including the following potentially sensitive
 -values will be stored in the raw state as plain text: `sensitive_labels.auth_token`, `sensitive_labels.password`, `sensitive_labels.service_key`.
@@ -3289,7 +3276,7 @@ index 1c81b91c9..46dc23462 100644
    the sensitive_labels block, but cannot be configured in both places.
  
 diff --git a/website/docs/r/monitoring_slo.html.markdown b/website/docs/r/monitoring_slo.html.markdown
-index 7967f8278..5ad114b4f 100644
+index b01ea138a..adde89f07 100644
 --- a/website/docs/r/monitoring_slo.html.markdown
 +++ b/website/docs/r/monitoring_slo.html.markdown
 @@ -53,7 +53,7 @@ resource "google_monitoring_slo" "appeng_slo" {
