@@ -11,6 +11,7 @@ import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleRangeExpectatio
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleRegexExpectationArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleRowConditionExpectationArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleSetExpectationArgs;
+import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleSqlAssertionArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleStatisticRangeExpectationArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleTableConditionExpectationArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleUniquenessExpectationArgs;
@@ -195,6 +196,23 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
     }
 
     /**
+     * Table rule which evaluates whether any row matches invalid state.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sqlAssertion")
+    private @Nullable Output<DatascanDataQualitySpecRuleSqlAssertionArgs> sqlAssertion;
+
+    /**
+     * @return Table rule which evaluates whether any row matches invalid state.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DatascanDataQualitySpecRuleSqlAssertionArgs>> sqlAssertion() {
+        return Optional.ofNullable(this.sqlAssertion);
+    }
+
+    /**
      * ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
      * Structure is documented below.
      * 
@@ -271,6 +289,7 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
         this.regexExpectation = $.regexExpectation;
         this.rowConditionExpectation = $.rowConditionExpectation;
         this.setExpectation = $.setExpectation;
+        this.sqlAssertion = $.sqlAssertion;
         this.statisticRangeExpectation = $.statisticRangeExpectation;
         this.tableConditionExpectation = $.tableConditionExpectation;
         this.threshold = $.threshold;
@@ -521,6 +540,29 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
          */
         public Builder setExpectation(DatascanDataQualitySpecRuleSetExpectationArgs setExpectation) {
             return setExpectation(Output.of(setExpectation));
+        }
+
+        /**
+         * @param sqlAssertion Table rule which evaluates whether any row matches invalid state.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sqlAssertion(@Nullable Output<DatascanDataQualitySpecRuleSqlAssertionArgs> sqlAssertion) {
+            $.sqlAssertion = sqlAssertion;
+            return this;
+        }
+
+        /**
+         * @param sqlAssertion Table rule which evaluates whether any row matches invalid state.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sqlAssertion(DatascanDataQualitySpecRuleSqlAssertionArgs sqlAssertion) {
+            return sqlAssertion(Output.of(sqlAssertion));
         }
 
         /**

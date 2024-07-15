@@ -10,6 +10,7 @@ import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleRangeExpectati
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleRegexExpectation;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleRowConditionExpectation;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleSetExpectation;
+import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleSqlAssertion;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleStatisticRangeExpectation;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleTableConditionExpectation;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleUniquenessExpectation;
@@ -81,6 +82,12 @@ public final class DatascanDataQualitySpecRule {
      * 
      */
     private @Nullable DatascanDataQualitySpecRuleSetExpectation setExpectation;
+    /**
+     * @return Table rule which evaluates whether any row matches invalid state.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable DatascanDataQualitySpecRuleSqlAssertion sqlAssertion;
     /**
      * @return ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
      * Structure is documented below.
@@ -185,6 +192,14 @@ public final class DatascanDataQualitySpecRule {
         return Optional.ofNullable(this.setExpectation);
     }
     /**
+     * @return Table rule which evaluates whether any row matches invalid state.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<DatascanDataQualitySpecRuleSqlAssertion> sqlAssertion() {
+        return Optional.ofNullable(this.sqlAssertion);
+    }
+    /**
      * @return ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
      * Structure is documented below.
      * 
@@ -234,6 +249,7 @@ public final class DatascanDataQualitySpecRule {
         private @Nullable DatascanDataQualitySpecRuleRegexExpectation regexExpectation;
         private @Nullable DatascanDataQualitySpecRuleRowConditionExpectation rowConditionExpectation;
         private @Nullable DatascanDataQualitySpecRuleSetExpectation setExpectation;
+        private @Nullable DatascanDataQualitySpecRuleSqlAssertion sqlAssertion;
         private @Nullable DatascanDataQualitySpecRuleStatisticRangeExpectation statisticRangeExpectation;
         private @Nullable DatascanDataQualitySpecRuleTableConditionExpectation tableConditionExpectation;
         private @Nullable Double threshold;
@@ -251,6 +267,7 @@ public final class DatascanDataQualitySpecRule {
     	      this.regexExpectation = defaults.regexExpectation;
     	      this.rowConditionExpectation = defaults.rowConditionExpectation;
     	      this.setExpectation = defaults.setExpectation;
+    	      this.sqlAssertion = defaults.sqlAssertion;
     	      this.statisticRangeExpectation = defaults.statisticRangeExpectation;
     	      this.tableConditionExpectation = defaults.tableConditionExpectation;
     	      this.threshold = defaults.threshold;
@@ -320,6 +337,12 @@ public final class DatascanDataQualitySpecRule {
             return this;
         }
         @CustomType.Setter
+        public Builder sqlAssertion(@Nullable DatascanDataQualitySpecRuleSqlAssertion sqlAssertion) {
+
+            this.sqlAssertion = sqlAssertion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder statisticRangeExpectation(@Nullable DatascanDataQualitySpecRuleStatisticRangeExpectation statisticRangeExpectation) {
 
             this.statisticRangeExpectation = statisticRangeExpectation;
@@ -355,6 +378,7 @@ public final class DatascanDataQualitySpecRule {
             _resultValue.regexExpectation = regexExpectation;
             _resultValue.rowConditionExpectation = rowConditionExpectation;
             _resultValue.setExpectation = setExpectation;
+            _resultValue.sqlAssertion = sqlAssertion;
             _resultValue.statisticRangeExpectation = statisticRangeExpectation;
             _resultValue.tableConditionExpectation = tableConditionExpectation;
             _resultValue.threshold = threshold;

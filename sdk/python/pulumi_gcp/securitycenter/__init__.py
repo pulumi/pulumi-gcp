@@ -23,5 +23,6 @@ from .source import *
 from .source_iam_binding import *
 from .source_iam_member import *
 from .source_iam_policy import *
+from .v2_organization_notification_config import *
 from ._inputs import *
 from . import outputs

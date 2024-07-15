@@ -214,6 +214,12 @@ import * as utilities from "../utilities";
  *                     sqlExpression: "COUNT(*) > 0",
  *                 },
  *             },
+ *             {
+ *                 dimension: "VALIDITY",
+ *                 sqlAssertion: {
+ *                     sqlStatement: "select * from bigquery-public-data.austin_bikeshare.bikeshare_stations where station_id is null",
+ *                 },
+ *             },
  *         ],
  *     },
  *     project: "my-project-name",

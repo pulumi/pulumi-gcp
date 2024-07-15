@@ -146,6 +146,46 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Security Address Groups Cloud Armor
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networksecurity.AddressGroup;
+ * import com.pulumi.gcp.networksecurity.AddressGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new AddressGroup("default", AddressGroupArgs.builder()
+ *             .name("my-address-groups")
+ *             .parent("projects/my-project-name")
+ *             .location("global")
+ *             .type("IPV4")
+ *             .capacity("100")
+ *             .purposes("CLOUD_ARMOR")
+ *             .items("208.80.154.224/32")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -321,6 +361,22 @@ public class AddressGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * List of supported purposes of the Address Group.
+     * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+     * 
+     */
+    @Export(name="purposes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> purposes;
+
+    /**
+     * @return List of supported purposes of the Address Group.
+     * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+     * 
+     */
+    public Output<Optional<List<String>>> purposes() {
+        return Codegen.optional(this.purposes);
     }
     /**
      * The type of the Address Group. Possible values are &#34;IPV4&#34; or &#34;IPV6&#34;.

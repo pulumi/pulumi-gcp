@@ -39654,8 +39654,7 @@ if not MYPY:
         """
         Time within the window to start the operations.
         It must be in an hourly format "HH:MM",
-        where HH : [00-23] and MM : [00] GMT.
-        eg: 21:00
+        where HH : [00-23] and MM : [00] GMT. eg: 21:00
         """
 elif False:
     ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgsDict: TypeAlias = Mapping[str, Any]
@@ -39669,8 +39668,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs:
         :param pulumi.Input[int] hours_in_cycle: The number of hours between snapshots.
         :param pulumi.Input[str] start_time: Time within the window to start the operations.
                It must be in an hourly format "HH:MM",
-               where HH : [00-23] and MM : [00] GMT.
-               eg: 21:00
+               where HH : [00-23] and MM : [00] GMT. eg: 21:00
         """
         pulumi.set(__self__, "hours_in_cycle", hours_in_cycle)
         pulumi.set(__self__, "start_time", start_time)
@@ -39693,8 +39691,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs:
         """
         Time within the window to start the operations.
         It must be in an hourly format "HH:MM",
-        where HH : [00-23] and MM : [00] GMT.
-        eg: 21:00
+        where HH : [00-23] and MM : [00] GMT. eg: 21:00
         """
         return pulumi.get(self, "start_time")
 

@@ -768,6 +768,71 @@ import (
 //	}
 //
 // ```
+// ### Dlp Job Trigger Timespan Config Big Query
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataloss.NewPreventionJobTrigger(ctx, "timespan_config_big_query", &dataloss.PreventionJobTriggerArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
+//				Description: pulumi.String("BigQuery DLP Job Trigger with timespan config and row limit"),
+//				DisplayName: pulumi.String("bigquery-dlp-job-trigger-limit-timespan"),
+//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
+//					&dataloss.PreventionJobTriggerTriggerArgs{
+//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//						},
+//					},
+//				},
+//				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					InspectTemplateName: pulumi.String("projects/test/locations/global/inspectTemplates/6425492983381733900"),
+//					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
+//						BigQueryOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs{
+//							TableReference: &dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs{
+//								ProjectId: pulumi.String("project"),
+//								DatasetId: pulumi.String("dataset"),
+//								TableId:   pulumi.String("table"),
+//							},
+//							SampleMethod: pulumi.String(""),
+//						},
+//						TimespanConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs{
+//							StartTime: pulumi.String("2023-01-01T00:00:23Z"),
+//							TimestampField: &dataloss.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs{
+//								Name: pulumi.String("timestamp"),
+//							},
+//						},
+//					},
+//					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
+//						&dataloss.PreventionJobTriggerInspectJobActionArgs{
+//							SaveFindings: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs{
+//								OutputConfig: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{
+//									Table: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{
+//										ProjectId: pulumi.String("project"),
+//										DatasetId: pulumi.String("output"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

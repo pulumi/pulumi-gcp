@@ -17,8 +17,8 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes)
  * * How-to Guides
- *     * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
  *     * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
+ *     * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
  *
  * ## Example Usage
  *
@@ -204,6 +204,10 @@ export class Volume extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Specifies the replica zone for regional volume.
+     */
+    public /*out*/ readonly replicaZone!: pulumi.Output<string>;
+    /**
      * Used to create this volume from a snapshot (= cloning) or an backup.
      * Structure is documented below.
      */
@@ -262,6 +266,10 @@ export class Volume extends pulumi.CustomResource {
      * Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
      */
     public /*out*/ readonly usedGib!: pulumi.Output<string>;
+    /**
+     * Specifies the active zone for regional volume.
+     */
+    public /*out*/ readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a Volume resource with the given unique name, arguments, and options.
@@ -298,6 +306,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["protocols"] = state ? state.protocols : undefined;
             resourceInputs["psaRange"] = state ? state.psaRange : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["replicaZone"] = state ? state.replicaZone : undefined;
             resourceInputs["restoreParameters"] = state ? state.restoreParameters : undefined;
             resourceInputs["restrictedActions"] = state ? state.restrictedActions : undefined;
             resourceInputs["securityStyle"] = state ? state.securityStyle : undefined;
@@ -311,6 +320,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["storagePool"] = state ? state.storagePool : undefined;
             resourceInputs["unixPermissions"] = state ? state.unixPermissions : undefined;
             resourceInputs["usedGib"] = state ? state.usedGib : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
             if ((!args || args.capacityGib === undefined) && !opts.urn) {
@@ -359,10 +369,12 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["psaRange"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
+            resourceInputs["replicaZone"] = undefined /*out*/;
             resourceInputs["serviceLevel"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateDetails"] = undefined /*out*/;
             resourceInputs["usedGib"] = undefined /*out*/;
+            resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
@@ -478,6 +490,10 @@ export interface VolumeState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Specifies the replica zone for regional volume.
+     */
+    replicaZone?: pulumi.Input<string>;
+    /**
      * Used to create this volume from a snapshot (= cloning) or an backup.
      * Structure is documented below.
      */
@@ -536,6 +552,10 @@ export interface VolumeState {
      * Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
      */
     usedGib?: pulumi.Input<string>;
+    /**
+     * Specifies the active zone for regional volume.
+     */
+    zone?: pulumi.Input<string>;
 }
 
 /**

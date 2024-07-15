@@ -39,6 +39,7 @@ if not MYPY:
     class PolicyDryRunSpecArgsDict(TypedDict):
         etag: NotRequired[pulumi.Input[str]]
         """
+        (Output)
         An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
         """
         inherit_from_parent: NotRequired[pulumi.Input[bool]]
@@ -52,9 +53,11 @@ if not MYPY:
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['PolicyDryRunSpecRuleArgsDict']]]]
         """
         In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+        Structure is documented below.
         """
         update_time: NotRequired[pulumi.Input[str]]
         """
+        (Output)
         Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
         """
 elif False:
@@ -69,11 +72,14 @@ class PolicyDryRunSpecArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyDryRunSpecRuleArgs']]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] etag: An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+        :param pulumi.Input[str] etag: (Output)
+               An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
         :param pulumi.Input[bool] inherit_from_parent: Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
         :param pulumi.Input[bool] reset: Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
         :param pulumi.Input[Sequence[pulumi.Input['PolicyDryRunSpecRuleArgs']]] rules: In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
-        :param pulumi.Input[str] update_time: Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
+               Structure is documented below.
+        :param pulumi.Input[str] update_time: (Output)
+               Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
         """
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -90,6 +96,7 @@ class PolicyDryRunSpecArgs:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
         """
         return pulumi.get(self, "etag")
@@ -127,6 +134,7 @@ class PolicyDryRunSpecArgs:
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyDryRunSpecRuleArgs']]]]:
         """
         In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+        Structure is documented below.
         """
         return pulumi.get(self, "rules")
 
@@ -138,6 +146,7 @@ class PolicyDryRunSpecArgs:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
         """
         return pulumi.get(self, "update_time")
@@ -156,6 +165,7 @@ if not MYPY:
         condition: NotRequired[pulumi.Input['PolicyDryRunSpecRuleConditionArgsDict']]
         """
         A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+        Structure is documented below.
         """
         deny_all: NotRequired[pulumi.Input[str]]
         """
@@ -167,7 +177,8 @@ if not MYPY:
         """
         values: NotRequired[pulumi.Input['PolicyDryRunSpecRuleValuesArgsDict']]
         """
-        List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+        List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+        Structure is documented below.
         """
 elif False:
     PolicyDryRunSpecRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -183,9 +194,11 @@ class PolicyDryRunSpecRuleArgs:
         """
         :param pulumi.Input[str] allow_all: Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
         :param pulumi.Input['PolicyDryRunSpecRuleConditionArgs'] condition: A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+               Structure is documented below.
         :param pulumi.Input[str] deny_all: Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
         :param pulumi.Input[str] enforce: If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
-        :param pulumi.Input['PolicyDryRunSpecRuleValuesArgs'] values: List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+        :param pulumi.Input['PolicyDryRunSpecRuleValuesArgs'] values: List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+               Structure is documented below.
         """
         if allow_all is not None:
             pulumi.set(__self__, "allow_all", allow_all)
@@ -215,6 +228,7 @@ class PolicyDryRunSpecRuleArgs:
     def condition(self) -> Optional[pulumi.Input['PolicyDryRunSpecRuleConditionArgs']]:
         """
         A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+        Structure is documented below.
         """
         return pulumi.get(self, "condition")
 
@@ -250,7 +264,8 @@ class PolicyDryRunSpecRuleArgs:
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input['PolicyDryRunSpecRuleValuesArgs']]:
         """
-        List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+        List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+        Structure is documented below.
         """
         return pulumi.get(self, "values")
 
@@ -407,6 +422,7 @@ if not MYPY:
     class PolicySpecArgsDict(TypedDict):
         etag: NotRequired[pulumi.Input[str]]
         """
+        (Output)
         An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
         """
         inherit_from_parent: NotRequired[pulumi.Input[bool]]
@@ -420,9 +436,11 @@ if not MYPY:
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['PolicySpecRuleArgsDict']]]]
         """
         Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
+        Structure is documented below.
         """
         update_time: NotRequired[pulumi.Input[str]]
         """
+        (Output)
         Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
         """
 elif False:
@@ -437,11 +455,14 @@ class PolicySpecArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicySpecRuleArgs']]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] etag: An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+        :param pulumi.Input[str] etag: (Output)
+               An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
         :param pulumi.Input[bool] inherit_from_parent: Determines the inheritance behavior for this `Policy`. If `inherit_from_parent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
         :param pulumi.Input[bool] reset: Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
         :param pulumi.Input[Sequence[pulumi.Input['PolicySpecRuleArgs']]] rules: Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
-        :param pulumi.Input[str] update_time: Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
+               Structure is documented below.
+        :param pulumi.Input[str] update_time: (Output)
+               Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
         """
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -458,6 +479,7 @@ class PolicySpecArgs:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
         """
         return pulumi.get(self, "etag")
@@ -495,6 +517,7 @@ class PolicySpecArgs:
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicySpecRuleArgs']]]]:
         """
         Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
+        Structure is documented below.
         """
         return pulumi.get(self, "rules")
 
@@ -506,6 +529,7 @@ class PolicySpecArgs:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
         """
         return pulumi.get(self, "update_time")
@@ -524,6 +548,7 @@ if not MYPY:
         condition: NotRequired[pulumi.Input['PolicySpecRuleConditionArgsDict']]
         """
         A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+        Structure is documented below.
         """
         deny_all: NotRequired[pulumi.Input[str]]
         """
@@ -535,7 +560,8 @@ if not MYPY:
         """
         values: NotRequired[pulumi.Input['PolicySpecRuleValuesArgsDict']]
         """
-        List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+        List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+        Structure is documented below.
         """
 elif False:
     PolicySpecRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -551,9 +577,11 @@ class PolicySpecRuleArgs:
         """
         :param pulumi.Input[str] allow_all: Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
         :param pulumi.Input['PolicySpecRuleConditionArgs'] condition: A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+               Structure is documented below.
         :param pulumi.Input[str] deny_all: Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
         :param pulumi.Input[str] enforce: If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
-        :param pulumi.Input['PolicySpecRuleValuesArgs'] values: List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+        :param pulumi.Input['PolicySpecRuleValuesArgs'] values: List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+               Structure is documented below.
         """
         if allow_all is not None:
             pulumi.set(__self__, "allow_all", allow_all)
@@ -583,6 +611,7 @@ class PolicySpecRuleArgs:
     def condition(self) -> Optional[pulumi.Input['PolicySpecRuleConditionArgs']]:
         """
         A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+        Structure is documented below.
         """
         return pulumi.get(self, "condition")
 
@@ -618,7 +647,8 @@ class PolicySpecRuleArgs:
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input['PolicySpecRuleValuesArgs']]:
         """
-        List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+        List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+        Structure is documented below.
         """
         return pulumi.get(self, "values")
 

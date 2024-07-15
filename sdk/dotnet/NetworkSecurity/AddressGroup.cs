@@ -96,6 +96,35 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// ### Network Security Address Groups Cloud Armor
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.NetworkSecurity.AddressGroup("default", new()
+    ///     {
+    ///         Name = "my-address-groups",
+    ///         Parent = "projects/my-project-name",
+    ///         Location = "global",
+    ///         Type = "IPV4",
+    ///         Capacity = 100,
+    ///         Purposes = new[]
+    ///         {
+    ///             "CLOUD_ARMOR",
+    ///         },
+    ///         Items = new[]
+    ///         {
+    ///             "208.80.154.224/32",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -182,6 +211,13 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// List of supported purposes of the Address Group.
+        /// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+        /// </summary>
+        [Output("purposes")]
+        public Output<ImmutableArray<string>> Purposes { get; private set; } = null!;
 
         /// <summary>
         /// The type of the Address Group. Possible values are "IPV4" or "IPV6".
@@ -311,6 +347,19 @@ namespace Pulumi.Gcp.NetworkSecurity
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
+        [Input("purposes")]
+        private InputList<string>? _purposes;
+
+        /// <summary>
+        /// List of supported purposes of the Address Group.
+        /// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+        /// </summary>
+        public InputList<string> Purposes
+        {
+            get => _purposes ?? (_purposes = new InputList<string>());
+            set => _purposes = value;
+        }
+
         /// <summary>
         /// The type of the Address Group. Possible values are "IPV4" or "IPV6".
         /// Possible values are: `IPV4`, `IPV6`.
@@ -427,6 +476,19 @@ namespace Pulumi.Gcp.NetworkSecurity
                 var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
+        }
+
+        [Input("purposes")]
+        private InputList<string>? _purposes;
+
+        /// <summary>
+        /// List of supported purposes of the Address Group.
+        /// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+        /// </summary>
+        public InputList<string> Purposes
+        {
+            get => _purposes ?? (_purposes = new InputList<string>());
+            set => _purposes = value;
         }
 
         /// <summary>

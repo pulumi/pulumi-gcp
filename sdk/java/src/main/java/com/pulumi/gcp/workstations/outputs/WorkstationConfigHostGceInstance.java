@@ -12,6 +12,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -88,6 +89,15 @@ public final class WorkstationConfigHostGceInstance {
      * 
      */
     private @Nullable List<String> tags;
+    /**
+     * @return Resource manager tags to be bound to the VM instances backing the Workstations.
+     * Tag keys and values have the same definition as
+     * https://cloud.google.com/resource-manager/docs/tags/tags-overview
+     * Keys must be in the format `tagKeys/{tag_key_id}`, and
+     * values are in the format `tagValues/456`.
+     * 
+     */
+    private @Nullable Map<String,String> vmTags;
 
     private WorkstationConfigHostGceInstance() {}
     /**
@@ -186,6 +196,17 @@ public final class WorkstationConfigHostGceInstance {
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
+    /**
+     * @return Resource manager tags to be bound to the VM instances backing the Workstations.
+     * Tag keys and values have the same definition as
+     * https://cloud.google.com/resource-manager/docs/tags/tags-overview
+     * Keys must be in the format `tagKeys/{tag_key_id}`, and
+     * values are in the format `tagValues/456`.
+     * 
+     */
+    public Map<String,String> vmTags() {
+        return this.vmTags == null ? Map.of() : this.vmTags;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -209,6 +230,7 @@ public final class WorkstationConfigHostGceInstance {
         private @Nullable List<String> serviceAccountScopes;
         private @Nullable WorkstationConfigHostGceInstanceShieldedInstanceConfig shieldedInstanceConfig;
         private @Nullable List<String> tags;
+        private @Nullable Map<String,String> vmTags;
         public Builder() {}
         public Builder(WorkstationConfigHostGceInstance defaults) {
     	      Objects.requireNonNull(defaults);
@@ -225,6 +247,7 @@ public final class WorkstationConfigHostGceInstance {
     	      this.serviceAccountScopes = defaults.serviceAccountScopes;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
     	      this.tags = defaults.tags;
+    	      this.vmTags = defaults.vmTags;
         }
 
         @CustomType.Setter
@@ -317,6 +340,12 @@ public final class WorkstationConfigHostGceInstance {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
+        public Builder vmTags(@Nullable Map<String,String> vmTags) {
+
+            this.vmTags = vmTags;
+            return this;
+        }
         public WorkstationConfigHostGceInstance build() {
             final var _resultValue = new WorkstationConfigHostGceInstance();
             _resultValue.accelerators = accelerators;
@@ -332,6 +361,7 @@ public final class WorkstationConfigHostGceInstance {
             _resultValue.serviceAccountScopes = serviceAccountScopes;
             _resultValue.shieldedInstanceConfig = shieldedInstanceConfig;
             _resultValue.tags = tags;
+            _resultValue.vmTags = vmTags;
             return _resultValue;
         }
     }

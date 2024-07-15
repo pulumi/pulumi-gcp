@@ -375,8 +375,8 @@ class Snapshot(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1/projects.locations.instances.snapshots)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/filestore/docs/snapshots)
             * [Creating Snapshots](https://cloud.google.com/filestore/docs/create-snapshots)
+            * [Official Documentation](https://cloud.google.com/filestore/docs/snapshots)
 
         ## Example Usage
 
@@ -490,8 +490,8 @@ class Snapshot(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1/projects.locations.instances.snapshots)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/filestore/docs/snapshots)
             * [Creating Snapshots](https://cloud.google.com/filestore/docs/create-snapshots)
+            * [Official Documentation](https://cloud.google.com/filestore/docs/snapshots)
 
         ## Example Usage
 

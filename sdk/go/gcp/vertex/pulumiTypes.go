@@ -3235,6 +3235,8 @@ type AiFeatureOnlineStoreFeatureviewFeatureRegistrySource struct {
 	// List of features that need to be synced to Online Store.
 	// Structure is documented below.
 	FeatureGroups []AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup `pulumi:"featureGroups"`
+	// The project number of the parent project of the feature Groups.
+	ProjectNumber *string `pulumi:"projectNumber"`
 }
 
 // AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceInput is an input type that accepts AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs and AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput values.
@@ -3252,6 +3254,8 @@ type AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs struct {
 	// List of features that need to be synced to Online Store.
 	// Structure is documented below.
 	FeatureGroups AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayInput `pulumi:"featureGroups"`
+	// The project number of the parent project of the feature Groups.
+	ProjectNumber pulumi.StringPtrInput `pulumi:"projectNumber"`
 }
 
 func (AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs) ElementType() reflect.Type {
@@ -3339,6 +3343,11 @@ func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput) FeatureGroup
 	}).(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput)
 }
 
+// The project number of the parent project of the feature Groups.
+func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput) ProjectNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewFeatureRegistrySource) *string { return v.ProjectNumber }).(pulumi.StringPtrOutput)
+}
+
 type AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput) ElementType() reflect.Type {
@@ -3372,6 +3381,16 @@ func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput) FeatureGr
 		}
 		return v.FeatureGroups
 	}).(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput)
+}
+
+// The project number of the parent project of the feature Groups.
+func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput) ProjectNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewFeatureRegistrySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectNumber
+	}).(pulumi.StringPtrOutput)
 }
 
 type AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup struct {

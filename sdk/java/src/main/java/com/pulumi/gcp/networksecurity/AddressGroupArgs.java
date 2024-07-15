@@ -139,6 +139,23 @@ public final class AddressGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * List of supported purposes of the Address Group.
+     * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+     * 
+     */
+    @Import(name="purposes")
+    private @Nullable Output<List<String>> purposes;
+
+    /**
+     * @return List of supported purposes of the Address Group.
+     * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+     * 
+     */
+    public Optional<Output<List<String>>> purposes() {
+        return Optional.ofNullable(this.purposes);
+    }
+
+    /**
      * The type of the Address Group. Possible values are &#34;IPV4&#34; or &#34;IPV6&#34;.
      * Possible values are: `IPV4`, `IPV6`.
      * 
@@ -165,6 +182,7 @@ public final class AddressGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.name = $.name;
         this.parent = $.parent;
+        this.purposes = $.purposes;
         this.type = $.type;
     }
 
@@ -355,6 +373,40 @@ public final class AddressGroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
+        }
+
+        /**
+         * @param purposes List of supported purposes of the Address Group.
+         * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purposes(@Nullable Output<List<String>> purposes) {
+            $.purposes = purposes;
+            return this;
+        }
+
+        /**
+         * @param purposes List of supported purposes of the Address Group.
+         * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purposes(List<String> purposes) {
+            return purposes(Output.of(purposes));
+        }
+
+        /**
+         * @param purposes List of supported purposes of the Address Group.
+         * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purposes(String... purposes) {
+            return purposes(List.of(purposes));
         }
 
         /**

@@ -82,6 +82,13 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         public Input<Inputs.DatascanDataQualitySpecRuleSetExpectationArgs>? SetExpectation { get; set; }
 
         /// <summary>
+        /// Table rule which evaluates whether any row matches invalid state.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sqlAssertion")]
+        public Input<Inputs.DatascanDataQualitySpecRuleSqlAssertionArgs>? SqlAssertion { get; set; }
+
+        /// <summary>
         /// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
         /// Structure is documented below.
         /// </summary>

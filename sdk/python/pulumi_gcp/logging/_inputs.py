@@ -201,7 +201,7 @@ if not MYPY:
         field_path: pulumi.Input[str]
         """
         The LogEntry field path to index.
-        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
         """
         type: pulumi.Input[str]
         """
@@ -217,7 +217,7 @@ class BillingAccountBucketConfigIndexConfigArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[str] field_path: The LogEntry field path to index.
-               Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+               Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
         :param pulumi.Input[str] type: The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
         """
         pulumi.set(__self__, "field_path", field_path)
@@ -228,7 +228,7 @@ class BillingAccountBucketConfigIndexConfigArgs:
     def field_path(self) -> pulumi.Input[str]:
         """
         The LogEntry field path to index.
-        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
         """
         return pulumi.get(self, "field_path")
 
@@ -514,7 +514,7 @@ if not MYPY:
         field_path: pulumi.Input[str]
         """
         The LogEntry field path to index.
-        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
         """
         type: pulumi.Input[str]
         """
@@ -530,7 +530,7 @@ class FolderBucketConfigIndexConfigArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[str] field_path: The LogEntry field path to index.
-               Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+               Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
         :param pulumi.Input[str] type: The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
         """
         pulumi.set(__self__, "field_path", field_path)
@@ -541,7 +541,7 @@ class FolderBucketConfigIndexConfigArgs:
     def field_path(self) -> pulumi.Input[str]:
         """
         The LogEntry field path to index.
-        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
         """
         return pulumi.get(self, "field_path")
 
@@ -1482,7 +1482,7 @@ if not MYPY:
         field_path: pulumi.Input[str]
         """
         The LogEntry field path to index.
-        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
         """
         type: pulumi.Input[str]
         """
@@ -1498,7 +1498,7 @@ class OrganizationBucketConfigIndexConfigArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[str] field_path: The LogEntry field path to index.
-               Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+               Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
         :param pulumi.Input[str] type: The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
         """
         pulumi.set(__self__, "field_path", field_path)
@@ -1509,7 +1509,7 @@ class OrganizationBucketConfigIndexConfigArgs:
     def field_path(self) -> pulumi.Input[str]:
         """
         The LogEntry field path to index.
-        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
         """
         return pulumi.get(self, "field_path")
 
@@ -1795,7 +1795,7 @@ if not MYPY:
         field_path: pulumi.Input[str]
         """
         The LogEntry field path to index.
-        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
         """
         type: pulumi.Input[str]
         """
@@ -1811,7 +1811,7 @@ class ProjectBucketConfigIndexConfigArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[str] field_path: The LogEntry field path to index.
-               Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+               Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
         :param pulumi.Input[str] type: The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
         """
         pulumi.set(__self__, "field_path", field_path)
@@ -1822,7 +1822,7 @@ class ProjectBucketConfigIndexConfigArgs:
     def field_path(self) -> pulumi.Input[str]:
         """
         The LogEntry field path to index.
-        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation for details.
+        Note that some paths are automatically indexed, and other paths are not eligible for indexing. See [indexing documentation](https://cloud.google.com/logging/docs/analyze/custom-index) for details.
         """
         return pulumi.get(self, "field_path")
 

@@ -167,7 +167,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
     }
     /**
      * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-     * If not specified at creation time, the default duration is 24 hours.
+     * If not specified at creation time, the default duration is 30 days.
      * 
      */
     @Export(name="destroyScheduledDuration", refs={String.class}, tree="[0]")
@@ -175,7 +175,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-     * If not specified at creation time, the default duration is 24 hours.
+     * If not specified at creation time, the default duration is 30 days.
      * 
      */
     public Output<String> destroyScheduledDuration() {

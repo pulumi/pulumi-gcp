@@ -17,16 +17,19 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * An organization policy gives you programmatic control over your organization&#39;s cloud resources.  Using Organization Policies, you will be able to configure constraints across your entire resource hierarchy.
+ * Defines an organization policy which is used to specify constraints for configurations of Google Cloud resources.
  * 
- * For more information, see:
- * * [Understanding Org Policy concepts](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
- * * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
- * * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
+ * To get more information about Policy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.policies)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+ *     * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+ * 
  * ## Example Usage
  * 
- * ### Enforce_policy
- * A test of an enforce orgpolicy policy for a project
+ * ### Org Policy Policy Enforce
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -74,8 +77,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Folder_policy
- * A test of an orgpolicy policy for a folder
+ * ### Org Policy Policy Folder
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -123,8 +126,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Organization_policy
- * A test of an orgpolicy policy for an organization
+ * ### Org Policy Policy Organization
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -162,8 +165,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Project_policy
- * A test of an orgpolicy policy for a project
+ * ### Org Policy Policy Project
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -224,7 +227,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Dry_run_spec
+ * ### Org Policy Policy Dry Run Spec
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -289,6 +293,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * Policy can be imported using any of these accepted formats:
+ * 
  * * `{{parent}}/policies/{{name}}`
  * 
  * When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
@@ -302,6 +307,7 @@ import javax.annotation.Nullable;
 public class Policy extends com.pulumi.resources.CustomResource {
     /**
      * Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it&#39;s enforced.
+     * Structure is documented below.
      * 
      */
     @Export(name="dryRunSpec", refs={PolicyDryRunSpec.class}, tree="[0]")
@@ -309,6 +315,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it&#39;s enforced.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<PolicyDryRunSpec>> dryRunSpec() {
@@ -362,6 +369,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
     }
     /**
      * Basic information about the Organization Policy.
+     * Structure is documented below.
      * 
      */
     @Export(name="spec", refs={PolicySpec.class}, tree="[0]")
@@ -369,6 +377,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Basic information about the Organization Policy.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<PolicySpec>> spec() {

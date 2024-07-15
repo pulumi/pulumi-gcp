@@ -33,6 +33,8 @@ __all__ = [
     'CertificateSelfManagedArgsDict',
     'DnsAuthorizationDnsResourceRecordArgs',
     'DnsAuthorizationDnsResourceRecordArgsDict',
+    'TrustConfigAllowlistedCertificateArgs',
+    'TrustConfigAllowlistedCertificateArgsDict',
     'TrustConfigTrustStoreArgs',
     'TrustConfigTrustStoreArgsDict',
     'TrustConfigTrustStoreIntermediateCaArgs',
@@ -826,6 +828,37 @@ class DnsAuthorizationDnsResourceRecordArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class TrustConfigAllowlistedCertificateArgsDict(TypedDict):
+        pem_certificate: pulumi.Input[str]
+        """
+        PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.
+        """
+elif False:
+    TrustConfigAllowlistedCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TrustConfigAllowlistedCertificateArgs:
+    def __init__(__self__, *,
+                 pem_certificate: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] pem_certificate: PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.
+        """
+        pulumi.set(__self__, "pem_certificate", pem_certificate)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> pulumi.Input[str]:
+        """
+        PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.
+        """
+        return pulumi.get(self, "pem_certificate")
+
+    @pem_certificate.setter
+    def pem_certificate(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pem_certificate", value)
 
 
 if not MYPY:

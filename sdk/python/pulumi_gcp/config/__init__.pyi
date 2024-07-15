@@ -305,6 +305,8 @@ securityCenterCustomEndpoint: Optional[str]
 
 securityCenterManagementCustomEndpoint: Optional[str]
 
+securityCenterV2CustomEndpoint: Optional[str]
+
 securityScannerCustomEndpoint: Optional[str]
 
 securitypostureCustomEndpoint: Optional[str]

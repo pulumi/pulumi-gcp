@@ -19,8 +19,7 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
     /**
      * @return Time within the window to start the operations.
      * It must be in an hourly format &#34;HH:MM&#34;,
-     * where HH : [00-23] and MM : [00] GMT.
-     * eg: 21:00
+     * where HH : [00-23] and MM : [00] GMT. eg: 21:00
      * 
      */
     private String startTime;
@@ -36,8 +35,7 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
     /**
      * @return Time within the window to start the operations.
      * It must be in an hourly format &#34;HH:MM&#34;,
-     * where HH : [00-23] and MM : [00] GMT.
-     * eg: 21:00
+     * where HH : [00-23] and MM : [00] GMT. eg: 21:00
      * 
      */
     public String startTime() {

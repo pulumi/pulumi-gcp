@@ -389,6 +389,21 @@ export class HealthCheck extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * The list of cloud regions from which health checks are performed. If
+     * any regions are specified, then exactly 3 regions should be specified.
+     * The region names must be valid names of Google Cloud regions. This can
+     * only be set for global health check. If this list is non-empty, then
+     * there are restrictions on what other health check fields are supported
+     * and what other resources can use this health check:
+     * * SSL, HTTP2, and GRPC protocols are not supported.
+     * * The TCP request field is not supported.
+     * * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+     * * The checkIntervalSec field must be at least 30.
+     * * The health check cannot be used with BackendService nor with managed
+     * instance group auto-healing.
+     */
+    public readonly sourceRegions!: pulumi.Output<string[] | undefined>;
+    /**
      * A nested object resource
      * Structure is documented below.
      */
@@ -439,6 +454,7 @@ export class HealthCheck extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["sourceRegions"] = state ? state.sourceRegions : undefined;
             resourceInputs["sslHealthCheck"] = state ? state.sslHealthCheck : undefined;
             resourceInputs["tcpHealthCheck"] = state ? state.tcpHealthCheck : undefined;
             resourceInputs["timeoutSec"] = state ? state.timeoutSec : undefined;
@@ -456,6 +472,7 @@ export class HealthCheck extends pulumi.CustomResource {
             resourceInputs["logConfig"] = args ? args.logConfig : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["sourceRegions"] = args ? args.sourceRegions : undefined;
             resourceInputs["sslHealthCheck"] = args ? args.sslHealthCheck : undefined;
             resourceInputs["tcpHealthCheck"] = args ? args.tcpHealthCheck : undefined;
             resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
@@ -539,6 +556,21 @@ export interface HealthCheckState {
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
+    /**
+     * The list of cloud regions from which health checks are performed. If
+     * any regions are specified, then exactly 3 regions should be specified.
+     * The region names must be valid names of Google Cloud regions. This can
+     * only be set for global health check. If this list is non-empty, then
+     * there are restrictions on what other health check fields are supported
+     * and what other resources can use this health check:
+     * * SSL, HTTP2, and GRPC protocols are not supported.
+     * * The TCP request field is not supported.
+     * * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+     * * The checkIntervalSec field must be at least 30.
+     * * The health check cannot be used with BackendService nor with managed
+     * instance group auto-healing.
+     */
+    sourceRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A nested object resource
      * Structure is documented below.
@@ -628,6 +660,21 @@ export interface HealthCheckArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The list of cloud regions from which health checks are performed. If
+     * any regions are specified, then exactly 3 regions should be specified.
+     * The region names must be valid names of Google Cloud regions. This can
+     * only be set for global health check. If this list is non-empty, then
+     * there are restrictions on what other health check fields are supported
+     * and what other resources can use this health check:
+     * * SSL, HTTP2, and GRPC protocols are not supported.
+     * * The TCP request field is not supported.
+     * * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+     * * The checkIntervalSec field must be at least 30.
+     * * The health check cannot be used with BackendService nor with managed
+     * instance group auto-healing.
+     */
+    sourceRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A nested object resource
      * Structure is documented below.

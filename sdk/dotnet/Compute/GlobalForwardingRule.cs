@@ -15,8 +15,7 @@ namespace Pulumi.Gcp.Compute
     /// balancing. Global forwarding rules can only be used for HTTP load
     /// balancing.
     /// 
-    /// For more information, see
-    /// https://cloud.google.com/compute/docs/load-balancing/http/
+    /// For more information, see https://cloud.google.com/compute/docs/load-balancing/http/
     /// 
     /// ## Example Usage
     /// 

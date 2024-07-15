@@ -531,6 +531,52 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Dlp Job Trigger Timespan Config Big Query
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const timespanConfigBigQuery = new gcp.dataloss.PreventionJobTrigger("timespan_config_big_query", {
+ *     parent: "projects/my-project-name",
+ *     description: "BigQuery DLP Job Trigger with timespan config and row limit",
+ *     displayName: "bigquery-dlp-job-trigger-limit-timespan",
+ *     triggers: [{
+ *         schedule: {
+ *             recurrencePeriodDuration: "86400s",
+ *         },
+ *     }],
+ *     inspectJob: {
+ *         inspectTemplateName: "projects/test/locations/global/inspectTemplates/6425492983381733900",
+ *         storageConfig: {
+ *             bigQueryOptions: {
+ *                 tableReference: {
+ *                     projectId: "project",
+ *                     datasetId: "dataset",
+ *                     tableId: "table",
+ *                 },
+ *                 sampleMethod: "",
+ *             },
+ *             timespanConfig: {
+ *                 startTime: "2023-01-01T00:00:23Z",
+ *                 timestampField: {
+ *                     name: "timestamp",
+ *                 },
+ *             },
+ *         },
+ *         actions: [{
+ *             saveFindings: {
+ *                 outputConfig: {
+ *                     table: {
+ *                         projectId: "project",
+ *                         datasetId: "output",
+ *                     },
+ *                 },
+ *             },
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

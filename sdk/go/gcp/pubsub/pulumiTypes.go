@@ -1118,7 +1118,7 @@ type SubscriptionBigqueryConfig struct {
 	// [service agent](https://cloud.google.com/iam/docs/service-agents),
 	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
-	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+	// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 	Table string `pulumi:"table"`
 	// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
 	// must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
@@ -1151,7 +1151,7 @@ type SubscriptionBigqueryConfigArgs struct {
 	// [service agent](https://cloud.google.com/iam/docs/service-agents),
 	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
-	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+	// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 	Table pulumi.StringInput `pulumi:"table"`
 	// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
 	// must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
@@ -1255,7 +1255,7 @@ func (o SubscriptionBigqueryConfigOutput) ServiceAccountEmail() pulumi.StringPtr
 	return o.ApplyT(func(v SubscriptionBigqueryConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
 
-// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 func (o SubscriptionBigqueryConfigOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v SubscriptionBigqueryConfig) string { return v.Table }).(pulumi.StringOutput)
 }
@@ -1326,7 +1326,7 @@ func (o SubscriptionBigqueryConfigPtrOutput) ServiceAccountEmail() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 func (o SubscriptionBigqueryConfigPtrOutput) Table() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubscriptionBigqueryConfig) *string {
 		if v == nil {
@@ -4334,7 +4334,7 @@ type GetSubscriptionBigqueryConfig struct {
 	// [service agent](https://cloud.google.com/iam/docs/service-agents),
 	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
-	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+	// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 	Table string `pulumi:"table"`
 	// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
 	// must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
@@ -4367,7 +4367,7 @@ type GetSubscriptionBigqueryConfigArgs struct {
 	// [service agent](https://cloud.google.com/iam/docs/service-agents),
 	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
 	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
-	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+	// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 	Table pulumi.StringInput `pulumi:"table"`
 	// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
 	// must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
@@ -4445,7 +4445,7 @@ func (o GetSubscriptionBigqueryConfigOutput) ServiceAccountEmail() pulumi.String
 	return o.ApplyT(func(v GetSubscriptionBigqueryConfig) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }
 
-// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 func (o GetSubscriptionBigqueryConfigOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionBigqueryConfig) string { return v.Table }).(pulumi.StringOutput)
 }

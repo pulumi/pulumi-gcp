@@ -51,6 +51,7 @@ type LookupHealthCheckResult struct {
 	Name               string                         `pulumi:"name"`
 	Project            *string                        `pulumi:"project"`
 	SelfLink           string                         `pulumi:"selfLink"`
+	SourceRegions      []string                       `pulumi:"sourceRegions"`
 	SslHealthChecks    []GetHealthCheckSslHealthCheck `pulumi:"sslHealthChecks"`
 	TcpHealthChecks    []GetHealthCheckTcpHealthCheck `pulumi:"tcpHealthChecks"`
 	TimeoutSec         int                            `pulumi:"timeoutSec"`
@@ -152,6 +153,10 @@ func (o LookupHealthCheckResultOutput) Project() pulumi.StringPtrOutput {
 
 func (o LookupHealthCheckResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHealthCheckResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func (o LookupHealthCheckResultOutput) SourceRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupHealthCheckResult) []string { return v.SourceRegions }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupHealthCheckResultOutput) SslHealthChecks() GetHealthCheckSslHealthCheckArrayOutput {

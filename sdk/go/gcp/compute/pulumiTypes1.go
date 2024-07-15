@@ -30106,8 +30106,7 @@ type GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule struct {
 	HoursInCycle int `pulumi:"hoursInCycle"`
 	// Time within the window to start the operations.
 	// It must be in an hourly format "HH:MM",
-	// where HH : [00-23] and MM : [00] GMT.
-	// eg: 21:00
+	// where HH : [00-23] and MM : [00] GMT. eg: 21:00
 	StartTime string `pulumi:"startTime"`
 }
 
@@ -30127,8 +30126,7 @@ type GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs struct {
 	HoursInCycle pulumi.IntInput `pulumi:"hoursInCycle"`
 	// Time within the window to start the operations.
 	// It must be in an hourly format "HH:MM",
-	// where HH : [00-23] and MM : [00] GMT.
-	// eg: 21:00
+	// where HH : [00-23] and MM : [00] GMT. eg: 21:00
 	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
@@ -30190,8 +30188,7 @@ func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) Hou
 
 // Time within the window to start the operations.
 // It must be in an hourly format "HH:MM",
-// where HH : [00-23] and MM : [00] GMT.
-// eg: 21:00
+// where HH : [00-23] and MM : [00] GMT. eg: 21:00
 func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule) string { return v.StartTime }).(pulumi.StringOutput)
 }

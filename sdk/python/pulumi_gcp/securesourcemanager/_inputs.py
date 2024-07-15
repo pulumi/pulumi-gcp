@@ -23,6 +23,14 @@ __all__ = [
     'InstanceIamMemberConditionArgsDict',
     'InstancePrivateConfigArgs',
     'InstancePrivateConfigArgsDict',
+    'RepositoryIamBindingConditionArgs',
+    'RepositoryIamBindingConditionArgsDict',
+    'RepositoryIamMemberConditionArgs',
+    'RepositoryIamMemberConditionArgsDict',
+    'RepositoryInitialConfigArgs',
+    'RepositoryInitialConfigArgsDict',
+    'RepositoryUriArgs',
+    'RepositoryUriArgsDict',
 ]
 
 MYPY = False
@@ -319,5 +327,281 @@ class InstancePrivateConfigArgs:
     @ssh_service_attachment.setter
     def ssh_service_attachment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ssh_service_attachment", value)
+
+
+if not MYPY:
+    class RepositoryIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    RepositoryIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RepositoryIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class RepositoryIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    RepositoryIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RepositoryIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class RepositoryInitialConfigArgsDict(TypedDict):
+        default_branch: NotRequired[pulumi.Input[str]]
+        """
+        Default branch name of the repository.
+        """
+        gitignores: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of gitignore template names user can choose from.
+        Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        """
+        license: NotRequired[pulumi.Input[str]]
+        """
+        License template name user can choose from.
+        Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        """
+        readme: NotRequired[pulumi.Input[str]]
+        """
+        README template name.
+        Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        """
+elif False:
+    RepositoryInitialConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RepositoryInitialConfigArgs:
+    def __init__(__self__, *,
+                 default_branch: Optional[pulumi.Input[str]] = None,
+                 gitignores: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 license: Optional[pulumi.Input[str]] = None,
+                 readme: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] default_branch: Default branch name of the repository.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] gitignores: List of gitignore template names user can choose from.
+               Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        :param pulumi.Input[str] license: License template name user can choose from.
+               Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        :param pulumi.Input[str] readme: README template name.
+               Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        """
+        if default_branch is not None:
+            pulumi.set(__self__, "default_branch", default_branch)
+        if gitignores is not None:
+            pulumi.set(__self__, "gitignores", gitignores)
+        if license is not None:
+            pulumi.set(__self__, "license", license)
+        if readme is not None:
+            pulumi.set(__self__, "readme", readme)
+
+    @property
+    @pulumi.getter(name="defaultBranch")
+    def default_branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default branch name of the repository.
+        """
+        return pulumi.get(self, "default_branch")
+
+    @default_branch.setter
+    def default_branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_branch", value)
+
+    @property
+    @pulumi.getter
+    def gitignores(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of gitignore template names user can choose from.
+        Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        """
+        return pulumi.get(self, "gitignores")
+
+    @gitignores.setter
+    def gitignores(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "gitignores", value)
+
+    @property
+    @pulumi.getter
+    def license(self) -> Optional[pulumi.Input[str]]:
+        """
+        License template name user can choose from.
+        Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        """
+        return pulumi.get(self, "license")
+
+    @license.setter
+    def license(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "license", value)
+
+    @property
+    @pulumi.getter
+    def readme(self) -> Optional[pulumi.Input[str]]:
+        """
+        README template name.
+        Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        """
+        return pulumi.get(self, "readme")
+
+    @readme.setter
+    def readme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "readme", value)
+
+
+if not MYPY:
+    class RepositoryUriArgsDict(TypedDict):
+        api: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        API is the URI for API access.
+        """
+        git_https: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        git_https is the git HTTPS URI for git operations.
+        """
+        html: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        HTML is the URI for the user to view the repository in a browser.
+        """
+elif False:
+    RepositoryUriArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RepositoryUriArgs:
+    def __init__(__self__, *,
+                 api: Optional[pulumi.Input[str]] = None,
+                 git_https: Optional[pulumi.Input[str]] = None,
+                 html: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] api: (Output)
+               API is the URI for API access.
+        :param pulumi.Input[str] git_https: (Output)
+               git_https is the git HTTPS URI for git operations.
+        :param pulumi.Input[str] html: (Output)
+               HTML is the URI for the user to view the repository in a browser.
+        """
+        if api is not None:
+            pulumi.set(__self__, "api", api)
+        if git_https is not None:
+            pulumi.set(__self__, "git_https", git_https)
+        if html is not None:
+            pulumi.set(__self__, "html", html)
+
+    @property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        API is the URI for API access.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api", value)
+
+    @property
+    @pulumi.getter(name="gitHttps")
+    def git_https(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        git_https is the git HTTPS URI for git operations.
+        """
+        return pulumi.get(self, "git_https")
+
+    @git_https.setter
+    def git_https(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "git_https", value)
+
+    @property
+    @pulumi.getter
+    def html(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        HTML is the URI for the user to view the repository in a browser.
+        """
+        return pulumi.get(self, "html")
+
+    @html.setter
+    def html(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "html", value)
 
 

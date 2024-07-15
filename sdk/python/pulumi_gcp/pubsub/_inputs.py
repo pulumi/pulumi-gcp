@@ -401,7 +401,7 @@ if not MYPY:
     class SubscriptionBigqueryConfigArgsDict(TypedDict):
         table: pulumi.Input[str]
         """
-        The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+        The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
         """
         drop_unknown_fields: NotRequired[pulumi.Input[bool]]
         """
@@ -443,7 +443,7 @@ class SubscriptionBigqueryConfigArgs:
                  use_topic_schema: Optional[pulumi.Input[bool]] = None,
                  write_metadata: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] table: The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+        :param pulumi.Input[str] table: The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
         :param pulumi.Input[bool] drop_unknown_fields: When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
                are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
                and any messages with extra fields are not written and remain in the subscription's backlog.
@@ -473,7 +473,7 @@ class SubscriptionBigqueryConfigArgs:
     @pulumi.getter
     def table(self) -> pulumi.Input[str]:
         """
-        The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+        The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
         """
         return pulumi.get(self, "table")
 

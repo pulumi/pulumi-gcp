@@ -866,6 +866,12 @@ class WorkstationConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        tag_key1 = gcp.tags.TagKey("tag_key1",
+            parent="organizations/123456789",
+            short_name="keyname")
+        tag_value1 = gcp.tags.TagValue("tag_value1",
+            parent=tag_key1.name.apply(lambda name: f"tagKeys/{name}"),
+            short_name="valuename")
         default = gcp.compute.Network("default",
             name="workstation-cluster",
             auto_create_subnetworks=False)
@@ -907,6 +913,9 @@ class WorkstationConfig(pulumi.CustomResource):
                     "bootDiskSizeGb": 35,
                     "disablePublicIpAddresses": True,
                     "disableSsh": False,
+                    "vmTags": pulumi.Output.all(tag_key1.name, tag_value1.name).apply(lambda tagKey1Name, tagValue1Name: {
+                        f"tagKeys/{tag_key1_name}": f"tagValues/{tag_value1_name}",
+                    }),
                 },
             })
         ```
@@ -1316,6 +1325,12 @@ class WorkstationConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        tag_key1 = gcp.tags.TagKey("tag_key1",
+            parent="organizations/123456789",
+            short_name="keyname")
+        tag_value1 = gcp.tags.TagValue("tag_value1",
+            parent=tag_key1.name.apply(lambda name: f"tagKeys/{name}"),
+            short_name="valuename")
         default = gcp.compute.Network("default",
             name="workstation-cluster",
             auto_create_subnetworks=False)
@@ -1357,6 +1372,9 @@ class WorkstationConfig(pulumi.CustomResource):
                     "bootDiskSizeGb": 35,
                     "disablePublicIpAddresses": True,
                     "disableSsh": False,
+                    "vmTags": pulumi.Output.all(tag_key1.name, tag_value1.name).apply(lambda tagKey1Name, tagValue1Name: {
+                        f"tagKeys/{tag_key1_name}": f"tagValues/{tag_value1_name}",
+                    }),
                 },
             })
         ```

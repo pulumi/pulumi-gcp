@@ -12,24 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Storage pools act as containers for volumes. All volumes in a storage pool share the following information:
-// * Location
-// * Service level
-// * Virtual Private Cloud (VPC) network
-// * Active Directory policy
-// * LDAP use for NFS volumes, if applicable
-// * Customer-managed encryption key (CMEK) policy
-//
-// The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable
-// component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool
-// independent of consumption at the volume level.
-//
-// To get more information about storagePool, see:
-//
-// * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.storagePools)
-// * How-to Guides
-//   - [Quickstart documentation](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
-//
 // ## Example Usage
 //
 // ### Storage Pool Create
@@ -156,9 +138,9 @@ type StoragePool struct {
 	// When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
 	// using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
 	LdapEnabled pulumi.BoolPtrOutput `pulumi:"ldapEnabled"`
-	// Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The resource name of the storage pool. Needs to be unique per location.
+	// The resource name of the storage pool. Needs to be unique per location/region.
 	//
 	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -170,6 +152,9 @@ type StoragePool struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+	ReplicaZone pulumi.StringPtrOutput `pulumi:"replicaZone"`
 	// Service level of the storage pool.
 	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel pulumi.StringOutput `pulumi:"serviceLevel"`
@@ -177,6 +162,10 @@ type StoragePool struct {
 	VolumeCapacityGib pulumi.StringOutput `pulumi:"volumeCapacityGib"`
 	// Number of volume in the storage pool.
 	VolumeCount pulumi.IntOutput `pulumi:"volumeCount"`
+	// Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+	// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+	Zone pulumi.StringPtrOutput `pulumi:"zone"`
 }
 
 // NewStoragePool registers a new resource with the given unique name, arguments, and options.
@@ -248,9 +237,9 @@ type storagePoolState struct {
 	// When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
 	// using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
 	LdapEnabled *bool `pulumi:"ldapEnabled"`
-	// Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location *string `pulumi:"location"`
-	// The resource name of the storage pool. Needs to be unique per location.
+	// The resource name of the storage pool. Needs to be unique per location/region.
 	//
 	// ***
 	Name *string `pulumi:"name"`
@@ -262,6 +251,9 @@ type storagePoolState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+	ReplicaZone *string `pulumi:"replicaZone"`
 	// Service level of the storage pool.
 	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel *string `pulumi:"serviceLevel"`
@@ -269,6 +261,10 @@ type storagePoolState struct {
 	VolumeCapacityGib *string `pulumi:"volumeCapacityGib"`
 	// Number of volume in the storage pool.
 	VolumeCount *int `pulumi:"volumeCount"`
+	// Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+	// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+	Zone *string `pulumi:"zone"`
 }
 
 type StoragePoolState struct {
@@ -294,9 +290,9 @@ type StoragePoolState struct {
 	// When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
 	// using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
 	LdapEnabled pulumi.BoolPtrInput
-	// Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location pulumi.StringPtrInput
-	// The resource name of the storage pool. Needs to be unique per location.
+	// The resource name of the storage pool. Needs to be unique per location/region.
 	//
 	// ***
 	Name pulumi.StringPtrInput
@@ -308,6 +304,9 @@ type StoragePoolState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+	ReplicaZone pulumi.StringPtrInput
 	// Service level of the storage pool.
 	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel pulumi.StringPtrInput
@@ -315,6 +314,10 @@ type StoragePoolState struct {
 	VolumeCapacityGib pulumi.StringPtrInput
 	// Number of volume in the storage pool.
 	VolumeCount pulumi.IntPtrInput
+	// Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+	// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+	Zone pulumi.StringPtrInput
 }
 
 func (StoragePoolState) ElementType() reflect.Type {
@@ -340,9 +343,9 @@ type storagePoolArgs struct {
 	// When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
 	// using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
 	LdapEnabled *bool `pulumi:"ldapEnabled"`
-	// Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location string `pulumi:"location"`
-	// The resource name of the storage pool. Needs to be unique per location.
+	// The resource name of the storage pool. Needs to be unique per location/region.
 	//
 	// ***
 	Name *string `pulumi:"name"`
@@ -351,9 +354,16 @@ type storagePoolArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+	ReplicaZone *string `pulumi:"replicaZone"`
 	// Service level of the storage pool.
 	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel string `pulumi:"serviceLevel"`
+	// Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+	// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a StoragePool resource.
@@ -376,9 +386,9 @@ type StoragePoolArgs struct {
 	// When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
 	// using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
 	LdapEnabled pulumi.BoolPtrInput
-	// Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location pulumi.StringInput
-	// The resource name of the storage pool. Needs to be unique per location.
+	// The resource name of the storage pool. Needs to be unique per location/region.
 	//
 	// ***
 	Name pulumi.StringPtrInput
@@ -387,9 +397,16 @@ type StoragePoolArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+	ReplicaZone pulumi.StringPtrInput
 	// Service level of the storage pool.
 	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel pulumi.StringInput
+	// Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+	// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+	Zone pulumi.StringPtrInput
 }
 
 func (StoragePoolArgs) ElementType() reflect.Type {
@@ -525,12 +542,12 @@ func (o StoragePoolOutput) LdapEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.BoolPtrOutput { return v.LdapEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.
+// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 func (o StoragePoolOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The resource name of the storage pool. Needs to be unique per location.
+// The resource name of the storage pool. Needs to be unique per location/region.
 //
 // ***
 func (o StoragePoolOutput) Name() pulumi.StringOutput {
@@ -554,6 +571,12 @@ func (o StoragePoolOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
+// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+func (o StoragePoolOutput) ReplicaZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringPtrOutput { return v.ReplicaZone }).(pulumi.StringPtrOutput)
+}
+
 // Service level of the storage pool.
 // Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 func (o StoragePoolOutput) ServiceLevel() pulumi.StringOutput {
@@ -568,6 +591,13 @@ func (o StoragePoolOutput) VolumeCapacityGib() pulumi.StringOutput {
 // Number of volume in the storage pool.
 func (o StoragePoolOutput) VolumeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.IntOutput { return v.VolumeCount }).(pulumi.IntOutput)
+}
+
+// Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
+// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
+func (o StoragePoolOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringPtrOutput { return v.Zone }).(pulumi.StringPtrOutput)
 }
 
 type StoragePoolArrayOutput struct{ *pulumi.OutputState }

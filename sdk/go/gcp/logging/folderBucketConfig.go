@@ -46,8 +46,10 @@ import (
 //				RetentionDays: pulumi.Int(30),
 //				BucketId:      pulumi.String("_Default"),
 //				IndexConfigs: logging.FolderBucketConfigIndexConfigArray{
-//					FilePath: "jsonPayload.request.status",
-//					Type:     "INDEX_TYPE_STRING",
+//					&logging.FolderBucketConfigIndexConfigArgs{
+//						FieldPath: pulumi.String("jsonPayload.request.status"),
+//						Type:      pulumi.String("INDEX_TYPE_STRING"),
+//					},
 //				},
 //			})
 //			if err != nil {

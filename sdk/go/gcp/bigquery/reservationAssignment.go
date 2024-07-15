@@ -12,11 +12,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The BigqueryReservation Assignment resource
+// The BigqueryReservation Assignment resource.
+//
+// To get more information about ReservationAssignment, see:
+//
+// * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations.assignments)
+// * How-to Guides
+//   - [Work with reservation assignments](https://cloud.google.com/bigquery/docs/reservations-assignments)
 //
 // ## Example Usage
 //
-// ### Basic
+// ### Bigquery Reservation Assignment Basic
+//
 // ```go
 // package main
 //
@@ -30,7 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basic, err := bigquery.NewReservation(ctx, "basic", &bigquery.ReservationArgs{
-//				Name:            pulumi.String("tf-test-my-reservation"),
+//				Name:            pulumi.String("example-reservation"),
 //				Project:         pulumi.String("my-project-name"),
 //				Location:        pulumi.String("us-central1"),
 //				SlotCapacity:    pulumi.Int(0),
@@ -39,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewReservationAssignment(ctx, "primary", &bigquery.ReservationAssignmentArgs{
+//			_, err = bigquery.NewReservationAssignment(ctx, "assignment", &bigquery.ReservationAssignmentArgs{
 //				Assignee:    pulumi.String("projects/my-project-name"),
 //				JobType:     pulumi.String("PIPELINE"),
 //				Reservation: basic.ID(),
@@ -55,7 +62,7 @@ import (
 //
 // ## Import
 //
-// Assignment can be imported using any of these accepted formats:
+// ReservationAssignment can be imported using any of these accepted formats:
 //
 // * `projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}`
 //
@@ -63,7 +70,7 @@ import (
 //
 // * `{{location}}/{{reservation}}/{{name}}`
 //
-// When using the `pulumi import` command, Assignment can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, ReservationAssignment can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}
@@ -87,13 +94,15 @@ type ReservationAssignment struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Output only. The resource name of the assignment.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The reservation for the resource
 	//
 	// ***
 	Reservation pulumi.StringOutput `pulumi:"reservation"`
-	// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+	// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
+	// Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
 	State pulumi.StringOutput `pulumi:"state"`
 }
 
@@ -144,13 +153,15 @@ type reservationAssignmentState struct {
 	Location *string `pulumi:"location"`
 	// Output only. The resource name of the assignment.
 	Name *string `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The reservation for the resource
 	//
 	// ***
 	Reservation *string `pulumi:"reservation"`
-	// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+	// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
+	// Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
 	State *string `pulumi:"state"`
 }
 
@@ -163,13 +174,15 @@ type ReservationAssignmentState struct {
 	Location pulumi.StringPtrInput
 	// Output only. The resource name of the assignment.
 	Name pulumi.StringPtrInput
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The reservation for the resource
 	//
 	// ***
 	Reservation pulumi.StringPtrInput
-	// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+	// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
+	// Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
 	State pulumi.StringPtrInput
 }
 
@@ -184,7 +197,8 @@ type reservationAssignmentArgs struct {
 	JobType string `pulumi:"jobType"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The reservation for the resource
 	//
@@ -200,7 +214,8 @@ type ReservationAssignmentArgs struct {
 	JobType pulumi.StringInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The reservation for the resource
 	//
@@ -315,7 +330,8 @@ func (o ReservationAssignmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservationAssignment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The project for the resource
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o ReservationAssignmentOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservationAssignment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -327,7 +343,8 @@ func (o ReservationAssignmentOutput) Reservation() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservationAssignment) pulumi.StringOutput { return v.Reservation }).(pulumi.StringOutput)
 }
 
-// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
+// Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
 func (o ReservationAssignmentOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservationAssignment) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

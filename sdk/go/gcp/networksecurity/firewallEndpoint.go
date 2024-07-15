@@ -20,8 +20,8 @@ import (
 //
 // * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/organizations.locations.firewallEndpoints)
 // * How-to Guides
-//   - [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
 //   - [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
+//   - [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
 //
 // > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
 // you must specify a `billingProjectId` and set `userProjectOverride` to true

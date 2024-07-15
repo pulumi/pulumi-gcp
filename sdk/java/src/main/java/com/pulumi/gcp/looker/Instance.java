@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/looker/docs/reference/rest/v1/projects.locations.instances)
  * * How-to Guides
- *     * [Create a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-create)
  *     * [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
+ *     * [Create a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-create)
  * 
  * ## Example Usage
  * 

@@ -3108,6 +3108,9 @@
                 "current": "gcp:certificatemanager/trustConfig:TrustConfig",
                 "majorVersion": 7,
                 "fields": {
+                    "allowlisted_certificates": {
+                        "maxItemsOne": false
+                    },
                     "trust_stores": {
                         "maxItemsOne": false,
                         "elem": {
@@ -5541,6 +5544,9 @@
                     },
                     "log_config": {
                         "maxItemsOne": true
+                    },
+                    "source_regions": {
+                        "maxItemsOne": false
                     },
                     "ssl_health_check": {
                         "maxItemsOne": true
@@ -12948,6 +12954,9 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "sql_assertion": {
+                                                "maxItemsOne": true
                                             },
                                             "statistic_range_expectation": {
                                                 "maxItemsOne": true
@@ -20490,6 +20499,9 @@
                 "fields": {
                     "items": {
                         "maxItemsOne": false
+                    },
+                    "purpose": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -23969,6 +23981,15 @@
                 "current": "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy",
                 "majorVersion": 7
             },
+            "google_scc_v2_organization_notification_config": {
+                "current": "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig",
+                "majorVersion": 7,
+                "fields": {
+                    "streaming_config": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_secret_manager_secret": {
                 "current": "gcp:secretmanager/secret:Secret",
                 "majorVersion": 7,
@@ -24079,6 +24100,50 @@
             },
             "google_secure_source_manager_instance_iam_policy": {
                 "current": "gcp:securesourcemanager/instanceIamPolicy:InstanceIamPolicy",
+                "majorVersion": 7
+            },
+            "google_secure_source_manager_repository": {
+                "current": "gcp:securesourcemanager/repository:Repository",
+                "majorVersion": 7,
+                "fields": {
+                    "initial_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "gitignores": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "uris": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_secure_source_manager_repository_iam_binding": {
+                "current": "gcp:securesourcemanager/repositoryIamBinding:RepositoryIamBinding",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_secure_source_manager_repository_iam_member": {
+                "current": "gcp:securesourcemanager/repositoryIamMember:RepositoryIamMember",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_secure_source_manager_repository_iam_policy": {
+                "current": "gcp:securesourcemanager/repositoryIamPolicy:RepositoryIamPolicy",
                 "majorVersion": 7
             },
             "google_security_scanner_scan_config": {
@@ -27776,6 +27841,9 @@
                     "log_config": {
                         "maxItemsOne": false
                     },
+                    "source_regions": {
+                        "maxItemsOne": false
+                    },
                     "ssl_health_check": {
                         "maxItemsOne": false
                     },
@@ -30173,6 +30241,25 @@
                     }
                 }
             },
+            "google_kms_crypto_keys": {
+                "current": "gcp:kms/getCryptoKeys:getCryptoKeys",
+                "majorVersion": 7,
+                "fields": {
+                    "keys": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "primary": {
+                                    "maxItemsOne": false
+                                },
+                                "version_template": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_kms_key_ring": {
                 "current": "gcp:kms/getKMSKeyRing:getKMSKeyRing",
                 "majorVersion": 7
@@ -30180,6 +30267,15 @@
             "google_kms_key_ring_iam_policy": {
                 "current": "gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy",
                 "majorVersion": 7
+            },
+            "google_kms_key_rings": {
+                "current": "gcp:kms/getKeyRings:getKeyRings",
+                "majorVersion": 7,
+                "fields": {
+                    "key_rings": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "google_kms_secret": {
                 "current": "gcp:kms/getKMSSecret:getKMSSecret",
@@ -30800,6 +30896,10 @@
             },
             "google_secure_source_manager_instance_iam_policy": {
                 "current": "gcp:securesourcemanager/getInstanceIamPolicy:getInstanceIamPolicy",
+                "majorVersion": 7
+            },
+            "google_secure_source_manager_repository_iam_policy": {
+                "current": "gcp:securesourcemanager/getRepositoryIamPolicy:getRepositoryIamPolicy",
                 "majorVersion": 7
             },
             "google_service_account": {
@@ -32402,6 +32502,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_kms_crypto_keys": [
+                "keys.$.effective_labels",
+                "keys.$.terraform_labels"
+            ],
             "google_privateca_certificate_authority": [
                 "effective_labels",
                 "terraform_labels"
@@ -33276,6 +33380,10 @@
             "gcp:securesourcemanager/instanceIamBinding:InstanceIamBinding": 0,
             "gcp:securesourcemanager/instanceIamMember:InstanceIamMember": 0,
             "gcp:securesourcemanager/instanceIamPolicy:InstanceIamPolicy": 0,
+            "gcp:securesourcemanager/repository:Repository": 0,
+            "gcp:securesourcemanager/repositoryIamBinding:RepositoryIamBinding": 0,
+            "gcp:securesourcemanager/repositoryIamMember:RepositoryIamMember": 0,
+            "gcp:securesourcemanager/repositoryIamPolicy:RepositoryIamPolicy": 0,
             "gcp:securitycenter/eventThreatDetectionCustomModule:EventThreatDetectionCustomModule": 0,
             "gcp:securitycenter/folderCustomModule:FolderCustomModule": 0,
             "gcp:securitycenter/instanceIamBinding:InstanceIamBinding": 0,
@@ -33293,6 +33401,7 @@
             "gcp:securitycenter/sourceIamBinding:SourceIamBinding": 0,
             "gcp:securitycenter/sourceIamMember:SourceIamMember": 0,
             "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": 0,
+            "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig": 0,
             "gcp:securityposture/posture:Posture": 0,
             "gcp:securityposture/postureDeployment:PostureDeployment": 0,
             "gcp:serviceaccount/account:Account": 0,
@@ -33605,6 +33714,7 @@
             "gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy": 0,
             "gcp:iap/getWebTypeComputeIamPolicy:getWebTypeComputeIamPolicy": 0,
             "gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy": 0,
+            "gcp:kms/getCryptoKeys:getCryptoKeys": 0,
             "gcp:kms/getKMSCryptoKey:getKMSCryptoKey": 0,
             "gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion": 0,
             "gcp:kms/getKMSKeyRing:getKMSKeyRing": 0,
@@ -33612,6 +33722,7 @@
             "gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric": 0,
             "gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext": 0,
             "gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy": 0,
+            "gcp:kms/getKeyRings:getKeyRings": 0,
             "gcp:logging/getFolderSettings:getFolderSettings": 0,
             "gcp:logging/getLogViewIamPolicy:getLogViewIamPolicy": 0,
             "gcp:logging/getOrganizationSettings:getOrganizationSettings": 0,
@@ -33656,6 +33767,7 @@
             "gcp:secretmanager/getSecretVersionAccess:getSecretVersionAccess": 0,
             "gcp:secretmanager/getSecrets:getSecrets": 0,
             "gcp:securesourcemanager/getInstanceIamPolicy:getInstanceIamPolicy": 0,
+            "gcp:securesourcemanager/getRepositoryIamPolicy:getRepositoryIamPolicy": 0,
             "gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy": 0,
             "gcp:serviceaccount/getAccount:getAccount": 0,
             "gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken": 0,

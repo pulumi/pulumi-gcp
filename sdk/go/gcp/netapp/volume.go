@@ -22,8 +22,8 @@ import (
 //
 // * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes)
 // * How-to Guides
-//   - [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
 //   - [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
+//   - [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
 //
 // ## Example Usage
 //
@@ -161,6 +161,8 @@ type Volume struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// Specifies the replica zone for regional volume.
+	ReplicaZone pulumi.StringOutput `pulumi:"replicaZone"`
 	// Used to create this volume from a snapshot (= cloning) or an backup.
 	// Structure is documented below.
 	RestoreParameters VolumeRestoreParametersPtrOutput `pulumi:"restoreParameters"`
@@ -194,6 +196,8 @@ type Volume struct {
 	UnixPermissions pulumi.StringOutput `pulumi:"unixPermissions"`
 	// Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
 	UsedGib pulumi.StringOutput `pulumi:"usedGib"`
+	// Specifies the active zone for regional volume.
+	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewVolume registers a new resource with the given unique name, arguments, and options.
@@ -303,6 +307,8 @@ type volumeState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// Specifies the replica zone for regional volume.
+	ReplicaZone *string `pulumi:"replicaZone"`
 	// Used to create this volume from a snapshot (= cloning) or an backup.
 	// Structure is documented below.
 	RestoreParameters *VolumeRestoreParameters `pulumi:"restoreParameters"`
@@ -336,6 +342,8 @@ type volumeState struct {
 	UnixPermissions *string `pulumi:"unixPermissions"`
 	// Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
 	UsedGib *string `pulumi:"usedGib"`
+	// Specifies the active zone for regional volume.
+	Zone *string `pulumi:"zone"`
 }
 
 type VolumeState struct {
@@ -396,6 +404,8 @@ type VolumeState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// Specifies the replica zone for regional volume.
+	ReplicaZone pulumi.StringPtrInput
 	// Used to create this volume from a snapshot (= cloning) or an backup.
 	// Structure is documented below.
 	RestoreParameters VolumeRestoreParametersPtrInput
@@ -429,6 +439,8 @@ type VolumeState struct {
 	UnixPermissions pulumi.StringPtrInput
 	// Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
 	UsedGib pulumi.StringPtrInput
+	// Specifies the active zone for regional volume.
+	Zone pulumi.StringPtrInput
 }
 
 func (VolumeState) ElementType() reflect.Type {
@@ -768,6 +780,11 @@ func (o VolumeOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
+// Specifies the replica zone for regional volume.
+func (o VolumeOutput) ReplicaZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.ReplicaZone }).(pulumi.StringOutput)
+}
+
 // Used to create this volume from a snapshot (= cloning) or an backup.
 // Structure is documented below.
 func (o VolumeOutput) RestoreParameters() VolumeRestoreParametersPtrOutput {
@@ -838,6 +855,11 @@ func (o VolumeOutput) UnixPermissions() pulumi.StringOutput {
 // Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
 func (o VolumeOutput) UsedGib() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.UsedGib }).(pulumi.StringOutput)
+}
+
+// Specifies the active zone for regional volume.
+func (o VolumeOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }
 
 type VolumeArrayOutput struct{ *pulumi.OutputState }

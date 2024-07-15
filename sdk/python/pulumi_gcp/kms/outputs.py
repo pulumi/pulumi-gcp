@@ -30,9 +30,13 @@ __all__ = [
     'KeyRingIAMMemberCondition',
     'KeyRingImportJobAttestation',
     'KeyRingImportJobPublicKey',
+    'GetCryptoKeysKeyResult',
+    'GetCryptoKeysKeyPrimaryResult',
+    'GetCryptoKeysKeyVersionTemplateResult',
     'GetKMSCryptoKeyPrimaryResult',
     'GetKMSCryptoKeyVersionPublicKeyResult',
     'GetKMSCryptoKeyVersionTemplateResult',
+    'GetKeyRingsKeyRingResult',
 ]
 
 @pulumi.output_type
@@ -861,6 +865,253 @@ class KeyRingImportJobPublicKey(dict):
 
 
 @pulumi.output_type
+class GetCryptoKeysKeyResult(dict):
+    def __init__(__self__, *,
+                 crypto_key_backend: str,
+                 destroy_scheduled_duration: str,
+                 effective_labels: Mapping[str, str],
+                 id: str,
+                 import_only: bool,
+                 labels: Mapping[str, str],
+                 primaries: Sequence['outputs.GetCryptoKeysKeyPrimaryResult'],
+                 pulumi_labels: Mapping[str, str],
+                 purpose: str,
+                 rotation_period: str,
+                 skip_initial_version_creation: bool,
+                 version_templates: Sequence['outputs.GetCryptoKeysKeyVersionTemplateResult'],
+                 key_ring: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+               The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+        :param str destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+               If not specified at creation time, the default duration is 30 days.
+        :param bool import_only: Whether this key may contain imported versions only.
+        :param Mapping[str, str] labels: Labels with user-defined metadata to apply to this resource.
+               
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param Sequence['GetCryptoKeysKeyPrimaryArgs'] primaries: A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+               Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+        :param Mapping[str, str] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
+        :param str purpose: The immutable purpose of this CryptoKey. See the
+               [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
+               for possible inputs.
+               Default value is "ENCRYPT_DECRYPT".
+        :param str rotation_period: Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
+               The first rotation will take place after the specified period. The rotation period has
+               the format of a decimal number with up to 9 fractional digits, followed by the
+               letter 's' (seconds). It must be greater than a day (ie, 86400).
+        :param bool skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+               You must use the 'google_kms_crypto_key_version' resource to create a new CryptoKeyVersion
+               or 'google_kms_key_ring_import_job' resource to import the CryptoKeyVersion.
+        :param Sequence['GetCryptoKeysKeyVersionTemplateArgs'] version_templates: A template describing settings for new crypto key versions.
+        :param str key_ring: The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
+        :param str name: The resource name for the CryptoKey.
+        """
+        pulumi.set(__self__, "crypto_key_backend", crypto_key_backend)
+        pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
+        pulumi.set(__self__, "effective_labels", effective_labels)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "import_only", import_only)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "primaries", primaries)
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        pulumi.set(__self__, "purpose", purpose)
+        pulumi.set(__self__, "rotation_period", rotation_period)
+        pulumi.set(__self__, "skip_initial_version_creation", skip_initial_version_creation)
+        pulumi.set(__self__, "version_templates", version_templates)
+        if key_ring is not None:
+            pulumi.set(__self__, "key_ring", key_ring)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="cryptoKeyBackend")
+    def crypto_key_backend(self) -> str:
+        """
+        The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+        The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+        """
+        return pulumi.get(self, "crypto_key_backend")
+
+    @property
+    @pulumi.getter(name="destroyScheduledDuration")
+    def destroy_scheduled_duration(self) -> str:
+        """
+        The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
+        If not specified at creation time, the default duration is 30 days.
+        """
+        return pulumi.get(self, "destroy_scheduled_duration")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="importOnly")
+    def import_only(self) -> bool:
+        """
+        Whether this key may contain imported versions only.
+        """
+        return pulumi.get(self, "import_only")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Labels with user-defined metadata to apply to this resource.
+
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def primaries(self) -> Sequence['outputs.GetCryptoKeysKeyPrimaryResult']:
+        """
+        A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+        Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+        """
+        return pulumi.get(self, "primaries")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        """
+        The combination of labels configured directly on the resource
+         and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
+    @pulumi.getter
+    def purpose(self) -> str:
+        """
+        The immutable purpose of this CryptoKey. See the
+        [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
+        for possible inputs.
+        Default value is "ENCRYPT_DECRYPT".
+        """
+        return pulumi.get(self, "purpose")
+
+    @property
+    @pulumi.getter(name="rotationPeriod")
+    def rotation_period(self) -> str:
+        """
+        Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
+        The first rotation will take place after the specified period. The rotation period has
+        the format of a decimal number with up to 9 fractional digits, followed by the
+        letter 's' (seconds). It must be greater than a day (ie, 86400).
+        """
+        return pulumi.get(self, "rotation_period")
+
+    @property
+    @pulumi.getter(name="skipInitialVersionCreation")
+    def skip_initial_version_creation(self) -> bool:
+        """
+        If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
+        You must use the 'google_kms_crypto_key_version' resource to create a new CryptoKeyVersion
+        or 'google_kms_key_ring_import_job' resource to import the CryptoKeyVersion.
+        """
+        return pulumi.get(self, "skip_initial_version_creation")
+
+    @property
+    @pulumi.getter(name="versionTemplates")
+    def version_templates(self) -> Sequence['outputs.GetCryptoKeysKeyVersionTemplateResult']:
+        """
+        A template describing settings for new crypto key versions.
+        """
+        return pulumi.get(self, "version_templates")
+
+    @property
+    @pulumi.getter(name="keyRing")
+    def key_ring(self) -> Optional[str]:
+        """
+        The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
+        """
+        return pulumi.get(self, "key_ring")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The resource name for the CryptoKey.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetCryptoKeysKeyPrimaryResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 state: str):
+        """
+        :param str name: The resource name for this CryptoKeyVersion.
+        :param str state: The current state of the CryptoKeyVersion.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name for this CryptoKeyVersion.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The current state of the CryptoKeyVersion.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetCryptoKeysKeyVersionTemplateResult(dict):
+    def __init__(__self__, *,
+                 algorithm: str,
+                 protection_level: str):
+        """
+        :param str algorithm: The algorithm to use when creating a version based on this template.
+               See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+        :param str protection_level: The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "protection_level", protection_level)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> str:
+        """
+        The algorithm to use when creating a version based on this template.
+        See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @property
+    @pulumi.getter(name="protectionLevel")
+    def protection_level(self) -> str:
+        """
+        The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
+        """
+        return pulumi.get(self, "protection_level")
+
+
+@pulumi.output_type
 class GetKMSCryptoKeyPrimaryResult(dict):
     def __init__(__self__, *,
                  name: str,
@@ -949,5 +1200,24 @@ class GetKMSCryptoKeyVersionTemplateResult(dict):
         The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
         """
         return pulumi.get(self, "protection_level")
+
+
+@pulumi.output_type
+class GetKeyRingsKeyRingResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
 
 

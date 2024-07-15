@@ -43,6 +43,7 @@ __all__ = [
     'DatascanDataQualitySpecRuleRegexExpectation',
     'DatascanDataQualitySpecRuleRowConditionExpectation',
     'DatascanDataQualitySpecRuleSetExpectation',
+    'DatascanDataQualitySpecRuleSqlAssertion',
     'DatascanDataQualitySpecRuleStatisticRangeExpectation',
     'DatascanDataQualitySpecRuleTableConditionExpectation',
     'DatascanDataQualitySpecRuleUniquenessExpectation',
@@ -1248,6 +1249,8 @@ class DatascanDataQualitySpecRule(dict):
             suggest = "row_condition_expectation"
         elif key == "setExpectation":
             suggest = "set_expectation"
+        elif key == "sqlAssertion":
+            suggest = "sql_assertion"
         elif key == "statisticRangeExpectation":
             suggest = "statistic_range_expectation"
         elif key == "tableConditionExpectation":
@@ -1277,6 +1280,7 @@ class DatascanDataQualitySpecRule(dict):
                  regex_expectation: Optional['outputs.DatascanDataQualitySpecRuleRegexExpectation'] = None,
                  row_condition_expectation: Optional['outputs.DatascanDataQualitySpecRuleRowConditionExpectation'] = None,
                  set_expectation: Optional['outputs.DatascanDataQualitySpecRuleSetExpectation'] = None,
+                 sql_assertion: Optional['outputs.DatascanDataQualitySpecRuleSqlAssertion'] = None,
                  statistic_range_expectation: Optional['outputs.DatascanDataQualitySpecRuleStatisticRangeExpectation'] = None,
                  table_condition_expectation: Optional['outputs.DatascanDataQualitySpecRuleTableConditionExpectation'] = None,
                  threshold: Optional[float] = None,
@@ -1300,6 +1304,8 @@ class DatascanDataQualitySpecRule(dict):
         :param 'DatascanDataQualitySpecRuleRowConditionExpectationArgs' row_condition_expectation: Table rule which evaluates whether each row passes the specified condition.
                Structure is documented below.
         :param 'DatascanDataQualitySpecRuleSetExpectationArgs' set_expectation: ColumnMap rule which evaluates whether each column value is contained by a specified set.
+               Structure is documented below.
+        :param 'DatascanDataQualitySpecRuleSqlAssertionArgs' sql_assertion: Table rule which evaluates whether any row matches invalid state.
                Structure is documented below.
         :param 'DatascanDataQualitySpecRuleStatisticRangeExpectationArgs' statistic_range_expectation: ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
                Structure is documented below.
@@ -1327,6 +1333,8 @@ class DatascanDataQualitySpecRule(dict):
             pulumi.set(__self__, "row_condition_expectation", row_condition_expectation)
         if set_expectation is not None:
             pulumi.set(__self__, "set_expectation", set_expectation)
+        if sql_assertion is not None:
+            pulumi.set(__self__, "sql_assertion", sql_assertion)
         if statistic_range_expectation is not None:
             pulumi.set(__self__, "statistic_range_expectation", statistic_range_expectation)
         if table_condition_expectation is not None:
@@ -1424,6 +1432,15 @@ class DatascanDataQualitySpecRule(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "set_expectation")
+
+    @property
+    @pulumi.getter(name="sqlAssertion")
+    def sql_assertion(self) -> Optional['outputs.DatascanDataQualitySpecRuleSqlAssertion']:
+        """
+        Table rule which evaluates whether any row matches invalid state.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sql_assertion")
 
     @property
     @pulumi.getter(name="statisticRangeExpectation")
@@ -1617,6 +1634,41 @@ class DatascanDataQualitySpecRuleSetExpectation(dict):
         Expected values for the column value.
         """
         return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class DatascanDataQualitySpecRuleSqlAssertion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sqlStatement":
+            suggest = "sql_statement"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatascanDataQualitySpecRuleSqlAssertion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatascanDataQualitySpecRuleSqlAssertion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatascanDataQualitySpecRuleSqlAssertion.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sql_statement: str):
+        """
+        :param str sql_statement: The SQL statement.
+        """
+        pulumi.set(__self__, "sql_statement", sql_statement)
+
+    @property
+    @pulumi.getter(name="sqlStatement")
+    def sql_statement(self) -> str:
+        """
+        The SQL statement.
+        """
+        return pulumi.get(self, "sql_statement")
 
 
 @pulumi.output_type

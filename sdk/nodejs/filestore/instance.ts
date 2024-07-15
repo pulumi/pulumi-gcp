@@ -13,9 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
  * * How-to Guides
+ *     * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
  *     * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
  *     * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
- *     * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
  *
  * ## Example Usage
  *

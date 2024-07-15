@@ -463,45 +463,6 @@ class PostureDeployment(pulumi.CustomResource):
         * How-to Guides
             * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
 
-        ## Example Usage
-
-        ### Securityposture Posture Deployment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        posture1 = gcp.securityposture.Posture("posture_1",
-            posture_id="posture_1",
-            parent="organizations/123456789",
-            location="global",
-            state="ACTIVE",
-            description="a new posture",
-            policy_sets=[{
-                "policySetId": "org_policy_set",
-                "description": "set of org policies",
-                "policies": [{
-                    "policyId": "policy_1",
-                    "constraint": {
-                        "orgPolicyConstraint": {
-                            "cannedConstraintId": "storage.uniformBucketLevelAccess",
-                            "policyRules": [{
-                                "enforce": True,
-                            }],
-                        },
-                    },
-                }],
-            }])
-        posture_deployment = gcp.securityposture.PostureDeployment("postureDeployment",
-            posture_deployment_id="posture_deployment_1",
-            parent="organizations/123456789",
-            location="global",
-            description="a new posture deployment",
-            target_resource="projects/1111111111111",
-            posture_id=posture1.name,
-            posture_revision_id=posture1.revision_id)
-        ```
-
         ## Import
 
         PostureDeployment can be imported using any of these accepted formats:
@@ -548,45 +509,6 @@ class PostureDeployment(pulumi.CustomResource):
 
         * How-to Guides
             * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
-
-        ## Example Usage
-
-        ### Securityposture Posture Deployment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        posture1 = gcp.securityposture.Posture("posture_1",
-            posture_id="posture_1",
-            parent="organizations/123456789",
-            location="global",
-            state="ACTIVE",
-            description="a new posture",
-            policy_sets=[{
-                "policySetId": "org_policy_set",
-                "description": "set of org policies",
-                "policies": [{
-                    "policyId": "policy_1",
-                    "constraint": {
-                        "orgPolicyConstraint": {
-                            "cannedConstraintId": "storage.uniformBucketLevelAccess",
-                            "policyRules": [{
-                                "enforce": True,
-                            }],
-                        },
-                    },
-                }],
-            }])
-        posture_deployment = gcp.securityposture.PostureDeployment("postureDeployment",
-            posture_deployment_id="posture_deployment_1",
-            parent="organizations/123456789",
-            location="global",
-            description="a new posture deployment",
-            target_resource="projects/1111111111111",
-            posture_id=posture1.name,
-            posture_revision_id=posture1.revision_id)
-        ```
 
         ## Import
 

@@ -1473,6 +1473,103 @@ func (o DnsAuthorizationDnsResourceRecordArrayOutput) Index(i pulumi.IntInput) D
 	}).(DnsAuthorizationDnsResourceRecordOutput)
 }
 
+type TrustConfigAllowlistedCertificate struct {
+	// PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.
+	PemCertificate string `pulumi:"pemCertificate"`
+}
+
+// TrustConfigAllowlistedCertificateInput is an input type that accepts TrustConfigAllowlistedCertificateArgs and TrustConfigAllowlistedCertificateOutput values.
+// You can construct a concrete instance of `TrustConfigAllowlistedCertificateInput` via:
+//
+//	TrustConfigAllowlistedCertificateArgs{...}
+type TrustConfigAllowlistedCertificateInput interface {
+	pulumi.Input
+
+	ToTrustConfigAllowlistedCertificateOutput() TrustConfigAllowlistedCertificateOutput
+	ToTrustConfigAllowlistedCertificateOutputWithContext(context.Context) TrustConfigAllowlistedCertificateOutput
+}
+
+type TrustConfigAllowlistedCertificateArgs struct {
+	// PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.
+	PemCertificate pulumi.StringInput `pulumi:"pemCertificate"`
+}
+
+func (TrustConfigAllowlistedCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrustConfigAllowlistedCertificate)(nil)).Elem()
+}
+
+func (i TrustConfigAllowlistedCertificateArgs) ToTrustConfigAllowlistedCertificateOutput() TrustConfigAllowlistedCertificateOutput {
+	return i.ToTrustConfigAllowlistedCertificateOutputWithContext(context.Background())
+}
+
+func (i TrustConfigAllowlistedCertificateArgs) ToTrustConfigAllowlistedCertificateOutputWithContext(ctx context.Context) TrustConfigAllowlistedCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrustConfigAllowlistedCertificateOutput)
+}
+
+// TrustConfigAllowlistedCertificateArrayInput is an input type that accepts TrustConfigAllowlistedCertificateArray and TrustConfigAllowlistedCertificateArrayOutput values.
+// You can construct a concrete instance of `TrustConfigAllowlistedCertificateArrayInput` via:
+//
+//	TrustConfigAllowlistedCertificateArray{ TrustConfigAllowlistedCertificateArgs{...} }
+type TrustConfigAllowlistedCertificateArrayInput interface {
+	pulumi.Input
+
+	ToTrustConfigAllowlistedCertificateArrayOutput() TrustConfigAllowlistedCertificateArrayOutput
+	ToTrustConfigAllowlistedCertificateArrayOutputWithContext(context.Context) TrustConfigAllowlistedCertificateArrayOutput
+}
+
+type TrustConfigAllowlistedCertificateArray []TrustConfigAllowlistedCertificateInput
+
+func (TrustConfigAllowlistedCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrustConfigAllowlistedCertificate)(nil)).Elem()
+}
+
+func (i TrustConfigAllowlistedCertificateArray) ToTrustConfigAllowlistedCertificateArrayOutput() TrustConfigAllowlistedCertificateArrayOutput {
+	return i.ToTrustConfigAllowlistedCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i TrustConfigAllowlistedCertificateArray) ToTrustConfigAllowlistedCertificateArrayOutputWithContext(ctx context.Context) TrustConfigAllowlistedCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrustConfigAllowlistedCertificateArrayOutput)
+}
+
+type TrustConfigAllowlistedCertificateOutput struct{ *pulumi.OutputState }
+
+func (TrustConfigAllowlistedCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrustConfigAllowlistedCertificate)(nil)).Elem()
+}
+
+func (o TrustConfigAllowlistedCertificateOutput) ToTrustConfigAllowlistedCertificateOutput() TrustConfigAllowlistedCertificateOutput {
+	return o
+}
+
+func (o TrustConfigAllowlistedCertificateOutput) ToTrustConfigAllowlistedCertificateOutputWithContext(ctx context.Context) TrustConfigAllowlistedCertificateOutput {
+	return o
+}
+
+// PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.
+func (o TrustConfigAllowlistedCertificateOutput) PemCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v TrustConfigAllowlistedCertificate) string { return v.PemCertificate }).(pulumi.StringOutput)
+}
+
+type TrustConfigAllowlistedCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (TrustConfigAllowlistedCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrustConfigAllowlistedCertificate)(nil)).Elem()
+}
+
+func (o TrustConfigAllowlistedCertificateArrayOutput) ToTrustConfigAllowlistedCertificateArrayOutput() TrustConfigAllowlistedCertificateArrayOutput {
+	return o
+}
+
+func (o TrustConfigAllowlistedCertificateArrayOutput) ToTrustConfigAllowlistedCertificateArrayOutputWithContext(ctx context.Context) TrustConfigAllowlistedCertificateArrayOutput {
+	return o
+}
+
+func (o TrustConfigAllowlistedCertificateArrayOutput) Index(i pulumi.IntInput) TrustConfigAllowlistedCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrustConfigAllowlistedCertificate {
+		return vs[0].([]TrustConfigAllowlistedCertificate)[vs[1].(int)]
+	}).(TrustConfigAllowlistedCertificateOutput)
+}
+
 type TrustConfigTrustStore struct {
 	// Set of intermediate CA certificates used for the path building phase of chain validation.
 	// The field is currently not supported if trust config is used for the workload certificate feature.
@@ -2046,6 +2143,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateSelfManagedPtrInput)(nil)).Elem(), CertificateSelfManagedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsAuthorizationDnsResourceRecordInput)(nil)).Elem(), DnsAuthorizationDnsResourceRecordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsAuthorizationDnsResourceRecordArrayInput)(nil)).Elem(), DnsAuthorizationDnsResourceRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrustConfigAllowlistedCertificateInput)(nil)).Elem(), TrustConfigAllowlistedCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrustConfigAllowlistedCertificateArrayInput)(nil)).Elem(), TrustConfigAllowlistedCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrustConfigTrustStoreInput)(nil)).Elem(), TrustConfigTrustStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrustConfigTrustStoreArrayInput)(nil)).Elem(), TrustConfigTrustStoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrustConfigTrustStoreIntermediateCaInput)(nil)).Elem(), TrustConfigTrustStoreIntermediateCaArgs{})
@@ -2074,6 +2173,8 @@ func init() {
 	pulumi.RegisterOutputType(CertificateSelfManagedPtrOutput{})
 	pulumi.RegisterOutputType(DnsAuthorizationDnsResourceRecordOutput{})
 	pulumi.RegisterOutputType(DnsAuthorizationDnsResourceRecordArrayOutput{})
+	pulumi.RegisterOutputType(TrustConfigAllowlistedCertificateOutput{})
+	pulumi.RegisterOutputType(TrustConfigAllowlistedCertificateArrayOutput{})
 	pulumi.RegisterOutputType(TrustConfigTrustStoreOutput{})
 	pulumi.RegisterOutputType(TrustConfigTrustStoreArrayOutput{})
 	pulumi.RegisterOutputType(TrustConfigTrustStoreIntermediateCaOutput{})

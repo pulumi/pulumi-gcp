@@ -874,6 +874,84 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Dlp Job Trigger Timespan Config Big Query
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataloss.PreventionJobTrigger;
+ * import com.pulumi.gcp.dataloss.PreventionJobTriggerArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerScheduleArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var timespanConfigBigQuery = new PreventionJobTrigger("timespanConfigBigQuery", PreventionJobTriggerArgs.builder()
+ *             .parent("projects/my-project-name")
+ *             .description("BigQuery DLP Job Trigger with timespan config and row limit")
+ *             .displayName("bigquery-dlp-job-trigger-limit-timespan")
+ *             .triggers(PreventionJobTriggerTriggerArgs.builder()
+ *                 .schedule(PreventionJobTriggerTriggerScheduleArgs.builder()
+ *                     .recurrencePeriodDuration("86400s")
+ *                     .build())
+ *                 .build())
+ *             .inspectJob(PreventionJobTriggerInspectJobArgs.builder()
+ *                 .inspectTemplateName("projects/test/locations/global/inspectTemplates/6425492983381733900")
+ *                 .storageConfig(PreventionJobTriggerInspectJobStorageConfigArgs.builder()
+ *                     .bigQueryOptions(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs.builder()
+ *                         .tableReference(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs.builder()
+ *                             .projectId("project")
+ *                             .datasetId("dataset")
+ *                             .tableId("table")
+ *                             .build())
+ *                         .sampleMethod("")
+ *                         .build())
+ *                     .timespanConfig(PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs.builder()
+ *                         .startTime("2023-01-01T00:00:23Z")
+ *                         .timestampField(PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs.builder()
+ *                             .name("timestamp")
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .actions(PreventionJobTriggerInspectJobActionArgs.builder()
+ *                     .saveFindings(PreventionJobTriggerInspectJobActionSaveFindingsArgs.builder()
+ *                         .outputConfig(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs.builder()
+ *                             .table(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs.builder()
+ *                                 .projectId("project")
+ *                                 .datasetId("output")
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

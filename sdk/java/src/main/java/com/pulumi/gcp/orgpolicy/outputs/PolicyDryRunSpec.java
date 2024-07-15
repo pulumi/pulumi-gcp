@@ -15,7 +15,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PolicyDryRunSpec {
     /**
-     * @return An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
+     * @return (Output)
+     * An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
      * 
      */
     private @Nullable String etag;
@@ -31,18 +32,21 @@ public final class PolicyDryRunSpec {
     private @Nullable Boolean reset;
     /**
      * @return In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+     * Structure is documented below.
      * 
      */
     private @Nullable List<PolicyDryRunSpecRule> rules;
     /**
-     * @return Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
+     * @return (Output)
+     * Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
      * 
      */
     private @Nullable String updateTime;
 
     private PolicyDryRunSpec() {}
     /**
-     * @return An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
+     * @return (Output)
+     * An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
      * 
      */
     public Optional<String> etag() {
@@ -64,13 +68,15 @@ public final class PolicyDryRunSpec {
     }
     /**
      * @return In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+     * Structure is documented below.
      * 
      */
     public List<PolicyDryRunSpecRule> rules() {
         return this.rules == null ? List.of() : this.rules;
     }
     /**
-     * @return Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
+     * @return (Output)
+     * Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
      * 
      */
     public Optional<String> updateTime() {

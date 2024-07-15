@@ -118,6 +118,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArg
     /**
      * How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
      * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+     * If TimespanConfig is set, set this to an empty string to avoid using the default value.
      * Default value is `TOP`.
      * Possible values are: `TOP`, `RANDOM_START`.
      * 
@@ -128,6 +129,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArg
     /**
      * @return How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
      * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+     * If TimespanConfig is set, set this to an empty string to avoid using the default value.
      * Default value is `TOP`.
      * Possible values are: `TOP`, `RANDOM_START`.
      * 
@@ -344,6 +346,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArg
         /**
          * @param sampleMethod How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
          * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+         * If TimespanConfig is set, set this to an empty string to avoid using the default value.
          * Default value is `TOP`.
          * Possible values are: `TOP`, `RANDOM_START`.
          * 
@@ -358,6 +361,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArg
         /**
          * @param sampleMethod How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
          * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+         * If TimespanConfig is set, set this to an empty string to avoid using the default value.
          * Default value is `TOP`.
          * Possible values are: `TOP`, `RANDOM_START`.
          * 

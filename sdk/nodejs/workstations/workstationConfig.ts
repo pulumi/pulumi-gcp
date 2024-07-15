@@ -15,6 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const tagKey1 = new gcp.tags.TagKey("tag_key1", {
+ *     parent: "organizations/123456789",
+ *     shortName: "keyname",
+ * });
+ * const tagValue1 = new gcp.tags.TagValue("tag_value1", {
+ *     parent: pulumi.interpolate`tagKeys/${tagKey1.name}`,
+ *     shortName: "valuename",
+ * });
  * const _default = new gcp.compute.Network("default", {
  *     name: "workstation-cluster",
  *     autoCreateSubnetworks: false,
@@ -59,6 +67,9 @@ import * as utilities from "../utilities";
  *             bootDiskSizeGb: 35,
  *             disablePublicIpAddresses: true,
  *             disableSsh: false,
+ *             vmTags: pulumi.all([tagKey1.name, tagValue1.name]).apply(([tagKey1Name, tagValue1Name]) => {
+ *                 [`tagKeys/${tagKey1Name}`]: `tagValues/${tagValue1Name}`,
+ *             }),
  *         },
  *     },
  * });

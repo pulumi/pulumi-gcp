@@ -835,6 +835,77 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// ### Dlp Job Trigger Timespan Config Big Query
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var timespanConfigBigQuery = new Gcp.DataLoss.PreventionJobTrigger("timespan_config_big_query", new()
+    ///     {
+    ///         Parent = "projects/my-project-name",
+    ///         Description = "BigQuery DLP Job Trigger with timespan config and row limit",
+    ///         DisplayName = "bigquery-dlp-job-trigger-limit-timespan",
+    ///         Triggers = new[]
+    ///         {
+    ///             new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerArgs
+    ///             {
+    ///                 Schedule = new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerScheduleArgs
+    ///                 {
+    ///                     RecurrencePeriodDuration = "86400s",
+    ///                 },
+    ///             },
+    ///         },
+    ///         InspectJob = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobArgs
+    ///         {
+    ///             InspectTemplateName = "projects/test/locations/global/inspectTemplates/6425492983381733900",
+    ///             StorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigArgs
+    ///             {
+    ///                 BigQueryOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs
+    ///                 {
+    ///                     TableReference = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs
+    ///                     {
+    ///                         ProjectId = "project",
+    ///                         DatasetId = "dataset",
+    ///                         TableId = "table",
+    ///                     },
+    ///                     SampleMethod = "",
+    ///                 },
+    ///                 TimespanConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs
+    ///                 {
+    ///                     StartTime = "2023-01-01T00:00:23Z",
+    ///                     TimestampField = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs
+    ///                     {
+    ///                         Name = "timestamp",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Actions = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
+    ///                 {
+    ///                     SaveFindings = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs
+    ///                     {
+    ///                         OutputConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs
+    ///                         {
+    ///                             Table = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs
+    ///                             {
+    ///                                 ProjectId = "project",
+    ///                                 DatasetId = "output",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

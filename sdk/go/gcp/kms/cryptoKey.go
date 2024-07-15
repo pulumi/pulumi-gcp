@@ -125,7 +125,7 @@ type CryptoKey struct {
 	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
 	CryptoKeyBackend pulumi.StringOutput `pulumi:"cryptoKeyBackend"`
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-	// If not specified at creation time, the default duration is 24 hours.
+	// If not specified at creation time, the default duration is 30 days.
 	DestroyScheduledDuration pulumi.StringOutput `pulumi:"destroyScheduledDuration"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -211,7 +211,7 @@ type cryptoKeyState struct {
 	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
 	CryptoKeyBackend *string `pulumi:"cryptoKeyBackend"`
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-	// If not specified at creation time, the default duration is 24 hours.
+	// If not specified at creation time, the default duration is 30 days.
 	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -260,7 +260,7 @@ type CryptoKeyState struct {
 	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
 	CryptoKeyBackend pulumi.StringPtrInput
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-	// If not specified at creation time, the default duration is 24 hours.
+	// If not specified at creation time, the default duration is 30 days.
 	DestroyScheduledDuration pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -313,7 +313,7 @@ type cryptoKeyArgs struct {
 	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
 	CryptoKeyBackend *string `pulumi:"cryptoKeyBackend"`
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-	// If not specified at creation time, the default duration is 24 hours.
+	// If not specified at creation time, the default duration is 30 days.
 	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
 	// Whether this key may contain imported versions only.
 	ImportOnly *bool `pulumi:"importOnly"`
@@ -354,7 +354,7 @@ type CryptoKeyArgs struct {
 	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
 	CryptoKeyBackend pulumi.StringPtrInput
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-	// If not specified at creation time, the default duration is 24 hours.
+	// If not specified at creation time, the default duration is 30 days.
 	DestroyScheduledDuration pulumi.StringPtrInput
 	// Whether this key may contain imported versions only.
 	ImportOnly pulumi.BoolPtrInput
@@ -483,7 +483,7 @@ func (o CryptoKeyOutput) CryptoKeyBackend() pulumi.StringOutput {
 }
 
 // The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-// If not specified at creation time, the default duration is 24 hours.
+// If not specified at creation time, the default duration is 30 days.
 func (o CryptoKeyOutput) DestroyScheduledDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.DestroyScheduledDuration }).(pulumi.StringOutput)
 }

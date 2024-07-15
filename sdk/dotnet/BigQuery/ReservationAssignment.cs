@@ -10,11 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery
 {
     /// <summary>
-    /// The BigqueryReservation Assignment resource
+    /// The BigqueryReservation Assignment resource.
+    /// 
+    /// To get more information about ReservationAssignment, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations.assignments)
+    /// * How-to Guides
+    ///     * [Work with reservation assignments](https://cloud.google.com/bigquery/docs/reservations-assignments)
     /// 
     /// ## Example Usage
     /// 
-    /// ### Basic
+    /// ### Bigquery Reservation Assignment Basic
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -25,14 +32,14 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var basic = new Gcp.BigQuery.Reservation("basic", new()
     ///     {
-    ///         Name = "tf-test-my-reservation",
+    ///         Name = "example-reservation",
     ///         Project = "my-project-name",
     ///         Location = "us-central1",
     ///         SlotCapacity = 0,
     ///         IgnoreIdleSlots = false,
     ///     });
     /// 
-    ///     var primary = new Gcp.BigQuery.ReservationAssignment("primary", new()
+    ///     var assignment = new Gcp.BigQuery.ReservationAssignment("assignment", new()
     ///     {
     ///         Assignee = "projects/my-project-name",
     ///         JobType = "PIPELINE",
@@ -44,7 +51,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// ## Import
     /// 
-    /// Assignment can be imported using any of these accepted formats:
+    /// ReservationAssignment can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}`
     /// 
@@ -52,7 +59,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// * `{{location}}/{{reservation}}/{{name}}`
     /// 
-    /// When using the `pulumi import` command, Assignment can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, ReservationAssignment can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}
@@ -94,7 +101,8 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -103,14 +111,14 @@ namespace Pulumi.Gcp.BigQuery
         /// The reservation for the resource
         /// 
         /// 
-        /// 
         /// - - -
         /// </summary>
         [Output("reservation")]
         public Output<string> Reservation { get; private set; } = null!;
 
         /// <summary>
-        /// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+        /// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
+        /// Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -180,14 +188,14 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The reservation for the resource
-        /// 
         /// 
         /// 
         /// - - -
@@ -228,7 +236,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -237,14 +246,14 @@ namespace Pulumi.Gcp.BigQuery
         /// The reservation for the resource
         /// 
         /// 
-        /// 
         /// - - -
         /// </summary>
         [Input("reservation")]
         public Input<string>? Reservation { get; set; }
 
         /// <summary>
-        /// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+        /// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
+        /// Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

@@ -10,6 +10,8 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.kms.inputs.GetCryptoKeyIamPolicyArgs;
 import com.pulumi.gcp.kms.inputs.GetCryptoKeyIamPolicyPlainArgs;
+import com.pulumi.gcp.kms.inputs.GetCryptoKeysArgs;
+import com.pulumi.gcp.kms.inputs.GetCryptoKeysPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
 import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyVersionArgs;
@@ -24,7 +26,10 @@ import com.pulumi.gcp.kms.inputs.GetKMSSecretCiphertextPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKMSSecretPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKeyRingIamPolicyArgs;
 import com.pulumi.gcp.kms.inputs.GetKeyRingIamPolicyPlainArgs;
+import com.pulumi.gcp.kms.inputs.GetKeyRingsArgs;
+import com.pulumi.gcp.kms.inputs.GetKeyRingsPlainArgs;
 import com.pulumi.gcp.kms.outputs.GetCryptoKeyIamPolicyResult;
+import com.pulumi.gcp.kms.outputs.GetCryptoKeysResult;
 import com.pulumi.gcp.kms.outputs.GetKMSCryptoKeyResult;
 import com.pulumi.gcp.kms.outputs.GetKMSCryptoKeyVersionResult;
 import com.pulumi.gcp.kms.outputs.GetKMSKeyRingResult;
@@ -32,6 +37,7 @@ import com.pulumi.gcp.kms.outputs.GetKMSSecretAsymmetricResult;
 import com.pulumi.gcp.kms.outputs.GetKMSSecretCiphertextResult;
 import com.pulumi.gcp.kms.outputs.GetKMSSecretResult;
 import com.pulumi.gcp.kms.outputs.GetKeyRingIamPolicyResult;
+import com.pulumi.gcp.kms.outputs.GetKeyRingsResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class KmsFunctions {
@@ -202,6 +208,58 @@ public final class KmsFunctions {
      */
     public static CompletableFuture<GetCryptoKeyIamPolicyResult> getCryptoKeyIamPolicyPlain(GetCryptoKeyIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", TypeShape.of(GetCryptoKeyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to all Google Cloud Platform KMS CryptoKeys in a given KeyRing. For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys).
+     * 
+     * A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
+     * Google Cloud KMS KeyRing.
+     * 
+     */
+    public static Output<GetCryptoKeysResult> getCryptoKeys(GetCryptoKeysArgs args) {
+        return getCryptoKeys(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to all Google Cloud Platform KMS CryptoKeys in a given KeyRing. For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys).
+     * 
+     * A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
+     * Google Cloud KMS KeyRing.
+     * 
+     */
+    public static CompletableFuture<GetCryptoKeysResult> getCryptoKeysPlain(GetCryptoKeysPlainArgs args) {
+        return getCryptoKeysPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to all Google Cloud Platform KMS CryptoKeys in a given KeyRing. For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys).
+     * 
+     * A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
+     * Google Cloud KMS KeyRing.
+     * 
+     */
+    public static Output<GetCryptoKeysResult> getCryptoKeys(GetCryptoKeysArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:kms/getCryptoKeys:getCryptoKeys", TypeShape.of(GetCryptoKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to all Google Cloud Platform KMS CryptoKeys in a given KeyRing. For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys).
+     * 
+     * A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
+     * Google Cloud KMS KeyRing.
+     * 
+     */
+    public static CompletableFuture<GetCryptoKeysResult> getCryptoKeysPlain(GetCryptoKeysPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:kms/getCryptoKeys:getCryptoKeys", TypeShape.of(GetCryptoKeysResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides access to a Google Cloud Platform KMS CryptoKey. For more information see
@@ -2602,5 +2660,17 @@ public final class KmsFunctions {
      */
     public static CompletableFuture<GetKeyRingIamPolicyResult> getKeyRingIamPolicyPlain(GetKeyRingIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", TypeShape.of(GetKeyRingIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetKeyRingsResult> getKeyRings(GetKeyRingsArgs args) {
+        return getKeyRings(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetKeyRingsResult> getKeyRingsPlain(GetKeyRingsPlainArgs args) {
+        return getKeyRingsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetKeyRingsResult> getKeyRings(GetKeyRingsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:kms/getKeyRings:getKeyRings", TypeShape.of(GetKeyRingsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetKeyRingsResult> getKeyRingsPlain(GetKeyRingsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:kms/getKeyRings:getKeyRings", TypeShape.of(GetKeyRingsResult.class), args, Utilities.withVersion(options));
     }
 }

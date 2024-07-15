@@ -2640,6 +2640,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "data_source_sourcerepo_repository.html.markdown",
 				},
 			},
+			"google_kms_key_rings": {
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
@@ -2794,6 +2797,7 @@ func Provider() tfbridge.ProviderInfo {
 		"google_workbench_instance_iam_binding",
 		"google_workbench_instance_iam_member",
 		"google_workbench_instance_iam_policy",
+		"google_kms_key_ring",
 	}
 
 	for _, name := range allowMissingResourceDocs {

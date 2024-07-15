@@ -725,6 +725,12 @@ class Datascan(pulumi.CustomResource):
                             "sqlExpression": "COUNT(*) > 0",
                         },
                     },
+                    {
+                        "dimension": "VALIDITY",
+                        "sqlAssertion": {
+                            "sqlStatement": "select * from bigquery-public-data.austin_bikeshare.bikeshare_stations where station_id is null",
+                        },
+                    },
                 ],
             },
             project="my-project-name")
@@ -983,6 +989,12 @@ class Datascan(pulumi.CustomResource):
                         "dimension": "VALIDITY",
                         "tableConditionExpectation": {
                             "sqlExpression": "COUNT(*) > 0",
+                        },
+                    },
+                    {
+                        "dimension": "VALIDITY",
+                        "sqlAssertion": {
+                            "sqlStatement": "select * from bigquery-public-data.austin_bikeshare.bikeshare_stations where station_id is null",
                         },
                     },
                 ],

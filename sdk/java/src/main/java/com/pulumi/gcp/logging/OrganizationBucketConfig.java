@@ -39,6 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetOrganizationArgs;
  * import com.pulumi.gcp.logging.OrganizationBucketConfig;
  * import com.pulumi.gcp.logging.OrganizationBucketConfigArgs;
+ * import com.pulumi.gcp.logging.inputs.OrganizationBucketConfigIndexConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,7 +63,7 @@ import javax.annotation.Nullable;
  *             .retentionDays(30)
  *             .bucketId("_Default")
  *             .indexConfigs(OrganizationBucketConfigIndexConfigArgs.builder()
- *                 .filePath("jsonPayload.request.status")
+ *                 .fieldPath("jsonPayload.request.status")
  *                 .type("INDEX_TYPE_STRING")
  *                 .build())
  *             .build());

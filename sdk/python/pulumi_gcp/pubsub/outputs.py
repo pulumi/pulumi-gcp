@@ -354,7 +354,7 @@ class SubscriptionBigqueryConfig(dict):
                  use_topic_schema: Optional[bool] = None,
                  write_metadata: Optional[bool] = None):
         """
-        :param str table: The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+        :param str table: The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
         :param bool drop_unknown_fields: When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
                are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
                and any messages with extra fields are not written and remain in the subscription's backlog.
@@ -384,7 +384,7 @@ class SubscriptionBigqueryConfig(dict):
     @pulumi.getter
     def table(self) -> str:
         """
-        The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+        The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
         """
         return pulumi.get(self, "table")
 
@@ -1347,7 +1347,7 @@ class GetSubscriptionBigqueryConfigResult(dict):
         :param str service_account_email: The service account to use to write to BigQuery. If not specified, the Pub/Sub
                [service agent](https://cloud.google.com/iam/docs/service-agents),
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
-        :param str table: The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+        :param str table: The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
         :param bool use_table_schema: When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
                must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
         :param bool use_topic_schema: When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
@@ -1386,7 +1386,7 @@ class GetSubscriptionBigqueryConfigResult(dict):
     @pulumi.getter
     def table(self) -> str:
         """
-        The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+        The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
         """
         return pulumi.get(self, "table")
 

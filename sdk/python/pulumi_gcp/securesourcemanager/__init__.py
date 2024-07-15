@@ -6,9 +6,14 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .get_instance_iam_policy import *
+from .get_repository_iam_policy import *
 from .instance import *
 from .instance_iam_binding import *
 from .instance_iam_member import *
 from .instance_iam_policy import *
+from .repository import *
+from .repository_iam_binding import *
+from .repository_iam_member import *
+from .repository_iam_policy import *
 from ._inputs import *
 from . import outputs

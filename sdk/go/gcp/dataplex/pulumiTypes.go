@@ -3425,6 +3425,9 @@ type DatascanDataQualitySpecRule struct {
 	// ColumnMap rule which evaluates whether each column value is contained by a specified set.
 	// Structure is documented below.
 	SetExpectation *DatascanDataQualitySpecRuleSetExpectation `pulumi:"setExpectation"`
+	// Table rule which evaluates whether any row matches invalid state.
+	// Structure is documented below.
+	SqlAssertion *DatascanDataQualitySpecRuleSqlAssertion `pulumi:"sqlAssertion"`
 	// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
 	// Structure is documented below.
 	StatisticRangeExpectation *DatascanDataQualitySpecRuleStatisticRangeExpectation `pulumi:"statisticRangeExpectation"`
@@ -3478,6 +3481,9 @@ type DatascanDataQualitySpecRuleArgs struct {
 	// ColumnMap rule which evaluates whether each column value is contained by a specified set.
 	// Structure is documented below.
 	SetExpectation DatascanDataQualitySpecRuleSetExpectationPtrInput `pulumi:"setExpectation"`
+	// Table rule which evaluates whether any row matches invalid state.
+	// Structure is documented below.
+	SqlAssertion DatascanDataQualitySpecRuleSqlAssertionPtrInput `pulumi:"sqlAssertion"`
 	// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
 	// Structure is documented below.
 	StatisticRangeExpectation DatascanDataQualitySpecRuleStatisticRangeExpectationPtrInput `pulumi:"statisticRangeExpectation"`
@@ -3608,6 +3614,12 @@ func (o DatascanDataQualitySpecRuleOutput) SetExpectation() DatascanDataQualityS
 	return o.ApplyT(func(v DatascanDataQualitySpecRule) *DatascanDataQualitySpecRuleSetExpectation {
 		return v.SetExpectation
 	}).(DatascanDataQualitySpecRuleSetExpectationPtrOutput)
+}
+
+// Table rule which evaluates whether any row matches invalid state.
+// Structure is documented below.
+func (o DatascanDataQualitySpecRuleOutput) SqlAssertion() DatascanDataQualitySpecRuleSqlAssertionPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) *DatascanDataQualitySpecRuleSqlAssertion { return v.SqlAssertion }).(DatascanDataQualitySpecRuleSqlAssertionPtrOutput)
 }
 
 // ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
@@ -4387,6 +4399,143 @@ func (o DatascanDataQualitySpecRuleSetExpectationPtrOutput) Values() pulumi.Stri
 		}
 		return v.Values
 	}).(pulumi.StringArrayOutput)
+}
+
+type DatascanDataQualitySpecRuleSqlAssertion struct {
+	// The SQL statement.
+	SqlStatement string `pulumi:"sqlStatement"`
+}
+
+// DatascanDataQualitySpecRuleSqlAssertionInput is an input type that accepts DatascanDataQualitySpecRuleSqlAssertionArgs and DatascanDataQualitySpecRuleSqlAssertionOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleSqlAssertionInput` via:
+//
+//	DatascanDataQualitySpecRuleSqlAssertionArgs{...}
+type DatascanDataQualitySpecRuleSqlAssertionInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleSqlAssertionOutput() DatascanDataQualitySpecRuleSqlAssertionOutput
+	ToDatascanDataQualitySpecRuleSqlAssertionOutputWithContext(context.Context) DatascanDataQualitySpecRuleSqlAssertionOutput
+}
+
+type DatascanDataQualitySpecRuleSqlAssertionArgs struct {
+	// The SQL statement.
+	SqlStatement pulumi.StringInput `pulumi:"sqlStatement"`
+}
+
+func (DatascanDataQualitySpecRuleSqlAssertionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleSqlAssertion)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecRuleSqlAssertionArgs) ToDatascanDataQualitySpecRuleSqlAssertionOutput() DatascanDataQualitySpecRuleSqlAssertionOutput {
+	return i.ToDatascanDataQualitySpecRuleSqlAssertionOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleSqlAssertionArgs) ToDatascanDataQualitySpecRuleSqlAssertionOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleSqlAssertionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleSqlAssertionOutput)
+}
+
+func (i DatascanDataQualitySpecRuleSqlAssertionArgs) ToDatascanDataQualitySpecRuleSqlAssertionPtrOutput() DatascanDataQualitySpecRuleSqlAssertionPtrOutput {
+	return i.ToDatascanDataQualitySpecRuleSqlAssertionPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleSqlAssertionArgs) ToDatascanDataQualitySpecRuleSqlAssertionPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleSqlAssertionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleSqlAssertionOutput).ToDatascanDataQualitySpecRuleSqlAssertionPtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualitySpecRuleSqlAssertionPtrInput is an input type that accepts DatascanDataQualitySpecRuleSqlAssertionArgs, DatascanDataQualitySpecRuleSqlAssertionPtr and DatascanDataQualitySpecRuleSqlAssertionPtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleSqlAssertionPtrInput` via:
+//
+//	        DatascanDataQualitySpecRuleSqlAssertionArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualitySpecRuleSqlAssertionPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleSqlAssertionPtrOutput() DatascanDataQualitySpecRuleSqlAssertionPtrOutput
+	ToDatascanDataQualitySpecRuleSqlAssertionPtrOutputWithContext(context.Context) DatascanDataQualitySpecRuleSqlAssertionPtrOutput
+}
+
+type datascanDataQualitySpecRuleSqlAssertionPtrType DatascanDataQualitySpecRuleSqlAssertionArgs
+
+func DatascanDataQualitySpecRuleSqlAssertionPtr(v *DatascanDataQualitySpecRuleSqlAssertionArgs) DatascanDataQualitySpecRuleSqlAssertionPtrInput {
+	return (*datascanDataQualitySpecRuleSqlAssertionPtrType)(v)
+}
+
+func (*datascanDataQualitySpecRuleSqlAssertionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleSqlAssertion)(nil)).Elem()
+}
+
+func (i *datascanDataQualitySpecRuleSqlAssertionPtrType) ToDatascanDataQualitySpecRuleSqlAssertionPtrOutput() DatascanDataQualitySpecRuleSqlAssertionPtrOutput {
+	return i.ToDatascanDataQualitySpecRuleSqlAssertionPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualitySpecRuleSqlAssertionPtrType) ToDatascanDataQualitySpecRuleSqlAssertionPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleSqlAssertionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleSqlAssertionPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleSqlAssertionOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleSqlAssertionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleSqlAssertion)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleSqlAssertionOutput) ToDatascanDataQualitySpecRuleSqlAssertionOutput() DatascanDataQualitySpecRuleSqlAssertionOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleSqlAssertionOutput) ToDatascanDataQualitySpecRuleSqlAssertionOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleSqlAssertionOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleSqlAssertionOutput) ToDatascanDataQualitySpecRuleSqlAssertionPtrOutput() DatascanDataQualitySpecRuleSqlAssertionPtrOutput {
+	return o.ToDatascanDataQualitySpecRuleSqlAssertionPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualitySpecRuleSqlAssertionOutput) ToDatascanDataQualitySpecRuleSqlAssertionPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleSqlAssertionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualitySpecRuleSqlAssertion) *DatascanDataQualitySpecRuleSqlAssertion {
+		return &v
+	}).(DatascanDataQualitySpecRuleSqlAssertionPtrOutput)
+}
+
+// The SQL statement.
+func (o DatascanDataQualitySpecRuleSqlAssertionOutput) SqlStatement() pulumi.StringOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleSqlAssertion) string { return v.SqlStatement }).(pulumi.StringOutput)
+}
+
+type DatascanDataQualitySpecRuleSqlAssertionPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleSqlAssertionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleSqlAssertion)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleSqlAssertionPtrOutput) ToDatascanDataQualitySpecRuleSqlAssertionPtrOutput() DatascanDataQualitySpecRuleSqlAssertionPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleSqlAssertionPtrOutput) ToDatascanDataQualitySpecRuleSqlAssertionPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleSqlAssertionPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleSqlAssertionPtrOutput) Elem() DatascanDataQualitySpecRuleSqlAssertionOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleSqlAssertion) DatascanDataQualitySpecRuleSqlAssertion {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualitySpecRuleSqlAssertion
+		return ret
+	}).(DatascanDataQualitySpecRuleSqlAssertionOutput)
+}
+
+// The SQL statement.
+func (o DatascanDataQualitySpecRuleSqlAssertionPtrOutput) SqlStatement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleSqlAssertion) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SqlStatement
+	}).(pulumi.StringPtrOutput)
 }
 
 type DatascanDataQualitySpecRuleStatisticRangeExpectation struct {
@@ -11551,6 +11700,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleRowConditionExpectationPtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleRowConditionExpectationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleSetExpectationInput)(nil)).Elem(), DatascanDataQualitySpecRuleSetExpectationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleSetExpectationPtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleSetExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleSqlAssertionInput)(nil)).Elem(), DatascanDataQualitySpecRuleSqlAssertionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleSqlAssertionPtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleSqlAssertionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleStatisticRangeExpectationInput)(nil)).Elem(), DatascanDataQualitySpecRuleStatisticRangeExpectationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleStatisticRangeExpectationPtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleStatisticRangeExpectationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleTableConditionExpectationInput)(nil)).Elem(), DatascanDataQualitySpecRuleTableConditionExpectationArgs{})
@@ -11691,6 +11842,8 @@ func init() {
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleSetExpectationOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleSetExpectationPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleSqlAssertionOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleSqlAssertionPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleStatisticRangeExpectationOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleTableConditionExpectationOutput{})

@@ -301,6 +301,10 @@ class FeatureFleetDefaultMemberConfigConfigmanagementArgs:
 
 if not MYPY:
     class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        """
         git: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgsDict']]
         """
         Git repo configuration for the cluster
@@ -325,11 +329,13 @@ elif False:
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
     def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  git: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs']] = None,
                  oci: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs']] = None,
                  prevent_drift: Optional[pulumi.Input[bool]] = None,
                  source_format: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[bool] enabled: Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
         :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs'] git: Git repo configuration for the cluster
                Structure is documented below.
         :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs'] oci: OCI repo configuration for the cluster
@@ -337,6 +343,8 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
         :param pulumi.Input[bool] prevent_drift: Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
         :param pulumi.Input[str] source_format: Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
         """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if git is not None:
             pulumi.set(__self__, "git", git)
         if oci is not None:
@@ -345,6 +353,18 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
             pulumi.set(__self__, "prevent_drift", prevent_drift)
         if source_format is not None:
             pulumi.set(__self__, "source_format", source_format)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter

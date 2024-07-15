@@ -536,6 +536,19 @@ type HealthCheck struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The list of cloud regions from which health checks are performed. If
+	// any regions are specified, then exactly 3 regions should be specified.
+	// The region names must be valid names of Google Cloud regions. This can
+	// only be set for global health check. If this list is non-empty, then
+	// there are restrictions on what other health check fields are supported
+	// and what other resources can use this health check:
+	// * SSL, HTTP2, and GRPC protocols are not supported.
+	// * The TCP request field is not supported.
+	// * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+	// * The checkIntervalSec field must be at least 30.
+	// * The health check cannot be used with BackendService nor with managed
+	//   instance group auto-healing.
+	SourceRegions pulumi.StringArrayOutput `pulumi:"sourceRegions"`
 	// A nested object resource
 	// Structure is documented below.
 	SslHealthCheck HealthCheckSslHealthCheckPtrOutput `pulumi:"sslHealthCheck"`
@@ -624,6 +637,19 @@ type healthCheckState struct {
 	Project *string `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// The list of cloud regions from which health checks are performed. If
+	// any regions are specified, then exactly 3 regions should be specified.
+	// The region names must be valid names of Google Cloud regions. This can
+	// only be set for global health check. If this list is non-empty, then
+	// there are restrictions on what other health check fields are supported
+	// and what other resources can use this health check:
+	// * SSL, HTTP2, and GRPC protocols are not supported.
+	// * The TCP request field is not supported.
+	// * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+	// * The checkIntervalSec field must be at least 30.
+	// * The health check cannot be used with BackendService nor with managed
+	//   instance group auto-healing.
+	SourceRegions []string `pulumi:"sourceRegions"`
 	// A nested object resource
 	// Structure is documented below.
 	SslHealthCheck *HealthCheckSslHealthCheck `pulumi:"sslHealthCheck"`
@@ -683,6 +709,19 @@ type HealthCheckState struct {
 	Project pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// The list of cloud regions from which health checks are performed. If
+	// any regions are specified, then exactly 3 regions should be specified.
+	// The region names must be valid names of Google Cloud regions. This can
+	// only be set for global health check. If this list is non-empty, then
+	// there are restrictions on what other health check fields are supported
+	// and what other resources can use this health check:
+	// * SSL, HTTP2, and GRPC protocols are not supported.
+	// * The TCP request field is not supported.
+	// * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+	// * The checkIntervalSec field must be at least 30.
+	// * The health check cannot be used with BackendService nor with managed
+	//   instance group auto-healing.
+	SourceRegions pulumi.StringArrayInput
 	// A nested object resource
 	// Structure is documented below.
 	SslHealthCheck HealthCheckSslHealthCheckPtrInput
@@ -742,6 +781,19 @@ type healthCheckArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The list of cloud regions from which health checks are performed. If
+	// any regions are specified, then exactly 3 regions should be specified.
+	// The region names must be valid names of Google Cloud regions. This can
+	// only be set for global health check. If this list is non-empty, then
+	// there are restrictions on what other health check fields are supported
+	// and what other resources can use this health check:
+	// * SSL, HTTP2, and GRPC protocols are not supported.
+	// * The TCP request field is not supported.
+	// * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+	// * The checkIntervalSec field must be at least 30.
+	// * The health check cannot be used with BackendService nor with managed
+	//   instance group auto-healing.
+	SourceRegions []string `pulumi:"sourceRegions"`
 	// A nested object resource
 	// Structure is documented below.
 	SslHealthCheck *HealthCheckSslHealthCheck `pulumi:"sslHealthCheck"`
@@ -796,6 +848,19 @@ type HealthCheckArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The list of cloud regions from which health checks are performed. If
+	// any regions are specified, then exactly 3 regions should be specified.
+	// The region names must be valid names of Google Cloud regions. This can
+	// only be set for global health check. If this list is non-empty, then
+	// there are restrictions on what other health check fields are supported
+	// and what other resources can use this health check:
+	// * SSL, HTTP2, and GRPC protocols are not supported.
+	// * The TCP request field is not supported.
+	// * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+	// * The checkIntervalSec field must be at least 30.
+	// * The health check cannot be used with BackendService nor with managed
+	//   instance group auto-healing.
+	SourceRegions pulumi.StringArrayInput
 	// A nested object resource
 	// Structure is documented below.
 	SslHealthCheck HealthCheckSslHealthCheckPtrInput
@@ -973,6 +1038,22 @@ func (o HealthCheckOutput) Project() pulumi.StringOutput {
 // The URI of the created resource.
 func (o HealthCheckOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *HealthCheck) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The list of cloud regions from which health checks are performed. If
+// any regions are specified, then exactly 3 regions should be specified.
+// The region names must be valid names of Google Cloud regions. This can
+// only be set for global health check. If this list is non-empty, then
+// there are restrictions on what other health check fields are supported
+// and what other resources can use this health check:
+//   - SSL, HTTP2, and GRPC protocols are not supported.
+//   - The TCP request field is not supported.
+//   - The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+//   - The checkIntervalSec field must be at least 30.
+//   - The health check cannot be used with BackendService nor with managed
+//     instance group auto-healing.
+func (o HealthCheckOutput) SourceRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HealthCheck) pulumi.StringArrayOutput { return v.SourceRegions }).(pulumi.StringArrayOutput)
 }
 
 // A nested object resource

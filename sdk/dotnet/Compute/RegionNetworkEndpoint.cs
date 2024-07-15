@@ -19,8 +19,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
     ///     * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
+    ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
     /// 
     /// ## Example Usage
     /// 

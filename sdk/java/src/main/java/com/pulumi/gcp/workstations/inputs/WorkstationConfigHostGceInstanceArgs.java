@@ -13,6 +13,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -227,6 +228,29 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Resource manager tags to be bound to the VM instances backing the Workstations.
+     * Tag keys and values have the same definition as
+     * https://cloud.google.com/resource-manager/docs/tags/tags-overview
+     * Keys must be in the format `tagKeys/{tag_key_id}`, and
+     * values are in the format `tagValues/456`.
+     * 
+     */
+    @Import(name="vmTags")
+    private @Nullable Output<Map<String,String>> vmTags;
+
+    /**
+     * @return Resource manager tags to be bound to the VM instances backing the Workstations.
+     * Tag keys and values have the same definition as
+     * https://cloud.google.com/resource-manager/docs/tags/tags-overview
+     * Keys must be in the format `tagKeys/{tag_key_id}`, and
+     * values are in the format `tagValues/456`.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> vmTags() {
+        return Optional.ofNullable(this.vmTags);
+    }
+
     private WorkstationConfigHostGceInstanceArgs() {}
 
     private WorkstationConfigHostGceInstanceArgs(WorkstationConfigHostGceInstanceArgs $) {
@@ -243,6 +267,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
         this.serviceAccountScopes = $.serviceAccountScopes;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.tags = $.tags;
+        this.vmTags = $.vmTags;
     }
 
     public static Builder builder() {
@@ -586,6 +611,35 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param vmTags Resource manager tags to be bound to the VM instances backing the Workstations.
+         * Tag keys and values have the same definition as
+         * https://cloud.google.com/resource-manager/docs/tags/tags-overview
+         * Keys must be in the format `tagKeys/{tag_key_id}`, and
+         * values are in the format `tagValues/456`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vmTags(@Nullable Output<Map<String,String>> vmTags) {
+            $.vmTags = vmTags;
+            return this;
+        }
+
+        /**
+         * @param vmTags Resource manager tags to be bound to the VM instances backing the Workstations.
+         * Tag keys and values have the same definition as
+         * https://cloud.google.com/resource-manager/docs/tags/tags-overview
+         * Keys must be in the format `tagKeys/{tag_key_id}`, and
+         * values are in the format `tagValues/456`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vmTags(Map<String,String> vmTags) {
+            return vmTags(Output.of(vmTags));
         }
 
         public WorkstationConfigHostGceInstanceArgs build() {

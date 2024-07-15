@@ -22,6 +22,7 @@ __all__ = ['TrustConfigArgs', 'TrustConfig']
 class TrustConfigArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
+                 allowlisted_certificates: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigAllowlistedCertificateArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -33,6 +34,9 @@ class TrustConfigArgs:
                
                
                - - -
+        :param pulumi.Input[Sequence[pulumi.Input['TrustConfigAllowlistedCertificateArgs']]] allowlisted_certificates: Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+               the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+               Structure is documented below.
         :param pulumi.Input[str] description: One or more paragraphs of text description of a trust config.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the trust config.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -45,6 +49,8 @@ class TrustConfigArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
+        if allowlisted_certificates is not None:
+            pulumi.set(__self__, "allowlisted_certificates", allowlisted_certificates)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
@@ -70,6 +76,20 @@ class TrustConfigArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="allowlistedCertificates")
+    def allowlisted_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigAllowlistedCertificateArgs']]]]:
+        """
+        Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+        the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allowlisted_certificates")
+
+    @allowlisted_certificates.setter
+    def allowlisted_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigAllowlistedCertificateArgs']]]]):
+        pulumi.set(self, "allowlisted_certificates", value)
 
     @property
     @pulumi.getter
@@ -140,6 +160,7 @@ class TrustConfigArgs:
 @pulumi.input_type
 class _TrustConfigState:
     def __init__(__self__, *,
+                 allowlisted_certificates: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigAllowlistedCertificateArgs']]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -152,6 +173,9 @@ class _TrustConfigState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TrustConfig resources.
+        :param pulumi.Input[Sequence[pulumi.Input['TrustConfigAllowlistedCertificateArgs']]] allowlisted_certificates: Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+               the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+               Structure is documented below.
         :param pulumi.Input[str] create_time: The creation timestamp of a TrustConfig.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -176,6 +200,8 @@ class _TrustConfigState:
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        if allowlisted_certificates is not None:
+            pulumi.set(__self__, "allowlisted_certificates", allowlisted_certificates)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
@@ -196,6 +222,20 @@ class _TrustConfigState:
             pulumi.set(__self__, "trust_stores", trust_stores)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="allowlistedCertificates")
+    def allowlisted_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigAllowlistedCertificateArgs']]]]:
+        """
+        Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+        the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allowlisted_certificates")
+
+    @allowlisted_certificates.setter
+    def allowlisted_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigAllowlistedCertificateArgs']]]]):
+        pulumi.set(self, "allowlisted_certificates", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -336,6 +376,7 @@ class TrustConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allowlisted_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrustConfigAllowlistedCertificateArgs', 'TrustConfigAllowlistedCertificateArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -377,6 +418,29 @@ class TrustConfig(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        ### Certificate Manager Trust Config Allowlisted Certificates
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default = gcp.certificatemanager.TrustConfig("default",
+            name="trust-config",
+            description="A sample trust config resource with allowlisted certificates",
+            location="global",
+            allowlisted_certificates=[
+                {
+                    "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
+                },
+                {
+                    "pemCertificate": std.file(input="test-fixtures/cert2.pem").result,
+                },
+            ],
+            labels={
+                "foo": "bar",
+            })
+        ```
 
         ## Import
 
@@ -404,6 +468,9 @@ class TrustConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrustConfigAllowlistedCertificateArgs', 'TrustConfigAllowlistedCertificateArgsDict']]]] allowlisted_certificates: Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+               the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+               Structure is documented below.
         :param pulumi.Input[str] description: One or more paragraphs of text description of a trust config.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the trust config.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -459,6 +526,29 @@ class TrustConfig(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        ### Certificate Manager Trust Config Allowlisted Certificates
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default = gcp.certificatemanager.TrustConfig("default",
+            name="trust-config",
+            description="A sample trust config resource with allowlisted certificates",
+            location="global",
+            allowlisted_certificates=[
+                {
+                    "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
+                },
+                {
+                    "pemCertificate": std.file(input="test-fixtures/cert2.pem").result,
+                },
+            ],
+            labels={
+                "foo": "bar",
+            })
+        ```
 
         ## Import
 
@@ -499,6 +589,7 @@ class TrustConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allowlisted_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrustConfigAllowlistedCertificateArgs', 'TrustConfigAllowlistedCertificateArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -514,6 +605,7 @@ class TrustConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TrustConfigArgs.__new__(TrustConfigArgs)
 
+            __props__.__dict__["allowlisted_certificates"] = allowlisted_certificates
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -538,6 +630,7 @@ class TrustConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allowlisted_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrustConfigAllowlistedCertificateArgs', 'TrustConfigAllowlistedCertificateArgsDict']]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -555,6 +648,9 @@ class TrustConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrustConfigAllowlistedCertificateArgs', 'TrustConfigAllowlistedCertificateArgsDict']]]] allowlisted_certificates: Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+               the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+               Structure is documented below.
         :param pulumi.Input[str] create_time: The creation timestamp of a TrustConfig.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -583,6 +679,7 @@ class TrustConfig(pulumi.CustomResource):
 
         __props__ = _TrustConfigState.__new__(_TrustConfigState)
 
+        __props__.__dict__["allowlisted_certificates"] = allowlisted_certificates
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
@@ -594,6 +691,16 @@ class TrustConfig(pulumi.CustomResource):
         __props__.__dict__["trust_stores"] = trust_stores
         __props__.__dict__["update_time"] = update_time
         return TrustConfig(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allowlistedCertificates")
+    def allowlisted_certificates(self) -> pulumi.Output[Optional[Sequence['outputs.TrustConfigAllowlistedCertificate']]]:
+        """
+        Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+        the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allowlisted_certificates")
 
     @property
     @pulumi.getter(name="createTime")

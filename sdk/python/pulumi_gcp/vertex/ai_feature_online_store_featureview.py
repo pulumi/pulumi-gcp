@@ -599,6 +599,117 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Vertex Ai Featureonlinestore Featureview Cross Project
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        test_project = gcp.organizations.get_project()
+        project = gcp.organizations.Project("project",
+            project_id="tf-test_55138",
+            name="tf-test_37559",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000")
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        opts = pulumi.ResourceOptions(depends_on=[project]))
+        vertexai = gcp.projects.Service("vertexai",
+            service="aiplatform.googleapis.com",
+            project=project.project_id,
+            disable_on_destroy=False,
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
+            name="example_cross_project_featureview",
+            project=project.project_id,
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            bigtable={
+                "autoScaling": {
+                    "minNodeCount": 1,
+                    "maxNodeCount": 2,
+                    "cpuUtilizationTarget": 80,
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[vertexai]))
+        sample_dataset = gcp.bigquery.Dataset("sample_dataset",
+            dataset_id="example_cross_project_featureview",
+            friendly_name="test",
+            description="This is a test description",
+            location="US")
+        viewer = gcp.bigquery.DatasetIamMember("viewer",
+            project=test_project.project_id,
+            dataset_id=sample_dataset.dataset_id,
+            role="roles/bigquery.dataViewer",
+            member=project.number.apply(lambda number: f"serviceAccount:service-{number}@gcp-sa-aiplatform.iam.gserviceaccount.com"),
+            opts = pulumi.ResourceOptions(depends_on=[featureonlinestore]))
+        wait30_seconds = time.index.Sleep("wait_30_seconds", create_duration=30s,
+        opts = pulumi.ResourceOptions(depends_on=[viewer]))
+        sample_table = gcp.bigquery.Table("sample_table",
+            deletion_protection=False,
+            dataset_id=sample_dataset.dataset_id,
+            table_id="example_cross_project_featureview",
+            schema=\"\"\"[
+            {
+                "name": "feature_id",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "example_cross_project_featureview",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "feature_timestamp",
+                "type": "TIMESTAMP",
+                "mode": "NULLABLE"
+            }
+        ]
+        \"\"\")
+        sample_feature_group = gcp.vertex.AiFeatureGroup("sample_feature_group",
+            name="example_cross_project_featureview",
+            description="A sample feature group",
+            region="us-central1",
+            labels={
+                "label-one": "value-one",
+            },
+            big_query={
+                "bigQuerySource": {
+                    "inputUri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                },
+                "entityIdColumns": ["feature_id"],
+            })
+        sample_feature = gcp.vertex.AiFeatureGroupFeature("sample_feature",
+            name="example_cross_project_featureview",
+            region="us-central1",
+            feature_group=sample_feature_group.name,
+            description="A sample feature",
+            labels={
+                "label-one": "value-one",
+            })
+        cross_project_featureview = gcp.vertex.AiFeatureOnlineStoreFeatureview("cross_project_featureview",
+            name="example_cross_project_featureview",
+            project=project.project_id,
+            region="us-central1",
+            feature_online_store=featureonlinestore.name,
+            sync_config={
+                "cron": "0 0 * * *",
+            },
+            feature_registry_source={
+                "featureGroups": [{
+                    "featureGroupId": sample_feature_group.name,
+                    "featureIds": [sample_feature.name],
+                }],
+                "projectNumber": test_project.number,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[
+                    vertexai,
+                    wait30_seconds,
+                ]))
+        ```
         ### Vertex Ai Featureonlinestore Featureview With Vector Search
 
         ```python
@@ -911,6 +1022,117 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                     "featureIds": [sample_feature.name],
                 }],
             })
+        ```
+        ### Vertex Ai Featureonlinestore Featureview Cross Project
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        test_project = gcp.organizations.get_project()
+        project = gcp.organizations.Project("project",
+            project_id="tf-test_55138",
+            name="tf-test_37559",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000")
+        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
+        opts = pulumi.ResourceOptions(depends_on=[project]))
+        vertexai = gcp.projects.Service("vertexai",
+            service="aiplatform.googleapis.com",
+            project=project.project_id,
+            disable_on_destroy=False,
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
+            name="example_cross_project_featureview",
+            project=project.project_id,
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            bigtable={
+                "autoScaling": {
+                    "minNodeCount": 1,
+                    "maxNodeCount": 2,
+                    "cpuUtilizationTarget": 80,
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[vertexai]))
+        sample_dataset = gcp.bigquery.Dataset("sample_dataset",
+            dataset_id="example_cross_project_featureview",
+            friendly_name="test",
+            description="This is a test description",
+            location="US")
+        viewer = gcp.bigquery.DatasetIamMember("viewer",
+            project=test_project.project_id,
+            dataset_id=sample_dataset.dataset_id,
+            role="roles/bigquery.dataViewer",
+            member=project.number.apply(lambda number: f"serviceAccount:service-{number}@gcp-sa-aiplatform.iam.gserviceaccount.com"),
+            opts = pulumi.ResourceOptions(depends_on=[featureonlinestore]))
+        wait30_seconds = time.index.Sleep("wait_30_seconds", create_duration=30s,
+        opts = pulumi.ResourceOptions(depends_on=[viewer]))
+        sample_table = gcp.bigquery.Table("sample_table",
+            deletion_protection=False,
+            dataset_id=sample_dataset.dataset_id,
+            table_id="example_cross_project_featureview",
+            schema=\"\"\"[
+            {
+                "name": "feature_id",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "example_cross_project_featureview",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "feature_timestamp",
+                "type": "TIMESTAMP",
+                "mode": "NULLABLE"
+            }
+        ]
+        \"\"\")
+        sample_feature_group = gcp.vertex.AiFeatureGroup("sample_feature_group",
+            name="example_cross_project_featureview",
+            description="A sample feature group",
+            region="us-central1",
+            labels={
+                "label-one": "value-one",
+            },
+            big_query={
+                "bigQuerySource": {
+                    "inputUri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                },
+                "entityIdColumns": ["feature_id"],
+            })
+        sample_feature = gcp.vertex.AiFeatureGroupFeature("sample_feature",
+            name="example_cross_project_featureview",
+            region="us-central1",
+            feature_group=sample_feature_group.name,
+            description="A sample feature",
+            labels={
+                "label-one": "value-one",
+            })
+        cross_project_featureview = gcp.vertex.AiFeatureOnlineStoreFeatureview("cross_project_featureview",
+            name="example_cross_project_featureview",
+            project=project.project_id,
+            region="us-central1",
+            feature_online_store=featureonlinestore.name,
+            sync_config={
+                "cron": "0 0 * * *",
+            },
+            feature_registry_source={
+                "featureGroups": [{
+                    "featureGroupId": sample_feature_group.name,
+                    "featureIds": [sample_feature.name],
+                }],
+                "projectNumber": test_project.number,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[
+                    vertexai,
+                    wait30_seconds,
+                ]))
         ```
         ### Vertex Ai Featureonlinestore Featureview With Vector Search
 

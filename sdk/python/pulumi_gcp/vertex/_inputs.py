@@ -1615,18 +1615,26 @@ if not MYPY:
         List of features that need to be synced to Online Store.
         Structure is documented below.
         """
+        project_number: NotRequired[pulumi.Input[str]]
+        """
+        The project number of the parent project of the feature Groups.
+        """
 elif False:
     AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs:
     def __init__(__self__, *,
-                 feature_groups: pulumi.Input[Sequence[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs']]]):
+                 feature_groups: pulumi.Input[Sequence[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs']]],
+                 project_number: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs']]] feature_groups: List of features that need to be synced to Online Store.
                Structure is documented below.
+        :param pulumi.Input[str] project_number: The project number of the parent project of the feature Groups.
         """
         pulumi.set(__self__, "feature_groups", feature_groups)
+        if project_number is not None:
+            pulumi.set(__self__, "project_number", project_number)
 
     @property
     @pulumi.getter(name="featureGroups")
@@ -1640,6 +1648,18 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs:
     @feature_groups.setter
     def feature_groups(self, value: pulumi.Input[Sequence[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs']]]):
         pulumi.set(self, "feature_groups", value)
+
+    @property
+    @pulumi.getter(name="projectNumber")
+    def project_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project number of the parent project of the feature Groups.
+        """
+        return pulumi.get(self, "project_number")
+
+    @project_number.setter
+    def project_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_number", value)
 
 
 if not MYPY:
