@@ -18,7 +18,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     /**
      * Identifier of the brand to which this client
      * is attached to. The format is
-     * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+     * `projects/{project_number}/brands/{brand_id}`.
      * 
      * ***
      * 
@@ -29,7 +29,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Identifier of the brand to which this client
      * is attached to. The format is
-     * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+     * `projects/{project_number}/brands/{brand_id}`.
      * 
      * ***
      * 
@@ -115,7 +115,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param brand Identifier of the brand to which this client
          * is attached to. The format is
-         * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+         * `projects/{project_number}/brands/{brand_id}`.
          * 
          * ***
          * 
@@ -130,7 +130,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param brand Identifier of the brand to which this client
          * is attached to. The format is
-         * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+         * `projects/{project_number}/brands/{brand_id}`.
          * 
          * ***
          * 

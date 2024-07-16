@@ -134,13 +134,9 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A special group to grant access to. Possible values include:
-     * 
      * * `projectOwners`: Owners of the enclosing project.
-     * 
      * * `projectReaders`: Readers of the enclosing project.
-     * 
      * * `projectWriters`: Writers of the enclosing project.
-     * 
      * * `allAuthenticatedUsers`: All authenticated BigQuery users.
      * 
      */
@@ -149,13 +145,9 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A special group to grant access to. Possible values include:
-     * 
      * * `projectOwners`: Owners of the enclosing project.
-     * 
      * * `projectReaders`: Readers of the enclosing project.
-     * 
      * * `projectWriters`: Writers of the enclosing project.
-     * 
      * * `allAuthenticatedUsers`: All authenticated BigQuery users.
      * 
      */
@@ -389,13 +381,9 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param specialGroup A special group to grant access to. Possible values include:
-         * 
          * * `projectOwners`: Owners of the enclosing project.
-         * 
          * * `projectReaders`: Readers of the enclosing project.
-         * 
          * * `projectWriters`: Writers of the enclosing project.
-         * 
          * * `allAuthenticatedUsers`: All authenticated BigQuery users.
          * 
          * @return builder
@@ -408,13 +396,9 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param specialGroup A special group to grant access to. Possible values include:
-         * 
          * * `projectOwners`: Owners of the enclosing project.
-         * 
          * * `projectReaders`: Readers of the enclosing project.
-         * 
          * * `projectWriters`: Writers of the enclosing project.
-         * 
          * * `allAuthenticatedUsers`: All authenticated BigQuery users.
          * 
          * @return builder

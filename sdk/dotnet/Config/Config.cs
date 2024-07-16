@@ -1096,6 +1096,13 @@ namespace Pulumi.Gcp
             set => _serviceUsageCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _siteVerificationCustomEndpoint = new __Value<string?>(() => __config.Get("siteVerificationCustomEndpoint"));
+        public static string? SiteVerificationCustomEndpoint
+        {
+            get => _siteVerificationCustomEndpoint.Get();
+            set => _siteVerificationCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<bool?> _skipRegionValidation = new __Value<bool?>(() => __config.GetBoolean("skipRegionValidation") ?? Utilities.GetEnvBoolean("PULUMI_GCP_SKIP_REGION_VALIDATION") ?? false);
         public static bool? SkipRegionValidation
         {

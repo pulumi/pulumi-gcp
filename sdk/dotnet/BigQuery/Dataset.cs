@@ -358,7 +358,6 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The default partition expiration for all partitioned tables in
         /// the dataset, in milliseconds.
-        /// 
         /// Once this property is set, all newly-created partitioned tables in
         /// the dataset will have an `expirationMs` property in the `timePartitioning`
         /// settings set to this value, and changing the value will only
@@ -377,7 +376,6 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The default lifetime of all tables in the dataset, in milliseconds.
         /// The minimum value is 3600000 milliseconds (one hour).
-        /// 
         /// Once this property is set, all newly-created tables in the dataset
         /// will have an `expirationTime` property set to the creation time plus
         /// the value in this property, and changing the value will only affect
@@ -458,12 +456,10 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The geographic location where the dataset should reside.
         /// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-        /// 
         /// There are two types of locations, regional or multi-regional. A regional
         /// location is a specific geographic place, such as Tokyo, and a multi-regional
         /// location is a large geographic area, such as the United States, that
         /// contains at least two geographic places.
-        /// 
         /// The default value is multi-regional location `US`.
         /// Changing this forces a new resource to be created.
         /// </summary>
@@ -616,7 +612,6 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The default partition expiration for all partitioned tables in
         /// the dataset, in milliseconds.
-        /// 
         /// Once this property is set, all newly-created partitioned tables in
         /// the dataset will have an `expirationMs` property in the `timePartitioning`
         /// settings set to this value, and changing the value will only
@@ -635,7 +630,6 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The default lifetime of all tables in the dataset, in milliseconds.
         /// The minimum value is 3600000 milliseconds (one hour).
-        /// 
         /// Once this property is set, all newly-created tables in the dataset
         /// will have an `expirationTime` property set to the creation time plus
         /// the value in this property, and changing the value will only affect
@@ -703,12 +697,10 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The geographic location where the dataset should reside.
         /// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-        /// 
         /// There are two types of locations, regional or multi-regional. A regional
         /// location is a specific geographic place, such as Tokyo, and a multi-regional
         /// location is a large geographic area, such as the United States, that
         /// contains at least two geographic places.
-        /// 
         /// The default value is multi-regional location `US`.
         /// Changing this forces a new resource to be created.
         /// </summary>
@@ -818,7 +810,6 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The default partition expiration for all partitioned tables in
         /// the dataset, in milliseconds.
-        /// 
         /// Once this property is set, all newly-created partitioned tables in
         /// the dataset will have an `expirationMs` property in the `timePartitioning`
         /// settings set to this value, and changing the value will only
@@ -837,7 +828,6 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The default lifetime of all tables in the dataset, in milliseconds.
         /// The minimum value is 3600000 milliseconds (one hour).
-        /// 
         /// Once this property is set, all newly-created tables in the dataset
         /// will have an `expirationTime` property set to the creation time plus
         /// the value in this property, and changing the value will only affect
@@ -934,12 +924,10 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The geographic location where the dataset should reside.
         /// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-        /// 
         /// There are two types of locations, regional or multi-regional. A regional
         /// location is a specific geographic place, such as Tokyo, and a multi-regional
         /// location is a large geographic area, such as the United States, that
         /// contains at least two geographic places.
-        /// 
         /// The default value is multi-regional location `US`.
         /// Changing this forces a new resource to be created.
         /// </summary>

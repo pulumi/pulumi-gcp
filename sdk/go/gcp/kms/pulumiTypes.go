@@ -395,6 +395,151 @@ func (o CryptoKeyIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type CryptoKeyKeyAccessJustificationsPolicy struct {
+	// The list of allowed reasons for access to this CryptoKey. Zero allowed
+	// access reasons means all encrypt, decrypt, and sign operations for
+	// this CryptoKey will fail.
+	AllowedAccessReasons []string `pulumi:"allowedAccessReasons"`
+}
+
+// CryptoKeyKeyAccessJustificationsPolicyInput is an input type that accepts CryptoKeyKeyAccessJustificationsPolicyArgs and CryptoKeyKeyAccessJustificationsPolicyOutput values.
+// You can construct a concrete instance of `CryptoKeyKeyAccessJustificationsPolicyInput` via:
+//
+//	CryptoKeyKeyAccessJustificationsPolicyArgs{...}
+type CryptoKeyKeyAccessJustificationsPolicyInput interface {
+	pulumi.Input
+
+	ToCryptoKeyKeyAccessJustificationsPolicyOutput() CryptoKeyKeyAccessJustificationsPolicyOutput
+	ToCryptoKeyKeyAccessJustificationsPolicyOutputWithContext(context.Context) CryptoKeyKeyAccessJustificationsPolicyOutput
+}
+
+type CryptoKeyKeyAccessJustificationsPolicyArgs struct {
+	// The list of allowed reasons for access to this CryptoKey. Zero allowed
+	// access reasons means all encrypt, decrypt, and sign operations for
+	// this CryptoKey will fail.
+	AllowedAccessReasons pulumi.StringArrayInput `pulumi:"allowedAccessReasons"`
+}
+
+func (CryptoKeyKeyAccessJustificationsPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyKeyAccessJustificationsPolicy)(nil)).Elem()
+}
+
+func (i CryptoKeyKeyAccessJustificationsPolicyArgs) ToCryptoKeyKeyAccessJustificationsPolicyOutput() CryptoKeyKeyAccessJustificationsPolicyOutput {
+	return i.ToCryptoKeyKeyAccessJustificationsPolicyOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyKeyAccessJustificationsPolicyArgs) ToCryptoKeyKeyAccessJustificationsPolicyOutputWithContext(ctx context.Context) CryptoKeyKeyAccessJustificationsPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyKeyAccessJustificationsPolicyOutput)
+}
+
+func (i CryptoKeyKeyAccessJustificationsPolicyArgs) ToCryptoKeyKeyAccessJustificationsPolicyPtrOutput() CryptoKeyKeyAccessJustificationsPolicyPtrOutput {
+	return i.ToCryptoKeyKeyAccessJustificationsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyKeyAccessJustificationsPolicyArgs) ToCryptoKeyKeyAccessJustificationsPolicyPtrOutputWithContext(ctx context.Context) CryptoKeyKeyAccessJustificationsPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyKeyAccessJustificationsPolicyOutput).ToCryptoKeyKeyAccessJustificationsPolicyPtrOutputWithContext(ctx)
+}
+
+// CryptoKeyKeyAccessJustificationsPolicyPtrInput is an input type that accepts CryptoKeyKeyAccessJustificationsPolicyArgs, CryptoKeyKeyAccessJustificationsPolicyPtr and CryptoKeyKeyAccessJustificationsPolicyPtrOutput values.
+// You can construct a concrete instance of `CryptoKeyKeyAccessJustificationsPolicyPtrInput` via:
+//
+//	        CryptoKeyKeyAccessJustificationsPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type CryptoKeyKeyAccessJustificationsPolicyPtrInput interface {
+	pulumi.Input
+
+	ToCryptoKeyKeyAccessJustificationsPolicyPtrOutput() CryptoKeyKeyAccessJustificationsPolicyPtrOutput
+	ToCryptoKeyKeyAccessJustificationsPolicyPtrOutputWithContext(context.Context) CryptoKeyKeyAccessJustificationsPolicyPtrOutput
+}
+
+type cryptoKeyKeyAccessJustificationsPolicyPtrType CryptoKeyKeyAccessJustificationsPolicyArgs
+
+func CryptoKeyKeyAccessJustificationsPolicyPtr(v *CryptoKeyKeyAccessJustificationsPolicyArgs) CryptoKeyKeyAccessJustificationsPolicyPtrInput {
+	return (*cryptoKeyKeyAccessJustificationsPolicyPtrType)(v)
+}
+
+func (*cryptoKeyKeyAccessJustificationsPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyKeyAccessJustificationsPolicy)(nil)).Elem()
+}
+
+func (i *cryptoKeyKeyAccessJustificationsPolicyPtrType) ToCryptoKeyKeyAccessJustificationsPolicyPtrOutput() CryptoKeyKeyAccessJustificationsPolicyPtrOutput {
+	return i.ToCryptoKeyKeyAccessJustificationsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *cryptoKeyKeyAccessJustificationsPolicyPtrType) ToCryptoKeyKeyAccessJustificationsPolicyPtrOutputWithContext(ctx context.Context) CryptoKeyKeyAccessJustificationsPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyKeyAccessJustificationsPolicyPtrOutput)
+}
+
+type CryptoKeyKeyAccessJustificationsPolicyOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyKeyAccessJustificationsPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyKeyAccessJustificationsPolicy)(nil)).Elem()
+}
+
+func (o CryptoKeyKeyAccessJustificationsPolicyOutput) ToCryptoKeyKeyAccessJustificationsPolicyOutput() CryptoKeyKeyAccessJustificationsPolicyOutput {
+	return o
+}
+
+func (o CryptoKeyKeyAccessJustificationsPolicyOutput) ToCryptoKeyKeyAccessJustificationsPolicyOutputWithContext(ctx context.Context) CryptoKeyKeyAccessJustificationsPolicyOutput {
+	return o
+}
+
+func (o CryptoKeyKeyAccessJustificationsPolicyOutput) ToCryptoKeyKeyAccessJustificationsPolicyPtrOutput() CryptoKeyKeyAccessJustificationsPolicyPtrOutput {
+	return o.ToCryptoKeyKeyAccessJustificationsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyKeyAccessJustificationsPolicyOutput) ToCryptoKeyKeyAccessJustificationsPolicyPtrOutputWithContext(ctx context.Context) CryptoKeyKeyAccessJustificationsPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyKeyAccessJustificationsPolicy) *CryptoKeyKeyAccessJustificationsPolicy {
+		return &v
+	}).(CryptoKeyKeyAccessJustificationsPolicyPtrOutput)
+}
+
+// The list of allowed reasons for access to this CryptoKey. Zero allowed
+// access reasons means all encrypt, decrypt, and sign operations for
+// this CryptoKey will fail.
+func (o CryptoKeyKeyAccessJustificationsPolicyOutput) AllowedAccessReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CryptoKeyKeyAccessJustificationsPolicy) []string { return v.AllowedAccessReasons }).(pulumi.StringArrayOutput)
+}
+
+type CryptoKeyKeyAccessJustificationsPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyKeyAccessJustificationsPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyKeyAccessJustificationsPolicy)(nil)).Elem()
+}
+
+func (o CryptoKeyKeyAccessJustificationsPolicyPtrOutput) ToCryptoKeyKeyAccessJustificationsPolicyPtrOutput() CryptoKeyKeyAccessJustificationsPolicyPtrOutput {
+	return o
+}
+
+func (o CryptoKeyKeyAccessJustificationsPolicyPtrOutput) ToCryptoKeyKeyAccessJustificationsPolicyPtrOutputWithContext(ctx context.Context) CryptoKeyKeyAccessJustificationsPolicyPtrOutput {
+	return o
+}
+
+func (o CryptoKeyKeyAccessJustificationsPolicyPtrOutput) Elem() CryptoKeyKeyAccessJustificationsPolicyOutput {
+	return o.ApplyT(func(v *CryptoKeyKeyAccessJustificationsPolicy) CryptoKeyKeyAccessJustificationsPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret CryptoKeyKeyAccessJustificationsPolicy
+		return ret
+	}).(CryptoKeyKeyAccessJustificationsPolicyOutput)
+}
+
+// The list of allowed reasons for access to this CryptoKey. Zero allowed
+// access reasons means all encrypt, decrypt, and sign operations for
+// this CryptoKey will fail.
+func (o CryptoKeyKeyAccessJustificationsPolicyPtrOutput) AllowedAccessReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CryptoKeyKeyAccessJustificationsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedAccessReasons
+	}).(pulumi.StringArrayOutput)
+}
+
 type CryptoKeyPrimary struct {
 	// The resource name for the CryptoKey.
 	Name *string `pulumi:"name"`
@@ -2242,6 +2387,15 @@ type GetCryptoKeysKey struct {
 	Id                       string            `pulumi:"id"`
 	// Whether this key may contain imported versions only.
 	ImportOnly bool `pulumi:"importOnly"`
+	// The policy used for Key Access Justifications Policy Enforcement. If this
+	// field is present and this key is enrolled in Key Access Justifications
+	// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+	// sign operations, and the operation will fail if rejected by the policy. The
+	// policy is defined by specifying zero or more allowed justification codes.
+	// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+	// By default, this field is absent, and all justification codes are allowed.
+	// This field is currently in beta and is subject to change.
+	KeyAccessJustificationsPolicies []GetCryptoKeysKeyKeyAccessJustificationsPolicy `pulumi:"keyAccessJustificationsPolicies"`
 	// The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
 	KeyRing *string `pulumi:"keyRing"`
 	// Labels with user-defined metadata to apply to this resource.
@@ -2297,6 +2451,15 @@ type GetCryptoKeysKeyArgs struct {
 	Id                       pulumi.StringInput    `pulumi:"id"`
 	// Whether this key may contain imported versions only.
 	ImportOnly pulumi.BoolInput `pulumi:"importOnly"`
+	// The policy used for Key Access Justifications Policy Enforcement. If this
+	// field is present and this key is enrolled in Key Access Justifications
+	// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+	// sign operations, and the operation will fail if rejected by the policy. The
+	// policy is defined by specifying zero or more allowed justification codes.
+	// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+	// By default, this field is absent, and all justification codes are allowed.
+	// This field is currently in beta and is subject to change.
+	KeyAccessJustificationsPolicies GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayInput `pulumi:"keyAccessJustificationsPolicies"`
 	// The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
 	KeyRing pulumi.StringPtrInput `pulumi:"keyRing"`
 	// Labels with user-defined metadata to apply to this resource.
@@ -2406,6 +2569,20 @@ func (o GetCryptoKeysKeyOutput) ImportOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCryptoKeysKey) bool { return v.ImportOnly }).(pulumi.BoolOutput)
 }
 
+// The policy used for Key Access Justifications Policy Enforcement. If this
+// field is present and this key is enrolled in Key Access Justifications
+// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+// sign operations, and the operation will fail if rejected by the policy. The
+// policy is defined by specifying zero or more allowed justification codes.
+// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+// By default, this field is absent, and all justification codes are allowed.
+// This field is currently in beta and is subject to change.
+func (o GetCryptoKeysKeyOutput) KeyAccessJustificationsPolicies() GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput {
+	return o.ApplyT(func(v GetCryptoKeysKey) []GetCryptoKeysKeyKeyAccessJustificationsPolicy {
+		return v.KeyAccessJustificationsPolicies
+	}).(GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput)
+}
+
 // The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
 func (o GetCryptoKeysKeyOutput) KeyRing() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCryptoKeysKey) *string { return v.KeyRing }).(pulumi.StringPtrOutput)
@@ -2483,6 +2660,109 @@ func (o GetCryptoKeysKeyArrayOutput) Index(i pulumi.IntInput) GetCryptoKeysKeyOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCryptoKeysKey {
 		return vs[0].([]GetCryptoKeysKey)[vs[1].(int)]
 	}).(GetCryptoKeysKeyOutput)
+}
+
+type GetCryptoKeysKeyKeyAccessJustificationsPolicy struct {
+	// The list of allowed reasons for access to this CryptoKey. Zero allowed
+	// access reasons means all encrypt, decrypt, and sign operations for
+	// this CryptoKey will fail.
+	AllowedAccessReasons []string `pulumi:"allowedAccessReasons"`
+}
+
+// GetCryptoKeysKeyKeyAccessJustificationsPolicyInput is an input type that accepts GetCryptoKeysKeyKeyAccessJustificationsPolicyArgs and GetCryptoKeysKeyKeyAccessJustificationsPolicyOutput values.
+// You can construct a concrete instance of `GetCryptoKeysKeyKeyAccessJustificationsPolicyInput` via:
+//
+//	GetCryptoKeysKeyKeyAccessJustificationsPolicyArgs{...}
+type GetCryptoKeysKeyKeyAccessJustificationsPolicyInput interface {
+	pulumi.Input
+
+	ToGetCryptoKeysKeyKeyAccessJustificationsPolicyOutput() GetCryptoKeysKeyKeyAccessJustificationsPolicyOutput
+	ToGetCryptoKeysKeyKeyAccessJustificationsPolicyOutputWithContext(context.Context) GetCryptoKeysKeyKeyAccessJustificationsPolicyOutput
+}
+
+type GetCryptoKeysKeyKeyAccessJustificationsPolicyArgs struct {
+	// The list of allowed reasons for access to this CryptoKey. Zero allowed
+	// access reasons means all encrypt, decrypt, and sign operations for
+	// this CryptoKey will fail.
+	AllowedAccessReasons pulumi.StringArrayInput `pulumi:"allowedAccessReasons"`
+}
+
+func (GetCryptoKeysKeyKeyAccessJustificationsPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCryptoKeysKeyKeyAccessJustificationsPolicy)(nil)).Elem()
+}
+
+func (i GetCryptoKeysKeyKeyAccessJustificationsPolicyArgs) ToGetCryptoKeysKeyKeyAccessJustificationsPolicyOutput() GetCryptoKeysKeyKeyAccessJustificationsPolicyOutput {
+	return i.ToGetCryptoKeysKeyKeyAccessJustificationsPolicyOutputWithContext(context.Background())
+}
+
+func (i GetCryptoKeysKeyKeyAccessJustificationsPolicyArgs) ToGetCryptoKeysKeyKeyAccessJustificationsPolicyOutputWithContext(ctx context.Context) GetCryptoKeysKeyKeyAccessJustificationsPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCryptoKeysKeyKeyAccessJustificationsPolicyOutput)
+}
+
+// GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayInput is an input type that accepts GetCryptoKeysKeyKeyAccessJustificationsPolicyArray and GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput values.
+// You can construct a concrete instance of `GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayInput` via:
+//
+//	GetCryptoKeysKeyKeyAccessJustificationsPolicyArray{ GetCryptoKeysKeyKeyAccessJustificationsPolicyArgs{...} }
+type GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput() GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput
+	ToGetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutputWithContext(context.Context) GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput
+}
+
+type GetCryptoKeysKeyKeyAccessJustificationsPolicyArray []GetCryptoKeysKeyKeyAccessJustificationsPolicyInput
+
+func (GetCryptoKeysKeyKeyAccessJustificationsPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCryptoKeysKeyKeyAccessJustificationsPolicy)(nil)).Elem()
+}
+
+func (i GetCryptoKeysKeyKeyAccessJustificationsPolicyArray) ToGetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput() GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput {
+	return i.ToGetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetCryptoKeysKeyKeyAccessJustificationsPolicyArray) ToGetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutputWithContext(ctx context.Context) GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput)
+}
+
+type GetCryptoKeysKeyKeyAccessJustificationsPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetCryptoKeysKeyKeyAccessJustificationsPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCryptoKeysKeyKeyAccessJustificationsPolicy)(nil)).Elem()
+}
+
+func (o GetCryptoKeysKeyKeyAccessJustificationsPolicyOutput) ToGetCryptoKeysKeyKeyAccessJustificationsPolicyOutput() GetCryptoKeysKeyKeyAccessJustificationsPolicyOutput {
+	return o
+}
+
+func (o GetCryptoKeysKeyKeyAccessJustificationsPolicyOutput) ToGetCryptoKeysKeyKeyAccessJustificationsPolicyOutputWithContext(ctx context.Context) GetCryptoKeysKeyKeyAccessJustificationsPolicyOutput {
+	return o
+}
+
+// The list of allowed reasons for access to this CryptoKey. Zero allowed
+// access reasons means all encrypt, decrypt, and sign operations for
+// this CryptoKey will fail.
+func (o GetCryptoKeysKeyKeyAccessJustificationsPolicyOutput) AllowedAccessReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCryptoKeysKeyKeyAccessJustificationsPolicy) []string { return v.AllowedAccessReasons }).(pulumi.StringArrayOutput)
+}
+
+type GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCryptoKeysKeyKeyAccessJustificationsPolicy)(nil)).Elem()
+}
+
+func (o GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput) ToGetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput() GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput {
+	return o
+}
+
+func (o GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput) ToGetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutputWithContext(ctx context.Context) GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput {
+	return o
+}
+
+func (o GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput) Index(i pulumi.IntInput) GetCryptoKeysKeyKeyAccessJustificationsPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCryptoKeysKeyKeyAccessJustificationsPolicy {
+		return vs[0].([]GetCryptoKeysKeyKeyAccessJustificationsPolicy)[vs[1].(int)]
+	}).(GetCryptoKeysKeyKeyAccessJustificationsPolicyOutput)
 }
 
 type GetCryptoKeysKeyPrimary struct {
@@ -2698,6 +2978,109 @@ func (o GetCryptoKeysKeyVersionTemplateArrayOutput) Index(i pulumi.IntInput) Get
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCryptoKeysKeyVersionTemplate {
 		return vs[0].([]GetCryptoKeysKeyVersionTemplate)[vs[1].(int)]
 	}).(GetCryptoKeysKeyVersionTemplateOutput)
+}
+
+type GetKMSCryptoKeyKeyAccessJustificationsPolicy struct {
+	// The list of allowed reasons for access to this CryptoKey. Zero allowed
+	// access reasons means all encrypt, decrypt, and sign operations for
+	// this CryptoKey will fail.
+	AllowedAccessReasons []string `pulumi:"allowedAccessReasons"`
+}
+
+// GetKMSCryptoKeyKeyAccessJustificationsPolicyInput is an input type that accepts GetKMSCryptoKeyKeyAccessJustificationsPolicyArgs and GetKMSCryptoKeyKeyAccessJustificationsPolicyOutput values.
+// You can construct a concrete instance of `GetKMSCryptoKeyKeyAccessJustificationsPolicyInput` via:
+//
+//	GetKMSCryptoKeyKeyAccessJustificationsPolicyArgs{...}
+type GetKMSCryptoKeyKeyAccessJustificationsPolicyInput interface {
+	pulumi.Input
+
+	ToGetKMSCryptoKeyKeyAccessJustificationsPolicyOutput() GetKMSCryptoKeyKeyAccessJustificationsPolicyOutput
+	ToGetKMSCryptoKeyKeyAccessJustificationsPolicyOutputWithContext(context.Context) GetKMSCryptoKeyKeyAccessJustificationsPolicyOutput
+}
+
+type GetKMSCryptoKeyKeyAccessJustificationsPolicyArgs struct {
+	// The list of allowed reasons for access to this CryptoKey. Zero allowed
+	// access reasons means all encrypt, decrypt, and sign operations for
+	// this CryptoKey will fail.
+	AllowedAccessReasons pulumi.StringArrayInput `pulumi:"allowedAccessReasons"`
+}
+
+func (GetKMSCryptoKeyKeyAccessJustificationsPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKMSCryptoKeyKeyAccessJustificationsPolicy)(nil)).Elem()
+}
+
+func (i GetKMSCryptoKeyKeyAccessJustificationsPolicyArgs) ToGetKMSCryptoKeyKeyAccessJustificationsPolicyOutput() GetKMSCryptoKeyKeyAccessJustificationsPolicyOutput {
+	return i.ToGetKMSCryptoKeyKeyAccessJustificationsPolicyOutputWithContext(context.Background())
+}
+
+func (i GetKMSCryptoKeyKeyAccessJustificationsPolicyArgs) ToGetKMSCryptoKeyKeyAccessJustificationsPolicyOutputWithContext(ctx context.Context) GetKMSCryptoKeyKeyAccessJustificationsPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKMSCryptoKeyKeyAccessJustificationsPolicyOutput)
+}
+
+// GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayInput is an input type that accepts GetKMSCryptoKeyKeyAccessJustificationsPolicyArray and GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput values.
+// You can construct a concrete instance of `GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayInput` via:
+//
+//	GetKMSCryptoKeyKeyAccessJustificationsPolicyArray{ GetKMSCryptoKeyKeyAccessJustificationsPolicyArgs{...} }
+type GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput() GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput
+	ToGetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutputWithContext(context.Context) GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput
+}
+
+type GetKMSCryptoKeyKeyAccessJustificationsPolicyArray []GetKMSCryptoKeyKeyAccessJustificationsPolicyInput
+
+func (GetKMSCryptoKeyKeyAccessJustificationsPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKMSCryptoKeyKeyAccessJustificationsPolicy)(nil)).Elem()
+}
+
+func (i GetKMSCryptoKeyKeyAccessJustificationsPolicyArray) ToGetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput() GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput {
+	return i.ToGetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetKMSCryptoKeyKeyAccessJustificationsPolicyArray) ToGetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutputWithContext(ctx context.Context) GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput)
+}
+
+type GetKMSCryptoKeyKeyAccessJustificationsPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetKMSCryptoKeyKeyAccessJustificationsPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKMSCryptoKeyKeyAccessJustificationsPolicy)(nil)).Elem()
+}
+
+func (o GetKMSCryptoKeyKeyAccessJustificationsPolicyOutput) ToGetKMSCryptoKeyKeyAccessJustificationsPolicyOutput() GetKMSCryptoKeyKeyAccessJustificationsPolicyOutput {
+	return o
+}
+
+func (o GetKMSCryptoKeyKeyAccessJustificationsPolicyOutput) ToGetKMSCryptoKeyKeyAccessJustificationsPolicyOutputWithContext(ctx context.Context) GetKMSCryptoKeyKeyAccessJustificationsPolicyOutput {
+	return o
+}
+
+// The list of allowed reasons for access to this CryptoKey. Zero allowed
+// access reasons means all encrypt, decrypt, and sign operations for
+// this CryptoKey will fail.
+func (o GetKMSCryptoKeyKeyAccessJustificationsPolicyOutput) AllowedAccessReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyKeyAccessJustificationsPolicy) []string { return v.AllowedAccessReasons }).(pulumi.StringArrayOutput)
+}
+
+type GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKMSCryptoKeyKeyAccessJustificationsPolicy)(nil)).Elem()
+}
+
+func (o GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput) ToGetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput() GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput {
+	return o
+}
+
+func (o GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput) ToGetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutputWithContext(ctx context.Context) GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput {
+	return o
+}
+
+func (o GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput) Index(i pulumi.IntInput) GetKMSCryptoKeyKeyAccessJustificationsPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKMSCryptoKeyKeyAccessJustificationsPolicy {
+		return vs[0].([]GetKMSCryptoKeyKeyAccessJustificationsPolicy)[vs[1].(int)]
+	}).(GetKMSCryptoKeyKeyAccessJustificationsPolicyOutput)
 }
 
 type GetKMSCryptoKeyPrimary struct {
@@ -3129,6 +3512,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMBindingConditionPtrInput)(nil)).Elem(), CryptoKeyIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberConditionInput)(nil)).Elem(), CryptoKeyIAMMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberConditionPtrInput)(nil)).Elem(), CryptoKeyIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyKeyAccessJustificationsPolicyInput)(nil)).Elem(), CryptoKeyKeyAccessJustificationsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyKeyAccessJustificationsPolicyPtrInput)(nil)).Elem(), CryptoKeyKeyAccessJustificationsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyPrimaryInput)(nil)).Elem(), CryptoKeyPrimaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyPrimaryArrayInput)(nil)).Elem(), CryptoKeyPrimaryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionAttestationInput)(nil)).Elem(), CryptoKeyVersionAttestationArgs{})
@@ -3155,10 +3540,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobPublicKeyArrayInput)(nil)).Elem(), KeyRingImportJobPublicKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeysKeyInput)(nil)).Elem(), GetCryptoKeysKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeysKeyArrayInput)(nil)).Elem(), GetCryptoKeysKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeysKeyKeyAccessJustificationsPolicyInput)(nil)).Elem(), GetCryptoKeysKeyKeyAccessJustificationsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayInput)(nil)).Elem(), GetCryptoKeysKeyKeyAccessJustificationsPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeysKeyPrimaryInput)(nil)).Elem(), GetCryptoKeysKeyPrimaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeysKeyPrimaryArrayInput)(nil)).Elem(), GetCryptoKeysKeyPrimaryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeysKeyVersionTemplateInput)(nil)).Elem(), GetCryptoKeysKeyVersionTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeysKeyVersionTemplateArrayInput)(nil)).Elem(), GetCryptoKeysKeyVersionTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyKeyAccessJustificationsPolicyInput)(nil)).Elem(), GetKMSCryptoKeyKeyAccessJustificationsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayInput)(nil)).Elem(), GetKMSCryptoKeyKeyAccessJustificationsPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyPrimaryInput)(nil)).Elem(), GetKMSCryptoKeyPrimaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyPrimaryArrayInput)(nil)).Elem(), GetKMSCryptoKeyPrimaryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyVersionPublicKeyInput)(nil)).Elem(), GetKMSCryptoKeyVersionPublicKeyArgs{})
@@ -3171,6 +3560,8 @@ func init() {
 	pulumi.RegisterOutputType(CryptoKeyIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyIAMMemberConditionOutput{})
 	pulumi.RegisterOutputType(CryptoKeyIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(CryptoKeyKeyAccessJustificationsPolicyOutput{})
+	pulumi.RegisterOutputType(CryptoKeyKeyAccessJustificationsPolicyPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyPrimaryOutput{})
 	pulumi.RegisterOutputType(CryptoKeyPrimaryArrayOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionAttestationOutput{})
@@ -3197,10 +3588,14 @@ func init() {
 	pulumi.RegisterOutputType(KeyRingImportJobPublicKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetCryptoKeysKeyOutput{})
 	pulumi.RegisterOutputType(GetCryptoKeysKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetCryptoKeysKeyKeyAccessJustificationsPolicyOutput{})
+	pulumi.RegisterOutputType(GetCryptoKeysKeyKeyAccessJustificationsPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetCryptoKeysKeyPrimaryOutput{})
 	pulumi.RegisterOutputType(GetCryptoKeysKeyPrimaryArrayOutput{})
 	pulumi.RegisterOutputType(GetCryptoKeysKeyVersionTemplateOutput{})
 	pulumi.RegisterOutputType(GetCryptoKeysKeyVersionTemplateArrayOutput{})
+	pulumi.RegisterOutputType(GetKMSCryptoKeyKeyAccessJustificationsPolicyOutput{})
+	pulumi.RegisterOutputType(GetKMSCryptoKeyKeyAccessJustificationsPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetKMSCryptoKeyPrimaryOutput{})
 	pulumi.RegisterOutputType(GetKMSCryptoKeyPrimaryArrayOutput{})
 	pulumi.RegisterOutputType(GetKMSCryptoKeyVersionPublicKeyOutput{})

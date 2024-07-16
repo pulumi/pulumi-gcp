@@ -5,6 +5,7 @@ package com.pulumi.gcp.kms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.kms.inputs.CryptoKeyKeyAccessJustificationsPolicyArgs;
 import com.pulumi.gcp.kms.inputs.CryptoKeyPrimaryArgs;
 import com.pulumi.gcp.kms.inputs.CryptoKeyVersionTemplateArgs;
 import java.lang.Boolean;
@@ -82,6 +83,37 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> importOnly() {
         return Optional.ofNullable(this.importOnly);
+    }
+
+    /**
+     * The policy used for Key Access Justifications Policy Enforcement. If this
+     * field is present and this key is enrolled in Key Access Justifications
+     * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+     * sign operations, and the operation will fail if rejected by the policy. The
+     * policy is defined by specifying zero or more allowed justification codes.
+     * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+     * By default, this field is absent, and all justification codes are allowed.
+     * This field is currently in beta and is subject to change.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="keyAccessJustificationsPolicy")
+    private @Nullable Output<CryptoKeyKeyAccessJustificationsPolicyArgs> keyAccessJustificationsPolicy;
+
+    /**
+     * @return The policy used for Key Access Justifications Policy Enforcement. If this
+     * field is present and this key is enrolled in Key Access Justifications
+     * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+     * sign operations, and the operation will fail if rejected by the policy. The
+     * policy is defined by specifying zero or more allowed justification codes.
+     * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+     * By default, this field is absent, and all justification codes are allowed.
+     * This field is currently in beta and is subject to change.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CryptoKeyKeyAccessJustificationsPolicyArgs>> keyAccessJustificationsPolicy() {
+        return Optional.ofNullable(this.keyAccessJustificationsPolicy);
     }
 
     /**
@@ -262,6 +294,7 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
         this.destroyScheduledDuration = $.destroyScheduledDuration;
         this.effectiveLabels = $.effectiveLabels;
         this.importOnly = $.importOnly;
+        this.keyAccessJustificationsPolicy = $.keyAccessJustificationsPolicy;
         this.keyRing = $.keyRing;
         this.labels = $.labels;
         this.name = $.name;
@@ -377,6 +410,43 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder importOnly(Boolean importOnly) {
             return importOnly(Output.of(importOnly));
+        }
+
+        /**
+         * @param keyAccessJustificationsPolicy The policy used for Key Access Justifications Policy Enforcement. If this
+         * field is present and this key is enrolled in Key Access Justifications
+         * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+         * sign operations, and the operation will fail if rejected by the policy. The
+         * policy is defined by specifying zero or more allowed justification codes.
+         * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+         * By default, this field is absent, and all justification codes are allowed.
+         * This field is currently in beta and is subject to change.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyAccessJustificationsPolicy(@Nullable Output<CryptoKeyKeyAccessJustificationsPolicyArgs> keyAccessJustificationsPolicy) {
+            $.keyAccessJustificationsPolicy = keyAccessJustificationsPolicy;
+            return this;
+        }
+
+        /**
+         * @param keyAccessJustificationsPolicy The policy used for Key Access Justifications Policy Enforcement. If this
+         * field is present and this key is enrolled in Key Access Justifications
+         * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+         * sign operations, and the operation will fail if rejected by the policy. The
+         * policy is defined by specifying zero or more allowed justification codes.
+         * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+         * By default, this field is absent, and all justification codes are allowed.
+         * This field is currently in beta and is subject to change.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyAccessJustificationsPolicy(CryptoKeyKeyAccessJustificationsPolicyArgs keyAccessJustificationsPolicy) {
+            return keyAccessJustificationsPolicy(Output.of(keyAccessJustificationsPolicy));
         }
 
         /**

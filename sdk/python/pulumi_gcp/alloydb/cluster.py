@@ -1044,18 +1044,6 @@ class Cluster(pulumi.CustomResource):
                  secondary_config: Optional[pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']]] = None,
                  __props__=None):
         """
-        A managed alloydb cluster.
-
-        To get more information about Cluster, see:
-
-        * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
-        * How-to Guides
-            * [AlloyDB](https://cloud.google.com/alloydb/docs/)
-
-        > **Note:** Users can promote a secondary cluster to a primary cluster with the help of `cluster_type`.
-        To promote, users have to set the `cluster_type` property as `PRIMARY` and remove the `secondary_config` field from cluster configuration.
-        See Example.
-
         ## Example Usage
 
         ### Alloydb Cluster Basic
@@ -1310,18 +1298,6 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A managed alloydb cluster.
-
-        To get more information about Cluster, see:
-
-        * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
-        * How-to Guides
-            * [AlloyDB](https://cloud.google.com/alloydb/docs/)
-
-        > **Note:** Users can promote a secondary cluster to a primary cluster with the help of `cluster_type`.
-        To promote, users have to set the `cluster_type` property as `PRIMARY` and remove the `secondary_config` field from cluster configuration.
-        See Example.
-
         ## Example Usage
 
         ### Alloydb Cluster Basic

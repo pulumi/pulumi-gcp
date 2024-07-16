@@ -141,6 +141,7 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public readonly string Id;
         public readonly bool ImportOnly;
+        public readonly ImmutableArray<Outputs.GetKMSCryptoKeyKeyAccessJustificationsPolicyResult> KeyAccessJustificationsPolicies;
         public readonly string KeyRing;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
@@ -171,6 +172,8 @@ namespace Pulumi.Gcp.Kms
 
             bool importOnly,
 
+            ImmutableArray<Outputs.GetKMSCryptoKeyKeyAccessJustificationsPolicyResult> keyAccessJustificationsPolicies,
+
             string keyRing,
 
             ImmutableDictionary<string, string> labels,
@@ -194,6 +197,7 @@ namespace Pulumi.Gcp.Kms
             EffectiveLabels = effectiveLabels;
             Id = id;
             ImportOnly = importOnly;
+            KeyAccessJustificationsPolicies = keyAccessJustificationsPolicies;
             KeyRing = keyRing;
             Labels = labels;
             Name = name;

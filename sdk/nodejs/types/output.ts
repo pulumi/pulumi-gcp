@@ -5592,13 +5592,9 @@ export namespace bigquery {
         routine?: outputs.bigquery.DatasetAccessRoutine;
         /**
          * A special group to grant access to. Possible values include:
-         *
          * * `projectOwners`: Owners of the enclosing project.
-         *
          * * `projectReaders`: Readers of the enclosing project.
-         *
          * * `projectWriters`: Writers of the enclosing project.
-         *
          * * `allAuthenticatedUsers`: All authenticated BigQuery users.
          */
         specialGroup?: string;
@@ -5770,17 +5766,9 @@ export namespace bigquery {
         routines: outputs.bigquery.GetDatasetAccessRoutine[];
         /**
          * A special group to grant access to. Possible values include:
-         *
-         *
          * * 'projectOwners': Owners of the enclosing project.
-         *
-         *
          * * 'projectReaders': Readers of the enclosing project.
-         *
-         *
          * * 'projectWriters': Writers of the enclosing project.
-         *
-         *
          * * 'allAuthenticatedUsers': All authenticated BigQuery users.
          */
         specialGroup: string;
@@ -60705,6 +60693,13 @@ export namespace gkehub {
         code: string;
     }
 
+    export interface GetMembershipBindingState {
+        /**
+         * Code describes the state of a MembershipBinding resource.
+         */
+        code: string;
+    }
+
     export interface MembershipAuthority {
         issuer: string;
     }
@@ -65023,6 +65018,15 @@ export namespace kms {
         title: string;
     }
 
+    export interface CryptoKeyKeyAccessJustificationsPolicy {
+        /**
+         * The list of allowed reasons for access to this CryptoKey. Zero allowed
+         * access reasons means all encrypt, decrypt, and sign operations for
+         * this CryptoKey will fail.
+         */
+        allowedAccessReasons?: string[];
+    }
+
     export interface CryptoKeyPrimary {
         /**
          * The resource name for the CryptoKey.
@@ -65198,6 +65202,17 @@ export namespace kms {
          */
         importOnly: boolean;
         /**
+         * The policy used for Key Access Justifications Policy Enforcement. If this
+         * field is present and this key is enrolled in Key Access Justifications
+         * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+         * sign operations, and the operation will fail if rejected by the policy. The
+         * policy is defined by specifying zero or more allowed justification codes.
+         * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+         * By default, this field is absent, and all justification codes are allowed.
+         * This field is currently in beta and is subject to change.
+         */
+        keyAccessJustificationsPolicies: outputs.kms.GetCryptoKeysKeyKeyAccessJustificationsPolicy[];
+        /**
          * The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
          */
         keyRing?: string;
@@ -65249,6 +65264,15 @@ export namespace kms {
         versionTemplates: outputs.kms.GetCryptoKeysKeyVersionTemplate[];
     }
 
+    export interface GetCryptoKeysKeyKeyAccessJustificationsPolicy {
+        /**
+         * The list of allowed reasons for access to this CryptoKey. Zero allowed
+         * access reasons means all encrypt, decrypt, and sign operations for
+         * this CryptoKey will fail.
+         */
+        allowedAccessReasons: string[];
+    }
+
     export interface GetCryptoKeysKeyPrimary {
         /**
          * The resource name for this CryptoKeyVersion.
@@ -65270,6 +65294,15 @@ export namespace kms {
          * The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
          */
         protectionLevel: string;
+    }
+
+    export interface GetKMSCryptoKeyKeyAccessJustificationsPolicy {
+        /**
+         * The list of allowed reasons for access to this CryptoKey. Zero allowed
+         * access reasons means all encrypt, decrypt, and sign operations for
+         * this CryptoKey will fail.
+         */
+        allowedAccessReasons: string[];
     }
 
     export interface GetKMSCryptoKeyPrimary {
@@ -75813,6 +75846,33 @@ export namespace securitycenter {
          * - - -
          */
         resourceTypes: string[];
+    }
+
+    export interface ProjectNotificationConfigStreamingConfig {
+        /**
+         * Expression that defines the filter to apply across create/update
+         * events of assets or findings as specified by the event type. The
+         * expression is a list of zero or more restrictions combined via
+         * logical operators AND and OR. Parentheses are supported, and OR
+         * has higher precedence than AND.
+         * Restrictions have the form <field> <operator> <value> and may have
+         * a - character in front of them to indicate negation. The fields
+         * map to those defined in the corresponding resource.
+         * The supported operators are:
+         * * = for all value types.
+         * * >, <, >=, <= for integer values.
+         * * :, meaning substring matching, for strings.
+         * The supported value types are:
+         * * string literals in quotes.
+         * * integer literals without quotes.
+         * * boolean literals true and false without quotes.
+         * See
+         * [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+         * for information on how to write a filter.
+         *
+         * - - -
+         */
+        filter: string;
     }
 
     export interface SourceIamBindingCondition {

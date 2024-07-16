@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.Iap
         /// <summary>
         /// Identifier of the brand to which this client
         /// is attached to. The format is
-        /// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+        /// `projects/{project_number}/brands/{brand_id}`.
         /// 
         /// 
         /// - - -
@@ -167,7 +167,7 @@ namespace Pulumi.Gcp.Iap
         /// <summary>
         /// Identifier of the brand to which this client
         /// is attached to. The format is
-        /// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+        /// `projects/{project_number}/brands/{brand_id}`.
         /// 
         /// 
         /// - - -
@@ -192,7 +192,7 @@ namespace Pulumi.Gcp.Iap
         /// <summary>
         /// Identifier of the brand to which this client
         /// is attached to. The format is
-        /// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+        /// `projects/{project_number}/brands/{brand_id}`.
         /// 
         /// 
         /// - - -

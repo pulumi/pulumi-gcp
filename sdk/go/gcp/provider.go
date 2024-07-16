@@ -164,6 +164,7 @@ type Provider struct {
 	ServiceManagementCustomEndpoint           pulumi.StringPtrOutput `pulumi:"serviceManagementCustomEndpoint"`
 	ServiceNetworkingCustomEndpoint           pulumi.StringPtrOutput `pulumi:"serviceNetworkingCustomEndpoint"`
 	ServiceUsageCustomEndpoint                pulumi.StringPtrOutput `pulumi:"serviceUsageCustomEndpoint"`
+	SiteVerificationCustomEndpoint            pulumi.StringPtrOutput `pulumi:"siteVerificationCustomEndpoint"`
 	SourceRepoCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"sourceRepoCustomEndpoint"`
 	SpannerCustomEndpoint                     pulumi.StringPtrOutput `pulumi:"spannerCustomEndpoint"`
 	SqlCustomEndpoint                         pulumi.StringPtrOutput `pulumi:"sqlCustomEndpoint"`
@@ -376,6 +377,7 @@ type providerArgs struct {
 	ServiceManagementCustomEndpoint           *string           `pulumi:"serviceManagementCustomEndpoint"`
 	ServiceNetworkingCustomEndpoint           *string           `pulumi:"serviceNetworkingCustomEndpoint"`
 	ServiceUsageCustomEndpoint                *string           `pulumi:"serviceUsageCustomEndpoint"`
+	SiteVerificationCustomEndpoint            *string           `pulumi:"siteVerificationCustomEndpoint"`
 	SourceRepoCustomEndpoint                  *string           `pulumi:"sourceRepoCustomEndpoint"`
 	SpannerCustomEndpoint                     *string           `pulumi:"spannerCustomEndpoint"`
 	SqlCustomEndpoint                         *string           `pulumi:"sqlCustomEndpoint"`
@@ -552,6 +554,7 @@ type ProviderArgs struct {
 	ServiceManagementCustomEndpoint           pulumi.StringPtrInput
 	ServiceNetworkingCustomEndpoint           pulumi.StringPtrInput
 	ServiceUsageCustomEndpoint                pulumi.StringPtrInput
+	SiteVerificationCustomEndpoint            pulumi.StringPtrInput
 	SourceRepoCustomEndpoint                  pulumi.StringPtrInput
 	SpannerCustomEndpoint                     pulumi.StringPtrInput
 	SqlCustomEndpoint                         pulumi.StringPtrInput
@@ -1193,6 +1196,10 @@ func (o ProviderOutput) ServiceNetworkingCustomEndpoint() pulumi.StringPtrOutput
 
 func (o ProviderOutput) ServiceUsageCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ServiceUsageCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) SiteVerificationCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SiteVerificationCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) SourceRepoCustomEndpoint() pulumi.StringPtrOutput {

@@ -5037,13 +5037,9 @@ export namespace bigquery {
         routine?: pulumi.Input<inputs.bigquery.DatasetAccessRoutine>;
         /**
          * A special group to grant access to. Possible values include:
-         *
          * * `projectOwners`: Owners of the enclosing project.
-         *
          * * `projectReaders`: Readers of the enclosing project.
-         *
          * * `projectWriters`: Writers of the enclosing project.
-         *
          * * `allAuthenticatedUsers`: All authenticated BigQuery users.
          */
         specialGroup?: pulumi.Input<string>;
@@ -52882,6 +52878,15 @@ export namespace kms {
         title: pulumi.Input<string>;
     }
 
+    export interface CryptoKeyKeyAccessJustificationsPolicy {
+        /**
+         * The list of allowed reasons for access to this CryptoKey. Zero allowed
+         * access reasons means all encrypt, decrypt, and sign operations for
+         * this CryptoKey will fail.
+         */
+        allowedAccessReasons?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface CryptoKeyPrimary {
         /**
          * The resource name for the CryptoKey.
@@ -62703,6 +62708,33 @@ export namespace securitycenter {
          * - - -
          */
         resourceTypes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ProjectNotificationConfigStreamingConfig {
+        /**
+         * Expression that defines the filter to apply across create/update
+         * events of assets or findings as specified by the event type. The
+         * expression is a list of zero or more restrictions combined via
+         * logical operators AND and OR. Parentheses are supported, and OR
+         * has higher precedence than AND.
+         * Restrictions have the form <field> <operator> <value> and may have
+         * a - character in front of them to indicate negation. The fields
+         * map to those defined in the corresponding resource.
+         * The supported operators are:
+         * * = for all value types.
+         * * >, <, >=, <= for integer values.
+         * * :, meaning substring matching, for strings.
+         * The supported value types are:
+         * * string literals in quotes.
+         * * integer literals without quotes.
+         * * boolean literals true and false without quotes.
+         * See
+         * [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+         * for information on how to write a filter.
+         *
+         * - - -
+         */
+        filter: pulumi.Input<string>;
     }
 
     export interface SourceIamBindingCondition {

@@ -58,13 +58,9 @@ public final class DatasetAccess {
     private @Nullable DatasetAccessRoutine routine;
     /**
      * @return A special group to grant access to. Possible values include:
-     * 
      * * `projectOwners`: Owners of the enclosing project.
-     * 
      * * `projectReaders`: Readers of the enclosing project.
-     * 
      * * `projectWriters`: Writers of the enclosing project.
-     * 
      * * `allAuthenticatedUsers`: All authenticated BigQuery users.
      * 
      */
@@ -143,13 +139,9 @@ public final class DatasetAccess {
     }
     /**
      * @return A special group to grant access to. Possible values include:
-     * 
      * * `projectOwners`: Owners of the enclosing project.
-     * 
      * * `projectReaders`: Readers of the enclosing project.
-     * 
      * * `projectWriters`: Writers of the enclosing project.
-     * 
      * * `allAuthenticatedUsers`: All authenticated BigQuery users.
      * 
      */

@@ -131,6 +131,16 @@ type CryptoKey struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether this key may contain imported versions only.
 	ImportOnly pulumi.BoolOutput `pulumi:"importOnly"`
+	// The policy used for Key Access Justifications Policy Enforcement. If this
+	// field is present and this key is enrolled in Key Access Justifications
+	// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+	// sign operations, and the operation will fail if rejected by the policy. The
+	// policy is defined by specifying zero or more allowed justification codes.
+	// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+	// By default, this field is absent, and all justification codes are allowed.
+	// This field is currently in beta and is subject to change.
+	// Structure is documented below.
+	KeyAccessJustificationsPolicy CryptoKeyKeyAccessJustificationsPolicyOutput `pulumi:"keyAccessJustificationsPolicy"`
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 	//
@@ -217,6 +227,16 @@ type cryptoKeyState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether this key may contain imported versions only.
 	ImportOnly *bool `pulumi:"importOnly"`
+	// The policy used for Key Access Justifications Policy Enforcement. If this
+	// field is present and this key is enrolled in Key Access Justifications
+	// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+	// sign operations, and the operation will fail if rejected by the policy. The
+	// policy is defined by specifying zero or more allowed justification codes.
+	// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+	// By default, this field is absent, and all justification codes are allowed.
+	// This field is currently in beta and is subject to change.
+	// Structure is documented below.
+	KeyAccessJustificationsPolicy *CryptoKeyKeyAccessJustificationsPolicy `pulumi:"keyAccessJustificationsPolicy"`
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 	//
@@ -266,6 +286,16 @@ type CryptoKeyState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// Whether this key may contain imported versions only.
 	ImportOnly pulumi.BoolPtrInput
+	// The policy used for Key Access Justifications Policy Enforcement. If this
+	// field is present and this key is enrolled in Key Access Justifications
+	// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+	// sign operations, and the operation will fail if rejected by the policy. The
+	// policy is defined by specifying zero or more allowed justification codes.
+	// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+	// By default, this field is absent, and all justification codes are allowed.
+	// This field is currently in beta and is subject to change.
+	// Structure is documented below.
+	KeyAccessJustificationsPolicy CryptoKeyKeyAccessJustificationsPolicyPtrInput
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 	//
@@ -317,6 +347,16 @@ type cryptoKeyArgs struct {
 	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
 	// Whether this key may contain imported versions only.
 	ImportOnly *bool `pulumi:"importOnly"`
+	// The policy used for Key Access Justifications Policy Enforcement. If this
+	// field is present and this key is enrolled in Key Access Justifications
+	// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+	// sign operations, and the operation will fail if rejected by the policy. The
+	// policy is defined by specifying zero or more allowed justification codes.
+	// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+	// By default, this field is absent, and all justification codes are allowed.
+	// This field is currently in beta and is subject to change.
+	// Structure is documented below.
+	KeyAccessJustificationsPolicy *CryptoKeyKeyAccessJustificationsPolicy `pulumi:"keyAccessJustificationsPolicy"`
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 	//
@@ -358,6 +398,16 @@ type CryptoKeyArgs struct {
 	DestroyScheduledDuration pulumi.StringPtrInput
 	// Whether this key may contain imported versions only.
 	ImportOnly pulumi.BoolPtrInput
+	// The policy used for Key Access Justifications Policy Enforcement. If this
+	// field is present and this key is enrolled in Key Access Justifications
+	// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+	// sign operations, and the operation will fail if rejected by the policy. The
+	// policy is defined by specifying zero or more allowed justification codes.
+	// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+	// By default, this field is absent, and all justification codes are allowed.
+	// This field is currently in beta and is subject to change.
+	// Structure is documented below.
+	KeyAccessJustificationsPolicy CryptoKeyKeyAccessJustificationsPolicyPtrInput
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 	//
@@ -496,6 +546,21 @@ func (o CryptoKeyOutput) EffectiveLabels() pulumi.StringMapOutput {
 // Whether this key may contain imported versions only.
 func (o CryptoKeyOutput) ImportOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.BoolOutput { return v.ImportOnly }).(pulumi.BoolOutput)
+}
+
+// The policy used for Key Access Justifications Policy Enforcement. If this
+// field is present and this key is enrolled in Key Access Justifications
+// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+// sign operations, and the operation will fail if rejected by the policy. The
+// policy is defined by specifying zero or more allowed justification codes.
+// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+// By default, this field is absent, and all justification codes are allowed.
+// This field is currently in beta and is subject to change.
+// Structure is documented below.
+func (o CryptoKeyOutput) KeyAccessJustificationsPolicy() CryptoKeyKeyAccessJustificationsPolicyOutput {
+	return o.ApplyT(func(v *CryptoKey) CryptoKeyKeyAccessJustificationsPolicyOutput {
+		return v.KeyAccessJustificationsPolicy
+	}).(CryptoKeyKeyAccessJustificationsPolicyOutput)
 }
 
 // The KeyRing that this key belongs to.

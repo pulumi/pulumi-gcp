@@ -1225,6 +1225,14 @@ Object.defineProperty(exports, "serviceUsageCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const siteVerificationCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "siteVerificationCustomEndpoint", {
+    get() {
+        return __config.get("siteVerificationCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const skipRegionValidation: boolean;
 Object.defineProperty(exports, "skipRegionValidation", {
     get() {

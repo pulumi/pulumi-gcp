@@ -368,15 +368,15 @@ public class AddressGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="purposes", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> purposes;
+    private Output<List<String>> purposes;
 
     /**
      * @return List of supported purposes of the Address Group.
      * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
      * 
      */
-    public Output<Optional<List<String>>> purposes() {
-        return Codegen.optional(this.purposes);
+    public Output<List<String>> purposes() {
+        return this.purposes;
     }
     /**
      * The type of the Address Group. Possible values are &#34;IPV4&#34; or &#34;IPV6&#34;.

@@ -75,6 +75,11 @@ export type ProjectCustomModule = import("./projectCustomModule").ProjectCustomM
 export const ProjectCustomModule: typeof import("./projectCustomModule").ProjectCustomModule = null as any;
 utilities.lazyLoad(exports, ["ProjectCustomModule"], () => require("./projectCustomModule"));
 
+export { ProjectNotificationConfigArgs, ProjectNotificationConfigState } from "./projectNotificationConfig";
+export type ProjectNotificationConfig = import("./projectNotificationConfig").ProjectNotificationConfig;
+export const ProjectNotificationConfig: typeof import("./projectNotificationConfig").ProjectNotificationConfig = null as any;
+utilities.lazyLoad(exports, ["ProjectNotificationConfig"], () => require("./projectNotificationConfig"));
+
 export { SourceArgs, SourceState } from "./source";
 export type Source = import("./source").Source;
 export const Source: typeof import("./source").Source = null as any;
@@ -131,6 +136,8 @@ const _module = {
                 return new OrganizationCustomModule(name, <any>undefined, { urn })
             case "gcp:securitycenter/projectCustomModule:ProjectCustomModule":
                 return new ProjectCustomModule(name, <any>undefined, { urn })
+            case "gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig":
+                return new ProjectNotificationConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/source:Source":
                 return new Source(name, <any>undefined, { urn })
             case "gcp:securitycenter/sourceIamBinding:SourceIamBinding":
@@ -159,6 +166,7 @@ pulumi.runtime.registerResourceModule("gcp", "securitycenter/muteConfig", _modul
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/notificationConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/organizationCustomModule", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/projectCustomModule", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/projectNotificationConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/source", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamMember", _module)

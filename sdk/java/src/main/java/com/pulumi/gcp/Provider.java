@@ -899,6 +899,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> serviceUsageCustomEndpoint() {
         return Codegen.optional(this.serviceUsageCustomEndpoint);
     }
+    @Export(name="siteVerificationCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> siteVerificationCustomEndpoint;
+
+    public Output<Optional<String>> siteVerificationCustomEndpoint() {
+        return Codegen.optional(this.siteVerificationCustomEndpoint);
+    }
     @Export(name="sourceRepoCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceRepoCustomEndpoint;
 

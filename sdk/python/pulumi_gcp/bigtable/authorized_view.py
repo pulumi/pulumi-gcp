@@ -243,6 +243,58 @@ class AuthorizedView(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        instance = gcp.bigtable.Instance("instance",
+            name="tf-instance",
+            clusters=[{
+                "clusterId": "tf-instance-cluster",
+                "zone": "us-central1-b",
+                "numNodes": 3,
+                "storageType": "HDD",
+            }])
+        table = gcp.bigtable.Table("table",
+            name="tf-table",
+            instance_name=instance.name,
+            split_keys=[
+                "a",
+                "b",
+                "c",
+            ],
+            column_families=[
+                {
+                    "family": "family-first",
+                },
+                {
+                    "family": "family-second",
+                },
+            ],
+            change_stream_retention="24h0m0s")
+        authorized_view = gcp.bigtable.AuthorizedView("authorized_view",
+            name="tf-authorized-view",
+            instance_name=instance.name,
+            table_name=table.name,
+            subset_view={
+                "rowPrefixes": [std.base64encode(input="prefix#").result],
+                "familySubsets": [
+                    {
+                        "familyName": "family-first",
+                        "qualifiers": [
+                            std.base64encode(input="qualifier").result,
+                            std.base64encode(input="qualifier-second").result,
+                        ],
+                    },
+                    {
+                        "familyName": "family-second",
+                        "qualifierPrefixes": [""],
+                    },
+                ],
+            })
+        ```
+
         ## Import
 
         Bigtable Authorized Views can be imported using any of these accepted formats:
@@ -286,6 +338,58 @@ class AuthorizedView(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        instance = gcp.bigtable.Instance("instance",
+            name="tf-instance",
+            clusters=[{
+                "clusterId": "tf-instance-cluster",
+                "zone": "us-central1-b",
+                "numNodes": 3,
+                "storageType": "HDD",
+            }])
+        table = gcp.bigtable.Table("table",
+            name="tf-table",
+            instance_name=instance.name,
+            split_keys=[
+                "a",
+                "b",
+                "c",
+            ],
+            column_families=[
+                {
+                    "family": "family-first",
+                },
+                {
+                    "family": "family-second",
+                },
+            ],
+            change_stream_retention="24h0m0s")
+        authorized_view = gcp.bigtable.AuthorizedView("authorized_view",
+            name="tf-authorized-view",
+            instance_name=instance.name,
+            table_name=table.name,
+            subset_view={
+                "rowPrefixes": [std.base64encode(input="prefix#").result],
+                "familySubsets": [
+                    {
+                        "familyName": "family-first",
+                        "qualifiers": [
+                            std.base64encode(input="qualifier").result,
+                            std.base64encode(input="qualifier-second").result,
+                        ],
+                    },
+                    {
+                        "familyName": "family-second",
+                        "qualifierPrefixes": [""],
+                    },
+                ],
+            })
+        ```
 
         ## Import
 

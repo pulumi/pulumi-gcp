@@ -88,6 +88,7 @@ __all__ = [
     'ScopeRbacRoleBindingRole',
     'ScopeRbacRoleBindingState',
     'ScopeState',
+    'GetMembershipBindingStateResult',
 ]
 
 @pulumi.output_type
@@ -3584,6 +3585,24 @@ class ScopeState(dict):
         """
         (Output)
         Code describes the state of a Scope resource.
+        """
+        return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class GetMembershipBindingStateResult(dict):
+    def __init__(__self__, *,
+                 code: str):
+        """
+        :param str code: Code describes the state of a MembershipBinding resource.
+        """
+        pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        Code describes the state of a MembershipBinding resource.
         """
         return pulumi.get(self, "code")
 

@@ -1084,6 +1084,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.serviceUsageCustomEndpoint);
     }
 
+    @Import(name="siteVerificationCustomEndpoint")
+    private @Nullable Output<String> siteVerificationCustomEndpoint;
+
+    public Optional<Output<String>> siteVerificationCustomEndpoint() {
+        return Optional.ofNullable(this.siteVerificationCustomEndpoint);
+    }
+
     @Import(name="sourceRepoCustomEndpoint")
     private @Nullable Output<String> sourceRepoCustomEndpoint;
 
@@ -1379,6 +1386,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.serviceManagementCustomEndpoint = $.serviceManagementCustomEndpoint;
         this.serviceNetworkingCustomEndpoint = $.serviceNetworkingCustomEndpoint;
         this.serviceUsageCustomEndpoint = $.serviceUsageCustomEndpoint;
+        this.siteVerificationCustomEndpoint = $.siteVerificationCustomEndpoint;
         this.sourceRepoCustomEndpoint = $.sourceRepoCustomEndpoint;
         this.spannerCustomEndpoint = $.spannerCustomEndpoint;
         this.sqlCustomEndpoint = $.sqlCustomEndpoint;
@@ -2793,6 +2801,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder serviceUsageCustomEndpoint(String serviceUsageCustomEndpoint) {
             return serviceUsageCustomEndpoint(Output.of(serviceUsageCustomEndpoint));
+        }
+
+        public Builder siteVerificationCustomEndpoint(@Nullable Output<String> siteVerificationCustomEndpoint) {
+            $.siteVerificationCustomEndpoint = siteVerificationCustomEndpoint;
+            return this;
+        }
+
+        public Builder siteVerificationCustomEndpoint(String siteVerificationCustomEndpoint) {
+            return siteVerificationCustomEndpoint(Output.of(siteVerificationCustomEndpoint));
         }
 
         public Builder sourceRepoCustomEndpoint(@Nullable Output<String> sourceRepoCustomEndpoint) {

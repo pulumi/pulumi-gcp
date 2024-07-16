@@ -25,7 +25,7 @@ class ClientArgs:
         The set of arguments for constructing a Client resource.
         :param pulumi.Input[str] brand: Identifier of the brand to which this client
                is attached to. The format is
-               `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+               `projects/{project_number}/brands/{brand_id}`.
                
                
                - - -
@@ -40,7 +40,7 @@ class ClientArgs:
         """
         Identifier of the brand to which this client
         is attached to. The format is
-        `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+        `projects/{project_number}/brands/{brand_id}`.
 
 
         - - -
@@ -75,7 +75,7 @@ class _ClientState:
         Input properties used for looking up and filtering Client resources.
         :param pulumi.Input[str] brand: Identifier of the brand to which this client
                is attached to. The format is
-               `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+               `projects/{project_number}/brands/{brand_id}`.
                
                
                - - -
@@ -99,7 +99,7 @@ class _ClientState:
         """
         Identifier of the brand to which this client
         is attached to. The format is
-        `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+        `projects/{project_number}/brands/{brand_id}`.
 
 
         - - -
@@ -215,7 +215,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] brand: Identifier of the brand to which this client
                is attached to. The format is
-               `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+               `projects/{project_number}/brands/{brand_id}`.
                
                
                - - -
@@ -341,7 +341,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] brand: Identifier of the brand to which this client
                is attached to. The format is
-               `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+               `projects/{project_number}/brands/{brand_id}`.
                
                
                - - -
@@ -366,7 +366,7 @@ class Client(pulumi.CustomResource):
         """
         Identifier of the brand to which this client
         is attached to. The format is
-        `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+        `projects/{project_number}/brands/{brand_id}`.
 
 
         - - -

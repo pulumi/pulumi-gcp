@@ -483,6 +483,9 @@ func GetServiceNetworkingCustomEndpoint(ctx *pulumi.Context) string {
 func GetServiceUsageCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:serviceUsageCustomEndpoint")
 }
+func GetSiteVerificationCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:siteVerificationCustomEndpoint")
+}
 func GetSkipRegionValidation(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "gcp:skipRegionValidation")
 	if err == nil {

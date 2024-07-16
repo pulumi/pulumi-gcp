@@ -19,6 +19,7 @@ from .mute_config import *
 from .notification_config import *
 from .organization_custom_module import *
 from .project_custom_module import *
+from .project_notification_config import *
 from .source import *
 from .source_iam_binding import *
 from .source_iam_member import *

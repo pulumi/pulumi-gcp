@@ -281,13 +281,9 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// A special group to grant access to. Possible values include:
-        /// 
         /// * `projectOwners`: Owners of the enclosing project.
-        /// 
         /// * `projectReaders`: Readers of the enclosing project.
-        /// 
         /// * `projectWriters`: Writers of the enclosing project.
-        /// 
         /// * `allAuthenticatedUsers`: All authenticated BigQuery users.
         /// </summary>
         [Output("specialGroup")]
@@ -426,13 +422,9 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// A special group to grant access to. Possible values include:
-        /// 
         /// * `projectOwners`: Owners of the enclosing project.
-        /// 
         /// * `projectReaders`: Readers of the enclosing project.
-        /// 
         /// * `projectWriters`: Writers of the enclosing project.
-        /// 
         /// * `allAuthenticatedUsers`: All authenticated BigQuery users.
         /// </summary>
         [Input("specialGroup")]
@@ -540,13 +532,9 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// A special group to grant access to. Possible values include:
-        /// 
         /// * `projectOwners`: Owners of the enclosing project.
-        /// 
         /// * `projectReaders`: Readers of the enclosing project.
-        /// 
         /// * `projectWriters`: Writers of the enclosing project.
-        /// 
         /// * `allAuthenticatedUsers`: All authenticated BigQuery users.
         /// </summary>
         [Input("specialGroup")]

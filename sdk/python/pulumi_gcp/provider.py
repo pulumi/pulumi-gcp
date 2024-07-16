@@ -172,6 +172,7 @@ class ProviderArgs:
                  service_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_networking_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_usage_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 site_verification_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  source_repo_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  spanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  sql_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -503,6 +504,8 @@ class ProviderArgs:
             pulumi.set(__self__, "service_networking_custom_endpoint", service_networking_custom_endpoint)
         if service_usage_custom_endpoint is not None:
             pulumi.set(__self__, "service_usage_custom_endpoint", service_usage_custom_endpoint)
+        if site_verification_custom_endpoint is not None:
+            pulumi.set(__self__, "site_verification_custom_endpoint", site_verification_custom_endpoint)
         if source_repo_custom_endpoint is not None:
             pulumi.set(__self__, "source_repo_custom_endpoint", source_repo_custom_endpoint)
         if spanner_custom_endpoint is not None:
@@ -1915,6 +1918,15 @@ class ProviderArgs:
         pulumi.set(self, "service_usage_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="siteVerificationCustomEndpoint")
+    def site_verification_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "site_verification_custom_endpoint")
+
+    @site_verification_custom_endpoint.setter
+    def site_verification_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "site_verification_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="sourceRepoCustomEndpoint")
     def source_repo_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "source_repo_custom_endpoint")
@@ -2252,6 +2264,7 @@ class Provider(pulumi.ProviderResource):
                  service_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_networking_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_usage_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 site_verification_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  source_repo_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  spanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  sql_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2461,6 +2474,7 @@ class Provider(pulumi.ProviderResource):
                  service_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_networking_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_usage_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 site_verification_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  source_repo_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  spanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  sql_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2646,6 +2660,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["service_management_custom_endpoint"] = service_management_custom_endpoint
             __props__.__dict__["service_networking_custom_endpoint"] = service_networking_custom_endpoint
             __props__.__dict__["service_usage_custom_endpoint"] = service_usage_custom_endpoint
+            __props__.__dict__["site_verification_custom_endpoint"] = site_verification_custom_endpoint
             __props__.__dict__["source_repo_custom_endpoint"] = source_repo_custom_endpoint
             __props__.__dict__["spanner_custom_endpoint"] = spanner_custom_endpoint
             __props__.__dict__["sql_custom_endpoint"] = sql_custom_endpoint
@@ -3405,6 +3420,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="serviceUsageCustomEndpoint")
     def service_usage_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "service_usage_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="siteVerificationCustomEndpoint")
+    def site_verification_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "site_verification_custom_endpoint")
 
     @property
     @pulumi.getter(name="sourceRepoCustomEndpoint")

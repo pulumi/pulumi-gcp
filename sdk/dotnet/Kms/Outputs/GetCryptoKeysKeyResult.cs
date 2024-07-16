@@ -30,6 +30,17 @@ namespace Pulumi.Gcp.Kms.Outputs
         /// </summary>
         public readonly bool ImportOnly;
         /// <summary>
+        /// The policy used for Key Access Justifications Policy Enforcement. If this
+        /// field is present and this key is enrolled in Key Access Justifications
+        /// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+        /// sign operations, and the operation will fail if rejected by the policy. The
+        /// policy is defined by specifying zero or more allowed justification codes.
+        /// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+        /// By default, this field is absent, and all justification codes are allowed.
+        /// This field is currently in beta and is subject to change.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetCryptoKeysKeyKeyAccessJustificationsPolicyResult> KeyAccessJustificationsPolicies;
+        /// <summary>
         /// The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
         /// </summary>
         public readonly string? KeyRing;
@@ -92,6 +103,8 @@ namespace Pulumi.Gcp.Kms.Outputs
 
             bool importOnly,
 
+            ImmutableArray<Outputs.GetCryptoKeysKeyKeyAccessJustificationsPolicyResult> keyAccessJustificationsPolicies,
+
             string? keyRing,
 
             ImmutableDictionary<string, string> labels,
@@ -115,6 +128,7 @@ namespace Pulumi.Gcp.Kms.Outputs
             EffectiveLabels = effectiveLabels;
             Id = id;
             ImportOnly = importOnly;
+            KeyAccessJustificationsPolicies = keyAccessJustificationsPolicies;
             KeyRing = keyRing;
             Labels = labels;
             Name = name;

@@ -134,7 +134,6 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
     /**
      * The default partition expiration for all partitioned tables in
      * the dataset, in milliseconds.
-     * 
      * Once this property is set, all newly-created partitioned tables in
      * the dataset will have an `expirationMs` property in the `timePartitioning`
      * settings set to this value, and changing the value will only
@@ -154,7 +153,6 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The default partition expiration for all partitioned tables in
      * the dataset, in milliseconds.
-     * 
      * Once this property is set, all newly-created partitioned tables in
      * the dataset will have an `expirationMs` property in the `timePartitioning`
      * settings set to this value, and changing the value will only
@@ -175,7 +173,6 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
     /**
      * The default lifetime of all tables in the dataset, in milliseconds.
      * The minimum value is 3600000 milliseconds (one hour).
-     * 
      * Once this property is set, all newly-created tables in the dataset
      * will have an `expirationTime` property set to the creation time plus
      * the value in this property, and changing the value will only affect
@@ -193,7 +190,6 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The default lifetime of all tables in the dataset, in milliseconds.
      * The minimum value is 3600000 milliseconds (one hour).
-     * 
      * Once this property is set, all newly-created tables in the dataset
      * will have an `expirationTime` property set to the creation time plus
      * the value in this property, and changing the value will only affect
@@ -367,12 +363,10 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
     /**
      * The geographic location where the dataset should reside.
      * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-     * 
      * There are two types of locations, regional or multi-regional. A regional
      * location is a specific geographic place, such as Tokyo, and a multi-regional
      * location is a large geographic area, such as the United States, that
      * contains at least two geographic places.
-     * 
      * The default value is multi-regional location `US`.
      * Changing this forces a new resource to be created.
      * 
@@ -383,12 +377,10 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The geographic location where the dataset should reside.
      * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-     * 
      * There are two types of locations, regional or multi-regional. A regional
      * location is a specific geographic place, such as Tokyo, and a multi-regional
      * location is a large geographic area, such as the United States, that
      * contains at least two geographic places.
-     * 
      * The default value is multi-regional location `US`.
      * Changing this forces a new resource to be created.
      * 
@@ -704,7 +696,6 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param defaultPartitionExpirationMs The default partition expiration for all partitioned tables in
          * the dataset, in milliseconds.
-         * 
          * Once this property is set, all newly-created partitioned tables in
          * the dataset will have an `expirationMs` property in the `timePartitioning`
          * settings set to this value, and changing the value will only
@@ -728,7 +719,6 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param defaultPartitionExpirationMs The default partition expiration for all partitioned tables in
          * the dataset, in milliseconds.
-         * 
          * Once this property is set, all newly-created partitioned tables in
          * the dataset will have an `expirationMs` property in the `timePartitioning`
          * settings set to this value, and changing the value will only
@@ -751,7 +741,6 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param defaultTableExpirationMs The default lifetime of all tables in the dataset, in milliseconds.
          * The minimum value is 3600000 milliseconds (one hour).
-         * 
          * Once this property is set, all newly-created tables in the dataset
          * will have an `expirationTime` property set to the creation time plus
          * the value in this property, and changing the value will only affect
@@ -773,7 +762,6 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param defaultTableExpirationMs The default lifetime of all tables in the dataset, in milliseconds.
          * The minimum value is 3600000 milliseconds (one hour).
-         * 
          * Once this property is set, all newly-created tables in the dataset
          * will have an `expirationTime` property set to the creation time plus
          * the value in this property, and changing the value will only affect
@@ -1003,12 +991,10 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The geographic location where the dataset should reside.
          * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-         * 
          * There are two types of locations, regional or multi-regional. A regional
          * location is a specific geographic place, such as Tokyo, and a multi-regional
          * location is a large geographic area, such as the United States, that
          * contains at least two geographic places.
-         * 
          * The default value is multi-regional location `US`.
          * Changing this forces a new resource to be created.
          * 
@@ -1023,12 +1009,10 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The geographic location where the dataset should reside.
          * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-         * 
          * There are two types of locations, regional or multi-regional. A regional
          * location is a specific geographic place, such as Tokyo, and a multi-regional
          * location is a large geographic area, such as the United States, that
          * contains at least two geographic places.
-         * 
          * The default value is multi-regional location `US`.
          * Changing this forces a new resource to be created.
          * 

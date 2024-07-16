@@ -173,7 +173,7 @@ export class AddressGroup extends pulumi.CustomResource {
      * List of supported purposes of the Address Group.
      * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
      */
-    public readonly purposes!: pulumi.Output<string[] | undefined>;
+    public readonly purposes!: pulumi.Output<string[]>;
     /**
      * The type of the Address Group. Possible values are "IPV4" or "IPV6".
      * Possible values are: `IPV4`, `IPV6`.

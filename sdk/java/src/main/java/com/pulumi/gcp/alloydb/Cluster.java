@@ -32,18 +32,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A managed alloydb cluster.
- * 
- * To get more information about Cluster, see:
- * 
- * * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
- * * How-to Guides
- *     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
- * 
- * &gt; **Note:** Users can promote a secondary cluster to a primary cluster with the help of `cluster_type`.
- * To promote, users have to set the `cluster_type` property as `PRIMARY` and remove the `secondary_config` field from cluster configuration.
- * See Example.
- * 
  * ## Example Usage
  * 
  * ### Alloydb Cluster Basic

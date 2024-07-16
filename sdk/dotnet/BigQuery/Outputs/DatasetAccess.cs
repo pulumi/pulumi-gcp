@@ -51,13 +51,9 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         public readonly Outputs.DatasetAccessRoutine? Routine;
         /// <summary>
         /// A special group to grant access to. Possible values include:
-        /// 
         /// * `projectOwners`: Owners of the enclosing project.
-        /// 
         /// * `projectReaders`: Readers of the enclosing project.
-        /// 
         /// * `projectWriters`: Writers of the enclosing project.
-        /// 
         /// * `allAuthenticatedUsers`: All authenticated BigQuery users.
         /// </summary>
         public readonly string? SpecialGroup;

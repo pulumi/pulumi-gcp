@@ -125,6 +125,18 @@ export class CryptoKey extends pulumi.CustomResource {
      */
     public readonly importOnly!: pulumi.Output<boolean>;
     /**
+     * The policy used for Key Access Justifications Policy Enforcement. If this
+     * field is present and this key is enrolled in Key Access Justifications
+     * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+     * sign operations, and the operation will fail if rejected by the policy. The
+     * policy is defined by specifying zero or more allowed justification codes.
+     * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+     * By default, this field is absent, and all justification codes are allowed.
+     * This field is currently in beta and is subject to change.
+     * Structure is documented below.
+     */
+    public readonly keyAccessJustificationsPolicy!: pulumi.Output<outputs.kms.CryptoKeyKeyAccessJustificationsPolicy>;
+    /**
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
      *
@@ -197,6 +209,7 @@ export class CryptoKey extends pulumi.CustomResource {
             resourceInputs["destroyScheduledDuration"] = state ? state.destroyScheduledDuration : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["importOnly"] = state ? state.importOnly : undefined;
+            resourceInputs["keyAccessJustificationsPolicy"] = state ? state.keyAccessJustificationsPolicy : undefined;
             resourceInputs["keyRing"] = state ? state.keyRing : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -214,6 +227,7 @@ export class CryptoKey extends pulumi.CustomResource {
             resourceInputs["cryptoKeyBackend"] = args ? args.cryptoKeyBackend : undefined;
             resourceInputs["destroyScheduledDuration"] = args ? args.destroyScheduledDuration : undefined;
             resourceInputs["importOnly"] = args ? args.importOnly : undefined;
+            resourceInputs["keyAccessJustificationsPolicy"] = args ? args.keyAccessJustificationsPolicy : undefined;
             resourceInputs["keyRing"] = args ? args.keyRing : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -254,6 +268,18 @@ export interface CryptoKeyState {
      * Whether this key may contain imported versions only.
      */
     importOnly?: pulumi.Input<boolean>;
+    /**
+     * The policy used for Key Access Justifications Policy Enforcement. If this
+     * field is present and this key is enrolled in Key Access Justifications
+     * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+     * sign operations, and the operation will fail if rejected by the policy. The
+     * policy is defined by specifying zero or more allowed justification codes.
+     * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+     * By default, this field is absent, and all justification codes are allowed.
+     * This field is currently in beta and is subject to change.
+     * Structure is documented below.
+     */
+    keyAccessJustificationsPolicy?: pulumi.Input<inputs.kms.CryptoKeyKeyAccessJustificationsPolicy>;
     /**
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
@@ -329,6 +355,18 @@ export interface CryptoKeyArgs {
      * Whether this key may contain imported versions only.
      */
     importOnly?: pulumi.Input<boolean>;
+    /**
+     * The policy used for Key Access Justifications Policy Enforcement. If this
+     * field is present and this key is enrolled in Key Access Justifications
+     * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+     * sign operations, and the operation will fail if rejected by the policy. The
+     * policy is defined by specifying zero or more allowed justification codes.
+     * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+     * By default, this field is absent, and all justification codes are allowed.
+     * This field is currently in beta and is subject to change.
+     * Structure is documented below.
+     */
+    keyAccessJustificationsPolicy?: pulumi.Input<inputs.kms.CryptoKeyKeyAccessJustificationsPolicy>;
     /**
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
