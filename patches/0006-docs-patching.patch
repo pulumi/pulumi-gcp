@@ -2963,7 +2963,7 @@ index 09a958846..4c024397b 100644
  
  * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands)
 diff --git a/website/docs/r/iap_client.html.markdown b/website/docs/r/iap_client.html.markdown
-index 348332b2d..35a8e1a9d 100644
+index e0ff3759a..3fc3b6d78 100644
 --- a/website/docs/r/iap_client.html.markdown
 +++ b/website/docs/r/iap_client.html.markdown
 @@ -32,9 +32,8 @@ To get more information about Client, see:
@@ -3068,7 +3068,7 @@ index 3eff57c07..662d642d1 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/kms_crypto_key.html.markdown b/website/docs/r/kms_crypto_key.html.markdown
-index a32153109..1c6bd556e 100644
+index 16d3b0dbf..bf5024ce0 100644
 --- a/website/docs/r/kms_crypto_key.html.markdown
 +++ b/website/docs/r/kms_crypto_key.html.markdown
 @@ -23,9 +23,9 @@ A `CryptoKey` represents a logical key that can be used for cryptographic operat

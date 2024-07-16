@@ -19335,6 +19335,16 @@
                 "current": "gcp:kms/cryptoKey:CryptoKey",
                 "majorVersion": 7,
                 "fields": {
+                    "key_access_justifications_policy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_access_reasons": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "primary": {
                         "maxItemsOne": false
                     },
@@ -23949,6 +23959,15 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "google_scc_project_notification_config": {
+                "current": "gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig",
+                "majorVersion": 7,
+                "fields": {
+                    "streaming_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -30061,6 +30080,15 @@
                 "current": "gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy",
                 "majorVersion": 7
             },
+            "google_gke_hub_membership_binding": {
+                "current": "gcp:gkehub/getMembershipBinding:getMembershipBinding",
+                "majorVersion": 7,
+                "fields": {
+                    "state": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_gke_hub_membership_iam_policy": {
                 "current": "gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy",
                 "majorVersion": 7
@@ -30220,6 +30248,16 @@
                 "current": "gcp:kms/getKMSCryptoKey:getKMSCryptoKey",
                 "majorVersion": 7,
                 "fields": {
+                    "key_access_justifications_policy": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowed_access_reasons": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "primary": {
                         "maxItemsOne": false
                     },
@@ -30249,6 +30287,16 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "key_access_justifications_policy": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_access_reasons": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "primary": {
                                     "maxItemsOne": false
                                 },
@@ -30954,6 +31002,10 @@
             },
             "google_service_networking_peered_dns_domain": {
                 "current": "gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain",
+                "majorVersion": 7
+            },
+            "google_site_verification_token": {
+                "current": "gcp:siteverification/getToken:getToken",
                 "majorVersion": 7
             },
             "google_sourcerepo_repository": {
@@ -32498,6 +32550,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_gke_hub_membership_binding": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_kms_crypto_key": [
                 "effective_labels",
                 "terraform_labels"
@@ -33397,6 +33453,7 @@
             "gcp:securitycenter/notificationConfig:NotificationConfig": 0,
             "gcp:securitycenter/organizationCustomModule:OrganizationCustomModule": 0,
             "gcp:securitycenter/projectCustomModule:ProjectCustomModule": 0,
+            "gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig": 0,
             "gcp:securitycenter/source:Source": 0,
             "gcp:securitycenter/sourceIamBinding:SourceIamBinding": 0,
             "gcp:securitycenter/sourceIamMember:SourceIamMember": 0,
@@ -33691,6 +33748,7 @@
             "gcp:gkebackup/getBackupPlanIamPolicy:getBackupPlanIamPolicy": 0,
             "gcp:gkebackup/getRestorePlanIamPolicy:getRestorePlanIamPolicy": 0,
             "gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy": 0,
+            "gcp:gkehub/getMembershipBinding:getMembershipBinding": 0,
             "gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy": 0,
             "gcp:gkehub/getScopeIamPolicy:getScopeIamPolicy": 0,
             "gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy": 0,
@@ -33778,6 +33836,7 @@
             "gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy": 0,
             "gcp:servicedirectory/getServiceIamPolicy:getServiceIamPolicy": 0,
             "gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain": 0,
+            "gcp:siteverification/getToken:getToken": 0,
             "gcp:sourcerepo/getRepository:getRepository": 0,
             "gcp:sourcerepo/getRepositoryIamPolicy:getRepositoryIamPolicy": 0,
             "gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy": 0,
