@@ -28173,6 +28173,9 @@ export namespace compute {
          * or `NOT_IN` for anti-affinities.
          */
         operator: string;
+        /**
+         * Corresponds to the label values of a reservation resource.
+         */
         values: string[];
     }
 
@@ -30757,6 +30760,9 @@ export namespace compute {
          * or `NOT_IN` for anti-affinities.
          */
         operator: string;
+        /**
+         * Corresponds to the label values of a reservation resource.
+         */
         values: string[];
     }
 
