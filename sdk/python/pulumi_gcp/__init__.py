@@ -226,6 +226,8 @@ if typing.TYPE_CHECKING:
     servicenetworking = __servicenetworking
     import pulumi_gcp.serviceusage as __serviceusage
     serviceusage = __serviceusage
+    import pulumi_gcp.siteverification as __siteverification
+    siteverification = __siteverification
     import pulumi_gcp.sourcerepo as __sourcerepo
     sourcerepo = __sourcerepo
     import pulumi_gcp.spanner as __spanner
@@ -359,6 +361,7 @@ else:
     servicedirectory = _utilities.lazy_import('pulumi_gcp.servicedirectory')
     servicenetworking = _utilities.lazy_import('pulumi_gcp.servicenetworking')
     serviceusage = _utilities.lazy_import('pulumi_gcp.serviceusage')
+    siteverification = _utilities.lazy_import('pulumi_gcp.siteverification')
     sourcerepo = _utilities.lazy_import('pulumi_gcp.sourcerepo')
     spanner = _utilities.lazy_import('pulumi_gcp.spanner')
     sql = _utilities.lazy_import('pulumi_gcp.sql')
@@ -7029,6 +7032,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
    "gcp:securitycenter/projectCustomModule:ProjectCustomModule": "ProjectCustomModule"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/projectNotificationConfig",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig": "ProjectNotificationConfig"
   }
  },
  {

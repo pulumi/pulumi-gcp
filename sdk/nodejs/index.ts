@@ -121,6 +121,7 @@ import * as serviceaccount from "./serviceaccount";
 import * as servicedirectory from "./servicedirectory";
 import * as servicenetworking from "./servicenetworking";
 import * as serviceusage from "./serviceusage";
+import * as siteverification from "./siteverification";
 import * as sourcerepo from "./sourcerepo";
 import * as spanner from "./spanner";
 import * as sql from "./sql";
@@ -244,6 +245,7 @@ export {
     servicedirectory,
     servicenetworking,
     serviceusage,
+    siteverification,
     sourcerepo,
     spanner,
     sql,

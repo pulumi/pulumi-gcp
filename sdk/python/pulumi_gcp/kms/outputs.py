@@ -18,6 +18,7 @@ from . import outputs
 __all__ = [
     'CryptoKeyIAMBindingCondition',
     'CryptoKeyIAMMemberCondition',
+    'CryptoKeyKeyAccessJustificationsPolicy',
     'CryptoKeyPrimary',
     'CryptoKeyVersionAttestation',
     'CryptoKeyVersionAttestationCertChains',
@@ -31,8 +32,10 @@ __all__ = [
     'KeyRingImportJobAttestation',
     'KeyRingImportJobPublicKey',
     'GetCryptoKeysKeyResult',
+    'GetCryptoKeysKeyKeyAccessJustificationsPolicyResult',
     'GetCryptoKeysKeyPrimaryResult',
     'GetCryptoKeysKeyVersionTemplateResult',
+    'GetKMSCryptoKeyKeyAccessJustificationsPolicyResult',
     'GetKMSCryptoKeyPrimaryResult',
     'GetKMSCryptoKeyVersionPublicKeyResult',
     'GetKMSCryptoKeyVersionTemplateResult',
@@ -135,6 +138,46 @@ class CryptoKeyIAMMemberCondition(dict):
         consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class CryptoKeyKeyAccessJustificationsPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedAccessReasons":
+            suggest = "allowed_access_reasons"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CryptoKeyKeyAccessJustificationsPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CryptoKeyKeyAccessJustificationsPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CryptoKeyKeyAccessJustificationsPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_access_reasons: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] allowed_access_reasons: The list of allowed reasons for access to this CryptoKey. Zero allowed
+               access reasons means all encrypt, decrypt, and sign operations for
+               this CryptoKey will fail.
+        """
+        if allowed_access_reasons is not None:
+            pulumi.set(__self__, "allowed_access_reasons", allowed_access_reasons)
+
+    @property
+    @pulumi.getter(name="allowedAccessReasons")
+    def allowed_access_reasons(self) -> Optional[Sequence[str]]:
+        """
+        The list of allowed reasons for access to this CryptoKey. Zero allowed
+        access reasons means all encrypt, decrypt, and sign operations for
+        this CryptoKey will fail.
+        """
+        return pulumi.get(self, "allowed_access_reasons")
 
 
 @pulumi.output_type
@@ -872,6 +915,7 @@ class GetCryptoKeysKeyResult(dict):
                  effective_labels: Mapping[str, str],
                  id: str,
                  import_only: bool,
+                 key_access_justifications_policies: Sequence['outputs.GetCryptoKeysKeyKeyAccessJustificationsPolicyResult'],
                  labels: Mapping[str, str],
                  primaries: Sequence['outputs.GetCryptoKeysKeyPrimaryResult'],
                  pulumi_labels: Mapping[str, str],
@@ -887,6 +931,14 @@ class GetCryptoKeysKeyResult(dict):
         :param str destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
                If not specified at creation time, the default duration is 30 days.
         :param bool import_only: Whether this key may contain imported versions only.
+        :param Sequence['GetCryptoKeysKeyKeyAccessJustificationsPolicyArgs'] key_access_justifications_policies: The policy used for Key Access Justifications Policy Enforcement. If this
+               field is present and this key is enrolled in Key Access Justifications
+               Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+               sign operations, and the operation will fail if rejected by the policy. The
+               policy is defined by specifying zero or more allowed justification codes.
+               https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+               By default, this field is absent, and all justification codes are allowed.
+               This field is currently in beta and is subject to change.
         :param Mapping[str, str] labels: Labels with user-defined metadata to apply to this resource.
                
                
@@ -916,6 +968,7 @@ class GetCryptoKeysKeyResult(dict):
         pulumi.set(__self__, "effective_labels", effective_labels)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "import_only", import_only)
+        pulumi.set(__self__, "key_access_justifications_policies", key_access_justifications_policies)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "primaries", primaries)
         pulumi.set(__self__, "pulumi_labels", pulumi_labels)
@@ -963,6 +1016,21 @@ class GetCryptoKeysKeyResult(dict):
         Whether this key may contain imported versions only.
         """
         return pulumi.get(self, "import_only")
+
+    @property
+    @pulumi.getter(name="keyAccessJustificationsPolicies")
+    def key_access_justifications_policies(self) -> Sequence['outputs.GetCryptoKeysKeyKeyAccessJustificationsPolicyResult']:
+        """
+        The policy used for Key Access Justifications Policy Enforcement. If this
+        field is present and this key is enrolled in Key Access Justifications
+        Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+        sign operations, and the operation will fail if rejected by the policy. The
+        policy is defined by specifying zero or more allowed justification codes.
+        https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+        By default, this field is absent, and all justification codes are allowed.
+        This field is currently in beta and is subject to change.
+        """
+        return pulumi.get(self, "key_access_justifications_policies")
 
     @property
     @pulumi.getter
@@ -1052,6 +1120,28 @@ class GetCryptoKeysKeyResult(dict):
 
 
 @pulumi.output_type
+class GetCryptoKeysKeyKeyAccessJustificationsPolicyResult(dict):
+    def __init__(__self__, *,
+                 allowed_access_reasons: Sequence[str]):
+        """
+        :param Sequence[str] allowed_access_reasons: The list of allowed reasons for access to this CryptoKey. Zero allowed
+               access reasons means all encrypt, decrypt, and sign operations for
+               this CryptoKey will fail.
+        """
+        pulumi.set(__self__, "allowed_access_reasons", allowed_access_reasons)
+
+    @property
+    @pulumi.getter(name="allowedAccessReasons")
+    def allowed_access_reasons(self) -> Sequence[str]:
+        """
+        The list of allowed reasons for access to this CryptoKey. Zero allowed
+        access reasons means all encrypt, decrypt, and sign operations for
+        this CryptoKey will fail.
+        """
+        return pulumi.get(self, "allowed_access_reasons")
+
+
+@pulumi.output_type
 class GetCryptoKeysKeyPrimaryResult(dict):
     def __init__(__self__, *,
                  name: str,
@@ -1109,6 +1199,28 @@ class GetCryptoKeysKeyVersionTemplateResult(dict):
         The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
         """
         return pulumi.get(self, "protection_level")
+
+
+@pulumi.output_type
+class GetKMSCryptoKeyKeyAccessJustificationsPolicyResult(dict):
+    def __init__(__self__, *,
+                 allowed_access_reasons: Sequence[str]):
+        """
+        :param Sequence[str] allowed_access_reasons: The list of allowed reasons for access to this CryptoKey. Zero allowed
+               access reasons means all encrypt, decrypt, and sign operations for
+               this CryptoKey will fail.
+        """
+        pulumi.set(__self__, "allowed_access_reasons", allowed_access_reasons)
+
+    @property
+    @pulumi.getter(name="allowedAccessReasons")
+    def allowed_access_reasons(self) -> Sequence[str]:
+        """
+        The list of allowed reasons for access to this CryptoKey. Zero allowed
+        access reasons means all encrypt, decrypt, and sign operations for
+        this CryptoKey will fail.
+        """
+        return pulumi.get(self, "allowed_access_reasons")
 
 
 @pulumi.output_type

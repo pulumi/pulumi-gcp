@@ -319,6 +319,8 @@ serviceNetworkingCustomEndpoint: Optional[str]
 
 serviceUsageCustomEndpoint: Optional[str]
 
+siteVerificationCustomEndpoint: Optional[str]
+
 skipRegionValidation: bool
 
 sourceRepoCustomEndpoint: Optional[str]

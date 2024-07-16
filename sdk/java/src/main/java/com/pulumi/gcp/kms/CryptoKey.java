@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.kms.CryptoKeyArgs;
 import com.pulumi.gcp.kms.inputs.CryptoKeyState;
+import com.pulumi.gcp.kms.outputs.CryptoKeyKeyAccessJustificationsPolicy;
 import com.pulumi.gcp.kms.outputs.CryptoKeyPrimary;
 import com.pulumi.gcp.kms.outputs.CryptoKeyVersionTemplate;
 import java.lang.Boolean;
@@ -208,6 +209,36 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> importOnly() {
         return this.importOnly;
+    }
+    /**
+     * The policy used for Key Access Justifications Policy Enforcement. If this
+     * field is present and this key is enrolled in Key Access Justifications
+     * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+     * sign operations, and the operation will fail if rejected by the policy. The
+     * policy is defined by specifying zero or more allowed justification codes.
+     * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+     * By default, this field is absent, and all justification codes are allowed.
+     * This field is currently in beta and is subject to change.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="keyAccessJustificationsPolicy", refs={CryptoKeyKeyAccessJustificationsPolicy.class}, tree="[0]")
+    private Output<CryptoKeyKeyAccessJustificationsPolicy> keyAccessJustificationsPolicy;
+
+    /**
+     * @return The policy used for Key Access Justifications Policy Enforcement. If this
+     * field is present and this key is enrolled in Key Access Justifications
+     * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+     * sign operations, and the operation will fail if rejected by the policy. The
+     * policy is defined by specifying zero or more allowed justification codes.
+     * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+     * By default, this field is absent, and all justification codes are allowed.
+     * This field is currently in beta and is subject to change.
+     * Structure is documented below.
+     * 
+     */
+    public Output<CryptoKeyKeyAccessJustificationsPolicy> keyAccessJustificationsPolicy() {
+        return this.keyAccessJustificationsPolicy;
     }
     /**
      * The KeyRing that this key belongs to.

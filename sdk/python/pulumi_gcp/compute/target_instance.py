@@ -452,7 +452,7 @@ class TargetInstance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         target_vm = gcp.compute.get_network(name="default")
-        vmimage = gcp.compute.get_image(family="debian-10",
+        vmimage = gcp.compute.get_image(family="debian-12",
             project="debian-cloud")
         target_vm_instance = gcp.compute.Instance("target-vm",
             name="custom-network-target-vm",
@@ -642,7 +642,7 @@ class TargetInstance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         target_vm = gcp.compute.get_network(name="default")
-        vmimage = gcp.compute.get_image(family="debian-10",
+        vmimage = gcp.compute.get_image(family="debian-12",
             project="debian-cloud")
         target_vm_instance = gcp.compute.Instance("target-vm",
             name="custom-network-target-vm",

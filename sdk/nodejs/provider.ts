@@ -173,6 +173,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly serviceManagementCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly serviceNetworkingCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly serviceUsageCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly siteVerificationCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly sourceRepoCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly spannerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly sqlCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -356,6 +357,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["serviceManagementCustomEndpoint"] = args ? args.serviceManagementCustomEndpoint : undefined;
             resourceInputs["serviceNetworkingCustomEndpoint"] = args ? args.serviceNetworkingCustomEndpoint : undefined;
             resourceInputs["serviceUsageCustomEndpoint"] = args ? args.serviceUsageCustomEndpoint : undefined;
+            resourceInputs["siteVerificationCustomEndpoint"] = args ? args.siteVerificationCustomEndpoint : undefined;
             resourceInputs["sourceRepoCustomEndpoint"] = args ? args.sourceRepoCustomEndpoint : undefined;
             resourceInputs["spannerCustomEndpoint"] = args ? args.spannerCustomEndpoint : undefined;
             resourceInputs["sqlCustomEndpoint"] = args ? args.sqlCustomEndpoint : undefined;
@@ -540,6 +542,7 @@ export interface ProviderArgs {
     serviceManagementCustomEndpoint?: pulumi.Input<string>;
     serviceNetworkingCustomEndpoint?: pulumi.Input<string>;
     serviceUsageCustomEndpoint?: pulumi.Input<string>;
+    siteVerificationCustomEndpoint?: pulumi.Input<string>;
     sourceRepoCustomEndpoint?: pulumi.Input<string>;
     spannerCustomEndpoint?: pulumi.Input<string>;
     sqlCustomEndpoint?: pulumi.Input<string>;

@@ -100,7 +100,7 @@ type Client struct {
 
 	// Identifier of the brand to which this client
 	// is attached to. The format is
-	// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+	// `projects/{project_number}/brands/{brand_id}`.
 	//
 	// ***
 	Brand pulumi.StringOutput `pulumi:"brand"`
@@ -155,7 +155,7 @@ func GetClient(ctx *pulumi.Context,
 type clientState struct {
 	// Identifier of the brand to which this client
 	// is attached to. The format is
-	// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+	// `projects/{project_number}/brands/{brand_id}`.
 	//
 	// ***
 	Brand *string `pulumi:"brand"`
@@ -171,7 +171,7 @@ type clientState struct {
 type ClientState struct {
 	// Identifier of the brand to which this client
 	// is attached to. The format is
-	// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+	// `projects/{project_number}/brands/{brand_id}`.
 	//
 	// ***
 	Brand pulumi.StringPtrInput
@@ -191,7 +191,7 @@ func (ClientState) ElementType() reflect.Type {
 type clientArgs struct {
 	// Identifier of the brand to which this client
 	// is attached to. The format is
-	// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+	// `projects/{project_number}/brands/{brand_id}`.
 	//
 	// ***
 	Brand string `pulumi:"brand"`
@@ -203,7 +203,7 @@ type clientArgs struct {
 type ClientArgs struct {
 	// Identifier of the brand to which this client
 	// is attached to. The format is
-	// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+	// `projects/{project_number}/brands/{brand_id}`.
 	//
 	// ***
 	Brand pulumi.StringInput
@@ -300,7 +300,7 @@ func (o ClientOutput) ToClientOutputWithContext(ctx context.Context) ClientOutpu
 
 // Identifier of the brand to which this client
 // is attached to. The format is
-// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+// `projects/{project_number}/brands/{brand_id}`.
 //
 // ***
 func (o ClientOutput) Brand() pulumi.StringOutput {

@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var vmimage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family("debian-10")
+ *             .family("debian-12")
  *             .project("debian-cloud")
  *             .build());
  * 

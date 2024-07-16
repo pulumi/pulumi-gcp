@@ -5,6 +5,7 @@ package com.pulumi.gcp.kms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.kms.outputs.GetCryptoKeysKeyKeyAccessJustificationsPolicy;
 import com.pulumi.gcp.kms.outputs.GetCryptoKeysKeyPrimary;
 import com.pulumi.gcp.kms.outputs.GetCryptoKeysKeyVersionTemplate;
 import java.lang.Boolean;
@@ -36,6 +37,18 @@ public final class GetCryptoKeysKey {
      * 
      */
     private Boolean importOnly;
+    /**
+     * @return The policy used for Key Access Justifications Policy Enforcement. If this
+     * field is present and this key is enrolled in Key Access Justifications
+     * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+     * sign operations, and the operation will fail if rejected by the policy. The
+     * policy is defined by specifying zero or more allowed justification codes.
+     * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+     * By default, this field is absent, and all justification codes are allowed.
+     * This field is currently in beta and is subject to change.
+     * 
+     */
+    private List<GetCryptoKeysKeyKeyAccessJustificationsPolicy> keyAccessJustificationsPolicies;
     /**
      * @return The key ring that the keys belongs to. Format: &#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;.,
      * 
@@ -124,6 +137,20 @@ public final class GetCryptoKeysKey {
      */
     public Boolean importOnly() {
         return this.importOnly;
+    }
+    /**
+     * @return The policy used for Key Access Justifications Policy Enforcement. If this
+     * field is present and this key is enrolled in Key Access Justifications
+     * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
+     * sign operations, and the operation will fail if rejected by the policy. The
+     * policy is defined by specifying zero or more allowed justification codes.
+     * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+     * By default, this field is absent, and all justification codes are allowed.
+     * This field is currently in beta and is subject to change.
+     * 
+     */
+    public List<GetCryptoKeysKeyKeyAccessJustificationsPolicy> keyAccessJustificationsPolicies() {
+        return this.keyAccessJustificationsPolicies;
     }
     /**
      * @return The key ring that the keys belongs to. Format: &#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;.,
@@ -216,6 +243,7 @@ public final class GetCryptoKeysKey {
         private Map<String,String> effectiveLabels;
         private String id;
         private Boolean importOnly;
+        private List<GetCryptoKeysKeyKeyAccessJustificationsPolicy> keyAccessJustificationsPolicies;
         private @Nullable String keyRing;
         private Map<String,String> labels;
         private @Nullable String name;
@@ -233,6 +261,7 @@ public final class GetCryptoKeysKey {
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
     	      this.importOnly = defaults.importOnly;
+    	      this.keyAccessJustificationsPolicies = defaults.keyAccessJustificationsPolicies;
     	      this.keyRing = defaults.keyRing;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
@@ -283,6 +312,17 @@ public final class GetCryptoKeysKey {
             }
             this.importOnly = importOnly;
             return this;
+        }
+        @CustomType.Setter
+        public Builder keyAccessJustificationsPolicies(List<GetCryptoKeysKeyKeyAccessJustificationsPolicy> keyAccessJustificationsPolicies) {
+            if (keyAccessJustificationsPolicies == null) {
+              throw new MissingRequiredPropertyException("GetCryptoKeysKey", "keyAccessJustificationsPolicies");
+            }
+            this.keyAccessJustificationsPolicies = keyAccessJustificationsPolicies;
+            return this;
+        }
+        public Builder keyAccessJustificationsPolicies(GetCryptoKeysKeyKeyAccessJustificationsPolicy... keyAccessJustificationsPolicies) {
+            return keyAccessJustificationsPolicies(List.of(keyAccessJustificationsPolicies));
         }
         @CustomType.Setter
         public Builder keyRing(@Nullable String keyRing) {
@@ -365,6 +405,7 @@ public final class GetCryptoKeysKey {
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.id = id;
             _resultValue.importOnly = importOnly;
+            _resultValue.keyAccessJustificationsPolicies = keyAccessJustificationsPolicies;
             _resultValue.keyRing = keyRing;
             _resultValue.labels = labels;
             _resultValue.name = name;

@@ -456,6 +456,9 @@ namespace Pulumi.Gcp
         [Output("serviceUsageCustomEndpoint")]
         public Output<string?> ServiceUsageCustomEndpoint { get; private set; } = null!;
 
+        [Output("siteVerificationCustomEndpoint")]
+        public Output<string?> SiteVerificationCustomEndpoint { get; private set; } = null!;
+
         [Output("sourceRepoCustomEndpoint")]
         public Output<string?> SourceRepoCustomEndpoint { get; private set; } = null!;
 
@@ -1024,6 +1027,9 @@ namespace Pulumi.Gcp
 
         [Input("serviceUsageCustomEndpoint")]
         public Input<string>? ServiceUsageCustomEndpoint { get; set; }
+
+        [Input("siteVerificationCustomEndpoint")]
+        public Input<string>? SiteVerificationCustomEndpoint { get; set; }
 
         [Input("sourceRepoCustomEndpoint")]
         public Input<string>? SourceRepoCustomEndpoint { get; set; }

@@ -21,6 +21,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * An Entitlement defines the eligibility of a set of users to obtain a predefined access for some time possibly after going through an approval workflow.
+ * 
  * ## Example Usage
  * 
  * ### Privileged Access Manager Entitlement Basic

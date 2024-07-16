@@ -5,6 +5,7 @@ package com.pulumi.gcp.kms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.kms.outputs.GetKMSCryptoKeyKeyAccessJustificationsPolicy;
 import com.pulumi.gcp.kms.outputs.GetKMSCryptoKeyPrimary;
 import com.pulumi.gcp.kms.outputs.GetKMSCryptoKeyVersionTemplate;
 import java.lang.Boolean;
@@ -24,6 +25,7 @@ public final class GetKMSCryptoKeyResult {
      */
     private String id;
     private Boolean importOnly;
+    private List<GetKMSCryptoKeyKeyAccessJustificationsPolicy> keyAccessJustificationsPolicies;
     private String keyRing;
     private Map<String,String> labels;
     private String name;
@@ -63,6 +65,9 @@ public final class GetKMSCryptoKeyResult {
     }
     public Boolean importOnly() {
         return this.importOnly;
+    }
+    public List<GetKMSCryptoKeyKeyAccessJustificationsPolicy> keyAccessJustificationsPolicies() {
+        return this.keyAccessJustificationsPolicies;
     }
     public String keyRing() {
         return this.keyRing;
@@ -116,6 +121,7 @@ public final class GetKMSCryptoKeyResult {
         private Map<String,String> effectiveLabels;
         private String id;
         private Boolean importOnly;
+        private List<GetKMSCryptoKeyKeyAccessJustificationsPolicy> keyAccessJustificationsPolicies;
         private String keyRing;
         private Map<String,String> labels;
         private String name;
@@ -133,6 +139,7 @@ public final class GetKMSCryptoKeyResult {
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
     	      this.importOnly = defaults.importOnly;
+    	      this.keyAccessJustificationsPolicies = defaults.keyAccessJustificationsPolicies;
     	      this.keyRing = defaults.keyRing;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
@@ -183,6 +190,17 @@ public final class GetKMSCryptoKeyResult {
             }
             this.importOnly = importOnly;
             return this;
+        }
+        @CustomType.Setter
+        public Builder keyAccessJustificationsPolicies(List<GetKMSCryptoKeyKeyAccessJustificationsPolicy> keyAccessJustificationsPolicies) {
+            if (keyAccessJustificationsPolicies == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyResult", "keyAccessJustificationsPolicies");
+            }
+            this.keyAccessJustificationsPolicies = keyAccessJustificationsPolicies;
+            return this;
+        }
+        public Builder keyAccessJustificationsPolicies(GetKMSCryptoKeyKeyAccessJustificationsPolicy... keyAccessJustificationsPolicies) {
+            return keyAccessJustificationsPolicies(List.of(keyAccessJustificationsPolicies));
         }
         @CustomType.Setter
         public Builder keyRing(String keyRing) {
@@ -269,6 +287,7 @@ public final class GetKMSCryptoKeyResult {
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.id = id;
             _resultValue.importOnly = importOnly;
+            _resultValue.keyAccessJustificationsPolicies = keyAccessJustificationsPolicies;
             _resultValue.keyRing = keyRing;
             _resultValue.labels = labels;
             _resultValue.name = name;

@@ -449,6 +449,8 @@ class Entitlement(pulumi.CustomResource):
                  requester_justification_config: Optional[pulumi.Input[Union['EntitlementRequesterJustificationConfigArgs', 'EntitlementRequesterJustificationConfigArgsDict']]] = None,
                  __props__=None):
         """
+        An Entitlement defines the eligibility of a set of users to obtain a predefined access for some time possibly after going through an approval workflow.
+
         ## Example Usage
 
         ### Privileged Access Manager Entitlement Basic
@@ -535,6 +537,8 @@ class Entitlement(pulumi.CustomResource):
                  args: EntitlementArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        An Entitlement defines the eligibility of a set of users to obtain a predefined access for some time possibly after going through an approval workflow.
+
         ## Example Usage
 
         ### Privileged Access Manager Entitlement Basic

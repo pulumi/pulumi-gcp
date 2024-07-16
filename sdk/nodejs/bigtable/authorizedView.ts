@@ -9,6 +9,67 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const instance = new gcp.bigtable.Instance("instance", {
+ *     name: "tf-instance",
+ *     clusters: [{
+ *         clusterId: "tf-instance-cluster",
+ *         zone: "us-central1-b",
+ *         numNodes: 3,
+ *         storageType: "HDD",
+ *     }],
+ * });
+ * const table = new gcp.bigtable.Table("table", {
+ *     name: "tf-table",
+ *     instanceName: instance.name,
+ *     splitKeys: [
+ *         "a",
+ *         "b",
+ *         "c",
+ *     ],
+ *     columnFamilies: [
+ *         {
+ *             family: "family-first",
+ *         },
+ *         {
+ *             family: "family-second",
+ *         },
+ *     ],
+ *     changeStreamRetention: "24h0m0s",
+ * });
+ * const authorizedView = new gcp.bigtable.AuthorizedView("authorized_view", {
+ *     name: "tf-authorized-view",
+ *     instanceName: instance.name,
+ *     tableName: table.name,
+ *     subsetView: {
+ *         rowPrefixes: [std.base64encode({
+ *             input: "prefix#",
+ *         }).then(invoke => invoke.result)],
+ *         familySubsets: [
+ *             {
+ *                 familyName: "family-first",
+ *                 qualifiers: [
+ *                     std.base64encode({
+ *                         input: "qualifier",
+ *                     }).then(invoke => invoke.result),
+ *                     std.base64encode({
+ *                         input: "qualifier-second",
+ *                     }).then(invoke => invoke.result),
+ *                 ],
+ *             },
+ *             {
+ *                 familyName: "family-second",
+ *                 qualifierPrefixes: [""],
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Bigtable Authorized Views can be imported using any of these accepted formats:

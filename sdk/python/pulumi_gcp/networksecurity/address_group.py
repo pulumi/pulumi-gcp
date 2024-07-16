@@ -863,7 +863,7 @@ class AddressGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def purposes(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def purposes(self) -> pulumi.Output[Sequence[str]]:
         """
         List of supported purposes of the Address Group.
         Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.

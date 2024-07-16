@@ -11391,6 +11391,103 @@ func (o ScopeStateTypeArrayOutput) Index(i pulumi.IntInput) ScopeStateTypeOutput
 	}).(ScopeStateTypeOutput)
 }
 
+type GetMembershipBindingState struct {
+	// Code describes the state of a MembershipBinding resource.
+	Code string `pulumi:"code"`
+}
+
+// GetMembershipBindingStateInput is an input type that accepts GetMembershipBindingStateArgs and GetMembershipBindingStateOutput values.
+// You can construct a concrete instance of `GetMembershipBindingStateInput` via:
+//
+//	GetMembershipBindingStateArgs{...}
+type GetMembershipBindingStateInput interface {
+	pulumi.Input
+
+	ToGetMembershipBindingStateOutput() GetMembershipBindingStateOutput
+	ToGetMembershipBindingStateOutputWithContext(context.Context) GetMembershipBindingStateOutput
+}
+
+type GetMembershipBindingStateArgs struct {
+	// Code describes the state of a MembershipBinding resource.
+	Code pulumi.StringInput `pulumi:"code"`
+}
+
+func (GetMembershipBindingStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMembershipBindingState)(nil)).Elem()
+}
+
+func (i GetMembershipBindingStateArgs) ToGetMembershipBindingStateOutput() GetMembershipBindingStateOutput {
+	return i.ToGetMembershipBindingStateOutputWithContext(context.Background())
+}
+
+func (i GetMembershipBindingStateArgs) ToGetMembershipBindingStateOutputWithContext(ctx context.Context) GetMembershipBindingStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMembershipBindingStateOutput)
+}
+
+// GetMembershipBindingStateArrayInput is an input type that accepts GetMembershipBindingStateArray and GetMembershipBindingStateArrayOutput values.
+// You can construct a concrete instance of `GetMembershipBindingStateArrayInput` via:
+//
+//	GetMembershipBindingStateArray{ GetMembershipBindingStateArgs{...} }
+type GetMembershipBindingStateArrayInput interface {
+	pulumi.Input
+
+	ToGetMembershipBindingStateArrayOutput() GetMembershipBindingStateArrayOutput
+	ToGetMembershipBindingStateArrayOutputWithContext(context.Context) GetMembershipBindingStateArrayOutput
+}
+
+type GetMembershipBindingStateArray []GetMembershipBindingStateInput
+
+func (GetMembershipBindingStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMembershipBindingState)(nil)).Elem()
+}
+
+func (i GetMembershipBindingStateArray) ToGetMembershipBindingStateArrayOutput() GetMembershipBindingStateArrayOutput {
+	return i.ToGetMembershipBindingStateArrayOutputWithContext(context.Background())
+}
+
+func (i GetMembershipBindingStateArray) ToGetMembershipBindingStateArrayOutputWithContext(ctx context.Context) GetMembershipBindingStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMembershipBindingStateArrayOutput)
+}
+
+type GetMembershipBindingStateOutput struct{ *pulumi.OutputState }
+
+func (GetMembershipBindingStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMembershipBindingState)(nil)).Elem()
+}
+
+func (o GetMembershipBindingStateOutput) ToGetMembershipBindingStateOutput() GetMembershipBindingStateOutput {
+	return o
+}
+
+func (o GetMembershipBindingStateOutput) ToGetMembershipBindingStateOutputWithContext(ctx context.Context) GetMembershipBindingStateOutput {
+	return o
+}
+
+// Code describes the state of a MembershipBinding resource.
+func (o GetMembershipBindingStateOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMembershipBindingState) string { return v.Code }).(pulumi.StringOutput)
+}
+
+type GetMembershipBindingStateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMembershipBindingStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMembershipBindingState)(nil)).Elem()
+}
+
+func (o GetMembershipBindingStateArrayOutput) ToGetMembershipBindingStateArrayOutput() GetMembershipBindingStateArrayOutput {
+	return o
+}
+
+func (o GetMembershipBindingStateArrayOutput) ToGetMembershipBindingStateArrayOutputWithContext(ctx context.Context) GetMembershipBindingStateArrayOutput {
+	return o
+}
+
+func (o GetMembershipBindingStateArrayOutput) Index(i pulumi.IntInput) GetMembershipBindingStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMembershipBindingState {
+		return vs[0].([]GetMembershipBindingState)[vs[1].(int)]
+	}).(GetMembershipBindingStateOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPtrInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigArgs{})
@@ -11534,6 +11631,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScopeRbacRoleBindingStateTypeArrayInput)(nil)).Elem(), ScopeRbacRoleBindingStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScopeStateTypeInput)(nil)).Elem(), ScopeStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScopeStateTypeArrayInput)(nil)).Elem(), ScopeStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMembershipBindingStateInput)(nil)).Elem(), GetMembershipBindingStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMembershipBindingStateArrayInput)(nil)).Elem(), GetMembershipBindingStateArray{})
 	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigOutput{})
 	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPtrOutput{})
 	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigConfigmanagementOutput{})
@@ -11676,4 +11775,6 @@ func init() {
 	pulumi.RegisterOutputType(ScopeRbacRoleBindingStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(ScopeStateTypeOutput{})
 	pulumi.RegisterOutputType(ScopeStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetMembershipBindingStateOutput{})
+	pulumi.RegisterOutputType(GetMembershipBindingStateArrayOutput{})
 }
