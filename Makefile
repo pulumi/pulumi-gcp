@@ -169,7 +169,7 @@ tfgen_build_only:
 
 upstream:
 ifneq ("$(wildcard upstream)","")
-	./upstream.sh init
+	./upstream.sh init -f
 endif
 
 bin/pulumi-java-gen: .pulumi-java-gen.version
