@@ -422,7 +422,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             description="with ddos protection config",
             type="CLOUD_ARMOR_NETWORK",
             ddos_protection_config={
-                "ddosProtection": "ADVANCED_PREVIEW",
+                "ddos_protection": "ADVANCED_PREVIEW",
             })
         ```
         ### Region Security Policy With User Defined Fields
@@ -539,7 +539,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             description="with ddos protection config",
             type="CLOUD_ARMOR_NETWORK",
             ddos_protection_config={
-                "ddosProtection": "ADVANCED_PREVIEW",
+                "ddos_protection": "ADVANCED_PREVIEW",
             })
         ```
         ### Region Security Policy With User Defined Fields

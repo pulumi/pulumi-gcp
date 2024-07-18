@@ -787,13 +787,13 @@ class Cluster(pulumi.CustomResource):
             name="basic-cluster",
             location="us-central1",
             authorization={
-                "adminUsers": {
+                "admin_users": {
                     "username": "admin@hashicorptest.com",
                 },
             },
             networking={
-                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
-                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+                "cluster_ipv4_cidr_blocks": ["10.0.0.0/16"],
+                "services_ipv4_cidr_blocks": ["10.1.0.0/16"],
             },
             fleet={
                 "project": f"projects/{project.number}",
@@ -814,23 +814,23 @@ class Cluster(pulumi.CustomResource):
             name="cluster-with-maintenance",
             location="us-central1",
             authorization={
-                "adminUsers": {
+                "admin_users": {
                     "username": "admin@hashicorptest.com",
                 },
             },
             networking={
-                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
-                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+                "cluster_ipv4_cidr_blocks": ["10.0.0.0/16"],
+                "services_ipv4_cidr_blocks": ["10.1.0.0/16"],
             },
             fleet={
                 "project": f"projects/{project.number}",
             },
             maintenance_policy={
                 "window": {
-                    "recurringWindow": {
+                    "recurring_window": {
                         "window": {
-                            "startTime": "2023-01-01T08:00:00Z",
-                            "endTime": "2023-01-01T17:00:00Z",
+                            "start_time": "2023-01-01T08:00:00Z",
+                            "end_time": "2023-01-01T17:00:00Z",
                         },
                         "recurrence": "FREQ=WEEKLY;BYDAY=SA",
                     },
@@ -848,13 +848,13 @@ class Cluster(pulumi.CustomResource):
             name="local-control-plane-cluster",
             location="us-central1",
             authorization={
-                "adminUsers": {
+                "admin_users": {
                     "username": "admin@hashicorptest.com",
                 },
             },
             networking={
-                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
-                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+                "cluster_ipv4_cidr_blocks": ["10.0.0.0/16"],
+                "services_ipv4_cidr_blocks": ["10.1.0.0/16"],
             },
             fleet={
                 "project": f"projects/{project.number}",
@@ -862,10 +862,10 @@ class Cluster(pulumi.CustomResource):
             external_load_balancer_ipv4_address_pools=["10.100.0.0-10.100.0.10"],
             control_plane={
                 "local": {
-                    "nodeLocation": "us-central1-edge-example-edgesite",
-                    "nodeCount": 1,
-                    "machineFilter": "machine-name",
-                    "sharedDeploymentPolicy": "ALLOWED",
+                    "node_location": "us-central1-edge-example-edgesite",
+                    "node_count": 1,
+                    "machine_filter": "machine-name",
+                    "shared_deployment_policy": "ALLOWED",
                 },
             })
         ```
@@ -952,13 +952,13 @@ class Cluster(pulumi.CustomResource):
             name="basic-cluster",
             location="us-central1",
             authorization={
-                "adminUsers": {
+                "admin_users": {
                     "username": "admin@hashicorptest.com",
                 },
             },
             networking={
-                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
-                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+                "cluster_ipv4_cidr_blocks": ["10.0.0.0/16"],
+                "services_ipv4_cidr_blocks": ["10.1.0.0/16"],
             },
             fleet={
                 "project": f"projects/{project.number}",
@@ -979,23 +979,23 @@ class Cluster(pulumi.CustomResource):
             name="cluster-with-maintenance",
             location="us-central1",
             authorization={
-                "adminUsers": {
+                "admin_users": {
                     "username": "admin@hashicorptest.com",
                 },
             },
             networking={
-                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
-                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+                "cluster_ipv4_cidr_blocks": ["10.0.0.0/16"],
+                "services_ipv4_cidr_blocks": ["10.1.0.0/16"],
             },
             fleet={
                 "project": f"projects/{project.number}",
             },
             maintenance_policy={
                 "window": {
-                    "recurringWindow": {
+                    "recurring_window": {
                         "window": {
-                            "startTime": "2023-01-01T08:00:00Z",
-                            "endTime": "2023-01-01T17:00:00Z",
+                            "start_time": "2023-01-01T08:00:00Z",
+                            "end_time": "2023-01-01T17:00:00Z",
                         },
                         "recurrence": "FREQ=WEEKLY;BYDAY=SA",
                     },
@@ -1013,13 +1013,13 @@ class Cluster(pulumi.CustomResource):
             name="local-control-plane-cluster",
             location="us-central1",
             authorization={
-                "adminUsers": {
+                "admin_users": {
                     "username": "admin@hashicorptest.com",
                 },
             },
             networking={
-                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
-                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+                "cluster_ipv4_cidr_blocks": ["10.0.0.0/16"],
+                "services_ipv4_cidr_blocks": ["10.1.0.0/16"],
             },
             fleet={
                 "project": f"projects/{project.number}",
@@ -1027,10 +1027,10 @@ class Cluster(pulumi.CustomResource):
             external_load_balancer_ipv4_address_pools=["10.100.0.0-10.100.0.10"],
             control_plane={
                 "local": {
-                    "nodeLocation": "us-central1-edge-example-edgesite",
-                    "nodeCount": 1,
-                    "machineFilter": "machine-name",
-                    "sharedDeploymentPolicy": "ALLOWED",
+                    "node_location": "us-central1-edge-example-edgesite",
+                    "node_count": 1,
+                    "machine_filter": "machine-name",
+                    "shared_deployment_policy": "ALLOWED",
                 },
             })
         ```

@@ -165,7 +165,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
             },
             deployment={
                 "zip": {
-                    "sourceUrl": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                    "source_url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 },
             },
             env_variables={
@@ -174,7 +174,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         internalapp_service_network_settings = gcp.appengine.ServiceNetworkSettings("internalapp",
             service=internalapp.service,
             network_settings={
-                "ingressTrafficAllowed": "INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
+                "ingress_traffic_allowed": "INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
             })
         ```
 
@@ -246,7 +246,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
             },
             deployment={
                 "zip": {
-                    "sourceUrl": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                    "source_url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 },
             },
             env_variables={
@@ -255,7 +255,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         internalapp_service_network_settings = gcp.appengine.ServiceNetworkSettings("internalapp",
             service=internalapp.service,
             network_settings={
-                "ingressTrafficAllowed": "INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
+                "ingress_traffic_allowed": "INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
             })
         ```
 

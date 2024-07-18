@@ -976,7 +976,7 @@ class Dataset(pulumi.CustomResource):
             accesses=[
                 {
                     "role": "OWNER",
-                    "userByEmail": bqowner.email,
+                    "user_by_email": bqowner.email,
                 },
                 {
                     "role": "READER",
@@ -1003,7 +1003,7 @@ class Dataset(pulumi.CustomResource):
             location="US",
             default_table_expiration_ms=3600000,
             default_encryption_configuration={
-                "kmsKeyName": crypto_key.id,
+                "kms_key_name": crypto_key.id,
             })
         ```
         ### Bigquery Dataset Authorized Dataset
@@ -1025,7 +1025,7 @@ class Dataset(pulumi.CustomResource):
             accesses=[
                 {
                     "role": "OWNER",
-                    "userByEmail": bqowner.email,
+                    "user_by_email": bqowner.email,
                 },
                 {
                     "role": "READER",
@@ -1044,7 +1044,7 @@ class Dataset(pulumi.CustomResource):
             accesses=[
                 {
                     "role": "OWNER",
-                    "userByEmail": bqowner.email,
+                    "user_by_email": bqowner.email,
                 },
                 {
                     "role": "READER",
@@ -1053,10 +1053,10 @@ class Dataset(pulumi.CustomResource):
                 {
                     "dataset": {
                         "dataset": {
-                            "projectId": public.project,
-                            "datasetId": public.dataset_id,
+                            "project_id": public.project,
+                            "dataset_id": public.dataset_id,
                         },
-                        "targetTypes": ["VIEWS"],
+                        "target_types": ["VIEWS"],
                     },
                 },
             ])
@@ -1079,9 +1079,9 @@ class Dataset(pulumi.CustomResource):
             definition_body="SELECT 1 + value AS value\\n",
             arguments=[{
                 "name": "value",
-                "argumentKind": "FIXED_TYPE",
-                "dataType": json.dumps({
-                    "typeKind": "INT64",
+                "argument_kind": "FIXED_TYPE",
+                "data_type": json.dumps({
+                    "type_kind": "INT64",
                 }),
             }],
             return_table_type=json.dumps({
@@ -1098,13 +1098,13 @@ class Dataset(pulumi.CustomResource):
             accesses=[
                 {
                     "role": "OWNER",
-                    "userByEmail": "my@service-account.com",
+                    "user_by_email": "my@service-account.com",
                 },
                 {
                     "routine": {
-                        "projectId": public_routine.project,
-                        "datasetId": public_routine.dataset_id,
-                        "routineId": public_routine.routine_id,
+                        "project_id": public_routine.project,
+                        "dataset_id": public_routine.dataset_id,
+                        "routine_id": public_routine.routine_id,
                     },
                 },
             ])
@@ -1121,7 +1121,7 @@ class Dataset(pulumi.CustomResource):
             description="This is a test description",
             location="aws-us-east-1",
             external_dataset_reference={
-                "externalSource": "aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
+                "external_source": "aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
                 "connection": "projects/project/locations/aws-us-east-1/connections/connection",
             })
         ```
@@ -1261,7 +1261,7 @@ class Dataset(pulumi.CustomResource):
             accesses=[
                 {
                     "role": "OWNER",
-                    "userByEmail": bqowner.email,
+                    "user_by_email": bqowner.email,
                 },
                 {
                     "role": "READER",
@@ -1288,7 +1288,7 @@ class Dataset(pulumi.CustomResource):
             location="US",
             default_table_expiration_ms=3600000,
             default_encryption_configuration={
-                "kmsKeyName": crypto_key.id,
+                "kms_key_name": crypto_key.id,
             })
         ```
         ### Bigquery Dataset Authorized Dataset
@@ -1310,7 +1310,7 @@ class Dataset(pulumi.CustomResource):
             accesses=[
                 {
                     "role": "OWNER",
-                    "userByEmail": bqowner.email,
+                    "user_by_email": bqowner.email,
                 },
                 {
                     "role": "READER",
@@ -1329,7 +1329,7 @@ class Dataset(pulumi.CustomResource):
             accesses=[
                 {
                     "role": "OWNER",
-                    "userByEmail": bqowner.email,
+                    "user_by_email": bqowner.email,
                 },
                 {
                     "role": "READER",
@@ -1338,10 +1338,10 @@ class Dataset(pulumi.CustomResource):
                 {
                     "dataset": {
                         "dataset": {
-                            "projectId": public.project,
-                            "datasetId": public.dataset_id,
+                            "project_id": public.project,
+                            "dataset_id": public.dataset_id,
                         },
-                        "targetTypes": ["VIEWS"],
+                        "target_types": ["VIEWS"],
                     },
                 },
             ])
@@ -1364,9 +1364,9 @@ class Dataset(pulumi.CustomResource):
             definition_body="SELECT 1 + value AS value\\n",
             arguments=[{
                 "name": "value",
-                "argumentKind": "FIXED_TYPE",
-                "dataType": json.dumps({
-                    "typeKind": "INT64",
+                "argument_kind": "FIXED_TYPE",
+                "data_type": json.dumps({
+                    "type_kind": "INT64",
                 }),
             }],
             return_table_type=json.dumps({
@@ -1383,13 +1383,13 @@ class Dataset(pulumi.CustomResource):
             accesses=[
                 {
                     "role": "OWNER",
-                    "userByEmail": "my@service-account.com",
+                    "user_by_email": "my@service-account.com",
                 },
                 {
                     "routine": {
-                        "projectId": public_routine.project,
-                        "datasetId": public_routine.dataset_id,
-                        "routineId": public_routine.routine_id,
+                        "project_id": public_routine.project,
+                        "dataset_id": public_routine.dataset_id,
+                        "routine_id": public_routine.routine_id,
                     },
                 },
             ])
@@ -1406,7 +1406,7 @@ class Dataset(pulumi.CustomResource):
             description="This is a test description",
             location="aws-us-east-1",
             external_dataset_reference={
-                "externalSource": "aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
+                "external_source": "aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
                 "connection": "projects/project/locations/aws-us-east-1/connections/connection",
             })
         ```

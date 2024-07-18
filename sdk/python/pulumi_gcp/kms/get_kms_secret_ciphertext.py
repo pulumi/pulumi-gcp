@@ -123,14 +123,14 @@ def get_kms_secret_ciphertext(crypto_key: Optional[str] = None,
         plaintext="my-secret-password")
     instance = gcp.compute.Instance("instance",
         network_interfaces=[{
-            "accessConfigs": [{}],
+            "access_configs": [{}],
             "network": "default",
         }],
         name="test",
         machine_type="e2-medium",
         zone="us-central1-a",
         boot_disk={
-            "initializeParams": {
+            "initialize_params": {
                 "image": "debian-cloud/debian-11",
             },
         },
@@ -206,14 +206,14 @@ def get_kms_secret_ciphertext_output(crypto_key: Optional[pulumi.Input[str]] = N
         plaintext="my-secret-password")
     instance = gcp.compute.Instance("instance",
         network_interfaces=[{
-            "accessConfigs": [{}],
+            "access_configs": [{}],
             "network": "default",
         }],
         name="test",
         machine_type="e2-medium",
         zone="us-central1-a",
         boot_disk={
-            "initializeParams": {
+            "initialize_params": {
                 "image": "debian-cloud/debian-11",
             },
         },

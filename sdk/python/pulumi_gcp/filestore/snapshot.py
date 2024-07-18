@@ -391,7 +391,7 @@ class Snapshot(pulumi.CustomResource):
             location="us-east1",
             tier="ENTERPRISE",
             file_shares={
-                "capacityGb": 1024,
+                "capacity_gb": 1024,
                 "name": "share1",
             },
             networks=[{
@@ -414,7 +414,7 @@ class Snapshot(pulumi.CustomResource):
             location="us-west1",
             tier="ENTERPRISE",
             file_shares={
-                "capacityGb": 1024,
+                "capacity_gb": 1024,
                 "name": "share1",
             },
             networks=[{
@@ -506,7 +506,7 @@ class Snapshot(pulumi.CustomResource):
             location="us-east1",
             tier="ENTERPRISE",
             file_shares={
-                "capacityGb": 1024,
+                "capacity_gb": 1024,
                 "name": "share1",
             },
             networks=[{
@@ -529,7 +529,7 @@ class Snapshot(pulumi.CustomResource):
             location="us-west1",
             tier="ENTERPRISE",
             file_shares={
-                "capacityGb": 1024,
+                "capacity_gb": 1024,
                 "name": "share1",
             },
             networks=[{
