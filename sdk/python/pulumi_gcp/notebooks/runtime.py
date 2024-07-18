@@ -445,16 +445,16 @@ class Runtime(pulumi.CustomResource):
             name="notebooks-runtime",
             location="us-central1",
             access_config={
-                "accessType": "SINGLE_USER",
-                "runtimeOwner": "admin@hashicorptest.com",
+                "access_type": "SINGLE_USER",
+                "runtime_owner": "admin@hashicorptest.com",
             },
             virtual_machine={
-                "virtualMachineConfig": {
-                    "machineType": "n1-standard-4",
-                    "dataDisk": {
-                        "initializeParams": {
-                            "diskSizeGb": 100,
-                            "diskType": "PD_STANDARD",
+                "virtual_machine_config": {
+                    "machine_type": "n1-standard-4",
+                    "data_disk": {
+                        "initialize_params": {
+                            "disk_size_gb": 100,
+                            "disk_type": "PD_STANDARD",
                         },
                     },
                 },
@@ -470,23 +470,23 @@ class Runtime(pulumi.CustomResource):
             name="notebooks-runtime-gpu",
             location="us-central1",
             access_config={
-                "accessType": "SINGLE_USER",
-                "runtimeOwner": "admin@hashicorptest.com",
+                "access_type": "SINGLE_USER",
+                "runtime_owner": "admin@hashicorptest.com",
             },
             software_config={
-                "installGpuDriver": True,
+                "install_gpu_driver": True,
             },
             virtual_machine={
-                "virtualMachineConfig": {
-                    "machineType": "n1-standard-4",
-                    "dataDisk": {
-                        "initializeParams": {
-                            "diskSizeGb": 100,
-                            "diskType": "PD_STANDARD",
+                "virtual_machine_config": {
+                    "machine_type": "n1-standard-4",
+                    "data_disk": {
+                        "initialize_params": {
+                            "disk_size_gb": 100,
+                            "disk_type": "PD_STANDARD",
                         },
                     },
-                    "acceleratorConfig": {
-                        "coreCount": 1,
+                    "accelerator_config": {
+                        "core_count": 1,
                         "type": "NVIDIA_TESLA_V100",
                     },
                 },
@@ -502,19 +502,19 @@ class Runtime(pulumi.CustomResource):
             name="notebooks-runtime-container",
             location="us-central1",
             access_config={
-                "accessType": "SINGLE_USER",
-                "runtimeOwner": "admin@hashicorptest.com",
+                "access_type": "SINGLE_USER",
+                "runtime_owner": "admin@hashicorptest.com",
             },
             virtual_machine={
-                "virtualMachineConfig": {
-                    "machineType": "n1-standard-4",
-                    "dataDisk": {
-                        "initializeParams": {
-                            "diskSizeGb": 100,
-                            "diskType": "PD_STANDARD",
+                "virtual_machine_config": {
+                    "machine_type": "n1-standard-4",
+                    "data_disk": {
+                        "initialize_params": {
+                            "disk_size_gb": 100,
+                            "disk_type": "PD_STANDARD",
                         },
                     },
-                    "containerImages": [
+                    "container_images": [
                         {
                             "repository": "gcr.io/deeplearning-platform-release/base-cpu",
                             "tag": "latest",
@@ -537,8 +537,8 @@ class Runtime(pulumi.CustomResource):
             name="notebooks-runtime-kernel",
             location="us-central1",
             access_config={
-                "accessType": "SINGLE_USER",
-                "runtimeOwner": "admin@hashicorptest.com",
+                "access_type": "SINGLE_USER",
+                "runtime_owner": "admin@hashicorptest.com",
             },
             software_config={
                 "kernels": [{
@@ -547,12 +547,12 @@ class Runtime(pulumi.CustomResource):
                 }],
             },
             virtual_machine={
-                "virtualMachineConfig": {
-                    "machineType": "n1-standard-4",
-                    "dataDisk": {
-                        "initializeParams": {
-                            "diskSizeGb": 100,
-                            "diskType": "PD_STANDARD",
+                "virtual_machine_config": {
+                    "machine_type": "n1-standard-4",
+                    "data_disk": {
+                        "initialize_params": {
+                            "disk_size_gb": 100,
+                            "disk_type": "PD_STANDARD",
                         },
                     },
                 },
@@ -571,19 +571,19 @@ class Runtime(pulumi.CustomResource):
             name="notebooks-runtime-script",
             location="us-central1",
             access_config={
-                "accessType": "SINGLE_USER",
-                "runtimeOwner": "admin@hashicorptest.com",
+                "access_type": "SINGLE_USER",
+                "runtime_owner": "admin@hashicorptest.com",
             },
             software_config={
-                "postStartupScriptBehavior": "RUN_EVERY_START",
+                "post_startup_script_behavior": "RUN_EVERY_START",
             },
             virtual_machine={
-                "virtualMachineConfig": {
-                    "machineType": "n1-standard-4",
-                    "dataDisk": {
-                        "initializeParams": {
-                            "diskSizeGb": 100,
-                            "diskType": "PD_STANDARD",
+                "virtual_machine_config": {
+                    "machine_type": "n1-standard-4",
+                    "data_disk": {
+                        "initialize_params": {
+                            "disk_size_gb": 100,
+                            "disk_type": "PD_STANDARD",
                         },
                     },
                 },
@@ -673,16 +673,16 @@ class Runtime(pulumi.CustomResource):
             name="notebooks-runtime",
             location="us-central1",
             access_config={
-                "accessType": "SINGLE_USER",
-                "runtimeOwner": "admin@hashicorptest.com",
+                "access_type": "SINGLE_USER",
+                "runtime_owner": "admin@hashicorptest.com",
             },
             virtual_machine={
-                "virtualMachineConfig": {
-                    "machineType": "n1-standard-4",
-                    "dataDisk": {
-                        "initializeParams": {
-                            "diskSizeGb": 100,
-                            "diskType": "PD_STANDARD",
+                "virtual_machine_config": {
+                    "machine_type": "n1-standard-4",
+                    "data_disk": {
+                        "initialize_params": {
+                            "disk_size_gb": 100,
+                            "disk_type": "PD_STANDARD",
                         },
                     },
                 },
@@ -698,23 +698,23 @@ class Runtime(pulumi.CustomResource):
             name="notebooks-runtime-gpu",
             location="us-central1",
             access_config={
-                "accessType": "SINGLE_USER",
-                "runtimeOwner": "admin@hashicorptest.com",
+                "access_type": "SINGLE_USER",
+                "runtime_owner": "admin@hashicorptest.com",
             },
             software_config={
-                "installGpuDriver": True,
+                "install_gpu_driver": True,
             },
             virtual_machine={
-                "virtualMachineConfig": {
-                    "machineType": "n1-standard-4",
-                    "dataDisk": {
-                        "initializeParams": {
-                            "diskSizeGb": 100,
-                            "diskType": "PD_STANDARD",
+                "virtual_machine_config": {
+                    "machine_type": "n1-standard-4",
+                    "data_disk": {
+                        "initialize_params": {
+                            "disk_size_gb": 100,
+                            "disk_type": "PD_STANDARD",
                         },
                     },
-                    "acceleratorConfig": {
-                        "coreCount": 1,
+                    "accelerator_config": {
+                        "core_count": 1,
                         "type": "NVIDIA_TESLA_V100",
                     },
                 },
@@ -730,19 +730,19 @@ class Runtime(pulumi.CustomResource):
             name="notebooks-runtime-container",
             location="us-central1",
             access_config={
-                "accessType": "SINGLE_USER",
-                "runtimeOwner": "admin@hashicorptest.com",
+                "access_type": "SINGLE_USER",
+                "runtime_owner": "admin@hashicorptest.com",
             },
             virtual_machine={
-                "virtualMachineConfig": {
-                    "machineType": "n1-standard-4",
-                    "dataDisk": {
-                        "initializeParams": {
-                            "diskSizeGb": 100,
-                            "diskType": "PD_STANDARD",
+                "virtual_machine_config": {
+                    "machine_type": "n1-standard-4",
+                    "data_disk": {
+                        "initialize_params": {
+                            "disk_size_gb": 100,
+                            "disk_type": "PD_STANDARD",
                         },
                     },
-                    "containerImages": [
+                    "container_images": [
                         {
                             "repository": "gcr.io/deeplearning-platform-release/base-cpu",
                             "tag": "latest",
@@ -765,8 +765,8 @@ class Runtime(pulumi.CustomResource):
             name="notebooks-runtime-kernel",
             location="us-central1",
             access_config={
-                "accessType": "SINGLE_USER",
-                "runtimeOwner": "admin@hashicorptest.com",
+                "access_type": "SINGLE_USER",
+                "runtime_owner": "admin@hashicorptest.com",
             },
             software_config={
                 "kernels": [{
@@ -775,12 +775,12 @@ class Runtime(pulumi.CustomResource):
                 }],
             },
             virtual_machine={
-                "virtualMachineConfig": {
-                    "machineType": "n1-standard-4",
-                    "dataDisk": {
-                        "initializeParams": {
-                            "diskSizeGb": 100,
-                            "diskType": "PD_STANDARD",
+                "virtual_machine_config": {
+                    "machine_type": "n1-standard-4",
+                    "data_disk": {
+                        "initialize_params": {
+                            "disk_size_gb": 100,
+                            "disk_type": "PD_STANDARD",
                         },
                     },
                 },
@@ -799,19 +799,19 @@ class Runtime(pulumi.CustomResource):
             name="notebooks-runtime-script",
             location="us-central1",
             access_config={
-                "accessType": "SINGLE_USER",
-                "runtimeOwner": "admin@hashicorptest.com",
+                "access_type": "SINGLE_USER",
+                "runtime_owner": "admin@hashicorptest.com",
             },
             software_config={
-                "postStartupScriptBehavior": "RUN_EVERY_START",
+                "post_startup_script_behavior": "RUN_EVERY_START",
             },
             virtual_machine={
-                "virtualMachineConfig": {
-                    "machineType": "n1-standard-4",
-                    "dataDisk": {
-                        "initializeParams": {
-                            "diskSizeGb": 100,
-                            "diskType": "PD_STANDARD",
+                "virtual_machine_config": {
+                    "machine_type": "n1-standard-4",
+                    "data_disk": {
+                        "initialize_params": {
+                            "disk_size_gb": 100,
+                            "disk_type": "PD_STANDARD",
                         },
                     },
                 },

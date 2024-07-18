@@ -520,18 +520,18 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloHttp",
+                "entry_point": "helloHttp",
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
             },
             service_config={
-                "maxInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
+                "max_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
             })
         ```
         ### Cloudfunctions2 Full
@@ -559,36 +559,36 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloPubSub",
-                "environmentVariables": {
-                    "BUILD_CONFIG_TEST": "build_test",
+                "entry_point": "helloPubSub",
+                "environment_variables": {
+                    "buil_d__confi_g__test": "build_test",
                 },
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
             },
             service_config={
-                "maxInstanceCount": 3,
-                "minInstanceCount": 1,
-                "availableMemory": "4Gi",
-                "timeoutSeconds": 60,
-                "maxInstanceRequestConcurrency": 80,
-                "availableCpu": "4",
-                "environmentVariables": {
-                    "SERVICE_CONFIG_TEST": "config_test",
+                "max_instance_count": 3,
+                "min_instance_count": 1,
+                "available_memory": "4Gi",
+                "timeout_seconds": 60,
+                "max_instance_request_concurrency": 80,
+                "available_cpu": "4",
+                "environment_variables": {
+                    "servic_e__confi_g__test": "config_test",
                 },
-                "ingressSettings": "ALLOW_INTERNAL_ONLY",
-                "allTrafficOnLatestRevision": True,
-                "serviceAccountEmail": account.email,
+                "ingress_settings": "ALLOW_INTERNAL_ONLY",
+                "all_traffic_on_latest_revision": True,
+                "service_account_email": account.email,
             },
             event_trigger={
-                "triggerRegion": "us-central1",
-                "eventType": "google.cloud.pubsub.topic.v1.messagePublished",
-                "pubsubTopic": topic.id,
-                "retryPolicy": "RETRY_POLICY_RETRY",
+                "trigger_region": "us-central1",
+                "event_type": "google.cloud.pubsub.topic.v1.messagePublished",
+                "pubsub_topic": topic.id,
+                "retry_policy": "RETRY_POLICY_RETRY",
             })
         ```
         ### Cloudfunctions2 Scheduler Auth
@@ -615,19 +615,19 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloHttp",
+                "entry_point": "helloHttp",
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
             },
             service_config={
-                "minInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
-                "serviceAccountEmail": account.email,
+                "min_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
+                "service_account_email": account.email,
             })
         invoker = gcp.cloudfunctionsv2.FunctionIamMember("invoker",
             project=function.project,
@@ -649,10 +649,10 @@ class Function(pulumi.CustomResource):
             region=function.location,
             http_target={
                 "uri": function.service_config.uri,
-                "httpMethod": "POST",
-                "oidcToken": {
+                "http_method": "POST",
+                "oidc_token": {
                     "audience": function.service_config.apply(lambda service_config: f"{service_config.uri}/"),
-                    "serviceAccountEmail": account.email,
+                    "service_account_email": account.email,
                 },
             })
         ```
@@ -706,34 +706,34 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs12",
-                "entryPoint": "entryPoint",
-                "environmentVariables": {
-                    "BUILD_CONFIG_TEST": "build_test",
+                "entry_point": "entryPoint",
+                "environment_variables": {
+                    "buil_d__confi_g__test": "build_test",
                 },
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": source_bucket.name,
                         "object": object.name,
                     },
                 },
             },
             service_config={
-                "maxInstanceCount": 3,
-                "minInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
-                "environmentVariables": {
-                    "SERVICE_CONFIG_TEST": "config_test",
+                "max_instance_count": 3,
+                "min_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
+                "environment_variables": {
+                    "servic_e__confi_g__test": "config_test",
                 },
-                "ingressSettings": "ALLOW_INTERNAL_ONLY",
-                "allTrafficOnLatestRevision": True,
-                "serviceAccountEmail": account.email,
+                "ingress_settings": "ALLOW_INTERNAL_ONLY",
+                "all_traffic_on_latest_revision": True,
+                "service_account_email": account.email,
             },
             event_trigger={
-                "eventType": "google.cloud.storage.object.v1.finalized",
-                "retryPolicy": "RETRY_POLICY_RETRY",
-                "serviceAccountEmail": account.email,
-                "eventFilters": [{
+                "event_type": "google.cloud.storage.object.v1.finalized",
+                "retry_policy": "RETRY_POLICY_RETRY",
+                "service_account_email": account.email,
+                "event_filters": [{
                     "attribute": "bucket",
                     "value": trigger_bucket.name,
                 }],
@@ -792,35 +792,35 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs12",
-                "entryPoint": "entryPoint",
-                "environmentVariables": {
-                    "BUILD_CONFIG_TEST": "build_test",
+                "entry_point": "entryPoint",
+                "environment_variables": {
+                    "buil_d__confi_g__test": "build_test",
                 },
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": source_bucket.name,
                         "object": object.name,
                     },
                 },
             },
             service_config={
-                "maxInstanceCount": 3,
-                "minInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
-                "environmentVariables": {
-                    "SERVICE_CONFIG_TEST": "config_test",
+                "max_instance_count": 3,
+                "min_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
+                "environment_variables": {
+                    "servic_e__confi_g__test": "config_test",
                 },
-                "ingressSettings": "ALLOW_INTERNAL_ONLY",
-                "allTrafficOnLatestRevision": True,
-                "serviceAccountEmail": account.email,
+                "ingress_settings": "ALLOW_INTERNAL_ONLY",
+                "all_traffic_on_latest_revision": True,
+                "service_account_email": account.email,
             },
             event_trigger={
-                "triggerRegion": "us-central1",
-                "eventType": "google.cloud.audit.log.v1.written",
-                "retryPolicy": "RETRY_POLICY_RETRY",
-                "serviceAccountEmail": account.email,
-                "eventFilters": [
+                "trigger_region": "us-central1",
+                "event_type": "google.cloud.audit.log.v1.written",
+                "retry_policy": "RETRY_POLICY_RETRY",
+                "service_account_email": account.email,
+                "event_filters": [
                     {
                         "attribute": "serviceName",
                         "value": "storage.googleapis.com",
@@ -885,19 +885,19 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloHttp",
+                "entry_point": "helloHttp",
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
-                "serviceAccount": account.id,
+                "service_account": account.id,
             },
             service_config={
-                "maxInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
+                "max_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
             },
             opts = pulumi.ResourceOptions(depends_on=[wait60s]))
         ```
@@ -919,7 +919,7 @@ class Function(pulumi.CustomResource):
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
             replication={
-                "userManaged": {
+                "user_managed": {
                     "replicas": [{
                         "location": "us-central1",
                     }],
@@ -935,21 +935,21 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloHttp",
+                "entry_point": "helloHttp",
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
             },
             service_config={
-                "maxInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
-                "secretEnvironmentVariables": [{
+                "max_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
+                "secret_environment_variables": [{
                     "key": "TEST",
-                    "projectId": project,
+                    "project_id": project,
                     "secret": secret.secret_id,
                     "version": "latest",
                 }],
@@ -974,7 +974,7 @@ class Function(pulumi.CustomResource):
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
             replication={
-                "userManaged": {
+                "user_managed": {
                     "replicas": [{
                         "location": "us-central1",
                     }],
@@ -990,21 +990,21 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloHttp",
+                "entry_point": "helloHttp",
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
             },
             service_config={
-                "maxInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
-                "secretVolumes": [{
-                    "mountPath": "/etc/secrets",
-                    "projectId": project,
+                "max_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
+                "secret_volumes": [{
+                    "mount_path": "/etc/secrets",
+                    "project_id": project,
                     "secret": secret.secret_id,
                 }],
             },
@@ -1029,9 +1029,9 @@ class Function(pulumi.CustomResource):
             name="workerpool",
             location="us-central1",
             worker_config={
-                "diskSizeGb": 100,
-                "machineType": "e2-standard-8",
-                "noExternalIp": False,
+                "disk_size_gb": 100,
+                "machine_type": "e2-standard-8",
+                "no_external_ip": False,
             })
         function = gcp.cloudfunctionsv2.Function("function",
             name="function-workerpool",
@@ -1039,19 +1039,19 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloHttp",
+                "entry_point": "helloHttp",
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
-                "workerPool": pool.id,
+                "worker_pool": pool.id,
             },
             service_config={
-                "maxInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
+                "max_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
             })
         ```
         ### Cloudfunctions2 Cmek Docs
@@ -1106,19 +1106,19 @@ class Function(pulumi.CustomResource):
             kms_key_name="cmek-key",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloHttp",
-                "dockerRepository": encoded_ar_repo.id,
+                "entry_point": "helloHttp",
+                "docker_repository": encoded_ar_repo.id,
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
             },
             service_config={
-                "maxInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
+                "max_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
             },
             opts = pulumi.ResourceOptions(depends_on=[gcf_cmek_keyuser]))
         ```
@@ -1147,37 +1147,37 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloPubSub",
-                "environmentVariables": {
-                    "BUILD_CONFIG_TEST": "build_test",
+                "entry_point": "helloPubSub",
+                "environment_variables": {
+                    "buil_d__confi_g__test": "build_test",
                 },
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
-                "automaticUpdatePolicy": {},
+                "automatic_update_policy": {},
             },
             service_config={
-                "maxInstanceCount": 3,
-                "minInstanceCount": 1,
-                "availableMemory": "4Gi",
-                "timeoutSeconds": 60,
-                "maxInstanceRequestConcurrency": 80,
-                "availableCpu": "4",
-                "environmentVariables": {
-                    "SERVICE_CONFIG_TEST": "config_test",
+                "max_instance_count": 3,
+                "min_instance_count": 1,
+                "available_memory": "4Gi",
+                "timeout_seconds": 60,
+                "max_instance_request_concurrency": 80,
+                "available_cpu": "4",
+                "environment_variables": {
+                    "servic_e__confi_g__test": "config_test",
                 },
-                "ingressSettings": "ALLOW_INTERNAL_ONLY",
-                "allTrafficOnLatestRevision": True,
-                "serviceAccountEmail": account.email,
+                "ingress_settings": "ALLOW_INTERNAL_ONLY",
+                "all_traffic_on_latest_revision": True,
+                "service_account_email": account.email,
             },
             event_trigger={
-                "triggerRegion": "us-central1",
-                "eventType": "google.cloud.pubsub.topic.v1.messagePublished",
-                "pubsubTopic": topic.id,
-                "retryPolicy": "RETRY_POLICY_RETRY",
+                "trigger_region": "us-central1",
+                "event_type": "google.cloud.pubsub.topic.v1.messagePublished",
+                "pubsub_topic": topic.id,
+                "retry_policy": "RETRY_POLICY_RETRY",
             })
         ```
         ### Cloudfunctions2 Abiu On Deploy
@@ -1205,37 +1205,37 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloPubSub",
-                "environmentVariables": {
-                    "BUILD_CONFIG_TEST": "build_test",
+                "entry_point": "helloPubSub",
+                "environment_variables": {
+                    "buil_d__confi_g__test": "build_test",
                 },
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
-                "onDeployUpdatePolicy": {},
+                "on_deploy_update_policy": {},
             },
             service_config={
-                "maxInstanceCount": 3,
-                "minInstanceCount": 1,
-                "availableMemory": "4Gi",
-                "timeoutSeconds": 60,
-                "maxInstanceRequestConcurrency": 80,
-                "availableCpu": "4",
-                "environmentVariables": {
-                    "SERVICE_CONFIG_TEST": "config_test",
+                "max_instance_count": 3,
+                "min_instance_count": 1,
+                "available_memory": "4Gi",
+                "timeout_seconds": 60,
+                "max_instance_request_concurrency": 80,
+                "available_cpu": "4",
+                "environment_variables": {
+                    "servic_e__confi_g__test": "config_test",
                 },
-                "ingressSettings": "ALLOW_INTERNAL_ONLY",
-                "allTrafficOnLatestRevision": True,
-                "serviceAccountEmail": account.email,
+                "ingress_settings": "ALLOW_INTERNAL_ONLY",
+                "all_traffic_on_latest_revision": True,
+                "service_account_email": account.email,
             },
             event_trigger={
-                "triggerRegion": "us-central1",
-                "eventType": "google.cloud.pubsub.topic.v1.messagePublished",
-                "pubsubTopic": topic.id,
-                "retryPolicy": "RETRY_POLICY_RETRY",
+                "trigger_region": "us-central1",
+                "event_type": "google.cloud.pubsub.topic.v1.messagePublished",
+                "pubsub_topic": topic.id,
+                "retry_policy": "RETRY_POLICY_RETRY",
             })
         ```
 
@@ -1325,18 +1325,18 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloHttp",
+                "entry_point": "helloHttp",
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
             },
             service_config={
-                "maxInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
+                "max_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
             })
         ```
         ### Cloudfunctions2 Full
@@ -1364,36 +1364,36 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloPubSub",
-                "environmentVariables": {
-                    "BUILD_CONFIG_TEST": "build_test",
+                "entry_point": "helloPubSub",
+                "environment_variables": {
+                    "buil_d__confi_g__test": "build_test",
                 },
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
             },
             service_config={
-                "maxInstanceCount": 3,
-                "minInstanceCount": 1,
-                "availableMemory": "4Gi",
-                "timeoutSeconds": 60,
-                "maxInstanceRequestConcurrency": 80,
-                "availableCpu": "4",
-                "environmentVariables": {
-                    "SERVICE_CONFIG_TEST": "config_test",
+                "max_instance_count": 3,
+                "min_instance_count": 1,
+                "available_memory": "4Gi",
+                "timeout_seconds": 60,
+                "max_instance_request_concurrency": 80,
+                "available_cpu": "4",
+                "environment_variables": {
+                    "servic_e__confi_g__test": "config_test",
                 },
-                "ingressSettings": "ALLOW_INTERNAL_ONLY",
-                "allTrafficOnLatestRevision": True,
-                "serviceAccountEmail": account.email,
+                "ingress_settings": "ALLOW_INTERNAL_ONLY",
+                "all_traffic_on_latest_revision": True,
+                "service_account_email": account.email,
             },
             event_trigger={
-                "triggerRegion": "us-central1",
-                "eventType": "google.cloud.pubsub.topic.v1.messagePublished",
-                "pubsubTopic": topic.id,
-                "retryPolicy": "RETRY_POLICY_RETRY",
+                "trigger_region": "us-central1",
+                "event_type": "google.cloud.pubsub.topic.v1.messagePublished",
+                "pubsub_topic": topic.id,
+                "retry_policy": "RETRY_POLICY_RETRY",
             })
         ```
         ### Cloudfunctions2 Scheduler Auth
@@ -1420,19 +1420,19 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloHttp",
+                "entry_point": "helloHttp",
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
             },
             service_config={
-                "minInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
-                "serviceAccountEmail": account.email,
+                "min_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
+                "service_account_email": account.email,
             })
         invoker = gcp.cloudfunctionsv2.FunctionIamMember("invoker",
             project=function.project,
@@ -1454,10 +1454,10 @@ class Function(pulumi.CustomResource):
             region=function.location,
             http_target={
                 "uri": function.service_config.uri,
-                "httpMethod": "POST",
-                "oidcToken": {
+                "http_method": "POST",
+                "oidc_token": {
                     "audience": function.service_config.apply(lambda service_config: f"{service_config.uri}/"),
-                    "serviceAccountEmail": account.email,
+                    "service_account_email": account.email,
                 },
             })
         ```
@@ -1511,34 +1511,34 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs12",
-                "entryPoint": "entryPoint",
-                "environmentVariables": {
-                    "BUILD_CONFIG_TEST": "build_test",
+                "entry_point": "entryPoint",
+                "environment_variables": {
+                    "buil_d__confi_g__test": "build_test",
                 },
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": source_bucket.name,
                         "object": object.name,
                     },
                 },
             },
             service_config={
-                "maxInstanceCount": 3,
-                "minInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
-                "environmentVariables": {
-                    "SERVICE_CONFIG_TEST": "config_test",
+                "max_instance_count": 3,
+                "min_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
+                "environment_variables": {
+                    "servic_e__confi_g__test": "config_test",
                 },
-                "ingressSettings": "ALLOW_INTERNAL_ONLY",
-                "allTrafficOnLatestRevision": True,
-                "serviceAccountEmail": account.email,
+                "ingress_settings": "ALLOW_INTERNAL_ONLY",
+                "all_traffic_on_latest_revision": True,
+                "service_account_email": account.email,
             },
             event_trigger={
-                "eventType": "google.cloud.storage.object.v1.finalized",
-                "retryPolicy": "RETRY_POLICY_RETRY",
-                "serviceAccountEmail": account.email,
-                "eventFilters": [{
+                "event_type": "google.cloud.storage.object.v1.finalized",
+                "retry_policy": "RETRY_POLICY_RETRY",
+                "service_account_email": account.email,
+                "event_filters": [{
                     "attribute": "bucket",
                     "value": trigger_bucket.name,
                 }],
@@ -1597,35 +1597,35 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs12",
-                "entryPoint": "entryPoint",
-                "environmentVariables": {
-                    "BUILD_CONFIG_TEST": "build_test",
+                "entry_point": "entryPoint",
+                "environment_variables": {
+                    "buil_d__confi_g__test": "build_test",
                 },
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": source_bucket.name,
                         "object": object.name,
                     },
                 },
             },
             service_config={
-                "maxInstanceCount": 3,
-                "minInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
-                "environmentVariables": {
-                    "SERVICE_CONFIG_TEST": "config_test",
+                "max_instance_count": 3,
+                "min_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
+                "environment_variables": {
+                    "servic_e__confi_g__test": "config_test",
                 },
-                "ingressSettings": "ALLOW_INTERNAL_ONLY",
-                "allTrafficOnLatestRevision": True,
-                "serviceAccountEmail": account.email,
+                "ingress_settings": "ALLOW_INTERNAL_ONLY",
+                "all_traffic_on_latest_revision": True,
+                "service_account_email": account.email,
             },
             event_trigger={
-                "triggerRegion": "us-central1",
-                "eventType": "google.cloud.audit.log.v1.written",
-                "retryPolicy": "RETRY_POLICY_RETRY",
-                "serviceAccountEmail": account.email,
-                "eventFilters": [
+                "trigger_region": "us-central1",
+                "event_type": "google.cloud.audit.log.v1.written",
+                "retry_policy": "RETRY_POLICY_RETRY",
+                "service_account_email": account.email,
+                "event_filters": [
                     {
                         "attribute": "serviceName",
                         "value": "storage.googleapis.com",
@@ -1690,19 +1690,19 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloHttp",
+                "entry_point": "helloHttp",
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
-                "serviceAccount": account.id,
+                "service_account": account.id,
             },
             service_config={
-                "maxInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
+                "max_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
             },
             opts = pulumi.ResourceOptions(depends_on=[wait60s]))
         ```
@@ -1724,7 +1724,7 @@ class Function(pulumi.CustomResource):
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
             replication={
-                "userManaged": {
+                "user_managed": {
                     "replicas": [{
                         "location": "us-central1",
                     }],
@@ -1740,21 +1740,21 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloHttp",
+                "entry_point": "helloHttp",
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
             },
             service_config={
-                "maxInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
-                "secretEnvironmentVariables": [{
+                "max_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
+                "secret_environment_variables": [{
                     "key": "TEST",
-                    "projectId": project,
+                    "project_id": project,
                     "secret": secret.secret_id,
                     "version": "latest",
                 }],
@@ -1779,7 +1779,7 @@ class Function(pulumi.CustomResource):
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
             replication={
-                "userManaged": {
+                "user_managed": {
                     "replicas": [{
                         "location": "us-central1",
                     }],
@@ -1795,21 +1795,21 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloHttp",
+                "entry_point": "helloHttp",
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
             },
             service_config={
-                "maxInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
-                "secretVolumes": [{
-                    "mountPath": "/etc/secrets",
-                    "projectId": project,
+                "max_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
+                "secret_volumes": [{
+                    "mount_path": "/etc/secrets",
+                    "project_id": project,
                     "secret": secret.secret_id,
                 }],
             },
@@ -1834,9 +1834,9 @@ class Function(pulumi.CustomResource):
             name="workerpool",
             location="us-central1",
             worker_config={
-                "diskSizeGb": 100,
-                "machineType": "e2-standard-8",
-                "noExternalIp": False,
+                "disk_size_gb": 100,
+                "machine_type": "e2-standard-8",
+                "no_external_ip": False,
             })
         function = gcp.cloudfunctionsv2.Function("function",
             name="function-workerpool",
@@ -1844,19 +1844,19 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloHttp",
+                "entry_point": "helloHttp",
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
-                "workerPool": pool.id,
+                "worker_pool": pool.id,
             },
             service_config={
-                "maxInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
+                "max_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
             })
         ```
         ### Cloudfunctions2 Cmek Docs
@@ -1911,19 +1911,19 @@ class Function(pulumi.CustomResource):
             kms_key_name="cmek-key",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloHttp",
-                "dockerRepository": encoded_ar_repo.id,
+                "entry_point": "helloHttp",
+                "docker_repository": encoded_ar_repo.id,
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
             },
             service_config={
-                "maxInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
+                "max_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
             },
             opts = pulumi.ResourceOptions(depends_on=[gcf_cmek_keyuser]))
         ```
@@ -1952,37 +1952,37 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloPubSub",
-                "environmentVariables": {
-                    "BUILD_CONFIG_TEST": "build_test",
+                "entry_point": "helloPubSub",
+                "environment_variables": {
+                    "buil_d__confi_g__test": "build_test",
                 },
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
-                "automaticUpdatePolicy": {},
+                "automatic_update_policy": {},
             },
             service_config={
-                "maxInstanceCount": 3,
-                "minInstanceCount": 1,
-                "availableMemory": "4Gi",
-                "timeoutSeconds": 60,
-                "maxInstanceRequestConcurrency": 80,
-                "availableCpu": "4",
-                "environmentVariables": {
-                    "SERVICE_CONFIG_TEST": "config_test",
+                "max_instance_count": 3,
+                "min_instance_count": 1,
+                "available_memory": "4Gi",
+                "timeout_seconds": 60,
+                "max_instance_request_concurrency": 80,
+                "available_cpu": "4",
+                "environment_variables": {
+                    "servic_e__confi_g__test": "config_test",
                 },
-                "ingressSettings": "ALLOW_INTERNAL_ONLY",
-                "allTrafficOnLatestRevision": True,
-                "serviceAccountEmail": account.email,
+                "ingress_settings": "ALLOW_INTERNAL_ONLY",
+                "all_traffic_on_latest_revision": True,
+                "service_account_email": account.email,
             },
             event_trigger={
-                "triggerRegion": "us-central1",
-                "eventType": "google.cloud.pubsub.topic.v1.messagePublished",
-                "pubsubTopic": topic.id,
-                "retryPolicy": "RETRY_POLICY_RETRY",
+                "trigger_region": "us-central1",
+                "event_type": "google.cloud.pubsub.topic.v1.messagePublished",
+                "pubsub_topic": topic.id,
+                "retry_policy": "RETRY_POLICY_RETRY",
             })
         ```
         ### Cloudfunctions2 Abiu On Deploy
@@ -2010,37 +2010,37 @@ class Function(pulumi.CustomResource):
             description="a new function",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "helloPubSub",
-                "environmentVariables": {
-                    "BUILD_CONFIG_TEST": "build_test",
+                "entry_point": "helloPubSub",
+                "environment_variables": {
+                    "buil_d__confi_g__test": "build_test",
                 },
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
-                "onDeployUpdatePolicy": {},
+                "on_deploy_update_policy": {},
             },
             service_config={
-                "maxInstanceCount": 3,
-                "minInstanceCount": 1,
-                "availableMemory": "4Gi",
-                "timeoutSeconds": 60,
-                "maxInstanceRequestConcurrency": 80,
-                "availableCpu": "4",
-                "environmentVariables": {
-                    "SERVICE_CONFIG_TEST": "config_test",
+                "max_instance_count": 3,
+                "min_instance_count": 1,
+                "available_memory": "4Gi",
+                "timeout_seconds": 60,
+                "max_instance_request_concurrency": 80,
+                "available_cpu": "4",
+                "environment_variables": {
+                    "servic_e__confi_g__test": "config_test",
                 },
-                "ingressSettings": "ALLOW_INTERNAL_ONLY",
-                "allTrafficOnLatestRevision": True,
-                "serviceAccountEmail": account.email,
+                "ingress_settings": "ALLOW_INTERNAL_ONLY",
+                "all_traffic_on_latest_revision": True,
+                "service_account_email": account.email,
             },
             event_trigger={
-                "triggerRegion": "us-central1",
-                "eventType": "google.cloud.pubsub.topic.v1.messagePublished",
-                "pubsubTopic": topic.id,
-                "retryPolicy": "RETRY_POLICY_RETRY",
+                "trigger_region": "us-central1",
+                "event_type": "google.cloud.pubsub.topic.v1.messagePublished",
+                "pubsub_topic": topic.id,
+                "retry_policy": "RETRY_POLICY_RETRY",
             })
         ```
 

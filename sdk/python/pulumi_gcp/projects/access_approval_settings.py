@@ -335,8 +335,8 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 "example.user@example.com",
             ],
             enrolled_services=[{
-                "cloudProduct": "all",
-                "enrollmentLevel": "BLOCK_ALL",
+                "cloud_product": "all",
+                "enrollment_level": "BLOCK_ALL",
             }])
         ```
         ### Project Access Approval Active Key Version
@@ -366,7 +366,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
             project_id="my-project-name",
             active_key_version=crypto_key_version.name,
             enrolled_services=[{
-                "cloudProduct": "all",
+                "cloud_product": "all",
             }],
             opts = pulumi.ResourceOptions(depends_on=[iam]))
         ```
@@ -433,8 +433,8 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 "example.user@example.com",
             ],
             enrolled_services=[{
-                "cloudProduct": "all",
-                "enrollmentLevel": "BLOCK_ALL",
+                "cloud_product": "all",
+                "enrollment_level": "BLOCK_ALL",
             }])
         ```
         ### Project Access Approval Active Key Version
@@ -464,7 +464,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
             project_id="my-project-name",
             active_key_version=crypto_key_version.name,
             enrolled_services=[{
-                "cloudProduct": "all",
+                "cloud_product": "all",
             }],
             opts = pulumi.ResourceOptions(depends_on=[iam]))
         ```

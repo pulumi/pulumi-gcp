@@ -1048,7 +1048,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             healthy_threshold=2,
             unhealthy_threshold=10,
             http_health_check={
-                "requestPath": "/healthz",
+                "request_path": "/healthz",
                 "port": 8080,
             })
         appserver = gcp.compute.InstanceGroupManager("appserver",
@@ -1056,7 +1056,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             base_instance_name="app",
             zone="us-central1-a",
             versions=[{
-                "instanceTemplate": appserver_google_compute_instance_template["selfLinkUnique"],
+                "instance_template": appserver_google_compute_instance_template["selfLinkUnique"],
             }],
             all_instances_config={
                 "metadata": {
@@ -1073,8 +1073,8 @@ class InstanceGroupManager(pulumi.CustomResource):
                 "port": 8888,
             }],
             auto_healing_policies={
-                "healthCheck": autohealing.id,
-                "initialDelaySec": 300,
+                "health_check": autohealing.id,
+                "initial_delay_sec": 300,
             })
         ```
 
@@ -1091,12 +1091,12 @@ class InstanceGroupManager(pulumi.CustomResource):
             versions=[
                 {
                     "name": "appserver",
-                    "instanceTemplate": appserver_google_compute_instance_template["selfLinkUnique"],
+                    "instance_template": appserver_google_compute_instance_template["selfLinkUnique"],
                 },
                 {
                     "name": "appserver-canary",
-                    "instanceTemplate": appserver_canary["selfLinkUnique"],
-                    "targetSize": {
+                    "instance_template": appserver_canary["selfLinkUnique"],
+                    "target_size": {
                         "fixed": 1,
                     },
                 },
@@ -1114,11 +1114,11 @@ class InstanceGroupManager(pulumi.CustomResource):
             zone="us-central1-a",
             target_size=5,
             versions=[{
-                "instanceTemplate": sr_igm["selfLink"],
+                "instance_template": sr_igm["selfLink"],
                 "name": "primary",
             }],
             standby_policy={
-                "initialDelaySec": 30,
+                "initial_delay_sec": 30,
                 "mode": "MANUAL",
             },
             target_suspended_size=2,
@@ -1244,7 +1244,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             healthy_threshold=2,
             unhealthy_threshold=10,
             http_health_check={
-                "requestPath": "/healthz",
+                "request_path": "/healthz",
                 "port": 8080,
             })
         appserver = gcp.compute.InstanceGroupManager("appserver",
@@ -1252,7 +1252,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             base_instance_name="app",
             zone="us-central1-a",
             versions=[{
-                "instanceTemplate": appserver_google_compute_instance_template["selfLinkUnique"],
+                "instance_template": appserver_google_compute_instance_template["selfLinkUnique"],
             }],
             all_instances_config={
                 "metadata": {
@@ -1269,8 +1269,8 @@ class InstanceGroupManager(pulumi.CustomResource):
                 "port": 8888,
             }],
             auto_healing_policies={
-                "healthCheck": autohealing.id,
-                "initialDelaySec": 300,
+                "health_check": autohealing.id,
+                "initial_delay_sec": 300,
             })
         ```
 
@@ -1287,12 +1287,12 @@ class InstanceGroupManager(pulumi.CustomResource):
             versions=[
                 {
                     "name": "appserver",
-                    "instanceTemplate": appserver_google_compute_instance_template["selfLinkUnique"],
+                    "instance_template": appserver_google_compute_instance_template["selfLinkUnique"],
                 },
                 {
                     "name": "appserver-canary",
-                    "instanceTemplate": appserver_canary["selfLinkUnique"],
-                    "targetSize": {
+                    "instance_template": appserver_canary["selfLinkUnique"],
+                    "target_size": {
                         "fixed": 1,
                     },
                 },
@@ -1310,11 +1310,11 @@ class InstanceGroupManager(pulumi.CustomResource):
             zone="us-central1-a",
             target_size=5,
             versions=[{
-                "instanceTemplate": sr_igm["selfLink"],
+                "instance_template": sr_igm["selfLink"],
                 "name": "primary",
             }],
             standby_policy={
-                "initialDelaySec": 30,
+                "initial_delay_sec": 30,
                 "mode": "MANUAL",
             },
             target_suspended_size=2,

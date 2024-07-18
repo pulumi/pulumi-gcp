@@ -477,13 +477,13 @@ class DataStore(pulumi.CustomResource):
             solution_types=["SOLUTION_TYPE_SEARCH"],
             create_advanced_site_search=False,
             document_processing_config={
-                "defaultParsingConfig": {
-                    "digitalParsingConfig": {},
+                "default_parsing_config": {
+                    "digital_parsing_config": {},
                 },
-                "parsingConfigOverrides": [{
-                    "fileType": "pdf",
-                    "ocrParsingConfig": {
-                        "useNativeText": True,
+                "parsing_config_overrides": [{
+                    "file_type": "pdf",
+                    "ocr_parsing_config": {
+                        "use_native_text": True,
                     },
                 }],
             })
@@ -586,13 +586,13 @@ class DataStore(pulumi.CustomResource):
             solution_types=["SOLUTION_TYPE_SEARCH"],
             create_advanced_site_search=False,
             document_processing_config={
-                "defaultParsingConfig": {
-                    "digitalParsingConfig": {},
+                "default_parsing_config": {
+                    "digital_parsing_config": {},
                 },
-                "parsingConfigOverrides": [{
-                    "fileType": "pdf",
-                    "ocrParsingConfig": {
-                        "useNativeText": True,
+                "parsing_config_overrides": [{
+                    "file_type": "pdf",
+                    "ocr_parsing_config": {
+                        "use_native_text": True,
                     },
                 }],
             })

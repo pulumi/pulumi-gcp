@@ -621,26 +621,26 @@ class Certificate(pulumi.CustomResource):
             pool=default.name,
             certificate_authority_id="my-authority",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -659,48 +659,48 @@ class Certificate(pulumi.CustomResource):
             lifetime="86000s",
             name="cert-1",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
-                        "commonName": "san1.example.com",
-                        "countryCode": "us",
+                        "common_name": "san1.example.com",
+                        "country_code": "us",
                         "organization": "google",
-                        "organizationalUnit": "enterprise",
+                        "organizational_unit": "enterprise",
                         "locality": "mountain view",
                         "province": "california",
-                        "streetAddress": "1600 amphitheatre parkway",
+                        "street_address": "1600 amphitheatre parkway",
                     },
-                    "subjectAltName": {
-                        "emailAddresses": ["email@example.com"],
-                        "ipAddresses": ["127.0.0.1"],
+                    "subject_alt_name": {
+                        "email_addresses": ["email@example.com"],
+                        "ip_addresses": ["127.0.0.1"],
                         "uris": ["http://www.ietf.org/rfc/rfc3986.txt"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": False,
+                        "extended_key_usage": {
+                            "server_auth": False,
                         },
                     },
-                    "nameConstraints": {
+                    "name_constraints": {
                         "critical": True,
-                        "permittedDnsNames": ["*.example.com"],
-                        "excludedDnsNames": ["*.deny.example.com"],
-                        "permittedIpRanges": ["10.0.0.0/8"],
-                        "excludedIpRanges": ["10.1.1.0/24"],
-                        "permittedEmailAddresses": [".example.com"],
-                        "excludedEmailAddresses": [".deny.example.com"],
-                        "permittedUris": [".example.com"],
-                        "excludedUris": [".deny.example.com"],
+                        "permitted_dns_names": ["*.example.com"],
+                        "excluded_dns_names": ["*.deny.example.com"],
+                        "permitted_ip_ranges": ["10.0.0.0/8"],
+                        "excluded_ip_ranges": ["10.1.1.0/24"],
+                        "permitted_email_addresses": [".example.com"],
+                        "excluded_email_addresses": [".deny.example.com"],
+                        "permitted_uris": [".example.com"],
+                        "excluded_uris": [".deny.example.com"],
                     },
                 },
-                "publicKey": {
+                "public_key": {
                     "format": "PEM",
                     "key": std.base64encode_output(input=cert_key.public_key_pem).apply(lambda invoke: invoke.result),
                 },
@@ -722,9 +722,9 @@ class Certificate(pulumi.CustomResource):
             name="my-certificate-template",
             description="An updated sample certificate template",
             identity_constraints={
-                "allowSubjectAltNamesPassthrough": True,
-                "allowSubjectPassthrough": True,
-                "celExpression": {
+                "allow_subject_alt_names_passthrough": True,
+                "allow_subject_passthrough": True,
+                "cel_expression": {
                     "description": "Always true",
                     "expression": "true",
                     "location": "any.file.anywhere",
@@ -732,18 +732,18 @@ class Certificate(pulumi.CustomResource):
                 },
             },
             passthrough_extensions={
-                "additionalExtensions": [{
-                    "objectIdPaths": [
+                "additional_extensions": [{
+                    "object_id_paths": [
                         1,
                         6,
                     ],
                 }],
-                "knownExtensions": ["EXTENDED_KEY_USAGE"],
+                "known_extensions": ["EXTENDED_KEY_USAGE"],
             },
             predefined_values={
-                "additionalExtensions": [{
-                    "objectId": {
-                        "objectIdPaths": [
+                "additional_extensions": [{
+                    "object_id": {
+                        "object_id_paths": [
                             1,
                             6,
                         ],
@@ -751,40 +751,40 @@ class Certificate(pulumi.CustomResource):
                     "value": "c3RyaW5nCg==",
                     "critical": True,
                 }],
-                "aiaOcspServers": ["string"],
-                "caOptions": {
-                    "isCa": False,
-                    "maxIssuerPathLength": 6,
+                "aia_ocsp_servers": ["string"],
+                "ca_options": {
+                    "is_ca": False,
+                    "max_issuer_path_length": 6,
                 },
-                "keyUsage": {
-                    "baseKeyUsage": {
-                        "certSign": False,
-                        "contentCommitment": True,
-                        "crlSign": False,
-                        "dataEncipherment": True,
-                        "decipherOnly": True,
-                        "digitalSignature": True,
-                        "encipherOnly": True,
-                        "keyAgreement": True,
-                        "keyEncipherment": True,
+                "key_usage": {
+                    "base_key_usage": {
+                        "cert_sign": False,
+                        "content_commitment": True,
+                        "crl_sign": False,
+                        "data_encipherment": True,
+                        "decipher_only": True,
+                        "digital_signature": True,
+                        "encipher_only": True,
+                        "key_agreement": True,
+                        "key_encipherment": True,
                     },
-                    "extendedKeyUsage": {
-                        "clientAuth": True,
-                        "codeSigning": True,
-                        "emailProtection": True,
-                        "ocspSigning": True,
-                        "serverAuth": True,
-                        "timeStamping": True,
+                    "extended_key_usage": {
+                        "client_auth": True,
+                        "code_signing": True,
+                        "email_protection": True,
+                        "ocsp_signing": True,
+                        "server_auth": True,
+                        "time_stamping": True,
                     },
-                    "unknownExtendedKeyUsages": [{
-                        "objectIdPaths": [
+                    "unknown_extended_key_usages": [{
+                        "object_id_paths": [
                             1,
                             6,
                         ],
                     }],
                 },
-                "policyIds": [{
-                    "objectIdPaths": [
+                "policy_ids": [{
+                    "object_id_paths": [
                         1,
                         6,
                     ],
@@ -795,26 +795,26 @@ class Certificate(pulumi.CustomResource):
             pool=default.name,
             certificate_authority_id="my-authority",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": False,
+                        "extended_key_usage": {
+                            "server_auth": False,
                         },
                     },
                 },
@@ -850,26 +850,26 @@ class Certificate(pulumi.CustomResource):
             pool=default.name,
             certificate_authority_id="my-authority",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": False,
+                        "extended_key_usage": {
+                            "server_auth": False,
                         },
                     },
                 },
@@ -904,27 +904,27 @@ class Certificate(pulumi.CustomResource):
             pool=default.name,
             certificate_authority_id="my-authority",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "digitalSignature": True,
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "digital_signature": True,
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -942,32 +942,32 @@ class Certificate(pulumi.CustomResource):
             name="my-certificate",
             lifetime="860s",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
-                        "commonName": "san1.example.com",
-                        "countryCode": "us",
+                        "common_name": "san1.example.com",
+                        "country_code": "us",
                         "organization": "google",
-                        "organizationalUnit": "enterprise",
+                        "organizational_unit": "enterprise",
                         "locality": "mountain view",
                         "province": "california",
-                        "streetAddress": "1600 amphitheatre parkway",
-                        "postalCode": "94109",
+                        "street_address": "1600 amphitheatre parkway",
+                        "postal_code": "94109",
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": False,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": False,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
-                "publicKey": {
+                "public_key": {
                     "format": "PEM",
                     "key": std.filebase64(input="test-fixtures/rsa_public.pem").result,
                 },
@@ -990,27 +990,27 @@ class Certificate(pulumi.CustomResource):
             pool=default.name,
             certificate_authority_id="my-authority",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "digitalSignature": True,
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "digital_signature": True,
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -1028,35 +1028,35 @@ class Certificate(pulumi.CustomResource):
             name="my-certificate",
             lifetime="860s",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
-                        "commonName": "san1.example.com",
-                        "countryCode": "us",
+                        "common_name": "san1.example.com",
+                        "country_code": "us",
                         "organization": "google",
-                        "organizationalUnit": "enterprise",
+                        "organizational_unit": "enterprise",
                         "locality": "mountain view",
                         "province": "california",
-                        "streetAddress": "1600 amphitheatre parkway",
-                        "postalCode": "94109",
+                        "street_address": "1600 amphitheatre parkway",
+                        "postal_code": "94109",
                     },
                 },
-                "subjectKeyId": {
-                    "keyId": "4cf3372289b1d411b999dbb9ebcd44744b6b2fca",
+                "subject_key_id": {
+                    "key_id": "4cf3372289b1d411b999dbb9ebcd44744b6b2fca",
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": False,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": False,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
-                "publicKey": {
+                "public_key": {
                     "format": "PEM",
                     "key": std.filebase64(input="test-fixtures/rsa_public.pem").result,
                 },
@@ -1150,26 +1150,26 @@ class Certificate(pulumi.CustomResource):
             pool=default.name,
             certificate_authority_id="my-authority",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -1188,48 +1188,48 @@ class Certificate(pulumi.CustomResource):
             lifetime="86000s",
             name="cert-1",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
-                        "commonName": "san1.example.com",
-                        "countryCode": "us",
+                        "common_name": "san1.example.com",
+                        "country_code": "us",
                         "organization": "google",
-                        "organizationalUnit": "enterprise",
+                        "organizational_unit": "enterprise",
                         "locality": "mountain view",
                         "province": "california",
-                        "streetAddress": "1600 amphitheatre parkway",
+                        "street_address": "1600 amphitheatre parkway",
                     },
-                    "subjectAltName": {
-                        "emailAddresses": ["email@example.com"],
-                        "ipAddresses": ["127.0.0.1"],
+                    "subject_alt_name": {
+                        "email_addresses": ["email@example.com"],
+                        "ip_addresses": ["127.0.0.1"],
                         "uris": ["http://www.ietf.org/rfc/rfc3986.txt"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": False,
+                        "extended_key_usage": {
+                            "server_auth": False,
                         },
                     },
-                    "nameConstraints": {
+                    "name_constraints": {
                         "critical": True,
-                        "permittedDnsNames": ["*.example.com"],
-                        "excludedDnsNames": ["*.deny.example.com"],
-                        "permittedIpRanges": ["10.0.0.0/8"],
-                        "excludedIpRanges": ["10.1.1.0/24"],
-                        "permittedEmailAddresses": [".example.com"],
-                        "excludedEmailAddresses": [".deny.example.com"],
-                        "permittedUris": [".example.com"],
-                        "excludedUris": [".deny.example.com"],
+                        "permitted_dns_names": ["*.example.com"],
+                        "excluded_dns_names": ["*.deny.example.com"],
+                        "permitted_ip_ranges": ["10.0.0.0/8"],
+                        "excluded_ip_ranges": ["10.1.1.0/24"],
+                        "permitted_email_addresses": [".example.com"],
+                        "excluded_email_addresses": [".deny.example.com"],
+                        "permitted_uris": [".example.com"],
+                        "excluded_uris": [".deny.example.com"],
                     },
                 },
-                "publicKey": {
+                "public_key": {
                     "format": "PEM",
                     "key": std.base64encode_output(input=cert_key.public_key_pem).apply(lambda invoke: invoke.result),
                 },
@@ -1251,9 +1251,9 @@ class Certificate(pulumi.CustomResource):
             name="my-certificate-template",
             description="An updated sample certificate template",
             identity_constraints={
-                "allowSubjectAltNamesPassthrough": True,
-                "allowSubjectPassthrough": True,
-                "celExpression": {
+                "allow_subject_alt_names_passthrough": True,
+                "allow_subject_passthrough": True,
+                "cel_expression": {
                     "description": "Always true",
                     "expression": "true",
                     "location": "any.file.anywhere",
@@ -1261,18 +1261,18 @@ class Certificate(pulumi.CustomResource):
                 },
             },
             passthrough_extensions={
-                "additionalExtensions": [{
-                    "objectIdPaths": [
+                "additional_extensions": [{
+                    "object_id_paths": [
                         1,
                         6,
                     ],
                 }],
-                "knownExtensions": ["EXTENDED_KEY_USAGE"],
+                "known_extensions": ["EXTENDED_KEY_USAGE"],
             },
             predefined_values={
-                "additionalExtensions": [{
-                    "objectId": {
-                        "objectIdPaths": [
+                "additional_extensions": [{
+                    "object_id": {
+                        "object_id_paths": [
                             1,
                             6,
                         ],
@@ -1280,40 +1280,40 @@ class Certificate(pulumi.CustomResource):
                     "value": "c3RyaW5nCg==",
                     "critical": True,
                 }],
-                "aiaOcspServers": ["string"],
-                "caOptions": {
-                    "isCa": False,
-                    "maxIssuerPathLength": 6,
+                "aia_ocsp_servers": ["string"],
+                "ca_options": {
+                    "is_ca": False,
+                    "max_issuer_path_length": 6,
                 },
-                "keyUsage": {
-                    "baseKeyUsage": {
-                        "certSign": False,
-                        "contentCommitment": True,
-                        "crlSign": False,
-                        "dataEncipherment": True,
-                        "decipherOnly": True,
-                        "digitalSignature": True,
-                        "encipherOnly": True,
-                        "keyAgreement": True,
-                        "keyEncipherment": True,
+                "key_usage": {
+                    "base_key_usage": {
+                        "cert_sign": False,
+                        "content_commitment": True,
+                        "crl_sign": False,
+                        "data_encipherment": True,
+                        "decipher_only": True,
+                        "digital_signature": True,
+                        "encipher_only": True,
+                        "key_agreement": True,
+                        "key_encipherment": True,
                     },
-                    "extendedKeyUsage": {
-                        "clientAuth": True,
-                        "codeSigning": True,
-                        "emailProtection": True,
-                        "ocspSigning": True,
-                        "serverAuth": True,
-                        "timeStamping": True,
+                    "extended_key_usage": {
+                        "client_auth": True,
+                        "code_signing": True,
+                        "email_protection": True,
+                        "ocsp_signing": True,
+                        "server_auth": True,
+                        "time_stamping": True,
                     },
-                    "unknownExtendedKeyUsages": [{
-                        "objectIdPaths": [
+                    "unknown_extended_key_usages": [{
+                        "object_id_paths": [
                             1,
                             6,
                         ],
                     }],
                 },
-                "policyIds": [{
-                    "objectIdPaths": [
+                "policy_ids": [{
+                    "object_id_paths": [
                         1,
                         6,
                     ],
@@ -1324,26 +1324,26 @@ class Certificate(pulumi.CustomResource):
             pool=default.name,
             certificate_authority_id="my-authority",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": False,
+                        "extended_key_usage": {
+                            "server_auth": False,
                         },
                     },
                 },
@@ -1379,26 +1379,26 @@ class Certificate(pulumi.CustomResource):
             pool=default.name,
             certificate_authority_id="my-authority",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": False,
+                        "extended_key_usage": {
+                            "server_auth": False,
                         },
                     },
                 },
@@ -1433,27 +1433,27 @@ class Certificate(pulumi.CustomResource):
             pool=default.name,
             certificate_authority_id="my-authority",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "digitalSignature": True,
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "digital_signature": True,
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -1471,32 +1471,32 @@ class Certificate(pulumi.CustomResource):
             name="my-certificate",
             lifetime="860s",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
-                        "commonName": "san1.example.com",
-                        "countryCode": "us",
+                        "common_name": "san1.example.com",
+                        "country_code": "us",
                         "organization": "google",
-                        "organizationalUnit": "enterprise",
+                        "organizational_unit": "enterprise",
                         "locality": "mountain view",
                         "province": "california",
-                        "streetAddress": "1600 amphitheatre parkway",
-                        "postalCode": "94109",
+                        "street_address": "1600 amphitheatre parkway",
+                        "postal_code": "94109",
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": False,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": False,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
-                "publicKey": {
+                "public_key": {
                     "format": "PEM",
                     "key": std.filebase64(input="test-fixtures/rsa_public.pem").result,
                 },
@@ -1519,27 +1519,27 @@ class Certificate(pulumi.CustomResource):
             pool=default.name,
             certificate_authority_id="my-authority",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "digitalSignature": True,
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "digital_signature": True,
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -1557,35 +1557,35 @@ class Certificate(pulumi.CustomResource):
             name="my-certificate",
             lifetime="860s",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
-                        "commonName": "san1.example.com",
-                        "countryCode": "us",
+                        "common_name": "san1.example.com",
+                        "country_code": "us",
                         "organization": "google",
-                        "organizationalUnit": "enterprise",
+                        "organizational_unit": "enterprise",
                         "locality": "mountain view",
                         "province": "california",
-                        "streetAddress": "1600 amphitheatre parkway",
-                        "postalCode": "94109",
+                        "street_address": "1600 amphitheatre parkway",
+                        "postal_code": "94109",
                     },
                 },
-                "subjectKeyId": {
-                    "keyId": "4cf3372289b1d411b999dbb9ebcd44744b6b2fca",
+                "subject_key_id": {
+                    "key_id": "4cf3372289b1d411b999dbb9ebcd44744b6b2fca",
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": False,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": False,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
-                "publicKey": {
+                "public_key": {
                     "format": "PEM",
                     "key": std.filebase64(input="test-fixtures/rsa_public.pem").result,
                 },

@@ -445,13 +445,13 @@ class ChatEngine(pulumi.CustomResource):
                 test_data_store2.data_store_id,
             ],
             common_config={
-                "companyName": "test-company",
+                "company_name": "test-company",
             },
             chat_engine_config={
-                "agentCreationConfig": {
+                "agent_creation_config": {
                     "business": "test business name",
-                    "defaultLanguageCode": "en",
-                    "timeZone": "America/Los_Angeles",
+                    "default_language_code": "en",
+                    "time_zone": "America/Los_Angeles",
                 },
             })
         ```
@@ -541,13 +541,13 @@ class ChatEngine(pulumi.CustomResource):
                 test_data_store2.data_store_id,
             ],
             common_config={
-                "companyName": "test-company",
+                "company_name": "test-company",
             },
             chat_engine_config={
-                "agentCreationConfig": {
+                "agent_creation_config": {
                     "business": "test business name",
-                    "defaultLanguageCode": "en",
-                    "timeZone": "America/Los_Angeles",
+                    "default_language_code": "en",
+                    "time_zone": "America/Los_Angeles",
                 },
             })
         ```
