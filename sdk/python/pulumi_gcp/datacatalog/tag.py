@@ -267,34 +267,34 @@ class Tag(pulumi.CustomResource):
             display_name="Demo Tag Template",
             fields=[
                 {
-                    "fieldId": "source",
-                    "displayName": "Source of data asset",
+                    "field_id": "source",
+                    "display_name": "Source of data asset",
                     "type": {
-                        "primitiveType": "STRING",
+                        "primitive_type": "STRING",
                     },
-                    "isRequired": True,
+                    "is_required": True,
                 },
                 {
-                    "fieldId": "num_rows",
-                    "displayName": "Number of rows in the data asset",
+                    "field_id": "num_rows",
+                    "display_name": "Number of rows in the data asset",
                     "type": {
-                        "primitiveType": "DOUBLE",
+                        "primitive_type": "DOUBLE",
                     },
                 },
                 {
-                    "fieldId": "pii_type",
-                    "displayName": "PII type",
+                    "field_id": "pii_type",
+                    "display_name": "PII type",
                     "type": {
-                        "enumType": {
-                            "allowedValues": [
+                        "enum_type": {
+                            "allowed_values": [
                                 {
-                                    "displayName": "EMAIL",
+                                    "display_name": "EMAIL",
                                 },
                                 {
-                                    "displayName": "SOCIAL SECURITY NUMBER",
+                                    "display_name": "SOCIAL SECURITY NUMBER",
                                 },
                                 {
-                                    "displayName": "NONE",
+                                    "display_name": "NONE",
                                 },
                             ],
                         },
@@ -306,8 +306,8 @@ class Tag(pulumi.CustomResource):
             parent=entry.id,
             template=tag_template.id,
             fields=[{
-                "fieldName": "source",
-                "stringValue": "my-string",
+                "field_name": "source",
+                "string_value": "my-string",
             }])
         ```
         ### Data Catalog Entry Group Tag
@@ -333,34 +333,34 @@ class Tag(pulumi.CustomResource):
             display_name="Demo Tag Template",
             fields=[
                 {
-                    "fieldId": "source",
-                    "displayName": "Source of data asset",
+                    "field_id": "source",
+                    "display_name": "Source of data asset",
                     "type": {
-                        "primitiveType": "STRING",
+                        "primitive_type": "STRING",
                     },
-                    "isRequired": True,
+                    "is_required": True,
                 },
                 {
-                    "fieldId": "num_rows",
-                    "displayName": "Number of rows in the data asset",
+                    "field_id": "num_rows",
+                    "display_name": "Number of rows in the data asset",
                     "type": {
-                        "primitiveType": "DOUBLE",
+                        "primitive_type": "DOUBLE",
                     },
                 },
                 {
-                    "fieldId": "pii_type",
-                    "displayName": "PII type",
+                    "field_id": "pii_type",
+                    "display_name": "PII type",
                     "type": {
-                        "enumType": {
-                            "allowedValues": [
+                        "enum_type": {
+                            "allowed_values": [
                                 {
-                                    "displayName": "EMAIL",
+                                    "display_name": "EMAIL",
                                 },
                                 {
-                                    "displayName": "SOCIAL SECURITY NUMBER",
+                                    "display_name": "SOCIAL SECURITY NUMBER",
                                 },
                                 {
-                                    "displayName": "NONE",
+                                    "display_name": "NONE",
                                 },
                             ],
                         },
@@ -372,8 +372,8 @@ class Tag(pulumi.CustomResource):
             parent=entry_group.id,
             template=tag_template.id,
             fields=[{
-                "fieldName": "source",
-                "stringValue": "my-string",
+                "field_name": "source",
+                "string_value": "my-string",
             }])
         ```
         ### Data Catalog Entry Tag Full
@@ -431,34 +431,34 @@ class Tag(pulumi.CustomResource):
             display_name="Demo Tag Template",
             fields=[
                 {
-                    "fieldId": "source",
-                    "displayName": "Source of data asset",
+                    "field_id": "source",
+                    "display_name": "Source of data asset",
                     "type": {
-                        "primitiveType": "STRING",
+                        "primitive_type": "STRING",
                     },
-                    "isRequired": True,
+                    "is_required": True,
                 },
                 {
-                    "fieldId": "num_rows",
-                    "displayName": "Number of rows in the data asset",
+                    "field_id": "num_rows",
+                    "display_name": "Number of rows in the data asset",
                     "type": {
-                        "primitiveType": "DOUBLE",
+                        "primitive_type": "DOUBLE",
                     },
                 },
                 {
-                    "fieldId": "pii_type",
-                    "displayName": "PII type",
+                    "field_id": "pii_type",
+                    "display_name": "PII type",
                     "type": {
-                        "enumType": {
-                            "allowedValues": [
+                        "enum_type": {
+                            "allowed_values": [
                                 {
-                                    "displayName": "EMAIL",
+                                    "display_name": "EMAIL",
                                 },
                                 {
-                                    "displayName": "SOCIAL SECURITY NUMBER",
+                                    "display_name": "SOCIAL SECURITY NUMBER",
                                 },
                                 {
-                                    "displayName": "NONE",
+                                    "display_name": "NONE",
                                 },
                             ],
                         },
@@ -471,16 +471,16 @@ class Tag(pulumi.CustomResource):
             template=tag_template.id,
             fields=[
                 {
-                    "fieldName": "source",
-                    "stringValue": "my-string",
+                    "field_name": "source",
+                    "string_value": "my-string",
                 },
                 {
-                    "fieldName": "num_rows",
-                    "doubleValue": 5,
+                    "field_name": "num_rows",
+                    "double_value": 5,
                 },
                 {
-                    "fieldName": "pii_type",
-                    "enumValue": "EMAIL",
+                    "field_name": "pii_type",
+                    "enum_value": "EMAIL",
                 },
             ],
             column="address")
@@ -489,12 +489,12 @@ class Tag(pulumi.CustomResource):
             template=tag_template.id,
             fields=[
                 {
-                    "fieldName": "source",
-                    "stringValue": "my-string",
+                    "field_name": "source",
+                    "string_value": "my-string",
                 },
                 {
-                    "fieldName": "pii_type",
-                    "enumValue": "NONE",
+                    "field_name": "pii_type",
+                    "enum_value": "NONE",
                 },
             ],
             column="first_name")
@@ -563,34 +563,34 @@ class Tag(pulumi.CustomResource):
             display_name="Demo Tag Template",
             fields=[
                 {
-                    "fieldId": "source",
-                    "displayName": "Source of data asset",
+                    "field_id": "source",
+                    "display_name": "Source of data asset",
                     "type": {
-                        "primitiveType": "STRING",
+                        "primitive_type": "STRING",
                     },
-                    "isRequired": True,
+                    "is_required": True,
                 },
                 {
-                    "fieldId": "num_rows",
-                    "displayName": "Number of rows in the data asset",
+                    "field_id": "num_rows",
+                    "display_name": "Number of rows in the data asset",
                     "type": {
-                        "primitiveType": "DOUBLE",
+                        "primitive_type": "DOUBLE",
                     },
                 },
                 {
-                    "fieldId": "pii_type",
-                    "displayName": "PII type",
+                    "field_id": "pii_type",
+                    "display_name": "PII type",
                     "type": {
-                        "enumType": {
-                            "allowedValues": [
+                        "enum_type": {
+                            "allowed_values": [
                                 {
-                                    "displayName": "EMAIL",
+                                    "display_name": "EMAIL",
                                 },
                                 {
-                                    "displayName": "SOCIAL SECURITY NUMBER",
+                                    "display_name": "SOCIAL SECURITY NUMBER",
                                 },
                                 {
-                                    "displayName": "NONE",
+                                    "display_name": "NONE",
                                 },
                             ],
                         },
@@ -602,8 +602,8 @@ class Tag(pulumi.CustomResource):
             parent=entry.id,
             template=tag_template.id,
             fields=[{
-                "fieldName": "source",
-                "stringValue": "my-string",
+                "field_name": "source",
+                "string_value": "my-string",
             }])
         ```
         ### Data Catalog Entry Group Tag
@@ -629,34 +629,34 @@ class Tag(pulumi.CustomResource):
             display_name="Demo Tag Template",
             fields=[
                 {
-                    "fieldId": "source",
-                    "displayName": "Source of data asset",
+                    "field_id": "source",
+                    "display_name": "Source of data asset",
                     "type": {
-                        "primitiveType": "STRING",
+                        "primitive_type": "STRING",
                     },
-                    "isRequired": True,
+                    "is_required": True,
                 },
                 {
-                    "fieldId": "num_rows",
-                    "displayName": "Number of rows in the data asset",
+                    "field_id": "num_rows",
+                    "display_name": "Number of rows in the data asset",
                     "type": {
-                        "primitiveType": "DOUBLE",
+                        "primitive_type": "DOUBLE",
                     },
                 },
                 {
-                    "fieldId": "pii_type",
-                    "displayName": "PII type",
+                    "field_id": "pii_type",
+                    "display_name": "PII type",
                     "type": {
-                        "enumType": {
-                            "allowedValues": [
+                        "enum_type": {
+                            "allowed_values": [
                                 {
-                                    "displayName": "EMAIL",
+                                    "display_name": "EMAIL",
                                 },
                                 {
-                                    "displayName": "SOCIAL SECURITY NUMBER",
+                                    "display_name": "SOCIAL SECURITY NUMBER",
                                 },
                                 {
-                                    "displayName": "NONE",
+                                    "display_name": "NONE",
                                 },
                             ],
                         },
@@ -668,8 +668,8 @@ class Tag(pulumi.CustomResource):
             parent=entry_group.id,
             template=tag_template.id,
             fields=[{
-                "fieldName": "source",
-                "stringValue": "my-string",
+                "field_name": "source",
+                "string_value": "my-string",
             }])
         ```
         ### Data Catalog Entry Tag Full
@@ -727,34 +727,34 @@ class Tag(pulumi.CustomResource):
             display_name="Demo Tag Template",
             fields=[
                 {
-                    "fieldId": "source",
-                    "displayName": "Source of data asset",
+                    "field_id": "source",
+                    "display_name": "Source of data asset",
                     "type": {
-                        "primitiveType": "STRING",
+                        "primitive_type": "STRING",
                     },
-                    "isRequired": True,
+                    "is_required": True,
                 },
                 {
-                    "fieldId": "num_rows",
-                    "displayName": "Number of rows in the data asset",
+                    "field_id": "num_rows",
+                    "display_name": "Number of rows in the data asset",
                     "type": {
-                        "primitiveType": "DOUBLE",
+                        "primitive_type": "DOUBLE",
                     },
                 },
                 {
-                    "fieldId": "pii_type",
-                    "displayName": "PII type",
+                    "field_id": "pii_type",
+                    "display_name": "PII type",
                     "type": {
-                        "enumType": {
-                            "allowedValues": [
+                        "enum_type": {
+                            "allowed_values": [
                                 {
-                                    "displayName": "EMAIL",
+                                    "display_name": "EMAIL",
                                 },
                                 {
-                                    "displayName": "SOCIAL SECURITY NUMBER",
+                                    "display_name": "SOCIAL SECURITY NUMBER",
                                 },
                                 {
-                                    "displayName": "NONE",
+                                    "display_name": "NONE",
                                 },
                             ],
                         },
@@ -767,16 +767,16 @@ class Tag(pulumi.CustomResource):
             template=tag_template.id,
             fields=[
                 {
-                    "fieldName": "source",
-                    "stringValue": "my-string",
+                    "field_name": "source",
+                    "string_value": "my-string",
                 },
                 {
-                    "fieldName": "num_rows",
-                    "doubleValue": 5,
+                    "field_name": "num_rows",
+                    "double_value": 5,
                 },
                 {
-                    "fieldName": "pii_type",
-                    "enumValue": "EMAIL",
+                    "field_name": "pii_type",
+                    "enum_value": "EMAIL",
                 },
             ],
             column="address")
@@ -785,12 +785,12 @@ class Tag(pulumi.CustomResource):
             template=tag_template.id,
             fields=[
                 {
-                    "fieldName": "source",
-                    "stringValue": "my-string",
+                    "field_name": "source",
+                    "string_value": "my-string",
                 },
                 {
-                    "fieldName": "pii_type",
-                    "enumValue": "NONE",
+                    "field_name": "pii_type",
+                    "enum_value": "NONE",
                 },
             ],
             column="first_name")

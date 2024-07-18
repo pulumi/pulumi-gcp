@@ -303,7 +303,7 @@ class HostingRelease(pulumi.CustomResource):
             config={
                 "redirects": [{
                     "glob": "/google/**",
-                    "statusCode": 302,
+                    "status_code": 302,
                     "location": "https://www.google.com",
                 }],
             })
@@ -326,7 +326,7 @@ class HostingRelease(pulumi.CustomResource):
             config={
                 "redirects": [{
                     "glob": "/google/**",
-                    "statusCode": 302,
+                    "status_code": 302,
                     "location": "https://www.google.com",
                 }],
             })
@@ -427,7 +427,7 @@ class HostingRelease(pulumi.CustomResource):
             config={
                 "redirects": [{
                     "glob": "/google/**",
-                    "statusCode": 302,
+                    "status_code": 302,
                     "location": "https://www.google.com",
                 }],
             })
@@ -450,7 +450,7 @@ class HostingRelease(pulumi.CustomResource):
             config={
                 "redirects": [{
                     "glob": "/google/**",
-                    "statusCode": 302,
+                    "status_code": 302,
                     "location": "https://www.google.com",
                 }],
             })

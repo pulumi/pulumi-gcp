@@ -348,7 +348,7 @@ class AttachedDisk(pulumi.CustomResource):
             machine_type="e2-medium",
             zone="us-west1-a",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                 },
             },
@@ -441,7 +441,7 @@ class AttachedDisk(pulumi.CustomResource):
             machine_type="e2-medium",
             zone="us-west1-a",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                 },
             },

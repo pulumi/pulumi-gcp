@@ -384,13 +384,13 @@ class PacketMirroring(pulumi.CustomResource):
         default = gcp.compute.Network("default", name="my-network")
         mirror = gcp.compute.Instance("mirror",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "network": default.id,
             }],
             name="my-instance",
             machine_type="e2-medium",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                 },
             })
@@ -435,8 +435,8 @@ class PacketMirroring(pulumi.CustomResource):
                 }],
             },
             filter={
-                "ipProtocols": ["tcp"],
-                "cidrRanges": ["0.0.0.0/0"],
+                "ip_protocols": ["tcp"],
+                "cidr_ranges": ["0.0.0.0/0"],
                 "direction": "BOTH",
             })
         ```
@@ -519,13 +519,13 @@ class PacketMirroring(pulumi.CustomResource):
         default = gcp.compute.Network("default", name="my-network")
         mirror = gcp.compute.Instance("mirror",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "network": default.id,
             }],
             name="my-instance",
             machine_type="e2-medium",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                 },
             })
@@ -570,8 +570,8 @@ class PacketMirroring(pulumi.CustomResource):
                 }],
             },
             filter={
-                "ipProtocols": ["tcp"],
-                "cidrRanges": ["0.0.0.0/0"],
+                "ip_protocols": ["tcp"],
+                "cidr_ranges": ["0.0.0.0/0"],
                 "direction": "BOTH",
             })
         ```

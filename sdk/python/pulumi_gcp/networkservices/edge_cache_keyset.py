@@ -397,7 +397,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                 "managed": True,
             }],
             validation_shared_keys=[{
-                "secretVersion": secret_version_basic.id,
+                "secret_version": secret_version_basic.id,
             }])
         ```
 
@@ -511,7 +511,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                 "managed": True,
             }],
             validation_shared_keys=[{
-                "secretVersion": secret_version_basic.id,
+                "secret_version": secret_version_basic.id,
             }])
         ```
 

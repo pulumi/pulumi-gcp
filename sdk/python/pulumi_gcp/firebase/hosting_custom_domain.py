@@ -648,7 +648,7 @@ class HostingCustomDomain(pulumi.CustomResource):
                 "rewrites": [{
                     "glob": "/hello/**",
                     "run": {
-                        "serviceId": default_service.name,
+                        "service_id": default_service.name,
                         "region": default_service.location,
                     },
                 }],
@@ -774,7 +774,7 @@ class HostingCustomDomain(pulumi.CustomResource):
                 "rewrites": [{
                     "glob": "/hello/**",
                     "run": {
-                        "serviceId": default_service.name,
+                        "service_id": default_service.name,
                         "region": default_service.location,
                     },
                 }],

@@ -262,7 +262,7 @@ class TransferAgentPool(pulumi.CustomResource):
             name="agent-pool-example",
             display_name="Source A to destination Z",
             bandwidth_limit={
-                "limitMbps": "120",
+                "limit_mbps": "120",
             },
             opts = pulumi.ResourceOptions(depends_on=[pubsub_editor_role]))
         ```
@@ -342,7 +342,7 @@ class TransferAgentPool(pulumi.CustomResource):
             name="agent-pool-example",
             display_name="Source A to destination Z",
             bandwidth_limit={
-                "limitMbps": "120",
+                "limit_mbps": "120",
             },
             opts = pulumi.ResourceOptions(depends_on=[pubsub_editor_role]))
         ```

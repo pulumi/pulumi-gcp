@@ -511,10 +511,10 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
             },
             region="us-central1",
             bigtable={
-                "autoScaling": {
-                    "minNodeCount": 1,
-                    "maxNodeCount": 3,
-                    "cpuUtilizationTarget": 50,
+                "auto_scaling": {
+                    "min_node_count": 1,
+                    "max_node_count": 3,
+                    "cpu_utilization_target": 50,
                 },
             })
         ```
@@ -533,9 +533,9 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
             region="us-central1",
             optimized={},
             dedicated_serving_endpoint={
-                "privateServiceConnectConfig": {
-                    "enablePrivateServiceConnect": True,
-                    "projectAllowlists": [project.number],
+                "private_service_connect_config": {
+                    "enable_private_service_connect": True,
+                    "project_allowlists": [project.number],
                 },
             })
         ```
@@ -552,10 +552,10 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
             },
             region="us-central1",
             bigtable={
-                "autoScaling": {
-                    "minNodeCount": 1,
-                    "maxNodeCount": 2,
-                    "cpuUtilizationTarget": 80,
+                "auto_scaling": {
+                    "min_node_count": 1,
+                    "max_node_count": 2,
+                    "cpu_utilization_target": 80,
                 },
             },
             embedding_management={
@@ -648,10 +648,10 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
             },
             region="us-central1",
             bigtable={
-                "autoScaling": {
-                    "minNodeCount": 1,
-                    "maxNodeCount": 3,
-                    "cpuUtilizationTarget": 50,
+                "auto_scaling": {
+                    "min_node_count": 1,
+                    "max_node_count": 3,
+                    "cpu_utilization_target": 50,
                 },
             })
         ```
@@ -670,9 +670,9 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
             region="us-central1",
             optimized={},
             dedicated_serving_endpoint={
-                "privateServiceConnectConfig": {
-                    "enablePrivateServiceConnect": True,
-                    "projectAllowlists": [project.number],
+                "private_service_connect_config": {
+                    "enable_private_service_connect": True,
+                    "project_allowlists": [project.number],
                 },
             })
         ```
@@ -689,10 +689,10 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
             },
             region="us-central1",
             bigtable={
-                "autoScaling": {
-                    "minNodeCount": 1,
-                    "maxNodeCount": 2,
-                    "cpuUtilizationTarget": 80,
+                "auto_scaling": {
+                    "min_node_count": 1,
+                    "max_node_count": 2,
+                    "cpu_utilization_target": 80,
                 },
             },
             embedding_management={
