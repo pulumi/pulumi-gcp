@@ -327,11 +327,11 @@ class PreferenceSet(pulumi.CustomResource):
             description="Terraform integration test description",
             display_name="Terraform integration test display",
             virtual_machine_preferences={
-                "vmwareEnginePreferences": {
-                    "cpuOvercommitRatio": 1.5,
+                "vmware_engine_preferences": {
+                    "cpu_overcommit_ratio": 1.5,
                 },
-                "sizingOptimizationStrategy": "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
-                "targetProduct": "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
+                "sizing_optimization_strategy": "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
+                "target_product": "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
             })
         ```
         ### Preference Set Full
@@ -346,29 +346,29 @@ class PreferenceSet(pulumi.CustomResource):
             description="Terraform integration test description",
             display_name="Terraform integration test display",
             virtual_machine_preferences={
-                "vmwareEnginePreferences": {
-                    "cpuOvercommitRatio": 1.5,
-                    "storageDeduplicationCompressionRatio": 1.3,
-                    "commitmentPlan": "ON_DEMAND",
+                "vmware_engine_preferences": {
+                    "cpu_overcommit_ratio": 1.5,
+                    "storage_deduplication_compression_ratio": 1.3,
+                    "commitment_plan": "ON_DEMAND",
                 },
-                "sizingOptimizationStrategy": "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
-                "targetProduct": "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
-                "commitmentPlan": "COMMITMENT_PLAN_ONE_YEAR",
-                "regionPreferences": {
-                    "preferredRegions": ["us-central1"],
+                "sizing_optimization_strategy": "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
+                "target_product": "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
+                "commitment_plan": "COMMITMENT_PLAN_ONE_YEAR",
+                "region_preferences": {
+                    "preferred_regions": ["us-central1"],
                 },
-                "soleTenancyPreferences": {
-                    "commitmentPlan": "ON_DEMAND",
-                    "cpuOvercommitRatio": 1.2,
-                    "hostMaintenancePolicy": "HOST_MAINTENANCE_POLICY_DEFAULT",
-                    "nodeTypes": [{
-                        "nodeName": "tf-test",
+                "sole_tenancy_preferences": {
+                    "commitment_plan": "ON_DEMAND",
+                    "cpu_overcommit_ratio": 1.2,
+                    "host_maintenance_policy": "HOST_MAINTENANCE_POLICY_DEFAULT",
+                    "node_types": [{
+                        "node_name": "tf-test",
                     }],
                 },
-                "computeEnginePreferences": {
-                    "licenseType": "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE",
-                    "machinePreferences": {
-                        "allowedMachineSeries": [{
+                "compute_engine_preferences": {
+                    "license_type": "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE",
+                    "machine_preferences": {
+                        "allowed_machine_series": [{
                             "code": "C3",
                         }],
                     },
@@ -443,11 +443,11 @@ class PreferenceSet(pulumi.CustomResource):
             description="Terraform integration test description",
             display_name="Terraform integration test display",
             virtual_machine_preferences={
-                "vmwareEnginePreferences": {
-                    "cpuOvercommitRatio": 1.5,
+                "vmware_engine_preferences": {
+                    "cpu_overcommit_ratio": 1.5,
                 },
-                "sizingOptimizationStrategy": "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
-                "targetProduct": "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
+                "sizing_optimization_strategy": "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
+                "target_product": "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
             })
         ```
         ### Preference Set Full
@@ -462,29 +462,29 @@ class PreferenceSet(pulumi.CustomResource):
             description="Terraform integration test description",
             display_name="Terraform integration test display",
             virtual_machine_preferences={
-                "vmwareEnginePreferences": {
-                    "cpuOvercommitRatio": 1.5,
-                    "storageDeduplicationCompressionRatio": 1.3,
-                    "commitmentPlan": "ON_DEMAND",
+                "vmware_engine_preferences": {
+                    "cpu_overcommit_ratio": 1.5,
+                    "storage_deduplication_compression_ratio": 1.3,
+                    "commitment_plan": "ON_DEMAND",
                 },
-                "sizingOptimizationStrategy": "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
-                "targetProduct": "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
-                "commitmentPlan": "COMMITMENT_PLAN_ONE_YEAR",
-                "regionPreferences": {
-                    "preferredRegions": ["us-central1"],
+                "sizing_optimization_strategy": "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
+                "target_product": "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
+                "commitment_plan": "COMMITMENT_PLAN_ONE_YEAR",
+                "region_preferences": {
+                    "preferred_regions": ["us-central1"],
                 },
-                "soleTenancyPreferences": {
-                    "commitmentPlan": "ON_DEMAND",
-                    "cpuOvercommitRatio": 1.2,
-                    "hostMaintenancePolicy": "HOST_MAINTENANCE_POLICY_DEFAULT",
-                    "nodeTypes": [{
-                        "nodeName": "tf-test",
+                "sole_tenancy_preferences": {
+                    "commitment_plan": "ON_DEMAND",
+                    "cpu_overcommit_ratio": 1.2,
+                    "host_maintenance_policy": "HOST_MAINTENANCE_POLICY_DEFAULT",
+                    "node_types": [{
+                        "node_name": "tf-test",
                     }],
                 },
-                "computeEnginePreferences": {
-                    "licenseType": "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE",
-                    "machinePreferences": {
-                        "allowedMachineSeries": [{
+                "compute_engine_preferences": {
+                    "license_type": "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE",
+                    "machine_preferences": {
+                        "allowed_machine_series": [{
                             "code": "C3",
                         }],
                     },

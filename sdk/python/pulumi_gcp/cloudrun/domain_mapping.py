@@ -254,7 +254,7 @@ class DomainMapping(pulumi.CustomResource):
                 "namespace": "my-project-name",
             },
             spec={
-                "routeName": default.name,
+                "route_name": default.name,
             })
         ```
 
@@ -333,7 +333,7 @@ class DomainMapping(pulumi.CustomResource):
                 "namespace": "my-project-name",
             },
             spec={
-                "routeName": default.name,
+                "route_name": default.name,
             })
         ```
 

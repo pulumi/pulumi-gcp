@@ -422,11 +422,11 @@ class HttpRoute(pulumi.CustomResource):
             hostnames=["example"],
             rules=[{
                 "matches": [{
-                    "queryParameters": [{
-                        "queryParameter": "key",
-                        "exactMatch": "value",
+                    "query_parameters": [{
+                        "query_parameter": "key",
+                        "exact_match": "value",
                     }],
-                    "fullPathMatch": "example",
+                    "full_path_match": "example",
                 }],
             }])
         ```
@@ -448,83 +448,83 @@ class HttpRoute(pulumi.CustomResource):
                     {
                         "headers": [{
                             "header": "header",
-                            "invertMatch": False,
-                            "regexMatch": "header-value",
+                            "invert_match": False,
+                            "regex_match": "header-value",
                         }],
-                        "queryParameters": [{
-                            "queryParameter": "key",
-                            "exactMatch": "value",
+                        "query_parameters": [{
+                            "query_parameter": "key",
+                            "exact_match": "value",
                         }],
-                        "prefixMatch": "example",
-                        "ignoreCase": False,
+                        "prefix_match": "example",
+                        "ignore_case": False,
                     },
                     {
                         "headers": [{
                             "header": "header",
-                            "invertMatch": False,
-                            "presentMatch": True,
+                            "invert_match": False,
+                            "present_match": True,
                         }],
-                        "queryParameters": [{
-                            "queryParameter": "key",
-                            "regexMatch": "value",
+                        "query_parameters": [{
+                            "query_parameter": "key",
+                            "regex_match": "value",
                         }],
-                        "regexMatch": "example",
-                        "ignoreCase": False,
+                        "regex_match": "example",
+                        "ignore_case": False,
                     },
                     {
                         "headers": [{
                             "header": "header",
-                            "invertMatch": False,
-                            "presentMatch": True,
+                            "invert_match": False,
+                            "present_match": True,
                         }],
-                        "queryParameters": [{
-                            "queryParameter": "key",
-                            "presentMatch": True,
+                        "query_parameters": [{
+                            "query_parameter": "key",
+                            "present_match": True,
                         }],
-                        "fullPathMatch": "example",
-                        "ignoreCase": False,
+                        "full_path_match": "example",
+                        "ignore_case": False,
                     },
                 ],
                 "action": {
                     "redirect": {
-                        "hostRedirect": "new-host",
-                        "pathRedirect": "new-path",
-                        "prefixRewrite": "new-prefix",
-                        "httpsRedirect": True,
-                        "stripQuery": True,
-                        "portRedirect": 8081,
+                        "host_redirect": "new-host",
+                        "path_redirect": "new-path",
+                        "prefix_rewrite": "new-prefix",
+                        "https_redirect": True,
+                        "strip_query": True,
+                        "port_redirect": 8081,
                     },
-                    "urlRewrite": {
-                        "pathPrefixRewrite": "new-prefix",
-                        "hostRewrite": "new-host",
+                    "url_rewrite": {
+                        "path_prefix_rewrite": "new-prefix",
+                        "host_rewrite": "new-host",
                     },
-                    "retryPolicy": {
-                        "retryConditions": ["server_error"],
-                        "numRetries": 1,
-                        "perTryTimeout": "1s",
+                    "retry_policy": {
+                        "retry_conditions": ["server_error"],
+                        "num_retries": 1,
+                        "per_try_timeout": "1s",
                     },
-                    "requestMirrorPolicy": {
+                    "request_mirror_policy": {
                         "destination": {
-                            "serviceName": "new",
+                            "service_name": "new",
                             "weight": 1,
                         },
                     },
-                    "corsPolicy": {
-                        "allowOrigins": ["example"],
-                        "allowMethods": [
+                    "cors_policy": {
+                        "allow_origins": ["example"],
+                        "allow_methods": [
                             "GET",
                             "PUT",
                         ],
-                        "allowHeaders": [
+                        "allow_headers": [
                             "version",
                             "type",
                         ],
-                        "exposeHeaders": [
+                        "expose_headers": [
                             "version",
                             "type",
                         ],
-                        "maxAge": "1s",
-                        "allowCredentials": True,
+                        "max_age": "1s",
+                        "allow_credentials": True,
                         "disabled": False,
                     },
                 },
@@ -545,66 +545,66 @@ class HttpRoute(pulumi.CustomResource):
             hostnames=["example"],
             rules=[{
                 "action": {
-                    "faultInjectionPolicy": {
+                    "fault_injection_policy": {
                         "delay": {
-                            "fixedDelay": "1s",
+                            "fixed_delay": "1s",
                             "percentage": 1,
                         },
                         "abort": {
-                            "httpStatus": 500,
+                            "http_status": 500,
                             "percentage": 1,
                         },
                     },
-                    "urlRewrite": {
-                        "pathPrefixRewrite": "new-prefix",
-                        "hostRewrite": "new-host",
+                    "url_rewrite": {
+                        "path_prefix_rewrite": "new-prefix",
+                        "host_rewrite": "new-host",
                     },
-                    "retryPolicy": {
-                        "retryConditions": ["server_error"],
-                        "numRetries": 1,
-                        "perTryTimeout": "1s",
+                    "retry_policy": {
+                        "retry_conditions": ["server_error"],
+                        "num_retries": 1,
+                        "per_try_timeout": "1s",
                     },
-                    "requestMirrorPolicy": {
+                    "request_mirror_policy": {
                         "destination": {
-                            "serviceName": "new",
+                            "service_name": "new",
                             "weight": 1,
                         },
                     },
-                    "corsPolicy": {
-                        "allowOrigins": ["example"],
-                        "allowMethods": [
+                    "cors_policy": {
+                        "allow_origins": ["example"],
+                        "allow_methods": [
                             "GET",
                             "PUT",
                         ],
-                        "allowHeaders": [
+                        "allow_headers": [
                             "version",
                             "type",
                         ],
-                        "exposeHeaders": [
+                        "expose_headers": [
                             "version",
                             "type",
                         ],
-                        "maxAge": "1s",
-                        "allowCredentials": True,
+                        "max_age": "1s",
+                        "allow_credentials": True,
                         "disabled": False,
                     },
-                    "requestHeaderModifier": {
+                    "request_header_modifier": {
                         "set": {
                             "version": "1",
                             "type": "json",
                         },
                         "add": {
-                            "minor-version": "1",
+                            "minor_version": "1",
                         },
                         "removes": ["arg"],
                     },
-                    "responseHeaderModifier": {
+                    "response_header_modifier": {
                         "set": {
                             "version": "1",
                             "type": "json",
                         },
                         "add": {
-                            "minor-version": "1",
+                            "minor_version": "1",
                         },
                         "removes": ["removearg"],
                     },
@@ -633,11 +633,11 @@ class HttpRoute(pulumi.CustomResource):
             meshes=[default.id],
             rules=[{
                 "matches": [{
-                    "queryParameters": [{
-                        "queryParameter": "key",
-                        "exactMatch": "value",
+                    "query_parameters": [{
+                        "query_parameter": "key",
+                        "exact_match": "value",
                     }],
-                    "fullPathMatch": "example",
+                    "full_path_match": "example",
                 }],
             }])
         ```
@@ -707,11 +707,11 @@ class HttpRoute(pulumi.CustomResource):
             hostnames=["example"],
             rules=[{
                 "matches": [{
-                    "queryParameters": [{
-                        "queryParameter": "key",
-                        "exactMatch": "value",
+                    "query_parameters": [{
+                        "query_parameter": "key",
+                        "exact_match": "value",
                     }],
-                    "fullPathMatch": "example",
+                    "full_path_match": "example",
                 }],
             }])
         ```
@@ -733,83 +733,83 @@ class HttpRoute(pulumi.CustomResource):
                     {
                         "headers": [{
                             "header": "header",
-                            "invertMatch": False,
-                            "regexMatch": "header-value",
+                            "invert_match": False,
+                            "regex_match": "header-value",
                         }],
-                        "queryParameters": [{
-                            "queryParameter": "key",
-                            "exactMatch": "value",
+                        "query_parameters": [{
+                            "query_parameter": "key",
+                            "exact_match": "value",
                         }],
-                        "prefixMatch": "example",
-                        "ignoreCase": False,
+                        "prefix_match": "example",
+                        "ignore_case": False,
                     },
                     {
                         "headers": [{
                             "header": "header",
-                            "invertMatch": False,
-                            "presentMatch": True,
+                            "invert_match": False,
+                            "present_match": True,
                         }],
-                        "queryParameters": [{
-                            "queryParameter": "key",
-                            "regexMatch": "value",
+                        "query_parameters": [{
+                            "query_parameter": "key",
+                            "regex_match": "value",
                         }],
-                        "regexMatch": "example",
-                        "ignoreCase": False,
+                        "regex_match": "example",
+                        "ignore_case": False,
                     },
                     {
                         "headers": [{
                             "header": "header",
-                            "invertMatch": False,
-                            "presentMatch": True,
+                            "invert_match": False,
+                            "present_match": True,
                         }],
-                        "queryParameters": [{
-                            "queryParameter": "key",
-                            "presentMatch": True,
+                        "query_parameters": [{
+                            "query_parameter": "key",
+                            "present_match": True,
                         }],
-                        "fullPathMatch": "example",
-                        "ignoreCase": False,
+                        "full_path_match": "example",
+                        "ignore_case": False,
                     },
                 ],
                 "action": {
                     "redirect": {
-                        "hostRedirect": "new-host",
-                        "pathRedirect": "new-path",
-                        "prefixRewrite": "new-prefix",
-                        "httpsRedirect": True,
-                        "stripQuery": True,
-                        "portRedirect": 8081,
+                        "host_redirect": "new-host",
+                        "path_redirect": "new-path",
+                        "prefix_rewrite": "new-prefix",
+                        "https_redirect": True,
+                        "strip_query": True,
+                        "port_redirect": 8081,
                     },
-                    "urlRewrite": {
-                        "pathPrefixRewrite": "new-prefix",
-                        "hostRewrite": "new-host",
+                    "url_rewrite": {
+                        "path_prefix_rewrite": "new-prefix",
+                        "host_rewrite": "new-host",
                     },
-                    "retryPolicy": {
-                        "retryConditions": ["server_error"],
-                        "numRetries": 1,
-                        "perTryTimeout": "1s",
+                    "retry_policy": {
+                        "retry_conditions": ["server_error"],
+                        "num_retries": 1,
+                        "per_try_timeout": "1s",
                     },
-                    "requestMirrorPolicy": {
+                    "request_mirror_policy": {
                         "destination": {
-                            "serviceName": "new",
+                            "service_name": "new",
                             "weight": 1,
                         },
                     },
-                    "corsPolicy": {
-                        "allowOrigins": ["example"],
-                        "allowMethods": [
+                    "cors_policy": {
+                        "allow_origins": ["example"],
+                        "allow_methods": [
                             "GET",
                             "PUT",
                         ],
-                        "allowHeaders": [
+                        "allow_headers": [
                             "version",
                             "type",
                         ],
-                        "exposeHeaders": [
+                        "expose_headers": [
                             "version",
                             "type",
                         ],
-                        "maxAge": "1s",
-                        "allowCredentials": True,
+                        "max_age": "1s",
+                        "allow_credentials": True,
                         "disabled": False,
                     },
                 },
@@ -830,66 +830,66 @@ class HttpRoute(pulumi.CustomResource):
             hostnames=["example"],
             rules=[{
                 "action": {
-                    "faultInjectionPolicy": {
+                    "fault_injection_policy": {
                         "delay": {
-                            "fixedDelay": "1s",
+                            "fixed_delay": "1s",
                             "percentage": 1,
                         },
                         "abort": {
-                            "httpStatus": 500,
+                            "http_status": 500,
                             "percentage": 1,
                         },
                     },
-                    "urlRewrite": {
-                        "pathPrefixRewrite": "new-prefix",
-                        "hostRewrite": "new-host",
+                    "url_rewrite": {
+                        "path_prefix_rewrite": "new-prefix",
+                        "host_rewrite": "new-host",
                     },
-                    "retryPolicy": {
-                        "retryConditions": ["server_error"],
-                        "numRetries": 1,
-                        "perTryTimeout": "1s",
+                    "retry_policy": {
+                        "retry_conditions": ["server_error"],
+                        "num_retries": 1,
+                        "per_try_timeout": "1s",
                     },
-                    "requestMirrorPolicy": {
+                    "request_mirror_policy": {
                         "destination": {
-                            "serviceName": "new",
+                            "service_name": "new",
                             "weight": 1,
                         },
                     },
-                    "corsPolicy": {
-                        "allowOrigins": ["example"],
-                        "allowMethods": [
+                    "cors_policy": {
+                        "allow_origins": ["example"],
+                        "allow_methods": [
                             "GET",
                             "PUT",
                         ],
-                        "allowHeaders": [
+                        "allow_headers": [
                             "version",
                             "type",
                         ],
-                        "exposeHeaders": [
+                        "expose_headers": [
                             "version",
                             "type",
                         ],
-                        "maxAge": "1s",
-                        "allowCredentials": True,
+                        "max_age": "1s",
+                        "allow_credentials": True,
                         "disabled": False,
                     },
-                    "requestHeaderModifier": {
+                    "request_header_modifier": {
                         "set": {
                             "version": "1",
                             "type": "json",
                         },
                         "add": {
-                            "minor-version": "1",
+                            "minor_version": "1",
                         },
                         "removes": ["arg"],
                     },
-                    "responseHeaderModifier": {
+                    "response_header_modifier": {
                         "set": {
                             "version": "1",
                             "type": "json",
                         },
                         "add": {
-                            "minor-version": "1",
+                            "minor_version": "1",
                         },
                         "removes": ["removearg"],
                     },
@@ -918,11 +918,11 @@ class HttpRoute(pulumi.CustomResource):
             meshes=[default.id],
             rules=[{
                 "matches": [{
-                    "queryParameters": [{
-                        "queryParameter": "key",
-                        "exactMatch": "value",
+                    "query_parameters": [{
+                        "query_parameter": "key",
+                        "exact_match": "value",
                     }],
-                    "fullPathMatch": "example",
+                    "full_path_match": "example",
                 }],
             }])
         ```

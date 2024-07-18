@@ -496,19 +496,19 @@ class OsPolicyAssignment(pulumi.CustomResource):
         primary = gcp.osconfig.OsPolicyAssignment("primary",
             instance_filter={
                 "all": False,
-                "exclusionLabels": [{
+                "exclusion_labels": [{
                     "labels": {
-                        "label-two": "value-two",
+                        "label_two": "value-two",
                     },
                 }],
-                "inclusionLabels": [{
+                "inclusion_labels": [{
                     "labels": {
-                        "label-one": "value-one",
+                        "label_one": "value-one",
                     },
                 }],
                 "inventories": [{
-                    "osShortName": "centos",
-                    "osVersion": "8.*",
+                    "os_short_name": "centos",
+                    "os_version": "8.*",
                 }],
             },
             location="us-central1-a",
@@ -516,59 +516,59 @@ class OsPolicyAssignment(pulumi.CustomResource):
             os_policies=[{
                 "id": "policy",
                 "mode": "VALIDATION",
-                "resourceGroups": [{
+                "resource_groups": [{
                     "resources": [
                         {
                             "id": "apt-to-yum",
                             "repository": {
                                 "apt": {
-                                    "archiveType": "DEB",
+                                    "archive_type": "DEB",
                                     "components": ["doc"],
                                     "distribution": "debian",
                                     "uri": "https://atl.mirrors.clouvider.net/debian",
-                                    "gpgKey": ".gnupg/pubring.kbx",
+                                    "gpg_key": ".gnupg/pubring.kbx",
                                 },
                             },
                         },
                         {
                             "id": "exec1",
-                            "exec": {
+                            "exec_": {
                                 "validate": {
                                     "interpreter": "SHELL",
                                     "args": ["arg1"],
                                     "file": {
-                                        "localPath": "$HOME/script.sh",
+                                        "local_path": "$HOME/script.sh",
                                     },
-                                    "outputFilePath": "$HOME/out",
+                                    "output_file_path": "$HOME/out",
                                 },
                                 "enforce": {
                                     "interpreter": "SHELL",
                                     "args": ["arg1"],
                                     "file": {
-                                        "allowInsecure": True,
+                                        "allow_insecure": True,
                                         "remote": {
                                             "uri": "https://www.example.com/script.sh",
-                                            "sha256Checksum": "c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
+                                            "sha256_checksum": "c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
                                         },
                                     },
-                                    "outputFilePath": "$HOME/out",
+                                    "output_file_path": "$HOME/out",
                                 },
                             },
                         },
                     ],
-                    "inventoryFilters": [{
-                        "osShortName": "centos",
-                        "osVersion": "8.*",
+                    "inventory_filters": [{
+                        "os_short_name": "centos",
+                        "os_version": "8.*",
                     }],
                 }],
-                "allowNoResourceGroupMatch": False,
+                "allow_no_resource_group_match": False,
                 "description": "A test os policy",
             }],
             rollout={
-                "disruptionBudget": {
+                "disruption_budget": {
                     "percent": 100,
                 },
-                "minWaitDuration": "3s",
+                "min_wait_duration": "3s",
             },
             description="A test os policy assignment")
         ```
@@ -646,19 +646,19 @@ class OsPolicyAssignment(pulumi.CustomResource):
         primary = gcp.osconfig.OsPolicyAssignment("primary",
             instance_filter={
                 "all": False,
-                "exclusionLabels": [{
+                "exclusion_labels": [{
                     "labels": {
-                        "label-two": "value-two",
+                        "label_two": "value-two",
                     },
                 }],
-                "inclusionLabels": [{
+                "inclusion_labels": [{
                     "labels": {
-                        "label-one": "value-one",
+                        "label_one": "value-one",
                     },
                 }],
                 "inventories": [{
-                    "osShortName": "centos",
-                    "osVersion": "8.*",
+                    "os_short_name": "centos",
+                    "os_version": "8.*",
                 }],
             },
             location="us-central1-a",
@@ -666,59 +666,59 @@ class OsPolicyAssignment(pulumi.CustomResource):
             os_policies=[{
                 "id": "policy",
                 "mode": "VALIDATION",
-                "resourceGroups": [{
+                "resource_groups": [{
                     "resources": [
                         {
                             "id": "apt-to-yum",
                             "repository": {
                                 "apt": {
-                                    "archiveType": "DEB",
+                                    "archive_type": "DEB",
                                     "components": ["doc"],
                                     "distribution": "debian",
                                     "uri": "https://atl.mirrors.clouvider.net/debian",
-                                    "gpgKey": ".gnupg/pubring.kbx",
+                                    "gpg_key": ".gnupg/pubring.kbx",
                                 },
                             },
                         },
                         {
                             "id": "exec1",
-                            "exec": {
+                            "exec_": {
                                 "validate": {
                                     "interpreter": "SHELL",
                                     "args": ["arg1"],
                                     "file": {
-                                        "localPath": "$HOME/script.sh",
+                                        "local_path": "$HOME/script.sh",
                                     },
-                                    "outputFilePath": "$HOME/out",
+                                    "output_file_path": "$HOME/out",
                                 },
                                 "enforce": {
                                     "interpreter": "SHELL",
                                     "args": ["arg1"],
                                     "file": {
-                                        "allowInsecure": True,
+                                        "allow_insecure": True,
                                         "remote": {
                                             "uri": "https://www.example.com/script.sh",
-                                            "sha256Checksum": "c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
+                                            "sha256_checksum": "c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
                                         },
                                     },
-                                    "outputFilePath": "$HOME/out",
+                                    "output_file_path": "$HOME/out",
                                 },
                             },
                         },
                     ],
-                    "inventoryFilters": [{
-                        "osShortName": "centos",
-                        "osVersion": "8.*",
+                    "inventory_filters": [{
+                        "os_short_name": "centos",
+                        "os_version": "8.*",
                     }],
                 }],
-                "allowNoResourceGroupMatch": False,
+                "allow_no_resource_group_match": False,
                 "description": "A test os policy",
             }],
             rollout={
-                "disruptionBudget": {
+                "disruption_budget": {
                     "percent": 100,
                 },
-                "minWaitDuration": "3s",
+                "min_wait_duration": "3s",
             },
             description="A test os policy assignment")
         ```
