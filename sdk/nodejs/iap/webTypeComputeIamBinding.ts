@@ -355,7 +355,7 @@ export class WebTypeComputeIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(WebTypeComputeIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(WebTypeComputeIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

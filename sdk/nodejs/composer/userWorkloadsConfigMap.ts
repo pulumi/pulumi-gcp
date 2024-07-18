@@ -146,7 +146,7 @@ export class UserWorkloadsConfigMap extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(UserWorkloadsConfigMap.__pulumiType, name, resourceInputs, opts);
+        super(UserWorkloadsConfigMap.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

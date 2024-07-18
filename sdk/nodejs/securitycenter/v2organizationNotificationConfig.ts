@@ -171,7 +171,7 @@ export class V2OrganizationNotificationConfig extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(V2OrganizationNotificationConfig.__pulumiType, name, resourceInputs, opts);
+        super(V2OrganizationNotificationConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -303,7 +303,7 @@ def get_image(family: Optional[str] = None,
     my_image = gcp.compute.get_image(family="debian-11",
         project="debian-cloud")
     default = gcp.compute.Instance("default", boot_disk={
-        "initializeParams": {
+        "initialize_params": {
             "image": my_image.self_link,
         },
     })
@@ -378,7 +378,7 @@ def get_image_output(family: Optional[pulumi.Input[Optional[str]]] = None,
     my_image = gcp.compute.get_image(family="debian-11",
         project="debian-cloud")
     default = gcp.compute.Instance("default", boot_disk={
-        "initializeParams": {
+        "initialize_params": {
             "image": my_image.self_link,
         },
     })

@@ -172,7 +172,7 @@ export class ServiceProjectAttachment extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ServiceProjectAttachment.__pulumiType, name, resourceInputs, opts);
+        super(ServiceProjectAttachment.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

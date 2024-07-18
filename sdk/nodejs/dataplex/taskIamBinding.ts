@@ -282,7 +282,7 @@ export class TaskIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TaskIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(TaskIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

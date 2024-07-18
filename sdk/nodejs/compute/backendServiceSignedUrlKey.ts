@@ -158,7 +158,7 @@ export class BackendServiceSignedUrlKey extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["keyValue"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(BackendServiceSignedUrlKey.__pulumiType, name, resourceInputs, opts);
+        super(BackendServiceSignedUrlKey.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -401,7 +401,7 @@ export class AppEngineServiceIamMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AppEngineServiceIamMember.__pulumiType, name, resourceInputs, opts);
+        super(AppEngineServiceIamMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -154,7 +154,7 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
             resourceInputs["protectionLevel"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(CryptoKeyVersion.__pulumiType, name, resourceInputs, opts);
+        super(CryptoKeyVersion.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -434,7 +434,7 @@ class TargetInstance(pulumi.CustomResource):
             machine_type="e2-medium",
             zone="us-central1-a",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": vmimage.self_link,
                 },
             },
@@ -459,7 +459,7 @@ class TargetInstance(pulumi.CustomResource):
             machine_type="e2-medium",
             zone="us-central1-a",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": vmimage.self_link,
                 },
             },
@@ -493,7 +493,7 @@ class TargetInstance(pulumi.CustomResource):
             project="debian-cloud")
         target_vm = gcp.compute.Instance("target-vm",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "network": default.self_link,
                 "subnetwork": default_subnetwork.self_link,
             }],
@@ -501,7 +501,7 @@ class TargetInstance(pulumi.CustomResource):
             machine_type="e2-medium",
             zone="southamerica-west1-a",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": vmimage.self_link,
                 },
             })
@@ -511,7 +511,7 @@ class TargetInstance(pulumi.CustomResource):
             description="ddos protection security policy to set target instance",
             type="CLOUD_ARMOR_NETWORK",
             ddos_protection_config={
-                "ddosProtection": "ADVANCED_PREVIEW",
+                "ddos_protection": "ADVANCED_PREVIEW",
             })
         edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edge_sec_service",
             region="southamerica-west1",
@@ -624,7 +624,7 @@ class TargetInstance(pulumi.CustomResource):
             machine_type="e2-medium",
             zone="us-central1-a",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": vmimage.self_link,
                 },
             },
@@ -649,7 +649,7 @@ class TargetInstance(pulumi.CustomResource):
             machine_type="e2-medium",
             zone="us-central1-a",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": vmimage.self_link,
                 },
             },
@@ -683,7 +683,7 @@ class TargetInstance(pulumi.CustomResource):
             project="debian-cloud")
         target_vm = gcp.compute.Instance("target-vm",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "network": default.self_link,
                 "subnetwork": default_subnetwork.self_link,
             }],
@@ -691,7 +691,7 @@ class TargetInstance(pulumi.CustomResource):
             machine_type="e2-medium",
             zone="southamerica-west1-a",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": vmimage.self_link,
                 },
             })
@@ -701,7 +701,7 @@ class TargetInstance(pulumi.CustomResource):
             description="ddos protection security policy to set target instance",
             type="CLOUD_ARMOR_NETWORK",
             ddos_protection_config={
-                "ddosProtection": "ADVANCED_PREVIEW",
+                "ddos_protection": "ADVANCED_PREVIEW",
             })
         edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edge_sec_service",
             region="southamerica-west1",

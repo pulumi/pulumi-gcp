@@ -146,7 +146,7 @@ export class ManagementOrganizationEventThreatDetectionCustomModule extends pulu
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ManagementOrganizationEventThreatDetectionCustomModule.__pulumiType, name, resourceInputs, opts);
+        super(ManagementOrganizationEventThreatDetectionCustomModule.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

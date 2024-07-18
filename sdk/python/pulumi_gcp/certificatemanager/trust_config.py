@@ -407,11 +407,11 @@ class TrustConfig(pulumi.CustomResource):
             description="sample description for the trust config",
             location="us-central1",
             trust_stores=[{
-                "trustAnchors": [{
-                    "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
+                "trust_anchors": [{
+                    "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
                 }],
-                "intermediateCas": [{
-                    "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
+                "intermediate_cas": [{
+                    "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
                 }],
             }],
             labels={
@@ -431,10 +431,10 @@ class TrustConfig(pulumi.CustomResource):
             location="global",
             allowlisted_certificates=[
                 {
-                    "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
+                    "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
                 },
                 {
-                    "pemCertificate": std.file(input="test-fixtures/cert2.pem").result,
+                    "pem_certificate": std.file(input="test-fixtures/cert2.pem").result,
                 },
             ],
             labels={
@@ -515,11 +515,11 @@ class TrustConfig(pulumi.CustomResource):
             description="sample description for the trust config",
             location="us-central1",
             trust_stores=[{
-                "trustAnchors": [{
-                    "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
+                "trust_anchors": [{
+                    "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
                 }],
-                "intermediateCas": [{
-                    "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
+                "intermediate_cas": [{
+                    "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
                 }],
             }],
             labels={
@@ -539,10 +539,10 @@ class TrustConfig(pulumi.CustomResource):
             location="global",
             allowlisted_certificates=[
                 {
-                    "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
+                    "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
                 },
                 {
-                    "pemCertificate": std.file(input="test-fixtures/cert2.pem").result,
+                    "pem_certificate": std.file(input="test-fixtures/cert2.pem").result,
                 },
             ],
             labels={

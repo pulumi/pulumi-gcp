@@ -96,7 +96,7 @@ export class Location extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Location.__pulumiType, name, resourceInputs, opts);
+        super(Location.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

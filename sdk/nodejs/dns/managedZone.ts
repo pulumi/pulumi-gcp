@@ -469,7 +469,7 @@ export class ManagedZone extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(ManagedZone.__pulumiType, name, resourceInputs, opts);
+        super(ManagedZone.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

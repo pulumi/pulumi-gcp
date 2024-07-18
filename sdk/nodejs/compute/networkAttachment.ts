@@ -278,7 +278,7 @@ export class NetworkAttachment extends pulumi.CustomResource {
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(NetworkAttachment.__pulumiType, name, resourceInputs, opts);
+        super(NetworkAttachment.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

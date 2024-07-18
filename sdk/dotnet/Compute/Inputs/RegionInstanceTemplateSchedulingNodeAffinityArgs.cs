@@ -27,6 +27,10 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("values", required: true)]
         private InputList<string>? _values;
+
+        /// <summary>
+        /// Corresponds to the label values of a reservation resource.
+        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());

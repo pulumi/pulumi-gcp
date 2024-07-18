@@ -188,7 +188,7 @@ export class ObjectAccessControl extends pulumi.CustomResource {
             resourceInputs["projectTeams"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ObjectAccessControl.__pulumiType, name, resourceInputs, opts);
+        super(ObjectAccessControl.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

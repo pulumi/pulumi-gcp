@@ -381,7 +381,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["replicaConfiguration", "rootPassword", "serverCaCerts"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(DatabaseInstance.__pulumiType, name, resourceInputs, opts);
+        super(DatabaseInstance.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

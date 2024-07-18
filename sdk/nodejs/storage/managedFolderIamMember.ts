@@ -378,7 +378,7 @@ export class ManagedFolderIamMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ManagedFolderIamMember.__pulumiType, name, resourceInputs, opts);
+        super(ManagedFolderIamMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

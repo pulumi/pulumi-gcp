@@ -167,7 +167,7 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(GlobalNetworkEndpointGroup.__pulumiType, name, resourceInputs, opts);
+        super(GlobalNetworkEndpointGroup.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

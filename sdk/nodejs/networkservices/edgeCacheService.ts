@@ -576,7 +576,7 @@ export class EdgeCacheService extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(EdgeCacheService.__pulumiType, name, resourceInputs, opts);
+        super(EdgeCacheService.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

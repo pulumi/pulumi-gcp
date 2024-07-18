@@ -204,7 +204,7 @@ export class Key extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(opts, aliasOpts);
         const secretOpts = { additionalSecretOutputs: ["privateKey"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(Key.__pulumiType, name, resourceInputs, opts);
+        super(Key.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

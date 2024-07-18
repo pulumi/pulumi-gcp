@@ -482,7 +482,7 @@ export class HealthCheck extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(HealthCheck.__pulumiType, name, resourceInputs, opts);
+        super(HealthCheck.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

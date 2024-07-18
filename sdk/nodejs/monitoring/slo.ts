@@ -380,7 +380,7 @@ export class Slo extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Slo.__pulumiType, name, resourceInputs, opts);
+        super(Slo.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

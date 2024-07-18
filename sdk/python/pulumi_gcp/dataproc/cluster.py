@@ -376,44 +376,44 @@ class Cluster(pulumi.CustomResource):
                 "foo": "bar",
             },
             cluster_config={
-                "stagingBucket": "dataproc-staging-bucket",
-                "masterConfig": {
-                    "numInstances": 1,
-                    "machineType": "e2-medium",
-                    "diskConfig": {
-                        "bootDiskType": "pd-ssd",
-                        "bootDiskSizeGb": 30,
+                "staging_bucket": "dataproc-staging-bucket",
+                "master_config": {
+                    "num_instances": 1,
+                    "machine_type": "e2-medium",
+                    "disk_config": {
+                        "boot_disk_type": "pd-ssd",
+                        "boot_disk_size_gb": 30,
                     },
                 },
-                "workerConfig": {
-                    "numInstances": 2,
-                    "machineType": "e2-medium",
-                    "minCpuPlatform": "Intel Skylake",
-                    "diskConfig": {
-                        "bootDiskSizeGb": 30,
-                        "numLocalSsds": 1,
+                "worker_config": {
+                    "num_instances": 2,
+                    "machine_type": "e2-medium",
+                    "min_cpu_platform": "Intel Skylake",
+                    "disk_config": {
+                        "boot_disk_size_gb": 30,
+                        "num_local_ssds": 1,
                     },
                 },
-                "preemptibleWorkerConfig": {
-                    "numInstances": 0,
+                "preemptible_worker_config": {
+                    "num_instances": 0,
                 },
-                "softwareConfig": {
-                    "imageVersion": "2.0.35-debian10",
-                    "overrideProperties": {
-                        "dataproc:dataproc.allow.zero.workers": "true",
+                "software_config": {
+                    "image_version": "2.0.35-debian10",
+                    "override_properties": {
+                        "dataproc_dataproc_allow_zero_workers": "true",
                     },
                 },
-                "gceClusterConfig": {
+                "gce_cluster_config": {
                     "tags": [
                         "foo",
                         "bar",
                     ],
-                    "serviceAccount": default.email,
-                    "serviceAccountScopes": ["cloud-platform"],
+                    "service_account": default.email,
+                    "service_account_scopes": ["cloud-platform"],
                 },
-                "initializationActions": [{
+                "initialization_actions": [{
                     "script": "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
-                    "timeoutSec": 500,
+                    "timeout_sec": 500,
                 }],
             })
         ```
@@ -428,13 +428,13 @@ class Cluster(pulumi.CustomResource):
             name="my-cluster-with-gpu",
             region="us-central1",
             cluster_config={
-                "gceClusterConfig": {
+                "gce_cluster_config": {
                     "zone": "us-central1-a",
                 },
-                "masterConfig": {
+                "master_config": {
                     "accelerators": [{
-                        "acceleratorType": "nvidia-tesla-k80",
-                        "acceleratorCount": 1,
+                        "accelerator_type": "nvidia-tesla-k80",
+                        "accelerator_count": 1,
                     }],
                 },
             })
@@ -509,44 +509,44 @@ class Cluster(pulumi.CustomResource):
                 "foo": "bar",
             },
             cluster_config={
-                "stagingBucket": "dataproc-staging-bucket",
-                "masterConfig": {
-                    "numInstances": 1,
-                    "machineType": "e2-medium",
-                    "diskConfig": {
-                        "bootDiskType": "pd-ssd",
-                        "bootDiskSizeGb": 30,
+                "staging_bucket": "dataproc-staging-bucket",
+                "master_config": {
+                    "num_instances": 1,
+                    "machine_type": "e2-medium",
+                    "disk_config": {
+                        "boot_disk_type": "pd-ssd",
+                        "boot_disk_size_gb": 30,
                     },
                 },
-                "workerConfig": {
-                    "numInstances": 2,
-                    "machineType": "e2-medium",
-                    "minCpuPlatform": "Intel Skylake",
-                    "diskConfig": {
-                        "bootDiskSizeGb": 30,
-                        "numLocalSsds": 1,
+                "worker_config": {
+                    "num_instances": 2,
+                    "machine_type": "e2-medium",
+                    "min_cpu_platform": "Intel Skylake",
+                    "disk_config": {
+                        "boot_disk_size_gb": 30,
+                        "num_local_ssds": 1,
                     },
                 },
-                "preemptibleWorkerConfig": {
-                    "numInstances": 0,
+                "preemptible_worker_config": {
+                    "num_instances": 0,
                 },
-                "softwareConfig": {
-                    "imageVersion": "2.0.35-debian10",
-                    "overrideProperties": {
-                        "dataproc:dataproc.allow.zero.workers": "true",
+                "software_config": {
+                    "image_version": "2.0.35-debian10",
+                    "override_properties": {
+                        "dataproc_dataproc_allow_zero_workers": "true",
                     },
                 },
-                "gceClusterConfig": {
+                "gce_cluster_config": {
                     "tags": [
                         "foo",
                         "bar",
                     ],
-                    "serviceAccount": default.email,
-                    "serviceAccountScopes": ["cloud-platform"],
+                    "service_account": default.email,
+                    "service_account_scopes": ["cloud-platform"],
                 },
-                "initializationActions": [{
+                "initialization_actions": [{
                     "script": "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
-                    "timeoutSec": 500,
+                    "timeout_sec": 500,
                 }],
             })
         ```
@@ -561,13 +561,13 @@ class Cluster(pulumi.CustomResource):
             name="my-cluster-with-gpu",
             region="us-central1",
             cluster_config={
-                "gceClusterConfig": {
+                "gce_cluster_config": {
                     "zone": "us-central1-a",
                 },
-                "masterConfig": {
+                "master_config": {
                     "accelerators": [{
-                        "acceleratorType": "nvidia-tesla-k80",
-                        "acceleratorCount": 1,
+                        "accelerator_type": "nvidia-tesla-k80",
+                        "accelerator_count": 1,
                     }],
                 },
             })

@@ -486,7 +486,7 @@ class CertificateMapEntry(pulumi.CustomResource):
                     instance.domain,
                     instance2.domain,
                 ],
-                "dnsAuthorizations": [
+                "dns_authorizations": [
                     instance.id,
                     instance2.id,
                 ],
@@ -595,7 +595,7 @@ class CertificateMapEntry(pulumi.CustomResource):
                     instance.domain,
                     instance2.domain,
                 ],
-                "dnsAuthorizations": [
+                "dns_authorizations": [
                     instance.id,
                     instance2.id,
                 ],

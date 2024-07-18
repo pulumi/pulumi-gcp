@@ -203,7 +203,7 @@ export class DicomStoreIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DicomStoreIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(DicomStoreIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

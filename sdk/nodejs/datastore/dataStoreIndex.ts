@@ -164,7 +164,7 @@ export class DataStoreIndex extends pulumi.CustomResource {
             resourceInputs["indexId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DataStoreIndex.__pulumiType, name, resourceInputs, opts);
+        super(DataStoreIndex.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

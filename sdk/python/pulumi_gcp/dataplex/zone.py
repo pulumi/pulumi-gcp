@@ -513,7 +513,7 @@ class Zone(pulumi.CustomResource):
             location="us-west1",
             name="zone",
             resource_spec={
-                "locationType": "MULTI_REGION",
+                "location_type": "MULTI_REGION",
             },
             type="RAW",
             description="Zone for DCL",
@@ -595,7 +595,7 @@ class Zone(pulumi.CustomResource):
             location="us-west1",
             name="zone",
             resource_spec={
-                "locationType": "MULTI_REGION",
+                "location_type": "MULTI_REGION",
             },
             type="RAW",
             description="Zone for DCL",

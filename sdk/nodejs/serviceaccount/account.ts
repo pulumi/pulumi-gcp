@@ -163,7 +163,7 @@ export class Account extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "gcp:serviceAccount/account:Account" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
-        super(Account.__pulumiType, name, resourceInputs, opts);
+        super(Account.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

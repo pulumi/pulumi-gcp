@@ -234,7 +234,7 @@ export class AccessPolicyIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AccessPolicyIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(AccessPolicyIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

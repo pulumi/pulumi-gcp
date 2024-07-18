@@ -175,7 +175,7 @@ export class NatAddress extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(NatAddress.__pulumiType, name, resourceInputs, opts);
+        super(NatAddress.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -466,7 +466,7 @@ export class Dataset extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(Dataset.__pulumiType, name, resourceInputs, opts);
+        super(Dataset.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

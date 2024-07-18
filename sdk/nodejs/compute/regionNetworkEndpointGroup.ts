@@ -471,7 +471,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(RegionNetworkEndpointGroup.__pulumiType, name, resourceInputs, opts);
+        super(RegionNetworkEndpointGroup.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

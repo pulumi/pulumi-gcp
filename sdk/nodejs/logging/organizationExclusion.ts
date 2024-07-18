@@ -124,7 +124,7 @@ export class OrganizationExclusion extends pulumi.CustomResource {
             resourceInputs["orgId"] = args ? args.orgId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(OrganizationExclusion.__pulumiType, name, resourceInputs, opts);
+        super(OrganizationExclusion.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

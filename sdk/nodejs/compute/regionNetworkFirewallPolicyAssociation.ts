@@ -140,7 +140,7 @@ export class RegionNetworkFirewallPolicyAssociation extends pulumi.CustomResourc
             resourceInputs["shortName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(RegionNetworkFirewallPolicyAssociation.__pulumiType, name, resourceInputs, opts);
+        super(RegionNetworkFirewallPolicyAssociation.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -572,36 +572,36 @@ class EdgeCacheService(pulumi.CustomResource):
             description="The default bucket for media edge test",
             max_attempts=2,
             timeout={
-                "connectTimeout": "10s",
+                "connect_timeout": "10s",
             })
         instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instance",
             name="my-service",
             description="some description",
             routing={
-                "hostRules": [{
+                "host_rules": [{
                     "description": "host rule description",
                     "hosts": ["sslcert.tf-test.club"],
-                    "pathMatcher": "routes",
+                    "path_matcher": "routes",
                 }],
-                "pathMatchers": [{
+                "path_matchers": [{
                     "name": "routes",
-                    "routeRules": [{
+                    "route_rules": [{
                         "description": "a route rule to match against",
                         "priority": "1",
-                        "matchRules": [{
-                            "prefixMatch": "/",
+                        "match_rules": [{
+                            "prefix_match": "/",
                         }],
                         "origin": instance.name,
-                        "routeAction": {
-                            "cdnPolicy": {
-                                "cacheMode": "CACHE_ALL_STATIC",
-                                "defaultTtl": "3600s",
+                        "route_action": {
+                            "cdn_policy": {
+                                "cache_mode": "CACHE_ALL_STATIC",
+                                "default_ttl": "3600s",
                             },
                         },
-                        "headerAction": {
-                            "responseHeaderToAdds": [{
-                                "headerName": "x-cache-status",
-                                "headerValue": "{cdn_cache_status}",
+                        "header_action": {
+                            "response_header_to_adds": [{
+                                "header_name": "x-cache-status",
+                                "header_value": "{cdn_cache_status}",
                             }],
                         },
                     }],
@@ -624,7 +624,7 @@ class EdgeCacheService(pulumi.CustomResource):
             description="The default bucket for media edge test",
             max_attempts=2,
             timeout={
-                "connectTimeout": "10s",
+                "connect_timeout": "10s",
             })
         instance = gcp.networkservices.EdgeCacheOrigin("instance",
             name="my-origin",
@@ -632,7 +632,7 @@ class EdgeCacheService(pulumi.CustomResource):
             description="The default bucket for media edge test",
             max_attempts=2,
             timeout={
-                "connectTimeout": "10s",
+                "connect_timeout": "10s",
             })
         instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instance",
             name="my-service",
@@ -643,43 +643,43 @@ class EdgeCacheService(pulumi.CustomResource):
                 "a": "b",
             },
             routing={
-                "hostRules": [
+                "host_rules": [
                     {
                         "description": "host rule description",
                         "hosts": ["sslcert.tf-test.club"],
-                        "pathMatcher": "routes",
+                        "path_matcher": "routes",
                     },
                     {
                         "description": "host rule2",
                         "hosts": ["sslcert.tf-test2.club"],
-                        "pathMatcher": "routes",
+                        "path_matcher": "routes",
                     },
                     {
                         "description": "host rule3",
                         "hosts": ["sslcert.tf-test3.club"],
-                        "pathMatcher": "routesAdvanced",
+                        "path_matcher": "routesAdvanced",
                     },
                 ],
-                "pathMatchers": [
+                "path_matchers": [
                     {
                         "name": "routes",
-                        "routeRules": [{
+                        "route_rules": [{
                             "description": "a route rule to match against",
                             "priority": "1",
-                            "matchRules": [{
-                                "prefixMatch": "/",
+                            "match_rules": [{
+                                "prefix_match": "/",
                             }],
                             "origin": instance.name,
-                            "routeAction": {
-                                "cdnPolicy": {
-                                    "cacheMode": "CACHE_ALL_STATIC",
-                                    "defaultTtl": "3600s",
+                            "route_action": {
+                                "cdn_policy": {
+                                    "cache_mode": "CACHE_ALL_STATIC",
+                                    "default_ttl": "3600s",
                                 },
                             },
-                            "headerAction": {
-                                "responseHeaderToAdds": [{
-                                    "headerName": "x-cache-status",
-                                    "headerValue": "{cdn_cache_status}",
+                            "header_action": {
+                                "response_header_to_adds": [{
+                                    "header_name": "x-cache-status",
+                                    "header_value": "{cdn_cache_status}",
                                 }],
                             },
                         }],
@@ -687,109 +687,109 @@ class EdgeCacheService(pulumi.CustomResource):
                     {
                         "name": "routesAdvanced",
                         "description": "an advanced ruleset",
-                        "routeRules": [
+                        "route_rules": [
                             {
                                 "description": "an advanced route rule to match against",
                                 "priority": "1",
-                                "matchRules": [
+                                "match_rules": [
                                     {
-                                        "prefixMatch": "/potato/",
-                                        "queryParameterMatches": [
+                                        "prefix_match": "/potato/",
+                                        "query_parameter_matches": [
                                             {
                                                 "name": "debug",
-                                                "presentMatch": True,
+                                                "present_match": True,
                                             },
                                             {
                                                 "name": "state",
-                                                "exactMatch": "debug",
+                                                "exact_match": "debug",
                                             },
                                         ],
                                     },
                                     {
-                                        "fullPathMatch": "/apple",
+                                        "full_path_match": "/apple",
                                     },
                                 ],
-                                "headerAction": {
-                                    "requestHeaderToAdds": [
+                                "header_action": {
+                                    "request_header_to_adds": [
                                         {
-                                            "headerName": "debug",
-                                            "headerValue": "true",
+                                            "header_name": "debug",
+                                            "header_value": "true",
                                             "replace": True,
                                         },
                                         {
-                                            "headerName": "potato",
-                                            "headerValue": "plant",
+                                            "header_name": "potato",
+                                            "header_value": "plant",
                                         },
                                     ],
-                                    "responseHeaderToAdds": [{
-                                        "headerName": "potato",
-                                        "headerValue": "plant",
+                                    "response_header_to_adds": [{
+                                        "header_name": "potato",
+                                        "header_value": "plant",
                                         "replace": True,
                                     }],
-                                    "requestHeaderToRemoves": [{
-                                        "headerName": "prod",
+                                    "request_header_to_removes": [{
+                                        "header_name": "prod",
                                     }],
-                                    "responseHeaderToRemoves": [{
-                                        "headerName": "prod",
+                                    "response_header_to_removes": [{
+                                        "header_name": "prod",
                                     }],
                                 },
                                 "origin": instance.name,
-                                "routeAction": {
-                                    "cdnPolicy": {
-                                        "cacheMode": "CACHE_ALL_STATIC",
-                                        "defaultTtl": "3800s",
-                                        "clientTtl": "3600s",
-                                        "maxTtl": "9000s",
-                                        "cacheKeyPolicy": {
-                                            "includeProtocol": True,
-                                            "excludeHost": True,
-                                            "includedQueryParameters": [
+                                "route_action": {
+                                    "cdn_policy": {
+                                        "cache_mode": "CACHE_ALL_STATIC",
+                                        "default_ttl": "3800s",
+                                        "client_ttl": "3600s",
+                                        "max_ttl": "9000s",
+                                        "cache_key_policy": {
+                                            "include_protocol": True,
+                                            "exclude_host": True,
+                                            "included_query_parameters": [
                                                 "apple",
                                                 "dev",
                                                 "santa",
                                                 "claus",
                                             ],
-                                            "includedHeaderNames": ["banana"],
-                                            "includedCookieNames": ["orange"],
+                                            "included_header_names": ["banana"],
+                                            "included_cookie_names": ["orange"],
                                         },
-                                        "negativeCaching": True,
-                                        "signedRequestMode": "DISABLED",
-                                        "negativeCachingPolicy": {
-                                            "500": "3000s",
+                                        "negative_caching": True,
+                                        "signed_request_mode": "DISABLED",
+                                        "negative_caching_policy": {
+                                            "_500": "3000s",
                                         },
                                     },
-                                    "urlRewrite": {
-                                        "pathPrefixRewrite": "/dev",
-                                        "hostRewrite": "dev.club",
+                                    "url_rewrite": {
+                                        "path_prefix_rewrite": "/dev",
+                                        "host_rewrite": "dev.club",
                                     },
-                                    "corsPolicy": {
-                                        "maxAge": "2500s",
-                                        "allowCredentials": True,
-                                        "allowOrigins": ["*"],
-                                        "allowMethods": ["GET"],
-                                        "allowHeaders": ["dev"],
-                                        "exposeHeaders": ["prod"],
+                                    "cors_policy": {
+                                        "max_age": "2500s",
+                                        "allow_credentials": True,
+                                        "allow_origins": ["*"],
+                                        "allow_methods": ["GET"],
+                                        "allow_headers": ["dev"],
+                                        "expose_headers": ["prod"],
                                     },
                                 },
                             },
                             {
                                 "description": "a second route rule to match against",
                                 "priority": "2",
-                                "matchRules": [{
-                                    "fullPathMatch": "/yay",
+                                "match_rules": [{
+                                    "full_path_match": "/yay",
                                 }],
                                 "origin": instance.name,
-                                "routeAction": {
-                                    "cdnPolicy": {
-                                        "cacheMode": "CACHE_ALL_STATIC",
-                                        "defaultTtl": "3600s",
-                                        "cacheKeyPolicy": {
-                                            "excludedQueryParameters": ["dev"],
+                                "route_action": {
+                                    "cdn_policy": {
+                                        "cache_mode": "CACHE_ALL_STATIC",
+                                        "default_ttl": "3600s",
+                                        "cache_key_policy": {
+                                            "excluded_query_parameters": ["dev"],
                                         },
                                     },
-                                    "corsPolicy": {
-                                        "maxAge": "3000s",
-                                        "allowHeaders": ["dev"],
+                                    "cors_policy": {
+                                        "max_age": "3000s",
+                                        "allow_headers": ["dev"],
                                         "disabled": True,
                                     },
                                 },
@@ -800,7 +800,7 @@ class EdgeCacheService(pulumi.CustomResource):
             },
             log_config={
                 "enable": True,
-                "sampleRate": 0.01,
+                "sample_rate": 0.01,
             })
         ```
         ### Network Services Edge Cache Service Dual Token
@@ -825,7 +825,7 @@ class EdgeCacheService(pulumi.CustomResource):
                 "managed": True,
             }],
             validation_shared_keys=[{
-                "secretVersion": secret_version_basic.id,
+                "secret_version": secret_version_basic.id,
             }])
         instance = gcp.networkservices.EdgeCacheOrigin("instance",
             name="my-origin",
@@ -835,33 +835,33 @@ class EdgeCacheService(pulumi.CustomResource):
             name="my-service",
             description="some description",
             routing={
-                "hostRules": [{
+                "host_rules": [{
                     "description": "host rule description",
                     "hosts": ["sslcert.tf-test.club"],
-                    "pathMatcher": "routes",
+                    "path_matcher": "routes",
                 }],
-                "pathMatchers": [{
+                "path_matchers": [{
                     "name": "routes",
-                    "routeRules": [
+                    "route_rules": [
                         {
                             "description": "a route rule to match against master playlist",
                             "priority": "1",
-                            "matchRules": [{
-                                "pathTemplateMatch": "/master.m3u8",
+                            "match_rules": [{
+                                "path_template_match": "/master.m3u8",
                             }],
                             "origin": instance.name,
-                            "routeAction": {
-                                "cdnPolicy": {
-                                    "signedRequestMode": "REQUIRE_TOKENS",
-                                    "signedRequestKeyset": keyset.id,
-                                    "signedTokenOptions": {
-                                        "tokenQueryParameter": "edge-cache-token",
+                            "route_action": {
+                                "cdn_policy": {
+                                    "signed_request_mode": "REQUIRE_TOKENS",
+                                    "signed_request_keyset": keyset.id,
+                                    "signed_token_options": {
+                                        "token_query_parameter": "edge-cache-token",
                                     },
-                                    "signedRequestMaximumExpirationTtl": "600s",
-                                    "addSignatures": {
+                                    "signed_request_maximum_expiration_ttl": "600s",
+                                    "add_signatures": {
                                         "actions": "GENERATE_COOKIE",
                                         "keyset": keyset.id,
-                                        "copiedParameters": [
+                                        "copied_parameters": [
                                             "PathGlobs",
                                             "SessionID",
                                         ],
@@ -872,28 +872,28 @@ class EdgeCacheService(pulumi.CustomResource):
                         {
                             "description": "a route rule to match against all playlists",
                             "priority": "2",
-                            "matchRules": [{
-                                "pathTemplateMatch": "/*.m3u8",
+                            "match_rules": [{
+                                "path_template_match": "/*.m3u8",
                             }],
                             "origin": instance.name,
-                            "routeAction": {
-                                "cdnPolicy": {
-                                    "signedRequestMode": "REQUIRE_TOKENS",
-                                    "signedRequestKeyset": keyset.id,
-                                    "signedTokenOptions": {
-                                        "tokenQueryParameter": "hdnts",
-                                        "allowedSignatureAlgorithms": [
+                            "route_action": {
+                                "cdn_policy": {
+                                    "signed_request_mode": "REQUIRE_TOKENS",
+                                    "signed_request_keyset": keyset.id,
+                                    "signed_token_options": {
+                                        "token_query_parameter": "hdnts",
+                                        "allowed_signature_algorithms": [
                                             "ED25519",
                                             "HMAC_SHA_256",
                                             "HMAC_SHA1",
                                         ],
                                     },
-                                    "addSignatures": {
+                                    "add_signatures": {
                                         "actions": "GENERATE_TOKEN_HLS_COOKIELESS",
                                         "keyset": keyset.id,
-                                        "tokenTtl": "1200s",
-                                        "tokenQueryParameter": "hdntl",
-                                        "copiedParameters": ["URLPrefix"],
+                                        "token_ttl": "1200s",
+                                        "token_query_parameter": "hdntl",
+                                        "copied_parameters": ["URLPrefix"],
                                     },
                                 },
                             },
@@ -901,20 +901,20 @@ class EdgeCacheService(pulumi.CustomResource):
                         {
                             "description": "a route rule to match against",
                             "priority": "3",
-                            "matchRules": [{
-                                "pathTemplateMatch": "/**.m3u8",
+                            "match_rules": [{
+                                "path_template_match": "/**.m3u8",
                             }],
                             "origin": instance.name,
-                            "routeAction": {
-                                "cdnPolicy": {
-                                    "signedRequestMode": "REQUIRE_TOKENS",
-                                    "signedRequestKeyset": keyset.id,
-                                    "signedTokenOptions": {
-                                        "tokenQueryParameter": "hdntl",
+                            "route_action": {
+                                "cdn_policy": {
+                                    "signed_request_mode": "REQUIRE_TOKENS",
+                                    "signed_request_keyset": keyset.id,
+                                    "signed_token_options": {
+                                        "token_query_parameter": "hdntl",
                                     },
-                                    "addSignatures": {
+                                    "add_signatures": {
                                         "actions": "PROPAGATE_TOKEN_HLS_COOKIELESS",
-                                        "tokenQueryParameter": "hdntl",
+                                        "token_query_parameter": "hdntl",
                                     },
                                 },
                             },
@@ -1005,36 +1005,36 @@ class EdgeCacheService(pulumi.CustomResource):
             description="The default bucket for media edge test",
             max_attempts=2,
             timeout={
-                "connectTimeout": "10s",
+                "connect_timeout": "10s",
             })
         instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instance",
             name="my-service",
             description="some description",
             routing={
-                "hostRules": [{
+                "host_rules": [{
                     "description": "host rule description",
                     "hosts": ["sslcert.tf-test.club"],
-                    "pathMatcher": "routes",
+                    "path_matcher": "routes",
                 }],
-                "pathMatchers": [{
+                "path_matchers": [{
                     "name": "routes",
-                    "routeRules": [{
+                    "route_rules": [{
                         "description": "a route rule to match against",
                         "priority": "1",
-                        "matchRules": [{
-                            "prefixMatch": "/",
+                        "match_rules": [{
+                            "prefix_match": "/",
                         }],
                         "origin": instance.name,
-                        "routeAction": {
-                            "cdnPolicy": {
-                                "cacheMode": "CACHE_ALL_STATIC",
-                                "defaultTtl": "3600s",
+                        "route_action": {
+                            "cdn_policy": {
+                                "cache_mode": "CACHE_ALL_STATIC",
+                                "default_ttl": "3600s",
                             },
                         },
-                        "headerAction": {
-                            "responseHeaderToAdds": [{
-                                "headerName": "x-cache-status",
-                                "headerValue": "{cdn_cache_status}",
+                        "header_action": {
+                            "response_header_to_adds": [{
+                                "header_name": "x-cache-status",
+                                "header_value": "{cdn_cache_status}",
                             }],
                         },
                     }],
@@ -1057,7 +1057,7 @@ class EdgeCacheService(pulumi.CustomResource):
             description="The default bucket for media edge test",
             max_attempts=2,
             timeout={
-                "connectTimeout": "10s",
+                "connect_timeout": "10s",
             })
         instance = gcp.networkservices.EdgeCacheOrigin("instance",
             name="my-origin",
@@ -1065,7 +1065,7 @@ class EdgeCacheService(pulumi.CustomResource):
             description="The default bucket for media edge test",
             max_attempts=2,
             timeout={
-                "connectTimeout": "10s",
+                "connect_timeout": "10s",
             })
         instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instance",
             name="my-service",
@@ -1076,43 +1076,43 @@ class EdgeCacheService(pulumi.CustomResource):
                 "a": "b",
             },
             routing={
-                "hostRules": [
+                "host_rules": [
                     {
                         "description": "host rule description",
                         "hosts": ["sslcert.tf-test.club"],
-                        "pathMatcher": "routes",
+                        "path_matcher": "routes",
                     },
                     {
                         "description": "host rule2",
                         "hosts": ["sslcert.tf-test2.club"],
-                        "pathMatcher": "routes",
+                        "path_matcher": "routes",
                     },
                     {
                         "description": "host rule3",
                         "hosts": ["sslcert.tf-test3.club"],
-                        "pathMatcher": "routesAdvanced",
+                        "path_matcher": "routesAdvanced",
                     },
                 ],
-                "pathMatchers": [
+                "path_matchers": [
                     {
                         "name": "routes",
-                        "routeRules": [{
+                        "route_rules": [{
                             "description": "a route rule to match against",
                             "priority": "1",
-                            "matchRules": [{
-                                "prefixMatch": "/",
+                            "match_rules": [{
+                                "prefix_match": "/",
                             }],
                             "origin": instance.name,
-                            "routeAction": {
-                                "cdnPolicy": {
-                                    "cacheMode": "CACHE_ALL_STATIC",
-                                    "defaultTtl": "3600s",
+                            "route_action": {
+                                "cdn_policy": {
+                                    "cache_mode": "CACHE_ALL_STATIC",
+                                    "default_ttl": "3600s",
                                 },
                             },
-                            "headerAction": {
-                                "responseHeaderToAdds": [{
-                                    "headerName": "x-cache-status",
-                                    "headerValue": "{cdn_cache_status}",
+                            "header_action": {
+                                "response_header_to_adds": [{
+                                    "header_name": "x-cache-status",
+                                    "header_value": "{cdn_cache_status}",
                                 }],
                             },
                         }],
@@ -1120,109 +1120,109 @@ class EdgeCacheService(pulumi.CustomResource):
                     {
                         "name": "routesAdvanced",
                         "description": "an advanced ruleset",
-                        "routeRules": [
+                        "route_rules": [
                             {
                                 "description": "an advanced route rule to match against",
                                 "priority": "1",
-                                "matchRules": [
+                                "match_rules": [
                                     {
-                                        "prefixMatch": "/potato/",
-                                        "queryParameterMatches": [
+                                        "prefix_match": "/potato/",
+                                        "query_parameter_matches": [
                                             {
                                                 "name": "debug",
-                                                "presentMatch": True,
+                                                "present_match": True,
                                             },
                                             {
                                                 "name": "state",
-                                                "exactMatch": "debug",
+                                                "exact_match": "debug",
                                             },
                                         ],
                                     },
                                     {
-                                        "fullPathMatch": "/apple",
+                                        "full_path_match": "/apple",
                                     },
                                 ],
-                                "headerAction": {
-                                    "requestHeaderToAdds": [
+                                "header_action": {
+                                    "request_header_to_adds": [
                                         {
-                                            "headerName": "debug",
-                                            "headerValue": "true",
+                                            "header_name": "debug",
+                                            "header_value": "true",
                                             "replace": True,
                                         },
                                         {
-                                            "headerName": "potato",
-                                            "headerValue": "plant",
+                                            "header_name": "potato",
+                                            "header_value": "plant",
                                         },
                                     ],
-                                    "responseHeaderToAdds": [{
-                                        "headerName": "potato",
-                                        "headerValue": "plant",
+                                    "response_header_to_adds": [{
+                                        "header_name": "potato",
+                                        "header_value": "plant",
                                         "replace": True,
                                     }],
-                                    "requestHeaderToRemoves": [{
-                                        "headerName": "prod",
+                                    "request_header_to_removes": [{
+                                        "header_name": "prod",
                                     }],
-                                    "responseHeaderToRemoves": [{
-                                        "headerName": "prod",
+                                    "response_header_to_removes": [{
+                                        "header_name": "prod",
                                     }],
                                 },
                                 "origin": instance.name,
-                                "routeAction": {
-                                    "cdnPolicy": {
-                                        "cacheMode": "CACHE_ALL_STATIC",
-                                        "defaultTtl": "3800s",
-                                        "clientTtl": "3600s",
-                                        "maxTtl": "9000s",
-                                        "cacheKeyPolicy": {
-                                            "includeProtocol": True,
-                                            "excludeHost": True,
-                                            "includedQueryParameters": [
+                                "route_action": {
+                                    "cdn_policy": {
+                                        "cache_mode": "CACHE_ALL_STATIC",
+                                        "default_ttl": "3800s",
+                                        "client_ttl": "3600s",
+                                        "max_ttl": "9000s",
+                                        "cache_key_policy": {
+                                            "include_protocol": True,
+                                            "exclude_host": True,
+                                            "included_query_parameters": [
                                                 "apple",
                                                 "dev",
                                                 "santa",
                                                 "claus",
                                             ],
-                                            "includedHeaderNames": ["banana"],
-                                            "includedCookieNames": ["orange"],
+                                            "included_header_names": ["banana"],
+                                            "included_cookie_names": ["orange"],
                                         },
-                                        "negativeCaching": True,
-                                        "signedRequestMode": "DISABLED",
-                                        "negativeCachingPolicy": {
-                                            "500": "3000s",
+                                        "negative_caching": True,
+                                        "signed_request_mode": "DISABLED",
+                                        "negative_caching_policy": {
+                                            "_500": "3000s",
                                         },
                                     },
-                                    "urlRewrite": {
-                                        "pathPrefixRewrite": "/dev",
-                                        "hostRewrite": "dev.club",
+                                    "url_rewrite": {
+                                        "path_prefix_rewrite": "/dev",
+                                        "host_rewrite": "dev.club",
                                     },
-                                    "corsPolicy": {
-                                        "maxAge": "2500s",
-                                        "allowCredentials": True,
-                                        "allowOrigins": ["*"],
-                                        "allowMethods": ["GET"],
-                                        "allowHeaders": ["dev"],
-                                        "exposeHeaders": ["prod"],
+                                    "cors_policy": {
+                                        "max_age": "2500s",
+                                        "allow_credentials": True,
+                                        "allow_origins": ["*"],
+                                        "allow_methods": ["GET"],
+                                        "allow_headers": ["dev"],
+                                        "expose_headers": ["prod"],
                                     },
                                 },
                             },
                             {
                                 "description": "a second route rule to match against",
                                 "priority": "2",
-                                "matchRules": [{
-                                    "fullPathMatch": "/yay",
+                                "match_rules": [{
+                                    "full_path_match": "/yay",
                                 }],
                                 "origin": instance.name,
-                                "routeAction": {
-                                    "cdnPolicy": {
-                                        "cacheMode": "CACHE_ALL_STATIC",
-                                        "defaultTtl": "3600s",
-                                        "cacheKeyPolicy": {
-                                            "excludedQueryParameters": ["dev"],
+                                "route_action": {
+                                    "cdn_policy": {
+                                        "cache_mode": "CACHE_ALL_STATIC",
+                                        "default_ttl": "3600s",
+                                        "cache_key_policy": {
+                                            "excluded_query_parameters": ["dev"],
                                         },
                                     },
-                                    "corsPolicy": {
-                                        "maxAge": "3000s",
-                                        "allowHeaders": ["dev"],
+                                    "cors_policy": {
+                                        "max_age": "3000s",
+                                        "allow_headers": ["dev"],
                                         "disabled": True,
                                     },
                                 },
@@ -1233,7 +1233,7 @@ class EdgeCacheService(pulumi.CustomResource):
             },
             log_config={
                 "enable": True,
-                "sampleRate": 0.01,
+                "sample_rate": 0.01,
             })
         ```
         ### Network Services Edge Cache Service Dual Token
@@ -1258,7 +1258,7 @@ class EdgeCacheService(pulumi.CustomResource):
                 "managed": True,
             }],
             validation_shared_keys=[{
-                "secretVersion": secret_version_basic.id,
+                "secret_version": secret_version_basic.id,
             }])
         instance = gcp.networkservices.EdgeCacheOrigin("instance",
             name="my-origin",
@@ -1268,33 +1268,33 @@ class EdgeCacheService(pulumi.CustomResource):
             name="my-service",
             description="some description",
             routing={
-                "hostRules": [{
+                "host_rules": [{
                     "description": "host rule description",
                     "hosts": ["sslcert.tf-test.club"],
-                    "pathMatcher": "routes",
+                    "path_matcher": "routes",
                 }],
-                "pathMatchers": [{
+                "path_matchers": [{
                     "name": "routes",
-                    "routeRules": [
+                    "route_rules": [
                         {
                             "description": "a route rule to match against master playlist",
                             "priority": "1",
-                            "matchRules": [{
-                                "pathTemplateMatch": "/master.m3u8",
+                            "match_rules": [{
+                                "path_template_match": "/master.m3u8",
                             }],
                             "origin": instance.name,
-                            "routeAction": {
-                                "cdnPolicy": {
-                                    "signedRequestMode": "REQUIRE_TOKENS",
-                                    "signedRequestKeyset": keyset.id,
-                                    "signedTokenOptions": {
-                                        "tokenQueryParameter": "edge-cache-token",
+                            "route_action": {
+                                "cdn_policy": {
+                                    "signed_request_mode": "REQUIRE_TOKENS",
+                                    "signed_request_keyset": keyset.id,
+                                    "signed_token_options": {
+                                        "token_query_parameter": "edge-cache-token",
                                     },
-                                    "signedRequestMaximumExpirationTtl": "600s",
-                                    "addSignatures": {
+                                    "signed_request_maximum_expiration_ttl": "600s",
+                                    "add_signatures": {
                                         "actions": "GENERATE_COOKIE",
                                         "keyset": keyset.id,
-                                        "copiedParameters": [
+                                        "copied_parameters": [
                                             "PathGlobs",
                                             "SessionID",
                                         ],
@@ -1305,28 +1305,28 @@ class EdgeCacheService(pulumi.CustomResource):
                         {
                             "description": "a route rule to match against all playlists",
                             "priority": "2",
-                            "matchRules": [{
-                                "pathTemplateMatch": "/*.m3u8",
+                            "match_rules": [{
+                                "path_template_match": "/*.m3u8",
                             }],
                             "origin": instance.name,
-                            "routeAction": {
-                                "cdnPolicy": {
-                                    "signedRequestMode": "REQUIRE_TOKENS",
-                                    "signedRequestKeyset": keyset.id,
-                                    "signedTokenOptions": {
-                                        "tokenQueryParameter": "hdnts",
-                                        "allowedSignatureAlgorithms": [
+                            "route_action": {
+                                "cdn_policy": {
+                                    "signed_request_mode": "REQUIRE_TOKENS",
+                                    "signed_request_keyset": keyset.id,
+                                    "signed_token_options": {
+                                        "token_query_parameter": "hdnts",
+                                        "allowed_signature_algorithms": [
                                             "ED25519",
                                             "HMAC_SHA_256",
                                             "HMAC_SHA1",
                                         ],
                                     },
-                                    "addSignatures": {
+                                    "add_signatures": {
                                         "actions": "GENERATE_TOKEN_HLS_COOKIELESS",
                                         "keyset": keyset.id,
-                                        "tokenTtl": "1200s",
-                                        "tokenQueryParameter": "hdntl",
-                                        "copiedParameters": ["URLPrefix"],
+                                        "token_ttl": "1200s",
+                                        "token_query_parameter": "hdntl",
+                                        "copied_parameters": ["URLPrefix"],
                                     },
                                 },
                             },
@@ -1334,20 +1334,20 @@ class EdgeCacheService(pulumi.CustomResource):
                         {
                             "description": "a route rule to match against",
                             "priority": "3",
-                            "matchRules": [{
-                                "pathTemplateMatch": "/**.m3u8",
+                            "match_rules": [{
+                                "path_template_match": "/**.m3u8",
                             }],
                             "origin": instance.name,
-                            "routeAction": {
-                                "cdnPolicy": {
-                                    "signedRequestMode": "REQUIRE_TOKENS",
-                                    "signedRequestKeyset": keyset.id,
-                                    "signedTokenOptions": {
-                                        "tokenQueryParameter": "hdntl",
+                            "route_action": {
+                                "cdn_policy": {
+                                    "signed_request_mode": "REQUIRE_TOKENS",
+                                    "signed_request_keyset": keyset.id,
+                                    "signed_token_options": {
+                                        "token_query_parameter": "hdntl",
                                     },
-                                    "addSignatures": {
+                                    "add_signatures": {
                                         "actions": "PROPAGATE_TOKEN_HLS_COOKIELESS",
-                                        "tokenQueryParameter": "hdntl",
+                                        "token_query_parameter": "hdntl",
                                     },
                                 },
                             },

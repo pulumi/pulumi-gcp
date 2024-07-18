@@ -147,7 +147,7 @@ export class SyncAuthorization extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SyncAuthorization.__pulumiType, name, resourceInputs, opts);
+        super(SyncAuthorization.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

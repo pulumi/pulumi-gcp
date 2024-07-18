@@ -168,7 +168,7 @@ export class LiteSubscription extends pulumi.CustomResource {
             resourceInputs["zone"] = args ? args.zone : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(LiteSubscription.__pulumiType, name, resourceInputs, opts);
+        super(LiteSubscription.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

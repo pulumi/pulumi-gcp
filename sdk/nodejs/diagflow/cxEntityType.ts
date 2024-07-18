@@ -212,7 +212,7 @@ export class CxEntityType extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(CxEntityType.__pulumiType, name, resourceInputs, opts);
+        super(CxEntityType.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

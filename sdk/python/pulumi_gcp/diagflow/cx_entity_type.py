@@ -433,7 +433,7 @@ class CxEntityType(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
             speech_to_text_settings={
-                "enableSpeechAdaptation": True,
+                "enable_speech_adaptation": True,
             })
         basic_entity_type = gcp.diagflow.CxEntityType("basic_entity_type",
             parent=agent.id,
@@ -539,7 +539,7 @@ class CxEntityType(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
             speech_to_text_settings={
-                "enableSpeechAdaptation": True,
+                "enable_speech_adaptation": True,
             })
         basic_entity_type = gcp.diagflow.CxEntityType("basic_entity_type",
             parent=agent.id,

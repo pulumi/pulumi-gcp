@@ -165,7 +165,7 @@ export class TenantOauthIdpConfig extends pulumi.CustomResource {
             resourceInputs["tenant"] = args ? args.tenant : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TenantOauthIdpConfig.__pulumiType, name, resourceInputs, opts);
+        super(TenantOauthIdpConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

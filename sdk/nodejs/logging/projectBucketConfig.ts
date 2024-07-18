@@ -248,7 +248,7 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ProjectBucketConfig.__pulumiType, name, resourceInputs, opts);
+        super(ProjectBucketConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

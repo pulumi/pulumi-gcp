@@ -68,7 +68,7 @@ export class DeliveryPipelineIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DeliveryPipelineIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(DeliveryPipelineIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

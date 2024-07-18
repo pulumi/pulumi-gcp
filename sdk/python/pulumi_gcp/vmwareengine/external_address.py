@@ -301,14 +301,14 @@ class ExternalAddress(pulumi.CustomResource):
             name="sample-pc",
             description="Sample test PC.",
             network_config={
-                "managementCidr": "192.168.50.0/24",
-                "vmwareEngineNetwork": external_address_nw.id,
+                "management_cidr": "192.168.50.0/24",
+                "vmware_engine_network": external_address_nw.id,
             },
             management_cluster={
-                "clusterId": "sample-mgmt-cluster",
-                "nodeTypeConfigs": [{
-                    "nodeTypeId": "standard-72",
-                    "nodeCount": 3,
+                "cluster_id": "sample-mgmt-cluster",
+                "node_type_configs": [{
+                    "node_type_id": "standard-72",
+                    "node_count": 3,
                 }],
             })
         external_address_np = gcp.vmwareengine.NetworkPolicy("external-address-np",
@@ -379,14 +379,14 @@ class ExternalAddress(pulumi.CustomResource):
             name="sample-pc",
             description="Sample test PC.",
             network_config={
-                "managementCidr": "192.168.50.0/24",
-                "vmwareEngineNetwork": external_address_nw.id,
+                "management_cidr": "192.168.50.0/24",
+                "vmware_engine_network": external_address_nw.id,
             },
             management_cluster={
-                "clusterId": "sample-mgmt-cluster",
-                "nodeTypeConfigs": [{
-                    "nodeTypeId": "standard-72",
-                    "nodeCount": 3,
+                "cluster_id": "sample-mgmt-cluster",
+                "node_type_configs": [{
+                    "node_type_id": "standard-72",
+                    "node_count": 3,
                 }],
             })
         external_address_np = gcp.vmwareengine.NetworkPolicy("external-address-np",

@@ -154,7 +154,7 @@ export class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(KeystoresAliasesPkcs12.__pulumiType, name, resourceInputs, opts);
+        super(KeystoresAliasesPkcs12.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

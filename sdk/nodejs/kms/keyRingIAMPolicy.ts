@@ -337,7 +337,7 @@ export class KeyRingIAMPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(KeyRingIAMPolicy.__pulumiType, name, resourceInputs, opts);
+        super(KeyRingIAMPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

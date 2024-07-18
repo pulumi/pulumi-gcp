@@ -237,7 +237,7 @@ export class MangedSslCertificate extends pulumi.CustomResource {
             resourceInputs["subjectAlternativeNames"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(MangedSslCertificate.__pulumiType, name, resourceInputs, opts);
+        super(MangedSslCertificate.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 
