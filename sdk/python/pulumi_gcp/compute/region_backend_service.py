@@ -1416,8 +1416,8 @@ class RegionBackendService(pulumi.CustomResource):
             protocol="HTTP",
             load_balancing_scheme="EXTERNAL",
             iap={
-                "oauth2ClientId": "abc",
-                "oauth2ClientSecret": "xyz",
+                "oauth2_client_id": "abc",
+                "oauth2_client_secret": "xyz",
             })
         ```
         ### Region Backend Service Cache
@@ -1438,12 +1438,12 @@ class RegionBackendService(pulumi.CustomResource):
             health_checks=default_region_health_check.id,
             enable_cdn=True,
             cdn_policy={
-                "cacheMode": "CACHE_ALL_STATIC",
-                "defaultTtl": 3600,
-                "clientTtl": 7200,
-                "maxTtl": 10800,
-                "negativeCaching": True,
-                "signedUrlCacheMaxAgeSec": 7200,
+                "cache_mode": "CACHE_ALL_STATIC",
+                "default_ttl": 3600,
+                "client_ttl": 7200,
+                "max_ttl": 10800,
+                "negative_caching": True,
+                "signed_url_cache_max_age_sec": 7200,
             },
             load_balancing_scheme="EXTERNAL",
             protocol="HTTP")
@@ -1526,10 +1526,10 @@ class RegionBackendService(pulumi.CustomResource):
             session_affinity="HTTP_COOKIE",
             protocol="HTTP",
             circuit_breakers={
-                "maxConnections": 10,
+                "max_connections": 10,
             },
             consistent_hash={
-                "httpCookie": {
+                "http_cookie": {
                     "ttl": {
                         "seconds": 11,
                         "nanos": 1111,
@@ -1538,7 +1538,7 @@ class RegionBackendService(pulumi.CustomResource):
                 },
             },
             outlier_detection={
-                "consecutiveErrors": 2,
+                "consecutive_errors": 2,
             })
         ```
         ### Region Backend Service Balancing Mode
@@ -1566,8 +1566,8 @@ class RegionBackendService(pulumi.CustomResource):
                 "subnetwork": default_subnetwork.id,
             }],
             disks=[{
-                "sourceImage": debian_image.self_link,
-                "autoDelete": True,
+                "source_image": debian_image.self_link,
+                "auto_delete": True,
                 "boot": True,
             }],
             tags=[
@@ -1578,7 +1578,7 @@ class RegionBackendService(pulumi.CustomResource):
             region="us-central1",
             name="rbs-rigm",
             versions=[{
-                "instanceTemplate": instance_template.id,
+                "instance_template": instance_template.id,
                 "name": "primary",
             }],
             base_instance_name="internal-glb",
@@ -1587,14 +1587,14 @@ class RegionBackendService(pulumi.CustomResource):
             region="us-central1",
             name="rbs-health-check",
             http_health_check={
-                "portSpecification": "USE_SERVING_PORT",
+                "port_specification": "USE_SERVING_PORT",
             })
         default = gcp.compute.RegionBackendService("default",
             load_balancing_scheme="INTERNAL_MANAGED",
             backends=[{
                 "group": rigm.instance_group,
-                "balancingMode": "UTILIZATION",
-                "capacityScaler": 1,
+                "balancing_mode": "UTILIZATION",
+                "capacity_scaler": 1,
             }],
             region="us-central1",
             name="region-service",
@@ -1623,10 +1623,10 @@ class RegionBackendService(pulumi.CustomResource):
             protocol="TCP",
             load_balancing_scheme="EXTERNAL",
             connection_tracking_policy={
-                "trackingMode": "PER_SESSION",
-                "connectionPersistenceOnUnhealthyBackends": "NEVER_PERSIST",
-                "idleTimeoutSec": 60,
-                "enableStrongAffinity": True,
+                "tracking_mode": "PER_SESSION",
+                "connection_persistence_on_unhealthy_backends": "NEVER_PERSIST",
+                "idle_timeout_sec": 60,
+                "enable_strong_affinity": True,
             })
         ```
 
@@ -1842,8 +1842,8 @@ class RegionBackendService(pulumi.CustomResource):
             protocol="HTTP",
             load_balancing_scheme="EXTERNAL",
             iap={
-                "oauth2ClientId": "abc",
-                "oauth2ClientSecret": "xyz",
+                "oauth2_client_id": "abc",
+                "oauth2_client_secret": "xyz",
             })
         ```
         ### Region Backend Service Cache
@@ -1864,12 +1864,12 @@ class RegionBackendService(pulumi.CustomResource):
             health_checks=default_region_health_check.id,
             enable_cdn=True,
             cdn_policy={
-                "cacheMode": "CACHE_ALL_STATIC",
-                "defaultTtl": 3600,
-                "clientTtl": 7200,
-                "maxTtl": 10800,
-                "negativeCaching": True,
-                "signedUrlCacheMaxAgeSec": 7200,
+                "cache_mode": "CACHE_ALL_STATIC",
+                "default_ttl": 3600,
+                "client_ttl": 7200,
+                "max_ttl": 10800,
+                "negative_caching": True,
+                "signed_url_cache_max_age_sec": 7200,
             },
             load_balancing_scheme="EXTERNAL",
             protocol="HTTP")
@@ -1952,10 +1952,10 @@ class RegionBackendService(pulumi.CustomResource):
             session_affinity="HTTP_COOKIE",
             protocol="HTTP",
             circuit_breakers={
-                "maxConnections": 10,
+                "max_connections": 10,
             },
             consistent_hash={
-                "httpCookie": {
+                "http_cookie": {
                     "ttl": {
                         "seconds": 11,
                         "nanos": 1111,
@@ -1964,7 +1964,7 @@ class RegionBackendService(pulumi.CustomResource):
                 },
             },
             outlier_detection={
-                "consecutiveErrors": 2,
+                "consecutive_errors": 2,
             })
         ```
         ### Region Backend Service Balancing Mode
@@ -1992,8 +1992,8 @@ class RegionBackendService(pulumi.CustomResource):
                 "subnetwork": default_subnetwork.id,
             }],
             disks=[{
-                "sourceImage": debian_image.self_link,
-                "autoDelete": True,
+                "source_image": debian_image.self_link,
+                "auto_delete": True,
                 "boot": True,
             }],
             tags=[
@@ -2004,7 +2004,7 @@ class RegionBackendService(pulumi.CustomResource):
             region="us-central1",
             name="rbs-rigm",
             versions=[{
-                "instanceTemplate": instance_template.id,
+                "instance_template": instance_template.id,
                 "name": "primary",
             }],
             base_instance_name="internal-glb",
@@ -2013,14 +2013,14 @@ class RegionBackendService(pulumi.CustomResource):
             region="us-central1",
             name="rbs-health-check",
             http_health_check={
-                "portSpecification": "USE_SERVING_PORT",
+                "port_specification": "USE_SERVING_PORT",
             })
         default = gcp.compute.RegionBackendService("default",
             load_balancing_scheme="INTERNAL_MANAGED",
             backends=[{
                 "group": rigm.instance_group,
-                "balancingMode": "UTILIZATION",
-                "capacityScaler": 1,
+                "balancing_mode": "UTILIZATION",
+                "capacity_scaler": 1,
             }],
             region="us-central1",
             name="region-service",
@@ -2049,10 +2049,10 @@ class RegionBackendService(pulumi.CustomResource):
             protocol="TCP",
             load_balancing_scheme="EXTERNAL",
             connection_tracking_policy={
-                "trackingMode": "PER_SESSION",
-                "connectionPersistenceOnUnhealthyBackends": "NEVER_PERSIST",
-                "idleTimeoutSec": 60,
-                "enableStrongAffinity": True,
+                "tracking_mode": "PER_SESSION",
+                "connection_persistence_on_unhealthy_backends": "NEVER_PERSIST",
+                "idle_timeout_sec": 60,
+                "enable_strong_affinity": True,
             })
         ```
 

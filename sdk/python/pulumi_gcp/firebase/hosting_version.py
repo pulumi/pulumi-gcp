@@ -172,7 +172,7 @@ class HostingVersion(pulumi.CustomResource):
             config={
                 "redirects": [{
                     "glob": "/google/**",
-                    "statusCode": 302,
+                    "status_code": 302,
                     "location": "https://www.google.com",
                 }],
             })
@@ -228,7 +228,7 @@ class HostingVersion(pulumi.CustomResource):
                 "rewrites": [{
                     "glob": "/hello/**",
                     "run": {
-                        "serviceId": default_service.name,
+                        "service_id": default_service.name,
                         "region": default_service.location,
                     },
                 }],
@@ -330,7 +330,7 @@ class HostingVersion(pulumi.CustomResource):
             config={
                 "redirects": [{
                     "glob": "/google/**",
-                    "statusCode": 302,
+                    "status_code": 302,
                     "location": "https://www.google.com",
                 }],
             })
@@ -386,7 +386,7 @@ class HostingVersion(pulumi.CustomResource):
                 "rewrites": [{
                     "glob": "/hello/**",
                     "run": {
-                        "serviceId": default_service.name,
+                        "service_id": default_service.name,
                         "region": default_service.location,
                     },
                 }],

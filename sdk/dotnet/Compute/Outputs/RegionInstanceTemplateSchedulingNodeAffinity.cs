@@ -22,6 +22,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// or `NOT_IN` for anti-affinities.
         /// </summary>
         public readonly string Operator;
+        /// <summary>
+        /// Corresponds to the label values of a reservation resource.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

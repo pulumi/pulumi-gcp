@@ -161,7 +161,7 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/restrict_all"),
             title="restrict_all",
             spec={
-                "restrictedServices": ["storage.googleapis.com"],
+                "restricted_services": ["storage.googleapis.com"],
             },
             use_explicit_dry_run_spec=True)
         service_perimeter_dry_run_resource = gcp.accesscontextmanager.ServicePerimeterDryRunResource("service-perimeter-dry-run-resource",
@@ -236,7 +236,7 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/restrict_all"),
             title="restrict_all",
             spec={
-                "restrictedServices": ["storage.googleapis.com"],
+                "restricted_services": ["storage.googleapis.com"],
             },
             use_explicit_dry_run_spec=True)
         service_perimeter_dry_run_resource = gcp.accesscontextmanager.ServicePerimeterDryRunResource("service-perimeter-dry-run-resource",

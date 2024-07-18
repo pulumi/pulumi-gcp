@@ -13418,6 +13418,7 @@ class InstanceTemplateSchedulingNodeAffinity(dict):
         :param str key: The key for the node affinity label.
         :param str operator: The operator. Can be `IN` for node-affinities
                or `NOT_IN` for anti-affinities.
+        :param Sequence[str] values: Corresponds to the label values of a reservation resource.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "operator", operator)
@@ -13443,6 +13444,9 @@ class InstanceTemplateSchedulingNodeAffinity(dict):
     @property
     @pulumi.getter
     def values(self) -> Sequence[str]:
+        """
+        Corresponds to the label values of a reservation resource.
+        """
         return pulumi.get(self, "values")
 
 
@@ -21861,6 +21865,7 @@ class RegionInstanceTemplateSchedulingNodeAffinity(dict):
         :param str key: The key for the node affinity label.
         :param str operator: The operator. Can be `IN` for node-affinities
                or `NOT_IN` for anti-affinities.
+        :param Sequence[str] values: Corresponds to the label values of a reservation resource.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "operator", operator)
@@ -21886,6 +21891,9 @@ class RegionInstanceTemplateSchedulingNodeAffinity(dict):
     @property
     @pulumi.getter
     def values(self) -> Sequence[str]:
+        """
+        Corresponds to the label values of a reservation resource.
+        """
         return pulumi.get(self, "values")
 
 

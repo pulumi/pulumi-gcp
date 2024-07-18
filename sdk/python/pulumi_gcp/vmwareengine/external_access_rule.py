@@ -494,11 +494,11 @@ class ExternalAccessRule(pulumi.CustomResource):
             action="DENY",
             ip_protocol="TCP",
             source_ip_ranges=[{
-                "ipAddressRange": "0.0.0.0/0",
+                "ip_address_range": "0.0.0.0/0",
             }],
             source_ports=["80"],
             destination_ip_ranges=[{
-                "ipAddressRange": "0.0.0.0/0",
+                "ip_address_range": "0.0.0.0/0",
             }],
             destination_ports=["433"])
         ```
@@ -518,14 +518,14 @@ class ExternalAccessRule(pulumi.CustomResource):
             name="sample-pc",
             description="Sample test PC.",
             network_config={
-                "managementCidr": "192.168.50.0/24",
-                "vmwareEngineNetwork": external_access_rule_nw.id,
+                "management_cidr": "192.168.50.0/24",
+                "vmware_engine_network": external_access_rule_nw.id,
             },
             management_cluster={
-                "clusterId": "sample-mgmt-cluster",
-                "nodeTypeConfigs": [{
-                    "nodeTypeId": "standard-72",
-                    "nodeCount": 3,
+                "cluster_id": "sample-mgmt-cluster",
+                "node_type_configs": [{
+                    "node_type_id": "standard-72",
+                    "node_count": 3,
                 }],
             })
         external_access_rule_np = gcp.vmwareengine.NetworkPolicy("external-access-rule-np",
@@ -545,11 +545,11 @@ class ExternalAccessRule(pulumi.CustomResource):
             action="ALLOW",
             ip_protocol="tcp",
             source_ip_ranges=[{
-                "ipAddressRange": "0.0.0.0/0",
+                "ip_address_range": "0.0.0.0/0",
             }],
             source_ports=["80"],
             destination_ip_ranges=[{
-                "externalAddress": external_access_rule_ea.id,
+                "external_address": external_access_rule_ea.id,
             }],
             destination_ports=["433"])
         ```
@@ -624,11 +624,11 @@ class ExternalAccessRule(pulumi.CustomResource):
             action="DENY",
             ip_protocol="TCP",
             source_ip_ranges=[{
-                "ipAddressRange": "0.0.0.0/0",
+                "ip_address_range": "0.0.0.0/0",
             }],
             source_ports=["80"],
             destination_ip_ranges=[{
-                "ipAddressRange": "0.0.0.0/0",
+                "ip_address_range": "0.0.0.0/0",
             }],
             destination_ports=["433"])
         ```
@@ -648,14 +648,14 @@ class ExternalAccessRule(pulumi.CustomResource):
             name="sample-pc",
             description="Sample test PC.",
             network_config={
-                "managementCidr": "192.168.50.0/24",
-                "vmwareEngineNetwork": external_access_rule_nw.id,
+                "management_cidr": "192.168.50.0/24",
+                "vmware_engine_network": external_access_rule_nw.id,
             },
             management_cluster={
-                "clusterId": "sample-mgmt-cluster",
-                "nodeTypeConfigs": [{
-                    "nodeTypeId": "standard-72",
-                    "nodeCount": 3,
+                "cluster_id": "sample-mgmt-cluster",
+                "node_type_configs": [{
+                    "node_type_id": "standard-72",
+                    "node_count": 3,
                 }],
             })
         external_access_rule_np = gcp.vmwareengine.NetworkPolicy("external-access-rule-np",
@@ -675,11 +675,11 @@ class ExternalAccessRule(pulumi.CustomResource):
             action="ALLOW",
             ip_protocol="tcp",
             source_ip_ranges=[{
-                "ipAddressRange": "0.0.0.0/0",
+                "ip_address_range": "0.0.0.0/0",
             }],
             source_ports=["80"],
             destination_ip_ranges=[{
-                "externalAddress": external_access_rule_ea.id,
+                "external_address": external_access_rule_ea.id,
             }],
             destination_ports=["433"])
         ```
