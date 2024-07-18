@@ -487,8 +487,8 @@ class BackendBucket(pulumi.CustomResource):
             bucket_name=image_bucket.name,
             enable_cdn=True,
             cdn_policy={
-                "cacheKeyPolicy": {
-                    "queryStringWhitelists": ["image-version"],
+                "cache_key_policy": {
+                    "query_string_whitelists": ["image-version"],
                 },
             })
         ```
@@ -507,8 +507,8 @@ class BackendBucket(pulumi.CustomResource):
             bucket_name=image_bucket.name,
             enable_cdn=True,
             cdn_policy={
-                "cacheKeyPolicy": {
-                    "includeHttpHeaders": ["X-My-Header-Field"],
+                "cache_key_policy": {
+                    "include_http_headers": ["X-My-Header-Field"],
                 },
             })
         ```
@@ -635,8 +635,8 @@ class BackendBucket(pulumi.CustomResource):
             bucket_name=image_bucket.name,
             enable_cdn=True,
             cdn_policy={
-                "cacheKeyPolicy": {
-                    "queryStringWhitelists": ["image-version"],
+                "cache_key_policy": {
+                    "query_string_whitelists": ["image-version"],
                 },
             })
         ```
@@ -655,8 +655,8 @@ class BackendBucket(pulumi.CustomResource):
             bucket_name=image_bucket.name,
             enable_cdn=True,
             cdn_policy={
-                "cacheKeyPolicy": {
-                    "includeHttpHeaders": ["X-My-Header-Field"],
+                "cache_key_policy": {
+                    "include_http_headers": ["X-My-Header-Field"],
                 },
             })
         ```

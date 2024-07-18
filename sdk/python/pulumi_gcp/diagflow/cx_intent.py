@@ -578,7 +578,7 @@ class CxIntent(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
             speech_to_text_settings={
-                "enableSpeechAdaptation": True,
+                "enable_speech_adaptation": True,
             })
         basic_intent = gcp.diagflow.CxIntent("basic_intent",
             parent=agent.id,
@@ -597,11 +597,11 @@ class CxIntent(pulumi.CustomResource):
                         "text": "example",
                     },
                 ],
-                "repeatCount": 1,
+                "repeat_count": 1,
             }],
             parameters=[{
                 "id": "param1",
-                "entityType": "projects/-/locations/-/agents/-/entityTypes/sys.date",
+                "entity_type": "projects/-/locations/-/agents/-/entityTypes/sys.date",
             }],
             labels={
                 "label1": "value1",
@@ -702,7 +702,7 @@ class CxIntent(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
             speech_to_text_settings={
-                "enableSpeechAdaptation": True,
+                "enable_speech_adaptation": True,
             })
         basic_intent = gcp.diagflow.CxIntent("basic_intent",
             parent=agent.id,
@@ -721,11 +721,11 @@ class CxIntent(pulumi.CustomResource):
                         "text": "example",
                     },
                 ],
-                "repeatCount": 1,
+                "repeat_count": 1,
             }],
             parameters=[{
                 "id": "param1",
-                "entityType": "projects/-/locations/-/agents/-/entityTypes/sys.date",
+                "entity_type": "projects/-/locations/-/agents/-/entityTypes/sys.date",
             }],
             labels={
                 "label1": "value1",

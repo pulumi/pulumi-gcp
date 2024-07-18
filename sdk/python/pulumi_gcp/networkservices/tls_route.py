@@ -319,12 +319,12 @@ class TlsRoute(pulumi.CustomResource):
             description="my description",
             rules=[{
                 "matches": [{
-                    "sniHosts": ["example.com"],
+                    "sni_hosts": ["example.com"],
                     "alpns": ["http/1.1"],
                 }],
                 "action": {
                     "destinations": [{
-                        "serviceName": default.id,
+                        "service_name": default.id,
                         "weight": 1,
                     }],
                 },
@@ -356,12 +356,12 @@ class TlsRoute(pulumi.CustomResource):
             meshes=[default_mesh.id],
             rules=[{
                 "matches": [{
-                    "sniHosts": ["example.com"],
+                    "sni_hosts": ["example.com"],
                     "alpns": ["http/1.1"],
                 }],
                 "action": {
                     "destinations": [{
-                        "serviceName": default.id,
+                        "service_name": default.id,
                         "weight": 1,
                     }],
                 },
@@ -396,12 +396,12 @@ class TlsRoute(pulumi.CustomResource):
             gateways=[default_gateway.id],
             rules=[{
                 "matches": [{
-                    "sniHosts": ["example.com"],
+                    "sni_hosts": ["example.com"],
                     "alpns": ["http/1.1"],
                 }],
                 "action": {
                     "destinations": [{
-                        "serviceName": default.id,
+                        "service_name": default.id,
                         "weight": 1,
                     }],
                 },
@@ -473,12 +473,12 @@ class TlsRoute(pulumi.CustomResource):
             description="my description",
             rules=[{
                 "matches": [{
-                    "sniHosts": ["example.com"],
+                    "sni_hosts": ["example.com"],
                     "alpns": ["http/1.1"],
                 }],
                 "action": {
                     "destinations": [{
-                        "serviceName": default.id,
+                        "service_name": default.id,
                         "weight": 1,
                     }],
                 },
@@ -510,12 +510,12 @@ class TlsRoute(pulumi.CustomResource):
             meshes=[default_mesh.id],
             rules=[{
                 "matches": [{
-                    "sniHosts": ["example.com"],
+                    "sni_hosts": ["example.com"],
                     "alpns": ["http/1.1"],
                 }],
                 "action": {
                     "destinations": [{
-                        "serviceName": default.id,
+                        "service_name": default.id,
                         "weight": 1,
                     }],
                 },
@@ -550,12 +550,12 @@ class TlsRoute(pulumi.CustomResource):
             gateways=[default_gateway.id],
             rules=[{
                 "matches": [{
-                    "sniHosts": ["example.com"],
+                    "sni_hosts": ["example.com"],
                     "alpns": ["http/1.1"],
                 }],
                 "action": {
                     "destinations": [{
-                        "serviceName": default.id,
+                        "service_name": default.id,
                         "weight": 1,
                     }],
                 },

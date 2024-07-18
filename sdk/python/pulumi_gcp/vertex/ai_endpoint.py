@@ -521,7 +521,7 @@ class AiEndpoint(pulumi.CustomResource):
             },
             network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
             encryption_spec={
-                "kmsKeyName": "kms-name",
+                "kms_key_name": "kms-name",
             },
             opts = pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
@@ -619,7 +619,7 @@ class AiEndpoint(pulumi.CustomResource):
             },
             network=vertex_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
             encryption_spec={
-                "kmsKeyName": "kms-name",
+                "kms_key_name": "kms-name",
             },
             opts = pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",

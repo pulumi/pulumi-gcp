@@ -295,14 +295,14 @@ class RecordSet(pulumi.CustomResource):
 
         frontend_instance = gcp.compute.Instance("frontend",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "network": "default",
             }],
             name="frontend",
             machine_type="g1-small",
             zone="us-central1-b",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                 },
             })
@@ -448,20 +448,20 @@ class RecordSet(pulumi.CustomResource):
             type="A",
             ttl=300,
             routing_policy={
-                "primaryBackup": {
-                    "trickleRatio": 0.1,
+                "primary_backup": {
+                    "trickle_ratio": 0.1,
                     "primary": {
-                        "internalLoadBalancers": [{
-                            "loadBalancerType": "regionalL4ilb",
-                            "ipAddress": prod_forwarding_rule.ip_address,
+                        "internal_load_balancers": [{
+                            "load_balancer_type": "regionalL4ilb",
+                            "ip_address": prod_forwarding_rule.ip_address,
                             "port": "80",
-                            "ipProtocol": "tcp",
-                            "networkUrl": prod_network.id,
+                            "ip_protocol": "tcp",
+                            "network_url": prod_network.id,
                             "project": prod_forwarding_rule.project,
                             "region": prod_forwarding_rule.region,
                         }],
                     },
-                    "backupGeos": [
+                    "backup_geos": [
                         {
                             "location": "asia-east1",
                             "rrdatas": ["10.128.1.1"],
@@ -533,14 +533,14 @@ class RecordSet(pulumi.CustomResource):
 
         frontend_instance = gcp.compute.Instance("frontend",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "network": "default",
             }],
             name="frontend",
             machine_type="g1-small",
             zone="us-central1-b",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                 },
             })
@@ -686,20 +686,20 @@ class RecordSet(pulumi.CustomResource):
             type="A",
             ttl=300,
             routing_policy={
-                "primaryBackup": {
-                    "trickleRatio": 0.1,
+                "primary_backup": {
+                    "trickle_ratio": 0.1,
                     "primary": {
-                        "internalLoadBalancers": [{
-                            "loadBalancerType": "regionalL4ilb",
-                            "ipAddress": prod_forwarding_rule.ip_address,
+                        "internal_load_balancers": [{
+                            "load_balancer_type": "regionalL4ilb",
+                            "ip_address": prod_forwarding_rule.ip_address,
                             "port": "80",
-                            "ipProtocol": "tcp",
-                            "networkUrl": prod_network.id,
+                            "ip_protocol": "tcp",
+                            "network_url": prod_network.id,
                             "project": prod_forwarding_rule.project,
                             "region": prod_forwarding_rule.region,
                         }],
                     },
-                    "backupGeos": [
+                    "backup_geos": [
                         {
                             "location": "asia-east1",
                             "rrdatas": ["10.128.1.1"],

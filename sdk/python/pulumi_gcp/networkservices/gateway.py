@@ -760,8 +760,8 @@ class Gateway(pulumi.CustomResource):
             name="my-certificate",
             location="us-central1",
             self_managed={
-                "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
-                "pemPrivateKey": std.file(input="test-fixtures/private-key.pem").result,
+                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         default_network = gcp.compute.Network("default",
             name="my-network",
@@ -817,8 +817,8 @@ class Gateway(pulumi.CustomResource):
             name="my-certificate",
             location="us-south1",
             self_managed={
-                "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
-                "pemPrivateKey": std.file(input="test-fixtures/private-key.pem").result,
+                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         default_network = gcp.compute.Network("default",
             name="my-network",
@@ -1000,8 +1000,8 @@ class Gateway(pulumi.CustomResource):
             name="my-certificate",
             location="us-central1",
             self_managed={
-                "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
-                "pemPrivateKey": std.file(input="test-fixtures/private-key.pem").result,
+                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         default_network = gcp.compute.Network("default",
             name="my-network",
@@ -1057,8 +1057,8 @@ class Gateway(pulumi.CustomResource):
             name="my-certificate",
             location="us-south1",
             self_managed={
-                "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
-                "pemPrivateKey": std.file(input="test-fixtures/private-key.pem").result,
+                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         default_network = gcp.compute.Network("default",
             name="my-network",

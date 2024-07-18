@@ -209,14 +209,14 @@ class SecretCiphertext(pulumi.CustomResource):
             plaintext="my-secret-password")
         instance = gcp.compute.Instance("instance",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "network": "default",
             }],
             name="my-instance",
             machine_type="e2-medium",
             zone="us-central1-a",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                 },
             },
@@ -281,14 +281,14 @@ class SecretCiphertext(pulumi.CustomResource):
             plaintext="my-secret-password")
         instance = gcp.compute.Instance("instance",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "network": "default",
             }],
             name="my-instance",
             machine_type="e2-medium",
             zone="us-central1-a",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                 },
             },

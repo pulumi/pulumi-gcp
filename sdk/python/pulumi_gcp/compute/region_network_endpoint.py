@@ -407,14 +407,14 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             project="debian-cloud")
         default_instance = gcp.compute.Instance("default",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "subnetwork": default_subnetwork.id,
             }],
             name="instance",
             machine_type="e2-medium",
             zone="us-central1-a",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": my_image.self_link,
                 },
             })
@@ -560,14 +560,14 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             project="debian-cloud")
         default_instance = gcp.compute.Instance("default",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "subnetwork": default_subnetwork.id,
             }],
             name="instance",
             machine_type="e2-medium",
             zone="us-central1-a",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": my_image.self_link,
                 },
             })
