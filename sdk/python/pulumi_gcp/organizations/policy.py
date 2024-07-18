@@ -353,7 +353,7 @@ class Policy(pulumi.CustomResource):
             org_id="123456789",
             constraint="serviceuser.services",
             list_policy={
-                "suggestedValue": "compute.googleapis.com",
+                "suggested_value": "compute.googleapis.com",
                 "deny": {
                     "values": ["cloudresourcemanager.googleapis.com"],
                 },
@@ -464,7 +464,7 @@ class Policy(pulumi.CustomResource):
             org_id="123456789",
             constraint="serviceuser.services",
             list_policy={
-                "suggestedValue": "compute.googleapis.com",
+                "suggested_value": "compute.googleapis.com",
                 "deny": {
                     "values": ["cloudresourcemanager.googleapis.com"],
                 },
