@@ -441,7 +441,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
             retention_days=30,
             bucket_id="custom-bucket",
             cmek_settings={
-                "kmsKeyName": key.id,
+                "kms_key_name": key.id,
             },
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
@@ -458,7 +458,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
             retention_days=30,
             bucket_id="custom-bucket",
             index_configs=[{
-                "fieldPath": "jsonPayload.request.status",
+                "field_path": "jsonPayload.request.status",
                 "type": "INDEX_TYPE_STRING",
             }])
         ```
@@ -568,7 +568,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
             retention_days=30,
             bucket_id="custom-bucket",
             cmek_settings={
-                "kmsKeyName": key.id,
+                "kms_key_name": key.id,
             },
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
@@ -585,7 +585,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
             retention_days=30,
             bucket_id="custom-bucket",
             index_configs=[{
-                "fieldPath": "jsonPayload.request.status",
+                "field_path": "jsonPayload.request.status",
                 "type": "INDEX_TYPE_STRING",
             }])
         ```

@@ -297,7 +297,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 "example.user@example.com",
             ],
             enrolled_services=[{
-                "cloudProduct": "all",
+                "cloud_product": "all",
             }])
         ```
         ### Folder Access Approval Active Key Version
@@ -334,7 +334,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
             folder_id=my_folder.folder_id,
             active_key_version=crypto_key_version.name,
             enrolled_services=[{
-                "cloudProduct": "all",
+                "cloud_product": "all",
             }],
             opts = pulumi.ResourceOptions(depends_on=[iam]))
         ```
@@ -403,7 +403,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 "example.user@example.com",
             ],
             enrolled_services=[{
-                "cloudProduct": "all",
+                "cloud_product": "all",
             }])
         ```
         ### Folder Access Approval Active Key Version
@@ -440,7 +440,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
             folder_id=my_folder.folder_id,
             active_key_version=crypto_key_version.name,
             enrolled_services=[{
-                "cloudProduct": "all",
+                "cloud_product": "all",
             }],
             opts = pulumi.ResourceOptions(depends_on=[iam]))
         ```

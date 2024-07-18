@@ -1063,11 +1063,11 @@ class Service(pulumi.CustomResource):
             ingress="INGRESS_TRAFFIC_ALL",
             template={
                 "scaling": {
-                    "maxInstanceCount": 2,
+                    "max_instance_count": 2,
                 },
                 "volumes": [{
                     "name": "cloudsql",
-                    "cloudSqlInstance": {
+                    "cloud_sql_instance": {
                         "instances": [instance.connection_name],
                     },
                 }],
@@ -1080,17 +1080,17 @@ class Service(pulumi.CustomResource):
                         },
                         {
                             "name": "SECRET_ENV_VAR",
-                            "valueSource": {
-                                "secretKeyRef": {
+                            "value_source": {
+                                "secret_key_ref": {
                                     "secret": secret.secret_id,
                                     "version": "1",
                                 },
                             },
                         },
                     ],
-                    "volumeMounts": [{
+                    "volume_mounts": [{
                         "name": "cloudsql",
-                        "mountPath": "/cloudsql",
+                        "mount_path": "/cloudsql",
                     }],
                 }],
             },
@@ -1136,7 +1136,7 @@ class Service(pulumi.CustomResource):
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
                 }],
-                "vpcAccess": {
+                "vpc_access": {
                     "connector": connector.id,
                     "egress": "ALL_TRAFFIC",
                 },
@@ -1156,8 +1156,8 @@ class Service(pulumi.CustomResource):
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
                 }],
-                "vpcAccess": {
-                    "networkInterfaces": [{
+                "vpc_access": {
+                    "network_interfaces": [{
                         "network": "default",
                         "subnetwork": "default",
                         "tags": [
@@ -1181,17 +1181,17 @@ class Service(pulumi.CustomResource):
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
-                    "startupProbe": {
-                        "initialDelaySeconds": 0,
-                        "timeoutSeconds": 1,
-                        "periodSeconds": 3,
-                        "failureThreshold": 1,
-                        "tcpSocket": {
+                    "startup_probe": {
+                        "initial_delay_seconds": 0,
+                        "timeout_seconds": 1,
+                        "period_seconds": 3,
+                        "failure_threshold": 1,
+                        "tcp_socket": {
                             "port": 8080,
                         },
                     },
-                    "livenessProbe": {
-                        "httpGet": {
+                    "liveness_probe": {
+                        "http_get": {
                             "path": "/",
                         },
                     },
@@ -1221,7 +1221,7 @@ class Service(pulumi.CustomResource):
                     "name": "a-volume",
                     "secret": {
                         "secret": secret.secret_id,
-                        "defaultMode": 292,
+                        "default_mode": 292,
                         "items": [{
                             "version": "1",
                             "path": "my-secret",
@@ -1230,9 +1230,9 @@ class Service(pulumi.CustomResource):
                 }],
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
-                    "volumeMounts": [{
+                    "volume_mounts": [{
                         "name": "a-volume",
-                        "mountPath": "/secrets",
+                        "mount_path": "/secrets",
                     }],
                 }],
             },
@@ -1260,13 +1260,13 @@ class Service(pulumi.CustomResource):
                     {
                         "name": "hello-1",
                         "ports": {
-                            "containerPort": 8080,
+                            "container_port": 8080,
                         },
                         "image": "us-docker.pkg.dev/cloudrun/container/hello",
-                        "dependsOns": ["hello-2"],
-                        "volumeMounts": [{
+                        "depends_ons": ["hello-2"],
+                        "volume_mounts": [{
                             "name": "empty-dir-volume",
-                            "mountPath": "/mnt",
+                            "mount_path": "/mnt",
                         }],
                     },
                     {
@@ -1276,8 +1276,8 @@ class Service(pulumi.CustomResource):
                             "name": "PORT",
                             "value": "8081",
                         }],
-                        "startupProbe": {
-                            "httpGet": {
+                        "startup_probe": {
+                            "http_get": {
                                 "port": 8081,
                             },
                         },
@@ -1285,9 +1285,9 @@ class Service(pulumi.CustomResource):
                 ],
                 "volumes": [{
                     "name": "empty-dir-volume",
-                    "emptyDir": {
+                    "empty_dir": {
                         "medium": "MEMORY",
-                        "sizeLimit": "256Mi",
+                        "size_limit": "256Mi",
                     },
                 }],
             })
@@ -1306,19 +1306,19 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             launch_stage="BETA",
             template={
-                "executionEnvironment": "EXECUTION_ENVIRONMENT_GEN2",
+                "execution_environment": "EXECUTION_ENVIRONMENT_GEN2",
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
-                    "volumeMounts": [{
+                    "volume_mounts": [{
                         "name": "bucket",
-                        "mountPath": "/var/www",
+                        "mount_path": "/var/www",
                     }],
                 }],
                 "volumes": [{
                     "name": "bucket",
                     "gcs": {
                         "bucket": default_bucket.name,
-                        "readOnly": False,
+                        "read_only": False,
                     },
                 }],
             })
@@ -1334,7 +1334,7 @@ class Service(pulumi.CustomResource):
             location="us-central1-b",
             tier="BASIC_HDD",
             file_shares={
-                "capacityGb": 1024,
+                "capacity_gb": 1024,
                 "name": "share1",
             },
             networks=[{
@@ -1347,16 +1347,16 @@ class Service(pulumi.CustomResource):
             ingress="INGRESS_TRAFFIC_ALL",
             launch_stage="BETA",
             template={
-                "executionEnvironment": "EXECUTION_ENVIRONMENT_GEN2",
+                "execution_environment": "EXECUTION_ENVIRONMENT_GEN2",
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello:latest",
-                    "volumeMounts": [{
+                    "volume_mounts": [{
                         "name": "nfs",
-                        "mountPath": "/mnt/nfs/filestore",
+                        "mount_path": "/mnt/nfs/filestore",
                     }],
                 }],
-                "vpcAccess": {
-                    "networkInterfaces": [{
+                "vpc_access": {
+                    "network_interfaces": [{
                         "network": "default",
                         "subnetwork": "default",
                     }],
@@ -1366,7 +1366,7 @@ class Service(pulumi.CustomResource):
                     "nfs": {
                         "server": default_instance.networks[0].ip_addresses[0],
                         "path": "/share1",
-                        "readOnly": False,
+                        "read_only": False,
                     },
                 }],
             })
@@ -1521,11 +1521,11 @@ class Service(pulumi.CustomResource):
             ingress="INGRESS_TRAFFIC_ALL",
             template={
                 "scaling": {
-                    "maxInstanceCount": 2,
+                    "max_instance_count": 2,
                 },
                 "volumes": [{
                     "name": "cloudsql",
-                    "cloudSqlInstance": {
+                    "cloud_sql_instance": {
                         "instances": [instance.connection_name],
                     },
                 }],
@@ -1538,17 +1538,17 @@ class Service(pulumi.CustomResource):
                         },
                         {
                             "name": "SECRET_ENV_VAR",
-                            "valueSource": {
-                                "secretKeyRef": {
+                            "value_source": {
+                                "secret_key_ref": {
                                     "secret": secret.secret_id,
                                     "version": "1",
                                 },
                             },
                         },
                     ],
-                    "volumeMounts": [{
+                    "volume_mounts": [{
                         "name": "cloudsql",
-                        "mountPath": "/cloudsql",
+                        "mount_path": "/cloudsql",
                     }],
                 }],
             },
@@ -1594,7 +1594,7 @@ class Service(pulumi.CustomResource):
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
                 }],
-                "vpcAccess": {
+                "vpc_access": {
                     "connector": connector.id,
                     "egress": "ALL_TRAFFIC",
                 },
@@ -1614,8 +1614,8 @@ class Service(pulumi.CustomResource):
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
                 }],
-                "vpcAccess": {
-                    "networkInterfaces": [{
+                "vpc_access": {
+                    "network_interfaces": [{
                         "network": "default",
                         "subnetwork": "default",
                         "tags": [
@@ -1639,17 +1639,17 @@ class Service(pulumi.CustomResource):
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
-                    "startupProbe": {
-                        "initialDelaySeconds": 0,
-                        "timeoutSeconds": 1,
-                        "periodSeconds": 3,
-                        "failureThreshold": 1,
-                        "tcpSocket": {
+                    "startup_probe": {
+                        "initial_delay_seconds": 0,
+                        "timeout_seconds": 1,
+                        "period_seconds": 3,
+                        "failure_threshold": 1,
+                        "tcp_socket": {
                             "port": 8080,
                         },
                     },
-                    "livenessProbe": {
-                        "httpGet": {
+                    "liveness_probe": {
+                        "http_get": {
                             "path": "/",
                         },
                     },
@@ -1679,7 +1679,7 @@ class Service(pulumi.CustomResource):
                     "name": "a-volume",
                     "secret": {
                         "secret": secret.secret_id,
-                        "defaultMode": 292,
+                        "default_mode": 292,
                         "items": [{
                             "version": "1",
                             "path": "my-secret",
@@ -1688,9 +1688,9 @@ class Service(pulumi.CustomResource):
                 }],
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
-                    "volumeMounts": [{
+                    "volume_mounts": [{
                         "name": "a-volume",
-                        "mountPath": "/secrets",
+                        "mount_path": "/secrets",
                     }],
                 }],
             },
@@ -1718,13 +1718,13 @@ class Service(pulumi.CustomResource):
                     {
                         "name": "hello-1",
                         "ports": {
-                            "containerPort": 8080,
+                            "container_port": 8080,
                         },
                         "image": "us-docker.pkg.dev/cloudrun/container/hello",
-                        "dependsOns": ["hello-2"],
-                        "volumeMounts": [{
+                        "depends_ons": ["hello-2"],
+                        "volume_mounts": [{
                             "name": "empty-dir-volume",
-                            "mountPath": "/mnt",
+                            "mount_path": "/mnt",
                         }],
                     },
                     {
@@ -1734,8 +1734,8 @@ class Service(pulumi.CustomResource):
                             "name": "PORT",
                             "value": "8081",
                         }],
-                        "startupProbe": {
-                            "httpGet": {
+                        "startup_probe": {
+                            "http_get": {
                                 "port": 8081,
                             },
                         },
@@ -1743,9 +1743,9 @@ class Service(pulumi.CustomResource):
                 ],
                 "volumes": [{
                     "name": "empty-dir-volume",
-                    "emptyDir": {
+                    "empty_dir": {
                         "medium": "MEMORY",
-                        "sizeLimit": "256Mi",
+                        "size_limit": "256Mi",
                     },
                 }],
             })
@@ -1764,19 +1764,19 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             launch_stage="BETA",
             template={
-                "executionEnvironment": "EXECUTION_ENVIRONMENT_GEN2",
+                "execution_environment": "EXECUTION_ENVIRONMENT_GEN2",
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
-                    "volumeMounts": [{
+                    "volume_mounts": [{
                         "name": "bucket",
-                        "mountPath": "/var/www",
+                        "mount_path": "/var/www",
                     }],
                 }],
                 "volumes": [{
                     "name": "bucket",
                     "gcs": {
                         "bucket": default_bucket.name,
-                        "readOnly": False,
+                        "read_only": False,
                     },
                 }],
             })
@@ -1792,7 +1792,7 @@ class Service(pulumi.CustomResource):
             location="us-central1-b",
             tier="BASIC_HDD",
             file_shares={
-                "capacityGb": 1024,
+                "capacity_gb": 1024,
                 "name": "share1",
             },
             networks=[{
@@ -1805,16 +1805,16 @@ class Service(pulumi.CustomResource):
             ingress="INGRESS_TRAFFIC_ALL",
             launch_stage="BETA",
             template={
-                "executionEnvironment": "EXECUTION_ENVIRONMENT_GEN2",
+                "execution_environment": "EXECUTION_ENVIRONMENT_GEN2",
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello:latest",
-                    "volumeMounts": [{
+                    "volume_mounts": [{
                         "name": "nfs",
-                        "mountPath": "/mnt/nfs/filestore",
+                        "mount_path": "/mnt/nfs/filestore",
                     }],
                 }],
-                "vpcAccess": {
-                    "networkInterfaces": [{
+                "vpc_access": {
+                    "network_interfaces": [{
                         "network": "default",
                         "subnetwork": "default",
                     }],
@@ -1824,7 +1824,7 @@ class Service(pulumi.CustomResource):
                     "nfs": {
                         "server": default_instance.networks[0].ip_addresses[0],
                         "path": "/share1",
-                        "readOnly": False,
+                        "read_only": False,
                     },
                 }],
             })

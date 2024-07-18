@@ -501,7 +501,7 @@ class Backup(pulumi.CustomResource):
             protocols=["NFSV3"],
             deletion_policy="FORCE",
             backup_config={
-                "backupVault": default_backup_vault.id,
+                "backup_vault": default_backup_vault.id,
             })
         test_backup = gcp.netapp.Backup("test_backup",
             name="test-backup",
@@ -609,7 +609,7 @@ class Backup(pulumi.CustomResource):
             protocols=["NFSV3"],
             deletion_policy="FORCE",
             backup_config={
-                "backupVault": default_backup_vault.id,
+                "backup_vault": default_backup_vault.id,
             })
         test_backup = gcp.netapp.Backup("test_backup",
             name="test-backup",

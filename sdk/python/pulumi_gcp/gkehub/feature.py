@@ -415,8 +415,8 @@ class Feature(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             },
             description="Membership")
@@ -425,7 +425,7 @@ class Feature(pulumi.CustomResource):
             location="global",
             spec={
                 "multiclusteringress": {
-                    "configMembership": membership.id,
+                    "config_membership": membership.id,
                 },
             })
         ```
@@ -463,8 +463,8 @@ class Feature(pulumi.CustomResource):
             location="global",
             spec={
                 "fleetobservability": {
-                    "loggingConfig": {
-                        "defaultConfig": {
+                    "logging_config": {
+                        "default_config": {
                             "mode": "COPY",
                         },
                     },
@@ -482,8 +482,8 @@ class Feature(pulumi.CustomResource):
             location="global",
             spec={
                 "fleetobservability": {
-                    "loggingConfig": {
-                        "fleetScopeLogsConfig": {
+                    "logging_config": {
+                        "fleet_scope_logs_config": {
                             "mode": "MOVE",
                         },
                     },
@@ -501,11 +501,11 @@ class Feature(pulumi.CustomResource):
             location="global",
             spec={
                 "fleetobservability": {
-                    "loggingConfig": {
-                        "defaultConfig": {
+                    "logging_config": {
+                        "default_config": {
                             "mode": "COPY",
                         },
-                        "fleetScopeLogsConfig": {
+                        "fleet_scope_logs_config": {
                             "mode": "MOVE",
                         },
                     },
@@ -538,9 +538,9 @@ class Feature(pulumi.CustomResource):
             location="global",
             fleet_default_member_config={
                 "configmanagement": {
-                    "configSync": {
+                    "config_sync": {
                         "git": {
-                            "syncRepo": "https://github.com/hashicorp/terraform",
+                            "sync_repo": "https://github.com/hashicorp/terraform",
                         },
                     },
                 },
@@ -557,23 +557,23 @@ class Feature(pulumi.CustomResource):
             location="global",
             fleet_default_member_config={
                 "policycontroller": {
-                    "policyControllerHubConfig": {
-                        "installSpec": "INSTALL_SPEC_ENABLED",
-                        "exemptableNamespaces": ["foo"],
-                        "policyContent": {
+                    "policy_controller_hub_config": {
+                        "install_spec": "INSTALL_SPEC_ENABLED",
+                        "exemptable_namespaces": ["foo"],
+                        "policy_content": {
                             "bundles": [{
                                 "bundle": "policy-essentials-v2022",
-                                "exemptedNamespaces": [
+                                "exempted_namespaces": [
                                     "foo",
                                     "bar",
                                 ],
                             }],
-                            "templateLibrary": {
+                            "template_library": {
                                 "installation": "ALL",
                             },
                         },
-                        "auditIntervalSeconds": 30,
-                        "referentialRulesEnabled": True,
+                        "audit_interval_seconds": 30,
+                        "referential_rules_enabled": True,
                     },
                 },
             })
@@ -589,39 +589,39 @@ class Feature(pulumi.CustomResource):
             location="global",
             fleet_default_member_config={
                 "policycontroller": {
-                    "policyControllerHubConfig": {
-                        "installSpec": "INSTALL_SPEC_SUSPENDED",
-                        "policyContent": {
+                    "policy_controller_hub_config": {
+                        "install_spec": "INSTALL_SPEC_SUSPENDED",
+                        "policy_content": {
                             "bundles": [
                                 {
                                     "bundle": "pci-dss-v3.2.1",
-                                    "exemptedNamespaces": [
+                                    "exempted_namespaces": [
                                         "baz",
                                         "bar",
                                     ],
                                 },
                                 {
                                     "bundle": "nist-sp-800-190",
-                                    "exemptedNamespaces": [],
+                                    "exempted_namespaces": [],
                                 },
                             ],
-                            "templateLibrary": {
+                            "template_library": {
                                 "installation": "ALL",
                             },
                         },
-                        "constraintViolationLimit": 50,
-                        "referentialRulesEnabled": True,
-                        "logDeniesEnabled": True,
-                        "mutationEnabled": True,
-                        "deploymentConfigs": [
+                        "constraint_violation_limit": 50,
+                        "referential_rules_enabled": True,
+                        "log_denies_enabled": True,
+                        "mutation_enabled": True,
+                        "deployment_configs": [
                             {
                                 "component": "admission",
-                                "replicaCount": 2,
-                                "podAffinity": "ANTI_AFFINITY",
+                                "replica_count": 2,
+                                "pod_affinity": "ANTI_AFFINITY",
                             },
                             {
                                 "component": "audit",
-                                "containerResources": {
+                                "container_resources": {
                                     "limits": {
                                         "memory": "1Gi",
                                         "cpu": "1.5",
@@ -631,7 +631,7 @@ class Feature(pulumi.CustomResource):
                                         "cpu": "150m",
                                     },
                                 },
-                                "podTolerations": [{
+                                "pod_tolerations": [{
                                     "key": "key1",
                                     "operator": "Equal",
                                     "value": "value1",
@@ -657,14 +657,14 @@ class Feature(pulumi.CustomResource):
             location="global",
             fleet_default_member_config={
                 "policycontroller": {
-                    "policyControllerHubConfig": {
-                        "installSpec": "INSTALL_SPEC_ENABLED",
-                        "policyContent": {},
-                        "constraintViolationLimit": 50,
-                        "referentialRulesEnabled": True,
-                        "logDeniesEnabled": True,
-                        "mutationEnabled": True,
-                        "deploymentConfigs": [{
+                    "policy_controller_hub_config": {
+                        "install_spec": "INSTALL_SPEC_ENABLED",
+                        "policy_content": {},
+                        "constraint_violation_limit": 50,
+                        "referential_rules_enabled": True,
+                        "log_denies_enabled": True,
+                        "mutation_enabled": True,
+                        "deployment_configs": [{
                             "component": "admission",
                         }],
                         "monitoring": {},
@@ -683,8 +683,8 @@ class Feature(pulumi.CustomResource):
             location="global",
             spec={
                 "clusterupgrade": {
-                    "upstreamFleets": [],
-                    "postConditions": {
+                    "upstream_fleets": [],
+                    "post_conditions": {
                         "soaking": "60s",
                     },
                 },
@@ -762,8 +762,8 @@ class Feature(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             },
             description="Membership")
@@ -772,7 +772,7 @@ class Feature(pulumi.CustomResource):
             location="global",
             spec={
                 "multiclusteringress": {
-                    "configMembership": membership.id,
+                    "config_membership": membership.id,
                 },
             })
         ```
@@ -810,8 +810,8 @@ class Feature(pulumi.CustomResource):
             location="global",
             spec={
                 "fleetobservability": {
-                    "loggingConfig": {
-                        "defaultConfig": {
+                    "logging_config": {
+                        "default_config": {
                             "mode": "COPY",
                         },
                     },
@@ -829,8 +829,8 @@ class Feature(pulumi.CustomResource):
             location="global",
             spec={
                 "fleetobservability": {
-                    "loggingConfig": {
-                        "fleetScopeLogsConfig": {
+                    "logging_config": {
+                        "fleet_scope_logs_config": {
                             "mode": "MOVE",
                         },
                     },
@@ -848,11 +848,11 @@ class Feature(pulumi.CustomResource):
             location="global",
             spec={
                 "fleetobservability": {
-                    "loggingConfig": {
-                        "defaultConfig": {
+                    "logging_config": {
+                        "default_config": {
                             "mode": "COPY",
                         },
-                        "fleetScopeLogsConfig": {
+                        "fleet_scope_logs_config": {
                             "mode": "MOVE",
                         },
                     },
@@ -885,9 +885,9 @@ class Feature(pulumi.CustomResource):
             location="global",
             fleet_default_member_config={
                 "configmanagement": {
-                    "configSync": {
+                    "config_sync": {
                         "git": {
-                            "syncRepo": "https://github.com/hashicorp/terraform",
+                            "sync_repo": "https://github.com/hashicorp/terraform",
                         },
                     },
                 },
@@ -904,23 +904,23 @@ class Feature(pulumi.CustomResource):
             location="global",
             fleet_default_member_config={
                 "policycontroller": {
-                    "policyControllerHubConfig": {
-                        "installSpec": "INSTALL_SPEC_ENABLED",
-                        "exemptableNamespaces": ["foo"],
-                        "policyContent": {
+                    "policy_controller_hub_config": {
+                        "install_spec": "INSTALL_SPEC_ENABLED",
+                        "exemptable_namespaces": ["foo"],
+                        "policy_content": {
                             "bundles": [{
                                 "bundle": "policy-essentials-v2022",
-                                "exemptedNamespaces": [
+                                "exempted_namespaces": [
                                     "foo",
                                     "bar",
                                 ],
                             }],
-                            "templateLibrary": {
+                            "template_library": {
                                 "installation": "ALL",
                             },
                         },
-                        "auditIntervalSeconds": 30,
-                        "referentialRulesEnabled": True,
+                        "audit_interval_seconds": 30,
+                        "referential_rules_enabled": True,
                     },
                 },
             })
@@ -936,39 +936,39 @@ class Feature(pulumi.CustomResource):
             location="global",
             fleet_default_member_config={
                 "policycontroller": {
-                    "policyControllerHubConfig": {
-                        "installSpec": "INSTALL_SPEC_SUSPENDED",
-                        "policyContent": {
+                    "policy_controller_hub_config": {
+                        "install_spec": "INSTALL_SPEC_SUSPENDED",
+                        "policy_content": {
                             "bundles": [
                                 {
                                     "bundle": "pci-dss-v3.2.1",
-                                    "exemptedNamespaces": [
+                                    "exempted_namespaces": [
                                         "baz",
                                         "bar",
                                     ],
                                 },
                                 {
                                     "bundle": "nist-sp-800-190",
-                                    "exemptedNamespaces": [],
+                                    "exempted_namespaces": [],
                                 },
                             ],
-                            "templateLibrary": {
+                            "template_library": {
                                 "installation": "ALL",
                             },
                         },
-                        "constraintViolationLimit": 50,
-                        "referentialRulesEnabled": True,
-                        "logDeniesEnabled": True,
-                        "mutationEnabled": True,
-                        "deploymentConfigs": [
+                        "constraint_violation_limit": 50,
+                        "referential_rules_enabled": True,
+                        "log_denies_enabled": True,
+                        "mutation_enabled": True,
+                        "deployment_configs": [
                             {
                                 "component": "admission",
-                                "replicaCount": 2,
-                                "podAffinity": "ANTI_AFFINITY",
+                                "replica_count": 2,
+                                "pod_affinity": "ANTI_AFFINITY",
                             },
                             {
                                 "component": "audit",
-                                "containerResources": {
+                                "container_resources": {
                                     "limits": {
                                         "memory": "1Gi",
                                         "cpu": "1.5",
@@ -978,7 +978,7 @@ class Feature(pulumi.CustomResource):
                                         "cpu": "150m",
                                     },
                                 },
-                                "podTolerations": [{
+                                "pod_tolerations": [{
                                     "key": "key1",
                                     "operator": "Equal",
                                     "value": "value1",
@@ -1004,14 +1004,14 @@ class Feature(pulumi.CustomResource):
             location="global",
             fleet_default_member_config={
                 "policycontroller": {
-                    "policyControllerHubConfig": {
-                        "installSpec": "INSTALL_SPEC_ENABLED",
-                        "policyContent": {},
-                        "constraintViolationLimit": 50,
-                        "referentialRulesEnabled": True,
-                        "logDeniesEnabled": True,
-                        "mutationEnabled": True,
-                        "deploymentConfigs": [{
+                    "policy_controller_hub_config": {
+                        "install_spec": "INSTALL_SPEC_ENABLED",
+                        "policy_content": {},
+                        "constraint_violation_limit": 50,
+                        "referential_rules_enabled": True,
+                        "log_denies_enabled": True,
+                        "mutation_enabled": True,
+                        "deployment_configs": [{
                             "component": "admission",
                         }],
                         "monitoring": {},
@@ -1030,8 +1030,8 @@ class Feature(pulumi.CustomResource):
             location="global",
             spec={
                 "clusterupgrade": {
-                    "upstreamFleets": [],
-                    "postConditions": {
+                    "upstream_fleets": [],
+                    "post_conditions": {
                         "soaking": "60s",
                     },
                 },

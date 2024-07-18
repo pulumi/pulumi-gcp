@@ -289,11 +289,11 @@ class AccessApprovalSettings(pulumi.CustomResource):
             ],
             enrolled_services=[
                 {
-                    "cloudProduct": "appengine.googleapis.com",
+                    "cloud_product": "appengine.googleapis.com",
                 },
                 {
-                    "cloudProduct": "dataflow.googleapis.com",
-                    "enrollmentLevel": "BLOCK_ALL",
+                    "cloud_product": "dataflow.googleapis.com",
+                    "enrollment_level": "BLOCK_ALL",
                 },
             ])
         ```
@@ -328,7 +328,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
             organization_id="123456789",
             active_key_version=crypto_key_version.name,
             enrolled_services=[{
-                "cloudProduct": "all",
+                "cloud_product": "all",
             }],
             opts = pulumi.ResourceOptions(depends_on=[iam]))
         ```
@@ -394,11 +394,11 @@ class AccessApprovalSettings(pulumi.CustomResource):
             ],
             enrolled_services=[
                 {
-                    "cloudProduct": "appengine.googleapis.com",
+                    "cloud_product": "appengine.googleapis.com",
                 },
                 {
-                    "cloudProduct": "dataflow.googleapis.com",
-                    "enrollmentLevel": "BLOCK_ALL",
+                    "cloud_product": "dataflow.googleapis.com",
+                    "enrollment_level": "BLOCK_ALL",
                 },
             ])
         ```
@@ -433,7 +433,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
             organization_id="123456789",
             active_key_version=crypto_key_version.name,
             enrolled_services=[{
-                "cloudProduct": "all",
+                "cloud_product": "all",
             }],
             opts = pulumi.ResourceOptions(depends_on=[iam]))
         ```
