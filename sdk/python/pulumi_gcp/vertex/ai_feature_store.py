@@ -434,10 +434,10 @@ class AiFeatureStore(pulumi.CustomResource):
             },
             region="us-central1",
             online_serving_config={
-                "fixedNodeCount": 2,
+                "fixed_node_count": 2,
             },
             encryption_spec={
-                "kmsKeyName": "kms-name",
+                "kms_key_name": "kms-name",
             },
             force_destroy=True)
         ```
@@ -454,10 +454,10 @@ class AiFeatureStore(pulumi.CustomResource):
             },
             region="us-central1",
             online_serving_config={
-                "fixedNodeCount": 2,
+                "fixed_node_count": 2,
             },
             encryption_spec={
-                "kmsKeyName": "kms-name",
+                "kms_key_name": "kms-name",
             },
             online_storage_ttl_days=30,
             force_destroy=True)
@@ -476,12 +476,12 @@ class AiFeatureStore(pulumi.CustomResource):
             region="us-central1",
             online_serving_config={
                 "scaling": {
-                    "minNodeCount": 2,
-                    "maxNodeCount": 10,
+                    "min_node_count": 2,
+                    "max_node_count": 10,
                 },
             },
             encryption_spec={
-                "kmsKeyName": "kms-name",
+                "kms_key_name": "kms-name",
             },
             force_destroy=True)
         ```
@@ -563,10 +563,10 @@ class AiFeatureStore(pulumi.CustomResource):
             },
             region="us-central1",
             online_serving_config={
-                "fixedNodeCount": 2,
+                "fixed_node_count": 2,
             },
             encryption_spec={
-                "kmsKeyName": "kms-name",
+                "kms_key_name": "kms-name",
             },
             force_destroy=True)
         ```
@@ -583,10 +583,10 @@ class AiFeatureStore(pulumi.CustomResource):
             },
             region="us-central1",
             online_serving_config={
-                "fixedNodeCount": 2,
+                "fixed_node_count": 2,
             },
             encryption_spec={
-                "kmsKeyName": "kms-name",
+                "kms_key_name": "kms-name",
             },
             online_storage_ttl_days=30,
             force_destroy=True)
@@ -605,12 +605,12 @@ class AiFeatureStore(pulumi.CustomResource):
             region="us-central1",
             online_serving_config={
                 "scaling": {
-                    "minNodeCount": 2,
-                    "maxNodeCount": 10,
+                    "min_node_count": 2,
+                    "max_node_count": 10,
                 },
             },
             encryption_spec={
-                "kmsKeyName": "kms-name",
+                "kms_key_name": "kms-name",
             },
             force_destroy=True)
         ```

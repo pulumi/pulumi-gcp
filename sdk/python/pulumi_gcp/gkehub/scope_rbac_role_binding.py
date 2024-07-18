@@ -435,7 +435,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
             scope_id=scope.scope_id,
             user="test-email@gmail.com",
             role={
-                "predefinedRole": "ADMIN",
+                "predefined_role": "ADMIN",
             },
             labels={
                 "key": "value",
@@ -510,7 +510,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
             scope_id=scope.scope_id,
             user="test-email@gmail.com",
             role={
-                "predefinedRole": "ADMIN",
+                "predefined_role": "ADMIN",
             },
             labels={
                 "key": "value",

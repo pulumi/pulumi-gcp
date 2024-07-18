@@ -494,14 +494,14 @@ class AlertPolicy(pulumi.CustomResource):
             display_name="My Alert Policy",
             combiner="OR",
             conditions=[{
-                "displayName": "test condition",
-                "conditionThreshold": {
+                "display_name": "test condition",
+                "condition_threshold": {
                     "filter": "metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
                     "duration": "60s",
                     "comparison": "COMPARISON_GT",
                     "aggregations": [{
-                        "alignmentPeriod": "60s",
-                        "perSeriesAligner": "ALIGN_RATE",
+                        "alignment_period": "60s",
+                        "per_series_aligner": "ALIGN_RATE",
                     }],
                 },
             }],
@@ -519,16 +519,16 @@ class AlertPolicy(pulumi.CustomResource):
             display_name="My Alert Policy",
             combiner="OR",
             conditions=[{
-                "displayName": "test condition",
-                "conditionThreshold": {
+                "display_name": "test condition",
+                "condition_threshold": {
                     "filter": "metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
                     "duration": "60s",
                     "comparison": "COMPARISON_GT",
                     "aggregations": [{
-                        "alignmentPeriod": "60s",
-                        "perSeriesAligner": "ALIGN_RATE",
+                        "alignment_period": "60s",
+                        "per_series_aligner": "ALIGN_RATE",
                     }],
-                    "evaluationMissingData": "EVALUATION_MISSING_DATA_INACTIVE",
+                    "evaluation_missing_data": "EVALUATION_MISSING_DATA_INACTIVE",
                 },
             }],
             user_labels={
@@ -545,17 +545,17 @@ class AlertPolicy(pulumi.CustomResource):
             display_name="My Alert Policy",
             combiner="OR",
             conditions=[{
-                "displayName": "test condition",
-                "conditionThreshold": {
+                "display_name": "test condition",
+                "condition_threshold": {
                     "filter": "metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
                     "duration": "60s",
-                    "forecastOptions": {
-                        "forecastHorizon": "3600s",
+                    "forecast_options": {
+                        "forecast_horizon": "3600s",
                     },
                     "comparison": "COMPARISON_GT",
                     "aggregations": [{
-                        "alignmentPeriod": "60s",
-                        "perSeriesAligner": "ALIGN_RATE",
+                        "alignment_period": "60s",
+                        "per_series_aligner": "ALIGN_RATE",
                     }],
                 },
             }],
@@ -573,17 +573,17 @@ class AlertPolicy(pulumi.CustomResource):
             display_name="My Alert Policy",
             combiner="OR",
             conditions=[{
-                "displayName": "test condition",
-                "conditionPrometheusQueryLanguage": {
+                "display_name": "test condition",
+                "condition_prometheus_query_language": {
                     "query": "compute_googleapis_com:instance_cpu_usage_time > 0",
                     "duration": "60s",
-                    "evaluationInterval": "60s",
-                    "alertRule": "AlwaysOn",
-                    "ruleGroup": "a test",
+                    "evaluation_interval": "60s",
+                    "alert_rule": "AlwaysOn",
+                    "rule_group": "a test",
                 },
             }],
             alert_strategy={
-                "autoClose": "1800s",
+                "auto_close": "1800s",
             })
         ```
 
@@ -658,14 +658,14 @@ class AlertPolicy(pulumi.CustomResource):
             display_name="My Alert Policy",
             combiner="OR",
             conditions=[{
-                "displayName": "test condition",
-                "conditionThreshold": {
+                "display_name": "test condition",
+                "condition_threshold": {
                     "filter": "metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
                     "duration": "60s",
                     "comparison": "COMPARISON_GT",
                     "aggregations": [{
-                        "alignmentPeriod": "60s",
-                        "perSeriesAligner": "ALIGN_RATE",
+                        "alignment_period": "60s",
+                        "per_series_aligner": "ALIGN_RATE",
                     }],
                 },
             }],
@@ -683,16 +683,16 @@ class AlertPolicy(pulumi.CustomResource):
             display_name="My Alert Policy",
             combiner="OR",
             conditions=[{
-                "displayName": "test condition",
-                "conditionThreshold": {
+                "display_name": "test condition",
+                "condition_threshold": {
                     "filter": "metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
                     "duration": "60s",
                     "comparison": "COMPARISON_GT",
                     "aggregations": [{
-                        "alignmentPeriod": "60s",
-                        "perSeriesAligner": "ALIGN_RATE",
+                        "alignment_period": "60s",
+                        "per_series_aligner": "ALIGN_RATE",
                     }],
-                    "evaluationMissingData": "EVALUATION_MISSING_DATA_INACTIVE",
+                    "evaluation_missing_data": "EVALUATION_MISSING_DATA_INACTIVE",
                 },
             }],
             user_labels={
@@ -709,17 +709,17 @@ class AlertPolicy(pulumi.CustomResource):
             display_name="My Alert Policy",
             combiner="OR",
             conditions=[{
-                "displayName": "test condition",
-                "conditionThreshold": {
+                "display_name": "test condition",
+                "condition_threshold": {
                     "filter": "metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
                     "duration": "60s",
-                    "forecastOptions": {
-                        "forecastHorizon": "3600s",
+                    "forecast_options": {
+                        "forecast_horizon": "3600s",
                     },
                     "comparison": "COMPARISON_GT",
                     "aggregations": [{
-                        "alignmentPeriod": "60s",
-                        "perSeriesAligner": "ALIGN_RATE",
+                        "alignment_period": "60s",
+                        "per_series_aligner": "ALIGN_RATE",
                     }],
                 },
             }],
@@ -737,17 +737,17 @@ class AlertPolicy(pulumi.CustomResource):
             display_name="My Alert Policy",
             combiner="OR",
             conditions=[{
-                "displayName": "test condition",
-                "conditionPrometheusQueryLanguage": {
+                "display_name": "test condition",
+                "condition_prometheus_query_language": {
                     "query": "compute_googleapis_com:instance_cpu_usage_time > 0",
                     "duration": "60s",
-                    "evaluationInterval": "60s",
-                    "alertRule": "AlwaysOn",
-                    "ruleGroup": "a test",
+                    "evaluation_interval": "60s",
+                    "alert_rule": "AlwaysOn",
+                    "rule_group": "a test",
                 },
             }],
             alert_strategy={
-                "autoClose": "1800s",
+                "auto_close": "1800s",
             })
         ```
 

@@ -314,19 +314,19 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             location="us-central1",
             tier="DEVOPS",
             publishing_options={
-                "publishCaCert": False,
-                "publishCrl": False,
+                "publish_ca_cert": False,
+                "publish_crl": False,
             },
             issuance_policy={
-                "maximumLifetime": "1209600s",
-                "baselineValues": {
-                    "caOptions": {
-                        "isCa": False,
+                "maximum_lifetime": "1209600s",
+                "baseline_values": {
+                    "ca_options": {
+                        "is_ca": False,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {},
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                    "key_usage": {
+                        "base_key_usage": {},
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -341,23 +341,23 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True,
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "Test LLC",
-                        "commonName": "my-ca",
+                        "common_name": "my-ca",
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": False,
+                        "extended_key_usage": {
+                            "server_auth": False,
                         },
                     },
                 },
@@ -462,19 +462,19 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             location="us-central1",
             tier="DEVOPS",
             publishing_options={
-                "publishCaCert": False,
-                "publishCrl": False,
+                "publish_ca_cert": False,
+                "publish_crl": False,
             },
             issuance_policy={
-                "maximumLifetime": "1209600s",
-                "baselineValues": {
-                    "caOptions": {
-                        "isCa": False,
+                "maximum_lifetime": "1209600s",
+                "baseline_values": {
+                    "ca_options": {
+                        "is_ca": False,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {},
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                    "key_usage": {
+                        "base_key_usage": {},
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -489,23 +489,23 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True,
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "Test LLC",
-                        "commonName": "my-ca",
+                        "common_name": "my-ca",
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": False,
+                        "extended_key_usage": {
+                            "server_auth": False,
                         },
                     },
                 },

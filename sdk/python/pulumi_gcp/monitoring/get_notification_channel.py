@@ -201,14 +201,14 @@ def get_notification_channel(display_name: Optional[str] = None,
         notification_channels=[basic.name],
         combiner="OR",
         conditions=[{
-            "displayName": "test condition",
-            "conditionThreshold": {
+            "display_name": "test condition",
+            "condition_threshold": {
                 "filter": "metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
                 "duration": "60s",
                 "comparison": "COMPARISON_GT",
                 "aggregations": [{
-                    "alignmentPeriod": "60s",
-                    "perSeriesAligner": "ALIGN_RATE",
+                    "alignment_period": "60s",
+                    "per_series_aligner": "ALIGN_RATE",
                 }],
             },
         }])
@@ -285,14 +285,14 @@ def get_notification_channel_output(display_name: Optional[pulumi.Input[Optional
         notification_channels=[basic.name],
         combiner="OR",
         conditions=[{
-            "displayName": "test condition",
-            "conditionThreshold": {
+            "display_name": "test condition",
+            "condition_threshold": {
                 "filter": "metric.type=\\"compute.googleapis.com/instance/disk/write_bytes_count\\" AND resource.type=\\"gce_instance\\"",
                 "duration": "60s",
                 "comparison": "COMPARISON_GT",
                 "aggregations": [{
-                    "alignmentPeriod": "60s",
-                    "perSeriesAligner": "ALIGN_RATE",
+                    "alignment_period": "60s",
+                    "per_series_aligner": "ALIGN_RATE",
                 }],
             },
         }])

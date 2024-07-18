@@ -159,7 +159,7 @@ def get_project_service_account(project: Optional[str] = None,
         name="kms-protected-bucket",
         location="US",
         encryption={
-            "defaultKmsKeyName": "your-crypto-key-id",
+            "default_kms_key_name": "your-crypto-key-id",
         },
         opts = pulumi.ResourceOptions(depends_on=[binding]))
     ```
@@ -251,7 +251,7 @@ def get_project_service_account_output(project: Optional[pulumi.Input[Optional[s
         name="kms-protected-bucket",
         location="US",
         encryption={
-            "defaultKmsKeyName": "your-crypto-key-id",
+            "default_kms_key_name": "your-crypto-key-id",
         },
         opts = pulumi.ResourceOptions(depends_on=[binding]))
     ```

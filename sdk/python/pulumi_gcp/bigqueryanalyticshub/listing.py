@@ -610,7 +610,7 @@ class Listing(pulumi.CustomResource):
             },
             restricted_export_config={
                 "enabled": True,
-                "restrictQueryResult": True,
+                "restrict_query_result": True,
             })
         ```
 
@@ -727,7 +727,7 @@ class Listing(pulumi.CustomResource):
             },
             restricted_export_config={
                 "enabled": True,
-                "restrictQueryResult": True,
+                "restrict_query_result": True,
             })
         ```
 
