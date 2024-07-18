@@ -364,7 +364,7 @@ class Service(pulumi.CustomResource):
             },
             traffics=[{
                 "percent": 100,
-                "latestRevision": True,
+                "latest_revision": True,
             }])
         sa = gcp.serviceaccount.Account("sa",
             account_id="cloud-run-pubsub-invoker",
@@ -382,12 +382,12 @@ class Service(pulumi.CustomResource):
             name="pubsub_subscription",
             topic=topic.name,
             push_config={
-                "pushEndpoint": default.statuses[0].url,
-                "oidcToken": {
-                    "serviceAccountEmail": sa.email,
+                "push_endpoint": default.statuses[0].url,
+                "oidc_token": {
+                    "service_account_email": sa.email,
                 },
                 "attributes": {
-                    "x-goog-version": "v1",
+                    "x_goog_version": "v1",
                 },
             })
         ```
@@ -410,7 +410,7 @@ class Service(pulumi.CustomResource):
             },
             traffics=[{
                 "percent": 100,
-                "latestRevision": True,
+                "latest_revision": True,
             }])
         ```
         ### Cloud Run Service Sql
@@ -438,9 +438,9 @@ class Service(pulumi.CustomResource):
                 },
                 "metadata": {
                     "annotations": {
-                        "autoscaling.knative.dev/maxScale": "1000",
-                        "run.googleapis.com/cloudsql-instances": instance.connection_name,
-                        "run.googleapis.com/client-name": "demo",
+                        "autoscaling_knative_dev_max_scale": "1000",
+                        "run_googleapis_com_cloudsql_instances": instance.connection_name,
+                        "run_googleapis_com_client_name": "demo",
                     },
                 },
             },
@@ -485,17 +485,17 @@ class Service(pulumi.CustomResource):
                 "spec": {
                     "containers": [{
                         "image": "us-docker.pkg.dev/cloudrun/container/hello",
-                        "startupProbe": {
-                            "initialDelaySeconds": 0,
-                            "timeoutSeconds": 1,
-                            "periodSeconds": 3,
-                            "failureThreshold": 1,
-                            "tcpSocket": {
+                        "startup_probe": {
+                            "initial_delay_seconds": 0,
+                            "timeout_seconds": 1,
+                            "period_seconds": 3,
+                            "failure_threshold": 1,
+                            "tcp_socket": {
                                 "port": 8080,
                             },
                         },
-                        "livenessProbe": {
-                            "httpGet": {
+                        "liveness_probe": {
+                            "http_get": {
                                 "path": "/",
                             },
                         },
@@ -504,7 +504,7 @@ class Service(pulumi.CustomResource):
             },
             traffics=[{
                 "percent": 100,
-                "latestRevision": True,
+                "latest_revision": True,
             }])
         ```
         ### Cloud Run Service Multicontainer
@@ -519,14 +519,14 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             metadata={
                 "annotations": {
-                    "run.googleapis.com/launch-stage": "BETA",
+                    "run_googleapis_com_launch_stage": "BETA",
                 },
             },
             template={
                 "metadata": {
                     "annotations": {
-                        "run.googleapis.com/container-dependencies": json.dumps({
-                            "hello-1": ["hello-2"],
+                        "run_googleapis_com_container_dependencies": json.dumps({
+                            "hello_1": ["hello-2"],
                         }),
                     },
                 },
@@ -535,12 +535,12 @@ class Service(pulumi.CustomResource):
                         {
                             "name": "hello-1",
                             "ports": [{
-                                "containerPort": 8080,
+                                "container_port": 8080,
                             }],
                             "image": "us-docker.pkg.dev/cloudrun/container/hello",
-                            "volumeMounts": [{
+                            "volume_mounts": [{
                                 "name": "shared-volume",
-                                "mountPath": "/mnt/shared",
+                                "mount_path": "/mnt/shared",
                             }],
                         },
                         {
@@ -550,22 +550,22 @@ class Service(pulumi.CustomResource):
                                 "name": "PORT",
                                 "value": "8081",
                             }],
-                            "startupProbe": {
-                                "httpGet": {
+                            "startup_probe": {
+                                "http_get": {
                                     "port": 8081,
                                 },
                             },
-                            "volumeMounts": [{
+                            "volume_mounts": [{
                                 "name": "shared-volume",
-                                "mountPath": "/mnt/shared",
+                                "mount_path": "/mnt/shared",
                             }],
                         },
                     ],
                     "volumes": [{
                         "name": "shared-volume",
-                        "emptyDir": {
+                        "empty_dir": {
                             "medium": "Memory",
-                            "sizeLimit": "128Mi",
+                            "size_limit": "128Mi",
                         },
                     }],
                 },
@@ -656,7 +656,7 @@ class Service(pulumi.CustomResource):
             },
             traffics=[{
                 "percent": 100,
-                "latestRevision": True,
+                "latest_revision": True,
             }])
         sa = gcp.serviceaccount.Account("sa",
             account_id="cloud-run-pubsub-invoker",
@@ -674,12 +674,12 @@ class Service(pulumi.CustomResource):
             name="pubsub_subscription",
             topic=topic.name,
             push_config={
-                "pushEndpoint": default.statuses[0].url,
-                "oidcToken": {
-                    "serviceAccountEmail": sa.email,
+                "push_endpoint": default.statuses[0].url,
+                "oidc_token": {
+                    "service_account_email": sa.email,
                 },
                 "attributes": {
-                    "x-goog-version": "v1",
+                    "x_goog_version": "v1",
                 },
             })
         ```
@@ -702,7 +702,7 @@ class Service(pulumi.CustomResource):
             },
             traffics=[{
                 "percent": 100,
-                "latestRevision": True,
+                "latest_revision": True,
             }])
         ```
         ### Cloud Run Service Sql
@@ -730,9 +730,9 @@ class Service(pulumi.CustomResource):
                 },
                 "metadata": {
                     "annotations": {
-                        "autoscaling.knative.dev/maxScale": "1000",
-                        "run.googleapis.com/cloudsql-instances": instance.connection_name,
-                        "run.googleapis.com/client-name": "demo",
+                        "autoscaling_knative_dev_max_scale": "1000",
+                        "run_googleapis_com_cloudsql_instances": instance.connection_name,
+                        "run_googleapis_com_client_name": "demo",
                     },
                 },
             },
@@ -777,17 +777,17 @@ class Service(pulumi.CustomResource):
                 "spec": {
                     "containers": [{
                         "image": "us-docker.pkg.dev/cloudrun/container/hello",
-                        "startupProbe": {
-                            "initialDelaySeconds": 0,
-                            "timeoutSeconds": 1,
-                            "periodSeconds": 3,
-                            "failureThreshold": 1,
-                            "tcpSocket": {
+                        "startup_probe": {
+                            "initial_delay_seconds": 0,
+                            "timeout_seconds": 1,
+                            "period_seconds": 3,
+                            "failure_threshold": 1,
+                            "tcp_socket": {
                                 "port": 8080,
                             },
                         },
-                        "livenessProbe": {
-                            "httpGet": {
+                        "liveness_probe": {
+                            "http_get": {
                                 "path": "/",
                             },
                         },
@@ -796,7 +796,7 @@ class Service(pulumi.CustomResource):
             },
             traffics=[{
                 "percent": 100,
-                "latestRevision": True,
+                "latest_revision": True,
             }])
         ```
         ### Cloud Run Service Multicontainer
@@ -811,14 +811,14 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             metadata={
                 "annotations": {
-                    "run.googleapis.com/launch-stage": "BETA",
+                    "run_googleapis_com_launch_stage": "BETA",
                 },
             },
             template={
                 "metadata": {
                     "annotations": {
-                        "run.googleapis.com/container-dependencies": json.dumps({
-                            "hello-1": ["hello-2"],
+                        "run_googleapis_com_container_dependencies": json.dumps({
+                            "hello_1": ["hello-2"],
                         }),
                     },
                 },
@@ -827,12 +827,12 @@ class Service(pulumi.CustomResource):
                         {
                             "name": "hello-1",
                             "ports": [{
-                                "containerPort": 8080,
+                                "container_port": 8080,
                             }],
                             "image": "us-docker.pkg.dev/cloudrun/container/hello",
-                            "volumeMounts": [{
+                            "volume_mounts": [{
                                 "name": "shared-volume",
-                                "mountPath": "/mnt/shared",
+                                "mount_path": "/mnt/shared",
                             }],
                         },
                         {
@@ -842,22 +842,22 @@ class Service(pulumi.CustomResource):
                                 "name": "PORT",
                                 "value": "8081",
                             }],
-                            "startupProbe": {
-                                "httpGet": {
+                            "startup_probe": {
+                                "http_get": {
                                     "port": 8081,
                                 },
                             },
-                            "volumeMounts": [{
+                            "volume_mounts": [{
                                 "name": "shared-volume",
-                                "mountPath": "/mnt/shared",
+                                "mount_path": "/mnt/shared",
                             }],
                         },
                     ],
                     "volumes": [{
                         "name": "shared-volume",
-                        "emptyDir": {
+                        "empty_dir": {
                             "medium": "Memory",
-                            "sizeLimit": "128Mi",
+                            "size_limit": "128Mi",
                         },
                     }],
                 },

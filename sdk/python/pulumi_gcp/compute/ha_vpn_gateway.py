@@ -435,11 +435,11 @@ class HaVpnGateway(pulumi.CustomResource):
             vpn_interfaces=[
                 {
                     "id": 0,
-                    "interconnectAttachment": attachment1.self_link,
+                    "interconnect_attachment": attachment1.self_link,
                 },
                 {
                     "id": 1,
-                    "interconnectAttachment": attachment2.self_link,
+                    "interconnect_attachment": attachment2.self_link,
                 },
             ])
         ```
@@ -597,11 +597,11 @@ class HaVpnGateway(pulumi.CustomResource):
             vpn_interfaces=[
                 {
                     "id": 0,
-                    "interconnectAttachment": attachment1.self_link,
+                    "interconnect_attachment": attachment1.self_link,
                 },
                 {
                     "id": 1,
-                    "interconnectAttachment": attachment2.self_link,
+                    "interconnect_attachment": attachment2.self_link,
                 },
             ])
         ```

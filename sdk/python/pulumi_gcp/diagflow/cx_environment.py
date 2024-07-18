@@ -244,7 +244,7 @@ class CxEnvironment(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
             speech_to_text_settings={
-                "enableSpeechAdaptation": True,
+                "enable_speech_adaptation": True,
             })
         version1 = gcp.diagflow.CxVersion("version_1",
             parent=agent.start_flow,
@@ -326,7 +326,7 @@ class CxEnvironment(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
             speech_to_text_settings={
-                "enableSpeechAdaptation": True,
+                "enable_speech_adaptation": True,
             })
         version1 = gcp.diagflow.CxVersion("version_1",
             parent=agent.start_flow,

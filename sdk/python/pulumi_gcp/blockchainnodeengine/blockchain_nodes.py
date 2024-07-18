@@ -394,17 +394,17 @@ class BlockchainNodes(pulumi.CustomResource):
             blockchain_type="ETHEREUM",
             blockchain_node_id="blockchain_basic_node",
             ethereum_details={
-                "apiEnableAdmin": True,
-                "apiEnableDebug": True,
-                "validatorConfig": {
-                    "mevRelayUrls": [
+                "api_enable_admin": True,
+                "api_enable_debug": True,
+                "validator_config": {
+                    "mev_relay_urls": [
                         "https://mev1.example.org/",
                         "https://mev2.example.org/",
                     ],
                 },
-                "nodeType": "ARCHIVE",
-                "consensusClient": "LIGHTHOUSE",
-                "executionClient": "ERIGON",
+                "node_type": "ARCHIVE",
+                "consensus_client": "LIGHTHOUSE",
+                "execution_client": "ERIGON",
                 "network": "MAINNET",
             },
             labels={
@@ -422,20 +422,20 @@ class BlockchainNodes(pulumi.CustomResource):
             blockchain_type="ETHEREUM",
             blockchain_node_id="blockchain_geth_node",
             ethereum_details={
-                "apiEnableAdmin": True,
-                "apiEnableDebug": True,
-                "validatorConfig": {
-                    "mevRelayUrls": [
+                "api_enable_admin": True,
+                "api_enable_debug": True,
+                "validator_config": {
+                    "mev_relay_urls": [
                         "https://mev1.example.org/",
                         "https://mev2.example.org/",
                     ],
                 },
-                "nodeType": "FULL",
-                "consensusClient": "LIGHTHOUSE",
-                "executionClient": "GETH",
+                "node_type": "FULL",
+                "consensus_client": "LIGHTHOUSE",
+                "execution_client": "GETH",
                 "network": "MAINNET",
-                "gethDetails": {
-                    "garbageCollectionMode": "FULL",
+                "geth_details": {
+                    "garbage_collection_mode": "FULL",
                 },
             },
             labels={
@@ -513,17 +513,17 @@ class BlockchainNodes(pulumi.CustomResource):
             blockchain_type="ETHEREUM",
             blockchain_node_id="blockchain_basic_node",
             ethereum_details={
-                "apiEnableAdmin": True,
-                "apiEnableDebug": True,
-                "validatorConfig": {
-                    "mevRelayUrls": [
+                "api_enable_admin": True,
+                "api_enable_debug": True,
+                "validator_config": {
+                    "mev_relay_urls": [
                         "https://mev1.example.org/",
                         "https://mev2.example.org/",
                     ],
                 },
-                "nodeType": "ARCHIVE",
-                "consensusClient": "LIGHTHOUSE",
-                "executionClient": "ERIGON",
+                "node_type": "ARCHIVE",
+                "consensus_client": "LIGHTHOUSE",
+                "execution_client": "ERIGON",
                 "network": "MAINNET",
             },
             labels={
@@ -541,20 +541,20 @@ class BlockchainNodes(pulumi.CustomResource):
             blockchain_type="ETHEREUM",
             blockchain_node_id="blockchain_geth_node",
             ethereum_details={
-                "apiEnableAdmin": True,
-                "apiEnableDebug": True,
-                "validatorConfig": {
-                    "mevRelayUrls": [
+                "api_enable_admin": True,
+                "api_enable_debug": True,
+                "validator_config": {
+                    "mev_relay_urls": [
                         "https://mev1.example.org/",
                         "https://mev2.example.org/",
                     ],
                 },
-                "nodeType": "FULL",
-                "consensusClient": "LIGHTHOUSE",
-                "executionClient": "GETH",
+                "node_type": "FULL",
+                "consensus_client": "LIGHTHOUSE",
+                "execution_client": "GETH",
                 "network": "MAINNET",
-                "gethDetails": {
-                    "garbageCollectionMode": "FULL",
+                "geth_details": {
+                    "garbage_collection_mode": "FULL",
                 },
             },
             labels={

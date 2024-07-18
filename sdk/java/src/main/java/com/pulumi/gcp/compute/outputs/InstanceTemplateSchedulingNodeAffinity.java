@@ -22,6 +22,10 @@ public final class InstanceTemplateSchedulingNodeAffinity {
      * 
      */
     private String operator;
+    /**
+     * @return Corresponds to the label values of a reservation resource.
+     * 
+     */
     private List<String> values;
 
     private InstanceTemplateSchedulingNodeAffinity() {}
@@ -40,6 +44,10 @@ public final class InstanceTemplateSchedulingNodeAffinity {
     public String operator() {
         return this.operator;
     }
+    /**
+     * @return Corresponds to the label values of a reservation resource.
+     * 
+     */
     public List<String> values() {
         return this.values;
     }
