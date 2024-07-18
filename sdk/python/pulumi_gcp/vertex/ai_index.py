@@ -491,16 +491,16 @@ class AiIndex(pulumi.CustomResource):
             display_name="test-index",
             description="index for test",
             metadata={
-                "contentsDeltaUri": bucket.name.apply(lambda name: f"gs://{name}/contents"),
+                "contents_delta_uri": bucket.name.apply(lambda name: f"gs://{name}/contents"),
                 "config": {
                     "dimensions": 2,
-                    "approximateNeighborsCount": 150,
-                    "shardSize": "SHARD_SIZE_SMALL",
-                    "distanceMeasureType": "DOT_PRODUCT_DISTANCE",
-                    "algorithmConfig": {
-                        "treeAhConfig": {
-                            "leafNodeEmbeddingCount": 500,
-                            "leafNodesToSearchPercent": 7,
+                    "approximate_neighbors_count": 150,
+                    "shard_size": "SHARD_SIZE_SMALL",
+                    "distance_measure_type": "DOT_PRODUCT_DISTANCE",
+                    "algorithm_config": {
+                        "tree_ah_config": {
+                            "leaf_node_embedding_count": 500,
+                            "leaf_nodes_to_search_percent": 7,
                         },
                     },
                 },
@@ -533,14 +533,14 @@ class AiIndex(pulumi.CustomResource):
             display_name="test-index",
             description="index for test",
             metadata={
-                "contentsDeltaUri": bucket.name.apply(lambda name: f"gs://{name}/contents"),
+                "contents_delta_uri": bucket.name.apply(lambda name: f"gs://{name}/contents"),
                 "config": {
                     "dimensions": 2,
-                    "shardSize": "SHARD_SIZE_LARGE",
-                    "distanceMeasureType": "COSINE_DISTANCE",
-                    "featureNormType": "UNIT_L2_NORM",
-                    "algorithmConfig": {
-                        "bruteForceConfig": {},
+                    "shard_size": "SHARD_SIZE_LARGE",
+                    "distance_measure_type": "COSINE_DISTANCE",
+                    "feature_norm_type": "UNIT_L2_NORM",
+                    "algorithm_config": {
+                        "brute_force_config": {},
                     },
                 },
             },
@@ -637,16 +637,16 @@ class AiIndex(pulumi.CustomResource):
             display_name="test-index",
             description="index for test",
             metadata={
-                "contentsDeltaUri": bucket.name.apply(lambda name: f"gs://{name}/contents"),
+                "contents_delta_uri": bucket.name.apply(lambda name: f"gs://{name}/contents"),
                 "config": {
                     "dimensions": 2,
-                    "approximateNeighborsCount": 150,
-                    "shardSize": "SHARD_SIZE_SMALL",
-                    "distanceMeasureType": "DOT_PRODUCT_DISTANCE",
-                    "algorithmConfig": {
-                        "treeAhConfig": {
-                            "leafNodeEmbeddingCount": 500,
-                            "leafNodesToSearchPercent": 7,
+                    "approximate_neighbors_count": 150,
+                    "shard_size": "SHARD_SIZE_SMALL",
+                    "distance_measure_type": "DOT_PRODUCT_DISTANCE",
+                    "algorithm_config": {
+                        "tree_ah_config": {
+                            "leaf_node_embedding_count": 500,
+                            "leaf_nodes_to_search_percent": 7,
                         },
                     },
                 },
@@ -679,14 +679,14 @@ class AiIndex(pulumi.CustomResource):
             display_name="test-index",
             description="index for test",
             metadata={
-                "contentsDeltaUri": bucket.name.apply(lambda name: f"gs://{name}/contents"),
+                "contents_delta_uri": bucket.name.apply(lambda name: f"gs://{name}/contents"),
                 "config": {
                     "dimensions": 2,
-                    "shardSize": "SHARD_SIZE_LARGE",
-                    "distanceMeasureType": "COSINE_DISTANCE",
-                    "featureNormType": "UNIT_L2_NORM",
-                    "algorithmConfig": {
-                        "bruteForceConfig": {},
+                    "shard_size": "SHARD_SIZE_LARGE",
+                    "distance_measure_type": "COSINE_DISTANCE",
+                    "feature_norm_type": "UNIT_L2_NORM",
+                    "algorithm_config": {
+                        "brute_force_config": {},
                     },
                 },
             },

@@ -442,9 +442,9 @@ class BitbucketServerConfig(pulumi.CustomResource):
             location="us-central1",
             host_uri="https://bbs.com",
             secrets={
-                "adminAccessTokenVersionName": "projects/myProject/secrets/mybbspat/versions/1",
-                "readAccessTokenVersionName": "projects/myProject/secrets/mybbspat/versions/1",
-                "webhookSecretVersionName": "projects/myProject/secrets/mybbspat/versions/1",
+                "admin_access_token_version_name": "projects/myProject/secrets/mybbspat/versions/1",
+                "read_access_token_version_name": "projects/myProject/secrets/mybbspat/versions/1",
+                "webhook_secret_version_name": "projects/myProject/secrets/mybbspat/versions/1",
             },
             username="test",
             api_key="<api-key>")
@@ -460,20 +460,20 @@ class BitbucketServerConfig(pulumi.CustomResource):
             location="us-central1",
             host_uri="https://bbs.com",
             secrets={
-                "adminAccessTokenVersionName": "projects/myProject/secrets/mybbspat/versions/1",
-                "readAccessTokenVersionName": "projects/myProject/secrets/mybbspat/versions/1",
-                "webhookSecretVersionName": "projects/myProject/secrets/mybbspat/versions/1",
+                "admin_access_token_version_name": "projects/myProject/secrets/mybbspat/versions/1",
+                "read_access_token_version_name": "projects/myProject/secrets/mybbspat/versions/1",
+                "webhook_secret_version_name": "projects/myProject/secrets/mybbspat/versions/1",
             },
             username="test",
             api_key="<api-key>",
             connected_repositories=[
                 {
-                    "projectKey": "DEV",
-                    "repoSlug": "repo1",
+                    "project_key": "DEV",
+                    "repo_slug": "repo1",
                 },
                 {
-                    "projectKey": "PROD",
-                    "repoSlug": "repo1",
+                    "project_key": "PROD",
+                    "repo_slug": "repo1",
                 },
             ])
         ```
@@ -506,9 +506,9 @@ class BitbucketServerConfig(pulumi.CustomResource):
             location="us-central1",
             host_uri="https://bbs.com",
             secrets={
-                "adminAccessTokenVersionName": "projects/myProject/secrets/mybbspat/versions/1",
-                "readAccessTokenVersionName": "projects/myProject/secrets/mybbspat/versions/1",
-                "webhookSecretVersionName": "projects/myProject/secrets/mybbspat/versions/1",
+                "admin_access_token_version_name": "projects/myProject/secrets/mybbspat/versions/1",
+                "read_access_token_version_name": "projects/myProject/secrets/mybbspat/versions/1",
+                "webhook_secret_version_name": "projects/myProject/secrets/mybbspat/versions/1",
             },
             username="test",
             api_key="<api-key>",
@@ -595,9 +595,9 @@ class BitbucketServerConfig(pulumi.CustomResource):
             location="us-central1",
             host_uri="https://bbs.com",
             secrets={
-                "adminAccessTokenVersionName": "projects/myProject/secrets/mybbspat/versions/1",
-                "readAccessTokenVersionName": "projects/myProject/secrets/mybbspat/versions/1",
-                "webhookSecretVersionName": "projects/myProject/secrets/mybbspat/versions/1",
+                "admin_access_token_version_name": "projects/myProject/secrets/mybbspat/versions/1",
+                "read_access_token_version_name": "projects/myProject/secrets/mybbspat/versions/1",
+                "webhook_secret_version_name": "projects/myProject/secrets/mybbspat/versions/1",
             },
             username="test",
             api_key="<api-key>")
@@ -613,20 +613,20 @@ class BitbucketServerConfig(pulumi.CustomResource):
             location="us-central1",
             host_uri="https://bbs.com",
             secrets={
-                "adminAccessTokenVersionName": "projects/myProject/secrets/mybbspat/versions/1",
-                "readAccessTokenVersionName": "projects/myProject/secrets/mybbspat/versions/1",
-                "webhookSecretVersionName": "projects/myProject/secrets/mybbspat/versions/1",
+                "admin_access_token_version_name": "projects/myProject/secrets/mybbspat/versions/1",
+                "read_access_token_version_name": "projects/myProject/secrets/mybbspat/versions/1",
+                "webhook_secret_version_name": "projects/myProject/secrets/mybbspat/versions/1",
             },
             username="test",
             api_key="<api-key>",
             connected_repositories=[
                 {
-                    "projectKey": "DEV",
-                    "repoSlug": "repo1",
+                    "project_key": "DEV",
+                    "repo_slug": "repo1",
                 },
                 {
-                    "projectKey": "PROD",
-                    "repoSlug": "repo1",
+                    "project_key": "PROD",
+                    "repo_slug": "repo1",
                 },
             ])
         ```
@@ -659,9 +659,9 @@ class BitbucketServerConfig(pulumi.CustomResource):
             location="us-central1",
             host_uri="https://bbs.com",
             secrets={
-                "adminAccessTokenVersionName": "projects/myProject/secrets/mybbspat/versions/1",
-                "readAccessTokenVersionName": "projects/myProject/secrets/mybbspat/versions/1",
-                "webhookSecretVersionName": "projects/myProject/secrets/mybbspat/versions/1",
+                "admin_access_token_version_name": "projects/myProject/secrets/mybbspat/versions/1",
+                "read_access_token_version_name": "projects/myProject/secrets/mybbspat/versions/1",
+                "webhook_secret_version_name": "projects/myProject/secrets/mybbspat/versions/1",
             },
             username="test",
             api_key="<api-key>",

@@ -475,7 +475,7 @@ class SQuotaPreference(pulumi.CustomResource):
             quota_id="CPUS-per-project-region",
             contact_email="testuser@gmail.com",
             quota_config={
-                "preferredValue": "200",
+                "preferred_value": "200",
             })
         ```
 
@@ -547,7 +547,7 @@ class SQuotaPreference(pulumi.CustomResource):
             quota_id="CPUS-per-project-region",
             contact_email="testuser@gmail.com",
             quota_config={
-                "preferredValue": "200",
+                "preferred_value": "200",
             })
         ```
 

@@ -161,7 +161,7 @@ class ServicePerimeterResource(pulumi.CustomResource):
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/restrict_all"),
             title="restrict_all",
             status={
-                "restrictedServices": ["storage.googleapis.com"],
+                "restricted_services": ["storage.googleapis.com"],
             })
         service_perimeter_resource = gcp.accesscontextmanager.ServicePerimeterResource("service-perimeter-resource",
             perimeter_name=service_perimeter_resource_service_perimeter.name,
@@ -235,7 +235,7 @@ class ServicePerimeterResource(pulumi.CustomResource):
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/restrict_all"),
             title="restrict_all",
             status={
-                "restrictedServices": ["storage.googleapis.com"],
+                "restricted_services": ["storage.googleapis.com"],
             })
         service_perimeter_resource = gcp.accesscontextmanager.ServicePerimeterResource("service-perimeter-resource",
             perimeter_name=service_perimeter_resource_service_perimeter.name,

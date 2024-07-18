@@ -196,10 +196,10 @@ class GcpUserAccessBinding(pulumi.CustomResource):
             title="chromeos_no_lock",
             basic={
                 "conditions": [{
-                    "devicePolicy": {
-                        "requireScreenLock": True,
-                        "osConstraints": [{
-                            "osType": "DESKTOP_CHROME_OS",
+                    "device_policy": {
+                        "require_screen_lock": True,
+                        "os_constraints": [{
+                            "os_type": "DESKTOP_CHROME_OS",
                         }],
                     },
                     "regions": ["US"],
@@ -273,10 +273,10 @@ class GcpUserAccessBinding(pulumi.CustomResource):
             title="chromeos_no_lock",
             basic={
                 "conditions": [{
-                    "devicePolicy": {
-                        "requireScreenLock": True,
-                        "osConstraints": [{
-                            "osType": "DESKTOP_CHROME_OS",
+                    "device_policy": {
+                        "require_screen_lock": True,
+                        "os_constraints": [{
+                            "os_type": "DESKTOP_CHROME_OS",
                         }],
                     },
                     "regions": ["US"],

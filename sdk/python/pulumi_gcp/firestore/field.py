@@ -330,10 +330,10 @@ class Field(pulumi.CustomResource):
                 "indexes": [
                     {
                         "order": "ASCENDING",
-                        "queryScope": "COLLECTION_GROUP",
+                        "query_scope": "COLLECTION_GROUP",
                     },
                     {
-                        "arrayConfig": "CONTAINS",
+                        "array_config": "CONTAINS",
                     },
                 ],
             })
@@ -386,7 +386,7 @@ class Field(pulumi.CustomResource):
                         "order": "DESCENDING",
                     },
                     {
-                        "arrayConfig": "CONTAINS",
+                        "array_config": "CONTAINS",
                     },
                 ],
             })
@@ -468,10 +468,10 @@ class Field(pulumi.CustomResource):
                 "indexes": [
                     {
                         "order": "ASCENDING",
-                        "queryScope": "COLLECTION_GROUP",
+                        "query_scope": "COLLECTION_GROUP",
                     },
                     {
-                        "arrayConfig": "CONTAINS",
+                        "array_config": "CONTAINS",
                     },
                 ],
             })
@@ -524,7 +524,7 @@ class Field(pulumi.CustomResource):
                         "order": "DESCENDING",
                     },
                     {
-                        "arrayConfig": "CONTAINS",
+                        "array_config": "CONTAINS",
                     },
                 ],
             })
