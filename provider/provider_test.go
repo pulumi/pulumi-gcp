@@ -109,7 +109,8 @@ func testProviderUpgradeWithConfig(
 	}
 	// The SetConfig above does not seem to be working here.
 	t.Setenv("PULUMI_GCP_SKIP_REGION_VALIDATION", "true")
-	result := providertest.PreviewProviderUpgrade(test, providerName, baselineVersion, optproviderupgrade.DisableAttach())
+	result := providertest.PreviewProviderUpgrade(t, test, providerName, baselineVersion,
+		optproviderupgrade.DisableAttach())
 	if assertFunction != nil {
 		assertFunction(t, result)
 	} else {
