@@ -154,14 +154,14 @@ class ServicePerimeters(pulumi.CustomResource):
                     "name": access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
                     "title": "",
                     "status": {
-                        "restrictedServices": ["storage.googleapis.com"],
+                        "restricted_services": ["storage.googleapis.com"],
                     },
                 },
                 {
                     "name": access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
                     "title": "",
                     "status": {
-                        "restrictedServices": ["bigtable.googleapis.com"],
+                        "restricted_services": ["bigtable.googleapis.com"],
                     },
                 },
             ])
@@ -171,10 +171,10 @@ class ServicePerimeters(pulumi.CustomResource):
             title="chromeos_no_lock",
             basic={
                 "conditions": [{
-                    "devicePolicy": {
-                        "requireScreenLock": False,
-                        "osConstraints": [{
-                            "osType": "DESKTOP_CHROME_OS",
+                    "device_policy": {
+                        "require_screen_lock": False,
+                        "os_constraints": [{
+                            "os_type": "DESKTOP_CHROME_OS",
                         }],
                     },
                     "regions": [
@@ -249,14 +249,14 @@ class ServicePerimeters(pulumi.CustomResource):
                     "name": access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
                     "title": "",
                     "status": {
-                        "restrictedServices": ["storage.googleapis.com"],
+                        "restricted_services": ["storage.googleapis.com"],
                     },
                 },
                 {
                     "name": access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
                     "title": "",
                     "status": {
-                        "restrictedServices": ["bigtable.googleapis.com"],
+                        "restricted_services": ["bigtable.googleapis.com"],
                     },
                 },
             ])
@@ -266,10 +266,10 @@ class ServicePerimeters(pulumi.CustomResource):
             title="chromeos_no_lock",
             basic={
                 "conditions": [{
-                    "devicePolicy": {
-                        "requireScreenLock": False,
-                        "osConstraints": [{
-                            "osType": "DESKTOP_CHROME_OS",
+                    "device_policy": {
+                        "require_screen_lock": False,
+                        "os_constraints": [{
+                            "os_type": "DESKTOP_CHROME_OS",
                         }],
                     },
                     "regions": [

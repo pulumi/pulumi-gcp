@@ -282,7 +282,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
             description="My description",
             display_name="display_name",
             inspect_config={
-                "infoTypes": [
+                "info_types": [
                     {
                         "name": "EMAIL_ADDRESS",
                     },
@@ -302,23 +302,23 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                         "name": "FIRST_NAME",
                     },
                 ],
-                "minLikelihood": "UNLIKELY",
-                "ruleSets": [
+                "min_likelihood": "UNLIKELY",
+                "rule_sets": [
                     {
-                        "infoTypes": [{
+                        "info_types": [{
                             "name": "EMAIL_ADDRESS",
                         }],
                         "rules": [{
-                            "exclusionRule": {
+                            "exclusion_rule": {
                                 "regex": {
                                     "pattern": ".+@example.com",
                                 },
-                                "matchingType": "MATCHING_TYPE_FULL_MATCH",
+                                "matching_type": "MATCHING_TYPE_FULL_MATCH",
                             },
                         }],
                     },
                     {
-                        "infoTypes": [
+                        "info_types": [
                             {
                                 "name": "EMAIL_ADDRESS",
                             },
@@ -336,48 +336,48 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                             },
                         ],
                         "rules": [{
-                            "exclusionRule": {
+                            "exclusion_rule": {
                                 "dictionary": {
-                                    "wordList": {
+                                    "word_list": {
                                         "words": ["TEST"],
                                     },
                                 },
-                                "matchingType": "MATCHING_TYPE_PARTIAL_MATCH",
+                                "matching_type": "MATCHING_TYPE_PARTIAL_MATCH",
                             },
                         }],
                     },
                     {
-                        "infoTypes": [{
+                        "info_types": [{
                             "name": "PERSON_NAME",
                         }],
                         "rules": [{
-                            "hotwordRule": {
-                                "hotwordRegex": {
+                            "hotword_rule": {
+                                "hotword_regex": {
                                     "pattern": "patient",
                                 },
                                 "proximity": {
-                                    "windowBefore": 50,
+                                    "window_before": 50,
                                 },
-                                "likelihoodAdjustment": {
-                                    "fixedLikelihood": "VERY_LIKELY",
+                                "likelihood_adjustment": {
+                                    "fixed_likelihood": "VERY_LIKELY",
                                 },
                             },
                         }],
                     },
                 ],
                 "limits": {
-                    "maxFindingsPerItem": 10,
-                    "maxFindingsPerRequest": 50,
-                    "maxFindingsPerInfoTypes": [
+                    "max_findings_per_item": 10,
+                    "max_findings_per_request": 50,
+                    "max_findings_per_info_types": [
                         {
-                            "maxFindings": 75,
-                            "infoType": {
+                            "max_findings": 75,
+                            "info_type": {
                                 "name": "PERSON_NAME",
                             },
                         },
                         {
-                            "maxFindings": 80,
-                            "infoType": {
+                            "max_findings": 80,
+                            "info_type": {
                                 "name": "LAST_NAME",
                             },
                         },
@@ -396,8 +396,8 @@ class PreventionInspectTemplate(pulumi.CustomResource):
             description="My description",
             display_name="display_name",
             inspect_config={
-                "customInfoTypes": [{
-                    "infoType": {
+                "custom_info_types": [{
+                    "info_type": {
                         "name": "MY_CUSTOM_TYPE",
                     },
                     "likelihood": "UNLIKELY",
@@ -405,46 +405,46 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                         "pattern": "test*",
                     },
                 }],
-                "infoTypes": [{
+                "info_types": [{
                     "name": "EMAIL_ADDRESS",
                 }],
-                "minLikelihood": "UNLIKELY",
-                "ruleSets": [
+                "min_likelihood": "UNLIKELY",
+                "rule_sets": [
                     {
-                        "infoTypes": [{
+                        "info_types": [{
                             "name": "EMAIL_ADDRESS",
                         }],
                         "rules": [{
-                            "exclusionRule": {
+                            "exclusion_rule": {
                                 "regex": {
                                     "pattern": ".+@example.com",
                                 },
-                                "matchingType": "MATCHING_TYPE_FULL_MATCH",
+                                "matching_type": "MATCHING_TYPE_FULL_MATCH",
                             },
                         }],
                     },
                     {
-                        "infoTypes": [{
+                        "info_types": [{
                             "name": "MY_CUSTOM_TYPE",
                         }],
                         "rules": [{
-                            "hotwordRule": {
-                                "hotwordRegex": {
+                            "hotword_rule": {
+                                "hotword_regex": {
                                     "pattern": "example*",
                                 },
                                 "proximity": {
-                                    "windowBefore": 50,
+                                    "window_before": 50,
                                 },
-                                "likelihoodAdjustment": {
-                                    "fixedLikelihood": "VERY_LIKELY",
+                                "likelihood_adjustment": {
+                                    "fixed_likelihood": "VERY_LIKELY",
                                 },
                             },
                         }],
                     },
                 ],
                 "limits": {
-                    "maxFindingsPerItem": 10,
-                    "maxFindingsPerRequest": 50,
+                    "max_findings_per_item": 10,
+                    "max_findings_per_request": 50,
                 },
             })
         ```
@@ -459,53 +459,53 @@ class PreventionInspectTemplate(pulumi.CustomResource):
             description="My description",
             display_name="display_name",
             inspect_config={
-                "customInfoTypes": [{
-                    "infoType": {
+                "custom_info_types": [{
+                    "info_type": {
                         "name": "MY_CUSTOM_TYPE",
                     },
                     "likelihood": "UNLIKELY",
-                    "surrogateType": {},
+                    "surrogate_type": {},
                 }],
-                "infoTypes": [{
+                "info_types": [{
                     "name": "EMAIL_ADDRESS",
                 }],
-                "minLikelihood": "UNLIKELY",
-                "ruleSets": [
+                "min_likelihood": "UNLIKELY",
+                "rule_sets": [
                     {
-                        "infoTypes": [{
+                        "info_types": [{
                             "name": "EMAIL_ADDRESS",
                         }],
                         "rules": [{
-                            "exclusionRule": {
+                            "exclusion_rule": {
                                 "regex": {
                                     "pattern": ".+@example.com",
                                 },
-                                "matchingType": "MATCHING_TYPE_FULL_MATCH",
+                                "matching_type": "MATCHING_TYPE_FULL_MATCH",
                             },
                         }],
                     },
                     {
-                        "infoTypes": [{
+                        "info_types": [{
                             "name": "MY_CUSTOM_TYPE",
                         }],
                         "rules": [{
-                            "hotwordRule": {
-                                "hotwordRegex": {
+                            "hotword_rule": {
+                                "hotword_regex": {
                                     "pattern": "example*",
                                 },
                                 "proximity": {
-                                    "windowBefore": 50,
+                                    "window_before": 50,
                                 },
-                                "likelihoodAdjustment": {
-                                    "fixedLikelihood": "VERY_LIKELY",
+                                "likelihood_adjustment": {
+                                    "fixed_likelihood": "VERY_LIKELY",
                                 },
                             },
                         }],
                     },
                 ],
                 "limits": {
-                    "maxFindingsPerItem": 10,
-                    "maxFindingsPerRequest": 50,
+                    "max_findings_per_item": 10,
+                    "max_findings_per_request": 50,
                 },
             })
         ```
@@ -518,7 +518,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         max_infotype_per_finding_default = gcp.dataloss.PreventionInspectTemplate("max_infotype_per_finding_default",
             parent="projects/my-project-name",
             inspect_config={
-                "infoTypes": [
+                "info_types": [
                     {
                         "name": "EMAIL_ADDRESS",
                     },
@@ -526,12 +526,12 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                         "name": "PERSON_NAME",
                     },
                 ],
-                "minLikelihood": "UNLIKELY",
+                "min_likelihood": "UNLIKELY",
                 "limits": {
-                    "maxFindingsPerRequest": 333,
-                    "maxFindingsPerItem": 222,
-                    "maxFindingsPerInfoTypes": [{
-                        "maxFindings": 111,
+                    "max_findings_per_request": 333,
+                    "max_findings_per_item": 222,
+                    "max_findings_per_info_types": [{
+                        "max_findings": 111,
                     }],
                 },
             })
@@ -601,7 +601,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
             description="My description",
             display_name="display_name",
             inspect_config={
-                "infoTypes": [
+                "info_types": [
                     {
                         "name": "EMAIL_ADDRESS",
                     },
@@ -621,23 +621,23 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                         "name": "FIRST_NAME",
                     },
                 ],
-                "minLikelihood": "UNLIKELY",
-                "ruleSets": [
+                "min_likelihood": "UNLIKELY",
+                "rule_sets": [
                     {
-                        "infoTypes": [{
+                        "info_types": [{
                             "name": "EMAIL_ADDRESS",
                         }],
                         "rules": [{
-                            "exclusionRule": {
+                            "exclusion_rule": {
                                 "regex": {
                                     "pattern": ".+@example.com",
                                 },
-                                "matchingType": "MATCHING_TYPE_FULL_MATCH",
+                                "matching_type": "MATCHING_TYPE_FULL_MATCH",
                             },
                         }],
                     },
                     {
-                        "infoTypes": [
+                        "info_types": [
                             {
                                 "name": "EMAIL_ADDRESS",
                             },
@@ -655,48 +655,48 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                             },
                         ],
                         "rules": [{
-                            "exclusionRule": {
+                            "exclusion_rule": {
                                 "dictionary": {
-                                    "wordList": {
+                                    "word_list": {
                                         "words": ["TEST"],
                                     },
                                 },
-                                "matchingType": "MATCHING_TYPE_PARTIAL_MATCH",
+                                "matching_type": "MATCHING_TYPE_PARTIAL_MATCH",
                             },
                         }],
                     },
                     {
-                        "infoTypes": [{
+                        "info_types": [{
                             "name": "PERSON_NAME",
                         }],
                         "rules": [{
-                            "hotwordRule": {
-                                "hotwordRegex": {
+                            "hotword_rule": {
+                                "hotword_regex": {
                                     "pattern": "patient",
                                 },
                                 "proximity": {
-                                    "windowBefore": 50,
+                                    "window_before": 50,
                                 },
-                                "likelihoodAdjustment": {
-                                    "fixedLikelihood": "VERY_LIKELY",
+                                "likelihood_adjustment": {
+                                    "fixed_likelihood": "VERY_LIKELY",
                                 },
                             },
                         }],
                     },
                 ],
                 "limits": {
-                    "maxFindingsPerItem": 10,
-                    "maxFindingsPerRequest": 50,
-                    "maxFindingsPerInfoTypes": [
+                    "max_findings_per_item": 10,
+                    "max_findings_per_request": 50,
+                    "max_findings_per_info_types": [
                         {
-                            "maxFindings": 75,
-                            "infoType": {
+                            "max_findings": 75,
+                            "info_type": {
                                 "name": "PERSON_NAME",
                             },
                         },
                         {
-                            "maxFindings": 80,
-                            "infoType": {
+                            "max_findings": 80,
+                            "info_type": {
                                 "name": "LAST_NAME",
                             },
                         },
@@ -715,8 +715,8 @@ class PreventionInspectTemplate(pulumi.CustomResource):
             description="My description",
             display_name="display_name",
             inspect_config={
-                "customInfoTypes": [{
-                    "infoType": {
+                "custom_info_types": [{
+                    "info_type": {
                         "name": "MY_CUSTOM_TYPE",
                     },
                     "likelihood": "UNLIKELY",
@@ -724,46 +724,46 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                         "pattern": "test*",
                     },
                 }],
-                "infoTypes": [{
+                "info_types": [{
                     "name": "EMAIL_ADDRESS",
                 }],
-                "minLikelihood": "UNLIKELY",
-                "ruleSets": [
+                "min_likelihood": "UNLIKELY",
+                "rule_sets": [
                     {
-                        "infoTypes": [{
+                        "info_types": [{
                             "name": "EMAIL_ADDRESS",
                         }],
                         "rules": [{
-                            "exclusionRule": {
+                            "exclusion_rule": {
                                 "regex": {
                                     "pattern": ".+@example.com",
                                 },
-                                "matchingType": "MATCHING_TYPE_FULL_MATCH",
+                                "matching_type": "MATCHING_TYPE_FULL_MATCH",
                             },
                         }],
                     },
                     {
-                        "infoTypes": [{
+                        "info_types": [{
                             "name": "MY_CUSTOM_TYPE",
                         }],
                         "rules": [{
-                            "hotwordRule": {
-                                "hotwordRegex": {
+                            "hotword_rule": {
+                                "hotword_regex": {
                                     "pattern": "example*",
                                 },
                                 "proximity": {
-                                    "windowBefore": 50,
+                                    "window_before": 50,
                                 },
-                                "likelihoodAdjustment": {
-                                    "fixedLikelihood": "VERY_LIKELY",
+                                "likelihood_adjustment": {
+                                    "fixed_likelihood": "VERY_LIKELY",
                                 },
                             },
                         }],
                     },
                 ],
                 "limits": {
-                    "maxFindingsPerItem": 10,
-                    "maxFindingsPerRequest": 50,
+                    "max_findings_per_item": 10,
+                    "max_findings_per_request": 50,
                 },
             })
         ```
@@ -778,53 +778,53 @@ class PreventionInspectTemplate(pulumi.CustomResource):
             description="My description",
             display_name="display_name",
             inspect_config={
-                "customInfoTypes": [{
-                    "infoType": {
+                "custom_info_types": [{
+                    "info_type": {
                         "name": "MY_CUSTOM_TYPE",
                     },
                     "likelihood": "UNLIKELY",
-                    "surrogateType": {},
+                    "surrogate_type": {},
                 }],
-                "infoTypes": [{
+                "info_types": [{
                     "name": "EMAIL_ADDRESS",
                 }],
-                "minLikelihood": "UNLIKELY",
-                "ruleSets": [
+                "min_likelihood": "UNLIKELY",
+                "rule_sets": [
                     {
-                        "infoTypes": [{
+                        "info_types": [{
                             "name": "EMAIL_ADDRESS",
                         }],
                         "rules": [{
-                            "exclusionRule": {
+                            "exclusion_rule": {
                                 "regex": {
                                     "pattern": ".+@example.com",
                                 },
-                                "matchingType": "MATCHING_TYPE_FULL_MATCH",
+                                "matching_type": "MATCHING_TYPE_FULL_MATCH",
                             },
                         }],
                     },
                     {
-                        "infoTypes": [{
+                        "info_types": [{
                             "name": "MY_CUSTOM_TYPE",
                         }],
                         "rules": [{
-                            "hotwordRule": {
-                                "hotwordRegex": {
+                            "hotword_rule": {
+                                "hotword_regex": {
                                     "pattern": "example*",
                                 },
                                 "proximity": {
-                                    "windowBefore": 50,
+                                    "window_before": 50,
                                 },
-                                "likelihoodAdjustment": {
-                                    "fixedLikelihood": "VERY_LIKELY",
+                                "likelihood_adjustment": {
+                                    "fixed_likelihood": "VERY_LIKELY",
                                 },
                             },
                         }],
                     },
                 ],
                 "limits": {
-                    "maxFindingsPerItem": 10,
-                    "maxFindingsPerRequest": 50,
+                    "max_findings_per_item": 10,
+                    "max_findings_per_request": 50,
                 },
             })
         ```
@@ -837,7 +837,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         max_infotype_per_finding_default = gcp.dataloss.PreventionInspectTemplate("max_infotype_per_finding_default",
             parent="projects/my-project-name",
             inspect_config={
-                "infoTypes": [
+                "info_types": [
                     {
                         "name": "EMAIL_ADDRESS",
                     },
@@ -845,12 +845,12 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                         "name": "PERSON_NAME",
                     },
                 ],
-                "minLikelihood": "UNLIKELY",
+                "min_likelihood": "UNLIKELY",
                 "limits": {
-                    "maxFindingsPerRequest": 333,
-                    "maxFindingsPerItem": 222,
-                    "maxFindingsPerInfoTypes": [{
-                        "maxFindings": 111,
+                    "max_findings_per_request": 333,
+                    "max_findings_per_item": 222,
+                    "max_findings_per_info_types": [{
+                        "max_findings": 111,
                     }],
                 },
             })

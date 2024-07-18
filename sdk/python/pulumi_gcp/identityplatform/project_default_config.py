@@ -150,18 +150,18 @@ class ProjectDefaultConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.identityplatform.ProjectDefaultConfig("default", sign_in={
-            "allowDuplicateEmails": True,
+            "allow_duplicate_emails": True,
             "anonymous": {
                 "enabled": True,
             },
             "email": {
                 "enabled": True,
-                "passwordRequired": False,
+                "password_required": False,
             },
-            "phoneNumber": {
+            "phone_number": {
                 "enabled": True,
-                "testPhoneNumbers": {
-                    "+11231231234": "000000",
+                "test_phone_numbers": {
+                    "_11231231234": "000000",
                 },
             },
         })
@@ -224,18 +224,18 @@ class ProjectDefaultConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.identityplatform.ProjectDefaultConfig("default", sign_in={
-            "allowDuplicateEmails": True,
+            "allow_duplicate_emails": True,
             "anonymous": {
                 "enabled": True,
             },
             "email": {
                 "enabled": True,
-                "passwordRequired": False,
+                "password_required": False,
             },
-            "phoneNumber": {
+            "phone_number": {
                 "enabled": True,
-                "testPhoneNumbers": {
-                    "+11231231234": "000000",
+                "test_phone_numbers": {
+                    "_11231231234": "000000",
                 },
             },
         })

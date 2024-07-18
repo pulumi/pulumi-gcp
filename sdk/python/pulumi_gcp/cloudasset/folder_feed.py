@@ -423,7 +423,7 @@ class FolderFeed(pulumi.CustomResource):
                 "compute.googleapis.com/Network",
             ],
             feed_output_config={
-                "pubsubDestination": {
+                "pubsub_destination": {
                     "topic": feed_output.id,
                 },
             },
@@ -524,7 +524,7 @@ class FolderFeed(pulumi.CustomResource):
                 "compute.googleapis.com/Network",
             ],
             feed_output_config={
-                "pubsubDestination": {
+                "pubsub_destination": {
                     "topic": feed_output.id,
                 },
             },

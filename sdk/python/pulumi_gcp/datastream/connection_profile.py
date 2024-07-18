@@ -624,7 +624,7 @@ class ConnectionProfile(pulumi.CustomResource):
             connection_profile_id="my-profile",
             gcs_profile={
                 "bucket": "my-bucket",
-                "rootPath": "/path",
+                "root_path": "/path",
             })
         ```
         ### Datastream Connection Profile Postgresql Private Connection
@@ -652,8 +652,8 @@ class ConnectionProfile(pulumi.CustomResource):
             region="us-central1",
             settings={
                 "tier": "db-f1-micro",
-                "ipConfiguration": {
-                    "authorizedNetworks": [
+                "ip_configuration": {
+                    "authorized_networks": [
                         {
                             "value": "34.71.242.81",
                         },
@@ -694,7 +694,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "database": db.name,
             },
             private_connectivity={
-                "privateConnection": private_connection.id,
+                "private_connection": private_connection.id,
             })
         ```
         ### Datastream Connection Profile Full
@@ -709,7 +709,7 @@ class ConnectionProfile(pulumi.CustomResource):
             connection_profile_id="my-profile",
             gcs_profile={
                 "bucket": "my-bucket",
-                "rootPath": "/path",
+                "root_path": "/path",
             },
             forward_ssh_connectivity={
                 "hostname": "google.com",
@@ -734,8 +734,8 @@ class ConnectionProfile(pulumi.CustomResource):
             region="us-central1",
             settings={
                 "tier": "db-f1-micro",
-                "ipConfiguration": {
-                    "authorizedNetworks": [
+                "ip_configuration": {
+                    "authorized_networks": [
                         {
                             "value": "34.71.242.81",
                         },
@@ -790,8 +790,8 @@ class ConnectionProfile(pulumi.CustomResource):
             deletion_protection=True,
             settings={
                 "tier": "db-custom-2-4096",
-                "ipConfiguration": {
-                    "authorizedNetworks": [
+                "ip_configuration": {
+                    "authorized_networks": [
                         {
                             "value": "34.71.242.81",
                         },
@@ -913,7 +913,7 @@ class ConnectionProfile(pulumi.CustomResource):
             connection_profile_id="my-profile",
             gcs_profile={
                 "bucket": "my-bucket",
-                "rootPath": "/path",
+                "root_path": "/path",
             })
         ```
         ### Datastream Connection Profile Postgresql Private Connection
@@ -941,8 +941,8 @@ class ConnectionProfile(pulumi.CustomResource):
             region="us-central1",
             settings={
                 "tier": "db-f1-micro",
-                "ipConfiguration": {
-                    "authorizedNetworks": [
+                "ip_configuration": {
+                    "authorized_networks": [
                         {
                             "value": "34.71.242.81",
                         },
@@ -983,7 +983,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 "database": db.name,
             },
             private_connectivity={
-                "privateConnection": private_connection.id,
+                "private_connection": private_connection.id,
             })
         ```
         ### Datastream Connection Profile Full
@@ -998,7 +998,7 @@ class ConnectionProfile(pulumi.CustomResource):
             connection_profile_id="my-profile",
             gcs_profile={
                 "bucket": "my-bucket",
-                "rootPath": "/path",
+                "root_path": "/path",
             },
             forward_ssh_connectivity={
                 "hostname": "google.com",
@@ -1023,8 +1023,8 @@ class ConnectionProfile(pulumi.CustomResource):
             region="us-central1",
             settings={
                 "tier": "db-f1-micro",
-                "ipConfiguration": {
-                    "authorizedNetworks": [
+                "ip_configuration": {
+                    "authorized_networks": [
                         {
                             "value": "34.71.242.81",
                         },
@@ -1079,8 +1079,8 @@ class ConnectionProfile(pulumi.CustomResource):
             deletion_protection=True,
             settings={
                 "tier": "db-custom-2-4096",
-                "ipConfiguration": {
-                    "authorizedNetworks": [
+                "ip_configuration": {
+                    "authorized_networks": [
                         {
                             "value": "34.71.242.81",
                         },

@@ -341,10 +341,10 @@ class Table(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="tf-instance",
             clusters=[{
-                "clusterId": "tf-instance-cluster",
+                "cluster_id": "tf-instance-cluster",
                 "zone": "us-central1-b",
-                "numNodes": 3,
-                "storageType": "HDD",
+                "num_nodes": 3,
+                "storage_type": "HDD",
             }])
         table = gcp.bigtable.Table("table",
             name="tf-table",
@@ -428,10 +428,10 @@ class Table(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="tf-instance",
             clusters=[{
-                "clusterId": "tf-instance-cluster",
+                "cluster_id": "tf-instance-cluster",
                 "zone": "us-central1-b",
-                "numNodes": 3,
-                "storageType": "HDD",
+                "num_nodes": 3,
+                "storage_type": "HDD",
             }])
         table = gcp.bigtable.Table("table",
             name="tf-table",

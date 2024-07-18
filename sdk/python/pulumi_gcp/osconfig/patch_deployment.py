@@ -451,7 +451,7 @@ class PatchDeployment(pulumi.CustomResource):
                 "all": True,
             },
             one_time_schedule={
-                "executeTime": "2999-10-10T10:10:10.045123456Z",
+                "execute_time": "2999-10-10T10:10:10.045123456Z",
             })
         ```
         ### Os Config Patch Deployment Daily
@@ -466,10 +466,10 @@ class PatchDeployment(pulumi.CustomResource):
                 "all": True,
             },
             recurring_schedule={
-                "timeZone": {
+                "time_zone": {
                     "id": "America/New_York",
                 },
-                "timeOfDay": {
+                "time_of_day": {
                     "hours": 0,
                     "minutes": 30,
                     "seconds": 30,
@@ -489,10 +489,10 @@ class PatchDeployment(pulumi.CustomResource):
                 "all": True,
             },
             recurring_schedule={
-                "timeZone": {
+                "time_zone": {
                     "id": "America/New_York",
                 },
-                "timeOfDay": {
+                "time_of_day": {
                     "hours": 0,
                     "minutes": 0,
                     "seconds": 0,
@@ -518,7 +518,7 @@ class PatchDeployment(pulumi.CustomResource):
                 "bar",
             ],
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": my_image.self_link,
                 },
             },
@@ -541,17 +541,17 @@ class PatchDeployment(pulumi.CustomResource):
                 },
             },
             recurring_schedule={
-                "timeZone": {
+                "time_zone": {
                     "id": "America/New_York",
                 },
-                "timeOfDay": {
+                "time_of_day": {
                     "hours": 0,
                     "minutes": 30,
                     "seconds": 30,
                     "nanos": 20,
                 },
                 "monthly": {
-                    "monthDay": 1,
+                    "month_day": 1,
                 },
             })
         ```
@@ -564,21 +564,21 @@ class PatchDeployment(pulumi.CustomResource):
         patch = gcp.osconfig.PatchDeployment("patch",
             patch_deployment_id="patch-deploy",
             instance_filter={
-                "groupLabels": [{
+                "group_labels": [{
                     "labels": {
                         "env": "dev",
                         "app": "web",
                     },
                 }],
-                "instanceNamePrefixes": ["test-"],
+                "instance_name_prefixes": ["test-"],
                 "zones": [
                     "us-central1-a",
                     "us-central-1c",
                 ],
             },
             patch_config={
-                "migInstancesAllowed": True,
-                "rebootConfig": "ALWAYS",
+                "mig_instances_allowed": True,
+                "reboot_config": "ALWAYS",
                 "apt": {
                     "type": "DIST",
                     "excludes": ["python"],
@@ -594,7 +594,7 @@ class PatchDeployment(pulumi.CustomResource):
                 "zypper": {
                     "categories": ["security"],
                 },
-                "windowsUpdate": {
+                "windows_update": {
                     "classifications": [
                         "CRITICAL",
                         "SECURITY",
@@ -602,36 +602,36 @@ class PatchDeployment(pulumi.CustomResource):
                     ],
                     "excludes": ["5012170"],
                 },
-                "preStep": {
-                    "linuxExecStepConfig": {
-                        "allowedSuccessCodes": [
+                "pre_step": {
+                    "linux_exec_step_config": {
+                        "allowed_success_codes": [
                             0,
                             3,
                         ],
-                        "localPath": "/tmp/pre_patch_script.sh",
+                        "local_path": "/tmp/pre_patch_script.sh",
                     },
-                    "windowsExecStepConfig": {
+                    "windows_exec_step_config": {
                         "interpreter": "SHELL",
-                        "allowedSuccessCodes": [
+                        "allowed_success_codes": [
                             0,
                             2,
                         ],
-                        "localPath": "C:\\\\Users\\\\user\\\\pre-patch-script.cmd",
+                        "local_path": "C:\\\\Users\\\\user\\\\pre-patch-script.cmd",
                     },
                 },
-                "postStep": {
-                    "linuxExecStepConfig": {
-                        "gcsObject": {
+                "post_step": {
+                    "linux_exec_step_config": {
+                        "gcs_object": {
                             "bucket": "my-patch-scripts",
-                            "generationNumber": "1523477886880",
+                            "generation_number": "1523477886880",
                             "object": "linux/post_patch_script",
                         },
                     },
-                    "windowsExecStepConfig": {
+                    "windows_exec_step_config": {
                         "interpreter": "POWERSHELL",
-                        "gcsObject": {
+                        "gcs_object": {
                             "bucket": "my-patch-scripts",
-                            "generationNumber": "135920493447",
+                            "generation_number": "135920493447",
                             "object": "windows/post_patch_script.ps1",
                         },
                     },
@@ -639,26 +639,26 @@ class PatchDeployment(pulumi.CustomResource):
             },
             duration="10s",
             recurring_schedule={
-                "timeZone": {
+                "time_zone": {
                     "id": "America/New_York",
                 },
-                "timeOfDay": {
+                "time_of_day": {
                     "hours": 0,
                     "minutes": 30,
                     "seconds": 30,
                     "nanos": 20,
                 },
                 "monthly": {
-                    "weekDayOfMonth": {
-                        "weekOrdinal": -1,
-                        "dayOfWeek": "TUESDAY",
-                        "dayOffset": 3,
+                    "week_day_of_month": {
+                        "week_ordinal": -1,
+                        "day_of_week": "TUESDAY",
+                        "day_offset": 3,
                     },
                 },
             },
             rollout={
                 "mode": "ZONE_BY_ZONE",
-                "disruptionBudget": {
+                "disruption_budget": {
                     "fixed": 1,
                 },
             })
@@ -736,7 +736,7 @@ class PatchDeployment(pulumi.CustomResource):
                 "all": True,
             },
             one_time_schedule={
-                "executeTime": "2999-10-10T10:10:10.045123456Z",
+                "execute_time": "2999-10-10T10:10:10.045123456Z",
             })
         ```
         ### Os Config Patch Deployment Daily
@@ -751,10 +751,10 @@ class PatchDeployment(pulumi.CustomResource):
                 "all": True,
             },
             recurring_schedule={
-                "timeZone": {
+                "time_zone": {
                     "id": "America/New_York",
                 },
-                "timeOfDay": {
+                "time_of_day": {
                     "hours": 0,
                     "minutes": 30,
                     "seconds": 30,
@@ -774,10 +774,10 @@ class PatchDeployment(pulumi.CustomResource):
                 "all": True,
             },
             recurring_schedule={
-                "timeZone": {
+                "time_zone": {
                     "id": "America/New_York",
                 },
-                "timeOfDay": {
+                "time_of_day": {
                     "hours": 0,
                     "minutes": 0,
                     "seconds": 0,
@@ -803,7 +803,7 @@ class PatchDeployment(pulumi.CustomResource):
                 "bar",
             ],
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": my_image.self_link,
                 },
             },
@@ -826,17 +826,17 @@ class PatchDeployment(pulumi.CustomResource):
                 },
             },
             recurring_schedule={
-                "timeZone": {
+                "time_zone": {
                     "id": "America/New_York",
                 },
-                "timeOfDay": {
+                "time_of_day": {
                     "hours": 0,
                     "minutes": 30,
                     "seconds": 30,
                     "nanos": 20,
                 },
                 "monthly": {
-                    "monthDay": 1,
+                    "month_day": 1,
                 },
             })
         ```
@@ -849,21 +849,21 @@ class PatchDeployment(pulumi.CustomResource):
         patch = gcp.osconfig.PatchDeployment("patch",
             patch_deployment_id="patch-deploy",
             instance_filter={
-                "groupLabels": [{
+                "group_labels": [{
                     "labels": {
                         "env": "dev",
                         "app": "web",
                     },
                 }],
-                "instanceNamePrefixes": ["test-"],
+                "instance_name_prefixes": ["test-"],
                 "zones": [
                     "us-central1-a",
                     "us-central-1c",
                 ],
             },
             patch_config={
-                "migInstancesAllowed": True,
-                "rebootConfig": "ALWAYS",
+                "mig_instances_allowed": True,
+                "reboot_config": "ALWAYS",
                 "apt": {
                     "type": "DIST",
                     "excludes": ["python"],
@@ -879,7 +879,7 @@ class PatchDeployment(pulumi.CustomResource):
                 "zypper": {
                     "categories": ["security"],
                 },
-                "windowsUpdate": {
+                "windows_update": {
                     "classifications": [
                         "CRITICAL",
                         "SECURITY",
@@ -887,36 +887,36 @@ class PatchDeployment(pulumi.CustomResource):
                     ],
                     "excludes": ["5012170"],
                 },
-                "preStep": {
-                    "linuxExecStepConfig": {
-                        "allowedSuccessCodes": [
+                "pre_step": {
+                    "linux_exec_step_config": {
+                        "allowed_success_codes": [
                             0,
                             3,
                         ],
-                        "localPath": "/tmp/pre_patch_script.sh",
+                        "local_path": "/tmp/pre_patch_script.sh",
                     },
-                    "windowsExecStepConfig": {
+                    "windows_exec_step_config": {
                         "interpreter": "SHELL",
-                        "allowedSuccessCodes": [
+                        "allowed_success_codes": [
                             0,
                             2,
                         ],
-                        "localPath": "C:\\\\Users\\\\user\\\\pre-patch-script.cmd",
+                        "local_path": "C:\\\\Users\\\\user\\\\pre-patch-script.cmd",
                     },
                 },
-                "postStep": {
-                    "linuxExecStepConfig": {
-                        "gcsObject": {
+                "post_step": {
+                    "linux_exec_step_config": {
+                        "gcs_object": {
                             "bucket": "my-patch-scripts",
-                            "generationNumber": "1523477886880",
+                            "generation_number": "1523477886880",
                             "object": "linux/post_patch_script",
                         },
                     },
-                    "windowsExecStepConfig": {
+                    "windows_exec_step_config": {
                         "interpreter": "POWERSHELL",
-                        "gcsObject": {
+                        "gcs_object": {
                             "bucket": "my-patch-scripts",
-                            "generationNumber": "135920493447",
+                            "generation_number": "135920493447",
                             "object": "windows/post_patch_script.ps1",
                         },
                     },
@@ -924,26 +924,26 @@ class PatchDeployment(pulumi.CustomResource):
             },
             duration="10s",
             recurring_schedule={
-                "timeZone": {
+                "time_zone": {
                     "id": "America/New_York",
                 },
-                "timeOfDay": {
+                "time_of_day": {
                     "hours": 0,
                     "minutes": 30,
                     "seconds": 30,
                     "nanos": 20,
                 },
                 "monthly": {
-                    "weekDayOfMonth": {
-                        "weekOrdinal": -1,
-                        "dayOfWeek": "TUESDAY",
-                        "dayOffset": 3,
+                    "week_day_of_month": {
+                        "week_ordinal": -1,
+                        "day_of_week": "TUESDAY",
+                        "day_offset": 3,
                     },
                 },
             },
             rollout={
                 "mode": "ZONE_BY_ZONE",
-                "disruptionBudget": {
+                "disruption_budget": {
                     "fixed": 1,
                 },
             })

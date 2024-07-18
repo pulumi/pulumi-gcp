@@ -259,7 +259,7 @@ class ManagementServer(pulumi.CustomResource):
             type="BACKUP_RESTORE",
             networks=[{
                 "network": default.id,
-                "peeringMode": "PRIVATE_SERVICE_ACCESS",
+                "peering_mode": "PRIVATE_SERVICE_ACCESS",
             }],
             opts = pulumi.ResourceOptions(depends_on=[default_connection]))
         ```
@@ -328,7 +328,7 @@ class ManagementServer(pulumi.CustomResource):
             type="BACKUP_RESTORE",
             networks=[{
                 "network": default.id,
-                "peeringMode": "PRIVATE_SERVICE_ACCESS",
+                "peering_mode": "PRIVATE_SERVICE_ACCESS",
             }],
             opts = pulumi.ResourceOptions(depends_on=[default_connection]))
         ```
