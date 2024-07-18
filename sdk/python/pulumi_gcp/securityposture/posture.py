@@ -368,15 +368,15 @@ class Posture(pulumi.CustomResource):
             description="a new posture",
             policy_sets=[
                 {
-                    "policySetId": "org_policy_set",
+                    "policy_set_id": "org_policy_set",
                     "description": "set of org policies",
                     "policies": [
                         {
-                            "policyId": "canned_org_policy",
+                            "policy_id": "canned_org_policy",
                             "constraint": {
-                                "orgPolicyConstraint": {
-                                    "cannedConstraintId": "storage.uniformBucketLevelAccess",
-                                    "policyRules": [{
+                                "org_policy_constraint": {
+                                    "canned_constraint_id": "storage.uniformBucketLevelAccess",
+                                    "policy_rules": [{
                                         "enforce": True,
                                         "condition": {
                                             "description": "condition description",
@@ -388,22 +388,22 @@ class Posture(pulumi.CustomResource):
                             },
                         },
                         {
-                            "policyId": "custom_org_policy",
+                            "policy_id": "custom_org_policy",
                             "constraint": {
-                                "orgPolicyConstraintCustom": {
-                                    "customConstraint": {
+                                "org_policy_constraint_custom": {
+                                    "custom_constraint": {
                                         "name": "organizations/123456789/customConstraints/custom.disableGkeAutoUpgrade",
-                                        "displayName": "Disable GKE auto upgrade",
+                                        "display_name": "Disable GKE auto upgrade",
                                         "description": "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
-                                        "actionType": "ALLOW",
+                                        "action_type": "ALLOW",
                                         "condition": "resource.management.autoUpgrade == false",
-                                        "methodTypes": [
+                                        "method_types": [
                                             "CREATE",
                                             "UPDATE",
                                         ],
-                                        "resourceTypes": ["container.googleapis.com/NodePool"],
+                                        "resource_types": ["container.googleapis.com/NodePool"],
                                     },
-                                    "policyRules": [{
+                                    "policy_rules": [{
                                         "enforce": True,
                                         "condition": {
                                             "description": "condition description",
@@ -417,44 +417,44 @@ class Posture(pulumi.CustomResource):
                     ],
                 },
                 {
-                    "policySetId": "sha_policy_set",
+                    "policy_set_id": "sha_policy_set",
                     "description": "set of sha policies",
                     "policies": [
                         {
-                            "policyId": "sha_builtin_module",
+                            "policy_id": "sha_builtin_module",
                             "constraint": {
-                                "securityHealthAnalyticsModule": {
-                                    "moduleName": "BIGQUERY_TABLE_CMEK_DISABLED",
-                                    "moduleEnablementState": "ENABLED",
+                                "security_health_analytics_module": {
+                                    "module_name": "BIGQUERY_TABLE_CMEK_DISABLED",
+                                    "module_enablement_state": "ENABLED",
                                 },
                             },
                             "description": "enable BIGQUERY_TABLE_CMEK_DISABLED",
                         },
                         {
-                            "policyId": "sha_custom_module",
+                            "policy_id": "sha_custom_module",
                             "constraint": {
-                                "securityHealthAnalyticsCustomModule": {
-                                    "displayName": "custom_SHA_policy",
+                                "security_health_analytics_custom_module": {
+                                    "display_name": "custom_SHA_policy",
                                     "config": {
                                         "predicate": {
                                             "expression": "resource.rotationPeriod > duration('2592000s')",
                                         },
-                                        "customOutput": {
+                                        "custom_output": {
                                             "properties": [{
                                                 "name": "duration",
-                                                "valueExpression": {
+                                                "value_expression": {
                                                     "expression": "resource.rotationPeriod",
                                                 },
                                             }],
                                         },
-                                        "resourceSelector": {
-                                            "resourceTypes": ["cloudkms.googleapis.com/CryptoKey"],
+                                        "resource_selector": {
+                                            "resource_types": ["cloudkms.googleapis.com/CryptoKey"],
                                         },
                                         "severity": "LOW",
                                         "description": "Custom Module",
                                         "recommendation": "Testing custom modules",
                                     },
-                                    "moduleEnablementState": "ENABLED",
+                                    "module_enablement_state": "ENABLED",
                                 },
                             },
                         },
@@ -520,15 +520,15 @@ class Posture(pulumi.CustomResource):
             description="a new posture",
             policy_sets=[
                 {
-                    "policySetId": "org_policy_set",
+                    "policy_set_id": "org_policy_set",
                     "description": "set of org policies",
                     "policies": [
                         {
-                            "policyId": "canned_org_policy",
+                            "policy_id": "canned_org_policy",
                             "constraint": {
-                                "orgPolicyConstraint": {
-                                    "cannedConstraintId": "storage.uniformBucketLevelAccess",
-                                    "policyRules": [{
+                                "org_policy_constraint": {
+                                    "canned_constraint_id": "storage.uniformBucketLevelAccess",
+                                    "policy_rules": [{
                                         "enforce": True,
                                         "condition": {
                                             "description": "condition description",
@@ -540,22 +540,22 @@ class Posture(pulumi.CustomResource):
                             },
                         },
                         {
-                            "policyId": "custom_org_policy",
+                            "policy_id": "custom_org_policy",
                             "constraint": {
-                                "orgPolicyConstraintCustom": {
-                                    "customConstraint": {
+                                "org_policy_constraint_custom": {
+                                    "custom_constraint": {
                                         "name": "organizations/123456789/customConstraints/custom.disableGkeAutoUpgrade",
-                                        "displayName": "Disable GKE auto upgrade",
+                                        "display_name": "Disable GKE auto upgrade",
                                         "description": "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
-                                        "actionType": "ALLOW",
+                                        "action_type": "ALLOW",
                                         "condition": "resource.management.autoUpgrade == false",
-                                        "methodTypes": [
+                                        "method_types": [
                                             "CREATE",
                                             "UPDATE",
                                         ],
-                                        "resourceTypes": ["container.googleapis.com/NodePool"],
+                                        "resource_types": ["container.googleapis.com/NodePool"],
                                     },
-                                    "policyRules": [{
+                                    "policy_rules": [{
                                         "enforce": True,
                                         "condition": {
                                             "description": "condition description",
@@ -569,44 +569,44 @@ class Posture(pulumi.CustomResource):
                     ],
                 },
                 {
-                    "policySetId": "sha_policy_set",
+                    "policy_set_id": "sha_policy_set",
                     "description": "set of sha policies",
                     "policies": [
                         {
-                            "policyId": "sha_builtin_module",
+                            "policy_id": "sha_builtin_module",
                             "constraint": {
-                                "securityHealthAnalyticsModule": {
-                                    "moduleName": "BIGQUERY_TABLE_CMEK_DISABLED",
-                                    "moduleEnablementState": "ENABLED",
+                                "security_health_analytics_module": {
+                                    "module_name": "BIGQUERY_TABLE_CMEK_DISABLED",
+                                    "module_enablement_state": "ENABLED",
                                 },
                             },
                             "description": "enable BIGQUERY_TABLE_CMEK_DISABLED",
                         },
                         {
-                            "policyId": "sha_custom_module",
+                            "policy_id": "sha_custom_module",
                             "constraint": {
-                                "securityHealthAnalyticsCustomModule": {
-                                    "displayName": "custom_SHA_policy",
+                                "security_health_analytics_custom_module": {
+                                    "display_name": "custom_SHA_policy",
                                     "config": {
                                         "predicate": {
                                             "expression": "resource.rotationPeriod > duration('2592000s')",
                                         },
-                                        "customOutput": {
+                                        "custom_output": {
                                             "properties": [{
                                                 "name": "duration",
-                                                "valueExpression": {
+                                                "value_expression": {
                                                     "expression": "resource.rotationPeriod",
                                                 },
                                             }],
                                         },
-                                        "resourceSelector": {
-                                            "resourceTypes": ["cloudkms.googleapis.com/CryptoKey"],
+                                        "resource_selector": {
+                                            "resource_types": ["cloudkms.googleapis.com/CryptoKey"],
                                         },
                                         "severity": "LOW",
                                         "description": "Custom Module",
                                         "recommendation": "Testing custom modules",
                                     },
-                                    "moduleEnablementState": "ENABLED",
+                                    "module_enablement_state": "ENABLED",
                                 },
                             },
                         },

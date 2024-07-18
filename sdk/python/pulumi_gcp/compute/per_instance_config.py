@@ -437,8 +437,8 @@ class PerInstanceConfig(pulumi.CustomResource):
                 "bar",
             ],
             disks=[{
-                "sourceImage": my_image.self_link,
-                "autoDelete": True,
+                "source_image": my_image.self_link,
+                "auto_delete": True,
                 "boot": True,
             }],
             network_interfaces=[{
@@ -456,7 +456,7 @@ class PerInstanceConfig(pulumi.CustomResource):
             name="my-igm",
             versions=[{
                 "name": "prod",
-                "instanceTemplate": igm_basic.self_link,
+                "instance_template": igm_basic.self_link,
             }],
             base_instance_name="igm-no-tp",
             zone="us-central1-c",
@@ -477,7 +477,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                     "instance_template": igm_basic.self_link,
                 },
                 "disks": [{
-                    "deviceName": "my-stateful-disk",
+                    "device_name": "my-stateful-disk",
                     "source": default.id,
                     "mode": "READ_ONLY",
                 }],
@@ -579,8 +579,8 @@ class PerInstanceConfig(pulumi.CustomResource):
                 "bar",
             ],
             disks=[{
-                "sourceImage": my_image.self_link,
-                "autoDelete": True,
+                "source_image": my_image.self_link,
+                "auto_delete": True,
                 "boot": True,
             }],
             network_interfaces=[{
@@ -598,7 +598,7 @@ class PerInstanceConfig(pulumi.CustomResource):
             name="my-igm",
             versions=[{
                 "name": "prod",
-                "instanceTemplate": igm_basic.self_link,
+                "instance_template": igm_basic.self_link,
             }],
             base_instance_name="igm-no-tp",
             zone="us-central1-c",
@@ -619,7 +619,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                     "instance_template": igm_basic.self_link,
                 },
                 "disks": [{
-                    "deviceName": "my-stateful-disk",
+                    "device_name": "my-stateful-disk",
                     "source": default.id,
                     "mode": "READ_ONLY",
                 }],

@@ -407,7 +407,7 @@ class AppConnection(pulumi.CustomResource):
         app_connector = gcp.beyondcorp.AppConnector("app_connector",
             name="my-app-connector",
             principal_info={
-                "serviceAccount": {
+                "service_account": {
                     "email": service_account.email,
                 },
             })
@@ -436,7 +436,7 @@ class AppConnection(pulumi.CustomResource):
         app_connector = gcp.beyondcorp.AppConnector("app_connector",
             name="my-app-connector",
             principal_info={
-                "serviceAccount": {
+                "service_account": {
                     "email": service_account.email,
                 },
             })
@@ -450,7 +450,7 @@ class AppConnection(pulumi.CustomResource):
             },
             connectors=[app_connector.id],
             gateway={
-                "appGateway": app_gateway.id,
+                "app_gateway": app_gateway.id,
             },
             labels={
                 "foo": "bar",
@@ -535,7 +535,7 @@ class AppConnection(pulumi.CustomResource):
         app_connector = gcp.beyondcorp.AppConnector("app_connector",
             name="my-app-connector",
             principal_info={
-                "serviceAccount": {
+                "service_account": {
                     "email": service_account.email,
                 },
             })
@@ -564,7 +564,7 @@ class AppConnection(pulumi.CustomResource):
         app_connector = gcp.beyondcorp.AppConnector("app_connector",
             name="my-app-connector",
             principal_info={
-                "serviceAccount": {
+                "service_account": {
                     "email": service_account.email,
                 },
             })
@@ -578,7 +578,7 @@ class AppConnection(pulumi.CustomResource):
             },
             connectors=[app_connector.id],
             gateway={
-                "appGateway": app_gateway.id,
+                "app_gateway": app_gateway.id,
             },
             labels={
                 "foo": "bar",

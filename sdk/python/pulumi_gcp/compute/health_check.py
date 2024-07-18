@@ -772,10 +772,10 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             tcp_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "request": "ARE YOU HEALTHY?",
-                "proxyHeader": "NONE",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -807,10 +807,10 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             ssl_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "request": "ARE YOU HEALTHY?",
-                "proxyHeader": "NONE",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -842,11 +842,11 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             http_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "host": "1.2.3.4",
-                "requestPath": "/mypath",
-                "proxyHeader": "NONE",
+                "request_path": "/mypath",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -878,11 +878,11 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             https_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "host": "1.2.3.4",
-                "requestPath": "/mypath",
-                "proxyHeader": "NONE",
+                "request_path": "/mypath",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -914,11 +914,11 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             http2_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "host": "1.2.3.4",
-                "requestPath": "/mypath",
-                "proxyHeader": "NONE",
+                "request_path": "/mypath",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -947,9 +947,9 @@ class HealthCheck(pulumi.CustomResource):
             timeout_sec=1,
             check_interval_sec=1,
             grpc_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
-                "grpcServiceName": "testservice",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
+                "grpc_service_name": "testservice",
             })
         ```
         ### Health Check With Logging
@@ -1105,10 +1105,10 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             tcp_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "request": "ARE YOU HEALTHY?",
-                "proxyHeader": "NONE",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -1140,10 +1140,10 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             ssl_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "request": "ARE YOU HEALTHY?",
-                "proxyHeader": "NONE",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -1175,11 +1175,11 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             http_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "host": "1.2.3.4",
-                "requestPath": "/mypath",
-                "proxyHeader": "NONE",
+                "request_path": "/mypath",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -1211,11 +1211,11 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             https_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "host": "1.2.3.4",
-                "requestPath": "/mypath",
-                "proxyHeader": "NONE",
+                "request_path": "/mypath",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -1247,11 +1247,11 @@ class HealthCheck(pulumi.CustomResource):
             healthy_threshold=4,
             unhealthy_threshold=5,
             http2_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
                 "host": "1.2.3.4",
-                "requestPath": "/mypath",
-                "proxyHeader": "NONE",
+                "request_path": "/mypath",
+                "proxy_header": "NONE",
                 "response": "I AM HEALTHY",
             })
         ```
@@ -1280,9 +1280,9 @@ class HealthCheck(pulumi.CustomResource):
             timeout_sec=1,
             check_interval_sec=1,
             grpc_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
-                "grpcServiceName": "testservice",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
+                "grpc_service_name": "testservice",
             })
         ```
         ### Health Check With Logging

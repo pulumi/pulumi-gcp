@@ -278,27 +278,27 @@ class Policy(pulumi.CustomResource):
             name="test-attestor-note",
             attestation_authority={
                 "hint": {
-                    "humanReadableName": "My attestor",
+                    "human_readable_name": "My attestor",
                 },
             })
         attestor = gcp.binaryauthorization.Attestor("attestor",
             name="test-attestor",
             attestation_authority_note={
-                "noteReference": note.name,
+                "note_reference": note.name,
             })
         policy = gcp.binaryauthorization.Policy("policy",
             admission_whitelist_patterns=[{
-                "namePattern": "gcr.io/google_containers/*",
+                "name_pattern": "gcr.io/google_containers/*",
             }],
             default_admission_rule={
-                "evaluationMode": "ALWAYS_ALLOW",
-                "enforcementMode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
+                "evaluation_mode": "ALWAYS_ALLOW",
+                "enforcement_mode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
             },
             cluster_admission_rules=[{
                 "cluster": "us-central1-a.prod-cluster",
-                "evaluationMode": "REQUIRE_ATTESTATION",
-                "enforcementMode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
-                "requireAttestationsBies": [attestor.name],
+                "evaluation_mode": "REQUIRE_ATTESTATION",
+                "enforcement_mode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
+                "require_attestations_bies": [attestor.name],
             }])
         ```
         ### Binary Authorization Policy Global Evaluation
@@ -311,19 +311,19 @@ class Policy(pulumi.CustomResource):
             name="test-attestor-note",
             attestation_authority={
                 "hint": {
-                    "humanReadableName": "My attestor",
+                    "human_readable_name": "My attestor",
                 },
             })
         attestor = gcp.binaryauthorization.Attestor("attestor",
             name="test-attestor",
             attestation_authority_note={
-                "noteReference": note.name,
+                "note_reference": note.name,
             })
         policy = gcp.binaryauthorization.Policy("policy",
             default_admission_rule={
-                "evaluationMode": "REQUIRE_ATTESTATION",
-                "enforcementMode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
-                "requireAttestationsBies": [attestor.name],
+                "evaluation_mode": "REQUIRE_ATTESTATION",
+                "enforcement_mode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
+                "require_attestations_bies": [attestor.name],
             },
             global_policy_evaluation_mode="ENABLE")
         ```
@@ -388,27 +388,27 @@ class Policy(pulumi.CustomResource):
             name="test-attestor-note",
             attestation_authority={
                 "hint": {
-                    "humanReadableName": "My attestor",
+                    "human_readable_name": "My attestor",
                 },
             })
         attestor = gcp.binaryauthorization.Attestor("attestor",
             name="test-attestor",
             attestation_authority_note={
-                "noteReference": note.name,
+                "note_reference": note.name,
             })
         policy = gcp.binaryauthorization.Policy("policy",
             admission_whitelist_patterns=[{
-                "namePattern": "gcr.io/google_containers/*",
+                "name_pattern": "gcr.io/google_containers/*",
             }],
             default_admission_rule={
-                "evaluationMode": "ALWAYS_ALLOW",
-                "enforcementMode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
+                "evaluation_mode": "ALWAYS_ALLOW",
+                "enforcement_mode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
             },
             cluster_admission_rules=[{
                 "cluster": "us-central1-a.prod-cluster",
-                "evaluationMode": "REQUIRE_ATTESTATION",
-                "enforcementMode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
-                "requireAttestationsBies": [attestor.name],
+                "evaluation_mode": "REQUIRE_ATTESTATION",
+                "enforcement_mode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
+                "require_attestations_bies": [attestor.name],
             }])
         ```
         ### Binary Authorization Policy Global Evaluation
@@ -421,19 +421,19 @@ class Policy(pulumi.CustomResource):
             name="test-attestor-note",
             attestation_authority={
                 "hint": {
-                    "humanReadableName": "My attestor",
+                    "human_readable_name": "My attestor",
                 },
             })
         attestor = gcp.binaryauthorization.Attestor("attestor",
             name="test-attestor",
             attestation_authority_note={
-                "noteReference": note.name,
+                "note_reference": note.name,
             })
         policy = gcp.binaryauthorization.Policy("policy",
             default_admission_rule={
-                "evaluationMode": "REQUIRE_ATTESTATION",
-                "enforcementMode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
-                "requireAttestationsBies": [attestor.name],
+                "evaluation_mode": "REQUIRE_ATTESTATION",
+                "enforcement_mode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
+                "require_attestations_bies": [attestor.name],
             },
             global_policy_evaluation_mode="ENABLE")
         ```

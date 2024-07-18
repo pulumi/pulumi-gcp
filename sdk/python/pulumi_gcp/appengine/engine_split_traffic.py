@@ -198,7 +198,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
             },
             deployment={
                 "zip": {
-                    "sourceUrl": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                    "source_url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 },
             },
             env_variables={
@@ -214,7 +214,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
             },
             deployment={
                 "zip": {
-                    "sourceUrl": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                    "source_url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 },
             },
             env_variables={
@@ -224,10 +224,10 @@ class EngineSplitTraffic(pulumi.CustomResource):
             service=liveapp_v2.service,
             migrate_traffic=False,
             split={
-                "shardBy": "IP",
+                "shard_by": "IP",
                 "allocations": pulumi.Output.all(liveapp_v1.version_id, liveapp_v2.version_id).apply(lambda liveappV1Version_id, liveappV2Version_id: {
-                    liveapp_v1_version_id: 0.75,
-                    liveapp_v2_version_id: 0.25,
+                    "": 0.75,
+                    "": 0.25,
                 }),
             })
         ```
@@ -301,7 +301,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
             },
             deployment={
                 "zip": {
-                    "sourceUrl": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                    "source_url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 },
             },
             env_variables={
@@ -317,7 +317,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
             },
             deployment={
                 "zip": {
-                    "sourceUrl": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                    "source_url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 },
             },
             env_variables={
@@ -327,10 +327,10 @@ class EngineSplitTraffic(pulumi.CustomResource):
             service=liveapp_v2.service,
             migrate_traffic=False,
             split={
-                "shardBy": "IP",
+                "shard_by": "IP",
                 "allocations": pulumi.Output.all(liveapp_v1.version_id, liveapp_v2.version_id).apply(lambda liveappV1Version_id, liveappV2Version_id: {
-                    liveapp_v1_version_id: 0.75,
-                    liveapp_v2_version_id: 0.25,
+                    "": 0.75,
+                    "": 0.25,
                 }),
             })
         ```

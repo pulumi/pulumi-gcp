@@ -493,24 +493,24 @@ class Config(pulumi.CustomResource):
             project=default.project_id,
             autodelete_anonymous_users=True,
             sign_in={
-                "allowDuplicateEmails": True,
+                "allow_duplicate_emails": True,
                 "anonymous": {
                     "enabled": True,
                 },
                 "email": {
                     "enabled": True,
-                    "passwordRequired": False,
+                    "password_required": False,
                 },
-                "phoneNumber": {
+                "phone_number": {
                     "enabled": True,
-                    "testPhoneNumbers": {
-                        "+11231231234": "000000",
+                    "test_phone_numbers": {
+                        "_11231231234": "000000",
                     },
                 },
             },
             sms_region_config={
-                "allowlistOnly": {
-                    "allowedRegions": [
+                "allowlist_only": {
+                    "allowed_regions": [
                         "US",
                         "CA",
                     ],
@@ -518,20 +518,20 @@ class Config(pulumi.CustomResource):
             },
             blocking_functions={
                 "triggers": [{
-                    "eventType": "beforeSignIn",
-                    "functionUri": "https://us-east1-my-project.cloudfunctions.net/before-sign-in",
+                    "event_type": "beforeSignIn",
+                    "function_uri": "https://us-east1-my-project.cloudfunctions.net/before-sign-in",
                 }],
-                "forwardInboundCredentials": {
-                    "refreshToken": True,
-                    "accessToken": True,
-                    "idToken": True,
+                "forward_inbound_credentials": {
+                    "refresh_token": True,
+                    "access_token": True,
+                    "id_token": True,
                 },
             },
             quota={
-                "signUpQuotaConfig": {
+                "sign_up_quota_config": {
                     "quota": 1000,
-                    "startTime": "",
-                    "quotaDuration": "7200s",
+                    "start_time": "",
+                    "quota_duration": "7200s",
                 },
             },
             authorized_domains=[
@@ -632,24 +632,24 @@ class Config(pulumi.CustomResource):
             project=default.project_id,
             autodelete_anonymous_users=True,
             sign_in={
-                "allowDuplicateEmails": True,
+                "allow_duplicate_emails": True,
                 "anonymous": {
                     "enabled": True,
                 },
                 "email": {
                     "enabled": True,
-                    "passwordRequired": False,
+                    "password_required": False,
                 },
-                "phoneNumber": {
+                "phone_number": {
                     "enabled": True,
-                    "testPhoneNumbers": {
-                        "+11231231234": "000000",
+                    "test_phone_numbers": {
+                        "_11231231234": "000000",
                     },
                 },
             },
             sms_region_config={
-                "allowlistOnly": {
-                    "allowedRegions": [
+                "allowlist_only": {
+                    "allowed_regions": [
                         "US",
                         "CA",
                     ],
@@ -657,20 +657,20 @@ class Config(pulumi.CustomResource):
             },
             blocking_functions={
                 "triggers": [{
-                    "eventType": "beforeSignIn",
-                    "functionUri": "https://us-east1-my-project.cloudfunctions.net/before-sign-in",
+                    "event_type": "beforeSignIn",
+                    "function_uri": "https://us-east1-my-project.cloudfunctions.net/before-sign-in",
                 }],
-                "forwardInboundCredentials": {
-                    "refreshToken": True,
-                    "accessToken": True,
-                    "idToken": True,
+                "forward_inbound_credentials": {
+                    "refresh_token": True,
+                    "access_token": True,
+                    "id_token": True,
                 },
             },
             quota={
-                "signUpQuotaConfig": {
+                "sign_up_quota_config": {
                     "quota": 1000,
-                    "startTime": "",
-                    "quotaDuration": "7200s",
+                    "start_time": "",
+                    "quota_duration": "7200s",
                 },
             },
             authorized_domains=[

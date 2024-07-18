@@ -335,12 +335,12 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             default_service=default_region_backend_service.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": default_region_backend_service.id,
-                "pathRules": [{
+                "default_service": default_region_backend_service.id,
+                "path_rules": [{
                     "paths": ["/*"],
                     "service": default_region_backend_service.id,
                 }],
@@ -360,8 +360,8 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             region="us-central1",
             name="url-map",
             default_url_redirect={
-                "httpsRedirect": True,
-                "stripQuery": False,
+                "https_redirect": True,
+                "strip_query": False,
             })
         default = gcp.compute.RegionTargetHttpProxy("default",
             region="us-central1",
@@ -462,12 +462,12 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             default_service=default_region_backend_service.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": default_region_backend_service.id,
-                "pathRules": [{
+                "default_service": default_region_backend_service.id,
+                "path_rules": [{
                     "paths": ["/*"],
                     "service": default_region_backend_service.id,
                 }],
@@ -487,8 +487,8 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             region="us-central1",
             name="url-map",
             default_url_redirect={
-                "httpsRedirect": True,
-                "stripQuery": False,
+                "https_redirect": True,
+                "strip_query": False,
             })
         default = gcp.compute.RegionTargetHttpProxy("default",
             region="us-central1",
