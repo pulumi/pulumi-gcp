@@ -868,8 +868,7 @@ func TestCloudrunServiceDiffNoErrorLabelsDuplicate(t *testing.T) {
 	]`, proj, proj))
 }
 
-func pulumiTestExec(ptest *pulumitest.PulumiTest, args ...string) {
-	t := ptest.T()
+func pulumiTestExec(t *testing.T, ptest *pulumitest.PulumiTest, args ...string) {
 	workspace := ptest.CurrentStack().Workspace()
 	ctx := context.Background()
 	workdir := workspace.WorkDir()
@@ -889,7 +888,8 @@ func pulumiTestExec(ptest *pulumitest.PulumiTest, args ...string) {
 }
 
 func pulumiTestImport(
-	ptest *pulumitest.PulumiTest, resourceType, resourceName, resourceID string, providerUrn string,
+	t *testing.T, ptest *pulumitest.PulumiTest,
+	resourceType, resourceName, resourceID string, providerUrn string,
 ) {
 	arguments := []string{
 		"import", resourceType, resourceName, resourceID, "--yes", "--protect=false", "-s", ptest.CurrentStack().Name(),
@@ -897,14 +897,14 @@ func pulumiTestImport(
 	if providerUrn != "" {
 		arguments = append(arguments, "--provider="+providerUrn)
 	}
-	pulumiTestExec(ptest, arguments...)
+	pulumiTestExec(t, ptest, arguments...)
 }
 
-func pulumiTestDeleteFromState(ptest *pulumitest.PulumiTest, resourceURN string) {
+func pulumiTestDeleteFromState(t *testing.T, ptest *pulumitest.PulumiTest, resourceURN string) {
 	arguments := []string{
 		"state", "delete", resourceURN, "--yes", "-s", ptest.CurrentStack().Name(),
 	}
-	pulumiTestExec(ptest, arguments...)
+	pulumiTestExec(t, ptest, arguments...)
 }
 
 func TestImport(t *testing.T) {
@@ -943,8 +943,8 @@ func TestImport(t *testing.T) {
 				providerUrn = res.Outputs["providerUrn"].Value.(string)
 			}
 
-			pulumiTestDeleteFromState(test, resourceUrn)
-			pulumiTestImport(test, tc.resourceType, "resource", resourceID, providerUrn)
+			pulumiTestDeleteFromState(t, test, resourceUrn)
+			pulumiTestImport(t, test, tc.resourceType, "resource", resourceID, providerUrn)
 
 			prevResult := test.Preview()
 			assertpreview.HasNoChanges(t, prevResult)

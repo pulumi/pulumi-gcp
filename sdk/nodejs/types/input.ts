@@ -18782,6 +18782,9 @@ export namespace compute {
          * or `NOT_IN` for anti-affinities.
          */
         operator: pulumi.Input<string>;
+        /**
+         * Corresponds to the label values of a reservation resource.
+         */
         values: pulumi.Input<pulumi.Input<string>[]>;
     }
 
@@ -21366,6 +21369,9 @@ export namespace compute {
          * or `NOT_IN` for anti-affinities.
          */
         operator: pulumi.Input<string>;
+        /**
+         * Corresponds to the label values of a reservation resource.
+         */
         values: pulumi.Input<pulumi.Input<string>[]>;
     }
 
