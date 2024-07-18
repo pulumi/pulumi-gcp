@@ -269,7 +269,7 @@ export class DatasetAccess extends pulumi.CustomResource {
             resourceInputs["apiUpdatedMember"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DatasetAccess.__pulumiType, name, resourceInputs, opts);
+        super(DatasetAccess.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

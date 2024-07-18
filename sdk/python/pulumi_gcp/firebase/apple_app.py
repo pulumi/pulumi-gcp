@@ -344,8 +344,8 @@ class AppleApp(pulumi.CustomResource):
             display_name="Display Name Full",
             project="my-project-name",
             restrictions={
-                "iosKeyRestrictions": {
-                    "allowedBundleIds": ["apple.app.12345"],
+                "ios_key_restrictions": {
+                    "allowed_bundle_ids": ["apple.app.12345"],
                 },
             })
         full = gcp.firebase.AppleApp("full",
@@ -439,8 +439,8 @@ class AppleApp(pulumi.CustomResource):
             display_name="Display Name Full",
             project="my-project-name",
             restrictions={
-                "iosKeyRestrictions": {
-                    "allowedBundleIds": ["apple.app.12345"],
+                "ios_key_restrictions": {
+                    "allowed_bundle_ids": ["apple.app.12345"],
                 },
             })
         full = gcp.firebase.AppleApp("full",

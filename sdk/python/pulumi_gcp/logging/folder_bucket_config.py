@@ -330,7 +330,7 @@ class FolderBucketConfig(pulumi.CustomResource):
             retention_days=30,
             bucket_id="_Default",
             index_configs=[{
-                "fieldPath": "jsonPayload.request.status",
+                "field_path": "jsonPayload.request.status",
                 "type": "INDEX_TYPE_STRING",
             }])
         ```
@@ -387,7 +387,7 @@ class FolderBucketConfig(pulumi.CustomResource):
             retention_days=30,
             bucket_id="_Default",
             index_configs=[{
-                "fieldPath": "jsonPayload.request.status",
+                "field_path": "jsonPayload.request.status",
                 "type": "INDEX_TYPE_STRING",
             }])
         ```

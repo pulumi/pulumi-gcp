@@ -202,7 +202,7 @@ export class OrganizationFeed extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(OrganizationFeed.__pulumiType, name, resourceInputs, opts);
+        super(OrganizationFeed.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

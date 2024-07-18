@@ -141,7 +141,7 @@ export class BackendBucketIamBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(BackendBucketIamBinding.__pulumiType, name, resourceInputs, opts);
+        super(BackendBucketIamBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -450,7 +450,7 @@ class SecurityProfile(pulumi.CustomResource):
             description="my description",
             type="THREAT_PREVENTION",
             threat_prevention_profile={
-                "severityOverrides": [
+                "severity_overrides": [
                     {
                         "action": "ALLOW",
                         "severity": "INFORMATIONAL",
@@ -460,9 +460,9 @@ class SecurityProfile(pulumi.CustomResource):
                         "severity": "HIGH",
                     },
                 ],
-                "threatOverrides": [{
+                "threat_overrides": [{
                     "action": "ALLOW",
-                    "threatId": "280647",
+                    "threat_id": "280647",
                 }],
             })
         ```
@@ -543,7 +543,7 @@ class SecurityProfile(pulumi.CustomResource):
             description="my description",
             type="THREAT_PREVENTION",
             threat_prevention_profile={
-                "severityOverrides": [
+                "severity_overrides": [
                     {
                         "action": "ALLOW",
                         "severity": "INFORMATIONAL",
@@ -553,9 +553,9 @@ class SecurityProfile(pulumi.CustomResource):
                         "severity": "HIGH",
                     },
                 ],
-                "threatOverrides": [{
+                "threat_overrides": [{
                     "action": "ALLOW",
-                    "threatId": "280647",
+                    "threat_id": "280647",
                 }],
             })
         ```

@@ -402,7 +402,7 @@ class Note(pulumi.CustomResource):
             name="attestor-note",
             attestation_authority={
                 "hint": {
-                    "humanReadableName": "Attestor Note",
+                    "human_readable_name": "Attestor Note",
                 },
             })
         ```
@@ -428,7 +428,7 @@ class Note(pulumi.CustomResource):
             ],
             attestation_authority={
                 "hint": {
-                    "humanReadableName": "Attestor Note",
+                    "human_readable_name": "Attestor Note",
                 },
             })
         ```
@@ -505,7 +505,7 @@ class Note(pulumi.CustomResource):
             name="attestor-note",
             attestation_authority={
                 "hint": {
-                    "humanReadableName": "Attestor Note",
+                    "human_readable_name": "Attestor Note",
                 },
             })
         ```
@@ -531,7 +531,7 @@ class Note(pulumi.CustomResource):
             ],
             attestation_authority={
                 "hint": {
-                    "humanReadableName": "Attestor Note",
+                    "human_readable_name": "Attestor Note",
                 },
             })
         ```

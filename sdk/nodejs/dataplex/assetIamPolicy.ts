@@ -262,7 +262,7 @@ export class AssetIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AssetIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(AssetIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

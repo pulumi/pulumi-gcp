@@ -118,7 +118,7 @@ export class CaExternalAccountKey extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["b64MacKey", "keyId"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(CaExternalAccountKey.__pulumiType, name, resourceInputs, opts);
+        super(CaExternalAccountKey.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

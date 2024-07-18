@@ -17930,6 +17930,9 @@ if not MYPY:
         or `NOT_IN` for anti-affinities.
         """
         values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Corresponds to the label values of a reservation resource.
+        """
 elif False:
     InstanceTemplateSchedulingNodeAffinityArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -17943,6 +17946,7 @@ class InstanceTemplateSchedulingNodeAffinityArgs:
         :param pulumi.Input[str] key: The key for the node affinity label.
         :param pulumi.Input[str] operator: The operator. Can be `IN` for node-affinities
                or `NOT_IN` for anti-affinities.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Corresponds to the label values of a reservation resource.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "operator", operator)
@@ -17976,6 +17980,9 @@ class InstanceTemplateSchedulingNodeAffinityArgs:
     @property
     @pulumi.getter
     def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Corresponds to the label values of a reservation resource.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -29138,6 +29145,9 @@ if not MYPY:
         or `NOT_IN` for anti-affinities.
         """
         values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Corresponds to the label values of a reservation resource.
+        """
 elif False:
     RegionInstanceTemplateSchedulingNodeAffinityArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -29151,6 +29161,7 @@ class RegionInstanceTemplateSchedulingNodeAffinityArgs:
         :param pulumi.Input[str] key: The key for the node affinity label.
         :param pulumi.Input[str] operator: The operator. Can be `IN` for node-affinities
                or `NOT_IN` for anti-affinities.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Corresponds to the label values of a reservation resource.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "operator", operator)
@@ -29184,6 +29195,9 @@ class RegionInstanceTemplateSchedulingNodeAffinityArgs:
     @property
     @pulumi.getter
     def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Corresponds to the label values of a reservation resource.
+        """
         return pulumi.get(self, "values")
 
     @values.setter

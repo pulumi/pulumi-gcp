@@ -212,7 +212,7 @@ export class TagKeyIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TagKeyIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(TagKeyIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

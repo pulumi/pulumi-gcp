@@ -177,7 +177,7 @@ export class DomainTrust extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["trustHandshakeSecret"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(DomainTrust.__pulumiType, name, resourceInputs, opts);
+        super(DomainTrust.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

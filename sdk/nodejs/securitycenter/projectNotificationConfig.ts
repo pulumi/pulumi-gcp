@@ -163,7 +163,7 @@ export class ProjectNotificationConfig extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ProjectNotificationConfig.__pulumiType, name, resourceInputs, opts);
+        super(ProjectNotificationConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

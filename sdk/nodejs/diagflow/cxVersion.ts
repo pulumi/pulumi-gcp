@@ -166,7 +166,7 @@ export class CxVersion extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(CxVersion.__pulumiType, name, resourceInputs, opts);
+        super(CxVersion.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

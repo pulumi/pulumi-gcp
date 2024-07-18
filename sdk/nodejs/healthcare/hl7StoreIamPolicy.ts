@@ -203,7 +203,7 @@ export class Hl7StoreIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Hl7StoreIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(Hl7StoreIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

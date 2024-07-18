@@ -782,7 +782,7 @@ class AttachedCluster(pulumi.CustomResource):
             description="Test cluster",
             distribution="aks",
             oidc_config={
-                "issuerUrl": "https://oidc.issuer.url",
+                "issuer_url": "https://oidc.issuer.url",
             },
             platform_version=versions.valid_versions[0],
             fleet={
@@ -809,17 +809,17 @@ class AttachedCluster(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             authorization={
-                "adminUsers": [
+                "admin_users": [
                     "user1@example.com",
                     "user2@example.com",
                 ],
-                "adminGroups": [
+                "admin_groups": [
                     "group1@example.com",
                     "group2@example.com",
                 ],
             },
             oidc_config={
-                "issuerUrl": "https://oidc.issuer.url",
+                "issuer_url": "https://oidc.issuer.url",
                 "jwks": std.base64encode(input="{\\"keys\\":[{\\"use\\":\\"sig\\",\\"kty\\":\\"RSA\\",\\"kid\\":\\"testid\\",\\"alg\\":\\"RS256\\",\\"n\\":\\"somedata\\",\\"e\\":\\"AQAB\\"}]}").result,
             },
             platform_version=versions.valid_versions[0],
@@ -827,23 +827,23 @@ class AttachedCluster(pulumi.CustomResource):
                 "project": f"projects/{project.number}",
             },
             logging_config={
-                "componentConfig": {
-                    "enableComponents": [
+                "component_config": {
+                    "enable_components": [
                         "SYSTEM_COMPONENTS",
                         "WORKLOADS",
                     ],
                 },
             },
             monitoring_config={
-                "managedPrometheusConfig": {
+                "managed_prometheus_config": {
                     "enabled": True,
                 },
             },
             binary_authorization={
-                "evaluationMode": "PROJECT_SINGLETON_POLICY_ENFORCE",
+                "evaluation_mode": "PROJECT_SINGLETON_POLICY_ENFORCE",
             },
             proxy_config={
-                "kubernetesSecret": {
+                "kubernetes_secret": {
                     "name": "proxy-config",
                     "namespace": "default",
                 },
@@ -865,7 +865,7 @@ class AttachedCluster(pulumi.CustomResource):
             description="Test cluster",
             distribution="aks",
             oidc_config={
-                "issuerUrl": "https://oidc.issuer.url",
+                "issuer_url": "https://oidc.issuer.url",
             },
             platform_version=versions.valid_versions[0],
             fleet={
@@ -965,7 +965,7 @@ class AttachedCluster(pulumi.CustomResource):
             description="Test cluster",
             distribution="aks",
             oidc_config={
-                "issuerUrl": "https://oidc.issuer.url",
+                "issuer_url": "https://oidc.issuer.url",
             },
             platform_version=versions.valid_versions[0],
             fleet={
@@ -992,17 +992,17 @@ class AttachedCluster(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             authorization={
-                "adminUsers": [
+                "admin_users": [
                     "user1@example.com",
                     "user2@example.com",
                 ],
-                "adminGroups": [
+                "admin_groups": [
                     "group1@example.com",
                     "group2@example.com",
                 ],
             },
             oidc_config={
-                "issuerUrl": "https://oidc.issuer.url",
+                "issuer_url": "https://oidc.issuer.url",
                 "jwks": std.base64encode(input="{\\"keys\\":[{\\"use\\":\\"sig\\",\\"kty\\":\\"RSA\\",\\"kid\\":\\"testid\\",\\"alg\\":\\"RS256\\",\\"n\\":\\"somedata\\",\\"e\\":\\"AQAB\\"}]}").result,
             },
             platform_version=versions.valid_versions[0],
@@ -1010,23 +1010,23 @@ class AttachedCluster(pulumi.CustomResource):
                 "project": f"projects/{project.number}",
             },
             logging_config={
-                "componentConfig": {
-                    "enableComponents": [
+                "component_config": {
+                    "enable_components": [
                         "SYSTEM_COMPONENTS",
                         "WORKLOADS",
                     ],
                 },
             },
             monitoring_config={
-                "managedPrometheusConfig": {
+                "managed_prometheus_config": {
                     "enabled": True,
                 },
             },
             binary_authorization={
-                "evaluationMode": "PROJECT_SINGLETON_POLICY_ENFORCE",
+                "evaluation_mode": "PROJECT_SINGLETON_POLICY_ENFORCE",
             },
             proxy_config={
-                "kubernetesSecret": {
+                "kubernetes_secret": {
                     "name": "proxy-config",
                     "namespace": "default",
                 },
@@ -1048,7 +1048,7 @@ class AttachedCluster(pulumi.CustomResource):
             description="Test cluster",
             distribution="aks",
             oidc_config={
-                "issuerUrl": "https://oidc.issuer.url",
+                "issuer_url": "https://oidc.issuer.url",
             },
             platform_version=versions.valid_versions[0],
             fleet={

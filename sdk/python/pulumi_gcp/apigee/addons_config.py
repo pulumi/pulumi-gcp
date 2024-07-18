@@ -141,10 +141,10 @@ class AddonsConfig(pulumi.CustomResource):
         test_organization = gcp.apigee.AddonsConfig("test_organization",
             org="test_organization",
             addons_config={
-                "apiSecurityConfig": {
+                "api_security_config": {
                     "enabled": True,
                 },
-                "monetizationConfig": {
+                "monetization_config": {
                     "enabled": True,
                 },
             })
@@ -192,19 +192,19 @@ class AddonsConfig(pulumi.CustomResource):
         test_organization = gcp.apigee.AddonsConfig("test_organization",
             org=org.name,
             addons_config={
-                "integrationConfig": {
+                "integration_config": {
                     "enabled": True,
                 },
-                "apiSecurityConfig": {
+                "api_security_config": {
                     "enabled": True,
                 },
-                "connectorsPlatformConfig": {
+                "connectors_platform_config": {
                     "enabled": True,
                 },
-                "monetizationConfig": {
+                "monetization_config": {
                     "enabled": True,
                 },
-                "advancedApiOpsConfig": {
+                "advanced_api_ops_config": {
                     "enabled": True,
                 },
             })
@@ -263,10 +263,10 @@ class AddonsConfig(pulumi.CustomResource):
         test_organization = gcp.apigee.AddonsConfig("test_organization",
             org="test_organization",
             addons_config={
-                "apiSecurityConfig": {
+                "api_security_config": {
                     "enabled": True,
                 },
-                "monetizationConfig": {
+                "monetization_config": {
                     "enabled": True,
                 },
             })
@@ -314,19 +314,19 @@ class AddonsConfig(pulumi.CustomResource):
         test_organization = gcp.apigee.AddonsConfig("test_organization",
             org=org.name,
             addons_config={
-                "integrationConfig": {
+                "integration_config": {
                     "enabled": True,
                 },
-                "apiSecurityConfig": {
+                "api_security_config": {
                     "enabled": True,
                 },
-                "connectorsPlatformConfig": {
+                "connectors_platform_config": {
                     "enabled": True,
                 },
-                "monetizationConfig": {
+                "monetization_config": {
                     "enabled": True,
                 },
-                "advancedApiOpsConfig": {
+                "advanced_api_ops_config": {
                     "enabled": True,
                 },
             })

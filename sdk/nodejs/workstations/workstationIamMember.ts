@@ -164,7 +164,7 @@ export class WorkstationIamMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(WorkstationIamMember.__pulumiType, name, resourceInputs, opts);
+        super(WorkstationIamMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

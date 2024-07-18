@@ -142,7 +142,7 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["policyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(OrganizationSecurityPolicy.__pulumiType, name, resourceInputs, opts);
+        super(OrganizationSecurityPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

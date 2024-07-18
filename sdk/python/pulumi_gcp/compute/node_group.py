@@ -565,14 +565,14 @@ class NodeGroup(pulumi.CustomResource):
             description="example google_compute_node_group for Google Provider",
             maintenance_policy="RESTART_IN_PLACE",
             maintenance_window={
-                "startTime": "08:00",
+                "start_time": "08:00",
             },
             initial_size=1,
             node_template=soletenant_tmpl.id,
             autoscaling_policy={
                 "mode": "ONLY_SCALE_OUT",
-                "minNodes": 1,
-                "maxNodes": 10,
+                "min_nodes": 1,
+                "max_nodes": 10,
             })
         ```
         ### Node Group Share Settings
@@ -596,10 +596,10 @@ class NodeGroup(pulumi.CustomResource):
             initial_size=1,
             node_template=soletenant_tmpl.id,
             share_settings={
-                "shareType": "SPECIFIC_PROJECTS",
-                "projectMaps": [{
+                "share_type": "SPECIFIC_PROJECTS",
+                "project_maps": [{
                     "id": guest_project.project_id,
-                    "projectId": guest_project.project_id,
+                    "project_id": guest_project.project_id,
                 }],
             })
         ```
@@ -733,14 +733,14 @@ class NodeGroup(pulumi.CustomResource):
             description="example google_compute_node_group for Google Provider",
             maintenance_policy="RESTART_IN_PLACE",
             maintenance_window={
-                "startTime": "08:00",
+                "start_time": "08:00",
             },
             initial_size=1,
             node_template=soletenant_tmpl.id,
             autoscaling_policy={
                 "mode": "ONLY_SCALE_OUT",
-                "minNodes": 1,
-                "maxNodes": 10,
+                "min_nodes": 1,
+                "max_nodes": 10,
             })
         ```
         ### Node Group Share Settings
@@ -764,10 +764,10 @@ class NodeGroup(pulumi.CustomResource):
             initial_size=1,
             node_template=soletenant_tmpl.id,
             share_settings={
-                "shareType": "SPECIFIC_PROJECTS",
-                "projectMaps": [{
+                "share_type": "SPECIFIC_PROJECTS",
+                "project_maps": [{
                     "id": guest_project.project_id,
-                    "projectId": guest_project.project_id,
+                    "project_id": guest_project.project_id,
                 }],
             })
         ```

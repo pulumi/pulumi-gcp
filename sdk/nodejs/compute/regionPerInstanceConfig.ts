@@ -245,7 +245,7 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
             resourceInputs["removeInstanceStateOnDestroy"] = args ? args.removeInstanceStateOnDestroy : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(RegionPerInstanceConfig.__pulumiType, name, resourceInputs, opts);
+        super(RegionPerInstanceConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

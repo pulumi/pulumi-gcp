@@ -326,7 +326,7 @@ export class TunnelIamPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TunnelIamPolicy.__pulumiType, name, resourceInputs, opts);
+        super(TunnelIamPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

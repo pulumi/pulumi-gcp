@@ -190,7 +190,7 @@ export class CxWebhook extends pulumi.CustomResource {
             resourceInputs["startFlow"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(CxWebhook.__pulumiType, name, resourceInputs, opts);
+        super(CxWebhook.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

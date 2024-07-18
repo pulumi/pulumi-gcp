@@ -380,7 +380,7 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(RegionTargetHttpsProxy.__pulumiType, name, resourceInputs, opts);
+        super(RegionTargetHttpsProxy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

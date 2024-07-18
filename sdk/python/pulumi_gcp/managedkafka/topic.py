@@ -311,12 +311,12 @@ class Topic(pulumi.CustomResource):
             cluster_id="my-cluster",
             location="us-central1",
             capacity_config={
-                "vcpuCount": "3",
-                "memoryBytes": "3221225472",
+                "vcpu_count": "3",
+                "memory_bytes": "3221225472",
             },
             gcp_config={
-                "accessConfig": {
-                    "networkConfigs": [{
+                "access_config": {
+                    "network_configs": [{
                         "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
                     }],
                 },
@@ -390,12 +390,12 @@ class Topic(pulumi.CustomResource):
             cluster_id="my-cluster",
             location="us-central1",
             capacity_config={
-                "vcpuCount": "3",
-                "memoryBytes": "3221225472",
+                "vcpu_count": "3",
+                "memory_bytes": "3221225472",
             },
             gcp_config={
-                "accessConfig": {
-                    "networkConfigs": [{
+                "access_config": {
+                    "network_configs": [{
                         "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
                     }],
                 },

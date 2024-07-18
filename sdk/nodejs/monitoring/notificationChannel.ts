@@ -214,7 +214,7 @@ export class NotificationChannel extends pulumi.CustomResource {
             resourceInputs["verificationStatus"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(NotificationChannel.__pulumiType, name, resourceInputs, opts);
+        super(NotificationChannel.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -348,7 +348,7 @@ export class IAMBinding extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "gcp:serviceAccount/iAMBinding:IAMBinding" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
-        super(IAMBinding.__pulumiType, name, resourceInputs, opts);
+        super(IAMBinding.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

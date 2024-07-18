@@ -468,7 +468,7 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["managementType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(RouterPeer.__pulumiType, name, resourceInputs, opts);
+        super(RouterPeer.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

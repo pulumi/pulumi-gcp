@@ -15,6 +15,7 @@
     "dependencies": {
         "@pulumi/pulumi": "^3.0.0",
         "@types/express": "^4.16.0",
+        "async-mutex": "^0.5.0",
         "read-package-json": "^2.0.13"
     },
     "devDependencies": {

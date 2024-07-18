@@ -109,7 +109,7 @@ export class Release extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Release.__pulumiType, name, resourceInputs, opts);
+        super(Release.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

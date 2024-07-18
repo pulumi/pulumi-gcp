@@ -253,7 +253,7 @@ export class RegionalEndpoint extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(RegionalEndpoint.__pulumiType, name, resourceInputs, opts);
+        super(RegionalEndpoint.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

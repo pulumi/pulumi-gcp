@@ -348,22 +348,22 @@ class Policy(pulumi.CustomResource):
             enable_inbound_forwarding=True,
             enable_logging=True,
             alternative_name_server_config={
-                "targetNameServers": [
+                "target_name_servers": [
                     {
-                        "ipv4Address": "172.16.1.10",
-                        "forwardingPath": "private",
+                        "ipv4_address": "172.16.1.10",
+                        "forwarding_path": "private",
                     },
                     {
-                        "ipv4Address": "172.16.1.20",
+                        "ipv4_address": "172.16.1.20",
                     },
                 ],
             },
             networks=[
                 {
-                    "networkUrl": network_1.id,
+                    "network_url": network_1.id,
                 },
                 {
-                    "networkUrl": network_2.id,
+                    "network_url": network_2.id,
                 },
             ])
         ```
@@ -449,22 +449,22 @@ class Policy(pulumi.CustomResource):
             enable_inbound_forwarding=True,
             enable_logging=True,
             alternative_name_server_config={
-                "targetNameServers": [
+                "target_name_servers": [
                     {
-                        "ipv4Address": "172.16.1.10",
-                        "forwardingPath": "private",
+                        "ipv4_address": "172.16.1.10",
+                        "forwarding_path": "private",
                     },
                     {
-                        "ipv4Address": "172.16.1.20",
+                        "ipv4_address": "172.16.1.20",
                     },
                 ],
             },
             networks=[
                 {
-                    "networkUrl": network_1.id,
+                    "network_url": network_1.id,
                 },
                 {
-                    "networkUrl": network_2.id,
+                    "network_url": network_2.id,
                 },
             ])
         ```

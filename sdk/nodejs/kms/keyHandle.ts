@@ -207,7 +207,7 @@ export class KeyHandle extends pulumi.CustomResource {
             resourceInputs["kmsKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(KeyHandle.__pulumiType, name, resourceInputs, opts);
+        super(KeyHandle.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

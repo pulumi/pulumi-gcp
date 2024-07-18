@@ -216,9 +216,9 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
             region="us-central1",
             snapshot_schedule_policy={
                 "schedule": {
-                    "dailySchedule": {
-                        "daysInCycle": 1,
-                        "startTime": "04:00",
+                    "daily_schedule": {
+                        "days_in_cycle": 1,
+                        "start_time": "04:00",
                     },
                 },
             })
@@ -303,9 +303,9 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
             region="us-central1",
             snapshot_schedule_policy={
                 "schedule": {
-                    "dailySchedule": {
-                        "daysInCycle": 1,
-                        "startTime": "04:00",
+                    "daily_schedule": {
+                        "days_in_cycle": 1,
+                        "start_time": "04:00",
                     },
                 },
             })

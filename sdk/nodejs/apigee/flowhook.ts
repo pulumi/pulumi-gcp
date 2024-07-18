@@ -125,7 +125,7 @@ export class Flowhook extends pulumi.CustomResource {
             resourceInputs["sharedflow"] = args ? args.sharedflow : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Flowhook.__pulumiType, name, resourceInputs, opts);
+        super(Flowhook.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -216,7 +216,7 @@ export class AccessLevelCondition extends pulumi.CustomResource {
             resourceInputs["vpcNetworkSources"] = args ? args.vpcNetworkSources : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AccessLevelCondition.__pulumiType, name, resourceInputs, opts);
+        super(AccessLevelCondition.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

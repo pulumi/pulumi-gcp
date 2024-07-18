@@ -391,12 +391,12 @@ class Cluster(pulumi.CustomResource):
             cluster_id="my-cluster",
             location="us-central1",
             capacity_config={
-                "vcpuCount": "3",
-                "memoryBytes": "3221225472",
+                "vcpu_count": "3",
+                "memory_bytes": "3221225472",
             },
             gcp_config={
-                "accessConfig": {
-                    "networkConfigs": [{
+                "access_config": {
+                    "network_configs": [{
                         "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
                     }],
                 },
@@ -425,16 +425,16 @@ class Cluster(pulumi.CustomResource):
             cluster_id="my-cluster",
             location="us-central1",
             capacity_config={
-                "vcpuCount": "3",
-                "memoryBytes": "3221225472",
+                "vcpu_count": "3",
+                "memory_bytes": "3221225472",
             },
             gcp_config={
-                "accessConfig": {
-                    "networkConfigs": [{
+                "access_config": {
+                    "network_configs": [{
                         "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
                     }],
                 },
-                "kmsKey": key.id,
+                "kms_key": key.id,
             })
         kafka_service_identity = gcp.projects.ServiceIdentity("kafka_service_identity",
             project=project.project_id,
@@ -503,12 +503,12 @@ class Cluster(pulumi.CustomResource):
             cluster_id="my-cluster",
             location="us-central1",
             capacity_config={
-                "vcpuCount": "3",
-                "memoryBytes": "3221225472",
+                "vcpu_count": "3",
+                "memory_bytes": "3221225472",
             },
             gcp_config={
-                "accessConfig": {
-                    "networkConfigs": [{
+                "access_config": {
+                    "network_configs": [{
                         "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
                     }],
                 },
@@ -537,16 +537,16 @@ class Cluster(pulumi.CustomResource):
             cluster_id="my-cluster",
             location="us-central1",
             capacity_config={
-                "vcpuCount": "3",
-                "memoryBytes": "3221225472",
+                "vcpu_count": "3",
+                "memory_bytes": "3221225472",
             },
             gcp_config={
-                "accessConfig": {
-                    "networkConfigs": [{
+                "access_config": {
+                    "network_configs": [{
                         "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
                     }],
                 },
-                "kmsKey": key.id,
+                "kms_key": key.id,
             })
         kafka_service_identity = gcp.projects.ServiceIdentity("kafka_service_identity",
             project=project.project_id,

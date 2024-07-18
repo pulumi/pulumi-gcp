@@ -170,7 +170,7 @@ export class TenantInboundSamlConfig extends pulumi.CustomResource {
             resourceInputs["tenant"] = args ? args.tenant : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TenantInboundSamlConfig.__pulumiType, name, resourceInputs, opts);
+        super(TenantInboundSamlConfig.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

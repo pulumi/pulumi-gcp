@@ -471,7 +471,7 @@ export class RouterNat extends pulumi.CustomResource {
             resourceInputs["udpIdleTimeoutSec"] = args ? args.udpIdleTimeoutSec : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(RouterNat.__pulumiType, name, resourceInputs, opts);
+        super(RouterNat.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 
