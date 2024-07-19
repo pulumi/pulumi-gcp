@@ -891,8 +891,8 @@ class Bucket(pulumi.CustomResource):
             force_destroy=True,
             uniform_bucket_level_access=True,
             website={
-                "mainPageSuffix": "index.html",
-                "notFoundPage": "404.html",
+                "main_page_suffix": "index.html",
+                "not_found_page": "404.html",
             },
             cors=[{
                 "origins": ["http://image-store.com"],
@@ -903,8 +903,8 @@ class Bucket(pulumi.CustomResource):
                     "POST",
                     "DELETE",
                 ],
-                "responseHeaders": ["*"],
-                "maxAgeSeconds": 3600,
+                "response_headers": ["*"],
+                "max_age_seconds": 3600,
             }])
         ```
 
@@ -954,8 +954,8 @@ class Bucket(pulumi.CustomResource):
                     "type": "Delete",
                 },
                 "condition": {
-                    "daysSinceNoncurrentTime": 3,
-                    "noAge": True,
+                    "days_since_noncurrent_time": 3,
+                    "no_age": True,
                 },
             }])
         ```
@@ -1066,8 +1066,8 @@ class Bucket(pulumi.CustomResource):
             force_destroy=True,
             uniform_bucket_level_access=True,
             website={
-                "mainPageSuffix": "index.html",
-                "notFoundPage": "404.html",
+                "main_page_suffix": "index.html",
+                "not_found_page": "404.html",
             },
             cors=[{
                 "origins": ["http://image-store.com"],
@@ -1078,8 +1078,8 @@ class Bucket(pulumi.CustomResource):
                     "POST",
                     "DELETE",
                 ],
-                "responseHeaders": ["*"],
-                "maxAgeSeconds": 3600,
+                "response_headers": ["*"],
+                "max_age_seconds": 3600,
             }])
         ```
 
@@ -1129,8 +1129,8 @@ class Bucket(pulumi.CustomResource):
                     "type": "Delete",
                 },
                 "condition": {
-                    "daysSinceNoncurrentTime": 3,
-                    "noAge": True,
+                    "days_since_noncurrent_time": 3,
+                    "no_age": True,
                 },
             }])
         ```

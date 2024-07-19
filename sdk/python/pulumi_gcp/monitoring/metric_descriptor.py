@@ -523,13 +523,13 @@ class MetricDescriptor(pulumi.CustomResource):
             unit="{USD}",
             labels=[{
                 "key": "store_id",
-                "valueType": "STRING",
+                "value_type": "STRING",
                 "description": "The ID of the store.",
             }],
             launch_stage="BETA",
             metadata={
-                "samplePeriod": "60s",
-                "ingestDelay": "30s",
+                "sample_period": "60s",
+                "ingest_delay": "30s",
             })
         ```
         ### Monitoring Metric Descriptor Alert
@@ -549,8 +549,8 @@ class MetricDescriptor(pulumi.CustomResource):
             display_name="metric-descriptor",
             combiner="OR",
             conditions=[{
-                "displayName": "test condition",
-                "conditionThreshold": {
+                "display_name": "test condition",
+                "condition_threshold": {
                     "filter": with_alert.type.apply(lambda type: f"metric.type=\\"{type}\\" AND resource.type=\\"gce_instance\\""),
                     "duration": "60s",
                     "comparison": "COMPARISON_GT",
@@ -640,13 +640,13 @@ class MetricDescriptor(pulumi.CustomResource):
             unit="{USD}",
             labels=[{
                 "key": "store_id",
-                "valueType": "STRING",
+                "value_type": "STRING",
                 "description": "The ID of the store.",
             }],
             launch_stage="BETA",
             metadata={
-                "samplePeriod": "60s",
-                "ingestDelay": "30s",
+                "sample_period": "60s",
+                "ingest_delay": "30s",
             })
         ```
         ### Monitoring Metric Descriptor Alert
@@ -666,8 +666,8 @@ class MetricDescriptor(pulumi.CustomResource):
             display_name="metric-descriptor",
             combiner="OR",
             conditions=[{
-                "displayName": "test condition",
-                "conditionThreshold": {
+                "display_name": "test condition",
+                "condition_threshold": {
                     "filter": with_alert.type.apply(lambda type: f"metric.type=\\"{type}\\" AND resource.type=\\"gce_instance\\""),
                     "duration": "60s",
                     "comparison": "COMPARISON_GT",

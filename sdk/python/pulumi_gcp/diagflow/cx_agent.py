@@ -656,29 +656,29 @@ class CxAgent(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
             speech_to_text_settings={
-                "enableSpeechAdaptation": True,
+                "enable_speech_adaptation": True,
             },
             advanced_settings={
-                "audioExportGcsDestination": {
+                "audio_export_gcs_destination": {
                     "uri": bucket.url.apply(lambda url: f"{url}/prefix-"),
                 },
-                "dtmfSettings": {
+                "dtmf_settings": {
                     "enabled": True,
-                    "maxDigits": 1,
-                    "finishDigit": "#",
+                    "max_digits": 1,
+                    "finish_digit": "#",
                 },
             },
             git_integration_settings={
-                "githubSettings": {
-                    "displayName": "Github Repo",
-                    "repositoryUri": "https://api.github.com/repos/githubtraining/hellogitworld",
-                    "trackingBranch": "main",
-                    "accessToken": "secret-token",
+                "github_settings": {
+                    "display_name": "Github Repo",
+                    "repository_uri": "https://api.github.com/repos/githubtraining/hellogitworld",
+                    "tracking_branch": "main",
+                    "access_token": "secret-token",
                     "branches": ["main"],
                 },
             },
             text_to_speech_settings={
-                "synthesizeSpeechConfigs": json.dumps({
+                "synthesize_speech_configs": json.dumps({
                     "en": {
                         "voice": {
                             "name": "en-US-Neural2-A",
@@ -792,29 +792,29 @@ class CxAgent(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
             speech_to_text_settings={
-                "enableSpeechAdaptation": True,
+                "enable_speech_adaptation": True,
             },
             advanced_settings={
-                "audioExportGcsDestination": {
+                "audio_export_gcs_destination": {
                     "uri": bucket.url.apply(lambda url: f"{url}/prefix-"),
                 },
-                "dtmfSettings": {
+                "dtmf_settings": {
                     "enabled": True,
-                    "maxDigits": 1,
-                    "finishDigit": "#",
+                    "max_digits": 1,
+                    "finish_digit": "#",
                 },
             },
             git_integration_settings={
-                "githubSettings": {
-                    "displayName": "Github Repo",
-                    "repositoryUri": "https://api.github.com/repos/githubtraining/hellogitworld",
-                    "trackingBranch": "main",
-                    "accessToken": "secret-token",
+                "github_settings": {
+                    "display_name": "Github Repo",
+                    "repository_uri": "https://api.github.com/repos/githubtraining/hellogitworld",
+                    "tracking_branch": "main",
+                    "access_token": "secret-token",
                     "branches": ["main"],
                 },
             },
             text_to_speech_settings={
-                "synthesizeSpeechConfigs": json.dumps({
+                "synthesize_speech_configs": json.dumps({
                     "en": {
                         "voice": {
                             "name": "en-US-Neural2-A",

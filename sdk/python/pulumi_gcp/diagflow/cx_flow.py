@@ -535,21 +535,21 @@ class CxFlow(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
             speech_to_text_settings={
-                "enableSpeechAdaptation": True,
+                "enable_speech_adaptation": True,
             })
         basic_flow = gcp.diagflow.CxFlow("basic_flow",
             parent=agent.id,
             display_name="MyFlow",
             description="Test Flow",
             nlu_settings={
-                "classificationThreshold": 0.3,
-                "modelType": "MODEL_TYPE_STANDARD",
+                "classification_threshold": 0.3,
+                "model_type": "MODEL_TYPE_STANDARD",
             },
             event_handlers=[
                 {
                     "event": "custom-event",
-                    "triggerFulfillment": {
-                        "returnPartialResponses": False,
+                    "trigger_fulfillment": {
+                        "return_partial_responses": False,
                         "messages": [{
                             "text": {
                                 "texts": ["I didn't get that. Can you say it again?"],
@@ -559,8 +559,8 @@ class CxFlow(pulumi.CustomResource):
                 },
                 {
                     "event": "sys.no-match-default",
-                    "triggerFulfillment": {
-                        "returnPartialResponses": False,
+                    "trigger_fulfillment": {
+                        "return_partial_responses": False,
                         "messages": [{
                             "text": {
                                 "texts": ["Sorry, could you say that again?"],
@@ -570,8 +570,8 @@ class CxFlow(pulumi.CustomResource):
                 },
                 {
                     "event": "sys.no-input-default",
-                    "triggerFulfillment": {
-                        "returnPartialResponses": False,
+                    "trigger_fulfillment": {
+                        "return_partial_responses": False,
                         "messages": [{
                             "text": {
                                 "texts": ["One more time?"],
@@ -603,7 +603,7 @@ class CxFlow(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
             speech_to_text_settings={
-                "enableSpeechAdaptation": True,
+                "enable_speech_adaptation": True,
             })
         bucket = gcp.storage.Bucket("bucket",
             name="dialogflowcx-bucket",
@@ -614,14 +614,14 @@ class CxFlow(pulumi.CustomResource):
             display_name="MyFlow",
             description="Test Flow",
             nlu_settings={
-                "classificationThreshold": 0.3,
-                "modelType": "MODEL_TYPE_STANDARD",
+                "classification_threshold": 0.3,
+                "model_type": "MODEL_TYPE_STANDARD",
             },
             event_handlers=[
                 {
                     "event": "custom-event",
-                    "triggerFulfillment": {
-                        "returnPartialResponses": False,
+                    "trigger_fulfillment": {
+                        "return_partial_responses": False,
                         "messages": [{
                             "text": {
                                 "texts": ["I didn't get that. Can you say it again?"],
@@ -631,8 +631,8 @@ class CxFlow(pulumi.CustomResource):
                 },
                 {
                     "event": "sys.no-match-default",
-                    "triggerFulfillment": {
-                        "returnPartialResponses": False,
+                    "trigger_fulfillment": {
+                        "return_partial_responses": False,
                         "messages": [{
                             "text": {
                                 "texts": ["Sorry, could you say that again?"],
@@ -642,8 +642,8 @@ class CxFlow(pulumi.CustomResource):
                 },
                 {
                     "event": "sys.no-input-default",
-                    "triggerFulfillment": {
-                        "returnPartialResponses": False,
+                    "trigger_fulfillment": {
+                        "return_partial_responses": False,
                         "messages": [{
                             "text": {
                                 "texts": ["One more time?"],
@@ -653,8 +653,8 @@ class CxFlow(pulumi.CustomResource):
                 },
                 {
                     "event": "another-event",
-                    "triggerFulfillment": {
-                        "returnPartialResponses": True,
+                    "trigger_fulfillment": {
+                        "return_partial_responses": True,
                         "messages": [
                             {
                                 "channel": "some-channel",
@@ -666,37 +666,37 @@ class CxFlow(pulumi.CustomResource):
                                 "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                             },
                             {
-                                "conversationSuccess": {
+                                "conversation_success": {
                                     "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                 },
                             },
                             {
-                                "outputAudioText": {
+                                "output_audio_text": {
                                     "text": "some output text",
                                 },
                             },
                             {
-                                "outputAudioText": {
+                                "output_audio_text": {
                                     "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                                 },
                             },
                             {
-                                "liveAgentHandoff": {
+                                "live_agent_handoff": {
                                     "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                 },
                             },
                             {
-                                "playAudio": {
-                                    "audioUri": "http://example.com/some-audio-file.mp3",
+                                "play_audio": {
+                                    "audio_uri": "http://example.com/some-audio-file.mp3",
                                 },
                             },
                             {
-                                "telephonyTransferCall": {
-                                    "phoneNumber": "1-234-567-8901",
+                                "telephony_transfer_call": {
+                                    "phone_number": "1-234-567-8901",
                                 },
                             },
                         ],
-                        "setParameterActions": [
+                        "set_parameter_actions": [
                             {
                                 "parameter": "some-param",
                                 "value": "123.45",
@@ -710,11 +710,11 @@ class CxFlow(pulumi.CustomResource):
                                 "value": json.dumps(["foo"]),
                             },
                         ],
-                        "conditionalCases": [{
+                        "conditional_cases": [{
                             "cases": json.dumps([
                                 {
                                     "condition": "$sys.func.RAND() < 0.5",
-                                    "caseContent": [
+                                    "case_content": [
                                         {
                                             "message": {
                                                 "text": {
@@ -754,8 +754,8 @@ class CxFlow(pulumi.CustomResource):
             ],
             transition_routes=[{
                 "condition": "true",
-                "triggerFulfillment": {
-                    "returnPartialResponses": True,
+                "trigger_fulfillment": {
+                    "return_partial_responses": True,
                     "messages": [
                         {
                             "channel": "some-channel",
@@ -767,37 +767,37 @@ class CxFlow(pulumi.CustomResource):
                             "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                         },
                         {
-                            "conversationSuccess": {
+                            "conversation_success": {
                                 "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             },
                         },
                         {
-                            "outputAudioText": {
+                            "output_audio_text": {
                                 "text": "some output text",
                             },
                         },
                         {
-                            "outputAudioText": {
+                            "output_audio_text": {
                                 "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                             },
                         },
                         {
-                            "liveAgentHandoff": {
+                            "live_agent_handoff": {
                                 "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             },
                         },
                         {
-                            "playAudio": {
-                                "audioUri": "http://example.com/some-audio-file.mp3",
+                            "play_audio": {
+                                "audio_uri": "http://example.com/some-audio-file.mp3",
                             },
                         },
                         {
-                            "telephonyTransferCall": {
-                                "phoneNumber": "1-234-567-8901",
+                            "telephony_transfer_call": {
+                                "phone_number": "1-234-567-8901",
                             },
                         },
                     ],
-                    "setParameterActions": [
+                    "set_parameter_actions": [
                         {
                             "parameter": "some-param",
                             "value": "123.45",
@@ -811,11 +811,11 @@ class CxFlow(pulumi.CustomResource):
                             "value": json.dumps(["foo"]),
                         },
                     ],
-                    "conditionalCases": [{
+                    "conditional_cases": [{
                         "cases": json.dumps([
                             {
                                 "condition": "$sys.func.RAND() < 0.5",
-                                "caseContent": [
+                                "case_content": [
                                     {
                                         "message": {
                                             "text": {
@@ -851,16 +851,16 @@ class CxFlow(pulumi.CustomResource):
                         ]),
                     }],
                 },
-                "targetFlow": agent.start_flow,
+                "target_flow": agent.start_flow,
             }],
             advanced_settings={
-                "audioExportGcsDestination": {
+                "audio_export_gcs_destination": {
                     "uri": bucket.url.apply(lambda url: f"{url}/prefix-"),
                 },
-                "dtmfSettings": {
+                "dtmf_settings": {
                     "enabled": True,
-                    "maxDigits": 1,
-                    "finishDigit": "#",
+                    "max_digits": 1,
+                    "finish_digit": "#",
                 },
             })
         ```
@@ -963,21 +963,21 @@ class CxFlow(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
             speech_to_text_settings={
-                "enableSpeechAdaptation": True,
+                "enable_speech_adaptation": True,
             })
         basic_flow = gcp.diagflow.CxFlow("basic_flow",
             parent=agent.id,
             display_name="MyFlow",
             description="Test Flow",
             nlu_settings={
-                "classificationThreshold": 0.3,
-                "modelType": "MODEL_TYPE_STANDARD",
+                "classification_threshold": 0.3,
+                "model_type": "MODEL_TYPE_STANDARD",
             },
             event_handlers=[
                 {
                     "event": "custom-event",
-                    "triggerFulfillment": {
-                        "returnPartialResponses": False,
+                    "trigger_fulfillment": {
+                        "return_partial_responses": False,
                         "messages": [{
                             "text": {
                                 "texts": ["I didn't get that. Can you say it again?"],
@@ -987,8 +987,8 @@ class CxFlow(pulumi.CustomResource):
                 },
                 {
                     "event": "sys.no-match-default",
-                    "triggerFulfillment": {
-                        "returnPartialResponses": False,
+                    "trigger_fulfillment": {
+                        "return_partial_responses": False,
                         "messages": [{
                             "text": {
                                 "texts": ["Sorry, could you say that again?"],
@@ -998,8 +998,8 @@ class CxFlow(pulumi.CustomResource):
                 },
                 {
                     "event": "sys.no-input-default",
-                    "triggerFulfillment": {
-                        "returnPartialResponses": False,
+                    "trigger_fulfillment": {
+                        "return_partial_responses": False,
                         "messages": [{
                             "text": {
                                 "texts": ["One more time?"],
@@ -1031,7 +1031,7 @@ class CxFlow(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
             speech_to_text_settings={
-                "enableSpeechAdaptation": True,
+                "enable_speech_adaptation": True,
             })
         bucket = gcp.storage.Bucket("bucket",
             name="dialogflowcx-bucket",
@@ -1042,14 +1042,14 @@ class CxFlow(pulumi.CustomResource):
             display_name="MyFlow",
             description="Test Flow",
             nlu_settings={
-                "classificationThreshold": 0.3,
-                "modelType": "MODEL_TYPE_STANDARD",
+                "classification_threshold": 0.3,
+                "model_type": "MODEL_TYPE_STANDARD",
             },
             event_handlers=[
                 {
                     "event": "custom-event",
-                    "triggerFulfillment": {
-                        "returnPartialResponses": False,
+                    "trigger_fulfillment": {
+                        "return_partial_responses": False,
                         "messages": [{
                             "text": {
                                 "texts": ["I didn't get that. Can you say it again?"],
@@ -1059,8 +1059,8 @@ class CxFlow(pulumi.CustomResource):
                 },
                 {
                     "event": "sys.no-match-default",
-                    "triggerFulfillment": {
-                        "returnPartialResponses": False,
+                    "trigger_fulfillment": {
+                        "return_partial_responses": False,
                         "messages": [{
                             "text": {
                                 "texts": ["Sorry, could you say that again?"],
@@ -1070,8 +1070,8 @@ class CxFlow(pulumi.CustomResource):
                 },
                 {
                     "event": "sys.no-input-default",
-                    "triggerFulfillment": {
-                        "returnPartialResponses": False,
+                    "trigger_fulfillment": {
+                        "return_partial_responses": False,
                         "messages": [{
                             "text": {
                                 "texts": ["One more time?"],
@@ -1081,8 +1081,8 @@ class CxFlow(pulumi.CustomResource):
                 },
                 {
                     "event": "another-event",
-                    "triggerFulfillment": {
-                        "returnPartialResponses": True,
+                    "trigger_fulfillment": {
+                        "return_partial_responses": True,
                         "messages": [
                             {
                                 "channel": "some-channel",
@@ -1094,37 +1094,37 @@ class CxFlow(pulumi.CustomResource):
                                 "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                             },
                             {
-                                "conversationSuccess": {
+                                "conversation_success": {
                                     "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                 },
                             },
                             {
-                                "outputAudioText": {
+                                "output_audio_text": {
                                     "text": "some output text",
                                 },
                             },
                             {
-                                "outputAudioText": {
+                                "output_audio_text": {
                                     "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                                 },
                             },
                             {
-                                "liveAgentHandoff": {
+                                "live_agent_handoff": {
                                     "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                 },
                             },
                             {
-                                "playAudio": {
-                                    "audioUri": "http://example.com/some-audio-file.mp3",
+                                "play_audio": {
+                                    "audio_uri": "http://example.com/some-audio-file.mp3",
                                 },
                             },
                             {
-                                "telephonyTransferCall": {
-                                    "phoneNumber": "1-234-567-8901",
+                                "telephony_transfer_call": {
+                                    "phone_number": "1-234-567-8901",
                                 },
                             },
                         ],
-                        "setParameterActions": [
+                        "set_parameter_actions": [
                             {
                                 "parameter": "some-param",
                                 "value": "123.45",
@@ -1138,11 +1138,11 @@ class CxFlow(pulumi.CustomResource):
                                 "value": json.dumps(["foo"]),
                             },
                         ],
-                        "conditionalCases": [{
+                        "conditional_cases": [{
                             "cases": json.dumps([
                                 {
                                     "condition": "$sys.func.RAND() < 0.5",
-                                    "caseContent": [
+                                    "case_content": [
                                         {
                                             "message": {
                                                 "text": {
@@ -1182,8 +1182,8 @@ class CxFlow(pulumi.CustomResource):
             ],
             transition_routes=[{
                 "condition": "true",
-                "triggerFulfillment": {
-                    "returnPartialResponses": True,
+                "trigger_fulfillment": {
+                    "return_partial_responses": True,
                     "messages": [
                         {
                             "channel": "some-channel",
@@ -1195,37 +1195,37 @@ class CxFlow(pulumi.CustomResource):
                             "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                         },
                         {
-                            "conversationSuccess": {
+                            "conversation_success": {
                                 "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             },
                         },
                         {
-                            "outputAudioText": {
+                            "output_audio_text": {
                                 "text": "some output text",
                             },
                         },
                         {
-                            "outputAudioText": {
+                            "output_audio_text": {
                                 "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                             },
                         },
                         {
-                            "liveAgentHandoff": {
+                            "live_agent_handoff": {
                                 "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             },
                         },
                         {
-                            "playAudio": {
-                                "audioUri": "http://example.com/some-audio-file.mp3",
+                            "play_audio": {
+                                "audio_uri": "http://example.com/some-audio-file.mp3",
                             },
                         },
                         {
-                            "telephonyTransferCall": {
-                                "phoneNumber": "1-234-567-8901",
+                            "telephony_transfer_call": {
+                                "phone_number": "1-234-567-8901",
                             },
                         },
                     ],
-                    "setParameterActions": [
+                    "set_parameter_actions": [
                         {
                             "parameter": "some-param",
                             "value": "123.45",
@@ -1239,11 +1239,11 @@ class CxFlow(pulumi.CustomResource):
                             "value": json.dumps(["foo"]),
                         },
                     ],
-                    "conditionalCases": [{
+                    "conditional_cases": [{
                         "cases": json.dumps([
                             {
                                 "condition": "$sys.func.RAND() < 0.5",
-                                "caseContent": [
+                                "case_content": [
                                     {
                                         "message": {
                                             "text": {
@@ -1279,16 +1279,16 @@ class CxFlow(pulumi.CustomResource):
                         ]),
                     }],
                 },
-                "targetFlow": agent.start_flow,
+                "target_flow": agent.start_flow,
             }],
             advanced_settings={
-                "audioExportGcsDestination": {
+                "audio_export_gcs_destination": {
                     "uri": bucket.url.apply(lambda url: f"{url}/prefix-"),
                 },
-                "dtmfSettings": {
+                "dtmf_settings": {
                     "enabled": True,
-                    "maxDigits": 1,
-                    "finishDigit": "#",
+                    "max_digits": 1,
+                    "finish_digit": "#",
                 },
             })
         ```

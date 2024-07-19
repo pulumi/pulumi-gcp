@@ -438,8 +438,8 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                 "bar",
             ],
             disks=[{
-                "sourceImage": my_image.self_link,
-                "autoDelete": True,
+                "source_image": my_image.self_link,
+                "auto_delete": True,
                 "boot": True,
             }],
             network_interfaces=[{
@@ -457,12 +457,12 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             name="my-rigm",
             versions=[{
                 "name": "prod",
-                "instanceTemplate": igm_basic.self_link,
+                "instance_template": igm_basic.self_link,
             }],
             update_policy={
                 "type": "OPPORTUNISTIC",
-                "instanceRedistributionType": "NONE",
-                "minimalAction": "RESTART",
+                "instance_redistribution_type": "NONE",
+                "minimal_action": "RESTART",
             },
             base_instance_name="rigm",
             region="us-central1",
@@ -483,7 +483,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                     "instance_template": igm_basic.self_link,
                 },
                 "disks": [{
-                    "deviceName": "my-stateful-disk",
+                    "device_name": "my-stateful-disk",
                     "source": default.id,
                     "mode": "READ_ONLY",
                 }],
@@ -586,8 +586,8 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                 "bar",
             ],
             disks=[{
-                "sourceImage": my_image.self_link,
-                "autoDelete": True,
+                "source_image": my_image.self_link,
+                "auto_delete": True,
                 "boot": True,
             }],
             network_interfaces=[{
@@ -605,12 +605,12 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             name="my-rigm",
             versions=[{
                 "name": "prod",
-                "instanceTemplate": igm_basic.self_link,
+                "instance_template": igm_basic.self_link,
             }],
             update_policy={
                 "type": "OPPORTUNISTIC",
-                "instanceRedistributionType": "NONE",
-                "minimalAction": "RESTART",
+                "instance_redistribution_type": "NONE",
+                "minimal_action": "RESTART",
             },
             base_instance_name="rigm",
             region="us-central1",
@@ -631,7 +631,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                     "instance_template": igm_basic.self_link,
                 },
                 "disks": [{
-                    "deviceName": "my-stateful-disk",
+                    "device_name": "my-stateful-disk",
                     "source": default.id,
                     "mode": "READ_ONLY",
                 }],

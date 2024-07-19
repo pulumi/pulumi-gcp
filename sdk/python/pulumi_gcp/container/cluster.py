@@ -3042,9 +3042,9 @@ class Cluster(pulumi.CustomResource):
             node_count=1,
             node_config={
                 "preemptible": True,
-                "machineType": "e2-medium",
-                "serviceAccount": default.email,
-                "oauthScopes": ["https://www.googleapis.com/auth/cloud-platform"],
+                "machine_type": "e2-medium",
+                "service_account": default.email,
+                "oauth_scopes": ["https://www.googleapis.com/auth/cloud-platform"],
             })
         ```
 
@@ -3066,8 +3066,8 @@ class Cluster(pulumi.CustomResource):
             location="us-central1-a",
             initial_node_count=3,
             node_config={
-                "serviceAccount": default.email,
-                "oauthScopes": ["https://www.googleapis.com/auth/cloud-platform"],
+                "service_account": default.email,
+                "oauth_scopes": ["https://www.googleapis.com/auth/cloud-platform"],
                 "labels": {
                     "foo": "bar",
                 },
@@ -3376,9 +3376,9 @@ class Cluster(pulumi.CustomResource):
             node_count=1,
             node_config={
                 "preemptible": True,
-                "machineType": "e2-medium",
-                "serviceAccount": default.email,
-                "oauthScopes": ["https://www.googleapis.com/auth/cloud-platform"],
+                "machine_type": "e2-medium",
+                "service_account": default.email,
+                "oauth_scopes": ["https://www.googleapis.com/auth/cloud-platform"],
             })
         ```
 
@@ -3400,8 +3400,8 @@ class Cluster(pulumi.CustomResource):
             location="us-central1-a",
             initial_node_count=3,
             node_config={
-                "serviceAccount": default.email,
-                "oauthScopes": ["https://www.googleapis.com/auth/cloud-platform"],
+                "service_account": default.email,
+                "oauth_scopes": ["https://www.googleapis.com/auth/cloud-platform"],
                 "labels": {
                     "foo": "bar",
                 },

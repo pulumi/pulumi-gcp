@@ -293,7 +293,7 @@ class Dataset(pulumi.CustomResource):
             location="us-central1",
             time_zone="UTC",
             encryption_spec={
-                "kmsKeyName": crypto_key.id,
+                "kms_key_name": crypto_key.id,
             },
             opts = pulumi.ResourceOptions(depends_on=[healthcare_cmek_keyuser]))
         ```
@@ -388,7 +388,7 @@ class Dataset(pulumi.CustomResource):
             location="us-central1",
             time_zone="UTC",
             encryption_spec={
-                "kmsKeyName": crypto_key.id,
+                "kms_key_name": crypto_key.id,
             },
             opts = pulumi.ResourceOptions(depends_on=[healthcare_cmek_keyuser]))
         ```

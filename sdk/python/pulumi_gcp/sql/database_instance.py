@@ -857,10 +857,10 @@ class DatabaseInstance(pulumi.CustomResource):
             database_version="MYSQL_5_7",
             settings={
                 "tier": "db-f1-micro",
-                "ipConfiguration": {
-                    "ipv4Enabled": False,
-                    "privateNetwork": private_network.id,
-                    "enablePrivatePathForGoogleCloudServices": True,
+                "ip_configuration": {
+                    "ipv4_enabled": False,
+                    "private_network": private_network.id,
+                    "enable_private_path_for_google_cloud_services": True,
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[private_vpc_connection]))
@@ -878,8 +878,8 @@ class DatabaseInstance(pulumi.CustomResource):
             settings={
                 "tier": "db-perf-optimized-N-2",
                 "edition": "ENTERPRISE_PLUS",
-                "dataCacheConfig": {
-                    "dataCacheEnabled": True,
+                "data_cache_config": {
+                    "data_cache_enabled": True,
                 },
             })
         ```
@@ -895,18 +895,18 @@ class DatabaseInstance(pulumi.CustomResource):
             database_version="MYSQL_8_0",
             settings={
                 "tier": "db-f1-micro",
-                "ipConfiguration": {
-                    "pscConfigs": [{
-                        "pscEnabled": True,
-                        "allowedConsumerProjects": ["allowed-consumer-project-name"],
+                "ip_configuration": {
+                    "psc_configs": [{
+                        "psc_enabled": True,
+                        "allowed_consumer_projects": ["allowed-consumer-project-name"],
                     }],
-                    "ipv4Enabled": False,
+                    "ipv4_enabled": False,
                 },
-                "backupConfiguration": {
+                "backup_configuration": {
                     "enabled": True,
-                    "binaryLogEnabled": True,
+                    "binary_log_enabled": True,
                 },
-                "availabilityType": "REGIONAL",
+                "availability_type": "REGIONAL",
             })
         ```
 
@@ -1051,10 +1051,10 @@ class DatabaseInstance(pulumi.CustomResource):
             database_version="MYSQL_5_7",
             settings={
                 "tier": "db-f1-micro",
-                "ipConfiguration": {
-                    "ipv4Enabled": False,
-                    "privateNetwork": private_network.id,
-                    "enablePrivatePathForGoogleCloudServices": True,
+                "ip_configuration": {
+                    "ipv4_enabled": False,
+                    "private_network": private_network.id,
+                    "enable_private_path_for_google_cloud_services": True,
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[private_vpc_connection]))
@@ -1072,8 +1072,8 @@ class DatabaseInstance(pulumi.CustomResource):
             settings={
                 "tier": "db-perf-optimized-N-2",
                 "edition": "ENTERPRISE_PLUS",
-                "dataCacheConfig": {
-                    "dataCacheEnabled": True,
+                "data_cache_config": {
+                    "data_cache_enabled": True,
                 },
             })
         ```
@@ -1089,18 +1089,18 @@ class DatabaseInstance(pulumi.CustomResource):
             database_version="MYSQL_8_0",
             settings={
                 "tier": "db-f1-micro",
-                "ipConfiguration": {
-                    "pscConfigs": [{
-                        "pscEnabled": True,
-                        "allowedConsumerProjects": ["allowed-consumer-project-name"],
+                "ip_configuration": {
+                    "psc_configs": [{
+                        "psc_enabled": True,
+                        "allowed_consumer_projects": ["allowed-consumer-project-name"],
                     }],
-                    "ipv4Enabled": False,
+                    "ipv4_enabled": False,
                 },
-                "backupConfiguration": {
+                "backup_configuration": {
                     "enabled": True,
-                    "binaryLogEnabled": True,
+                    "binary_log_enabled": True,
                 },
-                "availabilityType": "REGIONAL",
+                "availability_type": "REGIONAL",
             })
         ```
 
