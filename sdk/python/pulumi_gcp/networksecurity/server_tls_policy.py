@@ -435,25 +435,25 @@ class ServerTlsPolicy(pulumi.CustomResource):
             description="my description",
             allow_open=False,
             server_certificate={
-                "certificateProviderInstance": {
-                    "pluginInstance": "google_cloud_private_spiffe",
+                "certificate_provider_instance": {
+                    "plugin_instance": "google_cloud_private_spiffe",
                 },
             },
             mtls_policy={
-                "clientValidationCas": [
+                "client_validation_cas": [
                     {
-                        "grpcEndpoint": {
-                            "targetUri": "unix:mypath",
+                        "grpc_endpoint": {
+                            "target_uri": "unix:mypath",
                         },
                     },
                     {
-                        "grpcEndpoint": {
-                            "targetUri": "unix:abc/mypath",
+                        "grpc_endpoint": {
+                            "target_uri": "unix:abc/mypath",
                         },
                     },
                     {
-                        "certificateProviderInstance": {
-                            "pluginInstance": "google_cloud_private_spiffe",
+                        "certificate_provider_instance": {
+                            "plugin_instance": "google_cloud_private_spiffe",
                         },
                     },
                 ],
@@ -474,7 +474,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
             location="global",
             allow_open=False,
             mtls_policy={
-                "clientValidationMode": "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
+                "client_validation_mode": "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
             })
         ```
         ### Network Security Server Tls Policy Server Cert
@@ -492,8 +492,8 @@ class ServerTlsPolicy(pulumi.CustomResource):
             location="global",
             allow_open=False,
             server_certificate={
-                "grpcEndpoint": {
-                    "targetUri": "unix:mypath",
+                "grpc_endpoint": {
+                    "target_uri": "unix:mypath",
                 },
             })
         ```
@@ -510,11 +510,11 @@ class ServerTlsPolicy(pulumi.CustomResource):
             description="sample trust config description",
             location="global",
             trust_stores=[{
-                "trustAnchors": [{
-                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                "trust_anchors": [{
+                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
                 }],
-                "intermediateCas": [{
-                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                "intermediate_cas": [{
+                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
                 }],
             }],
             labels={
@@ -526,8 +526,8 @@ class ServerTlsPolicy(pulumi.CustomResource):
             location="global",
             allow_open=False,
             mtls_policy={
-                "clientValidationMode": "REJECT_INVALID",
-                "clientValidationTrustConfig": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
+                "client_validation_mode": "REJECT_INVALID",
+                "client_validation_trust_config": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
             },
             labels={
                 "foo": "bar",
@@ -604,25 +604,25 @@ class ServerTlsPolicy(pulumi.CustomResource):
             description="my description",
             allow_open=False,
             server_certificate={
-                "certificateProviderInstance": {
-                    "pluginInstance": "google_cloud_private_spiffe",
+                "certificate_provider_instance": {
+                    "plugin_instance": "google_cloud_private_spiffe",
                 },
             },
             mtls_policy={
-                "clientValidationCas": [
+                "client_validation_cas": [
                     {
-                        "grpcEndpoint": {
-                            "targetUri": "unix:mypath",
+                        "grpc_endpoint": {
+                            "target_uri": "unix:mypath",
                         },
                     },
                     {
-                        "grpcEndpoint": {
-                            "targetUri": "unix:abc/mypath",
+                        "grpc_endpoint": {
+                            "target_uri": "unix:abc/mypath",
                         },
                     },
                     {
-                        "certificateProviderInstance": {
-                            "pluginInstance": "google_cloud_private_spiffe",
+                        "certificate_provider_instance": {
+                            "plugin_instance": "google_cloud_private_spiffe",
                         },
                     },
                 ],
@@ -643,7 +643,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
             location="global",
             allow_open=False,
             mtls_policy={
-                "clientValidationMode": "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
+                "client_validation_mode": "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
             })
         ```
         ### Network Security Server Tls Policy Server Cert
@@ -661,8 +661,8 @@ class ServerTlsPolicy(pulumi.CustomResource):
             location="global",
             allow_open=False,
             server_certificate={
-                "grpcEndpoint": {
-                    "targetUri": "unix:mypath",
+                "grpc_endpoint": {
+                    "target_uri": "unix:mypath",
                 },
             })
         ```
@@ -679,11 +679,11 @@ class ServerTlsPolicy(pulumi.CustomResource):
             description="sample trust config description",
             location="global",
             trust_stores=[{
-                "trustAnchors": [{
-                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                "trust_anchors": [{
+                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
                 }],
-                "intermediateCas": [{
-                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                "intermediate_cas": [{
+                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
                 }],
             }],
             labels={
@@ -695,8 +695,8 @@ class ServerTlsPolicy(pulumi.CustomResource):
             location="global",
             allow_open=False,
             mtls_policy={
-                "clientValidationMode": "REJECT_INVALID",
-                "clientValidationTrustConfig": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
+                "client_validation_mode": "REJECT_INVALID",
+                "client_validation_trust_config": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
             },
             labels={
                 "foo": "bar",

@@ -503,9 +503,9 @@ class VMwareNodePool(pulumi.CustomResource):
             description="test cluster",
             on_prem_version="1.13.1-gke.35",
             network_config={
-                "serviceAddressCidrBlocks": ["10.96.0.0/12"],
-                "podAddressCidrBlocks": ["192.168.0.0/16"],
-                "dhcpIpConfig": {
+                "service_address_cidr_blocks": ["10.96.0.0/12"],
+                "pod_address_cidr_blocks": ["192.168.0.0/16"],
+                "dhcp_ip_config": {
                     "enabled": True,
                 },
             },
@@ -515,20 +515,20 @@ class VMwareNodePool(pulumi.CustomResource):
                 "replicas": 1,
             },
             load_balancer={
-                "vipConfig": {
-                    "controlPlaneVip": "10.251.133.5",
-                    "ingressVip": "10.251.135.19",
+                "vip_config": {
+                    "control_plane_vip": "10.251.133.5",
+                    "ingress_vip": "10.251.135.19",
                 },
-                "metalLbConfig": {
-                    "addressPools": [
+                "metal_lb_config": {
+                    "address_pools": [
                         {
                             "pool": "ingress-ip",
-                            "manualAssign": True,
+                            "manual_assign": True,
                             "addresses": ["10.251.135.19"],
                         },
                         {
                             "pool": "lb-test-ip",
-                            "manualAssign": True,
+                            "manual_assign": True,
                             "addresses": ["10.251.135.19"],
                         },
                     ],
@@ -540,8 +540,8 @@ class VMwareNodePool(pulumi.CustomResource):
             vmware_cluster=default_basic.name,
             config={
                 "replicas": 3,
-                "imageType": "ubuntu_containerd",
-                "enableLoadBalancer": True,
+                "image_type": "ubuntu_containerd",
+                "enable_load_balancer": True,
             })
         ```
         ## Import
@@ -608,9 +608,9 @@ class VMwareNodePool(pulumi.CustomResource):
             description="test cluster",
             on_prem_version="1.13.1-gke.35",
             network_config={
-                "serviceAddressCidrBlocks": ["10.96.0.0/12"],
-                "podAddressCidrBlocks": ["192.168.0.0/16"],
-                "dhcpIpConfig": {
+                "service_address_cidr_blocks": ["10.96.0.0/12"],
+                "pod_address_cidr_blocks": ["192.168.0.0/16"],
+                "dhcp_ip_config": {
                     "enabled": True,
                 },
             },
@@ -620,20 +620,20 @@ class VMwareNodePool(pulumi.CustomResource):
                 "replicas": 1,
             },
             load_balancer={
-                "vipConfig": {
-                    "controlPlaneVip": "10.251.133.5",
-                    "ingressVip": "10.251.135.19",
+                "vip_config": {
+                    "control_plane_vip": "10.251.133.5",
+                    "ingress_vip": "10.251.135.19",
                 },
-                "metalLbConfig": {
-                    "addressPools": [
+                "metal_lb_config": {
+                    "address_pools": [
                         {
                             "pool": "ingress-ip",
-                            "manualAssign": True,
+                            "manual_assign": True,
                             "addresses": ["10.251.135.19"],
                         },
                         {
                             "pool": "lb-test-ip",
-                            "manualAssign": True,
+                            "manual_assign": True,
                             "addresses": ["10.251.135.19"],
                         },
                     ],
@@ -645,8 +645,8 @@ class VMwareNodePool(pulumi.CustomResource):
             vmware_cluster=default_basic.name,
             config={
                 "replicas": 3,
-                "imageType": "ubuntu_containerd",
-                "enableLoadBalancer": True,
+                "image_type": "ubuntu_containerd",
+                "enable_load_balancer": True,
             })
         ```
         ## Import

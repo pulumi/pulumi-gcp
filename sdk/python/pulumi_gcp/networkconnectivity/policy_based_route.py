@@ -533,7 +533,7 @@ class PolicyBasedRoute(pulumi.CustomResource):
             name="my-pbr",
             network=my_network.id,
             filter={
-                "protocolVersion": "IPV4",
+                "protocol_version": "IPV4",
             },
             next_hop_other_routes="DEFAULT_ROUTING")
         ```
@@ -556,10 +556,10 @@ class PolicyBasedRoute(pulumi.CustomResource):
             network=my_network.id,
             priority=2302,
             filter={
-                "protocolVersion": "IPV4",
-                "ipProtocol": "UDP",
-                "srcRange": "10.0.0.0/24",
-                "destRange": "0.0.0.0/0",
+                "protocol_version": "IPV4",
+                "ip_protocol": "UDP",
+                "src_range": "10.0.0.0/24",
+                "dest_range": "0.0.0.0/0",
             },
             next_hop_ilb_ip=ilb.address,
             virtual_machine={
@@ -641,7 +641,7 @@ class PolicyBasedRoute(pulumi.CustomResource):
             name="my-pbr",
             network=my_network.id,
             filter={
-                "protocolVersion": "IPV4",
+                "protocol_version": "IPV4",
             },
             next_hop_other_routes="DEFAULT_ROUTING")
         ```
@@ -664,10 +664,10 @@ class PolicyBasedRoute(pulumi.CustomResource):
             network=my_network.id,
             priority=2302,
             filter={
-                "protocolVersion": "IPV4",
-                "ipProtocol": "UDP",
-                "srcRange": "10.0.0.0/24",
-                "destRange": "0.0.0.0/0",
+                "protocol_version": "IPV4",
+                "ip_protocol": "UDP",
+                "src_range": "10.0.0.0/24",
+                "dest_range": "0.0.0.0/0",
             },
             next_hop_ilb_ip=ilb.address,
             virtual_machine={

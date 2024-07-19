@@ -328,7 +328,7 @@ class Autoscaler(pulumi.CustomResource):
                 "bar",
             ],
             disks=[{
-                "sourceImage": debian9.id,
+                "source_image": debian9.id,
             }],
             network_interfaces=[{
                 "network": "default",
@@ -348,7 +348,7 @@ class Autoscaler(pulumi.CustomResource):
             name="my-igm",
             zone="us-central1-f",
             versions=[{
-                "instanceTemplate": default_instance_template.id,
+                "instance_template": default_instance_template.id,
                 "name": "primary",
             }],
             target_pools=[default_target_pool.id],
@@ -358,13 +358,13 @@ class Autoscaler(pulumi.CustomResource):
             zone="us-central1-f",
             target=default_instance_group_manager.id,
             autoscaling_policy={
-                "maxReplicas": 5,
-                "minReplicas": 1,
-                "cooldownPeriod": 60,
+                "max_replicas": 5,
+                "min_replicas": 1,
+                "cooldown_period": 60,
                 "metrics": [{
                     "name": "pubsub.googleapis.com/subscription/num_undelivered_messages",
                     "filter": "resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription",
-                    "singleInstanceAssignment": 65535,
+                    "single_instance_assignment": 65535,
                 }],
             })
         ```
@@ -385,7 +385,7 @@ class Autoscaler(pulumi.CustomResource):
                 "bar",
             ],
             disks=[{
-                "sourceImage": debian9.id,
+                "source_image": debian9.id,
             }],
             network_interfaces=[{
                 "network": "default",
@@ -405,7 +405,7 @@ class Autoscaler(pulumi.CustomResource):
             name="my-igm",
             zone="us-central1-f",
             versions=[{
-                "instanceTemplate": foobar_instance_template.id,
+                "instance_template": foobar_instance_template.id,
                 "name": "primary",
             }],
             target_pools=[foobar_target_pool.id],
@@ -415,10 +415,10 @@ class Autoscaler(pulumi.CustomResource):
             zone="us-central1-f",
             target=foobar_instance_group_manager.id,
             autoscaling_policy={
-                "maxReplicas": 5,
-                "minReplicas": 1,
-                "cooldownPeriod": 60,
-                "cpuUtilization": {
+                "max_replicas": 5,
+                "min_replicas": 1,
+                "cooldown_period": 60,
+                "cpu_utilization": {
                     "target": 0.5,
                 },
             })
@@ -509,7 +509,7 @@ class Autoscaler(pulumi.CustomResource):
                 "bar",
             ],
             disks=[{
-                "sourceImage": debian9.id,
+                "source_image": debian9.id,
             }],
             network_interfaces=[{
                 "network": "default",
@@ -529,7 +529,7 @@ class Autoscaler(pulumi.CustomResource):
             name="my-igm",
             zone="us-central1-f",
             versions=[{
-                "instanceTemplate": default_instance_template.id,
+                "instance_template": default_instance_template.id,
                 "name": "primary",
             }],
             target_pools=[default_target_pool.id],
@@ -539,13 +539,13 @@ class Autoscaler(pulumi.CustomResource):
             zone="us-central1-f",
             target=default_instance_group_manager.id,
             autoscaling_policy={
-                "maxReplicas": 5,
-                "minReplicas": 1,
-                "cooldownPeriod": 60,
+                "max_replicas": 5,
+                "min_replicas": 1,
+                "cooldown_period": 60,
                 "metrics": [{
                     "name": "pubsub.googleapis.com/subscription/num_undelivered_messages",
                     "filter": "resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription",
-                    "singleInstanceAssignment": 65535,
+                    "single_instance_assignment": 65535,
                 }],
             })
         ```
@@ -566,7 +566,7 @@ class Autoscaler(pulumi.CustomResource):
                 "bar",
             ],
             disks=[{
-                "sourceImage": debian9.id,
+                "source_image": debian9.id,
             }],
             network_interfaces=[{
                 "network": "default",
@@ -586,7 +586,7 @@ class Autoscaler(pulumi.CustomResource):
             name="my-igm",
             zone="us-central1-f",
             versions=[{
-                "instanceTemplate": foobar_instance_template.id,
+                "instance_template": foobar_instance_template.id,
                 "name": "primary",
             }],
             target_pools=[foobar_target_pool.id],
@@ -596,10 +596,10 @@ class Autoscaler(pulumi.CustomResource):
             zone="us-central1-f",
             target=foobar_instance_group_manager.id,
             autoscaling_policy={
-                "maxReplicas": 5,
-                "minReplicas": 1,
-                "cooldownPeriod": 60,
-                "cpuUtilization": {
+                "max_replicas": 5,
+                "min_replicas": 1,
+                "cooldown_period": 60,
+                "cpu_utilization": {
                     "target": 0.5,
                 },
             })

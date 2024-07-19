@@ -110,8 +110,8 @@ def get_user_workloads_secret(environment: Optional[str] = None,
     example_environment = gcp.composer.Environment("example",
         name="example-environment",
         config={
-            "softwareConfig": {
-                "imageVersion": "composer-3-airflow-2",
+            "software_config": {
+                "image_version": "composer-3-airflow-2",
             },
         })
     example_user_workloads_secret = gcp.composer.UserWorkloadsSecret("example",
@@ -167,8 +167,8 @@ def get_user_workloads_secret_output(environment: Optional[pulumi.Input[str]] = 
     example_environment = gcp.composer.Environment("example",
         name="example-environment",
         config={
-            "softwareConfig": {
-                "imageVersion": "composer-3-airflow-2",
+            "software_config": {
+                "image_version": "composer-3-airflow-2",
             },
         })
     example_user_workloads_secret = gcp.composer.UserWorkloadsSecret("example",

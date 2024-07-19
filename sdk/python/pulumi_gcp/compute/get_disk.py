@@ -459,7 +459,7 @@ def get_disk(name: Optional[str] = None,
         project="example")
     default = gcp.compute.Instance("default", boot_disk={
         "source": persistent_boot_disk.self_link,
-        "autoDelete": False,
+        "auto_delete": False,
     })
     ```
 
@@ -538,7 +538,7 @@ def get_disk_output(name: Optional[pulumi.Input[str]] = None,
         project="example")
     default = gcp.compute.Instance("default", boot_disk={
         "source": persistent_boot_disk.self_link,
-        "autoDelete": False,
+        "auto_delete": False,
     })
     ```
 

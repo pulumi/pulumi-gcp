@@ -587,18 +587,18 @@ class Task(pulumi.CustomResource):
             trigger_spec={
                 "type": "RECURRING",
                 "disabled": False,
-                "maxRetries": 3,
-                "startTime": "2023-10-02T15:01:23Z",
+                "max_retries": 3,
+                "start_time": "2023-10-02T15:01:23Z",
                 "schedule": "1 * * * *",
             },
             execution_spec={
-                "serviceAccount": f"{project.number}-compute@developer.gserviceaccount.com",
+                "service_account": f"{project.number}-compute@developer.gserviceaccount.com",
                 "project": "my-project-name",
-                "maxJobExecutionLifetime": "100s",
-                "kmsKey": "234jn2kjn42k3n423",
+                "max_job_execution_lifetime": "100s",
+                "kms_key": "234jn2kjn42k3n423",
             },
             spark={
-                "pythonScriptFile": "gs://dataproc-examples/pyspark/hello-world/hello-world.py",
+                "python_script_file": "gs://dataproc-examples/pyspark/hello-world/hello-world.py",
             },
             project="my-project-name")
         ```
@@ -626,35 +626,35 @@ class Task(pulumi.CustomResource):
             },
             description="task-spark-terraform",
             execution_spec={
-                "serviceAccount": f"{project.number}-compute@developer.gserviceaccount.com",
+                "service_account": f"{project.number}-compute@developer.gserviceaccount.com",
                 "args": {
-                    "TASK_ARGS": "--output_location,gs://spark-job/task-result, --output_format, json",
+                    "tas_k__args": "--output_location,gs://spark-job/task-result, --output_format, json",
                 },
             },
             spark={
-                "infrastructureSpec": {
+                "infrastructure_spec": {
                     "batch": {
-                        "executorsCount": 2,
-                        "maxExecutorsCount": 100,
+                        "executors_count": 2,
+                        "max_executors_count": 100,
                     },
-                    "containerImage": {
+                    "container_image": {
                         "image": "test-image",
-                        "javaJars": ["test-java-jars.jar"],
-                        "pythonPackages": ["gs://bucket-name/my/path/to/lib.tar.gz"],
+                        "java_jars": ["test-java-jars.jar"],
+                        "python_packages": ["gs://bucket-name/my/path/to/lib.tar.gz"],
                         "properties": {
                             "name": "wrench",
                             "mass": "1.3kg",
                             "count": "3",
                         },
                     },
-                    "vpcNetwork": {
-                        "networkTags": ["test-network-tag"],
-                        "subNetwork": default.id,
+                    "vpc_network": {
+                        "network_tags": ["test-network-tag"],
+                        "sub_network": default.id,
                     },
                 },
-                "fileUris": ["gs://terrafrom-test/test.csv"],
-                "archiveUris": ["gs://terraform-test/test.csv"],
-                "sqlScript": "show databases",
+                "file_uris": ["gs://terrafrom-test/test.csv"],
+                "archive_uris": ["gs://terraform-test/test.csv"],
+                "sql_script": "show databases",
             },
             project="my-project-name")
         ```
@@ -682,35 +682,35 @@ class Task(pulumi.CustomResource):
                 "schedule": "1 * * * *",
             },
             execution_spec={
-                "serviceAccount": f"{project.number}-compute@developer.gserviceaccount.com",
+                "service_account": f"{project.number}-compute@developer.gserviceaccount.com",
                 "args": {
-                    "TASK_ARGS": "--output_location,gs://spark-job-jars-anrajitha/task-result, --output_format, json",
+                    "tas_k__args": "--output_location,gs://spark-job-jars-anrajitha/task-result, --output_format, json",
                 },
             },
             notebook={
                 "notebook": "gs://terraform-test/test-notebook.ipynb",
-                "infrastructureSpec": {
+                "infrastructure_spec": {
                     "batch": {
-                        "executorsCount": 2,
-                        "maxExecutorsCount": 100,
+                        "executors_count": 2,
+                        "max_executors_count": 100,
                     },
-                    "containerImage": {
+                    "container_image": {
                         "image": "test-image",
-                        "javaJars": ["test-java-jars.jar"],
-                        "pythonPackages": ["gs://bucket-name/my/path/to/lib.tar.gz"],
+                        "java_jars": ["test-java-jars.jar"],
+                        "python_packages": ["gs://bucket-name/my/path/to/lib.tar.gz"],
                         "properties": {
                             "name": "wrench",
                             "mass": "1.3kg",
                             "count": "3",
                         },
                     },
-                    "vpcNetwork": {
-                        "networkTags": ["test-network-tag"],
+                    "vpc_network": {
+                        "network_tags": ["test-network-tag"],
                         "network": default.id,
                     },
                 },
-                "fileUris": ["gs://terraform-test/test.csv"],
-                "archiveUris": ["gs://terraform-test/test.csv"],
+                "file_uris": ["gs://terraform-test/test.csv"],
+                "archive_uris": ["gs://terraform-test/test.csv"],
             },
             project="my-project-name")
         ```
@@ -797,18 +797,18 @@ class Task(pulumi.CustomResource):
             trigger_spec={
                 "type": "RECURRING",
                 "disabled": False,
-                "maxRetries": 3,
-                "startTime": "2023-10-02T15:01:23Z",
+                "max_retries": 3,
+                "start_time": "2023-10-02T15:01:23Z",
                 "schedule": "1 * * * *",
             },
             execution_spec={
-                "serviceAccount": f"{project.number}-compute@developer.gserviceaccount.com",
+                "service_account": f"{project.number}-compute@developer.gserviceaccount.com",
                 "project": "my-project-name",
-                "maxJobExecutionLifetime": "100s",
-                "kmsKey": "234jn2kjn42k3n423",
+                "max_job_execution_lifetime": "100s",
+                "kms_key": "234jn2kjn42k3n423",
             },
             spark={
-                "pythonScriptFile": "gs://dataproc-examples/pyspark/hello-world/hello-world.py",
+                "python_script_file": "gs://dataproc-examples/pyspark/hello-world/hello-world.py",
             },
             project="my-project-name")
         ```
@@ -836,35 +836,35 @@ class Task(pulumi.CustomResource):
             },
             description="task-spark-terraform",
             execution_spec={
-                "serviceAccount": f"{project.number}-compute@developer.gserviceaccount.com",
+                "service_account": f"{project.number}-compute@developer.gserviceaccount.com",
                 "args": {
-                    "TASK_ARGS": "--output_location,gs://spark-job/task-result, --output_format, json",
+                    "tas_k__args": "--output_location,gs://spark-job/task-result, --output_format, json",
                 },
             },
             spark={
-                "infrastructureSpec": {
+                "infrastructure_spec": {
                     "batch": {
-                        "executorsCount": 2,
-                        "maxExecutorsCount": 100,
+                        "executors_count": 2,
+                        "max_executors_count": 100,
                     },
-                    "containerImage": {
+                    "container_image": {
                         "image": "test-image",
-                        "javaJars": ["test-java-jars.jar"],
-                        "pythonPackages": ["gs://bucket-name/my/path/to/lib.tar.gz"],
+                        "java_jars": ["test-java-jars.jar"],
+                        "python_packages": ["gs://bucket-name/my/path/to/lib.tar.gz"],
                         "properties": {
                             "name": "wrench",
                             "mass": "1.3kg",
                             "count": "3",
                         },
                     },
-                    "vpcNetwork": {
-                        "networkTags": ["test-network-tag"],
-                        "subNetwork": default.id,
+                    "vpc_network": {
+                        "network_tags": ["test-network-tag"],
+                        "sub_network": default.id,
                     },
                 },
-                "fileUris": ["gs://terrafrom-test/test.csv"],
-                "archiveUris": ["gs://terraform-test/test.csv"],
-                "sqlScript": "show databases",
+                "file_uris": ["gs://terrafrom-test/test.csv"],
+                "archive_uris": ["gs://terraform-test/test.csv"],
+                "sql_script": "show databases",
             },
             project="my-project-name")
         ```
@@ -892,35 +892,35 @@ class Task(pulumi.CustomResource):
                 "schedule": "1 * * * *",
             },
             execution_spec={
-                "serviceAccount": f"{project.number}-compute@developer.gserviceaccount.com",
+                "service_account": f"{project.number}-compute@developer.gserviceaccount.com",
                 "args": {
-                    "TASK_ARGS": "--output_location,gs://spark-job-jars-anrajitha/task-result, --output_format, json",
+                    "tas_k__args": "--output_location,gs://spark-job-jars-anrajitha/task-result, --output_format, json",
                 },
             },
             notebook={
                 "notebook": "gs://terraform-test/test-notebook.ipynb",
-                "infrastructureSpec": {
+                "infrastructure_spec": {
                     "batch": {
-                        "executorsCount": 2,
-                        "maxExecutorsCount": 100,
+                        "executors_count": 2,
+                        "max_executors_count": 100,
                     },
-                    "containerImage": {
+                    "container_image": {
                         "image": "test-image",
-                        "javaJars": ["test-java-jars.jar"],
-                        "pythonPackages": ["gs://bucket-name/my/path/to/lib.tar.gz"],
+                        "java_jars": ["test-java-jars.jar"],
+                        "python_packages": ["gs://bucket-name/my/path/to/lib.tar.gz"],
                         "properties": {
                             "name": "wrench",
                             "mass": "1.3kg",
                             "count": "3",
                         },
                     },
-                    "vpcNetwork": {
-                        "networkTags": ["test-network-tag"],
+                    "vpc_network": {
+                        "network_tags": ["test-network-tag"],
                         "network": default.id,
                     },
                 },
-                "fileUris": ["gs://terraform-test/test.csv"],
-                "archiveUris": ["gs://terraform-test/test.csv"],
+                "file_uris": ["gs://terraform-test/test.csv"],
+                "archive_uris": ["gs://terraform-test/test.csv"],
             },
             project="my-project-name")
         ```
