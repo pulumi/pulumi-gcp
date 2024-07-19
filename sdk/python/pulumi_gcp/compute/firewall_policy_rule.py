@@ -525,22 +525,22 @@ class FirewallPolicyRule(pulumi.CustomResource):
             direction="EGRESS",
             disabled=False,
             match={
-                "layer4Configs": [
+                "layer4_configs": [
                     {
-                        "ipProtocol": "tcp",
+                        "ip_protocol": "tcp",
                         "ports": ["8080"],
                     },
                     {
-                        "ipProtocol": "udp",
+                        "ip_protocol": "udp",
                         "ports": ["22"],
                     },
                 ],
-                "destIpRanges": ["11.100.0.1/32"],
-                "destFqdns": [],
-                "destRegionCodes": ["US"],
-                "destThreatIntelligences": ["iplist-known-malicious-ips"],
-                "srcAddressGroups": [],
-                "destAddressGroups": [basic_global_networksecurity_address_group.id],
+                "dest_ip_ranges": ["11.100.0.1/32"],
+                "dest_fqdns": [],
+                "dest_region_codes": ["US"],
+                "dest_threat_intelligences": ["iplist-known-malicious-ips"],
+                "src_address_groups": [],
+                "dest_address_groups": [basic_global_networksecurity_address_group.id],
             },
             target_service_accounts=["my@service-account.com"])
         ```
@@ -625,22 +625,22 @@ class FirewallPolicyRule(pulumi.CustomResource):
             direction="EGRESS",
             disabled=False,
             match={
-                "layer4Configs": [
+                "layer4_configs": [
                     {
-                        "ipProtocol": "tcp",
+                        "ip_protocol": "tcp",
                         "ports": ["8080"],
                     },
                     {
-                        "ipProtocol": "udp",
+                        "ip_protocol": "udp",
                         "ports": ["22"],
                     },
                 ],
-                "destIpRanges": ["11.100.0.1/32"],
-                "destFqdns": [],
-                "destRegionCodes": ["US"],
-                "destThreatIntelligences": ["iplist-known-malicious-ips"],
-                "srcAddressGroups": [],
-                "destAddressGroups": [basic_global_networksecurity_address_group.id],
+                "dest_ip_ranges": ["11.100.0.1/32"],
+                "dest_fqdns": [],
+                "dest_region_codes": ["US"],
+                "dest_threat_intelligences": ["iplist-known-malicious-ips"],
+                "src_address_groups": [],
+                "dest_address_groups": [basic_global_networksecurity_address_group.id],
             },
             target_service_accounts=["my@service-account.com"])
         ```

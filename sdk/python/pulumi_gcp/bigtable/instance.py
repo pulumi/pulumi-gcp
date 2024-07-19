@@ -427,9 +427,9 @@ class Instance(pulumi.CustomResource):
         production_instance = gcp.bigtable.Instance("production-instance",
             name="tf-instance",
             clusters=[{
-                "clusterId": "tf-instance-cluster",
-                "numNodes": 1,
-                "storageType": "HDD",
+                "cluster_id": "tf-instance-cluster",
+                "num_nodes": 1,
+                "storage_type": "HDD",
             }],
             labels={
                 "my-label": "prod-label",
@@ -446,19 +446,19 @@ class Instance(pulumi.CustomResource):
             name="tf-instance",
             clusters=[
                 {
-                    "clusterId": "tf-instance-cluster1",
-                    "numNodes": 1,
-                    "storageType": "HDD",
+                    "cluster_id": "tf-instance-cluster1",
+                    "num_nodes": 1,
+                    "storage_type": "HDD",
                     "zone": "us-central1-c",
                 },
                 {
-                    "clusterId": "tf-instance-cluster2",
-                    "storageType": "HDD",
+                    "cluster_id": "tf-instance-cluster2",
+                    "storage_type": "HDD",
                     "zone": "us-central1-b",
-                    "autoscalingConfig": {
-                        "minNodes": 1,
-                        "maxNodes": 3,
-                        "cpuTarget": 50,
+                    "autoscaling_config": {
+                        "min_nodes": 1,
+                        "max_nodes": 3,
+                        "cpu_target": 50,
                     },
                 },
             ],
@@ -548,9 +548,9 @@ class Instance(pulumi.CustomResource):
         production_instance = gcp.bigtable.Instance("production-instance",
             name="tf-instance",
             clusters=[{
-                "clusterId": "tf-instance-cluster",
-                "numNodes": 1,
-                "storageType": "HDD",
+                "cluster_id": "tf-instance-cluster",
+                "num_nodes": 1,
+                "storage_type": "HDD",
             }],
             labels={
                 "my-label": "prod-label",
@@ -567,19 +567,19 @@ class Instance(pulumi.CustomResource):
             name="tf-instance",
             clusters=[
                 {
-                    "clusterId": "tf-instance-cluster1",
-                    "numNodes": 1,
-                    "storageType": "HDD",
+                    "cluster_id": "tf-instance-cluster1",
+                    "num_nodes": 1,
+                    "storage_type": "HDD",
                     "zone": "us-central1-c",
                 },
                 {
-                    "clusterId": "tf-instance-cluster2",
-                    "storageType": "HDD",
+                    "cluster_id": "tf-instance-cluster2",
+                    "storage_type": "HDD",
                     "zone": "us-central1-b",
-                    "autoscalingConfig": {
-                        "minNodes": 1,
-                        "maxNodes": 3,
-                        "cpuTarget": 50,
+                    "autoscaling_config": {
+                        "min_nodes": 1,
+                        "max_nodes": 3,
+                        "cpu_target": 50,
                     },
                 },
             ],

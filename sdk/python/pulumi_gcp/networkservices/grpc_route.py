@@ -412,9 +412,9 @@ class GrpcRoute(pulumi.CustomResource):
                     }],
                 }],
                 "action": {
-                    "retryPolicy": {
-                        "retryConditions": ["cancelled"],
-                        "numRetries": 1,
+                    "retry_policy": {
+                        "retry_conditions": ["cancelled"],
+                        "num_retries": 1,
                     },
                 },
             }])
@@ -446,26 +446,26 @@ class GrpcRoute(pulumi.CustomResource):
                             "value": "value",
                         }],
                         "method": {
-                            "grpcService": "foo",
-                            "grpcMethod": "bar",
-                            "caseSensitive": True,
+                            "grpc_service": "foo",
+                            "grpc_method": "bar",
+                            "case_sensitive": True,
                         },
                     },
                 ],
                 "action": {
-                    "faultInjectionPolicy": {
+                    "fault_injection_policy": {
                         "delay": {
-                            "fixedDelay": "1s",
+                            "fixed_delay": "1s",
                             "percentage": 1,
                         },
                         "abort": {
-                            "httpStatus": 500,
+                            "http_status": 500,
                             "percentage": 1,
                         },
                     },
-                    "retryPolicy": {
-                        "retryConditions": ["cancelled"],
-                        "numRetries": 1,
+                    "retry_policy": {
+                        "retry_conditions": ["cancelled"],
+                        "num_retries": 1,
                     },
                 },
             }])
@@ -485,19 +485,19 @@ class GrpcRoute(pulumi.CustomResource):
             hostnames=["example"],
             rules=[{
                 "action": {
-                    "faultInjectionPolicy": {
+                    "fault_injection_policy": {
                         "delay": {
-                            "fixedDelay": "1s",
+                            "fixed_delay": "1s",
                             "percentage": 1,
                         },
                         "abort": {
-                            "httpStatus": 500,
+                            "http_status": 500,
                             "percentage": 1,
                         },
                     },
-                    "retryPolicy": {
-                        "retryConditions": ["cancelled"],
-                        "numRetries": 1,
+                    "retry_policy": {
+                        "retry_conditions": ["cancelled"],
+                        "num_retries": 1,
                     },
                 },
             }])
@@ -570,9 +570,9 @@ class GrpcRoute(pulumi.CustomResource):
                     }],
                 }],
                 "action": {
-                    "retryPolicy": {
-                        "retryConditions": ["cancelled"],
-                        "numRetries": 1,
+                    "retry_policy": {
+                        "retry_conditions": ["cancelled"],
+                        "num_retries": 1,
                     },
                 },
             }])
@@ -604,26 +604,26 @@ class GrpcRoute(pulumi.CustomResource):
                             "value": "value",
                         }],
                         "method": {
-                            "grpcService": "foo",
-                            "grpcMethod": "bar",
-                            "caseSensitive": True,
+                            "grpc_service": "foo",
+                            "grpc_method": "bar",
+                            "case_sensitive": True,
                         },
                     },
                 ],
                 "action": {
-                    "faultInjectionPolicy": {
+                    "fault_injection_policy": {
                         "delay": {
-                            "fixedDelay": "1s",
+                            "fixed_delay": "1s",
                             "percentage": 1,
                         },
                         "abort": {
-                            "httpStatus": 500,
+                            "http_status": 500,
                             "percentage": 1,
                         },
                     },
-                    "retryPolicy": {
-                        "retryConditions": ["cancelled"],
-                        "numRetries": 1,
+                    "retry_policy": {
+                        "retry_conditions": ["cancelled"],
+                        "num_retries": 1,
                     },
                 },
             }])
@@ -643,19 +643,19 @@ class GrpcRoute(pulumi.CustomResource):
             hostnames=["example"],
             rules=[{
                 "action": {
-                    "faultInjectionPolicy": {
+                    "fault_injection_policy": {
                         "delay": {
-                            "fixedDelay": "1s",
+                            "fixed_delay": "1s",
                             "percentage": 1,
                         },
                         "abort": {
-                            "httpStatus": 500,
+                            "http_status": 500,
                             "percentage": 1,
                         },
                     },
-                    "retryPolicy": {
-                        "retryConditions": ["cancelled"],
-                        "numRetries": 1,
+                    "retry_policy": {
+                        "retry_conditions": ["cancelled"],
+                        "num_retries": 1,
                     },
                 },
             }])

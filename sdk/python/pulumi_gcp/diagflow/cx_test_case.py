@@ -350,7 +350,7 @@ class CxTestCase(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
             speech_to_text_settings={
-                "enableSpeechAdaptation": True,
+                "enable_speech_adaptation": True,
             })
         intent = gcp.diagflow.CxIntent("intent",
             parent=agent.id,
@@ -360,14 +360,14 @@ class CxTestCase(pulumi.CustomResource):
                 "parts": [{
                     "text": "training phrase",
                 }],
-                "repeatCount": 1,
+                "repeat_count": 1,
             }])
         page = gcp.diagflow.CxPage("page",
             parent=agent.start_flow,
             display_name="MyPage",
             transition_routes=[{
                 "intent": intent.id,
-                "triggerFulfillment": {
+                "trigger_fulfillment": {
                     "messages": [{
                         "text": {
                             "texts": ["Training phrase response"],
@@ -377,7 +377,7 @@ class CxTestCase(pulumi.CustomResource):
             }],
             event_handlers=[{
                 "event": "some-event",
-                "triggerFulfillment": {
+                "trigger_fulfillment": {
                     "messages": [{
                         "text": {
                             "texts": ["Handling some event"],
@@ -391,67 +391,67 @@ class CxTestCase(pulumi.CustomResource):
             tags=["#tag1"],
             notes="demonstrates a simple training phrase response",
             test_config={
-                "trackingParameters": ["some_param"],
+                "tracking_parameters": ["some_param"],
                 "page": page.id,
             },
             test_case_conversation_turns=[
                 {
-                    "userInput": {
+                    "user_input": {
                         "input": {
-                            "languageCode": "en",
+                            "language_code": "en",
                             "text": {
                                 "text": "training phrase",
                             },
                         },
-                        "injectedParameters": json.dumps({
+                        "injected_parameters": json.dumps({
                             "some_param": "1",
                         }),
-                        "isWebhookEnabled": True,
-                        "enableSentimentAnalysis": True,
+                        "is_webhook_enabled": True,
+                        "enable_sentiment_analysis": True,
                     },
-                    "virtualAgentOutput": {
-                        "sessionParameters": json.dumps({
+                    "virtual_agent_output": {
+                        "session_parameters": json.dumps({
                             "some_param": "1",
                         }),
-                        "triggeredIntent": {
+                        "triggered_intent": {
                             "name": intent.id,
                         },
-                        "currentPage": {
+                        "current_page": {
                             "name": page.id,
                         },
-                        "textResponses": [{
+                        "text_responses": [{
                             "texts": ["Training phrase response"],
                         }],
                     },
                 },
                 {
-                    "userInput": {
+                    "user_input": {
                         "input": {
                             "event": {
                                 "event": "some-event",
                             },
                         },
                     },
-                    "virtualAgentOutput": {
-                        "currentPage": {
+                    "virtual_agent_output": {
+                        "current_page": {
                             "name": page.id,
                         },
-                        "textResponses": [{
+                        "text_responses": [{
                             "texts": ["Handling some event"],
                         }],
                     },
                 },
                 {
-                    "userInput": {
+                    "user_input": {
                         "input": {
                             "dtmf": {
                                 "digits": "12",
-                                "finishDigit": "3",
+                                "finish_digit": "3",
                             },
                         },
                     },
-                    "virtualAgentOutput": {
-                        "textResponses": [{
+                    "virtual_agent_output": {
+                        "text_responses": [{
                             "texts": ["I didn't get that. Can you say it again?"],
                         }],
                     },
@@ -526,7 +526,7 @@ class CxTestCase(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
             speech_to_text_settings={
-                "enableSpeechAdaptation": True,
+                "enable_speech_adaptation": True,
             })
         intent = gcp.diagflow.CxIntent("intent",
             parent=agent.id,
@@ -536,14 +536,14 @@ class CxTestCase(pulumi.CustomResource):
                 "parts": [{
                     "text": "training phrase",
                 }],
-                "repeatCount": 1,
+                "repeat_count": 1,
             }])
         page = gcp.diagflow.CxPage("page",
             parent=agent.start_flow,
             display_name="MyPage",
             transition_routes=[{
                 "intent": intent.id,
-                "triggerFulfillment": {
+                "trigger_fulfillment": {
                     "messages": [{
                         "text": {
                             "texts": ["Training phrase response"],
@@ -553,7 +553,7 @@ class CxTestCase(pulumi.CustomResource):
             }],
             event_handlers=[{
                 "event": "some-event",
-                "triggerFulfillment": {
+                "trigger_fulfillment": {
                     "messages": [{
                         "text": {
                             "texts": ["Handling some event"],
@@ -567,67 +567,67 @@ class CxTestCase(pulumi.CustomResource):
             tags=["#tag1"],
             notes="demonstrates a simple training phrase response",
             test_config={
-                "trackingParameters": ["some_param"],
+                "tracking_parameters": ["some_param"],
                 "page": page.id,
             },
             test_case_conversation_turns=[
                 {
-                    "userInput": {
+                    "user_input": {
                         "input": {
-                            "languageCode": "en",
+                            "language_code": "en",
                             "text": {
                                 "text": "training phrase",
                             },
                         },
-                        "injectedParameters": json.dumps({
+                        "injected_parameters": json.dumps({
                             "some_param": "1",
                         }),
-                        "isWebhookEnabled": True,
-                        "enableSentimentAnalysis": True,
+                        "is_webhook_enabled": True,
+                        "enable_sentiment_analysis": True,
                     },
-                    "virtualAgentOutput": {
-                        "sessionParameters": json.dumps({
+                    "virtual_agent_output": {
+                        "session_parameters": json.dumps({
                             "some_param": "1",
                         }),
-                        "triggeredIntent": {
+                        "triggered_intent": {
                             "name": intent.id,
                         },
-                        "currentPage": {
+                        "current_page": {
                             "name": page.id,
                         },
-                        "textResponses": [{
+                        "text_responses": [{
                             "texts": ["Training phrase response"],
                         }],
                     },
                 },
                 {
-                    "userInput": {
+                    "user_input": {
                         "input": {
                             "event": {
                                 "event": "some-event",
                             },
                         },
                     },
-                    "virtualAgentOutput": {
-                        "currentPage": {
+                    "virtual_agent_output": {
+                        "current_page": {
                             "name": page.id,
                         },
-                        "textResponses": [{
+                        "text_responses": [{
                             "texts": ["Handling some event"],
                         }],
                     },
                 },
                 {
-                    "userInput": {
+                    "user_input": {
                         "input": {
                             "dtmf": {
                                 "digits": "12",
-                                "finishDigit": "3",
+                                "finish_digit": "3",
                             },
                         },
                     },
-                    "virtualAgentOutput": {
-                        "textResponses": [{
+                    "virtual_agent_output": {
+                        "text_responses": [{
                             "texts": ["I didn't get that. Can you say it again?"],
                         }],
                     },

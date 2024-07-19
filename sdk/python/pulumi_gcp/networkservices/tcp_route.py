@@ -406,10 +406,10 @@ class TcpRoute(pulumi.CustomResource):
                 }],
                 "action": {
                     "destinations": [{
-                        "serviceName": default.id,
+                        "service_name": default.id,
                         "weight": 1,
                     }],
-                    "originalDestination": False,
+                    "original_destination": False,
                 },
             }])
         ```
@@ -436,10 +436,10 @@ class TcpRoute(pulumi.CustomResource):
             rules=[{
                 "action": {
                     "destinations": [{
-                        "serviceName": default.id,
+                        "service_name": default.id,
                         "weight": 1,
                     }],
-                    "originalDestination": False,
+                    "original_destination": False,
                 },
             }])
         ```
@@ -477,10 +477,10 @@ class TcpRoute(pulumi.CustomResource):
                 }],
                 "action": {
                     "destinations": [{
-                        "serviceName": default.id,
+                        "service_name": default.id,
                         "weight": 1,
                     }],
-                    "originalDestination": False,
+                    "original_destination": False,
                 },
             }])
         ```
@@ -521,10 +521,10 @@ class TcpRoute(pulumi.CustomResource):
                 }],
                 "action": {
                     "destinations": [{
-                        "serviceName": default.id,
+                        "service_name": default.id,
                         "weight": 1,
                     }],
-                    "originalDestination": False,
+                    "original_destination": False,
                 },
             }])
         ```
@@ -606,10 +606,10 @@ class TcpRoute(pulumi.CustomResource):
                 }],
                 "action": {
                     "destinations": [{
-                        "serviceName": default.id,
+                        "service_name": default.id,
                         "weight": 1,
                     }],
-                    "originalDestination": False,
+                    "original_destination": False,
                 },
             }])
         ```
@@ -636,10 +636,10 @@ class TcpRoute(pulumi.CustomResource):
             rules=[{
                 "action": {
                     "destinations": [{
-                        "serviceName": default.id,
+                        "service_name": default.id,
                         "weight": 1,
                     }],
-                    "originalDestination": False,
+                    "original_destination": False,
                 },
             }])
         ```
@@ -677,10 +677,10 @@ class TcpRoute(pulumi.CustomResource):
                 }],
                 "action": {
                     "destinations": [{
-                        "serviceName": default.id,
+                        "service_name": default.id,
                         "weight": 1,
                     }],
-                    "originalDestination": False,
+                    "original_destination": False,
                 },
             }])
         ```
@@ -721,10 +721,10 @@ class TcpRoute(pulumi.CustomResource):
                 }],
                 "action": {
                     "destinations": [{
-                        "serviceName": default.id,
+                        "service_name": default.id,
                         "weight": 1,
                     }],
-                    "originalDestination": False,
+                    "original_destination": False,
                 },
             }])
         ```

@@ -239,25 +239,25 @@ class NetworkEndpointList(pulumi.CustomResource):
             network=default.id)
         endpoint_instance1 = gcp.compute.Instance("endpoint-instance1",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "subnetwork": default_subnetwork.id,
             }],
             name="endpoint-instance1",
             machine_type="e2-medium",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": my_image.self_link,
                 },
             })
         endpoint_instance2 = gcp.compute.Instance("endpoint-instance2",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "subnetwork": default_subnetwork.id,
             }],
             name="endpoint-instance2",
             machine_type="e2-medium",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": my_image.self_link,
                 },
             })
@@ -267,12 +267,12 @@ class NetworkEndpointList(pulumi.CustomResource):
                 {
                     "instance": endpoint_instance1.name,
                     "port": neg["defaultPort"],
-                    "ipAddress": endpoint_instance1.network_interfaces[0].network_ip,
+                    "ip_address": endpoint_instance1.network_interfaces[0].network_ip,
                 },
                 {
                     "instance": endpoint_instance2.name,
                     "port": neg["defaultPort"],
-                    "ipAddress": endpoint_instance2.network_interfaces[0].network_ip,
+                    "ip_address": endpoint_instance2.network_interfaces[0].network_ip,
                 },
             ])
         group = gcp.compute.NetworkEndpointGroup("group",
@@ -373,25 +373,25 @@ class NetworkEndpointList(pulumi.CustomResource):
             network=default.id)
         endpoint_instance1 = gcp.compute.Instance("endpoint-instance1",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "subnetwork": default_subnetwork.id,
             }],
             name="endpoint-instance1",
             machine_type="e2-medium",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": my_image.self_link,
                 },
             })
         endpoint_instance2 = gcp.compute.Instance("endpoint-instance2",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "subnetwork": default_subnetwork.id,
             }],
             name="endpoint-instance2",
             machine_type="e2-medium",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": my_image.self_link,
                 },
             })
@@ -401,12 +401,12 @@ class NetworkEndpointList(pulumi.CustomResource):
                 {
                     "instance": endpoint_instance1.name,
                     "port": neg["defaultPort"],
-                    "ipAddress": endpoint_instance1.network_interfaces[0].network_ip,
+                    "ip_address": endpoint_instance1.network_interfaces[0].network_ip,
                 },
                 {
                     "instance": endpoint_instance2.name,
                     "port": neg["defaultPort"],
-                    "ipAddress": endpoint_instance2.network_interfaces[0].network_ip,
+                    "ip_address": endpoint_instance2.network_interfaces[0].network_ip,
                 },
             ])
         group = gcp.compute.NetworkEndpointGroup("group",

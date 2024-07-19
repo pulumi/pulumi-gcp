@@ -512,7 +512,7 @@ class Spoke(pulumi.CustomResource):
             },
             hub=basic_hub.id,
             linked_vpc_network={
-                "excludeExportRanges": [
+                "exclude_export_ranges": [
                     "198.51.100.0/24",
                     "10.10.0.0/16",
                 ],
@@ -538,15 +538,15 @@ class Spoke(pulumi.CustomResource):
             can_ip_forward=True,
             zone="us-west1-a",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "projects/debian-cloud/global/images/debian-10-buster-v20210817",
                 },
             },
             network_interfaces=[{
                 "subnetwork": subnetwork.name,
-                "networkIp": "10.0.0.2",
-                "accessConfigs": [{
-                    "networkTier": "PREMIUM",
+                "network_ip": "10.0.0.2",
+                "access_configs": [{
+                    "network_tier": "PREMIUM",
                 }],
             }])
         basic_hub = gcp.networkconnectivity.Hub("basic_hub",
@@ -565,10 +565,10 @@ class Spoke(pulumi.CustomResource):
             hub=basic_hub.id,
             linked_router_appliance_instances={
                 "instances": [{
-                    "virtualMachine": instance.self_link,
-                    "ipAddress": "10.0.0.2",
+                    "virtual_machine": instance.self_link,
+                    "ip_address": "10.0.0.2",
                 }],
-                "siteToSiteDataTransfer": True,
+                "site_to_site_data_transfer": True,
             })
         ```
 
@@ -648,7 +648,7 @@ class Spoke(pulumi.CustomResource):
             },
             hub=basic_hub.id,
             linked_vpc_network={
-                "excludeExportRanges": [
+                "exclude_export_ranges": [
                     "198.51.100.0/24",
                     "10.10.0.0/16",
                 ],
@@ -674,15 +674,15 @@ class Spoke(pulumi.CustomResource):
             can_ip_forward=True,
             zone="us-west1-a",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "projects/debian-cloud/global/images/debian-10-buster-v20210817",
                 },
             },
             network_interfaces=[{
                 "subnetwork": subnetwork.name,
-                "networkIp": "10.0.0.2",
-                "accessConfigs": [{
-                    "networkTier": "PREMIUM",
+                "network_ip": "10.0.0.2",
+                "access_configs": [{
+                    "network_tier": "PREMIUM",
                 }],
             }])
         basic_hub = gcp.networkconnectivity.Hub("basic_hub",
@@ -701,10 +701,10 @@ class Spoke(pulumi.CustomResource):
             hub=basic_hub.id,
             linked_router_appliance_instances={
                 "instances": [{
-                    "virtualMachine": instance.self_link,
-                    "ipAddress": "10.0.0.2",
+                    "virtual_machine": instance.self_link,
+                    "ip_address": "10.0.0.2",
                 }],
-                "siteToSiteDataTransfer": True,
+                "site_to_site_data_transfer": True,
             })
         ```
 

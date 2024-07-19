@@ -391,10 +391,10 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             },
             region="us-central1",
             online_serving_config={
-                "fixedNodeCount": 2,
+                "fixed_node_count": 2,
             },
             encryption_spec={
-                "kmsKeyName": "kms-name",
+                "kms_key_name": "kms-name",
             })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
             name="terraform",
@@ -404,20 +404,20 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             description="test description",
             featurestore=featurestore.id,
             monitoring_config={
-                "snapshotAnalysis": {
+                "snapshot_analysis": {
                     "disabled": False,
-                    "monitoringIntervalDays": 1,
-                    "stalenessDays": 21,
+                    "monitoring_interval_days": 1,
+                    "staleness_days": 21,
                 },
-                "numericalThresholdConfig": {
+                "numerical_threshold_config": {
                     "value": 0.8,
                 },
-                "categoricalThresholdConfig": {
+                "categorical_threshold_config": {
                     "value": 10,
                 },
-                "importFeaturesAnalysis": {
+                "import_features_analysis": {
                     "state": "ENABLED",
-                    "anomalyDetectionBaseline": "PREVIOUS_IMPORT_FEATURES_STATS",
+                    "anomaly_detection_baseline": "PREVIOUS_IMPORT_FEATURES_STATS",
                 },
             })
         ```
@@ -434,10 +434,10 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             },
             region="us-central1",
             online_serving_config={
-                "fixedNodeCount": 2,
+                "fixed_node_count": 2,
             },
             encryption_spec={
-                "kmsKeyName": "kms-name",
+                "kms_key_name": "kms-name",
             })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
             name="terraform2",
@@ -446,14 +446,14 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             },
             featurestore=featurestore.id,
             monitoring_config={
-                "snapshotAnalysis": {
+                "snapshot_analysis": {
                     "disabled": False,
-                    "monitoringInterval": "86400s",
+                    "monitoring_interval": "86400s",
                 },
-                "categoricalThresholdConfig": {
+                "categorical_threshold_config": {
                     "value": 0.3,
                 },
-                "numericalThresholdConfig": {
+                "numerical_threshold_config": {
                     "value": 0.3,
                 },
             },
@@ -519,10 +519,10 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             },
             region="us-central1",
             online_serving_config={
-                "fixedNodeCount": 2,
+                "fixed_node_count": 2,
             },
             encryption_spec={
-                "kmsKeyName": "kms-name",
+                "kms_key_name": "kms-name",
             })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
             name="terraform",
@@ -532,20 +532,20 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             description="test description",
             featurestore=featurestore.id,
             monitoring_config={
-                "snapshotAnalysis": {
+                "snapshot_analysis": {
                     "disabled": False,
-                    "monitoringIntervalDays": 1,
-                    "stalenessDays": 21,
+                    "monitoring_interval_days": 1,
+                    "staleness_days": 21,
                 },
-                "numericalThresholdConfig": {
+                "numerical_threshold_config": {
                     "value": 0.8,
                 },
-                "categoricalThresholdConfig": {
+                "categorical_threshold_config": {
                     "value": 10,
                 },
-                "importFeaturesAnalysis": {
+                "import_features_analysis": {
                     "state": "ENABLED",
-                    "anomalyDetectionBaseline": "PREVIOUS_IMPORT_FEATURES_STATS",
+                    "anomaly_detection_baseline": "PREVIOUS_IMPORT_FEATURES_STATS",
                 },
             })
         ```
@@ -562,10 +562,10 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             },
             region="us-central1",
             online_serving_config={
-                "fixedNodeCount": 2,
+                "fixed_node_count": 2,
             },
             encryption_spec={
-                "kmsKeyName": "kms-name",
+                "kms_key_name": "kms-name",
             })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
             name="terraform2",
@@ -574,14 +574,14 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             },
             featurestore=featurestore.id,
             monitoring_config={
-                "snapshotAnalysis": {
+                "snapshot_analysis": {
                     "disabled": False,
-                    "monitoringInterval": "86400s",
+                    "monitoring_interval": "86400s",
                 },
-                "categoricalThresholdConfig": {
+                "categorical_threshold_config": {
                     "value": 0.3,
                 },
-                "numericalThresholdConfig": {
+                "numerical_threshold_config": {
                     "value": 0.3,
                 },
             },

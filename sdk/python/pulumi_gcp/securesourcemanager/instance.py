@@ -459,31 +459,31 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             tier="ENTERPRISE",
             publishing_options={
-                "publishCaCert": True,
-                "publishCrl": True,
+                "publish_ca_cert": True,
+                "publish_crl": True,
             })
         root_ca = gcp.certificateauthority.Authority("root_ca",
             pool=ca_pool.name,
             certificate_authority_id="root-ca",
             location="us-central1",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "google",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -506,8 +506,8 @@ class Instance(pulumi.CustomResource):
             instance_id="my-instance",
             location="us-central1",
             private_config={
-                "isPrivate": True,
-                "caPool": ca_pool.id,
+                "is_private": True,
+                "ca_pool": ca_pool.id,
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     root_ca,
@@ -627,31 +627,31 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             tier="ENTERPRISE",
             publishing_options={
-                "publishCaCert": True,
-                "publishCrl": True,
+                "publish_ca_cert": True,
+                "publish_crl": True,
             })
         root_ca = gcp.certificateauthority.Authority("root_ca",
             pool=ca_pool.name,
             certificate_authority_id="root-ca",
             location="us-central1",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "google",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -674,8 +674,8 @@ class Instance(pulumi.CustomResource):
             instance_id="my-instance",
             location="us-central1",
             private_config={
-                "isPrivate": True,
-                "caPool": ca_pool.id,
+                "is_private": True,
+                "ca_pool": ca_pool.id,
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     root_ca,

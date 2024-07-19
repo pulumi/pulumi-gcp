@@ -165,8 +165,8 @@ class IamAuditConfig(pulumi.CustomResource):
             org_id="your-organization-id",
             service="allServices",
             audit_log_configs=[{
-                "logType": "DATA_READ",
-                "exemptedMembers": ["user:joebloggs@example.com"],
+                "log_type": "DATA_READ",
+                "exempted_members": ["user:joebloggs@example.com"],
             }])
         ```
 
@@ -203,8 +203,8 @@ class IamAuditConfig(pulumi.CustomResource):
             org_id="your-organization-id",
             service="allServices",
             audit_log_configs=[{
-                "logType": "DATA_READ",
-                "exemptedMembers": ["user:joebloggs@example.com"],
+                "log_type": "DATA_READ",
+                "exempted_members": ["user:joebloggs@example.com"],
             }])
         ```
 

@@ -492,25 +492,25 @@ class ConnectivityTest(pulumi.CustomResource):
             project="debian-cloud")
         source = gcp.compute.Instance("source",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "network": vpc.id,
             }],
             name="source-vm",
             machine_type="e2-medium",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": debian9.id,
                 },
             })
         destination = gcp.compute.Instance("destination",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "network": vpc.id,
             }],
             name="dest-vm",
             machine_type="e2-medium",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": debian9.id,
                 },
             })
@@ -554,14 +554,14 @@ class ConnectivityTest(pulumi.CustomResource):
         address_test = gcp.networkmanagement.ConnectivityTest("address-test",
             name="conn-test-addr",
             source={
-                "ipAddress": source_addr.address,
-                "projectId": source_addr.project,
+                "ip_address": source_addr.address,
+                "project_id": source_addr.project,
                 "network": vpc.id,
-                "networkType": "GCP_NETWORK",
+                "network_type": "GCP_NETWORK",
             },
             destination={
-                "ipAddress": dest_addr.address,
-                "projectId": dest_addr.project,
+                "ip_address": dest_addr.address,
+                "project_id": dest_addr.project,
                 "network": vpc.id,
             },
             protocol="UDP")
@@ -666,25 +666,25 @@ class ConnectivityTest(pulumi.CustomResource):
             project="debian-cloud")
         source = gcp.compute.Instance("source",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "network": vpc.id,
             }],
             name="source-vm",
             machine_type="e2-medium",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": debian9.id,
                 },
             })
         destination = gcp.compute.Instance("destination",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "network": vpc.id,
             }],
             name="dest-vm",
             machine_type="e2-medium",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": debian9.id,
                 },
             })
@@ -728,14 +728,14 @@ class ConnectivityTest(pulumi.CustomResource):
         address_test = gcp.networkmanagement.ConnectivityTest("address-test",
             name="conn-test-addr",
             source={
-                "ipAddress": source_addr.address,
-                "projectId": source_addr.project,
+                "ip_address": source_addr.address,
+                "project_id": source_addr.project,
                 "network": vpc.id,
-                "networkType": "GCP_NETWORK",
+                "network_type": "GCP_NETWORK",
             },
             destination={
-                "ipAddress": dest_addr.address,
-                "projectId": dest_addr.project,
+                "ip_address": dest_addr.address,
+                "project_id": dest_addr.project,
                 "network": vpc.id,
             },
             protocol="UDP")
