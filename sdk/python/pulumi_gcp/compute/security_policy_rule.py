@@ -424,9 +424,9 @@ class SecurityPolicyRule(pulumi.CustomResource):
             description="new rule",
             priority=100,
             match={
-                "versionedExpr": "SRC_IPS_V1",
+                "versioned_expr": "SRC_IPS_V1",
                 "config": {
-                    "srcIpRanges": ["10.10.0.0/16"],
+                    "src_ip_ranges": ["10.10.0.0/16"],
                 },
             },
             action="allow",
@@ -453,9 +453,9 @@ class SecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             priority=2147483647,
             match={
-                "versionedExpr": "SRC_IPS_V1",
+                "versioned_expr": "SRC_IPS_V1",
                 "config": {
-                    "srcIpRanges": ["*"],
+                    "src_ip_ranges": ["*"],
                 },
             })
         policy_rule = gcp.compute.SecurityPolicyRule("policy_rule",
@@ -463,9 +463,9 @@ class SecurityPolicyRule(pulumi.CustomResource):
             description="new rule",
             priority=100,
             match={
-                "versionedExpr": "SRC_IPS_V1",
+                "versioned_expr": "SRC_IPS_V1",
                 "config": {
-                    "srcIpRanges": ["10.10.0.0/16"],
+                    "src_ip_ranges": ["10.10.0.0/16"],
                 },
             },
             action="allow",
@@ -486,9 +486,9 @@ class SecurityPolicyRule(pulumi.CustomResource):
             description="new rule one",
             priority=100,
             match={
-                "versionedExpr": "SRC_IPS_V1",
+                "versioned_expr": "SRC_IPS_V1",
                 "config": {
-                    "srcIpRanges": ["10.10.0.0/16"],
+                    "src_ip_ranges": ["10.10.0.0/16"],
                 },
             },
             action="allow",
@@ -498,9 +498,9 @@ class SecurityPolicyRule(pulumi.CustomResource):
             description="new rule two",
             priority=101,
             match={
-                "versionedExpr": "SRC_IPS_V1",
+                "versioned_expr": "SRC_IPS_V1",
                 "config": {
-                    "srcIpRanges": [
+                    "src_ip_ranges": [
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
@@ -594,9 +594,9 @@ class SecurityPolicyRule(pulumi.CustomResource):
             description="new rule",
             priority=100,
             match={
-                "versionedExpr": "SRC_IPS_V1",
+                "versioned_expr": "SRC_IPS_V1",
                 "config": {
-                    "srcIpRanges": ["10.10.0.0/16"],
+                    "src_ip_ranges": ["10.10.0.0/16"],
                 },
             },
             action="allow",
@@ -623,9 +623,9 @@ class SecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             priority=2147483647,
             match={
-                "versionedExpr": "SRC_IPS_V1",
+                "versioned_expr": "SRC_IPS_V1",
                 "config": {
-                    "srcIpRanges": ["*"],
+                    "src_ip_ranges": ["*"],
                 },
             })
         policy_rule = gcp.compute.SecurityPolicyRule("policy_rule",
@@ -633,9 +633,9 @@ class SecurityPolicyRule(pulumi.CustomResource):
             description="new rule",
             priority=100,
             match={
-                "versionedExpr": "SRC_IPS_V1",
+                "versioned_expr": "SRC_IPS_V1",
                 "config": {
-                    "srcIpRanges": ["10.10.0.0/16"],
+                    "src_ip_ranges": ["10.10.0.0/16"],
                 },
             },
             action="allow",
@@ -656,9 +656,9 @@ class SecurityPolicyRule(pulumi.CustomResource):
             description="new rule one",
             priority=100,
             match={
-                "versionedExpr": "SRC_IPS_V1",
+                "versioned_expr": "SRC_IPS_V1",
                 "config": {
-                    "srcIpRanges": ["10.10.0.0/16"],
+                    "src_ip_ranges": ["10.10.0.0/16"],
                 },
             },
             action="allow",
@@ -668,9 +668,9 @@ class SecurityPolicyRule(pulumi.CustomResource):
             description="new rule two",
             priority=101,
             match={
-                "versionedExpr": "SRC_IPS_V1",
+                "versioned_expr": "SRC_IPS_V1",
                 "config": {
-                    "srcIpRanges": [
+                    "src_ip_ranges": [
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],

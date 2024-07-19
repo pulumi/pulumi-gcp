@@ -232,8 +232,8 @@ class Repository(pulumi.CustomResource):
             name="my-repository",
             pubsub_configs=[{
                 "topic": topic.id,
-                "messageFormat": "JSON",
-                "serviceAccountEmail": test_account.email,
+                "message_format": "JSON",
+                "service_account_email": test_account.email,
             }])
         ```
 
@@ -307,8 +307,8 @@ class Repository(pulumi.CustomResource):
             name="my-repository",
             pubsub_configs=[{
                 "topic": topic.id,
-                "messageFormat": "JSON",
-                "serviceAccountEmail": test_account.email,
+                "message_format": "JSON",
+                "service_account_email": test_account.email,
             }])
         ```
 

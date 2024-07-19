@@ -671,21 +671,21 @@ class Workload(pulumi.CustomResource):
             organization="123456789",
             billing_account="billingAccounts/000000-0000000-0000000-000000",
             kms_settings={
-                "nextRotationTime": "9999-10-02T15:01:23Z",
-                "rotationPeriod": "10368000s",
+                "next_rotation_time": "9999-10-02T15:01:23Z",
+                "rotation_period": "10368000s",
             },
             provisioned_resources_parent="folders/519620126891",
             resource_settings=[
                 {
-                    "displayName": "folder-display-name",
-                    "resourceType": "CONSUMER_FOLDER",
+                    "display_name": "folder-display-name",
+                    "resource_type": "CONSUMER_FOLDER",
                 },
                 {
-                    "resourceType": "ENCRYPTION_KEYS_PROJECT",
+                    "resource_type": "ENCRYPTION_KEYS_PROJECT",
                 },
                 {
-                    "resourceId": "ring",
-                    "resourceType": "KEYRING",
+                    "resource_id": "ring",
+                    "resource_type": "KEYRING",
                 },
             ],
             violation_notifications_enabled=True,
@@ -707,19 +707,19 @@ class Workload(pulumi.CustomResource):
             billing_account="billingAccounts/000000-0000000-0000000-000000",
             enable_sovereign_controls=True,
             kms_settings={
-                "nextRotationTime": "9999-10-02T15:01:23Z",
-                "rotationPeriod": "10368000s",
+                "next_rotation_time": "9999-10-02T15:01:23Z",
+                "rotation_period": "10368000s",
             },
             resource_settings=[
                 {
-                    "resourceType": "CONSUMER_FOLDER",
+                    "resource_type": "CONSUMER_FOLDER",
                 },
                 {
-                    "resourceType": "ENCRYPTION_KEYS_PROJECT",
+                    "resource_type": "ENCRYPTION_KEYS_PROJECT",
                 },
                 {
-                    "resourceId": "ring",
-                    "resourceType": "KEYRING",
+                    "resource_id": "ring",
+                    "resource_type": "KEYRING",
                 },
             ],
             labels={
@@ -792,21 +792,21 @@ class Workload(pulumi.CustomResource):
             organization="123456789",
             billing_account="billingAccounts/000000-0000000-0000000-000000",
             kms_settings={
-                "nextRotationTime": "9999-10-02T15:01:23Z",
-                "rotationPeriod": "10368000s",
+                "next_rotation_time": "9999-10-02T15:01:23Z",
+                "rotation_period": "10368000s",
             },
             provisioned_resources_parent="folders/519620126891",
             resource_settings=[
                 {
-                    "displayName": "folder-display-name",
-                    "resourceType": "CONSUMER_FOLDER",
+                    "display_name": "folder-display-name",
+                    "resource_type": "CONSUMER_FOLDER",
                 },
                 {
-                    "resourceType": "ENCRYPTION_KEYS_PROJECT",
+                    "resource_type": "ENCRYPTION_KEYS_PROJECT",
                 },
                 {
-                    "resourceId": "ring",
-                    "resourceType": "KEYRING",
+                    "resource_id": "ring",
+                    "resource_type": "KEYRING",
                 },
             ],
             violation_notifications_enabled=True,
@@ -828,19 +828,19 @@ class Workload(pulumi.CustomResource):
             billing_account="billingAccounts/000000-0000000-0000000-000000",
             enable_sovereign_controls=True,
             kms_settings={
-                "nextRotationTime": "9999-10-02T15:01:23Z",
-                "rotationPeriod": "10368000s",
+                "next_rotation_time": "9999-10-02T15:01:23Z",
+                "rotation_period": "10368000s",
             },
             resource_settings=[
                 {
-                    "resourceType": "CONSUMER_FOLDER",
+                    "resource_type": "CONSUMER_FOLDER",
                 },
                 {
-                    "resourceType": "ENCRYPTION_KEYS_PROJECT",
+                    "resource_type": "ENCRYPTION_KEYS_PROJECT",
                 },
                 {
-                    "resourceId": "ring",
-                    "resourceType": "KEYRING",
+                    "resource_id": "ring",
+                    "resource_type": "KEYRING",
                 },
             ],
             labels={

@@ -654,17 +654,17 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             rule_name="test-rule",
             target_service_accounts=["my@service-account.com"],
             match={
-                "srcIpRanges": ["10.100.0.1/32"],
-                "srcFqdns": ["example.com"],
-                "srcRegionCodes": ["US"],
-                "srcThreatIntelligences": ["iplist-known-malicious-ips"],
-                "layer4Configs": [{
-                    "ipProtocol": "all",
+                "src_ip_ranges": ["10.100.0.1/32"],
+                "src_fqdns": ["example.com"],
+                "src_region_codes": ["US"],
+                "src_threat_intelligences": ["iplist-known-malicious-ips"],
+                "layer4_configs": [{
+                    "ip_protocol": "all",
                 }],
-                "srcSecureTags": [{
+                "src_secure_tags": [{
                     "name": basic_value.name.apply(lambda name: f"tagValues/{name}"),
                 }],
-                "srcAddressGroups": [basic_regional_networksecurity_address_group.id],
+                "src_address_groups": [basic_regional_networksecurity_address_group.id],
             })
         ```
 
@@ -781,17 +781,17 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             rule_name="test-rule",
             target_service_accounts=["my@service-account.com"],
             match={
-                "srcIpRanges": ["10.100.0.1/32"],
-                "srcFqdns": ["example.com"],
-                "srcRegionCodes": ["US"],
-                "srcThreatIntelligences": ["iplist-known-malicious-ips"],
-                "layer4Configs": [{
-                    "ipProtocol": "all",
+                "src_ip_ranges": ["10.100.0.1/32"],
+                "src_fqdns": ["example.com"],
+                "src_region_codes": ["US"],
+                "src_threat_intelligences": ["iplist-known-malicious-ips"],
+                "layer4_configs": [{
+                    "ip_protocol": "all",
                 }],
-                "srcSecureTags": [{
+                "src_secure_tags": [{
                     "name": basic_value.name.apply(lambda name: f"tagValues/{name}"),
                 }],
-                "srcAddressGroups": [basic_regional_networksecurity_address_group.id],
+                "src_address_groups": [basic_regional_networksecurity_address_group.id],
             })
         ```
 

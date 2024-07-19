@@ -188,15 +188,15 @@ class Attestor(pulumi.CustomResource):
             name="test-attestor-note",
             attestation_authority={
                 "hint": {
-                    "humanReadableName": "Attestor Note",
+                    "human_readable_name": "Attestor Note",
                 },
             })
         attestor = gcp.binaryauthorization.Attestor("attestor",
             name="test-attestor",
             attestation_authority_note={
-                "noteReference": note.name,
-                "publicKeys": [{
-                    "asciiArmoredPgpPublicKey": \"\"\"mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl
+                "note_reference": note.name,
+                "public_keys": [{
+                    "ascii_armored_pgp_public_key": \"\"\"mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl
         bB7Iu2ezkECNzoEeU7WxUe8a61pMCh9cisS9H5mB2K2uM4Jnf8tgFeXn3akJDVo0
         oR1IC+Dp9mXbRSK3MAvKkOwWlG99sx3uEdvmeBRHBOO+grchLx24EThXFOyP9Fk6
         V39j6xMjw4aggLD15B4V0v9JqBDdJiIYFzszZDL6pJwZrzcP0z8JO4rTZd+f64bD
@@ -236,18 +236,18 @@ class Attestor(pulumi.CustomResource):
             name="test-attestor-note",
             attestation_authority={
                 "hint": {
-                    "humanReadableName": "Attestor Note",
+                    "human_readable_name": "Attestor Note",
                 },
             })
         attestor = gcp.binaryauthorization.Attestor("attestor",
             name="test-attestor",
             attestation_authority_note={
-                "noteReference": note.name,
-                "publicKeys": [{
+                "note_reference": note.name,
+                "public_keys": [{
                     "id": version.id,
-                    "pkixPublicKey": {
-                        "publicKeyPem": version.public_keys[0].pem,
-                        "signatureAlgorithm": version.public_keys[0].algorithm,
+                    "pkix_public_key": {
+                        "public_key_pem": version.public_keys[0].pem,
+                        "signature_algorithm": version.public_keys[0].algorithm,
                     },
                 }],
             })
@@ -311,15 +311,15 @@ class Attestor(pulumi.CustomResource):
             name="test-attestor-note",
             attestation_authority={
                 "hint": {
-                    "humanReadableName": "Attestor Note",
+                    "human_readable_name": "Attestor Note",
                 },
             })
         attestor = gcp.binaryauthorization.Attestor("attestor",
             name="test-attestor",
             attestation_authority_note={
-                "noteReference": note.name,
-                "publicKeys": [{
-                    "asciiArmoredPgpPublicKey": \"\"\"mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl
+                "note_reference": note.name,
+                "public_keys": [{
+                    "ascii_armored_pgp_public_key": \"\"\"mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl
         bB7Iu2ezkECNzoEeU7WxUe8a61pMCh9cisS9H5mB2K2uM4Jnf8tgFeXn3akJDVo0
         oR1IC+Dp9mXbRSK3MAvKkOwWlG99sx3uEdvmeBRHBOO+grchLx24EThXFOyP9Fk6
         V39j6xMjw4aggLD15B4V0v9JqBDdJiIYFzszZDL6pJwZrzcP0z8JO4rTZd+f64bD
@@ -359,18 +359,18 @@ class Attestor(pulumi.CustomResource):
             name="test-attestor-note",
             attestation_authority={
                 "hint": {
-                    "humanReadableName": "Attestor Note",
+                    "human_readable_name": "Attestor Note",
                 },
             })
         attestor = gcp.binaryauthorization.Attestor("attestor",
             name="test-attestor",
             attestation_authority_note={
-                "noteReference": note.name,
-                "publicKeys": [{
+                "note_reference": note.name,
+                "public_keys": [{
                     "id": version.id,
-                    "pkixPublicKey": {
-                        "publicKeyPem": version.public_keys[0].pem,
-                        "signatureAlgorithm": version.public_keys[0].algorithm,
+                    "pkix_public_key": {
+                        "public_key_pem": version.public_keys[0].pem,
+                        "signature_algorithm": version.public_keys[0].algorithm,
                     },
                 }],
             })

@@ -400,51 +400,51 @@ class TransferJob(pulumi.CustomResource):
             description="Nightly backup of S3 bucket",
             project=project,
             transfer_spec={
-                "objectConditions": {
-                    "maxTimeElapsedSinceLastModification": "600s",
-                    "excludePrefixes": ["requests.gz"],
+                "object_conditions": {
+                    "max_time_elapsed_since_last_modification": "600s",
+                    "exclude_prefixes": ["requests.gz"],
                 },
-                "transferOptions": {
-                    "deleteObjectsUniqueInSink": False,
+                "transfer_options": {
+                    "delete_objects_unique_in_sink": False,
                 },
-                "awsS3DataSource": {
-                    "bucketName": aws_s3_bucket,
-                    "awsAccessKey": {
-                        "accessKeyId": aws_access_key,
-                        "secretAccessKey": aws_secret_key,
+                "aws_s3_data_source": {
+                    "bucket_name": aws_s3_bucket,
+                    "aws_access_key": {
+                        "access_key_id": aws_access_key,
+                        "secret_access_key": aws_secret_key,
                     },
                 },
-                "gcsDataSink": {
-                    "bucketName": s3_backup_bucket.name,
+                "gcs_data_sink": {
+                    "bucket_name": s3_backup_bucket.name,
                     "path": "foo/bar/",
                 },
             },
             schedule={
-                "scheduleStartDate": {
+                "schedule_start_date": {
                     "year": 2018,
                     "month": 10,
                     "day": 1,
                 },
-                "scheduleEndDate": {
+                "schedule_end_date": {
                     "year": 2019,
                     "month": 1,
                     "day": 15,
                 },
-                "startTimeOfDay": {
+                "start_time_of_day": {
                     "hours": 23,
                     "minutes": 30,
                     "seconds": 0,
                     "nanos": 0,
                 },
-                "repeatInterval": "604800s",
+                "repeat_interval": "604800s",
             },
             notification_config={
-                "pubsubTopic": topic.id,
-                "eventTypes": [
+                "pubsub_topic": topic.id,
+                "event_types": [
                     "TRANSFER_OPERATION_SUCCESS",
                     "TRANSFER_OPERATION_FAILED",
                 ],
-                "payloadFormat": "JSON",
+                "payload_format": "JSON",
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     s3_backup_bucket_bucket_iam_member,
@@ -522,51 +522,51 @@ class TransferJob(pulumi.CustomResource):
             description="Nightly backup of S3 bucket",
             project=project,
             transfer_spec={
-                "objectConditions": {
-                    "maxTimeElapsedSinceLastModification": "600s",
-                    "excludePrefixes": ["requests.gz"],
+                "object_conditions": {
+                    "max_time_elapsed_since_last_modification": "600s",
+                    "exclude_prefixes": ["requests.gz"],
                 },
-                "transferOptions": {
-                    "deleteObjectsUniqueInSink": False,
+                "transfer_options": {
+                    "delete_objects_unique_in_sink": False,
                 },
-                "awsS3DataSource": {
-                    "bucketName": aws_s3_bucket,
-                    "awsAccessKey": {
-                        "accessKeyId": aws_access_key,
-                        "secretAccessKey": aws_secret_key,
+                "aws_s3_data_source": {
+                    "bucket_name": aws_s3_bucket,
+                    "aws_access_key": {
+                        "access_key_id": aws_access_key,
+                        "secret_access_key": aws_secret_key,
                     },
                 },
-                "gcsDataSink": {
-                    "bucketName": s3_backup_bucket.name,
+                "gcs_data_sink": {
+                    "bucket_name": s3_backup_bucket.name,
                     "path": "foo/bar/",
                 },
             },
             schedule={
-                "scheduleStartDate": {
+                "schedule_start_date": {
                     "year": 2018,
                     "month": 10,
                     "day": 1,
                 },
-                "scheduleEndDate": {
+                "schedule_end_date": {
                     "year": 2019,
                     "month": 1,
                     "day": 15,
                 },
-                "startTimeOfDay": {
+                "start_time_of_day": {
                     "hours": 23,
                     "minutes": 30,
                     "seconds": 0,
                     "nanos": 0,
                 },
-                "repeatInterval": "604800s",
+                "repeat_interval": "604800s",
             },
             notification_config={
-                "pubsubTopic": topic.id,
-                "eventTypes": [
+                "pubsub_topic": topic.id,
+                "event_types": [
                     "TRANSFER_OPERATION_SUCCESS",
                     "TRANSFER_OPERATION_FAILED",
                 ],
-                "payloadFormat": "JSON",
+                "payload_format": "JSON",
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     s3_backup_bucket_bucket_iam_member,

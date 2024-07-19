@@ -509,8 +509,8 @@ class AiIndexEndpoint(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             private_service_connect_config={
-                "enablePrivateServiceConnect": True,
-                "projectAllowlists": [project.number],
+                "enable_private_service_connect": True,
+                "project_allowlists": [project.number],
             })
         ```
         ### Vertex Ai Index Endpoint With Public Endpoint
@@ -638,8 +638,8 @@ class AiIndexEndpoint(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             private_service_connect_config={
-                "enablePrivateServiceConnect": True,
-                "projectAllowlists": [project.number],
+                "enable_private_service_connect": True,
+                "project_allowlists": [project.number],
             })
         ```
         ### Vertex Ai Index Endpoint With Public Endpoint

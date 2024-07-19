@@ -320,10 +320,10 @@ class EkmConnection(pulumi.CustomResource):
             location="us-central1",
             key_management_mode="MANUAL",
             service_resolvers=[{
-                "serviceDirectoryService": "projects/project_id/locations/us-central1/namespaces/namespace_name/services/service_name",
+                "service_directory_service": "projects/project_id/locations/us-central1/namespaces/namespace_name/services/service_name",
                 "hostname": "example-ekm.goog",
-                "serverCertificates": [{
-                    "rawDer": "==HAwIBCCAr6gAwIBAgIUWR+EV4lqiV7Ql12VY==",
+                "server_certificates": [{
+                    "raw_der": "==HAwIBCCAr6gAwIBAgIUWR+EV4lqiV7Ql12VY==",
                 }],
             }])
         ```
@@ -396,10 +396,10 @@ class EkmConnection(pulumi.CustomResource):
             location="us-central1",
             key_management_mode="MANUAL",
             service_resolvers=[{
-                "serviceDirectoryService": "projects/project_id/locations/us-central1/namespaces/namespace_name/services/service_name",
+                "service_directory_service": "projects/project_id/locations/us-central1/namespaces/namespace_name/services/service_name",
                 "hostname": "example-ekm.goog",
-                "serverCertificates": [{
-                    "rawDer": "==HAwIBCCAr6gAwIBAgIUWR+EV4lqiV7Ql12VY==",
+                "server_certificates": [{
+                    "raw_der": "==HAwIBCCAr6gAwIBAgIUWR+EV4lqiV7Ql12VY==",
                 }],
             }])
         ```
