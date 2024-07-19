@@ -511,7 +511,7 @@ class CxPage(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
             speech_to_text_settings={
-                "enableSpeechAdaptation": True,
+                "enable_speech_adaptation": True,
             })
         my_page2 = gcp.diagflow.CxPage("my_page2",
             parent=agent.start_flow,
@@ -537,37 +537,37 @@ class CxPage(pulumi.CustomResource):
                         "payload": "        {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                     },
                     {
-                        "conversationSuccess": {
+                        "conversation_success": {
                             "metadata": "          {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                         },
                     },
                     {
-                        "outputAudioText": {
+                        "output_audio_text": {
                             "text": "some output text",
                         },
                     },
                     {
-                        "outputAudioText": {
+                        "output_audio_text": {
                             "ssml": "          <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                         },
                     },
                     {
-                        "liveAgentHandoff": {
+                        "live_agent_handoff": {
                             "metadata": "          {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                         },
                     },
                     {
-                        "playAudio": {
-                            "audioUri": "http://example.com/some-audio-file.mp3",
+                        "play_audio": {
+                            "audio_uri": "http://example.com/some-audio-file.mp3",
                         },
                     },
                     {
-                        "telephonyTransferCall": {
-                            "phoneNumber": "1-234-567-8901",
+                        "telephony_transfer_call": {
+                            "phone_number": "1-234-567-8901",
                         },
                     },
                 ],
-                "setParameterActions": [
+                "set_parameter_actions": [
                     {
                         "parameter": "some-param",
                         "value": "123.45",
@@ -581,11 +581,11 @@ class CxPage(pulumi.CustomResource):
                         "value": json.dumps(["foo"]),
                     },
                 ],
-                "conditionalCases": [{
+                "conditional_cases": [{
                     "cases": json.dumps([
                         {
                             "condition": "$sys.func.RAND() < 0.5",
-                            "caseContent": [
+                            "case_content": [
                                 {
                                     "message": {
                                         "text": {
@@ -623,8 +623,8 @@ class CxPage(pulumi.CustomResource):
             },
             event_handlers=[{
                 "event": "some-event",
-                "triggerFulfillment": {
-                    "returnPartialResponses": True,
+                "trigger_fulfillment": {
+                    "return_partial_responses": True,
                     "messages": [
                         {
                             "channel": "some-channel",
@@ -636,37 +636,37 @@ class CxPage(pulumi.CustomResource):
                             "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                         },
                         {
-                            "conversationSuccess": {
+                            "conversation_success": {
                                 "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             },
                         },
                         {
-                            "outputAudioText": {
+                            "output_audio_text": {
                                 "text": "some output text",
                             },
                         },
                         {
-                            "outputAudioText": {
+                            "output_audio_text": {
                                 "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                             },
                         },
                         {
-                            "liveAgentHandoff": {
+                            "live_agent_handoff": {
                                 "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             },
                         },
                         {
-                            "playAudio": {
-                                "audioUri": "http://example.com/some-audio-file.mp3",
+                            "play_audio": {
+                                "audio_uri": "http://example.com/some-audio-file.mp3",
                             },
                         },
                         {
-                            "telephonyTransferCall": {
-                                "phoneNumber": "1-234-567-8901",
+                            "telephony_transfer_call": {
+                                "phone_number": "1-234-567-8901",
                             },
                         },
                     ],
-                    "setParameterActions": [
+                    "set_parameter_actions": [
                         {
                             "parameter": "some-param",
                             "value": "123.45",
@@ -680,11 +680,11 @@ class CxPage(pulumi.CustomResource):
                             "value": json.dumps(["foo"]),
                         },
                     ],
-                    "conditionalCases": [{
+                    "conditional_cases": [{
                         "cases": json.dumps([
                             {
                                 "condition": "$sys.func.RAND() < 0.5",
-                                "caseContent": [
+                                "case_content": [
                                     {
                                         "message": {
                                             "text": {
@@ -723,11 +723,11 @@ class CxPage(pulumi.CustomResource):
             }],
             form={
                 "parameters": [{
-                    "displayName": "param1",
-                    "entityType": "projects/-/locations/-/agents/-/entityTypes/sys.date",
-                    "defaultValue": json.dumps("2000-01-01"),
-                    "fillBehavior": {
-                        "initialPromptFulfillment": {
+                    "display_name": "param1",
+                    "entity_type": "projects/-/locations/-/agents/-/entityTypes/sys.date",
+                    "default_value": json.dumps("2000-01-01"),
+                    "fill_behavior": {
+                        "initial_prompt_fulfillment": {
                             "messages": [
                                 {
                                     "channel": "some-channel",
@@ -739,37 +739,37 @@ class CxPage(pulumi.CustomResource):
                                     "payload": "              {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                                 },
                                 {
-                                    "conversationSuccess": {
+                                    "conversation_success": {
                                         "metadata": "                {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                     },
                                 },
                                 {
-                                    "outputAudioText": {
+                                    "output_audio_text": {
                                         "text": "some output text",
                                     },
                                 },
                                 {
-                                    "outputAudioText": {
+                                    "output_audio_text": {
                                         "ssml": "                <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                                     },
                                 },
                                 {
-                                    "liveAgentHandoff": {
+                                    "live_agent_handoff": {
                                         "metadata": "                {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                     },
                                 },
                                 {
-                                    "playAudio": {
-                                        "audioUri": "http://example.com/some-audio-file.mp3",
+                                    "play_audio": {
+                                        "audio_uri": "http://example.com/some-audio-file.mp3",
                                     },
                                 },
                                 {
-                                    "telephonyTransferCall": {
-                                        "phoneNumber": "1-234-567-8901",
+                                    "telephony_transfer_call": {
+                                        "phone_number": "1-234-567-8901",
                                     },
                                 },
                             ],
-                            "setParameterActions": [
+                            "set_parameter_actions": [
                                 {
                                     "parameter": "some-param",
                                     "value": "123.45",
@@ -783,11 +783,11 @@ class CxPage(pulumi.CustomResource):
                                     "value": json.dumps(["foo"]),
                                 },
                             ],
-                            "conditionalCases": [{
+                            "conditional_cases": [{
                                 "cases": json.dumps([
                                     {
                                         "condition": "$sys.func.RAND() < 0.5",
-                                        "caseContent": [
+                                        "case_content": [
                                             {
                                                 "message": {
                                                     "text": {
@@ -823,11 +823,11 @@ class CxPage(pulumi.CustomResource):
                                 ]),
                             }],
                         },
-                        "repromptEventHandlers": [
+                        "reprompt_event_handlers": [
                             {
                                 "event": "sys.no-match-1",
-                                "triggerFulfillment": {
-                                    "returnPartialResponses": True,
+                                "trigger_fulfillment": {
+                                    "return_partial_responses": True,
                                     "webhook": my_webhook.id,
                                     "tag": "some-tag",
                                     "messages": [
@@ -841,37 +841,37 @@ class CxPage(pulumi.CustomResource):
                                             "payload": "                {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                                         },
                                         {
-                                            "conversationSuccess": {
+                                            "conversation_success": {
                                                 "metadata": "                  {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                             },
                                         },
                                         {
-                                            "outputAudioText": {
+                                            "output_audio_text": {
                                                 "text": "some output text",
                                             },
                                         },
                                         {
-                                            "outputAudioText": {
+                                            "output_audio_text": {
                                                 "ssml": "                  <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                                             },
                                         },
                                         {
-                                            "liveAgentHandoff": {
+                                            "live_agent_handoff": {
                                                 "metadata": "                  {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                             },
                                         },
                                         {
-                                            "playAudio": {
-                                                "audioUri": "http://example.com/some-audio-file.mp3",
+                                            "play_audio": {
+                                                "audio_uri": "http://example.com/some-audio-file.mp3",
                                             },
                                         },
                                         {
-                                            "telephonyTransferCall": {
-                                                "phoneNumber": "1-234-567-8901",
+                                            "telephony_transfer_call": {
+                                                "phone_number": "1-234-567-8901",
                                             },
                                         },
                                     ],
-                                    "setParameterActions": [
+                                    "set_parameter_actions": [
                                         {
                                             "parameter": "some-param",
                                             "value": "123.45",
@@ -885,11 +885,11 @@ class CxPage(pulumi.CustomResource):
                                             "value": json.dumps(["foo"]),
                                         },
                                     ],
-                                    "conditionalCases": [{
+                                    "conditional_cases": [{
                                         "cases": json.dumps([
                                             {
                                                 "condition": "$sys.func.RAND() < 0.5",
-                                                "caseContent": [
+                                                "case_content": [
                                                     {
                                                         "message": {
                                                             "text": {
@@ -928,28 +928,28 @@ class CxPage(pulumi.CustomResource):
                             },
                             {
                                 "event": "sys.no-match-2",
-                                "targetFlow": agent.start_flow,
+                                "target_flow": agent.start_flow,
                             },
                             {
                                 "event": "sys.no-match-3",
-                                "targetPage": my_page2.id,
+                                "target_page": my_page2.id,
                             },
                         ],
                     },
                     "required": True,
                     "redact": True,
-                    "advancedSettings": {
-                        "dtmfSettings": {
+                    "advanced_settings": {
+                        "dtmf_settings": {
                             "enabled": True,
-                            "maxDigits": 1,
-                            "finishDigit": "#",
+                            "max_digits": 1,
+                            "finish_digit": "#",
                         },
                     },
                 }],
             },
             transition_routes=[{
                 "condition": "$page.params.status = 'FINAL'",
-                "triggerFulfillment": {
+                "trigger_fulfillment": {
                     "messages": [
                         {
                             "channel": "some-channel",
@@ -961,37 +961,37 @@ class CxPage(pulumi.CustomResource):
                             "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                         },
                         {
-                            "conversationSuccess": {
+                            "conversation_success": {
                                 "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             },
                         },
                         {
-                            "outputAudioText": {
+                            "output_audio_text": {
                                 "text": "some output text",
                             },
                         },
                         {
-                            "outputAudioText": {
+                            "output_audio_text": {
                                 "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                             },
                         },
                         {
-                            "liveAgentHandoff": {
+                            "live_agent_handoff": {
                                 "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             },
                         },
                         {
-                            "playAudio": {
-                                "audioUri": "http://example.com/some-audio-file.mp3",
+                            "play_audio": {
+                                "audio_uri": "http://example.com/some-audio-file.mp3",
                             },
                         },
                         {
-                            "telephonyTransferCall": {
-                                "phoneNumber": "1-234-567-8901",
+                            "telephony_transfer_call": {
+                                "phone_number": "1-234-567-8901",
                             },
                         },
                     ],
-                    "setParameterActions": [
+                    "set_parameter_actions": [
                         {
                             "parameter": "some-param",
                             "value": "123.45",
@@ -1005,11 +1005,11 @@ class CxPage(pulumi.CustomResource):
                             "value": json.dumps(["foo"]),
                         },
                     ],
-                    "conditionalCases": [{
+                    "conditional_cases": [{
                         "cases": json.dumps([
                             {
                                 "condition": "$sys.func.RAND() < 0.5",
-                                "caseContent": [
+                                "case_content": [
                                     {
                                         "message": {
                                             "text": {
@@ -1045,13 +1045,13 @@ class CxPage(pulumi.CustomResource):
                         ]),
                     }],
                 },
-                "targetPage": my_page2.id,
+                "target_page": my_page2.id,
             }],
             advanced_settings={
-                "dtmfSettings": {
+                "dtmf_settings": {
                     "enabled": True,
-                    "maxDigits": 1,
-                    "finishDigit": "#",
+                    "max_digits": 1,
+                    "finish_digit": "#",
                 },
             })
         ```
@@ -1156,7 +1156,7 @@ class CxPage(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
             speech_to_text_settings={
-                "enableSpeechAdaptation": True,
+                "enable_speech_adaptation": True,
             })
         my_page2 = gcp.diagflow.CxPage("my_page2",
             parent=agent.start_flow,
@@ -1182,37 +1182,37 @@ class CxPage(pulumi.CustomResource):
                         "payload": "        {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                     },
                     {
-                        "conversationSuccess": {
+                        "conversation_success": {
                             "metadata": "          {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                         },
                     },
                     {
-                        "outputAudioText": {
+                        "output_audio_text": {
                             "text": "some output text",
                         },
                     },
                     {
-                        "outputAudioText": {
+                        "output_audio_text": {
                             "ssml": "          <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                         },
                     },
                     {
-                        "liveAgentHandoff": {
+                        "live_agent_handoff": {
                             "metadata": "          {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                         },
                     },
                     {
-                        "playAudio": {
-                            "audioUri": "http://example.com/some-audio-file.mp3",
+                        "play_audio": {
+                            "audio_uri": "http://example.com/some-audio-file.mp3",
                         },
                     },
                     {
-                        "telephonyTransferCall": {
-                            "phoneNumber": "1-234-567-8901",
+                        "telephony_transfer_call": {
+                            "phone_number": "1-234-567-8901",
                         },
                     },
                 ],
-                "setParameterActions": [
+                "set_parameter_actions": [
                     {
                         "parameter": "some-param",
                         "value": "123.45",
@@ -1226,11 +1226,11 @@ class CxPage(pulumi.CustomResource):
                         "value": json.dumps(["foo"]),
                     },
                 ],
-                "conditionalCases": [{
+                "conditional_cases": [{
                     "cases": json.dumps([
                         {
                             "condition": "$sys.func.RAND() < 0.5",
-                            "caseContent": [
+                            "case_content": [
                                 {
                                     "message": {
                                         "text": {
@@ -1268,8 +1268,8 @@ class CxPage(pulumi.CustomResource):
             },
             event_handlers=[{
                 "event": "some-event",
-                "triggerFulfillment": {
-                    "returnPartialResponses": True,
+                "trigger_fulfillment": {
+                    "return_partial_responses": True,
                     "messages": [
                         {
                             "channel": "some-channel",
@@ -1281,37 +1281,37 @@ class CxPage(pulumi.CustomResource):
                             "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                         },
                         {
-                            "conversationSuccess": {
+                            "conversation_success": {
                                 "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             },
                         },
                         {
-                            "outputAudioText": {
+                            "output_audio_text": {
                                 "text": "some output text",
                             },
                         },
                         {
-                            "outputAudioText": {
+                            "output_audio_text": {
                                 "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                             },
                         },
                         {
-                            "liveAgentHandoff": {
+                            "live_agent_handoff": {
                                 "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             },
                         },
                         {
-                            "playAudio": {
-                                "audioUri": "http://example.com/some-audio-file.mp3",
+                            "play_audio": {
+                                "audio_uri": "http://example.com/some-audio-file.mp3",
                             },
                         },
                         {
-                            "telephonyTransferCall": {
-                                "phoneNumber": "1-234-567-8901",
+                            "telephony_transfer_call": {
+                                "phone_number": "1-234-567-8901",
                             },
                         },
                     ],
-                    "setParameterActions": [
+                    "set_parameter_actions": [
                         {
                             "parameter": "some-param",
                             "value": "123.45",
@@ -1325,11 +1325,11 @@ class CxPage(pulumi.CustomResource):
                             "value": json.dumps(["foo"]),
                         },
                     ],
-                    "conditionalCases": [{
+                    "conditional_cases": [{
                         "cases": json.dumps([
                             {
                                 "condition": "$sys.func.RAND() < 0.5",
-                                "caseContent": [
+                                "case_content": [
                                     {
                                         "message": {
                                             "text": {
@@ -1368,11 +1368,11 @@ class CxPage(pulumi.CustomResource):
             }],
             form={
                 "parameters": [{
-                    "displayName": "param1",
-                    "entityType": "projects/-/locations/-/agents/-/entityTypes/sys.date",
-                    "defaultValue": json.dumps("2000-01-01"),
-                    "fillBehavior": {
-                        "initialPromptFulfillment": {
+                    "display_name": "param1",
+                    "entity_type": "projects/-/locations/-/agents/-/entityTypes/sys.date",
+                    "default_value": json.dumps("2000-01-01"),
+                    "fill_behavior": {
+                        "initial_prompt_fulfillment": {
                             "messages": [
                                 {
                                     "channel": "some-channel",
@@ -1384,37 +1384,37 @@ class CxPage(pulumi.CustomResource):
                                     "payload": "              {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                                 },
                                 {
-                                    "conversationSuccess": {
+                                    "conversation_success": {
                                         "metadata": "                {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                     },
                                 },
                                 {
-                                    "outputAudioText": {
+                                    "output_audio_text": {
                                         "text": "some output text",
                                     },
                                 },
                                 {
-                                    "outputAudioText": {
+                                    "output_audio_text": {
                                         "ssml": "                <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                                     },
                                 },
                                 {
-                                    "liveAgentHandoff": {
+                                    "live_agent_handoff": {
                                         "metadata": "                {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                     },
                                 },
                                 {
-                                    "playAudio": {
-                                        "audioUri": "http://example.com/some-audio-file.mp3",
+                                    "play_audio": {
+                                        "audio_uri": "http://example.com/some-audio-file.mp3",
                                     },
                                 },
                                 {
-                                    "telephonyTransferCall": {
-                                        "phoneNumber": "1-234-567-8901",
+                                    "telephony_transfer_call": {
+                                        "phone_number": "1-234-567-8901",
                                     },
                                 },
                             ],
-                            "setParameterActions": [
+                            "set_parameter_actions": [
                                 {
                                     "parameter": "some-param",
                                     "value": "123.45",
@@ -1428,11 +1428,11 @@ class CxPage(pulumi.CustomResource):
                                     "value": json.dumps(["foo"]),
                                 },
                             ],
-                            "conditionalCases": [{
+                            "conditional_cases": [{
                                 "cases": json.dumps([
                                     {
                                         "condition": "$sys.func.RAND() < 0.5",
-                                        "caseContent": [
+                                        "case_content": [
                                             {
                                                 "message": {
                                                     "text": {
@@ -1468,11 +1468,11 @@ class CxPage(pulumi.CustomResource):
                                 ]),
                             }],
                         },
-                        "repromptEventHandlers": [
+                        "reprompt_event_handlers": [
                             {
                                 "event": "sys.no-match-1",
-                                "triggerFulfillment": {
-                                    "returnPartialResponses": True,
+                                "trigger_fulfillment": {
+                                    "return_partial_responses": True,
                                     "webhook": my_webhook.id,
                                     "tag": "some-tag",
                                     "messages": [
@@ -1486,37 +1486,37 @@ class CxPage(pulumi.CustomResource):
                                             "payload": "                {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                                         },
                                         {
-                                            "conversationSuccess": {
+                                            "conversation_success": {
                                                 "metadata": "                  {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                             },
                                         },
                                         {
-                                            "outputAudioText": {
+                                            "output_audio_text": {
                                                 "text": "some output text",
                                             },
                                         },
                                         {
-                                            "outputAudioText": {
+                                            "output_audio_text": {
                                                 "ssml": "                  <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                                             },
                                         },
                                         {
-                                            "liveAgentHandoff": {
+                                            "live_agent_handoff": {
                                                 "metadata": "                  {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                                             },
                                         },
                                         {
-                                            "playAudio": {
-                                                "audioUri": "http://example.com/some-audio-file.mp3",
+                                            "play_audio": {
+                                                "audio_uri": "http://example.com/some-audio-file.mp3",
                                             },
                                         },
                                         {
-                                            "telephonyTransferCall": {
-                                                "phoneNumber": "1-234-567-8901",
+                                            "telephony_transfer_call": {
+                                                "phone_number": "1-234-567-8901",
                                             },
                                         },
                                     ],
-                                    "setParameterActions": [
+                                    "set_parameter_actions": [
                                         {
                                             "parameter": "some-param",
                                             "value": "123.45",
@@ -1530,11 +1530,11 @@ class CxPage(pulumi.CustomResource):
                                             "value": json.dumps(["foo"]),
                                         },
                                     ],
-                                    "conditionalCases": [{
+                                    "conditional_cases": [{
                                         "cases": json.dumps([
                                             {
                                                 "condition": "$sys.func.RAND() < 0.5",
-                                                "caseContent": [
+                                                "case_content": [
                                                     {
                                                         "message": {
                                                             "text": {
@@ -1573,28 +1573,28 @@ class CxPage(pulumi.CustomResource):
                             },
                             {
                                 "event": "sys.no-match-2",
-                                "targetFlow": agent.start_flow,
+                                "target_flow": agent.start_flow,
                             },
                             {
                                 "event": "sys.no-match-3",
-                                "targetPage": my_page2.id,
+                                "target_page": my_page2.id,
                             },
                         ],
                     },
                     "required": True,
                     "redact": True,
-                    "advancedSettings": {
-                        "dtmfSettings": {
+                    "advanced_settings": {
+                        "dtmf_settings": {
                             "enabled": True,
-                            "maxDigits": 1,
-                            "finishDigit": "#",
+                            "max_digits": 1,
+                            "finish_digit": "#",
                         },
                     },
                 }],
             },
             transition_routes=[{
                 "condition": "$page.params.status = 'FINAL'",
-                "triggerFulfillment": {
+                "trigger_fulfillment": {
                     "messages": [
                         {
                             "channel": "some-channel",
@@ -1606,37 +1606,37 @@ class CxPage(pulumi.CustomResource):
                             "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
                         },
                         {
-                            "conversationSuccess": {
+                            "conversation_success": {
                                 "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             },
                         },
                         {
-                            "outputAudioText": {
+                            "output_audio_text": {
                                 "text": "some output text",
                             },
                         },
                         {
-                            "outputAudioText": {
+                            "output_audio_text": {
                                 "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
                             },
                         },
                         {
-                            "liveAgentHandoff": {
+                            "live_agent_handoff": {
                                 "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
                             },
                         },
                         {
-                            "playAudio": {
-                                "audioUri": "http://example.com/some-audio-file.mp3",
+                            "play_audio": {
+                                "audio_uri": "http://example.com/some-audio-file.mp3",
                             },
                         },
                         {
-                            "telephonyTransferCall": {
-                                "phoneNumber": "1-234-567-8901",
+                            "telephony_transfer_call": {
+                                "phone_number": "1-234-567-8901",
                             },
                         },
                     ],
-                    "setParameterActions": [
+                    "set_parameter_actions": [
                         {
                             "parameter": "some-param",
                             "value": "123.45",
@@ -1650,11 +1650,11 @@ class CxPage(pulumi.CustomResource):
                             "value": json.dumps(["foo"]),
                         },
                     ],
-                    "conditionalCases": [{
+                    "conditional_cases": [{
                         "cases": json.dumps([
                             {
                                 "condition": "$sys.func.RAND() < 0.5",
-                                "caseContent": [
+                                "case_content": [
                                     {
                                         "message": {
                                             "text": {
@@ -1690,13 +1690,13 @@ class CxPage(pulumi.CustomResource):
                         ]),
                     }],
                 },
-                "targetPage": my_page2.id,
+                "target_page": my_page2.id,
             }],
             advanced_settings={
-                "dtmfSettings": {
+                "dtmf_settings": {
                     "enabled": True,
-                    "maxDigits": 1,
-                    "finishDigit": "#",
+                    "max_digits": 1,
+                    "finish_digit": "#",
                 },
             })
         ```

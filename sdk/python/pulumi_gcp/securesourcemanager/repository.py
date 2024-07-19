@@ -376,7 +376,7 @@ class Repository(pulumi.CustomResource):
             instance=instance.name,
             description="This is a test repository",
             initial_config={
-                "defaultBranch": "main",
+                "default_branch": "main",
                 "gitignores": ["python"],
                 "license": "mit",
                 "readme": "default",
@@ -472,7 +472,7 @@ class Repository(pulumi.CustomResource):
             instance=instance.name,
             description="This is a test repository",
             initial_config={
-                "defaultBranch": "main",
+                "default_branch": "main",
                 "gitignores": ["python"],
                 "license": "mit",
                 "readme": "default",

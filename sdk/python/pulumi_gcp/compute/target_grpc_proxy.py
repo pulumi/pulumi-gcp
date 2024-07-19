@@ -388,9 +388,9 @@ class TargetGrpcProxy(pulumi.CustomResource):
             timeout_sec=1,
             check_interval_sec=1,
             grpc_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
-                "grpcServiceName": "testservice",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
+                "grpc_service_name": "testservice",
             })
         home = gcp.compute.BackendService("home",
             name="backend",
@@ -405,53 +405,53 @@ class TargetGrpcProxy(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "routeRules": [{
+                "default_service": home.id,
+                "route_rules": [{
                     "priority": 1,
-                    "headerAction": {
-                        "requestHeadersToRemoves": ["RemoveMe2"],
-                        "requestHeadersToAdds": [{
-                            "headerName": "AddSomethingElse",
-                            "headerValue": "MyOtherValue",
+                    "header_action": {
+                        "request_headers_to_removes": ["RemoveMe2"],
+                        "request_headers_to_adds": [{
+                            "header_name": "AddSomethingElse",
+                            "header_value": "MyOtherValue",
                             "replace": True,
                         }],
-                        "responseHeadersToRemoves": ["RemoveMe3"],
-                        "responseHeadersToAdds": [{
-                            "headerName": "AddMe",
-                            "headerValue": "MyValue",
+                        "response_headers_to_removes": ["RemoveMe3"],
+                        "response_headers_to_adds": [{
+                            "header_name": "AddMe",
+                            "header_value": "MyValue",
                             "replace": False,
                         }],
                     },
-                    "matchRules": [{
-                        "fullPathMatch": "a full path",
-                        "headerMatches": [{
-                            "headerName": "someheader",
-                            "exactMatch": "match this exactly",
-                            "invertMatch": True,
+                    "match_rules": [{
+                        "full_path_match": "a full path",
+                        "header_matches": [{
+                            "header_name": "someheader",
+                            "exact_match": "match this exactly",
+                            "invert_match": True,
                         }],
-                        "ignoreCase": True,
-                        "metadataFilters": [{
-                            "filterMatchCriteria": "MATCH_ANY",
-                            "filterLabels": [{
+                        "ignore_case": True,
+                        "metadata_filters": [{
+                            "filter_match_criteria": "MATCH_ANY",
+                            "filter_labels": [{
                                 "name": "PLANET",
                                 "value": "MARS",
                             }],
                         }],
-                        "queryParameterMatches": [{
+                        "query_parameter_matches": [{
                             "name": "a query parameter",
-                            "presentMatch": True,
+                            "present_match": True,
                         }],
                     }],
-                    "urlRedirect": {
-                        "hostRedirect": "A host",
-                        "httpsRedirect": False,
-                        "pathRedirect": "some/path",
-                        "redirectResponseCode": "TEMPORARY_REDIRECT",
-                        "stripQuery": True,
+                    "url_redirect": {
+                        "host_redirect": "A host",
+                        "https_redirect": False,
+                        "path_redirect": "some/path",
+                        "redirect_response_code": "TEMPORARY_REDIRECT",
+                        "strip_query": True,
                     },
                 }],
             }],
@@ -550,9 +550,9 @@ class TargetGrpcProxy(pulumi.CustomResource):
             timeout_sec=1,
             check_interval_sec=1,
             grpc_health_check={
-                "portName": "health-check-port",
-                "portSpecification": "USE_NAMED_PORT",
-                "grpcServiceName": "testservice",
+                "port_name": "health-check-port",
+                "port_specification": "USE_NAMED_PORT",
+                "grpc_service_name": "testservice",
             })
         home = gcp.compute.BackendService("home",
             name="backend",
@@ -567,53 +567,53 @@ class TargetGrpcProxy(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "routeRules": [{
+                "default_service": home.id,
+                "route_rules": [{
                     "priority": 1,
-                    "headerAction": {
-                        "requestHeadersToRemoves": ["RemoveMe2"],
-                        "requestHeadersToAdds": [{
-                            "headerName": "AddSomethingElse",
-                            "headerValue": "MyOtherValue",
+                    "header_action": {
+                        "request_headers_to_removes": ["RemoveMe2"],
+                        "request_headers_to_adds": [{
+                            "header_name": "AddSomethingElse",
+                            "header_value": "MyOtherValue",
                             "replace": True,
                         }],
-                        "responseHeadersToRemoves": ["RemoveMe3"],
-                        "responseHeadersToAdds": [{
-                            "headerName": "AddMe",
-                            "headerValue": "MyValue",
+                        "response_headers_to_removes": ["RemoveMe3"],
+                        "response_headers_to_adds": [{
+                            "header_name": "AddMe",
+                            "header_value": "MyValue",
                             "replace": False,
                         }],
                     },
-                    "matchRules": [{
-                        "fullPathMatch": "a full path",
-                        "headerMatches": [{
-                            "headerName": "someheader",
-                            "exactMatch": "match this exactly",
-                            "invertMatch": True,
+                    "match_rules": [{
+                        "full_path_match": "a full path",
+                        "header_matches": [{
+                            "header_name": "someheader",
+                            "exact_match": "match this exactly",
+                            "invert_match": True,
                         }],
-                        "ignoreCase": True,
-                        "metadataFilters": [{
-                            "filterMatchCriteria": "MATCH_ANY",
-                            "filterLabels": [{
+                        "ignore_case": True,
+                        "metadata_filters": [{
+                            "filter_match_criteria": "MATCH_ANY",
+                            "filter_labels": [{
                                 "name": "PLANET",
                                 "value": "MARS",
                             }],
                         }],
-                        "queryParameterMatches": [{
+                        "query_parameter_matches": [{
                             "name": "a query parameter",
-                            "presentMatch": True,
+                            "present_match": True,
                         }],
                     }],
-                    "urlRedirect": {
-                        "hostRedirect": "A host",
-                        "httpsRedirect": False,
-                        "pathRedirect": "some/path",
-                        "redirectResponseCode": "TEMPORARY_REDIRECT",
-                        "stripQuery": True,
+                    "url_redirect": {
+                        "host_redirect": "A host",
+                        "https_redirect": False,
+                        "path_redirect": "some/path",
+                        "redirect_response_code": "TEMPORARY_REDIRECT",
+                        "strip_query": True,
                     },
                 }],
             }],

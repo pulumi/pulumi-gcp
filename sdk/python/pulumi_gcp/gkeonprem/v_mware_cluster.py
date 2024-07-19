@@ -987,9 +987,9 @@ class VMwareCluster(pulumi.CustomResource):
             on_prem_version="1.13.1-gke.35",
             annotations={},
             network_config={
-                "serviceAddressCidrBlocks": ["10.96.0.0/12"],
-                "podAddressCidrBlocks": ["192.168.0.0/16"],
-                "dhcpIpConfig": {
+                "service_address_cidr_blocks": ["10.96.0.0/12"],
+                "pod_address_cidr_blocks": ["192.168.0.0/16"],
+                "dhcp_ip_config": {
                     "enabled": True,
                 },
             },
@@ -999,23 +999,23 @@ class VMwareCluster(pulumi.CustomResource):
                 "replicas": 1,
             },
             load_balancer={
-                "vipConfig": {
-                    "controlPlaneVip": "10.251.133.5",
-                    "ingressVip": "10.251.135.19",
+                "vip_config": {
+                    "control_plane_vip": "10.251.133.5",
+                    "ingress_vip": "10.251.135.19",
                 },
-                "metalLbConfig": {
-                    "addressPools": [
+                "metal_lb_config": {
+                    "address_pools": [
                         {
                             "pool": "ingress-ip",
-                            "manualAssign": True,
+                            "manual_assign": True,
                             "addresses": ["10.251.135.19"],
-                            "avoidBuggyIps": True,
+                            "avoid_buggy_ips": True,
                         },
                         {
                             "pool": "lb-test-ip",
-                            "manualAssign": True,
+                            "manual_assign": True,
                             "addresses": ["10.251.135.19"],
-                            "avoidBuggyIps": True,
+                            "avoid_buggy_ips": True,
                         },
                     ],
                 },
@@ -1035,13 +1035,13 @@ class VMwareCluster(pulumi.CustomResource):
             on_prem_version="1.13.1-gke.35",
             annotations={},
             network_config={
-                "serviceAddressCidrBlocks": ["10.96.0.0/12"],
-                "podAddressCidrBlocks": ["192.168.0.0/16"],
-                "dhcpIpConfig": {
+                "service_address_cidr_blocks": ["10.96.0.0/12"],
+                "pod_address_cidr_blocks": ["192.168.0.0/16"],
+                "dhcp_ip_config": {
                     "enabled": True,
                 },
-                "controlPlaneV2Config": {
-                    "controlPlaneIpBlock": {
+                "control_plane_v2_config": {
+                    "control_plane_ip_block": {
                         "ips": [{
                             "hostname": "test-hostname",
                             "ip": "10.0.0.1",
@@ -1050,48 +1050,48 @@ class VMwareCluster(pulumi.CustomResource):
                         "gateway": "test-gateway",
                     },
                 },
-                "vcenterNetwork": "test-vcenter-network",
+                "vcenter_network": "test-vcenter-network",
             },
             control_plane_node={
                 "cpus": 4,
                 "memory": 8192,
                 "replicas": 1,
-                "autoResizeConfig": {
+                "auto_resize_config": {
                     "enabled": True,
                 },
             },
             load_balancer={
-                "vipConfig": {
-                    "controlPlaneVip": "10.251.133.5",
-                    "ingressVip": "10.251.135.19",
+                "vip_config": {
+                    "control_plane_vip": "10.251.133.5",
+                    "ingress_vip": "10.251.135.19",
                 },
-                "f5Config": {
+                "f5_config": {
                     "address": "10.0.0.1",
                     "partition": "test-partition",
-                    "snatPool": "test-snap-pool",
+                    "snat_pool": "test-snap-pool",
                 },
             },
             dataplane_v2={
-                "dataplaneV2Enabled": True,
-                "windowsDataplaneV2Enabled": True,
-                "advancedNetworking": True,
+                "dataplane_v2_enabled": True,
+                "windows_dataplane_v2_enabled": True,
+                "advanced_networking": True,
             },
             vm_tracking_enabled=True,
             enable_control_plane_v2=True,
             disable_bundled_ingress=True,
             authorization={
-                "adminUsers": [{
+                "admin_users": [{
                     "username": "testuser@gmail.com",
                 }],
             },
             anti_affinity_groups={
-                "aagConfigDisabled": True,
+                "aag_config_disabled": True,
             },
             auto_repair_config={
                 "enabled": True,
             },
             storage={
-                "vsphereCsiDisabled": True,
+                "vsphere_csi_disabled": True,
             })
         ```
         ### Gkeonprem Vmware Cluster Manuallb
@@ -1108,15 +1108,15 @@ class VMwareCluster(pulumi.CustomResource):
             on_prem_version="1.13.1-gke.35",
             annotations={},
             network_config={
-                "serviceAddressCidrBlocks": ["10.96.0.0/12"],
-                "podAddressCidrBlocks": ["192.168.0.0/16"],
-                "hostConfig": {
-                    "dnsServers": ["10.254.41.1"],
-                    "ntpServers": ["216.239.35.8"],
-                    "dnsSearchDomains": ["test-domain"],
+                "service_address_cidr_blocks": ["10.96.0.0/12"],
+                "pod_address_cidr_blocks": ["192.168.0.0/16"],
+                "host_config": {
+                    "dns_servers": ["10.254.41.1"],
+                    "ntp_servers": ["216.239.35.8"],
+                    "dns_search_domains": ["test-domain"],
                 },
-                "staticIpConfig": {
-                    "ipBlocks": [{
+                "static_ip_config": {
+                    "ip_blocks": [{
                         "netmask": "255.255.252.0",
                         "gateway": "10.251.31.254",
                         "ips": [
@@ -1144,48 +1144,48 @@ class VMwareCluster(pulumi.CustomResource):
                 "cpus": 4,
                 "memory": 8192,
                 "replicas": 1,
-                "autoResizeConfig": {
+                "auto_resize_config": {
                     "enabled": True,
                 },
             },
             load_balancer={
-                "vipConfig": {
-                    "controlPlaneVip": "10.251.133.5",
-                    "ingressVip": "10.251.135.19",
+                "vip_config": {
+                    "control_plane_vip": "10.251.133.5",
+                    "ingress_vip": "10.251.135.19",
                 },
-                "manualLbConfig": {
-                    "ingressHttpNodePort": 30005,
-                    "ingressHttpsNodePort": 30006,
-                    "controlPlaneNodePort": 30007,
-                    "konnectivityServerNodePort": 30008,
+                "manual_lb_config": {
+                    "ingress_http_node_port": 30005,
+                    "ingress_https_node_port": 30006,
+                    "control_plane_node_port": 30007,
+                    "konnectivity_server_node_port": 30008,
                 },
             },
             vcenters=[{
-                "resourcePool": "test-resource-pool",
+                "resource_pool": "test-resource-pool",
                 "datastore": "test-datastore",
                 "datacenter": "test-datacenter",
                 "cluster": "test-cluster",
                 "folder": "test-folder",
-                "caCertData": "test-ca-cert-data",
-                "storagePolicyName": "test-storage-policy-name",
+                "ca_cert_data": "test-ca-cert-data",
+                "storage_policy_name": "test-storage-policy-name",
             }],
             dataplane_v2={
-                "dataplaneV2Enabled": True,
-                "windowsDataplaneV2Enabled": True,
-                "advancedNetworking": True,
+                "dataplane_v2_enabled": True,
+                "windows_dataplane_v2_enabled": True,
+                "advanced_networking": True,
             },
             vm_tracking_enabled=True,
             enable_control_plane_v2=True,
             upgrade_policy={
-                "controlPlaneOnly": True,
+                "control_plane_only": True,
             },
             authorization={
-                "adminUsers": [{
+                "admin_users": [{
                     "username": "testuser@gmail.com",
                 }],
             },
             anti_affinity_groups={
-                "aagConfigDisabled": True,
+                "aag_config_disabled": True,
             },
             auto_repair_config={
                 "enabled": True,
@@ -1273,9 +1273,9 @@ class VMwareCluster(pulumi.CustomResource):
             on_prem_version="1.13.1-gke.35",
             annotations={},
             network_config={
-                "serviceAddressCidrBlocks": ["10.96.0.0/12"],
-                "podAddressCidrBlocks": ["192.168.0.0/16"],
-                "dhcpIpConfig": {
+                "service_address_cidr_blocks": ["10.96.0.0/12"],
+                "pod_address_cidr_blocks": ["192.168.0.0/16"],
+                "dhcp_ip_config": {
                     "enabled": True,
                 },
             },
@@ -1285,23 +1285,23 @@ class VMwareCluster(pulumi.CustomResource):
                 "replicas": 1,
             },
             load_balancer={
-                "vipConfig": {
-                    "controlPlaneVip": "10.251.133.5",
-                    "ingressVip": "10.251.135.19",
+                "vip_config": {
+                    "control_plane_vip": "10.251.133.5",
+                    "ingress_vip": "10.251.135.19",
                 },
-                "metalLbConfig": {
-                    "addressPools": [
+                "metal_lb_config": {
+                    "address_pools": [
                         {
                             "pool": "ingress-ip",
-                            "manualAssign": True,
+                            "manual_assign": True,
                             "addresses": ["10.251.135.19"],
-                            "avoidBuggyIps": True,
+                            "avoid_buggy_ips": True,
                         },
                         {
                             "pool": "lb-test-ip",
-                            "manualAssign": True,
+                            "manual_assign": True,
                             "addresses": ["10.251.135.19"],
-                            "avoidBuggyIps": True,
+                            "avoid_buggy_ips": True,
                         },
                     ],
                 },
@@ -1321,13 +1321,13 @@ class VMwareCluster(pulumi.CustomResource):
             on_prem_version="1.13.1-gke.35",
             annotations={},
             network_config={
-                "serviceAddressCidrBlocks": ["10.96.0.0/12"],
-                "podAddressCidrBlocks": ["192.168.0.0/16"],
-                "dhcpIpConfig": {
+                "service_address_cidr_blocks": ["10.96.0.0/12"],
+                "pod_address_cidr_blocks": ["192.168.0.0/16"],
+                "dhcp_ip_config": {
                     "enabled": True,
                 },
-                "controlPlaneV2Config": {
-                    "controlPlaneIpBlock": {
+                "control_plane_v2_config": {
+                    "control_plane_ip_block": {
                         "ips": [{
                             "hostname": "test-hostname",
                             "ip": "10.0.0.1",
@@ -1336,48 +1336,48 @@ class VMwareCluster(pulumi.CustomResource):
                         "gateway": "test-gateway",
                     },
                 },
-                "vcenterNetwork": "test-vcenter-network",
+                "vcenter_network": "test-vcenter-network",
             },
             control_plane_node={
                 "cpus": 4,
                 "memory": 8192,
                 "replicas": 1,
-                "autoResizeConfig": {
+                "auto_resize_config": {
                     "enabled": True,
                 },
             },
             load_balancer={
-                "vipConfig": {
-                    "controlPlaneVip": "10.251.133.5",
-                    "ingressVip": "10.251.135.19",
+                "vip_config": {
+                    "control_plane_vip": "10.251.133.5",
+                    "ingress_vip": "10.251.135.19",
                 },
-                "f5Config": {
+                "f5_config": {
                     "address": "10.0.0.1",
                     "partition": "test-partition",
-                    "snatPool": "test-snap-pool",
+                    "snat_pool": "test-snap-pool",
                 },
             },
             dataplane_v2={
-                "dataplaneV2Enabled": True,
-                "windowsDataplaneV2Enabled": True,
-                "advancedNetworking": True,
+                "dataplane_v2_enabled": True,
+                "windows_dataplane_v2_enabled": True,
+                "advanced_networking": True,
             },
             vm_tracking_enabled=True,
             enable_control_plane_v2=True,
             disable_bundled_ingress=True,
             authorization={
-                "adminUsers": [{
+                "admin_users": [{
                     "username": "testuser@gmail.com",
                 }],
             },
             anti_affinity_groups={
-                "aagConfigDisabled": True,
+                "aag_config_disabled": True,
             },
             auto_repair_config={
                 "enabled": True,
             },
             storage={
-                "vsphereCsiDisabled": True,
+                "vsphere_csi_disabled": True,
             })
         ```
         ### Gkeonprem Vmware Cluster Manuallb
@@ -1394,15 +1394,15 @@ class VMwareCluster(pulumi.CustomResource):
             on_prem_version="1.13.1-gke.35",
             annotations={},
             network_config={
-                "serviceAddressCidrBlocks": ["10.96.0.0/12"],
-                "podAddressCidrBlocks": ["192.168.0.0/16"],
-                "hostConfig": {
-                    "dnsServers": ["10.254.41.1"],
-                    "ntpServers": ["216.239.35.8"],
-                    "dnsSearchDomains": ["test-domain"],
+                "service_address_cidr_blocks": ["10.96.0.0/12"],
+                "pod_address_cidr_blocks": ["192.168.0.0/16"],
+                "host_config": {
+                    "dns_servers": ["10.254.41.1"],
+                    "ntp_servers": ["216.239.35.8"],
+                    "dns_search_domains": ["test-domain"],
                 },
-                "staticIpConfig": {
-                    "ipBlocks": [{
+                "static_ip_config": {
+                    "ip_blocks": [{
                         "netmask": "255.255.252.0",
                         "gateway": "10.251.31.254",
                         "ips": [
@@ -1430,48 +1430,48 @@ class VMwareCluster(pulumi.CustomResource):
                 "cpus": 4,
                 "memory": 8192,
                 "replicas": 1,
-                "autoResizeConfig": {
+                "auto_resize_config": {
                     "enabled": True,
                 },
             },
             load_balancer={
-                "vipConfig": {
-                    "controlPlaneVip": "10.251.133.5",
-                    "ingressVip": "10.251.135.19",
+                "vip_config": {
+                    "control_plane_vip": "10.251.133.5",
+                    "ingress_vip": "10.251.135.19",
                 },
-                "manualLbConfig": {
-                    "ingressHttpNodePort": 30005,
-                    "ingressHttpsNodePort": 30006,
-                    "controlPlaneNodePort": 30007,
-                    "konnectivityServerNodePort": 30008,
+                "manual_lb_config": {
+                    "ingress_http_node_port": 30005,
+                    "ingress_https_node_port": 30006,
+                    "control_plane_node_port": 30007,
+                    "konnectivity_server_node_port": 30008,
                 },
             },
             vcenters=[{
-                "resourcePool": "test-resource-pool",
+                "resource_pool": "test-resource-pool",
                 "datastore": "test-datastore",
                 "datacenter": "test-datacenter",
                 "cluster": "test-cluster",
                 "folder": "test-folder",
-                "caCertData": "test-ca-cert-data",
-                "storagePolicyName": "test-storage-policy-name",
+                "ca_cert_data": "test-ca-cert-data",
+                "storage_policy_name": "test-storage-policy-name",
             }],
             dataplane_v2={
-                "dataplaneV2Enabled": True,
-                "windowsDataplaneV2Enabled": True,
-                "advancedNetworking": True,
+                "dataplane_v2_enabled": True,
+                "windows_dataplane_v2_enabled": True,
+                "advanced_networking": True,
             },
             vm_tracking_enabled=True,
             enable_control_plane_v2=True,
             upgrade_policy={
-                "controlPlaneOnly": True,
+                "control_plane_only": True,
             },
             authorization={
-                "adminUsers": [{
+                "admin_users": [{
                     "username": "testuser@gmail.com",
                 }],
             },
             anti_affinity_groups={
-                "aagConfigDisabled": True,
+                "aag_config_disabled": True,
             },
             auto_repair_config={
                 "enabled": True,

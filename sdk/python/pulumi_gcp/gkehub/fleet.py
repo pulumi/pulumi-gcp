@@ -257,9 +257,9 @@ class Fleet(pulumi.CustomResource):
         default = gcp.gkehub.Fleet("default",
             display_name="my production fleet",
             default_cluster_config={
-                "securityPostureConfig": {
+                "security_posture_config": {
                     "mode": "DISABLED",
-                    "vulnerabilityMode": "VULNERABILITY_DISABLED",
+                    "vulnerability_mode": "VULNERABILITY_DISABLED",
                 },
             })
         ```
@@ -317,9 +317,9 @@ class Fleet(pulumi.CustomResource):
         default = gcp.gkehub.Fleet("default",
             display_name="my production fleet",
             default_cluster_config={
-                "securityPostureConfig": {
+                "security_posture_config": {
                     "mode": "DISABLED",
-                    "vulnerabilityMode": "VULNERABILITY_DISABLED",
+                    "vulnerability_mode": "VULNERABILITY_DISABLED",
                 },
             })
         ```

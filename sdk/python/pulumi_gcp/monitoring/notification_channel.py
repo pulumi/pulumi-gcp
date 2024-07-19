@@ -502,7 +502,7 @@ class NotificationChannel(pulumi.CustomResource):
                 "channel_name": "#foobar",
             },
             sensitive_labels={
-                "authToken": "one",
+                "auth_token": "one",
             })
         ```
 
@@ -609,7 +609,7 @@ class NotificationChannel(pulumi.CustomResource):
                 "channel_name": "#foobar",
             },
             sensitive_labels={
-                "authToken": "one",
+                "auth_token": "one",
             })
         ```
 

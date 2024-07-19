@@ -802,8 +802,8 @@ class Instance(pulumi.CustomResource):
             platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
             region="us-central1",
             oauth_config={
-                "clientId": "my-client-id",
-                "clientSecret": "my-client-secret",
+                "client_id": "my-client-id",
+                "client_secret": "my-client-secret",
             })
         ```
         ### Looker Instance Full
@@ -818,11 +818,11 @@ class Instance(pulumi.CustomResource):
             region="us-central1",
             public_ip_enabled=True,
             admin_settings={
-                "allowedEmailDomains": ["google.com"],
+                "allowed_email_domains": ["google.com"],
             },
             maintenance_window={
-                "dayOfWeek": "THURSDAY",
-                "startTime": {
+                "day_of_week": "THURSDAY",
+                "start_time": {
                     "hours": 22,
                     "minutes": 0,
                     "seconds": 0,
@@ -830,12 +830,12 @@ class Instance(pulumi.CustomResource):
                 },
             },
             deny_maintenance_period={
-                "startDate": {
+                "start_date": {
                     "year": 2050,
                     "month": 1,
                     "day": 1,
                 },
-                "endDate": {
+                "end_date": {
                     "year": 2050,
                     "month": 2,
                     "day": 1,
@@ -848,8 +848,8 @@ class Instance(pulumi.CustomResource):
                 },
             },
             oauth_config={
-                "clientId": "my-client-id",
-                "clientSecret": "my-client-secret",
+                "client_id": "my-client-id",
+                "client_secret": "my-client-secret",
             })
         ```
         ### Looker Instance Enterprise Full
@@ -878,14 +878,14 @@ class Instance(pulumi.CustomResource):
             reserved_range=looker_range.name,
             consumer_network=looker_network.id,
             admin_settings={
-                "allowedEmailDomains": ["google.com"],
+                "allowed_email_domains": ["google.com"],
             },
             encryption_config={
-                "kmsKeyName": "looker-kms-key",
+                "kms_key_name": "looker-kms-key",
             },
             maintenance_window={
-                "dayOfWeek": "THURSDAY",
-                "startTime": {
+                "day_of_week": "THURSDAY",
+                "start_time": {
                     "hours": 22,
                     "minutes": 0,
                     "seconds": 0,
@@ -893,12 +893,12 @@ class Instance(pulumi.CustomResource):
                 },
             },
             deny_maintenance_period={
-                "startDate": {
+                "start_date": {
                     "year": 2050,
                     "month": 1,
                     "day": 1,
                 },
-                "endDate": {
+                "end_date": {
                     "year": 2050,
                     "month": 2,
                     "day": 1,
@@ -911,8 +911,8 @@ class Instance(pulumi.CustomResource):
                 },
             },
             oauth_config={
-                "clientId": "my-client-id",
-                "clientSecret": "my-client-secret",
+                "client_id": "my-client-id",
+                "client_secret": "my-client-secret",
             },
             opts = pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
         project = gcp.organizations.get_project()
@@ -932,8 +932,8 @@ class Instance(pulumi.CustomResource):
             platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
             region="us-central1",
             oauth_config={
-                "clientId": "my-client-id",
-                "clientSecret": "my-client-secret",
+                "client_id": "my-client-id",
+                "client_secret": "my-client-secret",
             },
             custom_domain={
                 "domain": "my-custom-domain.com",
@@ -1049,8 +1049,8 @@ class Instance(pulumi.CustomResource):
             platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
             region="us-central1",
             oauth_config={
-                "clientId": "my-client-id",
-                "clientSecret": "my-client-secret",
+                "client_id": "my-client-id",
+                "client_secret": "my-client-secret",
             })
         ```
         ### Looker Instance Full
@@ -1065,11 +1065,11 @@ class Instance(pulumi.CustomResource):
             region="us-central1",
             public_ip_enabled=True,
             admin_settings={
-                "allowedEmailDomains": ["google.com"],
+                "allowed_email_domains": ["google.com"],
             },
             maintenance_window={
-                "dayOfWeek": "THURSDAY",
-                "startTime": {
+                "day_of_week": "THURSDAY",
+                "start_time": {
                     "hours": 22,
                     "minutes": 0,
                     "seconds": 0,
@@ -1077,12 +1077,12 @@ class Instance(pulumi.CustomResource):
                 },
             },
             deny_maintenance_period={
-                "startDate": {
+                "start_date": {
                     "year": 2050,
                     "month": 1,
                     "day": 1,
                 },
-                "endDate": {
+                "end_date": {
                     "year": 2050,
                     "month": 2,
                     "day": 1,
@@ -1095,8 +1095,8 @@ class Instance(pulumi.CustomResource):
                 },
             },
             oauth_config={
-                "clientId": "my-client-id",
-                "clientSecret": "my-client-secret",
+                "client_id": "my-client-id",
+                "client_secret": "my-client-secret",
             })
         ```
         ### Looker Instance Enterprise Full
@@ -1125,14 +1125,14 @@ class Instance(pulumi.CustomResource):
             reserved_range=looker_range.name,
             consumer_network=looker_network.id,
             admin_settings={
-                "allowedEmailDomains": ["google.com"],
+                "allowed_email_domains": ["google.com"],
             },
             encryption_config={
-                "kmsKeyName": "looker-kms-key",
+                "kms_key_name": "looker-kms-key",
             },
             maintenance_window={
-                "dayOfWeek": "THURSDAY",
-                "startTime": {
+                "day_of_week": "THURSDAY",
+                "start_time": {
                     "hours": 22,
                     "minutes": 0,
                     "seconds": 0,
@@ -1140,12 +1140,12 @@ class Instance(pulumi.CustomResource):
                 },
             },
             deny_maintenance_period={
-                "startDate": {
+                "start_date": {
                     "year": 2050,
                     "month": 1,
                     "day": 1,
                 },
-                "endDate": {
+                "end_date": {
                     "year": 2050,
                     "month": 2,
                     "day": 1,
@@ -1158,8 +1158,8 @@ class Instance(pulumi.CustomResource):
                 },
             },
             oauth_config={
-                "clientId": "my-client-id",
-                "clientSecret": "my-client-secret",
+                "client_id": "my-client-id",
+                "client_secret": "my-client-secret",
             },
             opts = pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
         project = gcp.organizations.get_project()
@@ -1179,8 +1179,8 @@ class Instance(pulumi.CustomResource):
             platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
             region="us-central1",
             oauth_config={
-                "clientId": "my-client-id",
-                "clientSecret": "my-client-secret",
+                "client_id": "my-client-id",
+                "client_secret": "my-client-secret",
             },
             custom_domain={
                 "domain": "my-custom-domain.com",

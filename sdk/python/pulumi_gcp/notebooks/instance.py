@@ -1408,7 +1408,7 @@ class Instance(pulumi.CustomResource):
             machine_type="e2-medium",
             vm_image={
                 "project": "deeplearning-platform-release",
-                "imageFamily": "tf-latest-cpu",
+                "image_family": "tf-latest-cpu",
             })
         ```
         ### Notebook Instance Basic Stopped
@@ -1423,7 +1423,7 @@ class Instance(pulumi.CustomResource):
             machine_type="e2-medium",
             vm_image={
                 "project": "deeplearning-platform-release",
-                "imageFamily": "tf-latest-cpu",
+                "image_family": "tf-latest-cpu",
             },
             desired_state="STOPPED")
         ```
@@ -1458,11 +1458,11 @@ class Instance(pulumi.CustomResource):
             install_gpu_driver=True,
             accelerator_config={
                 "type": "NVIDIA_TESLA_T4",
-                "coreCount": 1,
+                "core_count": 1,
             },
             vm_image={
                 "project": "deeplearning-platform-release",
-                "imageFamily": "tf-latest-gpu",
+                "image_family": "tf-latest-gpu",
             })
         ```
         ### Notebook Instance Full
@@ -1480,7 +1480,7 @@ class Instance(pulumi.CustomResource):
             machine_type="e2-medium",
             vm_image={
                 "project": "deeplearning-platform-release",
-                "imageFamily": "tf-latest-cpu",
+                "image_family": "tf-latest-cpu",
             },
             instance_owners=["my@service-account.com"],
             service_account="my@service-account.com",
@@ -1652,7 +1652,7 @@ class Instance(pulumi.CustomResource):
             machine_type="e2-medium",
             vm_image={
                 "project": "deeplearning-platform-release",
-                "imageFamily": "tf-latest-cpu",
+                "image_family": "tf-latest-cpu",
             })
         ```
         ### Notebook Instance Basic Stopped
@@ -1667,7 +1667,7 @@ class Instance(pulumi.CustomResource):
             machine_type="e2-medium",
             vm_image={
                 "project": "deeplearning-platform-release",
-                "imageFamily": "tf-latest-cpu",
+                "image_family": "tf-latest-cpu",
             },
             desired_state="STOPPED")
         ```
@@ -1702,11 +1702,11 @@ class Instance(pulumi.CustomResource):
             install_gpu_driver=True,
             accelerator_config={
                 "type": "NVIDIA_TESLA_T4",
-                "coreCount": 1,
+                "core_count": 1,
             },
             vm_image={
                 "project": "deeplearning-platform-release",
-                "imageFamily": "tf-latest-gpu",
+                "image_family": "tf-latest-gpu",
             })
         ```
         ### Notebook Instance Full
@@ -1724,7 +1724,7 @@ class Instance(pulumi.CustomResource):
             machine_type="e2-medium",
             vm_image={
                 "project": "deeplearning-platform-release",
-                "imageFamily": "tf-latest-cpu",
+                "image_family": "tf-latest-cpu",
             },
             instance_owners=["my@service-account.com"],
             service_account="my@service-account.com",
