@@ -453,33 +453,33 @@ class BareMetalNodePool(pulumi.CustomResource):
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             bare_metal_version="1.12.3",
             network_config={
-                "islandModeCidr": {
-                    "serviceAddressCidrBlocks": ["172.26.0.0/16"],
-                    "podAddressCidrBlocks": ["10.240.0.0/13"],
+                "island_mode_cidr": {
+                    "service_address_cidr_blocks": ["172.26.0.0/16"],
+                    "pod_address_cidr_blocks": ["10.240.0.0/13"],
                 },
             },
             control_plane={
-                "controlPlaneNodePoolConfig": {
-                    "nodePoolConfig": {
+                "control_plane_node_pool_config": {
+                    "node_pool_config": {
                         "labels": {},
-                        "operatingSystem": "LINUX",
-                        "nodeConfigs": [{
+                        "operating_system": "LINUX",
+                        "node_configs": [{
                             "labels": {},
-                            "nodeIp": "10.200.0.9",
+                            "node_ip": "10.200.0.9",
                         }],
                     },
                 },
             },
             load_balancer={
-                "portConfig": {
-                    "controlPlaneLoadBalancerPort": 443,
+                "port_config": {
+                    "control_plane_load_balancer_port": 443,
                 },
-                "vipConfig": {
-                    "controlPlaneVip": "10.200.0.13",
-                    "ingressVip": "10.200.0.14",
+                "vip_config": {
+                    "control_plane_vip": "10.200.0.13",
+                    "ingress_vip": "10.200.0.14",
                 },
-                "metalLbConfig": {
-                    "addressPools": [{
+                "metal_lb_config": {
+                    "address_pools": [{
                         "pool": "pool1",
                         "addresses": [
                             "10.200.0.14/32",
@@ -496,21 +496,21 @@ class BareMetalNodePool(pulumi.CustomResource):
                 },
             },
             storage={
-                "lvpShareConfig": {
-                    "lvpConfig": {
+                "lvp_share_config": {
+                    "lvp_config": {
                         "path": "/mnt/localpv-share",
-                        "storageClass": "local-shared",
+                        "storage_class": "local-shared",
                     },
-                    "sharedPathPvCount": 5,
+                    "shared_path_pv_count": 5,
                 },
-                "lvpNodeMountsConfig": {
+                "lvp_node_mounts_config": {
                     "path": "/mnt/localpv-disk",
-                    "storageClass": "local-disks",
+                    "storage_class": "local-disks",
                 },
             },
             security_config={
                 "authorization": {
-                    "adminUsers": [{
+                    "admin_users": [{
                         "username": "admin@hashicorptest.com",
                     }],
                 },
@@ -520,9 +520,9 @@ class BareMetalNodePool(pulumi.CustomResource):
             bare_metal_cluster=default_basic.name,
             location="us-west1",
             node_pool_config={
-                "operatingSystem": "LINUX",
-                "nodeConfigs": [{
-                    "nodeIp": "10.200.0.11",
+                "operating_system": "LINUX",
+                "node_configs": [{
+                    "node_ip": "10.200.0.11",
                 }],
             })
         ```
@@ -538,33 +538,33 @@ class BareMetalNodePool(pulumi.CustomResource):
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             bare_metal_version="1.12.3",
             network_config={
-                "islandModeCidr": {
-                    "serviceAddressCidrBlocks": ["172.26.0.0/16"],
-                    "podAddressCidrBlocks": ["10.240.0.0/13"],
+                "island_mode_cidr": {
+                    "service_address_cidr_blocks": ["172.26.0.0/16"],
+                    "pod_address_cidr_blocks": ["10.240.0.0/13"],
                 },
             },
             control_plane={
-                "controlPlaneNodePoolConfig": {
-                    "nodePoolConfig": {
+                "control_plane_node_pool_config": {
+                    "node_pool_config": {
                         "labels": {},
-                        "operatingSystem": "LINUX",
-                        "nodeConfigs": [{
+                        "operating_system": "LINUX",
+                        "node_configs": [{
                             "labels": {},
-                            "nodeIp": "10.200.0.9",
+                            "node_ip": "10.200.0.9",
                         }],
                     },
                 },
             },
             load_balancer={
-                "portConfig": {
-                    "controlPlaneLoadBalancerPort": 443,
+                "port_config": {
+                    "control_plane_load_balancer_port": 443,
                 },
-                "vipConfig": {
-                    "controlPlaneVip": "10.200.0.13",
-                    "ingressVip": "10.200.0.14",
+                "vip_config": {
+                    "control_plane_vip": "10.200.0.13",
+                    "ingress_vip": "10.200.0.14",
                 },
-                "metalLbConfig": {
-                    "addressPools": [{
+                "metal_lb_config": {
+                    "address_pools": [{
                         "pool": "pool1",
                         "addresses": [
                             "10.200.0.14/32",
@@ -581,21 +581,21 @@ class BareMetalNodePool(pulumi.CustomResource):
                 },
             },
             storage={
-                "lvpShareConfig": {
-                    "lvpConfig": {
+                "lvp_share_config": {
+                    "lvp_config": {
                         "path": "/mnt/localpv-share",
-                        "storageClass": "local-shared",
+                        "storage_class": "local-shared",
                     },
-                    "sharedPathPvCount": 5,
+                    "shared_path_pv_count": 5,
                 },
-                "lvpNodeMountsConfig": {
+                "lvp_node_mounts_config": {
                     "path": "/mnt/localpv-disk",
-                    "storageClass": "local-disks",
+                    "storage_class": "local-disks",
                 },
             },
             security_config={
                 "authorization": {
-                    "adminUsers": [{
+                    "admin_users": [{
                         "username": "admin@hashicorptest.com",
                     }],
                 },
@@ -607,10 +607,10 @@ class BareMetalNodePool(pulumi.CustomResource):
             location="us-west1",
             annotations={},
             node_pool_config={
-                "operatingSystem": "LINUX",
+                "operating_system": "LINUX",
                 "labels": {},
-                "nodeConfigs": [{
-                    "nodeIp": "10.200.0.11",
+                "node_configs": [{
+                    "node_ip": "10.200.0.11",
                     "labels": {},
                 }],
                 "taints": [{
@@ -683,33 +683,33 @@ class BareMetalNodePool(pulumi.CustomResource):
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             bare_metal_version="1.12.3",
             network_config={
-                "islandModeCidr": {
-                    "serviceAddressCidrBlocks": ["172.26.0.0/16"],
-                    "podAddressCidrBlocks": ["10.240.0.0/13"],
+                "island_mode_cidr": {
+                    "service_address_cidr_blocks": ["172.26.0.0/16"],
+                    "pod_address_cidr_blocks": ["10.240.0.0/13"],
                 },
             },
             control_plane={
-                "controlPlaneNodePoolConfig": {
-                    "nodePoolConfig": {
+                "control_plane_node_pool_config": {
+                    "node_pool_config": {
                         "labels": {},
-                        "operatingSystem": "LINUX",
-                        "nodeConfigs": [{
+                        "operating_system": "LINUX",
+                        "node_configs": [{
                             "labels": {},
-                            "nodeIp": "10.200.0.9",
+                            "node_ip": "10.200.0.9",
                         }],
                     },
                 },
             },
             load_balancer={
-                "portConfig": {
-                    "controlPlaneLoadBalancerPort": 443,
+                "port_config": {
+                    "control_plane_load_balancer_port": 443,
                 },
-                "vipConfig": {
-                    "controlPlaneVip": "10.200.0.13",
-                    "ingressVip": "10.200.0.14",
+                "vip_config": {
+                    "control_plane_vip": "10.200.0.13",
+                    "ingress_vip": "10.200.0.14",
                 },
-                "metalLbConfig": {
-                    "addressPools": [{
+                "metal_lb_config": {
+                    "address_pools": [{
                         "pool": "pool1",
                         "addresses": [
                             "10.200.0.14/32",
@@ -726,21 +726,21 @@ class BareMetalNodePool(pulumi.CustomResource):
                 },
             },
             storage={
-                "lvpShareConfig": {
-                    "lvpConfig": {
+                "lvp_share_config": {
+                    "lvp_config": {
                         "path": "/mnt/localpv-share",
-                        "storageClass": "local-shared",
+                        "storage_class": "local-shared",
                     },
-                    "sharedPathPvCount": 5,
+                    "shared_path_pv_count": 5,
                 },
-                "lvpNodeMountsConfig": {
+                "lvp_node_mounts_config": {
                     "path": "/mnt/localpv-disk",
-                    "storageClass": "local-disks",
+                    "storage_class": "local-disks",
                 },
             },
             security_config={
                 "authorization": {
-                    "adminUsers": [{
+                    "admin_users": [{
                         "username": "admin@hashicorptest.com",
                     }],
                 },
@@ -750,9 +750,9 @@ class BareMetalNodePool(pulumi.CustomResource):
             bare_metal_cluster=default_basic.name,
             location="us-west1",
             node_pool_config={
-                "operatingSystem": "LINUX",
-                "nodeConfigs": [{
-                    "nodeIp": "10.200.0.11",
+                "operating_system": "LINUX",
+                "node_configs": [{
+                    "node_ip": "10.200.0.11",
                 }],
             })
         ```
@@ -768,33 +768,33 @@ class BareMetalNodePool(pulumi.CustomResource):
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             bare_metal_version="1.12.3",
             network_config={
-                "islandModeCidr": {
-                    "serviceAddressCidrBlocks": ["172.26.0.0/16"],
-                    "podAddressCidrBlocks": ["10.240.0.0/13"],
+                "island_mode_cidr": {
+                    "service_address_cidr_blocks": ["172.26.0.0/16"],
+                    "pod_address_cidr_blocks": ["10.240.0.0/13"],
                 },
             },
             control_plane={
-                "controlPlaneNodePoolConfig": {
-                    "nodePoolConfig": {
+                "control_plane_node_pool_config": {
+                    "node_pool_config": {
                         "labels": {},
-                        "operatingSystem": "LINUX",
-                        "nodeConfigs": [{
+                        "operating_system": "LINUX",
+                        "node_configs": [{
                             "labels": {},
-                            "nodeIp": "10.200.0.9",
+                            "node_ip": "10.200.0.9",
                         }],
                     },
                 },
             },
             load_balancer={
-                "portConfig": {
-                    "controlPlaneLoadBalancerPort": 443,
+                "port_config": {
+                    "control_plane_load_balancer_port": 443,
                 },
-                "vipConfig": {
-                    "controlPlaneVip": "10.200.0.13",
-                    "ingressVip": "10.200.0.14",
+                "vip_config": {
+                    "control_plane_vip": "10.200.0.13",
+                    "ingress_vip": "10.200.0.14",
                 },
-                "metalLbConfig": {
-                    "addressPools": [{
+                "metal_lb_config": {
+                    "address_pools": [{
                         "pool": "pool1",
                         "addresses": [
                             "10.200.0.14/32",
@@ -811,21 +811,21 @@ class BareMetalNodePool(pulumi.CustomResource):
                 },
             },
             storage={
-                "lvpShareConfig": {
-                    "lvpConfig": {
+                "lvp_share_config": {
+                    "lvp_config": {
                         "path": "/mnt/localpv-share",
-                        "storageClass": "local-shared",
+                        "storage_class": "local-shared",
                     },
-                    "sharedPathPvCount": 5,
+                    "shared_path_pv_count": 5,
                 },
-                "lvpNodeMountsConfig": {
+                "lvp_node_mounts_config": {
                     "path": "/mnt/localpv-disk",
-                    "storageClass": "local-disks",
+                    "storage_class": "local-disks",
                 },
             },
             security_config={
                 "authorization": {
-                    "adminUsers": [{
+                    "admin_users": [{
                         "username": "admin@hashicorptest.com",
                     }],
                 },
@@ -837,10 +837,10 @@ class BareMetalNodePool(pulumi.CustomResource):
             location="us-west1",
             annotations={},
             node_pool_config={
-                "operatingSystem": "LINUX",
+                "operating_system": "LINUX",
                 "labels": {},
-                "nodeConfigs": [{
-                    "nodeIp": "10.200.0.11",
+                "node_configs": [{
+                    "node_ip": "10.200.0.11",
                     "labels": {},
                 }],
                 "taints": [{

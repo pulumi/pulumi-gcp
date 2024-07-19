@@ -892,8 +892,8 @@ class Subnetwork(pulumi.CustomResource):
             region="us-central1",
             network=custom_test.id,
             secondary_ip_ranges=[{
-                "rangeName": "tf-test-secondary-range-update1",
-                "ipCidrRange": "192.168.10.0/24",
+                "range_name": "tf-test-secondary-range-update1",
+                "ip_cidr_range": "192.168.10.0/24",
             }])
         ```
         ### Subnetwork Logging Config
@@ -911,8 +911,8 @@ class Subnetwork(pulumi.CustomResource):
             region="us-central1",
             network=custom_test.id,
             log_config={
-                "aggregationInterval": "INTERVAL_10_MIN",
-                "flowSampling": 0.5,
+                "aggregation_interval": "INTERVAL_10_MIN",
+                "flow_sampling": 0.5,
                 "metadata": "INCLUDE_ALL_METADATA",
             })
         ```
@@ -1148,8 +1148,8 @@ class Subnetwork(pulumi.CustomResource):
             region="us-central1",
             network=custom_test.id,
             secondary_ip_ranges=[{
-                "rangeName": "tf-test-secondary-range-update1",
-                "ipCidrRange": "192.168.10.0/24",
+                "range_name": "tf-test-secondary-range-update1",
+                "ip_cidr_range": "192.168.10.0/24",
             }])
         ```
         ### Subnetwork Logging Config
@@ -1167,8 +1167,8 @@ class Subnetwork(pulumi.CustomResource):
             region="us-central1",
             network=custom_test.id,
             log_config={
-                "aggregationInterval": "INTERVAL_10_MIN",
-                "flowSampling": 0.5,
+                "aggregation_interval": "INTERVAL_10_MIN",
+                "flow_sampling": 0.5,
                 "metadata": "INCLUDE_ALL_METADATA",
             })
         ```

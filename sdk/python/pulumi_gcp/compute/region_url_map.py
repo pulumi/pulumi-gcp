@@ -571,7 +571,7 @@ class RegionUrlMap(pulumi.CustomResource):
             timeout_sec=1,
             http_health_check={
                 "port": 80,
-                "requestPath": "/",
+                "request_path": "/",
             })
         login = gcp.compute.RegionBackendService("login",
             region="us-central1",
@@ -594,12 +594,12 @@ class RegionUrlMap(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "pathRules": [
+                "default_service": home.id,
+                "path_rules": [
                     {
                         "paths": ["/home"],
                         "service": home.id,
@@ -629,7 +629,7 @@ class RegionUrlMap(pulumi.CustomResource):
             timeout_sec=1,
             http_health_check={
                 "port": 80,
-                "requestPath": "/",
+                "request_path": "/",
             })
         login = gcp.compute.RegionBackendService("login",
             region="us-central1",
@@ -650,98 +650,98 @@ class RegionUrlMap(pulumi.CustomResource):
             name="regionurlmap",
             description="a description",
             default_route_action={
-                "retryPolicy": {
-                    "retryConditions": [
+                "retry_policy": {
+                    "retry_conditions": [
                         "5xx",
                         "gateway-error",
                     ],
-                    "numRetries": 3,
-                    "perTryTimeout": {
+                    "num_retries": 3,
+                    "per_try_timeout": {
                         "seconds": "0",
                         "nanos": 500,
                     },
                 },
-                "requestMirrorPolicy": {
-                    "backendService": home.id,
+                "request_mirror_policy": {
+                    "backend_service": home.id,
                 },
-                "weightedBackendServices": [
+                "weighted_backend_services": [
                     {
-                        "backendService": login.id,
+                        "backend_service": login.id,
                         "weight": 200,
-                        "headerAction": {
-                            "requestHeadersToAdds": [{
-                                "headerName": "foo-request-1",
-                                "headerValue": "bar",
+                        "header_action": {
+                            "request_headers_to_adds": [{
+                                "header_name": "foo-request-1",
+                                "header_value": "bar",
                                 "replace": True,
                             }],
-                            "requestHeadersToRemoves": ["fizz"],
-                            "responseHeadersToAdds": [{
-                                "headerName": "foo-response-1",
-                                "headerValue": "bar",
+                            "request_headers_to_removes": ["fizz"],
+                            "response_headers_to_adds": [{
+                                "header_name": "foo-response-1",
+                                "header_value": "bar",
                                 "replace": True,
                             }],
-                            "responseHeadersToRemoves": ["buzz"],
+                            "response_headers_to_removes": ["buzz"],
                         },
                     },
                     {
-                        "backendService": home.id,
+                        "backend_service": home.id,
                         "weight": 100,
-                        "headerAction": {
-                            "requestHeadersToAdds": [
+                        "header_action": {
+                            "request_headers_to_adds": [
                                 {
-                                    "headerName": "foo-request-1",
-                                    "headerValue": "bar",
+                                    "header_name": "foo-request-1",
+                                    "header_value": "bar",
                                     "replace": True,
                                 },
                                 {
-                                    "headerName": "foo-request-2",
-                                    "headerValue": "bar",
-                                    "replace": True,
-                                },
-                            ],
-                            "requestHeadersToRemoves": ["fizz"],
-                            "responseHeadersToAdds": [
-                                {
-                                    "headerName": "foo-response-2",
-                                    "headerValue": "bar",
-                                    "replace": True,
-                                },
-                                {
-                                    "headerName": "foo-response-1",
-                                    "headerValue": "bar",
+                                    "header_name": "foo-request-2",
+                                    "header_value": "bar",
                                     "replace": True,
                                 },
                             ],
-                            "responseHeadersToRemoves": ["buzz"],
+                            "request_headers_to_removes": ["fizz"],
+                            "response_headers_to_adds": [
+                                {
+                                    "header_name": "foo-response-2",
+                                    "header_value": "bar",
+                                    "replace": True,
+                                },
+                                {
+                                    "header_name": "foo-response-1",
+                                    "header_value": "bar",
+                                    "replace": True,
+                                },
+                            ],
+                            "response_headers_to_removes": ["buzz"],
                         },
                     },
                 ],
-                "urlRewrite": {
-                    "hostRewrite": "dev.example.com",
-                    "pathPrefixRewrite": "/v1/api/",
+                "url_rewrite": {
+                    "host_rewrite": "dev.example.com",
+                    "path_prefix_rewrite": "/v1/api/",
                 },
-                "corsPolicy": {
+                "cors_policy": {
                     "disabled": False,
-                    "allowCredentials": True,
-                    "allowHeaders": ["foobar"],
-                    "allowMethods": [
+                    "allow_credentials": True,
+                    "allow_headers": ["foobar"],
+                    "allow_methods": [
                         "GET",
                         "POST",
                     ],
-                    "allowOrigins": ["example.com"],
-                    "exposeHeaders": ["foobar"],
-                    "maxAge": 60,
+                    "allow_origins": ["example.com"],
+                    "expose_headers": ["foobar"],
+                    "max_age": 60,
                 },
-                "faultInjectionPolicy": {
+                "fault_injection_policy": {
                     "delay": {
-                        "fixedDelay": {
+                        "fixed_delay": {
                             "seconds": "0",
                             "nanos": 500,
                         },
                         "percentage": 0.5,
                     },
                     "abort": {
-                        "httpStatus": 500,
+                        "http_status": 500,
                         "percentage": 0.5,
                     },
                 },
@@ -752,12 +752,12 @@ class RegionUrlMap(pulumi.CustomResource):
             },
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "pathRules": [
+                "default_service": home.id,
+                "path_rules": [
                     {
                         "paths": ["/home"],
                         "service": home.id,
@@ -797,45 +797,45 @@ class RegionUrlMap(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "pathRules": [{
+                "default_service": home.id,
+                "path_rules": [{
                     "paths": ["/home"],
-                    "routeAction": {
-                        "corsPolicy": {
-                            "allowCredentials": True,
-                            "allowHeaders": ["Allowed content"],
-                            "allowMethods": ["GET"],
-                            "allowOrigins": ["Allowed origin"],
-                            "exposeHeaders": ["Exposed header"],
-                            "maxAge": 30,
+                    "route_action": {
+                        "cors_policy": {
+                            "allow_credentials": True,
+                            "allow_headers": ["Allowed content"],
+                            "allow_methods": ["GET"],
+                            "allow_origins": ["Allowed origin"],
+                            "expose_headers": ["Exposed header"],
+                            "max_age": 30,
                             "disabled": False,
                         },
-                        "faultInjectionPolicy": {
+                        "fault_injection_policy": {
                             "abort": {
-                                "httpStatus": 234,
+                                "http_status": 234,
                                 "percentage": 5.6,
                             },
                             "delay": {
-                                "fixedDelay": {
+                                "fixed_delay": {
                                     "seconds": "0",
                                     "nanos": 50000,
                                 },
                                 "percentage": 7.8,
                             },
                         },
-                        "requestMirrorPolicy": {
-                            "backendService": home.id,
+                        "request_mirror_policy": {
+                            "backend_service": home.id,
                         },
-                        "retryPolicy": {
-                            "numRetries": 4,
-                            "perTryTimeout": {
+                        "retry_policy": {
+                            "num_retries": 4,
+                            "per_try_timeout": {
                                 "seconds": "30",
                             },
-                            "retryConditions": [
+                            "retry_conditions": [
                                 "5xx",
                                 "deadline-exceeded",
                             ],
@@ -844,24 +844,24 @@ class RegionUrlMap(pulumi.CustomResource):
                             "seconds": "20",
                             "nanos": 750000000,
                         },
-                        "urlRewrite": {
-                            "hostRewrite": "dev.example.com",
-                            "pathPrefixRewrite": "/v1/api/",
+                        "url_rewrite": {
+                            "host_rewrite": "dev.example.com",
+                            "path_prefix_rewrite": "/v1/api/",
                         },
-                        "weightedBackendServices": [{
-                            "backendService": home.id,
+                        "weighted_backend_services": [{
+                            "backend_service": home.id,
                             "weight": 400,
-                            "headerAction": {
-                                "requestHeadersToRemoves": ["RemoveMe"],
-                                "requestHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
+                            "header_action": {
+                                "request_headers_to_removes": ["RemoveMe"],
+                                "request_headers_to_adds": [{
+                                    "header_name": "AddMe",
+                                    "header_value": "MyValue",
                                     "replace": True,
                                 }],
-                                "responseHeadersToRemoves": ["RemoveMe"],
-                                "responseHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
+                                "response_headers_to_removes": ["RemoveMe"],
+                                "response_headers_to_adds": [{
+                                    "header_name": "AddMe",
+                                    "header_value": "MyValue",
                                     "replace": False,
                                 }],
                             },
@@ -898,20 +898,20 @@ class RegionUrlMap(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "pathRules": [{
+                "default_service": home.id,
+                "path_rules": [{
                     "paths": ["/home"],
-                    "routeAction": {
-                        "retryPolicy": {
-                            "numRetries": 4,
-                            "perTryTimeout": {
+                    "route_action": {
+                        "retry_policy": {
+                            "num_retries": 4,
+                            "per_try_timeout": {
                                 "seconds": "30",
                             },
-                            "retryConditions": [
+                            "retry_conditions": [
                                 "5xx",
                                 "deadline-exceeded",
                             ],
@@ -920,17 +920,17 @@ class RegionUrlMap(pulumi.CustomResource):
                             "seconds": "20",
                             "nanos": 750000000,
                         },
-                        "urlRewrite": {
-                            "hostRewrite": "dev.example.com",
-                            "pathPrefixRewrite": "/v1/api/",
+                        "url_rewrite": {
+                            "host_rewrite": "dev.example.com",
+                            "path_prefix_rewrite": "/v1/api/",
                         },
-                        "weightedBackendServices": [{
-                            "backendService": home.id,
+                        "weighted_backend_services": [{
+                            "backend_service": home.id,
                             "weight": 400,
-                            "headerAction": {
-                                "responseHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
+                            "header_action": {
+                                "response_headers_to_adds": [{
+                                    "header_name": "AddMe",
+                                    "header_value": "MyValue",
                                     "replace": False,
                                 }],
                             },
@@ -967,53 +967,53 @@ class RegionUrlMap(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "routeRules": [{
+                "default_service": home.id,
+                "route_rules": [{
                     "priority": 1,
-                    "headerAction": {
-                        "requestHeadersToRemoves": ["RemoveMe2"],
-                        "requestHeadersToAdds": [{
-                            "headerName": "AddSomethingElse",
-                            "headerValue": "MyOtherValue",
+                    "header_action": {
+                        "request_headers_to_removes": ["RemoveMe2"],
+                        "request_headers_to_adds": [{
+                            "header_name": "AddSomethingElse",
+                            "header_value": "MyOtherValue",
                             "replace": True,
                         }],
-                        "responseHeadersToRemoves": ["RemoveMe3"],
-                        "responseHeadersToAdds": [{
-                            "headerName": "AddMe",
-                            "headerValue": "MyValue",
+                        "response_headers_to_removes": ["RemoveMe3"],
+                        "response_headers_to_adds": [{
+                            "header_name": "AddMe",
+                            "header_value": "MyValue",
                             "replace": False,
                         }],
                     },
-                    "matchRules": [{
-                        "fullPathMatch": "a full path",
-                        "headerMatches": [{
-                            "headerName": "someheader",
-                            "exactMatch": "match this exactly",
-                            "invertMatch": True,
+                    "match_rules": [{
+                        "full_path_match": "a full path",
+                        "header_matches": [{
+                            "header_name": "someheader",
+                            "exact_match": "match this exactly",
+                            "invert_match": True,
                         }],
-                        "ignoreCase": True,
-                        "metadataFilters": [{
-                            "filterMatchCriteria": "MATCH_ANY",
-                            "filterLabels": [{
+                        "ignore_case": True,
+                        "metadata_filters": [{
+                            "filter_match_criteria": "MATCH_ANY",
+                            "filter_labels": [{
                                 "name": "PLANET",
                                 "value": "MARS",
                             }],
                         }],
-                        "queryParameterMatches": [{
+                        "query_parameter_matches": [{
                             "name": "a query parameter",
-                            "presentMatch": True,
+                            "present_match": True,
                         }],
                     }],
-                    "urlRedirect": {
-                        "hostRedirect": "A host",
-                        "httpsRedirect": False,
-                        "pathRedirect": "some/path",
-                        "redirectResponseCode": "TEMPORARY_REDIRECT",
-                        "stripQuery": True,
+                    "url_redirect": {
+                        "host_redirect": "A host",
+                        "https_redirect": False,
+                        "path_redirect": "some/path",
+                        "redirect_response_code": "TEMPORARY_REDIRECT",
+                        "strip_query": True,
                     },
                 }],
             }],
@@ -1046,27 +1046,27 @@ class RegionUrlMap(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "routeRules": [{
+                "default_service": home.id,
+                "route_rules": [{
                     "priority": 1,
                     "service": home.id,
-                    "headerAction": {
-                        "requestHeadersToRemoves": ["RemoveMe2"],
+                    "header_action": {
+                        "request_headers_to_removes": ["RemoveMe2"],
                     },
-                    "matchRules": [{
-                        "fullPathMatch": "a full path",
-                        "headerMatches": [{
-                            "headerName": "someheader",
-                            "exactMatch": "match this exactly",
-                            "invertMatch": True,
+                    "match_rules": [{
+                        "full_path_match": "a full path",
+                        "header_matches": [{
+                            "header_name": "someheader",
+                            "exact_match": "match this exactly",
+                            "invert_match": True,
                         }],
-                        "queryParameterMatches": [{
+                        "query_parameter_matches": [{
                             "name": "a query parameter",
-                            "presentMatch": True,
+                            "present_match": True,
                         }],
                     }],
                 }],
@@ -1090,7 +1090,7 @@ class RegionUrlMap(pulumi.CustomResource):
             timeout_sec=1,
             http_health_check={
                 "port": 80,
-                "requestPath": "/",
+                "request_path": "/",
             })
         home_backend = gcp.compute.RegionBackendService("home-backend",
             region="us-central1",
@@ -1123,27 +1123,27 @@ class RegionUrlMap(pulumi.CustomResource):
             default_service=home_backend.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "mysite",
+                "path_matcher": "mysite",
             }],
             path_matchers=[{
                 "name": "mysite",
-                "defaultService": home_backend.id,
-                "routeRules": [
+                "default_service": home_backend.id,
+                "route_rules": [
                     {
-                        "matchRules": [{
-                            "pathTemplateMatch": "/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}",
+                        "match_rules": [{
+                            "path_template_match": "/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}",
                         }],
                         "service": cart_backend.id,
                         "priority": 1,
-                        "routeAction": {
-                            "urlRewrite": {
-                                "pathTemplateRewrite": "/{username}-{cartid}/",
+                        "route_action": {
+                            "url_rewrite": {
+                                "path_template_rewrite": "/{username}-{cartid}/",
                             },
                         },
                     },
                     {
-                        "matchRules": [{
-                            "pathTemplateMatch": "/xyzwebservices/v2/xyz/users/*/accountinfo/*",
+                        "match_rules": [{
+                            "path_template_match": "/xyzwebservices/v2/xyz/users/*/accountinfo/*",
                         }],
                         "service": user_backend.id,
                         "priority": 2,
@@ -1249,7 +1249,7 @@ class RegionUrlMap(pulumi.CustomResource):
             timeout_sec=1,
             http_health_check={
                 "port": 80,
-                "requestPath": "/",
+                "request_path": "/",
             })
         login = gcp.compute.RegionBackendService("login",
             region="us-central1",
@@ -1272,12 +1272,12 @@ class RegionUrlMap(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "pathRules": [
+                "default_service": home.id,
+                "path_rules": [
                     {
                         "paths": ["/home"],
                         "service": home.id,
@@ -1307,7 +1307,7 @@ class RegionUrlMap(pulumi.CustomResource):
             timeout_sec=1,
             http_health_check={
                 "port": 80,
-                "requestPath": "/",
+                "request_path": "/",
             })
         login = gcp.compute.RegionBackendService("login",
             region="us-central1",
@@ -1328,98 +1328,98 @@ class RegionUrlMap(pulumi.CustomResource):
             name="regionurlmap",
             description="a description",
             default_route_action={
-                "retryPolicy": {
-                    "retryConditions": [
+                "retry_policy": {
+                    "retry_conditions": [
                         "5xx",
                         "gateway-error",
                     ],
-                    "numRetries": 3,
-                    "perTryTimeout": {
+                    "num_retries": 3,
+                    "per_try_timeout": {
                         "seconds": "0",
                         "nanos": 500,
                     },
                 },
-                "requestMirrorPolicy": {
-                    "backendService": home.id,
+                "request_mirror_policy": {
+                    "backend_service": home.id,
                 },
-                "weightedBackendServices": [
+                "weighted_backend_services": [
                     {
-                        "backendService": login.id,
+                        "backend_service": login.id,
                         "weight": 200,
-                        "headerAction": {
-                            "requestHeadersToAdds": [{
-                                "headerName": "foo-request-1",
-                                "headerValue": "bar",
+                        "header_action": {
+                            "request_headers_to_adds": [{
+                                "header_name": "foo-request-1",
+                                "header_value": "bar",
                                 "replace": True,
                             }],
-                            "requestHeadersToRemoves": ["fizz"],
-                            "responseHeadersToAdds": [{
-                                "headerName": "foo-response-1",
-                                "headerValue": "bar",
+                            "request_headers_to_removes": ["fizz"],
+                            "response_headers_to_adds": [{
+                                "header_name": "foo-response-1",
+                                "header_value": "bar",
                                 "replace": True,
                             }],
-                            "responseHeadersToRemoves": ["buzz"],
+                            "response_headers_to_removes": ["buzz"],
                         },
                     },
                     {
-                        "backendService": home.id,
+                        "backend_service": home.id,
                         "weight": 100,
-                        "headerAction": {
-                            "requestHeadersToAdds": [
+                        "header_action": {
+                            "request_headers_to_adds": [
                                 {
-                                    "headerName": "foo-request-1",
-                                    "headerValue": "bar",
+                                    "header_name": "foo-request-1",
+                                    "header_value": "bar",
                                     "replace": True,
                                 },
                                 {
-                                    "headerName": "foo-request-2",
-                                    "headerValue": "bar",
-                                    "replace": True,
-                                },
-                            ],
-                            "requestHeadersToRemoves": ["fizz"],
-                            "responseHeadersToAdds": [
-                                {
-                                    "headerName": "foo-response-2",
-                                    "headerValue": "bar",
-                                    "replace": True,
-                                },
-                                {
-                                    "headerName": "foo-response-1",
-                                    "headerValue": "bar",
+                                    "header_name": "foo-request-2",
+                                    "header_value": "bar",
                                     "replace": True,
                                 },
                             ],
-                            "responseHeadersToRemoves": ["buzz"],
+                            "request_headers_to_removes": ["fizz"],
+                            "response_headers_to_adds": [
+                                {
+                                    "header_name": "foo-response-2",
+                                    "header_value": "bar",
+                                    "replace": True,
+                                },
+                                {
+                                    "header_name": "foo-response-1",
+                                    "header_value": "bar",
+                                    "replace": True,
+                                },
+                            ],
+                            "response_headers_to_removes": ["buzz"],
                         },
                     },
                 ],
-                "urlRewrite": {
-                    "hostRewrite": "dev.example.com",
-                    "pathPrefixRewrite": "/v1/api/",
+                "url_rewrite": {
+                    "host_rewrite": "dev.example.com",
+                    "path_prefix_rewrite": "/v1/api/",
                 },
-                "corsPolicy": {
+                "cors_policy": {
                     "disabled": False,
-                    "allowCredentials": True,
-                    "allowHeaders": ["foobar"],
-                    "allowMethods": [
+                    "allow_credentials": True,
+                    "allow_headers": ["foobar"],
+                    "allow_methods": [
                         "GET",
                         "POST",
                     ],
-                    "allowOrigins": ["example.com"],
-                    "exposeHeaders": ["foobar"],
-                    "maxAge": 60,
+                    "allow_origins": ["example.com"],
+                    "expose_headers": ["foobar"],
+                    "max_age": 60,
                 },
-                "faultInjectionPolicy": {
+                "fault_injection_policy": {
                     "delay": {
-                        "fixedDelay": {
+                        "fixed_delay": {
                             "seconds": "0",
                             "nanos": 500,
                         },
                         "percentage": 0.5,
                     },
                     "abort": {
-                        "httpStatus": 500,
+                        "http_status": 500,
                         "percentage": 0.5,
                     },
                 },
@@ -1430,12 +1430,12 @@ class RegionUrlMap(pulumi.CustomResource):
             },
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "pathRules": [
+                "default_service": home.id,
+                "path_rules": [
                     {
                         "paths": ["/home"],
                         "service": home.id,
@@ -1475,45 +1475,45 @@ class RegionUrlMap(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "pathRules": [{
+                "default_service": home.id,
+                "path_rules": [{
                     "paths": ["/home"],
-                    "routeAction": {
-                        "corsPolicy": {
-                            "allowCredentials": True,
-                            "allowHeaders": ["Allowed content"],
-                            "allowMethods": ["GET"],
-                            "allowOrigins": ["Allowed origin"],
-                            "exposeHeaders": ["Exposed header"],
-                            "maxAge": 30,
+                    "route_action": {
+                        "cors_policy": {
+                            "allow_credentials": True,
+                            "allow_headers": ["Allowed content"],
+                            "allow_methods": ["GET"],
+                            "allow_origins": ["Allowed origin"],
+                            "expose_headers": ["Exposed header"],
+                            "max_age": 30,
                             "disabled": False,
                         },
-                        "faultInjectionPolicy": {
+                        "fault_injection_policy": {
                             "abort": {
-                                "httpStatus": 234,
+                                "http_status": 234,
                                 "percentage": 5.6,
                             },
                             "delay": {
-                                "fixedDelay": {
+                                "fixed_delay": {
                                     "seconds": "0",
                                     "nanos": 50000,
                                 },
                                 "percentage": 7.8,
                             },
                         },
-                        "requestMirrorPolicy": {
-                            "backendService": home.id,
+                        "request_mirror_policy": {
+                            "backend_service": home.id,
                         },
-                        "retryPolicy": {
-                            "numRetries": 4,
-                            "perTryTimeout": {
+                        "retry_policy": {
+                            "num_retries": 4,
+                            "per_try_timeout": {
                                 "seconds": "30",
                             },
-                            "retryConditions": [
+                            "retry_conditions": [
                                 "5xx",
                                 "deadline-exceeded",
                             ],
@@ -1522,24 +1522,24 @@ class RegionUrlMap(pulumi.CustomResource):
                             "seconds": "20",
                             "nanos": 750000000,
                         },
-                        "urlRewrite": {
-                            "hostRewrite": "dev.example.com",
-                            "pathPrefixRewrite": "/v1/api/",
+                        "url_rewrite": {
+                            "host_rewrite": "dev.example.com",
+                            "path_prefix_rewrite": "/v1/api/",
                         },
-                        "weightedBackendServices": [{
-                            "backendService": home.id,
+                        "weighted_backend_services": [{
+                            "backend_service": home.id,
                             "weight": 400,
-                            "headerAction": {
-                                "requestHeadersToRemoves": ["RemoveMe"],
-                                "requestHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
+                            "header_action": {
+                                "request_headers_to_removes": ["RemoveMe"],
+                                "request_headers_to_adds": [{
+                                    "header_name": "AddMe",
+                                    "header_value": "MyValue",
                                     "replace": True,
                                 }],
-                                "responseHeadersToRemoves": ["RemoveMe"],
-                                "responseHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
+                                "response_headers_to_removes": ["RemoveMe"],
+                                "response_headers_to_adds": [{
+                                    "header_name": "AddMe",
+                                    "header_value": "MyValue",
                                     "replace": False,
                                 }],
                             },
@@ -1576,20 +1576,20 @@ class RegionUrlMap(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "pathRules": [{
+                "default_service": home.id,
+                "path_rules": [{
                     "paths": ["/home"],
-                    "routeAction": {
-                        "retryPolicy": {
-                            "numRetries": 4,
-                            "perTryTimeout": {
+                    "route_action": {
+                        "retry_policy": {
+                            "num_retries": 4,
+                            "per_try_timeout": {
                                 "seconds": "30",
                             },
-                            "retryConditions": [
+                            "retry_conditions": [
                                 "5xx",
                                 "deadline-exceeded",
                             ],
@@ -1598,17 +1598,17 @@ class RegionUrlMap(pulumi.CustomResource):
                             "seconds": "20",
                             "nanos": 750000000,
                         },
-                        "urlRewrite": {
-                            "hostRewrite": "dev.example.com",
-                            "pathPrefixRewrite": "/v1/api/",
+                        "url_rewrite": {
+                            "host_rewrite": "dev.example.com",
+                            "path_prefix_rewrite": "/v1/api/",
                         },
-                        "weightedBackendServices": [{
-                            "backendService": home.id,
+                        "weighted_backend_services": [{
+                            "backend_service": home.id,
                             "weight": 400,
-                            "headerAction": {
-                                "responseHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
+                            "header_action": {
+                                "response_headers_to_adds": [{
+                                    "header_name": "AddMe",
+                                    "header_value": "MyValue",
                                     "replace": False,
                                 }],
                             },
@@ -1645,53 +1645,53 @@ class RegionUrlMap(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "routeRules": [{
+                "default_service": home.id,
+                "route_rules": [{
                     "priority": 1,
-                    "headerAction": {
-                        "requestHeadersToRemoves": ["RemoveMe2"],
-                        "requestHeadersToAdds": [{
-                            "headerName": "AddSomethingElse",
-                            "headerValue": "MyOtherValue",
+                    "header_action": {
+                        "request_headers_to_removes": ["RemoveMe2"],
+                        "request_headers_to_adds": [{
+                            "header_name": "AddSomethingElse",
+                            "header_value": "MyOtherValue",
                             "replace": True,
                         }],
-                        "responseHeadersToRemoves": ["RemoveMe3"],
-                        "responseHeadersToAdds": [{
-                            "headerName": "AddMe",
-                            "headerValue": "MyValue",
+                        "response_headers_to_removes": ["RemoveMe3"],
+                        "response_headers_to_adds": [{
+                            "header_name": "AddMe",
+                            "header_value": "MyValue",
                             "replace": False,
                         }],
                     },
-                    "matchRules": [{
-                        "fullPathMatch": "a full path",
-                        "headerMatches": [{
-                            "headerName": "someheader",
-                            "exactMatch": "match this exactly",
-                            "invertMatch": True,
+                    "match_rules": [{
+                        "full_path_match": "a full path",
+                        "header_matches": [{
+                            "header_name": "someheader",
+                            "exact_match": "match this exactly",
+                            "invert_match": True,
                         }],
-                        "ignoreCase": True,
-                        "metadataFilters": [{
-                            "filterMatchCriteria": "MATCH_ANY",
-                            "filterLabels": [{
+                        "ignore_case": True,
+                        "metadata_filters": [{
+                            "filter_match_criteria": "MATCH_ANY",
+                            "filter_labels": [{
                                 "name": "PLANET",
                                 "value": "MARS",
                             }],
                         }],
-                        "queryParameterMatches": [{
+                        "query_parameter_matches": [{
                             "name": "a query parameter",
-                            "presentMatch": True,
+                            "present_match": True,
                         }],
                     }],
-                    "urlRedirect": {
-                        "hostRedirect": "A host",
-                        "httpsRedirect": False,
-                        "pathRedirect": "some/path",
-                        "redirectResponseCode": "TEMPORARY_REDIRECT",
-                        "stripQuery": True,
+                    "url_redirect": {
+                        "host_redirect": "A host",
+                        "https_redirect": False,
+                        "path_redirect": "some/path",
+                        "redirect_response_code": "TEMPORARY_REDIRECT",
+                        "strip_query": True,
                     },
                 }],
             }],
@@ -1724,27 +1724,27 @@ class RegionUrlMap(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "routeRules": [{
+                "default_service": home.id,
+                "route_rules": [{
                     "priority": 1,
                     "service": home.id,
-                    "headerAction": {
-                        "requestHeadersToRemoves": ["RemoveMe2"],
+                    "header_action": {
+                        "request_headers_to_removes": ["RemoveMe2"],
                     },
-                    "matchRules": [{
-                        "fullPathMatch": "a full path",
-                        "headerMatches": [{
-                            "headerName": "someheader",
-                            "exactMatch": "match this exactly",
-                            "invertMatch": True,
+                    "match_rules": [{
+                        "full_path_match": "a full path",
+                        "header_matches": [{
+                            "header_name": "someheader",
+                            "exact_match": "match this exactly",
+                            "invert_match": True,
                         }],
-                        "queryParameterMatches": [{
+                        "query_parameter_matches": [{
                             "name": "a query parameter",
-                            "presentMatch": True,
+                            "present_match": True,
                         }],
                     }],
                 }],
@@ -1768,7 +1768,7 @@ class RegionUrlMap(pulumi.CustomResource):
             timeout_sec=1,
             http_health_check={
                 "port": 80,
-                "requestPath": "/",
+                "request_path": "/",
             })
         home_backend = gcp.compute.RegionBackendService("home-backend",
             region="us-central1",
@@ -1801,27 +1801,27 @@ class RegionUrlMap(pulumi.CustomResource):
             default_service=home_backend.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "mysite",
+                "path_matcher": "mysite",
             }],
             path_matchers=[{
                 "name": "mysite",
-                "defaultService": home_backend.id,
-                "routeRules": [
+                "default_service": home_backend.id,
+                "route_rules": [
                     {
-                        "matchRules": [{
-                            "pathTemplateMatch": "/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}",
+                        "match_rules": [{
+                            "path_template_match": "/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}",
                         }],
                         "service": cart_backend.id,
                         "priority": 1,
-                        "routeAction": {
-                            "urlRewrite": {
-                                "pathTemplateRewrite": "/{username}-{cartid}/",
+                        "route_action": {
+                            "url_rewrite": {
+                                "path_template_rewrite": "/{username}-{cartid}/",
                             },
                         },
                     },
                     {
-                        "matchRules": [{
-                            "pathTemplateMatch": "/xyzwebservices/v2/xyz/users/*/accountinfo/*",
+                        "match_rules": [{
+                            "path_template_match": "/xyzwebservices/v2/xyz/users/*/accountinfo/*",
                         }],
                         "service": user_backend.id,
                         "priority": 2,

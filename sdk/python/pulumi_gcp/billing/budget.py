@@ -333,13 +333,13 @@ class Budget(pulumi.CustomResource):
             billing_account=account.id,
             display_name="Example Billing Budget",
             amount={
-                "specifiedAmount": {
-                    "currencyCode": "USD",
+                "specified_amount": {
+                    "currency_code": "USD",
                     "units": "100000",
                 },
             },
             threshold_rules=[{
-                "thresholdPercent": 0.5,
+                "threshold_percent": 0.5,
             }])
         ```
         ### Billing Budget Lastperiod
@@ -357,10 +357,10 @@ class Budget(pulumi.CustomResource):
                 "projects": [f"projects/{project.number}"],
             },
             amount={
-                "lastPeriodAmount": True,
+                "last_period_amount": True,
             },
             threshold_rules=[{
-                "thresholdPercent": 10,
+                "threshold_percent": 10,
             }])
         ```
         ### Billing Budget Filter
@@ -376,27 +376,27 @@ class Budget(pulumi.CustomResource):
             display_name="Example Billing Budget",
             budget_filter={
                 "projects": [f"projects/{project.number}"],
-                "creditTypesTreatment": "INCLUDE_SPECIFIED_CREDITS",
+                "credit_types_treatment": "INCLUDE_SPECIFIED_CREDITS",
                 "services": ["services/24E6-581D-38E5"],
-                "creditTypes": [
+                "credit_types": [
                     "PROMOTION",
                     "FREE_TIER",
                 ],
-                "resourceAncestors": ["organizations/123456789"],
+                "resource_ancestors": ["organizations/123456789"],
             },
             amount={
-                "specifiedAmount": {
-                    "currencyCode": "USD",
+                "specified_amount": {
+                    "currency_code": "USD",
                     "units": "100000",
                 },
             },
             threshold_rules=[
                 {
-                    "thresholdPercent": 0.5,
+                    "threshold_percent": 0.5,
                 },
                 {
-                    "thresholdPercent": 0.9,
-                    "spendBasis": "FORECASTED_SPEND",
+                    "threshold_percent": 0.9,
+                    "spend_basis": "FORECASTED_SPEND",
                 },
             ])
         ```
@@ -421,23 +421,23 @@ class Budget(pulumi.CustomResource):
                 "projects": [f"projects/{project.number}"],
             },
             amount={
-                "specifiedAmount": {
-                    "currencyCode": "USD",
+                "specified_amount": {
+                    "currency_code": "USD",
                     "units": "100000",
                 },
             },
             threshold_rules=[
                 {
-                    "thresholdPercent": 1,
+                    "threshold_percent": 1,
                 },
                 {
-                    "thresholdPercent": 1,
-                    "spendBasis": "FORECASTED_SPEND",
+                    "threshold_percent": 1,
+                    "spend_basis": "FORECASTED_SPEND",
                 },
             ],
             all_updates_rule={
-                "monitoringNotificationChannels": [notification_channel.id],
-                "disableDefaultIamRecipients": True,
+                "monitoring_notification_channels": [notification_channel.id],
+                "disable_default_iam_recipients": True,
             })
         ```
         ### Billing Budget Notify Project Recipient
@@ -455,14 +455,14 @@ class Budget(pulumi.CustomResource):
                 "projects": [f"projects/{project.number}"],
             },
             amount={
-                "specifiedAmount": {
-                    "currencyCode": "USD",
+                "specified_amount": {
+                    "currency_code": "USD",
                     "units": "100000",
                 },
             },
             all_updates_rule={
-                "monitoringNotificationChannels": [],
-                "enableProjectLevelRecipients": True,
+                "monitoring_notification_channels": [],
+                "enable_project_level_recipients": True,
             })
         ```
         ### Billing Budget Customperiod
@@ -478,15 +478,15 @@ class Budget(pulumi.CustomResource):
             display_name="Example Billing Budget",
             budget_filter={
                 "projects": [f"projects/{project.number}"],
-                "creditTypesTreatment": "EXCLUDE_ALL_CREDITS",
+                "credit_types_treatment": "EXCLUDE_ALL_CREDITS",
                 "services": ["services/24E6-581D-38E5"],
-                "customPeriod": {
-                    "startDate": {
+                "custom_period": {
+                    "start_date": {
                         "year": 2022,
                         "month": 1,
                         "day": 1,
                     },
-                    "endDate": {
+                    "end_date": {
                         "year": 2023,
                         "month": 12,
                         "day": 31,
@@ -494,17 +494,17 @@ class Budget(pulumi.CustomResource):
                 },
             },
             amount={
-                "specifiedAmount": {
-                    "currencyCode": "USD",
+                "specified_amount": {
+                    "currency_code": "USD",
                     "units": "100000",
                 },
             },
             threshold_rules=[
                 {
-                    "thresholdPercent": 0.5,
+                    "threshold_percent": 0.5,
                 },
                 {
-                    "thresholdPercent": 0.9,
+                    "threshold_percent": 0.9,
                 },
             ])
         ```
@@ -581,13 +581,13 @@ class Budget(pulumi.CustomResource):
             billing_account=account.id,
             display_name="Example Billing Budget",
             amount={
-                "specifiedAmount": {
-                    "currencyCode": "USD",
+                "specified_amount": {
+                    "currency_code": "USD",
                     "units": "100000",
                 },
             },
             threshold_rules=[{
-                "thresholdPercent": 0.5,
+                "threshold_percent": 0.5,
             }])
         ```
         ### Billing Budget Lastperiod
@@ -605,10 +605,10 @@ class Budget(pulumi.CustomResource):
                 "projects": [f"projects/{project.number}"],
             },
             amount={
-                "lastPeriodAmount": True,
+                "last_period_amount": True,
             },
             threshold_rules=[{
-                "thresholdPercent": 10,
+                "threshold_percent": 10,
             }])
         ```
         ### Billing Budget Filter
@@ -624,27 +624,27 @@ class Budget(pulumi.CustomResource):
             display_name="Example Billing Budget",
             budget_filter={
                 "projects": [f"projects/{project.number}"],
-                "creditTypesTreatment": "INCLUDE_SPECIFIED_CREDITS",
+                "credit_types_treatment": "INCLUDE_SPECIFIED_CREDITS",
                 "services": ["services/24E6-581D-38E5"],
-                "creditTypes": [
+                "credit_types": [
                     "PROMOTION",
                     "FREE_TIER",
                 ],
-                "resourceAncestors": ["organizations/123456789"],
+                "resource_ancestors": ["organizations/123456789"],
             },
             amount={
-                "specifiedAmount": {
-                    "currencyCode": "USD",
+                "specified_amount": {
+                    "currency_code": "USD",
                     "units": "100000",
                 },
             },
             threshold_rules=[
                 {
-                    "thresholdPercent": 0.5,
+                    "threshold_percent": 0.5,
                 },
                 {
-                    "thresholdPercent": 0.9,
-                    "spendBasis": "FORECASTED_SPEND",
+                    "threshold_percent": 0.9,
+                    "spend_basis": "FORECASTED_SPEND",
                 },
             ])
         ```
@@ -669,23 +669,23 @@ class Budget(pulumi.CustomResource):
                 "projects": [f"projects/{project.number}"],
             },
             amount={
-                "specifiedAmount": {
-                    "currencyCode": "USD",
+                "specified_amount": {
+                    "currency_code": "USD",
                     "units": "100000",
                 },
             },
             threshold_rules=[
                 {
-                    "thresholdPercent": 1,
+                    "threshold_percent": 1,
                 },
                 {
-                    "thresholdPercent": 1,
-                    "spendBasis": "FORECASTED_SPEND",
+                    "threshold_percent": 1,
+                    "spend_basis": "FORECASTED_SPEND",
                 },
             ],
             all_updates_rule={
-                "monitoringNotificationChannels": [notification_channel.id],
-                "disableDefaultIamRecipients": True,
+                "monitoring_notification_channels": [notification_channel.id],
+                "disable_default_iam_recipients": True,
             })
         ```
         ### Billing Budget Notify Project Recipient
@@ -703,14 +703,14 @@ class Budget(pulumi.CustomResource):
                 "projects": [f"projects/{project.number}"],
             },
             amount={
-                "specifiedAmount": {
-                    "currencyCode": "USD",
+                "specified_amount": {
+                    "currency_code": "USD",
                     "units": "100000",
                 },
             },
             all_updates_rule={
-                "monitoringNotificationChannels": [],
-                "enableProjectLevelRecipients": True,
+                "monitoring_notification_channels": [],
+                "enable_project_level_recipients": True,
             })
         ```
         ### Billing Budget Customperiod
@@ -726,15 +726,15 @@ class Budget(pulumi.CustomResource):
             display_name="Example Billing Budget",
             budget_filter={
                 "projects": [f"projects/{project.number}"],
-                "creditTypesTreatment": "EXCLUDE_ALL_CREDITS",
+                "credit_types_treatment": "EXCLUDE_ALL_CREDITS",
                 "services": ["services/24E6-581D-38E5"],
-                "customPeriod": {
-                    "startDate": {
+                "custom_period": {
+                    "start_date": {
                         "year": 2022,
                         "month": 1,
                         "day": 1,
                     },
-                    "endDate": {
+                    "end_date": {
                         "year": 2023,
                         "month": 12,
                         "day": 31,
@@ -742,17 +742,17 @@ class Budget(pulumi.CustomResource):
                 },
             },
             amount={
-                "specifiedAmount": {
-                    "currencyCode": "USD",
+                "specified_amount": {
+                    "currency_code": "USD",
                     "units": "100000",
                 },
             },
             threshold_rules=[
                 {
-                    "thresholdPercent": 0.5,
+                    "threshold_percent": 0.5,
                 },
                 {
-                    "thresholdPercent": 0.9,
+                    "threshold_percent": 0.9,
                 },
             ])
         ```

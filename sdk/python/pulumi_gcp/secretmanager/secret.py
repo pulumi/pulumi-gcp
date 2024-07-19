@@ -598,7 +598,7 @@ class Secret(pulumi.CustomResource):
                 "label": "my-label",
             },
             replication={
-                "userManaged": {
+                "user_managed": {
                     "replicas": [
                         {
                             "location": "us-central1",
@@ -660,8 +660,8 @@ class Secret(pulumi.CustomResource):
             secret_id="secret",
             replication={
                 "auto": {
-                    "customerManagedEncryption": {
-                        "kmsKeyName": "kms-key",
+                    "customer_managed_encryption": {
+                        "kms_key_name": "kms-key",
                     },
                 },
             },
@@ -758,7 +758,7 @@ class Secret(pulumi.CustomResource):
                 "label": "my-label",
             },
             replication={
-                "userManaged": {
+                "user_managed": {
                     "replicas": [
                         {
                             "location": "us-central1",
@@ -820,8 +820,8 @@ class Secret(pulumi.CustomResource):
             secret_id="secret",
             replication={
                 "auto": {
-                    "customerManagedEncryption": {
-                        "kmsKeyName": "kms-key",
+                    "customer_managed_encryption": {
+                        "kms_key_name": "kms-key",
                     },
                 },
             },
