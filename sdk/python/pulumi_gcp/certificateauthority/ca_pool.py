@@ -373,8 +373,8 @@ class CaPool(pulumi.CustomResource):
             location="us-central1",
             tier="ENTERPRISE",
             publishing_options={
-                "publishCaCert": True,
-                "publishCrl": True,
+                "publish_ca_cert": True,
+                "publish_crl": True,
             },
             labels={
                 "foo": "bar",
@@ -391,121 +391,121 @@ class CaPool(pulumi.CustomResource):
             location="us-central1",
             tier="ENTERPRISE",
             publishing_options={
-                "publishCaCert": False,
-                "publishCrl": True,
-                "encodingFormat": "PEM",
+                "publish_ca_cert": False,
+                "publish_crl": True,
+                "encoding_format": "PEM",
             },
             labels={
                 "foo": "bar",
             },
             issuance_policy={
-                "allowedKeyTypes": [
+                "allowed_key_types": [
                     {
-                        "ellipticCurve": {
-                            "signatureAlgorithm": "ECDSA_P256",
+                        "elliptic_curve": {
+                            "signature_algorithm": "ECDSA_P256",
                         },
                     },
                     {
                         "rsa": {
-                            "minModulusSize": "5",
-                            "maxModulusSize": "10",
+                            "min_modulus_size": "5",
+                            "max_modulus_size": "10",
                         },
                     },
                 ],
-                "maximumLifetime": "50000s",
-                "allowedIssuanceModes": {
-                    "allowCsrBasedIssuance": True,
-                    "allowConfigBasedIssuance": True,
+                "maximum_lifetime": "50000s",
+                "allowed_issuance_modes": {
+                    "allow_csr_based_issuance": True,
+                    "allow_config_based_issuance": True,
                 },
-                "identityConstraints": {
-                    "allowSubjectPassthrough": True,
-                    "allowSubjectAltNamesPassthrough": True,
-                    "celExpression": {
+                "identity_constraints": {
+                    "allow_subject_passthrough": True,
+                    "allow_subject_alt_names_passthrough": True,
+                    "cel_expression": {
                         "expression": "subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )",
                         "title": "My title",
                     },
                 },
-                "baselineValues": {
-                    "aiaOcspServers": ["example.com"],
-                    "additionalExtensions": [{
+                "baseline_values": {
+                    "aia_ocsp_servers": ["example.com"],
+                    "additional_extensions": [{
                         "critical": True,
                         "value": "asdf",
-                        "objectId": {
-                            "objectIdPaths": [
+                        "object_id": {
+                            "object_id_paths": [
                                 1,
                                 7,
                             ],
                         },
                     }],
-                    "policyIds": [
+                    "policy_ids": [
                         {
-                            "objectIdPaths": [
+                            "object_id_paths": [
                                 1,
                                 5,
                             ],
                         },
                         {
-                            "objectIdPaths": [
+                            "object_id_paths": [
                                 1,
                                 5,
                                 7,
                             ],
                         },
                     ],
-                    "caOptions": {
-                        "isCa": True,
-                        "maxIssuerPathLength": 10,
+                    "ca_options": {
+                        "is_ca": True,
+                        "max_issuer_path_length": 10,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "digitalSignature": True,
-                            "contentCommitment": True,
-                            "keyEncipherment": False,
-                            "dataEncipherment": True,
-                            "keyAgreement": True,
-                            "certSign": False,
-                            "crlSign": True,
-                            "decipherOnly": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "digital_signature": True,
+                            "content_commitment": True,
+                            "key_encipherment": False,
+                            "data_encipherment": True,
+                            "key_agreement": True,
+                            "cert_sign": False,
+                            "crl_sign": True,
+                            "decipher_only": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
-                            "clientAuth": False,
-                            "emailProtection": True,
-                            "codeSigning": True,
-                            "timeStamping": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
+                            "client_auth": False,
+                            "email_protection": True,
+                            "code_signing": True,
+                            "time_stamping": True,
                         },
                     },
-                    "nameConstraints": {
+                    "name_constraints": {
                         "critical": True,
-                        "permittedDnsNames": [
+                        "permitted_dns_names": [
                             "*.example1.com",
                             "*.example2.com",
                         ],
-                        "excludedDnsNames": [
+                        "excluded_dns_names": [
                             "*.deny.example1.com",
                             "*.deny.example2.com",
                         ],
-                        "permittedIpRanges": [
+                        "permitted_ip_ranges": [
                             "10.0.0.0/8",
                             "11.0.0.0/8",
                         ],
-                        "excludedIpRanges": [
+                        "excluded_ip_ranges": [
                             "10.1.1.0/24",
                             "11.1.1.0/24",
                         ],
-                        "permittedEmailAddresses": [
+                        "permitted_email_addresses": [
                             ".example1.com",
                             ".example2.com",
                         ],
-                        "excludedEmailAddresses": [
+                        "excluded_email_addresses": [
                             ".deny.example1.com",
                             ".deny.example2.com",
                         ],
-                        "permittedUris": [
+                        "permitted_uris": [
                             ".example1.com",
                             ".example2.com",
                         ],
-                        "excludedUris": [
+                        "excluded_uris": [
                             ".deny.example1.com",
                             ".deny.example2.com",
                         ],
@@ -585,8 +585,8 @@ class CaPool(pulumi.CustomResource):
             location="us-central1",
             tier="ENTERPRISE",
             publishing_options={
-                "publishCaCert": True,
-                "publishCrl": True,
+                "publish_ca_cert": True,
+                "publish_crl": True,
             },
             labels={
                 "foo": "bar",
@@ -603,121 +603,121 @@ class CaPool(pulumi.CustomResource):
             location="us-central1",
             tier="ENTERPRISE",
             publishing_options={
-                "publishCaCert": False,
-                "publishCrl": True,
-                "encodingFormat": "PEM",
+                "publish_ca_cert": False,
+                "publish_crl": True,
+                "encoding_format": "PEM",
             },
             labels={
                 "foo": "bar",
             },
             issuance_policy={
-                "allowedKeyTypes": [
+                "allowed_key_types": [
                     {
-                        "ellipticCurve": {
-                            "signatureAlgorithm": "ECDSA_P256",
+                        "elliptic_curve": {
+                            "signature_algorithm": "ECDSA_P256",
                         },
                     },
                     {
                         "rsa": {
-                            "minModulusSize": "5",
-                            "maxModulusSize": "10",
+                            "min_modulus_size": "5",
+                            "max_modulus_size": "10",
                         },
                     },
                 ],
-                "maximumLifetime": "50000s",
-                "allowedIssuanceModes": {
-                    "allowCsrBasedIssuance": True,
-                    "allowConfigBasedIssuance": True,
+                "maximum_lifetime": "50000s",
+                "allowed_issuance_modes": {
+                    "allow_csr_based_issuance": True,
+                    "allow_config_based_issuance": True,
                 },
-                "identityConstraints": {
-                    "allowSubjectPassthrough": True,
-                    "allowSubjectAltNamesPassthrough": True,
-                    "celExpression": {
+                "identity_constraints": {
+                    "allow_subject_passthrough": True,
+                    "allow_subject_alt_names_passthrough": True,
+                    "cel_expression": {
                         "expression": "subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )",
                         "title": "My title",
                     },
                 },
-                "baselineValues": {
-                    "aiaOcspServers": ["example.com"],
-                    "additionalExtensions": [{
+                "baseline_values": {
+                    "aia_ocsp_servers": ["example.com"],
+                    "additional_extensions": [{
                         "critical": True,
                         "value": "asdf",
-                        "objectId": {
-                            "objectIdPaths": [
+                        "object_id": {
+                            "object_id_paths": [
                                 1,
                                 7,
                             ],
                         },
                     }],
-                    "policyIds": [
+                    "policy_ids": [
                         {
-                            "objectIdPaths": [
+                            "object_id_paths": [
                                 1,
                                 5,
                             ],
                         },
                         {
-                            "objectIdPaths": [
+                            "object_id_paths": [
                                 1,
                                 5,
                                 7,
                             ],
                         },
                     ],
-                    "caOptions": {
-                        "isCa": True,
-                        "maxIssuerPathLength": 10,
+                    "ca_options": {
+                        "is_ca": True,
+                        "max_issuer_path_length": 10,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "digitalSignature": True,
-                            "contentCommitment": True,
-                            "keyEncipherment": False,
-                            "dataEncipherment": True,
-                            "keyAgreement": True,
-                            "certSign": False,
-                            "crlSign": True,
-                            "decipherOnly": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "digital_signature": True,
+                            "content_commitment": True,
+                            "key_encipherment": False,
+                            "data_encipherment": True,
+                            "key_agreement": True,
+                            "cert_sign": False,
+                            "crl_sign": True,
+                            "decipher_only": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
-                            "clientAuth": False,
-                            "emailProtection": True,
-                            "codeSigning": True,
-                            "timeStamping": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
+                            "client_auth": False,
+                            "email_protection": True,
+                            "code_signing": True,
+                            "time_stamping": True,
                         },
                     },
-                    "nameConstraints": {
+                    "name_constraints": {
                         "critical": True,
-                        "permittedDnsNames": [
+                        "permitted_dns_names": [
                             "*.example1.com",
                             "*.example2.com",
                         ],
-                        "excludedDnsNames": [
+                        "excluded_dns_names": [
                             "*.deny.example1.com",
                             "*.deny.example2.com",
                         ],
-                        "permittedIpRanges": [
+                        "permitted_ip_ranges": [
                             "10.0.0.0/8",
                             "11.0.0.0/8",
                         ],
-                        "excludedIpRanges": [
+                        "excluded_ip_ranges": [
                             "10.1.1.0/24",
                             "11.1.1.0/24",
                         ],
-                        "permittedEmailAddresses": [
+                        "permitted_email_addresses": [
                             ".example1.com",
                             ".example2.com",
                         ],
-                        "excludedEmailAddresses": [
+                        "excluded_email_addresses": [
                             ".deny.example1.com",
                             ".deny.example2.com",
                         ],
-                        "permittedUris": [
+                        "permitted_uris": [
                             ".example1.com",
                             ".example2.com",
                         ],
-                        "excludedUris": [
+                        "excluded_uris": [
                             ".deny.example1.com",
                             ".deny.example2.com",
                         ],

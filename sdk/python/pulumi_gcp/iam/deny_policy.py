@@ -224,25 +224,25 @@ class DenyPolicy(pulumi.CustomResource):
             rules=[
                 {
                     "description": "First rule",
-                    "denyRule": {
-                        "deniedPrincipals": ["principalSet://goog/public:all"],
-                        "denialCondition": {
+                    "deny_rule": {
+                        "denied_principals": ["principalSet://goog/public:all"],
+                        "denial_condition": {
                             "title": "Some expr",
                             "expression": "!resource.matchTag('12345678/env', 'test')",
                         },
-                        "deniedPermissions": ["cloudresourcemanager.googleapis.com/projects.update"],
+                        "denied_permissions": ["cloudresourcemanager.googleapis.com/projects.update"],
                     },
                 },
                 {
                     "description": "Second rule",
-                    "denyRule": {
-                        "deniedPrincipals": ["principalSet://goog/public:all"],
-                        "denialCondition": {
+                    "deny_rule": {
+                        "denied_principals": ["principalSet://goog/public:all"],
+                        "denial_condition": {
                             "title": "Some expr",
                             "expression": "!resource.matchTag('12345678/env', 'test')",
                         },
-                        "deniedPermissions": ["cloudresourcemanager.googleapis.com/projects.update"],
-                        "exceptionPrincipals": [test_account.email.apply(lambda email: f"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}")],
+                        "denied_permissions": ["cloudresourcemanager.googleapis.com/projects.update"],
+                        "exception_principals": [test_account.email.apply(lambda email: f"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}")],
                     },
                 },
             ])
@@ -308,25 +308,25 @@ class DenyPolicy(pulumi.CustomResource):
             rules=[
                 {
                     "description": "First rule",
-                    "denyRule": {
-                        "deniedPrincipals": ["principalSet://goog/public:all"],
-                        "denialCondition": {
+                    "deny_rule": {
+                        "denied_principals": ["principalSet://goog/public:all"],
+                        "denial_condition": {
                             "title": "Some expr",
                             "expression": "!resource.matchTag('12345678/env', 'test')",
                         },
-                        "deniedPermissions": ["cloudresourcemanager.googleapis.com/projects.update"],
+                        "denied_permissions": ["cloudresourcemanager.googleapis.com/projects.update"],
                     },
                 },
                 {
                     "description": "Second rule",
-                    "denyRule": {
-                        "deniedPrincipals": ["principalSet://goog/public:all"],
-                        "denialCondition": {
+                    "deny_rule": {
+                        "denied_principals": ["principalSet://goog/public:all"],
+                        "denial_condition": {
                             "title": "Some expr",
                             "expression": "!resource.matchTag('12345678/env', 'test')",
                         },
-                        "deniedPermissions": ["cloudresourcemanager.googleapis.com/projects.update"],
-                        "exceptionPrincipals": [test_account.email.apply(lambda email: f"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}")],
+                        "denied_permissions": ["cloudresourcemanager.googleapis.com/projects.update"],
+                        "exception_principals": [test_account.email.apply(lambda email: f"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}")],
                     },
                 },
             ])

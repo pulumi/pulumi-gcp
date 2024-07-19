@@ -463,8 +463,8 @@ class CustomTargetType(pulumi.CustomResource):
                 "my_second_label": "example-label-2",
             },
             custom_actions={
-                "renderAction": "renderAction",
-                "deployAction": "deployAction",
+                "render_action": "renderAction",
+                "deploy_action": "deployAction",
             })
         ```
         ### Clouddeploy Custom Target Type Git Skaffold Modules
@@ -478,9 +478,9 @@ class CustomTargetType(pulumi.CustomResource):
             name="my-custom-target-type",
             description="My custom target type",
             custom_actions={
-                "renderAction": "renderAction",
-                "deployAction": "deployAction",
-                "includeSkaffoldModules": [{
+                "render_action": "renderAction",
+                "deploy_action": "deployAction",
+                "include_skaffold_modules": [{
                     "configs": ["my-config"],
                     "git": {
                         "repo": "http://github.com/example/example-repo.git",
@@ -501,11 +501,11 @@ class CustomTargetType(pulumi.CustomResource):
             name="my-custom-target-type",
             description="My custom target type",
             custom_actions={
-                "renderAction": "renderAction",
-                "deployAction": "deployAction",
-                "includeSkaffoldModules": [{
+                "render_action": "renderAction",
+                "deploy_action": "deployAction",
+                "include_skaffold_modules": [{
                     "configs": ["my-config"],
-                    "googleCloudStorage": {
+                    "google_cloud_storage": {
                         "source": "gs://example-bucket/dir/configs/*",
                         "path": "skaffold.yaml",
                     },
@@ -523,11 +523,11 @@ class CustomTargetType(pulumi.CustomResource):
             name="my-custom-target-type",
             description="My custom target type",
             custom_actions={
-                "renderAction": "renderAction",
-                "deployAction": "deployAction",
-                "includeSkaffoldModules": [{
+                "render_action": "renderAction",
+                "deploy_action": "deployAction",
+                "include_skaffold_modules": [{
                     "configs": ["my-config"],
-                    "googleCloudBuildRepo": {
+                    "google_cloud_build_repo": {
                         "repository": "projects/example/locations/us-central1/connections/git/repositories/example-repo",
                         "path": "configs/skaffold.yaml",
                         "ref": "main",
@@ -616,8 +616,8 @@ class CustomTargetType(pulumi.CustomResource):
                 "my_second_label": "example-label-2",
             },
             custom_actions={
-                "renderAction": "renderAction",
-                "deployAction": "deployAction",
+                "render_action": "renderAction",
+                "deploy_action": "deployAction",
             })
         ```
         ### Clouddeploy Custom Target Type Git Skaffold Modules
@@ -631,9 +631,9 @@ class CustomTargetType(pulumi.CustomResource):
             name="my-custom-target-type",
             description="My custom target type",
             custom_actions={
-                "renderAction": "renderAction",
-                "deployAction": "deployAction",
-                "includeSkaffoldModules": [{
+                "render_action": "renderAction",
+                "deploy_action": "deployAction",
+                "include_skaffold_modules": [{
                     "configs": ["my-config"],
                     "git": {
                         "repo": "http://github.com/example/example-repo.git",
@@ -654,11 +654,11 @@ class CustomTargetType(pulumi.CustomResource):
             name="my-custom-target-type",
             description="My custom target type",
             custom_actions={
-                "renderAction": "renderAction",
-                "deployAction": "deployAction",
-                "includeSkaffoldModules": [{
+                "render_action": "renderAction",
+                "deploy_action": "deployAction",
+                "include_skaffold_modules": [{
                     "configs": ["my-config"],
-                    "googleCloudStorage": {
+                    "google_cloud_storage": {
                         "source": "gs://example-bucket/dir/configs/*",
                         "path": "skaffold.yaml",
                     },
@@ -676,11 +676,11 @@ class CustomTargetType(pulumi.CustomResource):
             name="my-custom-target-type",
             description="My custom target type",
             custom_actions={
-                "renderAction": "renderAction",
-                "deployAction": "deployAction",
-                "includeSkaffoldModules": [{
+                "render_action": "renderAction",
+                "deploy_action": "deployAction",
+                "include_skaffold_modules": [{
                     "configs": ["my-config"],
-                    "googleCloudBuildRepo": {
+                    "google_cloud_build_repo": {
                         "repository": "projects/example/locations/us-central1/connections/git/repositories/example-repo",
                         "path": "configs/skaffold.yaml",
                         "ref": "main",

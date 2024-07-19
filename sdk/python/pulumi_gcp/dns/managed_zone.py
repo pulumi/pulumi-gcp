@@ -729,10 +729,10 @@ class ManagedZone(pulumi.CustomResource):
             private_visibility_config={
                 "networks": [
                     {
-                        "networkUrl": network_1.id,
+                        "network_url": network_1.id,
                     },
                     {
-                        "networkUrl": network_2.id,
+                        "network_url": network_2.id,
                     },
                 ],
             })
@@ -760,20 +760,20 @@ class ManagedZone(pulumi.CustomResource):
             private_visibility_config={
                 "networks": [
                     {
-                        "networkUrl": network_1.id,
+                        "network_url": network_1.id,
                     },
                     {
-                        "networkUrl": network_2.id,
+                        "network_url": network_2.id,
                     },
                 ],
             },
             forwarding_config={
-                "targetNameServers": [
+                "target_name_servers": [
                     {
-                        "ipv4Address": "172.16.1.10",
+                        "ipv4_address": "172.16.1.10",
                     },
                     {
-                        "ipv4Address": "172.16.1.20",
+                        "ipv4_address": "172.16.1.20",
                     },
                 ],
             })
@@ -795,12 +795,12 @@ class ManagedZone(pulumi.CustomResource):
             private_ip_google_access=True,
             secondary_ip_ranges=[
                 {
-                    "rangeName": "pod",
-                    "ipCidrRange": "10.0.0.0/19",
+                    "range_name": "pod",
+                    "ip_cidr_range": "10.0.0.0/19",
                 },
                 {
-                    "rangeName": "svc",
-                    "ipCidrRange": "10.0.32.0/22",
+                    "range_name": "svc",
+                    "ip_cidr_range": "10.0.32.0/22",
                 },
             ])
         cluster_1 = gcp.container.Cluster("cluster-1",
@@ -814,17 +814,17 @@ class ManagedZone(pulumi.CustomResource):
             network=network_1.name,
             subnetwork=subnetwork_1.name,
             private_cluster_config={
-                "enablePrivateEndpoint": True,
-                "enablePrivateNodes": True,
-                "masterIpv4CidrBlock": "10.42.0.0/28",
-                "masterGlobalAccessConfig": {
+                "enable_private_endpoint": True,
+                "enable_private_nodes": True,
+                "master_ipv4_cidr_block": "10.42.0.0/28",
+                "master_global_access_config": {
                     "enabled": True,
                 },
             },
             master_authorized_networks_config={},
             ip_allocation_policy={
-                "clusterSecondaryRangeName": subnetwork_1.secondary_ip_ranges[0].range_name,
-                "servicesSecondaryRangeName": subnetwork_1.secondary_ip_ranges[1].range_name,
+                "cluster_secondary_range_name": subnetwork_1.secondary_ip_ranges[0].range_name,
+                "services_secondary_range_name": subnetwork_1.secondary_ip_ranges[1].range_name,
             },
             deletion_protection=True)
         private_zone_gke = gcp.dns.ManagedZone("private-zone-gke",
@@ -836,8 +836,8 @@ class ManagedZone(pulumi.CustomResource):
             },
             visibility="private",
             private_visibility_config={
-                "gkeClusters": [{
-                    "gkeClusterName": cluster_1.id,
+                "gke_clusters": [{
+                    "gke_cluster_name": cluster_1.id,
                 }],
             })
         ```
@@ -860,12 +860,12 @@ class ManagedZone(pulumi.CustomResource):
             visibility="private",
             private_visibility_config={
                 "networks": [{
-                    "networkUrl": network_source.id,
+                    "network_url": network_source.id,
                 }],
             },
             peering_config={
-                "targetNetwork": {
-                    "networkUrl": network_target.id,
+                "target_network": {
+                    "network_url": network_target.id,
                 },
             })
         ```
@@ -885,7 +885,7 @@ class ManagedZone(pulumi.CustomResource):
             visibility="private",
             service_directory_config={
                 "namespace": {
-                    "namespaceUrl": example.id,
+                    "namespace_url": example.id,
                 },
             })
         network = gcp.compute.Network("network",
@@ -906,7 +906,7 @@ class ManagedZone(pulumi.CustomResource):
                 "foo": "bar",
             },
             cloud_logging_config={
-                "enableLogging": True,
+                "enable_logging": True,
             })
         ```
 
@@ -1029,10 +1029,10 @@ class ManagedZone(pulumi.CustomResource):
             private_visibility_config={
                 "networks": [
                     {
-                        "networkUrl": network_1.id,
+                        "network_url": network_1.id,
                     },
                     {
-                        "networkUrl": network_2.id,
+                        "network_url": network_2.id,
                     },
                 ],
             })
@@ -1060,20 +1060,20 @@ class ManagedZone(pulumi.CustomResource):
             private_visibility_config={
                 "networks": [
                     {
-                        "networkUrl": network_1.id,
+                        "network_url": network_1.id,
                     },
                     {
-                        "networkUrl": network_2.id,
+                        "network_url": network_2.id,
                     },
                 ],
             },
             forwarding_config={
-                "targetNameServers": [
+                "target_name_servers": [
                     {
-                        "ipv4Address": "172.16.1.10",
+                        "ipv4_address": "172.16.1.10",
                     },
                     {
-                        "ipv4Address": "172.16.1.20",
+                        "ipv4_address": "172.16.1.20",
                     },
                 ],
             })
@@ -1095,12 +1095,12 @@ class ManagedZone(pulumi.CustomResource):
             private_ip_google_access=True,
             secondary_ip_ranges=[
                 {
-                    "rangeName": "pod",
-                    "ipCidrRange": "10.0.0.0/19",
+                    "range_name": "pod",
+                    "ip_cidr_range": "10.0.0.0/19",
                 },
                 {
-                    "rangeName": "svc",
-                    "ipCidrRange": "10.0.32.0/22",
+                    "range_name": "svc",
+                    "ip_cidr_range": "10.0.32.0/22",
                 },
             ])
         cluster_1 = gcp.container.Cluster("cluster-1",
@@ -1114,17 +1114,17 @@ class ManagedZone(pulumi.CustomResource):
             network=network_1.name,
             subnetwork=subnetwork_1.name,
             private_cluster_config={
-                "enablePrivateEndpoint": True,
-                "enablePrivateNodes": True,
-                "masterIpv4CidrBlock": "10.42.0.0/28",
-                "masterGlobalAccessConfig": {
+                "enable_private_endpoint": True,
+                "enable_private_nodes": True,
+                "master_ipv4_cidr_block": "10.42.0.0/28",
+                "master_global_access_config": {
                     "enabled": True,
                 },
             },
             master_authorized_networks_config={},
             ip_allocation_policy={
-                "clusterSecondaryRangeName": subnetwork_1.secondary_ip_ranges[0].range_name,
-                "servicesSecondaryRangeName": subnetwork_1.secondary_ip_ranges[1].range_name,
+                "cluster_secondary_range_name": subnetwork_1.secondary_ip_ranges[0].range_name,
+                "services_secondary_range_name": subnetwork_1.secondary_ip_ranges[1].range_name,
             },
             deletion_protection=True)
         private_zone_gke = gcp.dns.ManagedZone("private-zone-gke",
@@ -1136,8 +1136,8 @@ class ManagedZone(pulumi.CustomResource):
             },
             visibility="private",
             private_visibility_config={
-                "gkeClusters": [{
-                    "gkeClusterName": cluster_1.id,
+                "gke_clusters": [{
+                    "gke_cluster_name": cluster_1.id,
                 }],
             })
         ```
@@ -1160,12 +1160,12 @@ class ManagedZone(pulumi.CustomResource):
             visibility="private",
             private_visibility_config={
                 "networks": [{
-                    "networkUrl": network_source.id,
+                    "network_url": network_source.id,
                 }],
             },
             peering_config={
-                "targetNetwork": {
-                    "networkUrl": network_target.id,
+                "target_network": {
+                    "network_url": network_target.id,
                 },
             })
         ```
@@ -1185,7 +1185,7 @@ class ManagedZone(pulumi.CustomResource):
             visibility="private",
             service_directory_config={
                 "namespace": {
-                    "namespaceUrl": example.id,
+                    "namespace_url": example.id,
                 },
             })
         network = gcp.compute.Network("network",
@@ -1206,7 +1206,7 @@ class ManagedZone(pulumi.CustomResource):
                 "foo": "bar",
             },
             cloud_logging_config={
-                "enableLogging": True,
+                "enable_logging": True,
             })
         ```
 
