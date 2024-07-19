@@ -404,7 +404,7 @@ class ManagedZone(pulumi.CustomResource):
             visibility="private",
             private_visibility_config={
                 "networks": [{
-                    "networkUrl": network.id,
+                    "network_url": network.id,
                 }],
             },
             opts = pulumi.ResourceOptions(depends_on=[dns]))
@@ -514,7 +514,7 @@ class ManagedZone(pulumi.CustomResource):
             visibility="private",
             private_visibility_config={
                 "networks": [{
-                    "networkUrl": network.id,
+                    "network_url": network.id,
                 }],
             },
             opts = pulumi.ResourceOptions(depends_on=[dns]))

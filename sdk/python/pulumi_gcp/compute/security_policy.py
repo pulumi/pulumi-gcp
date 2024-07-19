@@ -408,9 +408,9 @@ class SecurityPolicy(pulumi.CustomResource):
                     "action": "deny(403)",
                     "priority": 1000,
                     "match": {
-                        "versionedExpr": "SRC_IPS_V1",
+                        "versioned_expr": "SRC_IPS_V1",
                         "config": {
-                            "srcIpRanges": ["9.9.9.0/24"],
+                            "src_ip_ranges": ["9.9.9.0/24"],
                         },
                     },
                     "description": "Deny access to IPs in 9.9.9.0/24",
@@ -419,9 +419,9 @@ class SecurityPolicy(pulumi.CustomResource):
                     "action": "allow",
                     "priority": 2147483647,
                     "match": {
-                        "versionedExpr": "SRC_IPS_V1",
+                        "versioned_expr": "SRC_IPS_V1",
                         "config": {
-                            "srcIpRanges": ["*"],
+                            "src_ip_ranges": ["*"],
                         },
                     },
                     "description": "default rule",
@@ -442,16 +442,16 @@ class SecurityPolicy(pulumi.CustomResource):
             },
             project="my-project-name",
             web_settings={
-                "integrationType": "INVISIBLE",
-                "allowAllDomains": True,
-                "allowedDomains": ["localhost"],
+                "integration_type": "INVISIBLE",
+                "allow_all_domains": True,
+                "allowed_domains": ["localhost"],
             })
         policy = gcp.compute.SecurityPolicy("policy",
             name="my-policy",
             description="basic security policy",
             type="CLOUD_ARMOR",
             recaptcha_options_config={
-                "redirectSiteKey": primary.name,
+                "redirect_site_key": primary.name,
             })
         ```
 
@@ -468,9 +468,9 @@ class SecurityPolicy(pulumi.CustomResource):
                     "action": "allow",
                     "priority": 2147483647,
                     "match": {
-                        "versionedExpr": "SRC_IPS_V1",
+                        "versioned_expr": "SRC_IPS_V1",
                         "config": {
-                            "srcIpRanges": ["*"],
+                            "src_ip_ranges": ["*"],
                         },
                     },
                     "description": "default rule",
@@ -483,15 +483,15 @@ class SecurityPolicy(pulumi.CustomResource):
                             "expression": "request.path.matches(\\"/login.html\\") && token.recaptcha_session.score < 0.2",
                         },
                     },
-                    "headerAction": {
-                        "requestHeadersToAdds": [
+                    "header_action": {
+                        "request_headers_to_adds": [
                             {
-                                "headerName": "reCAPTCHA-Warning",
-                                "headerValue": "high",
+                                "header_name": "reCAPTCHA-Warning",
+                                "header_value": "high",
                             },
                             {
-                                "headerName": "X-Resource",
-                                "headerValue": "test",
+                                "header_name": "X-Resource",
+                                "header_value": "test",
                             },
                         ],
                     },
@@ -513,26 +513,26 @@ class SecurityPolicy(pulumi.CustomResource):
                 "action": "throttle",
                 "priority": 2147483647,
                 "match": {
-                    "versionedExpr": "SRC_IPS_V1",
+                    "versioned_expr": "SRC_IPS_V1",
                     "config": {
-                        "srcIpRanges": ["*"],
+                        "src_ip_ranges": ["*"],
                     },
                 },
                 "description": "default rule",
-                "rateLimitOptions": {
-                    "conformAction": "allow",
-                    "exceedAction": "redirect",
-                    "enforceOnKey": "",
-                    "enforceOnKeyConfigs": [{
-                        "enforceOnKeyType": "IP",
+                "rate_limit_options": {
+                    "conform_action": "allow",
+                    "exceed_action": "redirect",
+                    "enforce_on_key": "",
+                    "enforce_on_key_configs": [{
+                        "enforce_on_key_type": "IP",
                     }],
-                    "exceedRedirectOptions": {
+                    "exceed_redirect_options": {
                         "type": "EXTERNAL_302",
                         "target": "<https://www.example.com>",
                     },
-                    "rateLimitThreshold": {
+                    "rate_limit_threshold": {
                         "count": 10,
-                        "intervalSec": 60,
+                        "interval_sec": 60,
                     },
                 },
             }])
@@ -612,9 +612,9 @@ class SecurityPolicy(pulumi.CustomResource):
                     "action": "deny(403)",
                     "priority": 1000,
                     "match": {
-                        "versionedExpr": "SRC_IPS_V1",
+                        "versioned_expr": "SRC_IPS_V1",
                         "config": {
-                            "srcIpRanges": ["9.9.9.0/24"],
+                            "src_ip_ranges": ["9.9.9.0/24"],
                         },
                     },
                     "description": "Deny access to IPs in 9.9.9.0/24",
@@ -623,9 +623,9 @@ class SecurityPolicy(pulumi.CustomResource):
                     "action": "allow",
                     "priority": 2147483647,
                     "match": {
-                        "versionedExpr": "SRC_IPS_V1",
+                        "versioned_expr": "SRC_IPS_V1",
                         "config": {
-                            "srcIpRanges": ["*"],
+                            "src_ip_ranges": ["*"],
                         },
                     },
                     "description": "default rule",
@@ -646,16 +646,16 @@ class SecurityPolicy(pulumi.CustomResource):
             },
             project="my-project-name",
             web_settings={
-                "integrationType": "INVISIBLE",
-                "allowAllDomains": True,
-                "allowedDomains": ["localhost"],
+                "integration_type": "INVISIBLE",
+                "allow_all_domains": True,
+                "allowed_domains": ["localhost"],
             })
         policy = gcp.compute.SecurityPolicy("policy",
             name="my-policy",
             description="basic security policy",
             type="CLOUD_ARMOR",
             recaptcha_options_config={
-                "redirectSiteKey": primary.name,
+                "redirect_site_key": primary.name,
             })
         ```
 
@@ -672,9 +672,9 @@ class SecurityPolicy(pulumi.CustomResource):
                     "action": "allow",
                     "priority": 2147483647,
                     "match": {
-                        "versionedExpr": "SRC_IPS_V1",
+                        "versioned_expr": "SRC_IPS_V1",
                         "config": {
-                            "srcIpRanges": ["*"],
+                            "src_ip_ranges": ["*"],
                         },
                     },
                     "description": "default rule",
@@ -687,15 +687,15 @@ class SecurityPolicy(pulumi.CustomResource):
                             "expression": "request.path.matches(\\"/login.html\\") && token.recaptcha_session.score < 0.2",
                         },
                     },
-                    "headerAction": {
-                        "requestHeadersToAdds": [
+                    "header_action": {
+                        "request_headers_to_adds": [
                             {
-                                "headerName": "reCAPTCHA-Warning",
-                                "headerValue": "high",
+                                "header_name": "reCAPTCHA-Warning",
+                                "header_value": "high",
                             },
                             {
-                                "headerName": "X-Resource",
-                                "headerValue": "test",
+                                "header_name": "X-Resource",
+                                "header_value": "test",
                             },
                         ],
                     },
@@ -717,26 +717,26 @@ class SecurityPolicy(pulumi.CustomResource):
                 "action": "throttle",
                 "priority": 2147483647,
                 "match": {
-                    "versionedExpr": "SRC_IPS_V1",
+                    "versioned_expr": "SRC_IPS_V1",
                     "config": {
-                        "srcIpRanges": ["*"],
+                        "src_ip_ranges": ["*"],
                     },
                 },
                 "description": "default rule",
-                "rateLimitOptions": {
-                    "conformAction": "allow",
-                    "exceedAction": "redirect",
-                    "enforceOnKey": "",
-                    "enforceOnKeyConfigs": [{
-                        "enforceOnKeyType": "IP",
+                "rate_limit_options": {
+                    "conform_action": "allow",
+                    "exceed_action": "redirect",
+                    "enforce_on_key": "",
+                    "enforce_on_key_configs": [{
+                        "enforce_on_key_type": "IP",
                     }],
-                    "exceedRedirectOptions": {
+                    "exceed_redirect_options": {
                         "type": "EXTERNAL_302",
                         "target": "<https://www.example.com>",
                     },
-                    "rateLimitThreshold": {
+                    "rate_limit_threshold": {
                         "count": 10,
-                        "intervalSec": 60,
+                        "interval_sec": 60,
                     },
                 },
             }])

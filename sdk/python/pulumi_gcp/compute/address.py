@@ -844,14 +844,14 @@ class Address(pulumi.CustomResource):
             machine_type="f1-micro",
             zone="us-central1-a",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": debian_image.self_link,
                 },
             },
             network_interfaces=[{
                 "network": "default",
-                "accessConfigs": [{
-                    "natIp": static.address,
+                "access_configs": [{
+                    "nat_ip": static.address,
                 }],
             }])
         ```
@@ -1044,14 +1044,14 @@ class Address(pulumi.CustomResource):
             machine_type="f1-micro",
             zone="us-central1-a",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": debian_image.self_link,
                 },
             },
             network_interfaces=[{
                 "network": "default",
-                "accessConfigs": [{
-                    "natIp": static.address,
+                "access_configs": [{
+                    "nat_ip": static.address,
                 }],
             }])
         ```

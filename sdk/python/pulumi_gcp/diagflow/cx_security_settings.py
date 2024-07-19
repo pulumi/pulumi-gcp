@@ -578,7 +578,7 @@ class CxSecuritySettings(pulumi.CustomResource):
             parent="projects/my-project-name/locations/global",
             display_name="dialogflowcx-inspect-template",
             inspect_config={
-                "infoTypes": [{
+                "info_types": [{
                     "name": "EMAIL_ADDRESS",
                 }],
             })
@@ -586,12 +586,12 @@ class CxSecuritySettings(pulumi.CustomResource):
             parent="projects/my-project-name/locations/global",
             display_name="dialogflowcx-deidentify-template",
             deidentify_config={
-                "infoTypeTransformations": {
+                "info_type_transformations": {
                     "transformations": [{
-                        "primitiveTransformation": {
-                            "replaceConfig": {
-                                "newValue": {
-                                    "stringValue": "[REDACTED]",
+                        "primitive_transformation": {
+                            "replace_config": {
+                                "new_value": {
+                                    "string_value": "[REDACTED]",
                                 },
                             },
                         },
@@ -611,13 +611,13 @@ class CxSecuritySettings(pulumi.CustomResource):
             deidentify_template=deidentify.id,
             purge_data_types=["DIALOGFLOW_HISTORY"],
             audio_export_settings={
-                "gcsBucket": bucket.id,
-                "audioExportPattern": "export",
-                "enableAudioRedaction": True,
-                "audioFormat": "OGG",
+                "gcs_bucket": bucket.id,
+                "audio_export_pattern": "export",
+                "enable_audio_redaction": True,
+                "audio_format": "OGG",
             },
             insights_export_settings={
-                "enableInsightsExport": True,
+                "enable_insights_export": True,
             },
             retention_strategy="REMOVE_AFTER_CONVERSATION")
         ```
@@ -724,7 +724,7 @@ class CxSecuritySettings(pulumi.CustomResource):
             parent="projects/my-project-name/locations/global",
             display_name="dialogflowcx-inspect-template",
             inspect_config={
-                "infoTypes": [{
+                "info_types": [{
                     "name": "EMAIL_ADDRESS",
                 }],
             })
@@ -732,12 +732,12 @@ class CxSecuritySettings(pulumi.CustomResource):
             parent="projects/my-project-name/locations/global",
             display_name="dialogflowcx-deidentify-template",
             deidentify_config={
-                "infoTypeTransformations": {
+                "info_type_transformations": {
                     "transformations": [{
-                        "primitiveTransformation": {
-                            "replaceConfig": {
-                                "newValue": {
-                                    "stringValue": "[REDACTED]",
+                        "primitive_transformation": {
+                            "replace_config": {
+                                "new_value": {
+                                    "string_value": "[REDACTED]",
                                 },
                             },
                         },
@@ -757,13 +757,13 @@ class CxSecuritySettings(pulumi.CustomResource):
             deidentify_template=deidentify.id,
             purge_data_types=["DIALOGFLOW_HISTORY"],
             audio_export_settings={
-                "gcsBucket": bucket.id,
-                "audioExportPattern": "export",
-                "enableAudioRedaction": True,
-                "audioFormat": "OGG",
+                "gcs_bucket": bucket.id,
+                "audio_export_pattern": "export",
+                "enable_audio_redaction": True,
+                "audio_format": "OGG",
             },
             insights_export_settings={
-                "enableInsightsExport": True,
+                "enable_insights_export": True,
             },
             retention_strategy="REMOVE_AFTER_CONVERSATION")
         ```

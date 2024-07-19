@@ -254,12 +254,12 @@ class ResponsePolicy(pulumi.CustomResource):
             private_ip_google_access=True,
             secondary_ip_ranges=[
                 {
-                    "rangeName": "pod",
-                    "ipCidrRange": "10.0.0.0/19",
+                    "range_name": "pod",
+                    "ip_cidr_range": "10.0.0.0/19",
                 },
                 {
-                    "rangeName": "svc",
-                    "ipCidrRange": "10.0.32.0/22",
+                    "range_name": "svc",
+                    "ip_cidr_range": "10.0.32.0/22",
                 },
             ])
         cluster_1 = gcp.container.Cluster("cluster-1",
@@ -273,31 +273,31 @@ class ResponsePolicy(pulumi.CustomResource):
             network=network_1.name,
             subnetwork=subnetwork_1.name,
             private_cluster_config={
-                "enablePrivateEndpoint": True,
-                "enablePrivateNodes": True,
-                "masterIpv4CidrBlock": "10.42.0.0/28",
-                "masterGlobalAccessConfig": {
+                "enable_private_endpoint": True,
+                "enable_private_nodes": True,
+                "master_ipv4_cidr_block": "10.42.0.0/28",
+                "master_global_access_config": {
                     "enabled": True,
                 },
             },
             master_authorized_networks_config={},
             ip_allocation_policy={
-                "clusterSecondaryRangeName": subnetwork_1.secondary_ip_ranges[0].range_name,
-                "servicesSecondaryRangeName": subnetwork_1.secondary_ip_ranges[1].range_name,
+                "cluster_secondary_range_name": subnetwork_1.secondary_ip_ranges[0].range_name,
+                "services_secondary_range_name": subnetwork_1.secondary_ip_ranges[1].range_name,
             },
             deletion_protection=True)
         example_response_policy = gcp.dns.ResponsePolicy("example-response-policy",
             response_policy_name="example-response-policy",
             networks=[
                 {
-                    "networkUrl": network_1.id,
+                    "network_url": network_1.id,
                 },
                 {
-                    "networkUrl": network_2.id,
+                    "network_url": network_2.id,
                 },
             ],
             gke_clusters=[{
-                "gkeClusterName": cluster_1.id,
+                "gke_cluster_name": cluster_1.id,
             }])
         ```
 
@@ -371,12 +371,12 @@ class ResponsePolicy(pulumi.CustomResource):
             private_ip_google_access=True,
             secondary_ip_ranges=[
                 {
-                    "rangeName": "pod",
-                    "ipCidrRange": "10.0.0.0/19",
+                    "range_name": "pod",
+                    "ip_cidr_range": "10.0.0.0/19",
                 },
                 {
-                    "rangeName": "svc",
-                    "ipCidrRange": "10.0.32.0/22",
+                    "range_name": "svc",
+                    "ip_cidr_range": "10.0.32.0/22",
                 },
             ])
         cluster_1 = gcp.container.Cluster("cluster-1",
@@ -390,31 +390,31 @@ class ResponsePolicy(pulumi.CustomResource):
             network=network_1.name,
             subnetwork=subnetwork_1.name,
             private_cluster_config={
-                "enablePrivateEndpoint": True,
-                "enablePrivateNodes": True,
-                "masterIpv4CidrBlock": "10.42.0.0/28",
-                "masterGlobalAccessConfig": {
+                "enable_private_endpoint": True,
+                "enable_private_nodes": True,
+                "master_ipv4_cidr_block": "10.42.0.0/28",
+                "master_global_access_config": {
                     "enabled": True,
                 },
             },
             master_authorized_networks_config={},
             ip_allocation_policy={
-                "clusterSecondaryRangeName": subnetwork_1.secondary_ip_ranges[0].range_name,
-                "servicesSecondaryRangeName": subnetwork_1.secondary_ip_ranges[1].range_name,
+                "cluster_secondary_range_name": subnetwork_1.secondary_ip_ranges[0].range_name,
+                "services_secondary_range_name": subnetwork_1.secondary_ip_ranges[1].range_name,
             },
             deletion_protection=True)
         example_response_policy = gcp.dns.ResponsePolicy("example-response-policy",
             response_policy_name="example-response-policy",
             networks=[
                 {
-                    "networkUrl": network_1.id,
+                    "network_url": network_1.id,
                 },
                 {
-                    "networkUrl": network_2.id,
+                    "network_url": network_2.id,
                 },
             ],
             gke_clusters=[{
-                "gkeClusterName": cluster_1.id,
+                "gke_cluster_name": cluster_1.id,
             }])
         ```
 

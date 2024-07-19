@@ -577,7 +577,7 @@ class Job(pulumi.CustomResource):
             description="test job",
             schedule="*/2 * * * *",
             pubsub_target={
-                "topicName": topic.id,
+                "topic_name": topic.id,
                 "data": std.base64encode(input="test").result,
             })
         ```
@@ -595,14 +595,14 @@ class Job(pulumi.CustomResource):
             time_zone="America/New_York",
             attempt_deadline="320s",
             retry_config={
-                "retryCount": 1,
+                "retry_count": 1,
             },
             http_target={
-                "httpMethod": "POST",
+                "http_method": "POST",
                 "uri": "https://example.com/",
                 "body": std.base64encode(input="{\\"foo\\":\\"bar\\"}").result,
                 "headers": {
-                    "Content-Type": "application/json",
+                    "content__type": "application/json",
                 },
             })
         ```
@@ -621,14 +621,14 @@ class Job(pulumi.CustomResource):
             time_zone="America/New_York",
             attempt_deadline="320s",
             retry_config={
-                "retryCount": 1,
+                "retry_count": 1,
             },
             http_target={
-                "httpMethod": "POST",
+                "http_method": "POST",
                 "uri": "https://example.com/ping",
                 "body": std.base64encode(input="{\\"foo\\":\\"bar\\"}").result,
                 "headers": {
-                    "Content-Type": "application/json",
+                    "content__type": "application/json",
                 },
             })
         ```
@@ -645,19 +645,19 @@ class Job(pulumi.CustomResource):
             time_zone="Europe/London",
             attempt_deadline="320s",
             retry_config={
-                "minBackoffDuration": "1s",
-                "maxRetryDuration": "10s",
-                "maxDoublings": 2,
-                "retryCount": 3,
+                "min_backoff_duration": "1s",
+                "max_retry_duration": "10s",
+                "max_doublings": 2,
+                "retry_count": 3,
             },
             app_engine_http_target={
-                "httpMethod": "POST",
-                "appEngineRouting": {
+                "http_method": "POST",
+                "app_engine_routing": {
                     "service": "web",
                     "version": "prod",
                     "instance": "my-instance-001",
                 },
-                "relativeUri": "/ping",
+                "relative_uri": "/ping",
             })
         ```
         ### Scheduler Job Oauth
@@ -674,10 +674,10 @@ class Job(pulumi.CustomResource):
             time_zone="America/New_York",
             attempt_deadline="320s",
             http_target={
-                "httpMethod": "GET",
+                "http_method": "GET",
                 "uri": "https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs",
-                "oauthToken": {
-                    "serviceAccountEmail": default.email,
+                "oauth_token": {
+                    "service_account_email": default.email,
                 },
             })
         ```
@@ -695,10 +695,10 @@ class Job(pulumi.CustomResource):
             time_zone="America/New_York",
             attempt_deadline="320s",
             http_target={
-                "httpMethod": "GET",
+                "http_method": "GET",
                 "uri": "https://example.com/ping",
-                "oidcToken": {
-                    "serviceAccountEmail": default.email,
+                "oidc_token": {
+                    "service_account_email": default.email,
                 },
             })
         ```
@@ -804,7 +804,7 @@ class Job(pulumi.CustomResource):
             description="test job",
             schedule="*/2 * * * *",
             pubsub_target={
-                "topicName": topic.id,
+                "topic_name": topic.id,
                 "data": std.base64encode(input="test").result,
             })
         ```
@@ -822,14 +822,14 @@ class Job(pulumi.CustomResource):
             time_zone="America/New_York",
             attempt_deadline="320s",
             retry_config={
-                "retryCount": 1,
+                "retry_count": 1,
             },
             http_target={
-                "httpMethod": "POST",
+                "http_method": "POST",
                 "uri": "https://example.com/",
                 "body": std.base64encode(input="{\\"foo\\":\\"bar\\"}").result,
                 "headers": {
-                    "Content-Type": "application/json",
+                    "content__type": "application/json",
                 },
             })
         ```
@@ -848,14 +848,14 @@ class Job(pulumi.CustomResource):
             time_zone="America/New_York",
             attempt_deadline="320s",
             retry_config={
-                "retryCount": 1,
+                "retry_count": 1,
             },
             http_target={
-                "httpMethod": "POST",
+                "http_method": "POST",
                 "uri": "https://example.com/ping",
                 "body": std.base64encode(input="{\\"foo\\":\\"bar\\"}").result,
                 "headers": {
-                    "Content-Type": "application/json",
+                    "content__type": "application/json",
                 },
             })
         ```
@@ -872,19 +872,19 @@ class Job(pulumi.CustomResource):
             time_zone="Europe/London",
             attempt_deadline="320s",
             retry_config={
-                "minBackoffDuration": "1s",
-                "maxRetryDuration": "10s",
-                "maxDoublings": 2,
-                "retryCount": 3,
+                "min_backoff_duration": "1s",
+                "max_retry_duration": "10s",
+                "max_doublings": 2,
+                "retry_count": 3,
             },
             app_engine_http_target={
-                "httpMethod": "POST",
-                "appEngineRouting": {
+                "http_method": "POST",
+                "app_engine_routing": {
                     "service": "web",
                     "version": "prod",
                     "instance": "my-instance-001",
                 },
-                "relativeUri": "/ping",
+                "relative_uri": "/ping",
             })
         ```
         ### Scheduler Job Oauth
@@ -901,10 +901,10 @@ class Job(pulumi.CustomResource):
             time_zone="America/New_York",
             attempt_deadline="320s",
             http_target={
-                "httpMethod": "GET",
+                "http_method": "GET",
                 "uri": "https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs",
-                "oauthToken": {
-                    "serviceAccountEmail": default.email,
+                "oauth_token": {
+                    "service_account_email": default.email,
                 },
             })
         ```
@@ -922,10 +922,10 @@ class Job(pulumi.CustomResource):
             time_zone="America/New_York",
             attempt_deadline="320s",
             http_target={
-                "httpMethod": "GET",
+                "http_method": "GET",
                 "uri": "https://example.com/ping",
-                "oidcToken": {
-                    "serviceAccountEmail": default.email,
+                "oidc_token": {
+                    "service_account_email": default.email,
                 },
             })
         ```
