@@ -317,7 +317,7 @@ class AppConnector(pulumi.CustomResource):
         app_connector = gcp.beyondcorp.AppConnector("app_connector",
             name="my-app-connector",
             principal_info={
-                "serviceAccount": {
+                "service_account": {
                     "email": service_account.email,
                 },
             })
@@ -336,7 +336,7 @@ class AppConnector(pulumi.CustomResource):
             region="us-central1",
             display_name="some display name",
             principal_info={
-                "serviceAccount": {
+                "service_account": {
                     "email": service_account.email,
                 },
             },
@@ -419,7 +419,7 @@ class AppConnector(pulumi.CustomResource):
         app_connector = gcp.beyondcorp.AppConnector("app_connector",
             name="my-app-connector",
             principal_info={
-                "serviceAccount": {
+                "service_account": {
                     "email": service_account.email,
                 },
             })
@@ -438,7 +438,7 @@ class AppConnector(pulumi.CustomResource):
             region="us-central1",
             display_name="some display name",
             principal_info={
-                "serviceAccount": {
+                "service_account": {
                     "email": service_account.email,
                 },
             },

@@ -644,16 +644,16 @@ class Instance(pulumi.CustomResource):
                 "env": "test",
             },
             node_config={
-                "cpuCount": 1,
-                "memorySizeMb": 1024,
+                "cpu_count": 1,
+                "memory_size_mb": 1024,
             },
             node_count=1,
             memcache_version="MEMCACHE_1_5",
             maintenance_policy={
-                "weeklyMaintenanceWindows": [{
+                "weekly_maintenance_windows": [{
                     "day": "SATURDAY",
                     "duration": "14400s",
-                    "startTime": {
+                    "start_time": {
                         "hours": 0,
                         "minutes": 30,
                         "seconds": 0,
@@ -763,16 +763,16 @@ class Instance(pulumi.CustomResource):
                 "env": "test",
             },
             node_config={
-                "cpuCount": 1,
-                "memorySizeMb": 1024,
+                "cpu_count": 1,
+                "memory_size_mb": 1024,
             },
             node_count=1,
             memcache_version="MEMCACHE_1_5",
             maintenance_policy={
-                "weeklyMaintenanceWindows": [{
+                "weekly_maintenance_windows": [{
                     "day": "SATURDAY",
                     "duration": "14400s",
-                    "startTime": {
+                    "start_time": {
                         "hours": 0,
                         "minutes": 30,
                         "seconds": 0,

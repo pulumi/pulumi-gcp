@@ -283,10 +283,10 @@ class ResponsePolicyRule(pulumi.CustomResource):
             response_policy_name="example-response-policy",
             networks=[
                 {
-                    "networkUrl": network_1.id,
+                    "network_url": network_1.id,
                 },
                 {
-                    "networkUrl": network_2.id,
+                    "network_url": network_2.id,
                 },
             ])
         example_response_policy_rule = gcp.dns.ResponsePolicyRule("example-response-policy-rule",
@@ -294,7 +294,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
             rule_name="example-rule",
             dns_name="dns.example.com.",
             local_data={
-                "localDatas": [{
+                "local_datas": [{
                     "name": "dns.example.com.",
                     "type": "A",
                     "ttl": 300,
@@ -372,10 +372,10 @@ class ResponsePolicyRule(pulumi.CustomResource):
             response_policy_name="example-response-policy",
             networks=[
                 {
-                    "networkUrl": network_1.id,
+                    "network_url": network_1.id,
                 },
                 {
-                    "networkUrl": network_2.id,
+                    "network_url": network_2.id,
                 },
             ])
         example_response_policy_rule = gcp.dns.ResponsePolicyRule("example-response-policy-rule",
@@ -383,7 +383,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
             rule_name="example-rule",
             dns_name="dns.example.com.",
             local_data={
-                "localDatas": [{
+                "local_datas": [{
                     "name": "dns.example.com.",
                     "type": "A",
                     "ttl": 300,

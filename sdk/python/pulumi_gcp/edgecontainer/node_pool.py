@@ -510,13 +510,13 @@ class NodePool(pulumi.CustomResource):
             name="default",
             location="us-central1",
             authorization={
-                "adminUsers": {
+                "admin_users": {
                     "username": "admin@hashicorptest.com",
                 },
             },
             networking={
-                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
-                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+                "cluster_ipv4_cidr_blocks": ["10.0.0.0/16"],
+                "services_ipv4_cidr_blocks": ["10.1.0.0/16"],
             },
             fleet={
                 "project": f"projects/{project.number}",
@@ -543,13 +543,13 @@ class NodePool(pulumi.CustomResource):
             name="default",
             location="us-central1",
             authorization={
-                "adminUsers": {
+                "admin_users": {
                     "username": "admin@hashicorptest.com",
                 },
             },
             networking={
-                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
-                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+                "cluster_ipv4_cidr_blocks": ["10.0.0.0/16"],
+                "services_ipv4_cidr_blocks": ["10.1.0.0/16"],
             },
             fleet={
                 "project": f"projects/{project.number}",
@@ -571,7 +571,7 @@ class NodePool(pulumi.CustomResource):
             node_location="us-central1-edge-example-edgesite",
             node_count=3,
             local_disk_encryption={
-                "kmsKey": crypto_key_crypto_key.id,
+                "kms_key": crypto_key_crypto_key.id,
             },
             opts = pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```
@@ -586,13 +586,13 @@ class NodePool(pulumi.CustomResource):
             name="",
             location="us-central1",
             authorization={
-                "adminUsers": {
+                "admin_users": {
                     "username": "admin@hashicorptest.com",
                 },
             },
             networking={
-                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
-                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+                "cluster_ipv4_cidr_blocks": ["10.0.0.0/16"],
+                "services_ipv4_cidr_blocks": ["10.1.0.0/16"],
             },
             fleet={
                 "project": f"projects/{project.number}",
@@ -600,10 +600,10 @@ class NodePool(pulumi.CustomResource):
             external_load_balancer_ipv4_address_pools=["10.100.0.0-10.100.0.10"],
             control_plane={
                 "local": {
-                    "nodeLocation": "us-central1-edge-example-edgesite",
-                    "nodeCount": 1,
-                    "machineFilter": "machine-name",
-                    "sharedDeploymentPolicy": "ALLOWED",
+                    "node_location": "us-central1-edge-example-edgesite",
+                    "node_count": 1,
+                    "machine_filter": "machine-name",
+                    "shared_deployment_policy": "ALLOWED",
                 },
             })
         default_node_pool = gcp.edgecontainer.NodePool("default",
@@ -689,13 +689,13 @@ class NodePool(pulumi.CustomResource):
             name="default",
             location="us-central1",
             authorization={
-                "adminUsers": {
+                "admin_users": {
                     "username": "admin@hashicorptest.com",
                 },
             },
             networking={
-                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
-                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+                "cluster_ipv4_cidr_blocks": ["10.0.0.0/16"],
+                "services_ipv4_cidr_blocks": ["10.1.0.0/16"],
             },
             fleet={
                 "project": f"projects/{project.number}",
@@ -722,13 +722,13 @@ class NodePool(pulumi.CustomResource):
             name="default",
             location="us-central1",
             authorization={
-                "adminUsers": {
+                "admin_users": {
                     "username": "admin@hashicorptest.com",
                 },
             },
             networking={
-                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
-                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+                "cluster_ipv4_cidr_blocks": ["10.0.0.0/16"],
+                "services_ipv4_cidr_blocks": ["10.1.0.0/16"],
             },
             fleet={
                 "project": f"projects/{project.number}",
@@ -750,7 +750,7 @@ class NodePool(pulumi.CustomResource):
             node_location="us-central1-edge-example-edgesite",
             node_count=3,
             local_disk_encryption={
-                "kmsKey": crypto_key_crypto_key.id,
+                "kms_key": crypto_key_crypto_key.id,
             },
             opts = pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```
@@ -765,13 +765,13 @@ class NodePool(pulumi.CustomResource):
             name="",
             location="us-central1",
             authorization={
-                "adminUsers": {
+                "admin_users": {
                     "username": "admin@hashicorptest.com",
                 },
             },
             networking={
-                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
-                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+                "cluster_ipv4_cidr_blocks": ["10.0.0.0/16"],
+                "services_ipv4_cidr_blocks": ["10.1.0.0/16"],
             },
             fleet={
                 "project": f"projects/{project.number}",
@@ -779,10 +779,10 @@ class NodePool(pulumi.CustomResource):
             external_load_balancer_ipv4_address_pools=["10.100.0.0-10.100.0.10"],
             control_plane={
                 "local": {
-                    "nodeLocation": "us-central1-edge-example-edgesite",
-                    "nodeCount": 1,
-                    "machineFilter": "machine-name",
-                    "sharedDeploymentPolicy": "ALLOWED",
+                    "node_location": "us-central1-edge-example-edgesite",
+                    "node_count": 1,
+                    "machine_filter": "machine-name",
+                    "shared_deployment_policy": "ALLOWED",
                 },
             })
         default_node_pool = gcp.edgecontainer.NodePool("default",

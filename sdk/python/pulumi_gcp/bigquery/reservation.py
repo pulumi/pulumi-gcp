@@ -401,7 +401,7 @@ class Reservation(pulumi.CustomResource):
             ignore_idle_slots=True,
             concurrency=0,
             autoscale={
-                "maxSlots": 100,
+                "max_slots": 100,
             })
         ```
 
@@ -482,7 +482,7 @@ class Reservation(pulumi.CustomResource):
             ignore_idle_slots=True,
             concurrency=0,
             autoscale={
-                "maxSlots": 100,
+                "max_slots": 100,
             })
         ```
 

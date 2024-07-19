@@ -246,18 +246,18 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             document_is_folder=False,
             property_definitions=[{
                 "name": "prop3",
-                "displayName": "propdisp3",
-                "isRepeatable": False,
-                "isFilterable": True,
-                "isSearchable": True,
-                "isMetadata": False,
-                "isRequired": False,
-                "retrievalImportance": "HIGHEST",
-                "schemaSources": [{
+                "display_name": "propdisp3",
+                "is_repeatable": False,
+                "is_filterable": True,
+                "is_searchable": True,
+                "is_metadata": False,
+                "is_required": False,
+                "retrieval_importance": "HIGHEST",
+                "schema_sources": [{
                     "name": "dummy_source",
-                    "processorType": "dummy_processor",
+                    "processor_type": "dummy_processor",
                 }],
-                "textTypeOptions": {},
+                "text_type_options": {},
             }])
         ```
 
@@ -319,18 +319,18 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             document_is_folder=False,
             property_definitions=[{
                 "name": "prop3",
-                "displayName": "propdisp3",
-                "isRepeatable": False,
-                "isFilterable": True,
-                "isSearchable": True,
-                "isMetadata": False,
-                "isRequired": False,
-                "retrievalImportance": "HIGHEST",
-                "schemaSources": [{
+                "display_name": "propdisp3",
+                "is_repeatable": False,
+                "is_filterable": True,
+                "is_searchable": True,
+                "is_metadata": False,
+                "is_required": False,
+                "retrieval_importance": "HIGHEST",
+                "schema_sources": [{
                     "name": "dummy_source",
-                    "processorType": "dummy_processor",
+                    "processor_type": "dummy_processor",
                 }],
-                "textTypeOptions": {},
+                "text_type_options": {},
             }])
         ```
 

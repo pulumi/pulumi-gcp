@@ -321,13 +321,13 @@ class RegionAutoscaler(pulumi.CustomResource):
             name="my-instance-template",
             machine_type="e2-standard-4",
             disks=[{
-                "sourceImage": "debian-cloud/debian-11",
-                "diskSizeGb": 250,
+                "source_image": "debian-cloud/debian-11",
+                "disk_size_gb": 250,
             }],
             network_interfaces=[{
                 "network": "default",
-                "accessConfigs": [{
-                    "networkTier": "PREMIUM",
+                "access_configs": [{
+                    "network_tier": "PREMIUM",
                 }],
             }],
             service_account={
@@ -346,7 +346,7 @@ class RegionAutoscaler(pulumi.CustomResource):
             name="my-region-igm",
             region="us-central1",
             versions=[{
-                "instanceTemplate": foobar_instance_template.id,
+                "instance_template": foobar_instance_template.id,
                 "name": "primary",
             }],
             target_pools=[foobar_target_pool.id],
@@ -356,10 +356,10 @@ class RegionAutoscaler(pulumi.CustomResource):
             region="us-central1",
             target=foobar_region_instance_group_manager.id,
             autoscaling_policy={
-                "maxReplicas": 5,
-                "minReplicas": 1,
-                "cooldownPeriod": 60,
-                "cpuUtilization": {
+                "max_replicas": 5,
+                "min_replicas": 1,
+                "cooldown_period": 60,
+                "cpu_utilization": {
                     "target": 0.5,
                 },
             })
@@ -445,13 +445,13 @@ class RegionAutoscaler(pulumi.CustomResource):
             name="my-instance-template",
             machine_type="e2-standard-4",
             disks=[{
-                "sourceImage": "debian-cloud/debian-11",
-                "diskSizeGb": 250,
+                "source_image": "debian-cloud/debian-11",
+                "disk_size_gb": 250,
             }],
             network_interfaces=[{
                 "network": "default",
-                "accessConfigs": [{
-                    "networkTier": "PREMIUM",
+                "access_configs": [{
+                    "network_tier": "PREMIUM",
                 }],
             }],
             service_account={
@@ -470,7 +470,7 @@ class RegionAutoscaler(pulumi.CustomResource):
             name="my-region-igm",
             region="us-central1",
             versions=[{
-                "instanceTemplate": foobar_instance_template.id,
+                "instance_template": foobar_instance_template.id,
                 "name": "primary",
             }],
             target_pools=[foobar_target_pool.id],
@@ -480,10 +480,10 @@ class RegionAutoscaler(pulumi.CustomResource):
             region="us-central1",
             target=foobar_region_instance_group_manager.id,
             autoscaling_policy={
-                "maxReplicas": 5,
-                "minReplicas": 1,
-                "cooldownPeriod": 60,
-                "cpuUtilization": {
+                "max_replicas": 5,
+                "min_replicas": 1,
+                "cooldown_period": 60,
+                "cpu_utilization": {
                     "target": 0.5,
                 },
             })

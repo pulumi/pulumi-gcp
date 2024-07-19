@@ -371,9 +371,9 @@ class Router(pulumi.CustomResource):
             network=foobar_network.name,
             bgp={
                 "asn": 64514,
-                "advertiseMode": "CUSTOM",
-                "advertisedGroups": ["ALL_SUBNETS"],
-                "advertisedIpRanges": [
+                "advertise_mode": "CUSTOM",
+                "advertised_groups": ["ALL_SUBNETS"],
+                "advertised_ip_ranges": [
                     {
                         "range": "1.2.3.4",
                     },
@@ -483,9 +483,9 @@ class Router(pulumi.CustomResource):
             network=foobar_network.name,
             bgp={
                 "asn": 64514,
-                "advertiseMode": "CUSTOM",
-                "advertisedGroups": ["ALL_SUBNETS"],
-                "advertisedIpRanges": [
+                "advertise_mode": "CUSTOM",
+                "advertised_groups": ["ALL_SUBNETS"],
+                "advertised_ip_ranges": [
                     {
                         "range": "1.2.3.4",
                     },

@@ -364,13 +364,13 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             region="us-central1",
             git_remote_settings={
                 "url": git_repository.url,
-                "defaultBranch": "main",
-                "authenticationTokenSecretVersion": secret_version.id,
+                "default_branch": "main",
+                "authentication_token_secret_version": secret_version.id,
             },
             workspace_compilation_overrides={
-                "defaultDatabase": "database",
-                "schemaSuffix": "_suffix",
-                "tablePrefix": "prefix_",
+                "default_database": "database",
+                "schema_suffix": "_suffix",
+                "table_prefix": "prefix_",
             })
         release_config = gcp.dataform.RepositoryReleaseConfig("release_config",
             project=repository.project,
@@ -381,13 +381,13 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             cron_schedule="0 7 * * *",
             time_zone="America/New_York",
             code_compilation_config={
-                "defaultDatabase": "gcp-example-project",
-                "defaultSchema": "example-dataset",
-                "defaultLocation": "us-central1",
-                "assertionSchema": "example-assertion-dataset",
-                "databaseSuffix": "",
-                "schemaSuffix": "",
-                "tablePrefix": "",
+                "default_database": "gcp-example-project",
+                "default_schema": "example-dataset",
+                "default_location": "us-central1",
+                "assertion_schema": "example-assertion-dataset",
+                "database_suffix": "",
+                "schema_suffix": "",
+                "table_prefix": "",
                 "vars": {
                     "var1": "value",
                 },
@@ -402,7 +402,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             name="my_workflow",
             release_config=release_config.id,
             invocation_config={
-                "includedTargets": [
+                "included_targets": [
                     {
                         "database": "gcp-example-project",
                         "schema": "example-dataset",
@@ -414,11 +414,11 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                         "name": "target_2",
                     },
                 ],
-                "includedTags": ["tag_1"],
-                "transitiveDependenciesIncluded": True,
-                "transitiveDependentsIncluded": True,
-                "fullyRefreshIncrementalTablesEnabled": False,
-                "serviceAccount": dataform_sa.email,
+                "included_tags": ["tag_1"],
+                "transitive_dependencies_included": True,
+                "transitive_dependents_included": True,
+                "fully_refresh_incremental_tables_enabled": False,
+                "service_account": dataform_sa.email,
             },
             cron_schedule="0 7 * * *",
             time_zone="America/New_York")
@@ -499,13 +499,13 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             region="us-central1",
             git_remote_settings={
                 "url": git_repository.url,
-                "defaultBranch": "main",
-                "authenticationTokenSecretVersion": secret_version.id,
+                "default_branch": "main",
+                "authentication_token_secret_version": secret_version.id,
             },
             workspace_compilation_overrides={
-                "defaultDatabase": "database",
-                "schemaSuffix": "_suffix",
-                "tablePrefix": "prefix_",
+                "default_database": "database",
+                "schema_suffix": "_suffix",
+                "table_prefix": "prefix_",
             })
         release_config = gcp.dataform.RepositoryReleaseConfig("release_config",
             project=repository.project,
@@ -516,13 +516,13 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             cron_schedule="0 7 * * *",
             time_zone="America/New_York",
             code_compilation_config={
-                "defaultDatabase": "gcp-example-project",
-                "defaultSchema": "example-dataset",
-                "defaultLocation": "us-central1",
-                "assertionSchema": "example-assertion-dataset",
-                "databaseSuffix": "",
-                "schemaSuffix": "",
-                "tablePrefix": "",
+                "default_database": "gcp-example-project",
+                "default_schema": "example-dataset",
+                "default_location": "us-central1",
+                "assertion_schema": "example-assertion-dataset",
+                "database_suffix": "",
+                "schema_suffix": "",
+                "table_prefix": "",
                 "vars": {
                     "var1": "value",
                 },
@@ -537,7 +537,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             name="my_workflow",
             release_config=release_config.id,
             invocation_config={
-                "includedTargets": [
+                "included_targets": [
                     {
                         "database": "gcp-example-project",
                         "schema": "example-dataset",
@@ -549,11 +549,11 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                         "name": "target_2",
                     },
                 ],
-                "includedTags": ["tag_1"],
-                "transitiveDependenciesIncluded": True,
-                "transitiveDependentsIncluded": True,
-                "fullyRefreshIncrementalTablesEnabled": False,
-                "serviceAccount": dataform_sa.email,
+                "included_tags": ["tag_1"],
+                "transitive_dependencies_included": True,
+                "transitive_dependents_included": True,
+                "fully_refresh_incremental_tables_enabled": False,
+                "service_account": dataform_sa.email,
             },
             cron_schedule="0 7 * * *",
             time_zone="America/New_York")

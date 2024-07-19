@@ -1151,7 +1151,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             },
             deployment={
                 "zip": {
-                    "sourceUrl": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                    "source_url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 },
             },
             liveness_check={
@@ -1164,19 +1164,19 @@ class FlexibleAppVersion(pulumi.CustomResource):
                 "port": "8080",
             },
             handlers=[{
-                "urlRegex": ".*\\\\/my-path\\\\/*",
-                "securityLevel": "SECURE_ALWAYS",
+                "url_regex": ".*\\\\/my-path\\\\/*",
+                "security_level": "SECURE_ALWAYS",
                 "login": "LOGIN_REQUIRED",
-                "authFailAction": "AUTH_FAIL_ACTION_REDIRECT",
-                "staticFiles": {
+                "auth_fail_action": "AUTH_FAIL_ACTION_REDIRECT",
+                "static_files": {
                     "path": "my-other-path",
-                    "uploadPathRegex": ".*\\\\/my-path\\\\/*",
+                    "upload_path_regex": ".*\\\\/my-path\\\\/*",
                 },
             }],
             automatic_scaling={
-                "coolDownPeriod": "120s",
-                "cpuUtilization": {
-                    "targetUtilization": 0.5,
+                "cool_down_period": "120s",
+                "cpu_utilization": {
+                    "target_utilization": 0.5,
                 },
             },
             noop_on_destroy=True,
@@ -1327,7 +1327,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             },
             deployment={
                 "zip": {
-                    "sourceUrl": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                    "source_url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 },
             },
             liveness_check={
@@ -1340,19 +1340,19 @@ class FlexibleAppVersion(pulumi.CustomResource):
                 "port": "8080",
             },
             handlers=[{
-                "urlRegex": ".*\\\\/my-path\\\\/*",
-                "securityLevel": "SECURE_ALWAYS",
+                "url_regex": ".*\\\\/my-path\\\\/*",
+                "security_level": "SECURE_ALWAYS",
                 "login": "LOGIN_REQUIRED",
-                "authFailAction": "AUTH_FAIL_ACTION_REDIRECT",
-                "staticFiles": {
+                "auth_fail_action": "AUTH_FAIL_ACTION_REDIRECT",
+                "static_files": {
                     "path": "my-other-path",
-                    "uploadPathRegex": ".*\\\\/my-path\\\\/*",
+                    "upload_path_regex": ".*\\\\/my-path\\\\/*",
                 },
             }],
             automatic_scaling={
-                "coolDownPeriod": "120s",
-                "cpuUtilization": {
-                    "targetUtilization": 0.5,
+                "cool_down_period": "120s",
+                "cpu_utilization": {
+                    "target_utilization": 0.5,
                 },
             },
             noop_on_destroy=True,
