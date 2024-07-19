@@ -391,7 +391,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
             description="An externally managed VPN gateway",
             interfaces=[{
                 "id": 0,
-                "ipAddress": "8.8.8.8",
+                "ip_address": "8.8.8.8",
             }])
         network_subnet1 = gcp.compute.Subnetwork("network_subnet1",
             name="ha-vpn-subnet-1",
@@ -539,7 +539,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
             description="An externally managed VPN gateway",
             interfaces=[{
                 "id": 0,
-                "ipAddress": "8.8.8.8",
+                "ip_address": "8.8.8.8",
             }])
         network_subnet1 = gcp.compute.Subnetwork("network_subnet1",
             name="ha-vpn-subnet-1",

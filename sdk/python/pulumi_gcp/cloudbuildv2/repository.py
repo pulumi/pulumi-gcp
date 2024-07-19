@@ -366,12 +366,12 @@ class Repository(pulumi.CustomResource):
             location="us-central1",
             name="my-terraform-ghe-connection",
             github_enterprise_config={
-                "hostUri": "https://ghe.com",
-                "privateKeySecretVersion": private_key_secret_version.id,
-                "webhookSecretSecretVersion": webhook_secret_secret_version.id,
-                "appId": 200,
-                "appSlug": "gcb-app",
-                "appInstallationId": 300,
+                "host_uri": "https://ghe.com",
+                "private_key_secret_version": private_key_secret_version.id,
+                "webhook_secret_secret_version": webhook_secret_secret_version.id,
+                "app_id": 200,
+                "app_slug": "gcb-app",
+                "app_installation_id": 300,
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     policy_pk,
@@ -409,9 +409,9 @@ class Repository(pulumi.CustomResource):
             location="us-central1",
             name="my-connection",
             github_config={
-                "appInstallationId": 123123,
-                "authorizerCredential": {
-                    "oauthTokenSecretVersion": github_token_secret_version.id,
+                "app_installation_id": 123123,
+                "authorizer_credential": {
+                    "oauth_token_secret_version": github_token_secret_version.id,
                 },
             })
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
@@ -514,12 +514,12 @@ class Repository(pulumi.CustomResource):
             location="us-central1",
             name="my-terraform-ghe-connection",
             github_enterprise_config={
-                "hostUri": "https://ghe.com",
-                "privateKeySecretVersion": private_key_secret_version.id,
-                "webhookSecretSecretVersion": webhook_secret_secret_version.id,
-                "appId": 200,
-                "appSlug": "gcb-app",
-                "appInstallationId": 300,
+                "host_uri": "https://ghe.com",
+                "private_key_secret_version": private_key_secret_version.id,
+                "webhook_secret_secret_version": webhook_secret_secret_version.id,
+                "app_id": 200,
+                "app_slug": "gcb-app",
+                "app_installation_id": 300,
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     policy_pk,
@@ -557,9 +557,9 @@ class Repository(pulumi.CustomResource):
             location="us-central1",
             name="my-connection",
             github_config={
-                "appInstallationId": 123123,
-                "authorizerCredential": {
-                    "oauthTokenSecretVersion": github_token_secret_version.id,
+                "app_installation_id": 123123,
+                "authorizer_credential": {
+                    "oauth_token_secret_version": github_token_secret_version.id,
                 },
             })
         my_repository = gcp.cloudbuildv2.Repository("my-repository",

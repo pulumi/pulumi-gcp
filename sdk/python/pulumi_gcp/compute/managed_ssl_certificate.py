@@ -411,12 +411,12 @@ class ManagedSslCertificate(pulumi.CustomResource):
             default_service=default_backend_service.id,
             host_rules=[{
                 "hosts": ["sslcert.tf-test.club"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": default_backend_service.id,
-                "pathRules": [{
+                "default_service": default_backend_service.id,
+                "path_rules": [{
                     "paths": ["/*"],
                     "service": default_backend_service.id,
                 }],
@@ -539,12 +539,12 @@ class ManagedSslCertificate(pulumi.CustomResource):
             default_service=default_backend_service.id,
             host_rules=[{
                 "hosts": ["sslcert.tf-test.club"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": default_backend_service.id,
-                "pathRules": [{
+                "default_service": default_backend_service.id,
+                "path_rules": [{
                     "paths": ["/*"],
                     "service": default_backend_service.id,
                 }],

@@ -449,7 +449,7 @@ class Certificate(pulumi.CustomResource):
                     instance.domain,
                     instance2.domain,
                 ],
-                "dnsAuthorizations": [
+                "dns_authorizations": [
                     instance.id,
                     instance2.id,
                 ],
@@ -470,26 +470,26 @@ class Certificate(pulumi.CustomResource):
             pool=pool.name,
             certificate_authority_id="ca-authority",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -505,8 +505,8 @@ class Certificate(pulumi.CustomResource):
             name="issuance-config",
             description="sample description for the certificate issuanceConfigs",
             certificate_authority_config={
-                "certificateAuthorityServiceConfig": {
-                    "caPool": pool.id,
+                "certificate_authority_service_config": {
+                    "ca_pool": pool.id,
                 },
             },
             lifetime="1814400s",
@@ -519,7 +519,7 @@ class Certificate(pulumi.CustomResource):
             scope="EDGE_CACHE",
             managed={
                 "domains": ["terraform.subdomain1.com"],
-                "issuanceConfig": issuanceconfig.id,
+                "issuance_config": issuanceconfig.id,
             })
         ```
         ### Certificate Manager Certificate Basic
@@ -545,7 +545,7 @@ class Certificate(pulumi.CustomResource):
                     instance.domain,
                     instance2.domain,
                 ],
-                "dnsAuthorizations": [
+                "dns_authorizations": [
                     instance.id,
                     instance2.id,
                 ],
@@ -563,8 +563,8 @@ class Certificate(pulumi.CustomResource):
             description="Regional cert",
             location="us-central1",
             self_managed={
-                "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
-                "pemPrivateKey": std.file(input="test-fixtures/private-key.pem").result,
+                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         ```
         ### Certificate Manager Google Managed Certificate Issuance Config All Regions
@@ -582,26 +582,26 @@ class Certificate(pulumi.CustomResource):
             pool=pool.name,
             certificate_authority_id="ca-authority",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -617,8 +617,8 @@ class Certificate(pulumi.CustomResource):
             name="issuance-config",
             description="sample description for the certificate issuanceConfigs",
             certificate_authority_config={
-                "certificateAuthorityServiceConfig": {
-                    "caPool": pool.id,
+                "certificate_authority_service_config": {
+                    "ca_pool": pool.id,
                 },
             },
             lifetime="1814400s",
@@ -631,7 +631,7 @@ class Certificate(pulumi.CustomResource):
             scope="ALL_REGIONS",
             managed={
                 "domains": ["terraform.subdomain1.com"],
-                "issuanceConfig": issuanceconfig.id,
+                "issuance_config": issuanceconfig.id,
             })
         ```
         ### Certificate Manager Google Managed Certificate Dns All Regions
@@ -657,7 +657,7 @@ class Certificate(pulumi.CustomResource):
                     instance.domain,
                     instance2.domain,
                 ],
-                "dnsAuthorizations": [
+                "dns_authorizations": [
                     instance.id,
                     instance2.id,
                 ],
@@ -680,7 +680,7 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             managed={
                 "domains": [instance.domain],
-                "dnsAuthorizations": [instance.id],
+                "dns_authorizations": [instance.id],
             })
         ```
 
@@ -776,7 +776,7 @@ class Certificate(pulumi.CustomResource):
                     instance.domain,
                     instance2.domain,
                 ],
-                "dnsAuthorizations": [
+                "dns_authorizations": [
                     instance.id,
                     instance2.id,
                 ],
@@ -797,26 +797,26 @@ class Certificate(pulumi.CustomResource):
             pool=pool.name,
             certificate_authority_id="ca-authority",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -832,8 +832,8 @@ class Certificate(pulumi.CustomResource):
             name="issuance-config",
             description="sample description for the certificate issuanceConfigs",
             certificate_authority_config={
-                "certificateAuthorityServiceConfig": {
-                    "caPool": pool.id,
+                "certificate_authority_service_config": {
+                    "ca_pool": pool.id,
                 },
             },
             lifetime="1814400s",
@@ -846,7 +846,7 @@ class Certificate(pulumi.CustomResource):
             scope="EDGE_CACHE",
             managed={
                 "domains": ["terraform.subdomain1.com"],
-                "issuanceConfig": issuanceconfig.id,
+                "issuance_config": issuanceconfig.id,
             })
         ```
         ### Certificate Manager Certificate Basic
@@ -872,7 +872,7 @@ class Certificate(pulumi.CustomResource):
                     instance.domain,
                     instance2.domain,
                 ],
-                "dnsAuthorizations": [
+                "dns_authorizations": [
                     instance.id,
                     instance2.id,
                 ],
@@ -890,8 +890,8 @@ class Certificate(pulumi.CustomResource):
             description="Regional cert",
             location="us-central1",
             self_managed={
-                "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
-                "pemPrivateKey": std.file(input="test-fixtures/private-key.pem").result,
+                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         ```
         ### Certificate Manager Google Managed Certificate Issuance Config All Regions
@@ -909,26 +909,26 @@ class Certificate(pulumi.CustomResource):
             pool=pool.name,
             certificate_authority_id="ca-authority",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -944,8 +944,8 @@ class Certificate(pulumi.CustomResource):
             name="issuance-config",
             description="sample description for the certificate issuanceConfigs",
             certificate_authority_config={
-                "certificateAuthorityServiceConfig": {
-                    "caPool": pool.id,
+                "certificate_authority_service_config": {
+                    "ca_pool": pool.id,
                 },
             },
             lifetime="1814400s",
@@ -958,7 +958,7 @@ class Certificate(pulumi.CustomResource):
             scope="ALL_REGIONS",
             managed={
                 "domains": ["terraform.subdomain1.com"],
-                "issuanceConfig": issuanceconfig.id,
+                "issuance_config": issuanceconfig.id,
             })
         ```
         ### Certificate Manager Google Managed Certificate Dns All Regions
@@ -984,7 +984,7 @@ class Certificate(pulumi.CustomResource):
                     instance.domain,
                     instance2.domain,
                 ],
-                "dnsAuthorizations": [
+                "dns_authorizations": [
                     instance.id,
                     instance2.id,
                 ],
@@ -1007,7 +1007,7 @@ class Certificate(pulumi.CustomResource):
             location="us-central1",
             managed={
                 "domains": [instance.domain],
-                "dnsAuthorizations": [instance.id],
+                "dns_authorizations": [instance.id],
             })
         ```
 

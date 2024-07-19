@@ -1163,11 +1163,11 @@ class Table(pulumi.CustomResource):
             table_id="sheet",
             external_data_configuration={
                 "autodetect": True,
-                "sourceFormat": "GOOGLE_SHEETS",
-                "googleSheetsOptions": {
-                    "skipLeadingRows": 1,
+                "source_format": "GOOGLE_SHEETS",
+                "google_sheets_options": {
+                    "skip_leading_rows": 1,
                 },
-                "sourceUris": ["https://docs.google.com/spreadsheets/d/123456789012345"],
+                "source_uris": ["https://docs.google.com/spreadsheets/d/123456789012345"],
             })
         ```
 
@@ -1314,11 +1314,11 @@ class Table(pulumi.CustomResource):
             table_id="sheet",
             external_data_configuration={
                 "autodetect": True,
-                "sourceFormat": "GOOGLE_SHEETS",
-                "googleSheetsOptions": {
-                    "skipLeadingRows": 1,
+                "source_format": "GOOGLE_SHEETS",
+                "google_sheets_options": {
+                    "skip_leading_rows": 1,
                 },
-                "sourceUris": ["https://docs.google.com/spreadsheets/d/123456789012345"],
+                "source_uris": ["https://docs.google.com/spreadsheets/d/123456789012345"],
             })
         ```
 

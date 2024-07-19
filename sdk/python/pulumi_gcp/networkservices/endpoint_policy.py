@@ -474,11 +474,11 @@ class EndpointPolicy(pulumi.CustomResource):
                 "ports": ["8081"],
             },
             endpoint_matcher={
-                "metadataLabelMatcher": {
-                    "metadataLabelMatchCriteria": "MATCH_ANY",
-                    "metadataLabels": [{
-                        "labelName": "foo",
-                        "labelValue": "bar",
+                "metadata_label_matcher": {
+                    "metadata_label_match_criteria": "MATCH_ANY",
+                    "metadata_labels": [{
+                        "label_name": "foo",
+                        "label_value": "bar",
                     }],
                 },
             })
@@ -500,8 +500,8 @@ class EndpointPolicy(pulumi.CustomResource):
                 "ports": ["8081"],
             },
             endpoint_matcher={
-                "metadataLabelMatcher": {
-                    "metadataLabelMatchCriteria": "MATCH_ANY",
+                "metadata_label_matcher": {
+                    "metadata_label_match_criteria": "MATCH_ANY",
                 },
             })
         ```
@@ -575,11 +575,11 @@ class EndpointPolicy(pulumi.CustomResource):
                 "ports": ["8081"],
             },
             endpoint_matcher={
-                "metadataLabelMatcher": {
-                    "metadataLabelMatchCriteria": "MATCH_ANY",
-                    "metadataLabels": [{
-                        "labelName": "foo",
-                        "labelValue": "bar",
+                "metadata_label_matcher": {
+                    "metadata_label_match_criteria": "MATCH_ANY",
+                    "metadata_labels": [{
+                        "label_name": "foo",
+                        "label_value": "bar",
                     }],
                 },
             })
@@ -601,8 +601,8 @@ class EndpointPolicy(pulumi.CustomResource):
                 "ports": ["8081"],
             },
             endpoint_matcher={
-                "metadataLabelMatcher": {
-                    "metadataLabelMatchCriteria": "MATCH_ANY",
+                "metadata_label_matcher": {
+                    "metadata_label_match_criteria": "MATCH_ANY",
                 },
             })
         ```

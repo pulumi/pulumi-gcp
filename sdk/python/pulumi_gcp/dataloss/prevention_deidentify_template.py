@@ -297,18 +297,18 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             description="Description",
             display_name="Displayname",
             deidentify_config={
-                "infoTypeTransformations": {
+                "info_type_transformations": {
                     "transformations": [
                         {
-                            "infoTypes": [{
+                            "info_types": [{
                                 "name": "FIRST_NAME",
                             }],
-                            "primitiveTransformation": {
-                                "replaceWithInfoTypeConfig": True,
+                            "primitive_transformation": {
+                                "replace_with_info_type_config": True,
                             },
                         },
                         {
-                            "infoTypes": [
+                            "info_types": [
                                 {
                                     "name": "PHONE_NUMBER",
                                 },
@@ -316,16 +316,16 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                                     "name": "AGE",
                                 },
                             ],
-                            "primitiveTransformation": {
-                                "replaceConfig": {
-                                    "newValue": {
-                                        "integerValue": 9,
+                            "primitive_transformation": {
+                                "replace_config": {
+                                    "new_value": {
+                                        "integer_value": 9,
                                     },
                                 },
                             },
                         },
                         {
-                            "infoTypes": [
+                            "info_types": [
                                 {
                                     "name": "EMAIL_ADDRESS",
                                 },
@@ -333,25 +333,25 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                                     "name": "LAST_NAME",
                                 },
                             ],
-                            "primitiveTransformation": {
-                                "characterMaskConfig": {
-                                    "maskingCharacter": "X",
-                                    "numberToMask": 4,
-                                    "reverseOrder": True,
-                                    "charactersToIgnores": [{
-                                        "commonCharactersToIgnore": "PUNCTUATION",
+                            "primitive_transformation": {
+                                "character_mask_config": {
+                                    "masking_character": "X",
+                                    "number_to_mask": 4,
+                                    "reverse_order": True,
+                                    "characters_to_ignores": [{
+                                        "common_characters_to_ignore": "PUNCTUATION",
                                     }],
                                 },
                             },
                         },
                         {
-                            "infoTypes": [{
+                            "info_types": [{
                                 "name": "DATE_OF_BIRTH",
                             }],
-                            "primitiveTransformation": {
-                                "replaceConfig": {
-                                    "newValue": {
-                                        "dateValue": {
+                            "primitive_transformation": {
+                                "replace_config": {
+                                    "new_value": {
+                                        "date_value": {
                                             "year": 2020,
                                             "month": 1,
                                             "day": 1,
@@ -361,20 +361,20 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                             },
                         },
                         {
-                            "infoTypes": [{
+                            "info_types": [{
                                 "name": "CREDIT_CARD_NUMBER",
                             }],
-                            "primitiveTransformation": {
-                                "cryptoDeterministicConfig": {
+                            "primitive_transformation": {
+                                "crypto_deterministic_config": {
                                     "context": {
                                         "name": "sometweak",
                                     },
-                                    "cryptoKey": {
+                                    "crypto_key": {
                                         "transient": {
                                             "name": "beep",
                                         },
                                     },
-                                    "surrogateInfoType": {
+                                    "surrogate_info_type": {
                                         "name": "abc",
                                     },
                                 },
@@ -395,26 +395,26 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             description="Description",
             display_name="Displayname",
             deidentify_config={
-                "imageTransformations": {
+                "image_transformations": {
                     "transforms": [
                         {
-                            "redactionColor": {
+                            "redaction_color": {
                                 "red": 0.5,
                                 "blue": 1,
                                 "green": 0.2,
                             },
-                            "selectedInfoTypes": {
-                                "infoTypes": [{
+                            "selected_info_types": {
+                                "info_types": [{
                                     "name": "COLOR_INFO",
                                     "version": "latest",
                                 }],
                             },
                         },
                         {
-                            "allInfoTypes": {},
+                            "all_info_types": {},
                         },
                         {
-                            "allText": {},
+                            "all_text": {},
                         },
                     ],
                 },
@@ -481,18 +481,18 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             description="Description",
             display_name="Displayname",
             deidentify_config={
-                "infoTypeTransformations": {
+                "info_type_transformations": {
                     "transformations": [
                         {
-                            "infoTypes": [{
+                            "info_types": [{
                                 "name": "FIRST_NAME",
                             }],
-                            "primitiveTransformation": {
-                                "replaceWithInfoTypeConfig": True,
+                            "primitive_transformation": {
+                                "replace_with_info_type_config": True,
                             },
                         },
                         {
-                            "infoTypes": [
+                            "info_types": [
                                 {
                                     "name": "PHONE_NUMBER",
                                 },
@@ -500,16 +500,16 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                                     "name": "AGE",
                                 },
                             ],
-                            "primitiveTransformation": {
-                                "replaceConfig": {
-                                    "newValue": {
-                                        "integerValue": 9,
+                            "primitive_transformation": {
+                                "replace_config": {
+                                    "new_value": {
+                                        "integer_value": 9,
                                     },
                                 },
                             },
                         },
                         {
-                            "infoTypes": [
+                            "info_types": [
                                 {
                                     "name": "EMAIL_ADDRESS",
                                 },
@@ -517,25 +517,25 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                                     "name": "LAST_NAME",
                                 },
                             ],
-                            "primitiveTransformation": {
-                                "characterMaskConfig": {
-                                    "maskingCharacter": "X",
-                                    "numberToMask": 4,
-                                    "reverseOrder": True,
-                                    "charactersToIgnores": [{
-                                        "commonCharactersToIgnore": "PUNCTUATION",
+                            "primitive_transformation": {
+                                "character_mask_config": {
+                                    "masking_character": "X",
+                                    "number_to_mask": 4,
+                                    "reverse_order": True,
+                                    "characters_to_ignores": [{
+                                        "common_characters_to_ignore": "PUNCTUATION",
                                     }],
                                 },
                             },
                         },
                         {
-                            "infoTypes": [{
+                            "info_types": [{
                                 "name": "DATE_OF_BIRTH",
                             }],
-                            "primitiveTransformation": {
-                                "replaceConfig": {
-                                    "newValue": {
-                                        "dateValue": {
+                            "primitive_transformation": {
+                                "replace_config": {
+                                    "new_value": {
+                                        "date_value": {
                                             "year": 2020,
                                             "month": 1,
                                             "day": 1,
@@ -545,20 +545,20 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                             },
                         },
                         {
-                            "infoTypes": [{
+                            "info_types": [{
                                 "name": "CREDIT_CARD_NUMBER",
                             }],
-                            "primitiveTransformation": {
-                                "cryptoDeterministicConfig": {
+                            "primitive_transformation": {
+                                "crypto_deterministic_config": {
                                     "context": {
                                         "name": "sometweak",
                                     },
-                                    "cryptoKey": {
+                                    "crypto_key": {
                                         "transient": {
                                             "name": "beep",
                                         },
                                     },
-                                    "surrogateInfoType": {
+                                    "surrogate_info_type": {
                                         "name": "abc",
                                     },
                                 },
@@ -579,26 +579,26 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             description="Description",
             display_name="Displayname",
             deidentify_config={
-                "imageTransformations": {
+                "image_transformations": {
                     "transforms": [
                         {
-                            "redactionColor": {
+                            "redaction_color": {
                                 "red": 0.5,
                                 "blue": 1,
                                 "green": 0.2,
                             },
-                            "selectedInfoTypes": {
-                                "infoTypes": [{
+                            "selected_info_types": {
+                                "info_types": [{
                                     "name": "COLOR_INFO",
                                     "version": "latest",
                                 }],
                             },
                         },
                         {
-                            "allInfoTypes": {},
+                            "all_info_types": {},
                         },
                         {
-                            "allText": {},
+                            "all_text": {},
                         },
                     ],
                 },

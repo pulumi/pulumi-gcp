@@ -347,11 +347,11 @@ class IAMMember(pulumi.CustomResource):
             service="allServices",
             audit_log_configs=[
                 {
-                    "logType": "ADMIN_READ",
+                    "log_type": "ADMIN_READ",
                 },
                 {
-                    "logType": "DATA_READ",
-                    "exemptedMembers": ["user:joebloggs@example.com"],
+                    "log_type": "DATA_READ",
+                    "exempted_members": ["user:joebloggs@example.com"],
                 },
             ])
         ```
@@ -474,11 +474,11 @@ class IAMMember(pulumi.CustomResource):
             service="allServices",
             audit_log_configs=[
                 {
-                    "logType": "ADMIN_READ",
+                    "log_type": "ADMIN_READ",
                 },
                 {
-                    "logType": "DATA_READ",
-                    "exemptedMembers": ["user:joebloggs@example.com"],
+                    "log_type": "DATA_READ",
+                    "exempted_members": ["user:joebloggs@example.com"],
                 },
             ])
         ```
@@ -660,11 +660,11 @@ class IAMMember(pulumi.CustomResource):
             service="allServices",
             audit_log_configs=[
                 {
-                    "logType": "ADMIN_READ",
+                    "log_type": "ADMIN_READ",
                 },
                 {
-                    "logType": "DATA_READ",
-                    "exemptedMembers": ["user:joebloggs@example.com"],
+                    "log_type": "DATA_READ",
+                    "exempted_members": ["user:joebloggs@example.com"],
                 },
             ])
         ```
@@ -787,11 +787,11 @@ class IAMMember(pulumi.CustomResource):
             service="allServices",
             audit_log_configs=[
                 {
-                    "logType": "ADMIN_READ",
+                    "log_type": "ADMIN_READ",
                 },
                 {
-                    "logType": "DATA_READ",
-                    "exemptedMembers": ["user:joebloggs@example.com"],
+                    "log_type": "DATA_READ",
+                    "exempted_members": ["user:joebloggs@example.com"],
                 },
             ])
         ```

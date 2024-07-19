@@ -580,7 +580,7 @@ class Connection(pulumi.CustomResource):
             description="a riveting description",
             location="US",
             cloud_sql={
-                "instanceId": instance.connection_name,
+                "instance_id": instance.connection_name,
                 "database": db.name,
                 "type": "POSTGRES",
                 "credential": {
@@ -620,7 +620,7 @@ class Connection(pulumi.CustomResource):
             friendly_name="👋",
             description="a riveting description",
             cloud_sql={
-                "instanceId": instance.connection_name,
+                "instance_id": instance.connection_name,
                 "database": db.name,
                 "type": "POSTGRES",
                 "credential": {
@@ -641,8 +641,8 @@ class Connection(pulumi.CustomResource):
             friendly_name="👋",
             description="a riveting description",
             aws={
-                "accessRole": {
-                    "iamRoleId": "arn:aws:iam::999999999999:role/omnirole",
+                "access_role": {
+                    "iam_role_id": "arn:aws:iam::999999999999:role/omnirole",
                 },
             })
         ```
@@ -658,8 +658,8 @@ class Connection(pulumi.CustomResource):
             friendly_name="👋",
             description="a riveting description",
             azure={
-                "customerTenantId": "customer-tenant-id",
-                "federatedApplicationClientId": "b43eeeee-eeee-eeee-eeee-a480155501ce",
+                "customer_tenant_id": "customer-tenant-id",
+                "federated_application_client_id": "b43eeeee-eeee-eeee-eeee-a480155501ce",
             })
         ```
         ### Bigquery Connection Cloudspanner
@@ -675,7 +675,7 @@ class Connection(pulumi.CustomResource):
             description="a riveting description",
             cloud_spanner={
                 "database": "projects/project/instances/instance/databases/database",
-                "databaseRole": "database_role",
+                "database_role": "database_role",
             })
         ```
         ### Bigquery Connection Cloudspanner Databoost
@@ -691,9 +691,9 @@ class Connection(pulumi.CustomResource):
             description="a riveting description",
             cloud_spanner={
                 "database": "projects/project/instances/instance/databases/database",
-                "useParallelism": True,
-                "useDataBoost": True,
-                "maxParallelism": 100,
+                "use_parallelism": True,
+                "use_data_boost": True,
+                "max_parallelism": 100,
             })
         ```
         ### Bigquery Connection Spark
@@ -706,16 +706,16 @@ class Connection(pulumi.CustomResource):
             name="my-connection",
             region="us-central1",
             cluster_config={
-                "softwareConfig": {
-                    "overrideProperties": {
-                        "dataproc:dataproc.allow.zero.workers": "true",
+                "software_config": {
+                    "override_properties": {
+                        "dataproc_dataproc_allow_zero_workers": "true",
                     },
                 },
-                "masterConfig": {
-                    "numInstances": 1,
-                    "machineType": "e2-standard-2",
-                    "diskConfig": {
-                        "bootDiskSizeGb": 35,
+                "master_config": {
+                    "num_instances": 1,
+                    "machine_type": "e2-standard-2",
+                    "disk_config": {
+                        "boot_disk_size_gb": 35,
                     },
                 },
             })
@@ -725,8 +725,8 @@ class Connection(pulumi.CustomResource):
             friendly_name="👋",
             description="a riveting description",
             spark={
-                "sparkHistoryServerConfig": {
-                    "dataprocCluster": basic.id,
+                "spark_history_server_config": {
+                    "dataproc_cluster": basic.id,
                 },
             })
         ```
@@ -757,7 +757,7 @@ class Connection(pulumi.CustomResource):
             location="US",
             kms_key_name="projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
             cloud_sql={
-                "instanceId": instance.connection_name,
+                "instance_id": instance.connection_name,
                 "database": db.name,
                 "type": "POSTGRES",
                 "credential": {
@@ -880,7 +880,7 @@ class Connection(pulumi.CustomResource):
             description="a riveting description",
             location="US",
             cloud_sql={
-                "instanceId": instance.connection_name,
+                "instance_id": instance.connection_name,
                 "database": db.name,
                 "type": "POSTGRES",
                 "credential": {
@@ -920,7 +920,7 @@ class Connection(pulumi.CustomResource):
             friendly_name="👋",
             description="a riveting description",
             cloud_sql={
-                "instanceId": instance.connection_name,
+                "instance_id": instance.connection_name,
                 "database": db.name,
                 "type": "POSTGRES",
                 "credential": {
@@ -941,8 +941,8 @@ class Connection(pulumi.CustomResource):
             friendly_name="👋",
             description="a riveting description",
             aws={
-                "accessRole": {
-                    "iamRoleId": "arn:aws:iam::999999999999:role/omnirole",
+                "access_role": {
+                    "iam_role_id": "arn:aws:iam::999999999999:role/omnirole",
                 },
             })
         ```
@@ -958,8 +958,8 @@ class Connection(pulumi.CustomResource):
             friendly_name="👋",
             description="a riveting description",
             azure={
-                "customerTenantId": "customer-tenant-id",
-                "federatedApplicationClientId": "b43eeeee-eeee-eeee-eeee-a480155501ce",
+                "customer_tenant_id": "customer-tenant-id",
+                "federated_application_client_id": "b43eeeee-eeee-eeee-eeee-a480155501ce",
             })
         ```
         ### Bigquery Connection Cloudspanner
@@ -975,7 +975,7 @@ class Connection(pulumi.CustomResource):
             description="a riveting description",
             cloud_spanner={
                 "database": "projects/project/instances/instance/databases/database",
-                "databaseRole": "database_role",
+                "database_role": "database_role",
             })
         ```
         ### Bigquery Connection Cloudspanner Databoost
@@ -991,9 +991,9 @@ class Connection(pulumi.CustomResource):
             description="a riveting description",
             cloud_spanner={
                 "database": "projects/project/instances/instance/databases/database",
-                "useParallelism": True,
-                "useDataBoost": True,
-                "maxParallelism": 100,
+                "use_parallelism": True,
+                "use_data_boost": True,
+                "max_parallelism": 100,
             })
         ```
         ### Bigquery Connection Spark
@@ -1006,16 +1006,16 @@ class Connection(pulumi.CustomResource):
             name="my-connection",
             region="us-central1",
             cluster_config={
-                "softwareConfig": {
-                    "overrideProperties": {
-                        "dataproc:dataproc.allow.zero.workers": "true",
+                "software_config": {
+                    "override_properties": {
+                        "dataproc_dataproc_allow_zero_workers": "true",
                     },
                 },
-                "masterConfig": {
-                    "numInstances": 1,
-                    "machineType": "e2-standard-2",
-                    "diskConfig": {
-                        "bootDiskSizeGb": 35,
+                "master_config": {
+                    "num_instances": 1,
+                    "machine_type": "e2-standard-2",
+                    "disk_config": {
+                        "boot_disk_size_gb": 35,
                     },
                 },
             })
@@ -1025,8 +1025,8 @@ class Connection(pulumi.CustomResource):
             friendly_name="👋",
             description="a riveting description",
             spark={
-                "sparkHistoryServerConfig": {
-                    "dataprocCluster": basic.id,
+                "spark_history_server_config": {
+                    "dataproc_cluster": basic.id,
                 },
             })
         ```
@@ -1057,7 +1057,7 @@ class Connection(pulumi.CustomResource):
             location="US",
             kms_key_name="projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
             cloud_sql={
-                "instanceId": instance.connection_name,
+                "instance_id": instance.connection_name,
                 "database": db.name,
                 "type": "POSTGRES",
                 "credential": {

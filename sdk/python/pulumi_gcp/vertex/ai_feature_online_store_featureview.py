@@ -469,10 +469,10 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             },
             region="us-central1",
             bigtable={
-                "autoScaling": {
-                    "minNodeCount": 1,
-                    "maxNodeCount": 2,
-                    "cpuUtilizationTarget": 80,
+                "auto_scaling": {
+                    "min_node_count": 1,
+                    "max_node_count": 2,
+                    "cpu_utilization_target": 80,
                 },
             })
         tf_test_dataset = gcp.bigquery.Dataset("tf-test-dataset",
@@ -514,7 +514,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             },
             big_query_source={
                 "uri": pulumi.Output.all(tf_test_table.project, tf_test_table.dataset_id, tf_test_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
-                "entityIdColumns": ["test_entity_column"],
+                "entity_id_columns": ["test_entity_column"],
             })
         project = gcp.organizations.get_project()
         ```
@@ -531,10 +531,10 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             },
             region="us-central1",
             bigtable={
-                "autoScaling": {
-                    "minNodeCount": 1,
-                    "maxNodeCount": 2,
-                    "cpuUtilizationTarget": 80,
+                "auto_scaling": {
+                    "min_node_count": 1,
+                    "max_node_count": 2,
+                    "cpu_utilization_target": 80,
                 },
             })
         sample_dataset = gcp.bigquery.Dataset("sample_dataset",
@@ -572,10 +572,10 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             big_query={
-                "bigQuerySource": {
-                    "inputUri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                "big_query_source": {
+                    "input_uri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
                 },
-                "entityIdColumns": ["feature_id"],
+                "entity_id_columns": ["feature_id"],
             })
         sample_feature = gcp.vertex.AiFeatureGroupFeature("sample_feature",
             name="example_feature_view_feature_registry",
@@ -593,9 +593,9 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 "cron": "0 0 * * *",
             },
             feature_registry_source={
-                "featureGroups": [{
-                    "featureGroupId": sample_feature_group.name,
-                    "featureIds": [sample_feature.name],
+                "feature_groups": [{
+                    "feature_group_id": sample_feature_group.name,
+                    "feature_ids": [sample_feature.name],
                 }],
             })
         ```
@@ -627,10 +627,10 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             },
             region="us-central1",
             bigtable={
-                "autoScaling": {
-                    "minNodeCount": 1,
-                    "maxNodeCount": 2,
-                    "cpuUtilizationTarget": 80,
+                "auto_scaling": {
+                    "min_node_count": 1,
+                    "max_node_count": 2,
+                    "cpu_utilization_target": 80,
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[vertexai]))
@@ -677,10 +677,10 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             big_query={
-                "bigQuerySource": {
-                    "inputUri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                "big_query_source": {
+                    "input_uri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
                 },
-                "entityIdColumns": ["feature_id"],
+                "entity_id_columns": ["feature_id"],
             })
         sample_feature = gcp.vertex.AiFeatureGroupFeature("sample_feature",
             name="example_cross_project_featureview",
@@ -699,11 +699,11 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 "cron": "0 0 * * *",
             },
             feature_registry_source={
-                "featureGroups": [{
-                    "featureGroupId": sample_feature_group.name,
-                    "featureIds": [sample_feature.name],
+                "feature_groups": [{
+                    "feature_group_id": sample_feature_group.name,
+                    "feature_ids": [sample_feature.name],
                 }],
-                "projectNumber": test_project.number,
+                "project_number": test_project.number,
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     vertexai,
@@ -723,10 +723,10 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             },
             region="us-central1",
             bigtable={
-                "autoScaling": {
-                    "minNodeCount": 1,
-                    "maxNodeCount": 2,
-                    "cpuUtilizationTarget": 80,
+                "auto_scaling": {
+                    "min_node_count": 1,
+                    "max_node_count": 2,
+                    "cpu_utilization_target": 80,
                 },
             },
             embedding_management={
@@ -795,17 +795,17 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             },
             big_query_source={
                 "uri": pulumi.Output.all(tf_test_table.project, tf_test_table.dataset_id, tf_test_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
-                "entityIdColumns": ["test_entity_column"],
+                "entity_id_columns": ["test_entity_column"],
             },
             vector_search_config={
-                "embeddingColumn": "embedding",
-                "filterColumns": ["country"],
-                "crowdingColumn": "test_crowding_column",
-                "distanceMeasureType": "DOT_PRODUCT_DISTANCE",
-                "treeAhConfig": {
-                    "leafNodeEmbeddingCount": "1000",
+                "embedding_column": "embedding",
+                "filter_columns": ["country"],
+                "crowding_column": "test_crowding_column",
+                "distance_measure_type": "DOT_PRODUCT_DISTANCE",
+                "tree_ah_config": {
+                    "leaf_node_embedding_count": "1000",
                 },
-                "embeddingDimension": 2,
+                "embedding_dimension": 2,
             })
         project = gcp.organizations.get_project()
         ```
@@ -893,10 +893,10 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             },
             region="us-central1",
             bigtable={
-                "autoScaling": {
-                    "minNodeCount": 1,
-                    "maxNodeCount": 2,
-                    "cpuUtilizationTarget": 80,
+                "auto_scaling": {
+                    "min_node_count": 1,
+                    "max_node_count": 2,
+                    "cpu_utilization_target": 80,
                 },
             })
         tf_test_dataset = gcp.bigquery.Dataset("tf-test-dataset",
@@ -938,7 +938,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             },
             big_query_source={
                 "uri": pulumi.Output.all(tf_test_table.project, tf_test_table.dataset_id, tf_test_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
-                "entityIdColumns": ["test_entity_column"],
+                "entity_id_columns": ["test_entity_column"],
             })
         project = gcp.organizations.get_project()
         ```
@@ -955,10 +955,10 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             },
             region="us-central1",
             bigtable={
-                "autoScaling": {
-                    "minNodeCount": 1,
-                    "maxNodeCount": 2,
-                    "cpuUtilizationTarget": 80,
+                "auto_scaling": {
+                    "min_node_count": 1,
+                    "max_node_count": 2,
+                    "cpu_utilization_target": 80,
                 },
             })
         sample_dataset = gcp.bigquery.Dataset("sample_dataset",
@@ -996,10 +996,10 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             big_query={
-                "bigQuerySource": {
-                    "inputUri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                "big_query_source": {
+                    "input_uri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
                 },
-                "entityIdColumns": ["feature_id"],
+                "entity_id_columns": ["feature_id"],
             })
         sample_feature = gcp.vertex.AiFeatureGroupFeature("sample_feature",
             name="example_feature_view_feature_registry",
@@ -1017,9 +1017,9 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 "cron": "0 0 * * *",
             },
             feature_registry_source={
-                "featureGroups": [{
-                    "featureGroupId": sample_feature_group.name,
-                    "featureIds": [sample_feature.name],
+                "feature_groups": [{
+                    "feature_group_id": sample_feature_group.name,
+                    "feature_ids": [sample_feature.name],
                 }],
             })
         ```
@@ -1051,10 +1051,10 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             },
             region="us-central1",
             bigtable={
-                "autoScaling": {
-                    "minNodeCount": 1,
-                    "maxNodeCount": 2,
-                    "cpuUtilizationTarget": 80,
+                "auto_scaling": {
+                    "min_node_count": 1,
+                    "max_node_count": 2,
+                    "cpu_utilization_target": 80,
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[vertexai]))
@@ -1101,10 +1101,10 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             big_query={
-                "bigQuerySource": {
-                    "inputUri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                "big_query_source": {
+                    "input_uri": pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
                 },
-                "entityIdColumns": ["feature_id"],
+                "entity_id_columns": ["feature_id"],
             })
         sample_feature = gcp.vertex.AiFeatureGroupFeature("sample_feature",
             name="example_cross_project_featureview",
@@ -1123,11 +1123,11 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 "cron": "0 0 * * *",
             },
             feature_registry_source={
-                "featureGroups": [{
-                    "featureGroupId": sample_feature_group.name,
-                    "featureIds": [sample_feature.name],
+                "feature_groups": [{
+                    "feature_group_id": sample_feature_group.name,
+                    "feature_ids": [sample_feature.name],
                 }],
-                "projectNumber": test_project.number,
+                "project_number": test_project.number,
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     vertexai,
@@ -1147,10 +1147,10 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             },
             region="us-central1",
             bigtable={
-                "autoScaling": {
-                    "minNodeCount": 1,
-                    "maxNodeCount": 2,
-                    "cpuUtilizationTarget": 80,
+                "auto_scaling": {
+                    "min_node_count": 1,
+                    "max_node_count": 2,
+                    "cpu_utilization_target": 80,
                 },
             },
             embedding_management={
@@ -1219,17 +1219,17 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             },
             big_query_source={
                 "uri": pulumi.Output.all(tf_test_table.project, tf_test_table.dataset_id, tf_test_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
-                "entityIdColumns": ["test_entity_column"],
+                "entity_id_columns": ["test_entity_column"],
             },
             vector_search_config={
-                "embeddingColumn": "embedding",
-                "filterColumns": ["country"],
-                "crowdingColumn": "test_crowding_column",
-                "distanceMeasureType": "DOT_PRODUCT_DISTANCE",
-                "treeAhConfig": {
-                    "leafNodeEmbeddingCount": "1000",
+                "embedding_column": "embedding",
+                "filter_columns": ["country"],
+                "crowding_column": "test_crowding_column",
+                "distance_measure_type": "DOT_PRODUCT_DISTANCE",
+                "tree_ah_config": {
+                    "leaf_node_embedding_count": "1000",
                 },
-                "embeddingDimension": 2,
+                "embedding_dimension": 2,
             })
         project = gcp.organizations.get_project()
         ```

@@ -436,19 +436,19 @@ class ClientTlsPolicy(pulumi.CustomResource):
             },
             description="my description",
             client_certificate={
-                "certificateProviderInstance": {
-                    "pluginInstance": "google_cloud_private_spiffe",
+                "certificate_provider_instance": {
+                    "plugin_instance": "google_cloud_private_spiffe",
                 },
             },
             server_validation_cas=[
                 {
-                    "grpcEndpoint": {
-                        "targetUri": "unix:mypath",
+                    "grpc_endpoint": {
+                        "target_uri": "unix:mypath",
                     },
                 },
                 {
-                    "grpcEndpoint": {
-                        "targetUri": "unix:mypath1",
+                    "grpc_endpoint": {
+                        "target_uri": "unix:mypath1",
                     },
                 },
             ])
@@ -534,19 +534,19 @@ class ClientTlsPolicy(pulumi.CustomResource):
             },
             description="my description",
             client_certificate={
-                "certificateProviderInstance": {
-                    "pluginInstance": "google_cloud_private_spiffe",
+                "certificate_provider_instance": {
+                    "plugin_instance": "google_cloud_private_spiffe",
                 },
             },
             server_validation_cas=[
                 {
-                    "grpcEndpoint": {
-                        "targetUri": "unix:mypath",
+                    "grpc_endpoint": {
+                        "target_uri": "unix:mypath",
                     },
                 },
                 {
-                    "grpcEndpoint": {
-                        "targetUri": "unix:mypath1",
+                    "grpc_endpoint": {
+                        "target_uri": "unix:mypath1",
                     },
                 },
             ])
