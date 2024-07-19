@@ -1038,10 +1038,10 @@ class RouterPeer(pulumi.CustomResource):
             advertised_route_priority=100,
             interface="interface-1",
             bfd={
-                "minReceiveInterval": 1000,
-                "minTransmitInterval": 1000,
+                "min_receive_interval": 1000,
+                "min_transmit_interval": 1000,
                 "multiplier": 5,
-                "sessionInitializationMode": "ACTIVE",
+                "session_initialization_mode": "ACTIVE",
             })
         ```
         ### Router Peer Router Appliance
@@ -1079,12 +1079,12 @@ class RouterPeer(pulumi.CustomResource):
             machine_type="e2-medium",
             can_ip_forward=True,
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                 },
             },
             network_interfaces=[{
-                "networkIp": addr_peer.address,
+                "network_ip": addr_peer.address,
                 "subnetwork": subnetwork.self_link,
             }])
         hub = gcp.networkconnectivity.Hub("hub", name="my-router-hub")
@@ -1094,10 +1094,10 @@ class RouterPeer(pulumi.CustomResource):
             hub=hub.id,
             linked_router_appliance_instances={
                 "instances": [{
-                    "virtualMachine": instance.self_link,
-                    "ipAddress": addr_peer.address,
+                    "virtual_machine": instance.self_link,
+                    "ip_address": addr_peer.address,
                 }],
-                "siteToSiteDataTransfer": False,
+                "site_to_site_data_transfer": False,
             })
         router = gcp.compute.Router("router",
             name="my-router-router",
@@ -1315,10 +1315,10 @@ class RouterPeer(pulumi.CustomResource):
             advertised_route_priority=100,
             interface="interface-1",
             bfd={
-                "minReceiveInterval": 1000,
-                "minTransmitInterval": 1000,
+                "min_receive_interval": 1000,
+                "min_transmit_interval": 1000,
                 "multiplier": 5,
-                "sessionInitializationMode": "ACTIVE",
+                "session_initialization_mode": "ACTIVE",
             })
         ```
         ### Router Peer Router Appliance
@@ -1356,12 +1356,12 @@ class RouterPeer(pulumi.CustomResource):
             machine_type="e2-medium",
             can_ip_forward=True,
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                 },
             },
             network_interfaces=[{
-                "networkIp": addr_peer.address,
+                "network_ip": addr_peer.address,
                 "subnetwork": subnetwork.self_link,
             }])
         hub = gcp.networkconnectivity.Hub("hub", name="my-router-hub")
@@ -1371,10 +1371,10 @@ class RouterPeer(pulumi.CustomResource):
             hub=hub.id,
             linked_router_appliance_instances={
                 "instances": [{
-                    "virtualMachine": instance.self_link,
-                    "ipAddress": addr_peer.address,
+                    "virtual_machine": instance.self_link,
+                    "ip_address": addr_peer.address,
                 }],
-                "siteToSiteDataTransfer": False,
+                "site_to_site_data_transfer": False,
             })
         router = gcp.compute.Router("router",
             name="my-router-router",

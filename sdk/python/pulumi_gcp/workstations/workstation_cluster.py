@@ -631,7 +631,7 @@ class WorkstationCluster(pulumi.CustomResource):
             subnetwork=default_subnetwork.id,
             location="us-central1",
             private_cluster_config={
-                "enablePrivateEndpoint": True,
+                "enable_private_endpoint": True,
             },
             labels={
                 "label": "key",
@@ -661,7 +661,7 @@ class WorkstationCluster(pulumi.CustomResource):
             subnetwork=default_subnetwork.id,
             location="us-central1",
             private_cluster_config={
-                "enablePrivateEndpoint": True,
+                "enable_private_endpoint": True,
             },
             domain_config={
                 "domain": "workstations.example.com",
@@ -780,7 +780,7 @@ class WorkstationCluster(pulumi.CustomResource):
             subnetwork=default_subnetwork.id,
             location="us-central1",
             private_cluster_config={
-                "enablePrivateEndpoint": True,
+                "enable_private_endpoint": True,
             },
             labels={
                 "label": "key",
@@ -810,7 +810,7 @@ class WorkstationCluster(pulumi.CustomResource):
             subnetwork=default_subnetwork.id,
             location="us-central1",
             private_cluster_config={
-                "enablePrivateEndpoint": True,
+                "enable_private_endpoint": True,
             },
             domain_config={
                 "domain": "workstations.example.com",

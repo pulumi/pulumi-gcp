@@ -1081,22 +1081,22 @@ class Cluster(pulumi.CustomResource):
             },
             continuous_backup_config={
                 "enabled": True,
-                "recoveryWindowDays": 14,
+                "recovery_window_days": 14,
             },
             automated_backup_policy={
                 "location": "us-central1",
-                "backupWindow": "1800s",
+                "backup_window": "1800s",
                 "enabled": True,
-                "weeklySchedule": {
-                    "daysOfWeeks": ["MONDAY"],
-                    "startTimes": [{
+                "weekly_schedule": {
+                    "days_of_weeks": ["MONDAY"],
+                    "start_times": [{
                         "hours": 23,
                         "minutes": 0,
                         "seconds": 0,
                         "nanos": 0,
                     }],
                 },
-                "quantityBasedRetention": {
+                "quantity_based_retention": {
                     "count": 1,
                 },
                 "labels": {
@@ -1137,7 +1137,7 @@ class Cluster(pulumi.CustomResource):
             instance_id="alloydb-instance",
             instance_type="PRIMARY",
             machine_config={
-                "cpuCount": 2,
+                "cpu_count": 2,
             },
             opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         source_backup = gcp.alloydb.Backup("source",
@@ -1152,7 +1152,7 @@ class Cluster(pulumi.CustomResource):
                 "network": default.id,
             },
             restore_backup_source={
-                "backupName": source_backup.name,
+                "backup_name": source_backup.name,
             })
         restored_via_pitr = gcp.alloydb.Cluster("restored_via_pitr",
             cluster_id="alloydb-pitr-restored",
@@ -1160,7 +1160,7 @@ class Cluster(pulumi.CustomResource):
             network=default.id,
             restore_continuous_backup_source={
                 "cluster": source.name,
-                "pointInTime": "2023-08-03T19:19:00.094Z",
+                "point_in_time": "2023-08-03T19:19:00.094Z",
             })
         project = gcp.organizations.get_project()
         ```
@@ -1190,7 +1190,7 @@ class Cluster(pulumi.CustomResource):
             instance_id="alloydb-primary-instance",
             instance_type="PRIMARY",
             machine_config={
-                "cpuCount": 2,
+                "cpu_count": 2,
             },
             opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         secondary = gcp.alloydb.Cluster("secondary",
@@ -1202,7 +1202,7 @@ class Cluster(pulumi.CustomResource):
                 "enabled": False,
             },
             secondary_config={
-                "primaryClusterName": primary.name,
+                "primary_cluster_name": primary.name,
             },
             opts = pulumi.ResourceOptions(depends_on=[primary_instance]))
         project = gcp.organizations.get_project()
@@ -1335,22 +1335,22 @@ class Cluster(pulumi.CustomResource):
             },
             continuous_backup_config={
                 "enabled": True,
-                "recoveryWindowDays": 14,
+                "recovery_window_days": 14,
             },
             automated_backup_policy={
                 "location": "us-central1",
-                "backupWindow": "1800s",
+                "backup_window": "1800s",
                 "enabled": True,
-                "weeklySchedule": {
-                    "daysOfWeeks": ["MONDAY"],
-                    "startTimes": [{
+                "weekly_schedule": {
+                    "days_of_weeks": ["MONDAY"],
+                    "start_times": [{
                         "hours": 23,
                         "minutes": 0,
                         "seconds": 0,
                         "nanos": 0,
                     }],
                 },
-                "quantityBasedRetention": {
+                "quantity_based_retention": {
                     "count": 1,
                 },
                 "labels": {
@@ -1391,7 +1391,7 @@ class Cluster(pulumi.CustomResource):
             instance_id="alloydb-instance",
             instance_type="PRIMARY",
             machine_config={
-                "cpuCount": 2,
+                "cpu_count": 2,
             },
             opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         source_backup = gcp.alloydb.Backup("source",
@@ -1406,7 +1406,7 @@ class Cluster(pulumi.CustomResource):
                 "network": default.id,
             },
             restore_backup_source={
-                "backupName": source_backup.name,
+                "backup_name": source_backup.name,
             })
         restored_via_pitr = gcp.alloydb.Cluster("restored_via_pitr",
             cluster_id="alloydb-pitr-restored",
@@ -1414,7 +1414,7 @@ class Cluster(pulumi.CustomResource):
             network=default.id,
             restore_continuous_backup_source={
                 "cluster": source.name,
-                "pointInTime": "2023-08-03T19:19:00.094Z",
+                "point_in_time": "2023-08-03T19:19:00.094Z",
             })
         project = gcp.organizations.get_project()
         ```
@@ -1444,7 +1444,7 @@ class Cluster(pulumi.CustomResource):
             instance_id="alloydb-primary-instance",
             instance_type="PRIMARY",
             machine_config={
-                "cpuCount": 2,
+                "cpu_count": 2,
             },
             opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         secondary = gcp.alloydb.Cluster("secondary",
@@ -1456,7 +1456,7 @@ class Cluster(pulumi.CustomResource):
                 "enabled": False,
             },
             secondary_config={
-                "primaryClusterName": primary.name,
+                "primary_cluster_name": primary.name,
             },
             opts = pulumi.ResourceOptions(depends_on=[primary_instance]))
         project = gcp.organizations.get_project()

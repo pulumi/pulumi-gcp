@@ -515,9 +515,9 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             description="new rule",
             priority=100,
             match={
-                "versionedExpr": "SRC_IPS_V1",
+                "versioned_expr": "SRC_IPS_V1",
                 "config": {
-                    "srcIpRanges": ["10.10.0.0/16"],
+                    "src_ip_ranges": ["10.10.0.0/16"],
                 },
             },
             action="allow",
@@ -540,9 +540,9 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             description="new rule one",
             priority=100,
             match={
-                "versionedExpr": "SRC_IPS_V1",
+                "versioned_expr": "SRC_IPS_V1",
                 "config": {
-                    "srcIpRanges": ["10.10.0.0/16"],
+                    "src_ip_ranges": ["10.10.0.0/16"],
                 },
             },
             action="allow",
@@ -553,9 +553,9 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             description="new rule two",
             priority=101,
             match={
-                "versionedExpr": "SRC_IPS_V1",
+                "versioned_expr": "SRC_IPS_V1",
                 "config": {
-                    "srcIpRanges": [
+                    "src_ip_ranges": [
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
@@ -581,22 +581,22 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             description="new rule",
             priority=100,
             match={
-                "versionedExpr": "SRC_IPS_V1",
+                "versioned_expr": "SRC_IPS_V1",
                 "config": {
-                    "srcIpRanges": ["10.10.0.0/16"],
+                    "src_ip_ranges": ["10.10.0.0/16"],
                 },
             },
             preconfigured_waf_config={
                 "exclusions": [
                     {
-                        "requestUris": [{
+                        "request_uris": [{
                             "operator": "STARTS_WITH",
                             "value": "/admin",
                         }],
-                        "targetRuleSet": "rce-stable",
+                        "target_rule_set": "rce-stable",
                     },
                     {
-                        "requestQueryParams": [
+                        "request_query_params": [
                             {
                                 "operator": "CONTAINS",
                                 "value": "password",
@@ -610,8 +610,8 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                                 "value": "description",
                             },
                         ],
-                        "targetRuleSet": "xss-stable",
-                        "targetRuleIds": [
+                        "target_rule_set": "xss-stable",
+                        "target_rule_ids": [
                             "owasp-crs-v030001-id941330-xss",
                             "owasp-crs-v030001-id941340-xss",
                         ],
@@ -634,7 +634,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             description="policy for activating network DDoS protection for the desired region",
             type="CLOUD_ARMOR_NETWORK",
             ddos_protection_config={
-                "ddosProtection": "ADVANCED_PREVIEW",
+                "ddos_protection": "ADVANCED_PREVIEW",
             })
         edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edge_sec_service",
             region="us-west2",
@@ -661,8 +661,8 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             description="custom rule for network match",
             priority=100,
             network_match={
-                "srcIpRanges": ["10.10.0.0/16"],
-                "userDefinedFields": [{
+                "src_ip_ranges": ["10.10.0.0/16"],
+                "user_defined_fields": [{
                     "name": "SIG1_AT_0",
                     "values": ["0x8F00"],
                 }],
@@ -765,9 +765,9 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             description="new rule",
             priority=100,
             match={
-                "versionedExpr": "SRC_IPS_V1",
+                "versioned_expr": "SRC_IPS_V1",
                 "config": {
-                    "srcIpRanges": ["10.10.0.0/16"],
+                    "src_ip_ranges": ["10.10.0.0/16"],
                 },
             },
             action="allow",
@@ -790,9 +790,9 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             description="new rule one",
             priority=100,
             match={
-                "versionedExpr": "SRC_IPS_V1",
+                "versioned_expr": "SRC_IPS_V1",
                 "config": {
-                    "srcIpRanges": ["10.10.0.0/16"],
+                    "src_ip_ranges": ["10.10.0.0/16"],
                 },
             },
             action="allow",
@@ -803,9 +803,9 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             description="new rule two",
             priority=101,
             match={
-                "versionedExpr": "SRC_IPS_V1",
+                "versioned_expr": "SRC_IPS_V1",
                 "config": {
-                    "srcIpRanges": [
+                    "src_ip_ranges": [
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
@@ -831,22 +831,22 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             description="new rule",
             priority=100,
             match={
-                "versionedExpr": "SRC_IPS_V1",
+                "versioned_expr": "SRC_IPS_V1",
                 "config": {
-                    "srcIpRanges": ["10.10.0.0/16"],
+                    "src_ip_ranges": ["10.10.0.0/16"],
                 },
             },
             preconfigured_waf_config={
                 "exclusions": [
                     {
-                        "requestUris": [{
+                        "request_uris": [{
                             "operator": "STARTS_WITH",
                             "value": "/admin",
                         }],
-                        "targetRuleSet": "rce-stable",
+                        "target_rule_set": "rce-stable",
                     },
                     {
-                        "requestQueryParams": [
+                        "request_query_params": [
                             {
                                 "operator": "CONTAINS",
                                 "value": "password",
@@ -860,8 +860,8 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                                 "value": "description",
                             },
                         ],
-                        "targetRuleSet": "xss-stable",
-                        "targetRuleIds": [
+                        "target_rule_set": "xss-stable",
+                        "target_rule_ids": [
                             "owasp-crs-v030001-id941330-xss",
                             "owasp-crs-v030001-id941340-xss",
                         ],
@@ -884,7 +884,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             description="policy for activating network DDoS protection for the desired region",
             type="CLOUD_ARMOR_NETWORK",
             ddos_protection_config={
-                "ddosProtection": "ADVANCED_PREVIEW",
+                "ddos_protection": "ADVANCED_PREVIEW",
             })
         edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edge_sec_service",
             region="us-west2",
@@ -911,8 +911,8 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             description="custom rule for network match",
             priority=100,
             network_match={
-                "srcIpRanges": ["10.10.0.0/16"],
-                "userDefinedFields": [{
+                "src_ip_ranges": ["10.10.0.0/16"],
+                "user_defined_fields": [{
                     "name": "SIG1_AT_0",
                     "values": ["0x8F00"],
                 }],

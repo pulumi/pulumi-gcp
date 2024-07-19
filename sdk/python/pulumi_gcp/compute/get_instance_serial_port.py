@@ -127,14 +127,14 @@ def get_instance_serial_port(instance: Optional[str] = None,
 
     windows = gcp.compute.Instance("windows",
         network_interfaces=[{
-            "accessConfigs": [{}],
+            "access_configs": [{}],
             "network": "default",
         }],
         name="windows-instance",
         machine_type="e2-medium",
         zone="us-central1-a",
         boot_disk={
-            "initializeParams": {
+            "initialize_params": {
                 "image": "windows-cloud/windows-2019",
             },
         },
@@ -219,14 +219,14 @@ def get_instance_serial_port_output(instance: Optional[pulumi.Input[str]] = None
 
     windows = gcp.compute.Instance("windows",
         network_interfaces=[{
-            "accessConfigs": [{}],
+            "access_configs": [{}],
             "network": "default",
         }],
         name="windows-instance",
         machine_type="e2-medium",
         zone="us-central1-a",
         boot_disk={
-            "initializeParams": {
+            "initialize_params": {
                 "image": "windows-cloud/windows-2019",
             },
         },

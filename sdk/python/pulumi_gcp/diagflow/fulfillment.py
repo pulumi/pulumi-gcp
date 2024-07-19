@@ -274,7 +274,7 @@ class Fulfillment(pulumi.CustomResource):
                 "uri": "https://google.com",
                 "username": "admin",
                 "password": "password",
-                "requestHeaders": {
+                "request_headers": {
                     "name": "wrench",
                 },
             },
@@ -341,7 +341,7 @@ class Fulfillment(pulumi.CustomResource):
                 "uri": "https://google.com",
                 "username": "admin",
                 "password": "password",
-                "requestHeaders": {
+                "request_headers": {
                     "name": "wrench",
                 },
             },

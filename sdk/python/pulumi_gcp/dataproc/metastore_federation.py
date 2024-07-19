@@ -378,7 +378,7 @@ class MetastoreFederation(pulumi.CustomResource):
             tier="DEVELOPER",
             hive_metastore_config={
                 "version": "3.1.2",
-                "endpointProtocol": "GRPC",
+                "endpoint_protocol": "GRPC",
             })
         default = gcp.dataproc.MetastoreFederation("default",
             location="us-central1",
@@ -387,7 +387,7 @@ class MetastoreFederation(pulumi.CustomResource):
             backend_metastores=[{
                 "rank": "1",
                 "name": default_metastore_service.id,
-                "metastoreType": "DATAPROC_METASTORE",
+                "metastore_type": "DATAPROC_METASTORE",
             }])
         ```
         ### Dataproc Metastore Federation Bigquery
@@ -402,7 +402,7 @@ class MetastoreFederation(pulumi.CustomResource):
             tier="DEVELOPER",
             hive_metastore_config={
                 "version": "3.1.2",
-                "endpointProtocol": "GRPC",
+                "endpoint_protocol": "GRPC",
             })
         project = gcp.organizations.get_project()
         default = gcp.dataproc.MetastoreFederation("default",
@@ -413,12 +413,12 @@ class MetastoreFederation(pulumi.CustomResource):
                 {
                     "rank": "2",
                     "name": project.id,
-                    "metastoreType": "BIGQUERY",
+                    "metastore_type": "BIGQUERY",
                 },
                 {
                     "rank": "1",
                     "name": default_metastore_service.id,
-                    "metastoreType": "DATAPROC_METASTORE",
+                    "metastore_type": "DATAPROC_METASTORE",
                 },
             ])
         ```
@@ -483,7 +483,7 @@ class MetastoreFederation(pulumi.CustomResource):
             tier="DEVELOPER",
             hive_metastore_config={
                 "version": "3.1.2",
-                "endpointProtocol": "GRPC",
+                "endpoint_protocol": "GRPC",
             })
         default = gcp.dataproc.MetastoreFederation("default",
             location="us-central1",
@@ -492,7 +492,7 @@ class MetastoreFederation(pulumi.CustomResource):
             backend_metastores=[{
                 "rank": "1",
                 "name": default_metastore_service.id,
-                "metastoreType": "DATAPROC_METASTORE",
+                "metastore_type": "DATAPROC_METASTORE",
             }])
         ```
         ### Dataproc Metastore Federation Bigquery
@@ -507,7 +507,7 @@ class MetastoreFederation(pulumi.CustomResource):
             tier="DEVELOPER",
             hive_metastore_config={
                 "version": "3.1.2",
-                "endpointProtocol": "GRPC",
+                "endpoint_protocol": "GRPC",
             })
         project = gcp.organizations.get_project()
         default = gcp.dataproc.MetastoreFederation("default",
@@ -518,12 +518,12 @@ class MetastoreFederation(pulumi.CustomResource):
                 {
                     "rank": "2",
                     "name": project.id,
-                    "metastoreType": "BIGQUERY",
+                    "metastore_type": "BIGQUERY",
                 },
                 {
                     "rank": "1",
                     "name": default_metastore_service.id,
-                    "metastoreType": "DATAPROC_METASTORE",
+                    "metastore_type": "DATAPROC_METASTORE",
                 },
             ])
         ```

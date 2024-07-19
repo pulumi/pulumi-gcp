@@ -425,8 +425,8 @@ class MembershipBinding(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="tf-test-membership_39249",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[primary]))
@@ -521,8 +521,8 @@ class MembershipBinding(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="tf-test-membership_39249",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[primary]))

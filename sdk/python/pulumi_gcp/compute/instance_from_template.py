@@ -1319,9 +1319,9 @@ class InstanceFromTemplate(pulumi.CustomResource):
             name="template",
             machine_type="e2-medium",
             disks=[{
-                "sourceImage": "debian-cloud/debian-11",
-                "autoDelete": True,
-                "diskSizeGb": 100,
+                "source_image": "debian-cloud/debian-11",
+                "auto_delete": True,
+                "disk_size_gb": 100,
                 "boot": True,
             }],
             network_interfaces=[{
@@ -1422,9 +1422,9 @@ class InstanceFromTemplate(pulumi.CustomResource):
             name="template",
             machine_type="e2-medium",
             disks=[{
-                "sourceImage": "debian-cloud/debian-11",
-                "autoDelete": True,
-                "diskSizeGb": 100,
+                "source_image": "debian-cloud/debian-11",
+                "auto_delete": True,
+                "disk_size_gb": 100,
                 "boot": True,
             }],
             network_interfaces=[{
