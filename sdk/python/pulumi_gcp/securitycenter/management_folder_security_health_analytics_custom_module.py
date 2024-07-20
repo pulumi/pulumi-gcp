@@ -347,8 +347,8 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
                 "predicate": {
                     "expression": "resource.rotationPeriod > duration(\\"2592000s\\")",
                 },
-                "resourceSelector": {
-                    "resourceTypes": ["cloudkms.googleapis.com/CryptoKey"],
+                "resource_selector": {
+                    "resource_types": ["cloudkms.googleapis.com/CryptoKey"],
                 },
                 "description": "The rotation period of the identified cryptokey resource exceeds 30 days.",
                 "recommendation": "Set the rotation period to at most 30 days.",
@@ -376,10 +376,10 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
                     "description": "description of the expression",
                     "location": "location of the expression",
                 },
-                "customOutput": {
+                "custom_output": {
                     "properties": [{
                         "name": "duration",
-                        "valueExpression": {
+                        "value_expression": {
                             "expression": "resource.rotationPeriod",
                             "title": "Purpose of the expression",
                             "description": "description of the expression",
@@ -387,8 +387,8 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
                         },
                     }],
                 },
-                "resourceSelector": {
-                    "resourceTypes": ["cloudkms.googleapis.com/CryptoKey"],
+                "resource_selector": {
+                    "resource_types": ["cloudkms.googleapis.com/CryptoKey"],
                 },
                 "severity": "LOW",
                 "description": "Description of the custom module",
@@ -470,8 +470,8 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
                 "predicate": {
                     "expression": "resource.rotationPeriod > duration(\\"2592000s\\")",
                 },
-                "resourceSelector": {
-                    "resourceTypes": ["cloudkms.googleapis.com/CryptoKey"],
+                "resource_selector": {
+                    "resource_types": ["cloudkms.googleapis.com/CryptoKey"],
                 },
                 "description": "The rotation period of the identified cryptokey resource exceeds 30 days.",
                 "recommendation": "Set the rotation period to at most 30 days.",
@@ -499,10 +499,10 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
                     "description": "description of the expression",
                     "location": "location of the expression",
                 },
-                "customOutput": {
+                "custom_output": {
                     "properties": [{
                         "name": "duration",
-                        "valueExpression": {
+                        "value_expression": {
                             "expression": "resource.rotationPeriod",
                             "title": "Purpose of the expression",
                             "description": "description of the expression",
@@ -510,8 +510,8 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
                         },
                     }],
                 },
-                "resourceSelector": {
-                    "resourceTypes": ["cloudkms.googleapis.com/CryptoKey"],
+                "resource_selector": {
+                    "resource_types": ["cloudkms.googleapis.com/CryptoKey"],
                 },
                 "severity": "LOW",
                 "description": "Description of the custom module",

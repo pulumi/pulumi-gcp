@@ -311,13 +311,13 @@ class NetworkEndpoint(pulumi.CustomResource):
             network=default.id)
         endpoint_instance = gcp.compute.Instance("endpoint-instance",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "subnetwork": default_subnetwork.id,
             }],
             name="endpoint-instance",
             machine_type="e2-medium",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": my_image.self_link,
                 },
             })
@@ -426,13 +426,13 @@ class NetworkEndpoint(pulumi.CustomResource):
             network=default.id)
         endpoint_instance = gcp.compute.Instance("endpoint-instance",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "subnetwork": default_subnetwork.id,
             }],
             name="endpoint-instance",
             machine_type="e2-medium",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": my_image.self_link,
                 },
             })

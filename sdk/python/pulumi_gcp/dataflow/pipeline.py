@@ -511,32 +511,32 @@ class Pipeline(pulumi.CustomResource):
             state="STATE_ACTIVE",
             region="us-central1",
             workload={
-                "dataflowLaunchTemplateRequest": {
-                    "projectId": "my-project",
-                    "gcsPath": "gs://my-bucket/path",
-                    "launchParameters": {
-                        "jobName": "my-job",
+                "dataflow_launch_template_request": {
+                    "project_id": "my-project",
+                    "gcs_path": "gs://my-bucket/path",
+                    "launch_parameters": {
+                        "job_name": "my-job",
                         "parameters": {
                             "name": "wrench",
                         },
                         "environment": {
-                            "numWorkers": 5,
-                            "maxWorkers": 5,
+                            "num_workers": 5,
+                            "max_workers": 5,
                             "zone": "us-centra1-a",
-                            "serviceAccountEmail": service_account.email,
+                            "service_account_email": service_account.email,
                             "network": "default",
-                            "tempLocation": "gs://my-bucket/tmp_dir",
-                            "bypassTempDirValidation": False,
-                            "machineType": "E2",
-                            "additionalUserLabels": {
+                            "temp_location": "gs://my-bucket/tmp_dir",
+                            "bypass_temp_dir_validation": False,
+                            "machine_type": "E2",
+                            "additional_user_labels": {
                                 "context": "test",
                             },
-                            "workerRegion": "us-central1",
-                            "workerZone": "us-central1-a",
-                            "enableStreamingEngine": False,
+                            "worker_region": "us-central1",
+                            "worker_zone": "us-central1-a",
+                            "enable_streaming_engine": False,
                         },
                         "update": False,
-                        "transformNameMapping": {
+                        "transform_name_mapping": {
                             "name": "wrench",
                         },
                     },
@@ -640,32 +640,32 @@ class Pipeline(pulumi.CustomResource):
             state="STATE_ACTIVE",
             region="us-central1",
             workload={
-                "dataflowLaunchTemplateRequest": {
-                    "projectId": "my-project",
-                    "gcsPath": "gs://my-bucket/path",
-                    "launchParameters": {
-                        "jobName": "my-job",
+                "dataflow_launch_template_request": {
+                    "project_id": "my-project",
+                    "gcs_path": "gs://my-bucket/path",
+                    "launch_parameters": {
+                        "job_name": "my-job",
                         "parameters": {
                             "name": "wrench",
                         },
                         "environment": {
-                            "numWorkers": 5,
-                            "maxWorkers": 5,
+                            "num_workers": 5,
+                            "max_workers": 5,
                             "zone": "us-centra1-a",
-                            "serviceAccountEmail": service_account.email,
+                            "service_account_email": service_account.email,
                             "network": "default",
-                            "tempLocation": "gs://my-bucket/tmp_dir",
-                            "bypassTempDirValidation": False,
-                            "machineType": "E2",
-                            "additionalUserLabels": {
+                            "temp_location": "gs://my-bucket/tmp_dir",
+                            "bypass_temp_dir_validation": False,
+                            "machine_type": "E2",
+                            "additional_user_labels": {
                                 "context": "test",
                             },
-                            "workerRegion": "us-central1",
-                            "workerZone": "us-central1-a",
-                            "enableStreamingEngine": False,
+                            "worker_region": "us-central1",
+                            "worker_zone": "us-central1-a",
+                            "enable_streaming_engine": False,
                         },
                         "update": False,
-                        "transformNameMapping": {
+                        "transform_name_mapping": {
                             "name": "wrench",
                         },
                     },

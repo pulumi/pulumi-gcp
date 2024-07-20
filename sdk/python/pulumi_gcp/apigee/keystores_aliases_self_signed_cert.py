@@ -451,11 +451,11 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
             sig_alg="SHA512withRSA",
             cert_validity_in_days=4,
             subject={
-                "commonName": "selfsigned_example",
-                "countryCode": "US",
+                "common_name": "selfsigned_example",
+                "country_code": "US",
                 "locality": "TX",
                 "org": "CCE",
-                "orgUnit": "PSO",
+                "org_unit": "PSO",
             })
         ```
 
@@ -572,11 +572,11 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
             sig_alg="SHA512withRSA",
             cert_validity_in_days=4,
             subject={
-                "commonName": "selfsigned_example",
-                "countryCode": "US",
+                "common_name": "selfsigned_example",
+                "country_code": "US",
                 "locality": "TX",
                 "org": "CCE",
-                "orgUnit": "PSO",
+                "org_unit": "PSO",
             })
         ```
 

@@ -1504,8 +1504,8 @@ class BackendService(pulumi.CustomResource):
             protocol="HTTP",
             load_balancing_scheme="EXTERNAL",
             iap={
-                "oauth2ClientId": "abc",
-                "oauth2ClientSecret": "xyz",
+                "oauth2_client_id": "abc",
+                "oauth2_client_secret": "xyz",
             })
         ```
         ### Backend Service Cache Simple
@@ -1524,7 +1524,7 @@ class BackendService(pulumi.CustomResource):
             health_checks=default_http_health_check.id,
             enable_cdn=True,
             cdn_policy={
-                "signedUrlCacheMaxAgeSec": 7200,
+                "signed_url_cache_max_age_sec": 7200,
             })
         ```
         ### Backend Service Cache Include Http Headers
@@ -1537,12 +1537,12 @@ class BackendService(pulumi.CustomResource):
             name="backend-service",
             enable_cdn=True,
             cdn_policy={
-                "cacheMode": "USE_ORIGIN_HEADERS",
-                "cacheKeyPolicy": {
-                    "includeHost": True,
-                    "includeProtocol": True,
-                    "includeQueryString": True,
-                    "includeHttpHeaders": ["X-My-Header-Field"],
+                "cache_mode": "USE_ORIGIN_HEADERS",
+                "cache_key_policy": {
+                    "include_host": True,
+                    "include_protocol": True,
+                    "include_query_string": True,
+                    "include_http_headers": ["X-My-Header-Field"],
                 },
             })
         ```
@@ -1556,15 +1556,15 @@ class BackendService(pulumi.CustomResource):
             name="backend-service",
             enable_cdn=True,
             cdn_policy={
-                "cacheMode": "CACHE_ALL_STATIC",
-                "defaultTtl": 3600,
-                "clientTtl": 7200,
-                "maxTtl": 10800,
-                "cacheKeyPolicy": {
-                    "includeHost": True,
-                    "includeProtocol": True,
-                    "includeQueryString": True,
-                    "includeNamedCookies": [
+                "cache_mode": "CACHE_ALL_STATIC",
+                "default_ttl": 3600,
+                "client_ttl": 7200,
+                "max_ttl": 10800,
+                "cache_key_policy": {
+                    "include_host": True,
+                    "include_protocol": True,
+                    "include_query_string": True,
+                    "include_named_cookies": [
                         "__next_preview_data",
                         "__prerender_bypass",
                     ],
@@ -1587,12 +1587,12 @@ class BackendService(pulumi.CustomResource):
             health_checks=default_http_health_check.id,
             enable_cdn=True,
             cdn_policy={
-                "cacheMode": "CACHE_ALL_STATIC",
-                "defaultTtl": 3600,
-                "clientTtl": 7200,
-                "maxTtl": 10800,
-                "negativeCaching": True,
-                "signedUrlCacheMaxAgeSec": 7200,
+                "cache_mode": "CACHE_ALL_STATIC",
+                "default_ttl": 3600,
+                "client_ttl": 7200,
+                "max_ttl": 10800,
+                "negative_caching": True,
+                "signed_url_cache_max_age_sec": 7200,
             })
         ```
         ### Backend Service Cache Bypass Cache On Request Headers
@@ -1611,18 +1611,18 @@ class BackendService(pulumi.CustomResource):
             health_checks=default_http_health_check.id,
             enable_cdn=True,
             cdn_policy={
-                "cacheMode": "CACHE_ALL_STATIC",
-                "defaultTtl": 3600,
-                "clientTtl": 7200,
-                "maxTtl": 10800,
-                "negativeCaching": True,
-                "signedUrlCacheMaxAgeSec": 7200,
-                "bypassCacheOnRequestHeaders": [
+                "cache_mode": "CACHE_ALL_STATIC",
+                "default_ttl": 3600,
+                "client_ttl": 7200,
+                "max_ttl": 10800,
+                "negative_caching": True,
+                "signed_url_cache_max_age_sec": 7200,
+                "bypass_cache_on_request_headers": [
                     {
-                        "headerName": "Authorization",
+                        "header_name": "Authorization",
                     },
                     {
-                        "headerName": "Proxy-Authorization",
+                        "header_name": "Proxy-Authorization",
                     },
                 ],
             })
@@ -1662,10 +1662,10 @@ class BackendService(pulumi.CustomResource):
             locality_lb_policy="RING_HASH",
             session_affinity="HTTP_COOKIE",
             circuit_breakers={
-                "maxConnections": 10,
+                "max_connections": 10,
             },
             consistent_hash={
-                "httpCookie": {
+                "http_cookie": {
                     "ttl": {
                         "seconds": 11,
                         "nanos": 1111,
@@ -1674,7 +1674,7 @@ class BackendService(pulumi.CustomResource):
                 },
             },
             outlier_detection={
-                "consecutiveErrors": 2,
+                "consecutive_errors": 2,
             })
         ```
         ### Backend Service Network Endpoint
@@ -1931,8 +1931,8 @@ class BackendService(pulumi.CustomResource):
             protocol="HTTP",
             load_balancing_scheme="EXTERNAL",
             iap={
-                "oauth2ClientId": "abc",
-                "oauth2ClientSecret": "xyz",
+                "oauth2_client_id": "abc",
+                "oauth2_client_secret": "xyz",
             })
         ```
         ### Backend Service Cache Simple
@@ -1951,7 +1951,7 @@ class BackendService(pulumi.CustomResource):
             health_checks=default_http_health_check.id,
             enable_cdn=True,
             cdn_policy={
-                "signedUrlCacheMaxAgeSec": 7200,
+                "signed_url_cache_max_age_sec": 7200,
             })
         ```
         ### Backend Service Cache Include Http Headers
@@ -1964,12 +1964,12 @@ class BackendService(pulumi.CustomResource):
             name="backend-service",
             enable_cdn=True,
             cdn_policy={
-                "cacheMode": "USE_ORIGIN_HEADERS",
-                "cacheKeyPolicy": {
-                    "includeHost": True,
-                    "includeProtocol": True,
-                    "includeQueryString": True,
-                    "includeHttpHeaders": ["X-My-Header-Field"],
+                "cache_mode": "USE_ORIGIN_HEADERS",
+                "cache_key_policy": {
+                    "include_host": True,
+                    "include_protocol": True,
+                    "include_query_string": True,
+                    "include_http_headers": ["X-My-Header-Field"],
                 },
             })
         ```
@@ -1983,15 +1983,15 @@ class BackendService(pulumi.CustomResource):
             name="backend-service",
             enable_cdn=True,
             cdn_policy={
-                "cacheMode": "CACHE_ALL_STATIC",
-                "defaultTtl": 3600,
-                "clientTtl": 7200,
-                "maxTtl": 10800,
-                "cacheKeyPolicy": {
-                    "includeHost": True,
-                    "includeProtocol": True,
-                    "includeQueryString": True,
-                    "includeNamedCookies": [
+                "cache_mode": "CACHE_ALL_STATIC",
+                "default_ttl": 3600,
+                "client_ttl": 7200,
+                "max_ttl": 10800,
+                "cache_key_policy": {
+                    "include_host": True,
+                    "include_protocol": True,
+                    "include_query_string": True,
+                    "include_named_cookies": [
                         "__next_preview_data",
                         "__prerender_bypass",
                     ],
@@ -2014,12 +2014,12 @@ class BackendService(pulumi.CustomResource):
             health_checks=default_http_health_check.id,
             enable_cdn=True,
             cdn_policy={
-                "cacheMode": "CACHE_ALL_STATIC",
-                "defaultTtl": 3600,
-                "clientTtl": 7200,
-                "maxTtl": 10800,
-                "negativeCaching": True,
-                "signedUrlCacheMaxAgeSec": 7200,
+                "cache_mode": "CACHE_ALL_STATIC",
+                "default_ttl": 3600,
+                "client_ttl": 7200,
+                "max_ttl": 10800,
+                "negative_caching": True,
+                "signed_url_cache_max_age_sec": 7200,
             })
         ```
         ### Backend Service Cache Bypass Cache On Request Headers
@@ -2038,18 +2038,18 @@ class BackendService(pulumi.CustomResource):
             health_checks=default_http_health_check.id,
             enable_cdn=True,
             cdn_policy={
-                "cacheMode": "CACHE_ALL_STATIC",
-                "defaultTtl": 3600,
-                "clientTtl": 7200,
-                "maxTtl": 10800,
-                "negativeCaching": True,
-                "signedUrlCacheMaxAgeSec": 7200,
-                "bypassCacheOnRequestHeaders": [
+                "cache_mode": "CACHE_ALL_STATIC",
+                "default_ttl": 3600,
+                "client_ttl": 7200,
+                "max_ttl": 10800,
+                "negative_caching": True,
+                "signed_url_cache_max_age_sec": 7200,
+                "bypass_cache_on_request_headers": [
                     {
-                        "headerName": "Authorization",
+                        "header_name": "Authorization",
                     },
                     {
-                        "headerName": "Proxy-Authorization",
+                        "header_name": "Proxy-Authorization",
                     },
                 ],
             })
@@ -2089,10 +2089,10 @@ class BackendService(pulumi.CustomResource):
             locality_lb_policy="RING_HASH",
             session_affinity="HTTP_COOKIE",
             circuit_breakers={
-                "maxConnections": 10,
+                "max_connections": 10,
             },
             consistent_hash={
-                "httpCookie": {
+                "http_cookie": {
                     "ttl": {
                         "seconds": 11,
                         "nanos": 1111,
@@ -2101,7 +2101,7 @@ class BackendService(pulumi.CustomResource):
                 },
             },
             outlier_detection={
-                "consecutiveErrors": 2,
+                "consecutive_errors": 2,
             })
         ```
         ### Backend Service Network Endpoint

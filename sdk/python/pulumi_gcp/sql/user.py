@@ -419,7 +419,7 @@ class User(pulumi.CustomResource):
             database_version="POSTGRES_15",
             settings={
                 "tier": "db-f1-micro",
-                "databaseFlags": [{
+                "database_flags": [{
                     "name": "cloudsql_iam_authentication",
                     "value": "on",
                 }],
@@ -448,7 +448,7 @@ class User(pulumi.CustomResource):
             database_version="MYSQL_8_0",
             settings={
                 "tier": "db-f1-micro",
-                "databaseFlags": [{
+                "database_flags": [{
                     "name": "cloudsql_iam_authentication",
                     "value": "on",
                 }],
@@ -557,7 +557,7 @@ class User(pulumi.CustomResource):
             database_version="POSTGRES_15",
             settings={
                 "tier": "db-f1-micro",
-                "databaseFlags": [{
+                "database_flags": [{
                     "name": "cloudsql_iam_authentication",
                     "value": "on",
                 }],
@@ -586,7 +586,7 @@ class User(pulumi.CustomResource):
             database_version="MYSQL_8_0",
             settings={
                 "tier": "db-f1-micro",
-                "databaseFlags": [{
+                "database_flags": [{
                     "name": "cloudsql_iam_authentication",
                     "value": "on",
                 }],
