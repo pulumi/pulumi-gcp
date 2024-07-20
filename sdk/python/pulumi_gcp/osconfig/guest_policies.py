@@ -433,7 +433,7 @@ class GuestPolicies(pulumi.CustomResource):
                 "bar",
             ],
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": my_image.self_link,
                 },
             },
@@ -450,7 +450,7 @@ class GuestPolicies(pulumi.CustomResource):
             },
             packages=[{
                 "name": "my-package",
-                "desiredState": "UPDATED",
+                "desired_state": "UPDATED",
             }])
         ```
         ### Os Config Guest Policies Packages
@@ -462,7 +462,7 @@ class GuestPolicies(pulumi.CustomResource):
         guest_policies = gcp.osconfig.GuestPolicies("guest_policies",
             guest_policy_id="guest-policy",
             assignment={
-                "groupLabels": [
+                "group_labels": [
                     {
                         "labels": {
                             "color": "red",
@@ -480,15 +480,15 @@ class GuestPolicies(pulumi.CustomResource):
             packages=[
                 {
                     "name": "my-package",
-                    "desiredState": "INSTALLED",
+                    "desired_state": "INSTALLED",
                 },
                 {
                     "name": "bad-package-1",
-                    "desiredState": "REMOVED",
+                    "desired_state": "REMOVED",
                 },
                 {
                     "name": "bad-package-2",
-                    "desiredState": "REMOVED",
+                    "desired_state": "REMOVED",
                     "manager": "APT",
                 },
             ],
@@ -496,7 +496,7 @@ class GuestPolicies(pulumi.CustomResource):
                 {
                     "apt": {
                         "uri": "https://packages.cloud.google.com/apt",
-                        "archiveType": "DEB",
+                        "archive_type": "DEB",
                         "distribution": "cloud-sdk-stretch",
                         "components": ["main"],
                     },
@@ -504,9 +504,9 @@ class GuestPolicies(pulumi.CustomResource):
                 {
                     "yum": {
                         "id": "google-cloud-sdk",
-                        "displayName": "Google Cloud SDK",
-                        "baseUrl": "https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64",
-                        "gpgKeys": [
+                        "display_name": "Google Cloud SDK",
+                        "base_url": "https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64",
+                        "gpg_keys": [
                             "https://packages.cloud.google.com/yum/doc/yum-key.gpg",
                             "https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg",
                         ],
@@ -530,7 +530,7 @@ class GuestPolicies(pulumi.CustomResource):
             },
             recipes=[{
                 "name": "guest-policy-recipe",
-                "desiredState": "INSTALLED",
+                "desired_state": "INSTALLED",
                 "artifacts": [{
                     "id": "guest-policy-artifact-id",
                     "gcs": {
@@ -539,9 +539,9 @@ class GuestPolicies(pulumi.CustomResource):
                         "generation": 1546030865175603,
                     },
                 }],
-                "installSteps": [{
-                    "msiInstallation": {
-                        "artifactId": "guest-policy-artifact-id",
+                "install_steps": [{
+                    "msi_installation": {
+                        "artifact_id": "guest-policy-artifact-id",
                     },
                 }],
             }])
@@ -632,7 +632,7 @@ class GuestPolicies(pulumi.CustomResource):
                 "bar",
             ],
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": my_image.self_link,
                 },
             },
@@ -649,7 +649,7 @@ class GuestPolicies(pulumi.CustomResource):
             },
             packages=[{
                 "name": "my-package",
-                "desiredState": "UPDATED",
+                "desired_state": "UPDATED",
             }])
         ```
         ### Os Config Guest Policies Packages
@@ -661,7 +661,7 @@ class GuestPolicies(pulumi.CustomResource):
         guest_policies = gcp.osconfig.GuestPolicies("guest_policies",
             guest_policy_id="guest-policy",
             assignment={
-                "groupLabels": [
+                "group_labels": [
                     {
                         "labels": {
                             "color": "red",
@@ -679,15 +679,15 @@ class GuestPolicies(pulumi.CustomResource):
             packages=[
                 {
                     "name": "my-package",
-                    "desiredState": "INSTALLED",
+                    "desired_state": "INSTALLED",
                 },
                 {
                     "name": "bad-package-1",
-                    "desiredState": "REMOVED",
+                    "desired_state": "REMOVED",
                 },
                 {
                     "name": "bad-package-2",
-                    "desiredState": "REMOVED",
+                    "desired_state": "REMOVED",
                     "manager": "APT",
                 },
             ],
@@ -695,7 +695,7 @@ class GuestPolicies(pulumi.CustomResource):
                 {
                     "apt": {
                         "uri": "https://packages.cloud.google.com/apt",
-                        "archiveType": "DEB",
+                        "archive_type": "DEB",
                         "distribution": "cloud-sdk-stretch",
                         "components": ["main"],
                     },
@@ -703,9 +703,9 @@ class GuestPolicies(pulumi.CustomResource):
                 {
                     "yum": {
                         "id": "google-cloud-sdk",
-                        "displayName": "Google Cloud SDK",
-                        "baseUrl": "https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64",
-                        "gpgKeys": [
+                        "display_name": "Google Cloud SDK",
+                        "base_url": "https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64",
+                        "gpg_keys": [
                             "https://packages.cloud.google.com/yum/doc/yum-key.gpg",
                             "https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg",
                         ],
@@ -729,7 +729,7 @@ class GuestPolicies(pulumi.CustomResource):
             },
             recipes=[{
                 "name": "guest-policy-recipe",
-                "desiredState": "INSTALLED",
+                "desired_state": "INSTALLED",
                 "artifacts": [{
                     "id": "guest-policy-artifact-id",
                     "gcs": {
@@ -738,9 +738,9 @@ class GuestPolicies(pulumi.CustomResource):
                         "generation": 1546030865175603,
                     },
                 }],
-                "installSteps": [{
-                    "msiInstallation": {
-                        "artifactId": "guest-policy-artifact-id",
+                "install_steps": [{
+                    "msi_installation": {
+                        "artifact_id": "guest-policy-artifact-id",
                     },
                 }],
             }])

@@ -646,18 +646,18 @@ class URLMap(pulumi.CustomResource):
             host_rules=[
                 {
                     "hosts": ["mysite.com"],
-                    "pathMatcher": "mysite",
+                    "path_matcher": "mysite",
                 },
                 {
                     "hosts": ["myothersite.com"],
-                    "pathMatcher": "otherpaths",
+                    "path_matcher": "otherpaths",
                 },
             ],
             path_matchers=[
                 {
                     "name": "mysite",
-                    "defaultService": static.id,
-                    "pathRules": [
+                    "default_service": static.id,
+                    "path_rules": [
                         {
                             "paths": ["/home"],
                             "service": static.id,
@@ -674,7 +674,7 @@ class URLMap(pulumi.CustomResource):
                 },
                 {
                     "name": "otherpaths",
-                    "defaultService": static.id,
+                    "default_service": static.id,
                 },
             ],
             tests=[{
@@ -707,53 +707,53 @@ class URLMap(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "routeRules": [{
+                "default_service": home.id,
+                "route_rules": [{
                     "priority": 1,
-                    "headerAction": {
-                        "requestHeadersToRemoves": ["RemoveMe2"],
-                        "requestHeadersToAdds": [{
-                            "headerName": "AddSomethingElse",
-                            "headerValue": "MyOtherValue",
+                    "header_action": {
+                        "request_headers_to_removes": ["RemoveMe2"],
+                        "request_headers_to_adds": [{
+                            "header_name": "AddSomethingElse",
+                            "header_value": "MyOtherValue",
                             "replace": True,
                         }],
-                        "responseHeadersToRemoves": ["RemoveMe3"],
-                        "responseHeadersToAdds": [{
-                            "headerName": "AddMe",
-                            "headerValue": "MyValue",
+                        "response_headers_to_removes": ["RemoveMe3"],
+                        "response_headers_to_adds": [{
+                            "header_name": "AddMe",
+                            "header_value": "MyValue",
                             "replace": False,
                         }],
                     },
-                    "matchRules": [{
-                        "fullPathMatch": "a full path",
-                        "headerMatches": [{
-                            "headerName": "someheader",
-                            "exactMatch": "match this exactly",
-                            "invertMatch": True,
+                    "match_rules": [{
+                        "full_path_match": "a full path",
+                        "header_matches": [{
+                            "header_name": "someheader",
+                            "exact_match": "match this exactly",
+                            "invert_match": True,
                         }],
-                        "ignoreCase": True,
-                        "metadataFilters": [{
-                            "filterMatchCriteria": "MATCH_ANY",
-                            "filterLabels": [{
+                        "ignore_case": True,
+                        "metadata_filters": [{
+                            "filter_match_criteria": "MATCH_ANY",
+                            "filter_labels": [{
                                 "name": "PLANET",
                                 "value": "MARS",
                             }],
                         }],
-                        "queryParameterMatches": [{
+                        "query_parameter_matches": [{
                             "name": "a query parameter",
-                            "presentMatch": True,
+                            "present_match": True,
                         }],
                     }],
-                    "urlRedirect": {
-                        "hostRedirect": "A host",
-                        "httpsRedirect": False,
-                        "pathRedirect": "some/path",
-                        "redirectResponseCode": "TEMPORARY_REDIRECT",
-                        "stripQuery": True,
+                    "url_redirect": {
+                        "host_redirect": "A host",
+                        "https_redirect": False,
+                        "path_redirect": "some/path",
+                        "redirect_response_code": "TEMPORARY_REDIRECT",
+                        "strip_query": True,
                     },
                 }],
             }],
@@ -787,24 +787,24 @@ class URLMap(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "routeRules": [{
+                "default_service": home.id,
+                "route_rules": [{
                     "priority": 1,
-                    "matchRules": [{
-                        "prefixMatch": "/someprefix",
-                        "headerMatches": [{
-                            "headerName": "someheader",
-                            "exactMatch": "match this exactly",
-                            "invertMatch": True,
+                    "match_rules": [{
+                        "prefix_match": "/someprefix",
+                        "header_matches": [{
+                            "header_name": "someheader",
+                            "exact_match": "match this exactly",
+                            "invert_match": True,
                         }],
                     }],
-                    "urlRedirect": {
-                        "pathRedirect": "some/path",
-                        "redirectResponseCode": "TEMPORARY_REDIRECT",
+                    "url_redirect": {
+                        "path_redirect": "some/path",
+                        "redirect_response_code": "TEMPORARY_REDIRECT",
                     },
                 }],
             }],
@@ -838,46 +838,46 @@ class URLMap(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "pathRules": [{
+                "default_service": home.id,
+                "path_rules": [{
                     "paths": ["/home"],
-                    "routeAction": {
-                        "corsPolicy": {
-                            "allowCredentials": True,
-                            "allowHeaders": ["Allowed content"],
-                            "allowMethods": ["GET"],
-                            "allowOriginRegexes": ["abc.*"],
-                            "allowOrigins": ["Allowed origin"],
-                            "exposeHeaders": ["Exposed header"],
-                            "maxAge": 30,
+                    "route_action": {
+                        "cors_policy": {
+                            "allow_credentials": True,
+                            "allow_headers": ["Allowed content"],
+                            "allow_methods": ["GET"],
+                            "allow_origin_regexes": ["abc.*"],
+                            "allow_origins": ["Allowed origin"],
+                            "expose_headers": ["Exposed header"],
+                            "max_age": 30,
                             "disabled": False,
                         },
-                        "faultInjectionPolicy": {
+                        "fault_injection_policy": {
                             "abort": {
-                                "httpStatus": 234,
+                                "http_status": 234,
                                 "percentage": 5.6,
                             },
                             "delay": {
-                                "fixedDelay": {
+                                "fixed_delay": {
                                     "seconds": "0",
                                     "nanos": 50000,
                                 },
                                 "percentage": 7.8,
                             },
                         },
-                        "requestMirrorPolicy": {
-                            "backendService": home.id,
+                        "request_mirror_policy": {
+                            "backend_service": home.id,
                         },
-                        "retryPolicy": {
-                            "numRetries": 4,
-                            "perTryTimeout": {
+                        "retry_policy": {
+                            "num_retries": 4,
+                            "per_try_timeout": {
                                 "seconds": "30",
                             },
-                            "retryConditions": [
+                            "retry_conditions": [
                                 "5xx",
                                 "deadline-exceeded",
                             ],
@@ -886,24 +886,24 @@ class URLMap(pulumi.CustomResource):
                             "seconds": "20",
                             "nanos": 750000000,
                         },
-                        "urlRewrite": {
-                            "hostRewrite": "dev.example.com",
-                            "pathPrefixRewrite": "/v1/api/",
+                        "url_rewrite": {
+                            "host_rewrite": "dev.example.com",
+                            "path_prefix_rewrite": "/v1/api/",
                         },
-                        "weightedBackendServices": [{
-                            "backendService": home.id,
+                        "weighted_backend_services": [{
+                            "backend_service": home.id,
                             "weight": 400,
-                            "headerAction": {
-                                "requestHeadersToRemoves": ["RemoveMe"],
-                                "requestHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
+                            "header_action": {
+                                "request_headers_to_removes": ["RemoveMe"],
+                                "request_headers_to_adds": [{
+                                    "header_name": "AddMe",
+                                    "header_value": "MyValue",
                                     "replace": True,
                                 }],
-                                "responseHeadersToRemoves": ["RemoveMe"],
-                                "responseHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
+                                "response_headers_to_removes": ["RemoveMe"],
+                                "response_headers_to_adds": [{
+                                    "header_name": "AddMe",
+                                    "header_value": "MyValue",
                                     "replace": False,
                                 }],
                             },
@@ -941,38 +941,38 @@ class URLMap(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "pathRules": [{
+                "default_service": home.id,
+                "path_rules": [{
                     "paths": ["/home"],
-                    "routeAction": {
-                        "corsPolicy": {
-                            "allowCredentials": True,
-                            "allowHeaders": ["Allowed content"],
-                            "allowMethods": ["GET"],
-                            "allowOriginRegexes": ["abc.*"],
-                            "allowOrigins": ["Allowed origin"],
-                            "exposeHeaders": ["Exposed header"],
-                            "maxAge": 30,
+                    "route_action": {
+                        "cors_policy": {
+                            "allow_credentials": True,
+                            "allow_headers": ["Allowed content"],
+                            "allow_methods": ["GET"],
+                            "allow_origin_regexes": ["abc.*"],
+                            "allow_origins": ["Allowed origin"],
+                            "expose_headers": ["Exposed header"],
+                            "max_age": 30,
                             "disabled": False,
                         },
-                        "weightedBackendServices": [{
-                            "backendService": home.id,
+                        "weighted_backend_services": [{
+                            "backend_service": home.id,
                             "weight": 400,
-                            "headerAction": {
-                                "requestHeadersToRemoves": ["RemoveMe"],
-                                "requestHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
+                            "header_action": {
+                                "request_headers_to_removes": ["RemoveMe"],
+                                "request_headers_to_adds": [{
+                                    "header_name": "AddMe",
+                                    "header_value": "MyValue",
                                     "replace": True,
                                 }],
-                                "responseHeadersToRemoves": ["RemoveMe"],
-                                "responseHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
+                                "response_headers_to_removes": ["RemoveMe"],
+                                "response_headers_to_adds": [{
+                                    "header_name": "AddMe",
+                                    "header_value": "MyValue",
                                     "replace": False,
                                 }],
                             },
@@ -1021,33 +1021,33 @@ class URLMap(pulumi.CustomResource):
             default_service=default.id,
             host_rules=[{
                 "hosts": ["*"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": default.id,
-                "routeRules": [
+                "default_service": default.id,
+                "route_rules": [
                     {
                         "priority": 1,
                         "service": service_a.id,
-                        "matchRules": [{
-                            "prefixMatch": "/",
-                            "ignoreCase": True,
-                            "headerMatches": [{
-                                "headerName": "abtest",
-                                "exactMatch": "a",
+                        "match_rules": [{
+                            "prefix_match": "/",
+                            "ignore_case": True,
+                            "header_matches": [{
+                                "header_name": "abtest",
+                                "exact_match": "a",
                             }],
                         }],
                     },
                     {
                         "priority": 2,
                         "service": service_b.id,
-                        "matchRules": [{
-                            "ignoreCase": True,
-                            "prefixMatch": "/",
-                            "headerMatches": [{
-                                "headerName": "abtest",
-                                "exactMatch": "b",
+                        "match_rules": [{
+                            "ignore_case": True,
+                            "prefix_match": "/",
+                            "header_matches": [{
+                                "header_name": "abtest",
+                                "exact_match": "b",
                             }],
                         }],
                     },
@@ -1089,33 +1089,33 @@ class URLMap(pulumi.CustomResource):
             default_service=default.id,
             host_rules=[{
                 "hosts": ["*"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": default.id,
-                "routeRules": [
+                "default_service": default.id,
+                "route_rules": [
                     {
                         "priority": 1,
                         "service": service_a.id,
-                        "matchRules": [{
-                            "prefixMatch": "/",
-                            "ignoreCase": True,
-                            "queryParameterMatches": [{
+                        "match_rules": [{
+                            "prefix_match": "/",
+                            "ignore_case": True,
+                            "query_parameter_matches": [{
                                 "name": "abtest",
-                                "exactMatch": "a",
+                                "exact_match": "a",
                             }],
                         }],
                     },
                     {
                         "priority": 2,
                         "service": service_b.id,
-                        "matchRules": [{
-                            "ignoreCase": True,
-                            "prefixMatch": "/",
-                            "queryParameterMatches": [{
+                        "match_rules": [{
+                            "ignore_case": True,
+                            "prefix_match": "/",
+                            "query_parameter_matches": [{
                                 "name": "abtest",
-                                "exactMatch": "b",
+                                "exact_match": "b",
                             }],
                         }],
                     },
@@ -1160,27 +1160,27 @@ class URLMap(pulumi.CustomResource):
             default_service=static.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "mysite",
+                "path_matcher": "mysite",
             }],
             path_matchers=[{
                 "name": "mysite",
-                "defaultService": static.id,
-                "routeRules": [
+                "default_service": static.id,
+                "route_rules": [
                     {
-                        "matchRules": [{
-                            "pathTemplateMatch": "/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}",
+                        "match_rules": [{
+                            "path_template_match": "/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}",
                         }],
                         "service": cart_backend.id,
                         "priority": 1,
-                        "routeAction": {
-                            "urlRewrite": {
-                                "pathTemplateRewrite": "/{username}-{cartid}/",
+                        "route_action": {
+                            "url_rewrite": {
+                                "path_template_rewrite": "/{username}-{cartid}/",
                             },
                         },
                     },
                     {
-                        "matchRules": [{
-                            "pathTemplateMatch": "/xyzwebservices/v2/xyz/users/*/accountinfo/*",
+                        "match_rules": [{
+                            "path_template_match": "/xyzwebservices/v2/xyz/users/*/accountinfo/*",
                         }],
                         "service": user_backend.id,
                         "priority": 2,
@@ -1218,48 +1218,48 @@ class URLMap(pulumi.CustomResource):
             description="a description",
             default_service=example.id,
             default_custom_error_response_policy={
-                "errorResponseRules": [{
-                    "matchResponseCodes": ["5xx"],
+                "error_response_rules": [{
+                    "match_response_codes": ["5xx"],
                     "path": "/*",
-                    "overrideResponseCode": 502,
+                    "override_response_code": 502,
                 }],
-                "errorService": error.id,
+                "error_service": error.id,
             },
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "mysite",
+                "path_matcher": "mysite",
             }],
             path_matchers=[{
                 "name": "mysite",
-                "defaultService": example.id,
-                "defaultCustomErrorResponsePolicy": {
-                    "errorResponseRules": [
+                "default_service": example.id,
+                "default_custom_error_response_policy": {
+                    "error_response_rules": [
                         {
-                            "matchResponseCodes": [
+                            "match_response_codes": [
                                 "4xx",
                                 "5xx",
                             ],
                             "path": "/login",
-                            "overrideResponseCode": 404,
+                            "override_response_code": 404,
                         },
                         {
-                            "matchResponseCodes": ["503"],
+                            "match_response_codes": ["503"],
                             "path": "/example",
-                            "overrideResponseCode": 502,
+                            "override_response_code": 502,
                         },
                     ],
-                    "errorService": error.id,
+                    "error_service": error.id,
                 },
-                "pathRules": [{
+                "path_rules": [{
                     "paths": ["/*"],
                     "service": example.id,
-                    "customErrorResponsePolicy": {
-                        "errorResponseRules": [{
-                            "matchResponseCodes": ["4xx"],
+                    "custom_error_response_policy": {
+                        "error_response_rules": [{
+                            "match_response_codes": ["4xx"],
                             "path": "/register",
-                            "overrideResponseCode": 401,
+                            "override_response_code": 401,
                         }],
-                        "errorService": error.id,
+                        "error_service": error.id,
                     },
                 }],
             }])
@@ -1384,18 +1384,18 @@ class URLMap(pulumi.CustomResource):
             host_rules=[
                 {
                     "hosts": ["mysite.com"],
-                    "pathMatcher": "mysite",
+                    "path_matcher": "mysite",
                 },
                 {
                     "hosts": ["myothersite.com"],
-                    "pathMatcher": "otherpaths",
+                    "path_matcher": "otherpaths",
                 },
             ],
             path_matchers=[
                 {
                     "name": "mysite",
-                    "defaultService": static.id,
-                    "pathRules": [
+                    "default_service": static.id,
+                    "path_rules": [
                         {
                             "paths": ["/home"],
                             "service": static.id,
@@ -1412,7 +1412,7 @@ class URLMap(pulumi.CustomResource):
                 },
                 {
                     "name": "otherpaths",
-                    "defaultService": static.id,
+                    "default_service": static.id,
                 },
             ],
             tests=[{
@@ -1445,53 +1445,53 @@ class URLMap(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "routeRules": [{
+                "default_service": home.id,
+                "route_rules": [{
                     "priority": 1,
-                    "headerAction": {
-                        "requestHeadersToRemoves": ["RemoveMe2"],
-                        "requestHeadersToAdds": [{
-                            "headerName": "AddSomethingElse",
-                            "headerValue": "MyOtherValue",
+                    "header_action": {
+                        "request_headers_to_removes": ["RemoveMe2"],
+                        "request_headers_to_adds": [{
+                            "header_name": "AddSomethingElse",
+                            "header_value": "MyOtherValue",
                             "replace": True,
                         }],
-                        "responseHeadersToRemoves": ["RemoveMe3"],
-                        "responseHeadersToAdds": [{
-                            "headerName": "AddMe",
-                            "headerValue": "MyValue",
+                        "response_headers_to_removes": ["RemoveMe3"],
+                        "response_headers_to_adds": [{
+                            "header_name": "AddMe",
+                            "header_value": "MyValue",
                             "replace": False,
                         }],
                     },
-                    "matchRules": [{
-                        "fullPathMatch": "a full path",
-                        "headerMatches": [{
-                            "headerName": "someheader",
-                            "exactMatch": "match this exactly",
-                            "invertMatch": True,
+                    "match_rules": [{
+                        "full_path_match": "a full path",
+                        "header_matches": [{
+                            "header_name": "someheader",
+                            "exact_match": "match this exactly",
+                            "invert_match": True,
                         }],
-                        "ignoreCase": True,
-                        "metadataFilters": [{
-                            "filterMatchCriteria": "MATCH_ANY",
-                            "filterLabels": [{
+                        "ignore_case": True,
+                        "metadata_filters": [{
+                            "filter_match_criteria": "MATCH_ANY",
+                            "filter_labels": [{
                                 "name": "PLANET",
                                 "value": "MARS",
                             }],
                         }],
-                        "queryParameterMatches": [{
+                        "query_parameter_matches": [{
                             "name": "a query parameter",
-                            "presentMatch": True,
+                            "present_match": True,
                         }],
                     }],
-                    "urlRedirect": {
-                        "hostRedirect": "A host",
-                        "httpsRedirect": False,
-                        "pathRedirect": "some/path",
-                        "redirectResponseCode": "TEMPORARY_REDIRECT",
-                        "stripQuery": True,
+                    "url_redirect": {
+                        "host_redirect": "A host",
+                        "https_redirect": False,
+                        "path_redirect": "some/path",
+                        "redirect_response_code": "TEMPORARY_REDIRECT",
+                        "strip_query": True,
                     },
                 }],
             }],
@@ -1525,24 +1525,24 @@ class URLMap(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "routeRules": [{
+                "default_service": home.id,
+                "route_rules": [{
                     "priority": 1,
-                    "matchRules": [{
-                        "prefixMatch": "/someprefix",
-                        "headerMatches": [{
-                            "headerName": "someheader",
-                            "exactMatch": "match this exactly",
-                            "invertMatch": True,
+                    "match_rules": [{
+                        "prefix_match": "/someprefix",
+                        "header_matches": [{
+                            "header_name": "someheader",
+                            "exact_match": "match this exactly",
+                            "invert_match": True,
                         }],
                     }],
-                    "urlRedirect": {
-                        "pathRedirect": "some/path",
-                        "redirectResponseCode": "TEMPORARY_REDIRECT",
+                    "url_redirect": {
+                        "path_redirect": "some/path",
+                        "redirect_response_code": "TEMPORARY_REDIRECT",
                     },
                 }],
             }],
@@ -1576,46 +1576,46 @@ class URLMap(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "pathRules": [{
+                "default_service": home.id,
+                "path_rules": [{
                     "paths": ["/home"],
-                    "routeAction": {
-                        "corsPolicy": {
-                            "allowCredentials": True,
-                            "allowHeaders": ["Allowed content"],
-                            "allowMethods": ["GET"],
-                            "allowOriginRegexes": ["abc.*"],
-                            "allowOrigins": ["Allowed origin"],
-                            "exposeHeaders": ["Exposed header"],
-                            "maxAge": 30,
+                    "route_action": {
+                        "cors_policy": {
+                            "allow_credentials": True,
+                            "allow_headers": ["Allowed content"],
+                            "allow_methods": ["GET"],
+                            "allow_origin_regexes": ["abc.*"],
+                            "allow_origins": ["Allowed origin"],
+                            "expose_headers": ["Exposed header"],
+                            "max_age": 30,
                             "disabled": False,
                         },
-                        "faultInjectionPolicy": {
+                        "fault_injection_policy": {
                             "abort": {
-                                "httpStatus": 234,
+                                "http_status": 234,
                                 "percentage": 5.6,
                             },
                             "delay": {
-                                "fixedDelay": {
+                                "fixed_delay": {
                                     "seconds": "0",
                                     "nanos": 50000,
                                 },
                                 "percentage": 7.8,
                             },
                         },
-                        "requestMirrorPolicy": {
-                            "backendService": home.id,
+                        "request_mirror_policy": {
+                            "backend_service": home.id,
                         },
-                        "retryPolicy": {
-                            "numRetries": 4,
-                            "perTryTimeout": {
+                        "retry_policy": {
+                            "num_retries": 4,
+                            "per_try_timeout": {
                                 "seconds": "30",
                             },
-                            "retryConditions": [
+                            "retry_conditions": [
                                 "5xx",
                                 "deadline-exceeded",
                             ],
@@ -1624,24 +1624,24 @@ class URLMap(pulumi.CustomResource):
                             "seconds": "20",
                             "nanos": 750000000,
                         },
-                        "urlRewrite": {
-                            "hostRewrite": "dev.example.com",
-                            "pathPrefixRewrite": "/v1/api/",
+                        "url_rewrite": {
+                            "host_rewrite": "dev.example.com",
+                            "path_prefix_rewrite": "/v1/api/",
                         },
-                        "weightedBackendServices": [{
-                            "backendService": home.id,
+                        "weighted_backend_services": [{
+                            "backend_service": home.id,
                             "weight": 400,
-                            "headerAction": {
-                                "requestHeadersToRemoves": ["RemoveMe"],
-                                "requestHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
+                            "header_action": {
+                                "request_headers_to_removes": ["RemoveMe"],
+                                "request_headers_to_adds": [{
+                                    "header_name": "AddMe",
+                                    "header_value": "MyValue",
                                     "replace": True,
                                 }],
-                                "responseHeadersToRemoves": ["RemoveMe"],
-                                "responseHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
+                                "response_headers_to_removes": ["RemoveMe"],
+                                "response_headers_to_adds": [{
+                                    "header_name": "AddMe",
+                                    "header_value": "MyValue",
                                     "replace": False,
                                 }],
                             },
@@ -1679,38 +1679,38 @@ class URLMap(pulumi.CustomResource):
             default_service=home.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": home.id,
-                "pathRules": [{
+                "default_service": home.id,
+                "path_rules": [{
                     "paths": ["/home"],
-                    "routeAction": {
-                        "corsPolicy": {
-                            "allowCredentials": True,
-                            "allowHeaders": ["Allowed content"],
-                            "allowMethods": ["GET"],
-                            "allowOriginRegexes": ["abc.*"],
-                            "allowOrigins": ["Allowed origin"],
-                            "exposeHeaders": ["Exposed header"],
-                            "maxAge": 30,
+                    "route_action": {
+                        "cors_policy": {
+                            "allow_credentials": True,
+                            "allow_headers": ["Allowed content"],
+                            "allow_methods": ["GET"],
+                            "allow_origin_regexes": ["abc.*"],
+                            "allow_origins": ["Allowed origin"],
+                            "expose_headers": ["Exposed header"],
+                            "max_age": 30,
                             "disabled": False,
                         },
-                        "weightedBackendServices": [{
-                            "backendService": home.id,
+                        "weighted_backend_services": [{
+                            "backend_service": home.id,
                             "weight": 400,
-                            "headerAction": {
-                                "requestHeadersToRemoves": ["RemoveMe"],
-                                "requestHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
+                            "header_action": {
+                                "request_headers_to_removes": ["RemoveMe"],
+                                "request_headers_to_adds": [{
+                                    "header_name": "AddMe",
+                                    "header_value": "MyValue",
                                     "replace": True,
                                 }],
-                                "responseHeadersToRemoves": ["RemoveMe"],
-                                "responseHeadersToAdds": [{
-                                    "headerName": "AddMe",
-                                    "headerValue": "MyValue",
+                                "response_headers_to_removes": ["RemoveMe"],
+                                "response_headers_to_adds": [{
+                                    "header_name": "AddMe",
+                                    "header_value": "MyValue",
                                     "replace": False,
                                 }],
                             },
@@ -1759,33 +1759,33 @@ class URLMap(pulumi.CustomResource):
             default_service=default.id,
             host_rules=[{
                 "hosts": ["*"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": default.id,
-                "routeRules": [
+                "default_service": default.id,
+                "route_rules": [
                     {
                         "priority": 1,
                         "service": service_a.id,
-                        "matchRules": [{
-                            "prefixMatch": "/",
-                            "ignoreCase": True,
-                            "headerMatches": [{
-                                "headerName": "abtest",
-                                "exactMatch": "a",
+                        "match_rules": [{
+                            "prefix_match": "/",
+                            "ignore_case": True,
+                            "header_matches": [{
+                                "header_name": "abtest",
+                                "exact_match": "a",
                             }],
                         }],
                     },
                     {
                         "priority": 2,
                         "service": service_b.id,
-                        "matchRules": [{
-                            "ignoreCase": True,
-                            "prefixMatch": "/",
-                            "headerMatches": [{
-                                "headerName": "abtest",
-                                "exactMatch": "b",
+                        "match_rules": [{
+                            "ignore_case": True,
+                            "prefix_match": "/",
+                            "header_matches": [{
+                                "header_name": "abtest",
+                                "exact_match": "b",
                             }],
                         }],
                     },
@@ -1827,33 +1827,33 @@ class URLMap(pulumi.CustomResource):
             default_service=default.id,
             host_rules=[{
                 "hosts": ["*"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": default.id,
-                "routeRules": [
+                "default_service": default.id,
+                "route_rules": [
                     {
                         "priority": 1,
                         "service": service_a.id,
-                        "matchRules": [{
-                            "prefixMatch": "/",
-                            "ignoreCase": True,
-                            "queryParameterMatches": [{
+                        "match_rules": [{
+                            "prefix_match": "/",
+                            "ignore_case": True,
+                            "query_parameter_matches": [{
                                 "name": "abtest",
-                                "exactMatch": "a",
+                                "exact_match": "a",
                             }],
                         }],
                     },
                     {
                         "priority": 2,
                         "service": service_b.id,
-                        "matchRules": [{
-                            "ignoreCase": True,
-                            "prefixMatch": "/",
-                            "queryParameterMatches": [{
+                        "match_rules": [{
+                            "ignore_case": True,
+                            "prefix_match": "/",
+                            "query_parameter_matches": [{
                                 "name": "abtest",
-                                "exactMatch": "b",
+                                "exact_match": "b",
                             }],
                         }],
                     },
@@ -1898,27 +1898,27 @@ class URLMap(pulumi.CustomResource):
             default_service=static.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "mysite",
+                "path_matcher": "mysite",
             }],
             path_matchers=[{
                 "name": "mysite",
-                "defaultService": static.id,
-                "routeRules": [
+                "default_service": static.id,
+                "route_rules": [
                     {
-                        "matchRules": [{
-                            "pathTemplateMatch": "/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}",
+                        "match_rules": [{
+                            "path_template_match": "/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}",
                         }],
                         "service": cart_backend.id,
                         "priority": 1,
-                        "routeAction": {
-                            "urlRewrite": {
-                                "pathTemplateRewrite": "/{username}-{cartid}/",
+                        "route_action": {
+                            "url_rewrite": {
+                                "path_template_rewrite": "/{username}-{cartid}/",
                             },
                         },
                     },
                     {
-                        "matchRules": [{
-                            "pathTemplateMatch": "/xyzwebservices/v2/xyz/users/*/accountinfo/*",
+                        "match_rules": [{
+                            "path_template_match": "/xyzwebservices/v2/xyz/users/*/accountinfo/*",
                         }],
                         "service": user_backend.id,
                         "priority": 2,
@@ -1956,48 +1956,48 @@ class URLMap(pulumi.CustomResource):
             description="a description",
             default_service=example.id,
             default_custom_error_response_policy={
-                "errorResponseRules": [{
-                    "matchResponseCodes": ["5xx"],
+                "error_response_rules": [{
+                    "match_response_codes": ["5xx"],
                     "path": "/*",
-                    "overrideResponseCode": 502,
+                    "override_response_code": 502,
                 }],
-                "errorService": error.id,
+                "error_service": error.id,
             },
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "mysite",
+                "path_matcher": "mysite",
             }],
             path_matchers=[{
                 "name": "mysite",
-                "defaultService": example.id,
-                "defaultCustomErrorResponsePolicy": {
-                    "errorResponseRules": [
+                "default_service": example.id,
+                "default_custom_error_response_policy": {
+                    "error_response_rules": [
                         {
-                            "matchResponseCodes": [
+                            "match_response_codes": [
                                 "4xx",
                                 "5xx",
                             ],
                             "path": "/login",
-                            "overrideResponseCode": 404,
+                            "override_response_code": 404,
                         },
                         {
-                            "matchResponseCodes": ["503"],
+                            "match_response_codes": ["503"],
                             "path": "/example",
-                            "overrideResponseCode": 502,
+                            "override_response_code": 502,
                         },
                     ],
-                    "errorService": error.id,
+                    "error_service": error.id,
                 },
-                "pathRules": [{
+                "path_rules": [{
                     "paths": ["/*"],
                     "service": example.id,
-                    "customErrorResponsePolicy": {
-                        "errorResponseRules": [{
-                            "matchResponseCodes": ["4xx"],
+                    "custom_error_response_policy": {
+                        "error_response_rules": [{
+                            "match_response_codes": ["4xx"],
                             "path": "/register",
-                            "overrideResponseCode": 401,
+                            "override_response_code": 401,
                         }],
-                        "errorService": error.id,
+                        "error_service": error.id,
                     },
                 }],
             }])

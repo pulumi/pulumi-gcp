@@ -322,8 +322,8 @@ class GenericService(pulumi.CustomResource):
                 "my_other_key": "my_other_value",
             },
             basic_service={
-                "serviceType": "APP_ENGINE",
-                "serviceLabels": {
+                "service_type": "APP_ENGINE",
+                "service_labels": {
                     "module_id": "another-module-id",
                 },
             })
@@ -410,8 +410,8 @@ class GenericService(pulumi.CustomResource):
                 "my_other_key": "my_other_value",
             },
             basic_service={
-                "serviceType": "APP_ENGINE",
-                "serviceLabels": {
+                "service_type": "APP_ENGINE",
+                "service_labels": {
                     "module_id": "another-module-id",
                 },
             })

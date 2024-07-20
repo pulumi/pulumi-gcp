@@ -460,15 +460,15 @@ class Job(pulumi.CustomResource):
             },
             query={
                 "query": "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-                "destinationTable": {
-                    "projectId": foo.project,
-                    "datasetId": foo.dataset_id,
-                    "tableId": foo.table_id,
+                "destination_table": {
+                    "project_id": foo.project,
+                    "dataset_id": foo.dataset_id,
+                    "table_id": foo.table_id,
                 },
-                "allowLargeResults": True,
-                "flattenResults": True,
-                "scriptOptions": {
-                    "keyResultStatement": "LAST",
+                "allow_large_results": True,
+                "flatten_results": True,
+                "script_options": {
+                    "key_result_statement": "LAST",
                 },
             })
         ```
@@ -494,16 +494,16 @@ class Job(pulumi.CustomResource):
             },
             query={
                 "query": "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-                "destinationTable": {
-                    "tableId": foo.id,
+                "destination_table": {
+                    "table_id": foo.id,
                 },
-                "defaultDataset": {
-                    "datasetId": bar.id,
+                "default_dataset": {
+                    "dataset_id": bar.id,
                 },
-                "allowLargeResults": True,
-                "flattenResults": True,
-                "scriptOptions": {
-                    "keyResultStatement": "LAST",
+                "allow_large_results": True,
+                "flatten_results": True,
+                "script_options": {
+                    "key_result_statement": "LAST",
                 },
             })
         ```
@@ -528,18 +528,18 @@ class Job(pulumi.CustomResource):
                 "my_job": "load",
             },
             load={
-                "sourceUris": ["gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv"],
-                "destinationTable": {
-                    "projectId": foo.project,
-                    "datasetId": foo.dataset_id,
-                    "tableId": foo.table_id,
+                "source_uris": ["gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv"],
+                "destination_table": {
+                    "project_id": foo.project,
+                    "dataset_id": foo.dataset_id,
+                    "table_id": foo.table_id,
                 },
-                "skipLeadingRows": 1,
-                "schemaUpdateOptions": [
+                "skip_leading_rows": 1,
+                "schema_update_options": [
                     "ALLOW_FIELD_RELAXATION",
                     "ALLOW_FIELD_ADDITION",
                 ],
-                "writeDisposition": "WRITE_APPEND",
+                "write_disposition": "WRITE_APPEND",
                 "autodetect": True,
             })
         ```
@@ -575,16 +575,16 @@ class Job(pulumi.CustomResource):
                 "my_job": "load",
             },
             load={
-                "sourceUris": [pulumi.Output.all(object.bucket, object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
-                "destinationTable": {
-                    "projectId": foo.project,
-                    "datasetId": foo.dataset_id,
-                    "tableId": foo.table_id,
+                "source_uris": [pulumi.Output.all(object.bucket, object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
+                "destination_table": {
+                    "project_id": foo.project,
+                    "dataset_id": foo.dataset_id,
+                    "table_id": foo.table_id,
                 },
-                "writeDisposition": "WRITE_TRUNCATE",
+                "write_disposition": "WRITE_TRUNCATE",
                 "autodetect": True,
-                "sourceFormat": "NEWLINE_DELIMITED_JSON",
-                "jsonExtension": "GEOJSON",
+                "source_format": "NEWLINE_DELIMITED_JSON",
+                "json_extension": "GEOJSON",
             },
             opts = pulumi.ResourceOptions(depends_on=[object]))
         ```
@@ -617,22 +617,22 @@ class Job(pulumi.CustomResource):
                 "my_job": "load",
             },
             load={
-                "sourceUris": [pulumi.Output.all(test_bucket_object.bucket, test_bucket_object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
-                "destinationTable": {
-                    "projectId": test_table.project,
-                    "datasetId": test_table.dataset_id,
-                    "tableId": test_table.table_id,
+                "source_uris": [pulumi.Output.all(test_bucket_object.bucket, test_bucket_object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
+                "destination_table": {
+                    "project_id": test_table.project,
+                    "dataset_id": test_table.dataset_id,
+                    "table_id": test_table.table_id,
                 },
-                "schemaUpdateOptions": [
+                "schema_update_options": [
                     "ALLOW_FIELD_RELAXATION",
                     "ALLOW_FIELD_ADDITION",
                 ],
-                "writeDisposition": "WRITE_APPEND",
-                "sourceFormat": "PARQUET",
+                "write_disposition": "WRITE_APPEND",
+                "source_format": "PARQUET",
                 "autodetect": True,
-                "parquetOptions": {
-                    "enumAsString": True,
-                    "enableListInference": True,
+                "parquet_options": {
+                    "enum_as_string": True,
+                    "enable_list_inference": True,
                 },
             })
         ```
@@ -713,31 +713,31 @@ class Job(pulumi.CustomResource):
         ]
         \"\"\",
             encryption_configuration={
-                "kmsKeyName": crypto_key.id,
+                "kms_key_name": crypto_key.id,
             },
             opts = pulumi.ResourceOptions(depends_on=[encrypt_role]))
         job = gcp.bigquery.Job("job",
             job_id="job_copy",
             copy={
-                "sourceTables": [
+                "source_tables": [
                     {
-                        "projectId": source[0].project,
-                        "datasetId": source[0].dataset_id,
-                        "tableId": source[0].table_id,
+                        "project_id": source[0].project,
+                        "dataset_id": source[0].dataset_id,
+                        "table_id": source[0].table_id,
                     },
                     {
-                        "projectId": source[1].project,
-                        "datasetId": source[1].dataset_id,
-                        "tableId": source[1].table_id,
+                        "project_id": source[1].project,
+                        "dataset_id": source[1].dataset_id,
+                        "table_id": source[1].table_id,
                     },
                 ],
-                "destinationTable": {
-                    "projectId": dest.project,
-                    "datasetId": dest.dataset_id,
-                    "tableId": dest.table_id,
+                "destination_table": {
+                    "project_id": dest.project,
+                    "dataset_id": dest.dataset_id,
+                    "table_id": dest.table_id,
                 },
-                "destinationEncryptionConfiguration": {
-                    "kmsKeyName": crypto_key.id,
+                "destination_encryption_configuration": {
+                    "kms_key_name": crypto_key.id,
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[encrypt_role]))
@@ -782,13 +782,13 @@ class Job(pulumi.CustomResource):
         job = gcp.bigquery.Job("job",
             job_id="job_extract",
             extract={
-                "destinationUris": [dest.url.apply(lambda url: f"{url}/extract")],
-                "sourceTable": {
-                    "projectId": source_one.project,
-                    "datasetId": source_one.dataset_id,
-                    "tableId": source_one.table_id,
+                "destination_uris": [dest.url.apply(lambda url: f"{url}/extract")],
+                "source_table": {
+                    "project_id": source_one.project,
+                    "dataset_id": source_one.dataset_id,
+                    "table_id": source_one.table_id,
                 },
-                "destinationFormat": "NEWLINE_DELIMITED_JSON",
+                "destination_format": "NEWLINE_DELIMITED_JSON",
                 "compression": "GZIP",
             })
         ```
@@ -888,15 +888,15 @@ class Job(pulumi.CustomResource):
             },
             query={
                 "query": "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-                "destinationTable": {
-                    "projectId": foo.project,
-                    "datasetId": foo.dataset_id,
-                    "tableId": foo.table_id,
+                "destination_table": {
+                    "project_id": foo.project,
+                    "dataset_id": foo.dataset_id,
+                    "table_id": foo.table_id,
                 },
-                "allowLargeResults": True,
-                "flattenResults": True,
-                "scriptOptions": {
-                    "keyResultStatement": "LAST",
+                "allow_large_results": True,
+                "flatten_results": True,
+                "script_options": {
+                    "key_result_statement": "LAST",
                 },
             })
         ```
@@ -922,16 +922,16 @@ class Job(pulumi.CustomResource):
             },
             query={
                 "query": "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-                "destinationTable": {
-                    "tableId": foo.id,
+                "destination_table": {
+                    "table_id": foo.id,
                 },
-                "defaultDataset": {
-                    "datasetId": bar.id,
+                "default_dataset": {
+                    "dataset_id": bar.id,
                 },
-                "allowLargeResults": True,
-                "flattenResults": True,
-                "scriptOptions": {
-                    "keyResultStatement": "LAST",
+                "allow_large_results": True,
+                "flatten_results": True,
+                "script_options": {
+                    "key_result_statement": "LAST",
                 },
             })
         ```
@@ -956,18 +956,18 @@ class Job(pulumi.CustomResource):
                 "my_job": "load",
             },
             load={
-                "sourceUris": ["gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv"],
-                "destinationTable": {
-                    "projectId": foo.project,
-                    "datasetId": foo.dataset_id,
-                    "tableId": foo.table_id,
+                "source_uris": ["gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv"],
+                "destination_table": {
+                    "project_id": foo.project,
+                    "dataset_id": foo.dataset_id,
+                    "table_id": foo.table_id,
                 },
-                "skipLeadingRows": 1,
-                "schemaUpdateOptions": [
+                "skip_leading_rows": 1,
+                "schema_update_options": [
                     "ALLOW_FIELD_RELAXATION",
                     "ALLOW_FIELD_ADDITION",
                 ],
-                "writeDisposition": "WRITE_APPEND",
+                "write_disposition": "WRITE_APPEND",
                 "autodetect": True,
             })
         ```
@@ -1003,16 +1003,16 @@ class Job(pulumi.CustomResource):
                 "my_job": "load",
             },
             load={
-                "sourceUris": [pulumi.Output.all(object.bucket, object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
-                "destinationTable": {
-                    "projectId": foo.project,
-                    "datasetId": foo.dataset_id,
-                    "tableId": foo.table_id,
+                "source_uris": [pulumi.Output.all(object.bucket, object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
+                "destination_table": {
+                    "project_id": foo.project,
+                    "dataset_id": foo.dataset_id,
+                    "table_id": foo.table_id,
                 },
-                "writeDisposition": "WRITE_TRUNCATE",
+                "write_disposition": "WRITE_TRUNCATE",
                 "autodetect": True,
-                "sourceFormat": "NEWLINE_DELIMITED_JSON",
-                "jsonExtension": "GEOJSON",
+                "source_format": "NEWLINE_DELIMITED_JSON",
+                "json_extension": "GEOJSON",
             },
             opts = pulumi.ResourceOptions(depends_on=[object]))
         ```
@@ -1045,22 +1045,22 @@ class Job(pulumi.CustomResource):
                 "my_job": "load",
             },
             load={
-                "sourceUris": [pulumi.Output.all(test_bucket_object.bucket, test_bucket_object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
-                "destinationTable": {
-                    "projectId": test_table.project,
-                    "datasetId": test_table.dataset_id,
-                    "tableId": test_table.table_id,
+                "source_uris": [pulumi.Output.all(test_bucket_object.bucket, test_bucket_object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
+                "destination_table": {
+                    "project_id": test_table.project,
+                    "dataset_id": test_table.dataset_id,
+                    "table_id": test_table.table_id,
                 },
-                "schemaUpdateOptions": [
+                "schema_update_options": [
                     "ALLOW_FIELD_RELAXATION",
                     "ALLOW_FIELD_ADDITION",
                 ],
-                "writeDisposition": "WRITE_APPEND",
-                "sourceFormat": "PARQUET",
+                "write_disposition": "WRITE_APPEND",
+                "source_format": "PARQUET",
                 "autodetect": True,
-                "parquetOptions": {
-                    "enumAsString": True,
-                    "enableListInference": True,
+                "parquet_options": {
+                    "enum_as_string": True,
+                    "enable_list_inference": True,
                 },
             })
         ```
@@ -1141,31 +1141,31 @@ class Job(pulumi.CustomResource):
         ]
         \"\"\",
             encryption_configuration={
-                "kmsKeyName": crypto_key.id,
+                "kms_key_name": crypto_key.id,
             },
             opts = pulumi.ResourceOptions(depends_on=[encrypt_role]))
         job = gcp.bigquery.Job("job",
             job_id="job_copy",
             copy={
-                "sourceTables": [
+                "source_tables": [
                     {
-                        "projectId": source[0].project,
-                        "datasetId": source[0].dataset_id,
-                        "tableId": source[0].table_id,
+                        "project_id": source[0].project,
+                        "dataset_id": source[0].dataset_id,
+                        "table_id": source[0].table_id,
                     },
                     {
-                        "projectId": source[1].project,
-                        "datasetId": source[1].dataset_id,
-                        "tableId": source[1].table_id,
+                        "project_id": source[1].project,
+                        "dataset_id": source[1].dataset_id,
+                        "table_id": source[1].table_id,
                     },
                 ],
-                "destinationTable": {
-                    "projectId": dest.project,
-                    "datasetId": dest.dataset_id,
-                    "tableId": dest.table_id,
+                "destination_table": {
+                    "project_id": dest.project,
+                    "dataset_id": dest.dataset_id,
+                    "table_id": dest.table_id,
                 },
-                "destinationEncryptionConfiguration": {
-                    "kmsKeyName": crypto_key.id,
+                "destination_encryption_configuration": {
+                    "kms_key_name": crypto_key.id,
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[encrypt_role]))
@@ -1210,13 +1210,13 @@ class Job(pulumi.CustomResource):
         job = gcp.bigquery.Job("job",
             job_id="job_extract",
             extract={
-                "destinationUris": [dest.url.apply(lambda url: f"{url}/extract")],
-                "sourceTable": {
-                    "projectId": source_one.project,
-                    "datasetId": source_one.dataset_id,
-                    "tableId": source_one.table_id,
+                "destination_uris": [dest.url.apply(lambda url: f"{url}/extract")],
+                "source_table": {
+                    "project_id": source_one.project,
+                    "dataset_id": source_one.dataset_id,
+                    "table_id": source_one.table_id,
                 },
-                "destinationFormat": "NEWLINE_DELIMITED_JSON",
+                "destination_format": "NEWLINE_DELIMITED_JSON",
                 "compression": "GZIP",
             })
         ```

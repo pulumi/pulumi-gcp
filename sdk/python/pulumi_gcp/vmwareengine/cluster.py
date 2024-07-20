@@ -241,22 +241,22 @@ class Cluster(pulumi.CustomResource):
             name="sample-pc",
             description="Sample test PC.",
             network_config={
-                "managementCidr": "192.168.30.0/24",
-                "vmwareEngineNetwork": cluster_nw.id,
+                "management_cidr": "192.168.30.0/24",
+                "vmware_engine_network": cluster_nw.id,
             },
             management_cluster={
-                "clusterId": "sample-mgmt-cluster",
-                "nodeTypeConfigs": [{
-                    "nodeTypeId": "standard-72",
-                    "nodeCount": 3,
+                "cluster_id": "sample-mgmt-cluster",
+                "node_type_configs": [{
+                    "node_type_id": "standard-72",
+                    "node_count": 3,
                 }],
             })
         vmw_engine_ext_cluster = gcp.vmwareengine.Cluster("vmw-engine-ext-cluster",
             name="ext-cluster",
             parent=cluster_pc.id,
             node_type_configs=[{
-                "nodeTypeId": "standard-72",
-                "nodeCount": 3,
+                "node_type_id": "standard-72",
+                "node_count": 3,
             }])
         ```
         ### Vmware Engine Cluster Full
@@ -275,24 +275,24 @@ class Cluster(pulumi.CustomResource):
             name="sample-pc",
             description="Sample test PC.",
             network_config={
-                "managementCidr": "192.168.30.0/24",
-                "vmwareEngineNetwork": cluster_nw.id,
+                "management_cidr": "192.168.30.0/24",
+                "vmware_engine_network": cluster_nw.id,
             },
             management_cluster={
-                "clusterId": "sample-mgmt-cluster",
-                "nodeTypeConfigs": [{
-                    "nodeTypeId": "standard-72",
-                    "nodeCount": 3,
-                    "customCoreCount": 32,
+                "cluster_id": "sample-mgmt-cluster",
+                "node_type_configs": [{
+                    "node_type_id": "standard-72",
+                    "node_count": 3,
+                    "custom_core_count": 32,
                 }],
             })
         vmw_ext_cluster = gcp.vmwareengine.Cluster("vmw-ext-cluster",
             name="ext-cluster",
             parent=cluster_pc.id,
             node_type_configs=[{
-                "nodeTypeId": "standard-72",
-                "nodeCount": 3,
-                "customCoreCount": 32,
+                "node_type_id": "standard-72",
+                "node_count": 3,
+                "custom_core_count": 32,
             }])
         ```
 
@@ -352,22 +352,22 @@ class Cluster(pulumi.CustomResource):
             name="sample-pc",
             description="Sample test PC.",
             network_config={
-                "managementCidr": "192.168.30.0/24",
-                "vmwareEngineNetwork": cluster_nw.id,
+                "management_cidr": "192.168.30.0/24",
+                "vmware_engine_network": cluster_nw.id,
             },
             management_cluster={
-                "clusterId": "sample-mgmt-cluster",
-                "nodeTypeConfigs": [{
-                    "nodeTypeId": "standard-72",
-                    "nodeCount": 3,
+                "cluster_id": "sample-mgmt-cluster",
+                "node_type_configs": [{
+                    "node_type_id": "standard-72",
+                    "node_count": 3,
                 }],
             })
         vmw_engine_ext_cluster = gcp.vmwareengine.Cluster("vmw-engine-ext-cluster",
             name="ext-cluster",
             parent=cluster_pc.id,
             node_type_configs=[{
-                "nodeTypeId": "standard-72",
-                "nodeCount": 3,
+                "node_type_id": "standard-72",
+                "node_count": 3,
             }])
         ```
         ### Vmware Engine Cluster Full
@@ -386,24 +386,24 @@ class Cluster(pulumi.CustomResource):
             name="sample-pc",
             description="Sample test PC.",
             network_config={
-                "managementCidr": "192.168.30.0/24",
-                "vmwareEngineNetwork": cluster_nw.id,
+                "management_cidr": "192.168.30.0/24",
+                "vmware_engine_network": cluster_nw.id,
             },
             management_cluster={
-                "clusterId": "sample-mgmt-cluster",
-                "nodeTypeConfigs": [{
-                    "nodeTypeId": "standard-72",
-                    "nodeCount": 3,
-                    "customCoreCount": 32,
+                "cluster_id": "sample-mgmt-cluster",
+                "node_type_configs": [{
+                    "node_type_id": "standard-72",
+                    "node_count": 3,
+                    "custom_core_count": 32,
                 }],
             })
         vmw_ext_cluster = gcp.vmwareengine.Cluster("vmw-ext-cluster",
             name="ext-cluster",
             parent=cluster_pc.id,
             node_type_configs=[{
-                "nodeTypeId": "standard-72",
-                "nodeCount": 3,
-                "customCoreCount": 32,
+                "node_type_id": "standard-72",
+                "node_count": 3,
+                "custom_core_count": 32,
             }])
         ```
 

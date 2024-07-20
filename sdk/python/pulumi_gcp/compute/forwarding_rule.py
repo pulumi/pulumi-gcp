@@ -1851,8 +1851,8 @@ class ForwardingRule(pulumi.CustomResource):
                 "subnetwork": default_subnetwork.id,
             }],
             disks=[{
-                "sourceImage": debian_image.self_link,
-                "autoDelete": True,
+                "source_image": debian_image.self_link,
+                "auto_delete": True,
                 "boot": True,
             }],
             tags=[
@@ -1863,7 +1863,7 @@ class ForwardingRule(pulumi.CustomResource):
             region="us-central1",
             name="website-rigm",
             versions=[{
-                "instanceTemplate": instance_template.id,
+                "instance_template": instance_template.id,
                 "name": "primary",
             }],
             base_instance_name="internal-glb",
@@ -1933,15 +1933,15 @@ class ForwardingRule(pulumi.CustomResource):
             region="us-central1",
             name="website-hc",
             http_health_check={
-                "portSpecification": "USE_SERVING_PORT",
+                "port_specification": "USE_SERVING_PORT",
             },
             opts = pulumi.ResourceOptions(depends_on=[fw4]))
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             load_balancing_scheme="INTERNAL_MANAGED",
             backends=[{
                 "group": rigm.instance_group,
-                "balancingMode": "UTILIZATION",
-                "capacityScaler": 1,
+                "balancing_mode": "UTILIZATION",
+                "capacity_scaler": 1,
             }],
             region="us-central1",
             name="website-backend",
@@ -2001,8 +2001,8 @@ class ForwardingRule(pulumi.CustomResource):
                 "subnetwork": default_subnetwork.id,
             }],
             disks=[{
-                "sourceImage": debian_image.self_link,
-                "autoDelete": True,
+                "source_image": debian_image.self_link,
+                "auto_delete": True,
                 "boot": True,
             }],
             tags=[
@@ -2013,7 +2013,7 @@ class ForwardingRule(pulumi.CustomResource):
             region="us-central1",
             name="website-rigm",
             versions=[{
-                "instanceTemplate": instance_template.id,
+                "instance_template": instance_template.id,
                 "name": "primary",
             }],
             base_instance_name="internal-glb",
@@ -2083,15 +2083,15 @@ class ForwardingRule(pulumi.CustomResource):
             region="us-central1",
             name="website-hc",
             http_health_check={
-                "portSpecification": "USE_SERVING_PORT",
+                "port_specification": "USE_SERVING_PORT",
             },
             opts = pulumi.ResourceOptions(depends_on=[fw4]))
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             load_balancing_scheme="EXTERNAL_MANAGED",
             backends=[{
                 "group": rigm.instance_group,
-                "balancingMode": "UTILIZATION",
-                "capacityScaler": 1,
+                "balancing_mode": "UTILIZATION",
+                "capacity_scaler": 1,
             }],
             region="us-central1",
             name="website-backend",
@@ -2746,8 +2746,8 @@ class ForwardingRule(pulumi.CustomResource):
                 "subnetwork": default_subnetwork.id,
             }],
             disks=[{
-                "sourceImage": debian_image.self_link,
-                "autoDelete": True,
+                "source_image": debian_image.self_link,
+                "auto_delete": True,
                 "boot": True,
             }],
             tags=[
@@ -2758,7 +2758,7 @@ class ForwardingRule(pulumi.CustomResource):
             region="us-central1",
             name="website-rigm",
             versions=[{
-                "instanceTemplate": instance_template.id,
+                "instance_template": instance_template.id,
                 "name": "primary",
             }],
             base_instance_name="internal-glb",
@@ -2828,15 +2828,15 @@ class ForwardingRule(pulumi.CustomResource):
             region="us-central1",
             name="website-hc",
             http_health_check={
-                "portSpecification": "USE_SERVING_PORT",
+                "port_specification": "USE_SERVING_PORT",
             },
             opts = pulumi.ResourceOptions(depends_on=[fw4]))
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             load_balancing_scheme="INTERNAL_MANAGED",
             backends=[{
                 "group": rigm.instance_group,
-                "balancingMode": "UTILIZATION",
-                "capacityScaler": 1,
+                "balancing_mode": "UTILIZATION",
+                "capacity_scaler": 1,
             }],
             region="us-central1",
             name="website-backend",
@@ -2896,8 +2896,8 @@ class ForwardingRule(pulumi.CustomResource):
                 "subnetwork": default_subnetwork.id,
             }],
             disks=[{
-                "sourceImage": debian_image.self_link,
-                "autoDelete": True,
+                "source_image": debian_image.self_link,
+                "auto_delete": True,
                 "boot": True,
             }],
             tags=[
@@ -2908,7 +2908,7 @@ class ForwardingRule(pulumi.CustomResource):
             region="us-central1",
             name="website-rigm",
             versions=[{
-                "instanceTemplate": instance_template.id,
+                "instance_template": instance_template.id,
                 "name": "primary",
             }],
             base_instance_name="internal-glb",
@@ -2978,15 +2978,15 @@ class ForwardingRule(pulumi.CustomResource):
             region="us-central1",
             name="website-hc",
             http_health_check={
-                "portSpecification": "USE_SERVING_PORT",
+                "port_specification": "USE_SERVING_PORT",
             },
             opts = pulumi.ResourceOptions(depends_on=[fw4]))
         default_region_backend_service = gcp.compute.RegionBackendService("default",
             load_balancing_scheme="EXTERNAL_MANAGED",
             backends=[{
                 "group": rigm.instance_group,
-                "balancingMode": "UTILIZATION",
-                "capacityScaler": 1,
+                "balancing_mode": "UTILIZATION",
+                "capacity_scaler": 1,
             }],
             region="us-central1",
             name="website-backend",

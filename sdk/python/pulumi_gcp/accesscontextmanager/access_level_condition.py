@@ -462,10 +462,10 @@ class AccessLevelCondition(pulumi.CustomResource):
             title="chromeos_no_lock",
             basic={
                 "conditions": [{
-                    "devicePolicy": {
-                        "requireScreenLock": True,
-                        "osConstraints": [{
-                            "osType": "DESKTOP_CHROME_OS",
+                    "device_policy": {
+                        "require_screen_lock": True,
+                        "os_constraints": [{
+                            "os_type": "DESKTOP_CHROME_OS",
                         }],
                     },
                     "regions": [
@@ -486,11 +486,11 @@ class AccessLevelCondition(pulumi.CustomResource):
             ],
             negate=False,
             device_policy={
-                "requireScreenLock": False,
-                "requireAdminApproval": False,
-                "requireCorpOwned": True,
-                "osConstraints": [{
-                    "osType": "DESKTOP_CHROME_OS",
+                "require_screen_lock": False,
+                "require_admin_approval": False,
+                "require_corp_owned": True,
+                "os_constraints": [{
+                    "os_type": "DESKTOP_CHROME_OS",
                 }],
             },
             regions=[
@@ -589,10 +589,10 @@ class AccessLevelCondition(pulumi.CustomResource):
             title="chromeos_no_lock",
             basic={
                 "conditions": [{
-                    "devicePolicy": {
-                        "requireScreenLock": True,
-                        "osConstraints": [{
-                            "osType": "DESKTOP_CHROME_OS",
+                    "device_policy": {
+                        "require_screen_lock": True,
+                        "os_constraints": [{
+                            "os_type": "DESKTOP_CHROME_OS",
                         }],
                     },
                     "regions": [
@@ -613,11 +613,11 @@ class AccessLevelCondition(pulumi.CustomResource):
             ],
             negate=False,
             device_policy={
-                "requireScreenLock": False,
-                "requireAdminApproval": False,
-                "requireCorpOwned": True,
-                "osConstraints": [{
-                    "osType": "DESKTOP_CHROME_OS",
+                "require_screen_lock": False,
+                "require_admin_approval": False,
+                "require_corp_owned": True,
+                "os_constraints": [{
+                    "os_type": "DESKTOP_CHROME_OS",
                 }],
             },
             regions=[

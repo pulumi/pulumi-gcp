@@ -314,11 +314,11 @@ class Index(pulumi.CustomResource):
             collection="atestcollection",
             fields=[
                 {
-                    "fieldPath": "name",
+                    "field_path": "name",
                     "order": "ASCENDING",
                 },
                 {
-                    "fieldPath": "description",
+                    "field_path": "description",
                     "order": "DESCENDING",
                 },
             ])
@@ -344,11 +344,11 @@ class Index(pulumi.CustomResource):
             api_scope="DATASTORE_MODE_API",
             fields=[
                 {
-                    "fieldPath": "name",
+                    "field_path": "name",
                     "order": "ASCENDING",
                 },
                 {
-                    "fieldPath": "description",
+                    "field_path": "description",
                     "order": "DESCENDING",
                 },
             ])
@@ -372,16 +372,16 @@ class Index(pulumi.CustomResource):
             collection="atestcollection",
             fields=[
                 {
-                    "fieldPath": "field_name",
+                    "field_path": "field_name",
                     "order": "ASCENDING",
                 },
                 {
-                    "fieldPath": "__name__",
+                    "field_path": "__name__",
                     "order": "ASCENDING",
                 },
                 {
-                    "fieldPath": "description",
-                    "vectorConfig": {
+                    "field_path": "description",
+                    "vector_config": {
                         "dimension": 128,
                         "flat": {},
                     },
@@ -462,11 +462,11 @@ class Index(pulumi.CustomResource):
             collection="atestcollection",
             fields=[
                 {
-                    "fieldPath": "name",
+                    "field_path": "name",
                     "order": "ASCENDING",
                 },
                 {
-                    "fieldPath": "description",
+                    "field_path": "description",
                     "order": "DESCENDING",
                 },
             ])
@@ -492,11 +492,11 @@ class Index(pulumi.CustomResource):
             api_scope="DATASTORE_MODE_API",
             fields=[
                 {
-                    "fieldPath": "name",
+                    "field_path": "name",
                     "order": "ASCENDING",
                 },
                 {
-                    "fieldPath": "description",
+                    "field_path": "description",
                     "order": "DESCENDING",
                 },
             ])
@@ -520,16 +520,16 @@ class Index(pulumi.CustomResource):
             collection="atestcollection",
             fields=[
                 {
-                    "fieldPath": "field_name",
+                    "field_path": "field_name",
                     "order": "ASCENDING",
                 },
                 {
-                    "fieldPath": "__name__",
+                    "field_path": "__name__",
                     "order": "ASCENDING",
                 },
                 {
-                    "fieldPath": "description",
-                    "vectorConfig": {
+                    "field_path": "description",
+                    "vector_config": {
                         "dimension": 128,
                         "flat": {},
                     },
