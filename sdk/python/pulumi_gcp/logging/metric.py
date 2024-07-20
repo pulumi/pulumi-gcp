@@ -496,22 +496,22 @@ class Metric(pulumi.CustomResource):
             name="my-(custom)/metric",
             filter="resource.type=gae_app AND severity>=ERROR",
             metric_descriptor={
-                "metricKind": "DELTA",
-                "valueType": "DISTRIBUTION",
+                "metric_kind": "DELTA",
+                "value_type": "DISTRIBUTION",
                 "unit": "1",
                 "labels": [
                     {
                         "key": "mass",
-                        "valueType": "STRING",
+                        "value_type": "STRING",
                         "description": "amount of matter",
                     },
                     {
                         "key": "sku",
-                        "valueType": "INT64",
+                        "value_type": "INT64",
                         "description": "Identifying number for item",
                     },
                 ],
-                "displayName": "My metric",
+                "display_name": "My metric",
             },
             value_extractor="EXTRACT(jsonPayload.request)",
             label_extractors={
@@ -519,8 +519,8 @@ class Metric(pulumi.CustomResource):
                 "sku": "EXTRACT(jsonPayload.id)",
             },
             bucket_options={
-                "linearBuckets": {
-                    "numFiniteBuckets": 3,
+                "linear_buckets": {
+                    "num_finite_buckets": 3,
                     "width": 1,
                     "offset": 1,
                 },
@@ -536,8 +536,8 @@ class Metric(pulumi.CustomResource):
             name="my-(custom)/metric",
             filter="resource.type=gae_app AND severity>=ERROR",
             metric_descriptor={
-                "metricKind": "DELTA",
-                "valueType": "INT64",
+                "metric_kind": "DELTA",
+                "value_type": "INT64",
             })
         ```
         ### Logging Metric Counter Labels
@@ -550,11 +550,11 @@ class Metric(pulumi.CustomResource):
             name="my-(custom)/metric",
             filter="resource.type=gae_app AND severity>=ERROR",
             metric_descriptor={
-                "metricKind": "DELTA",
-                "valueType": "INT64",
+                "metric_kind": "DELTA",
+                "value_type": "INT64",
                 "labels": [{
                     "key": "mass",
-                    "valueType": "STRING",
+                    "value_type": "STRING",
                     "description": "amount of matter",
                 }],
             },
@@ -587,8 +587,8 @@ class Metric(pulumi.CustomResource):
             name="my-(custom)/metric",
             filter="resource.type=gae_app AND severity>=ERROR",
             metric_descriptor={
-                "metricKind": "DELTA",
-                "valueType": "INT64",
+                "metric_kind": "DELTA",
+                "value_type": "INT64",
             },
             disabled=True)
         ```
@@ -679,22 +679,22 @@ class Metric(pulumi.CustomResource):
             name="my-(custom)/metric",
             filter="resource.type=gae_app AND severity>=ERROR",
             metric_descriptor={
-                "metricKind": "DELTA",
-                "valueType": "DISTRIBUTION",
+                "metric_kind": "DELTA",
+                "value_type": "DISTRIBUTION",
                 "unit": "1",
                 "labels": [
                     {
                         "key": "mass",
-                        "valueType": "STRING",
+                        "value_type": "STRING",
                         "description": "amount of matter",
                     },
                     {
                         "key": "sku",
-                        "valueType": "INT64",
+                        "value_type": "INT64",
                         "description": "Identifying number for item",
                     },
                 ],
-                "displayName": "My metric",
+                "display_name": "My metric",
             },
             value_extractor="EXTRACT(jsonPayload.request)",
             label_extractors={
@@ -702,8 +702,8 @@ class Metric(pulumi.CustomResource):
                 "sku": "EXTRACT(jsonPayload.id)",
             },
             bucket_options={
-                "linearBuckets": {
-                    "numFiniteBuckets": 3,
+                "linear_buckets": {
+                    "num_finite_buckets": 3,
                     "width": 1,
                     "offset": 1,
                 },
@@ -719,8 +719,8 @@ class Metric(pulumi.CustomResource):
             name="my-(custom)/metric",
             filter="resource.type=gae_app AND severity>=ERROR",
             metric_descriptor={
-                "metricKind": "DELTA",
-                "valueType": "INT64",
+                "metric_kind": "DELTA",
+                "value_type": "INT64",
             })
         ```
         ### Logging Metric Counter Labels
@@ -733,11 +733,11 @@ class Metric(pulumi.CustomResource):
             name="my-(custom)/metric",
             filter="resource.type=gae_app AND severity>=ERROR",
             metric_descriptor={
-                "metricKind": "DELTA",
-                "valueType": "INT64",
+                "metric_kind": "DELTA",
+                "value_type": "INT64",
                 "labels": [{
                     "key": "mass",
-                    "valueType": "STRING",
+                    "value_type": "STRING",
                     "description": "amount of matter",
                 }],
             },
@@ -770,8 +770,8 @@ class Metric(pulumi.CustomResource):
             name="my-(custom)/metric",
             filter="resource.type=gae_app AND severity>=ERROR",
             metric_descriptor={
-                "metricKind": "DELTA",
-                "valueType": "INT64",
+                "metric_kind": "DELTA",
+                "value_type": "INT64",
             },
             disabled=True)
         ```

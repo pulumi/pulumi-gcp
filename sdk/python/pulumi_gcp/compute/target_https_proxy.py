@@ -734,12 +734,12 @@ class TargetHttpsProxy(pulumi.CustomResource):
             default_service=default_backend_service.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": default_backend_service.id,
-                "pathRules": [{
+                "default_service": default_backend_service.id,
+                "path_rules": [{
                     "paths": ["/*"],
                     "service": default_backend_service.id,
                 }],
@@ -778,12 +778,12 @@ class TargetHttpsProxy(pulumi.CustomResource):
             default_service=default_backend_service.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": default_backend_service.id,
-                "pathRules": [{
+                "default_service": default_backend_service.id,
+                "path_rules": [{
                     "paths": ["/*"],
                     "service": default_backend_service.id,
                 }],
@@ -807,11 +807,11 @@ class TargetHttpsProxy(pulumi.CustomResource):
             description="sample description for the trust config",
             location="global",
             trust_stores=[{
-                "trustAnchors": [{
-                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                "trust_anchors": [{
+                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
                 }],
-                "intermediateCas": [{
-                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                "intermediate_cas": [{
+                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
                 }],
             }],
             labels={
@@ -823,8 +823,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
             location="global",
             allow_open=False,
             mtls_policy={
-                "clientValidationMode": "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
-                "clientValidationTrustConfig": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
+                "client_validation_mode": "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
+                "client_validation_trust_config": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
             })
         default_ssl_certificate = gcp.compute.SSLCertificate("default",
             name="my-certificate",
@@ -847,12 +847,12 @@ class TargetHttpsProxy(pulumi.CustomResource):
             default_service=default_backend_service.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": default_backend_service.id,
-                "pathRules": [{
+                "default_service": default_backend_service.id,
+                "path_rules": [{
                     "paths": ["/*"],
                     "service": default_backend_service.id,
                 }],
@@ -874,8 +874,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
             name="my-certificate",
             scope="ALL_REGIONS",
             self_managed={
-                "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
-                "pemPrivateKey": std.file(input="test-fixtures/private-key.pem").result,
+                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         default_backend_service = gcp.compute.BackendService("default",
             name="backend-service",
@@ -889,12 +889,12 @@ class TargetHttpsProxy(pulumi.CustomResource):
             default_service=default_backend_service.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": default_backend_service.id,
-                "pathRules": [{
+                "default_service": default_backend_service.id,
+                "path_rules": [{
                     "paths": ["/*"],
                     "service": default_backend_service.id,
                 }],
@@ -1036,12 +1036,12 @@ class TargetHttpsProxy(pulumi.CustomResource):
             default_service=default_backend_service.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": default_backend_service.id,
-                "pathRules": [{
+                "default_service": default_backend_service.id,
+                "path_rules": [{
                     "paths": ["/*"],
                     "service": default_backend_service.id,
                 }],
@@ -1080,12 +1080,12 @@ class TargetHttpsProxy(pulumi.CustomResource):
             default_service=default_backend_service.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": default_backend_service.id,
-                "pathRules": [{
+                "default_service": default_backend_service.id,
+                "path_rules": [{
                     "paths": ["/*"],
                     "service": default_backend_service.id,
                 }],
@@ -1109,11 +1109,11 @@ class TargetHttpsProxy(pulumi.CustomResource):
             description="sample description for the trust config",
             location="global",
             trust_stores=[{
-                "trustAnchors": [{
-                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                "trust_anchors": [{
+                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
                 }],
-                "intermediateCas": [{
-                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                "intermediate_cas": [{
+                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
                 }],
             }],
             labels={
@@ -1125,8 +1125,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
             location="global",
             allow_open=False,
             mtls_policy={
-                "clientValidationMode": "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
-                "clientValidationTrustConfig": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
+                "client_validation_mode": "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
+                "client_validation_trust_config": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
             })
         default_ssl_certificate = gcp.compute.SSLCertificate("default",
             name="my-certificate",
@@ -1149,12 +1149,12 @@ class TargetHttpsProxy(pulumi.CustomResource):
             default_service=default_backend_service.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": default_backend_service.id,
-                "pathRules": [{
+                "default_service": default_backend_service.id,
+                "path_rules": [{
                     "paths": ["/*"],
                     "service": default_backend_service.id,
                 }],
@@ -1176,8 +1176,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
             name="my-certificate",
             scope="ALL_REGIONS",
             self_managed={
-                "pemCertificate": std.file(input="test-fixtures/cert.pem").result,
-                "pemPrivateKey": std.file(input="test-fixtures/private-key.pem").result,
+                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         default_backend_service = gcp.compute.BackendService("default",
             name="backend-service",
@@ -1191,12 +1191,12 @@ class TargetHttpsProxy(pulumi.CustomResource):
             default_service=default_backend_service.id,
             host_rules=[{
                 "hosts": ["mysite.com"],
-                "pathMatcher": "allpaths",
+                "path_matcher": "allpaths",
             }],
             path_matchers=[{
                 "name": "allpaths",
-                "defaultService": default_backend_service.id,
-                "pathRules": [{
+                "default_service": default_backend_service.id,
+                "path_rules": [{
                     "paths": ["/*"],
                     "service": default_backend_service.id,
                 }],

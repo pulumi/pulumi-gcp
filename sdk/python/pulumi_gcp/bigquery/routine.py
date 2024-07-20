@@ -704,11 +704,11 @@ class Routine(pulumi.CustomResource):
             arguments=[
                 {
                     "name": "x",
-                    "dataType": "{\\"typeKind\\" :  \\"FLOAT64\\"}",
+                    "data_type": "{\\"typeKind\\" :  \\"FLOAT64\\"}",
                 },
                 {
                     "name": "y",
-                    "dataType": "{\\"typeKind\\" :  \\"FLOAT64\\"}",
+                    "data_type": "{\\"typeKind\\" :  \\"FLOAT64\\"}",
                 },
             ],
             return_type="{\\"typeKind\\" :  \\"FLOAT64\\"}")
@@ -729,9 +729,9 @@ class Routine(pulumi.CustomResource):
             definition_body="SELECT 1 + value AS value\\n",
             arguments=[{
                 "name": "value",
-                "argumentKind": "FIXED_TYPE",
-                "dataType": json.dumps({
-                    "typeKind": "INT64",
+                "argument_kind": "FIXED_TYPE",
+                "data_type": json.dumps({
+                    "type_kind": "INT64",
                 }),
             }],
             return_table_type=json.dumps({
@@ -781,7 +781,7 @@ class Routine(pulumi.CustomResource):
         \"\"\",
             spark_options={
                 "connection": test_connection.name,
-                "runtimeVersion": "2.1",
+                "runtime_version": "2.1",
             })
         ```
         ### Bigquery Routine Pyspark Mainfile
@@ -803,11 +803,11 @@ class Routine(pulumi.CustomResource):
             definition_body="",
             spark_options={
                 "connection": test_connection.name,
-                "runtimeVersion": "2.1",
-                "mainFileUri": "gs://test-bucket/main.py",
-                "pyFileUris": ["gs://test-bucket/lib.py"],
-                "fileUris": ["gs://test-bucket/distribute_in_executor.json"],
-                "archiveUris": ["gs://test-bucket/distribute_in_executor.tar.gz"],
+                "runtime_version": "2.1",
+                "main_file_uri": "gs://test-bucket/main.py",
+                "py_file_uris": ["gs://test-bucket/lib.py"],
+                "file_uris": ["gs://test-bucket/distribute_in_executor.json"],
+                "archive_uris": ["gs://test-bucket/distribute_in_executor.tar.gz"],
             })
         ```
         ### Bigquery Routine Spark Jar
@@ -829,13 +829,13 @@ class Routine(pulumi.CustomResource):
             definition_body="",
             spark_options={
                 "connection": test_connection.name,
-                "runtimeVersion": "2.1",
-                "containerImage": "gcr.io/my-project-id/my-spark-image:latest",
-                "mainClass": "com.google.test.jar.MainClass",
-                "jarUris": ["gs://test-bucket/uberjar_spark_spark3.jar"],
+                "runtime_version": "2.1",
+                "container_image": "gcr.io/my-project-id/my-spark-image:latest",
+                "main_class": "com.google.test.jar.MainClass",
+                "jar_uris": ["gs://test-bucket/uberjar_spark_spark3.jar"],
                 "properties": {
-                    "spark.dataproc.scaling.version": "2",
-                    "spark.reducer.fetchMigratedShuffle.enabled": "true",
+                    "spark_dataproc_scaling_version": "2",
+                    "spark_reducer_fetch_migrated_shuffle_enabled": "true",
                 },
             })
         ```
@@ -855,7 +855,7 @@ class Routine(pulumi.CustomResource):
             definition_body="SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')",
             arguments=[{
                 "name": "ssn",
-                "dataType": "{\\"typeKind\\" :  \\"STRING\\"}",
+                "data_type": "{\\"typeKind\\" :  \\"STRING\\"}",
             }],
             return_type="{\\"typeKind\\" :  \\"STRING\\"}")
         ```
@@ -879,8 +879,8 @@ class Routine(pulumi.CustomResource):
             remote_function_options={
                 "endpoint": "https://us-east1-my_gcf_project.cloudfunctions.net/remote_add",
                 "connection": test_connection.name,
-                "maxBatchingRows": "10",
-                "userDefinedContext": {
+                "max_batching_rows": "10",
+                "user_defined_context": {
                     "z": "1.5",
                 },
             })
@@ -999,11 +999,11 @@ class Routine(pulumi.CustomResource):
             arguments=[
                 {
                     "name": "x",
-                    "dataType": "{\\"typeKind\\" :  \\"FLOAT64\\"}",
+                    "data_type": "{\\"typeKind\\" :  \\"FLOAT64\\"}",
                 },
                 {
                     "name": "y",
-                    "dataType": "{\\"typeKind\\" :  \\"FLOAT64\\"}",
+                    "data_type": "{\\"typeKind\\" :  \\"FLOAT64\\"}",
                 },
             ],
             return_type="{\\"typeKind\\" :  \\"FLOAT64\\"}")
@@ -1024,9 +1024,9 @@ class Routine(pulumi.CustomResource):
             definition_body="SELECT 1 + value AS value\\n",
             arguments=[{
                 "name": "value",
-                "argumentKind": "FIXED_TYPE",
-                "dataType": json.dumps({
-                    "typeKind": "INT64",
+                "argument_kind": "FIXED_TYPE",
+                "data_type": json.dumps({
+                    "type_kind": "INT64",
                 }),
             }],
             return_table_type=json.dumps({
@@ -1076,7 +1076,7 @@ class Routine(pulumi.CustomResource):
         \"\"\",
             spark_options={
                 "connection": test_connection.name,
-                "runtimeVersion": "2.1",
+                "runtime_version": "2.1",
             })
         ```
         ### Bigquery Routine Pyspark Mainfile
@@ -1098,11 +1098,11 @@ class Routine(pulumi.CustomResource):
             definition_body="",
             spark_options={
                 "connection": test_connection.name,
-                "runtimeVersion": "2.1",
-                "mainFileUri": "gs://test-bucket/main.py",
-                "pyFileUris": ["gs://test-bucket/lib.py"],
-                "fileUris": ["gs://test-bucket/distribute_in_executor.json"],
-                "archiveUris": ["gs://test-bucket/distribute_in_executor.tar.gz"],
+                "runtime_version": "2.1",
+                "main_file_uri": "gs://test-bucket/main.py",
+                "py_file_uris": ["gs://test-bucket/lib.py"],
+                "file_uris": ["gs://test-bucket/distribute_in_executor.json"],
+                "archive_uris": ["gs://test-bucket/distribute_in_executor.tar.gz"],
             })
         ```
         ### Bigquery Routine Spark Jar
@@ -1124,13 +1124,13 @@ class Routine(pulumi.CustomResource):
             definition_body="",
             spark_options={
                 "connection": test_connection.name,
-                "runtimeVersion": "2.1",
-                "containerImage": "gcr.io/my-project-id/my-spark-image:latest",
-                "mainClass": "com.google.test.jar.MainClass",
-                "jarUris": ["gs://test-bucket/uberjar_spark_spark3.jar"],
+                "runtime_version": "2.1",
+                "container_image": "gcr.io/my-project-id/my-spark-image:latest",
+                "main_class": "com.google.test.jar.MainClass",
+                "jar_uris": ["gs://test-bucket/uberjar_spark_spark3.jar"],
                 "properties": {
-                    "spark.dataproc.scaling.version": "2",
-                    "spark.reducer.fetchMigratedShuffle.enabled": "true",
+                    "spark_dataproc_scaling_version": "2",
+                    "spark_reducer_fetch_migrated_shuffle_enabled": "true",
                 },
             })
         ```
@@ -1150,7 +1150,7 @@ class Routine(pulumi.CustomResource):
             definition_body="SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')",
             arguments=[{
                 "name": "ssn",
-                "dataType": "{\\"typeKind\\" :  \\"STRING\\"}",
+                "data_type": "{\\"typeKind\\" :  \\"STRING\\"}",
             }],
             return_type="{\\"typeKind\\" :  \\"STRING\\"}")
         ```
@@ -1174,8 +1174,8 @@ class Routine(pulumi.CustomResource):
             remote_function_options={
                 "endpoint": "https://us-east1-my_gcf_project.cloudfunctions.net/remote_add",
                 "connection": test_connection.name,
-                "maxBatchingRows": "10",
-                "userDefinedContext": {
+                "max_batching_rows": "10",
+                "user_defined_context": {
                     "z": "1.5",
                 },
             })

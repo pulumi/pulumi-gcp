@@ -429,7 +429,7 @@ class AiTensorboard(pulumi.CustomResource):
             },
             region="us-central1",
             encryption_spec={
-                "kmsKeyName": "kms-name",
+                "kms_key_name": "kms-name",
             },
             opts = pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```
@@ -533,7 +533,7 @@ class AiTensorboard(pulumi.CustomResource):
             },
             region="us-central1",
             encryption_spec={
-                "kmsKeyName": "kms-name",
+                "kms_key_name": "kms-name",
             },
             opts = pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```

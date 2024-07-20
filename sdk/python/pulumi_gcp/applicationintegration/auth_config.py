@@ -579,8 +579,8 @@ class AuthConfig(pulumi.CustomResource):
             display_name="test-authconfig",
             description="Test auth config created via terraform",
             decrypted_credential={
-                "credentialType": "USERNAME_AND_PASSWORD",
-                "usernameAndPassword": {
+                "credential_type": "USERNAME_AND_PASSWORD",
+                "username_and_password": {
                     "username": "test-username",
                     "password": "test-password",
                 },
@@ -651,8 +651,8 @@ class AuthConfig(pulumi.CustomResource):
             display_name="test-authconfig",
             description="Test auth config created via terraform",
             decrypted_credential={
-                "credentialType": "USERNAME_AND_PASSWORD",
-                "usernameAndPassword": {
+                "credential_type": "USERNAME_AND_PASSWORD",
+                "username_and_password": {
                     "username": "test-username",
                     "password": "test-password",
                 },
