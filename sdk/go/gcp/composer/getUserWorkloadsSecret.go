@@ -61,10 +61,10 @@ import (
 //				return err
 //			}
 //			example := exampleEnvironment.Name.ApplyT(func(name string) (composer.GetUserWorkloadsSecretResult, error) {
-//				return composer.LookupUserWorkloadsSecretOutput(ctx, composer.GetUserWorkloadsSecretOutputArgs{
+//				return composer.GetUserWorkloadsSecretResult(interface{}(composer.LookupUserWorkloadsSecretOutput(ctx, composer.GetUserWorkloadsSecretOutputArgs{
 //					Environment: name,
 //					Name:        googleComposerUserWorkloadsSecret.Example.Name,
-//				}, nil), nil
+//				}, nil))), nil
 //			}).(composer.GetUserWorkloadsSecretResultOutput)
 //			ctx.Export("debug", example)
 //			return nil

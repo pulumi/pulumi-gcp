@@ -56,7 +56,7 @@ import (
 //				Schedule:    pulumi.String("*/2 * * * *"),
 //				PubsubTarget: &cloudscheduler.JobPubsubTargetArgs{
 //					TopicName: topic.ID(),
-//					Data:      invokeBase64encode.Result,
+//					Data:      pulumi.String(invokeBase64encode.Result),
 //				},
 //			})
 //			if err != nil {
@@ -100,7 +100,7 @@ import (
 //				HttpTarget: &cloudscheduler.JobHttpTargetArgs{
 //					HttpMethod: pulumi.String("POST"),
 //					Uri:        pulumi.String("https://example.com/"),
-//					Body:       invokeBase64encode.Result,
+//					Body:       pulumi.String(invokeBase64encode.Result),
 //					Headers: pulumi.StringMap{
 //						"Content-Type": pulumi.String("application/json"),
 //					},
@@ -148,7 +148,7 @@ import (
 //				HttpTarget: &cloudscheduler.JobHttpTargetArgs{
 //					HttpMethod: pulumi.String("POST"),
 //					Uri:        pulumi.String("https://example.com/ping"),
-//					Body:       invokeBase64encode.Result,
+//					Body:       pulumi.String(invokeBase64encode.Result),
 //					Headers: pulumi.StringMap{
 //						"Content-Type": pulumi.String("application/json"),
 //					},

@@ -857,8 +857,8 @@ class MetastoreService(pulumi.CustomResource):
             port=9080,
             tier="DEVELOPER",
             maintenance_window={
-                "hourOfDay": 2,
-                "dayOfWeek": "SUNDAY",
+                "hour_of_day": 2,
+                "day_of_week": "SUNDAY",
             },
             hive_metastore_config={
                 "version": "2.3.6",
@@ -884,7 +884,7 @@ class MetastoreService(pulumi.CustomResource):
             service_id="example-service",
             location="us-central1",
             encryption_config={
-                "kmsKey": crypto_key.id,
+                "kms_key": crypto_key.id,
             },
             hive_metastore_config={
                 "version": "3.1.2",
@@ -942,7 +942,7 @@ class MetastoreService(pulumi.CustomResource):
                 "consumers": [{
                     "subnetwork": subnet.id,
                 }],
-                "customRoutesEnabled": True,
+                "custom_routes_enabled": True,
             })
         ```
         ### Dataproc Metastore Service Dpms2
@@ -959,7 +959,7 @@ class MetastoreService(pulumi.CustomResource):
                 "version": "3.1.2",
             },
             scaling_config={
-                "instanceSize": "EXTRA_SMALL",
+                "instance_size": "EXTRA_SMALL",
             })
         ```
         ### Dataproc Metastore Service Dpms2 Scaling Factor
@@ -976,7 +976,7 @@ class MetastoreService(pulumi.CustomResource):
                 "version": "3.1.2",
             },
             scaling_config={
-                "scalingFactor": 2,
+                "scaling_factor": 2,
             })
         ```
         ### Dataproc Metastore Service Scheduled Backup
@@ -994,17 +994,17 @@ class MetastoreService(pulumi.CustomResource):
             port=9080,
             tier="DEVELOPER",
             maintenance_window={
-                "hourOfDay": 2,
-                "dayOfWeek": "SUNDAY",
+                "hour_of_day": 2,
+                "day_of_week": "SUNDAY",
             },
             hive_metastore_config={
                 "version": "2.3.6",
             },
             scheduled_backup={
                 "enabled": True,
-                "cronSchedule": "0 0 * * *",
-                "timeZone": "UTC",
-                "backupLocation": bucket.name.apply(lambda name: f"gs://{name}"),
+                "cron_schedule": "0 0 * * *",
+                "time_zone": "UTC",
+                "backup_location": bucket.name.apply(lambda name: f"gs://{name}"),
             },
             labels={
                 "env": "test",
@@ -1024,10 +1024,10 @@ class MetastoreService(pulumi.CustomResource):
                 "version": "3.1.2",
             },
             scaling_config={
-                "autoscalingConfig": {
-                    "autoscalingEnabled": True,
-                    "limitConfig": {
-                        "maxScalingFactor": 1,
+                "autoscaling_config": {
+                    "autoscaling_enabled": True,
+                    "limit_config": {
+                        "max_scaling_factor": 1,
                     },
                 },
             })
@@ -1046,11 +1046,11 @@ class MetastoreService(pulumi.CustomResource):
                 "version": "3.1.2",
             },
             scaling_config={
-                "autoscalingConfig": {
-                    "autoscalingEnabled": True,
-                    "limitConfig": {
-                        "minScalingFactor": 0.1,
-                        "maxScalingFactor": 1,
+                "autoscaling_config": {
+                    "autoscaling_enabled": True,
+                    "limit_config": {
+                        "min_scaling_factor": 0.1,
+                        "max_scaling_factor": 1,
                     },
                 },
             })
@@ -1069,10 +1069,10 @@ class MetastoreService(pulumi.CustomResource):
                 "version": "3.1.2",
             },
             scaling_config={
-                "autoscalingConfig": {
-                    "autoscalingEnabled": True,
-                    "limitConfig": {
-                        "minScalingFactor": 0.1,
+                "autoscaling_config": {
+                    "autoscaling_enabled": True,
+                    "limit_config": {
+                        "min_scaling_factor": 0.1,
                     },
                 },
             })
@@ -1091,8 +1091,8 @@ class MetastoreService(pulumi.CustomResource):
                 "version": "3.1.2",
             },
             scaling_config={
-                "autoscalingConfig": {
-                    "autoscalingEnabled": True,
+                "autoscaling_config": {
+                    "autoscaling_enabled": True,
                 },
             })
         ```
@@ -1196,8 +1196,8 @@ class MetastoreService(pulumi.CustomResource):
             port=9080,
             tier="DEVELOPER",
             maintenance_window={
-                "hourOfDay": 2,
-                "dayOfWeek": "SUNDAY",
+                "hour_of_day": 2,
+                "day_of_week": "SUNDAY",
             },
             hive_metastore_config={
                 "version": "2.3.6",
@@ -1223,7 +1223,7 @@ class MetastoreService(pulumi.CustomResource):
             service_id="example-service",
             location="us-central1",
             encryption_config={
-                "kmsKey": crypto_key.id,
+                "kms_key": crypto_key.id,
             },
             hive_metastore_config={
                 "version": "3.1.2",
@@ -1281,7 +1281,7 @@ class MetastoreService(pulumi.CustomResource):
                 "consumers": [{
                     "subnetwork": subnet.id,
                 }],
-                "customRoutesEnabled": True,
+                "custom_routes_enabled": True,
             })
         ```
         ### Dataproc Metastore Service Dpms2
@@ -1298,7 +1298,7 @@ class MetastoreService(pulumi.CustomResource):
                 "version": "3.1.2",
             },
             scaling_config={
-                "instanceSize": "EXTRA_SMALL",
+                "instance_size": "EXTRA_SMALL",
             })
         ```
         ### Dataproc Metastore Service Dpms2 Scaling Factor
@@ -1315,7 +1315,7 @@ class MetastoreService(pulumi.CustomResource):
                 "version": "3.1.2",
             },
             scaling_config={
-                "scalingFactor": 2,
+                "scaling_factor": 2,
             })
         ```
         ### Dataproc Metastore Service Scheduled Backup
@@ -1333,17 +1333,17 @@ class MetastoreService(pulumi.CustomResource):
             port=9080,
             tier="DEVELOPER",
             maintenance_window={
-                "hourOfDay": 2,
-                "dayOfWeek": "SUNDAY",
+                "hour_of_day": 2,
+                "day_of_week": "SUNDAY",
             },
             hive_metastore_config={
                 "version": "2.3.6",
             },
             scheduled_backup={
                 "enabled": True,
-                "cronSchedule": "0 0 * * *",
-                "timeZone": "UTC",
-                "backupLocation": bucket.name.apply(lambda name: f"gs://{name}"),
+                "cron_schedule": "0 0 * * *",
+                "time_zone": "UTC",
+                "backup_location": bucket.name.apply(lambda name: f"gs://{name}"),
             },
             labels={
                 "env": "test",
@@ -1363,10 +1363,10 @@ class MetastoreService(pulumi.CustomResource):
                 "version": "3.1.2",
             },
             scaling_config={
-                "autoscalingConfig": {
-                    "autoscalingEnabled": True,
-                    "limitConfig": {
-                        "maxScalingFactor": 1,
+                "autoscaling_config": {
+                    "autoscaling_enabled": True,
+                    "limit_config": {
+                        "max_scaling_factor": 1,
                     },
                 },
             })
@@ -1385,11 +1385,11 @@ class MetastoreService(pulumi.CustomResource):
                 "version": "3.1.2",
             },
             scaling_config={
-                "autoscalingConfig": {
-                    "autoscalingEnabled": True,
-                    "limitConfig": {
-                        "minScalingFactor": 0.1,
-                        "maxScalingFactor": 1,
+                "autoscaling_config": {
+                    "autoscaling_enabled": True,
+                    "limit_config": {
+                        "min_scaling_factor": 0.1,
+                        "max_scaling_factor": 1,
                     },
                 },
             })
@@ -1408,10 +1408,10 @@ class MetastoreService(pulumi.CustomResource):
                 "version": "3.1.2",
             },
             scaling_config={
-                "autoscalingConfig": {
-                    "autoscalingEnabled": True,
-                    "limitConfig": {
-                        "minScalingFactor": 0.1,
+                "autoscaling_config": {
+                    "autoscaling_enabled": True,
+                    "limit_config": {
+                        "min_scaling_factor": 0.1,
                     },
                 },
             })
@@ -1430,8 +1430,8 @@ class MetastoreService(pulumi.CustomResource):
                 "version": "3.1.2",
             },
             scaling_config={
-                "autoscalingConfig": {
-                    "autoscalingEnabled": True,
+                "autoscaling_config": {
+                    "autoscaling_enabled": True,
                 },
             })
         ```

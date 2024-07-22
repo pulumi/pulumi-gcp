@@ -193,17 +193,17 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             enable_logging=True,
             match={
                 "config": {
-                    "srcIpRanges": [
+                    "src_ip_ranges": [
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
-                    "layer4Configs": [
+                    "layer4_configs": [
                         {
-                            "ipProtocol": "tcp",
+                            "ip_protocol": "tcp",
                             "ports": ["22"],
                         },
                         {
-                            "ipProtocol": "icmp",
+                            "ip_protocol": "icmp",
                         },
                     ],
                 },
@@ -272,17 +272,17 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             enable_logging=True,
             match={
                 "config": {
-                    "srcIpRanges": [
+                    "src_ip_ranges": [
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
-                    "layer4Configs": [
+                    "layer4_configs": [
                         {
-                            "ipProtocol": "tcp",
+                            "ip_protocol": "tcp",
                             "ports": ["22"],
                         },
                         {
-                            "ipProtocol": "icmp",
+                            "ip_protocol": "icmp",
                         },
                     ],
                 },

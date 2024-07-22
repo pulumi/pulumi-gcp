@@ -327,15 +327,15 @@ class LiteTopic(pulumi.CustomResource):
             partition_config={
                 "count": 1,
                 "capacity": {
-                    "publishMibPerSec": 4,
-                    "subscribeMibPerSec": 8,
+                    "publish_mib_per_sec": 4,
+                    "subscribe_mib_per_sec": 8,
                 },
             },
             retention_config={
-                "perPartitionBytes": "32212254720",
+                "per_partition_bytes": "32212254720",
             },
             reservation_config={
-                "throughputReservation": example.name,
+                "throughput_reservation": example.name,
             })
         ```
 
@@ -420,15 +420,15 @@ class LiteTopic(pulumi.CustomResource):
             partition_config={
                 "count": 1,
                 "capacity": {
-                    "publishMibPerSec": 4,
-                    "subscribeMibPerSec": 8,
+                    "publish_mib_per_sec": 4,
+                    "subscribe_mib_per_sec": 8,
                 },
             },
             retention_config={
-                "perPartitionBytes": "32212254720",
+                "per_partition_bytes": "32212254720",
             },
             reservation_config={
-                "throughputReservation": example.name,
+                "throughput_reservation": example.name,
             })
         ```
 

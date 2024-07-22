@@ -1285,9 +1285,9 @@ class Instance(pulumi.CustomResource):
                 "other_key": "other_val",
             },
             maintenance_policy={
-                "weeklyMaintenanceWindows": [{
+                "weekly_maintenance_windows": [{
                     "day": "TUESDAY",
-                    "startTime": {
+                    "start_time": {
                         "hours": 0,
                         "minutes": 30,
                         "seconds": 0,
@@ -1309,8 +1309,8 @@ class Instance(pulumi.CustomResource):
             location_id="us-central1-a",
             alternative_location_id="us-central1-f",
             persistence_config={
-                "persistenceMode": "RDB",
-                "rdbSnapshotPeriod": "TWELVE_HOURS",
+                "persistence_mode": "RDB",
+                "rdb_snapshot_period": "TWELVE_HOURS",
             })
         ```
         ### Redis Instance Private Service
@@ -1582,9 +1582,9 @@ class Instance(pulumi.CustomResource):
                 "other_key": "other_val",
             },
             maintenance_policy={
-                "weeklyMaintenanceWindows": [{
+                "weekly_maintenance_windows": [{
                     "day": "TUESDAY",
-                    "startTime": {
+                    "start_time": {
                         "hours": 0,
                         "minutes": 30,
                         "seconds": 0,
@@ -1606,8 +1606,8 @@ class Instance(pulumi.CustomResource):
             location_id="us-central1-a",
             alternative_location_id="us-central1-f",
             persistence_config={
-                "persistenceMode": "RDB",
-                "rdbSnapshotPeriod": "TWELVE_HOURS",
+                "persistence_mode": "RDB",
+                "rdb_snapshot_period": "TWELVE_HOURS",
             })
         ```
         ### Redis Instance Private Service

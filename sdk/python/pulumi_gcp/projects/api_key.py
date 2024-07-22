@@ -224,13 +224,13 @@ class ApiKey(pulumi.CustomResource):
             display_name="sample-key",
             project=basic.name,
             restrictions={
-                "androidKeyRestrictions": {
-                    "allowedApplications": [{
-                        "packageName": "com.example.app123",
-                        "sha1Fingerprint": "1699466a142d4682a5f91b50fdf400f2358e2b0b",
+                "android_key_restrictions": {
+                    "allowed_applications": [{
+                        "package_name": "com.example.app123",
+                        "sha1_fingerprint": "1699466a142d4682a5f91b50fdf400f2358e2b0b",
                     }],
                 },
-                "apiTargets": [{
+                "api_targets": [{
                     "service": "translate.googleapis.com",
                     "methods": ["GET*"],
                 }],
@@ -251,12 +251,12 @@ class ApiKey(pulumi.CustomResource):
             display_name="sample-key",
             project=basic.name,
             restrictions={
-                "apiTargets": [{
+                "api_targets": [{
                     "service": "translate.googleapis.com",
                     "methods": ["GET*"],
                 }],
-                "browserKeyRestrictions": {
-                    "allowedReferrers": [".*"],
+                "browser_key_restrictions": {
+                    "allowed_referrers": [".*"],
                 },
             })
         ```
@@ -275,12 +275,12 @@ class ApiKey(pulumi.CustomResource):
             display_name="sample-key",
             project=basic.name,
             restrictions={
-                "apiTargets": [{
+                "api_targets": [{
                     "service": "translate.googleapis.com",
                     "methods": ["GET*"],
                 }],
-                "iosKeyRestrictions": {
-                    "allowedBundleIds": ["com.google.app.macos"],
+                "ios_key_restrictions": {
+                    "allowed_bundle_ids": ["com.google.app.macos"],
                 },
             })
         ```
@@ -314,12 +314,12 @@ class ApiKey(pulumi.CustomResource):
             display_name="sample-key",
             project=basic.name,
             restrictions={
-                "apiTargets": [{
+                "api_targets": [{
                     "service": "translate.googleapis.com",
                     "methods": ["GET*"],
                 }],
-                "serverKeyRestrictions": {
-                    "allowedIps": ["127.0.0.1"],
+                "server_key_restrictions": {
+                    "allowed_ips": ["127.0.0.1"],
                 },
             })
         ```
@@ -381,13 +381,13 @@ class ApiKey(pulumi.CustomResource):
             display_name="sample-key",
             project=basic.name,
             restrictions={
-                "androidKeyRestrictions": {
-                    "allowedApplications": [{
-                        "packageName": "com.example.app123",
-                        "sha1Fingerprint": "1699466a142d4682a5f91b50fdf400f2358e2b0b",
+                "android_key_restrictions": {
+                    "allowed_applications": [{
+                        "package_name": "com.example.app123",
+                        "sha1_fingerprint": "1699466a142d4682a5f91b50fdf400f2358e2b0b",
                     }],
                 },
-                "apiTargets": [{
+                "api_targets": [{
                     "service": "translate.googleapis.com",
                     "methods": ["GET*"],
                 }],
@@ -408,12 +408,12 @@ class ApiKey(pulumi.CustomResource):
             display_name="sample-key",
             project=basic.name,
             restrictions={
-                "apiTargets": [{
+                "api_targets": [{
                     "service": "translate.googleapis.com",
                     "methods": ["GET*"],
                 }],
-                "browserKeyRestrictions": {
-                    "allowedReferrers": [".*"],
+                "browser_key_restrictions": {
+                    "allowed_referrers": [".*"],
                 },
             })
         ```
@@ -432,12 +432,12 @@ class ApiKey(pulumi.CustomResource):
             display_name="sample-key",
             project=basic.name,
             restrictions={
-                "apiTargets": [{
+                "api_targets": [{
                     "service": "translate.googleapis.com",
                     "methods": ["GET*"],
                 }],
-                "iosKeyRestrictions": {
-                    "allowedBundleIds": ["com.google.app.macos"],
+                "ios_key_restrictions": {
+                    "allowed_bundle_ids": ["com.google.app.macos"],
                 },
             })
         ```
@@ -471,12 +471,12 @@ class ApiKey(pulumi.CustomResource):
             display_name="sample-key",
             project=basic.name,
             restrictions={
-                "apiTargets": [{
+                "api_targets": [{
                     "service": "translate.googleapis.com",
                     "methods": ["GET*"],
                 }],
-                "serverKeyRestrictions": {
-                    "allowedIps": ["127.0.0.1"],
+                "server_key_restrictions": {
+                    "allowed_ips": ["127.0.0.1"],
                 },
             })
         ```

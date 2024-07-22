@@ -53,8 +53,8 @@ import (
 //			defaultRegionSslCertificate, err := compute.NewRegionSslCertificate(ctx, "default", &compute.RegionSslCertificateArgs{
 //				Region:      pulumi.String("us-central1"),
 //				Name:        pulumi.String("my-certificate"),
-//				PrivateKey:  invokeFile.Result,
-//				Certificate: invokeFile1.Result,
+//				PrivateKey:  pulumi.String(invokeFile.Result),
+//				Certificate: pulumi.String(invokeFile1.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -171,12 +171,12 @@ import (
 //					&certificatemanager.TrustConfigTrustStoreArgs{
 //						TrustAnchors: certificatemanager.TrustConfigTrustStoreTrustAnchorArray{
 //							&certificatemanager.TrustConfigTrustStoreTrustAnchorArgs{
-//								PemCertificate: invokeFile.Result,
+//								PemCertificate: pulumi.String(invokeFile.Result),
 //							},
 //						},
 //						IntermediateCas: certificatemanager.TrustConfigTrustStoreIntermediateCaArray{
 //							&certificatemanager.TrustConfigTrustStoreIntermediateCaArgs{
-//								PemCertificate: invokeFile1.Result,
+//								PemCertificate: pulumi.String(invokeFile1.Result),
 //							},
 //						},
 //					},
@@ -218,8 +218,8 @@ import (
 //			defaultRegionSslCertificate, err := compute.NewRegionSslCertificate(ctx, "default", &compute.RegionSslCertificateArgs{
 //				Region:      pulumi.String("us-central1"),
 //				Name:        pulumi.String("my-certificate"),
-//				PrivateKey:  invokeFile2.Result,
-//				Certificate: invokeFile3.Result,
+//				PrivateKey:  pulumi.String(invokeFile2.Result),
+//				Certificate: pulumi.String(invokeFile3.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -330,8 +330,8 @@ import (
 //				Name:     pulumi.String("my-certificate"),
 //				Location: pulumi.String("us-central1"),
 //				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
-//					PemCertificate: invokeFile.Result,
-//					PemPrivateKey:  invokeFile1.Result,
+//					PemCertificate: pulumi.String(invokeFile.Result),
+//					PemPrivateKey:  pulumi.String(invokeFile1.Result),
 //				},
 //			})
 //			if err != nil {

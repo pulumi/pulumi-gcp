@@ -414,9 +414,9 @@ class GCPolicy(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="tf-instance",
             clusters=[{
-                "clusterId": "tf-instance-cluster",
-                "numNodes": 3,
-                "storageType": "HDD",
+                "cluster_id": "tf-instance-cluster",
+                "num_nodes": 3,
+                "storage_type": "HDD",
             }])
         table = gcp.bigtable.Table("table",
             name="tf-table",
@@ -472,7 +472,7 @@ class GCPolicy(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="instance_name",
             clusters=[{
-                "clusterId": "cid",
+                "cluster_id": "cid",
                 "zone": "us-central1-b",
             }],
             instance_type="DEVELOPMENT",
@@ -563,9 +563,9 @@ class GCPolicy(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="tf-instance",
             clusters=[{
-                "clusterId": "tf-instance-cluster",
-                "numNodes": 3,
-                "storageType": "HDD",
+                "cluster_id": "tf-instance-cluster",
+                "num_nodes": 3,
+                "storage_type": "HDD",
             }])
         table = gcp.bigtable.Table("table",
             name="tf-table",
@@ -621,7 +621,7 @@ class GCPolicy(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="instance_name",
             clusters=[{
-                "clusterId": "cid",
+                "cluster_id": "cid",
                 "zone": "us-central1-b",
             }],
             instance_type="DEVELOPMENT",

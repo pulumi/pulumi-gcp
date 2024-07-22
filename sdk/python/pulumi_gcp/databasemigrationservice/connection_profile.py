@@ -556,7 +556,7 @@ class ConnectionProfile(pulumi.CustomResource):
             database_version="MYSQL_5_7",
             settings={
                 "tier": "db-n1-standard-1",
-                "deletionProtectionEnabled": False,
+                "deletion_protection_enabled": False,
             },
             deletion_protection=False)
         sql_client_cert = gcp.sql.SslCert("sql_client_cert",
@@ -581,11 +581,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 "username": sqldb_user.name,
                 "password": sqldb_user.password,
                 "ssl": {
-                    "clientKey": sql_client_cert.private_key,
-                    "clientCertificate": sql_client_cert.cert,
-                    "caCertificate": sql_client_cert.server_ca_cert,
+                    "client_key": sql_client_cert.private_key,
+                    "client_certificate": sql_client_cert.cert,
+                    "ca_certificate": sql_client_cert.server_ca_cert,
                 },
-                "cloudSqlId": "my-database",
+                "cloud_sql_id": "my-database",
             },
             opts = pulumi.ResourceOptions(depends_on=[sqldb_user]))
         cloudsqlprofile_destination = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile_destination",
@@ -597,24 +597,24 @@ class ConnectionProfile(pulumi.CustomResource):
             },
             cloudsql={
                 "settings": {
-                    "databaseVersion": "MYSQL_5_7",
-                    "userLabels": {
+                    "database_version": "MYSQL_5_7",
+                    "user_labels": {
                         "cloudfoo": "cloudbar",
                     },
                     "tier": "db-n1-standard-1",
                     "edition": "ENTERPRISE",
-                    "storageAutoResizeLimit": "0",
-                    "activationPolicy": "ALWAYS",
-                    "ipConfig": {
-                        "enableIpv4": True,
-                        "requireSsl": True,
+                    "storage_auto_resize_limit": "0",
+                    "activation_policy": "ALWAYS",
+                    "ip_config": {
+                        "enable_ipv4": True,
+                        "require_ssl": True,
                     },
-                    "autoStorageIncrease": True,
-                    "dataDiskType": "PD_HDD",
-                    "dataDiskSizeGb": "11",
+                    "auto_storage_increase": True,
+                    "data_disk_type": "PD_HDD",
+                    "data_disk_size_gb": "11",
                     "zone": "us-central1-b",
-                    "sourceId": f"projects/{project.project_id}/locations/us-central1/connectionProfiles/my-fromprofileid",
-                    "rootPassword": "testpasscloudsql",
+                    "source_id": f"projects/{project.project_id}/locations/us-central1/connectionProfiles/my-fromprofileid",
+                    "root_password": "testpasscloudsql",
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[cloudsqlprofile]))
@@ -654,11 +654,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 "username": sqldb_user.name,
                 "password": sqldb_user.password,
                 "ssl": {
-                    "clientKey": sql_client_cert.private_key,
-                    "clientCertificate": sql_client_cert.cert,
-                    "caCertificate": sql_client_cert.server_ca_cert,
+                    "client_key": sql_client_cert.private_key,
+                    "client_certificate": sql_client_cert.cert,
+                    "ca_certificate": sql_client_cert.server_ca_cert,
                 },
-                "cloudSqlId": "my-database",
+                "cloud_sql_id": "my-database",
             },
             opts = pulumi.ResourceOptions(depends_on=[sqldb_user]))
         ```
@@ -680,8 +680,8 @@ class ConnectionProfile(pulumi.CustomResource):
                 "port": 1521,
                 "username": "username",
                 "password": "password",
-                "databaseService": "dbprovider",
-                "staticServiceIpConnectivity": {},
+                "database_service": "dbprovider",
+                "static_service_ip_connectivity": {},
             })
         ```
         ### Database Migration Service Connection Profile Alloydb
@@ -710,22 +710,22 @@ class ConnectionProfile(pulumi.CustomResource):
                 "foo": "bar",
             },
             alloydb={
-                "clusterId": "tf-test-dbmsalloycluster_52865",
+                "cluster_id": "tf-test-dbmsalloycluster_52865",
                 "settings": {
-                    "initialUser": {
+                    "initial_user": {
                         "user": "alloyuser_85840",
                         "password": "alloypass_60302",
                     },
-                    "vpcNetwork": default.id,
+                    "vpc_network": default.id,
                     "labels": {
                         "alloyfoo": "alloybar",
                     },
-                    "primaryInstanceSettings": {
+                    "primary_instance_settings": {
                         "id": "priminstid",
-                        "machineConfig": {
-                            "cpuCount": 2,
+                        "machine_config": {
+                            "cpu_count": 2,
                         },
-                        "databaseFlags": {},
+                        "database_flags": {},
                         "labels": {
                             "alloysinstfoo": "allowinstbar",
                         },
@@ -813,7 +813,7 @@ class ConnectionProfile(pulumi.CustomResource):
             database_version="MYSQL_5_7",
             settings={
                 "tier": "db-n1-standard-1",
-                "deletionProtectionEnabled": False,
+                "deletion_protection_enabled": False,
             },
             deletion_protection=False)
         sql_client_cert = gcp.sql.SslCert("sql_client_cert",
@@ -838,11 +838,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 "username": sqldb_user.name,
                 "password": sqldb_user.password,
                 "ssl": {
-                    "clientKey": sql_client_cert.private_key,
-                    "clientCertificate": sql_client_cert.cert,
-                    "caCertificate": sql_client_cert.server_ca_cert,
+                    "client_key": sql_client_cert.private_key,
+                    "client_certificate": sql_client_cert.cert,
+                    "ca_certificate": sql_client_cert.server_ca_cert,
                 },
-                "cloudSqlId": "my-database",
+                "cloud_sql_id": "my-database",
             },
             opts = pulumi.ResourceOptions(depends_on=[sqldb_user]))
         cloudsqlprofile_destination = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile_destination",
@@ -854,24 +854,24 @@ class ConnectionProfile(pulumi.CustomResource):
             },
             cloudsql={
                 "settings": {
-                    "databaseVersion": "MYSQL_5_7",
-                    "userLabels": {
+                    "database_version": "MYSQL_5_7",
+                    "user_labels": {
                         "cloudfoo": "cloudbar",
                     },
                     "tier": "db-n1-standard-1",
                     "edition": "ENTERPRISE",
-                    "storageAutoResizeLimit": "0",
-                    "activationPolicy": "ALWAYS",
-                    "ipConfig": {
-                        "enableIpv4": True,
-                        "requireSsl": True,
+                    "storage_auto_resize_limit": "0",
+                    "activation_policy": "ALWAYS",
+                    "ip_config": {
+                        "enable_ipv4": True,
+                        "require_ssl": True,
                     },
-                    "autoStorageIncrease": True,
-                    "dataDiskType": "PD_HDD",
-                    "dataDiskSizeGb": "11",
+                    "auto_storage_increase": True,
+                    "data_disk_type": "PD_HDD",
+                    "data_disk_size_gb": "11",
                     "zone": "us-central1-b",
-                    "sourceId": f"projects/{project.project_id}/locations/us-central1/connectionProfiles/my-fromprofileid",
-                    "rootPassword": "testpasscloudsql",
+                    "source_id": f"projects/{project.project_id}/locations/us-central1/connectionProfiles/my-fromprofileid",
+                    "root_password": "testpasscloudsql",
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[cloudsqlprofile]))
@@ -911,11 +911,11 @@ class ConnectionProfile(pulumi.CustomResource):
                 "username": sqldb_user.name,
                 "password": sqldb_user.password,
                 "ssl": {
-                    "clientKey": sql_client_cert.private_key,
-                    "clientCertificate": sql_client_cert.cert,
-                    "caCertificate": sql_client_cert.server_ca_cert,
+                    "client_key": sql_client_cert.private_key,
+                    "client_certificate": sql_client_cert.cert,
+                    "ca_certificate": sql_client_cert.server_ca_cert,
                 },
-                "cloudSqlId": "my-database",
+                "cloud_sql_id": "my-database",
             },
             opts = pulumi.ResourceOptions(depends_on=[sqldb_user]))
         ```
@@ -937,8 +937,8 @@ class ConnectionProfile(pulumi.CustomResource):
                 "port": 1521,
                 "username": "username",
                 "password": "password",
-                "databaseService": "dbprovider",
-                "staticServiceIpConnectivity": {},
+                "database_service": "dbprovider",
+                "static_service_ip_connectivity": {},
             })
         ```
         ### Database Migration Service Connection Profile Alloydb
@@ -967,22 +967,22 @@ class ConnectionProfile(pulumi.CustomResource):
                 "foo": "bar",
             },
             alloydb={
-                "clusterId": "tf-test-dbmsalloycluster_52865",
+                "cluster_id": "tf-test-dbmsalloycluster_52865",
                 "settings": {
-                    "initialUser": {
+                    "initial_user": {
                         "user": "alloyuser_85840",
                         "password": "alloypass_60302",
                     },
-                    "vpcNetwork": default.id,
+                    "vpc_network": default.id,
                     "labels": {
                         "alloyfoo": "alloybar",
                     },
-                    "primaryInstanceSettings": {
+                    "primary_instance_settings": {
                         "id": "priminstid",
-                        "machineConfig": {
-                            "cpuCount": 2,
+                        "machine_config": {
+                            "cpu_count": 2,
                         },
-                        "databaseFlags": {},
+                        "database_flags": {},
                         "labels": {
                             "alloysinstfoo": "allowinstbar",
                         },

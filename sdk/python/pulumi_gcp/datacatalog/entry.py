@@ -567,7 +567,7 @@ class Entry(pulumi.CustomResource):
             entry_id="my_entry",
             type="FILESET",
             gcs_fileset_spec={
-                "filePatterns": ["gs://fake_bucket/dir/*"],
+                "file_patterns": ["gs://fake_bucket/dir/*"],
             })
         ```
         ### Data Catalog Entry Full
@@ -717,7 +717,7 @@ class Entry(pulumi.CustomResource):
             entry_id="my_entry",
             type="FILESET",
             gcs_fileset_spec={
-                "filePatterns": ["gs://fake_bucket/dir/*"],
+                "file_patterns": ["gs://fake_bucket/dir/*"],
             })
         ```
         ### Data Catalog Entry Full

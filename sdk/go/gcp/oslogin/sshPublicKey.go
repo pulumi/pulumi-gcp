@@ -50,7 +50,7 @@ import (
 //			}
 //			_, err = oslogin.NewSshPublicKey(ctx, "cache", &oslogin.SshPublicKeyArgs{
 //				User: pulumi.String(me.Email),
-//				Key:  invokeFile.Result,
+//				Key:  pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
 //				return err
