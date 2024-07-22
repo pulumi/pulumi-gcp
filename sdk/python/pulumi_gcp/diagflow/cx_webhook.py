@@ -426,7 +426,7 @@ class CxWebhook(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
             speech_to_text_settings={
-                "enableSpeechAdaptation": True,
+                "enable_speech_adaptation": True,
             })
         basic_webhook = gcp.diagflow.CxWebhook("basic_webhook",
             parent=agent.id,
@@ -510,7 +510,7 @@ class CxWebhook(pulumi.CustomResource):
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
             speech_to_text_settings={
-                "enableSpeechAdaptation": True,
+                "enable_speech_adaptation": True,
             })
         basic_webhook = gcp.diagflow.CxWebhook("basic_webhook",
             parent=agent.id,

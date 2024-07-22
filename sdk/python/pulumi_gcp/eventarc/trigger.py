@@ -548,16 +548,16 @@ class Trigger(pulumi.CustomResource):
                     "containers": [{
                         "image": "gcr.io/cloudrun/hello",
                         "ports": [{
-                            "containerPort": 8080,
+                            "container_port": 8080,
                         }],
                     }],
-                    "containerConcurrency": 50,
-                    "timeoutSeconds": 100,
+                    "container_concurrency": 50,
+                    "timeout_seconds": 100,
                 },
             },
             traffics=[{
                 "percent": 100,
-                "latestRevision": True,
+                "latest_revision": True,
             }])
         primary = gcp.eventarc.Trigger("primary",
             name="name",
@@ -567,7 +567,7 @@ class Trigger(pulumi.CustomResource):
                 "value": "google.cloud.pubsub.topic.v1.messagePublished",
             }],
             destination={
-                "cloudRunService": {
+                "cloud_run_service": {
                     "service": default.name,
                     "region": "europe-west1",
                 },
@@ -654,16 +654,16 @@ class Trigger(pulumi.CustomResource):
                     "containers": [{
                         "image": "gcr.io/cloudrun/hello",
                         "ports": [{
-                            "containerPort": 8080,
+                            "container_port": 8080,
                         }],
                     }],
-                    "containerConcurrency": 50,
-                    "timeoutSeconds": 100,
+                    "container_concurrency": 50,
+                    "timeout_seconds": 100,
                 },
             },
             traffics=[{
                 "percent": 100,
-                "latestRevision": True,
+                "latest_revision": True,
             }])
         primary = gcp.eventarc.Trigger("primary",
             name="name",
@@ -673,7 +673,7 @@ class Trigger(pulumi.CustomResource):
                 "value": "google.cloud.pubsub.topic.v1.messagePublished",
             }],
             destination={
-                "cloudRunService": {
+                "cloud_run_service": {
                     "service": default.name,
                     "region": "europe-west1",
                 },

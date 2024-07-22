@@ -929,59 +929,59 @@ class BareMetalAdminCluster(pulumi.CustomResource):
             location="us-west1",
             bare_metal_version="1.13.4",
             network_config={
-                "islandModeCidr": {
-                    "serviceAddressCidrBlocks": ["172.26.0.0/16"],
-                    "podAddressCidrBlocks": ["10.240.0.0/13"],
+                "island_mode_cidr": {
+                    "service_address_cidr_blocks": ["172.26.0.0/16"],
+                    "pod_address_cidr_blocks": ["10.240.0.0/13"],
                 },
             },
             node_config={
-                "maxPodsPerNode": 250,
+                "max_pods_per_node": 250,
             },
             control_plane={
-                "controlPlaneNodePoolConfig": {
-                    "nodePoolConfig": {
+                "control_plane_node_pool_config": {
+                    "node_pool_config": {
                         "labels": {},
-                        "operatingSystem": "LINUX",
-                        "nodeConfigs": [
+                        "operating_system": "LINUX",
+                        "node_configs": [
                             {
                                 "labels": {},
-                                "nodeIp": "10.200.0.2",
+                                "node_ip": "10.200.0.2",
                             },
                             {
                                 "labels": {},
-                                "nodeIp": "10.200.0.3",
+                                "node_ip": "10.200.0.3",
                             },
                             {
                                 "labels": {},
-                                "nodeIp": "10.200.0.4",
+                                "node_ip": "10.200.0.4",
                             },
                         ],
                     },
                 },
             },
             load_balancer={
-                "portConfig": {
-                    "controlPlaneLoadBalancerPort": 443,
+                "port_config": {
+                    "control_plane_load_balancer_port": 443,
                 },
-                "vipConfig": {
-                    "controlPlaneVip": "10.200.0.5",
+                "vip_config": {
+                    "control_plane_vip": "10.200.0.5",
                 },
             },
             storage={
-                "lvpShareConfig": {
-                    "lvpConfig": {
+                "lvp_share_config": {
+                    "lvp_config": {
                         "path": "/mnt/localpv-share",
-                        "storageClass": "local-shared",
+                        "storage_class": "local-shared",
                     },
-                    "sharedPathPvCount": 5,
+                    "shared_path_pv_count": 5,
                 },
-                "lvpNodeMountsConfig": {
+                "lvp_node_mounts_config": {
                     "path": "/mnt/localpv-disk",
-                    "storageClass": "local-disks",
+                    "storage_class": "local-disks",
                 },
             },
             node_access_config={
-                "loginUser": "root",
+                "login_user": "root",
             })
         ```
         ### Gkeonprem Bare Metal Admin Cluster Full
@@ -999,31 +999,31 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                 "env": "test",
             },
             network_config={
-                "islandModeCidr": {
-                    "serviceAddressCidrBlocks": ["172.26.0.0/16"],
-                    "podAddressCidrBlocks": ["10.240.0.0/13"],
+                "island_mode_cidr": {
+                    "service_address_cidr_blocks": ["172.26.0.0/16"],
+                    "pod_address_cidr_blocks": ["10.240.0.0/13"],
                 },
             },
             node_config={
-                "maxPodsPerNode": 250,
+                "max_pods_per_node": 250,
             },
             control_plane={
-                "controlPlaneNodePoolConfig": {
-                    "nodePoolConfig": {
+                "control_plane_node_pool_config": {
+                    "node_pool_config": {
                         "labels": {},
-                        "operatingSystem": "LINUX",
-                        "nodeConfigs": [
+                        "operating_system": "LINUX",
+                        "node_configs": [
                             {
                                 "labels": {},
-                                "nodeIp": "10.200.0.2",
+                                "node_ip": "10.200.0.2",
                             },
                             {
                                 "labels": {},
-                                "nodeIp": "10.200.0.3",
+                                "node_ip": "10.200.0.3",
                             },
                             {
                                 "labels": {},
-                                "nodeIp": "10.200.0.4",
+                                "node_ip": "10.200.0.4",
                             },
                         ],
                         "taints": [{
@@ -1033,57 +1033,57 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                         }],
                     },
                 },
-                "apiServerArgs": [{
+                "api_server_args": [{
                     "argument": "test argument",
                     "value": "test value",
                 }],
             },
             load_balancer={
-                "portConfig": {
-                    "controlPlaneLoadBalancerPort": 443,
+                "port_config": {
+                    "control_plane_load_balancer_port": 443,
                 },
-                "vipConfig": {
-                    "controlPlaneVip": "10.200.0.5",
+                "vip_config": {
+                    "control_plane_vip": "10.200.0.5",
                 },
-                "manualLbConfig": {
+                "manual_lb_config": {
                     "enabled": True,
                 },
             },
             storage={
-                "lvpShareConfig": {
-                    "lvpConfig": {
+                "lvp_share_config": {
+                    "lvp_config": {
                         "path": "/mnt/localpv-share",
-                        "storageClass": "local-shared",
+                        "storage_class": "local-shared",
                     },
-                    "sharedPathPvCount": 5,
+                    "shared_path_pv_count": 5,
                 },
-                "lvpNodeMountsConfig": {
+                "lvp_node_mounts_config": {
                     "path": "/mnt/localpv-disk",
-                    "storageClass": "local-disks",
+                    "storage_class": "local-disks",
                 },
             },
             node_access_config={
-                "loginUser": "root",
+                "login_user": "root",
             },
             security_config={
                 "authorization": {
-                    "adminUsers": [{
+                    "admin_users": [{
                         "username": "admin@hashicorptest.com",
                     }],
                 },
             },
             maintenance_config={
-                "maintenanceAddressCidrBlocks": [
+                "maintenance_address_cidr_blocks": [
                     "10.0.0.1/32",
                     "10.0.0.2/32",
                 ],
             },
             cluster_operations={
-                "enableApplicationLogs": True,
+                "enable_application_logs": True,
             },
             proxy={
                 "uri": "test proxy uri",
-                "noProxies": ["127.0.0.1"],
+                "no_proxies": ["127.0.0.1"],
             })
         ```
 
@@ -1176,59 +1176,59 @@ class BareMetalAdminCluster(pulumi.CustomResource):
             location="us-west1",
             bare_metal_version="1.13.4",
             network_config={
-                "islandModeCidr": {
-                    "serviceAddressCidrBlocks": ["172.26.0.0/16"],
-                    "podAddressCidrBlocks": ["10.240.0.0/13"],
+                "island_mode_cidr": {
+                    "service_address_cidr_blocks": ["172.26.0.0/16"],
+                    "pod_address_cidr_blocks": ["10.240.0.0/13"],
                 },
             },
             node_config={
-                "maxPodsPerNode": 250,
+                "max_pods_per_node": 250,
             },
             control_plane={
-                "controlPlaneNodePoolConfig": {
-                    "nodePoolConfig": {
+                "control_plane_node_pool_config": {
+                    "node_pool_config": {
                         "labels": {},
-                        "operatingSystem": "LINUX",
-                        "nodeConfigs": [
+                        "operating_system": "LINUX",
+                        "node_configs": [
                             {
                                 "labels": {},
-                                "nodeIp": "10.200.0.2",
+                                "node_ip": "10.200.0.2",
                             },
                             {
                                 "labels": {},
-                                "nodeIp": "10.200.0.3",
+                                "node_ip": "10.200.0.3",
                             },
                             {
                                 "labels": {},
-                                "nodeIp": "10.200.0.4",
+                                "node_ip": "10.200.0.4",
                             },
                         ],
                     },
                 },
             },
             load_balancer={
-                "portConfig": {
-                    "controlPlaneLoadBalancerPort": 443,
+                "port_config": {
+                    "control_plane_load_balancer_port": 443,
                 },
-                "vipConfig": {
-                    "controlPlaneVip": "10.200.0.5",
+                "vip_config": {
+                    "control_plane_vip": "10.200.0.5",
                 },
             },
             storage={
-                "lvpShareConfig": {
-                    "lvpConfig": {
+                "lvp_share_config": {
+                    "lvp_config": {
                         "path": "/mnt/localpv-share",
-                        "storageClass": "local-shared",
+                        "storage_class": "local-shared",
                     },
-                    "sharedPathPvCount": 5,
+                    "shared_path_pv_count": 5,
                 },
-                "lvpNodeMountsConfig": {
+                "lvp_node_mounts_config": {
                     "path": "/mnt/localpv-disk",
-                    "storageClass": "local-disks",
+                    "storage_class": "local-disks",
                 },
             },
             node_access_config={
-                "loginUser": "root",
+                "login_user": "root",
             })
         ```
         ### Gkeonprem Bare Metal Admin Cluster Full
@@ -1246,31 +1246,31 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                 "env": "test",
             },
             network_config={
-                "islandModeCidr": {
-                    "serviceAddressCidrBlocks": ["172.26.0.0/16"],
-                    "podAddressCidrBlocks": ["10.240.0.0/13"],
+                "island_mode_cidr": {
+                    "service_address_cidr_blocks": ["172.26.0.0/16"],
+                    "pod_address_cidr_blocks": ["10.240.0.0/13"],
                 },
             },
             node_config={
-                "maxPodsPerNode": 250,
+                "max_pods_per_node": 250,
             },
             control_plane={
-                "controlPlaneNodePoolConfig": {
-                    "nodePoolConfig": {
+                "control_plane_node_pool_config": {
+                    "node_pool_config": {
                         "labels": {},
-                        "operatingSystem": "LINUX",
-                        "nodeConfigs": [
+                        "operating_system": "LINUX",
+                        "node_configs": [
                             {
                                 "labels": {},
-                                "nodeIp": "10.200.0.2",
+                                "node_ip": "10.200.0.2",
                             },
                             {
                                 "labels": {},
-                                "nodeIp": "10.200.0.3",
+                                "node_ip": "10.200.0.3",
                             },
                             {
                                 "labels": {},
-                                "nodeIp": "10.200.0.4",
+                                "node_ip": "10.200.0.4",
                             },
                         ],
                         "taints": [{
@@ -1280,57 +1280,57 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                         }],
                     },
                 },
-                "apiServerArgs": [{
+                "api_server_args": [{
                     "argument": "test argument",
                     "value": "test value",
                 }],
             },
             load_balancer={
-                "portConfig": {
-                    "controlPlaneLoadBalancerPort": 443,
+                "port_config": {
+                    "control_plane_load_balancer_port": 443,
                 },
-                "vipConfig": {
-                    "controlPlaneVip": "10.200.0.5",
+                "vip_config": {
+                    "control_plane_vip": "10.200.0.5",
                 },
-                "manualLbConfig": {
+                "manual_lb_config": {
                     "enabled": True,
                 },
             },
             storage={
-                "lvpShareConfig": {
-                    "lvpConfig": {
+                "lvp_share_config": {
+                    "lvp_config": {
                         "path": "/mnt/localpv-share",
-                        "storageClass": "local-shared",
+                        "storage_class": "local-shared",
                     },
-                    "sharedPathPvCount": 5,
+                    "shared_path_pv_count": 5,
                 },
-                "lvpNodeMountsConfig": {
+                "lvp_node_mounts_config": {
                     "path": "/mnt/localpv-disk",
-                    "storageClass": "local-disks",
+                    "storage_class": "local-disks",
                 },
             },
             node_access_config={
-                "loginUser": "root",
+                "login_user": "root",
             },
             security_config={
                 "authorization": {
-                    "adminUsers": [{
+                    "admin_users": [{
                         "username": "admin@hashicorptest.com",
                     }],
                 },
             },
             maintenance_config={
-                "maintenanceAddressCidrBlocks": [
+                "maintenance_address_cidr_blocks": [
                     "10.0.0.1/32",
                     "10.0.0.2/32",
                 ],
             },
             cluster_operations={
-                "enableApplicationLogs": True,
+                "enable_application_logs": True,
             },
             proxy={
                 "uri": "test proxy uri",
-                "noProxies": ["127.0.0.1"],
+                "no_proxies": ["127.0.0.1"],
             })
         ```
 

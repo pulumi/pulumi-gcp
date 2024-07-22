@@ -349,7 +349,7 @@ class PrivateConnection(pulumi.CustomResource):
                 "key": "value",
             },
             vpc_peering_config={
-                "vpcName": default.id,
+                "vpc_name": default.id,
                 "subnet": "10.0.0.0/29",
             })
         ```
@@ -421,7 +421,7 @@ class PrivateConnection(pulumi.CustomResource):
                 "key": "value",
             },
             vpc_peering_config={
-                "vpcName": default.id,
+                "vpc_name": default.id,
                 "subnet": "10.0.0.0/29",
             })
         ```

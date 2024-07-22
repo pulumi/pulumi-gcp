@@ -407,22 +407,22 @@ class AppProfile(pulumi.CustomResource):
             name="bt-instance",
             clusters=[
                 {
-                    "clusterId": "cluster-1",
+                    "cluster_id": "cluster-1",
                     "zone": "us-central1-a",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
                 {
-                    "clusterId": "cluster-2",
+                    "cluster_id": "cluster-2",
                     "zone": "us-central1-b",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
                 {
-                    "clusterId": "cluster-3",
+                    "cluster_id": "cluster-3",
                     "zone": "us-central1-c",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
             ],
             deletion_protection=True)
@@ -441,18 +441,18 @@ class AppProfile(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="bt-instance",
             clusters=[{
-                "clusterId": "cluster-1",
+                "cluster_id": "cluster-1",
                 "zone": "us-central1-b",
-                "numNodes": 3,
-                "storageType": "HDD",
+                "num_nodes": 3,
+                "storage_type": "HDD",
             }],
             deletion_protection=True)
         ap = gcp.bigquery.AppProfile("ap",
             instance=instance.name,
             app_profile_id="bt-profile",
             single_cluster_routing={
-                "clusterId": "cluster-1",
-                "allowTransactionalWrites": True,
+                "cluster_id": "cluster-1",
+                "allow_transactional_writes": True,
             },
             ignore_warnings=True)
         ```
@@ -466,22 +466,22 @@ class AppProfile(pulumi.CustomResource):
             name="bt-instance",
             clusters=[
                 {
-                    "clusterId": "cluster-1",
+                    "cluster_id": "cluster-1",
                     "zone": "us-central1-a",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
                 {
-                    "clusterId": "cluster-2",
+                    "cluster_id": "cluster-2",
                     "zone": "us-central1-b",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
                 {
-                    "clusterId": "cluster-3",
+                    "cluster_id": "cluster-3",
                     "zone": "us-central1-c",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
             ],
             deletion_protection=True)
@@ -504,18 +504,18 @@ class AppProfile(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="bt-instance",
             clusters=[{
-                "clusterId": "cluster-1",
+                "cluster_id": "cluster-1",
                 "zone": "us-central1-b",
-                "numNodes": 3,
-                "storageType": "HDD",
+                "num_nodes": 3,
+                "storage_type": "HDD",
             }],
             deletion_protection=True)
         ap = gcp.bigquery.AppProfile("ap",
             instance=instance.name,
             app_profile_id="bt-profile",
             single_cluster_routing={
-                "clusterId": "cluster-1",
-                "allowTransactionalWrites": True,
+                "cluster_id": "cluster-1",
+                "allow_transactional_writes": True,
             },
             standard_isolation={
                 "priority": "PRIORITY_LOW",
@@ -593,22 +593,22 @@ class AppProfile(pulumi.CustomResource):
             name="bt-instance",
             clusters=[
                 {
-                    "clusterId": "cluster-1",
+                    "cluster_id": "cluster-1",
                     "zone": "us-central1-a",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
                 {
-                    "clusterId": "cluster-2",
+                    "cluster_id": "cluster-2",
                     "zone": "us-central1-b",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
                 {
-                    "clusterId": "cluster-3",
+                    "cluster_id": "cluster-3",
                     "zone": "us-central1-c",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
             ],
             deletion_protection=True)
@@ -627,18 +627,18 @@ class AppProfile(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="bt-instance",
             clusters=[{
-                "clusterId": "cluster-1",
+                "cluster_id": "cluster-1",
                 "zone": "us-central1-b",
-                "numNodes": 3,
-                "storageType": "HDD",
+                "num_nodes": 3,
+                "storage_type": "HDD",
             }],
             deletion_protection=True)
         ap = gcp.bigquery.AppProfile("ap",
             instance=instance.name,
             app_profile_id="bt-profile",
             single_cluster_routing={
-                "clusterId": "cluster-1",
-                "allowTransactionalWrites": True,
+                "cluster_id": "cluster-1",
+                "allow_transactional_writes": True,
             },
             ignore_warnings=True)
         ```
@@ -652,22 +652,22 @@ class AppProfile(pulumi.CustomResource):
             name="bt-instance",
             clusters=[
                 {
-                    "clusterId": "cluster-1",
+                    "cluster_id": "cluster-1",
                     "zone": "us-central1-a",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
                 {
-                    "clusterId": "cluster-2",
+                    "cluster_id": "cluster-2",
                     "zone": "us-central1-b",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
                 {
-                    "clusterId": "cluster-3",
+                    "cluster_id": "cluster-3",
                     "zone": "us-central1-c",
-                    "numNodes": 3,
-                    "storageType": "HDD",
+                    "num_nodes": 3,
+                    "storage_type": "HDD",
                 },
             ],
             deletion_protection=True)
@@ -690,18 +690,18 @@ class AppProfile(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="bt-instance",
             clusters=[{
-                "clusterId": "cluster-1",
+                "cluster_id": "cluster-1",
                 "zone": "us-central1-b",
-                "numNodes": 3,
-                "storageType": "HDD",
+                "num_nodes": 3,
+                "storage_type": "HDD",
             }],
             deletion_protection=True)
         ap = gcp.bigquery.AppProfile("ap",
             instance=instance.name,
             app_profile_id="bt-profile",
             single_cluster_routing={
-                "clusterId": "cluster-1",
-                "allowTransactionalWrites": True,
+                "cluster_id": "cluster-1",
+                "allow_transactional_writes": True,
             },
             standard_isolation={
                 "priority": "PRIORITY_LOW",

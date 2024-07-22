@@ -396,9 +396,9 @@ class ResourcePolicy(pulumi.CustomResource):
             region="us-central1",
             snapshot_schedule_policy={
                 "schedule": {
-                    "dailySchedule": {
-                        "daysInCycle": 1,
-                        "startTime": "04:00",
+                    "daily_schedule": {
+                        "days_in_cycle": 1,
+                        "start_time": "04:00",
                     },
                 },
             })
@@ -414,21 +414,21 @@ class ResourcePolicy(pulumi.CustomResource):
             region="us-central1",
             snapshot_schedule_policy={
                 "schedule": {
-                    "hourlySchedule": {
-                        "hoursInCycle": 20,
-                        "startTime": "23:00",
+                    "hourly_schedule": {
+                        "hours_in_cycle": 20,
+                        "start_time": "23:00",
                     },
                 },
-                "retentionPolicy": {
-                    "maxRetentionDays": 10,
-                    "onSourceDiskDelete": "KEEP_AUTO_SNAPSHOTS",
+                "retention_policy": {
+                    "max_retention_days": 10,
+                    "on_source_disk_delete": "KEEP_AUTO_SNAPSHOTS",
                 },
-                "snapshotProperties": {
+                "snapshot_properties": {
                     "labels": {
                         "my_label": "value",
                     },
-                    "storageLocations": "us",
-                    "guestFlush": True,
+                    "storage_locations": "us",
+                    "guest_flush": True,
                 },
             })
         ```
@@ -442,7 +442,7 @@ class ResourcePolicy(pulumi.CustomResource):
             name="gce-policy",
             region="us-central1",
             group_placement_policy={
-                "vmCount": 2,
+                "vm_count": 2,
                 "collocation": "COLLOCATED",
             })
         ```
@@ -456,9 +456,9 @@ class ResourcePolicy(pulumi.CustomResource):
             name="gce-policy",
             region="us-central1",
             group_placement_policy={
-                "vmCount": 2,
+                "vm_count": 2,
                 "collocation": "COLLOCATED",
-                "maxDistance": 2,
+                "max_distance": 2,
             })
         ```
         ### Resource Policy Instance Schedule Policy
@@ -472,13 +472,13 @@ class ResourcePolicy(pulumi.CustomResource):
             region="us-central1",
             description="Start and stop instances",
             instance_schedule_policy={
-                "vmStartSchedule": {
+                "vm_start_schedule": {
                     "schedule": "0 * * * *",
                 },
-                "vmStopSchedule": {
+                "vm_stop_schedule": {
                     "schedule": "15 * * * *",
                 },
-                "timeZone": "US/Central",
+                "time_zone": "US/Central",
             })
         ```
         ### Resource Policy Snapshot Schedule Chain Name
@@ -493,22 +493,22 @@ class ResourcePolicy(pulumi.CustomResource):
             description="chain name snapshot",
             snapshot_schedule_policy={
                 "schedule": {
-                    "hourlySchedule": {
-                        "hoursInCycle": 20,
-                        "startTime": "23:00",
+                    "hourly_schedule": {
+                        "hours_in_cycle": 20,
+                        "start_time": "23:00",
                     },
                 },
-                "retentionPolicy": {
-                    "maxRetentionDays": 14,
-                    "onSourceDiskDelete": "KEEP_AUTO_SNAPSHOTS",
+                "retention_policy": {
+                    "max_retention_days": 14,
+                    "on_source_disk_delete": "KEEP_AUTO_SNAPSHOTS",
                 },
-                "snapshotProperties": {
+                "snapshot_properties": {
                     "labels": {
                         "my_label": "value",
                     },
-                    "storageLocations": "us",
-                    "guestFlush": True,
-                    "chainName": "test-schedule-chain-name",
+                    "storage_locations": "us",
+                    "guest_flush": True,
+                    "chain_name": "test-schedule-chain-name",
                 },
             })
         ```
@@ -607,9 +607,9 @@ class ResourcePolicy(pulumi.CustomResource):
             region="us-central1",
             snapshot_schedule_policy={
                 "schedule": {
-                    "dailySchedule": {
-                        "daysInCycle": 1,
-                        "startTime": "04:00",
+                    "daily_schedule": {
+                        "days_in_cycle": 1,
+                        "start_time": "04:00",
                     },
                 },
             })
@@ -625,21 +625,21 @@ class ResourcePolicy(pulumi.CustomResource):
             region="us-central1",
             snapshot_schedule_policy={
                 "schedule": {
-                    "hourlySchedule": {
-                        "hoursInCycle": 20,
-                        "startTime": "23:00",
+                    "hourly_schedule": {
+                        "hours_in_cycle": 20,
+                        "start_time": "23:00",
                     },
                 },
-                "retentionPolicy": {
-                    "maxRetentionDays": 10,
-                    "onSourceDiskDelete": "KEEP_AUTO_SNAPSHOTS",
+                "retention_policy": {
+                    "max_retention_days": 10,
+                    "on_source_disk_delete": "KEEP_AUTO_SNAPSHOTS",
                 },
-                "snapshotProperties": {
+                "snapshot_properties": {
                     "labels": {
                         "my_label": "value",
                     },
-                    "storageLocations": "us",
-                    "guestFlush": True,
+                    "storage_locations": "us",
+                    "guest_flush": True,
                 },
             })
         ```
@@ -653,7 +653,7 @@ class ResourcePolicy(pulumi.CustomResource):
             name="gce-policy",
             region="us-central1",
             group_placement_policy={
-                "vmCount": 2,
+                "vm_count": 2,
                 "collocation": "COLLOCATED",
             })
         ```
@@ -667,9 +667,9 @@ class ResourcePolicy(pulumi.CustomResource):
             name="gce-policy",
             region="us-central1",
             group_placement_policy={
-                "vmCount": 2,
+                "vm_count": 2,
                 "collocation": "COLLOCATED",
-                "maxDistance": 2,
+                "max_distance": 2,
             })
         ```
         ### Resource Policy Instance Schedule Policy
@@ -683,13 +683,13 @@ class ResourcePolicy(pulumi.CustomResource):
             region="us-central1",
             description="Start and stop instances",
             instance_schedule_policy={
-                "vmStartSchedule": {
+                "vm_start_schedule": {
                     "schedule": "0 * * * *",
                 },
-                "vmStopSchedule": {
+                "vm_stop_schedule": {
                     "schedule": "15 * * * *",
                 },
-                "timeZone": "US/Central",
+                "time_zone": "US/Central",
             })
         ```
         ### Resource Policy Snapshot Schedule Chain Name
@@ -704,22 +704,22 @@ class ResourcePolicy(pulumi.CustomResource):
             description="chain name snapshot",
             snapshot_schedule_policy={
                 "schedule": {
-                    "hourlySchedule": {
-                        "hoursInCycle": 20,
-                        "startTime": "23:00",
+                    "hourly_schedule": {
+                        "hours_in_cycle": 20,
+                        "start_time": "23:00",
                     },
                 },
-                "retentionPolicy": {
-                    "maxRetentionDays": 14,
-                    "onSourceDiskDelete": "KEEP_AUTO_SNAPSHOTS",
+                "retention_policy": {
+                    "max_retention_days": 14,
+                    "on_source_disk_delete": "KEEP_AUTO_SNAPSHOTS",
                 },
-                "snapshotProperties": {
+                "snapshot_properties": {
                     "labels": {
                         "my_label": "value",
                     },
-                    "storageLocations": "us",
-                    "guestFlush": True,
-                    "chainName": "test-schedule-chain-name",
+                    "storage_locations": "us",
+                    "guest_flush": True,
+                    "chain_name": "test-schedule-chain-name",
                 },
             })
         ```

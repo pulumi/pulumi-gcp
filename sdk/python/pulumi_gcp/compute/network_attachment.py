@@ -509,7 +509,7 @@ class NetworkAttachment(pulumi.CustomResource):
             zone="us-central1-a",
             machine_type="e2-micro",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                 },
             },
@@ -518,7 +518,7 @@ class NetworkAttachment(pulumi.CustomResource):
                     "network": "default",
                 },
                 {
-                    "networkAttachment": default_network_attachment.self_link,
+                    "network_attachment": default_network_attachment.self_link,
                 },
             ])
         ```
@@ -644,7 +644,7 @@ class NetworkAttachment(pulumi.CustomResource):
             zone="us-central1-a",
             machine_type="e2-micro",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                 },
             },
@@ -653,7 +653,7 @@ class NetworkAttachment(pulumi.CustomResource):
                     "network": "default",
                 },
                 {
-                    "networkAttachment": default_network_attachment.self_link,
+                    "network_attachment": default_network_attachment.self_link,
                 },
             ])
         ```

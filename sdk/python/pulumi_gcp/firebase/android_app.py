@@ -368,10 +368,10 @@ class AndroidApp(pulumi.CustomResource):
             display_name="Display Name",
             project="my-project-name",
             restrictions={
-                "androidKeyRestrictions": {
-                    "allowedApplications": [{
-                        "packageName": "android.package.app",
-                        "sha1Fingerprint": "2145bdf698b8715039bd0e83f2069bed435ac21c",
+                "android_key_restrictions": {
+                    "allowed_applications": [{
+                        "package_name": "android.package.app",
+                        "sha1_fingerprint": "2145bdf698b8715039bd0e83f2069bed435ac21c",
                     }],
                 },
             })
@@ -469,10 +469,10 @@ class AndroidApp(pulumi.CustomResource):
             display_name="Display Name",
             project="my-project-name",
             restrictions={
-                "androidKeyRestrictions": {
-                    "allowedApplications": [{
-                        "packageName": "android.package.app",
-                        "sha1Fingerprint": "2145bdf698b8715039bd0e83f2069bed435ac21c",
+                "android_key_restrictions": {
+                    "allowed_applications": [{
+                        "package_name": "android.package.app",
+                        "sha1_fingerprint": "2145bdf698b8715039bd0e83f2069bed435ac21c",
                     }],
                 },
             })

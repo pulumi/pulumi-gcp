@@ -506,13 +506,13 @@ class VpnConnection(pulumi.CustomResource):
             name="default",
             location="us-central1",
             authorization={
-                "adminUsers": {
+                "admin_users": {
                     "username": "admin@hashicorptest.com",
                 },
             },
             networking={
-                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
-                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+                "cluster_ipv4_cidr_blocks": ["10.0.0.0/16"],
+                "services_ipv4_cidr_blocks": ["10.1.0.0/16"],
             },
             fleet={
                 "project": f"projects/{project.number}",
@@ -610,13 +610,13 @@ class VpnConnection(pulumi.CustomResource):
             name="default",
             location="us-central1",
             authorization={
-                "adminUsers": {
+                "admin_users": {
                     "username": "admin@hashicorptest.com",
                 },
             },
             networking={
-                "clusterIpv4CidrBlocks": ["10.0.0.0/16"],
-                "servicesIpv4CidrBlocks": ["10.1.0.0/16"],
+                "cluster_ipv4_cidr_blocks": ["10.0.0.0/16"],
+                "services_ipv4_cidr_blocks": ["10.1.0.0/16"],
             },
             fleet={
                 "project": f"projects/{project.number}",

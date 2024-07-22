@@ -335,7 +335,7 @@ class SecretVersion(pulumi.CustomResource):
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
             replication={
-                "userManaged": {
+                "user_managed": {
                     "replicas": [{
                         "location": "us-central1",
                     }],
@@ -355,7 +355,7 @@ class SecretVersion(pulumi.CustomResource):
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
             replication={
-                "userManaged": {
+                "user_managed": {
                     "replicas": [{
                         "location": "us-central1",
                     }],
@@ -376,7 +376,7 @@ class SecretVersion(pulumi.CustomResource):
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
             replication={
-                "userManaged": {
+                "user_managed": {
                     "replicas": [{
                         "location": "us-central1",
                     }],
@@ -455,7 +455,7 @@ class SecretVersion(pulumi.CustomResource):
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
             replication={
-                "userManaged": {
+                "user_managed": {
                     "replicas": [{
                         "location": "us-central1",
                     }],
@@ -475,7 +475,7 @@ class SecretVersion(pulumi.CustomResource):
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
             replication={
-                "userManaged": {
+                "user_managed": {
                     "replicas": [{
                         "location": "us-central1",
                     }],
@@ -496,7 +496,7 @@ class SecretVersion(pulumi.CustomResource):
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-version",
             replication={
-                "userManaged": {
+                "user_managed": {
                     "replicas": [{
                         "location": "us-central1",
                     }],
