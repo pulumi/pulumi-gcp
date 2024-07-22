@@ -618,7 +618,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             },
             traffics=[{
                 "percent": 100,
-                "latestRevision": True,
+                "latest_revision": True,
             }])
         # Cloud Run Example
         cloudrun_neg = gcp.compute.RegionNetworkEndpointGroup("cloudrun_neg",
@@ -651,7 +651,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             },
             deployment={
                 "zip": {
-                    "sourceUrl": pulumi.Output.all(appengine_neg_bucket.name, appengine_neg_bucket_object.name).apply(lambda appengineNegBucketName, appengineNegBucketObjectName: f"https://storage.googleapis.com/{appengine_neg_bucket_name}/{appengine_neg_bucket_object_name}"),
+                    "source_url": pulumi.Output.all(appengine_neg_bucket.name, appengine_neg_bucket_object.name).apply(lambda appengineNegBucketName, appengineNegBucketObjectName: f"https://storage.googleapis.com/{appengine_neg_bucket_name}/{appengine_neg_bucket_object_name}"),
                 },
             },
             liveness_check={
@@ -664,19 +664,19 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 "port": "8080",
             },
             handlers=[{
-                "urlRegex": ".*\\\\/my-path\\\\/*",
-                "securityLevel": "SECURE_ALWAYS",
+                "url_regex": ".*\\\\/my-path\\\\/*",
+                "security_level": "SECURE_ALWAYS",
                 "login": "LOGIN_REQUIRED",
-                "authFailAction": "AUTH_FAIL_ACTION_REDIRECT",
-                "staticFiles": {
+                "auth_fail_action": "AUTH_FAIL_ACTION_REDIRECT",
+                "static_files": {
                     "path": "my-other-path",
-                    "uploadPathRegex": ".*\\\\/my-path\\\\/*",
+                    "upload_path_regex": ".*\\\\/my-path\\\\/*",
                 },
             }],
             automatic_scaling={
-                "coolDownPeriod": "120s",
-                "cpuUtilization": {
-                    "targetUtilization": 0.5,
+                "cool_down_period": "120s",
+                "cpu_utilization": {
+                    "target_utilization": 0.5,
                 },
             },
             delete_service_on_destroy=True)
@@ -954,7 +954,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             },
             traffics=[{
                 "percent": 100,
-                "latestRevision": True,
+                "latest_revision": True,
             }])
         # Cloud Run Example
         cloudrun_neg = gcp.compute.RegionNetworkEndpointGroup("cloudrun_neg",
@@ -987,7 +987,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             },
             deployment={
                 "zip": {
-                    "sourceUrl": pulumi.Output.all(appengine_neg_bucket.name, appengine_neg_bucket_object.name).apply(lambda appengineNegBucketName, appengineNegBucketObjectName: f"https://storage.googleapis.com/{appengine_neg_bucket_name}/{appengine_neg_bucket_object_name}"),
+                    "source_url": pulumi.Output.all(appengine_neg_bucket.name, appengine_neg_bucket_object.name).apply(lambda appengineNegBucketName, appengineNegBucketObjectName: f"https://storage.googleapis.com/{appengine_neg_bucket_name}/{appengine_neg_bucket_object_name}"),
                 },
             },
             liveness_check={
@@ -1000,19 +1000,19 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 "port": "8080",
             },
             handlers=[{
-                "urlRegex": ".*\\\\/my-path\\\\/*",
-                "securityLevel": "SECURE_ALWAYS",
+                "url_regex": ".*\\\\/my-path\\\\/*",
+                "security_level": "SECURE_ALWAYS",
                 "login": "LOGIN_REQUIRED",
-                "authFailAction": "AUTH_FAIL_ACTION_REDIRECT",
-                "staticFiles": {
+                "auth_fail_action": "AUTH_FAIL_ACTION_REDIRECT",
+                "static_files": {
                     "path": "my-other-path",
-                    "uploadPathRegex": ".*\\\\/my-path\\\\/*",
+                    "upload_path_regex": ".*\\\\/my-path\\\\/*",
                 },
             }],
             automatic_scaling={
-                "coolDownPeriod": "120s",
-                "cpuUtilization": {
-                    "targetUtilization": 0.5,
+                "cool_down_period": "120s",
+                "cpu_utilization": {
+                    "target_utilization": 0.5,
                 },
             },
             delete_service_on_destroy=True)

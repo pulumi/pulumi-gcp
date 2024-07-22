@@ -1053,8 +1053,8 @@ class Trigger(pulumi.CustomResource):
         filename_trigger = gcp.cloudbuild.Trigger("filename-trigger",
             location="us-central1",
             trigger_template={
-                "branchName": "main",
-                "repoName": "my-repo",
+                "branch_name": "main",
+                "repo_name": "my-repo",
             },
             substitutions={
                 "_FOO": "bar",
@@ -1072,8 +1072,8 @@ class Trigger(pulumi.CustomResource):
             name="my-trigger",
             location="global",
             trigger_template={
-                "branchName": "main",
-                "repoName": "my-repo",
+                "branch_name": "main",
+                "repo_name": "my-repo",
             },
             build={
                 "steps": [
@@ -1085,7 +1085,7 @@ class Trigger(pulumi.CustomResource):
                             "localfile.zip",
                         ],
                         "timeout": "120s",
-                        "secretEnvs": ["MY_SECRET"],
+                        "secret_envs": ["MY_SECRET"],
                     },
                     {
                         "name": "ubuntu",
@@ -1093,7 +1093,7 @@ class Trigger(pulumi.CustomResource):
                     },
                 ],
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": "mybucket",
                         "object": "source_code.tar.gz",
                     },
@@ -1103,21 +1103,21 @@ class Trigger(pulumi.CustomResource):
                     "newFeature",
                 ],
                 "substitutions": {
-                    "_FOO": "bar",
-                    "_BAZ": "qux",
+                    "__foo": "bar",
+                    "__baz": "qux",
                 },
-                "queueTtl": "20s",
-                "logsBucket": "gs://mybucket/logs",
+                "queue_ttl": "20s",
+                "logs_bucket": "gs://mybucket/logs",
                 "secrets": [{
-                    "kmsKeyName": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
-                    "secretEnv": {
-                        "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
+                    "kms_key_name": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
+                    "secret_env": {
+                        "password": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
                     },
                 }],
-                "availableSecrets": {
-                    "secretManagers": [{
+                "available_secrets": {
+                    "secret_managers": [{
                         "env": "MY_SECRET",
-                        "versionName": "projects/myProject/secrets/mySecret/versions/latest",
+                        "version_name": "projects/myProject/secrets/mySecret/versions/latest",
                     }],
                 },
                 "artifacts": {
@@ -1126,34 +1126,34 @@ class Trigger(pulumi.CustomResource):
                         "location": "gs://bucket/path/to/somewhere/",
                         "paths": ["path"],
                     },
-                    "npmPackages": [{
-                        "packagePath": "package.json",
+                    "npm_packages": [{
+                        "package_path": "package.json",
                         "repository": "https://us-west1-npm.pkg.dev/myProject/quickstart-nodejs-repo",
                     }],
-                    "pythonPackages": [{
+                    "python_packages": [{
                         "paths": ["dist/*"],
                         "repository": "https://us-west1-python.pkg.dev/myProject/quickstart-python-repo",
                     }],
-                    "mavenArtifacts": [{
+                    "maven_artifacts": [{
                         "repository": "https://us-west1-maven.pkg.dev/myProject/quickstart-java-repo",
                         "path": "/workspace/my-app/target/my-app-1.0.SNAPSHOT.jar",
-                        "artifactId": "my-app",
-                        "groupId": "com.mycompany.app",
+                        "artifact_id": "my-app",
+                        "group_id": "com.mycompany.app",
                         "version": "1.0",
                     }],
                 },
                 "options": {
-                    "sourceProvenanceHashes": ["MD5"],
-                    "requestedVerifyOption": "VERIFIED",
-                    "machineType": "N1_HIGHCPU_8",
-                    "diskSizeGb": 100,
-                    "substitutionOption": "ALLOW_LOOSE",
-                    "dynamicSubstitutions": True,
-                    "logStreamingOption": "STREAM_OFF",
-                    "workerPool": "pool",
+                    "source_provenance_hashes": ["MD5"],
+                    "requested_verify_option": "VERIFIED",
+                    "machine_type": "N1_HIGHCPU_8",
+                    "disk_size_gb": 100,
+                    "substitution_option": "ALLOW_LOOSE",
+                    "dynamic_substitutions": True,
+                    "log_streaming_option": "STREAM_OFF",
+                    "worker_pool": "pool",
                     "logging": "LEGACY",
                     "envs": ["ekey = evalue"],
-                    "secretEnvs": ["secretenv = svalue"],
+                    "secret_envs": ["secretenv = svalue"],
                     "volumes": [{
                         "name": "v1",
                         "path": "v1",
@@ -1179,8 +1179,8 @@ class Trigger(pulumi.CustomResource):
             member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         service_account_trigger = gcp.cloudbuild.Trigger("service-account-trigger",
             trigger_template={
-                "branchName": "main",
-                "repoName": "my-repo",
+                "branch_name": "main",
+                "repo_name": "my-repo",
             },
             service_account=cloudbuild_service_account.id,
             filename="cloudbuild.yaml",
@@ -1225,13 +1225,13 @@ class Trigger(pulumi.CustomResource):
             source_to_build={
                 "uri": "https://hashicorp/terraform-provider-google-beta",
                 "ref": "refs/heads/main",
-                "repoType": "GITHUB",
+                "repo_type": "GITHUB",
             },
             git_file_source={
                 "path": "cloudbuild.yaml",
                 "uri": "https://hashicorp/terraform-provider-google-beta",
                 "revision": "refs/heads/main",
-                "repoType": "GITHUB",
+                "repo_type": "GITHUB",
             },
             substitutions={
                 "_ACTION": "$(body.message.data.action)",
@@ -1247,7 +1247,7 @@ class Trigger(pulumi.CustomResource):
         webhook_trigger_secret_key = gcp.secretmanager.Secret("webhook_trigger_secret_key",
             secret_id="webhook-trigger-secret-key",
             replication={
-                "userManaged": {
+                "user_managed": {
                     "replicas": [{
                         "location": "us-central1",
                     }],
@@ -1274,13 +1274,13 @@ class Trigger(pulumi.CustomResource):
             source_to_build={
                 "uri": "https://hashicorp/terraform-provider-google-beta",
                 "ref": "refs/heads/main",
-                "repoType": "GITHUB",
+                "repo_type": "GITHUB",
             },
             git_file_source={
                 "path": "cloudbuild.yaml",
                 "uri": "https://hashicorp/terraform-provider-google-beta",
                 "revision": "refs/heads/main",
-                "repoType": "GITHUB",
+                "repo_type": "GITHUB",
             })
         ```
         ### Cloudbuild Trigger Manual
@@ -1294,16 +1294,16 @@ class Trigger(pulumi.CustomResource):
             source_to_build={
                 "uri": "https://hashicorp/terraform-provider-google-beta",
                 "ref": "refs/heads/main",
-                "repoType": "GITHUB",
+                "repo_type": "GITHUB",
             },
             git_file_source={
                 "path": "cloudbuild.yaml",
                 "uri": "https://hashicorp/terraform-provider-google-beta",
                 "revision": "refs/heads/main",
-                "repoType": "GITHUB",
+                "repo_type": "GITHUB",
             },
             approval_config={
-                "approvalRequired": True,
+                "approval_required": True,
             })
         ```
         ### Cloudbuild Trigger Manual Github Enterprise
@@ -1317,15 +1317,15 @@ class Trigger(pulumi.CustomResource):
             source_to_build={
                 "uri": "https://hashicorp/terraform-provider-google-beta",
                 "ref": "refs/heads/main",
-                "repoType": "GITHUB",
-                "githubEnterpriseConfig": "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+                "repo_type": "GITHUB",
+                "github_enterprise_config": "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
             },
             git_file_source={
                 "path": "cloudbuild.yaml",
                 "uri": "https://hashicorp/terraform-provider-google-beta",
                 "revision": "refs/heads/main",
-                "repoType": "GITHUB",
-                "githubEnterpriseConfig": "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+                "repo_type": "GITHUB",
+                "github_enterprise_config": "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
             })
         ```
         ### Cloudbuild Trigger Manual Bitbucket Server
@@ -1339,15 +1339,15 @@ class Trigger(pulumi.CustomResource):
             source_to_build={
                 "uri": "https://bbs.com/scm/stag/test-repo.git",
                 "ref": "refs/heads/main",
-                "repoType": "BITBUCKET_SERVER",
-                "bitbucketServerConfig": "projects/myProject/locations/global/bitbucketServerConfigs/configID",
+                "repo_type": "BITBUCKET_SERVER",
+                "bitbucket_server_config": "projects/myProject/locations/global/bitbucketServerConfigs/configID",
             },
             git_file_source={
                 "path": "cloudbuild.yaml",
                 "uri": "https://bbs.com/scm/stag/test-repo.git",
                 "revision": "refs/heads/main",
-                "repoType": "BITBUCKET_SERVER",
-                "bitbucketServerConfig": "projects/myProject/locations/global/bitbucketServerConfigs/configID",
+                "repo_type": "BITBUCKET_SERVER",
+                "bitbucket_server_config": "projects/myProject/locations/global/bitbucketServerConfigs/configID",
             })
         ```
         ### Cloudbuild Trigger Repo
@@ -1360,9 +1360,9 @@ class Trigger(pulumi.CustomResource):
             location="us-central1",
             name="my-connection",
             github_config={
-                "appInstallationId": 123123,
-                "authorizerCredential": {
-                    "oauthTokenSecretVersion": "projects/my-project/secrets/github-pat-secret/versions/latest",
+                "app_installation_id": 123123,
+                "authorizer_credential": {
+                    "oauth_token_secret_version": "projects/my-project/secrets/github-pat-secret/versions/latest",
                 },
             })
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
@@ -1389,12 +1389,12 @@ class Trigger(pulumi.CustomResource):
             name="bbs-push-trigger",
             location="us-central1",
             bitbucket_server_trigger_config={
-                "repoSlug": "bbs-push-trigger",
-                "projectKey": "STAG",
-                "bitbucketServerConfigResource": "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+                "repo_slug": "bbs-push-trigger",
+                "project_key": "STAG",
+                "bitbucket_server_config_resource": "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
                 "push": {
                     "tag": "^0.1.*",
-                    "invertRegex": True,
+                    "invert_regex": True,
                 },
             },
             filename="cloudbuild.yaml")
@@ -1409,13 +1409,13 @@ class Trigger(pulumi.CustomResource):
             name="ghe-trigger",
             location="us-central1",
             bitbucket_server_trigger_config={
-                "repoSlug": "terraform-provider-google",
-                "projectKey": "STAG",
-                "bitbucketServerConfigResource": "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
-                "pullRequest": {
+                "repo_slug": "terraform-provider-google",
+                "project_key": "STAG",
+                "bitbucket_server_config_resource": "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+                "pull_request": {
                     "branch": "^master$",
-                    "invertRegex": False,
-                    "commentControl": "COMMENTS_ENABLED",
+                    "invert_regex": False,
+                    "comment_control": "COMMENTS_ENABLED",
                 },
             },
             filename="cloudbuild.yaml")
@@ -1435,7 +1435,7 @@ class Trigger(pulumi.CustomResource):
                 "push": {
                     "branch": "^main$",
                 },
-                "enterpriseConfigResourceName": "projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID",
+                "enterprise_config_resource_name": "projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID",
             },
             filename="cloudbuild.yaml")
         ```
@@ -1449,8 +1449,8 @@ class Trigger(pulumi.CustomResource):
             name="my-trigger",
             location="global",
             trigger_template={
-                "branchName": "main",
-                "repoName": "my-repo",
+                "branch_name": "main",
+                "repo_name": "my-repo",
             },
             build={
                 "steps": [{
@@ -1459,10 +1459,10 @@ class Trigger(pulumi.CustomResource):
                         "-c",
                         "exit 1",
                     ],
-                    "allowFailure": True,
+                    "allow_failure": True,
                 }],
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": "mybucket",
                         "object": "source_code.tar.gz",
                     },
@@ -1472,21 +1472,21 @@ class Trigger(pulumi.CustomResource):
                     "newFeature",
                 ],
                 "substitutions": {
-                    "_FOO": "bar",
-                    "_BAZ": "qux",
+                    "__foo": "bar",
+                    "__baz": "qux",
                 },
-                "queueTtl": "20s",
-                "logsBucket": "gs://mybucket/logs",
+                "queue_ttl": "20s",
+                "logs_bucket": "gs://mybucket/logs",
                 "secrets": [{
-                    "kmsKeyName": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
-                    "secretEnv": {
-                        "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
+                    "kms_key_name": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
+                    "secret_env": {
+                        "password": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
                     },
                 }],
-                "availableSecrets": {
-                    "secretManagers": [{
+                "available_secrets": {
+                    "secret_managers": [{
                         "env": "MY_SECRET",
-                        "versionName": "projects/myProject/secrets/mySecret/versions/latest",
+                        "version_name": "projects/myProject/secrets/mySecret/versions/latest",
                     }],
                 },
                 "artifacts": {
@@ -1497,17 +1497,17 @@ class Trigger(pulumi.CustomResource):
                     },
                 },
                 "options": {
-                    "sourceProvenanceHashes": ["MD5"],
-                    "requestedVerifyOption": "VERIFIED",
-                    "machineType": "N1_HIGHCPU_8",
-                    "diskSizeGb": 100,
-                    "substitutionOption": "ALLOW_LOOSE",
-                    "dynamicSubstitutions": True,
-                    "logStreamingOption": "STREAM_OFF",
-                    "workerPool": "pool",
+                    "source_provenance_hashes": ["MD5"],
+                    "requested_verify_option": "VERIFIED",
+                    "machine_type": "N1_HIGHCPU_8",
+                    "disk_size_gb": 100,
+                    "substitution_option": "ALLOW_LOOSE",
+                    "dynamic_substitutions": True,
+                    "log_streaming_option": "STREAM_OFF",
+                    "worker_pool": "pool",
                     "logging": "LEGACY",
                     "envs": ["ekey = evalue"],
-                    "secretEnvs": ["secretenv = svalue"],
+                    "secret_envs": ["secretenv = svalue"],
                     "volumes": [{
                         "name": "v1",
                         "path": "v1",
@@ -1525,8 +1525,8 @@ class Trigger(pulumi.CustomResource):
             name="my-trigger",
             location="global",
             trigger_template={
-                "branchName": "main",
-                "repoName": "my-repo",
+                "branch_name": "main",
+                "repo_name": "my-repo",
             },
             build={
                 "steps": [{
@@ -1535,13 +1535,13 @@ class Trigger(pulumi.CustomResource):
                         "-c",
                         "exit 1",
                     ],
-                    "allowExitCodes": [
+                    "allow_exit_codes": [
                         1,
                         3,
                     ],
                 }],
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": "mybucket",
                         "object": "source_code.tar.gz",
                     },
@@ -1551,21 +1551,21 @@ class Trigger(pulumi.CustomResource):
                     "newFeature",
                 ],
                 "substitutions": {
-                    "_FOO": "bar",
-                    "_BAZ": "qux",
+                    "__foo": "bar",
+                    "__baz": "qux",
                 },
-                "queueTtl": "20s",
-                "logsBucket": "gs://mybucket/logs",
+                "queue_ttl": "20s",
+                "logs_bucket": "gs://mybucket/logs",
                 "secrets": [{
-                    "kmsKeyName": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
-                    "secretEnv": {
-                        "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
+                    "kms_key_name": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
+                    "secret_env": {
+                        "password": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
                     },
                 }],
-                "availableSecrets": {
-                    "secretManagers": [{
+                "available_secrets": {
+                    "secret_managers": [{
                         "env": "MY_SECRET",
-                        "versionName": "projects/myProject/secrets/mySecret/versions/latest",
+                        "version_name": "projects/myProject/secrets/mySecret/versions/latest",
                     }],
                 },
                 "artifacts": {
@@ -1576,17 +1576,17 @@ class Trigger(pulumi.CustomResource):
                     },
                 },
                 "options": {
-                    "sourceProvenanceHashes": ["MD5"],
-                    "requestedVerifyOption": "VERIFIED",
-                    "machineType": "N1_HIGHCPU_8",
-                    "diskSizeGb": 100,
-                    "substitutionOption": "ALLOW_LOOSE",
-                    "dynamicSubstitutions": True,
-                    "logStreamingOption": "STREAM_OFF",
-                    "workerPool": "pool",
+                    "source_provenance_hashes": ["MD5"],
+                    "requested_verify_option": "VERIFIED",
+                    "machine_type": "N1_HIGHCPU_8",
+                    "disk_size_gb": 100,
+                    "substitution_option": "ALLOW_LOOSE",
+                    "dynamic_substitutions": True,
+                    "log_streaming_option": "STREAM_OFF",
+                    "worker_pool": "pool",
                     "logging": "LEGACY",
                     "envs": ["ekey = evalue"],
-                    "secretEnvs": ["secretenv = svalue"],
+                    "secret_envs": ["secretenv = svalue"],
                     "volumes": [{
                         "name": "v1",
                         "path": "v1",
@@ -1604,9 +1604,9 @@ class Trigger(pulumi.CustomResource):
             location="us-central1",
             name="my-connection",
             github_config={
-                "appInstallationId": 123123,
-                "authorizerCredential": {
-                    "oauthTokenSecretVersion": "projects/my-project/secrets/github-pat-secret/versions/latest",
+                "app_installation_id": 123123,
+                "authorizer_credential": {
+                    "oauth_token_secret_version": "projects/my-project/secrets/github-pat-secret/versions/latest",
                 },
             })
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
@@ -1623,13 +1623,13 @@ class Trigger(pulumi.CustomResource):
             source_to_build={
                 "repository": my_repository.id,
                 "ref": "refs/heads/main",
-                "repoType": "GITHUB",
+                "repo_type": "GITHUB",
             },
             git_file_source={
                 "path": "cloudbuild.yaml",
                 "repository": my_repository.id,
                 "revision": "refs/heads/main",
-                "repoType": "GITHUB",
+                "repo_type": "GITHUB",
             })
         ```
 
@@ -1767,8 +1767,8 @@ class Trigger(pulumi.CustomResource):
         filename_trigger = gcp.cloudbuild.Trigger("filename-trigger",
             location="us-central1",
             trigger_template={
-                "branchName": "main",
-                "repoName": "my-repo",
+                "branch_name": "main",
+                "repo_name": "my-repo",
             },
             substitutions={
                 "_FOO": "bar",
@@ -1786,8 +1786,8 @@ class Trigger(pulumi.CustomResource):
             name="my-trigger",
             location="global",
             trigger_template={
-                "branchName": "main",
-                "repoName": "my-repo",
+                "branch_name": "main",
+                "repo_name": "my-repo",
             },
             build={
                 "steps": [
@@ -1799,7 +1799,7 @@ class Trigger(pulumi.CustomResource):
                             "localfile.zip",
                         ],
                         "timeout": "120s",
-                        "secretEnvs": ["MY_SECRET"],
+                        "secret_envs": ["MY_SECRET"],
                     },
                     {
                         "name": "ubuntu",
@@ -1807,7 +1807,7 @@ class Trigger(pulumi.CustomResource):
                     },
                 ],
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": "mybucket",
                         "object": "source_code.tar.gz",
                     },
@@ -1817,21 +1817,21 @@ class Trigger(pulumi.CustomResource):
                     "newFeature",
                 ],
                 "substitutions": {
-                    "_FOO": "bar",
-                    "_BAZ": "qux",
+                    "__foo": "bar",
+                    "__baz": "qux",
                 },
-                "queueTtl": "20s",
-                "logsBucket": "gs://mybucket/logs",
+                "queue_ttl": "20s",
+                "logs_bucket": "gs://mybucket/logs",
                 "secrets": [{
-                    "kmsKeyName": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
-                    "secretEnv": {
-                        "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
+                    "kms_key_name": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
+                    "secret_env": {
+                        "password": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
                     },
                 }],
-                "availableSecrets": {
-                    "secretManagers": [{
+                "available_secrets": {
+                    "secret_managers": [{
                         "env": "MY_SECRET",
-                        "versionName": "projects/myProject/secrets/mySecret/versions/latest",
+                        "version_name": "projects/myProject/secrets/mySecret/versions/latest",
                     }],
                 },
                 "artifacts": {
@@ -1840,34 +1840,34 @@ class Trigger(pulumi.CustomResource):
                         "location": "gs://bucket/path/to/somewhere/",
                         "paths": ["path"],
                     },
-                    "npmPackages": [{
-                        "packagePath": "package.json",
+                    "npm_packages": [{
+                        "package_path": "package.json",
                         "repository": "https://us-west1-npm.pkg.dev/myProject/quickstart-nodejs-repo",
                     }],
-                    "pythonPackages": [{
+                    "python_packages": [{
                         "paths": ["dist/*"],
                         "repository": "https://us-west1-python.pkg.dev/myProject/quickstart-python-repo",
                     }],
-                    "mavenArtifacts": [{
+                    "maven_artifacts": [{
                         "repository": "https://us-west1-maven.pkg.dev/myProject/quickstart-java-repo",
                         "path": "/workspace/my-app/target/my-app-1.0.SNAPSHOT.jar",
-                        "artifactId": "my-app",
-                        "groupId": "com.mycompany.app",
+                        "artifact_id": "my-app",
+                        "group_id": "com.mycompany.app",
                         "version": "1.0",
                     }],
                 },
                 "options": {
-                    "sourceProvenanceHashes": ["MD5"],
-                    "requestedVerifyOption": "VERIFIED",
-                    "machineType": "N1_HIGHCPU_8",
-                    "diskSizeGb": 100,
-                    "substitutionOption": "ALLOW_LOOSE",
-                    "dynamicSubstitutions": True,
-                    "logStreamingOption": "STREAM_OFF",
-                    "workerPool": "pool",
+                    "source_provenance_hashes": ["MD5"],
+                    "requested_verify_option": "VERIFIED",
+                    "machine_type": "N1_HIGHCPU_8",
+                    "disk_size_gb": 100,
+                    "substitution_option": "ALLOW_LOOSE",
+                    "dynamic_substitutions": True,
+                    "log_streaming_option": "STREAM_OFF",
+                    "worker_pool": "pool",
                     "logging": "LEGACY",
                     "envs": ["ekey = evalue"],
-                    "secretEnvs": ["secretenv = svalue"],
+                    "secret_envs": ["secretenv = svalue"],
                     "volumes": [{
                         "name": "v1",
                         "path": "v1",
@@ -1893,8 +1893,8 @@ class Trigger(pulumi.CustomResource):
             member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         service_account_trigger = gcp.cloudbuild.Trigger("service-account-trigger",
             trigger_template={
-                "branchName": "main",
-                "repoName": "my-repo",
+                "branch_name": "main",
+                "repo_name": "my-repo",
             },
             service_account=cloudbuild_service_account.id,
             filename="cloudbuild.yaml",
@@ -1939,13 +1939,13 @@ class Trigger(pulumi.CustomResource):
             source_to_build={
                 "uri": "https://hashicorp/terraform-provider-google-beta",
                 "ref": "refs/heads/main",
-                "repoType": "GITHUB",
+                "repo_type": "GITHUB",
             },
             git_file_source={
                 "path": "cloudbuild.yaml",
                 "uri": "https://hashicorp/terraform-provider-google-beta",
                 "revision": "refs/heads/main",
-                "repoType": "GITHUB",
+                "repo_type": "GITHUB",
             },
             substitutions={
                 "_ACTION": "$(body.message.data.action)",
@@ -1961,7 +1961,7 @@ class Trigger(pulumi.CustomResource):
         webhook_trigger_secret_key = gcp.secretmanager.Secret("webhook_trigger_secret_key",
             secret_id="webhook-trigger-secret-key",
             replication={
-                "userManaged": {
+                "user_managed": {
                     "replicas": [{
                         "location": "us-central1",
                     }],
@@ -1988,13 +1988,13 @@ class Trigger(pulumi.CustomResource):
             source_to_build={
                 "uri": "https://hashicorp/terraform-provider-google-beta",
                 "ref": "refs/heads/main",
-                "repoType": "GITHUB",
+                "repo_type": "GITHUB",
             },
             git_file_source={
                 "path": "cloudbuild.yaml",
                 "uri": "https://hashicorp/terraform-provider-google-beta",
                 "revision": "refs/heads/main",
-                "repoType": "GITHUB",
+                "repo_type": "GITHUB",
             })
         ```
         ### Cloudbuild Trigger Manual
@@ -2008,16 +2008,16 @@ class Trigger(pulumi.CustomResource):
             source_to_build={
                 "uri": "https://hashicorp/terraform-provider-google-beta",
                 "ref": "refs/heads/main",
-                "repoType": "GITHUB",
+                "repo_type": "GITHUB",
             },
             git_file_source={
                 "path": "cloudbuild.yaml",
                 "uri": "https://hashicorp/terraform-provider-google-beta",
                 "revision": "refs/heads/main",
-                "repoType": "GITHUB",
+                "repo_type": "GITHUB",
             },
             approval_config={
-                "approvalRequired": True,
+                "approval_required": True,
             })
         ```
         ### Cloudbuild Trigger Manual Github Enterprise
@@ -2031,15 +2031,15 @@ class Trigger(pulumi.CustomResource):
             source_to_build={
                 "uri": "https://hashicorp/terraform-provider-google-beta",
                 "ref": "refs/heads/main",
-                "repoType": "GITHUB",
-                "githubEnterpriseConfig": "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+                "repo_type": "GITHUB",
+                "github_enterprise_config": "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
             },
             git_file_source={
                 "path": "cloudbuild.yaml",
                 "uri": "https://hashicorp/terraform-provider-google-beta",
                 "revision": "refs/heads/main",
-                "repoType": "GITHUB",
-                "githubEnterpriseConfig": "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
+                "repo_type": "GITHUB",
+                "github_enterprise_config": "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
             })
         ```
         ### Cloudbuild Trigger Manual Bitbucket Server
@@ -2053,15 +2053,15 @@ class Trigger(pulumi.CustomResource):
             source_to_build={
                 "uri": "https://bbs.com/scm/stag/test-repo.git",
                 "ref": "refs/heads/main",
-                "repoType": "BITBUCKET_SERVER",
-                "bitbucketServerConfig": "projects/myProject/locations/global/bitbucketServerConfigs/configID",
+                "repo_type": "BITBUCKET_SERVER",
+                "bitbucket_server_config": "projects/myProject/locations/global/bitbucketServerConfigs/configID",
             },
             git_file_source={
                 "path": "cloudbuild.yaml",
                 "uri": "https://bbs.com/scm/stag/test-repo.git",
                 "revision": "refs/heads/main",
-                "repoType": "BITBUCKET_SERVER",
-                "bitbucketServerConfig": "projects/myProject/locations/global/bitbucketServerConfigs/configID",
+                "repo_type": "BITBUCKET_SERVER",
+                "bitbucket_server_config": "projects/myProject/locations/global/bitbucketServerConfigs/configID",
             })
         ```
         ### Cloudbuild Trigger Repo
@@ -2074,9 +2074,9 @@ class Trigger(pulumi.CustomResource):
             location="us-central1",
             name="my-connection",
             github_config={
-                "appInstallationId": 123123,
-                "authorizerCredential": {
-                    "oauthTokenSecretVersion": "projects/my-project/secrets/github-pat-secret/versions/latest",
+                "app_installation_id": 123123,
+                "authorizer_credential": {
+                    "oauth_token_secret_version": "projects/my-project/secrets/github-pat-secret/versions/latest",
                 },
             })
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
@@ -2103,12 +2103,12 @@ class Trigger(pulumi.CustomResource):
             name="bbs-push-trigger",
             location="us-central1",
             bitbucket_server_trigger_config={
-                "repoSlug": "bbs-push-trigger",
-                "projectKey": "STAG",
-                "bitbucketServerConfigResource": "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+                "repo_slug": "bbs-push-trigger",
+                "project_key": "STAG",
+                "bitbucket_server_config_resource": "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
                 "push": {
                     "tag": "^0.1.*",
-                    "invertRegex": True,
+                    "invert_regex": True,
                 },
             },
             filename="cloudbuild.yaml")
@@ -2123,13 +2123,13 @@ class Trigger(pulumi.CustomResource):
             name="ghe-trigger",
             location="us-central1",
             bitbucket_server_trigger_config={
-                "repoSlug": "terraform-provider-google",
-                "projectKey": "STAG",
-                "bitbucketServerConfigResource": "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
-                "pullRequest": {
+                "repo_slug": "terraform-provider-google",
+                "project_key": "STAG",
+                "bitbucket_server_config_resource": "projects/123456789/locations/us-central1/bitbucketServerConfigs/myBitbucketConfig",
+                "pull_request": {
                     "branch": "^master$",
-                    "invertRegex": False,
-                    "commentControl": "COMMENTS_ENABLED",
+                    "invert_regex": False,
+                    "comment_control": "COMMENTS_ENABLED",
                 },
             },
             filename="cloudbuild.yaml")
@@ -2149,7 +2149,7 @@ class Trigger(pulumi.CustomResource):
                 "push": {
                     "branch": "^main$",
                 },
-                "enterpriseConfigResourceName": "projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID",
+                "enterprise_config_resource_name": "projects/123456789/locations/us-central1/githubEnterpriseConfigs/configID",
             },
             filename="cloudbuild.yaml")
         ```
@@ -2163,8 +2163,8 @@ class Trigger(pulumi.CustomResource):
             name="my-trigger",
             location="global",
             trigger_template={
-                "branchName": "main",
-                "repoName": "my-repo",
+                "branch_name": "main",
+                "repo_name": "my-repo",
             },
             build={
                 "steps": [{
@@ -2173,10 +2173,10 @@ class Trigger(pulumi.CustomResource):
                         "-c",
                         "exit 1",
                     ],
-                    "allowFailure": True,
+                    "allow_failure": True,
                 }],
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": "mybucket",
                         "object": "source_code.tar.gz",
                     },
@@ -2186,21 +2186,21 @@ class Trigger(pulumi.CustomResource):
                     "newFeature",
                 ],
                 "substitutions": {
-                    "_FOO": "bar",
-                    "_BAZ": "qux",
+                    "__foo": "bar",
+                    "__baz": "qux",
                 },
-                "queueTtl": "20s",
-                "logsBucket": "gs://mybucket/logs",
+                "queue_ttl": "20s",
+                "logs_bucket": "gs://mybucket/logs",
                 "secrets": [{
-                    "kmsKeyName": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
-                    "secretEnv": {
-                        "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
+                    "kms_key_name": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
+                    "secret_env": {
+                        "password": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
                     },
                 }],
-                "availableSecrets": {
-                    "secretManagers": [{
+                "available_secrets": {
+                    "secret_managers": [{
                         "env": "MY_SECRET",
-                        "versionName": "projects/myProject/secrets/mySecret/versions/latest",
+                        "version_name": "projects/myProject/secrets/mySecret/versions/latest",
                     }],
                 },
                 "artifacts": {
@@ -2211,17 +2211,17 @@ class Trigger(pulumi.CustomResource):
                     },
                 },
                 "options": {
-                    "sourceProvenanceHashes": ["MD5"],
-                    "requestedVerifyOption": "VERIFIED",
-                    "machineType": "N1_HIGHCPU_8",
-                    "diskSizeGb": 100,
-                    "substitutionOption": "ALLOW_LOOSE",
-                    "dynamicSubstitutions": True,
-                    "logStreamingOption": "STREAM_OFF",
-                    "workerPool": "pool",
+                    "source_provenance_hashes": ["MD5"],
+                    "requested_verify_option": "VERIFIED",
+                    "machine_type": "N1_HIGHCPU_8",
+                    "disk_size_gb": 100,
+                    "substitution_option": "ALLOW_LOOSE",
+                    "dynamic_substitutions": True,
+                    "log_streaming_option": "STREAM_OFF",
+                    "worker_pool": "pool",
                     "logging": "LEGACY",
                     "envs": ["ekey = evalue"],
-                    "secretEnvs": ["secretenv = svalue"],
+                    "secret_envs": ["secretenv = svalue"],
                     "volumes": [{
                         "name": "v1",
                         "path": "v1",
@@ -2239,8 +2239,8 @@ class Trigger(pulumi.CustomResource):
             name="my-trigger",
             location="global",
             trigger_template={
-                "branchName": "main",
-                "repoName": "my-repo",
+                "branch_name": "main",
+                "repo_name": "my-repo",
             },
             build={
                 "steps": [{
@@ -2249,13 +2249,13 @@ class Trigger(pulumi.CustomResource):
                         "-c",
                         "exit 1",
                     ],
-                    "allowExitCodes": [
+                    "allow_exit_codes": [
                         1,
                         3,
                     ],
                 }],
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": "mybucket",
                         "object": "source_code.tar.gz",
                     },
@@ -2265,21 +2265,21 @@ class Trigger(pulumi.CustomResource):
                     "newFeature",
                 ],
                 "substitutions": {
-                    "_FOO": "bar",
-                    "_BAZ": "qux",
+                    "__foo": "bar",
+                    "__baz": "qux",
                 },
-                "queueTtl": "20s",
-                "logsBucket": "gs://mybucket/logs",
+                "queue_ttl": "20s",
+                "logs_bucket": "gs://mybucket/logs",
                 "secrets": [{
-                    "kmsKeyName": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
-                    "secretEnv": {
-                        "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
+                    "kms_key_name": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
+                    "secret_env": {
+                        "password": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
                     },
                 }],
-                "availableSecrets": {
-                    "secretManagers": [{
+                "available_secrets": {
+                    "secret_managers": [{
                         "env": "MY_SECRET",
-                        "versionName": "projects/myProject/secrets/mySecret/versions/latest",
+                        "version_name": "projects/myProject/secrets/mySecret/versions/latest",
                     }],
                 },
                 "artifacts": {
@@ -2290,17 +2290,17 @@ class Trigger(pulumi.CustomResource):
                     },
                 },
                 "options": {
-                    "sourceProvenanceHashes": ["MD5"],
-                    "requestedVerifyOption": "VERIFIED",
-                    "machineType": "N1_HIGHCPU_8",
-                    "diskSizeGb": 100,
-                    "substitutionOption": "ALLOW_LOOSE",
-                    "dynamicSubstitutions": True,
-                    "logStreamingOption": "STREAM_OFF",
-                    "workerPool": "pool",
+                    "source_provenance_hashes": ["MD5"],
+                    "requested_verify_option": "VERIFIED",
+                    "machine_type": "N1_HIGHCPU_8",
+                    "disk_size_gb": 100,
+                    "substitution_option": "ALLOW_LOOSE",
+                    "dynamic_substitutions": True,
+                    "log_streaming_option": "STREAM_OFF",
+                    "worker_pool": "pool",
                     "logging": "LEGACY",
                     "envs": ["ekey = evalue"],
-                    "secretEnvs": ["secretenv = svalue"],
+                    "secret_envs": ["secretenv = svalue"],
                     "volumes": [{
                         "name": "v1",
                         "path": "v1",
@@ -2318,9 +2318,9 @@ class Trigger(pulumi.CustomResource):
             location="us-central1",
             name="my-connection",
             github_config={
-                "appInstallationId": 123123,
-                "authorizerCredential": {
-                    "oauthTokenSecretVersion": "projects/my-project/secrets/github-pat-secret/versions/latest",
+                "app_installation_id": 123123,
+                "authorizer_credential": {
+                    "oauth_token_secret_version": "projects/my-project/secrets/github-pat-secret/versions/latest",
                 },
             })
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
@@ -2337,13 +2337,13 @@ class Trigger(pulumi.CustomResource):
             source_to_build={
                 "repository": my_repository.id,
                 "ref": "refs/heads/main",
-                "repoType": "GITHUB",
+                "repo_type": "GITHUB",
             },
             git_file_source={
                 "path": "cloudbuild.yaml",
                 "repository": my_repository.id,
                 "revision": "refs/heads/main",
-                "repoType": "GITHUB",
+                "repo_type": "GITHUB",
             })
         ```
 

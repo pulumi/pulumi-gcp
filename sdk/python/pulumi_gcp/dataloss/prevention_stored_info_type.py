@@ -357,7 +357,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             display_name="Displayname",
             regex={
                 "pattern": "patient",
-                "groupIndexes": [2],
+                "group_indexes": [2],
             })
         ```
         ### Dlp Stored Info Type Dictionary
@@ -371,7 +371,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             description="Description",
             display_name="Displayname",
             dictionary={
-                "wordList": {
+                "word_list": {
                     "words": [
                         "word",
                         "word2",
@@ -398,10 +398,10 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             description="Description",
             display_name="Displayname",
             large_custom_dictionary={
-                "cloudStorageFileSet": {
+                "cloud_storage_file_set": {
                     "url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"gs://{bucket_name}/{object_name}"),
                 },
-                "outputPath": {
+                "output_path": {
                     "path": bucket.name.apply(lambda name: f"gs://{name}/output/dictionary.txt"),
                 },
             })
@@ -419,7 +419,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             stored_info_type_id="id-",
             regex={
                 "pattern": "patient",
-                "groupIndexes": [2],
+                "group_indexes": [2],
             })
         ```
 
@@ -492,7 +492,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             display_name="Displayname",
             regex={
                 "pattern": "patient",
-                "groupIndexes": [2],
+                "group_indexes": [2],
             })
         ```
         ### Dlp Stored Info Type Dictionary
@@ -506,7 +506,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             description="Description",
             display_name="Displayname",
             dictionary={
-                "wordList": {
+                "word_list": {
                     "words": [
                         "word",
                         "word2",
@@ -533,10 +533,10 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             description="Description",
             display_name="Displayname",
             large_custom_dictionary={
-                "cloudStorageFileSet": {
+                "cloud_storage_file_set": {
                     "url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"gs://{bucket_name}/{object_name}"),
                 },
-                "outputPath": {
+                "output_path": {
                     "path": bucket.name.apply(lambda name: f"gs://{name}/output/dictionary.txt"),
                 },
             })
@@ -554,7 +554,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             stored_info_type_id="id-",
             regex={
                 "pattern": "patient",
-                "groupIndexes": [2],
+                "group_indexes": [2],
             })
         ```
 

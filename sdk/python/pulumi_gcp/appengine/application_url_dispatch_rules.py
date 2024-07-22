@@ -132,7 +132,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
             },
             deployment={
                 "zip": {
-                    "sourceUrl": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                    "source_url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 },
             },
             env_variables={
@@ -207,7 +207,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
             },
             deployment={
                 "zip": {
-                    "sourceUrl": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                    "source_url": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
                 },
             },
             env_variables={

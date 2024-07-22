@@ -228,15 +228,15 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
             region="us-central1",
             name="example-deployment-resource-pool",
             dedicated_resources={
-                "machineSpec": {
-                    "machineType": "n1-standard-4",
-                    "acceleratorType": "NVIDIA_TESLA_K80",
-                    "acceleratorCount": 1,
+                "machine_spec": {
+                    "machine_type": "n1-standard-4",
+                    "accelerator_type": "NVIDIA_TESLA_K80",
+                    "accelerator_count": 1,
                 },
-                "minReplicaCount": 1,
-                "maxReplicaCount": 2,
-                "autoscalingMetricSpecs": [{
-                    "metricName": "aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle",
+                "min_replica_count": 1,
+                "max_replica_count": 2,
+                "autoscaling_metric_specs": [{
+                    "metric_name": "aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle",
                     "target": 60,
                 }],
             })
@@ -310,15 +310,15 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
             region="us-central1",
             name="example-deployment-resource-pool",
             dedicated_resources={
-                "machineSpec": {
-                    "machineType": "n1-standard-4",
-                    "acceleratorType": "NVIDIA_TESLA_K80",
-                    "acceleratorCount": 1,
+                "machine_spec": {
+                    "machine_type": "n1-standard-4",
+                    "accelerator_type": "NVIDIA_TESLA_K80",
+                    "accelerator_count": 1,
                 },
-                "minReplicaCount": 1,
-                "maxReplicaCount": 2,
-                "autoscalingMetricSpecs": [{
-                    "metricName": "aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle",
+                "min_replica_count": 1,
+                "max_replica_count": 2,
+                "autoscaling_metric_specs": [{
+                    "metric_name": "aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle",
                     "target": 60,
                 }],
             })
