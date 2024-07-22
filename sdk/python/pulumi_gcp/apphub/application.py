@@ -395,16 +395,16 @@ class Application(pulumi.CustomResource):
                 "criticality": {
                     "type": "MISSION_CRITICAL",
                 },
-                "businessOwners": [{
-                    "displayName": "Alice",
+                "business_owners": [{
+                    "display_name": "Alice",
                     "email": "alice@google.com",
                 }],
-                "developerOwners": [{
-                    "displayName": "Bob",
+                "developer_owners": [{
+                    "display_name": "Bob",
                     "email": "bob@google.com",
                 }],
-                "operatorOwners": [{
-                    "displayName": "Charlie",
+                "operator_owners": [{
+                    "display_name": "Charlie",
                     "email": "charlie@google.com",
                 }],
             })
@@ -489,16 +489,16 @@ class Application(pulumi.CustomResource):
                 "criticality": {
                     "type": "MISSION_CRITICAL",
                 },
-                "businessOwners": [{
-                    "displayName": "Alice",
+                "business_owners": [{
+                    "display_name": "Alice",
                     "email": "alice@google.com",
                 }],
-                "developerOwners": [{
-                    "displayName": "Bob",
+                "developer_owners": [{
+                    "display_name": "Bob",
                     "email": "bob@google.com",
                 }],
-                "operatorOwners": [{
-                    "displayName": "Charlie",
+                "operator_owners": [{
+                    "display_name": "Charlie",
                     "email": "charlie@google.com",
                 }],
             })

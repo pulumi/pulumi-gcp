@@ -437,13 +437,13 @@ class Repository(pulumi.CustomResource):
             },
             git_remote_settings={
                 "url": "https://github.com/OWNER/REPOSITORY.git",
-                "defaultBranch": "main",
-                "authenticationTokenSecretVersion": secret_version.id,
+                "default_branch": "main",
+                "authentication_token_secret_version": secret_version.id,
             },
             workspace_compilation_overrides={
-                "defaultDatabase": "database",
-                "schemaSuffix": "_suffix",
-                "tablePrefix": "prefix_",
+                "default_database": "database",
+                "schema_suffix": "_suffix",
+                "table_prefix": "prefix_",
             })
         ```
 
@@ -531,13 +531,13 @@ class Repository(pulumi.CustomResource):
             },
             git_remote_settings={
                 "url": "https://github.com/OWNER/REPOSITORY.git",
-                "defaultBranch": "main",
-                "authenticationTokenSecretVersion": secret_version.id,
+                "default_branch": "main",
+                "authentication_token_secret_version": secret_version.id,
             },
             workspace_compilation_overrides={
-                "defaultDatabase": "database",
-                "schemaSuffix": "_suffix",
-                "tablePrefix": "prefix_",
+                "default_database": "database",
+                "schema_suffix": "_suffix",
+                "table_prefix": "prefix_",
             })
         ```
 

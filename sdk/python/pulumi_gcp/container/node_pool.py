@@ -831,9 +831,9 @@ class NodePool(pulumi.CustomResource):
             node_count=1,
             node_config={
                 "preemptible": True,
-                "machineType": "e2-medium",
-                "serviceAccount": default.email,
-                "oauthScopes": ["https://www.googleapis.com/auth/cloud-platform"],
+                "machine_type": "e2-medium",
+                "service_account": default.email,
+                "oauth_scopes": ["https://www.googleapis.com/auth/cloud-platform"],
             })
         ```
 
@@ -852,9 +852,9 @@ class NodePool(pulumi.CustomResource):
             initial_node_count=3,
             node_locations=["us-central1-c"],
             node_config={
-                "serviceAccount": default.email,
-                "oauthScopes": ["https://www.googleapis.com/auth/cloud-platform"],
-                "guestAccelerators": [{
+                "service_account": default.email,
+                "oauth_scopes": ["https://www.googleapis.com/auth/cloud-platform"],
+                "guest_accelerators": [{
                     "type": "nvidia-tesla-k80",
                     "count": 1,
                 }],
@@ -863,9 +863,9 @@ class NodePool(pulumi.CustomResource):
             name="my-node-pool",
             cluster=primary.id,
             node_config={
-                "machineType": "e2-medium",
-                "serviceAccount": default.email,
-                "oauthScopes": ["https://www.googleapis.com/auth/cloud-platform"],
+                "machine_type": "e2-medium",
+                "service_account": default.email,
+                "oauth_scopes": ["https://www.googleapis.com/auth/cloud-platform"],
             })
         ```
 
@@ -982,9 +982,9 @@ class NodePool(pulumi.CustomResource):
             node_count=1,
             node_config={
                 "preemptible": True,
-                "machineType": "e2-medium",
-                "serviceAccount": default.email,
-                "oauthScopes": ["https://www.googleapis.com/auth/cloud-platform"],
+                "machine_type": "e2-medium",
+                "service_account": default.email,
+                "oauth_scopes": ["https://www.googleapis.com/auth/cloud-platform"],
             })
         ```
 
@@ -1003,9 +1003,9 @@ class NodePool(pulumi.CustomResource):
             initial_node_count=3,
             node_locations=["us-central1-c"],
             node_config={
-                "serviceAccount": default.email,
-                "oauthScopes": ["https://www.googleapis.com/auth/cloud-platform"],
-                "guestAccelerators": [{
+                "service_account": default.email,
+                "oauth_scopes": ["https://www.googleapis.com/auth/cloud-platform"],
+                "guest_accelerators": [{
                     "type": "nvidia-tesla-k80",
                     "count": 1,
                 }],
@@ -1014,9 +1014,9 @@ class NodePool(pulumi.CustomResource):
             name="my-node-pool",
             cluster=primary.id,
             node_config={
-                "machineType": "e2-medium",
-                "serviceAccount": default.email,
-                "oauthScopes": ["https://www.googleapis.com/auth/cloud-platform"],
+                "machine_type": "e2-medium",
+                "service_account": default.email,
+                "oauth_scopes": ["https://www.googleapis.com/auth/cloud-platform"],
             })
         ```
 

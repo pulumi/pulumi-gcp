@@ -83,7 +83,7 @@ import (
 //			_, err = runtimeconfig.NewVariable(ctx, "my-secret", &runtimeconfig.VariableArgs{
 //				Parent: my_runtime_config.Name,
 //				Name:   pulumi.String("secret"),
-//				Value:  invokeFilebase64.Result,
+//				Value:  pulumi.String(invokeFilebase64.Result),
 //			})
 //			if err != nil {
 //				return err

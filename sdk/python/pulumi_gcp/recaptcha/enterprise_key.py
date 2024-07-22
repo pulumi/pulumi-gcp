@@ -409,12 +409,12 @@ class EnterpriseKey(pulumi.CustomResource):
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
             android_settings={
-                "allowAllPackageNames": True,
-                "allowedPackageNames": [],
+                "allow_all_package_names": True,
+                "allowed_package_names": [],
             },
             project="my-project-name",
             testing_options={
-                "testingScore": 0.8,
+                "testing_score": 0.8,
             },
             labels={
                 "label-one": "value-one",
@@ -429,12 +429,12 @@ class EnterpriseKey(pulumi.CustomResource):
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
             ios_settings={
-                "allowAllBundleIds": True,
-                "allowedBundleIds": [],
+                "allow_all_bundle_ids": True,
+                "allowed_bundle_ids": [],
             },
             project="my-project-name",
             testing_options={
-                "testingScore": 1,
+                "testing_score": 1,
             },
             labels={
                 "label-one": "value-one",
@@ -450,8 +450,8 @@ class EnterpriseKey(pulumi.CustomResource):
             display_name="display-name-one",
             project="my-project-name",
             web_settings={
-                "integrationType": "SCORE",
-                "allowAllDomains": True,
+                "integration_type": "SCORE",
+                "allow_all_domains": True,
             },
             labels={})
         ```
@@ -465,18 +465,18 @@ class EnterpriseKey(pulumi.CustomResource):
             display_name="display-name-one",
             project="my-project-name",
             testing_options={
-                "testingChallenge": "NOCAPTCHA",
-                "testingScore": 0.5,
+                "testing_challenge": "NOCAPTCHA",
+                "testing_score": 0.5,
             },
             waf_settings={
-                "wafFeature": "CHALLENGE_PAGE",
-                "wafService": "CA",
+                "waf_feature": "CHALLENGE_PAGE",
+                "waf_service": "CA",
             },
             web_settings={
-                "integrationType": "INVISIBLE",
-                "allowAllDomains": True,
-                "allowedDomains": [],
-                "challengeSecurityPreference": "USABILITY",
+                "integration_type": "INVISIBLE",
+                "allow_all_domains": True,
+                "allowed_domains": [],
+                "challenge_security_preference": "USABILITY",
             },
             labels={
                 "label-one": "value-one",
@@ -492,14 +492,14 @@ class EnterpriseKey(pulumi.CustomResource):
             display_name="display-name-one",
             project="my-project-name",
             testing_options={
-                "testingChallenge": "NOCAPTCHA",
-                "testingScore": 0.5,
+                "testing_challenge": "NOCAPTCHA",
+                "testing_score": 0.5,
             },
             web_settings={
-                "integrationType": "CHECKBOX",
-                "allowAllDomains": True,
-                "allowedDomains": [],
-                "challengeSecurityPreference": "USABILITY",
+                "integration_type": "CHECKBOX",
+                "allow_all_domains": True,
+                "allowed_domains": [],
+                "challenge_security_preference": "USABILITY",
             },
             labels={
                 "label-one": "value-one",
@@ -515,13 +515,13 @@ class EnterpriseKey(pulumi.CustomResource):
             display_name="display-name-one",
             project="my-project-name",
             testing_options={
-                "testingScore": 0.5,
+                "testing_score": 0.5,
             },
             web_settings={
-                "integrationType": "SCORE",
-                "allowAllDomains": True,
-                "allowAmpTraffic": False,
-                "allowedDomains": [],
+                "integration_type": "SCORE",
+                "allow_all_domains": True,
+                "allow_amp_traffic": False,
+                "allowed_domains": [],
             },
             labels={
                 "label-one": "value-one",
@@ -590,12 +590,12 @@ class EnterpriseKey(pulumi.CustomResource):
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
             android_settings={
-                "allowAllPackageNames": True,
-                "allowedPackageNames": [],
+                "allow_all_package_names": True,
+                "allowed_package_names": [],
             },
             project="my-project-name",
             testing_options={
-                "testingScore": 0.8,
+                "testing_score": 0.8,
             },
             labels={
                 "label-one": "value-one",
@@ -610,12 +610,12 @@ class EnterpriseKey(pulumi.CustomResource):
         primary = gcp.recaptcha.EnterpriseKey("primary",
             display_name="display-name-one",
             ios_settings={
-                "allowAllBundleIds": True,
-                "allowedBundleIds": [],
+                "allow_all_bundle_ids": True,
+                "allowed_bundle_ids": [],
             },
             project="my-project-name",
             testing_options={
-                "testingScore": 1,
+                "testing_score": 1,
             },
             labels={
                 "label-one": "value-one",
@@ -631,8 +631,8 @@ class EnterpriseKey(pulumi.CustomResource):
             display_name="display-name-one",
             project="my-project-name",
             web_settings={
-                "integrationType": "SCORE",
-                "allowAllDomains": True,
+                "integration_type": "SCORE",
+                "allow_all_domains": True,
             },
             labels={})
         ```
@@ -646,18 +646,18 @@ class EnterpriseKey(pulumi.CustomResource):
             display_name="display-name-one",
             project="my-project-name",
             testing_options={
-                "testingChallenge": "NOCAPTCHA",
-                "testingScore": 0.5,
+                "testing_challenge": "NOCAPTCHA",
+                "testing_score": 0.5,
             },
             waf_settings={
-                "wafFeature": "CHALLENGE_PAGE",
-                "wafService": "CA",
+                "waf_feature": "CHALLENGE_PAGE",
+                "waf_service": "CA",
             },
             web_settings={
-                "integrationType": "INVISIBLE",
-                "allowAllDomains": True,
-                "allowedDomains": [],
-                "challengeSecurityPreference": "USABILITY",
+                "integration_type": "INVISIBLE",
+                "allow_all_domains": True,
+                "allowed_domains": [],
+                "challenge_security_preference": "USABILITY",
             },
             labels={
                 "label-one": "value-one",
@@ -673,14 +673,14 @@ class EnterpriseKey(pulumi.CustomResource):
             display_name="display-name-one",
             project="my-project-name",
             testing_options={
-                "testingChallenge": "NOCAPTCHA",
-                "testingScore": 0.5,
+                "testing_challenge": "NOCAPTCHA",
+                "testing_score": 0.5,
             },
             web_settings={
-                "integrationType": "CHECKBOX",
-                "allowAllDomains": True,
-                "allowedDomains": [],
-                "challengeSecurityPreference": "USABILITY",
+                "integration_type": "CHECKBOX",
+                "allow_all_domains": True,
+                "allowed_domains": [],
+                "challenge_security_preference": "USABILITY",
             },
             labels={
                 "label-one": "value-one",
@@ -696,13 +696,13 @@ class EnterpriseKey(pulumi.CustomResource):
             display_name="display-name-one",
             project="my-project-name",
             testing_options={
-                "testingScore": 0.5,
+                "testing_score": 0.5,
             },
             web_settings={
-                "integrationType": "SCORE",
-                "allowAllDomains": True,
-                "allowAmpTraffic": False,
-                "allowedDomains": [],
+                "integration_type": "SCORE",
+                "allow_all_domains": True,
+                "allow_amp_traffic": False,
+                "allowed_domains": [],
             },
             labels={
                 "label-one": "value-one",

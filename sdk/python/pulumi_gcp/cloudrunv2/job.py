@@ -889,7 +889,7 @@ class Job(pulumi.CustomResource):
                 "template": {
                     "volumes": [{
                         "name": "cloudsql",
-                        "cloudSqlInstance": {
+                        "cloud_sql_instance": {
                             "instances": [instance.connection_name],
                         },
                     }],
@@ -902,17 +902,17 @@ class Job(pulumi.CustomResource):
                             },
                             {
                                 "name": "latestdclsecret",
-                                "valueSource": {
-                                    "secretKeyRef": {
+                                "value_source": {
+                                    "secret_key_ref": {
                                         "secret": secret.secret_id,
                                         "version": "1",
                                     },
                                 },
                             },
                         ],
-                        "volumeMounts": [{
+                        "volume_mounts": [{
                             "name": "cloudsql",
-                            "mountPath": "/cloudsql",
+                            "mount_path": "/cloudsql",
                         }],
                     }],
                 },
@@ -958,7 +958,7 @@ class Job(pulumi.CustomResource):
                     "containers": [{
                         "image": "us-docker.pkg.dev/cloudrun/container/job",
                     }],
-                    "vpcAccess": {
+                    "vpc_access": {
                         "connector": connector.id,
                         "egress": "ALL_TRAFFIC",
                     },
@@ -980,8 +980,8 @@ class Job(pulumi.CustomResource):
                     "containers": [{
                         "image": "us-docker.pkg.dev/cloudrun/container/job",
                     }],
-                    "vpcAccess": {
-                        "networkInterfaces": [{
+                    "vpc_access": {
+                        "network_interfaces": [{
                             "network": "default",
                             "subnetwork": "default",
                             "tags": [
@@ -1023,7 +1023,7 @@ class Job(pulumi.CustomResource):
                         "name": "a-volume",
                         "secret": {
                             "secret": secret.secret_id,
-                            "defaultMode": 292,
+                            "default_mode": 292,
                             "items": [{
                                 "version": "1",
                                 "path": "my-secret",
@@ -1033,9 +1033,9 @@ class Job(pulumi.CustomResource):
                     }],
                     "containers": [{
                         "image": "us-docker.pkg.dev/cloudrun/container/job",
-                        "volumeMounts": [{
+                        "volume_mounts": [{
                             "name": "a-volume",
-                            "mountPath": "/secrets",
+                            "mount_path": "/secrets",
                         }],
                     }],
                 },
@@ -1059,16 +1059,16 @@ class Job(pulumi.CustomResource):
                 "template": {
                     "containers": [{
                         "image": "us-docker.pkg.dev/cloudrun/container/job",
-                        "volumeMounts": [{
+                        "volume_mounts": [{
                             "name": "empty-dir-volume",
-                            "mountPath": "/mnt",
+                            "mount_path": "/mnt",
                         }],
                     }],
                     "volumes": [{
                         "name": "empty-dir-volume",
-                        "emptyDir": {
+                        "empty_dir": {
                             "medium": "MEMORY",
-                            "sizeLimit": "128Mi",
+                            "size_limit": "128Mi",
                         },
                     }],
                 },
@@ -1235,7 +1235,7 @@ class Job(pulumi.CustomResource):
                 "template": {
                     "volumes": [{
                         "name": "cloudsql",
-                        "cloudSqlInstance": {
+                        "cloud_sql_instance": {
                             "instances": [instance.connection_name],
                         },
                     }],
@@ -1248,17 +1248,17 @@ class Job(pulumi.CustomResource):
                             },
                             {
                                 "name": "latestdclsecret",
-                                "valueSource": {
-                                    "secretKeyRef": {
+                                "value_source": {
+                                    "secret_key_ref": {
                                         "secret": secret.secret_id,
                                         "version": "1",
                                     },
                                 },
                             },
                         ],
-                        "volumeMounts": [{
+                        "volume_mounts": [{
                             "name": "cloudsql",
-                            "mountPath": "/cloudsql",
+                            "mount_path": "/cloudsql",
                         }],
                     }],
                 },
@@ -1304,7 +1304,7 @@ class Job(pulumi.CustomResource):
                     "containers": [{
                         "image": "us-docker.pkg.dev/cloudrun/container/job",
                     }],
-                    "vpcAccess": {
+                    "vpc_access": {
                         "connector": connector.id,
                         "egress": "ALL_TRAFFIC",
                     },
@@ -1326,8 +1326,8 @@ class Job(pulumi.CustomResource):
                     "containers": [{
                         "image": "us-docker.pkg.dev/cloudrun/container/job",
                     }],
-                    "vpcAccess": {
-                        "networkInterfaces": [{
+                    "vpc_access": {
+                        "network_interfaces": [{
                             "network": "default",
                             "subnetwork": "default",
                             "tags": [
@@ -1369,7 +1369,7 @@ class Job(pulumi.CustomResource):
                         "name": "a-volume",
                         "secret": {
                             "secret": secret.secret_id,
-                            "defaultMode": 292,
+                            "default_mode": 292,
                             "items": [{
                                 "version": "1",
                                 "path": "my-secret",
@@ -1379,9 +1379,9 @@ class Job(pulumi.CustomResource):
                     }],
                     "containers": [{
                         "image": "us-docker.pkg.dev/cloudrun/container/job",
-                        "volumeMounts": [{
+                        "volume_mounts": [{
                             "name": "a-volume",
-                            "mountPath": "/secrets",
+                            "mount_path": "/secrets",
                         }],
                     }],
                 },
@@ -1405,16 +1405,16 @@ class Job(pulumi.CustomResource):
                 "template": {
                     "containers": [{
                         "image": "us-docker.pkg.dev/cloudrun/container/job",
-                        "volumeMounts": [{
+                        "volume_mounts": [{
                             "name": "empty-dir-volume",
-                            "mountPath": "/mnt",
+                            "mount_path": "/mnt",
                         }],
                     }],
                     "volumes": [{
                         "name": "empty-dir-volume",
-                        "emptyDir": {
+                        "empty_dir": {
                             "medium": "MEMORY",
-                            "sizeLimit": "128Mi",
+                            "size_limit": "128Mi",
                         },
                     }],
                 },

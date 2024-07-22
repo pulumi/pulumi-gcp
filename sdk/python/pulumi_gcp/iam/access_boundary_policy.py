@@ -218,10 +218,10 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
             title="chromeos_no_lock",
             basic={
                 "conditions": [{
-                    "devicePolicy": {
-                        "requireScreenLock": True,
-                        "osConstraints": [{
-                            "osType": "DESKTOP_CHROME_OS",
+                    "device_policy": {
+                        "require_screen_lock": True,
+                        "os_constraints": [{
+                            "os_type": "DESKTOP_CHROME_OS",
                         }],
                     },
                     "regions": [
@@ -237,10 +237,10 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
             display_name="My AB policy",
             rules=[{
                 "description": "AB rule",
-                "accessBoundaryRule": {
-                    "availableResource": "*",
-                    "availablePermissions": ["*"],
-                    "availabilityCondition": {
+                "access_boundary_rule": {
+                    "available_resource": "*",
+                    "available_permissions": ["*"],
+                    "availability_condition": {
                         "title": "Access level expr",
                         "expression": pulumi.Output.all(project.org_id, test_access.name).apply(lambda org_id, name: f"request.matchAccessLevels('{org_id}', ['{name}'])"),
                     },
@@ -302,10 +302,10 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
             title="chromeos_no_lock",
             basic={
                 "conditions": [{
-                    "devicePolicy": {
-                        "requireScreenLock": True,
-                        "osConstraints": [{
-                            "osType": "DESKTOP_CHROME_OS",
+                    "device_policy": {
+                        "require_screen_lock": True,
+                        "os_constraints": [{
+                            "os_type": "DESKTOP_CHROME_OS",
                         }],
                     },
                     "regions": [
@@ -321,10 +321,10 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
             display_name="My AB policy",
             rules=[{
                 "description": "AB rule",
-                "accessBoundaryRule": {
-                    "availableResource": "*",
-                    "availablePermissions": ["*"],
-                    "availabilityCondition": {
+                "access_boundary_rule": {
+                    "available_resource": "*",
+                    "available_permissions": ["*"],
+                    "availability_condition": {
                         "title": "Access level expr",
                         "expression": pulumi.Output.all(project.org_id, test_access.name).apply(lambda org_id, name: f"request.matchAccessLevels('{org_id}', ['{name}'])"),
                     },

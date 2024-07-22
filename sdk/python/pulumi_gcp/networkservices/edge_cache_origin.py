@@ -743,25 +743,25 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 "FORBIDDEN",
             ],
             timeout={
-                "connectTimeout": "10s",
-                "maxAttemptsTimeout": "20s",
-                "responseTimeout": "60s",
-                "readTimeout": "5s",
+                "connect_timeout": "10s",
+                "max_attempts_timeout": "20s",
+                "response_timeout": "60s",
+                "read_timeout": "5s",
             },
             origin_override_action={
-                "urlRewrite": {
-                    "hostRewrite": "example.com",
+                "url_rewrite": {
+                    "host_rewrite": "example.com",
                 },
-                "headerAction": {
-                    "requestHeadersToAdds": [{
-                        "headerName": "x-header",
-                        "headerValue": "value",
+                "header_action": {
+                    "request_headers_to_adds": [{
+                        "header_name": "x-header",
+                        "header_value": "value",
                         "replace": True,
                     }],
                 },
             },
             origin_redirect={
-                "redirectConditions": [
+                "redirect_conditions": [
                     "MOVED_PERMANENTLY",
                     "FOUND",
                     "SEE_OTHER",
@@ -779,7 +779,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 "a": "b",
             },
             timeout={
-                "connectTimeout": "10s",
+                "connect_timeout": "10s",
             })
         ```
         ### Network Services Edge Cache Origin V4auth
@@ -801,9 +801,9 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             origin_address="gs://media-edge-default",
             description="The default bucket for V4 authentication",
             aws_v4_authentication={
-                "accessKeyId": "ACCESSKEYID",
-                "secretAccessKeyVersion": secret_version_basic.id,
-                "originRegion": "auto",
+                "access_key_id": "ACCESSKEYID",
+                "secret_access_key_version": secret_version_basic.id,
+                "origin_region": "auto",
             })
         ```
 
@@ -936,25 +936,25 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 "FORBIDDEN",
             ],
             timeout={
-                "connectTimeout": "10s",
-                "maxAttemptsTimeout": "20s",
-                "responseTimeout": "60s",
-                "readTimeout": "5s",
+                "connect_timeout": "10s",
+                "max_attempts_timeout": "20s",
+                "response_timeout": "60s",
+                "read_timeout": "5s",
             },
             origin_override_action={
-                "urlRewrite": {
-                    "hostRewrite": "example.com",
+                "url_rewrite": {
+                    "host_rewrite": "example.com",
                 },
-                "headerAction": {
-                    "requestHeadersToAdds": [{
-                        "headerName": "x-header",
-                        "headerValue": "value",
+                "header_action": {
+                    "request_headers_to_adds": [{
+                        "header_name": "x-header",
+                        "header_value": "value",
                         "replace": True,
                     }],
                 },
             },
             origin_redirect={
-                "redirectConditions": [
+                "redirect_conditions": [
                     "MOVED_PERMANENTLY",
                     "FOUND",
                     "SEE_OTHER",
@@ -972,7 +972,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 "a": "b",
             },
             timeout={
-                "connectTimeout": "10s",
+                "connect_timeout": "10s",
             })
         ```
         ### Network Services Edge Cache Origin V4auth
@@ -994,9 +994,9 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             origin_address="gs://media-edge-default",
             description="The default bucket for V4 authentication",
             aws_v4_authentication={
-                "accessKeyId": "ACCESSKEYID",
-                "secretAccessKeyVersion": secret_version_basic.id,
-                "originRegion": "auto",
+                "access_key_id": "ACCESSKEYID",
+                "secret_access_key_version": secret_version_basic.id,
+                "origin_region": "auto",
             })
         ```
 

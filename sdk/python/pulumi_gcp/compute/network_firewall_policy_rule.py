@@ -619,17 +619,17 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
             rule_name="test-rule",
             target_service_accounts=["my@service-account.com"],
             match={
-                "srcIpRanges": ["10.100.0.1/32"],
-                "srcFqdns": ["google.com"],
-                "srcRegionCodes": ["US"],
-                "srcThreatIntelligences": ["iplist-known-malicious-ips"],
-                "srcSecureTags": [{
+                "src_ip_ranges": ["10.100.0.1/32"],
+                "src_fqdns": ["google.com"],
+                "src_region_codes": ["US"],
+                "src_threat_intelligences": ["iplist-known-malicious-ips"],
+                "src_secure_tags": [{
                     "name": basic_value.name.apply(lambda name: f"tagValues/{name}"),
                 }],
-                "layer4Configs": [{
-                    "ipProtocol": "all",
+                "layer4_configs": [{
+                    "ip_protocol": "all",
                 }],
-                "srcAddressGroups": [basic_global_networksecurity_address_group.id],
+                "src_address_groups": [basic_global_networksecurity_address_group.id],
             })
         ```
 
@@ -737,17 +737,17 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
             rule_name="test-rule",
             target_service_accounts=["my@service-account.com"],
             match={
-                "srcIpRanges": ["10.100.0.1/32"],
-                "srcFqdns": ["google.com"],
-                "srcRegionCodes": ["US"],
-                "srcThreatIntelligences": ["iplist-known-malicious-ips"],
-                "srcSecureTags": [{
+                "src_ip_ranges": ["10.100.0.1/32"],
+                "src_fqdns": ["google.com"],
+                "src_region_codes": ["US"],
+                "src_threat_intelligences": ["iplist-known-malicious-ips"],
+                "src_secure_tags": [{
                     "name": basic_value.name.apply(lambda name: f"tagValues/{name}"),
                 }],
-                "layer4Configs": [{
-                    "ipProtocol": "all",
+                "layer4_configs": [{
+                    "ip_protocol": "all",
                 }],
-                "srcAddressGroups": [basic_global_networksecurity_address_group.id],
+                "src_address_groups": [basic_global_networksecurity_address_group.id],
             })
         ```
 

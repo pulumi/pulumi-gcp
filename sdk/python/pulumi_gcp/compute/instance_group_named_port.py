@@ -256,8 +256,8 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
             network=container_network.name,
             subnetwork=container_subnetwork.name,
             ip_allocation_policy={
-                "clusterIpv4CidrBlock": "/19",
-                "servicesIpv4CidrBlock": "/22",
+                "cluster_ipv4_cidr_block": "/19",
+                "services_ipv4_cidr_block": "/22",
             },
             deletion_protection=True)
         my_port = gcp.compute.InstanceGroupNamedPort("my_port",
@@ -356,8 +356,8 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
             network=container_network.name,
             subnetwork=container_subnetwork.name,
             ip_allocation_policy={
-                "clusterIpv4CidrBlock": "/19",
-                "servicesIpv4CidrBlock": "/22",
+                "cluster_ipv4_cidr_block": "/19",
+                "services_ipv4_cidr_block": "/22",
             },
             deletion_protection=True)
         my_port = gcp.compute.InstanceGroupNamedPort("my_port",

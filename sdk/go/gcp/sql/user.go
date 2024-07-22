@@ -124,7 +124,7 @@ import (
 //				return err
 //			}
 //			_, err = sql.NewUser(ctx, "iam_service_account_user", &sql.UserArgs{
-//				Name:     invokeTrimsuffix.Result,
+//				Name:     pulumi.String(invokeTrimsuffix.Result),
 //				Instance: main.Name,
 //				Type:     pulumi.String("CLOUD_IAM_SERVICE_ACCOUNT"),
 //			})
