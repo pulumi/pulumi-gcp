@@ -482,21 +482,21 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline={
                 "stages": [
                     {
-                        "deployParameters": [{
+                        "deploy_parameters": [{
                             "values": {
-                                "deployParameterKey": "deployParameterValue",
+                                "deploy_parameter_key": "deployParameterValue",
                             },
-                            "matchTargetLabels": {},
+                            "match_target_labels": {},
                         }],
                         "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        "targetId": "example-target-one",
+                        "target_id": "example-target-one",
                     },
                     {
                         "profiles": [],
-                        "targetId": "example-target-two",
+                        "target_id": "example-target-two",
                     },
                 ],
             },
@@ -523,21 +523,21 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline={
                 "stages": [
                     {
-                        "deployParameters": [{
+                        "deploy_parameters": [{
                             "values": {
-                                "deployParameterKey": "deployParameterValue",
+                                "deploy_parameter_key": "deployParameterValue",
                             },
-                            "matchTargetLabels": {},
+                            "match_target_labels": {},
                         }],
                         "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        "targetId": "example-target-one",
+                        "target_id": "example-target-one",
                     },
                     {
                         "profiles": [],
-                        "targetId": "example-target-two",
+                        "target_id": "example-target-two",
                     },
                 ],
             },
@@ -564,21 +564,21 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline={
                 "stages": [
                     {
-                        "deployParameters": [{
+                        "deploy_parameters": [{
                             "values": {
-                                "deployParameterKey": "deployParameterValue",
+                                "deploy_parameter_key": "deployParameterValue",
                             },
-                            "matchTargetLabels": {},
+                            "match_target_labels": {},
                         }],
                         "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        "targetId": "example-target-one",
+                        "target_id": "example-target-one",
                     },
                     {
                         "profiles": [],
-                        "targetId": "example-target-two",
+                        "target_id": "example-target-two",
                     },
                 ],
             },
@@ -605,21 +605,21 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline={
                 "stages": [
                     {
-                        "deployParameters": [{
+                        "deploy_parameters": [{
                             "values": {
-                                "deployParameterKey": "deployParameterValue",
+                                "deploy_parameter_key": "deployParameterValue",
                             },
-                            "matchTargetLabels": {},
+                            "match_target_labels": {},
                         }],
                         "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        "targetId": "example-target-one",
+                        "target_id": "example-target-one",
                     },
                     {
                         "profiles": [],
-                        "targetId": "example-target-two",
+                        "target_id": "example-target-two",
                     },
                 ],
             },
@@ -646,21 +646,21 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline={
                 "stages": [
                     {
-                        "deployParameters": [{
+                        "deploy_parameters": [{
                             "values": {
-                                "deployParameterKey": "deployParameterValue",
+                                "deploy_parameter_key": "deployParameterValue",
                             },
-                            "matchTargetLabels": {},
+                            "match_target_labels": {},
                         }],
                         "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        "targetId": "example-target-one",
+                        "target_id": "example-target-one",
                     },
                     {
                         "profiles": [],
-                        "targetId": "example-target-two",
+                        "target_id": "example-target-two",
                     },
                 ],
             },
@@ -743,21 +743,21 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline={
                 "stages": [
                     {
-                        "deployParameters": [{
+                        "deploy_parameters": [{
                             "values": {
-                                "deployParameterKey": "deployParameterValue",
+                                "deploy_parameter_key": "deployParameterValue",
                             },
-                            "matchTargetLabels": {},
+                            "match_target_labels": {},
                         }],
                         "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        "targetId": "example-target-one",
+                        "target_id": "example-target-one",
                     },
                     {
                         "profiles": [],
-                        "targetId": "example-target-two",
+                        "target_id": "example-target-two",
                     },
                 ],
             },
@@ -784,21 +784,21 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline={
                 "stages": [
                     {
-                        "deployParameters": [{
+                        "deploy_parameters": [{
                             "values": {
-                                "deployParameterKey": "deployParameterValue",
+                                "deploy_parameter_key": "deployParameterValue",
                             },
-                            "matchTargetLabels": {},
+                            "match_target_labels": {},
                         }],
                         "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        "targetId": "example-target-one",
+                        "target_id": "example-target-one",
                     },
                     {
                         "profiles": [],
-                        "targetId": "example-target-two",
+                        "target_id": "example-target-two",
                     },
                 ],
             },
@@ -825,21 +825,21 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline={
                 "stages": [
                     {
-                        "deployParameters": [{
+                        "deploy_parameters": [{
                             "values": {
-                                "deployParameterKey": "deployParameterValue",
+                                "deploy_parameter_key": "deployParameterValue",
                             },
-                            "matchTargetLabels": {},
+                            "match_target_labels": {},
                         }],
                         "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        "targetId": "example-target-one",
+                        "target_id": "example-target-one",
                     },
                     {
                         "profiles": [],
-                        "targetId": "example-target-two",
+                        "target_id": "example-target-two",
                     },
                 ],
             },
@@ -866,21 +866,21 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline={
                 "stages": [
                     {
-                        "deployParameters": [{
+                        "deploy_parameters": [{
                             "values": {
-                                "deployParameterKey": "deployParameterValue",
+                                "deploy_parameter_key": "deployParameterValue",
                             },
-                            "matchTargetLabels": {},
+                            "match_target_labels": {},
                         }],
                         "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        "targetId": "example-target-one",
+                        "target_id": "example-target-one",
                     },
                     {
                         "profiles": [],
-                        "targetId": "example-target-two",
+                        "target_id": "example-target-two",
                     },
                 ],
             },
@@ -907,21 +907,21 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline={
                 "stages": [
                     {
-                        "deployParameters": [{
+                        "deploy_parameters": [{
                             "values": {
-                                "deployParameterKey": "deployParameterValue",
+                                "deploy_parameter_key": "deployParameterValue",
                             },
-                            "matchTargetLabels": {},
+                            "match_target_labels": {},
                         }],
                         "profiles": [
                             "example-profile-one",
                             "example-profile-two",
                         ],
-                        "targetId": "example-target-one",
+                        "target_id": "example-target-one",
                     },
                     {
                         "profiles": [],
-                        "targetId": "example-target-two",
+                        "target_id": "example-target-two",
                     },
                 ],
             },

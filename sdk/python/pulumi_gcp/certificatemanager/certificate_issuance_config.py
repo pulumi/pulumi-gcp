@@ -465,26 +465,26 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
             pool=pool.name,
             certificate_authority_id="ca-authority",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -499,8 +499,8 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
             name="issuance-config",
             description="sample description for the certificate issuanceConfigs",
             certificate_authority_config={
-                "certificateAuthorityServiceConfig": {
-                    "caPool": pool.id,
+                "certificate_authority_service_config": {
+                    "ca_pool": pool.id,
                 },
             },
             lifetime="1814400s",
@@ -590,26 +590,26 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
             pool=pool.name,
             certificate_authority_id="ca-authority",
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "HashiCorp",
-                        "commonName": "my-certificate-authority",
+                        "common_name": "my-certificate-authority",
                     },
-                    "subjectAltName": {
-                        "dnsNames": ["hashicorp.com"],
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -624,8 +624,8 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
             name="issuance-config",
             description="sample description for the certificate issuanceConfigs",
             certificate_authority_config={
-                "certificateAuthorityServiceConfig": {
-                    "caPool": pool.id,
+                "certificate_authority_service_config": {
+                    "ca_pool": pool.id,
                 },
             },
             lifetime="1814400s",

@@ -251,9 +251,9 @@ class Policy(pulumi.CustomResource):
             name=basic.name.apply(lambda name: f"{name}/policies/gcp.resourceLocations"),
             parent=basic.name,
             spec={
-                "inheritFromParent": True,
+                "inherit_from_parent": True,
                 "rules": [{
-                    "denyAll": "TRUE",
+                    "deny_all": "TRUE",
                 }],
             })
         ```
@@ -293,12 +293,12 @@ class Policy(pulumi.CustomResource):
                             "title": "sample-condition",
                         },
                         "values": {
-                            "allowedValues": ["projects/allowed-project"],
-                            "deniedValues": ["projects/denied-project"],
+                            "allowed_values": ["projects/allowed-project"],
+                            "denied_values": ["projects/denied-project"],
                         },
                     },
                     {
-                        "allowAll": "TRUE",
+                        "allow_all": "TRUE",
                     },
                 ],
             })
@@ -327,7 +327,7 @@ class Policy(pulumi.CustomResource):
                 }],
             },
             dry_run_spec={
-                "inheritFromParent": False,
+                "inherit_from_parent": False,
                 "reset": False,
                 "rules": [{
                     "enforce": "FALSE",
@@ -409,9 +409,9 @@ class Policy(pulumi.CustomResource):
             name=basic.name.apply(lambda name: f"{name}/policies/gcp.resourceLocations"),
             parent=basic.name,
             spec={
-                "inheritFromParent": True,
+                "inherit_from_parent": True,
                 "rules": [{
-                    "denyAll": "TRUE",
+                    "deny_all": "TRUE",
                 }],
             })
         ```
@@ -451,12 +451,12 @@ class Policy(pulumi.CustomResource):
                             "title": "sample-condition",
                         },
                         "values": {
-                            "allowedValues": ["projects/allowed-project"],
-                            "deniedValues": ["projects/denied-project"],
+                            "allowed_values": ["projects/allowed-project"],
+                            "denied_values": ["projects/denied-project"],
                         },
                     },
                     {
-                        "allowAll": "TRUE",
+                        "allow_all": "TRUE",
                     },
                 ],
             })
@@ -485,7 +485,7 @@ class Policy(pulumi.CustomResource):
                 }],
             },
             dry_run_spec={
-                "inheritFromParent": False,
+                "inherit_from_parent": False,
                 "reset": False,
                 "rules": [{
                     "enforce": "FALSE",

@@ -57,7 +57,7 @@ import (
 //					SsoUrl:      pulumi.String("https://example.com"),
 //					IdpCertificates: identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificateArray{
 //						&identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificateArgs{
-//							X509Certificate: invokeFile.Result,
+//							X509Certificate: pulumi.String(invokeFile.Result),
 //						},
 //					},
 //				},

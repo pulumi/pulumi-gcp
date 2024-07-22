@@ -328,7 +328,7 @@ class MachineImage(pulumi.CustomResource):
             name="my-vm",
             machine_type="e2-medium",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                 },
             },
@@ -349,7 +349,7 @@ class MachineImage(pulumi.CustomResource):
             name="my-vm",
             machine_type="e2-medium",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                 },
             },
@@ -366,7 +366,7 @@ class MachineImage(pulumi.CustomResource):
             name="my-image",
             source_instance=vm.self_link,
             machine_image_encryption_key={
-                "kmsKeyName": crypto_key.id,
+                "kms_key_name": crypto_key.id,
             })
         ```
 
@@ -441,7 +441,7 @@ class MachineImage(pulumi.CustomResource):
             name="my-vm",
             machine_type="e2-medium",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                 },
             },
@@ -462,7 +462,7 @@ class MachineImage(pulumi.CustomResource):
             name="my-vm",
             machine_type="e2-medium",
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                 },
             },
@@ -479,7 +479,7 @@ class MachineImage(pulumi.CustomResource):
             name="my-image",
             source_instance=vm.self_link,
             machine_image_encryption_key={
-                "kmsKeyName": crypto_key.id,
+                "kms_key_name": crypto_key.id,
             })
         ```
 

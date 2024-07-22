@@ -540,12 +540,12 @@ class Registration(pulumi.CustomResource):
                 "labelkey": "labelvalue",
             },
             yearly_price={
-                "currencyCode": "USD",
+                "currency_code": "USD",
                 "units": "12",
             },
             dns_settings={
-                "customDns": {
-                    "nameServers": [
+                "custom_dns": {
+                    "name_servers": [
                         "ns-cloud-a1.googledomains.com.",
                         "ns-cloud-a2.googledomains.com.",
                         "ns-cloud-a3.googledomains.com.",
@@ -555,39 +555,39 @@ class Registration(pulumi.CustomResource):
             },
             contact_settings={
                 "privacy": "REDACTED_CONTACT_DATA",
-                "registrantContact": {
-                    "phoneNumber": "+12345000000",
+                "registrant_contact": {
+                    "phone_number": "+12345000000",
                     "email": "user@example.com",
-                    "postalAddress": {
-                        "regionCode": "US",
-                        "postalCode": "95050",
-                        "administrativeArea": "CA",
+                    "postal_address": {
+                        "region_code": "US",
+                        "postal_code": "95050",
+                        "administrative_area": "CA",
                         "locality": "Example City",
-                        "addressLines": ["1234 Example street"],
+                        "address_lines": ["1234 Example street"],
                         "recipients": ["example recipient"],
                     },
                 },
-                "adminContact": {
-                    "phoneNumber": "+12345000000",
+                "admin_contact": {
+                    "phone_number": "+12345000000",
                     "email": "user@example.com",
-                    "postalAddress": {
-                        "regionCode": "US",
-                        "postalCode": "95050",
-                        "administrativeArea": "CA",
+                    "postal_address": {
+                        "region_code": "US",
+                        "postal_code": "95050",
+                        "administrative_area": "CA",
                         "locality": "Example City",
-                        "addressLines": ["1234 Example street"],
+                        "address_lines": ["1234 Example street"],
                         "recipients": ["example recipient"],
                     },
                 },
-                "technicalContact": {
-                    "phoneNumber": "+12345000000",
+                "technical_contact": {
+                    "phone_number": "+12345000000",
                     "email": "user@example.com",
-                    "postalAddress": {
-                        "regionCode": "US",
-                        "postalCode": "95050",
-                        "administrativeArea": "CA",
+                    "postal_address": {
+                        "region_code": "US",
+                        "postal_code": "95050",
+                        "administrative_area": "CA",
                         "locality": "Example City",
-                        "addressLines": ["1234 Example street"],
+                        "address_lines": ["1234 Example street"],
                         "recipients": ["example recipient"],
                     },
                 },
@@ -657,12 +657,12 @@ class Registration(pulumi.CustomResource):
                 "labelkey": "labelvalue",
             },
             yearly_price={
-                "currencyCode": "USD",
+                "currency_code": "USD",
                 "units": "12",
             },
             dns_settings={
-                "customDns": {
-                    "nameServers": [
+                "custom_dns": {
+                    "name_servers": [
                         "ns-cloud-a1.googledomains.com.",
                         "ns-cloud-a2.googledomains.com.",
                         "ns-cloud-a3.googledomains.com.",
@@ -672,39 +672,39 @@ class Registration(pulumi.CustomResource):
             },
             contact_settings={
                 "privacy": "REDACTED_CONTACT_DATA",
-                "registrantContact": {
-                    "phoneNumber": "+12345000000",
+                "registrant_contact": {
+                    "phone_number": "+12345000000",
                     "email": "user@example.com",
-                    "postalAddress": {
-                        "regionCode": "US",
-                        "postalCode": "95050",
-                        "administrativeArea": "CA",
+                    "postal_address": {
+                        "region_code": "US",
+                        "postal_code": "95050",
+                        "administrative_area": "CA",
                         "locality": "Example City",
-                        "addressLines": ["1234 Example street"],
+                        "address_lines": ["1234 Example street"],
                         "recipients": ["example recipient"],
                     },
                 },
-                "adminContact": {
-                    "phoneNumber": "+12345000000",
+                "admin_contact": {
+                    "phone_number": "+12345000000",
                     "email": "user@example.com",
-                    "postalAddress": {
-                        "regionCode": "US",
-                        "postalCode": "95050",
-                        "administrativeArea": "CA",
+                    "postal_address": {
+                        "region_code": "US",
+                        "postal_code": "95050",
+                        "administrative_area": "CA",
                         "locality": "Example City",
-                        "addressLines": ["1234 Example street"],
+                        "address_lines": ["1234 Example street"],
                         "recipients": ["example recipient"],
                     },
                 },
-                "technicalContact": {
-                    "phoneNumber": "+12345000000",
+                "technical_contact": {
+                    "phone_number": "+12345000000",
                     "email": "user@example.com",
-                    "postalAddress": {
-                        "regionCode": "US",
-                        "postalCode": "95050",
-                        "administrativeArea": "CA",
+                    "postal_address": {
+                        "region_code": "US",
+                        "postal_code": "95050",
+                        "administrative_area": "CA",
                         "locality": "Example City",
-                        "addressLines": ["1234 Example street"],
+                        "address_lines": ["1234 Example street"],
                         "recipients": ["example recipient"],
                     },
                 },

@@ -545,7 +545,7 @@ class Asset(pulumi.CustomResource):
                 "enabled": False,
             },
             resource_spec={
-                "locationType": "SINGLE_REGION",
+                "location_type": "SINGLE_REGION",
             },
             project="my-project-name")
         primary = gcp.dataplex.Asset("primary",
@@ -641,7 +641,7 @@ class Asset(pulumi.CustomResource):
                 "enabled": False,
             },
             resource_spec={
-                "locationType": "SINGLE_REGION",
+                "location_type": "SINGLE_REGION",
             },
             project="my-project-name")
         primary = gcp.dataplex.Asset("primary",

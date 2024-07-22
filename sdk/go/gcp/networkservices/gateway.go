@@ -121,8 +121,8 @@ import (
 //				Name:     pulumi.String("my-certificate"),
 //				Location: pulumi.String("us-central1"),
 //				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
-//					PemCertificate: invokeFile.Result,
-//					PemPrivateKey:  invokeFile1.Result,
+//					PemCertificate: pulumi.String(invokeFile.Result),
+//					PemPrivateKey:  pulumi.String(invokeFile1.Result),
 //				},
 //			})
 //			if err != nil {
@@ -240,8 +240,8 @@ import (
 //				Name:     pulumi.String("my-certificate"),
 //				Location: pulumi.String("us-south1"),
 //				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
-//					PemCertificate: invokeFile.Result,
-//					PemPrivateKey:  invokeFile1.Result,
+//					PemCertificate: pulumi.String(invokeFile.Result),
+//					PemPrivateKey:  pulumi.String(invokeFile1.Result),
 //				},
 //			})
 //			if err != nil {

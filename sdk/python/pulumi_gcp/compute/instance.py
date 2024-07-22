@@ -1457,7 +1457,7 @@ class Instance(pulumi.CustomResource):
             display_name="Custom SA for VM Instance")
         default_instance = gcp.compute.Instance("default",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "network": "default",
             }],
             name="my-instance",
@@ -1468,7 +1468,7 @@ class Instance(pulumi.CustomResource):
                 "bar",
             ],
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                     "labels": {
                         "my_label": "value",
@@ -1628,7 +1628,7 @@ class Instance(pulumi.CustomResource):
             display_name="Custom SA for VM Instance")
         default_instance = gcp.compute.Instance("default",
             network_interfaces=[{
-                "accessConfigs": [{}],
+                "access_configs": [{}],
                 "network": "default",
             }],
             name="my-instance",
@@ -1639,7 +1639,7 @@ class Instance(pulumi.CustomResource):
                 "bar",
             ],
             boot_disk={
-                "initializeParams": {
+                "initialize_params": {
                     "image": "debian-cloud/debian-11",
                     "labels": {
                         "my_label": "value",

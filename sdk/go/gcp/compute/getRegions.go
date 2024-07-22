@@ -33,14 +33,14 @@ import (
 //				return err
 //			}
 //			var cluster []*compute.Subnetwork
-//			for index := 0; index < len(available.Names); index++ {
+//			for index := 0; index < int(len(available.Names)); index++ {
 //				key0 := index
 //				val0 := index
 //				__res, err := compute.NewSubnetwork(ctx, fmt.Sprintf("cluster-%v", key0), &compute.SubnetworkArgs{
 //					Name:        pulumi.String("my-network"),
 //					IpCidrRange: pulumi.String(fmt.Sprintf("10.36.%v.0/24", val0)),
 //					Network:     pulumi.String("my-network"),
-//					Region:      available.Names[val0],
+//					Region:      pulumi.String(available.Names[val0]),
 //				})
 //				if err != nil {
 //					return err
