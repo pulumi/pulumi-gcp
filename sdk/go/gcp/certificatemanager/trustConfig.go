@@ -57,12 +57,12 @@ import (
 //					&certificatemanager.TrustConfigTrustStoreArgs{
 //						TrustAnchors: certificatemanager.TrustConfigTrustStoreTrustAnchorArray{
 //							&certificatemanager.TrustConfigTrustStoreTrustAnchorArgs{
-//								PemCertificate: invokeFile.Result,
+//								PemCertificate: pulumi.String(invokeFile.Result),
 //							},
 //						},
 //						IntermediateCas: certificatemanager.TrustConfigTrustStoreIntermediateCaArray{
 //							&certificatemanager.TrustConfigTrustStoreIntermediateCaArgs{
-//								PemCertificate: invokeFile1.Result,
+//								PemCertificate: pulumi.String(invokeFile1.Result),
 //							},
 //						},
 //					},
@@ -112,10 +112,10 @@ import (
 //				Location:    pulumi.String("global"),
 //				AllowlistedCertificates: certificatemanager.TrustConfigAllowlistedCertificateArray{
 //					&certificatemanager.TrustConfigAllowlistedCertificateArgs{
-//						PemCertificate: invokeFile.Result,
+//						PemCertificate: pulumi.String(invokeFile.Result),
 //					},
 //					&certificatemanager.TrustConfigAllowlistedCertificateArgs{
-//						PemCertificate: invokeFile1.Result,
+//						PemCertificate: pulumi.String(invokeFile1.Result),
 //					},
 //				},
 //				Labels: pulumi.StringMap{

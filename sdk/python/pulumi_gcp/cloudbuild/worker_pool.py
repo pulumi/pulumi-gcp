@@ -395,9 +395,9 @@ class WorkerPool(pulumi.CustomResource):
             name="my-pool",
             location="europe-west1",
             worker_config={
-                "diskSizeGb": 100,
-                "machineType": "e2-standard-4",
-                "noExternalIp": False,
+                "disk_size_gb": 100,
+                "machine_type": "e2-standard-4",
+                "no_external_ip": False,
             })
         ```
 
@@ -429,13 +429,13 @@ class WorkerPool(pulumi.CustomResource):
             name="my-pool",
             location="europe-west1",
             worker_config={
-                "diskSizeGb": 100,
-                "machineType": "e2-standard-4",
-                "noExternalIp": False,
+                "disk_size_gb": 100,
+                "machine_type": "e2-standard-4",
+                "no_external_ip": False,
             },
             network_config={
-                "peeredNetwork": network.id,
-                "peeredNetworkIpRange": "/29",
+                "peered_network": network.id,
+                "peered_network_ip_range": "/29",
             },
             opts = pulumi.ResourceOptions(depends_on=[worker_pool_conn]))
         ```
@@ -498,9 +498,9 @@ class WorkerPool(pulumi.CustomResource):
             name="my-pool",
             location="europe-west1",
             worker_config={
-                "diskSizeGb": 100,
-                "machineType": "e2-standard-4",
-                "noExternalIp": False,
+                "disk_size_gb": 100,
+                "machine_type": "e2-standard-4",
+                "no_external_ip": False,
             })
         ```
 
@@ -532,13 +532,13 @@ class WorkerPool(pulumi.CustomResource):
             name="my-pool",
             location="europe-west1",
             worker_config={
-                "diskSizeGb": 100,
-                "machineType": "e2-standard-4",
-                "noExternalIp": False,
+                "disk_size_gb": 100,
+                "machine_type": "e2-standard-4",
+                "no_external_ip": False,
             },
             network_config={
-                "peeredNetwork": network.id,
-                "peeredNetworkIpRange": "/29",
+                "peered_network": network.id,
+                "peered_network_ip_range": "/29",
             },
             opts = pulumi.ResourceOptions(depends_on=[worker_pool_conn]))
         ```

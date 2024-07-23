@@ -63,8 +63,8 @@ import (
 //			_, err = serviceusage.NewConsumerQuotaOverride(ctx, "override", &serviceusage.ConsumerQuotaOverrideArgs{
 //				Project:       myProject.ProjectId,
 //				Service:       pulumi.String("servicemanagement.googleapis.com"),
-//				Metric:        invokeUrlencode.Result,
-//				Limit:         invokeUrlencode1.Result,
+//				Metric:        pulumi.String(invokeUrlencode.Result),
+//				Limit:         pulumi.String(invokeUrlencode1.Result),
 //				OverrideValue: pulumi.String("95"),
 //				Force:         pulumi.Bool(true),
 //			})
@@ -118,8 +118,8 @@ import (
 //				},
 //				Project:       myProject.ProjectId,
 //				Service:       pulumi.String("compute.googleapis.com"),
-//				Metric:        invokeUrlencode.Result,
-//				Limit:         invokeUrlencode1.Result,
+//				Metric:        pulumi.String(invokeUrlencode.Result),
+//				Limit:         pulumi.String(invokeUrlencode1.Result),
 //				OverrideValue: pulumi.String("8"),
 //				Force:         pulumi.Bool(true),
 //			})
@@ -170,8 +170,8 @@ import (
 //			_, err = serviceusage.NewConsumerQuotaOverride(ctx, "override", &serviceusage.ConsumerQuotaOverrideArgs{
 //				Project:       myProject.ProjectId,
 //				Service:       pulumi.String("libraryagent.googleapis.com"),
-//				Metric:        invokeUrlencode.Result,
-//				Limit:         invokeUrlencode1.Result,
+//				Metric:        pulumi.String(invokeUrlencode.Result),
+//				Limit:         pulumi.String(invokeUrlencode1.Result),
 //				OverrideValue: pulumi.String("1"),
 //				Force:         pulumi.Bool(true),
 //				Dimensions: pulumi.StringMap{

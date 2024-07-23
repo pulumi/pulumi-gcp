@@ -301,16 +301,16 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
             display_name="Display Name",
             tenant=tenant.name,
             idp_config={
-                "idpEntityId": "tf-idp",
-                "signRequest": True,
-                "ssoUrl": "https://example.com",
-                "idpCertificates": [{
-                    "x509Certificate": std.file(input="test-fixtures/rsa_cert.pem").result,
+                "idp_entity_id": "tf-idp",
+                "sign_request": True,
+                "sso_url": "https://example.com",
+                "idp_certificates": [{
+                    "x509_certificate": std.file(input="test-fixtures/rsa_cert.pem").result,
                 }],
             },
             sp_config={
-                "spEntityId": "tf-sp",
-                "callbackUri": "https://example.com",
+                "sp_entity_id": "tf-sp",
+                "callback_uri": "https://example.com",
             })
         ```
 
@@ -380,16 +380,16 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
             display_name="Display Name",
             tenant=tenant.name,
             idp_config={
-                "idpEntityId": "tf-idp",
-                "signRequest": True,
-                "ssoUrl": "https://example.com",
-                "idpCertificates": [{
-                    "x509Certificate": std.file(input="test-fixtures/rsa_cert.pem").result,
+                "idp_entity_id": "tf-idp",
+                "sign_request": True,
+                "sso_url": "https://example.com",
+                "idp_certificates": [{
+                    "x509_certificate": std.file(input="test-fixtures/rsa_cert.pem").result,
                 }],
             },
             sp_config={
-                "spEntityId": "tf-sp",
-                "callbackUri": "https://example.com",
+                "sp_entity_id": "tf-sp",
+                "callback_uri": "https://example.com",
             })
         ```
 

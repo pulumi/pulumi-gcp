@@ -877,11 +877,11 @@ class Connection(pulumi.CustomResource):
             config_variables=[
                 {
                     "key": "project_id",
-                    "stringValue": "connectors-example",
+                    "string_value": "connectors-example",
                 },
                 {
                     "key": "topic_id",
-                    "stringValue": "test",
+                    "string_value": "test",
                 },
             ])
         ```
@@ -895,7 +895,7 @@ class Connection(pulumi.CustomResource):
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="test-secret",
             replication={
-                "userManaged": {
+                "user_managed": {
                     "replicas": [{
                         "location": "us-central1",
                     }],
@@ -918,61 +918,61 @@ class Connection(pulumi.CustomResource):
             config_variables=[
                 {
                     "key": "proxy_enabled",
-                    "booleanValue": False,
+                    "boolean_value": False,
                 },
                 {
                     "key": "sample_integer_value",
-                    "integerValue": 1,
+                    "integer_value": 1,
                 },
                 {
                     "key": "sample_encryption_key_value",
-                    "encryptionKeyValue": {
+                    "encryption_key_value": {
                         "type": "GOOGLE_MANAGED",
-                        "kmsKeyName": "sampleKMSKkey",
+                        "kms_key_name": "sampleKMSKkey",
                     },
                 },
                 {
                     "key": "sample_secret_value",
-                    "secretValue": {
-                        "secretVersion": secret_version_basic.name,
+                    "secret_value": {
+                        "secret_version": secret_version_basic.name,
                     },
                 },
             ],
             suspended=False,
             auth_config={
-                "additionalVariables": [
+                "additional_variables": [
                     {
                         "key": "sample_string",
-                        "stringValue": "sampleString",
+                        "string_value": "sampleString",
                     },
                     {
                         "key": "sample_boolean",
-                        "booleanValue": False,
+                        "boolean_value": False,
                     },
                     {
                         "key": "sample_integer",
-                        "integerValue": 1,
+                        "integer_value": 1,
                     },
                     {
                         "key": "sample_secret_value",
-                        "secretValue": {
-                            "secretVersion": secret_version_basic.name,
+                        "secret_value": {
+                            "secret_version": secret_version_basic.name,
                         },
                     },
                     {
                         "key": "sample_encryption_key_value",
-                        "encryptionKeyValue": {
+                        "encryption_key_value": {
                             "type": "GOOGLE_MANAGED",
-                            "kmsKeyName": "sampleKMSKkey",
+                            "kms_key_name": "sampleKMSKkey",
                         },
                     },
                 ],
-                "authType": "USER_PASSWORD",
-                "authKey": "sampleAuthKey",
-                "userPassword": {
+                "auth_type": "USER_PASSWORD",
+                "auth_key": "sampleAuthKey",
+                "user_password": {
                     "username": "user@xyz.com",
                     "password": {
-                        "secretVersion": secret_version_basic.name,
+                        "secret_version": secret_version_basic.name,
                     },
                 },
             },
@@ -991,132 +991,132 @@ class Connection(pulumi.CustomResource):
                 "enabled": True,
             },
             node_config={
-                "minNodeCount": 2,
-                "maxNodeCount": 50,
+                "min_node_count": 2,
+                "max_node_count": 50,
             },
             labels={
                 "foo": "bar",
             },
             ssl_config={
-                "additionalVariables": [
+                "additional_variables": [
                     {
                         "key": "sample_string",
-                        "stringValue": "sampleString",
+                        "string_value": "sampleString",
                     },
                     {
                         "key": "sample_boolean",
-                        "booleanValue": False,
+                        "boolean_value": False,
                     },
                     {
                         "key": "sample_integer",
-                        "integerValue": 1,
+                        "integer_value": 1,
                     },
                     {
                         "key": "sample_secret_value",
-                        "secretValue": {
-                            "secretVersion": secret_version_basic.name,
+                        "secret_value": {
+                            "secret_version": secret_version_basic.name,
                         },
                     },
                     {
                         "key": "sample_encryption_key_value",
-                        "encryptionKeyValue": {
+                        "encryption_key_value": {
                             "type": "GOOGLE_MANAGED",
-                            "kmsKeyName": "sampleKMSKkey",
+                            "kms_key_name": "sampleKMSKkey",
                         },
                     },
                 ],
-                "clientCertType": "PEM",
-                "clientCertificate": {
-                    "secretVersion": secret_version_basic.name,
+                "client_cert_type": "PEM",
+                "client_certificate": {
+                    "secret_version": secret_version_basic.name,
                 },
-                "clientPrivateKey": {
-                    "secretVersion": secret_version_basic.name,
+                "client_private_key": {
+                    "secret_version": secret_version_basic.name,
                 },
-                "clientPrivateKeyPass": {
-                    "secretVersion": secret_version_basic.name,
+                "client_private_key_pass": {
+                    "secret_version": secret_version_basic.name,
                 },
-                "privateServerCertificate": {
-                    "secretVersion": secret_version_basic.name,
+                "private_server_certificate": {
+                    "secret_version": secret_version_basic.name,
                 },
-                "serverCertType": "PEM",
-                "trustModel": "PRIVATE",
+                "server_cert_type": "PEM",
+                "trust_model": "PRIVATE",
                 "type": "TLS",
-                "useSsl": True,
+                "use_ssl": True,
             },
             eventing_enablement_type="EVENTING_AND_CONNECTION",
             eventing_config={
-                "additionalVariables": [
+                "additional_variables": [
                     {
                         "key": "sample_string",
-                        "stringValue": "sampleString",
+                        "string_value": "sampleString",
                     },
                     {
                         "key": "sample_boolean",
-                        "booleanValue": False,
+                        "boolean_value": False,
                     },
                     {
                         "key": "sample_integer",
-                        "integerValue": 1,
+                        "integer_value": 1,
                     },
                     {
                         "key": "sample_secret_value",
-                        "secretValue": {
-                            "secretVersion": secret_version_basic.name,
+                        "secret_value": {
+                            "secret_version": secret_version_basic.name,
                         },
                     },
                     {
                         "key": "sample_encryption_key_value",
-                        "encryptionKeyValue": {
+                        "encryption_key_value": {
                             "type": "GOOGLE_MANAGED",
-                            "kmsKeyName": "sampleKMSKkey",
+                            "kms_key_name": "sampleKMSKkey",
                         },
                     },
                 ],
-                "registrationDestinationConfig": {
+                "registration_destination_config": {
                     "key": "registration_destination_config",
                     "destinations": [{
                         "host": "https://test.zendesk.com",
                         "port": 80,
                     }],
                 },
-                "authConfig": {
-                    "authType": "USER_PASSWORD",
-                    "authKey": "sampleAuthKey",
-                    "userPassword": {
+                "auth_config": {
+                    "auth_type": "USER_PASSWORD",
+                    "auth_key": "sampleAuthKey",
+                    "user_password": {
                         "username": "user@xyz.com",
                         "password": {
-                            "secretVersion": secret_version_basic.name,
+                            "secret_version": secret_version_basic.name,
                         },
                     },
-                    "additionalVariables": [
+                    "additional_variables": [
                         {
                             "key": "sample_string",
-                            "stringValue": "sampleString",
+                            "string_value": "sampleString",
                         },
                         {
                             "key": "sample_boolean",
-                            "booleanValue": False,
+                            "boolean_value": False,
                         },
                         {
                             "key": "sample_integer",
-                            "integerValue": 1,
+                            "integer_value": 1,
                         },
                         {
                             "key": "sample_secret_value",
-                            "secretValue": {
-                                "secretVersion": secret_version_basic.name,
+                            "secret_value": {
+                                "secret_version": secret_version_basic.name,
                             },
                         },
                         {
                             "key": "sample_encryption_key_value",
-                            "encryptionKeyValue": {
+                            "encryption_key_value": {
                                 "type": "GOOGLE_MANAGED",
-                                "kmsKeyName": "sampleKMSKkey",
+                                "kms_key_name": "sampleKMSKkey",
                             },
                         },
                     ],
                 },
-                "enrichmentEnabled": True,
+                "enrichment_enabled": True,
             })
         ```
 
@@ -1212,11 +1212,11 @@ class Connection(pulumi.CustomResource):
             config_variables=[
                 {
                     "key": "project_id",
-                    "stringValue": "connectors-example",
+                    "string_value": "connectors-example",
                 },
                 {
                     "key": "topic_id",
-                    "stringValue": "test",
+                    "string_value": "test",
                 },
             ])
         ```
@@ -1230,7 +1230,7 @@ class Connection(pulumi.CustomResource):
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="test-secret",
             replication={
-                "userManaged": {
+                "user_managed": {
                     "replicas": [{
                         "location": "us-central1",
                     }],
@@ -1253,61 +1253,61 @@ class Connection(pulumi.CustomResource):
             config_variables=[
                 {
                     "key": "proxy_enabled",
-                    "booleanValue": False,
+                    "boolean_value": False,
                 },
                 {
                     "key": "sample_integer_value",
-                    "integerValue": 1,
+                    "integer_value": 1,
                 },
                 {
                     "key": "sample_encryption_key_value",
-                    "encryptionKeyValue": {
+                    "encryption_key_value": {
                         "type": "GOOGLE_MANAGED",
-                        "kmsKeyName": "sampleKMSKkey",
+                        "kms_key_name": "sampleKMSKkey",
                     },
                 },
                 {
                     "key": "sample_secret_value",
-                    "secretValue": {
-                        "secretVersion": secret_version_basic.name,
+                    "secret_value": {
+                        "secret_version": secret_version_basic.name,
                     },
                 },
             ],
             suspended=False,
             auth_config={
-                "additionalVariables": [
+                "additional_variables": [
                     {
                         "key": "sample_string",
-                        "stringValue": "sampleString",
+                        "string_value": "sampleString",
                     },
                     {
                         "key": "sample_boolean",
-                        "booleanValue": False,
+                        "boolean_value": False,
                     },
                     {
                         "key": "sample_integer",
-                        "integerValue": 1,
+                        "integer_value": 1,
                     },
                     {
                         "key": "sample_secret_value",
-                        "secretValue": {
-                            "secretVersion": secret_version_basic.name,
+                        "secret_value": {
+                            "secret_version": secret_version_basic.name,
                         },
                     },
                     {
                         "key": "sample_encryption_key_value",
-                        "encryptionKeyValue": {
+                        "encryption_key_value": {
                             "type": "GOOGLE_MANAGED",
-                            "kmsKeyName": "sampleKMSKkey",
+                            "kms_key_name": "sampleKMSKkey",
                         },
                     },
                 ],
-                "authType": "USER_PASSWORD",
-                "authKey": "sampleAuthKey",
-                "userPassword": {
+                "auth_type": "USER_PASSWORD",
+                "auth_key": "sampleAuthKey",
+                "user_password": {
                     "username": "user@xyz.com",
                     "password": {
-                        "secretVersion": secret_version_basic.name,
+                        "secret_version": secret_version_basic.name,
                     },
                 },
             },
@@ -1326,132 +1326,132 @@ class Connection(pulumi.CustomResource):
                 "enabled": True,
             },
             node_config={
-                "minNodeCount": 2,
-                "maxNodeCount": 50,
+                "min_node_count": 2,
+                "max_node_count": 50,
             },
             labels={
                 "foo": "bar",
             },
             ssl_config={
-                "additionalVariables": [
+                "additional_variables": [
                     {
                         "key": "sample_string",
-                        "stringValue": "sampleString",
+                        "string_value": "sampleString",
                     },
                     {
                         "key": "sample_boolean",
-                        "booleanValue": False,
+                        "boolean_value": False,
                     },
                     {
                         "key": "sample_integer",
-                        "integerValue": 1,
+                        "integer_value": 1,
                     },
                     {
                         "key": "sample_secret_value",
-                        "secretValue": {
-                            "secretVersion": secret_version_basic.name,
+                        "secret_value": {
+                            "secret_version": secret_version_basic.name,
                         },
                     },
                     {
                         "key": "sample_encryption_key_value",
-                        "encryptionKeyValue": {
+                        "encryption_key_value": {
                             "type": "GOOGLE_MANAGED",
-                            "kmsKeyName": "sampleKMSKkey",
+                            "kms_key_name": "sampleKMSKkey",
                         },
                     },
                 ],
-                "clientCertType": "PEM",
-                "clientCertificate": {
-                    "secretVersion": secret_version_basic.name,
+                "client_cert_type": "PEM",
+                "client_certificate": {
+                    "secret_version": secret_version_basic.name,
                 },
-                "clientPrivateKey": {
-                    "secretVersion": secret_version_basic.name,
+                "client_private_key": {
+                    "secret_version": secret_version_basic.name,
                 },
-                "clientPrivateKeyPass": {
-                    "secretVersion": secret_version_basic.name,
+                "client_private_key_pass": {
+                    "secret_version": secret_version_basic.name,
                 },
-                "privateServerCertificate": {
-                    "secretVersion": secret_version_basic.name,
+                "private_server_certificate": {
+                    "secret_version": secret_version_basic.name,
                 },
-                "serverCertType": "PEM",
-                "trustModel": "PRIVATE",
+                "server_cert_type": "PEM",
+                "trust_model": "PRIVATE",
                 "type": "TLS",
-                "useSsl": True,
+                "use_ssl": True,
             },
             eventing_enablement_type="EVENTING_AND_CONNECTION",
             eventing_config={
-                "additionalVariables": [
+                "additional_variables": [
                     {
                         "key": "sample_string",
-                        "stringValue": "sampleString",
+                        "string_value": "sampleString",
                     },
                     {
                         "key": "sample_boolean",
-                        "booleanValue": False,
+                        "boolean_value": False,
                     },
                     {
                         "key": "sample_integer",
-                        "integerValue": 1,
+                        "integer_value": 1,
                     },
                     {
                         "key": "sample_secret_value",
-                        "secretValue": {
-                            "secretVersion": secret_version_basic.name,
+                        "secret_value": {
+                            "secret_version": secret_version_basic.name,
                         },
                     },
                     {
                         "key": "sample_encryption_key_value",
-                        "encryptionKeyValue": {
+                        "encryption_key_value": {
                             "type": "GOOGLE_MANAGED",
-                            "kmsKeyName": "sampleKMSKkey",
+                            "kms_key_name": "sampleKMSKkey",
                         },
                     },
                 ],
-                "registrationDestinationConfig": {
+                "registration_destination_config": {
                     "key": "registration_destination_config",
                     "destinations": [{
                         "host": "https://test.zendesk.com",
                         "port": 80,
                     }],
                 },
-                "authConfig": {
-                    "authType": "USER_PASSWORD",
-                    "authKey": "sampleAuthKey",
-                    "userPassword": {
+                "auth_config": {
+                    "auth_type": "USER_PASSWORD",
+                    "auth_key": "sampleAuthKey",
+                    "user_password": {
                         "username": "user@xyz.com",
                         "password": {
-                            "secretVersion": secret_version_basic.name,
+                            "secret_version": secret_version_basic.name,
                         },
                     },
-                    "additionalVariables": [
+                    "additional_variables": [
                         {
                             "key": "sample_string",
-                            "stringValue": "sampleString",
+                            "string_value": "sampleString",
                         },
                         {
                             "key": "sample_boolean",
-                            "booleanValue": False,
+                            "boolean_value": False,
                         },
                         {
                             "key": "sample_integer",
-                            "integerValue": 1,
+                            "integer_value": 1,
                         },
                         {
                             "key": "sample_secret_value",
-                            "secretValue": {
-                                "secretVersion": secret_version_basic.name,
+                            "secret_value": {
+                                "secret_version": secret_version_basic.name,
                             },
                         },
                         {
                             "key": "sample_encryption_key_value",
-                            "encryptionKeyValue": {
+                            "encryption_key_value": {
                                 "type": "GOOGLE_MANAGED",
-                                "kmsKeyName": "sampleKMSKkey",
+                                "kms_key_name": "sampleKMSKkey",
                             },
                         },
                     ],
                 },
-                "enrichmentEnabled": True,
+                "enrichment_enabled": True,
             })
         ```
 

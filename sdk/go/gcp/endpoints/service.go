@@ -38,7 +38,7 @@ import (
 //			_, err = endpoints.NewService(ctx, "openapi_service", &endpoints.ServiceArgs{
 //				ServiceName:   pulumi.String("api-name.endpoints.project-id.cloud.goog"),
 //				Project:       pulumi.String("project-id"),
-//				OpenapiConfig: invokeFile.Result,
+//				OpenapiConfig: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -58,8 +58,8 @@ import (
 //			_, err = endpoints.NewService(ctx, "grpc_service", &endpoints.ServiceArgs{
 //				ServiceName:        pulumi.String("api-name.endpoints.project-id.cloud.goog"),
 //				Project:            pulumi.String("project-id"),
-//				GrpcConfig:         invokeFile1.Result,
-//				ProtocOutputBase64: invokeFilebase642.Result,
+//				GrpcConfig:         pulumi.String(invokeFile1.Result),
+//				ProtocOutputBase64: pulumi.String(invokeFilebase642.Result),
 //			})
 //			if err != nil {
 //				return err

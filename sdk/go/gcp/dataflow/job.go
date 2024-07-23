@@ -94,9 +94,9 @@ import (
 //				TempGcsLocation:       pulumi.String("gs://my-bucket/tmp_dir"),
 //				EnableStreamingEngine: pulumi.Bool(true),
 //				Parameters: pulumi.Map{
-//					"inputFilePattern": bucket1.Url.ApplyT(func(url string) (string, error) {
+//					"inputFilePattern": interface{}(bucket1.Url.ApplyT(func(url string) (string, error) {
 //						return fmt.Sprintf("%v/*.json", url), nil
-//					}).(pulumi.StringOutput),
+//					}).(pulumi.StringOutput)),
 //					"outputTopic": topic.ID(),
 //				},
 //				TransformNameMapping: pulumi.Map{

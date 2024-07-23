@@ -67,9 +67,9 @@ import (
 //				Ttl:         pulumi.Int(300),
 //				ManagedZone: prod.Name,
 //				Rrdatas: pulumi.StringArray{
-//					frontendInstance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+//					pulumi.String(frontendInstance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
 //						return &networkInterfaces[0].AccessConfigs[0].NatIp, nil
-//					}).(pulumi.StringPtrOutput),
+//					}).(pulumi.StringPtrOutput)),
 //				},
 //			})
 //			if err != nil {

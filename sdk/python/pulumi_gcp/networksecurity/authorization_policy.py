@@ -395,7 +395,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
             rules=[{
                 "sources": [{
                     "principals": ["namespace/*"],
-                    "ipBlocks": ["1.2.3.0/24"],
+                    "ip_blocks": ["1.2.3.0/24"],
                 }],
             }])
         ```
@@ -415,15 +415,15 @@ class AuthorizationPolicy(pulumi.CustomResource):
             rules=[{
                 "sources": [{
                     "principals": ["namespace/*"],
-                    "ipBlocks": ["1.2.3.0/24"],
+                    "ip_blocks": ["1.2.3.0/24"],
                 }],
                 "destinations": [{
                     "hosts": ["mydomain.*"],
                     "ports": [8080],
                     "methods": ["GET"],
-                    "httpHeaderMatch": {
-                        "headerName": ":method",
-                        "regexMatch": "GET",
+                    "http_header_match": {
+                        "header_name": ":method",
+                        "regex_match": "GET",
                     },
                 }],
             }])
@@ -498,7 +498,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
             rules=[{
                 "sources": [{
                     "principals": ["namespace/*"],
-                    "ipBlocks": ["1.2.3.0/24"],
+                    "ip_blocks": ["1.2.3.0/24"],
                 }],
             }])
         ```
@@ -518,15 +518,15 @@ class AuthorizationPolicy(pulumi.CustomResource):
             rules=[{
                 "sources": [{
                     "principals": ["namespace/*"],
-                    "ipBlocks": ["1.2.3.0/24"],
+                    "ip_blocks": ["1.2.3.0/24"],
                 }],
                 "destinations": [{
                     "hosts": ["mydomain.*"],
                     "ports": [8080],
                     "methods": ["GET"],
-                    "httpHeaderMatch": {
-                        "headerName": ":method",
-                        "regexMatch": "GET",
+                    "http_header_match": {
+                        "header_name": ":method",
+                        "regex_match": "GET",
                     },
                 }],
             }])

@@ -97,8 +97,8 @@ def get_image_versions(project: Optional[str] = None,
         name="test-env",
         region="us-central1",
         config={
-            "softwareConfig": {
-                "imageVersion": all.image_versions[0].image_version_id,
+            "software_config": {
+                "image_version": all.image_versions[0].image_version_id,
             },
         })
     ```
@@ -140,8 +140,8 @@ def get_image_versions_output(project: Optional[pulumi.Input[Optional[str]]] = N
         name="test-env",
         region="us-central1",
         config={
-            "softwareConfig": {
-                "imageVersion": all.image_versions[0].image_version_id,
+            "software_config": {
+                "image_version": all.image_versions[0].image_version_id,
             },
         })
     ```

@@ -347,7 +347,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
             },
             region="us-central1",
             online_serving_config={
-                "fixedNodeCount": 2,
+                "fixed_node_count": 2,
             })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
             name="terraform",
@@ -376,7 +376,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
             },
             region="us-central1",
             online_serving_config={
-                "fixedNodeCount": 2,
+                "fixed_node_count": 2,
             })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
             name="terraform2",
@@ -385,14 +385,14 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
             },
             featurestore=featurestore.id,
             monitoring_config={
-                "snapshotAnalysis": {
+                "snapshot_analysis": {
                     "disabled": False,
-                    "monitoringInterval": "86400s",
+                    "monitoring_interval": "86400s",
                 },
-                "categoricalThresholdConfig": {
+                "categorical_threshold_config": {
                     "value": 0.3,
                 },
-                "numericalThresholdConfig": {
+                "numerical_threshold_config": {
                     "value": 0.3,
                 },
             })
@@ -461,7 +461,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
             },
             region="us-central1",
             online_serving_config={
-                "fixedNodeCount": 2,
+                "fixed_node_count": 2,
             })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
             name="terraform",
@@ -490,7 +490,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
             },
             region="us-central1",
             online_serving_config={
-                "fixedNodeCount": 2,
+                "fixed_node_count": 2,
             })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
             name="terraform2",
@@ -499,14 +499,14 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
             },
             featurestore=featurestore.id,
             monitoring_config={
-                "snapshotAnalysis": {
+                "snapshot_analysis": {
                     "disabled": False,
-                    "monitoringInterval": "86400s",
+                    "monitoring_interval": "86400s",
                 },
-                "categoricalThresholdConfig": {
+                "categorical_threshold_config": {
                     "value": 0.3,
                 },
-                "numericalThresholdConfig": {
+                "numerical_threshold_config": {
                     "value": 0.3,
                 },
             })
