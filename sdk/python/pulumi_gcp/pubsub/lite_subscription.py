@@ -282,18 +282,18 @@ class LiteSubscription(pulumi.CustomResource):
             partition_config={
                 "count": 1,
                 "capacity": {
-                    "publishMibPerSec": 4,
-                    "subscribeMibPerSec": 8,
+                    "publish_mib_per_sec": 4,
+                    "subscribe_mib_per_sec": 8,
                 },
             },
             retention_config={
-                "perPartitionBytes": "32212254720",
+                "per_partition_bytes": "32212254720",
             })
         example_lite_subscription = gcp.pubsub.LiteSubscription("example",
             name="example-subscription",
             topic=example.name,
             delivery_config={
-                "deliveryRequirement": "DELIVER_AFTER_STORED",
+                "delivery_requirement": "DELIVER_AFTER_STORED",
             })
         ```
 
@@ -372,18 +372,18 @@ class LiteSubscription(pulumi.CustomResource):
             partition_config={
                 "count": 1,
                 "capacity": {
-                    "publishMibPerSec": 4,
-                    "subscribeMibPerSec": 8,
+                    "publish_mib_per_sec": 4,
+                    "subscribe_mib_per_sec": 8,
                 },
             },
             retention_config={
-                "perPartitionBytes": "32212254720",
+                "per_partition_bytes": "32212254720",
             })
         example_lite_subscription = gcp.pubsub.LiteSubscription("example",
             name="example-subscription",
             topic=example.name,
             delivery_config={
-                "deliveryRequirement": "DELIVER_AFTER_STORED",
+                "delivery_requirement": "DELIVER_AFTER_STORED",
             })
         ```
 

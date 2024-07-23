@@ -281,7 +281,7 @@ class CustomService(pulumi.CustomResource):
             service_id="custom-srv",
             display_name="My Custom Service custom-srv",
             telemetry={
-                "resourceName": "//product.googleapis.com/foo/foo/services/test",
+                "resource_name": "//product.googleapis.com/foo/foo/services/test",
             },
             user_labels={
                 "my_key": "my_value",
@@ -349,7 +349,7 @@ class CustomService(pulumi.CustomResource):
             service_id="custom-srv",
             display_name="My Custom Service custom-srv",
             telemetry={
-                "resourceName": "//product.googleapis.com/foo/foo/services/test",
+                "resource_name": "//product.googleapis.com/foo/foo/services/test",
             },
             user_labels={
                 "my_key": "my_value",

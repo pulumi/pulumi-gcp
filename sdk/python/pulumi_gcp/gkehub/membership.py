@@ -412,8 +412,8 @@ class Membership(pulumi.CustomResource):
             membership_id="basic",
             location="us-west1",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             })
         ```
@@ -433,8 +433,8 @@ class Membership(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="basic",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             },
             labels={
@@ -452,7 +452,7 @@ class Membership(pulumi.CustomResource):
             location="us-central1-a",
             initial_node_count=1,
             workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
+                "workload_pool": "my-project-name.svc.id.goog",
             },
             deletion_protection=True,
             network="default",
@@ -460,8 +460,8 @@ class Membership(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="basic",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": primary.id,
+                "gke_cluster": {
+                    "resource_link": primary.id,
                 },
             },
             authority={
@@ -551,8 +551,8 @@ class Membership(pulumi.CustomResource):
             membership_id="basic",
             location="us-west1",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             })
         ```
@@ -572,8 +572,8 @@ class Membership(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="basic",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             },
             labels={
@@ -591,7 +591,7 @@ class Membership(pulumi.CustomResource):
             location="us-central1-a",
             initial_node_count=1,
             workload_identity_config={
-                "workloadPool": "my-project-name.svc.id.goog",
+                "workload_pool": "my-project-name.svc.id.goog",
             },
             deletion_protection=True,
             network="default",
@@ -599,8 +599,8 @@ class Membership(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="basic",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": primary.id,
+                "gke_cluster": {
+                    "resource_link": primary.id,
                 },
             },
             authority={
