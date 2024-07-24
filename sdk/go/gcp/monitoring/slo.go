@@ -156,7 +156,7 @@ import (
 //				CalendarPeriod: pulumi.String("FORTNIGHT"),
 //				WindowsBasedSli: &monitoring.SloWindowsBasedSliArgs{
 //					WindowPeriod:        pulumi.String("400s"),
-//					GoodBadMetricFilter: invokeJoin.Result,
+//					GoodBadMetricFilter: pulumi.String(invokeJoin.Result),
 //				},
 //			})
 //			if err != nil {
@@ -207,7 +207,7 @@ import (
 //				WindowsBasedSli: &monitoring.SloWindowsBasedSliArgs{
 //					WindowPeriod: pulumi.String("600s"),
 //					MetricMeanInRange: &monitoring.SloWindowsBasedSliMetricMeanInRangeArgs{
-//						TimeSeries: invokeJoin.Result,
+//						TimeSeries: pulumi.String(invokeJoin.Result),
 //						Range: &monitoring.SloWindowsBasedSliMetricMeanInRangeRangeArgs{
 //							Max: pulumi.Float64(5),
 //						},
@@ -262,7 +262,7 @@ import (
 //				WindowsBasedSli: &monitoring.SloWindowsBasedSliArgs{
 //					WindowPeriod: pulumi.String("400s"),
 //					MetricSumInRange: &monitoring.SloWindowsBasedSliMetricSumInRangeArgs{
-//						TimeSeries: invokeJoin.Result,
+//						TimeSeries: pulumi.String(invokeJoin.Result),
 //						Range: &monitoring.SloWindowsBasedSliMetricSumInRangeRangeArgs{
 //							Max: pulumi.Float64(5000),
 //						},
@@ -320,7 +320,7 @@ import (
 //						Threshold: pulumi.Float64(0.1),
 //						Performance: &monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs{
 //							DistributionCut: &monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs{
-//								DistributionFilter: invokeJoin.Result,
+//								DistributionFilter: pulumi.String(invokeJoin.Result),
 //								Range: &monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs{
 //									Min: pulumi.Float64(1),
 //									Max: pulumi.Float64(9),

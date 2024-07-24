@@ -686,10 +686,10 @@ class Target(pulumi.CustomResource):
                     "RENDER",
                     "DEPLOY",
                 ],
-                "executionTimeout": "3600s",
+                "execution_timeout": "3600s",
             }],
             multi_target={
-                "targetIds": [
+                "target_ids": [
                     "1",
                     "2",
                 ],
@@ -721,7 +721,7 @@ class Target(pulumi.CustomResource):
                     "RENDER",
                     "DEPLOY",
                 ],
-                "executionTimeout": "3600s",
+                "execution_timeout": "3600s",
             }],
             project="my-project-name",
             require_approval=False,
@@ -843,10 +843,10 @@ class Target(pulumi.CustomResource):
                     "RENDER",
                     "DEPLOY",
                 ],
-                "executionTimeout": "3600s",
+                "execution_timeout": "3600s",
             }],
             multi_target={
-                "targetIds": [
+                "target_ids": [
                     "1",
                     "2",
                 ],
@@ -878,7 +878,7 @@ class Target(pulumi.CustomResource):
                     "RENDER",
                     "DEPLOY",
                 ],
-                "executionTimeout": "3600s",
+                "execution_timeout": "3600s",
             }],
             project="my-project-name",
             require_approval=False,

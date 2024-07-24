@@ -521,7 +521,7 @@ class ServicePerimeter(pulumi.CustomResource):
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/restrict_storage"),
             title="restrict_storage",
             status={
-                "restrictedServices": ["storage.googleapis.com"],
+                "restricted_services": ["storage.googleapis.com"],
             })
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
@@ -529,10 +529,10 @@ class ServicePerimeter(pulumi.CustomResource):
             title="chromeos_no_lock",
             basic={
                 "conditions": [{
-                    "devicePolicy": {
-                        "requireScreenLock": False,
-                        "osConstraints": [{
-                            "osType": "DESKTOP_CHROME_OS",
+                    "device_policy": {
+                        "require_screen_lock": False,
+                        "os_constraints": [{
+                            "os_type": "DESKTOP_CHROME_OS",
                         }],
                     },
                     "regions": [
@@ -559,17 +559,17 @@ class ServicePerimeter(pulumi.CustomResource):
                     "name": access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
                     "title": "",
                     "status": {
-                        "restrictedServices": ["storage.googleapis.com"],
+                        "restricted_services": ["storage.googleapis.com"],
                     },
                 },
                 {
                     "name": access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
                     "title": "",
                     "status": {
-                        "restrictedServices": ["bigtable.googleapis.com"],
-                        "vpcAccessibleServices": {
-                            "enableRestriction": True,
-                            "allowedServices": ["bigquery.googleapis.com"],
+                        "restricted_services": ["bigtable.googleapis.com"],
+                        "vpc_accessible_services": {
+                            "enable_restriction": True,
+                            "allowed_services": ["bigquery.googleapis.com"],
                         },
                     },
                 },
@@ -580,10 +580,10 @@ class ServicePerimeter(pulumi.CustomResource):
             title="secure_data_exchange",
             basic={
                 "conditions": [{
-                    "devicePolicy": {
-                        "requireScreenLock": False,
-                        "osConstraints": [{
-                            "osType": "DESKTOP_CHROME_OS",
+                    "device_policy": {
+                        "require_screen_lock": False,
+                        "os_constraints": [{
+                            "os_type": "DESKTOP_CHROME_OS",
                         }],
                     },
                     "regions": [
@@ -599,31 +599,31 @@ class ServicePerimeter(pulumi.CustomResource):
             title="%s",
             perimeter_type="PERIMETER_TYPE_REGULAR",
             status={
-                "restrictedServices": [
+                "restricted_services": [
                     "bigquery.googleapis.com",
                     "storage.googleapis.com",
                 ],
-                "accessLevels": [access_level.name],
-                "vpcAccessibleServices": {
-                    "enableRestriction": True,
-                    "allowedServices": [
+                "access_levels": [access_level.name],
+                "vpc_accessible_services": {
+                    "enable_restriction": True,
+                    "allowed_services": [
                         "bigquery.googleapis.com",
                         "storage.googleapis.com",
                     ],
                 },
-                "ingressPolicies": [{
-                    "ingressFrom": {
+                "ingress_policies": [{
+                    "ingress_from": {
                         "sources": [{
-                            "accessLevel": test_access_google_access_context_manager_access_level["name"],
+                            "access_level": test_access_google_access_context_manager_access_level["name"],
                         }],
-                        "identityType": "ANY_IDENTITY",
+                        "identity_type": "ANY_IDENTITY",
                     },
-                    "ingressTo": {
+                    "ingress_to": {
                         "resources": ["*"],
                         "operations": [
                             {
-                                "serviceName": "bigquery.googleapis.com",
-                                "methodSelectors": [
+                                "service_name": "bigquery.googleapis.com",
+                                "method_selectors": [
                                     {
                                         "method": "BigQueryStorage.ReadRows",
                                     },
@@ -636,17 +636,17 @@ class ServicePerimeter(pulumi.CustomResource):
                                 ],
                             },
                             {
-                                "serviceName": "storage.googleapis.com",
-                                "methodSelectors": [{
+                                "service_name": "storage.googleapis.com",
+                                "method_selectors": [{
                                     "method": "google.storage.objects.create",
                                 }],
                             },
                         ],
                     },
                 }],
-                "egressPolicies": [{
-                    "egressFrom": {
-                        "identityType": "ANY_USER_ACCOUNT",
+                "egress_policies": [{
+                    "egress_from": {
+                        "identity_type": "ANY_USER_ACCOUNT",
                     },
                 }],
             })
@@ -665,10 +665,10 @@ class ServicePerimeter(pulumi.CustomResource):
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/restrict_bigquery_dryrun_storage"),
             title="restrict_bigquery_dryrun_storage",
             status={
-                "restrictedServices": ["bigquery.googleapis.com"],
+                "restricted_services": ["bigquery.googleapis.com"],
             },
             spec={
-                "restrictedServices": ["storage.googleapis.com"],
+                "restricted_services": ["storage.googleapis.com"],
             },
             use_explicit_dry_run_spec=True)
         ```
@@ -778,7 +778,7 @@ class ServicePerimeter(pulumi.CustomResource):
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/restrict_storage"),
             title="restrict_storage",
             status={
-                "restrictedServices": ["storage.googleapis.com"],
+                "restricted_services": ["storage.googleapis.com"],
             })
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
@@ -786,10 +786,10 @@ class ServicePerimeter(pulumi.CustomResource):
             title="chromeos_no_lock",
             basic={
                 "conditions": [{
-                    "devicePolicy": {
-                        "requireScreenLock": False,
-                        "osConstraints": [{
-                            "osType": "DESKTOP_CHROME_OS",
+                    "device_policy": {
+                        "require_screen_lock": False,
+                        "os_constraints": [{
+                            "os_type": "DESKTOP_CHROME_OS",
                         }],
                     },
                     "regions": [
@@ -816,17 +816,17 @@ class ServicePerimeter(pulumi.CustomResource):
                     "name": access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
                     "title": "",
                     "status": {
-                        "restrictedServices": ["storage.googleapis.com"],
+                        "restricted_services": ["storage.googleapis.com"],
                     },
                 },
                 {
                     "name": access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
                     "title": "",
                     "status": {
-                        "restrictedServices": ["bigtable.googleapis.com"],
-                        "vpcAccessibleServices": {
-                            "enableRestriction": True,
-                            "allowedServices": ["bigquery.googleapis.com"],
+                        "restricted_services": ["bigtable.googleapis.com"],
+                        "vpc_accessible_services": {
+                            "enable_restriction": True,
+                            "allowed_services": ["bigquery.googleapis.com"],
                         },
                     },
                 },
@@ -837,10 +837,10 @@ class ServicePerimeter(pulumi.CustomResource):
             title="secure_data_exchange",
             basic={
                 "conditions": [{
-                    "devicePolicy": {
-                        "requireScreenLock": False,
-                        "osConstraints": [{
-                            "osType": "DESKTOP_CHROME_OS",
+                    "device_policy": {
+                        "require_screen_lock": False,
+                        "os_constraints": [{
+                            "os_type": "DESKTOP_CHROME_OS",
                         }],
                     },
                     "regions": [
@@ -856,31 +856,31 @@ class ServicePerimeter(pulumi.CustomResource):
             title="%s",
             perimeter_type="PERIMETER_TYPE_REGULAR",
             status={
-                "restrictedServices": [
+                "restricted_services": [
                     "bigquery.googleapis.com",
                     "storage.googleapis.com",
                 ],
-                "accessLevels": [access_level.name],
-                "vpcAccessibleServices": {
-                    "enableRestriction": True,
-                    "allowedServices": [
+                "access_levels": [access_level.name],
+                "vpc_accessible_services": {
+                    "enable_restriction": True,
+                    "allowed_services": [
                         "bigquery.googleapis.com",
                         "storage.googleapis.com",
                     ],
                 },
-                "ingressPolicies": [{
-                    "ingressFrom": {
+                "ingress_policies": [{
+                    "ingress_from": {
                         "sources": [{
-                            "accessLevel": test_access_google_access_context_manager_access_level["name"],
+                            "access_level": test_access_google_access_context_manager_access_level["name"],
                         }],
-                        "identityType": "ANY_IDENTITY",
+                        "identity_type": "ANY_IDENTITY",
                     },
-                    "ingressTo": {
+                    "ingress_to": {
                         "resources": ["*"],
                         "operations": [
                             {
-                                "serviceName": "bigquery.googleapis.com",
-                                "methodSelectors": [
+                                "service_name": "bigquery.googleapis.com",
+                                "method_selectors": [
                                     {
                                         "method": "BigQueryStorage.ReadRows",
                                     },
@@ -893,17 +893,17 @@ class ServicePerimeter(pulumi.CustomResource):
                                 ],
                             },
                             {
-                                "serviceName": "storage.googleapis.com",
-                                "methodSelectors": [{
+                                "service_name": "storage.googleapis.com",
+                                "method_selectors": [{
                                     "method": "google.storage.objects.create",
                                 }],
                             },
                         ],
                     },
                 }],
-                "egressPolicies": [{
-                    "egressFrom": {
-                        "identityType": "ANY_USER_ACCOUNT",
+                "egress_policies": [{
+                    "egress_from": {
+                        "identity_type": "ANY_USER_ACCOUNT",
                     },
                 }],
             })
@@ -922,10 +922,10 @@ class ServicePerimeter(pulumi.CustomResource):
             name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/restrict_bigquery_dryrun_storage"),
             title="restrict_bigquery_dryrun_storage",
             status={
-                "restrictedServices": ["bigquery.googleapis.com"],
+                "restricted_services": ["bigquery.googleapis.com"],
             },
             spec={
-                "restrictedServices": ["storage.googleapis.com"],
+                "restricted_services": ["storage.googleapis.com"],
             },
             use_explicit_dry_run_spec=True)
         ```

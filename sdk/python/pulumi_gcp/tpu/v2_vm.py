@@ -870,8 +870,8 @@ class V2Vm(pulumi.CustomResource):
             },
             cidr_block="10.0.0.0/29",
             network_config={
-                "canIpForward": True,
-                "enableExternalIps": True,
+                "can_ip_forward": True,
+                "enable_external_ips": True,
                 "network": network.id,
                 "subnetwork": subnet.id,
             },
@@ -879,14 +879,14 @@ class V2Vm(pulumi.CustomResource):
                 "preemptible": True,
             },
             shielded_instance_config={
-                "enableSecureBoot": True,
+                "enable_secure_boot": True,
             },
             service_account={
                 "email": sa.email,
                 "scopes": ["https://www.googleapis.com/auth/cloud-platform"],
             },
             data_disks=[{
-                "sourceDisk": disk.id,
+                "source_disk": disk.id,
                 "mode": "READ_ONLY",
             }],
             labels={
@@ -1029,8 +1029,8 @@ class V2Vm(pulumi.CustomResource):
             },
             cidr_block="10.0.0.0/29",
             network_config={
-                "canIpForward": True,
-                "enableExternalIps": True,
+                "can_ip_forward": True,
+                "enable_external_ips": True,
                 "network": network.id,
                 "subnetwork": subnet.id,
             },
@@ -1038,14 +1038,14 @@ class V2Vm(pulumi.CustomResource):
                 "preemptible": True,
             },
             shielded_instance_config={
-                "enableSecureBoot": True,
+                "enable_secure_boot": True,
             },
             service_account={
                 "email": sa.email,
                 "scopes": ["https://www.googleapis.com/auth/cloud-platform"],
             },
             data_disks=[{
-                "sourceDisk": disk.id,
+                "source_disk": disk.id,
                 "mode": "READ_ONLY",
             }],
             labels={

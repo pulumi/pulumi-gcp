@@ -69,7 +69,7 @@ import (
 //				AppId:      _default.AppId,
 //				TokenTtl:   pulumi.String("7200s"),
 //				KeyId:      pulumi.String("Key ID"),
-//				PrivateKey: invokeFile.Result,
+//				PrivateKey: pulumi.String(invokeFile.Result),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				wait30s,
 //			}))
