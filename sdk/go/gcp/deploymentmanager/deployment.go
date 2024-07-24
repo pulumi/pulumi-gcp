@@ -53,7 +53,7 @@ import (
 //				Name: pulumi.String("my-deployment"),
 //				Target: &deploymentmanager.DeploymentTargetArgs{
 //					Config: &deploymentmanager.DeploymentTargetConfigArgs{
-//						Content: invokeFile.Result,
+//						Content: pulumi.String(invokeFile.Result),
 //					},
 //				},
 //				Labels: deploymentmanager.DeploymentLabelArray{

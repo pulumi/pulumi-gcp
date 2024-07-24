@@ -577,12 +577,12 @@ class UptimeCheckConfig(pulumi.CustomResource):
             http_check={
                 "path": "some-path",
                 "port": 8010,
-                "requestMethod": "POST",
-                "contentType": "USER_PROVIDED",
-                "customContentType": "application/json",
+                "request_method": "POST",
+                "content_type": "USER_PROVIDED",
+                "custom_content_type": "application/json",
                 "body": "Zm9vJTI1M0RiYXI=",
-                "pingConfig": {
-                    "pingsCount": 1,
+                "ping_config": {
+                    "pings_count": 1,
                 },
             },
             monitored_resource={
@@ -595,9 +595,9 @@ class UptimeCheckConfig(pulumi.CustomResource):
             content_matchers=[{
                 "content": "\\"example\\"",
                 "matcher": "MATCHES_JSON_PATH",
-                "jsonPathMatcher": {
-                    "jsonPath": "$.path",
-                    "jsonMatcher": "EXACT_MATCH",
+                "json_path_matcher": {
+                    "json_path": "$.path",
+                    "json_matcher": "EXACT_MATCH",
                 },
             }],
             checker_type="STATIC_IP_CHECKERS")
@@ -614,18 +614,18 @@ class UptimeCheckConfig(pulumi.CustomResource):
             http_check={
                 "path": "some-path",
                 "port": 8010,
-                "requestMethod": "POST",
-                "contentType": "URL_ENCODED",
+                "request_method": "POST",
+                "content_type": "URL_ENCODED",
                 "body": "Zm9vJTI1M0RiYXI=",
-                "acceptedResponseStatusCodes": [
+                "accepted_response_status_codes": [
                     {
-                        "statusClass": "STATUS_CLASS_2XX",
+                        "status_class": "STATUS_CLASS_2XX",
                     },
                     {
-                        "statusValue": 301,
+                        "status_value": 301,
                     },
                     {
-                        "statusValue": 302,
+                        "status_value": 302,
                     },
                 ],
             },
@@ -639,9 +639,9 @@ class UptimeCheckConfig(pulumi.CustomResource):
             content_matchers=[{
                 "content": "\\"example\\"",
                 "matcher": "MATCHES_JSON_PATH",
-                "jsonPathMatcher": {
-                    "jsonPath": "$.path",
-                    "jsonMatcher": "EXACT_MATCH",
+                "json_path_matcher": {
+                    "json_path": "$.path",
+                    "json_matcher": "EXACT_MATCH",
                 },
             }],
             checker_type="STATIC_IP_CHECKERS")
@@ -658,9 +658,9 @@ class UptimeCheckConfig(pulumi.CustomResource):
             http_check={
                 "path": "/some-path",
                 "port": 443,
-                "useSsl": True,
-                "validateSsl": True,
-                "serviceAgentAuthentication": {
+                "use_ssl": True,
+                "validate_ssl": True,
+                "service_agent_authentication": {
                     "type": "OIDC_TOKEN",
                 },
             },
@@ -674,9 +674,9 @@ class UptimeCheckConfig(pulumi.CustomResource):
             content_matchers=[{
                 "content": "example",
                 "matcher": "MATCHES_JSON_PATH",
-                "jsonPathMatcher": {
-                    "jsonPath": "$.path",
-                    "jsonMatcher": "REGEX_MATCH",
+                "json_path_matcher": {
+                    "json_path": "$.path",
+                    "json_matcher": "REGEX_MATCH",
                 },
             }])
         ```
@@ -694,13 +694,13 @@ class UptimeCheckConfig(pulumi.CustomResource):
             timeout="60s",
             tcp_check={
                 "port": 888,
-                "pingConfig": {
-                    "pingsCount": 2,
+                "ping_config": {
+                    "pings_count": 2,
                 },
             },
             resource_group={
-                "resourceType": "INSTANCE",
-                "groupId": check.name,
+                "resource_type": "INSTANCE",
+                "group_id": check.name,
             })
         ```
         ### Uptime Check Config Synthetic Monitor
@@ -722,24 +722,24 @@ class UptimeCheckConfig(pulumi.CustomResource):
             location="us-central1",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "SyntheticFunction",
+                "entry_point": "SyntheticFunction",
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
             },
             service_config={
-                "maxInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
+                "max_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
             })
         synthetic_monitor = gcp.monitoring.UptimeCheckConfig("synthetic_monitor",
             display_name="synthetic_monitor",
             timeout="60s",
             synthetic_monitor={
-                "cloudFunctionV2": {
+                "cloud_function_v2": {
                     "name": function.id,
                 },
             })
@@ -818,12 +818,12 @@ class UptimeCheckConfig(pulumi.CustomResource):
             http_check={
                 "path": "some-path",
                 "port": 8010,
-                "requestMethod": "POST",
-                "contentType": "USER_PROVIDED",
-                "customContentType": "application/json",
+                "request_method": "POST",
+                "content_type": "USER_PROVIDED",
+                "custom_content_type": "application/json",
                 "body": "Zm9vJTI1M0RiYXI=",
-                "pingConfig": {
-                    "pingsCount": 1,
+                "ping_config": {
+                    "pings_count": 1,
                 },
             },
             monitored_resource={
@@ -836,9 +836,9 @@ class UptimeCheckConfig(pulumi.CustomResource):
             content_matchers=[{
                 "content": "\\"example\\"",
                 "matcher": "MATCHES_JSON_PATH",
-                "jsonPathMatcher": {
-                    "jsonPath": "$.path",
-                    "jsonMatcher": "EXACT_MATCH",
+                "json_path_matcher": {
+                    "json_path": "$.path",
+                    "json_matcher": "EXACT_MATCH",
                 },
             }],
             checker_type="STATIC_IP_CHECKERS")
@@ -855,18 +855,18 @@ class UptimeCheckConfig(pulumi.CustomResource):
             http_check={
                 "path": "some-path",
                 "port": 8010,
-                "requestMethod": "POST",
-                "contentType": "URL_ENCODED",
+                "request_method": "POST",
+                "content_type": "URL_ENCODED",
                 "body": "Zm9vJTI1M0RiYXI=",
-                "acceptedResponseStatusCodes": [
+                "accepted_response_status_codes": [
                     {
-                        "statusClass": "STATUS_CLASS_2XX",
+                        "status_class": "STATUS_CLASS_2XX",
                     },
                     {
-                        "statusValue": 301,
+                        "status_value": 301,
                     },
                     {
-                        "statusValue": 302,
+                        "status_value": 302,
                     },
                 ],
             },
@@ -880,9 +880,9 @@ class UptimeCheckConfig(pulumi.CustomResource):
             content_matchers=[{
                 "content": "\\"example\\"",
                 "matcher": "MATCHES_JSON_PATH",
-                "jsonPathMatcher": {
-                    "jsonPath": "$.path",
-                    "jsonMatcher": "EXACT_MATCH",
+                "json_path_matcher": {
+                    "json_path": "$.path",
+                    "json_matcher": "EXACT_MATCH",
                 },
             }],
             checker_type="STATIC_IP_CHECKERS")
@@ -899,9 +899,9 @@ class UptimeCheckConfig(pulumi.CustomResource):
             http_check={
                 "path": "/some-path",
                 "port": 443,
-                "useSsl": True,
-                "validateSsl": True,
-                "serviceAgentAuthentication": {
+                "use_ssl": True,
+                "validate_ssl": True,
+                "service_agent_authentication": {
                     "type": "OIDC_TOKEN",
                 },
             },
@@ -915,9 +915,9 @@ class UptimeCheckConfig(pulumi.CustomResource):
             content_matchers=[{
                 "content": "example",
                 "matcher": "MATCHES_JSON_PATH",
-                "jsonPathMatcher": {
-                    "jsonPath": "$.path",
-                    "jsonMatcher": "REGEX_MATCH",
+                "json_path_matcher": {
+                    "json_path": "$.path",
+                    "json_matcher": "REGEX_MATCH",
                 },
             }])
         ```
@@ -935,13 +935,13 @@ class UptimeCheckConfig(pulumi.CustomResource):
             timeout="60s",
             tcp_check={
                 "port": 888,
-                "pingConfig": {
-                    "pingsCount": 2,
+                "ping_config": {
+                    "pings_count": 2,
                 },
             },
             resource_group={
-                "resourceType": "INSTANCE",
-                "groupId": check.name,
+                "resource_type": "INSTANCE",
+                "group_id": check.name,
             })
         ```
         ### Uptime Check Config Synthetic Monitor
@@ -963,24 +963,24 @@ class UptimeCheckConfig(pulumi.CustomResource):
             location="us-central1",
             build_config={
                 "runtime": "nodejs16",
-                "entryPoint": "SyntheticFunction",
+                "entry_point": "SyntheticFunction",
                 "source": {
-                    "storageSource": {
+                    "storage_source": {
                         "bucket": bucket.name,
                         "object": object.name,
                     },
                 },
             },
             service_config={
-                "maxInstanceCount": 1,
-                "availableMemory": "256M",
-                "timeoutSeconds": 60,
+                "max_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
             })
         synthetic_monitor = gcp.monitoring.UptimeCheckConfig("synthetic_monitor",
             display_name="synthetic_monitor",
             timeout="60s",
             synthetic_monitor={
-                "cloudFunctionV2": {
+                "cloud_function_v2": {
                     "name": function.id,
                 },
             })

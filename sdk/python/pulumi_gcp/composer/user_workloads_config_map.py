@@ -235,8 +235,8 @@ class UserWorkloadsConfigMap(pulumi.CustomResource):
             name="test-environment",
             region="us-central1",
             config={
-                "softwareConfig": {
-                    "imageVersion": "composer-3-airflow-2",
+                "software_config": {
+                    "image_version": "composer-3-airflow-2",
                 },
             })
         config_map = gcp.composer.UserWorkloadsConfigMap("config_map",
@@ -310,8 +310,8 @@ class UserWorkloadsConfigMap(pulumi.CustomResource):
             name="test-environment",
             region="us-central1",
             config={
-                "softwareConfig": {
-                    "imageVersion": "composer-3-airflow-2",
+                "software_config": {
+                    "image_version": "composer-3-airflow-2",
                 },
             })
         config_map = gcp.composer.UserWorkloadsConfigMap("config_map",

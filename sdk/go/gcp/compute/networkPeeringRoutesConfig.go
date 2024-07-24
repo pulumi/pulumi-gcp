@@ -153,9 +153,9 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewNetworkPeeringRoutesConfig(ctx, "peering_gke_routes", &compute.NetworkPeeringRoutesConfigArgs{
-//				Peering: privateCluster.PrivateClusterConfig.ApplyT(func(privateClusterConfig container.ClusterPrivateClusterConfig) (*string, error) {
+//				Peering: pulumi.String(privateCluster.PrivateClusterConfig.ApplyT(func(privateClusterConfig container.ClusterPrivateClusterConfig) (*string, error) {
 //					return &privateClusterConfig.PeeringName, nil
-//				}).(pulumi.StringPtrOutput),
+//				}).(pulumi.StringPtrOutput)),
 //				Network:            containerNetwork.Name,
 //				ImportCustomRoutes: pulumi.Bool(true),
 //				ExportCustomRoutes: pulumi.Bool(true),

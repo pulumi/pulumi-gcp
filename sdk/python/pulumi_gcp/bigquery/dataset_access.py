@@ -566,14 +566,14 @@ class DatasetAccess(pulumi.CustomResource):
             table_id="example_table",
             view={
                 "query": "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-                "useLegacySql": False,
+                "use_legacy_sql": False,
             })
         access = gcp.bigquery.DatasetAccess("access",
             dataset_id=private.dataset_id,
             view={
-                "projectId": public_table.project,
-                "datasetId": public.dataset_id,
-                "tableId": public_table.table_id,
+                "project_id": public_table.project,
+                "dataset_id": public.dataset_id,
+                "table_id": public_table.table_id,
             })
         ```
         ### Bigquery Dataset Access Authorized Dataset
@@ -588,10 +588,10 @@ class DatasetAccess(pulumi.CustomResource):
             dataset_id=private.dataset_id,
             authorized_dataset={
                 "dataset": {
-                    "projectId": public.project,
-                    "datasetId": public.dataset_id,
+                    "project_id": public.project,
+                    "dataset_id": public.dataset_id,
                 },
-                "targetTypes": ["VIEWS"],
+                "target_types": ["VIEWS"],
             })
         ```
         ### Bigquery Dataset Access Authorized Routine
@@ -612,9 +612,9 @@ class DatasetAccess(pulumi.CustomResource):
             definition_body="SELECT 1 + value AS value\\n",
             arguments=[{
                 "name": "value",
-                "argumentKind": "FIXED_TYPE",
-                "dataType": json.dumps({
-                    "typeKind": "INT64",
+                "argument_kind": "FIXED_TYPE",
+                "data_type": json.dumps({
+                    "type_kind": "INT64",
                 }),
             }],
             return_table_type=json.dumps({
@@ -631,9 +631,9 @@ class DatasetAccess(pulumi.CustomResource):
         authorized_routine = gcp.bigquery.DatasetAccess("authorized_routine",
             dataset_id=private.dataset_id,
             routine={
-                "projectId": public_routine.project,
-                "datasetId": public_routine.dataset_id,
-                "routineId": public_routine.routine_id,
+                "project_id": public_routine.project,
+                "dataset_id": public_routine.dataset_id,
+                "routine_id": public_routine.routine_id,
             })
         ```
 
@@ -720,14 +720,14 @@ class DatasetAccess(pulumi.CustomResource):
             table_id="example_table",
             view={
                 "query": "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
-                "useLegacySql": False,
+                "use_legacy_sql": False,
             })
         access = gcp.bigquery.DatasetAccess("access",
             dataset_id=private.dataset_id,
             view={
-                "projectId": public_table.project,
-                "datasetId": public.dataset_id,
-                "tableId": public_table.table_id,
+                "project_id": public_table.project,
+                "dataset_id": public.dataset_id,
+                "table_id": public_table.table_id,
             })
         ```
         ### Bigquery Dataset Access Authorized Dataset
@@ -742,10 +742,10 @@ class DatasetAccess(pulumi.CustomResource):
             dataset_id=private.dataset_id,
             authorized_dataset={
                 "dataset": {
-                    "projectId": public.project,
-                    "datasetId": public.dataset_id,
+                    "project_id": public.project,
+                    "dataset_id": public.dataset_id,
                 },
-                "targetTypes": ["VIEWS"],
+                "target_types": ["VIEWS"],
             })
         ```
         ### Bigquery Dataset Access Authorized Routine
@@ -766,9 +766,9 @@ class DatasetAccess(pulumi.CustomResource):
             definition_body="SELECT 1 + value AS value\\n",
             arguments=[{
                 "name": "value",
-                "argumentKind": "FIXED_TYPE",
-                "dataType": json.dumps({
-                    "typeKind": "INT64",
+                "argument_kind": "FIXED_TYPE",
+                "data_type": json.dumps({
+                    "type_kind": "INT64",
                 }),
             }],
             return_table_type=json.dumps({
@@ -785,9 +785,9 @@ class DatasetAccess(pulumi.CustomResource):
         authorized_routine = gcp.bigquery.DatasetAccess("authorized_routine",
             dataset_id=private.dataset_id,
             routine={
-                "projectId": public_routine.project,
-                "datasetId": public_routine.dataset_id,
-                "routineId": public_routine.routine_id,
+                "project_id": public_routine.project,
+                "dataset_id": public_routine.dataset_id,
+                "routine_id": public_routine.routine_id,
             })
         ```
 

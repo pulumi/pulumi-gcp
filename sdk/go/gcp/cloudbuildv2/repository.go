@@ -56,7 +56,7 @@ import (
 //			}
 //			_, err = secretmanager.NewSecretVersion(ctx, "private-key-secret-version", &secretmanager.SecretVersionArgs{
 //				Secret:     private_key_secret.ID(),
-//				SecretData: invokeFile.Result,
+//				SecretData: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -170,7 +170,7 @@ import (
 //			}
 //			_, err = secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
 //				Secret:     github_token_secret.ID(),
-//				SecretData: invokeFile.Result,
+//				SecretData: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
 //				return err

@@ -89,12 +89,12 @@ import (
 //			}
 //			_, err = accesscontextmanager.NewGcpUserAccessBinding(ctx, "gcp_user_access_binding", &accesscontextmanager.GcpUserAccessBindingArgs{
 //				OrganizationId: pulumi.String("123456789"),
-//				GroupKey: std.TrimprefixOutput(ctx, std.TrimprefixOutputArgs{
+//				GroupKey: pulumi.String(std.TrimprefixOutput(ctx, std.TrimprefixOutputArgs{
 //					Input:  group.ID(),
 //					Prefix: pulumi.String("groups/"),
 //				}, nil).ApplyT(func(invoke std.TrimprefixResult) (*string, error) {
 //					return invoke.Result, nil
-//				}).(pulumi.StringPtrOutput),
+//				}).(pulumi.StringPtrOutput)),
 //				AccessLevels: accessLevelIdForUserAccessBinding.Name,
 //			})
 //			if err != nil {

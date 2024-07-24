@@ -319,8 +319,8 @@ class FeatureMembership(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             })
         feature = gcp.gkehub.Feature("feature",
@@ -335,9 +335,9 @@ class FeatureMembership(pulumi.CustomResource):
             membership=membership.membership_id,
             configmanagement={
                 "version": "1.6.2",
-                "configSync": {
+                "config_sync": {
                     "git": {
-                        "syncRepo": "https://github.com/hashicorp/terraform",
+                        "sync_repo": "https://github.com/hashicorp/terraform",
                     },
                 },
             })
@@ -355,8 +355,8 @@ class FeatureMembership(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             })
         feature = gcp.gkehub.Feature("feature",
@@ -371,13 +371,13 @@ class FeatureMembership(pulumi.CustomResource):
             membership=membership.membership_id,
             configmanagement={
                 "version": "1.15.1",
-                "configSync": {
+                "config_sync": {
                     "oci": {
-                        "syncRepo": "us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",
-                        "policyDir": "config-connector",
-                        "syncWaitSecs": "20",
-                        "secretType": "gcpserviceaccount",
-                        "gcpServiceAccountEmail": "sa@project-id.iam.gserviceaccount.com",
+                        "sync_repo": "us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",
+                        "policy_dir": "config-connector",
+                        "sync_wait_secs": "20",
+                        "secret_type": "gcpserviceaccount",
+                        "gcp_service_account_email": "sa@project-id.iam.gserviceaccount.com",
                     },
                 },
             })
@@ -410,8 +410,8 @@ class FeatureMembership(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             })
         feature = gcp.gkehub.Feature("feature",
@@ -440,8 +440,8 @@ class FeatureMembership(pulumi.CustomResource):
             membership_id="my-membership",
             location="us-central1",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             })
         feature = gcp.gkehub.Feature("feature",
@@ -457,9 +457,9 @@ class FeatureMembership(pulumi.CustomResource):
             membership_location=membership.location,
             configmanagement={
                 "version": "1.6.2",
-                "configSync": {
+                "config_sync": {
                     "git": {
-                        "syncRepo": "https://github.com/hashicorp/terraform",
+                        "sync_repo": "https://github.com/hashicorp/terraform",
                     },
                 },
             })
@@ -478,8 +478,8 @@ class FeatureMembership(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             })
         feature = gcp.gkehub.Feature("feature",
@@ -490,8 +490,8 @@ class FeatureMembership(pulumi.CustomResource):
             feature=feature.name,
             membership=membership.membership_id,
             policycontroller={
-                "policyControllerHubConfig": {
-                    "installSpec": "INSTALL_SPEC_ENABLED",
+                "policy_controller_hub_config": {
+                    "install_spec": "INSTALL_SPEC_ENABLED",
                 },
             })
         ```
@@ -509,8 +509,8 @@ class FeatureMembership(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             })
         feature = gcp.gkehub.Feature("feature",
@@ -521,18 +521,18 @@ class FeatureMembership(pulumi.CustomResource):
             feature=feature.name,
             membership=membership.membership_id,
             policycontroller={
-                "policyControllerHubConfig": {
-                    "installSpec": "INSTALL_SPEC_SUSPENDED",
-                    "policyContent": {
-                        "templateLibrary": {
+                "policy_controller_hub_config": {
+                    "install_spec": "INSTALL_SPEC_SUSPENDED",
+                    "policy_content": {
+                        "template_library": {
                             "installation": "NOT_INSTALLED",
                         },
                     },
-                    "constraintViolationLimit": 50,
-                    "auditIntervalSeconds": 120,
-                    "referentialRulesEnabled": True,
-                    "logDeniesEnabled": True,
-                    "mutationEnabled": True,
+                    "constraint_violation_limit": 50,
+                    "audit_interval_seconds": 120,
+                    "referential_rules_enabled": True,
+                    "log_denies_enabled": True,
+                    "mutation_enabled": True,
                 },
                 "version": "1.17.0",
             })
@@ -597,8 +597,8 @@ class FeatureMembership(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             })
         feature = gcp.gkehub.Feature("feature",
@@ -613,9 +613,9 @@ class FeatureMembership(pulumi.CustomResource):
             membership=membership.membership_id,
             configmanagement={
                 "version": "1.6.2",
-                "configSync": {
+                "config_sync": {
                     "git": {
-                        "syncRepo": "https://github.com/hashicorp/terraform",
+                        "sync_repo": "https://github.com/hashicorp/terraform",
                     },
                 },
             })
@@ -633,8 +633,8 @@ class FeatureMembership(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             })
         feature = gcp.gkehub.Feature("feature",
@@ -649,13 +649,13 @@ class FeatureMembership(pulumi.CustomResource):
             membership=membership.membership_id,
             configmanagement={
                 "version": "1.15.1",
-                "configSync": {
+                "config_sync": {
                     "oci": {
-                        "syncRepo": "us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",
-                        "policyDir": "config-connector",
-                        "syncWaitSecs": "20",
-                        "secretType": "gcpserviceaccount",
-                        "gcpServiceAccountEmail": "sa@project-id.iam.gserviceaccount.com",
+                        "sync_repo": "us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",
+                        "policy_dir": "config-connector",
+                        "sync_wait_secs": "20",
+                        "secret_type": "gcpserviceaccount",
+                        "gcp_service_account_email": "sa@project-id.iam.gserviceaccount.com",
                     },
                 },
             })
@@ -688,8 +688,8 @@ class FeatureMembership(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             })
         feature = gcp.gkehub.Feature("feature",
@@ -718,8 +718,8 @@ class FeatureMembership(pulumi.CustomResource):
             membership_id="my-membership",
             location="us-central1",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             })
         feature = gcp.gkehub.Feature("feature",
@@ -735,9 +735,9 @@ class FeatureMembership(pulumi.CustomResource):
             membership_location=membership.location,
             configmanagement={
                 "version": "1.6.2",
-                "configSync": {
+                "config_sync": {
                     "git": {
-                        "syncRepo": "https://github.com/hashicorp/terraform",
+                        "sync_repo": "https://github.com/hashicorp/terraform",
                     },
                 },
             })
@@ -756,8 +756,8 @@ class FeatureMembership(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             })
         feature = gcp.gkehub.Feature("feature",
@@ -768,8 +768,8 @@ class FeatureMembership(pulumi.CustomResource):
             feature=feature.name,
             membership=membership.membership_id,
             policycontroller={
-                "policyControllerHubConfig": {
-                    "installSpec": "INSTALL_SPEC_ENABLED",
+                "policy_controller_hub_config": {
+                    "install_spec": "INSTALL_SPEC_ENABLED",
                 },
             })
         ```
@@ -787,8 +787,8 @@ class FeatureMembership(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             })
         feature = gcp.gkehub.Feature("feature",
@@ -799,18 +799,18 @@ class FeatureMembership(pulumi.CustomResource):
             feature=feature.name,
             membership=membership.membership_id,
             policycontroller={
-                "policyControllerHubConfig": {
-                    "installSpec": "INSTALL_SPEC_SUSPENDED",
-                    "policyContent": {
-                        "templateLibrary": {
+                "policy_controller_hub_config": {
+                    "install_spec": "INSTALL_SPEC_SUSPENDED",
+                    "policy_content": {
+                        "template_library": {
                             "installation": "NOT_INSTALLED",
                         },
                     },
-                    "constraintViolationLimit": 50,
-                    "auditIntervalSeconds": 120,
-                    "referentialRulesEnabled": True,
-                    "logDeniesEnabled": True,
-                    "mutationEnabled": True,
+                    "constraint_violation_limit": 50,
+                    "audit_interval_seconds": 120,
+                    "referential_rules_enabled": True,
+                    "log_denies_enabled": True,
+                    "mutation_enabled": True,
                 },
                 "version": "1.17.0",
             })

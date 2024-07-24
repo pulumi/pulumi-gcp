@@ -251,10 +251,10 @@ class AuthorizedView(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="tf-instance",
             clusters=[{
-                "clusterId": "tf-instance-cluster",
+                "cluster_id": "tf-instance-cluster",
                 "zone": "us-central1-b",
-                "numNodes": 3,
-                "storageType": "HDD",
+                "num_nodes": 3,
+                "storage_type": "HDD",
             }])
         table = gcp.bigtable.Table("table",
             name="tf-table",
@@ -278,18 +278,18 @@ class AuthorizedView(pulumi.CustomResource):
             instance_name=instance.name,
             table_name=table.name,
             subset_view={
-                "rowPrefixes": [std.base64encode(input="prefix#").result],
-                "familySubsets": [
+                "row_prefixes": [std.base64encode(input="prefix#").result],
+                "family_subsets": [
                     {
-                        "familyName": "family-first",
+                        "family_name": "family-first",
                         "qualifiers": [
                             std.base64encode(input="qualifier").result,
                             std.base64encode(input="qualifier-second").result,
                         ],
                     },
                     {
-                        "familyName": "family-second",
-                        "qualifierPrefixes": [""],
+                        "family_name": "family-second",
+                        "qualifier_prefixes": [""],
                     },
                 ],
             })
@@ -347,10 +347,10 @@ class AuthorizedView(pulumi.CustomResource):
         instance = gcp.bigtable.Instance("instance",
             name="tf-instance",
             clusters=[{
-                "clusterId": "tf-instance-cluster",
+                "cluster_id": "tf-instance-cluster",
                 "zone": "us-central1-b",
-                "numNodes": 3,
-                "storageType": "HDD",
+                "num_nodes": 3,
+                "storage_type": "HDD",
             }])
         table = gcp.bigtable.Table("table",
             name="tf-table",
@@ -374,18 +374,18 @@ class AuthorizedView(pulumi.CustomResource):
             instance_name=instance.name,
             table_name=table.name,
             subset_view={
-                "rowPrefixes": [std.base64encode(input="prefix#").result],
-                "familySubsets": [
+                "row_prefixes": [std.base64encode(input="prefix#").result],
+                "family_subsets": [
                     {
-                        "familyName": "family-first",
+                        "family_name": "family-first",
                         "qualifiers": [
                             std.base64encode(input="qualifier").result,
                             std.base64encode(input="qualifier-second").result,
                         ],
                     },
                     {
-                        "familyName": "family-second",
-                        "qualifierPrefixes": [""],
+                        "family_name": "family-second",
+                        "qualifier_prefixes": [""],
                     },
                 ],
             })
