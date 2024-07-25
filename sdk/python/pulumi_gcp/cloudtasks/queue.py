@@ -360,18 +360,18 @@ class Queue(pulumi.CustomResource):
                 "instance": "test",
             },
             rate_limits={
-                "maxConcurrentDispatches": 3,
-                "maxDispatchesPerSecond": 2,
+                "max_concurrent_dispatches": 3,
+                "max_dispatches_per_second": 2,
             },
             retry_config={
-                "maxAttempts": 5,
-                "maxRetryDuration": "4s",
-                "maxBackoff": "3s",
-                "minBackoff": "2s",
-                "maxDoublings": 1,
+                "max_attempts": 5,
+                "max_retry_duration": "4s",
+                "max_backoff": "3s",
+                "min_backoff": "2s",
+                "max_doublings": 1,
             },
             stackdriver_logging_config={
-                "samplingRatio": 0.9,
+                "sampling_ratio": 0.9,
             })
         ```
 
@@ -460,18 +460,18 @@ class Queue(pulumi.CustomResource):
                 "instance": "test",
             },
             rate_limits={
-                "maxConcurrentDispatches": 3,
-                "maxDispatchesPerSecond": 2,
+                "max_concurrent_dispatches": 3,
+                "max_dispatches_per_second": 2,
             },
             retry_config={
-                "maxAttempts": 5,
-                "maxRetryDuration": "4s",
-                "maxBackoff": "3s",
-                "minBackoff": "2s",
-                "maxDoublings": 1,
+                "max_attempts": 5,
+                "max_retry_duration": "4s",
+                "max_backoff": "3s",
+                "min_backoff": "2s",
+                "max_doublings": 1,
             },
             stackdriver_logging_config={
-                "samplingRatio": 0.9,
+                "sampling_ratio": 0.9,
             })
         ```
 

@@ -463,53 +463,53 @@ class WorkflowTemplate(pulumi.CustomResource):
             name="template-example",
             location="us-central1",
             placement={
-                "managedCluster": {
-                    "clusterName": "my-cluster",
+                "managed_cluster": {
+                    "cluster_name": "my-cluster",
                     "config": {
-                        "gceClusterConfig": {
+                        "gce_cluster_config": {
                             "zone": "us-central1-a",
                             "tags": [
                                 "foo",
                                 "bar",
                             ],
                         },
-                        "masterConfig": {
-                            "numInstances": 1,
-                            "machineType": "n1-standard-1",
-                            "diskConfig": {
-                                "bootDiskType": "pd-ssd",
-                                "bootDiskSizeGb": 15,
+                        "master_config": {
+                            "num_instances": 1,
+                            "machine_type": "n1-standard-1",
+                            "disk_config": {
+                                "boot_disk_type": "pd-ssd",
+                                "boot_disk_size_gb": 15,
                             },
                         },
-                        "workerConfig": {
-                            "numInstances": 3,
-                            "machineType": "n1-standard-2",
-                            "diskConfig": {
-                                "bootDiskSizeGb": 10,
-                                "numLocalSsds": 2,
+                        "worker_config": {
+                            "num_instances": 3,
+                            "machine_type": "n1-standard-2",
+                            "disk_config": {
+                                "boot_disk_size_gb": 10,
+                                "num_local_ssds": 2,
                             },
                         },
-                        "secondaryWorkerConfig": {
-                            "numInstances": 2,
+                        "secondary_worker_config": {
+                            "num_instances": 2,
                         },
-                        "softwareConfig": {
-                            "imageVersion": "2.0.35-debian10",
+                        "software_config": {
+                            "image_version": "2.0.35-debian10",
                         },
                     },
                 },
             },
             jobs=[
                 {
-                    "stepId": "someJob",
-                    "sparkJob": {
-                        "mainClass": "SomeClass",
+                    "step_id": "someJob",
+                    "spark_job": {
+                        "main_class": "SomeClass",
                     },
                 },
                 {
-                    "stepId": "otherJob",
-                    "prerequisiteStepIds": ["someJob"],
-                    "prestoJob": {
-                        "queryFileUri": "someuri",
+                    "step_id": "otherJob",
+                    "prerequisite_step_ids": ["someJob"],
+                    "presto_job": {
+                        "query_file_uri": "someuri",
                     },
                 },
             ])
@@ -582,53 +582,53 @@ class WorkflowTemplate(pulumi.CustomResource):
             name="template-example",
             location="us-central1",
             placement={
-                "managedCluster": {
-                    "clusterName": "my-cluster",
+                "managed_cluster": {
+                    "cluster_name": "my-cluster",
                     "config": {
-                        "gceClusterConfig": {
+                        "gce_cluster_config": {
                             "zone": "us-central1-a",
                             "tags": [
                                 "foo",
                                 "bar",
                             ],
                         },
-                        "masterConfig": {
-                            "numInstances": 1,
-                            "machineType": "n1-standard-1",
-                            "diskConfig": {
-                                "bootDiskType": "pd-ssd",
-                                "bootDiskSizeGb": 15,
+                        "master_config": {
+                            "num_instances": 1,
+                            "machine_type": "n1-standard-1",
+                            "disk_config": {
+                                "boot_disk_type": "pd-ssd",
+                                "boot_disk_size_gb": 15,
                             },
                         },
-                        "workerConfig": {
-                            "numInstances": 3,
-                            "machineType": "n1-standard-2",
-                            "diskConfig": {
-                                "bootDiskSizeGb": 10,
-                                "numLocalSsds": 2,
+                        "worker_config": {
+                            "num_instances": 3,
+                            "machine_type": "n1-standard-2",
+                            "disk_config": {
+                                "boot_disk_size_gb": 10,
+                                "num_local_ssds": 2,
                             },
                         },
-                        "secondaryWorkerConfig": {
-                            "numInstances": 2,
+                        "secondary_worker_config": {
+                            "num_instances": 2,
                         },
-                        "softwareConfig": {
-                            "imageVersion": "2.0.35-debian10",
+                        "software_config": {
+                            "image_version": "2.0.35-debian10",
                         },
                     },
                 },
             },
             jobs=[
                 {
-                    "stepId": "someJob",
-                    "sparkJob": {
-                        "mainClass": "SomeClass",
+                    "step_id": "someJob",
+                    "spark_job": {
+                        "main_class": "SomeClass",
                     },
                 },
                 {
-                    "stepId": "otherJob",
-                    "prerequisiteStepIds": ["someJob"],
-                    "prestoJob": {
-                        "queryFileUri": "someuri",
+                    "step_id": "otherJob",
+                    "prerequisite_step_ids": ["someJob"],
+                    "presto_job": {
+                        "query_file_uri": "someuri",
                     },
                 },
             ])

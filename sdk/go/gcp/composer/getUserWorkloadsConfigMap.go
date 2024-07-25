@@ -48,10 +48,10 @@ import (
 //				return err
 //			}
 //			example := exampleEnvironment.Name.ApplyT(func(name string) (composer.GetUserWorkloadsConfigMapResult, error) {
-//				return composer.LookupUserWorkloadsConfigMapOutput(ctx, composer.GetUserWorkloadsConfigMapOutputArgs{
+//				return composer.GetUserWorkloadsConfigMapResult(interface{}(composer.LookupUserWorkloadsConfigMapOutput(ctx, composer.GetUserWorkloadsConfigMapOutputArgs{
 //					Environment: name,
 //					Name:        googleComposerUserWorkloadsConfigMap.Example.Name,
-//				}, nil), nil
+//				}, nil))), nil
 //			}).(composer.GetUserWorkloadsConfigMapResultOutput)
 //			ctx.Export("debug", example)
 //			return nil

@@ -433,7 +433,7 @@ class ServiceLbPolicies(pulumi.CustomResource):
                 "enable": True,
             },
             failover_config={
-                "failoverHealthThreshold": 70,
+                "failover_health_threshold": 70,
             },
             labels={
                 "foo": "bar",
@@ -524,7 +524,7 @@ class ServiceLbPolicies(pulumi.CustomResource):
                 "enable": True,
             },
             failover_config={
-                "failoverHealthThreshold": 70,
+                "failover_health_threshold": 70,
             },
             labels={
                 "foo": "bar",

@@ -447,7 +447,7 @@ class Hl7Store(pulumi.CustomResource):
             dataset=dataset.id,
             reject_duplicate_message=True,
             notification_configs=[{
-                "pubsubTopic": topic.id,
+                "pubsub_topic": topic.id,
             }],
             labels={
                 "label1": "labelvalue1",
@@ -466,8 +466,8 @@ class Hl7Store(pulumi.CustomResource):
             name="example-hl7-v2-store",
             dataset=dataset.id,
             parser_config={
-                "allowNullHeader": False,
-                "segmentTerminator": "Jw==",
+                "allow_null_header": False,
+                "segment_terminator": "Jw==",
                 "schema": \"\"\"{
           "schemas": [{
             "messageSchemaConfigs": {
@@ -562,8 +562,8 @@ class Hl7Store(pulumi.CustomResource):
             name="example-hl7-v2-store",
             dataset=dataset.id,
             parser_config={
-                "allowNullHeader": False,
-                "segmentTerminator": "Jw==",
+                "allow_null_header": False,
+                "segment_terminator": "Jw==",
                 "version": "V2",
             })
         ```
@@ -652,7 +652,7 @@ class Hl7Store(pulumi.CustomResource):
             dataset=dataset.id,
             reject_duplicate_message=True,
             notification_configs=[{
-                "pubsubTopic": topic.id,
+                "pubsub_topic": topic.id,
             }],
             labels={
                 "label1": "labelvalue1",
@@ -671,8 +671,8 @@ class Hl7Store(pulumi.CustomResource):
             name="example-hl7-v2-store",
             dataset=dataset.id,
             parser_config={
-                "allowNullHeader": False,
-                "segmentTerminator": "Jw==",
+                "allow_null_header": False,
+                "segment_terminator": "Jw==",
                 "schema": \"\"\"{
           "schemas": [{
             "messageSchemaConfigs": {
@@ -767,8 +767,8 @@ class Hl7Store(pulumi.CustomResource):
             name="example-hl7-v2-store",
             dataset=dataset.id,
             parser_config={
-                "allowNullHeader": False,
-                "segmentTerminator": "Jw==",
+                "allow_null_header": False,
+                "segment_terminator": "Jw==",
                 "version": "V2",
             })
         ```

@@ -445,19 +445,19 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             location="us-central1",
             tier="DEVOPS",
             publishing_options={
-                "publishCaCert": False,
-                "publishCrl": False,
+                "publish_ca_cert": False,
+                "publish_crl": False,
             },
             issuance_policy={
-                "maximumLifetime": "1209600s",
-                "baselineValues": {
-                    "caOptions": {
-                        "isCa": False,
+                "maximum_lifetime": "1209600s",
+                "baseline_values": {
+                    "ca_options": {
+                        "is_ca": False,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {},
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                    "key_usage": {
+                        "base_key_usage": {},
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -472,23 +472,23 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True,
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "Test LLC",
-                        "commonName": "my-ca",
+                        "common_name": "my-ca",
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": False,
+                        "extended_key_usage": {
+                            "server_auth": False,
                         },
                     },
                 },
@@ -524,19 +524,19 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             location="us-central1",
             tier="DEVOPS",
             publishing_options={
-                "publishCaCert": False,
-                "publishCrl": False,
+                "publish_ca_cert": False,
+                "publish_crl": False,
             },
             issuance_policy={
-                "maximumLifetime": "1209600s",
-                "baselineValues": {
-                    "caOptions": {
-                        "isCa": False,
+                "maximum_lifetime": "1209600s",
+                "baseline_values": {
+                    "ca_options": {
+                        "is_ca": False,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {},
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                    "key_usage": {
+                        "base_key_usage": {},
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -551,23 +551,23 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True,
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "Test LLC",
-                        "commonName": "my-ca",
+                        "common_name": "my-ca",
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": False,
+                        "extended_key_usage": {
+                            "server_auth": False,
                         },
                     },
                 },
@@ -585,11 +585,11 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             description="sample trust config description",
             location="us-central1",
             trust_stores=[{
-                "trustAnchors": [{
-                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                "trust_anchors": [{
+                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
                 }],
-                "intermediateCas": [{
-                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                "intermediate_cas": [{
+                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
                 }],
             }])
         default_tls_inspection_policy = gcp.networksecurity.TlsInspectionPolicy("default",
@@ -694,19 +694,19 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             location="us-central1",
             tier="DEVOPS",
             publishing_options={
-                "publishCaCert": False,
-                "publishCrl": False,
+                "publish_ca_cert": False,
+                "publish_crl": False,
             },
             issuance_policy={
-                "maximumLifetime": "1209600s",
-                "baselineValues": {
-                    "caOptions": {
-                        "isCa": False,
+                "maximum_lifetime": "1209600s",
+                "baseline_values": {
+                    "ca_options": {
+                        "is_ca": False,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {},
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                    "key_usage": {
+                        "base_key_usage": {},
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -721,23 +721,23 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True,
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "Test LLC",
-                        "commonName": "my-ca",
+                        "common_name": "my-ca",
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": False,
+                        "extended_key_usage": {
+                            "server_auth": False,
                         },
                     },
                 },
@@ -773,19 +773,19 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             location="us-central1",
             tier="DEVOPS",
             publishing_options={
-                "publishCaCert": False,
-                "publishCrl": False,
+                "publish_ca_cert": False,
+                "publish_crl": False,
             },
             issuance_policy={
-                "maximumLifetime": "1209600s",
-                "baselineValues": {
-                    "caOptions": {
-                        "isCa": False,
+                "maximum_lifetime": "1209600s",
+                "baseline_values": {
+                    "ca_options": {
+                        "is_ca": False,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {},
-                        "extendedKeyUsage": {
-                            "serverAuth": True,
+                    "key_usage": {
+                        "base_key_usage": {},
+                        "extended_key_usage": {
+                            "server_auth": True,
                         },
                     },
                 },
@@ -800,23 +800,23 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True,
             config={
-                "subjectConfig": {
+                "subject_config": {
                     "subject": {
                         "organization": "Test LLC",
-                        "commonName": "my-ca",
+                        "common_name": "my-ca",
                     },
                 },
-                "x509Config": {
-                    "caOptions": {
-                        "isCa": True,
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
                     },
-                    "keyUsage": {
-                        "baseKeyUsage": {
-                            "certSign": True,
-                            "crlSign": True,
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
                         },
-                        "extendedKeyUsage": {
-                            "serverAuth": False,
+                        "extended_key_usage": {
+                            "server_auth": False,
                         },
                     },
                 },
@@ -834,11 +834,11 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             description="sample trust config description",
             location="us-central1",
             trust_stores=[{
-                "trustAnchors": [{
-                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                "trust_anchors": [{
+                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
                 }],
-                "intermediateCas": [{
-                    "pemCertificate": std.file(input="test-fixtures/ca_cert.pem").result,
+                "intermediate_cas": [{
+                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
                 }],
             }])
         default_tls_inspection_policy = gcp.networksecurity.TlsInspectionPolicy("default",

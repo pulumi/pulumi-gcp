@@ -343,7 +343,7 @@ import (
 //				CertificateAuthority: defaultAuthority.CertificateAuthorityId,
 //				Name:                 pulumi.String("my-certificate"),
 //				Lifetime:             pulumi.String("860s"),
-//				PemCsr:               invokeFile.Result,
+//				PemCsr:               pulumi.String(invokeFile.Result),
 //				CertificateTemplate:  defaultCertificateTemplate.ID(),
 //			})
 //			if err != nil {
@@ -430,7 +430,7 @@ import (
 //				CertificateAuthority: defaultAuthority.CertificateAuthorityId,
 //				Name:                 pulumi.String("my-certificate"),
 //				Lifetime:             pulumi.String("860s"),
-//				PemCsr:               invokeFile.Result,
+//				PemCsr:               pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -545,7 +545,7 @@ import (
 //					},
 //					PublicKey: &certificateauthority.CertificateConfigPublicKeyArgs{
 //						Format: pulumi.String("PEM"),
-//						Key:    invokeFilebase64.Result,
+//						Key:    pulumi.String(invokeFilebase64.Result),
 //					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -667,7 +667,7 @@ import (
 //					},
 //					PublicKey: &certificateauthority.CertificateConfigPublicKeyArgs{
 //						Format: pulumi.String("PEM"),
-//						Key:    invokeFilebase64.Result,
+//						Key:    pulumi.String(invokeFilebase64.Result),
 //					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{

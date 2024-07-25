@@ -187,9 +187,9 @@ import (
 //				Region:                     pulumi.String("us-central1"),
 //				Instance:                   defaultInstance.SelfLink,
 //				Port:                       pulumi.Int(80),
-//				IpAddress: defaultInstance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+//				IpAddress: pulumi.String(defaultInstance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
 //					return &networkInterfaces[0].NetworkIp, nil
-//				}).(pulumi.StringPtrOutput),
+//				}).(pulumi.StringPtrOutput)),
 //				ClientDestinationPort: pulumi.Int(8080),
 //			})
 //			if err != nil {

@@ -259,7 +259,7 @@ class DomainMapping(pulumi.CustomResource):
         domain_mapping = gcp.appengine.DomainMapping("domain_mapping",
             domain_name="verified-domain.com",
             ssl_settings={
-                "sslManagementType": "AUTOMATIC",
+                "ssl_management_type": "AUTOMATIC",
             })
         ```
 
@@ -328,7 +328,7 @@ class DomainMapping(pulumi.CustomResource):
         domain_mapping = gcp.appengine.DomainMapping("domain_mapping",
             domain_name="verified-domain.com",
             ssl_settings={
-                "sslManagementType": "AUTOMATIC",
+                "ssl_management_type": "AUTOMATIC",
             })
         ```
 

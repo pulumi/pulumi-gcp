@@ -633,17 +633,17 @@ class Job(pulumi.CustomResource):
             region=mycluster.region,
             force_delete=True,
             placement={
-                "clusterName": mycluster.name,
+                "cluster_name": mycluster.name,
             },
             spark_config={
-                "mainClass": "org.apache.spark.examples.SparkPi",
-                "jarFileUris": ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
+                "main_class": "org.apache.spark.examples.SparkPi",
+                "jar_file_uris": ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
                 "args": ["1000"],
                 "properties": {
-                    "spark.logConf": "true",
+                    "spark_log_conf": "true",
                 },
-                "loggingConfig": {
-                    "driverLogLevels": {
+                "logging_config": {
+                    "driver_log_levels": {
                         "root": "INFO",
                     },
                 },
@@ -653,12 +653,12 @@ class Job(pulumi.CustomResource):
             region=mycluster.region,
             force_delete=True,
             placement={
-                "clusterName": mycluster.name,
+                "cluster_name": mycluster.name,
             },
             pyspark_config={
-                "mainPythonFileUri": "gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py",
+                "main_python_file_uri": "gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py",
                 "properties": {
-                    "spark.logConf": "true",
+                    "spark_log_conf": "true",
                 },
             })
         pulumi.export("sparkStatus", spark.statuses[0].state)
@@ -718,17 +718,17 @@ class Job(pulumi.CustomResource):
             region=mycluster.region,
             force_delete=True,
             placement={
-                "clusterName": mycluster.name,
+                "cluster_name": mycluster.name,
             },
             spark_config={
-                "mainClass": "org.apache.spark.examples.SparkPi",
-                "jarFileUris": ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
+                "main_class": "org.apache.spark.examples.SparkPi",
+                "jar_file_uris": ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
                 "args": ["1000"],
                 "properties": {
-                    "spark.logConf": "true",
+                    "spark_log_conf": "true",
                 },
-                "loggingConfig": {
-                    "driverLogLevels": {
+                "logging_config": {
+                    "driver_log_levels": {
                         "root": "INFO",
                     },
                 },
@@ -738,12 +738,12 @@ class Job(pulumi.CustomResource):
             region=mycluster.region,
             force_delete=True,
             placement={
-                "clusterName": mycluster.name,
+                "cluster_name": mycluster.name,
             },
             pyspark_config={
-                "mainPythonFileUri": "gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py",
+                "main_python_file_uri": "gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py",
                 "properties": {
-                    "spark.logConf": "true",
+                    "spark_log_conf": "true",
                 },
             })
         pulumi.export("sparkStatus", spark.statuses[0].state)

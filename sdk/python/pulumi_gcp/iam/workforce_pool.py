@@ -442,10 +442,10 @@ class WorkforcePool(pulumi.CustomResource):
             disabled=False,
             session_duration="7200s",
             access_restrictions={
-                "allowedServices": [{
+                "allowed_services": [{
                     "domain": "backstory.chronicle.security",
                 }],
-                "disableProgrammaticSignin": False,
+                "disable_programmatic_signin": False,
             })
         ```
 
@@ -537,10 +537,10 @@ class WorkforcePool(pulumi.CustomResource):
             disabled=False,
             session_duration="7200s",
             access_restrictions={
-                "allowedServices": [{
+                "allowed_services": [{
                     "domain": "backstory.chronicle.security",
                 }],
-                "disableProgrammaticSignin": False,
+                "disable_programmatic_signin": False,
             })
         ```
 

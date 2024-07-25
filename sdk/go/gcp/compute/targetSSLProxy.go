@@ -53,8 +53,8 @@ import (
 //			}
 //			defaultSSLCertificate, err := compute.NewSSLCertificate(ctx, "default", &compute.SSLCertificateArgs{
 //				Name:        pulumi.String("default-cert"),
-//				PrivateKey:  invokeFile.Result,
-//				Certificate: invokeFile1.Result,
+//				PrivateKey:  pulumi.String(invokeFile.Result),
+//				Certificate: pulumi.String(invokeFile1.Result),
 //			})
 //			if err != nil {
 //				return err

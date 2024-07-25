@@ -171,15 +171,15 @@ import (
 //				},
 //				Username: pulumi.String("test"),
 //				ApiKey:   pulumi.String("<api-key>"),
-//				PeeredNetwork: vpcNetwork.ID().ApplyT(func(id string) (std.ReplaceResult, error) {
-//					return std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
+//				PeeredNetwork: pulumi.String(vpcNetwork.ID().ApplyT(func(id string) (std.ReplaceResult, error) {
+//					return std.ReplaceResult(interface{}(std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
 //						Text:    id,
 //						Search:  project.Name,
 //						Replace: project.Number,
-//					}, nil), nil
+//					}, nil))), nil
 //				}).(std.ReplaceResultOutput).ApplyT(func(invoke std.ReplaceResult) (*string, error) {
 //					return invoke.Result, nil
-//				}).(pulumi.StringPtrOutput),
+//				}).(pulumi.StringPtrOutput)),
 //				SslCa: pulumi.String("-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				_default,
