@@ -695,8 +695,8 @@ class ServiceAttachment(pulumi.CustomResource):
                 "482878270665",
             ],
             consumer_accept_lists=[{
-                "projectIdOrNum": "658859330310",
-                "connectionLimit": 4,
+                "project_id_or_num": "658859330310",
+                "connection_limit": 4,
             }])
         psc_ilb_consumer_address = gcp.compute.Address("psc_ilb_consumer_address",
             name="psc-ilb-consumer-address",
@@ -762,8 +762,8 @@ class ServiceAttachment(pulumi.CustomResource):
             nat_subnets=[psc_ilb_nat.id],
             target_service=psc_ilb_target_service.id,
             consumer_accept_lists=[{
-                "networkUrl": psc_ilb_consumer_network.self_link,
-                "connectionLimit": 1,
+                "network_url": psc_ilb_consumer_network.self_link,
+                "connection_limit": 1,
             }])
         psc_ilb_consumer_subnetwork = gcp.compute.Subnetwork("psc_ilb_consumer_subnetwork",
             name="psc-ilb-consumer-network",
@@ -837,8 +837,8 @@ class ServiceAttachment(pulumi.CustomResource):
                 "482878270665",
             ],
             consumer_accept_lists=[{
-                "projectIdOrNum": "658859330310",
-                "connectionLimit": 4,
+                "project_id_or_num": "658859330310",
+                "connection_limit": 4,
             }],
             reconcile_connections=False)
         ```
@@ -1040,8 +1040,8 @@ class ServiceAttachment(pulumi.CustomResource):
                 "482878270665",
             ],
             consumer_accept_lists=[{
-                "projectIdOrNum": "658859330310",
-                "connectionLimit": 4,
+                "project_id_or_num": "658859330310",
+                "connection_limit": 4,
             }])
         psc_ilb_consumer_address = gcp.compute.Address("psc_ilb_consumer_address",
             name="psc-ilb-consumer-address",
@@ -1107,8 +1107,8 @@ class ServiceAttachment(pulumi.CustomResource):
             nat_subnets=[psc_ilb_nat.id],
             target_service=psc_ilb_target_service.id,
             consumer_accept_lists=[{
-                "networkUrl": psc_ilb_consumer_network.self_link,
-                "connectionLimit": 1,
+                "network_url": psc_ilb_consumer_network.self_link,
+                "connection_limit": 1,
             }])
         psc_ilb_consumer_subnetwork = gcp.compute.Subnetwork("psc_ilb_consumer_subnetwork",
             name="psc-ilb-consumer-network",
@@ -1182,8 +1182,8 @@ class ServiceAttachment(pulumi.CustomResource):
                 "482878270665",
             ],
             consumer_accept_lists=[{
-                "projectIdOrNum": "658859330310",
-                "connectionLimit": 4,
+                "project_id_or_num": "658859330310",
+                "connection_limit": 4,
             }],
             reconcile_connections=False)
         ```

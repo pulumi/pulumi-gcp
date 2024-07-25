@@ -1048,7 +1048,7 @@ class RouterNat(pulumi.CustomResource):
             source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
             subnetworks=[{
                 "name": subnet.id,
-                "sourceIpRangesToNats": ["ALL_IP_RANGES"],
+                "source_ip_ranges_to_nats": ["ALL_IP_RANGES"],
             }])
         ```
         ### Router Nat Rules
@@ -1087,14 +1087,14 @@ class RouterNat(pulumi.CustomResource):
             source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
             subnetworks=[{
                 "name": subnet.id,
-                "sourceIpRangesToNats": ["ALL_IP_RANGES"],
+                "source_ip_ranges_to_nats": ["ALL_IP_RANGES"],
             }],
             rules=[{
-                "ruleNumber": 100,
+                "rule_number": 100,
                 "description": "nat rules example",
                 "match": "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')",
                 "action": {
-                    "sourceNatActiveIps": [
+                    "source_nat_active_ips": [
                         addr2.self_link,
                         addr3.self_link,
                     ],
@@ -1128,7 +1128,7 @@ class RouterNat(pulumi.CustomResource):
             description="vpc spoke for inter vpc nat",
             hub=hub.id,
             linked_vpc_network={
-                "excludeExportRanges": [
+                "exclude_export_ranges": [
                     "198.51.100.0/24",
                     "10.10.0.0/16",
                 ],
@@ -1145,14 +1145,14 @@ class RouterNat(pulumi.CustomResource):
             type="PRIVATE",
             subnetworks=[{
                 "name": subnet.id,
-                "sourceIpRangesToNats": ["ALL_IP_RANGES"],
+                "source_ip_ranges_to_nats": ["ALL_IP_RANGES"],
             }],
             rules=[{
-                "ruleNumber": 100,
+                "rule_number": 100,
                 "description": "rule for private nat",
                 "match": "nexthop.hub == \\"//networkconnectivity.googleapis.com/projects/acm-test-proj-123/locations/global/hubs/my-hub\\"",
                 "action": {
-                    "sourceNatActiveRanges": [subnet.self_link],
+                    "source_nat_active_ranges": [subnet.self_link],
                 },
             }])
         ```
@@ -1335,7 +1335,7 @@ class RouterNat(pulumi.CustomResource):
             source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
             subnetworks=[{
                 "name": subnet.id,
-                "sourceIpRangesToNats": ["ALL_IP_RANGES"],
+                "source_ip_ranges_to_nats": ["ALL_IP_RANGES"],
             }])
         ```
         ### Router Nat Rules
@@ -1374,14 +1374,14 @@ class RouterNat(pulumi.CustomResource):
             source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
             subnetworks=[{
                 "name": subnet.id,
-                "sourceIpRangesToNats": ["ALL_IP_RANGES"],
+                "source_ip_ranges_to_nats": ["ALL_IP_RANGES"],
             }],
             rules=[{
-                "ruleNumber": 100,
+                "rule_number": 100,
                 "description": "nat rules example",
                 "match": "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')",
                 "action": {
-                    "sourceNatActiveIps": [
+                    "source_nat_active_ips": [
                         addr2.self_link,
                         addr3.self_link,
                     ],
@@ -1415,7 +1415,7 @@ class RouterNat(pulumi.CustomResource):
             description="vpc spoke for inter vpc nat",
             hub=hub.id,
             linked_vpc_network={
-                "excludeExportRanges": [
+                "exclude_export_ranges": [
                     "198.51.100.0/24",
                     "10.10.0.0/16",
                 ],
@@ -1432,14 +1432,14 @@ class RouterNat(pulumi.CustomResource):
             type="PRIVATE",
             subnetworks=[{
                 "name": subnet.id,
-                "sourceIpRangesToNats": ["ALL_IP_RANGES"],
+                "source_ip_ranges_to_nats": ["ALL_IP_RANGES"],
             }],
             rules=[{
-                "ruleNumber": 100,
+                "rule_number": 100,
                 "description": "rule for private nat",
                 "match": "nexthop.hub == \\"//networkconnectivity.googleapis.com/projects/acm-test-proj-123/locations/global/hubs/my-hub\\"",
                 "action": {
-                    "sourceNatActiveRanges": [subnet.self_link],
+                    "source_nat_active_ranges": [subnet.self_link],
                 },
             }])
         ```

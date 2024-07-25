@@ -86,14 +86,14 @@ import (
 //				TableName:    table.Name,
 //				SubsetView: &bigtable.AuthorizedViewSubsetViewArgs{
 //					RowPrefixes: pulumi.StringArray{
-//						invokeBase64encode.Result,
+//						pulumi.String(invokeBase64encode.Result),
 //					},
 //					FamilySubsets: bigtable.AuthorizedViewSubsetViewFamilySubsetArray{
 //						&bigtable.AuthorizedViewSubsetViewFamilySubsetArgs{
 //							FamilyName: pulumi.String("family-first"),
 //							Qualifiers: pulumi.StringArray{
-//								invokeBase64encode1.Result,
-//								invokeBase64encode2.Result,
+//								pulumi.String(invokeBase64encode1.Result),
+//								pulumi.String(invokeBase64encode2.Result),
 //							},
 //						},
 //						&bigtable.AuthorizedViewSubsetViewFamilySubsetArgs{

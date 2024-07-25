@@ -482,7 +482,7 @@ class Topic(pulumi.CustomResource):
         example = gcp.pubsub.Topic("example",
             name="example-topic",
             message_storage_policy={
-                "allowedPersistenceRegions": ["europe-west3"],
+                "allowed_persistence_regions": ["europe-west3"],
             })
         ```
         ### Pubsub Topic Schema Settings
@@ -526,11 +526,11 @@ class Topic(pulumi.CustomResource):
         example = gcp.pubsub.Topic("example",
             name="example-topic",
             ingestion_data_source_settings={
-                "awsKinesis": {
-                    "streamArn": "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name",
-                    "consumerArn": "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111",
-                    "awsRoleArn": "arn:aws:iam::111111111111:role/fake-role-name",
-                    "gcpServiceAccount": "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
+                "aws_kinesis": {
+                    "stream_arn": "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name",
+                    "consumer_arn": "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111",
+                    "aws_role_arn": "arn:aws:iam::111111111111:role/fake-role-name",
+                    "gcp_service_account": "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
                 },
             })
         ```
@@ -651,7 +651,7 @@ class Topic(pulumi.CustomResource):
         example = gcp.pubsub.Topic("example",
             name="example-topic",
             message_storage_policy={
-                "allowedPersistenceRegions": ["europe-west3"],
+                "allowed_persistence_regions": ["europe-west3"],
             })
         ```
         ### Pubsub Topic Schema Settings
@@ -695,11 +695,11 @@ class Topic(pulumi.CustomResource):
         example = gcp.pubsub.Topic("example",
             name="example-topic",
             ingestion_data_source_settings={
-                "awsKinesis": {
-                    "streamArn": "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name",
-                    "consumerArn": "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111",
-                    "awsRoleArn": "arn:aws:iam::111111111111:role/fake-role-name",
-                    "gcpServiceAccount": "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
+                "aws_kinesis": {
+                    "stream_arn": "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name",
+                    "consumer_arn": "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111",
+                    "aws_role_arn": "arn:aws:iam::111111111111:role/fake-role-name",
+                    "gcp_service_account": "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
                 },
             })
         ```

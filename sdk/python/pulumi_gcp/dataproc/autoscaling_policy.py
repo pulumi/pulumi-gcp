@@ -308,21 +308,21 @@ class AutoscalingPolicy(pulumi.CustomResource):
             policy_id="dataproc-policy",
             location="us-central1",
             worker_config={
-                "maxInstances": 3,
+                "max_instances": 3,
             },
             basic_algorithm={
-                "yarnConfig": {
-                    "gracefulDecommissionTimeout": "30s",
-                    "scaleUpFactor": 0.5,
-                    "scaleDownFactor": 0.5,
+                "yarn_config": {
+                    "graceful_decommission_timeout": "30s",
+                    "scale_up_factor": 0.5,
+                    "scale_down_factor": 0.5,
                 },
             })
         basic = gcp.dataproc.Cluster("basic",
             name="dataproc-policy",
             region="us-central1",
             cluster_config={
-                "autoscalingConfig": {
-                    "policyUri": asp.name,
+                "autoscaling_config": {
+                    "policy_uri": asp.name,
                 },
             })
         ```
@@ -391,21 +391,21 @@ class AutoscalingPolicy(pulumi.CustomResource):
             policy_id="dataproc-policy",
             location="us-central1",
             worker_config={
-                "maxInstances": 3,
+                "max_instances": 3,
             },
             basic_algorithm={
-                "yarnConfig": {
-                    "gracefulDecommissionTimeout": "30s",
-                    "scaleUpFactor": 0.5,
-                    "scaleDownFactor": 0.5,
+                "yarn_config": {
+                    "graceful_decommission_timeout": "30s",
+                    "scale_up_factor": 0.5,
+                    "scale_down_factor": 0.5,
                 },
             })
         basic = gcp.dataproc.Cluster("basic",
             name="dataproc-policy",
             region="us-central1",
             cluster_config={
-                "autoscalingConfig": {
-                    "policyUri": asp.name,
+                "autoscaling_config": {
+                    "policy_uri": asp.name,
                 },
             })
         ```

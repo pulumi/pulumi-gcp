@@ -530,12 +530,12 @@ class Stream(pulumi.CustomResource):
             region="us-central1",
             settings={
                 "tier": "db-f1-micro",
-                "backupConfiguration": {
+                "backup_configuration": {
                     "enabled": True,
-                    "binaryLogEnabled": True,
+                    "binary_log_enabled": True,
                 },
-                "ipConfiguration": {
-                    "authorizedNetworks": [
+                "ip_configuration": {
+                    "authorized_networks": [
                         {
                             "value": "34.71.242.81",
                         },
@@ -601,7 +601,7 @@ class Stream(pulumi.CustomResource):
             connection_profile_id="destination-profile",
             gcs_profile={
                 "bucket": bucket.name,
-                "rootPath": "/path",
+                "root_path": "/path",
             })
         default = gcp.datastream.Stream("default",
             stream_id="my-stream",
@@ -612,21 +612,21 @@ class Stream(pulumi.CustomResource):
                 "key": "value",
             },
             source_config={
-                "sourceConnectionProfile": source_connection_profile.id,
-                "mysqlSourceConfig": {
-                    "includeObjects": {
-                        "mysqlDatabases": [{
+                "source_connection_profile": source_connection_profile.id,
+                "mysql_source_config": {
+                    "include_objects": {
+                        "mysql_databases": [{
                             "database": "my-database",
-                            "mysqlTables": [
+                            "mysql_tables": [
                                 {
                                     "table": "includedTable",
-                                    "mysqlColumns": [{
+                                    "mysql_columns": [{
                                         "column": "includedColumn",
-                                        "dataType": "VARCHAR",
+                                        "data_type": "VARCHAR",
                                         "collation": "utf8mb4",
-                                        "primaryKey": False,
+                                        "primary_key": False,
                                         "nullable": False,
-                                        "ordinalPosition": 0,
+                                        "ordinal_position": 0,
                                     }],
                                 },
                                 {
@@ -635,50 +635,50 @@ class Stream(pulumi.CustomResource):
                             ],
                         }],
                     },
-                    "excludeObjects": {
-                        "mysqlDatabases": [{
+                    "exclude_objects": {
+                        "mysql_databases": [{
                             "database": "my-database",
-                            "mysqlTables": [{
+                            "mysql_tables": [{
                                 "table": "excludedTable",
-                                "mysqlColumns": [{
+                                "mysql_columns": [{
                                     "column": "excludedColumn",
-                                    "dataType": "VARCHAR",
+                                    "data_type": "VARCHAR",
                                     "collation": "utf8mb4",
-                                    "primaryKey": False,
+                                    "primary_key": False,
                                     "nullable": False,
-                                    "ordinalPosition": 0,
+                                    "ordinal_position": 0,
                                 }],
                             }],
                         }],
                     },
-                    "maxConcurrentCdcTasks": 5,
+                    "max_concurrent_cdc_tasks": 5,
                 },
             },
             destination_config={
-                "destinationConnectionProfile": destination_connection_profile.id,
-                "gcsDestinationConfig": {
+                "destination_connection_profile": destination_connection_profile.id,
+                "gcs_destination_config": {
                     "path": "mydata",
-                    "fileRotationMb": 200,
-                    "fileRotationInterval": "60s",
-                    "jsonFileFormat": {
-                        "schemaFileFormat": "NO_SCHEMA_FILE",
+                    "file_rotation_mb": 200,
+                    "file_rotation_interval": "60s",
+                    "json_file_format": {
+                        "schema_file_format": "NO_SCHEMA_FILE",
                         "compression": "GZIP",
                     },
                 },
             },
             backfill_all={
-                "mysqlExcludedObjects": {
-                    "mysqlDatabases": [{
+                "mysql_excluded_objects": {
+                    "mysql_databases": [{
                         "database": "my-database",
-                        "mysqlTables": [{
+                        "mysql_tables": [{
                             "table": "excludedTable",
-                            "mysqlColumns": [{
+                            "mysql_columns": [{
                                 "column": "excludedColumn",
-                                "dataType": "VARCHAR",
+                                "data_type": "VARCHAR",
                                 "collation": "utf8mb4",
-                                "primaryKey": False,
+                                "primary_key": False,
                                 "nullable": False,
-                                "ordinalPosition": 0,
+                                "ordinal_position": 0,
                             }],
                         }],
                     }],
@@ -715,28 +715,28 @@ class Stream(pulumi.CustomResource):
             stream_id="my-stream",
             desired_state="RUNNING",
             source_config={
-                "sourceConnectionProfile": source.id,
-                "postgresqlSourceConfig": {
-                    "maxConcurrentBackfillTasks": 12,
+                "source_connection_profile": source.id,
+                "postgresql_source_config": {
+                    "max_concurrent_backfill_tasks": 12,
                     "publication": "publication",
-                    "replicationSlot": "replication_slot",
-                    "includeObjects": {
-                        "postgresqlSchemas": [{
+                    "replication_slot": "replication_slot",
+                    "include_objects": {
+                        "postgresql_schemas": [{
                             "schema": "schema",
-                            "postgresqlTables": [{
+                            "postgresql_tables": [{
                                 "table": "table",
-                                "postgresqlColumns": [{
+                                "postgresql_columns": [{
                                     "column": "column",
                                 }],
                             }],
                         }],
                     },
-                    "excludeObjects": {
-                        "postgresqlSchemas": [{
+                    "exclude_objects": {
+                        "postgresql_schemas": [{
                             "schema": "schema",
-                            "postgresqlTables": [{
+                            "postgresql_tables": [{
                                 "table": "table",
-                                "postgresqlColumns": [{
+                                "postgresql_columns": [{
                                     "column": "column",
                                 }],
                             }],
@@ -745,23 +745,23 @@ class Stream(pulumi.CustomResource):
                 },
             },
             destination_config={
-                "destinationConnectionProfile": destination.id,
-                "bigqueryDestinationConfig": {
-                    "dataFreshness": "900s",
-                    "sourceHierarchyDatasets": {
-                        "datasetTemplate": {
+                "destination_connection_profile": destination.id,
+                "bigquery_destination_config": {
+                    "data_freshness": "900s",
+                    "source_hierarchy_datasets": {
+                        "dataset_template": {
                             "location": "us-central1",
                         },
                     },
                 },
             },
             backfill_all={
-                "postgresqlExcludedObjects": {
-                    "postgresqlSchemas": [{
+                "postgresql_excluded_objects": {
+                    "postgresql_schemas": [{
                         "schema": "schema",
-                        "postgresqlTables": [{
+                        "postgresql_tables": [{
                             "table": "table",
-                            "postgresqlColumns": [{
+                            "postgresql_columns": [{
                                 "column": "column",
                             }],
                         }],
@@ -784,7 +784,7 @@ class Stream(pulumi.CustomResource):
                 "port": 1521,
                 "username": "user",
                 "password": "pass",
-                "databaseService": "ORCL",
+                "database_service": "ORCL",
             })
         destination = gcp.datastream.ConnectionProfile("destination",
             display_name="BigQuery Destination",
@@ -797,53 +797,53 @@ class Stream(pulumi.CustomResource):
             stream_id="my-stream",
             desired_state="RUNNING",
             source_config={
-                "sourceConnectionProfile": source.id,
-                "oracleSourceConfig": {
-                    "maxConcurrentCdcTasks": 8,
-                    "maxConcurrentBackfillTasks": 12,
-                    "includeObjects": {
-                        "oracleSchemas": [{
+                "source_connection_profile": source.id,
+                "oracle_source_config": {
+                    "max_concurrent_cdc_tasks": 8,
+                    "max_concurrent_backfill_tasks": 12,
+                    "include_objects": {
+                        "oracle_schemas": [{
                             "schema": "schema",
-                            "oracleTables": [{
+                            "oracle_tables": [{
                                 "table": "table",
-                                "oracleColumns": [{
+                                "oracle_columns": [{
                                     "column": "column",
                                 }],
                             }],
                         }],
                     },
-                    "excludeObjects": {
-                        "oracleSchemas": [{
+                    "exclude_objects": {
+                        "oracle_schemas": [{
                             "schema": "schema",
-                            "oracleTables": [{
+                            "oracle_tables": [{
                                 "table": "table",
-                                "oracleColumns": [{
+                                "oracle_columns": [{
                                     "column": "column",
                                 }],
                             }],
                         }],
                     },
-                    "dropLargeObjects": {},
+                    "drop_large_objects": {},
                 },
             },
             destination_config={
-                "destinationConnectionProfile": destination.id,
-                "bigqueryDestinationConfig": {
-                    "dataFreshness": "900s",
-                    "sourceHierarchyDatasets": {
-                        "datasetTemplate": {
+                "destination_connection_profile": destination.id,
+                "bigquery_destination_config": {
+                    "data_freshness": "900s",
+                    "source_hierarchy_datasets": {
+                        "dataset_template": {
                             "location": "us-central1",
                         },
                     },
                 },
             },
             backfill_all={
-                "oracleExcludedObjects": {
-                    "oracleSchemas": [{
+                "oracle_excluded_objects": {
+                    "oracle_schemas": [{
                         "schema": "schema",
-                        "oracleTables": [{
+                        "oracle_tables": [{
                             "table": "table",
-                            "oracleColumns": [{
+                            "oracle_columns": [{
                                 "column": "column",
                             }],
                         }],
@@ -865,8 +865,8 @@ class Stream(pulumi.CustomResource):
             deletion_protection=True,
             settings={
                 "tier": "db-custom-2-4096",
-                "ipConfiguration": {
-                    "authorizedNetworks": [
+                "ip_configuration": {
+                    "authorized_networks": [
                         {
                             "value": "34.71.242.81",
                         },
@@ -914,9 +914,9 @@ class Stream(pulumi.CustomResource):
             location="us-central1",
             stream_id="stream",
             source_config={
-                "sourceConnectionProfile": source.id,
-                "sqlServerSourceConfig": {
-                    "includeObjects": {
+                "source_connection_profile": source.id,
+                "sql_server_source_config": {
+                    "include_objects": {
                         "schemas": [{
                             "schema": "schema",
                             "tables": [{
@@ -927,11 +927,11 @@ class Stream(pulumi.CustomResource):
                 },
             },
             destination_config={
-                "destinationConnectionProfile": destination.id,
-                "bigqueryDestinationConfig": {
-                    "dataFreshness": "900s",
-                    "sourceHierarchyDatasets": {
-                        "datasetTemplate": {
+                "destination_connection_profile": destination.id,
+                "bigquery_destination_config": {
+                    "data_freshness": "900s",
+                    "source_hierarchy_datasets": {
+                        "dataset_template": {
                             "location": "us-central1",
                         },
                     },
@@ -962,12 +962,12 @@ class Stream(pulumi.CustomResource):
             region="us-central1",
             settings={
                 "tier": "db-f1-micro",
-                "backupConfiguration": {
+                "backup_configuration": {
                     "enabled": True,
-                    "binaryLogEnabled": True,
+                    "binary_log_enabled": True,
                 },
-                "ipConfiguration": {
-                    "authorizedNetworks": [
+                "ip_configuration": {
+                    "authorized_networks": [
                         {
                             "value": "34.71.242.81",
                         },
@@ -1009,15 +1009,15 @@ class Stream(pulumi.CustomResource):
             location="us-central1",
             stream_id="postgres-bigquery",
             source_config={
-                "sourceConnectionProfile": source_connection_profile.id,
-                "mysqlSourceConfig": {},
+                "source_connection_profile": source_connection_profile.id,
+                "mysql_source_config": {},
             },
             destination_config={
-                "destinationConnectionProfile": destination_connection_profile2.id,
-                "bigqueryDestinationConfig": {
-                    "dataFreshness": "900s",
-                    "singleTargetDataset": {
-                        "datasetId": postgres.id,
+                "destination_connection_profile": destination_connection_profile2.id,
+                "bigquery_destination_config": {
+                    "data_freshness": "900s",
+                    "single_target_dataset": {
+                        "dataset_id": postgres.id,
                     },
                 },
             },
@@ -1040,12 +1040,12 @@ class Stream(pulumi.CustomResource):
             region="us-central1",
             settings={
                 "tier": "db-f1-micro",
-                "backupConfiguration": {
+                "backup_configuration": {
                     "enabled": True,
-                    "binaryLogEnabled": True,
+                    "binary_log_enabled": True,
                 },
-                "ipConfiguration": {
-                    "authorizedNetworks": [
+                "ip_configuration": {
+                    "authorized_networks": [
                         {
                             "value": "34.71.242.81",
                         },
@@ -1100,16 +1100,16 @@ class Stream(pulumi.CustomResource):
             location="us-central1",
             display_name="my stream",
             source_config={
-                "sourceConnectionProfile": source_connection_profile.id,
-                "mysqlSourceConfig": {},
+                "source_connection_profile": source_connection_profile.id,
+                "mysql_source_config": {},
             },
             destination_config={
-                "destinationConnectionProfile": destination_connection_profile.id,
-                "bigqueryDestinationConfig": {
-                    "sourceHierarchyDatasets": {
-                        "datasetTemplate": {
+                "destination_connection_profile": destination_connection_profile.id,
+                "bigquery_destination_config": {
+                    "source_hierarchy_datasets": {
+                        "dataset_template": {
                             "location": "us-central1",
-                            "kmsKeyName": "bigquery-kms-name",
+                            "kms_key_name": "bigquery-kms-name",
                         },
                     },
                 },
@@ -1191,12 +1191,12 @@ class Stream(pulumi.CustomResource):
             region="us-central1",
             settings={
                 "tier": "db-f1-micro",
-                "backupConfiguration": {
+                "backup_configuration": {
                     "enabled": True,
-                    "binaryLogEnabled": True,
+                    "binary_log_enabled": True,
                 },
-                "ipConfiguration": {
-                    "authorizedNetworks": [
+                "ip_configuration": {
+                    "authorized_networks": [
                         {
                             "value": "34.71.242.81",
                         },
@@ -1262,7 +1262,7 @@ class Stream(pulumi.CustomResource):
             connection_profile_id="destination-profile",
             gcs_profile={
                 "bucket": bucket.name,
-                "rootPath": "/path",
+                "root_path": "/path",
             })
         default = gcp.datastream.Stream("default",
             stream_id="my-stream",
@@ -1273,21 +1273,21 @@ class Stream(pulumi.CustomResource):
                 "key": "value",
             },
             source_config={
-                "sourceConnectionProfile": source_connection_profile.id,
-                "mysqlSourceConfig": {
-                    "includeObjects": {
-                        "mysqlDatabases": [{
+                "source_connection_profile": source_connection_profile.id,
+                "mysql_source_config": {
+                    "include_objects": {
+                        "mysql_databases": [{
                             "database": "my-database",
-                            "mysqlTables": [
+                            "mysql_tables": [
                                 {
                                     "table": "includedTable",
-                                    "mysqlColumns": [{
+                                    "mysql_columns": [{
                                         "column": "includedColumn",
-                                        "dataType": "VARCHAR",
+                                        "data_type": "VARCHAR",
                                         "collation": "utf8mb4",
-                                        "primaryKey": False,
+                                        "primary_key": False,
                                         "nullable": False,
-                                        "ordinalPosition": 0,
+                                        "ordinal_position": 0,
                                     }],
                                 },
                                 {
@@ -1296,50 +1296,50 @@ class Stream(pulumi.CustomResource):
                             ],
                         }],
                     },
-                    "excludeObjects": {
-                        "mysqlDatabases": [{
+                    "exclude_objects": {
+                        "mysql_databases": [{
                             "database": "my-database",
-                            "mysqlTables": [{
+                            "mysql_tables": [{
                                 "table": "excludedTable",
-                                "mysqlColumns": [{
+                                "mysql_columns": [{
                                     "column": "excludedColumn",
-                                    "dataType": "VARCHAR",
+                                    "data_type": "VARCHAR",
                                     "collation": "utf8mb4",
-                                    "primaryKey": False,
+                                    "primary_key": False,
                                     "nullable": False,
-                                    "ordinalPosition": 0,
+                                    "ordinal_position": 0,
                                 }],
                             }],
                         }],
                     },
-                    "maxConcurrentCdcTasks": 5,
+                    "max_concurrent_cdc_tasks": 5,
                 },
             },
             destination_config={
-                "destinationConnectionProfile": destination_connection_profile.id,
-                "gcsDestinationConfig": {
+                "destination_connection_profile": destination_connection_profile.id,
+                "gcs_destination_config": {
                     "path": "mydata",
-                    "fileRotationMb": 200,
-                    "fileRotationInterval": "60s",
-                    "jsonFileFormat": {
-                        "schemaFileFormat": "NO_SCHEMA_FILE",
+                    "file_rotation_mb": 200,
+                    "file_rotation_interval": "60s",
+                    "json_file_format": {
+                        "schema_file_format": "NO_SCHEMA_FILE",
                         "compression": "GZIP",
                     },
                 },
             },
             backfill_all={
-                "mysqlExcludedObjects": {
-                    "mysqlDatabases": [{
+                "mysql_excluded_objects": {
+                    "mysql_databases": [{
                         "database": "my-database",
-                        "mysqlTables": [{
+                        "mysql_tables": [{
                             "table": "excludedTable",
-                            "mysqlColumns": [{
+                            "mysql_columns": [{
                                 "column": "excludedColumn",
-                                "dataType": "VARCHAR",
+                                "data_type": "VARCHAR",
                                 "collation": "utf8mb4",
-                                "primaryKey": False,
+                                "primary_key": False,
                                 "nullable": False,
-                                "ordinalPosition": 0,
+                                "ordinal_position": 0,
                             }],
                         }],
                     }],
@@ -1376,28 +1376,28 @@ class Stream(pulumi.CustomResource):
             stream_id="my-stream",
             desired_state="RUNNING",
             source_config={
-                "sourceConnectionProfile": source.id,
-                "postgresqlSourceConfig": {
-                    "maxConcurrentBackfillTasks": 12,
+                "source_connection_profile": source.id,
+                "postgresql_source_config": {
+                    "max_concurrent_backfill_tasks": 12,
                     "publication": "publication",
-                    "replicationSlot": "replication_slot",
-                    "includeObjects": {
-                        "postgresqlSchemas": [{
+                    "replication_slot": "replication_slot",
+                    "include_objects": {
+                        "postgresql_schemas": [{
                             "schema": "schema",
-                            "postgresqlTables": [{
+                            "postgresql_tables": [{
                                 "table": "table",
-                                "postgresqlColumns": [{
+                                "postgresql_columns": [{
                                     "column": "column",
                                 }],
                             }],
                         }],
                     },
-                    "excludeObjects": {
-                        "postgresqlSchemas": [{
+                    "exclude_objects": {
+                        "postgresql_schemas": [{
                             "schema": "schema",
-                            "postgresqlTables": [{
+                            "postgresql_tables": [{
                                 "table": "table",
-                                "postgresqlColumns": [{
+                                "postgresql_columns": [{
                                     "column": "column",
                                 }],
                             }],
@@ -1406,23 +1406,23 @@ class Stream(pulumi.CustomResource):
                 },
             },
             destination_config={
-                "destinationConnectionProfile": destination.id,
-                "bigqueryDestinationConfig": {
-                    "dataFreshness": "900s",
-                    "sourceHierarchyDatasets": {
-                        "datasetTemplate": {
+                "destination_connection_profile": destination.id,
+                "bigquery_destination_config": {
+                    "data_freshness": "900s",
+                    "source_hierarchy_datasets": {
+                        "dataset_template": {
                             "location": "us-central1",
                         },
                     },
                 },
             },
             backfill_all={
-                "postgresqlExcludedObjects": {
-                    "postgresqlSchemas": [{
+                "postgresql_excluded_objects": {
+                    "postgresql_schemas": [{
                         "schema": "schema",
-                        "postgresqlTables": [{
+                        "postgresql_tables": [{
                             "table": "table",
-                            "postgresqlColumns": [{
+                            "postgresql_columns": [{
                                 "column": "column",
                             }],
                         }],
@@ -1445,7 +1445,7 @@ class Stream(pulumi.CustomResource):
                 "port": 1521,
                 "username": "user",
                 "password": "pass",
-                "databaseService": "ORCL",
+                "database_service": "ORCL",
             })
         destination = gcp.datastream.ConnectionProfile("destination",
             display_name="BigQuery Destination",
@@ -1458,53 +1458,53 @@ class Stream(pulumi.CustomResource):
             stream_id="my-stream",
             desired_state="RUNNING",
             source_config={
-                "sourceConnectionProfile": source.id,
-                "oracleSourceConfig": {
-                    "maxConcurrentCdcTasks": 8,
-                    "maxConcurrentBackfillTasks": 12,
-                    "includeObjects": {
-                        "oracleSchemas": [{
+                "source_connection_profile": source.id,
+                "oracle_source_config": {
+                    "max_concurrent_cdc_tasks": 8,
+                    "max_concurrent_backfill_tasks": 12,
+                    "include_objects": {
+                        "oracle_schemas": [{
                             "schema": "schema",
-                            "oracleTables": [{
+                            "oracle_tables": [{
                                 "table": "table",
-                                "oracleColumns": [{
+                                "oracle_columns": [{
                                     "column": "column",
                                 }],
                             }],
                         }],
                     },
-                    "excludeObjects": {
-                        "oracleSchemas": [{
+                    "exclude_objects": {
+                        "oracle_schemas": [{
                             "schema": "schema",
-                            "oracleTables": [{
+                            "oracle_tables": [{
                                 "table": "table",
-                                "oracleColumns": [{
+                                "oracle_columns": [{
                                     "column": "column",
                                 }],
                             }],
                         }],
                     },
-                    "dropLargeObjects": {},
+                    "drop_large_objects": {},
                 },
             },
             destination_config={
-                "destinationConnectionProfile": destination.id,
-                "bigqueryDestinationConfig": {
-                    "dataFreshness": "900s",
-                    "sourceHierarchyDatasets": {
-                        "datasetTemplate": {
+                "destination_connection_profile": destination.id,
+                "bigquery_destination_config": {
+                    "data_freshness": "900s",
+                    "source_hierarchy_datasets": {
+                        "dataset_template": {
                             "location": "us-central1",
                         },
                     },
                 },
             },
             backfill_all={
-                "oracleExcludedObjects": {
-                    "oracleSchemas": [{
+                "oracle_excluded_objects": {
+                    "oracle_schemas": [{
                         "schema": "schema",
-                        "oracleTables": [{
+                        "oracle_tables": [{
                             "table": "table",
-                            "oracleColumns": [{
+                            "oracle_columns": [{
                                 "column": "column",
                             }],
                         }],
@@ -1526,8 +1526,8 @@ class Stream(pulumi.CustomResource):
             deletion_protection=True,
             settings={
                 "tier": "db-custom-2-4096",
-                "ipConfiguration": {
-                    "authorizedNetworks": [
+                "ip_configuration": {
+                    "authorized_networks": [
                         {
                             "value": "34.71.242.81",
                         },
@@ -1575,9 +1575,9 @@ class Stream(pulumi.CustomResource):
             location="us-central1",
             stream_id="stream",
             source_config={
-                "sourceConnectionProfile": source.id,
-                "sqlServerSourceConfig": {
-                    "includeObjects": {
+                "source_connection_profile": source.id,
+                "sql_server_source_config": {
+                    "include_objects": {
                         "schemas": [{
                             "schema": "schema",
                             "tables": [{
@@ -1588,11 +1588,11 @@ class Stream(pulumi.CustomResource):
                 },
             },
             destination_config={
-                "destinationConnectionProfile": destination.id,
-                "bigqueryDestinationConfig": {
-                    "dataFreshness": "900s",
-                    "sourceHierarchyDatasets": {
-                        "datasetTemplate": {
+                "destination_connection_profile": destination.id,
+                "bigquery_destination_config": {
+                    "data_freshness": "900s",
+                    "source_hierarchy_datasets": {
+                        "dataset_template": {
                             "location": "us-central1",
                         },
                     },
@@ -1623,12 +1623,12 @@ class Stream(pulumi.CustomResource):
             region="us-central1",
             settings={
                 "tier": "db-f1-micro",
-                "backupConfiguration": {
+                "backup_configuration": {
                     "enabled": True,
-                    "binaryLogEnabled": True,
+                    "binary_log_enabled": True,
                 },
-                "ipConfiguration": {
-                    "authorizedNetworks": [
+                "ip_configuration": {
+                    "authorized_networks": [
                         {
                             "value": "34.71.242.81",
                         },
@@ -1670,15 +1670,15 @@ class Stream(pulumi.CustomResource):
             location="us-central1",
             stream_id="postgres-bigquery",
             source_config={
-                "sourceConnectionProfile": source_connection_profile.id,
-                "mysqlSourceConfig": {},
+                "source_connection_profile": source_connection_profile.id,
+                "mysql_source_config": {},
             },
             destination_config={
-                "destinationConnectionProfile": destination_connection_profile2.id,
-                "bigqueryDestinationConfig": {
-                    "dataFreshness": "900s",
-                    "singleTargetDataset": {
-                        "datasetId": postgres.id,
+                "destination_connection_profile": destination_connection_profile2.id,
+                "bigquery_destination_config": {
+                    "data_freshness": "900s",
+                    "single_target_dataset": {
+                        "dataset_id": postgres.id,
                     },
                 },
             },
@@ -1701,12 +1701,12 @@ class Stream(pulumi.CustomResource):
             region="us-central1",
             settings={
                 "tier": "db-f1-micro",
-                "backupConfiguration": {
+                "backup_configuration": {
                     "enabled": True,
-                    "binaryLogEnabled": True,
+                    "binary_log_enabled": True,
                 },
-                "ipConfiguration": {
-                    "authorizedNetworks": [
+                "ip_configuration": {
+                    "authorized_networks": [
                         {
                             "value": "34.71.242.81",
                         },
@@ -1761,16 +1761,16 @@ class Stream(pulumi.CustomResource):
             location="us-central1",
             display_name="my stream",
             source_config={
-                "sourceConnectionProfile": source_connection_profile.id,
-                "mysqlSourceConfig": {},
+                "source_connection_profile": source_connection_profile.id,
+                "mysql_source_config": {},
             },
             destination_config={
-                "destinationConnectionProfile": destination_connection_profile.id,
-                "bigqueryDestinationConfig": {
-                    "sourceHierarchyDatasets": {
-                        "datasetTemplate": {
+                "destination_connection_profile": destination_connection_profile.id,
+                "bigquery_destination_config": {
+                    "source_hierarchy_datasets": {
+                        "dataset_template": {
                             "location": "us-central1",
-                            "kmsKeyName": "bigquery-kms-name",
+                            "kms_key_name": "bigquery-kms-name",
                         },
                     },
                 },

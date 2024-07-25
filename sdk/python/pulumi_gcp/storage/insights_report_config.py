@@ -284,34 +284,34 @@ class InsightsReportConfig(pulumi.CustomResource):
             location="us-central1",
             frequency_options={
                 "frequency": "WEEKLY",
-                "startDate": {
+                "start_date": {
                     "day": 15,
                     "month": 3,
                     "year": 2050,
                 },
-                "endDate": {
+                "end_date": {
                     "day": 15,
                     "month": 4,
                     "year": 2050,
                 },
             },
             csv_options={
-                "recordSeparator": "\\n",
+                "record_separator": "\\n",
                 "delimiter": ",",
-                "headerRequired": False,
+                "header_required": False,
             },
             object_metadata_report_options={
-                "metadataFields": [
+                "metadata_fields": [
                     "bucket",
                     "name",
                     "project",
                 ],
-                "storageFilters": {
+                "storage_filters": {
                     "bucket": report_bucket.name,
                 },
-                "storageDestinationOptions": {
+                "storage_destination_options": {
                     "bucket": report_bucket.name,
-                    "destinationPath": "test-insights-reports",
+                    "destination_path": "test-insights-reports",
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[admin]))
@@ -389,34 +389,34 @@ class InsightsReportConfig(pulumi.CustomResource):
             location="us-central1",
             frequency_options={
                 "frequency": "WEEKLY",
-                "startDate": {
+                "start_date": {
                     "day": 15,
                     "month": 3,
                     "year": 2050,
                 },
-                "endDate": {
+                "end_date": {
                     "day": 15,
                     "month": 4,
                     "year": 2050,
                 },
             },
             csv_options={
-                "recordSeparator": "\\n",
+                "record_separator": "\\n",
                 "delimiter": ",",
-                "headerRequired": False,
+                "header_required": False,
             },
             object_metadata_report_options={
-                "metadataFields": [
+                "metadata_fields": [
                     "bucket",
                     "name",
                     "project",
                 ],
-                "storageFilters": {
+                "storage_filters": {
                     "bucket": report_bucket.name,
                 },
-                "storageDestinationOptions": {
+                "storage_destination_options": {
                     "bucket": report_bucket.name,
-                    "destinationPath": "test-insights-reports",
+                    "destination_path": "test-insights-reports",
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[admin]))

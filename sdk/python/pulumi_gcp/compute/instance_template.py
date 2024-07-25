@@ -1201,9 +1201,9 @@ class InstanceTemplate(pulumi.CustomResource):
             region="us-central1",
             snapshot_schedule_policy={
                 "schedule": {
-                    "dailySchedule": {
-                        "daysInCycle": 1,
-                        "startTime": "04:00",
+                    "daily_schedule": {
+                        "days_in_cycle": 1,
+                        "start_time": "04:00",
                     },
                 },
             })
@@ -1221,19 +1221,19 @@ class InstanceTemplate(pulumi.CustomResource):
             machine_type="e2-medium",
             can_ip_forward=False,
             scheduling={
-                "automaticRestart": True,
-                "onHostMaintenance": "MIGRATE",
+                "automatic_restart": True,
+                "on_host_maintenance": "MIGRATE",
             },
             disks=[
                 {
-                    "sourceImage": "debian-cloud/debian-11",
-                    "autoDelete": True,
+                    "source_image": "debian-cloud/debian-11",
+                    "auto_delete": True,
                     "boot": True,
-                    "resourcePolicies": daily_backup.id,
+                    "resource_policies": daily_backup.id,
                 },
                 {
                     "source": foobar.name,
-                    "autoDelete": False,
+                    "auto_delete": False,
                     "boot": False,
                 },
             ],
@@ -1267,8 +1267,8 @@ class InstanceTemplate(pulumi.CustomResource):
                 "bar",
             ],
             disks=[{
-                "sourceImage": my_image.self_link,
-                "autoDelete": True,
+                "source_image": my_image.self_link,
+                "auto_delete": True,
                 "boot": True,
             }],
             network_interfaces=[{
@@ -1276,7 +1276,7 @@ class InstanceTemplate(pulumi.CustomResource):
             }],
             scheduling={
                 "preemptible": False,
-                "automaticRestart": True,
+                "automatic_restart": True,
             },
             metadata={
                 "gce-software-declaration": \"\"\"{
@@ -1467,9 +1467,9 @@ class InstanceTemplate(pulumi.CustomResource):
             region="us-central1",
             snapshot_schedule_policy={
                 "schedule": {
-                    "dailySchedule": {
-                        "daysInCycle": 1,
-                        "startTime": "04:00",
+                    "daily_schedule": {
+                        "days_in_cycle": 1,
+                        "start_time": "04:00",
                     },
                 },
             })
@@ -1487,19 +1487,19 @@ class InstanceTemplate(pulumi.CustomResource):
             machine_type="e2-medium",
             can_ip_forward=False,
             scheduling={
-                "automaticRestart": True,
-                "onHostMaintenance": "MIGRATE",
+                "automatic_restart": True,
+                "on_host_maintenance": "MIGRATE",
             },
             disks=[
                 {
-                    "sourceImage": "debian-cloud/debian-11",
-                    "autoDelete": True,
+                    "source_image": "debian-cloud/debian-11",
+                    "auto_delete": True,
                     "boot": True,
-                    "resourcePolicies": daily_backup.id,
+                    "resource_policies": daily_backup.id,
                 },
                 {
                     "source": foobar.name,
-                    "autoDelete": False,
+                    "auto_delete": False,
                     "boot": False,
                 },
             ],
@@ -1533,8 +1533,8 @@ class InstanceTemplate(pulumi.CustomResource):
                 "bar",
             ],
             disks=[{
-                "sourceImage": my_image.self_link,
-                "autoDelete": True,
+                "source_image": my_image.self_link,
+                "auto_delete": True,
                 "boot": True,
             }],
             network_interfaces=[{
@@ -1542,7 +1542,7 @@ class InstanceTemplate(pulumi.CustomResource):
             }],
             scheduling={
                 "preemptible": False,
-                "automaticRestart": True,
+                "automatic_restart": True,
             },
             metadata={
                 "gce-software-declaration": \"\"\"{

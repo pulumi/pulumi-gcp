@@ -223,7 +223,7 @@ import (
 //					"attribute.environment": pulumi.String("assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\""),
 //				},
 //				Saml: &iam.WorkloadIdentityPoolProviderSamlArgs{
-//					IdpMetadataXml: invokeFile.Result,
+//					IdpMetadataXml: pulumi.String(invokeFile.Result),
 //				},
 //			})
 //			if err != nil {
@@ -273,7 +273,7 @@ import (
 //					"attribute.environment": pulumi.String("assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\""),
 //				},
 //				Saml: &iam.WorkloadIdentityPoolProviderSamlArgs{
-//					IdpMetadataXml: invokeFile.Result,
+//					IdpMetadataXml: pulumi.String(invokeFile.Result),
 //				},
 //			})
 //			if err != nil {
