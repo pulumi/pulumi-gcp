@@ -358,8 +358,8 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="tf-test-membership_8493",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[primary]))
@@ -369,7 +369,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             membership_id=membership.membership_id,
             user=f"service-{project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com",
             role={
-                "predefinedRole": "ANTHOS_SUPPORT",
+                "predefined_role": "ANTHOS_SUPPORT",
             },
             location="global",
             opts = pulumi.ResourceOptions(depends_on=[membership]))
@@ -436,8 +436,8 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
         membership = gcp.gkehub.Membership("membership",
             membership_id="tf-test-membership_8493",
             endpoint={
-                "gkeCluster": {
-                    "resourceLink": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                "gke_cluster": {
+                    "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[primary]))
@@ -447,7 +447,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             membership_id=membership.membership_id,
             user=f"service-{project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com",
             role={
-                "predefinedRole": "ANTHOS_SUPPORT",
+                "predefined_role": "ANTHOS_SUPPORT",
             },
             location="global",
             opts = pulumi.ResourceOptions(depends_on=[membership]))

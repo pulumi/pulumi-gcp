@@ -177,7 +177,7 @@ import (
 //			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-base64", &secretmanager.SecretVersionArgs{
 //				Secret:             secret_basic.ID(),
 //				IsSecretDataBase64: pulumi.Bool(true),
-//				SecretData:         invokeFilebase64.Result,
+//				SecretData:         pulumi.String(invokeFilebase64.Result),
 //			})
 //			if err != nil {
 //				return err

@@ -334,7 +334,7 @@ class DataPolicy(pulumi.CustomResource):
             return_type="{\\"typeKind\\" :  \\"STRING\\"}",
             arguments=[{
                 "name": "ssn",
-                "dataType": "{\\"typeKind\\" :  \\"STRING\\"}",
+                "data_type": "{\\"typeKind\\" :  \\"STRING\\"}",
             }])
         data_policy = gcp.bigquerydatapolicy.DataPolicy("data_policy",
             location="us-central1",
@@ -451,7 +451,7 @@ class DataPolicy(pulumi.CustomResource):
             return_type="{\\"typeKind\\" :  \\"STRING\\"}",
             arguments=[{
                 "name": "ssn",
-                "dataType": "{\\"typeKind\\" :  \\"STRING\\"}",
+                "data_type": "{\\"typeKind\\" :  \\"STRING\\"}",
             }])
         data_policy = gcp.bigquerydatapolicy.DataPolicy("data_policy",
             location="us-central1",

@@ -574,45 +574,45 @@ class AwsNodePool(pulumi.CustomResource):
             location="us-west1")
         primary = gcp.container.AwsCluster("primary",
             authorization={
-                "adminUsers": [{
+                "admin_users": [{
                     "username": "my@service-account.com",
                 }],
             },
             aws_region="my-aws-region",
             control_plane={
-                "awsServicesAuthentication": {
-                    "roleArn": "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
-                    "roleSessionName": "my--1p-dev-session",
+                "aws_services_authentication": {
+                    "role_arn": "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
+                    "role_session_name": "my--1p-dev-session",
                 },
-                "configEncryption": {
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                "config_encryption": {
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 },
-                "databaseEncryption": {
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                "database_encryption": {
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 },
-                "iamInstanceProfile": "my--1p-dev-controlplane",
-                "subnetIds": ["subnet-00000000000000000"],
+                "iam_instance_profile": "my--1p-dev-controlplane",
+                "subnet_ids": ["subnet-00000000000000000"],
                 "version": versions.valid_versions[0],
-                "instanceType": "t3.medium",
-                "mainVolume": {
+                "instance_type": "t3.medium",
+                "main_volume": {
                     "iops": 3000,
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    "sizeGib": 10,
-                    "volumeType": "GP3",
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "size_gib": 10,
+                    "volume_type": "GP3",
                 },
-                "proxyConfig": {
-                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                "proxy_config": {
+                    "secret_arn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secret_version": "12345678-ABCD-EFGH-IJKL-987654321098",
                 },
-                "rootVolume": {
+                "root_volume": {
                     "iops": 3000,
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    "sizeGib": 10,
-                    "volumeType": "GP3",
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "size_gib": 10,
+                    "volume_type": "GP3",
                 },
-                "securityGroupIds": ["sg-00000000000000000"],
-                "sshConfig": {
-                    "ec2KeyPair": "my--1p-dev-ssh",
+                "security_group_ids": ["sg-00000000000000000"],
+                "ssh_config": {
+                    "ec2_key_pair": "my--1p-dev-ssh",
                 },
                 "tags": {
                     "owner": "my@service-account.com",
@@ -624,9 +624,9 @@ class AwsNodePool(pulumi.CustomResource):
             location="us-west1",
             name="name",
             networking={
-                "podAddressCidrBlocks": ["10.2.0.0/16"],
-                "serviceAddressCidrBlocks": ["10.1.0.0/16"],
-                "vpcId": "vpc-00000000000000000",
+                "pod_address_cidr_blocks": ["10.2.0.0/16"],
+                "service_address_cidr_blocks": ["10.1.0.0/16"],
+                "vpc_id": "vpc-00000000000000000",
             },
             annotations={
                 "label-one": "value-one",
@@ -635,35 +635,35 @@ class AwsNodePool(pulumi.CustomResource):
             project="my-project-name")
         primary_aws_node_pool = gcp.container.AwsNodePool("primary",
             autoscaling={
-                "maxNodeCount": 5,
-                "minNodeCount": 1,
+                "max_node_count": 5,
+                "min_node_count": 1,
             },
             cluster=primary.name,
             config={
-                "configEncryption": {
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                "config_encryption": {
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 },
-                "iamInstanceProfile": "my--1p-dev-nodepool",
-                "instanceType": "t3.medium",
+                "iam_instance_profile": "my--1p-dev-nodepool",
+                "instance_type": "t3.medium",
                 "labels": {
-                    "label-one": "value-one",
+                    "label_one": "value-one",
                 },
-                "rootVolume": {
+                "root_volume": {
                     "iops": 3000,
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    "sizeGib": 10,
-                    "volumeType": "GP3",
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "size_gib": 10,
+                    "volume_type": "GP3",
                 },
-                "securityGroupIds": ["sg-00000000000000000"],
-                "proxyConfig": {
-                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                "security_group_ids": ["sg-00000000000000000"],
+                "proxy_config": {
+                    "secret_arn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secret_version": "12345678-ABCD-EFGH-IJKL-987654321098",
                 },
-                "sshConfig": {
-                    "ec2KeyPair": "my--1p-dev-ssh",
+                "ssh_config": {
+                    "ec2_key_pair": "my--1p-dev-ssh",
                 },
                 "tags": {
-                    "tag-one": "value-one",
+                    "tag_one": "value-one",
                 },
                 "taints": [{
                     "effect": "PREFER_NO_SCHEDULE",
@@ -673,7 +673,7 @@ class AwsNodePool(pulumi.CustomResource):
             },
             location="us-west1",
             max_pods_constraint={
-                "maxPodsPerNode": 110,
+                "max_pods_per_node": 110,
             },
             name="node-pool-name",
             subnet_id="subnet-00000000000000000",
@@ -682,7 +682,7 @@ class AwsNodePool(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             management={
-                "autoRepair": True,
+                "auto_repair": True,
             },
             project="my-project-name")
         ```
@@ -696,45 +696,45 @@ class AwsNodePool(pulumi.CustomResource):
             location="us-west1")
         primary = gcp.container.AwsCluster("primary",
             authorization={
-                "adminUsers": [{
+                "admin_users": [{
                     "username": "my@service-account.com",
                 }],
             },
             aws_region="my-aws-region",
             control_plane={
-                "awsServicesAuthentication": {
-                    "roleArn": "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
-                    "roleSessionName": "my--1p-dev-session",
+                "aws_services_authentication": {
+                    "role_arn": "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
+                    "role_session_name": "my--1p-dev-session",
                 },
-                "configEncryption": {
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                "config_encryption": {
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 },
-                "databaseEncryption": {
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                "database_encryption": {
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 },
-                "iamInstanceProfile": "my--1p-dev-controlplane",
-                "subnetIds": ["subnet-00000000000000000"],
+                "iam_instance_profile": "my--1p-dev-controlplane",
+                "subnet_ids": ["subnet-00000000000000000"],
                 "version": versions.valid_versions[0],
-                "instanceType": "t3.medium",
-                "mainVolume": {
+                "instance_type": "t3.medium",
+                "main_volume": {
                     "iops": 3000,
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    "sizeGib": 10,
-                    "volumeType": "GP3",
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "size_gib": 10,
+                    "volume_type": "GP3",
                 },
-                "proxyConfig": {
-                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                "proxy_config": {
+                    "secret_arn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secret_version": "12345678-ABCD-EFGH-IJKL-987654321098",
                 },
-                "rootVolume": {
+                "root_volume": {
                     "iops": 3000,
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    "sizeGib": 10,
-                    "volumeType": "GP3",
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "size_gib": 10,
+                    "volume_type": "GP3",
                 },
-                "securityGroupIds": ["sg-00000000000000000"],
-                "sshConfig": {
-                    "ec2KeyPair": "my--1p-dev-ssh",
+                "security_group_ids": ["sg-00000000000000000"],
+                "ssh_config": {
+                    "ec2_key_pair": "my--1p-dev-ssh",
                 },
                 "tags": {
                     "owner": "my@service-account.com",
@@ -746,9 +746,9 @@ class AwsNodePool(pulumi.CustomResource):
             location="us-west1",
             name="name",
             networking={
-                "podAddressCidrBlocks": ["10.2.0.0/16"],
-                "serviceAddressCidrBlocks": ["10.1.0.0/16"],
-                "vpcId": "vpc-00000000000000000",
+                "pod_address_cidr_blocks": ["10.2.0.0/16"],
+                "service_address_cidr_blocks": ["10.1.0.0/16"],
+                "vpc_id": "vpc-00000000000000000",
             },
             annotations={
                 "label-one": "value-one",
@@ -757,35 +757,35 @@ class AwsNodePool(pulumi.CustomResource):
             project="my-project-name")
         primary_aws_node_pool = gcp.container.AwsNodePool("primary",
             autoscaling={
-                "maxNodeCount": 5,
-                "minNodeCount": 1,
+                "max_node_count": 5,
+                "min_node_count": 1,
             },
             cluster=primary.name,
             config={
-                "configEncryption": {
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                "config_encryption": {
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 },
-                "iamInstanceProfile": "my--1p-dev-nodepool",
-                "instanceType": "t3.medium",
+                "iam_instance_profile": "my--1p-dev-nodepool",
+                "instance_type": "t3.medium",
                 "labels": {
-                    "label-one": "value-one",
+                    "label_one": "value-one",
                 },
-                "rootVolume": {
+                "root_volume": {
                     "iops": 3000,
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    "sizeGib": 10,
-                    "volumeType": "gp3",
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "size_gib": 10,
+                    "volume_type": "gp3",
                 },
-                "securityGroupIds": ["sg-00000000000000000"],
-                "proxyConfig": {
-                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                "security_group_ids": ["sg-00000000000000000"],
+                "proxy_config": {
+                    "secret_arn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secret_version": "12345678-ABCD-EFGH-IJKL-987654321098",
                 },
-                "sshConfig": {
-                    "ec2KeyPair": "my--1p-dev-ssh",
+                "ssh_config": {
+                    "ec2_key_pair": "my--1p-dev-ssh",
                 },
                 "tags": {
-                    "tag-one": "value-one",
+                    "tag_one": "value-one",
                 },
                 "taints": [{
                     "effect": "prefer_no_schedule",
@@ -795,7 +795,7 @@ class AwsNodePool(pulumi.CustomResource):
             },
             location="us-west1",
             max_pods_constraint={
-                "maxPodsPerNode": 110,
+                "max_pods_per_node": 110,
             },
             name="node-pool-name",
             subnet_id="subnet-00000000000000000",
@@ -815,45 +815,45 @@ class AwsNodePool(pulumi.CustomResource):
             location="us-west1")
         primary = gcp.container.AwsCluster("primary",
             authorization={
-                "adminUsers": [{
+                "admin_users": [{
                     "username": "my@service-account.com",
                 }],
             },
             aws_region="my-aws-region",
             control_plane={
-                "awsServicesAuthentication": {
-                    "roleArn": "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
-                    "roleSessionName": "my--1p-dev-session",
+                "aws_services_authentication": {
+                    "role_arn": "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
+                    "role_session_name": "my--1p-dev-session",
                 },
-                "configEncryption": {
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                "config_encryption": {
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 },
-                "databaseEncryption": {
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                "database_encryption": {
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 },
-                "iamInstanceProfile": "my--1p-dev-controlplane",
-                "subnetIds": ["subnet-00000000000000000"],
+                "iam_instance_profile": "my--1p-dev-controlplane",
+                "subnet_ids": ["subnet-00000000000000000"],
                 "version": versions.valid_versions[0],
-                "instanceType": "t3.medium",
-                "mainVolume": {
+                "instance_type": "t3.medium",
+                "main_volume": {
                     "iops": 3000,
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    "sizeGib": 10,
-                    "volumeType": "GP3",
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "size_gib": 10,
+                    "volume_type": "GP3",
                 },
-                "proxyConfig": {
-                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                "proxy_config": {
+                    "secret_arn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secret_version": "12345678-ABCD-EFGH-IJKL-987654321098",
                 },
-                "rootVolume": {
+                "root_volume": {
                     "iops": 3000,
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    "sizeGib": 10,
-                    "volumeType": "GP3",
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "size_gib": 10,
+                    "volume_type": "GP3",
                 },
-                "securityGroupIds": ["sg-00000000000000000"],
-                "sshConfig": {
-                    "ec2KeyPair": "my--1p-dev-ssh",
+                "security_group_ids": ["sg-00000000000000000"],
+                "ssh_config": {
+                    "ec2_key_pair": "my--1p-dev-ssh",
                 },
                 "tags": {
                     "owner": "my@service-account.com",
@@ -865,9 +865,9 @@ class AwsNodePool(pulumi.CustomResource):
             location="us-west1",
             name="name",
             networking={
-                "podAddressCidrBlocks": ["10.2.0.0/16"],
-                "serviceAddressCidrBlocks": ["10.1.0.0/16"],
-                "vpcId": "vpc-00000000000000000",
+                "pod_address_cidr_blocks": ["10.2.0.0/16"],
+                "service_address_cidr_blocks": ["10.1.0.0/16"],
+                "vpc_id": "vpc-00000000000000000",
             },
             annotations={
                 "label-one": "value-one",
@@ -876,49 +876,49 @@ class AwsNodePool(pulumi.CustomResource):
             project="my-project-name")
         primary_aws_node_pool = gcp.container.AwsNodePool("primary",
             autoscaling={
-                "maxNodeCount": 5,
-                "minNodeCount": 1,
+                "max_node_count": 5,
+                "min_node_count": 1,
             },
             cluster=primary.name,
             config={
-                "configEncryption": {
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                "config_encryption": {
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 },
-                "iamInstanceProfile": "my--1p-dev-nodepool",
-                "instanceType": "t3.medium",
+                "iam_instance_profile": "my--1p-dev-nodepool",
+                "instance_type": "t3.medium",
                 "labels": {
-                    "label-one": "value-one",
+                    "label_one": "value-one",
                 },
-                "rootVolume": {
+                "root_volume": {
                     "iops": 3000,
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    "sizeGib": 10,
-                    "volumeType": "gp3",
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "size_gib": 10,
+                    "volume_type": "gp3",
                 },
-                "securityGroupIds": ["sg-00000000000000000"],
-                "proxyConfig": {
-                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                "security_group_ids": ["sg-00000000000000000"],
+                "proxy_config": {
+                    "secret_arn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secret_version": "12345678-ABCD-EFGH-IJKL-987654321098",
                 },
-                "sshConfig": {
-                    "ec2KeyPair": "my--1p-dev-ssh",
+                "ssh_config": {
+                    "ec2_key_pair": "my--1p-dev-ssh",
                 },
                 "tags": {
-                    "tag-one": "value-one",
+                    "tag_one": "value-one",
                 },
                 "taints": [{
                     "effect": "prefer_no_schedule",
                     "key": "taint-key",
                     "value": "taint-value",
                 }],
-                "instancePlacement": {
+                "instance_placement": {
                     "tenancy": "dedicated",
                 },
-                "imageType": "ubuntu",
+                "image_type": "ubuntu",
             },
             location="us-west1",
             max_pods_constraint={
-                "maxPodsPerNode": 110,
+                "max_pods_per_node": 110,
             },
             name="node-pool-name",
             subnet_id="subnet-00000000000000000",
@@ -996,45 +996,45 @@ class AwsNodePool(pulumi.CustomResource):
             location="us-west1")
         primary = gcp.container.AwsCluster("primary",
             authorization={
-                "adminUsers": [{
+                "admin_users": [{
                     "username": "my@service-account.com",
                 }],
             },
             aws_region="my-aws-region",
             control_plane={
-                "awsServicesAuthentication": {
-                    "roleArn": "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
-                    "roleSessionName": "my--1p-dev-session",
+                "aws_services_authentication": {
+                    "role_arn": "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
+                    "role_session_name": "my--1p-dev-session",
                 },
-                "configEncryption": {
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                "config_encryption": {
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 },
-                "databaseEncryption": {
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                "database_encryption": {
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 },
-                "iamInstanceProfile": "my--1p-dev-controlplane",
-                "subnetIds": ["subnet-00000000000000000"],
+                "iam_instance_profile": "my--1p-dev-controlplane",
+                "subnet_ids": ["subnet-00000000000000000"],
                 "version": versions.valid_versions[0],
-                "instanceType": "t3.medium",
-                "mainVolume": {
+                "instance_type": "t3.medium",
+                "main_volume": {
                     "iops": 3000,
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    "sizeGib": 10,
-                    "volumeType": "GP3",
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "size_gib": 10,
+                    "volume_type": "GP3",
                 },
-                "proxyConfig": {
-                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                "proxy_config": {
+                    "secret_arn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secret_version": "12345678-ABCD-EFGH-IJKL-987654321098",
                 },
-                "rootVolume": {
+                "root_volume": {
                     "iops": 3000,
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    "sizeGib": 10,
-                    "volumeType": "GP3",
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "size_gib": 10,
+                    "volume_type": "GP3",
                 },
-                "securityGroupIds": ["sg-00000000000000000"],
-                "sshConfig": {
-                    "ec2KeyPair": "my--1p-dev-ssh",
+                "security_group_ids": ["sg-00000000000000000"],
+                "ssh_config": {
+                    "ec2_key_pair": "my--1p-dev-ssh",
                 },
                 "tags": {
                     "owner": "my@service-account.com",
@@ -1046,9 +1046,9 @@ class AwsNodePool(pulumi.CustomResource):
             location="us-west1",
             name="name",
             networking={
-                "podAddressCidrBlocks": ["10.2.0.0/16"],
-                "serviceAddressCidrBlocks": ["10.1.0.0/16"],
-                "vpcId": "vpc-00000000000000000",
+                "pod_address_cidr_blocks": ["10.2.0.0/16"],
+                "service_address_cidr_blocks": ["10.1.0.0/16"],
+                "vpc_id": "vpc-00000000000000000",
             },
             annotations={
                 "label-one": "value-one",
@@ -1057,35 +1057,35 @@ class AwsNodePool(pulumi.CustomResource):
             project="my-project-name")
         primary_aws_node_pool = gcp.container.AwsNodePool("primary",
             autoscaling={
-                "maxNodeCount": 5,
-                "minNodeCount": 1,
+                "max_node_count": 5,
+                "min_node_count": 1,
             },
             cluster=primary.name,
             config={
-                "configEncryption": {
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                "config_encryption": {
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 },
-                "iamInstanceProfile": "my--1p-dev-nodepool",
-                "instanceType": "t3.medium",
+                "iam_instance_profile": "my--1p-dev-nodepool",
+                "instance_type": "t3.medium",
                 "labels": {
-                    "label-one": "value-one",
+                    "label_one": "value-one",
                 },
-                "rootVolume": {
+                "root_volume": {
                     "iops": 3000,
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    "sizeGib": 10,
-                    "volumeType": "GP3",
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "size_gib": 10,
+                    "volume_type": "GP3",
                 },
-                "securityGroupIds": ["sg-00000000000000000"],
-                "proxyConfig": {
-                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                "security_group_ids": ["sg-00000000000000000"],
+                "proxy_config": {
+                    "secret_arn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secret_version": "12345678-ABCD-EFGH-IJKL-987654321098",
                 },
-                "sshConfig": {
-                    "ec2KeyPair": "my--1p-dev-ssh",
+                "ssh_config": {
+                    "ec2_key_pair": "my--1p-dev-ssh",
                 },
                 "tags": {
-                    "tag-one": "value-one",
+                    "tag_one": "value-one",
                 },
                 "taints": [{
                     "effect": "PREFER_NO_SCHEDULE",
@@ -1095,7 +1095,7 @@ class AwsNodePool(pulumi.CustomResource):
             },
             location="us-west1",
             max_pods_constraint={
-                "maxPodsPerNode": 110,
+                "max_pods_per_node": 110,
             },
             name="node-pool-name",
             subnet_id="subnet-00000000000000000",
@@ -1104,7 +1104,7 @@ class AwsNodePool(pulumi.CustomResource):
                 "label-one": "value-one",
             },
             management={
-                "autoRepair": True,
+                "auto_repair": True,
             },
             project="my-project-name")
         ```
@@ -1118,45 +1118,45 @@ class AwsNodePool(pulumi.CustomResource):
             location="us-west1")
         primary = gcp.container.AwsCluster("primary",
             authorization={
-                "adminUsers": [{
+                "admin_users": [{
                     "username": "my@service-account.com",
                 }],
             },
             aws_region="my-aws-region",
             control_plane={
-                "awsServicesAuthentication": {
-                    "roleArn": "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
-                    "roleSessionName": "my--1p-dev-session",
+                "aws_services_authentication": {
+                    "role_arn": "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
+                    "role_session_name": "my--1p-dev-session",
                 },
-                "configEncryption": {
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                "config_encryption": {
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 },
-                "databaseEncryption": {
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                "database_encryption": {
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 },
-                "iamInstanceProfile": "my--1p-dev-controlplane",
-                "subnetIds": ["subnet-00000000000000000"],
+                "iam_instance_profile": "my--1p-dev-controlplane",
+                "subnet_ids": ["subnet-00000000000000000"],
                 "version": versions.valid_versions[0],
-                "instanceType": "t3.medium",
-                "mainVolume": {
+                "instance_type": "t3.medium",
+                "main_volume": {
                     "iops": 3000,
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    "sizeGib": 10,
-                    "volumeType": "GP3",
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "size_gib": 10,
+                    "volume_type": "GP3",
                 },
-                "proxyConfig": {
-                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                "proxy_config": {
+                    "secret_arn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secret_version": "12345678-ABCD-EFGH-IJKL-987654321098",
                 },
-                "rootVolume": {
+                "root_volume": {
                     "iops": 3000,
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    "sizeGib": 10,
-                    "volumeType": "GP3",
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "size_gib": 10,
+                    "volume_type": "GP3",
                 },
-                "securityGroupIds": ["sg-00000000000000000"],
-                "sshConfig": {
-                    "ec2KeyPair": "my--1p-dev-ssh",
+                "security_group_ids": ["sg-00000000000000000"],
+                "ssh_config": {
+                    "ec2_key_pair": "my--1p-dev-ssh",
                 },
                 "tags": {
                     "owner": "my@service-account.com",
@@ -1168,9 +1168,9 @@ class AwsNodePool(pulumi.CustomResource):
             location="us-west1",
             name="name",
             networking={
-                "podAddressCidrBlocks": ["10.2.0.0/16"],
-                "serviceAddressCidrBlocks": ["10.1.0.0/16"],
-                "vpcId": "vpc-00000000000000000",
+                "pod_address_cidr_blocks": ["10.2.0.0/16"],
+                "service_address_cidr_blocks": ["10.1.0.0/16"],
+                "vpc_id": "vpc-00000000000000000",
             },
             annotations={
                 "label-one": "value-one",
@@ -1179,35 +1179,35 @@ class AwsNodePool(pulumi.CustomResource):
             project="my-project-name")
         primary_aws_node_pool = gcp.container.AwsNodePool("primary",
             autoscaling={
-                "maxNodeCount": 5,
-                "minNodeCount": 1,
+                "max_node_count": 5,
+                "min_node_count": 1,
             },
             cluster=primary.name,
             config={
-                "configEncryption": {
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                "config_encryption": {
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 },
-                "iamInstanceProfile": "my--1p-dev-nodepool",
-                "instanceType": "t3.medium",
+                "iam_instance_profile": "my--1p-dev-nodepool",
+                "instance_type": "t3.medium",
                 "labels": {
-                    "label-one": "value-one",
+                    "label_one": "value-one",
                 },
-                "rootVolume": {
+                "root_volume": {
                     "iops": 3000,
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    "sizeGib": 10,
-                    "volumeType": "gp3",
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "size_gib": 10,
+                    "volume_type": "gp3",
                 },
-                "securityGroupIds": ["sg-00000000000000000"],
-                "proxyConfig": {
-                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                "security_group_ids": ["sg-00000000000000000"],
+                "proxy_config": {
+                    "secret_arn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secret_version": "12345678-ABCD-EFGH-IJKL-987654321098",
                 },
-                "sshConfig": {
-                    "ec2KeyPair": "my--1p-dev-ssh",
+                "ssh_config": {
+                    "ec2_key_pair": "my--1p-dev-ssh",
                 },
                 "tags": {
-                    "tag-one": "value-one",
+                    "tag_one": "value-one",
                 },
                 "taints": [{
                     "effect": "prefer_no_schedule",
@@ -1217,7 +1217,7 @@ class AwsNodePool(pulumi.CustomResource):
             },
             location="us-west1",
             max_pods_constraint={
-                "maxPodsPerNode": 110,
+                "max_pods_per_node": 110,
             },
             name="node-pool-name",
             subnet_id="subnet-00000000000000000",
@@ -1237,45 +1237,45 @@ class AwsNodePool(pulumi.CustomResource):
             location="us-west1")
         primary = gcp.container.AwsCluster("primary",
             authorization={
-                "adminUsers": [{
+                "admin_users": [{
                     "username": "my@service-account.com",
                 }],
             },
             aws_region="my-aws-region",
             control_plane={
-                "awsServicesAuthentication": {
-                    "roleArn": "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
-                    "roleSessionName": "my--1p-dev-session",
+                "aws_services_authentication": {
+                    "role_arn": "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
+                    "role_session_name": "my--1p-dev-session",
                 },
-                "configEncryption": {
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                "config_encryption": {
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 },
-                "databaseEncryption": {
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                "database_encryption": {
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 },
-                "iamInstanceProfile": "my--1p-dev-controlplane",
-                "subnetIds": ["subnet-00000000000000000"],
+                "iam_instance_profile": "my--1p-dev-controlplane",
+                "subnet_ids": ["subnet-00000000000000000"],
                 "version": versions.valid_versions[0],
-                "instanceType": "t3.medium",
-                "mainVolume": {
+                "instance_type": "t3.medium",
+                "main_volume": {
                     "iops": 3000,
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    "sizeGib": 10,
-                    "volumeType": "GP3",
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "size_gib": 10,
+                    "volume_type": "GP3",
                 },
-                "proxyConfig": {
-                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                "proxy_config": {
+                    "secret_arn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secret_version": "12345678-ABCD-EFGH-IJKL-987654321098",
                 },
-                "rootVolume": {
+                "root_volume": {
                     "iops": 3000,
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    "sizeGib": 10,
-                    "volumeType": "GP3",
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "size_gib": 10,
+                    "volume_type": "GP3",
                 },
-                "securityGroupIds": ["sg-00000000000000000"],
-                "sshConfig": {
-                    "ec2KeyPair": "my--1p-dev-ssh",
+                "security_group_ids": ["sg-00000000000000000"],
+                "ssh_config": {
+                    "ec2_key_pair": "my--1p-dev-ssh",
                 },
                 "tags": {
                     "owner": "my@service-account.com",
@@ -1287,9 +1287,9 @@ class AwsNodePool(pulumi.CustomResource):
             location="us-west1",
             name="name",
             networking={
-                "podAddressCidrBlocks": ["10.2.0.0/16"],
-                "serviceAddressCidrBlocks": ["10.1.0.0/16"],
-                "vpcId": "vpc-00000000000000000",
+                "pod_address_cidr_blocks": ["10.2.0.0/16"],
+                "service_address_cidr_blocks": ["10.1.0.0/16"],
+                "vpc_id": "vpc-00000000000000000",
             },
             annotations={
                 "label-one": "value-one",
@@ -1298,49 +1298,49 @@ class AwsNodePool(pulumi.CustomResource):
             project="my-project-name")
         primary_aws_node_pool = gcp.container.AwsNodePool("primary",
             autoscaling={
-                "maxNodeCount": 5,
-                "minNodeCount": 1,
+                "max_node_count": 5,
+                "min_node_count": 1,
             },
             cluster=primary.name,
             config={
-                "configEncryption": {
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                "config_encryption": {
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 },
-                "iamInstanceProfile": "my--1p-dev-nodepool",
-                "instanceType": "t3.medium",
+                "iam_instance_profile": "my--1p-dev-nodepool",
+                "instance_type": "t3.medium",
                 "labels": {
-                    "label-one": "value-one",
+                    "label_one": "value-one",
                 },
-                "rootVolume": {
+                "root_volume": {
                     "iops": 3000,
-                    "kmsKeyArn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
-                    "sizeGib": 10,
-                    "volumeType": "gp3",
+                    "kms_key_arn": "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+                    "size_gib": 10,
+                    "volume_type": "gp3",
                 },
-                "securityGroupIds": ["sg-00000000000000000"],
-                "proxyConfig": {
-                    "secretArn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
-                    "secretVersion": "12345678-ABCD-EFGH-IJKL-987654321098",
+                "security_group_ids": ["sg-00000000000000000"],
+                "proxy_config": {
+                    "secret_arn": "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+                    "secret_version": "12345678-ABCD-EFGH-IJKL-987654321098",
                 },
-                "sshConfig": {
-                    "ec2KeyPair": "my--1p-dev-ssh",
+                "ssh_config": {
+                    "ec2_key_pair": "my--1p-dev-ssh",
                 },
                 "tags": {
-                    "tag-one": "value-one",
+                    "tag_one": "value-one",
                 },
                 "taints": [{
                     "effect": "prefer_no_schedule",
                     "key": "taint-key",
                     "value": "taint-value",
                 }],
-                "instancePlacement": {
+                "instance_placement": {
                     "tenancy": "dedicated",
                 },
-                "imageType": "ubuntu",
+                "image_type": "ubuntu",
             },
             location="us-west1",
             max_pods_constraint={
-                "maxPodsPerNode": 110,
+                "max_pods_per_node": 110,
             },
             name="node-pool-name",
             subnet_id="subnet-00000000000000000",

@@ -743,7 +743,7 @@ class Repository(pulumi.CustomResource):
             description="example docker repository",
             format="DOCKER",
             docker_config={
-                "immutableTags": True,
+                "immutable_tags": True,
             })
         ```
         ### Artifact Registry Repository Cmek
@@ -788,7 +788,7 @@ class Repository(pulumi.CustomResource):
             format="DOCKER",
             mode="VIRTUAL_REPOSITORY",
             virtual_repository_config={
-                "upstreamPolicies": [
+                "upstream_policies": [
                     {
                         "id": "my-repository-upstream-1",
                         "repository": my_repo_upstream_1.id,
@@ -816,8 +816,8 @@ class Repository(pulumi.CustomResource):
             mode="REMOTE_REPOSITORY",
             remote_repository_config={
                 "description": "docker hub",
-                "dockerRepository": {
-                    "publicRepository": "DOCKER_HUB",
+                "docker_repository": {
+                    "public_repository": "DOCKER_HUB",
                 },
             })
         ```
@@ -835,10 +835,10 @@ class Repository(pulumi.CustomResource):
             mode="REMOTE_REPOSITORY",
             remote_repository_config={
                 "description": "Debian buster remote repository",
-                "aptRepository": {
-                    "publicRepository": {
-                        "repositoryBase": "DEBIAN",
-                        "repositoryPath": "debian/dists/buster",
+                "apt_repository": {
+                    "public_repository": {
+                        "repository_base": "DEBIAN",
+                        "repository_path": "debian/dists/buster",
                     },
                 },
             })
@@ -857,10 +857,10 @@ class Repository(pulumi.CustomResource):
             mode="REMOTE_REPOSITORY",
             remote_repository_config={
                 "description": "Rocky 9 remote repository",
-                "yumRepository": {
-                    "publicRepository": {
-                        "repositoryBase": "ROCKY",
-                        "repositoryPath": "pub/rocky/9/BaseOS/x86_64/os",
+                "yum_repository": {
+                    "public_repository": {
+                        "repository_base": "ROCKY",
+                        "repository_path": "pub/rocky/9/BaseOS/x86_64/os",
                     },
                 },
             })
@@ -882,21 +882,21 @@ class Repository(pulumi.CustomResource):
                     "id": "delete-prerelease",
                     "action": "DELETE",
                     "condition": {
-                        "tagState": "TAGGED",
-                        "tagPrefixes": [
+                        "tag_state": "TAGGED",
+                        "tag_prefixes": [
                             "alpha",
                             "v0",
                         ],
-                        "olderThan": "2592000s",
+                        "older_than": "2592000s",
                     },
                 },
                 {
                     "id": "keep-tagged-release",
                     "action": "KEEP",
                     "condition": {
-                        "tagState": "TAGGED",
-                        "tagPrefixes": ["release"],
-                        "packageNamePrefixes": [
+                        "tag_state": "TAGGED",
+                        "tag_prefixes": ["release"],
+                        "package_name_prefixes": [
                             "webapp",
                             "mobile",
                         ],
@@ -905,13 +905,13 @@ class Repository(pulumi.CustomResource):
                 {
                     "id": "keep-minimum-versions",
                     "action": "KEEP",
-                    "mostRecentVersions": {
-                        "packageNamePrefixes": [
+                    "most_recent_versions": {
+                        "package_name_prefixes": [
                             "webapp",
                             "mobile",
                             "sandbox",
                         ],
-                        "keepCount": 5,
+                        "keep_count": 5,
                     },
                 },
             ])
@@ -943,14 +943,14 @@ class Repository(pulumi.CustomResource):
             mode="REMOTE_REPOSITORY",
             remote_repository_config={
                 "description": "docker hub with custom credentials",
-                "disableUpstreamValidation": True,
-                "dockerRepository": {
-                    "publicRepository": "DOCKER_HUB",
+                "disable_upstream_validation": True,
+                "docker_repository": {
+                    "public_repository": "DOCKER_HUB",
                 },
-                "upstreamCredentials": {
-                    "usernamePasswordCredentials": {
+                "upstream_credentials": {
+                    "username_password_credentials": {
                         "username": "remote-username",
-                        "passwordSecretVersion": example_remote_secret_version.name,
+                        "password_secret_version": example_remote_secret_version.name,
                     },
                 },
             })
@@ -982,16 +982,16 @@ class Repository(pulumi.CustomResource):
             mode="REMOTE_REPOSITORY",
             remote_repository_config={
                 "description": "custom docker remote with credentials",
-                "disableUpstreamValidation": True,
-                "dockerRepository": {
-                    "customRepository": {
+                "disable_upstream_validation": True,
+                "docker_repository": {
+                    "custom_repository": {
                         "uri": "https://registry-1.docker.io",
                     },
                 },
-                "upstreamCredentials": {
-                    "usernamePasswordCredentials": {
+                "upstream_credentials": {
+                    "username_password_credentials": {
                         "username": "remote-username",
-                        "passwordSecretVersion": example_remote_secret_version.name,
+                        "password_secret_version": example_remote_secret_version.name,
                     },
                 },
             })
@@ -1023,16 +1023,16 @@ class Repository(pulumi.CustomResource):
             mode="REMOTE_REPOSITORY",
             remote_repository_config={
                 "description": "custom maven remote with credentials",
-                "disableUpstreamValidation": True,
-                "mavenRepository": {
-                    "customRepository": {
+                "disable_upstream_validation": True,
+                "maven_repository": {
+                    "custom_repository": {
                         "uri": "https://my.maven.registry",
                     },
                 },
-                "upstreamCredentials": {
-                    "usernamePasswordCredentials": {
+                "upstream_credentials": {
+                    "username_password_credentials": {
                         "username": "remote-username",
-                        "passwordSecretVersion": example_remote_secret_version.name,
+                        "password_secret_version": example_remote_secret_version.name,
                     },
                 },
             })
@@ -1064,16 +1064,16 @@ class Repository(pulumi.CustomResource):
             mode="REMOTE_REPOSITORY",
             remote_repository_config={
                 "description": "custom npm with credentials",
-                "disableUpstreamValidation": True,
-                "npmRepository": {
-                    "customRepository": {
+                "disable_upstream_validation": True,
+                "npm_repository": {
+                    "custom_repository": {
                         "uri": "https://my.npm.registry",
                     },
                 },
-                "upstreamCredentials": {
-                    "usernamePasswordCredentials": {
+                "upstream_credentials": {
+                    "username_password_credentials": {
                         "username": "remote-username",
-                        "passwordSecretVersion": example_remote_secret_version.name,
+                        "password_secret_version": example_remote_secret_version.name,
                     },
                 },
             })
@@ -1105,16 +1105,16 @@ class Repository(pulumi.CustomResource):
             mode="REMOTE_REPOSITORY",
             remote_repository_config={
                 "description": "custom npm with credentials",
-                "disableUpstreamValidation": True,
-                "pythonRepository": {
-                    "customRepository": {
+                "disable_upstream_validation": True,
+                "python_repository": {
+                    "custom_repository": {
                         "uri": "https://my.python.registry",
                     },
                 },
-                "upstreamCredentials": {
-                    "usernamePasswordCredentials": {
+                "upstream_credentials": {
+                    "username_password_credentials": {
                         "username": "remote-username",
-                        "passwordSecretVersion": example_remote_secret_version.name,
+                        "password_secret_version": example_remote_secret_version.name,
                     },
                 },
             })
@@ -1239,7 +1239,7 @@ class Repository(pulumi.CustomResource):
             description="example docker repository",
             format="DOCKER",
             docker_config={
-                "immutableTags": True,
+                "immutable_tags": True,
             })
         ```
         ### Artifact Registry Repository Cmek
@@ -1284,7 +1284,7 @@ class Repository(pulumi.CustomResource):
             format="DOCKER",
             mode="VIRTUAL_REPOSITORY",
             virtual_repository_config={
-                "upstreamPolicies": [
+                "upstream_policies": [
                     {
                         "id": "my-repository-upstream-1",
                         "repository": my_repo_upstream_1.id,
@@ -1312,8 +1312,8 @@ class Repository(pulumi.CustomResource):
             mode="REMOTE_REPOSITORY",
             remote_repository_config={
                 "description": "docker hub",
-                "dockerRepository": {
-                    "publicRepository": "DOCKER_HUB",
+                "docker_repository": {
+                    "public_repository": "DOCKER_HUB",
                 },
             })
         ```
@@ -1331,10 +1331,10 @@ class Repository(pulumi.CustomResource):
             mode="REMOTE_REPOSITORY",
             remote_repository_config={
                 "description": "Debian buster remote repository",
-                "aptRepository": {
-                    "publicRepository": {
-                        "repositoryBase": "DEBIAN",
-                        "repositoryPath": "debian/dists/buster",
+                "apt_repository": {
+                    "public_repository": {
+                        "repository_base": "DEBIAN",
+                        "repository_path": "debian/dists/buster",
                     },
                 },
             })
@@ -1353,10 +1353,10 @@ class Repository(pulumi.CustomResource):
             mode="REMOTE_REPOSITORY",
             remote_repository_config={
                 "description": "Rocky 9 remote repository",
-                "yumRepository": {
-                    "publicRepository": {
-                        "repositoryBase": "ROCKY",
-                        "repositoryPath": "pub/rocky/9/BaseOS/x86_64/os",
+                "yum_repository": {
+                    "public_repository": {
+                        "repository_base": "ROCKY",
+                        "repository_path": "pub/rocky/9/BaseOS/x86_64/os",
                     },
                 },
             })
@@ -1378,21 +1378,21 @@ class Repository(pulumi.CustomResource):
                     "id": "delete-prerelease",
                     "action": "DELETE",
                     "condition": {
-                        "tagState": "TAGGED",
-                        "tagPrefixes": [
+                        "tag_state": "TAGGED",
+                        "tag_prefixes": [
                             "alpha",
                             "v0",
                         ],
-                        "olderThan": "2592000s",
+                        "older_than": "2592000s",
                     },
                 },
                 {
                     "id": "keep-tagged-release",
                     "action": "KEEP",
                     "condition": {
-                        "tagState": "TAGGED",
-                        "tagPrefixes": ["release"],
-                        "packageNamePrefixes": [
+                        "tag_state": "TAGGED",
+                        "tag_prefixes": ["release"],
+                        "package_name_prefixes": [
                             "webapp",
                             "mobile",
                         ],
@@ -1401,13 +1401,13 @@ class Repository(pulumi.CustomResource):
                 {
                     "id": "keep-minimum-versions",
                     "action": "KEEP",
-                    "mostRecentVersions": {
-                        "packageNamePrefixes": [
+                    "most_recent_versions": {
+                        "package_name_prefixes": [
                             "webapp",
                             "mobile",
                             "sandbox",
                         ],
-                        "keepCount": 5,
+                        "keep_count": 5,
                     },
                 },
             ])
@@ -1439,14 +1439,14 @@ class Repository(pulumi.CustomResource):
             mode="REMOTE_REPOSITORY",
             remote_repository_config={
                 "description": "docker hub with custom credentials",
-                "disableUpstreamValidation": True,
-                "dockerRepository": {
-                    "publicRepository": "DOCKER_HUB",
+                "disable_upstream_validation": True,
+                "docker_repository": {
+                    "public_repository": "DOCKER_HUB",
                 },
-                "upstreamCredentials": {
-                    "usernamePasswordCredentials": {
+                "upstream_credentials": {
+                    "username_password_credentials": {
                         "username": "remote-username",
-                        "passwordSecretVersion": example_remote_secret_version.name,
+                        "password_secret_version": example_remote_secret_version.name,
                     },
                 },
             })
@@ -1478,16 +1478,16 @@ class Repository(pulumi.CustomResource):
             mode="REMOTE_REPOSITORY",
             remote_repository_config={
                 "description": "custom docker remote with credentials",
-                "disableUpstreamValidation": True,
-                "dockerRepository": {
-                    "customRepository": {
+                "disable_upstream_validation": True,
+                "docker_repository": {
+                    "custom_repository": {
                         "uri": "https://registry-1.docker.io",
                     },
                 },
-                "upstreamCredentials": {
-                    "usernamePasswordCredentials": {
+                "upstream_credentials": {
+                    "username_password_credentials": {
                         "username": "remote-username",
-                        "passwordSecretVersion": example_remote_secret_version.name,
+                        "password_secret_version": example_remote_secret_version.name,
                     },
                 },
             })
@@ -1519,16 +1519,16 @@ class Repository(pulumi.CustomResource):
             mode="REMOTE_REPOSITORY",
             remote_repository_config={
                 "description": "custom maven remote with credentials",
-                "disableUpstreamValidation": True,
-                "mavenRepository": {
-                    "customRepository": {
+                "disable_upstream_validation": True,
+                "maven_repository": {
+                    "custom_repository": {
                         "uri": "https://my.maven.registry",
                     },
                 },
-                "upstreamCredentials": {
-                    "usernamePasswordCredentials": {
+                "upstream_credentials": {
+                    "username_password_credentials": {
                         "username": "remote-username",
-                        "passwordSecretVersion": example_remote_secret_version.name,
+                        "password_secret_version": example_remote_secret_version.name,
                     },
                 },
             })
@@ -1560,16 +1560,16 @@ class Repository(pulumi.CustomResource):
             mode="REMOTE_REPOSITORY",
             remote_repository_config={
                 "description": "custom npm with credentials",
-                "disableUpstreamValidation": True,
-                "npmRepository": {
-                    "customRepository": {
+                "disable_upstream_validation": True,
+                "npm_repository": {
+                    "custom_repository": {
                         "uri": "https://my.npm.registry",
                     },
                 },
-                "upstreamCredentials": {
-                    "usernamePasswordCredentials": {
+                "upstream_credentials": {
+                    "username_password_credentials": {
                         "username": "remote-username",
-                        "passwordSecretVersion": example_remote_secret_version.name,
+                        "password_secret_version": example_remote_secret_version.name,
                     },
                 },
             })
@@ -1601,16 +1601,16 @@ class Repository(pulumi.CustomResource):
             mode="REMOTE_REPOSITORY",
             remote_repository_config={
                 "description": "custom npm with credentials",
-                "disableUpstreamValidation": True,
-                "pythonRepository": {
-                    "customRepository": {
+                "disable_upstream_validation": True,
+                "python_repository": {
+                    "custom_repository": {
                         "uri": "https://my.python.registry",
                     },
                 },
-                "upstreamCredentials": {
-                    "usernamePasswordCredentials": {
+                "upstream_credentials": {
+                    "username_password_credentials": {
                         "username": "remote-username",
-                        "passwordSecretVersion": example_remote_secret_version.name,
+                        "password_secret_version": example_remote_secret_version.name,
                     },
                 },
             })

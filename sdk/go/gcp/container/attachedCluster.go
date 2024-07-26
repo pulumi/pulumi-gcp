@@ -129,7 +129,7 @@ import (
 //				},
 //				OidcConfig: &container.AttachedClusterOidcConfigArgs{
 //					IssuerUrl: pulumi.String("https://oidc.issuer.url"),
-//					Jwks:      invokeBase64encode.Result,
+//					Jwks:      pulumi.String(invokeBase64encode.Result),
 //				},
 //				PlatformVersion: pulumi.String(versions.ValidVersions[0]),
 //				Fleet: &container.AttachedClusterFleetArgs{
