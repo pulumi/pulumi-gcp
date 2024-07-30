@@ -696,11 +696,18 @@ public class WebTypeComputeIamMember extends com.pulumi.resources.CustomResource
      * @param options A bag of options that control this resource's behavior.
      */
     public WebTypeComputeIamMember(String name, WebTypeComputeIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iap/webTypeComputeIamMember:WebTypeComputeIamMember", name, args == null ? WebTypeComputeIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:iap/webTypeComputeIamMember:WebTypeComputeIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private WebTypeComputeIamMember(String name, Output<String> id, @Nullable WebTypeComputeIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:iap/webTypeComputeIamMember:WebTypeComputeIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static WebTypeComputeIamMemberArgs makeArgs(WebTypeComputeIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WebTypeComputeIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

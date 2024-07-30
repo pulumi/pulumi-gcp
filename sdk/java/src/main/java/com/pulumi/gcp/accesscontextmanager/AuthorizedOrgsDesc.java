@@ -287,11 +287,18 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AuthorizedOrgsDesc(String name, AuthorizedOrgsDescArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc", name, args == null ? AuthorizedOrgsDescArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AuthorizedOrgsDesc(String name, Output<String> id, @Nullable AuthorizedOrgsDescState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AuthorizedOrgsDescArgs makeArgs(AuthorizedOrgsDescArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AuthorizedOrgsDescArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

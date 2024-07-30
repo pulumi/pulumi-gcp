@@ -698,11 +698,18 @@ public class TunnelDestGroupIamPolicy extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public TunnelDestGroupIamPolicy(String name, TunnelDestGroupIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iap/tunnelDestGroupIamPolicy:TunnelDestGroupIamPolicy", name, args == null ? TunnelDestGroupIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:iap/tunnelDestGroupIamPolicy:TunnelDestGroupIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TunnelDestGroupIamPolicy(String name, Output<String> id, @Nullable TunnelDestGroupIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:iap/tunnelDestGroupIamPolicy:TunnelDestGroupIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TunnelDestGroupIamPolicyArgs makeArgs(TunnelDestGroupIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TunnelDestGroupIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -223,11 +223,18 @@ public class TunnelDestGroup extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TunnelDestGroup(String name, TunnelDestGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iap/tunnelDestGroup:TunnelDestGroup", name, args == null ? TunnelDestGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:iap/tunnelDestGroup:TunnelDestGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TunnelDestGroup(String name, Output<String> id, @Nullable TunnelDestGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:iap/tunnelDestGroup:TunnelDestGroup", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TunnelDestGroupArgs makeArgs(TunnelDestGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TunnelDestGroupArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

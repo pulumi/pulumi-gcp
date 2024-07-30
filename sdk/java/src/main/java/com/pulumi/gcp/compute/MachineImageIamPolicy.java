@@ -669,11 +669,18 @@ public class MachineImageIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public MachineImageIamPolicy(String name, MachineImageIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/machineImageIamPolicy:MachineImageIamPolicy", name, args == null ? MachineImageIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/machineImageIamPolicy:MachineImageIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private MachineImageIamPolicy(String name, Output<String> id, @Nullable MachineImageIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/machineImageIamPolicy:MachineImageIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static MachineImageIamPolicyArgs makeArgs(MachineImageIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MachineImageIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

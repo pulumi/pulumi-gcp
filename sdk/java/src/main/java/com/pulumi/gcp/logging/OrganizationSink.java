@@ -296,11 +296,18 @@ public class OrganizationSink extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public OrganizationSink(String name, OrganizationSinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/organizationSink:OrganizationSink", name, args == null ? OrganizationSinkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:logging/organizationSink:OrganizationSink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OrganizationSink(String name, Output<String> id, @Nullable OrganizationSinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:logging/organizationSink:OrganizationSink", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OrganizationSinkArgs makeArgs(OrganizationSinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OrganizationSinkArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

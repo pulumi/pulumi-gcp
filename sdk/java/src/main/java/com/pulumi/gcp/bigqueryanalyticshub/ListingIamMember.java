@@ -486,11 +486,18 @@ public class ListingIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ListingIamMember(String name, ListingIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigqueryanalyticshub/listingIamMember:ListingIamMember", name, args == null ? ListingIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:bigqueryanalyticshub/listingIamMember:ListingIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ListingIamMember(String name, Output<String> id, @Nullable ListingIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:bigqueryanalyticshub/listingIamMember:ListingIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ListingIamMemberArgs makeArgs(ListingIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ListingIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

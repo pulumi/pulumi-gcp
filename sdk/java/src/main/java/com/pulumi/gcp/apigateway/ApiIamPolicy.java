@@ -386,11 +386,18 @@ public class ApiIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ApiIamPolicy(String name, ApiIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigateway/apiIamPolicy:ApiIamPolicy", name, args == null ? ApiIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:apigateway/apiIamPolicy:ApiIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ApiIamPolicy(String name, Output<String> id, @Nullable ApiIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:apigateway/apiIamPolicy:ApiIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ApiIamPolicyArgs makeArgs(ApiIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApiIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

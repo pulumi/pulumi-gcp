@@ -457,11 +457,18 @@ public class ConnectivityTest extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ConnectivityTest(String name, ConnectivityTestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkmanagement/connectivityTest:ConnectivityTest", name, args == null ? ConnectivityTestArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:networkmanagement/connectivityTest:ConnectivityTest", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ConnectivityTest(String name, Output<String> id, @Nullable ConnectivityTestState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:networkmanagement/connectivityTest:ConnectivityTest", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ConnectivityTestArgs makeArgs(ConnectivityTestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConnectivityTestArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -465,11 +465,18 @@ public class IamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public IamBinding(String name, IamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudrun/iamBinding:IamBinding", name, args == null ? IamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:cloudrun/iamBinding:IamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private IamBinding(String name, Output<String> id, @Nullable IamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:cloudrun/iamBinding:IamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static IamBindingArgs makeArgs(IamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

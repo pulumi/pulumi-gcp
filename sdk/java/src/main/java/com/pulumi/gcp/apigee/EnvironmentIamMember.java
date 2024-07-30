@@ -426,11 +426,18 @@ public class EnvironmentIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public EnvironmentIamMember(String name, EnvironmentIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/environmentIamMember:EnvironmentIamMember", name, args == null ? EnvironmentIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:apigee/environmentIamMember:EnvironmentIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private EnvironmentIamMember(String name, Output<String> id, @Nullable EnvironmentIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:apigee/environmentIamMember:EnvironmentIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static EnvironmentIamMemberArgs makeArgs(EnvironmentIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EnvironmentIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

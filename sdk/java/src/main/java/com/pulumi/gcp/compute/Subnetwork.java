@@ -836,11 +836,18 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Subnetwork(String name, SubnetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/subnetwork:Subnetwork", name, args == null ? SubnetworkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/subnetwork:Subnetwork", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Subnetwork(String name, Output<String> id, @Nullable SubnetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/subnetwork:Subnetwork", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SubnetworkArgs makeArgs(SubnetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SubnetworkArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

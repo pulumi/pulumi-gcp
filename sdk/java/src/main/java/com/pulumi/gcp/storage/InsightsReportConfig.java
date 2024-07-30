@@ -272,11 +272,18 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public InsightsReportConfig(String name, InsightsReportConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/insightsReportConfig:InsightsReportConfig", name, args == null ? InsightsReportConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:storage/insightsReportConfig:InsightsReportConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private InsightsReportConfig(String name, Output<String> id, @Nullable InsightsReportConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:storage/insightsReportConfig:InsightsReportConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static InsightsReportConfigArgs makeArgs(InsightsReportConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InsightsReportConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -361,11 +361,18 @@ public class TrustConfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TrustConfig(String name, TrustConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:certificatemanager/trustConfig:TrustConfig", name, args == null ? TrustConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:certificatemanager/trustConfig:TrustConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TrustConfig(String name, Output<String> id, @Nullable TrustConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:certificatemanager/trustConfig:TrustConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TrustConfigArgs makeArgs(TrustConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TrustConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

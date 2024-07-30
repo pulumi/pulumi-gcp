@@ -288,11 +288,18 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TargetTCPProxy(String name, TargetTCPProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/targetTCPProxy:TargetTCPProxy", name, args == null ? TargetTCPProxyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/targetTCPProxy:TargetTCPProxy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TargetTCPProxy(String name, Output<String> id, @Nullable TargetTCPProxyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/targetTCPProxy:TargetTCPProxy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TargetTCPProxyArgs makeArgs(TargetTCPProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TargetTCPProxyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
