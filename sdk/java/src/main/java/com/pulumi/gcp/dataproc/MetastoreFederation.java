@@ -379,11 +379,18 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public MetastoreFederation(String name, MetastoreFederationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/metastoreFederation:MetastoreFederation", name, args == null ? MetastoreFederationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataproc/metastoreFederation:MetastoreFederation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private MetastoreFederation(String name, Output<String> id, @Nullable MetastoreFederationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataproc/metastoreFederation:MetastoreFederation", name, state, makeResourceOptions(options, id));
+    }
+
+    private static MetastoreFederationArgs makeArgs(MetastoreFederationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MetastoreFederationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

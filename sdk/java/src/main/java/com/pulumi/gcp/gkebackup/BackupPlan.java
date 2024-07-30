@@ -959,11 +959,18 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public BackupPlan(String name, BackupPlanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkebackup/backupPlan:BackupPlan", name, args == null ? BackupPlanArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:gkebackup/backupPlan:BackupPlan", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private BackupPlan(String name, Output<String> id, @Nullable BackupPlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:gkebackup/backupPlan:BackupPlan", name, state, makeResourceOptions(options, id));
+    }
+
+    private static BackupPlanArgs makeArgs(BackupPlanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BackupPlanArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

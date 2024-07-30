@@ -181,11 +181,18 @@ public class Source extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Source(String name, SourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/source:Source", name, args == null ? SourceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:securitycenter/source:Source", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Source(String name, Output<String> id, @Nullable SourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:securitycenter/source:Source", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SourceArgs makeArgs(SourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SourceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

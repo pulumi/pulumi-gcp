@@ -424,11 +424,18 @@ public class AiFeatureStore extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AiFeatureStore(String name, @Nullable AiFeatureStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiFeatureStore:AiFeatureStore", name, args == null ? AiFeatureStoreArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:vertex/aiFeatureStore:AiFeatureStore", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AiFeatureStore(String name, Output<String> id, @Nullable AiFeatureStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:vertex/aiFeatureStore:AiFeatureStore", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AiFeatureStoreArgs makeArgs(@Nullable AiFeatureStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AiFeatureStoreArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

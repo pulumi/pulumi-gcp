@@ -239,11 +239,18 @@ public class EkmConnection extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public EkmConnection(String name, EkmConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/ekmConnection:EkmConnection", name, args == null ? EkmConnectionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:kms/ekmConnection:EkmConnection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private EkmConnection(String name, Output<String> id, @Nullable EkmConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:kms/ekmConnection:EkmConnection", name, state, makeResourceOptions(options, id));
+    }
+
+    private static EkmConnectionArgs makeArgs(EkmConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EkmConnectionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

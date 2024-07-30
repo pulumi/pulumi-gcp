@@ -218,11 +218,18 @@ public class DenyPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DenyPolicy(String name, DenyPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iam/denyPolicy:DenyPolicy", name, args == null ? DenyPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:iam/denyPolicy:DenyPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DenyPolicy(String name, Output<String> id, @Nullable DenyPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:iam/denyPolicy:DenyPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DenyPolicyArgs makeArgs(DenyPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DenyPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -474,11 +474,18 @@ public class AiFeatureOnlineStore extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AiFeatureOnlineStore(String name, @Nullable AiFeatureOnlineStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore", name, args == null ? AiFeatureOnlineStoreArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AiFeatureOnlineStore(String name, Output<String> id, @Nullable AiFeatureOnlineStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AiFeatureOnlineStoreArgs makeArgs(@Nullable AiFeatureOnlineStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AiFeatureOnlineStoreArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

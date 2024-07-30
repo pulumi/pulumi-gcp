@@ -442,11 +442,18 @@ public class ListingIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ListingIamPolicy(String name, ListingIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigqueryanalyticshub/listingIamPolicy:ListingIamPolicy", name, args == null ? ListingIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:bigqueryanalyticshub/listingIamPolicy:ListingIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ListingIamPolicy(String name, Output<String> id, @Nullable ListingIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:bigqueryanalyticshub/listingIamPolicy:ListingIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ListingIamPolicyArgs makeArgs(ListingIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ListingIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

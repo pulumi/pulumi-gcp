@@ -323,11 +323,18 @@ public class OrganizationCustomModule extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public OrganizationCustomModule(String name, OrganizationCustomModuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/organizationCustomModule:OrganizationCustomModule", name, args == null ? OrganizationCustomModuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:securitycenter/organizationCustomModule:OrganizationCustomModule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OrganizationCustomModule(String name, Output<String> id, @Nullable OrganizationCustomModuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:securitycenter/organizationCustomModule:OrganizationCustomModule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OrganizationCustomModuleArgs makeArgs(OrganizationCustomModuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OrganizationCustomModuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

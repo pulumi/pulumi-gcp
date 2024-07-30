@@ -388,11 +388,18 @@ public class JobIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public JobIAMPolicy(String name, JobIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/jobIAMPolicy:JobIAMPolicy", name, args == null ? JobIAMPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataproc/jobIAMPolicy:JobIAMPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private JobIAMPolicy(String name, Output<String> id, @Nullable JobIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataproc/jobIAMPolicy:JobIAMPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static JobIAMPolicyArgs makeArgs(JobIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? JobIAMPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

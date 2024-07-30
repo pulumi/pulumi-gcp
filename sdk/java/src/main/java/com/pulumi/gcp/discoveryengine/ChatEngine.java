@@ -340,11 +340,18 @@ public class ChatEngine extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ChatEngine(String name, ChatEngineArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:discoveryengine/chatEngine:ChatEngine", name, args == null ? ChatEngineArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:discoveryengine/chatEngine:ChatEngine", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ChatEngine(String name, Output<String> id, @Nullable ChatEngineState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:discoveryengine/chatEngine:ChatEngine", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ChatEngineArgs makeArgs(ChatEngineArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ChatEngineArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

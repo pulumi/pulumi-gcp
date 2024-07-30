@@ -734,11 +734,18 @@ public class CaPoolIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CaPoolIamMember(String name, CaPoolIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:certificateauthority/caPoolIamMember:CaPoolIamMember", name, args == null ? CaPoolIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:certificateauthority/caPoolIamMember:CaPoolIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CaPoolIamMember(String name, Output<String> id, @Nullable CaPoolIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:certificateauthority/caPoolIamMember:CaPoolIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CaPoolIamMemberArgs makeArgs(CaPoolIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CaPoolIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

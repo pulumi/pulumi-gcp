@@ -458,11 +458,18 @@ public class DatascanIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DatascanIamMember(String name, DatascanIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/datascanIamMember:DatascanIamMember", name, args == null ? DatascanIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataplex/datascanIamMember:DatascanIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DatascanIamMember(String name, Output<String> id, @Nullable DatascanIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataplex/datascanIamMember:DatascanIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DatascanIamMemberArgs makeArgs(DatascanIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DatascanIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

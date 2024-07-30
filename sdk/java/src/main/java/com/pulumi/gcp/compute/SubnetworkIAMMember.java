@@ -758,11 +758,18 @@ public class SubnetworkIAMMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SubnetworkIAMMember(String name, SubnetworkIAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/subnetworkIAMMember:SubnetworkIAMMember", name, args == null ? SubnetworkIAMMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/subnetworkIAMMember:SubnetworkIAMMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SubnetworkIAMMember(String name, Output<String> id, @Nullable SubnetworkIAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/subnetworkIAMMember:SubnetworkIAMMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SubnetworkIAMMemberArgs makeArgs(SubnetworkIAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SubnetworkIAMMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

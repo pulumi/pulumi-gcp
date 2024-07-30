@@ -420,11 +420,18 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
      * @param options A bag of options that control this resource's behavior.
      */
     public NetworkFirewallPolicyRule(String name, NetworkFirewallPolicyRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule", name, args == null ? NetworkFirewallPolicyRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NetworkFirewallPolicyRule(String name, Output<String> id, @Nullable NetworkFirewallPolicyRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NetworkFirewallPolicyRuleArgs makeArgs(NetworkFirewallPolicyRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NetworkFirewallPolicyRuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

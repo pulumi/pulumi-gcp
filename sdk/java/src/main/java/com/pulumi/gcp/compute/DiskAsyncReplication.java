@@ -79,11 +79,18 @@ public class DiskAsyncReplication extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DiskAsyncReplication(String name, DiskAsyncReplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/diskAsyncReplication:DiskAsyncReplication", name, args == null ? DiskAsyncReplicationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/diskAsyncReplication:DiskAsyncReplication", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DiskAsyncReplication(String name, Output<String> id, @Nullable DiskAsyncReplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/diskAsyncReplication:DiskAsyncReplication", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DiskAsyncReplicationArgs makeArgs(DiskAsyncReplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DiskAsyncReplicationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

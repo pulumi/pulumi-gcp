@@ -426,11 +426,18 @@ public class Listing extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Listing(String name, ListingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigqueryanalyticshub/listing:Listing", name, args == null ? ListingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:bigqueryanalyticshub/listing:Listing", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Listing(String name, Output<String> id, @Nullable ListingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:bigqueryanalyticshub/listing:Listing", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ListingArgs makeArgs(ListingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ListingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

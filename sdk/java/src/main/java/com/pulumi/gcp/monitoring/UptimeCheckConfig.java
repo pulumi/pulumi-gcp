@@ -650,11 +650,18 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public UptimeCheckConfig(String name, UptimeCheckConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig", name, args == null ? UptimeCheckConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private UptimeCheckConfig(String name, Output<String> id, @Nullable UptimeCheckConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static UptimeCheckConfigArgs makeArgs(UptimeCheckConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? UptimeCheckConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

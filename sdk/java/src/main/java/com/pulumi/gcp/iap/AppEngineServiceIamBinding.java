@@ -753,11 +753,18 @@ public class AppEngineServiceIamBinding extends com.pulumi.resources.CustomResou
      * @param options A bag of options that control this resource's behavior.
      */
     public AppEngineServiceIamBinding(String name, AppEngineServiceIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iap/appEngineServiceIamBinding:AppEngineServiceIamBinding", name, args == null ? AppEngineServiceIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:iap/appEngineServiceIamBinding:AppEngineServiceIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AppEngineServiceIamBinding(String name, Output<String> id, @Nullable AppEngineServiceIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:iap/appEngineServiceIamBinding:AppEngineServiceIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AppEngineServiceIamBindingArgs makeArgs(AppEngineServiceIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AppEngineServiceIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

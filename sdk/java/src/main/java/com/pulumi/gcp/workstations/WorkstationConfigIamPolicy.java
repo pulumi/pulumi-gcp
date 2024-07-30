@@ -156,11 +156,18 @@ public class WorkstationConfigIamPolicy extends com.pulumi.resources.CustomResou
      * @param options A bag of options that control this resource's behavior.
      */
     public WorkstationConfigIamPolicy(String name, WorkstationConfigIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:workstations/workstationConfigIamPolicy:WorkstationConfigIamPolicy", name, args == null ? WorkstationConfigIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:workstations/workstationConfigIamPolicy:WorkstationConfigIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private WorkstationConfigIamPolicy(String name, Output<String> id, @Nullable WorkstationConfigIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:workstations/workstationConfigIamPolicy:WorkstationConfigIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static WorkstationConfigIamPolicyArgs makeArgs(WorkstationConfigIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkstationConfigIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

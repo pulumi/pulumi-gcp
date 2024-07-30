@@ -441,11 +441,18 @@ public class TagTemplateIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TagTemplateIamBinding(String name, TagTemplateIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:datacatalog/tagTemplateIamBinding:TagTemplateIamBinding", name, args == null ? TagTemplateIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:datacatalog/tagTemplateIamBinding:TagTemplateIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TagTemplateIamBinding(String name, Output<String> id, @Nullable TagTemplateIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:datacatalog/tagTemplateIamBinding:TagTemplateIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TagTemplateIamBindingArgs makeArgs(TagTemplateIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TagTemplateIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

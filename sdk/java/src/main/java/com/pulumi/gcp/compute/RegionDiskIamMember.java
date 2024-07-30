@@ -464,11 +464,18 @@ public class RegionDiskIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RegionDiskIamMember(String name, RegionDiskIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionDiskIamMember:RegionDiskIamMember", name, args == null ? RegionDiskIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/regionDiskIamMember:RegionDiskIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RegionDiskIamMember(String name, Output<String> id, @Nullable RegionDiskIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/regionDiskIamMember:RegionDiskIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RegionDiskIamMemberArgs makeArgs(RegionDiskIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionDiskIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

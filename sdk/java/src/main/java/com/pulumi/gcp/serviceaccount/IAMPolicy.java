@@ -618,11 +618,18 @@ public class IAMPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public IAMPolicy(String name, IAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:serviceaccount/iAMPolicy:IAMPolicy", name, args == null ? IAMPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:serviceaccount/iAMPolicy:IAMPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private IAMPolicy(String name, Output<String> id, @Nullable IAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:serviceaccount/iAMPolicy:IAMPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static IAMPolicyArgs makeArgs(IAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IAMPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -458,11 +458,18 @@ public class EntryTypeIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public EntryTypeIamMember(String name, EntryTypeIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/entryTypeIamMember:EntryTypeIamMember", name, args == null ? EntryTypeIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataplex/entryTypeIamMember:EntryTypeIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private EntryTypeIamMember(String name, Output<String> id, @Nullable EntryTypeIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataplex/entryTypeIamMember:EntryTypeIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static EntryTypeIamMemberArgs makeArgs(EntryTypeIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EntryTypeIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
