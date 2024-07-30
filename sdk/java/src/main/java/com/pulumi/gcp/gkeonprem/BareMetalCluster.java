@@ -1016,11 +1016,18 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public BareMetalCluster(String name, BareMetalClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkeonprem/bareMetalCluster:BareMetalCluster", name, args == null ? BareMetalClusterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:gkeonprem/bareMetalCluster:BareMetalCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private BareMetalCluster(String name, Output<String> id, @Nullable BareMetalClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:gkeonprem/bareMetalCluster:BareMetalCluster", name, state, makeResourceOptions(options, id));
+    }
+
+    private static BareMetalClusterArgs makeArgs(BareMetalClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BareMetalClusterArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

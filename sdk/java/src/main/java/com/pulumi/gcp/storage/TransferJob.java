@@ -365,11 +365,18 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TransferJob(String name, TransferJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/transferJob:TransferJob", name, args == null ? TransferJobArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:storage/transferJob:TransferJob", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TransferJob(String name, Output<String> id, @Nullable TransferJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:storage/transferJob:TransferJob", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TransferJobArgs makeArgs(TransferJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TransferJobArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

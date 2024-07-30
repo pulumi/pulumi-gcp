@@ -374,11 +374,18 @@ public class WorkflowTemplate extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public WorkflowTemplate(String name, WorkflowTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/workflowTemplate:WorkflowTemplate", name, args == null ? WorkflowTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataproc/workflowTemplate:WorkflowTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private WorkflowTemplate(String name, Output<String> id, @Nullable WorkflowTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataproc/workflowTemplate:WorkflowTemplate", name, state, makeResourceOptions(options, id));
+    }
+
+    private static WorkflowTemplateArgs makeArgs(WorkflowTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkflowTemplateArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

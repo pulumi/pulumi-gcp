@@ -360,11 +360,18 @@ public class RegionPerInstanceConfig extends com.pulumi.resources.CustomResource
      * @param options A bag of options that control this resource's behavior.
      */
     public RegionPerInstanceConfig(String name, RegionPerInstanceConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig", name, args == null ? RegionPerInstanceConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RegionPerInstanceConfig(String name, Output<String> id, @Nullable RegionPerInstanceConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RegionPerInstanceConfigArgs makeArgs(RegionPerInstanceConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionPerInstanceConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

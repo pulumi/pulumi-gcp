@@ -747,11 +747,18 @@ public class TunnelInstanceIAMBinding extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public TunnelInstanceIAMBinding(String name, TunnelInstanceIAMBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding", name, args == null ? TunnelInstanceIAMBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TunnelInstanceIAMBinding(String name, Output<String> id, @Nullable TunnelInstanceIAMBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TunnelInstanceIAMBindingArgs makeArgs(TunnelInstanceIAMBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TunnelInstanceIAMBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

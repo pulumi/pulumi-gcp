@@ -400,11 +400,18 @@ public class ClusterIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ClusterIAMPolicy(String name, ClusterIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy", name, args == null ? ClusterIAMPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ClusterIAMPolicy(String name, Output<String> id, @Nullable ClusterIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ClusterIAMPolicyArgs makeArgs(ClusterIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ClusterIAMPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

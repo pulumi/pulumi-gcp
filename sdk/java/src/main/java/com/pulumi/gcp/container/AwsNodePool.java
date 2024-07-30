@@ -840,11 +840,18 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AwsNodePool(String name, AwsNodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:container/awsNodePool:AwsNodePool", name, args == null ? AwsNodePoolArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:container/awsNodePool:AwsNodePool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AwsNodePool(String name, Output<String> id, @Nullable AwsNodePoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:container/awsNodePool:AwsNodePool", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AwsNodePoolArgs makeArgs(AwsNodePoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AwsNodePoolArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

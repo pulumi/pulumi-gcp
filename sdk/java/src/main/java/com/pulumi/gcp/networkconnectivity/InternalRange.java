@@ -501,11 +501,18 @@ public class InternalRange extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public InternalRange(String name, InternalRangeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkconnectivity/internalRange:InternalRange", name, args == null ? InternalRangeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:networkconnectivity/internalRange:InternalRange", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private InternalRange(String name, Output<String> id, @Nullable InternalRangeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:networkconnectivity/internalRange:InternalRange", name, state, makeResourceOptions(options, id));
+    }
+
+    private static InternalRangeArgs makeArgs(InternalRangeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InternalRangeArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

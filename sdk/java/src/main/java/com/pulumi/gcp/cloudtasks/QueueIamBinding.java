@@ -465,11 +465,18 @@ public class QueueIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public QueueIamBinding(String name, QueueIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudtasks/queueIamBinding:QueueIamBinding", name, args == null ? QueueIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:cloudtasks/queueIamBinding:QueueIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private QueueIamBinding(String name, Output<String> id, @Nullable QueueIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:cloudtasks/queueIamBinding:QueueIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static QueueIamBindingArgs makeArgs(QueueIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? QueueIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

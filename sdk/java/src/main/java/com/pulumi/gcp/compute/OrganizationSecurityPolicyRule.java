@@ -284,11 +284,18 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
      * @param options A bag of options that control this resource's behavior.
      */
     public OrganizationSecurityPolicyRule(String name, OrganizationSecurityPolicyRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule", name, args == null ? OrganizationSecurityPolicyRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OrganizationSecurityPolicyRule(String name, Output<String> id, @Nullable OrganizationSecurityPolicyRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OrganizationSecurityPolicyRuleArgs makeArgs(OrganizationSecurityPolicyRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OrganizationSecurityPolicyRuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

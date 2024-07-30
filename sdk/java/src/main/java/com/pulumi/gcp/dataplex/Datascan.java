@@ -685,11 +685,18 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Datascan(String name, DatascanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/datascan:Datascan", name, args == null ? DatascanArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataplex/datascan:Datascan", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Datascan(String name, Output<String> id, @Nullable DatascanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataplex/datascan:Datascan", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DatascanArgs makeArgs(DatascanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DatascanArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -511,11 +511,18 @@ public class VolumeReplication extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public VolumeReplication(String name, VolumeReplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:netapp/volumeReplication:VolumeReplication", name, args == null ? VolumeReplicationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:netapp/volumeReplication:VolumeReplication", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private VolumeReplication(String name, Output<String> id, @Nullable VolumeReplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:netapp/volumeReplication:VolumeReplication", name, state, makeResourceOptions(options, id));
+    }
+
+    private static VolumeReplicationArgs makeArgs(VolumeReplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VolumeReplicationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

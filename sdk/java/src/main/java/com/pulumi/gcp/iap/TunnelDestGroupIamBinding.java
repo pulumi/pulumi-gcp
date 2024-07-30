@@ -753,11 +753,18 @@ public class TunnelDestGroupIamBinding extends com.pulumi.resources.CustomResour
      * @param options A bag of options that control this resource's behavior.
      */
     public TunnelDestGroupIamBinding(String name, TunnelDestGroupIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iap/tunnelDestGroupIamBinding:TunnelDestGroupIamBinding", name, args == null ? TunnelDestGroupIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:iap/tunnelDestGroupIamBinding:TunnelDestGroupIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TunnelDestGroupIamBinding(String name, Output<String> id, @Nullable TunnelDestGroupIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:iap/tunnelDestGroupIamBinding:TunnelDestGroupIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TunnelDestGroupIamBindingArgs makeArgs(TunnelDestGroupIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TunnelDestGroupIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

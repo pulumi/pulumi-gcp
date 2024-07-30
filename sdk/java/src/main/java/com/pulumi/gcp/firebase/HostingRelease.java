@@ -363,11 +363,18 @@ public class HostingRelease extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public HostingRelease(String name, HostingReleaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/hostingRelease:HostingRelease", name, args == null ? HostingReleaseArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:firebase/hostingRelease:HostingRelease", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private HostingRelease(String name, Output<String> id, @Nullable HostingReleaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:firebase/hostingRelease:HostingRelease", name, state, makeResourceOptions(options, id));
+    }
+
+    private static HostingReleaseArgs makeArgs(HostingReleaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HostingReleaseArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

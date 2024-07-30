@@ -239,11 +239,18 @@ public class LiteSubscription extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public LiteSubscription(String name, LiteSubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:pubsub/liteSubscription:LiteSubscription", name, args == null ? LiteSubscriptionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:pubsub/liteSubscription:LiteSubscription", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private LiteSubscription(String name, Output<String> id, @Nullable LiteSubscriptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:pubsub/liteSubscription:LiteSubscription", name, state, makeResourceOptions(options, id));
+    }
+
+    private static LiteSubscriptionArgs makeArgs(LiteSubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LiteSubscriptionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

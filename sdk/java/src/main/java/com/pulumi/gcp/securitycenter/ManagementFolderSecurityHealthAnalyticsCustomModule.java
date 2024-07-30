@@ -358,11 +358,18 @@ public class ManagementFolderSecurityHealthAnalyticsCustomModule extends com.pul
      * @param options A bag of options that control this resource's behavior.
      */
     public ManagementFolderSecurityHealthAnalyticsCustomModule(String name, ManagementFolderSecurityHealthAnalyticsCustomModuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule", name, args == null ? ManagementFolderSecurityHealthAnalyticsCustomModuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ManagementFolderSecurityHealthAnalyticsCustomModule(String name, Output<String> id, @Nullable ManagementFolderSecurityHealthAnalyticsCustomModuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ManagementFolderSecurityHealthAnalyticsCustomModuleArgs makeArgs(ManagementFolderSecurityHealthAnalyticsCustomModuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ManagementFolderSecurityHealthAnalyticsCustomModuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
