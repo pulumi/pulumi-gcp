@@ -440,11 +440,18 @@ public class TaxonomyIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TaxonomyIamMember(String name, TaxonomyIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:datacatalog/taxonomyIamMember:TaxonomyIamMember", name, args == null ? TaxonomyIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:datacatalog/taxonomyIamMember:TaxonomyIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TaxonomyIamMember(String name, Output<String> id, @Nullable TaxonomyIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:datacatalog/taxonomyIamMember:TaxonomyIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TaxonomyIamMemberArgs makeArgs(TaxonomyIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TaxonomyIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

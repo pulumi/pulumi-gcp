@@ -181,11 +181,18 @@ public class ConfigIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ConfigIamBinding(String name, ConfigIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:runtimeconfig/configIamBinding:ConfigIamBinding", name, args == null ? ConfigIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:runtimeconfig/configIamBinding:ConfigIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ConfigIamBinding(String name, Output<String> id, @Nullable ConfigIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:runtimeconfig/configIamBinding:ConfigIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ConfigIamBindingArgs makeArgs(ConfigIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConfigIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

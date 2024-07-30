@@ -464,11 +464,18 @@ public class FeatureIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public FeatureIamMember(String name, FeatureIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkehub/featureIamMember:FeatureIamMember", name, args == null ? FeatureIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:gkehub/featureIamMember:FeatureIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FeatureIamMember(String name, Output<String> id, @Nullable FeatureIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:gkehub/featureIamMember:FeatureIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FeatureIamMemberArgs makeArgs(FeatureIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FeatureIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

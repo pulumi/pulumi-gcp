@@ -313,11 +313,18 @@ public class CxEntityType extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CxEntityType(String name, CxEntityTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:diagflow/cxEntityType:CxEntityType", name, args == null ? CxEntityTypeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:diagflow/cxEntityType:CxEntityType", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CxEntityType(String name, Output<String> id, @Nullable CxEntityTypeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:diagflow/cxEntityType:CxEntityType", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CxEntityTypeArgs makeArgs(CxEntityTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CxEntityTypeArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

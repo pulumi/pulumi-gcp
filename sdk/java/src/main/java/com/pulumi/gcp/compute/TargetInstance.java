@@ -505,11 +505,18 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TargetInstance(String name, TargetInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/targetInstance:TargetInstance", name, args == null ? TargetInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/targetInstance:TargetInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TargetInstance(String name, Output<String> id, @Nullable TargetInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/targetInstance:TargetInstance", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TargetInstanceArgs makeArgs(TargetInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TargetInstanceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

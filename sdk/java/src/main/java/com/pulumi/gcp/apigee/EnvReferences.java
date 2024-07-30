@@ -143,11 +143,18 @@ public class EnvReferences extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public EnvReferences(String name, EnvReferencesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/envReferences:EnvReferences", name, args == null ? EnvReferencesArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:apigee/envReferences:EnvReferences", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private EnvReferences(String name, Output<String> id, @Nullable EnvReferencesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:apigee/envReferences:EnvReferences", name, state, makeResourceOptions(options, id));
+    }
+
+    private static EnvReferencesArgs makeArgs(EnvReferencesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EnvReferencesArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -255,11 +255,18 @@ public class GenericService extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public GenericService(String name, GenericServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:monitoring/genericService:GenericService", name, args == null ? GenericServiceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:monitoring/genericService:GenericService", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private GenericService(String name, Output<String> id, @Nullable GenericServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:monitoring/genericService:GenericService", name, state, makeResourceOptions(options, id));
+    }
+
+    private static GenericServiceArgs makeArgs(GenericServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GenericServiceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

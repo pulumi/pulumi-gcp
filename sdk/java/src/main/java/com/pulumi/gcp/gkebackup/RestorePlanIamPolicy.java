@@ -422,11 +422,18 @@ public class RestorePlanIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RestorePlanIamPolicy(String name, RestorePlanIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy", name, args == null ? RestorePlanIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RestorePlanIamPolicy(String name, Output<String> id, @Nullable RestorePlanIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RestorePlanIamPolicyArgs makeArgs(RestorePlanIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RestorePlanIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

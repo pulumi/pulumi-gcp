@@ -348,11 +348,18 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public NodeTemplate(String name, @Nullable NodeTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/nodeTemplate:NodeTemplate", name, args == null ? NodeTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/nodeTemplate:NodeTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NodeTemplate(String name, Output<String> id, @Nullable NodeTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/nodeTemplate:NodeTemplate", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NodeTemplateArgs makeArgs(@Nullable NodeTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NodeTemplateArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -110,11 +110,18 @@ public class Location extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Location(String name, @Nullable LocationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:notebooks/location:Location", name, args == null ? LocationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:notebooks/location:Location", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Location(String name, Output<String> id, @Nullable LocationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:notebooks/location:Location", name, state, makeResourceOptions(options, id));
+    }
+
+    private static LocationArgs makeArgs(@Nullable LocationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LocationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

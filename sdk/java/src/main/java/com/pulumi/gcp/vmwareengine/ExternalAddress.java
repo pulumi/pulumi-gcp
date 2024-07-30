@@ -283,11 +283,18 @@ public class ExternalAddress extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ExternalAddress(String name, ExternalAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vmwareengine/externalAddress:ExternalAddress", name, args == null ? ExternalAddressArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:vmwareengine/externalAddress:ExternalAddress", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ExternalAddress(String name, Output<String> id, @Nullable ExternalAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:vmwareengine/externalAddress:ExternalAddress", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ExternalAddressArgs makeArgs(ExternalAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ExternalAddressArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

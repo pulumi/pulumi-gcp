@@ -439,11 +439,18 @@ public class SnapshotIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SnapshotIamBinding(String name, SnapshotIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/snapshotIamBinding:SnapshotIamBinding", name, args == null ? SnapshotIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/snapshotIamBinding:SnapshotIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SnapshotIamBinding(String name, Output<String> id, @Nullable SnapshotIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/snapshotIamBinding:SnapshotIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SnapshotIamBindingArgs makeArgs(SnapshotIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SnapshotIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

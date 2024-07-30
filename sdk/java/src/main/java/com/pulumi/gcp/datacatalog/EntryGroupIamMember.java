@@ -440,11 +440,18 @@ public class EntryGroupIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public EntryGroupIamMember(String name, EntryGroupIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:datacatalog/entryGroupIamMember:EntryGroupIamMember", name, args == null ? EntryGroupIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:datacatalog/entryGroupIamMember:EntryGroupIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private EntryGroupIamMember(String name, Output<String> id, @Nullable EntryGroupIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:datacatalog/entryGroupIamMember:EntryGroupIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static EntryGroupIamMemberArgs makeArgs(EntryGroupIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EntryGroupIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

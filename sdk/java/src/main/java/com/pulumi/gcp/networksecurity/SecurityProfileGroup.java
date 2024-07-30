@@ -288,11 +288,18 @@ public class SecurityProfileGroup extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SecurityProfileGroup(String name, @Nullable SecurityProfileGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/securityProfileGroup:SecurityProfileGroup", name, args == null ? SecurityProfileGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:networksecurity/securityProfileGroup:SecurityProfileGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SecurityProfileGroup(String name, Output<String> id, @Nullable SecurityProfileGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:networksecurity/securityProfileGroup:SecurityProfileGroup", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SecurityProfileGroupArgs makeArgs(@Nullable SecurityProfileGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SecurityProfileGroupArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

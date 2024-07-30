@@ -116,11 +116,18 @@ public class EnvGroupAttachment extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public EnvGroupAttachment(String name, EnvGroupAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/envGroupAttachment:EnvGroupAttachment", name, args == null ? EnvGroupAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:apigee/envGroupAttachment:EnvGroupAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private EnvGroupAttachment(String name, Output<String> id, @Nullable EnvGroupAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:apigee/envGroupAttachment:EnvGroupAttachment", name, state, makeResourceOptions(options, id));
+    }
+
+    private static EnvGroupAttachmentArgs makeArgs(EnvGroupAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EnvGroupAttachmentArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

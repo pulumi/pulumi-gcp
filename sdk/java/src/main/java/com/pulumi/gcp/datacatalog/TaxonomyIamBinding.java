@@ -441,11 +441,18 @@ public class TaxonomyIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TaxonomyIamBinding(String name, TaxonomyIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:datacatalog/taxonomyIamBinding:TaxonomyIamBinding", name, args == null ? TaxonomyIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:datacatalog/taxonomyIamBinding:TaxonomyIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TaxonomyIamBinding(String name, Output<String> id, @Nullable TaxonomyIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:datacatalog/taxonomyIamBinding:TaxonomyIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TaxonomyIamBindingArgs makeArgs(TaxonomyIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TaxonomyIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

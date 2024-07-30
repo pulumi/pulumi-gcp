@@ -427,11 +427,18 @@ public class EnvironmentIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public EnvironmentIamBinding(String name, EnvironmentIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/environmentIamBinding:EnvironmentIamBinding", name, args == null ? EnvironmentIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:apigee/environmentIamBinding:EnvironmentIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private EnvironmentIamBinding(String name, Output<String> id, @Nullable EnvironmentIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:apigee/environmentIamBinding:EnvironmentIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static EnvironmentIamBindingArgs makeArgs(EnvironmentIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EnvironmentIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
