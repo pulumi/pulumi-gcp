@@ -496,11 +496,18 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Hl7Store(String name, Hl7StoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/hl7Store:Hl7Store", name, args == null ? Hl7StoreArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:healthcare/hl7Store:Hl7Store", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Hl7Store(String name, Output<String> id, @Nullable Hl7StoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:healthcare/hl7Store:Hl7Store", name, state, makeResourceOptions(options, id));
+    }
+
+    private static Hl7StoreArgs makeArgs(Hl7StoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? Hl7StoreArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

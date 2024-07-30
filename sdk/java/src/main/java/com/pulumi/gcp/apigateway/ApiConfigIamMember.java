@@ -448,11 +448,18 @@ public class ApiConfigIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ApiConfigIamMember(String name, ApiConfigIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigateway/apiConfigIamMember:ApiConfigIamMember", name, args == null ? ApiConfigIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:apigateway/apiConfigIamMember:ApiConfigIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ApiConfigIamMember(String name, Output<String> id, @Nullable ApiConfigIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:apigateway/apiConfigIamMember:ApiConfigIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ApiConfigIamMemberArgs makeArgs(ApiConfigIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApiConfigIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

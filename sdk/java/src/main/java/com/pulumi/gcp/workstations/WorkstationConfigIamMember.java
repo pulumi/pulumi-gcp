@@ -200,11 +200,18 @@ public class WorkstationConfigIamMember extends com.pulumi.resources.CustomResou
      * @param options A bag of options that control this resource's behavior.
      */
     public WorkstationConfigIamMember(String name, WorkstationConfigIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:workstations/workstationConfigIamMember:WorkstationConfigIamMember", name, args == null ? WorkstationConfigIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:workstations/workstationConfigIamMember:WorkstationConfigIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private WorkstationConfigIamMember(String name, Output<String> id, @Nullable WorkstationConfigIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:workstations/workstationConfigIamMember:WorkstationConfigIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static WorkstationConfigIamMemberArgs makeArgs(WorkstationConfigIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkstationConfigIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

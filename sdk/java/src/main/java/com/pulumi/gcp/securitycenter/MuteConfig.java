@@ -246,11 +246,18 @@ public class MuteConfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public MuteConfig(String name, MuteConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/muteConfig:MuteConfig", name, args == null ? MuteConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:securitycenter/muteConfig:MuteConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private MuteConfig(String name, Output<String> id, @Nullable MuteConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:securitycenter/muteConfig:MuteConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static MuteConfigArgs makeArgs(MuteConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MuteConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

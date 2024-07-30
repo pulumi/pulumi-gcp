@@ -730,11 +730,18 @@ public class CertificateTemplateIamMember extends com.pulumi.resources.CustomRes
      * @param options A bag of options that control this resource's behavior.
      */
     public CertificateTemplateIamMember(String name, CertificateTemplateIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:certificateauthority/certificateTemplateIamMember:CertificateTemplateIamMember", name, args == null ? CertificateTemplateIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:certificateauthority/certificateTemplateIamMember:CertificateTemplateIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CertificateTemplateIamMember(String name, Output<String> id, @Nullable CertificateTemplateIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:certificateauthority/certificateTemplateIamMember:CertificateTemplateIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CertificateTemplateIamMemberArgs makeArgs(CertificateTemplateIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CertificateTemplateIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

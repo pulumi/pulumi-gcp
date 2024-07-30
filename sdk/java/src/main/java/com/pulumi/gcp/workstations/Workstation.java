@@ -404,11 +404,18 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Workstation(String name, WorkstationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:workstations/workstation:Workstation", name, args == null ? WorkstationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:workstations/workstation:Workstation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Workstation(String name, Output<String> id, @Nullable WorkstationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:workstations/workstation:Workstation", name, state, makeResourceOptions(options, id));
+    }
+
+    private static WorkstationArgs makeArgs(WorkstationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkstationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

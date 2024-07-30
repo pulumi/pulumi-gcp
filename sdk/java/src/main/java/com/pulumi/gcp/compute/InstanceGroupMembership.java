@@ -220,11 +220,18 @@ public class InstanceGroupMembership extends com.pulumi.resources.CustomResource
      * @param options A bag of options that control this resource's behavior.
      */
     public InstanceGroupMembership(String name, InstanceGroupMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/instanceGroupMembership:InstanceGroupMembership", name, args == null ? InstanceGroupMembershipArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/instanceGroupMembership:InstanceGroupMembership", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private InstanceGroupMembership(String name, Output<String> id, @Nullable InstanceGroupMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/instanceGroupMembership:InstanceGroupMembership", name, state, makeResourceOptions(options, id));
+    }
+
+    private static InstanceGroupMembershipArgs makeArgs(InstanceGroupMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InstanceGroupMembershipArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

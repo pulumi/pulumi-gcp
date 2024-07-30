@@ -550,11 +550,18 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public StandardAppVersion(String name, StandardAppVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:appengine/standardAppVersion:StandardAppVersion", name, args == null ? StandardAppVersionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:appengine/standardAppVersion:StandardAppVersion", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private StandardAppVersion(String name, Output<String> id, @Nullable StandardAppVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:appengine/standardAppVersion:StandardAppVersion", name, state, makeResourceOptions(options, id));
+    }
+
+    private static StandardAppVersionArgs makeArgs(StandardAppVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? StandardAppVersionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

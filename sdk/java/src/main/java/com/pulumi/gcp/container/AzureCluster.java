@@ -587,11 +587,18 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AzureCluster(String name, AzureClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:container/azureCluster:AzureCluster", name, args == null ? AzureClusterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:container/azureCluster:AzureCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AzureCluster(String name, Output<String> id, @Nullable AzureClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:container/azureCluster:AzureCluster", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AzureClusterArgs makeArgs(AzureClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AzureClusterArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

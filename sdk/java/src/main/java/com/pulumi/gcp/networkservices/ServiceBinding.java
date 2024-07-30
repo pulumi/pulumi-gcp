@@ -265,11 +265,18 @@ public class ServiceBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ServiceBinding(String name, ServiceBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/serviceBinding:ServiceBinding", name, args == null ? ServiceBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:networkservices/serviceBinding:ServiceBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ServiceBinding(String name, Output<String> id, @Nullable ServiceBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:networkservices/serviceBinding:ServiceBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ServiceBindingArgs makeArgs(ServiceBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

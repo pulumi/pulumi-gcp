@@ -401,11 +401,18 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CxIntent(String name, CxIntentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:diagflow/cxIntent:CxIntent", name, args == null ? CxIntentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:diagflow/cxIntent:CxIntent", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CxIntent(String name, Output<String> id, @Nullable CxIntentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:diagflow/cxIntent:CxIntent", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CxIntentArgs makeArgs(CxIntentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CxIntentArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

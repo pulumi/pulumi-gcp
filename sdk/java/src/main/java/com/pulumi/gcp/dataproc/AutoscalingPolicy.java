@@ -251,11 +251,18 @@ public class AutoscalingPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AutoscalingPolicy(String name, AutoscalingPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/autoscalingPolicy:AutoscalingPolicy", name, args == null ? AutoscalingPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataproc/autoscalingPolicy:AutoscalingPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AutoscalingPolicy(String name, Output<String> id, @Nullable AutoscalingPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataproc/autoscalingPolicy:AutoscalingPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AutoscalingPolicyArgs makeArgs(AutoscalingPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AutoscalingPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

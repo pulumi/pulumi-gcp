@@ -253,11 +253,18 @@ public class Variable extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Variable(String name, VariableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:runtimeconfig/variable:Variable", name, args == null ? VariableArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:runtimeconfig/variable:Variable", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Variable(String name, Output<String> id, @Nullable VariableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:runtimeconfig/variable:Variable", name, state, makeResourceOptions(options, id));
+    }
+
+    private static VariableArgs makeArgs(VariableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VariableArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

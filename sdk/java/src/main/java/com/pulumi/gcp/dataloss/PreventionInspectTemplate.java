@@ -539,11 +539,18 @@ public class PreventionInspectTemplate extends com.pulumi.resources.CustomResour
      * @param options A bag of options that control this resource's behavior.
      */
     public PreventionInspectTemplate(String name, PreventionInspectTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate", name, args == null ? PreventionInspectTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private PreventionInspectTemplate(String name, Output<String> id, @Nullable PreventionInspectTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PreventionInspectTemplateArgs makeArgs(PreventionInspectTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PreventionInspectTemplateArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

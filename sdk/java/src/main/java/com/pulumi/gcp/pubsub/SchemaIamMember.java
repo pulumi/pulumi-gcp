@@ -438,11 +438,18 @@ public class SchemaIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SchemaIamMember(String name, SchemaIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:pubsub/schemaIamMember:SchemaIamMember", name, args == null ? SchemaIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:pubsub/schemaIamMember:SchemaIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SchemaIamMember(String name, Output<String> id, @Nullable SchemaIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:pubsub/schemaIamMember:SchemaIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SchemaIamMemberArgs makeArgs(SchemaIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SchemaIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

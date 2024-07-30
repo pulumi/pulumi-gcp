@@ -450,11 +450,18 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public OsPolicyAssignment(String name, OsPolicyAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:osconfig/osPolicyAssignment:OsPolicyAssignment", name, args == null ? OsPolicyAssignmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:osconfig/osPolicyAssignment:OsPolicyAssignment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OsPolicyAssignment(String name, Output<String> id, @Nullable OsPolicyAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:osconfig/osPolicyAssignment:OsPolicyAssignment", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OsPolicyAssignmentArgs makeArgs(OsPolicyAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OsPolicyAssignmentArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

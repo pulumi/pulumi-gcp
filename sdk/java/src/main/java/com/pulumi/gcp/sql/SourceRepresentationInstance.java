@@ -340,11 +340,18 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      * @param options A bag of options that control this resource's behavior.
      */
     public SourceRepresentationInstance(String name, SourceRepresentationInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance", name, args == null ? SourceRepresentationInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SourceRepresentationInstance(String name, Output<String> id, @Nullable SourceRepresentationInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SourceRepresentationInstanceArgs makeArgs(SourceRepresentationInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SourceRepresentationInstanceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -459,11 +459,18 @@ public class MetastoreFederationIamBinding extends com.pulumi.resources.CustomRe
      * @param options A bag of options that control this resource's behavior.
      */
     public MetastoreFederationIamBinding(String name, MetastoreFederationIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/metastoreFederationIamBinding:MetastoreFederationIamBinding", name, args == null ? MetastoreFederationIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataproc/metastoreFederationIamBinding:MetastoreFederationIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private MetastoreFederationIamBinding(String name, Output<String> id, @Nullable MetastoreFederationIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataproc/metastoreFederationIamBinding:MetastoreFederationIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static MetastoreFederationIamBindingArgs makeArgs(MetastoreFederationIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MetastoreFederationIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

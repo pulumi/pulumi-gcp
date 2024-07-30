@@ -717,11 +717,18 @@ public class SecretIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SecretIamBinding(String name, SecretIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:secretmanager/secretIamBinding:SecretIamBinding", name, args == null ? SecretIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:secretmanager/secretIamBinding:SecretIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SecretIamBinding(String name, Output<String> id, @Nullable SecretIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:secretmanager/secretIamBinding:SecretIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SecretIamBindingArgs makeArgs(SecretIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SecretIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -167,11 +167,18 @@ public class FirewallPolicyAssociation extends com.pulumi.resources.CustomResour
      * @param options A bag of options that control this resource's behavior.
      */
     public FirewallPolicyAssociation(String name, FirewallPolicyAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation", name, args == null ? FirewallPolicyAssociationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FirewallPolicyAssociation(String name, Output<String> id, @Nullable FirewallPolicyAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FirewallPolicyAssociationArgs makeArgs(FirewallPolicyAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FirewallPolicyAssociationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

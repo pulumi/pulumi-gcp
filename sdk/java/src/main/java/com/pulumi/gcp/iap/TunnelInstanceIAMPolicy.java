@@ -692,11 +692,18 @@ public class TunnelInstanceIAMPolicy extends com.pulumi.resources.CustomResource
      * @param options A bag of options that control this resource's behavior.
      */
     public TunnelInstanceIAMPolicy(String name, TunnelInstanceIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy", name, args == null ? TunnelInstanceIAMPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TunnelInstanceIAMPolicy(String name, Output<String> id, @Nullable TunnelInstanceIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TunnelInstanceIAMPolicyArgs makeArgs(TunnelInstanceIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TunnelInstanceIAMPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
