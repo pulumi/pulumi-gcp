@@ -465,11 +465,18 @@ public class RegionDiskIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RegionDiskIamBinding(String name, RegionDiskIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionDiskIamBinding:RegionDiskIamBinding", name, args == null ? RegionDiskIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/regionDiskIamBinding:RegionDiskIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RegionDiskIamBinding(String name, Output<String> id, @Nullable RegionDiskIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/regionDiskIamBinding:RegionDiskIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RegionDiskIamBindingArgs makeArgs(RegionDiskIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionDiskIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

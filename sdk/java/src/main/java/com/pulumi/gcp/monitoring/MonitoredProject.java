@@ -158,11 +158,18 @@ public class MonitoredProject extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public MonitoredProject(String name, MonitoredProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:monitoring/monitoredProject:MonitoredProject", name, args == null ? MonitoredProjectArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:monitoring/monitoredProject:MonitoredProject", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private MonitoredProject(String name, Output<String> id, @Nullable MonitoredProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:monitoring/monitoredProject:MonitoredProject", name, state, makeResourceOptions(options, id));
+    }
+
+    private static MonitoredProjectArgs makeArgs(MonitoredProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MonitoredProjectArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

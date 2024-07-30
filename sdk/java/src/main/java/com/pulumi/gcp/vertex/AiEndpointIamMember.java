@@ -82,11 +82,18 @@ public class AiEndpointIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AiEndpointIamMember(String name, AiEndpointIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiEndpointIamMember:AiEndpointIamMember", name, args == null ? AiEndpointIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:vertex/aiEndpointIamMember:AiEndpointIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AiEndpointIamMember(String name, Output<String> id, @Nullable AiEndpointIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:vertex/aiEndpointIamMember:AiEndpointIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AiEndpointIamMemberArgs makeArgs(AiEndpointIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AiEndpointIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

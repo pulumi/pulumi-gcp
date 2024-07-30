@@ -401,11 +401,18 @@ public class AccountIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AccountIamBinding(String name, AccountIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:billing/accountIamBinding:AccountIamBinding", name, args == null ? AccountIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:billing/accountIamBinding:AccountIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AccountIamBinding(String name, Output<String> id, @Nullable AccountIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:billing/accountIamBinding:AccountIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AccountIamBindingArgs makeArgs(AccountIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccountIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

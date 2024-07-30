@@ -231,11 +231,18 @@ public class HmacKey extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public HmacKey(String name, HmacKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/hmacKey:HmacKey", name, args == null ? HmacKeyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:storage/hmacKey:HmacKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private HmacKey(String name, Output<String> id, @Nullable HmacKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:storage/hmacKey:HmacKey", name, state, makeResourceOptions(options, id));
+    }
+
+    private static HmacKeyArgs makeArgs(HmacKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HmacKeyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

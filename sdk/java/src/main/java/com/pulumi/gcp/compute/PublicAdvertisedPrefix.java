@@ -213,11 +213,18 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
      * @param options A bag of options that control this resource's behavior.
      */
     public PublicAdvertisedPrefix(String name, PublicAdvertisedPrefixArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix", name, args == null ? PublicAdvertisedPrefixArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private PublicAdvertisedPrefix(String name, Output<String> id, @Nullable PublicAdvertisedPrefixState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PublicAdvertisedPrefixArgs makeArgs(PublicAdvertisedPrefixArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PublicAdvertisedPrefixArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

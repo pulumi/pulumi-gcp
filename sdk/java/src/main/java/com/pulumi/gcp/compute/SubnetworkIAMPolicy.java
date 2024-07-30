@@ -704,11 +704,18 @@ public class SubnetworkIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SubnetworkIAMPolicy(String name, SubnetworkIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy", name, args == null ? SubnetworkIAMPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SubnetworkIAMPolicy(String name, Output<String> id, @Nullable SubnetworkIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SubnetworkIAMPolicyArgs makeArgs(SubnetworkIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SubnetworkIAMPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

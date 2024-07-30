@@ -933,11 +933,18 @@ public class CxPage extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CxPage(String name, CxPageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:diagflow/cxPage:CxPage", name, args == null ? CxPageArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:diagflow/cxPage:CxPage", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CxPage(String name, Output<String> id, @Nullable CxPageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:diagflow/cxPage:CxPage", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CxPageArgs makeArgs(CxPageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CxPageArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

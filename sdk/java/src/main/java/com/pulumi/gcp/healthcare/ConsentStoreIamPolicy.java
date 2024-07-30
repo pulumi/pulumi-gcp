@@ -394,11 +394,18 @@ public class ConsentStoreIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ConsentStoreIamPolicy(String name, ConsentStoreIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy", name, args == null ? ConsentStoreIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ConsentStoreIamPolicy(String name, Output<String> id, @Nullable ConsentStoreIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ConsentStoreIamPolicyArgs makeArgs(ConsentStoreIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConsentStoreIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

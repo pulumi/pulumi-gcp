@@ -442,11 +442,18 @@ public class RegionNetworkFirewallPolicyRule extends com.pulumi.resources.Custom
      * @param options A bag of options that control this resource's behavior.
      */
     public RegionNetworkFirewallPolicyRule(String name, RegionNetworkFirewallPolicyRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule", name, args == null ? RegionNetworkFirewallPolicyRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RegionNetworkFirewallPolicyRule(String name, Output<String> id, @Nullable RegionNetworkFirewallPolicyRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RegionNetworkFirewallPolicyRuleArgs makeArgs(RegionNetworkFirewallPolicyRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionNetworkFirewallPolicyRuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

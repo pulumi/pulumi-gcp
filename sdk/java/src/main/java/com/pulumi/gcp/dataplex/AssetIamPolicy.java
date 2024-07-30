@@ -432,11 +432,18 @@ public class AssetIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AssetIamPolicy(String name, AssetIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/assetIamPolicy:AssetIamPolicy", name, args == null ? AssetIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataplex/assetIamPolicy:AssetIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AssetIamPolicy(String name, Output<String> id, @Nullable AssetIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataplex/assetIamPolicy:AssetIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AssetIamPolicyArgs makeArgs(AssetIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AssetIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

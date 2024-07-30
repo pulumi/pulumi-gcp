@@ -364,11 +364,18 @@ public class DicomStoreIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DicomStoreIamPolicy(String name, DicomStoreIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy", name, args == null ? DicomStoreIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DicomStoreIamPolicy(String name, Output<String> id, @Nullable DicomStoreIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DicomStoreIamPolicyArgs makeArgs(DicomStoreIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DicomStoreIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

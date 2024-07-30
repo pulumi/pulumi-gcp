@@ -712,11 +712,18 @@ public class KeyRingIAMMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public KeyRingIAMMember(String name, KeyRingIAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/keyRingIAMMember:KeyRingIAMMember", name, args == null ? KeyRingIAMMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:kms/keyRingIAMMember:KeyRingIAMMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private KeyRingIAMMember(String name, Output<String> id, @Nullable KeyRingIAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:kms/keyRingIAMMember:KeyRingIAMMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static KeyRingIAMMemberArgs makeArgs(KeyRingIAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KeyRingIAMMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

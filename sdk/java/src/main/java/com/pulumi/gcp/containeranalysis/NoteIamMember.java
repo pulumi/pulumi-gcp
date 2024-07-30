@@ -438,11 +438,18 @@ public class NoteIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public NoteIamMember(String name, NoteIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:containeranalysis/noteIamMember:NoteIamMember", name, args == null ? NoteIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:containeranalysis/noteIamMember:NoteIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NoteIamMember(String name, Output<String> id, @Nullable NoteIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:containeranalysis/noteIamMember:NoteIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NoteIamMemberArgs makeArgs(NoteIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NoteIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

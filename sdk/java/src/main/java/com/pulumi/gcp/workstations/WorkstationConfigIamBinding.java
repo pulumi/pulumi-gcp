@@ -201,11 +201,18 @@ public class WorkstationConfigIamBinding extends com.pulumi.resources.CustomReso
      * @param options A bag of options that control this resource's behavior.
      */
     public WorkstationConfigIamBinding(String name, WorkstationConfigIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:workstations/workstationConfigIamBinding:WorkstationConfigIamBinding", name, args == null ? WorkstationConfigIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:workstations/workstationConfigIamBinding:WorkstationConfigIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private WorkstationConfigIamBinding(String name, Output<String> id, @Nullable WorkstationConfigIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:workstations/workstationConfigIamBinding:WorkstationConfigIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static WorkstationConfigIamBindingArgs makeArgs(WorkstationConfigIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkstationConfigIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

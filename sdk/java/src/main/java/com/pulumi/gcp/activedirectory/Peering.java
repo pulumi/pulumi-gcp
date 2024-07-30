@@ -271,11 +271,18 @@ public class Peering extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Peering(String name, PeeringArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:activedirectory/peering:Peering", name, args == null ? PeeringArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:activedirectory/peering:Peering", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Peering(String name, Output<String> id, @Nullable PeeringState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:activedirectory/peering:Peering", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PeeringArgs makeArgs(PeeringArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PeeringArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

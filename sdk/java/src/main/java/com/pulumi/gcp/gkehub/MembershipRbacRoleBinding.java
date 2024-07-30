@@ -313,11 +313,18 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      * @param options A bag of options that control this resource's behavior.
      */
     public MembershipRbacRoleBinding(String name, MembershipRbacRoleBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding", name, args == null ? MembershipRbacRoleBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private MembershipRbacRoleBinding(String name, Output<String> id, @Nullable com.pulumi.gcp.gkehub.inputs.MembershipRbacRoleBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static MembershipRbacRoleBindingArgs makeArgs(MembershipRbacRoleBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MembershipRbacRoleBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

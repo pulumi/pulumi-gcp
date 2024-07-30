@@ -181,11 +181,18 @@ public class InstanceSettings extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public InstanceSettings(String name, InstanceSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/instanceSettings:InstanceSettings", name, args == null ? InstanceSettingsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/instanceSettings:InstanceSettings", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private InstanceSettings(String name, Output<String> id, @Nullable InstanceSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/instanceSettings:InstanceSettings", name, state, makeResourceOptions(options, id));
+    }
+
+    private static InstanceSettingsArgs makeArgs(InstanceSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InstanceSettingsArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

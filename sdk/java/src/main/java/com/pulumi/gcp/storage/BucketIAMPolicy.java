@@ -640,11 +640,18 @@ public class BucketIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public BucketIAMPolicy(String name, BucketIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/bucketIAMPolicy:BucketIAMPolicy", name, args == null ? BucketIAMPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:storage/bucketIAMPolicy:BucketIAMPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private BucketIAMPolicy(String name, Output<String> id, @Nullable BucketIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:storage/bucketIAMPolicy:BucketIAMPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static BucketIAMPolicyArgs makeArgs(BucketIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BucketIAMPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

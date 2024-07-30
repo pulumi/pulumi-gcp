@@ -312,11 +312,18 @@ public class VPNGateway extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public VPNGateway(String name, VPNGatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/vPNGateway:VPNGateway", name, args == null ? VPNGatewayArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/vPNGateway:VPNGateway", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private VPNGateway(String name, Output<String> id, @Nullable VPNGatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/vPNGateway:VPNGateway", name, state, makeResourceOptions(options, id));
+    }
+
+    private static VPNGatewayArgs makeArgs(VPNGatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VPNGatewayArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
