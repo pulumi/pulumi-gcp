@@ -136,11 +136,18 @@ public class BackendServiceIamPolicy extends com.pulumi.resources.CustomResource
      * @param options A bag of options that control this resource's behavior.
      */
     public BackendServiceIamPolicy(String name, BackendServiceIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/backendServiceIamPolicy:BackendServiceIamPolicy", name, args == null ? BackendServiceIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/backendServiceIamPolicy:BackendServiceIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private BackendServiceIamPolicy(String name, Output<String> id, @Nullable BackendServiceIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/backendServiceIamPolicy:BackendServiceIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static BackendServiceIamPolicyArgs makeArgs(BackendServiceIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BackendServiceIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

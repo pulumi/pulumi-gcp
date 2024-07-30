@@ -682,11 +682,18 @@ public class IamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public IamPolicy(String name, IamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/iamPolicy:IamPolicy", name, args == null ? IamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:bigquery/iamPolicy:IamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private IamPolicy(String name, Output<String> id, @Nullable IamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:bigquery/iamPolicy:IamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static IamPolicyArgs makeArgs(IamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

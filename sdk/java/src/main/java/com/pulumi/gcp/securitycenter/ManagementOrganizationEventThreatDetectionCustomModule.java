@@ -216,11 +216,18 @@ public class ManagementOrganizationEventThreatDetectionCustomModule extends com.
      * @param options A bag of options that control this resource's behavior.
      */
     public ManagementOrganizationEventThreatDetectionCustomModule(String name, ManagementOrganizationEventThreatDetectionCustomModuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/managementOrganizationEventThreatDetectionCustomModule:ManagementOrganizationEventThreatDetectionCustomModule", name, args == null ? ManagementOrganizationEventThreatDetectionCustomModuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:securitycenter/managementOrganizationEventThreatDetectionCustomModule:ManagementOrganizationEventThreatDetectionCustomModule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ManagementOrganizationEventThreatDetectionCustomModule(String name, Output<String> id, @Nullable ManagementOrganizationEventThreatDetectionCustomModuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:securitycenter/managementOrganizationEventThreatDetectionCustomModule:ManagementOrganizationEventThreatDetectionCustomModule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ManagementOrganizationEventThreatDetectionCustomModuleArgs makeArgs(ManagementOrganizationEventThreatDetectionCustomModuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ManagementOrganizationEventThreatDetectionCustomModuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -466,11 +466,18 @@ public class BackupPlanIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public BackupPlanIamMember(String name, BackupPlanIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkebackup/backupPlanIamMember:BackupPlanIamMember", name, args == null ? BackupPlanIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:gkebackup/backupPlanIamMember:BackupPlanIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private BackupPlanIamMember(String name, Output<String> id, @Nullable BackupPlanIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:gkebackup/backupPlanIamMember:BackupPlanIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static BackupPlanIamMemberArgs makeArgs(BackupPlanIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BackupPlanIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -431,11 +431,18 @@ public class ScopeIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ScopeIamBinding(String name, ScopeIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkehub/scopeIamBinding:ScopeIamBinding", name, args == null ? ScopeIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:gkehub/scopeIamBinding:ScopeIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ScopeIamBinding(String name, Output<String> id, @Nullable ScopeIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:gkehub/scopeIamBinding:ScopeIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ScopeIamBindingArgs makeArgs(ScopeIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ScopeIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

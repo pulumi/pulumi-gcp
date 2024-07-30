@@ -185,11 +185,18 @@ public class FolderExclusion extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public FolderExclusion(String name, FolderExclusionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/folderExclusion:FolderExclusion", name, args == null ? FolderExclusionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:logging/folderExclusion:FolderExclusion", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FolderExclusion(String name, Output<String> id, @Nullable FolderExclusionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:logging/folderExclusion:FolderExclusion", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FolderExclusionArgs makeArgs(FolderExclusionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FolderExclusionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

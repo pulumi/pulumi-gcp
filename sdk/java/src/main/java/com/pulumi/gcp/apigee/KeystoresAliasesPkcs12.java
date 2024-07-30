@@ -200,11 +200,18 @@ public class KeystoresAliasesPkcs12 extends com.pulumi.resources.CustomResource 
      * @param options A bag of options that control this resource's behavior.
      */
     public KeystoresAliasesPkcs12(String name, KeystoresAliasesPkcs12Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12", name, args == null ? KeystoresAliasesPkcs12Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private KeystoresAliasesPkcs12(String name, Output<String> id, @Nullable KeystoresAliasesPkcs12State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12", name, state, makeResourceOptions(options, id));
+    }
+
+    private static KeystoresAliasesPkcs12Args makeArgs(KeystoresAliasesPkcs12Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KeystoresAliasesPkcs12Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -440,11 +440,18 @@ public class ClusterIAMMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ClusterIAMMember(String name, ClusterIAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/clusterIAMMember:ClusterIAMMember", name, args == null ? ClusterIAMMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataproc/clusterIAMMember:ClusterIAMMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ClusterIAMMember(String name, Output<String> id, @Nullable ClusterIAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataproc/clusterIAMMember:ClusterIAMMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ClusterIAMMemberArgs makeArgs(ClusterIAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ClusterIAMMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

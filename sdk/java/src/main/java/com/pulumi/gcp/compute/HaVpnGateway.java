@@ -416,11 +416,18 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public HaVpnGateway(String name, HaVpnGatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/haVpnGateway:HaVpnGateway", name, args == null ? HaVpnGatewayArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/haVpnGateway:HaVpnGateway", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private HaVpnGateway(String name, Output<String> id, @Nullable HaVpnGatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/haVpnGateway:HaVpnGateway", name, state, makeResourceOptions(options, id));
+    }
+
+    private static HaVpnGatewayArgs makeArgs(HaVpnGatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HaVpnGatewayArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -1113,11 +1113,18 @@ public class RestorePlan extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RestorePlan(String name, RestorePlanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkebackup/restorePlan:RestorePlan", name, args == null ? RestorePlanArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:gkebackup/restorePlan:RestorePlan", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RestorePlan(String name, Output<String> id, @Nullable RestorePlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:gkebackup/restorePlan:RestorePlan", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RestorePlanArgs makeArgs(RestorePlanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RestorePlanArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

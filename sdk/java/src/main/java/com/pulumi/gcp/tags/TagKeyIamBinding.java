@@ -415,11 +415,18 @@ public class TagKeyIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TagKeyIamBinding(String name, TagKeyIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:tags/tagKeyIamBinding:TagKeyIamBinding", name, args == null ? TagKeyIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:tags/tagKeyIamBinding:TagKeyIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TagKeyIamBinding(String name, Output<String> id, @Nullable TagKeyIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:tags/tagKeyIamBinding:TagKeyIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TagKeyIamBindingArgs makeArgs(TagKeyIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TagKeyIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

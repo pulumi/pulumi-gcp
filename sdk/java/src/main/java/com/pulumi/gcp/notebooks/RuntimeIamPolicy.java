@@ -420,11 +420,18 @@ public class RuntimeIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RuntimeIamPolicy(String name, RuntimeIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:notebooks/runtimeIamPolicy:RuntimeIamPolicy", name, args == null ? RuntimeIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:notebooks/runtimeIamPolicy:RuntimeIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RuntimeIamPolicy(String name, Output<String> id, @Nullable RuntimeIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:notebooks/runtimeIamPolicy:RuntimeIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RuntimeIamPolicyArgs makeArgs(RuntimeIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RuntimeIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -254,11 +254,18 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AttachedDisk(String name, AttachedDiskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/attachedDisk:AttachedDisk", name, args == null ? AttachedDiskArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/attachedDisk:AttachedDisk", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AttachedDisk(String name, Output<String> id, @Nullable AttachedDiskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/attachedDisk:AttachedDisk", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AttachedDiskArgs makeArgs(AttachedDiskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AttachedDiskArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

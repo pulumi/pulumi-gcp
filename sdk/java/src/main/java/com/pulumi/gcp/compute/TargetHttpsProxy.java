@@ -786,11 +786,18 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TargetHttpsProxy(String name, TargetHttpsProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/targetHttpsProxy:TargetHttpsProxy", name, args == null ? TargetHttpsProxyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/targetHttpsProxy:TargetHttpsProxy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TargetHttpsProxy(String name, Output<String> id, @Nullable TargetHttpsProxyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/targetHttpsProxy:TargetHttpsProxy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TargetHttpsProxyArgs makeArgs(TargetHttpsProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TargetHttpsProxyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

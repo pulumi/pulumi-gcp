@@ -416,11 +416,18 @@ public class InstanceIAMBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public InstanceIAMBinding(String name, InstanceIAMBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:spanner/instanceIAMBinding:InstanceIAMBinding", name, args == null ? InstanceIAMBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:spanner/instanceIAMBinding:InstanceIAMBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private InstanceIAMBinding(String name, Output<String> id, @Nullable InstanceIAMBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:spanner/instanceIAMBinding:InstanceIAMBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static InstanceIAMBindingArgs makeArgs(InstanceIAMBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InstanceIAMBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

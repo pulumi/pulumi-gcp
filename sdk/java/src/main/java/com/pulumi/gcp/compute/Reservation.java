@@ -300,11 +300,18 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Reservation(String name, ReservationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/reservation:Reservation", name, args == null ? ReservationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/reservation:Reservation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Reservation(String name, Output<String> id, @Nullable ReservationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/reservation:Reservation", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ReservationArgs makeArgs(ReservationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ReservationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

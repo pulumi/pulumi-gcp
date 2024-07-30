@@ -446,11 +446,18 @@ public class BitbucketServerConfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public BitbucketServerConfig(String name, BitbucketServerConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig", name, args == null ? BitbucketServerConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private BitbucketServerConfig(String name, Output<String> id, @Nullable BitbucketServerConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static BitbucketServerConfigArgs makeArgs(BitbucketServerConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BitbucketServerConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -414,11 +414,18 @@ public class EntryGroupIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public EntryGroupIamPolicy(String name, EntryGroupIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/entryGroupIamPolicy:EntryGroupIamPolicy", name, args == null ? EntryGroupIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataplex/entryGroupIamPolicy:EntryGroupIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private EntryGroupIamPolicy(String name, Output<String> id, @Nullable EntryGroupIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataplex/entryGroupIamPolicy:EntryGroupIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static EntryGroupIamPolicyArgs makeArgs(EntryGroupIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EntryGroupIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -179,11 +179,18 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Sharedflow(String name, SharedflowArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/sharedflow:Sharedflow", name, args == null ? SharedflowArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:apigee/sharedflow:Sharedflow", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Sharedflow(String name, Output<String> id, @Nullable SharedflowState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:apigee/sharedflow:Sharedflow", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SharedflowArgs makeArgs(SharedflowArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SharedflowArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
