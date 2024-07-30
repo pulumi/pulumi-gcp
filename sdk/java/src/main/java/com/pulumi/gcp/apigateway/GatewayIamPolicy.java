@@ -414,11 +414,18 @@ public class GatewayIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public GatewayIamPolicy(String name, GatewayIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigateway/gatewayIamPolicy:GatewayIamPolicy", name, args == null ? GatewayIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:apigateway/gatewayIamPolicy:GatewayIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private GatewayIamPolicy(String name, Output<String> id, @Nullable GatewayIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:apigateway/gatewayIamPolicy:GatewayIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static GatewayIamPolicyArgs makeArgs(GatewayIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GatewayIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

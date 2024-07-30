@@ -478,11 +478,18 @@ public class ConnectionIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ConnectionIamMember(String name, ConnectionIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/connectionIamMember:ConnectionIamMember", name, args == null ? ConnectionIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:bigquery/connectionIamMember:ConnectionIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ConnectionIamMember(String name, Output<String> id, @Nullable ConnectionIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:bigquery/connectionIamMember:ConnectionIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ConnectionIamMemberArgs makeArgs(ConnectionIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConnectionIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

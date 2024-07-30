@@ -439,11 +439,18 @@ public class DnsManagedZoneIamBinding extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public DnsManagedZoneIamBinding(String name, DnsManagedZoneIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dns/dnsManagedZoneIamBinding:DnsManagedZoneIamBinding", name, args == null ? DnsManagedZoneIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dns/dnsManagedZoneIamBinding:DnsManagedZoneIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DnsManagedZoneIamBinding(String name, Output<String> id, @Nullable DnsManagedZoneIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dns/dnsManagedZoneIamBinding:DnsManagedZoneIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DnsManagedZoneIamBindingArgs makeArgs(DnsManagedZoneIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DnsManagedZoneIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

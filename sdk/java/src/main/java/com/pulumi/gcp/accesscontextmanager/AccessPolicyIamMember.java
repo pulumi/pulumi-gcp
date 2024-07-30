@@ -414,11 +414,18 @@ public class AccessPolicyIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AccessPolicyIamMember(String name, AccessPolicyIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/accessPolicyIamMember:AccessPolicyIamMember", name, args == null ? AccessPolicyIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:accesscontextmanager/accessPolicyIamMember:AccessPolicyIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AccessPolicyIamMember(String name, Output<String> id, @Nullable AccessPolicyIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:accesscontextmanager/accessPolicyIamMember:AccessPolicyIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AccessPolicyIamMemberArgs makeArgs(AccessPolicyIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessPolicyIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

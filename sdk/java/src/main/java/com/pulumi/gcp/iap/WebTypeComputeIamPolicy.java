@@ -642,11 +642,18 @@ public class WebTypeComputeIamPolicy extends com.pulumi.resources.CustomResource
      * @param options A bag of options that control this resource's behavior.
      */
     public WebTypeComputeIamPolicy(String name, WebTypeComputeIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iap/webTypeComputeIamPolicy:WebTypeComputeIamPolicy", name, args == null ? WebTypeComputeIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:iap/webTypeComputeIamPolicy:WebTypeComputeIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private WebTypeComputeIamPolicy(String name, Output<String> id, @Nullable WebTypeComputeIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:iap/webTypeComputeIamPolicy:WebTypeComputeIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static WebTypeComputeIamPolicyArgs makeArgs(WebTypeComputeIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WebTypeComputeIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

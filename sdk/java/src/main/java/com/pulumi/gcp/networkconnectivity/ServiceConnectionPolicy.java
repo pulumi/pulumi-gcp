@@ -369,11 +369,18 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
      * @param options A bag of options that control this resource's behavior.
      */
     public ServiceConnectionPolicy(String name, ServiceConnectionPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy", name, args == null ? ServiceConnectionPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ServiceConnectionPolicy(String name, Output<String> id, @Nullable ServiceConnectionPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ServiceConnectionPolicyArgs makeArgs(ServiceConnectionPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceConnectionPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -262,11 +262,18 @@ public class GlobalNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * @param options A bag of options that control this resource's behavior.
      */
     public GlobalNetworkEndpointGroup(String name, GlobalNetworkEndpointGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup", name, args == null ? GlobalNetworkEndpointGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private GlobalNetworkEndpointGroup(String name, Output<String> id, @Nullable GlobalNetworkEndpointGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup", name, state, makeResourceOptions(options, id));
+    }
+
+    private static GlobalNetworkEndpointGroupArgs makeArgs(GlobalNetworkEndpointGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GlobalNetworkEndpointGroupArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

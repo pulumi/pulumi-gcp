@@ -384,11 +384,18 @@ public class NetworkEndpointGroup extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public NetworkEndpointGroup(String name, NetworkEndpointGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/networkEndpointGroup:NetworkEndpointGroup", name, args == null ? NetworkEndpointGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/networkEndpointGroup:NetworkEndpointGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NetworkEndpointGroup(String name, Output<String> id, @Nullable NetworkEndpointGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/networkEndpointGroup:NetworkEndpointGroup", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NetworkEndpointGroupArgs makeArgs(NetworkEndpointGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NetworkEndpointGroupArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

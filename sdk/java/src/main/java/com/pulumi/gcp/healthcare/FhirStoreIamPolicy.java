@@ -364,11 +364,18 @@ public class FhirStoreIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public FhirStoreIamPolicy(String name, FhirStoreIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy", name, args == null ? FhirStoreIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FhirStoreIamPolicy(String name, Output<String> id, @Nullable FhirStoreIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FhirStoreIamPolicyArgs makeArgs(FhirStoreIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FhirStoreIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

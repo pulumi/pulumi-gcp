@@ -337,11 +337,18 @@ public class FolderCustomModule extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public FolderCustomModule(String name, FolderCustomModuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/folderCustomModule:FolderCustomModule", name, args == null ? FolderCustomModuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:securitycenter/folderCustomModule:FolderCustomModule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FolderCustomModule(String name, Output<String> id, @Nullable FolderCustomModuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:securitycenter/folderCustomModule:FolderCustomModule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FolderCustomModuleArgs makeArgs(FolderCustomModuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FolderCustomModuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

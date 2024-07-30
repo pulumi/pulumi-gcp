@@ -191,11 +191,18 @@ public class ServicePerimeters extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ServicePerimeters(String name, ServicePerimetersArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:accesscontextmanager/servicePerimeters:ServicePerimeters", name, args == null ? ServicePerimetersArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:accesscontextmanager/servicePerimeters:ServicePerimeters", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ServicePerimeters(String name, Output<String> id, @Nullable ServicePerimetersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:accesscontextmanager/servicePerimeters:ServicePerimeters", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ServicePerimetersArgs makeArgs(ServicePerimetersArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServicePerimetersArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

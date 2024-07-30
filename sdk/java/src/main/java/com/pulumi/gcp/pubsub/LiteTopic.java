@@ -259,11 +259,18 @@ public class LiteTopic extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public LiteTopic(String name, @Nullable LiteTopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:pubsub/liteTopic:LiteTopic", name, args == null ? LiteTopicArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:pubsub/liteTopic:LiteTopic", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private LiteTopic(String name, Output<String> id, @Nullable LiteTopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:pubsub/liteTopic:LiteTopic", name, state, makeResourceOptions(options, id));
+    }
+
+    private static LiteTopicArgs makeArgs(@Nullable LiteTopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LiteTopicArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

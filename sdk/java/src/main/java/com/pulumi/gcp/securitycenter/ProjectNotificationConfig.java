@@ -228,11 +228,18 @@ public class ProjectNotificationConfig extends com.pulumi.resources.CustomResour
      * @param options A bag of options that control this resource's behavior.
      */
     public ProjectNotificationConfig(String name, ProjectNotificationConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig", name, args == null ? ProjectNotificationConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ProjectNotificationConfig(String name, Output<String> id, @Nullable ProjectNotificationConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ProjectNotificationConfigArgs makeArgs(ProjectNotificationConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectNotificationConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

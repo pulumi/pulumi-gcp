@@ -461,11 +461,18 @@ public class MembershipIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public MembershipIamBinding(String name, MembershipIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkehub/membershipIamBinding:MembershipIamBinding", name, args == null ? MembershipIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:gkehub/membershipIamBinding:MembershipIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private MembershipIamBinding(String name, Output<String> id, @Nullable MembershipIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:gkehub/membershipIamBinding:MembershipIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static MembershipIamBindingArgs makeArgs(MembershipIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MembershipIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -394,11 +394,18 @@ public class SnapshotIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SnapshotIamPolicy(String name, SnapshotIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/snapshotIamPolicy:SnapshotIamPolicy", name, args == null ? SnapshotIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/snapshotIamPolicy:SnapshotIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SnapshotIamPolicy(String name, Output<String> id, @Nullable SnapshotIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/snapshotIamPolicy:SnapshotIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SnapshotIamPolicyArgs makeArgs(SnapshotIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SnapshotIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

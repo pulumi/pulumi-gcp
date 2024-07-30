@@ -265,11 +265,18 @@ public class CertificateMap extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CertificateMap(String name, @Nullable CertificateMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:certificatemanager/certificateMap:CertificateMap", name, args == null ? CertificateMapArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:certificatemanager/certificateMap:CertificateMap", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CertificateMap(String name, Output<String> id, @Nullable CertificateMapState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:certificatemanager/certificateMap:CertificateMap", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CertificateMapArgs makeArgs(@Nullable CertificateMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CertificateMapArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

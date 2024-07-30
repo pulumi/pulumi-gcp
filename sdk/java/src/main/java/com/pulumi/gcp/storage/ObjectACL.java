@@ -177,11 +177,18 @@ public class ObjectACL extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ObjectACL(String name, ObjectACLArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/objectACL:ObjectACL", name, args == null ? ObjectACLArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:storage/objectACL:ObjectACL", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ObjectACL(String name, Output<String> id, @Nullable ObjectACLState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:storage/objectACL:ObjectACL", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ObjectACLArgs makeArgs(ObjectACLArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ObjectACLArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

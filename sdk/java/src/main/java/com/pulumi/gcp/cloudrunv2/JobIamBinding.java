@@ -465,11 +465,18 @@ public class JobIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public JobIamBinding(String name, JobIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudrunv2/jobIamBinding:JobIamBinding", name, args == null ? JobIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:cloudrunv2/jobIamBinding:JobIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private JobIamBinding(String name, Output<String> id, @Nullable JobIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:cloudrunv2/jobIamBinding:JobIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static JobIamBindingArgs makeArgs(JobIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? JobIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

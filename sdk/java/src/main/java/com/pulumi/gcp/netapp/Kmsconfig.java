@@ -287,11 +287,18 @@ public class Kmsconfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Kmsconfig(String name, KmsconfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:netapp/kmsconfig:Kmsconfig", name, args == null ? KmsconfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:netapp/kmsconfig:Kmsconfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Kmsconfig(String name, Output<String> id, @Nullable KmsconfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:netapp/kmsconfig:Kmsconfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static KmsconfigArgs makeArgs(KmsconfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KmsconfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

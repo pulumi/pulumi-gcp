@@ -279,11 +279,18 @@ public class AppCheckPlayIntegrityConfig extends com.pulumi.resources.CustomReso
      * @param options A bag of options that control this resource's behavior.
      */
     public AppCheckPlayIntegrityConfig(String name, AppCheckPlayIntegrityConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig", name, args == null ? AppCheckPlayIntegrityConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AppCheckPlayIntegrityConfig(String name, Output<String> id, @Nullable AppCheckPlayIntegrityConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AppCheckPlayIntegrityConfigArgs makeArgs(AppCheckPlayIntegrityConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AppCheckPlayIntegrityConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -759,11 +759,18 @@ public class SubnetworkIAMBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SubnetworkIAMBinding(String name, SubnetworkIAMBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding", name, args == null ? SubnetworkIAMBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SubnetworkIAMBinding(String name, Output<String> id, @Nullable SubnetworkIAMBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SubnetworkIAMBindingArgs makeArgs(SubnetworkIAMBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SubnetworkIAMBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

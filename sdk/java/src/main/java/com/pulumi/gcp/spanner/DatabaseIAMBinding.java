@@ -724,11 +724,18 @@ public class DatabaseIAMBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DatabaseIAMBinding(String name, DatabaseIAMBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:spanner/databaseIAMBinding:DatabaseIAMBinding", name, args == null ? DatabaseIAMBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:spanner/databaseIAMBinding:DatabaseIAMBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DatabaseIAMBinding(String name, Output<String> id, @Nullable DatabaseIAMBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:spanner/databaseIAMBinding:DatabaseIAMBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DatabaseIAMBindingArgs makeArgs(DatabaseIAMBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DatabaseIAMBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -403,11 +403,18 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public PreventionStoredInfoType(String name, PreventionStoredInfoTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType", name, args == null ? PreventionStoredInfoTypeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private PreventionStoredInfoType(String name, Output<String> id, @Nullable PreventionStoredInfoTypeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PreventionStoredInfoTypeArgs makeArgs(PreventionStoredInfoTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PreventionStoredInfoTypeArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -218,11 +218,18 @@ public class LogViewIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public LogViewIamMember(String name, LogViewIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/logViewIamMember:LogViewIamMember", name, args == null ? LogViewIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:logging/logViewIamMember:LogViewIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private LogViewIamMember(String name, Output<String> id, @Nullable LogViewIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:logging/logViewIamMember:LogViewIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static LogViewIamMemberArgs makeArgs(LogViewIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LogViewIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

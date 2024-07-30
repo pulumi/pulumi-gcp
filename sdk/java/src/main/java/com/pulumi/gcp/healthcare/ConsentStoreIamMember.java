@@ -438,11 +438,18 @@ public class ConsentStoreIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ConsentStoreIamMember(String name, ConsentStoreIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/consentStoreIamMember:ConsentStoreIamMember", name, args == null ? ConsentStoreIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:healthcare/consentStoreIamMember:ConsentStoreIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ConsentStoreIamMember(String name, Output<String> id, @Nullable ConsentStoreIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:healthcare/consentStoreIamMember:ConsentStoreIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ConsentStoreIamMemberArgs makeArgs(ConsentStoreIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConsentStoreIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -386,11 +386,18 @@ public class ScopeIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ScopeIamPolicy(String name, ScopeIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkehub/scopeIamPolicy:ScopeIamPolicy", name, args == null ? ScopeIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:gkehub/scopeIamPolicy:ScopeIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ScopeIamPolicy(String name, Output<String> id, @Nullable ScopeIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:gkehub/scopeIamPolicy:ScopeIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ScopeIamPolicyArgs makeArgs(ScopeIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ScopeIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
