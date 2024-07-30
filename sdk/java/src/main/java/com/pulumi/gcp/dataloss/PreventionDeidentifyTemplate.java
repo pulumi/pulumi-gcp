@@ -379,11 +379,18 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
      * @param options A bag of options that control this resource's behavior.
      */
     public PreventionDeidentifyTemplate(String name, PreventionDeidentifyTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate", name, args == null ? PreventionDeidentifyTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private PreventionDeidentifyTemplate(String name, Output<String> id, @Nullable PreventionDeidentifyTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PreventionDeidentifyTemplateArgs makeArgs(PreventionDeidentifyTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PreventionDeidentifyTemplateArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

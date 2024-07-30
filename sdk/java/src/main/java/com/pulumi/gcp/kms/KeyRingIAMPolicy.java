@@ -664,11 +664,18 @@ public class KeyRingIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public KeyRingIAMPolicy(String name, KeyRingIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy", name, args == null ? KeyRingIAMPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private KeyRingIAMPolicy(String name, Output<String> id, @Nullable KeyRingIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static KeyRingIAMPolicyArgs makeArgs(KeyRingIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KeyRingIAMPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

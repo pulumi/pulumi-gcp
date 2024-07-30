@@ -362,11 +362,18 @@ public class AiFeatureStoreEntityTypeFeature extends com.pulumi.resources.Custom
      * @param options A bag of options that control this resource's behavior.
      */
     public AiFeatureStoreEntityTypeFeature(String name, AiFeatureStoreEntityTypeFeatureArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature", name, args == null ? AiFeatureStoreEntityTypeFeatureArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AiFeatureStoreEntityTypeFeature(String name, Output<String> id, @Nullable AiFeatureStoreEntityTypeFeatureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AiFeatureStoreEntityTypeFeatureArgs makeArgs(AiFeatureStoreEntityTypeFeatureArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AiFeatureStoreEntityTypeFeatureArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

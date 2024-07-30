@@ -68,11 +68,18 @@ public class TargetIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TargetIamPolicy(String name, TargetIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:clouddeploy/targetIamPolicy:TargetIamPolicy", name, args == null ? TargetIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:clouddeploy/targetIamPolicy:TargetIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TargetIamPolicy(String name, Output<String> id, @Nullable TargetIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:clouddeploy/targetIamPolicy:TargetIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TargetIamPolicyArgs makeArgs(TargetIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TargetIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

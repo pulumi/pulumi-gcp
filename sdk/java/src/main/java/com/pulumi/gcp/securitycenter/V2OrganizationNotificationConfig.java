@@ -247,11 +247,18 @@ public class V2OrganizationNotificationConfig extends com.pulumi.resources.Custo
      * @param options A bag of options that control this resource's behavior.
      */
     public V2OrganizationNotificationConfig(String name, V2OrganizationNotificationConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig", name, args == null ? V2OrganizationNotificationConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private V2OrganizationNotificationConfig(String name, Output<String> id, @Nullable V2OrganizationNotificationConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static V2OrganizationNotificationConfigArgs makeArgs(V2OrganizationNotificationConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? V2OrganizationNotificationConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

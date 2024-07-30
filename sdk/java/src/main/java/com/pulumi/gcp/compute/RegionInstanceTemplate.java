@@ -581,11 +581,18 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * @param options A bag of options that control this resource's behavior.
      */
     public RegionInstanceTemplate(String name, RegionInstanceTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionInstanceTemplate:RegionInstanceTemplate", name, args == null ? RegionInstanceTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/regionInstanceTemplate:RegionInstanceTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RegionInstanceTemplate(String name, Output<String> id, @Nullable RegionInstanceTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/regionInstanceTemplate:RegionInstanceTemplate", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RegionInstanceTemplateArgs makeArgs(RegionInstanceTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionInstanceTemplateArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

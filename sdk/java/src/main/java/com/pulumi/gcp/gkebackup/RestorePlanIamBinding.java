@@ -467,11 +467,18 @@ public class RestorePlanIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RestorePlanIamBinding(String name, RestorePlanIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding", name, args == null ? RestorePlanIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RestorePlanIamBinding(String name, Output<String> id, @Nullable RestorePlanIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RestorePlanIamBindingArgs makeArgs(RestorePlanIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RestorePlanIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

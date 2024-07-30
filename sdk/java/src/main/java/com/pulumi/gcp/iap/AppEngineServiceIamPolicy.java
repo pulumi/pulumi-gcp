@@ -698,11 +698,18 @@ public class AppEngineServiceIamPolicy extends com.pulumi.resources.CustomResour
      * @param options A bag of options that control this resource's behavior.
      */
     public AppEngineServiceIamPolicy(String name, AppEngineServiceIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iap/appEngineServiceIamPolicy:AppEngineServiceIamPolicy", name, args == null ? AppEngineServiceIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:iap/appEngineServiceIamPolicy:AppEngineServiceIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AppEngineServiceIamPolicy(String name, Output<String> id, @Nullable AppEngineServiceIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:iap/appEngineServiceIamPolicy:AppEngineServiceIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AppEngineServiceIamPolicyArgs makeArgs(AppEngineServiceIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AppEngineServiceIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -317,11 +317,18 @@ public class PostureDeployment extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public PostureDeployment(String name, PostureDeploymentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securityposture/postureDeployment:PostureDeployment", name, args == null ? PostureDeploymentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:securityposture/postureDeployment:PostureDeployment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private PostureDeployment(String name, Output<String> id, @Nullable PostureDeploymentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:securityposture/postureDeployment:PostureDeployment", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PostureDeploymentArgs makeArgs(PostureDeploymentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PostureDeploymentArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

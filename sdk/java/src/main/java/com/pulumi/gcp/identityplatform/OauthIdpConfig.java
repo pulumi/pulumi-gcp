@@ -218,11 +218,18 @@ public class OauthIdpConfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public OauthIdpConfig(String name, OauthIdpConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:identityplatform/oauthIdpConfig:OauthIdpConfig", name, args == null ? OauthIdpConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:identityplatform/oauthIdpConfig:OauthIdpConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OauthIdpConfig(String name, Output<String> id, @Nullable OauthIdpConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:identityplatform/oauthIdpConfig:OauthIdpConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OauthIdpConfigArgs makeArgs(OauthIdpConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OauthIdpConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

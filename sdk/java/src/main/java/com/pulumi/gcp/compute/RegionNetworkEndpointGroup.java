@@ -885,11 +885,18 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * @param options A bag of options that control this resource's behavior.
      */
     public RegionNetworkEndpointGroup(String name, RegionNetworkEndpointGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup", name, args == null ? RegionNetworkEndpointGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RegionNetworkEndpointGroup(String name, Output<String> id, @Nullable RegionNetworkEndpointGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RegionNetworkEndpointGroupArgs makeArgs(RegionNetworkEndpointGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionNetworkEndpointGroupArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

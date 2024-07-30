@@ -269,11 +269,18 @@ public class AddonsConfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AddonsConfig(String name, AddonsConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/addonsConfig:AddonsConfig", name, args == null ? AddonsConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:apigee/addonsConfig:AddonsConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AddonsConfig(String name, Output<String> id, @Nullable AddonsConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:apigee/addonsConfig:AddonsConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AddonsConfigArgs makeArgs(AddonsConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AddonsConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

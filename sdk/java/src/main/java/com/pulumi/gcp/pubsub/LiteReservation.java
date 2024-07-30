@@ -189,11 +189,18 @@ public class LiteReservation extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public LiteReservation(String name, LiteReservationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:pubsub/liteReservation:LiteReservation", name, args == null ? LiteReservationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:pubsub/liteReservation:LiteReservation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private LiteReservation(String name, Output<String> id, @Nullable LiteReservationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:pubsub/liteReservation:LiteReservation", name, state, makeResourceOptions(options, id));
+    }
+
+    private static LiteReservationArgs makeArgs(LiteReservationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LiteReservationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

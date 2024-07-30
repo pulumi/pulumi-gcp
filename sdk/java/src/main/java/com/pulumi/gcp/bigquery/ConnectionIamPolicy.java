@@ -434,11 +434,18 @@ public class ConnectionIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ConnectionIamPolicy(String name, ConnectionIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/connectionIamPolicy:ConnectionIamPolicy", name, args == null ? ConnectionIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:bigquery/connectionIamPolicy:ConnectionIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ConnectionIamPolicy(String name, Output<String> id, @Nullable ConnectionIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:bigquery/connectionIamPolicy:ConnectionIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ConnectionIamPolicyArgs makeArgs(ConnectionIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConnectionIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

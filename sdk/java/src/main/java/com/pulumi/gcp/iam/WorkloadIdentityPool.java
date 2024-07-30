@@ -279,11 +279,18 @@ public class WorkloadIdentityPool extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public WorkloadIdentityPool(String name, WorkloadIdentityPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iam/workloadIdentityPool:WorkloadIdentityPool", name, args == null ? WorkloadIdentityPoolArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:iam/workloadIdentityPool:WorkloadIdentityPool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private WorkloadIdentityPool(String name, Output<String> id, @Nullable WorkloadIdentityPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:iam/workloadIdentityPool:WorkloadIdentityPool", name, state, makeResourceOptions(options, id));
+    }
+
+    private static WorkloadIdentityPoolArgs makeArgs(WorkloadIdentityPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkloadIdentityPoolArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

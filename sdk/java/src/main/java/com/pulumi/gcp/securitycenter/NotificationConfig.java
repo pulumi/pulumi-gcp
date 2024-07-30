@@ -232,11 +232,18 @@ public class NotificationConfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public NotificationConfig(String name, NotificationConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:securitycenter/notificationConfig:NotificationConfig", name, args == null ? NotificationConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:securitycenter/notificationConfig:NotificationConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NotificationConfig(String name, Output<String> id, @Nullable NotificationConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:securitycenter/notificationConfig:NotificationConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NotificationConfigArgs makeArgs(NotificationConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NotificationConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

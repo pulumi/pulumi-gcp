@@ -487,11 +487,18 @@ public class ListingIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ListingIamBinding(String name, ListingIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigqueryanalyticshub/listingIamBinding:ListingIamBinding", name, args == null ? ListingIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:bigqueryanalyticshub/listingIamBinding:ListingIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ListingIamBinding(String name, Output<String> id, @Nullable ListingIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:bigqueryanalyticshub/listingIamBinding:ListingIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ListingIamBindingArgs makeArgs(ListingIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ListingIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

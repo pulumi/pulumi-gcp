@@ -442,11 +442,18 @@ public class TableIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TableIamMember(String name, TableIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigtable/tableIamMember:TableIamMember", name, args == null ? TableIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:bigtable/tableIamMember:TableIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TableIamMember(String name, Output<String> id, @Nullable TableIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:bigtable/tableIamMember:TableIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TableIamMemberArgs makeArgs(TableIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TableIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
