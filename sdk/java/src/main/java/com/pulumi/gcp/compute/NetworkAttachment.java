@@ -457,11 +457,18 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public NetworkAttachment(String name, NetworkAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/networkAttachment:NetworkAttachment", name, args == null ? NetworkAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/networkAttachment:NetworkAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private NetworkAttachment(String name, Output<String> id, @Nullable NetworkAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/networkAttachment:NetworkAttachment", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NetworkAttachmentArgs makeArgs(NetworkAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NetworkAttachmentArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

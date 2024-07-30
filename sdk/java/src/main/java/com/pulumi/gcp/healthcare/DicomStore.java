@@ -360,11 +360,18 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DicomStore(String name, DicomStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/dicomStore:DicomStore", name, args == null ? DicomStoreArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:healthcare/dicomStore:DicomStore", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DicomStore(String name, Output<String> id, @Nullable DicomStoreState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:healthcare/dicomStore:DicomStore", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DicomStoreArgs makeArgs(DicomStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DicomStoreArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

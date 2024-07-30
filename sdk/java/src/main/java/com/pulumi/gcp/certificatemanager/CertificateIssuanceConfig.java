@@ -393,11 +393,18 @@ public class CertificateIssuanceConfig extends com.pulumi.resources.CustomResour
      * @param options A bag of options that control this resource's behavior.
      */
     public CertificateIssuanceConfig(String name, CertificateIssuanceConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig", name, args == null ? CertificateIssuanceConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CertificateIssuanceConfig(String name, Output<String> id, @Nullable CertificateIssuanceConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CertificateIssuanceConfigArgs makeArgs(CertificateIssuanceConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CertificateIssuanceConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

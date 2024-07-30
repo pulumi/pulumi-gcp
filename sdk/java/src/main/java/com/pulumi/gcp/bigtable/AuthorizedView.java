@@ -239,11 +239,18 @@ public class AuthorizedView extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AuthorizedView(String name, AuthorizedViewArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigtable/authorizedView:AuthorizedView", name, args == null ? AuthorizedViewArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:bigtable/authorizedView:AuthorizedView", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AuthorizedView(String name, Output<String> id, @Nullable AuthorizedViewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:bigtable/authorizedView:AuthorizedView", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AuthorizedViewArgs makeArgs(AuthorizedViewArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AuthorizedViewArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

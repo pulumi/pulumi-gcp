@@ -402,11 +402,18 @@ public class DicomStoreIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DicomStoreIamMember(String name, DicomStoreIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember", name, args == null ? DicomStoreIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DicomStoreIamMember(String name, Output<String> id, @Nullable DicomStoreIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DicomStoreIamMemberArgs makeArgs(DicomStoreIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DicomStoreIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

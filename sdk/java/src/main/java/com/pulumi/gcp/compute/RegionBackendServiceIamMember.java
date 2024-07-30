@@ -214,11 +214,18 @@ public class RegionBackendServiceIamMember extends com.pulumi.resources.CustomRe
      * @param options A bag of options that control this resource's behavior.
      */
     public RegionBackendServiceIamMember(String name, RegionBackendServiceIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionBackendServiceIamMember:RegionBackendServiceIamMember", name, args == null ? RegionBackendServiceIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/regionBackendServiceIamMember:RegionBackendServiceIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RegionBackendServiceIamMember(String name, Output<String> id, @Nullable RegionBackendServiceIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/regionBackendServiceIamMember:RegionBackendServiceIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RegionBackendServiceIamMemberArgs makeArgs(RegionBackendServiceIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionBackendServiceIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

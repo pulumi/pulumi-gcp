@@ -280,11 +280,18 @@ public class ObjectAccessControl extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ObjectAccessControl(String name, ObjectAccessControlArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:storage/objectAccessControl:ObjectAccessControl", name, args == null ? ObjectAccessControlArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:storage/objectAccessControl:ObjectAccessControl", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ObjectAccessControl(String name, Output<String> id, @Nullable ObjectAccessControlState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:storage/objectAccessControl:ObjectAccessControl", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ObjectAccessControlArgs makeArgs(ObjectAccessControlArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ObjectAccessControlArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

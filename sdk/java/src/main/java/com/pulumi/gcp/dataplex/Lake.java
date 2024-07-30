@@ -349,11 +349,18 @@ public class Lake extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Lake(String name, LakeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/lake:Lake", name, args == null ? LakeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataplex/lake:Lake", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Lake(String name, Output<String> id, @Nullable LakeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataplex/lake:Lake", name, state, makeResourceOptions(options, id));
+    }
+
+    private static LakeArgs makeArgs(LakeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LakeArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

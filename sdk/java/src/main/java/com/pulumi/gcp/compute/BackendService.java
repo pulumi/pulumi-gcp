@@ -1319,11 +1319,18 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public BackendService(String name, @Nullable BackendServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/backendService:BackendService", name, args == null ? BackendServiceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/backendService:BackendService", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private BackendService(String name, Output<String> id, @Nullable BackendServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/backendService:BackendService", name, state, makeResourceOptions(options, id));
+    }
+
+    private static BackendServiceArgs makeArgs(@Nullable BackendServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BackendServiceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

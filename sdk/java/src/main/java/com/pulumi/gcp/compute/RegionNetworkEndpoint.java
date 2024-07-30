@@ -409,11 +409,18 @@ public class RegionNetworkEndpoint extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RegionNetworkEndpoint(String name, RegionNetworkEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint", name, args == null ? RegionNetworkEndpointArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RegionNetworkEndpoint(String name, Output<String> id, @Nullable RegionNetworkEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RegionNetworkEndpointArgs makeArgs(RegionNetworkEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionNetworkEndpointArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

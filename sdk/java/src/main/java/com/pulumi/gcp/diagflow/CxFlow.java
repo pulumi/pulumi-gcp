@@ -727,11 +727,18 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CxFlow(String name, CxFlowArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:diagflow/cxFlow:CxFlow", name, args == null ? CxFlowArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:diagflow/cxFlow:CxFlow", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CxFlow(String name, Output<String> id, @Nullable CxFlowState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:diagflow/cxFlow:CxFlow", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CxFlowArgs makeArgs(CxFlowArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CxFlowArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

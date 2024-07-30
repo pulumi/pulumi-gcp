@@ -849,11 +849,18 @@ public class Routine extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Routine(String name, RoutineArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquery/routine:Routine", name, args == null ? RoutineArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:bigquery/routine:Routine", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Routine(String name, Output<String> id, @Nullable RoutineState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:bigquery/routine:Routine", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RoutineArgs makeArgs(RoutineArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RoutineArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

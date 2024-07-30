@@ -370,11 +370,18 @@ public class TagKeyIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TagKeyIamPolicy(String name, TagKeyIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:tags/tagKeyIamPolicy:TagKeyIamPolicy", name, args == null ? TagKeyIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:tags/tagKeyIamPolicy:TagKeyIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TagKeyIamPolicy(String name, Output<String> id, @Nullable TagKeyIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:tags/tagKeyIamPolicy:TagKeyIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TagKeyIamPolicyArgs makeArgs(TagKeyIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TagKeyIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -415,11 +415,18 @@ public class InstanceIAMMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public InstanceIAMMember(String name, InstanceIAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:spanner/instanceIAMMember:InstanceIAMMember", name, args == null ? InstanceIAMMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:spanner/instanceIAMMember:InstanceIAMMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private InstanceIAMMember(String name, Output<String> id, @Nullable InstanceIAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:spanner/instanceIAMMember:InstanceIAMMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static InstanceIAMMemberArgs makeArgs(InstanceIAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InstanceIAMMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

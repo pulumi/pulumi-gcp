@@ -285,11 +285,18 @@ public class Network extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Network(String name, NetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:edgenetwork/network:Network", name, args == null ? NetworkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:edgenetwork/network:Network", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Network(String name, Output<String> id, @Nullable NetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:edgenetwork/network:Network", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NetworkArgs makeArgs(NetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NetworkArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

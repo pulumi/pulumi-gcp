@@ -429,11 +429,18 @@ public class JobIAMBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public JobIAMBinding(String name, JobIAMBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/jobIAMBinding:JobIAMBinding", name, args == null ? JobIAMBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataproc/jobIAMBinding:JobIAMBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private JobIAMBinding(String name, Output<String> id, @Nullable JobIAMBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataproc/jobIAMBinding:JobIAMBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static JobIAMBindingArgs makeArgs(JobIAMBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? JobIAMBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

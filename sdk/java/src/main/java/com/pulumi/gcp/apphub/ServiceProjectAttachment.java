@@ -285,11 +285,18 @@ public class ServiceProjectAttachment extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public ServiceProjectAttachment(String name, ServiceProjectAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment", name, args == null ? ServiceProjectAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ServiceProjectAttachment(String name, Output<String> id, @Nullable ServiceProjectAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ServiceProjectAttachmentArgs makeArgs(ServiceProjectAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceProjectAttachmentArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

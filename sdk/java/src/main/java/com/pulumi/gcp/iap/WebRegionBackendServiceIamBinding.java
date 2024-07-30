@@ -745,11 +745,18 @@ public class WebRegionBackendServiceIamBinding extends com.pulumi.resources.Cust
      * @param options A bag of options that control this resource's behavior.
      */
     public WebRegionBackendServiceIamBinding(String name, WebRegionBackendServiceIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iap/webRegionBackendServiceIamBinding:WebRegionBackendServiceIamBinding", name, args == null ? WebRegionBackendServiceIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:iap/webRegionBackendServiceIamBinding:WebRegionBackendServiceIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private WebRegionBackendServiceIamBinding(String name, Output<String> id, @Nullable WebRegionBackendServiceIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:iap/webRegionBackendServiceIamBinding:WebRegionBackendServiceIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static WebRegionBackendServiceIamBindingArgs makeArgs(WebRegionBackendServiceIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WebRegionBackendServiceIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
