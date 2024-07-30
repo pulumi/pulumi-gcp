@@ -370,11 +370,18 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public OrganizationPolicy(String name, OrganizationPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:folder/organizationPolicy:OrganizationPolicy", name, args == null ? OrganizationPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:folder/organizationPolicy:OrganizationPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OrganizationPolicy(String name, Output<String> id, @Nullable OrganizationPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:folder/organizationPolicy:OrganizationPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OrganizationPolicyArgs makeArgs(OrganizationPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OrganizationPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

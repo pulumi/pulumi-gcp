@@ -412,11 +412,18 @@ public class PolicyTagIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public PolicyTagIamMember(String name, PolicyTagIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:datacatalog/policyTagIamMember:PolicyTagIamMember", name, args == null ? PolicyTagIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:datacatalog/policyTagIamMember:PolicyTagIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private PolicyTagIamMember(String name, Output<String> id, @Nullable PolicyTagIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:datacatalog/policyTagIamMember:PolicyTagIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PolicyTagIamMemberArgs makeArgs(PolicyTagIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PolicyTagIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -267,11 +267,18 @@ public class BillingAccountSink extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public BillingAccountSink(String name, BillingAccountSinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/billingAccountSink:BillingAccountSink", name, args == null ? BillingAccountSinkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:logging/billingAccountSink:BillingAccountSink", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private BillingAccountSink(String name, Output<String> id, @Nullable BillingAccountSinkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:logging/billingAccountSink:BillingAccountSink", name, state, makeResourceOptions(options, id));
+    }
+
+    private static BillingAccountSinkArgs makeArgs(BillingAccountSinkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BillingAccountSinkArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

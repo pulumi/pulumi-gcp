@@ -389,11 +389,18 @@ public class RegionSecurityPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RegionSecurityPolicy(String name, @Nullable RegionSecurityPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionSecurityPolicy:RegionSecurityPolicy", name, args == null ? RegionSecurityPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/regionSecurityPolicy:RegionSecurityPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RegionSecurityPolicy(String name, Output<String> id, @Nullable RegionSecurityPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/regionSecurityPolicy:RegionSecurityPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RegionSecurityPolicyArgs makeArgs(@Nullable RegionSecurityPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionSecurityPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

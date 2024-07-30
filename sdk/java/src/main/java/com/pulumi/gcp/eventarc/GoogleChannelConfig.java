@@ -210,11 +210,18 @@ public class GoogleChannelConfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public GoogleChannelConfig(String name, GoogleChannelConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:eventarc/googleChannelConfig:GoogleChannelConfig", name, args == null ? GoogleChannelConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:eventarc/googleChannelConfig:GoogleChannelConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private GoogleChannelConfig(String name, Output<String> id, @Nullable GoogleChannelConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:eventarc/googleChannelConfig:GoogleChannelConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static GoogleChannelConfigArgs makeArgs(GoogleChannelConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GoogleChannelConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

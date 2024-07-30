@@ -459,11 +459,18 @@ public class DataPolicyIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DataPolicyIamBinding(String name, DataPolicyIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigquerydatapolicy/dataPolicyIamBinding:DataPolicyIamBinding", name, args == null ? DataPolicyIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:bigquerydatapolicy/dataPolicyIamBinding:DataPolicyIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DataPolicyIamBinding(String name, Output<String> id, @Nullable DataPolicyIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:bigquerydatapolicy/dataPolicyIamBinding:DataPolicyIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DataPolicyIamBindingArgs makeArgs(DataPolicyIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DataPolicyIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

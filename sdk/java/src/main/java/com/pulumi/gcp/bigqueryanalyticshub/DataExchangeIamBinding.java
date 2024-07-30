@@ -467,11 +467,18 @@ public class DataExchangeIamBinding extends com.pulumi.resources.CustomResource 
      * @param options A bag of options that control this resource's behavior.
      */
     public DataExchangeIamBinding(String name, DataExchangeIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:bigqueryanalyticshub/dataExchangeIamBinding:DataExchangeIamBinding", name, args == null ? DataExchangeIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:bigqueryanalyticshub/dataExchangeIamBinding:DataExchangeIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DataExchangeIamBinding(String name, Output<String> id, @Nullable DataExchangeIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:bigqueryanalyticshub/dataExchangeIamBinding:DataExchangeIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DataExchangeIamBindingArgs makeArgs(DataExchangeIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DataExchangeIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

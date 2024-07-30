@@ -795,11 +795,18 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public EdgeCacheService(String name, EdgeCacheServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/edgeCacheService:EdgeCacheService", name, args == null ? EdgeCacheServiceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:networkservices/edgeCacheService:EdgeCacheService", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private EdgeCacheService(String name, Output<String> id, @Nullable EdgeCacheServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:networkservices/edgeCacheService:EdgeCacheService", name, state, makeResourceOptions(options, id));
+    }
+
+    private static EdgeCacheServiceArgs makeArgs(EdgeCacheServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EdgeCacheServiceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

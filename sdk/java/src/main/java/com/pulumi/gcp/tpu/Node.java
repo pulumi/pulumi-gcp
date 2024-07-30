@@ -464,11 +464,18 @@ public class Node extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Node(String name, NodeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:tpu/node:Node", name, args == null ? NodeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:tpu/node:Node", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Node(String name, Output<String> id, @Nullable NodeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:tpu/node:Node", name, state, makeResourceOptions(options, id));
+    }
+
+    private static NodeArgs makeArgs(NodeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NodeArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -724,11 +724,18 @@ public class ImageIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ImageIamMember(String name, ImageIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/imageIamMember:ImageIamMember", name, args == null ? ImageIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/imageIamMember:ImageIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ImageIamMember(String name, Output<String> id, @Nullable ImageIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/imageIamMember:ImageIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ImageIamMemberArgs makeArgs(ImageIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ImageIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

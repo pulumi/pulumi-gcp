@@ -201,11 +201,18 @@ public class DocumentAiWarehouseLocation extends com.pulumi.resources.CustomReso
      * @param options A bag of options that control this resource's behavior.
      */
     public DocumentAiWarehouseLocation(String name, DocumentAiWarehouseLocationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation", name, args == null ? DocumentAiWarehouseLocationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DocumentAiWarehouseLocation(String name, Output<String> id, @Nullable DocumentAiWarehouseLocationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DocumentAiWarehouseLocationArgs makeArgs(DocumentAiWarehouseLocationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DocumentAiWarehouseLocationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -463,11 +463,18 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Spoke(String name, SpokeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkconnectivity/spoke:Spoke", name, args == null ? SpokeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:networkconnectivity/spoke:Spoke", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Spoke(String name, Output<String> id, @Nullable SpokeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:networkconnectivity/spoke:Spoke", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SpokeArgs makeArgs(SpokeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SpokeArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

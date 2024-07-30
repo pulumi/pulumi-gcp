@@ -465,11 +465,18 @@ public class FunctionIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public FunctionIamBinding(String name, FunctionIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudfunctions/functionIamBinding:FunctionIamBinding", name, args == null ? FunctionIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:cloudfunctions/functionIamBinding:FunctionIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FunctionIamBinding(String name, Output<String> id, @Nullable FunctionIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:cloudfunctions/functionIamBinding:FunctionIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FunctionIamBindingArgs makeArgs(FunctionIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FunctionIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

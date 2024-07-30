@@ -227,11 +227,18 @@ public class AccessBoundaryPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AccessBoundaryPolicy(String name, AccessBoundaryPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy", name, args == null ? AccessBoundaryPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AccessBoundaryPolicy(String name, Output<String> id, @Nullable AccessBoundaryPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AccessBoundaryPolicyArgs makeArgs(AccessBoundaryPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessBoundaryPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

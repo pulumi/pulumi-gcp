@@ -201,11 +201,18 @@ public class GlobalNetworkEndpoint extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public GlobalNetworkEndpoint(String name, GlobalNetworkEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint", name, args == null ? GlobalNetworkEndpointArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private GlobalNetworkEndpoint(String name, Output<String> id, @Nullable GlobalNetworkEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint", name, state, makeResourceOptions(options, id));
+    }
+
+    private static GlobalNetworkEndpointArgs makeArgs(GlobalNetworkEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GlobalNetworkEndpointArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
