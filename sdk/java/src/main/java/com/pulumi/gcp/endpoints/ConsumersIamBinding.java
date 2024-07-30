@@ -177,11 +177,18 @@ public class ConsumersIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ConsumersIamBinding(String name, ConsumersIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:endpoints/consumersIamBinding:ConsumersIamBinding", name, args == null ? ConsumersIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:endpoints/consumersIamBinding:ConsumersIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ConsumersIamBinding(String name, Output<String> id, @Nullable ConsumersIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:endpoints/consumersIamBinding:ConsumersIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ConsumersIamBindingArgs makeArgs(ConsumersIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConsumersIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

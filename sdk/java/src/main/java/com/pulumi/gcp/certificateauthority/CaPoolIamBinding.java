@@ -735,11 +735,18 @@ public class CaPoolIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CaPoolIamBinding(String name, CaPoolIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:certificateauthority/caPoolIamBinding:CaPoolIamBinding", name, args == null ? CaPoolIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:certificateauthority/caPoolIamBinding:CaPoolIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CaPoolIamBinding(String name, Output<String> id, @Nullable CaPoolIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:certificateauthority/caPoolIamBinding:CaPoolIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CaPoolIamBindingArgs makeArgs(CaPoolIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CaPoolIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

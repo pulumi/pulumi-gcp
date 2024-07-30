@@ -319,11 +319,18 @@ public class Occurence extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Occurence(String name, OccurenceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:containeranalysis/occurence:Occurence", name, args == null ? OccurenceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:containeranalysis/occurence:Occurence", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Occurence(String name, Output<String> id, @Nullable OccurenceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:containeranalysis/occurence:Occurence", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OccurenceArgs makeArgs(OccurenceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OccurenceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

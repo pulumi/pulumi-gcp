@@ -242,11 +242,18 @@ public class OrganizationBucketConfig extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public OrganizationBucketConfig(String name, OrganizationBucketConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/organizationBucketConfig:OrganizationBucketConfig", name, args == null ? OrganizationBucketConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:logging/organizationBucketConfig:OrganizationBucketConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OrganizationBucketConfig(String name, Output<String> id, @Nullable OrganizationBucketConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:logging/organizationBucketConfig:OrganizationBucketConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OrganizationBucketConfigArgs makeArgs(OrganizationBucketConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OrganizationBucketConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

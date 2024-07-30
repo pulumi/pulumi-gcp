@@ -278,11 +278,18 @@ public class AppCheckServiceConfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AppCheckServiceConfig(String name, AppCheckServiceConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig", name, args == null ? AppCheckServiceConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AppCheckServiceConfig(String name, Output<String> id, @Nullable AppCheckServiceConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AppCheckServiceConfigArgs makeArgs(AppCheckServiceConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AppCheckServiceConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -329,11 +329,18 @@ public class PreferenceSet extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public PreferenceSet(String name, PreferenceSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:migrationcenter/preferenceSet:PreferenceSet", name, args == null ? PreferenceSetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:migrationcenter/preferenceSet:PreferenceSet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private PreferenceSet(String name, Output<String> id, @Nullable PreferenceSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:migrationcenter/preferenceSet:PreferenceSet", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PreferenceSetArgs makeArgs(PreferenceSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PreferenceSetArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

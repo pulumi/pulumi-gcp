@@ -465,11 +465,18 @@ public class RuntimeIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RuntimeIamBinding(String name, RuntimeIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:notebooks/runtimeIamBinding:RuntimeIamBinding", name, args == null ? RuntimeIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:notebooks/runtimeIamBinding:RuntimeIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RuntimeIamBinding(String name, Output<String> id, @Nullable RuntimeIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:notebooks/runtimeIamBinding:RuntimeIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RuntimeIamBindingArgs makeArgs(RuntimeIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RuntimeIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

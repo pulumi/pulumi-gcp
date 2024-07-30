@@ -458,11 +458,18 @@ public class GatewayIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public GatewayIamMember(String name, GatewayIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigateway/gatewayIamMember:GatewayIamMember", name, args == null ? GatewayIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:apigateway/gatewayIamMember:GatewayIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private GatewayIamMember(String name, Output<String> id, @Nullable GatewayIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:apigateway/gatewayIamMember:GatewayIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static GatewayIamMemberArgs makeArgs(GatewayIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GatewayIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

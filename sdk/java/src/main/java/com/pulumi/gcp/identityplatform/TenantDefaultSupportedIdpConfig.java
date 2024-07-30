@@ -243,11 +243,18 @@ public class TenantDefaultSupportedIdpConfig extends com.pulumi.resources.Custom
      * @param options A bag of options that control this resource's behavior.
      */
     public TenantDefaultSupportedIdpConfig(String name, TenantDefaultSupportedIdpConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig", name, args == null ? TenantDefaultSupportedIdpConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TenantDefaultSupportedIdpConfig(String name, Output<String> id, @Nullable TenantDefaultSupportedIdpConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TenantDefaultSupportedIdpConfigArgs makeArgs(TenantDefaultSupportedIdpConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TenantDefaultSupportedIdpConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

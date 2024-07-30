@@ -402,11 +402,18 @@ public class Hl7StoreIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Hl7StoreIamMember(String name, Hl7StoreIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember", name, args == null ? Hl7StoreIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Hl7StoreIamMember(String name, Output<String> id, @Nullable Hl7StoreIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static Hl7StoreIamMemberArgs makeArgs(Hl7StoreIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? Hl7StoreIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

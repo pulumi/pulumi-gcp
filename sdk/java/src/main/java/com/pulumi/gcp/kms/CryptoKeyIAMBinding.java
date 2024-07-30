@@ -430,11 +430,18 @@ public class CryptoKeyIAMBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CryptoKeyIAMBinding(String name, CryptoKeyIAMBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding", name, args == null ? CryptoKeyIAMBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CryptoKeyIAMBinding(String name, Output<String> id, @Nullable CryptoKeyIAMBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CryptoKeyIAMBindingArgs makeArgs(CryptoKeyIAMBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CryptoKeyIAMBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

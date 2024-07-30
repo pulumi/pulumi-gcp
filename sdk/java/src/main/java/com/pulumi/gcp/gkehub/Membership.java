@@ -418,11 +418,18 @@ public class Membership extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Membership(String name, MembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkehub/membership:Membership", name, args == null ? MembershipArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:gkehub/membership:Membership", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Membership(String name, Output<String> id, @Nullable MembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:gkehub/membership:Membership", name, state, makeResourceOptions(options, id));
+    }
+
+    private static MembershipArgs makeArgs(MembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MembershipArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

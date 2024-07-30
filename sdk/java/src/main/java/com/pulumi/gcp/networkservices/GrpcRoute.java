@@ -447,11 +447,18 @@ public class GrpcRoute extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public GrpcRoute(String name, GrpcRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/grpcRoute:GrpcRoute", name, args == null ? GrpcRouteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:networkservices/grpcRoute:GrpcRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private GrpcRoute(String name, Output<String> id, @Nullable GrpcRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:networkservices/grpcRoute:GrpcRoute", name, state, makeResourceOptions(options, id));
+    }
+
+    private static GrpcRouteArgs makeArgs(GrpcRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GrpcRouteArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -465,11 +465,18 @@ public class ConnectionIAMBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ConnectionIAMBinding(String name, ConnectionIAMBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding", name, args == null ? ConnectionIAMBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ConnectionIAMBinding(String name, Output<String> id, @Nullable ConnectionIAMBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ConnectionIAMBindingArgs makeArgs(ConnectionIAMBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConnectionIAMBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

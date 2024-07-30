@@ -438,11 +438,18 @@ public class AttestorIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AttestorIamMember(String name, AttestorIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:binaryauthorization/attestorIamMember:AttestorIamMember", name, args == null ? AttestorIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:binaryauthorization/attestorIamMember:AttestorIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AttestorIamMember(String name, Output<String> id, @Nullable AttestorIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:binaryauthorization/attestorIamMember:AttestorIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AttestorIamMemberArgs makeArgs(AttestorIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AttestorIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

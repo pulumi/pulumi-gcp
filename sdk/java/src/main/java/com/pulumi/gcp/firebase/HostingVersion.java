@@ -402,11 +402,18 @@ public class HostingVersion extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public HostingVersion(String name, HostingVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/hostingVersion:HostingVersion", name, args == null ? HostingVersionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:firebase/hostingVersion:HostingVersion", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private HostingVersion(String name, Output<String> id, @Nullable HostingVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:firebase/hostingVersion:HostingVersion", name, state, makeResourceOptions(options, id));
+    }
+
+    private static HostingVersionArgs makeArgs(HostingVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HostingVersionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
