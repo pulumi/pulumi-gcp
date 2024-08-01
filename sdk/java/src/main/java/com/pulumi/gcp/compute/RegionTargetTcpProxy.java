@@ -314,11 +314,18 @@ public class RegionTargetTcpProxy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RegionTargetTcpProxy(String name, RegionTargetTcpProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy", name, args == null ? RegionTargetTcpProxyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RegionTargetTcpProxy(String name, Output<String> id, @Nullable RegionTargetTcpProxyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RegionTargetTcpProxyArgs makeArgs(RegionTargetTcpProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionTargetTcpProxyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -243,11 +243,18 @@ public class FolderBucketConfig extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public FolderBucketConfig(String name, FolderBucketConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:logging/folderBucketConfig:FolderBucketConfig", name, args == null ? FolderBucketConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:logging/folderBucketConfig:FolderBucketConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FolderBucketConfig(String name, Output<String> id, @Nullable FolderBucketConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:logging/folderBucketConfig:FolderBucketConfig", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FolderBucketConfigArgs makeArgs(FolderBucketConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FolderBucketConfigArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -408,11 +408,18 @@ public class LakeIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public LakeIamPolicy(String name, LakeIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/lakeIamPolicy:LakeIamPolicy", name, args == null ? LakeIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataplex/lakeIamPolicy:LakeIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private LakeIamPolicy(String name, Output<String> id, @Nullable LakeIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataplex/lakeIamPolicy:LakeIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static LakeIamPolicyArgs makeArgs(LakeIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LakeIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

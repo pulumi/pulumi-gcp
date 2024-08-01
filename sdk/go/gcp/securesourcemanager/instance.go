@@ -90,7 +90,7 @@ import (
 //			cryptoKeyBinding, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key_binding", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: cryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number)),
+//				Member:      pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err
@@ -185,7 +185,7 @@ import (
 //				CaPool: caPool.ID(),
 //				Role:   pulumi.String("roles/privateca.certificateRequester"),
 //				Members: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number)),
+//					pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number),
 //				},
 //			})
 //			if err != nil {

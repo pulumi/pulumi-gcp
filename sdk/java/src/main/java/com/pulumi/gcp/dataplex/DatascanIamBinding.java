@@ -459,11 +459,18 @@ public class DatascanIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DatascanIamBinding(String name, DatascanIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/datascanIamBinding:DatascanIamBinding", name, args == null ? DatascanIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataplex/datascanIamBinding:DatascanIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DatascanIamBinding(String name, Output<String> id, @Nullable DatascanIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataplex/datascanIamBinding:DatascanIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DatascanIamBindingArgs makeArgs(DatascanIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DatascanIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

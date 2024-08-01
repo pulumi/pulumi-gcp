@@ -504,11 +504,18 @@ public class Automation extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Automation(String name, AutomationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:clouddeploy/automation:Automation", name, args == null ? AutomationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:clouddeploy/automation:Automation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Automation(String name, Output<String> id, @Nullable AutomationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:clouddeploy/automation:Automation", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AutomationArgs makeArgs(AutomationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AutomationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

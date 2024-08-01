@@ -465,11 +465,18 @@ public class FeatureIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public FeatureIamBinding(String name, FeatureIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:gkehub/featureIamBinding:FeatureIamBinding", name, args == null ? FeatureIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:gkehub/featureIamBinding:FeatureIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FeatureIamBinding(String name, Output<String> id, @Nullable FeatureIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:gkehub/featureIamBinding:FeatureIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FeatureIamBindingArgs makeArgs(FeatureIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FeatureIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

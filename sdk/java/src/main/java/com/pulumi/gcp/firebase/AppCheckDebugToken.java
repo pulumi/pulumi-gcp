@@ -230,11 +230,18 @@ public class AppCheckDebugToken extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AppCheckDebugToken(String name, AppCheckDebugTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firebase/appCheckDebugToken:AppCheckDebugToken", name, args == null ? AppCheckDebugTokenArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:firebase/appCheckDebugToken:AppCheckDebugToken", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AppCheckDebugToken(String name, Output<String> id, @Nullable AppCheckDebugTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:firebase/appCheckDebugToken:AppCheckDebugToken", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AppCheckDebugTokenArgs makeArgs(AppCheckDebugTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AppCheckDebugTokenArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

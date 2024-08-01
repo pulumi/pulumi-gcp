@@ -962,11 +962,18 @@ public class RegionHealthCheck extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RegionHealthCheck(String name, @Nullable RegionHealthCheckArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/regionHealthCheck:RegionHealthCheck", name, args == null ? RegionHealthCheckArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:compute/regionHealthCheck:RegionHealthCheck", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RegionHealthCheck(String name, Output<String> id, @Nullable RegionHealthCheckState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/regionHealthCheck:RegionHealthCheck", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RegionHealthCheckArgs makeArgs(@Nullable RegionHealthCheckArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionHealthCheckArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -266,11 +266,18 @@ public class AiDataset extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AiDataset(String name, AiDatasetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:vertex/aiDataset:AiDataset", name, args == null ? AiDatasetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:vertex/aiDataset:AiDataset", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AiDataset(String name, Output<String> id, @Nullable AiDatasetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:vertex/aiDataset:AiDataset", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AiDatasetArgs makeArgs(AiDatasetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AiDatasetArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

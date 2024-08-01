@@ -203,11 +203,18 @@ public class SyncAuthorization extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SyncAuthorization(String name, SyncAuthorizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:apigee/syncAuthorization:SyncAuthorization", name, args == null ? SyncAuthorizationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:apigee/syncAuthorization:SyncAuthorization", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SyncAuthorization(String name, Output<String> id, @Nullable SyncAuthorizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:apigee/syncAuthorization:SyncAuthorization", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SyncAuthorizationArgs makeArgs(SyncAuthorizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SyncAuthorizationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

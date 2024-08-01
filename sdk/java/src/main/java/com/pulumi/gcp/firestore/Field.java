@@ -361,11 +361,18 @@ public class Field extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Field(String name, FieldArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:firestore/field:Field", name, args == null ? FieldArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:firestore/field:Field", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Field(String name, Output<String> id, @Nullable FieldState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:firestore/field:Field", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FieldArgs makeArgs(FieldArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FieldArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

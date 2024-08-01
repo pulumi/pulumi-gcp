@@ -187,7 +187,7 @@ import (
 //			viewer, err := projects.NewIAMMember(ctx, "viewer", &projects.IAMMemberArgs{
 //				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/bigquery.metadataViewer"),
-//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
+//				Member:  pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err
@@ -195,7 +195,7 @@ import (
 //			editor, err := projects.NewIAMMember(ctx, "editor", &projects.IAMMemberArgs{
 //				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/bigquery.dataEditor"),
-//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
+//				Member:  pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err
@@ -280,7 +280,7 @@ import (
 //			viewer, err := projects.NewIAMMember(ctx, "viewer", &projects.IAMMemberArgs{
 //				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/bigquery.metadataViewer"),
-//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
+//				Member:  pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err
@@ -288,7 +288,7 @@ import (
 //			editor, err := projects.NewIAMMember(ctx, "editor", &projects.IAMMemberArgs{
 //				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/bigquery.dataEditor"),
-//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
+//				Member:  pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err
@@ -488,7 +488,7 @@ import (
 //			admin, err := storage.NewBucketIAMMember(ctx, "admin", &storage.BucketIAMMemberArgs{
 //				Bucket: example.Name,
 //				Role:   pulumi.String("roles/storage.admin"),
-//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
+//				Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err
@@ -555,7 +555,7 @@ import (
 //			admin, err := storage.NewBucketIAMMember(ctx, "admin", &storage.BucketIAMMemberArgs{
 //				Bucket: example.Name,
 //				Role:   pulumi.String("roles/storage.admin"),
-//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
+//				Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err

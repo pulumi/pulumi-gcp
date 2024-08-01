@@ -60,7 +60,7 @@ import (
 //					},
 //				},
 //				Fleet: &edgecontainer.ClusterFleetArgs{
-//					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//					Project: pulumi.Sprintf("projects/%v", project.Number),
 //				},
 //				Labels: pulumi.StringMap{
 //					"my_key":    pulumi.String("my_val"),
@@ -113,7 +113,7 @@ import (
 //					},
 //				},
 //				Fleet: &edgecontainer.ClusterFleetArgs{
-//					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//					Project: pulumi.Sprintf("projects/%v", project.Number),
 //				},
 //				MaintenancePolicy: &edgecontainer.ClusterMaintenancePolicyArgs{
 //					Window: &edgecontainer.ClusterMaintenancePolicyWindowArgs{
@@ -173,7 +173,7 @@ import (
 //					},
 //				},
 //				Fleet: &edgecontainer.ClusterFleetArgs{
-//					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
+//					Project: pulumi.Sprintf("projects/%v", project.Number),
 //				},
 //				ExternalLoadBalancerIpv4AddressPools: pulumi.StringArray{
 //					pulumi.String("10.100.0.0-10.100.0.10"),

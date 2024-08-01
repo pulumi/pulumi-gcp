@@ -240,11 +240,18 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public IAMCustomRole(String name, IAMCustomRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:projects/iAMCustomRole:IAMCustomRole", name, args == null ? IAMCustomRoleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:projects/iAMCustomRole:IAMCustomRole", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private IAMCustomRole(String name, Output<String> id, @Nullable IAMCustomRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:projects/iAMCustomRole:IAMCustomRole", name, state, makeResourceOptions(options, id));
+    }
+
+    private static IAMCustomRoleArgs makeArgs(IAMCustomRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IAMCustomRoleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

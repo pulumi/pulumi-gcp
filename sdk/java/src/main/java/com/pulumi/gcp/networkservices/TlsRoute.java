@@ -414,11 +414,18 @@ public class TlsRoute extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TlsRoute(String name, TlsRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networkservices/tlsRoute:TlsRoute", name, args == null ? TlsRouteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:networkservices/tlsRoute:TlsRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TlsRoute(String name, Output<String> id, @Nullable TlsRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:networkservices/tlsRoute:TlsRoute", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TlsRouteArgs makeArgs(TlsRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TlsRouteArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

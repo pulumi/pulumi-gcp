@@ -172,11 +172,18 @@ public class AddressGroupIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AddressGroupIamPolicy(String name, AddressGroupIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:networksecurity/addressGroupIamPolicy:AddressGroupIamPolicy", name, args == null ? AddressGroupIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:networksecurity/addressGroupIamPolicy:AddressGroupIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AddressGroupIamPolicy(String name, Output<String> id, @Nullable AddressGroupIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:networksecurity/addressGroupIamPolicy:AddressGroupIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AddressGroupIamPolicyArgs makeArgs(AddressGroupIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AddressGroupIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

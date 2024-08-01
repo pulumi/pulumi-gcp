@@ -416,11 +416,18 @@ public class MetastoreServiceIamPolicy extends com.pulumi.resources.CustomResour
      * @param options A bag of options that control this resource's behavior.
      */
     public MetastoreServiceIamPolicy(String name, MetastoreServiceIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/metastoreServiceIamPolicy:MetastoreServiceIamPolicy", name, args == null ? MetastoreServiceIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataproc/metastoreServiceIamPolicy:MetastoreServiceIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private MetastoreServiceIamPolicy(String name, Output<String> id, @Nullable MetastoreServiceIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataproc/metastoreServiceIamPolicy:MetastoreServiceIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static MetastoreServiceIamPolicyArgs makeArgs(MetastoreServiceIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MetastoreServiceIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

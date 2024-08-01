@@ -464,11 +464,18 @@ public class ZoneIamMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ZoneIamMember(String name, ZoneIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataplex/zoneIamMember:ZoneIamMember", name, args == null ? ZoneIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:dataplex/zoneIamMember:ZoneIamMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ZoneIamMember(String name, Output<String> id, @Nullable ZoneIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:dataplex/zoneIamMember:ZoneIamMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ZoneIamMemberArgs makeArgs(ZoneIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ZoneIamMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

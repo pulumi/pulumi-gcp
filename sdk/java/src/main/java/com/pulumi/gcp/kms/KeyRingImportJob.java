@@ -220,11 +220,18 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public KeyRingImportJob(String name, KeyRingImportJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/keyRingImportJob:KeyRingImportJob", name, args == null ? KeyRingImportJobArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:kms/keyRingImportJob:KeyRingImportJob", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private KeyRingImportJob(String name, Output<String> id, @Nullable KeyRingImportJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:kms/keyRingImportJob:KeyRingImportJob", name, state, makeResourceOptions(options, id));
+    }
+
+    private static KeyRingImportJobArgs makeArgs(KeyRingImportJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KeyRingImportJobArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

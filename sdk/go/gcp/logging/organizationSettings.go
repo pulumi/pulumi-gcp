@@ -48,7 +48,7 @@ import (
 //			iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: pulumi.String("kms-key"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:%v", settings.KmsServiceAccountId)),
+//				Member:      pulumi.Sprintf("serviceAccount:%v", settings.KmsServiceAccountId),
 //			})
 //			if err != nil {
 //				return err

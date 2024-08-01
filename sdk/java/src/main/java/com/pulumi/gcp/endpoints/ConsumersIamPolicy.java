@@ -132,11 +132,18 @@ public class ConsumersIamPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ConsumersIamPolicy(String name, ConsumersIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy", name, args == null ? ConsumersIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ConsumersIamPolicy(String name, Output<String> id, @Nullable ConsumersIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ConsumersIamPolicyArgs makeArgs(ConsumersIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConsumersIamPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -437,11 +437,18 @@ public class RepositoryIamBinding extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RepositoryIamBinding(String name, RepositoryIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding", name, args == null ? RepositoryIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RepositoryIamBinding(String name, Output<String> id, @Nullable RepositoryIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RepositoryIamBindingArgs makeArgs(RepositoryIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RepositoryIamBindingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
